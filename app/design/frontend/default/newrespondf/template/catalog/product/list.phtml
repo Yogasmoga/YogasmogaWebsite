@@ -403,7 +403,7 @@ if (isset($page) && $page == '11') {
 //		  $classname = "first-confname2";
         ?>
 
-        <div class="first-confname1">
+        <div class="productCont">
             <?php $isNewImage = $confProduct->getResource()->getAttribute('mobile_image')->getFrontend()->getValue($confProduct); ?>
             <?php if (isset($isNewImage)) { ?>
 
@@ -432,7 +432,7 @@ if (isset($page) && $page == '11') {
         <?php ++$counter;
         //echo "$counter";
         if ($counter % 2 == 0) {
-            echo "<div class='clear'></div>";
+            //echo "<div class='clear'></div>";
             $divcleared = true;
         }
         ?>
@@ -506,7 +506,7 @@ if (isset($page) && $page == '11') {
             ++$counter;
             //echo "$counter";
             if ($counter % 2 == 0) {
-                echo "<div class='clear'></div>";
+                //echo "<div class='clear'></div>";
                 $divcleared = true;
             }
         }

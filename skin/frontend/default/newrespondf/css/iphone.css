@@ -3591,6 +3591,7 @@ h4.legend {
 
 .gridWrap .productCont:nth-child(2n+1) {
     padding-right: 2px;
+    clear: left;
 }
 
 .gridWrap .productCont:nth-child(2n) {
