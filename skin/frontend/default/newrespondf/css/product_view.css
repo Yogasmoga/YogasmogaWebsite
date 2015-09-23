@@ -821,11 +821,11 @@ td#tdpopupproductsmallimages {
 }
 
 td#tdpopupproductbigimage {
-    /*padding-top: 3px;*/
+    padding-top: 0 !important;
     text-align: center;
 }
 td#tdpopupproductbigimage > img{
-    width: 94%;
+    width: 94% !important;
 }
 
 img#closelightbox {
