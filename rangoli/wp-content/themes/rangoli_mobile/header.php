@@ -28,7 +28,7 @@ $logged_in = is_user_logged_in();
             <meta property="og:title" content="Rangoli: The YOGASMOGA Community"/>
             <meta property="og:description"
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
-            <meta property="description"
+            <meta name="description"
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
         <?php
         }
@@ -38,7 +38,7 @@ $logged_in = is_user_logged_in();
             <meta property="og:title" content="Look | Rangoli: The YOGASMOGA Community"/>
             <meta property="og:description"
                   content="Our READ section features a curated selection of health & wellness related articles, op-eds, editorial, recipes, biographies, interviews and more. Your brain will love you for it. Rangoli: The YOGASMOGA Community."/>
-            <meta property="description"
+            <meta name="description"
                   content="Our READ section features a curated selection of health & wellness related articles, op-eds, editorial, recipes, biographies, interviews and more. Your brain will love you for it. Rangoli: The YOGASMOGA Community."/>
         <?php
         }
@@ -48,7 +48,7 @@ $logged_in = is_user_logged_in();
             <meta property="og:title" content="Look | Rangoli: The YOGASMOGA Community"/>
             <meta property="og:description"
                   content="Discover our Look section and browse through photography, slideshows, and more awe-inspiring imagery that revolve around health & wellness. Pictures are worth 1000 words and our Look section will give you plenty to talk about. Rangoli: The YOGASMOGA Community."/>
-            <meta property="description"
+            <meta name="description"
                   content="Discover our Look section and browse through photography, slideshows, and more awe-inspiring imagery that revolve around health & wellness. Pictures are worth 1000 words and our Look section will give you plenty to talk about. Rangoli: The YOGASMOGA Community."/>
         <?php
         }
@@ -58,7 +58,7 @@ $logged_in = is_user_logged_in();
             <meta property="og:title" content="Learn | Rangoli: The YOGASMOGA Community"/>
             <meta property="og:description"
                   content="Learn how to hit that yoga pose with video tutorials from our beloved SMOGIs. Whether you’re a beginner or a seasoned yogi, our SMOGIs will guide you step-by-step with each pose, adjustment, inhale and exhale. Rangoli: The YOGASMOGA Community."/>
-            <meta property="description"
+            <meta name="description"
                   content="Learn how to hit that yoga pose with video tutorials from our beloved SMOGIs. Whether you’re a beginner or a seasoned yogi, our SMOGIs will guide you step-by-step with each pose, adjustment, inhale and exhale. Rangoli: The YOGASMOGA Community."/>
         <?php
         }
@@ -68,7 +68,7 @@ $logged_in = is_user_logged_in();
             <meta property="og:title" content="404 | Rangoli: The YOGASMOGA Community"/>
             <meta property="og:description"
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
-            <meta property="description"
+            <meta name="description"
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
         <?php
         }
@@ -83,7 +83,7 @@ $logged_in = is_user_logged_in();
                 <meta property="og:title" content="YOGASMOGA Brentwood | Rangoli: The YOGASMOGA Community"/>
                 <meta property="og:description"
                       content="Centrally located on the corner of San Vicente Boulevard and Montana Avenue in Brentwood, Los Angeles. We chose this space for its accessibility and neighborhood vibe. Our bright and sunny Brentwood store is wrapped in floor-to-ceiling windows that fill the space with natural light and warm, welcoming energy."/>
-                <meta property="description"
+                <meta name="description"
                       content="Centrally located on the corner of San Vicente Boulevard and Montana Avenue in Brentwood, Los Angeles. We chose this space for its accessibility and neighborhood vibe. Our bright and sunny Brentwood store is wrapped in floor-to-ceiling windows that fill the space with natural light and warm, welcoming energy."/>
             <?php
             }
@@ -92,7 +92,7 @@ $logged_in = is_user_logged_in();
                 <meta property="og:title" content="YOGASMOGA Townhouse | Rangoli: The YOGASMOGA Community"/>
                 <meta property="og:description"
                       content="We chose this two-story townhouse on Greenwich Avenue as our first store for its strong feel of community. The exposed brick walls create a cozy atmosphere and neutral palate for our bright collections. We are currently renovating the upstairs space for yoga classes and other wellness events."/>
-                <meta property="description"
+                <meta name="description"
                       content="We chose this two-story townhouse on Greenwich Avenue as our first store for its strong feel of community. The exposed brick walls create a cozy atmosphere and neutral palate for our bright collections. We are currently renovating the upstairs space for yoga classes and other wellness events."/>
             <?php
             }
@@ -101,7 +101,7 @@ $logged_in = is_user_logged_in();
                 <meta property="og:title" content="YOGASMOGA HQ | Rangoli: The YOGASMOGA Community"/>
                 <meta property="og:description"
                       content="We are YOGASMOGA. Designed in NYC. Made in USA. We make things for life, one breath at a time."/>
-                <meta property="description"
+                <meta name="description"
                       content="We are YOGASMOGA. Designed in NYC. Made in USA. We make things for life, one breath at a time."/>
             <?php
             }
@@ -111,7 +111,7 @@ $logged_in = is_user_logged_in();
             <meta property="og:title" content="About Rangoli | Rangoli: The YOGASMOGA Community"/>
             <meta property="og:description"
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind."/>
-            <meta property="description"
+            <meta name="description"
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind."/>
         <?php
         } else {
@@ -126,7 +126,7 @@ $logged_in = is_user_logged_in();
             <title><?php echo get_the_title(); ?> | Rangoli: The YOGASMOGA Community</title>
             <meta property="og:title" content="<?php echo get_the_title(); ?> | Rangoli: The YOGASMOGA Community"/>
             <meta property="og:description" content="<?php echo $description; ?>"/>
-            <meta property="description" content="<?php echo $description; ?>"/>
+            <meta name="description" content="<?php echo $description; ?>"/>
             <meta property="og:image"
                   content="<?php $banner_img_url = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'single-post-thumbnail');
                   echo $banner_img_url[0]; ?>"/>
@@ -199,6 +199,19 @@ $logged_in = is_user_logged_in();
 
     </head>
 <body>
+    <!-- google analytics code -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-37432636-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <!-- end google analytics code -->
+
     <span style="display: none;" class="logged_in">
     <?php if (is_user_logged_in()) {
         $user = get_current_user_id();

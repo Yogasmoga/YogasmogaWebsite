@@ -659,12 +659,13 @@ html[xmlns] .overridefix {
 }
 
 .gridWrap .productCont{
-    min-height: 450px;
+    min-height: 280px;
     width: 228px;
 }
 
 .productCont .prod-img{
-    height: 338px;
+    height: 225px;
+    overflow: hidden;
 }
 
 .chat-status{
