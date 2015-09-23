@@ -7,9 +7,10 @@ header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=design_products.csv');
 $output = fopen('php://output', 'w');
 $products = Mage::getModel('catalog/product')
-    ->getCollection()
+    ->getCollection()->addAttributeToSort('name', 'ASC')
     ->addAttributeToSelect('*')
     ->addAttributeToFilter('type_id', array('eq' => 'configurable'));
+
 
 fputcsv($output, array('Sku', 'Name', 'Label'));
 foreach ($products as $_product) {
