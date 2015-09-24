@@ -23,6 +23,8 @@ jQuery(document).ready(function($){
         }
     });
     $("#bucket1_slider").flexslider('pause');
+    $("#bucket1_slider .flex-direction-nav").hide();
+    $("#bucket1_slider .flex-control-nav").hide();
 
     $(window).load(function(){
 
@@ -33,6 +35,8 @@ jQuery(document).ready(function($){
 
         $(".flexslider .slides li").css({"display":"block"});
         $("#bucket1_slider").flexslider('play');
+        $("#bucket1_slider .flex-direction-nav").show();
+        $("#bucket1_slider .flex-control-nav").show();
 
     });
 
