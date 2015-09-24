@@ -20,17 +20,19 @@ jQuery(document).ready(function($){
             setTimeout(function(){ positionfloatingimages();;}, 50);
         }
     });
-    $("#bucket1_slider").flexslider('pause');
-    $("#bucket1_slider .flex-direction-nav").hide();
-    $("#bucket1_slider .flex-control-nav").hide();
+    if($("#bucket1_slider").length!=0){
+        $("#bucket1_slider").flexslider('pause');
+        $("#bucket1_slider .flex-direction-nav").hide();
+        $("#bucket1_slider .flex-control-nav").hide();
 
-    $(window).load(function(){
+        $(window).load(function(){
 
-        $("#bucket1_slider").flexslider('play');
-        $("#bucket1_slider .flex-direction-nav").show();
-        $("#bucket1_slider .flex-control-nav").show();
+            $("#bucket1_slider").flexslider('play');
+            $("#bucket1_slider .flex-direction-nav").show();
+            $("#bucket1_slider .flex-control-nav").show();
 
-    });
+        });
+    }
 
     //$(".gridfull .sliderImg img").load(function(){
     //    $(this).closest(".gridfull").css("opacity",1);
