@@ -28,8 +28,11 @@ jQuery(document).ready(function($){
         $(window).load(function(){
 
             $("#bucket1_slider").flexslider('play');
-            $("#bucket1_slider .flex-direction-nav").show();
-            $("#bucket1_slider .flex-control-nav").show();
+
+            if($("#bucket1_slider .slides li").length>1) {
+                $("#bucket1_slider .flex-direction-nav").show();
+                $("#bucket1_slider .flex-control-nav").show();
+            }
 
         });
     }
