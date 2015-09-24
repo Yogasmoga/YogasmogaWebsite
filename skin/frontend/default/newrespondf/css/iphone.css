@@ -4753,7 +4753,7 @@ table.productdetailtable div#colorcontainer div table {
     background: #c2c3c4;
 }
 
-.includeoptionmain .include_option > div:first-child.selected {
+.includeoptionmain .include_option > div:last-child.selected {
     background: #00B900 !important;
 }
 
