@@ -84,7 +84,7 @@
 		 <li>
 		 <?php if ($this->getIsStripeCustomer()) : ?>
 			<div id="stripe-update-payment-holder">
-			<a id="stripe-update-payment" class="use checkBCre showcreditcardopt"><?php echo $this->__("Change Credit Card Details") ?></a>
+			<a id="stripe-update-payment" class="use checkBCre showcreditcardopt"><?php //echo $this->__("Change Credit Card Details") ?></a>
                  <!-- <div class="creditOption clear">
 						<span class="addVal">Use a different Credit Card</span><span class="showCrdtOpt"></span>
 						<a id="stripe-update-payment" class="use checkBCre showcreditcardopt"><?php echo $this->__("Change payment information") ?></a>
@@ -100,7 +100,9 @@
 	Stripe.setPublishableKey('<?php echo $this->getPublishableKey() ?>');
 
 	<?php if ($this->getIsStripeCustomer()) : ?>
-		$('stripe-update-payment').observe('click',function(event){
+		//$('stripe-update-payment').observe('click',function(event){
+		$('p_method_stripe').observe('click',function(event){
+		
 			Event.stop(event);
 			    $('stripe-change-payment-form').show();
 				$('stripe-payment-details').hide();
