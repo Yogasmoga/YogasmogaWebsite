@@ -5283,7 +5283,7 @@ button.place-order {
 }
 
 .input-box input, .form_field_left input {
-    font: 15px ITCAvantGardeStd-Bk !important;
+    font: 14px graphikregular !important;
     letter-spacing: 1px;
 }
 
@@ -5316,7 +5316,7 @@ button.place-order {
 }
 
 .gender-link span label {
-    font: 15px ITCAvantGardeStd-Bk !important;
+    font: 14px graphikregular !important;
     color: #fff !important;
     opacity: 0.6 !important;
     letter-spacing: 1px;
@@ -5398,7 +5398,7 @@ button.place-order {
 .already_signed_up {
     color: #fff;
     float: left;
-    font: 15px ITCAvantGardeStd-Bk;
+    font: 14px graphikregular;
     margin-bottom: 10px;
     margin-top: -15px;
     opacity: 0.6;
@@ -5659,7 +5659,7 @@ table#checkout-review-table tfoot td .price {
 #create_account {
     border: medium none;
     color: #fff;
-    font: 15px ITCAvantGardeStd-Bk;
+    font: 14px graphikregular;
 }
 
 .selected_method > span:first-child {
@@ -6583,11 +6583,11 @@ button#send2 {
 */
 
 #singup_form.singup_form input {
-    font-size: 15px !important;
+    font-size: 14px !important;
 }
 
 #loginPopupDiv input {
-    font: 15px ITCAvantGardeStd-Bk !important;
+    font: 14px graphikregular !important
 }
 
 #ajaxlogin_button_send span img {
@@ -6597,7 +6597,7 @@ button#send2 {
 .new_customer > a {
     color: #fff;
     float: left;
-    font: 15px ITCAvantGardeStd-Bk;
+    font: 14px graphikregular;
     margin-top: 15px;
     opacity: 0.6;
     letter-spacing: 1px;
