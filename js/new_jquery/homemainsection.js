@@ -1,35 +1,35 @@
 jQuery(document).ready(function($){
-    // sliderHeight();
+    var sliderHeight = $(window).width() * 0.523;
     $(".gridfull").css('min-height',$(window).width()*0.48);
-    $(".flexslider li").css({"display":"none"});
-    $(".flexslider li:first-child").css({"opacity":1, "display":"block"});
+    $(".flexslider li").css({"height": sliderHeight});
+
+    //$(flexslider)
+    $('.flexslider').flexslider({
+        controlNav: true,
+        slideshowSpeed: 5000,
+        animationSpeed:1250,
+        easing:"linear",
+        directionNav: true,
+        startAt: 0,
+        start: function(slider) {
+            //fixFlexisliderImage();
+        },
+        before: function(slider) {
+            //$('.current-slide').text(slider.currentSlide);
+            //fixFlexisliderImage();
+            setTimeout(function(){ positionfloatingimages();;}, 50);
+        }
+    });
+    $("#bucket1_slider").flexslider('pause');
+    $("#bucket1_slider .flex-direction-nav").hide();
+    $("#bucket1_slider .flex-control-nav").hide();
 
     $(window).load(function(){
 
-        var startSlideNumber = 0;
+        $("#bucket1_slider").flexslider('play');
+        $("#bucket1_slider .flex-direction-nav").show();
+        $("#bucket1_slider .flex-control-nav").show();
 
-        $("#bucket1_slider .slides li, .cubix").css('background-color', '#fff');
-
-        if(jQuery(".home-slider")!=undefined && jQuery('.home-slider').length>0)
-            startSlideNumber = 1;
-
-        $(".flexslider .slides li").css({"display":"block"});
-        $('.flexslider').flexslider({
-            controlNav: true,
-            slideshowSpeed: 5000,
-            animationSpeed:1250,
-            easing:"linear",
-            directionNav: true,
-            startAt: startSlideNumber,
-            start: function(slider) {
-                //fixFlexisliderImage();
-              },
-            before: function(slider) {
-            //$('.current-slide').text(slider.currentSlide);
-            //fixFlexisliderImage();
-             setTimeout(function(){ positionfloatingimages();;}, 50);
-            }
-        });
     });
 
     //$(".gridfull .sliderImg img").load(function(){
