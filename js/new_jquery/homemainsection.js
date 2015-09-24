@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
     // sliderHeight();
     var sliderHeight = $(window).width() * 0.523;
     $(".gridfull").css('min-height',$(window).width()*0.48);
-    $(".flexslider li").css({"height": sliderHeight});
+    $("#bucket1_slider.flexslider li").css({"height": sliderHeight});
 
     $('.flexslider').flexslider({
         controlNav: true,
@@ -26,8 +26,10 @@ jQuery(document).ready(function($){
     $(window).load(function(){
         if($("#bucket1_slider").length!=0){
             $("#bucket1_slider").flexslider('play');
-            $("#bucket1_slider .flex-direction-nav").show();
-            $("#bucket1_slider .flex-control-nav").show();
+            if($("#bucket1_slider .slides li").length>1) {
+                $("#bucket1_slider .flex-direction-nav").show();
+                $("#bucket1_slider .flex-control-nav").show();
+            }
         }
     });
 
