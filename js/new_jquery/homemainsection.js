@@ -22,7 +22,7 @@ jQuery(document).ready(function($){
             setTimeout(function(){ positionfloatingimages();;}, 50);
         }
     });
-    //$("#bucket1_slider").pause();
+    $("#bucket1_slider").flexslider('pause');
 
     $(window).load(function(){
 
@@ -32,7 +32,7 @@ jQuery(document).ready(function($){
             startSlideNumber = 1;
 
         $(".flexslider .slides li").css({"display":"block"});
-        $("#bucket1_slider").play();
+        $("#bucket1_slider").flexslider('play');
 
     });
 
