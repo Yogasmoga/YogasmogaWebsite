@@ -22,7 +22,8 @@ jQuery(document).ready(function($){
             setTimeout(function(){ positionfloatingimages();;}, 50);
         }
     });
-
+    $("#bucket1_slider").pause();
+    
     $(window).load(function(){
 
         var startSlideNumber = 0;

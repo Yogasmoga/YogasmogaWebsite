@@ -3040,7 +3040,7 @@ h4.legend {
     letter-spacing: 1px;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 5px;
 }
 
 .discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
@@ -3506,6 +3506,7 @@ label[for="shipping:street1"] {
 
 #checkout-review-table tr.cart-info {
     border-bottom: 1px solid #999;
+    position: relative;
 }
 
 #checkout-review-table tr.cart-info .col_left_img {
@@ -5623,6 +5624,10 @@ p.required {
     right: 0;
 }
 
+#checkout-review-table tbody .price {
+    top: 16px;
+}
+
 table#checkout-review-table tfoot td .price {
     right: 0px;
 }
@@ -6679,7 +6684,7 @@ button#send2 {
     color: #00B800;
     float: right;
     font: 12px AvantGarde-Demi !important;
-    margin-top: 10px;
+    margin-top: 8px;
     letter-spacing: 1px;
 }
 
