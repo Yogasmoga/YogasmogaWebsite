@@ -1,8 +1,10 @@
 jQuery(document).ready(function($){
     // sliderHeight();
     var sliderHeight = $(window).width() * 0.523;
+    var bannerFliudHeight = $(window).width() * 0.3125;
     $(".gridfull").css('min-height',$(window).width()*0.48);
     $("#bucket1_slider.flexslider li").css({"height": sliderHeight});
+    $("#Allproducts .bannerFluid").css({"height": sliderHeight});
 
     $('.flexslider').flexslider({
         controlNav: true,
