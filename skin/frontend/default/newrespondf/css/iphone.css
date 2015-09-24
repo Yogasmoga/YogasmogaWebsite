@@ -5578,6 +5578,7 @@ p.required {
 #checkout-shipping-method-load label, #checkout-shipping-method-load label strong {
     font: 12px/44px GraphikRegular;
     margin-bottom: -2px;
+    letter-spacing: 1px;
 }
 
 #checkout-shipping-method-load .method label {
