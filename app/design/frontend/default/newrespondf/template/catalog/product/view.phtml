@@ -915,21 +915,21 @@ if ($lengthAvailable) {
 
                         <div class="include_option">
                             <?php
-                            /*foreach ($arProductAllOptions as $options) {
-                                */?><!--
-                                <div value="<?php /*echo $options['default_price']; */?>"
-                                     title="<?php /*echo $options['default_title']; */?>"
-                                     optionid="<?php /*echo $options['option_id']; */?>"
-                                     optiontypeid="<?php /*echo $options['option_type_id']; */?>"
-                                     class="<?php /*if ($options['default_title'] == 'N') {
+                            foreach ($arProductAllOptions as $options) {
+                                ?>
+                                <div value="<?php echo $options['default_price']; ?>"
+                                     title="<?php echo $options['default_title']; ?>"
+                                     optionid="<?php echo $options['option_id']; ?>"
+                                     optiontypeid="<?php echo $options['option_type_id']; ?>"
+                                     class="<?php if ($options['default_title'] == 'N') {
                                          echo 'selected';
-                                     } */?>"><?php /*echo $options['default_title']; */?>
+                                     } ?>"><?php echo $options['default_title']; ?>
                                 </div>
-                                --><?php
-/*                            }*/
+                                <?php
+                            }
                             ?>
-                            <div class="selected" optiontypeid="2" optionid="1" title="N" value="0.0000">N</div>
-                            <div class="" optiontypeid="1" optionid="1" title="Y" value="0.0000">Y</div>
+                            <!--<div class="selected" optiontypeid="2" optionid="1" title="N" value="0.0000">N</div>
+                            <div class="" optiontypeid="1" optionid="1" title="Y" value="0.0000">Y</div>-->
                         </div>
 
                     </div>

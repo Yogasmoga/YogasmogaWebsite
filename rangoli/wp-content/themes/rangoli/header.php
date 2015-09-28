@@ -276,7 +276,7 @@ if(!is_user_logged_in()){
                         </span>
                     </li>
                     <li data-blockid="help-new">
-                        <a href="#">Help</a>
+                        <a href="/help#faq">Help</a>
                         <span>|</span>
                         <ul style="left: -87px;" class="sub-menu l-align cms-header-link">
                             <li class="blank"></li>
@@ -287,7 +287,7 @@ if(!is_user_logged_in()){
                             <li class="last" data-blockid="email-us"><a href="/help#email-us">Email Us</a></li>
                         </ul>
                     </li>
-                    <li>                        <a href="#" id="welcome-name">My Account</a>
+                    <li> <a href="#" id="welcome-name">My Account</a>
                         <ul style="left: -64px;" class="sub-menu l-align my-acnt">
                             <li class="blank"></li>
                             <li style="padding-top: 16px;"><a href="/sales/order/history">track order</a></li>
