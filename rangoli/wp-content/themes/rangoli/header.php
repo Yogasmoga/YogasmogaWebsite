@@ -234,7 +234,7 @@ if(!is_user_logged_in()){
                                 <li><a href="/women/tops/tanks">Tanks</a></li>
                                 <li><a href="/women/tops/tees">TEES</a></li>
                                 <li><a href="/women/tops/sweaters">SWEATERS</a></li>
-                                <li><a href="/women/tops/jackets">Jackets</a></li>
+                                <li><a href="/women/tops/jackets">Jackets & Hoodies</a></li>
                                 <li><a href="/women/tops/rangoli">Rangoli</a></li>
                             </ul>
                         </li>
@@ -303,7 +303,7 @@ if(!is_user_logged_in()){
                         </span>
                     </li>
                     <li data-blockid="help-new">
-                        <a href="#">Help</a>
+                        <a href="/help#faq">Help</a>
                         <span>|</span>
                         <ul style="left: -87px;" class="sub-menu l-align cms-header-link">
                             <li class="blank"></li>
