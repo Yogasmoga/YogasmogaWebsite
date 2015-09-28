@@ -100,8 +100,8 @@
 	Stripe.setPublishableKey('<?php echo $this->getPublishableKey() ?>');
 
 	<?php if ($this->getIsStripeCustomer()) : ?>
-		//$('stripe-update-payment').observe('click',function(event){
-		$('p_method_stripe').observe('click',function(event){
+		$('stripe-update-payment').observe('click',function(event){
+//		$('p_method_stripe').observe('click',function(event){
 		
 			Event.stop(event);
 			    $('stripe-change-payment-form').show();
@@ -114,15 +114,16 @@
 				$('stripe-payment-details').show();
 				$('stripe_create_stripe_customer').value = '0';
 				$(this).update("Change payment information");
-			} else {
-				alert('ravi123');
-				$(this).update("Use existing payment information");
+			/*} else {*/
+//				alert();
+//				$(this).update("Use existing payment information");
 				$('stripe-change-payment-form').show();
 				$('stripe-payment-details').hide();
 				$('stripe_create_stripe_customer').value = "1";
-			}
+			/*}
 			**/
-		});	
+		});
+		$('stripe-update-payment').click();
 	<?php endif; ?>
 
 <?php if (!(bool)Mage::getStoreConfig('onestepcheckout/general/rewrite_checkout_links')) : ?>
