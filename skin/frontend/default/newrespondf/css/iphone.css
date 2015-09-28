@@ -4901,7 +4901,7 @@ table.productdetailtable div#colorcontainer div table {
     float: left;
     overflow: hidden;
     height: 48px;
-    margin: 30px 0 0 0;
+    margin: 26px 0 0 0;
     position: relative;
     width: 50%;
     border: 2px solid #fff;
@@ -4927,6 +4927,7 @@ button.place-order {
     left: 0;
     position: fixed;
     top: 0;
+    right: 0;
 }
 
 .thanks-page .thanks-block p {
@@ -4946,11 +4947,13 @@ button.place-order {
     background: #00b900 none repeat scroll 0 0;
     color: hsl(0, 0%, 100%);
     display: block;
-    font: 16px/50px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     height: 44px;
     letter-spacing: 1px;
     text-decoration: none;
     text-transform: uppercase;
+    width: 275px;
+    margin: 0 auto;
 }
 
 .thanks-page .thanks-block p .shop-tag {

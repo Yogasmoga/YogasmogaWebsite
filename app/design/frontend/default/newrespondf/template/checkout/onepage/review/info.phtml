@@ -104,6 +104,7 @@ function format_bill($html)
 <div id="checkout-review-submit">
      <?php echo $this->getChildHtml('progress') ?>
     <?php echo $this->getChildHtml('agreements') ?>
+    <div class="checkout-error-msg" style="color: #ff6600; font: 12px/18px graphikregular"></div>
     <div class="buttons-set" id="review-buttons-container">
         <?php echo $this->getChildHtml('button') ?>
         <span class="please-wait" id="review-please-wait" style="display:none;">

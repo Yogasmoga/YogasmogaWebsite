@@ -791,7 +791,8 @@ Payment.prototype = {
                 }
                 return;
             }
-            alert(response.error);
+            //alert(response.error);
+            jQuery(".stripe-error-msg").html(response.error);
             return;
         }
 
@@ -856,7 +857,8 @@ Review.prototype = {
                 if (typeof(msg)=='object') {
                     msg = msg.join("\n");
                 }
-                alert(msg);
+                //alert(msg);
+                jQuery(".checkout-error-msg").html(msg);
             }
 
             if (response.update_section) {

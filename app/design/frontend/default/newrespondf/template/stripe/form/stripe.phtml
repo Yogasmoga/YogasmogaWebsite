@@ -64,6 +64,7 @@
 			    <?php endif; ?>
 				</ul>
 			</fieldset>
+			<div class="stripe-error-msg"></div>
 		</li>
 		<?php if ($this->getIsStripeCustomer()) : ?>
 			<li id="stripe-payment-details"<?php if (!$this->getIsStripeCustomer()) : ?> style="display: none;"<?php endif; ?>>
