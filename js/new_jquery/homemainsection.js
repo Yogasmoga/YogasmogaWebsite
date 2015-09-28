@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
     var sliderHeight = $(window).width() * 0.523;
     $(".gridfull").css('min-height',$(window).width()*0.48);
-    $(".flexslider li").css({"height": sliderHeight});
+    $("#bucket1_slider.flexslider li").css({"height": sliderHeight});
 
     //$(flexslider)
     $('.flexslider').flexslider({
