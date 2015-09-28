@@ -35,9 +35,9 @@
 $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 $carturl = Mage::helper('checkout/cart')->getCartUrl();
 $checkouturl = Mage::helper('checkout/url')->getCheckoutUrl();
-if($currentUrl == $carturl) {
+/*if($currentUrl == $carturl) {
     echo'<script>window.location="'.$checkouturl.'"</script>';
-}
+}*/
 
 //Mage::app()->getFrontController()->getResponse()->setRedirect('checkout/onepage');
 
@@ -77,7 +77,7 @@ if(!function_exists('activategiftcard'))
                 Mage::getSingleton('giftcards/session')->setActive('1');
                 Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
                 Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
-                //Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
             }
         }
         //}
