@@ -3162,6 +3162,7 @@ label[for="shipping:street1"] {
     font-size: 12px;
     line-height: 28px;
     text-align: left;
+    letter-spacing: 1px;
     margin-top: 15px;
 }
 
@@ -7510,6 +7511,7 @@ label[for="stripe_expiration"] {
 
 #stripe-change-payment-form input {
     font: 12px GraphikRegular !important;
+    letter-spacing: 1px !important;
 }
 
 #stripe-update-payment-holder {
