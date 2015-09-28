@@ -30,11 +30,14 @@
  * @var $test Mage_Customer_Block_Address_Book
  */
 ?>
+<style>
+#address-update .messages .success-msg{ margin-top:20px;}
+</style>
 <div class="page-title title-buttons" style="padding: 0 12px;">
     <h1><?php echo $this->__('Address Book') ?></h1>
     <button type="button" title="<?php echo $this->__('Add New Address') ?>" class="button" onclick="window.location='<?php echo $this->getAddAddressUrl() ?>';"><span><span><?php echo $this->__('Add New Address') ?></span></span></button>
 </div>
-<?php echo $this->getMessagesBlock()->toHtml() ?>
+
 <div class="col2-set addresses-list" style="padding: 0 12px;">
     <div class="col-1 addresses-primary">
         <h2><?php echo $this->__('Default Addresses') ?></h2>
@@ -88,11 +91,15 @@
                 <p><?php echo $this->__('You have no additional address entries in your address book.') ?></p>
             </li>
         <?php endif ?>
+		
         </ol>
     </div>
 </div>
 <div class="buttons-set">
     <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+</div>
+<div id="address-update">
+<?php echo $this->getMessagesBlock()->toHtml() ?>
 </div>
 <script type="text/javascript">
 //<![CDATA[
