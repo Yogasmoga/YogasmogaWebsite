@@ -7587,7 +7587,7 @@ table#checkout-review-table tfoot tr.reward-point td .price {
 }
 
 #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
-    margin: 0;
+    margin: -7px 0 0;
     position: absolute;
     right: -2px;
 }
