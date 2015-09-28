@@ -415,17 +415,17 @@ Validation.addAllThese([
     ['validate-no-html-tags', 'HTML tags are not allowed', function(v) {
 				return !/<(\/)?\w+/.test(v);
 			}],
-	['validate-select', 'Please select an option.', function(v) {
+	['validate-select', 'Please select an option', function(v) {
                 return ((v != "none") && (v != null) && (v.length != 0));
             }],
-    ['required-entry', 'This is a required field.', function(v) {
+    ['required-entry', 'This is a required field', function(v) {
                 return !Validation.get('IsEmpty').test(v);
             }],
-    ['validate-number', 'Please enter a valid number in this field.', function(v) {
+    ['validate-number', 'Please enter a valid number in this field', function(v) {
                 return Validation.get('IsEmpty').test(v)
                     || (!isNaN(parseNumber(v)) && /^\s*-?\d*(\.\d*)?\s*$/.test(v));
             }],
-    ['validate-number-range', 'The value is not within the specified range.', function(v, elm) {
+    ['validate-number-range', 'The value is not within the specified range', function(v, elm) {
                 if (Validation.get('IsEmpty').test(v)) {
                     return true;
                 }
@@ -526,7 +526,7 @@ Validation.addAllThese([
                 }
                 return !(pass.length < 7);
             }],
-    ['validate-cpassword', 'Please make sure your passwords match.', function(v) {
+    ['validate-cpassword', 'Please make sure your passwords match', function(v) {
                 var conf = $('confirmation') ? $('confirmation') : $$('.validate-cpassword')[0];
                 var pass = false;
                 if ($('password')) {
@@ -610,17 +610,17 @@ Validation.addAllThese([
                     return false;
                 }
             }],
-    ['validate-not-negative-number', 'Please enter a number 0 or greater in this field.', function(v) {
+    ['validate-not-negative-number', 'Please enter a number 0 or greater in this field', function(v) {
                 if (Validation.get('IsEmpty').test(v)) {
                     return true;
                 }
                 v = parseNumber(v);
                 return !isNaN(v) && v >= 0;
             }],
-    ['validate-zero-or-greater', 'Please enter a number 0 or greater in this field.', function(v) {
+    ['validate-zero-or-greater', 'Please enter a number 0 or greater in this field', function(v) {
             return Validation.get('validate-not-negative-number').test(v);
         }],
-    ['validate-greater-than-zero', 'Please enter a number greater than 0 in this field.', function(v) {
+    ['validate-greater-than-zero', 'Please enter a number greater than 0 in this field', function(v) {
             if (Validation.get('IsEmpty').test(v)) {
                 return true;
             }
@@ -635,7 +635,7 @@ Validation.addAllThese([
                 if (Validation.get('IsEmpty').test(v) && v != '') return false;
                 return true;
             }],
-    ['validate-cc-number', 'Please enter a valid credit card number.', function(v, elm) {
+    ['validate-cc-number', 'Please enter a valid credit card number', function(v, elm) {
                 // remove non-numerics
                 var ccTypeContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_number')) + '_cc_type');
                 if (ccTypeContainer && typeof Validation.creditCartTypes.get(ccTypeContainer.value) != 'undefined'
@@ -648,7 +648,7 @@ Validation.addAllThese([
                 }
                 return validateCreditCard(v);
             }],
-    ['validate-cc-type', 'Credit card number does not match credit card type.', function(v, elm) {
+    ['validate-cc-type', 'Credit card number does not match credit card type', function(v, elm) {
                 // remove credit card number delimiters such as "-" and space
                 elm.value = removeDelimiters(elm.value);
                 v         = removeDelimiters(v);
@@ -688,7 +688,7 @@ Validation.addAllThese([
 
                 return true;
             }],
-     ['validate-cc-type-select', 'Card type does not match credit card number.', function(v, elm) {
+     ['validate-cc-type-select', 'Card type does not match credit card number', function(v, elm) {
                 var ccNumberContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_type')) + '_cc_number');
                 if (Validation.isOnChange && Validation.get('IsEmpty').test(ccNumberContainer.value)) {
                     return true;
@@ -698,7 +698,7 @@ Validation.addAllThese([
                 }
                 return Validation.get('validate-cc-type').test(ccNumberContainer.value, ccNumberContainer);
             }],
-     ['validate-cc-exp', 'Incorrect credit card expiration date.', function(v, elm) {
+     ['validate-cc-exp', 'Incorrect credit card expiration date', function(v, elm) {
                 var ccExpMonth   = v;
                 var ccExpYear    = $(elm.id.substr(0,elm.id.indexOf('_expiration')) + '_expiration_yr').value;
                 var currentTime  = new Date();
@@ -709,7 +709,7 @@ Validation.addAllThese([
                 }
                 return true;
             }],
-     ['validate-cc-cvn', 'Please enter a valid credit card verification number.', function(v, elm) {
+     ['validate-cc-cvn', 'Please enter a valid CV Number', function(v, elm) {
                 var ccTypeContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_cid')) + '_cc_type');
                 if (!ccTypeContainer) {
                     return true;

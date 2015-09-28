@@ -81,26 +81,26 @@ function validatePaymentForm()
     {
         if(jQuery("#payment_form input.paymethod:checked").length == 0)
         {
-            jQuery("#paymentmethoderrormsg").html('Please choose a payment method.');
-            return false;
-        }
-        if(jQuery("#payment_form input.paymethod:checked").val() == "stripe")
-        {
-            _stripecheck = true;
-        }
-    }
-    if(_stripecheck)
-    {
-        unsetAllError(jQuery("#payment_form"));
-        if(jQuery("#stripe-update-payment").length > 0 && jQuery("#stripe-update-payment").hasClass('use'))
-            return true;
-        var flag = validatefields(jQuery("#payment_form"));
-        if(jQuery("#stripe_cc_number").val() != "")
-        {
-            if(!Stripe.validateCardNumber(jQuery("#stripe_cc_number").val()))
+            jQuery("#paymentmethoderrormsg").html('Please choose a payment method');
+                return false;
+            }
+            if(jQuery("#payment_form input.paymethod:checked").val() == "stripe")
             {
-                flag = false;
-                setOnError(jQuery("#stripe_cc_number"), "Invalid Credit Card Number");
+                _stripecheck = true;
+            }
+        }
+        if(_stripecheck)
+        {
+            unsetAllError(jQuery("#payment_form"));
+            if(jQuery("#stripe-update-payment").length > 0 && jQuery("#stripe-update-payment").hasClass('use'))
+                return true;
+            var flag = validatefields(jQuery("#payment_form"));
+            if(jQuery("#stripe_cc_number").val() != "")
+            {
+                if(!Stripe.validateCardNumber(jQuery("#stripe_cc_number").val()))
+                {
+                    flag = false;
+                    setOnError(jQuery("#stripe_cc_number"), "Invalid Credit Card");
             }
         }
         if(jQuery("#stripe_cc_cid").val() != "")
