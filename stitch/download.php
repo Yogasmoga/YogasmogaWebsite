@@ -92,36 +92,30 @@ if (file_exists($inputFileName)) {
         $magento_fallriver = $fallriver_stock + $magento_stock;
         $magento_price = $rowData[0][30];
 
-//    $sku = $rowData[0][0];
-//    $name = $rowData[0][1];
-//    $unit_price = $rowData[0][2];
-//    $total_stock = $rowData[0][3];
-//    $brentwood_stock = $rowData[0][4];
-//    $fallriver_stock = $rowData[0][5];
-//    $magento_stock = $rowData[0][6];
-//    $greenwich_stock = $rowData[0][7];
-//    $magento_price = $rowData[0][8];
-
-        if (strpos($name, '(') === false)
-            continue;
-
-        $parenthesis_start_position = strpos($name, '(');
-        $parenthesis_end_position = strpos($name, ')');
-
-        $actual_name = trim(substr($name, 0, $parenthesis_start_position));
-        $within_parenthesis = trim(substr($name, $parenthesis_start_position + 1, $parenthesis_end_position - $parenthesis_start_position - 1));
-
         $height = '';
-        if (strpos($within_parenthesis, ",") === false) {
-            $color = $within_parenthesis;
+        if(strpos($name, '(')===false){
+            $actual_name = $name;
             $size = 'One';
-        } else {
-            $ar_within_parenthesis = explode(",", $within_parenthesis);
-            $color = $ar_within_parenthesis[0];
-            $size = $ar_within_parenthesis[1];
+            $color = 'None';
+        }
+        else {
+            $parenthesis_start_position = strpos($name, '(');
+            $parenthesis_end_position = strpos($name, ')');
 
-            if (count($ar_within_parenthesis) == 3)
-                $height = $ar_within_parenthesis[2];
+            $actual_name = trim(substr($name, 0, $parenthesis_start_position));
+            $within_parenthesis = trim(substr($name, $parenthesis_start_position + 1, $parenthesis_end_position - $parenthesis_start_position - 1));
+
+            if (strpos($within_parenthesis, ",") === false) {
+                $color = $within_parenthesis;
+                $size = 'One';
+            } else {
+                $ar_within_parenthesis = explode(",", $within_parenthesis);
+                $color = $ar_within_parenthesis[0];
+                $size = $ar_within_parenthesis[1];
+
+                if (count($ar_within_parenthesis) == 3)
+                    $height = $ar_within_parenthesis[2];
+            }
         }
 
         $product_names[] = $actual_name;
