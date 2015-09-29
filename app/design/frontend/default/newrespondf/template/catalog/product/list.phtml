@@ -376,7 +376,7 @@ if (isset($page) && $page == '11') {
 
 
                     // if(in_array($colorId,$configurableProductArr[$key]))
-                    if ($check) {
+                    if ($check && $imgdata['type']=='product image') {
 
                         if (count($imageArr[$colorId]) <= 3) {
                             if (!array_key_exists($colorId, $imageArr)) {
