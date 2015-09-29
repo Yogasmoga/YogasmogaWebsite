@@ -1,5 +1,4 @@
 <?php
-
     function hasDifferentSizes($originalSizes, $productSizes){
 
         foreach($productSizes as $productSize){
@@ -23,7 +22,7 @@
     else
         $upload_display = "display:block";
 
-    $stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich');
+    $stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich', 'magentofallriver');
     $ar_sizes = array('One', 'S', 'M', 'L', 'XL', 'XXL', '2', '4', '6', '8', '10', '12', '14', '16', '18');
 
     $store = 'all';
@@ -41,6 +40,14 @@
         if($available=="1")
             $available = 1;
     }
+?>
+
+<html>
+<head>
+    <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
+    <title>Stitch All Inventory Report</title>
+</head>
+<body style="font-size: 12px; font-family: arial, helvetica, sans-serif"><?php
 
 if(file_exists($inputFileName)){
 
@@ -83,37 +90,30 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $magento_fallriver = $fallriver_stock + $magento_stock;
     $magento_price = $rowData[0][30];
 
-//    $sku = $rowData[0][0];
-//    $name = $rowData[0][1];
-//    $unit_price = $rowData[0][2];
-//    $total_stock = $rowData[0][3];
-//    $brentwood_stock = $rowData[0][4];
-//    $fallriver_stock = $rowData[0][5];
-//    $magento_stock = $rowData[0][6];
-//    $greenwich_stock = $rowData[0][7];
-//    $magento_price = $rowData[0][8];
-
-    if(strpos($name, '(')===false)
-        continue;
-
-    $parenthesis_start_position = strpos($name, '(');
-    $parenthesis_end_position = strpos($name, ')');
-
-    $actual_name = trim(substr($name, 0, $parenthesis_start_position));
-    $within_parenthesis = trim(substr($name, $parenthesis_start_position + 1, $parenthesis_end_position - $parenthesis_start_position - 1));
-
     $height = '';
-    if(strpos($within_parenthesis, ",")===false) {
-        $color = $within_parenthesis;
+    if(strpos($name, '(')===false){
+        $actual_name = $name;
         $size = 'One';
+        $color = 'None';
     }
-    else{
-        $ar_within_parenthesis = explode(",", $within_parenthesis);
-        $color = $ar_within_parenthesis[0];
-        $size = $ar_within_parenthesis[1];
+    else {
+        $parenthesis_start_position = strpos($name, '(');
+        $parenthesis_end_position = strpos($name, ')');
 
-        if(count($ar_within_parenthesis)==3)
-            $height = $ar_within_parenthesis[2];
+        $actual_name = trim(substr($name, 0, $parenthesis_start_position));
+        $within_parenthesis = trim(substr($name, $parenthesis_start_position + 1, $parenthesis_end_position - $parenthesis_start_position - 1));
+
+        if (strpos($within_parenthesis, ",") === false) {
+            $color = $within_parenthesis;
+            $size = 'One';
+        } else {
+            $ar_within_parenthesis = explode(",", $within_parenthesis);
+            $color = $ar_within_parenthesis[0];
+            $size = $ar_within_parenthesis[1];
+
+            if (count($ar_within_parenthesis) == 3)
+                $height = $ar_within_parenthesis[2];
+        }
     }
 
     $product_names[] = $actual_name;
@@ -136,19 +136,11 @@ for ($row = 2; $row <= $highestRow; $row++) {
     );
 }
 
-$product_names = array_unique($product_names);
+    $product_names = array_unique($product_names);
 
 ksort($all_products);
 ?>
-
-<html>
-<head>
-    <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
-    <title>Stitch All Inventory Report</title>
-</head>
-<body style="font-size: 12px; font-family: arial, helvetica, sans-serif">
-
-<div id="divdata" style="padding-top: 155px;">
+<div id="divdata" style="padding-top: 175px;">
 <table style="width:100%; margin:auto; padding: 20px; border-collapse: collapse;font-size: 12px; font-family: arial, helvetica, sans-serif">
     <thead>
 
