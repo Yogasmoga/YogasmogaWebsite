@@ -6444,7 +6444,7 @@ button.btn-invite.button {
     stroke: #666;
 }
 
-.section.allow .head svg line {
+.section.allow.completed .head svg line {
     stroke: #666;
 }
 .section .head svg line {
@@ -7717,4 +7717,8 @@ label[for="billing-address-select"] {
 
 #address-update .messages{
     background: transparent !important;
+}
+#discountFormPoints2 fieldset{
+    float: left;
+    width: 100%;
 }
