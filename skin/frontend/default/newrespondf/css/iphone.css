@@ -3226,9 +3226,9 @@ label[for="shipping:street1"] {
     top: 0px;
 }
 
-#shopping_arrow.is-active.arrow-tag svg line:nth-child(3) {
+/*#shopping_arrow.is-active.arrow-tag svg line:nth-child(3) {
     stroke: none;
-}
+}*/
 
 .one-page-checkout .section .head .arrow-tag img {
     float: right;
@@ -6439,6 +6439,9 @@ button.btn-invite.button {
     width: auto;
     margin-left: 20px;
     padding-top: 18px;
+}
+.section.always_allow .head svg line{
+    stroke: #666;
 }
 
 .section.allow .head svg line {

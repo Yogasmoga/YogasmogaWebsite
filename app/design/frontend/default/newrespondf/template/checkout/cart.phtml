@@ -682,10 +682,12 @@ jQuery(".apply_smogi_bucks").click(function(){
                 var offset =  jQuery("#opc-billing").offset().top;
                 jQuery(window).scrollTop(offset-120);
                 jQuery("#opc-billing .head").click();
+                jQuery("#opc-cart").addClass("always_allow");
             });
             jQuery("#shopping_arrow").click(function(){
                 jQuery("#checkout-step-billing").hide();
                 jQuery("#opc-billing").removeClass("active");
+                jQuery("#opc-cart").removeClass("always_allow");
             });
 
 
