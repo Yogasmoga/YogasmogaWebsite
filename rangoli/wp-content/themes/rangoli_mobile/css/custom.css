@@ -1097,6 +1097,10 @@ input:focus {
     background: #f4f4f4;
 }
 
+.homepagegrid .author_post_read a{
+    line-height: 0;
+}
+
 .homepagegrid .featured_post_title {
     padding: 0 14px 25px;
     position: relative;
