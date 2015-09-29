@@ -1097,8 +1097,10 @@ input:focus {
     background: #f4f4f4;
 }
 
-.homepagegrid .author_post_read a{
+.homepagegrid .author_post_read a {
+    float: left;
     line-height: 0;
+    width: 100%;
 }
 
 .homepagegrid .featured_post_title {
