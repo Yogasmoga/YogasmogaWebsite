@@ -26,7 +26,9 @@
     height : 29px;
     margin-top : 47px;
 }
-
+.box-seprtr.last {
+    float: left;
+}
 .sectionheader
 {
     font-family: gothambook;
@@ -108,17 +110,7 @@ a.forgot-link:hover
 
 .submitbtn
 {
-    /*background-image : url('../images/customer/submit_off.png');*/
-    background-image : url('../images/submit-btn.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    width : 125px;
-    height : 25px;
-}
-
-.submitbtnpassword
-{
-    background-image : url('../images/submit-btn.png') !important;
+    background-image : url('../images/customer/submit_off.png');
     background-repeat: no-repeat;
     background-position: center;
     width : 125px;

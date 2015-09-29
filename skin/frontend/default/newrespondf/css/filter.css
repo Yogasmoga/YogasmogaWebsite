@@ -34,6 +34,7 @@
     top: 88px;
     width: 120%;
     z-index: 12;
+    left: 0;
 }
 .filter {
     background: none repeat scroll 0 0 #ededed;
@@ -234,13 +235,13 @@
     background: #EEEEEE;
 }
 .dropdown_links > ul > li {
-    font: 14px/44px AvantGarde-Demi;
+    font: 12px/44px AvantGarde-Demi;
     letter-spacing: 1px;
     position: relative;
     text-transform: uppercase;
 }
 .dropdown_links > ul > li >ul >li{
-    font:14px/44px ITCAvantGardeStd-Bk;
+    font:12px/44px ITCAvantGardeStd-Bk;
     background: #eee;
 }
 .dropdown_links > ul > li > a, .dropdown_links > ul > li > ul li a {
@@ -253,7 +254,8 @@
     /*border-left: 1px solid #555;*/
     line-height: 44px;
     position: absolute;
-    right: 0;
+    right: 20%;
+    margin-right: -13px;
     text-align: center;
     top: 0px;
     width: 44px;
@@ -283,7 +285,7 @@
     opacity: 1;
 }
 .has_no_childs {
-    font: 14px/44px Avantgarde-demi;
+    font: 12px/44px Avantgarde-demi;
     letter-spacing: 1px;
     text-transform: uppercase;
 }

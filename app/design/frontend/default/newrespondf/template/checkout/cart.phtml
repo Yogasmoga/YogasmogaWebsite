@@ -31,13 +31,41 @@
  * @see Mage_Checkout_Block_Cart
  */
 ?>
+<!--<style>
+    #shopping-cart-totals-table{
+        border-top: none !important;
+        margin-top: -16px !important;
+        background: #fff;
+    }
+    #shopping-cart-totals-table .price {
+        position: absolute;
+        right: 14px;
+    }
+    .section .head + div{
+        border-bottom: none !important;
+    }
+    .error{
+        margin-bottom: 0 !important;
+    }
+    button.place-order::before, #shopping-cart-table .button::before, #shopping-cart-totals-table + .button::before, .col2-set .registered-users .buttons-set #send2::before{
+        background: none !important;
+    }
+    #shopping-cart-totals-table + .button, #shopping-cart-table .button{
+        text-transform: uppercase;
+    }
+</style>-->
 <?php
 $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 $carturl = Mage::helper('checkout/cart')->getCartUrl();
 $checkouturl = Mage::helper('checkout/url')->getCheckoutUrl();
-/*if($currentUrl == $carturl) {
+
+/************* this code is causing reloading of page again and again **********************/
+/*
+if($currentUrl == $carturl) {
     echo'<script>window.location="'.$checkouturl.'"</script>';
-}*/
+}
+*/
+/************* this code is causing reloading of page again and again **********************/
 
 //Mage::app()->getFrontController()->getResponse()->setRedirect('checkout/onepage');
 
@@ -277,7 +305,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
             if(Mage::getSingleton('core/session')->getAutoAppliedDiscount() == 1)
             {
                 Mage::getSingleton('core/session')->setAutoAppliedDiscount(2);
-                //Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+              //  Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
 
             }
 
@@ -385,17 +413,21 @@ else
                         //echo '<span class="step-count">'. round(Mage::helper('core')->currency($reward_model->getPointsCurrent($customerId, $store_id)+0)).'</span>';
 
                     }
-                    ?>
-                    &nbsp;Shopping Bag
-			<span id="shopping_arrow" class="arrow-tag is-active"<?php //if(Mage::getSingleton('customer/session')->isLoggedIn()) { echo 'arrow-tag'; } else { echo 'arrow-tag is-active' ;};?>>
-			<img alt="arrow" src="<?php echo $this->getSkinUrl('images/black-arrw.png') ;?>" class="">
+                    ?>Shopping Bag
+			<span id="shopping_arrow" class="arrow-tag is-active">
+                <!-- <img alt="arrow" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ;?><!--" class="">-->
+                <svg width="44px" height="44px">
+                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374" y2="109.657"></line>
+                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374" y1="21.39" x2="30.374" y2="21.39"></line>
+                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374" y1="13.39" x2="22.374" y2="29.39"></line>
+                </svg>
 			</span>
                     <div class="clear"></div>
                 </div>
             </div>
             <div style="display:<?php if(Mage::getSingleton('customer/session')->isLoggedIn()) { echo 'none'; } else { echo 'block' ;};?>" class="box a-item" id="checkout-step-cart">
                 <?php echo $this->getChildHtml('form_before') ?>
-                <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+                <?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
                 <?php /* if(!$this->hasError()): ?>
         <ul class="checkout-types">
         <?php foreach ($this->getMethods('methods') as $method): ?>
@@ -408,31 +440,21 @@ else
     <?php endif; */ ?>
                 <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
                     <fieldset>
-                        <table id="shopping-cart-table" class="data-table cart-table">
-                            <thead>
-                            <tr>
-                                <th class="a-center"><?php echo $this->__('ITEMS') ?></th>
-                                <th class="a-right"><?php
+                        <div id="shopping-cart-table" class="data-table cart-table">
+
+                                <div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>
+                                <div class="cart_total"><?php
                                     $subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
-                                    echo $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
+                                    $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
+                                    echo "$". (int)substr($formattedPrice, 1,strlen($formattedPrice));
                                     ?>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <!-- <tr>
-                        <td colspan="2" class="">
-                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update'); ?>" class="button btn-update"><?php //echo $this->__('Update'); ?></button>
-                           
-                        </td>
-                    </tr> -->
-                            </tfoot>
-                            <tbody>
-                            <?php foreach($this->getItems() as $_item): ?>
+                                </div>
+                        </div>
+
+                        <?php foreach($this->getItems() as $_item): ?>
                                 <?php echo $this->getItemHtml($_item) ?>
                             <?php endforeach ?>
-                            </tbody>
-                        </table>
+
                     </fieldset>
                 </form>
                 <?php
@@ -481,14 +503,31 @@ else
 
                             <?php // if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
                             <div class="totals">
-                                <?php echo $this->getChildHtml('totals'); ?>
+<!--                            <div class=""> --><?php ///* ****Removinf class totals**** */ ?>
+                                 <?php echo $this->getChildHtml('totals'); ?>
                                 <?php if(!$this->hasError()){ ?>
                                     <?php $customerlogin = Mage::getSingleton('customer/session')->isLoggedIn() ?>
 
                                     <?php if($customerlogin): ?>
-                                    <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Continue'); ?>" class="button btn-update"><?php //echo $this->__('Update'); ?></button>
+                                    
+									<?php $url = Mage::app()->getRequest()->getControllerName(); 
+									if($url ==strtolower('cart')){
+									?>
+										<a name="update_cart_action_checkout" value="update_qty" title="<?php echo $this->__('Continue'); ?>" class="button btn-update" href="<?php echo Mage::helper('checkout/url')->getCheckoutUrl(); ?>">
+                                        <?php echo $this->__('PROCEED TO CHECKOUT'); ?></a>
+										
+									<?php } else{?>
+										<button type="submit" name="update_cart_action_checkout" value="update_qty" title="<?php echo $this->__('Continue'); ?>" class="button btn-update">
+                                        <?php echo $this->__('PROCEED TO CHECKOUT'); ?></button>
+										<?php }?>
+									
+									
+									
+									<!--<button type="submit" name="update_cart_action_checkout" value="update_qty" title="<?php //echo $this->__('Continue'); ?>" class="button btn-update">
+                                        <?php //echo $this->__('PROCEED TO CHECKOUT'); ?></button>-->
+										
                                 <?php else: ?>
-                                    <button type="submit" name="update_cart_action" onclick="openLogin()" value="update_qty" title="<?php echo $this->__('Continue'); ?>" class="button btn-update"><?php //echo $this->__('Update'); ?></button>
+                                    <button type="submit" name="update_cart_action" rel="not-logged" onclick="openLogin()" value="update_qty" title="<?php echo $this->__('Continue'); ?>" class="button btn-update"><?php //echo $this->__('Update'); ?></button>
                                 <?php endif ?>
 
                                 <?php } else {
@@ -580,7 +619,7 @@ else
 
                 }
             }
-
+/*
             jQuery(".apply_smogi_bucks").click(function(){
 
                 var be_used = jQuery("#points_to_be_used").val();
@@ -596,6 +635,25 @@ else
                 }
 
             });
+*/
+
+jQuery(".apply_smogi_bucks").click(function(){
+
+                var be_used = jQuery("#points_to_be_used").val();
+
+                var availableUserSmogiBucks = jQuery("span#bucks").attr("rel");
+                
+                if (be_used == '') {
+
+                    jQuery("#points_to_be_used").val(availableUserSmogiBucks);
+                    
+//                    jQuery("#error_msg_smogi").html("Please fill SMOGI Bucks Value");
+//                    jQuery("#points_to_be_used").focus();
+//                    return false ;
+
+                }
+
+            });			
 
             jQuery(".apply_promo_code_div .btn-update").click(function(){
 

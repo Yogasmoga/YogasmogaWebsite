@@ -37,10 +37,10 @@
         <form id="discountFormPoints2" name="discountFormPoints2" method="post" action="#" onsubmit="return(false)">
         <fieldset>
              
-           <P>Sign in to use SMOGI Bucks</p>
+           <P><span style="color: #AE8637;" onclick="openLogin();">Sign in</span> to use SMOGI Bucks</p>
                     
           <div class="buttons-set">
-           <button type="submit" onclick="openLogin()" value="Apply" class="button btn-update"><span><span>+</span></span></button>
+           <button type="submit" onclick="openLogin()" value="Apply" rel="not-logged" class="button btn-update"><span><span class="beforeSignIn">+</span></span></button>
           </div>
             
         </fieldset>
@@ -62,7 +62,7 @@
        <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/').'#smogi-promotions' ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset style="clear: both;">
           <?php echo $this->getIllustrationImage()?>
-            
+            <span id="bucks" style="display:none;" rel="<?php echo $point_details['customer_points']?>"></span>
             <div class="rewards_point_cart" style="display:none;"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
             <?php //if ($point_details['points_money'] > $point_details['customer_points']):?>
             <?php if ($point_details['min_use'] > $point_details['customer_points']):?>
@@ -121,7 +121,7 @@
 
 				 <div class="apply_smogi_code_div" style="display: none;">
 
-                 <input placeholder="<?php echo $this->__('Use Your %d SMOGI Bucks.', $point_details['customer_points']); ?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($point_details['customer_points']);?>" <?php if($point_details['full_use']):?>type="hidden"<?php else:?>type="text"<?php endif;?> value="<?php if($point_details['full_use']):?><?php echo $point_details['max_use'];?><?php endif;?>"  name="points_to_be_used" class="input-text" id="points_to_be_used"/>
+                 <input placeholder="<?php echo $this->__('Use your %d SMOGI Bucks', $point_details['customer_points']); ?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($point_details['customer_points']);?>" <?php if($point_details['full_use']):?>type="hidden"<?php else:?>type="text"<?php endif;?> value="<?php if($point_details['full_use']):?><?php echo $point_details['max_use'];?><?php endif;?>"  name="points_to_be_used" class="input-text" id="points_to_be_used"/>
                     
                 <?php endif;?>
                 <?php if($this->getCustomerPoints() > 0) : ?>
@@ -156,12 +156,12 @@
 	</script> -->
     <?php else: ?>
     <form action="<?php echo $this->getUrl('rewardpoints/index/removequotation/').'#smogi-promotions' ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
-        <fieldset style="float:left; width:100%">
+        <fieldset>
             
             <?php echo $this->getIllustrationImage()?>
             <div  style="display:none;" class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
             <?php if ($points_currently_used > 0):?>
-            <p><?php echo $this->__('You are currently using %d Bucks of your %d SMOGI Bucks available.<span id="double-star" style="display:none;">**</span>', $points_currently_used, $this->getCustomerPoints()); ?></p>
+            <p><?php echo $this->__('%d of %d SMOGI Bucks applied', $points_currently_used, $this->getCustomerPoints()); ?></p>
             <?php endif;?>
             <div class="buttons-set">
                 <button class="remove_smogi apply_smogi_bucks" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove Points') ?>"><span><span><?php echo $this->__('Remove') ?></span></span></button>

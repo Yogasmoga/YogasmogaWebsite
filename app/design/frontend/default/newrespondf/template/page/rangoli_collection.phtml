@@ -23,15 +23,16 @@ if (isset($categoryNamesForParent) && count($categoryNamesForParent) > 4) {
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+      lang="<?php echo $this->getLang() ?>">
 <head>
     <?php echo $this->getChildHtml('head') ?>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<body<?php echo $this->getBodyClass() ? ' class="' . $this->getBodyClass() . '"' : '' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
 <script type="text/javascript">
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         jQuery('.flexslider').flexslider({
             slideshow: false
@@ -49,119 +50,144 @@ if (isset($categoryNamesForParent) && count($categoryNamesForParent) > 4) {
     });
 </script>
 <div class="wrapper">
-<div class="page">
-<?php echo $this->getChildHtml('header') ?>
-    <div class="category-block">
-        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-        <div class="sign-in-box">
-            <?php
-            if (Mage::getSingleton('customer/session')->isLoggedIn()) {
-                $store_id = Mage::app()->getStore()->getId();
-                $customerId = Mage::getModel('customer/session')->getCustomerId();
-                if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)) {
-                    $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
-                    echo $reward_flat_model->collectPointsCurrent($customerId, $store_id) + 0;
-                    //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
-                }
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+        <div class="category-block">
+            <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+            <div class="sign-in-box">
+                <?php
+                if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+                    $store_id = Mage::app()->getStore()->getId();
+                    $customerId = Mage::getModel('customer/session')->getCustomerId();
+                    if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)) {
+                        $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                        echo $reward_flat_model->collectPointsCurrent($customerId, $store_id) + 0;
+                        //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+                    }
 
-                $reward_model = Mage::getModel('rewardpoints/stats');
-                //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
-                //echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
-                echo '<a href="javascript:void(0)"><span class="rewards_points"><b>$</b>' . ($reward_model->getPointsCurrent($customerId, $store_id) + 0) . '</span></a>';
-            } else { ?>
-                <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
-            <?php } ?>
-            <h1>RANGOLI</h1>
+                    $reward_model = Mage::getModel('rewardpoints/stats');
+                    //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+                    //echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
+                    echo '<a href="javascript:void(0)"><span class="rewards_points"><b>$</b>' . ($reward_model->getPointsCurrent($customerId, $store_id) + 0) . '</span></a>';
+                } else { ?>
+                    <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
+                <?php } ?>
+                <h1>RANGOLI</h1>
 
-            <!--        <div class="toggle_dropdown"><img src="-->
-            <?php //echo $this->getSkinUrl("images/black-arrw.png") ?><!--"/></div>-->
+                <!--        <div class="toggle_dropdown"><img src="-->
+                <?php //echo $this->getSkinUrl("images/black-arrw.png") ?><!--"/></div>-->
+            </div>
         </div>
+
+        <a class="go_to_parent" href="<?php echo $goBackUrl; ?>">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="44px"
+                 viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <rect fill="#555555" width="44" height="44"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="14" y1="14" x2="30" y2="30"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30" y1="14" x2="14" y2="30"/>
+</g>
+</svg>
+        </a>
+
+        <div class="flexslider">
+            <ul class="slides">
+                <li>
+                    <img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli_collection_1.jpg"); ?>"/>
+
+                    <div
+                        style="float: left;
+                               width: 100%;
+                               position: relative;
+                               font: 18px/21px freighttextbook;
+                               color: rgb(84, 84, 84);
+                               text-align: center;
+                               padding: 20px;">
+
+                        Rang = <span style="font-family: freighttextbookitalic;">Color</span><br>Oli = <span style="font-family: freighttextbookitalic;">That mixes/belongs to (Color)</span><br>Individually hand-printed
+                        collection <br>Limited edition
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- RAngoli Lotus slides -->
+        <div class="flexslider">
+            <ul class="slides">
+                <li class="next-slide">
+                    <img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli_lotus.jpg"); ?>"/>
+                </li>
+                <li>
+                    <a href="/women/bottoms/rangoli/rangoli-sweet-n-short?color=102"><img
+                            src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-short-n-sweet-blue.jpg"); ?>"/></a>
+                </li>
+                <li>
+                    <a href="/women/tops/rangoli/rangoli-my-racer-back?color=273"><img
+                            src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-my-racer-back-turquoise.jpg"); ?>"/></a>
+                </li>
+                <li>
+                    <a href="/women/tops/rangoli/rangoli-twistie-tank?color=96"><img
+                            src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-my-twistie-tank-purple.jpg"); ?>"/></a>
+                </li>
+                <li>
+                    <a href="/women/tops/rangoli/rangoli-sneak-n-peek-bra?color=96"><img
+                            src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-sneak-n-peak-bra-purple.jpg"); ?>"/></a>
+                </li>
+                <li>
+                    <a href="/women/bottoms/rangoli/rangoli-tippy-toe-legging?color=275"><img
+                            src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-tippy-toe-legging-grey.jpg"); ?>"/></a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- Rangoli lilly slides -->
+        <div class="flexslider">
+            <ul class="slides">
+                <li class="next-slide">
+                    <img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli_lily.jpg"); ?>"/>
+                </li>
+                <li>
+                    <a href="/women/tops/rangoli/rangoli-my-racer-back?color=275"><img
+                            src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-my-racer-back-yellow.jpg"); ?>"/></a>
+                </li>
+                <li>
+                    <a href="/women/tops/rangoli/rangoli-my-racer-back?color=97"><img
+                            src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-my-racer-back-white.jpg"); ?>"/></a>
+                </li>
+                <li>
+                    <a href="/women/bottoms/rangoli/rangoli-run-jump-n-play-crop?color=275"><img
+                            src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-run-jump-play-crop-grey.jpg"); ?>"/></a>
+                </li>
+                <li>
+                    <a href="/women/tops/rangoli/rangoli-sneak-n-peek-bra?color=275"><img
+                            src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-sneak-n-peek-bra-grey.jpg"); ?>"/></a>
+                </li>
+            </ul>
+        </div>
+
+
+        <?php echo $this->getChildHtml('footer') ?>
+        <?php echo $this->getChildHtml('before_body_end') ?>
     </div>
 
-    <a class="go_to_parent" href="<?php echo $goBackUrl; ?>" >
-        <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
-                        <g>
-                            <line y2="30.218" x2="30.975" y1="15.751" x1="16.508" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-                            <line y2="30.218" x2="16.508" y1="15.751" x1="30.975" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-                        </g>
-</svg>
-    </a>
+    <?php echo $this->getAbsoluteFooter() ?>
+    <style>
+        .wrapper {
+            padding-top: 80px;
+        }
 
-<div class="flexslider">
-    <ul class="slides">
-        <li>
-            <img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli_collection_1.jpg");?>" />
+        .flexslider {
+            margin-bottom: 0px !important;
+            min-height: 100px !important;
+        }
 
-            <div style="float: left; width: 100%; position: relative; font: 16px/19px freighttext; color: rgb(84, 84, 84); text-align: center; letter-spacing: 1px; padding: 10px;"> Rang= Color /<br>Oli = That mixes/belongs to (Color)<br>Individually hand-printed collection.<br>limited edition</div>
-        </li>
-    </ul>
-</div>
-
-
-<!-- RAngoli Lotus slides -->
-<div class="flexslider">
-    <ul class="slides">
-        <li class="next-slide">
-            <img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli_lotus.jpg");?>" />
-        </li>
-        <li>
-            <a href="/women/bottoms/rangoli/rangoli-sweet-n-short?color=102"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-short-n-sweet-blue.jpg");?>" /></a>
-        </li>
-        <li>
-            <a href="/women/tops/rangoli/rangoli-my-racer-back?color=273"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-my-racer-back-turquoise.jpg");?>" /></a>
-        </li>
-        <li>
-            <a href="/women/tops/rangoli/rangoli-twistie-tank?color=96"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-my-twistie-tank-purple.jpg");?>" /></a>
-        </li>
-        <li>
-            <a href="/women/tops/rangoli/rangoli-sneak-n-peek-bra?color=96"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-sneak-n-peak-bra-purple.jpg");?>" /></a>
-        </li>
-        <li>
-            <a href="/women/bottoms/rangoli/rangoli-tippy-toe-legging?color=275"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-tippy-toe-legging-grey.jpg");?>" /></a>
-        </li>
-    </ul>
-</div>
-
-
-<!-- Rangoli lilly slides -->
-<div class="flexslider">
-    <ul class="slides">
-        <li class="next-slide">
-            <img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli_lily.jpg");?>" />
-        </li>
-        <li>
-            <a href="/women/tops/rangoli/rangoli-my-racer-back?color=275"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-my-racer-back-yellow.jpg");?>" /></a>
-        </li>
-        <li>
-            <a href="/women/tops/rangoli/rangoli-my-racer-back?color=97"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-my-racer-back-white.jpg");?>" /></a>
-        </li>
-        <li>
-            <a href="/women/bottoms/rangoli/rangoli-run-jump-n-play-crop?color=275"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-run-jump-play-crop-grey.jpg");?>" /></a>
-        </li>
-        <li>
-            <a href="/women/tops/rangoli/rangoli-sneak-n-peek-bra?color=275"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-sneak-n-peek-bra-grey.jpg");?>" /></a>
-        </li>
-    </ul>
-</div>
-
-
-<?php echo $this->getChildHtml('footer') ?>
-<?php echo $this->getChildHtml('before_body_end') ?>
-</div>
-
-<?php echo $this->getAbsoluteFooter() ?>
-<style>
-    .wrapper {
-        padding-top: 80px;
-    }
-    .flexslider {
-        margin-bottom: 0px !important;
-        min-height: 100px !important;
-    }
-    .category-block .sign-in-box{
-        z-index: 6 !important;
-    }
-</style>
+        .category-block .sign-in-box {
+            z-index: 6 !important;
+        }
+    </style>
 </body>
 </html>
 

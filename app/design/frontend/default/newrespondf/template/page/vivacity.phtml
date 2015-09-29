@@ -49,15 +49,16 @@ if (isset($categoryNamesForParent) && count($categoryNamesForParent) > 4) {
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+      lang="<?php echo $this->getLang() ?>">
 <head>
     <?php echo $this->getChildHtml('head') ?>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<body<?php echo $this->getBodyClass() ? ' class="' . $this->getBodyClass() . '"' : '' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
 <script type="text/javascript">
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         jQuery('.flexslider').flexslider({
             slideshow: false
@@ -104,24 +105,37 @@ if (isset($categoryNamesForParent) && count($categoryNamesForParent) > 4) {
             </div>
         </div>
 
-        <a class="go_to_parent" href="<?php echo $goBackUrl; ?>" >
-            <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
-                        <g>
-                            <line y2="30.218" x2="30.975" y1="15.751" x1="16.508" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-                            <line y2="30.218" x2="16.508" y1="15.751" x1="30.975" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-                        </g>
+        <a class="go_to_parent" href="<?php echo $goBackUrl; ?>">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <rect fill="#555555" width="44" height="44"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="14" y1="14" x2="30" y2="30"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30" y1="14" x2="14" y2="30"/>
+</g>
 </svg>
         </a>
         <!-- Vivacity box1  slides -->
         <div class="flexslider">
             <ul class="slides">
                 <li>
-                    <img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity.jpg");?>" />
+                    <img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity.jpg"); ?>"/>
 
-                    <div style="float: left; width: 100%; position: relative; font: 16px/19px freighttext; color: rgb(84, 84, 84); text-align: center; letter-spacing: 1px; padding: 10px;"> /vi´vasede/<br/>
-                        Noun (especially in a woman)<br/>
+                    <div
+                        style="float: left;
+                                width: 100%;
+                                position: relative;
+                                font: 18px/21px freighttextbook;
+                                color: rgb(84, 84, 84);
+                                text-align: center;
+                                padding: 20px;"
+                        >
+                        /vi´vasede/<br/>
+                        Noun <span style="font-family: freighttextbookitalic;">(especially in a woman)</span><br/>
                         The quality of being attractively<br/>
-                        lively & animated</div>
+                        lively & animated
+                    </div>
                 </li>
             </ul>
         </div>
@@ -131,85 +145,98 @@ if (isset($categoryNamesForParent) && count($categoryNamesForParent) > 4) {
         <div class="flexslider">
             <ul class="slides">
                 <li class="next-slide">
-                    <img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-legging.jpg");?>" />
+                    <img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-legging.jpg"); ?>"/>
                 </li>
                 <li>
-                    <a href="/women/bottoms/leggings/vivacity-legging?color=215"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-olivine.jpg");?>" /></a>
+                    <a href="/women/bottoms/leggings/vivacity-legging?color=215"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-olivine.jpg"); ?>"/></a>
                 </li>
                 <li>
-                    <a href="/women/bottoms/leggings/vivacity-legging?color=107"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-greay-cavier.jpg");?>" /></a>
+                    <a href="/women/bottoms/leggings/vivacity-legging?color=107"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-greay-cavier.jpg"); ?>"/></a>
                 </li>
                 <li>
-                    <a href="/women/bottoms/leggings/vivacity-legging?color=76"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-carbon6.jpg");?>" /></a>
+                    <a href="/women/bottoms/leggings/vivacity-legging?color=76"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-carbon6.jpg"); ?>"/></a>
                 </li>
             </ul>
         </div>
-
 
 
         <!-- Vivacity box3  slides -->
         <div class="flexslider">
             <ul class="slides">
                 <li class="next-slide">
-                    <img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-crop.jpg");?>" />
+                    <img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-crop.jpg"); ?>"/>
                 </li>
                 <li>
-                    <a href="/women/bottoms/crops/vivacity-crop?color=215"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-crop-olivine.jpg");?>" /></a>
+                    <a href="/women/bottoms/crops/vivacity-crop?color=215"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-crop-olivine.jpg"); ?>"/></a>
                 </li>
                 <li>
-                    <a href="/women/bottoms/crops/vivacity-crop?color=107"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-crop-grey-cavier.jpg");?>" /></a>
+                    <a href="/women/bottoms/crops/vivacity-crop?color=107"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-crop-grey-cavier.jpg"); ?>"/></a>
                 </li>
                 <li>
-                    <a href="/women/bottoms/crops/vivacity-crop?color=76"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-crop-carbon-6.jpg");?>" /></a>
+                    <a href="/women/bottoms/crops/vivacity-crop?color=76"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-crop-carbon-6.jpg"); ?>"/></a>
                 </li>
             </ul>
         </div>
-
 
 
         <!-- Vivacity box4  slides -->
         <div class="flexslider">
             <ul class="slides">
                 <li class="next-slide">
-                    <img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-long-sleeve.jpg");?>" />
+                    <img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-long-sleeve.jpg"); ?>"/>
                 </li>
                 <li>
-                    <a href="/women/tops/tees/vivacity-long-sleeve?color=261"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-long-sleeve-tee-andaman-green.jpg");?>" /></a>
+                    <a href="/women/tops/tees/vivacity-long-sleeve?color=261"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-long-sleeve-tee-andaman-green.jpg"); ?>"/></a>
                 </li>
                 <li>
-                    <a href="/women/tops/tees/vivacity-long-sleeve?color=106"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-long-sleeve-tee-everest-avalanche.jpg");?>" /></a>
+                    <a href="/women/tops/tees/vivacity-long-sleeve?color=106"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-long-sleeve-tee-everest-avalanche.jpg"); ?>"/></a>
                 </li>
                 <li>
-                    <a href="/women/tops/tees/vivacity-long-sleeve?color=214"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-long-sleeve-tee-rudhira.jpg");?>" /></a>
+                    <a href="/women/tops/tees/vivacity-long-sleeve?color=214"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-long-sleeve-tee-rudhira.jpg"); ?>"/></a>
                 </li>
                 <li>
-                    <a href="/women/tops/tees/vivacity-long-sleeve?color=76"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-long-sleeve-tee-carbon6.jpg");?>" /></a>
+                    <a href="/women/tops/tees/vivacity-long-sleeve?color=76"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-long-sleeve-tee-carbon6.jpg"); ?>"/></a>
                 </li>
             </ul>
         </div>
-
 
 
         <!-- Vivacity box5  slides -->
         <div class="flexslider">
             <ul class="slides">
                 <li class="next-slide">
-                    <img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve.jpg");?>" />
+                    <img
+                        src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve.jpg"); ?>"/>
                 </li>
                 <li>
-                    <a href="/women/tops/tees/vivacity-short-sleeve-tee?color=216"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve-tee-andaman-green.jpg");?>" /></a>
+                    <a href="/women/tops/tees/vivacity-short-sleeve-tee?color=216"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve-tee-andaman-green.jpg"); ?>"/></a>
                 </li>
                 <li>
-                    <a href="/women/tops/tees/vivacity-short-sleeve-tee?color=106"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve-tee-carbon6.jpg");?>" /></a>
+                    <a href="/women/tops/tees/vivacity-short-sleeve-tee?color=106"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve-tee-carbon6.jpg"); ?>"/></a>
                 </li>
                 <li>
-                    <a href="/women/tops/tees/vivacity-short-sleeve-tee?color=214"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve-tee-everest-avalanche.jpg");?>" /></a>
+                    <a href="/women/tops/tees/vivacity-short-sleeve-tee?color=214"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve-tee-everest-avalanche.jpg"); ?>"/></a>
                 </li>
                 <li>
-                    <a href="/women/tops/tees/vivacity-short-sleeve-tee?color=215"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve-tee-olivine.jpg");?>" /></a>
+                    <a href="/women/tops/tees/vivacity-short-sleeve-tee?color=215"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve-tee-olivine.jpg"); ?>"/></a>
                 </li>
                 <li>
-                    <a href="/women/tops/tees/vivacity-short-sleeve-tee?color=76"><img src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve-tee-rudhira.jpg");?>" /></a>
+                    <a href="/women/tops/tees/vivacity-short-sleeve-tee?color=76"><img
+                            src="<?php echo $this->getSkinUrl("images/vivacity-collection/vivacity-short-sleeve-tee-rudhira.jpg"); ?>"/></a>
                 </li>
             </ul>
         </div>
@@ -224,14 +251,17 @@ if (isset($categoryNamesForParent) && count($categoryNamesForParent) > 4) {
         .wrapper {
             padding-top: 80px;
         }
+
         .flexslider {
             margin-bottom: 0px !important;
             min-height: 100px !important;
         }
-        .category-block .sign-in-box{
+
+        .category-block .sign-in-box {
             z-index: 6 !important;
         }
-        .flex-control-nav{
+
+        .flex-control-nav {
             display: none;
         }
     </style>

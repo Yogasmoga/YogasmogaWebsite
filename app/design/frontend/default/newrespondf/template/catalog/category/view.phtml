@@ -33,7 +33,7 @@
 ?>
 <div class="category-block">
   <div class="sign-in-box">
-	<?php   
+	<?php
 		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
 		$store_id = Mage::app()->getStore()->getId();
 		$customerId = Mage::getModel('customer/session')->getCustomerId();
@@ -41,11 +41,11 @@
 			$reward_flat_model = Mage::getModel('rewardpoints/flatstats');
 			echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
 			//Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
-		}        
-		
+		}
+
 		$reward_model = Mage::getModel('rewardpoints/stats');
 		//echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
-		//echo $reward_model->getPointsCurrent($customerId, $store_id)+0;                    
+		//echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
 		 echo '<a href="javascript:void(0)"><span class="rewards_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
 		} else { ?>
      <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
@@ -126,9 +126,9 @@
 		<?php } ?>
         <div class="dropdown_links">
 
-			<?php 
+			<?php
 			//get the url like this:    =>http://yogasmoga.com/women/top
-			$currentUrl = Mage::helper('core/url')->getCurrentUrl(); 
+			$currentUrl = Mage::helper('core/url')->getCurrentUrl();
 
 			$categoryName = explode('/', $currentUrl);  // break the url
 			$urlKey = $categoryName[3];     // get the top category name
@@ -141,44 +141,65 @@
 
 			?>
 			<ul>
-			    <?php 
+			    <?php
 				if(isset($parentCategoryId) && $parentCategoryId =='3') { $whtsmaincatid ='16'; } else { $whtsmaincatid ='19'; }
 				$whatscatid = Mage::getModel('catalog/category')->load($whtsmaincatid); ?>
                 <li><a title="What's New" class="has_no_childs" href="<?php echo $whatscatid->getUrl(); ?>"><?php echo $whatscatid->getName(); ?></a>
 <!--				<ul></ul><span class="border-line"></span>-->
 				</li>
-				 <?php 
+				 <?php
 					foreach(explode(',',$subcats) as $subCatid)
 					{
 					  $_category = Mage::getModel('catalog/category')->load($subCatid);
 					  if($_category->getIsActive()) { ?>
 						<li style="<?php if($_category->getId() =='16' || $_category->getId() =='19') { echo 'display:none';} ?>">
 
-						<?php 
+						<?php
 						$sub_cat = Mage::getModel('catalog/category')->load($_category->getId());
 						$sub_subcats = $sub_cat->getChildren();
 						$_subcategories = $sub_cat->getChildrenCategories();
 						if (count($_subcategories) > 0): ?>
-                <a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
-					    <span>
-		  <svg width="44px" height="44px">
-			  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
-					y2="109.657"/>
-			  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
-					y1="21.39" x2="30.374" y2="21.39"/>
-			  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
-					y1="13.39" x2="22.374" y2="29.39"/>
-		  </svg>
+						<?php $currentCategoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+						
+						$activeFound = false;
+						if($currentCategoryId == $_category->getId()){
+							$activeFound = true;
+						?>
+						
+						<a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
+					    <span class="active">
+							<svg height="44px" width="44px">
+								<line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+								<line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+								<line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+							</svg>
 						</span>
-
-						<?php else: ?>
+						<?php }
+						else{ ?>
+						
+						<a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
+					    <span>
+							<svg height="44px" width="44px">
+								<line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+								<line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+								<line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+							</svg>
+						</span>
+						
+						
+						<?php }?>
+						
+					<?php else: ?>
 					<a href="<?php echo $_category->getURL() ?>" class="has_no_childs" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
 						<?php endif ?>
 						<?php
-						echo '<ul>';
+						if($activeFound){
+							echo '<ul style="display:block">';}
+						else{
+							echo '<ul>';}
 						foreach($_subcategories as $_sub_category)
 						{
-							
+
 							 // $_sub_category = Mage::getModel('catalog/category')->load($sub_subCatid);
 							  if($_sub_category->getIsActive()) {
 			echo '<li class="sub_cat"><a href="'.$_sub_category->getURL().'" title="'.$_sub_category->getName().'">'.$_sub_category->getName().'</a></li>';
@@ -193,14 +214,24 @@
 									}
 								  }
 							   }
-							 
+
 						 }
 						 echo '</ul>';
 
 //						 echo '<span class="border-line"></span></li>';
 					  }
 					}
-					 
+						$urlString = Mage::helper('core/url')->getCurrentUrl();
+						$path = Mage::getSingleton('core/url')->parseUrl($urlString)->getPath();
+						$urlPath = explode("/", $path);
+						$women = Mage::getModel('catalog/category')->load(3);
+						$men = Mage::getModel('catalog/category')->load(5);
+						if(strtolower($urlPath[1])==strtolower('men')){
+							echo  '<li  class="sub_cat gold_link"><a href="'.$women->getUrl().'">'.$women->getName().'</a></li>';
+						}
+						if(strtolower($urlPath[1])==strtolower('women')){
+							echo  '<li  class="sub_cat gold_link"><a href="'.$men->getUrl().'">'.$men->getName().'</a></li>';
+						}
 					?>
 
             </ul>

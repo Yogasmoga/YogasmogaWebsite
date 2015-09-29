@@ -254,6 +254,7 @@ input, textarea, select {
 .popup_container.sign_in_modal .overlay-inner-bg .left_block ul li label {
     color: #808185;
     margin-bottom: 3px;
+    line-height: 25px;
 }
 
 .popup_container.sign_in_modal .overlay-inner-bg .left_block .no_account {
@@ -266,7 +267,7 @@ input, textarea, select {
     height: 100%;
     left: 0;
     overflow: hidden;
-    padding: 0 30px;
+    padding: 0 27px;
     position: fixed;
     width: 100%;
     margin-top: 0px;
@@ -322,7 +323,7 @@ input, textarea, select {
 }
 
 #content > .cross_popup {
-    /*background: url("../../images/cross1.png") no-repeat scroll center center rgba(0, 0, 0, 0);*/
+    background: #666;
     height: 44px;
     margin-left: 0;
     position: fixed;
@@ -345,7 +346,7 @@ input, textarea, select {
 }
 
 .sign-up-block .btn {
-    background: none repeat scroll 0 0 #ae8637;
+    background: none repeat scroll 0 0 #999;
     border: 1px solid #666;
     color: #666;
     float: right;
@@ -356,16 +357,18 @@ input, textarea, select {
     letter-spacing: 0.05em;
     line-height: 1;
     margin: 17px 0;
-    padding: 10px 30px;
+    padding: 6px 30px;
     text-decoration: none;
     /*text-transform: uppercase;*/
     width: 100%;
 }
-
+.sign-up-block .btn.active {
+    background: #ae8637;
+}
 .sign-up-block .tick-mark {
     display: inline-block;
-    height: 37px;
-    width: 31px;
+    height: 44px;
+    width: 44px;
 }
 
 .gender-link label {
@@ -373,22 +376,24 @@ input, textarea, select {
     text-transform: capitalize !important;
 }
 
-
 .sign_signup_form .error, .sign_signup_form .validation-advice {
-    color: #ae8637 !important;
+    color: #FF6600 !important;
     float: none;
     font: 13px ItCAvantGardeStd-Bk;
     margin-top: 7px;
     position: absolute;
     text-transform: none;
+    letter-spacing: 1px;
 }
 .buttons.ajaxlogin_actions > p#err_msg {
-    color: #ae8635;
+    color: #ff6600;
     float: left;
     font: 13px ITCAvantGardeStd-Bk;
     margin-top: 60px;
     position: absolute;
+    letter-spacing: 1px;
 }
+
 .left_block.left_block_new .top-heading {
     float: left;
     margin-bottom: 0 !important;

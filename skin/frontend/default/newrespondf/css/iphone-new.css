@@ -95,26 +95,28 @@
     display: block;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 21px;
-    color: #444444;
+    color: #555555;
     line-height: 24px;
     padding-bottom: 0;
     letter-spacing: 0.5px;
 }
 
 .custom-block .our-breath .below-txt {
+    color: #555555;
     display: inline-block;
     font-family: freighttextbook;
-    font-size: 18px;
-    color: #444444;
-    line-height: 25px;
-    letter-spacing: 1px;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 28px !important;
+    padding: 15px 0;
 }
 
 .custom-block.our-breath {
     font-size: 22px;
     line-height: 28px;
     font-family: freighttextbook;
-    color: #444444;
+    color: #555555;
 }
 
 .custom-block .story-box1 {
@@ -144,9 +146,11 @@
     transform-origin: 0 0 0;
     transition-duration: 1s;
 }
+
 .detail-part .arrow-tag.is-active svg line:nth-child(3), .sign-in-box .arrow-tag.is-active svg line:nth-child(3) {
     stroke: none;
 }
+
 .detail-part .arrow-tag img, .sign-in-box .arrow-tag img {
     float: right;
     margin: 9px 0;
@@ -166,12 +170,13 @@
     width: 100%;
     z-index: 9;
     top: 88px;
-    box-shadow: 0 3px 27px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
 .account-nav .sub-nav {
     width: 100%;
     list-style: none;
+    padding: 15px 0;
 }
 
 .account-nav .sub-nav li {
@@ -182,29 +187,37 @@
 
 .account-nav .sub-nav li:last-child {
     border: none;
-    padding-bottom: 22px;
 }
+
 li.menu-item.contact_icon_li:last-child {
-    padding-bottom: 22px;
+    padding-bottom: 15px;
 }
+
 li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
-    padding-bottom: 22px;
+    padding-bottom: 15px;
 }
+
 .account-nav .sub-nav li a {
     color: #656565;
     display: block;
     font-family: Avantgarde-demi;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 50px;
     height: 44px;
     text-decoration: none;
     text-transform: uppercase;
     width: 100%;
-    padding: 0 12px;
+    padding: 0 14px;
 }
-.account-nav .sub-nav li a:hover{
+
+.account-nav .sub-nav li a.active_link {
+    color: #ae8637;
+}
+
+.account-nav .sub-nav li a:hover {
     background: #EEEEEE;
 }
+
 .ys-tech-block .story-box span {
     font-size: 18px;
     line-height: 22px;
@@ -229,7 +242,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 .discover-fabric .outer-part p {
     font-size: 12px;
     line-height: 15px;
-    color: #444444;
+    color: #555555;
     font-family: AvantGarde-Demi;
     min-height: 78px;
     padding: 20px 0;
@@ -239,8 +252,18 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     font-family: ITCAvantGardeStd-Bk;
 }
 
+.earnsmogibuckstext > span {
+    left: 0;
+    position: absolute;
+    top: 3px;
+}
+
+.free-shiping {
+    padding: 0 12px;
+}
+
 .our-febrics span {
-    color: #444;
+    color: #555555;
     display: inline-block;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 21px;
@@ -253,7 +276,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     font-size: 22px;
     line-height: 28px;
     font-family: freighttextbook;
-    color: #444444;
+    color: #555555;
     padding-right: 16px;
 }
 
@@ -268,15 +291,16 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     font-size: 22px;
     line-height: 44px;
     color: #ae8637;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid #999;
 }
 
 .aurum .inner-aurum {
     list-style: outside none none;
-    padding: 0 12px;
+    padding: 0 14px 35px;
     position: relative;
     text-align: left;
     width: 100%;
+    float: left;
 }
 
 .aurum li {
@@ -285,8 +309,12 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 
 .aurum li div {
     position: absolute;
-    right: 8px;
+    right: -11px;
     top: 0;
+}
+
+.aurum li div.arrow-tag.is-active svg line:nth-child(3) {
+    stroke: none;
 }
 
 .aurum {
@@ -297,7 +325,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     font-size: 22px;
     line-height: 28px;
     font-family: freighttextbook;
-    color: #444444;
+    color: #555;
     margin: 13px 0;
 }
 
@@ -311,8 +339,8 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 
 /*********************smogi pages start *******************/
 .smogi-content {
-    font-size: 22px;
-    line-height: 28px;
+    font-size: 18px;
+    line-height: 1.65em;
     font-family: freighttextbook;
     text-align: left;
     clear: both;
@@ -333,8 +361,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .smogi-content p {
-    padding: 20px 12px 0;
-    line-height: 28px;
+    line-height: 1.65em;
 }
 
 .ys-tech-block .story-box.smogi-box span {
@@ -512,14 +539,14 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .pg-heading {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .pg-heading h2 {
-    font-size: 24px;
+    font-size: 19px;
     font-weight: normal;
-    line-height: 15px;
     color: #545454;
+    font-weight: normal;
     font-family: ITCAvantGardeStd-Bk;
     text-transform: uppercase;
     display: inline-block;
@@ -545,7 +572,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     height: 44px;
     width: 100%;
     margin: 28px 0;
-    font: 14px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     letter-spacing: 1px;
 }
 
@@ -578,25 +605,18 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .billing-add, .shipping-add, .payment-metthod-cont {
-    background: hsl(0, 0%, 94%) none repeat scroll 0 0;
     box-sizing: border-box;
-    min-height: 235px;
-    padding: 20px 30px;
     position: relative;
     width: 100%;
     clear: both;
-    margin: 14px 0;
+    margin: 14px 0 0;
 }
 
 .billing-add, .shipping-add, .payment-metthod-cont {
-    background: hsl(0, 0%, 94%) none repeat scroll 0 0;
     box-sizing: border-box;
-    min-height: 235px;
-    padding: 20px 30px;
     position: relative;
     width: 100%;
     clear: both;
-    margin: 14px 0;
 }
 
 .addtional-add {
@@ -656,10 +676,14 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .our-breath p {
-    color: #444444;
-    font: 22px/28px freighttextbook;
-    /*margin: 20px 0 0 !important;*/
+    color: #555555;
+    font: 18px/1.65em freighttextbook;
     float: left;
+    margin: 20px 0 0;
+}
+
+.our-breath p:last-child {
+    margin-bottom: 20px;
 }
 
 .txt-cnt {
@@ -719,7 +743,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .story-box > .close-icn {
-    background: url("/skin/frontend/default/newrespondf/images/cross1.png") repeat scroll 0 0 #555;
+    background: #555555;
     display: none;
     height: 44px;
     left: initial;
@@ -728,6 +752,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     top: 88px;
     width: 44px;
     z-index: 1;
+    opacity: 0.90;
 }
 
 /*********************************************************2-june ********************************/
@@ -763,7 +788,6 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     cursor: pointer;
     display: inline-block;
     height: 44px;
-    padding: 15px;
     position: absolute;
     right: 0;
     top: 0;
@@ -797,6 +821,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     position: relative;
     color: #AD8536;
     text-align: left;
+    float: left;
     width: 100%;
 }
 
@@ -804,11 +829,16 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     display: inline-block;
     float: left;
     font-size: 0;
-    height: 24px;
-    line-height: 0;
-    padding-right: 11px;
-    padding-top: 10px;
+    height: 44px;
+    line-height: 44px;
+    margin-left: -10px;
+    margin-right: 0;
     position: static;
+    width: 44px;
+}
+
+.inner-aurum li .febric-icn img {
+    vertical-align: middle;
 }
 
 .inner-aurum li .innr-txt {
@@ -919,7 +949,7 @@ form#cardbalanceform table.redeem-giftcard {
 }
 
 #createcardform .sub-title {
-    color: #444 !important;
+    color: #555555 !important;
     margin-bottom: 15px;
     text-align: left;
 }
@@ -965,10 +995,12 @@ form#cardbalanceform table.redeem-giftcard {
     border: medium none;
     color: #fff;
     float: left;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     margin-right: 2%;
     width: 48%;
     text-transform: uppercase;
+    height: 44px;
+    margin-bottom: 14px;
 }
 
 .goy-form .button.btn-addtobag {
@@ -976,10 +1008,12 @@ form#cardbalanceform table.redeem-giftcard {
     border: medium none;
     color: #fff;
     float: left;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     margin-left: 2%;
     width: 48%;
     text-transform: uppercase;
+    height: 44px;
+    margin-bottom: 14px;
 }
 
 .txt-cnt {
@@ -1002,8 +1036,10 @@ form#cardbalanceform table.redeem-giftcard {
 
 /*******************************************5-june******************/
 .inside-content .our-breath {
-    padding: 30px 12px;
+    padding: 10px 14px 5px;
     text-align: left;
+    float: left;
+    width: 100%;
 }
 
 .inside-content .title {
@@ -1107,7 +1143,7 @@ form#cardbalanceform table.redeem-giftcard {
 
 .add-bracelet-bag {
     background: #42AC00;
-    font: 16px/18px ITCAvantGardeStd-Bk;
+    font: 14px/18px ITCAvantGardeStd-Bk;
     color: #fff;
     width: 100%;
     height: 58px;
@@ -1132,13 +1168,13 @@ form#cardbalanceform table.redeem-giftcard {
 }
 
 #account_content .generic-box address {
-    color: #444;
+    color: #555555;
     font: 13px/18px GraphikRegular;
     margin-bottom: 25px;
 }
 
 #account_content .generic-box .col-1 h4 {
-    color: #444;
+    color: #555555;
     font: 12px Avantgarde-demi;
     text-transform: uppercase;
     margin-bottom: 25px;
@@ -1158,4 +1194,15 @@ form#cardbalanceform table.redeem-giftcard {
 #account_content #my-orders-table {
     border-collapse: collapse;
     margin-top: 10px;
+}
+
+.dropdown_links > ul {
+    height: 100%;
+    overflow: auto;
+    padding: 15px 0;
+    width: 120%;
+}
+
+.dropdown_links > ul > li:last-child a {
+    color: #AE8637 !important;
 }

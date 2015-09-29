@@ -85,8 +85,8 @@ Customer account home dashboard layout
                 <block type="sales/order_items" name="order_items" template="sales/order/items.phtml">
                     <action method="addItemRender"><type>default</type><block>sales/order_item_renderer_default</block><template>sales/order/items/renderer/default.phtml</template></action>
                     <block type="sales/order_totals" name="order_totals" template="sales/order/totals.phtml">
-                        <action method="setLabelProperties"><value>colspan="4" class="a-right"</value></action>
-                        <action method="setValueProperties"><value>class="last a-right"</value></action>
+                        <action method="setLabelProperties"><value>style="padding:3px 9px" colspan="3" class="a-right"</value></action>
+                        <action method="setValueProperties"><value>style="padding:0" align="right"</value></action>
                         <block type="tax/sales_order_tax" name="tax" template="tax/order/tax.phtml" />
                     </block>
                 </block>

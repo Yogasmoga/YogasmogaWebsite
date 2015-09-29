@@ -47,7 +47,7 @@
         {
             ?>
             <?php foreach ($this->getMethods() as $_method): $_code = $_method->getCode() ?>
-		<dt style="display:<?php if($_code == 'paypal_express'){ echo "none";} ?> ;<?php if($_code == 'free'){ echo "width:100%; margin-top:50px;";}?>">
+		<dt style="display:<?php if($_code == 'paypal_express'){ echo "none";} ?> ;<?php if($_code == 'free'){ echo "width:100%; margin-top:28px; margin-bottom: -37px;";}?>">
         <?php if( sizeof($this->getMethods()) > 1 ): ?>
             <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($_code=='free'): ?> checked="checked"<?php endif; ?> />
 					
@@ -95,6 +95,6 @@
 <script type="text/javascript">
 payment.init();
 
-
+jQuery("#p_method_free").parent().css("background","none");
 
 </script>

@@ -5,9 +5,18 @@ jQuery.noConflict();
 
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function(jQuery){
-
+    forgot_password();
     checkIsUserLogged();
 
+    jQuery(".sign_signup_form input").on("keyup",function(){
+        isinputvalid();
+    });
+    jQuery("#ajaxlogin_form input").on("keyup",function(){
+        isloginvalid();
+    });
+    jQuery("#ajaxlogin_close_icon").click(function(){
+        jQuery("#ajaxlogin_button_send").removeClass("active");
+    });
     /***login form for smogi buck page***/
     /******************Smogi Bucks Login For Mobile Page Start **********/
     jQuery("#sb-sign-in-form").submit(function(event){
@@ -145,6 +154,43 @@ function isValidEmailAddress(emailAddress) {
     return pattern.test(emailAddress);
 };
 
+function isinputvalid(){
+    var fname = jQuery.trim(jQuery(".singup_form input[name='fname']").val());
+    var lname = jQuery.trim(jQuery(".singup_form input[name='lname']").val());
+    var email_id = jQuery.trim(jQuery(".singup_form input[name='email']").val());
+    var pwd = jQuery.trim(jQuery(".singup_form input[name='password']").val());
+    var gender_link = jQuery(".gender-link");
+    var gender = jQuery(".f-right .current input").val();
+    //jQuery("create_account").removeClass("active");
+    if(fname=="" || fname=="First Name"){
+        jQuery("#create_account").removeClass("active");
+    }
+    else if(lname=="" || lname=="Last Name"){
+        jQuery("#create_account").removeClass("active");
+    }
+    else if(email_id=="" || email_id=="Email"){
+        jQuery("#create_account").removeClass("active");
+    }
+    /*else if(!isValidEmailAddress(email_id)){
+        jQuery("#create_account").removeClass("active");
+    }*/
+    else if(pwd==""){
+        jQuery("#create_account").removeClass("active");
+    }
+    /*else if(pwd.length<6){
+        jQuery("#create_account").removeClass("active");
+    }*/
+    else if(!gender_link.find(".f1").hasClass("current") && !gender_link.find(".f2").hasClass("current")){
+        jQuery("#create_account").removeClass("active");
+    }
+    else{
+        jQuery("#error_msg").html("");
+        jQuery("#create_account").addClass("active");
+    }
+}
+
+
+
 function createCustomerAccount() {
     var fname = jQuery.trim(jQuery(".singup_form input[name='fname']").val());
     var lname = jQuery.trim(jQuery(".singup_form input[name='lname']").val());
@@ -172,7 +218,7 @@ function createCustomerAccount() {
         jQuery("#error_msg").html("Please choose a password");
     }
     else if(pwd.length<6){
-        jQuery("#error_msg").html("Password should be of 6 or more.");
+        jQuery("#error_msg").html("Password should be of 6 characters.");
     }
 
     else if(!gender_link.find(".f1").hasClass("current") && !gender_link.find(".f2").hasClass("current")){
@@ -243,12 +289,12 @@ function forgotCustomer() {
     var email_id = jQuery.trim(jQuery(".login_form input[name='email']").val());
 
     if(email_id=="" || email_id=="Email"){
-        jQuery('#err_pass').html('Email Field is required');
+        jQuery('#err_pass').html('Please fill your email id');
         //alert(email_id);err_pass
         return false;
     }
     else if(!isValidEmailAddress(email_id)){
-        jQuery('#err_pass').html('Email id is not valid.');
+        jQuery('#err_pass').html('Please fill your email id');
         return false;
     }
     else {
@@ -263,7 +309,26 @@ function forgotCustomer() {
 
 }
 
-
+function isloginvalid(){
+    var email_id = jQuery.trim(jQuery(".login_form input[name='email']").val());
+    var pwd = jQuery.trim(jQuery(".login_form input[name='password']").val());
+    //var url = homeUrl + 'mycatalog/myproduct/logincustomer';
+    var button_html = jQuery(".login_customer").html();
+    jQuery("#ajaxlogin_button_send").removeClass("active");
+    if(email_id=="" || email_id=="Email"){
+        jQuery("#ajaxlogin_button_send").removeClass("active");
+    }
+    /*else if(!isValidEmailAddress(email_id)){
+        jQuery("#ajaxlogin_button_send").removeClass("active");
+    }*/
+    else if(pwd==""){
+        jQuery("#ajaxlogin_button_send").removeClass("active");
+    }
+    else{
+        jQuery("#err_msg").html("");
+        jQuery("#ajaxlogin_button_send").addClass("active");
+    }
+}
 function loginCustomer() {
     if (window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
@@ -281,10 +346,10 @@ function loginCustomer() {
     var button_html = jQuery(".login_customer").html();
 
     if(email_id=="" || email_id=="Email"){
-        jQuery("#err_msg").html("Please fill in your Email ID");
+        jQuery("#err_msg").html("Please fill in your email id");
     }
     else if(!isValidEmailAddress(email_id)){
-        jQuery("#err_msg").html("Please enter a valid Email ID");
+        jQuery("#err_msg").html("Invalid Email or Password");
     }
     else if(pwd=="" || pwd=="Last Name"){
         jQuery("#err_msg").html("Please enter your password.");
@@ -318,7 +383,7 @@ function loginCustomer() {
                 }
                 else {
 
-                    jQuery(".login_customer").html('<span class="tick-mark"><img src="/skin/frontend/default/newrespondf/images/tick-mark.jpg"></span>');
+                    jQuery(".login_customer").html('<span class="tick-mark"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve"><style type="text/css">.st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}</style><polyline class="st0" points="5.9,25.6 14.6,34.3 39.1,9.8 "/></svg></span>');
                     //alert(data.errors);
                     //jQuery("#err_msg").html(data.errors);
                     jQuery('#err_msg').html('Invalid Email or Password');
@@ -433,3 +498,13 @@ function checkIsUserLogged() {
 
 /**************** ys team functions *****************/
 
+function forgot_password(){
+    jQuery(".form_field_left  input").keyup(function(){
+        if(jQuery(this).val()!=="" && jQuery(this).val()!=="Email"){
+            jQuery(".ajaxlogin_forgot_pwd_actions").addClass("active");
+        }
+        else{
+            jQuery(".ajaxlogin_forgot_pwd_actions").removeClass("active");
+        }
+    });
+}

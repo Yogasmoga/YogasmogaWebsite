@@ -26,7 +26,13 @@
 				<name>mobile/myaccount.js</name>
             </action>
         </reference>
-		
+        <reference name="head">
+            <action method="addItem">
+                <type>js</type>
+                <name>mobile/myvalidations.js</name>
+            </action>
+        </reference>
+
         <reference name="content">
             <block type="giftcards/balance" name="card_balance" template="webtex/giftcards/balance.phtml"/>
             <block type="giftcards/purchased" name="card_purchased" template="webtex/giftcards/purchased.phtml"/>
@@ -52,4 +58,10 @@
             <block type="giftcards/coupon" after="coupon" name="checkout.cart.giftcards" as="giftcards" template="webtex/giftcards/coupon.phtml"/>
         </reference>
     </checkout_onepage_index>
+	 <checkout_cart_index>
+        <reference name="checkout.cart">
+            <action method="addItemRender"><type>giftcards</type><block>checkout/cart_item_renderer</block><template>webtex/giftcards/cart_item.phtml</template></action>
+            <block type="giftcards/coupon" after="coupon" name="checkout.cart.giftcards" as="giftcards" template="webtex/giftcards/coupon.phtml"/>
+        </reference>
+    </checkout_cart_index>
 </layout>

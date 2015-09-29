@@ -5,12 +5,13 @@
 
                 <div id="ajaxlogin_close_icon" onclick="AjaxLoginForm.hideLoginContainer()">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         width="35px" height="35px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve" style="margin:4px;">
-                <g>
-                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="12.517" y1="12.517" x2="31.482" y2="31.483"/>
-                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="31.482" y1="12.517" x2="12.517" y2="31.483"/>
-                </g>
-                </svg>
+                         width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <rect fill="#555555" width="44" height="44"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="14" y1="14" x2="30" y2="30"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30" y1="14" x2="14" y2="30"/>
+</g>
+</svg>
                 </div>
 
                 <div class="top-heading">
@@ -45,12 +46,15 @@
                             <p style="text-align: left;" id="err_msg"></p>
 
 
-                            <button id="ajaxlogin_button_send" name="ajaxlogin_button_send"
-                                    title="<?php echo $this->__('Login') ?>" class="button ajaxlogin_button login_customer"
-                                    type="button">
-
+<!--                            <button id="ajaxlogin_button_send" name="ajaxlogin_button_send" AjaxLoginForm.hideLoginContainer() title="--><?php //echo $this->__('Login') ?><!--" class="button ajaxlogin_button login_customer" type="button">-->
+                            <button id="ajaxlogin_button_send" name="ajaxlogin_button_send" title="<?php echo $this->__('Login') ?>" class="button ajaxlogin_button login_customer" type="submit">
 									<span class="tick-mark">
-										<img src="<?php echo $this->getSkinUrl("images/tick-mark.jpg") ?>"/>
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+                                            <style type="text/css">
+                                            .st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+                                            </style>
+                                            <polyline class="st0" points="5.9,25.6 14.6,34.3 39.1,9.8 "/>
+                                        </svg>
 									</span>
                             </button>
 
@@ -94,7 +98,6 @@
                 e.preventDefault();
                 forgotCustomer();
             });
-
         });
 
         AjaxLoginLoader = "<div class='ajax_login_loader'>&nbsp;</div>";
