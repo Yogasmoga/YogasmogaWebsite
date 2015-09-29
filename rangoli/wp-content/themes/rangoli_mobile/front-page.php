@@ -28,7 +28,7 @@ $home = get_site_url();
                     ?>
                     <div class="play-video" video="<?php echo get_the_post_video_url($post->ID); ?>">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="44px"
                              viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">                    <defs>
                             </defs>
                             <path fill="<?php echo $author_color; ?>"
@@ -170,24 +170,25 @@ $home = get_site_url();
     if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
         $post = get_post();
 ?>
-        <div class="author_post_read">
+        <div class="author_post_read read_section">
             <?php echo get_the_post_thumbnail($post->ID, "mobile_posts");
             if (!has_post_thumbnail()) {
                 echo '<img src="' . $home . '/wp-content/themes/rangoli_mobile/images/no-background_posts.png" />';
             }
             ?>
-            <div class="overlay-text"></div>
-            <div class="align_bottom">
-                <svg width="50px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     viewBox="0 0 50 34.4" style="enable-background:new 0 0 50 34.4;" xml:space="preserve">
+        </div>
+        <div class="featured_post_title">
+            <svg width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 50 34.4" style="enable-background:new 0 0 50 34.4;" xml:space="preserve">
                 <style type="text/css">
-                    .wh{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+                    .wh{fill:none;stroke:#555; stroke-width: 2px; stroke-miterlimit:10;}
                 </style>
-                    <g>
-                        <polygon class="wh" points="3,33.2 24.4,31 24.4,2.9 3,0.8 	"/>
-                        <polygon class="wh" points="45.9,33.2 24.4,31 24.4,2.9 45.9,0.8 	"/>
-                    </g>
-                </svg>
+                <g>
+                    <polygon class="wh" points="3,33.2 24.4,31 24.4,2.9 3,0.8 	"/>
+                    <polygon class="wh" points="45.9,33.2 24.4,31 24.4,2.9 45.9,0.8 	"/>
+                </g>
+            </svg>
+            <div class="align_bottom">
                 <div class="post_category"><?php echo get_post_categories(); ?></div>
                 <div class="post_title"><?php echo $post->post_title; ?></div>
                 <div class="post_author">with <span><?php echo $post_author->display_name; ?></span></div>
@@ -209,44 +210,46 @@ $home = get_site_url();
     if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
         $post = get_post();
         ?>
-        <div class="author_post_read">
+        <div class="author_post_read look_section">
             <?php echo get_the_post_thumbnail($post->ID, "mobile_posts");
             if (!has_post_thumbnail()) {
                 echo '<img src="' . $home . '/wp-content/themes/rangoli_mobile/images/no-background_posts.png" />';
             }
             ?>
 
-            <div class="overlay-text"></div>
-            <div class="align_bottom">
-                <svg width="48.9px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 48.9 24" style="enable-background:new 0 0 48.9 24;" xml:space="preserve">
+            <?php
+            if(has_post_video()){
+                $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
+                $author_color = '#' . $authors[0]->color_shade;
+                ?>
+                <div class="video">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="44px"
+                         viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">                    <defs>
+                        </defs>
+                        <path fill="<?php echo $author_color; ?>"
+                              opacity="0.9" enable-background="new"
+                              d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
+                            </svg>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+        <div class="featured_post_title">
+            <svg width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 48.9 24" style="enable-background:new 0 0 48.9 24;" xml:space="preserve">
                 <style type="text/css">
-                .wh{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+                    .wh{fill:none;stroke:#555; stroke-width: 2px; stroke-miterlimit:10;}
                 </style>
                 <g id="XMLID_40_">
-                <circle id="XMLID_42_" class="wh" cx="24.4" cy="12.1" r="6.6"/>
-                <path id="XMLID_41_" class="wh" d="M24.4,1.3c-9.3,0-17.6,4.3-23,10.9c5.4,6.7,13.7,10.9,23,10.9c9.3,0,17.6-4.3,23-10.9
+                    <circle id="XMLID_42_" class="wh" cx="24.4" cy="12.1" r="6.6"/>
+                    <path id="XMLID_41_" class="wh" d="M24.4,1.3c-9.3,0-17.6,4.3-23,10.9c5.4,6.7,13.7,10.9,23,10.9c9.3,0,17.6-4.3,23-10.9
                 C42,5.5,33.7,1.3,24.4,1.3z"/>
                 </g>
-                </svg>
-                <?php
-                    if(has_post_video()){
-                        $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
-                        $author_color = '#' . $authors[0]->color_shade;
-                        ?>
-                        <div class="video">
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
-                            viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">                    <defs>
-                            </defs>
-                            <path fill="<?php echo $author_color; ?>"
-                            opacity="0.9" enable-background="new"
-                            d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
-                            </svg>
-                        </div>
-                        <?php
-                    }
-                ?>
+            </svg>
+            <div class="align_bottom">
+
                 <div class="post_category"><?php echo get_post_categories(); ?></div>
                 <div class="post_title"><?php echo $post->post_title; ?></div>
                 <div class="post_author">with <span><?php echo $post_author->display_name; ?></span></div>
@@ -268,43 +271,46 @@ $home = get_site_url();
     if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
         $post = get_post();
         ?>
-        <div class="author_post_read">
+        <div class="author_post_read learn_section">
             <?php echo get_the_post_thumbnail($post->ID, "mobile_posts");
             if (!has_post_thumbnail()) {
                 echo '<img src="' . $home . '/wp-content/themes/rangoli_mobile/images/no-background_posts.png" />';
             }
             ?>
-            <div class="overlay-text"></div>
-            <div class="align_bottom">
-                <svg width="48px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 48.9 38.3" style="enable-background:new 0 0 48.9 38.3;" xml:space="preserve">
-                <style type="text/css">
-                .wh{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
-                </style>
-                <g id="XMLID_40_">
-                <path id="XMLID_42_" class="wh" d="M24.4,1c-7.4,0-13.3,6-13.3,13.3c0,3.5,1,5.8,3.6,9.1c2.6,3.3,3.7,5.6,3.7,9.2V37h12v-4.4
-                c0-3.6,1.1-6,3.7-9.2c2.6-3.3,3.6-5.6,3.6-9.1C37.8,7,31.8,1,24.4,1z"/>
-                <line id="XMLID_41_" class="wh" x1="18.2" y1="30.7" x2="30.6" y2="30.7"/>
-                </g>
-                </svg>
-                <?php
-                if(has_post_video()){
-                    $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
-                    $author_color = '#' . $authors[0]->color_shade;
-                    ?>
-                    <div class="video">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
-                        viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">                    <defs>
+            <?php
+            if(has_post_video()){
+                $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
+                $author_color = '#' . $authors[0]->color_shade;
+                ?>
+                <div class="video">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="44px"
+                         viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">                    <defs>
                         </defs>
                         <path fill="<?php echo $author_color; ?>"
-                        opacity="0.9" enable-background="new"
-                        d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
+                              opacity="0.9" enable-background="new"
+                              d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
                         </svg>
-                    </div>
-                    <?php
-                }
-                ?>
+                </div>
+                <?php
+            }
+            ?>
+
+        </div>
+        <div class="featured_post_title">
+            <svg width="23px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 48.9 38.3" style="enable-background:new 0 0 48.9 38.3;" xml:space="preserve">
+                <style type="text/css">
+                    .wh{fill:none;stroke:#555; stroke-width: 2px; stroke-miterlimit:10;}
+                </style>
+                <g id="XMLID_40_">
+                    <path id="XMLID_42_" class="wh" d="M24.4,1c-7.4,0-13.3,6-13.3,13.3c0,3.5,1,5.8,3.6,9.1c2.6,3.3,3.7,5.6,3.7,9.2V37h12v-4.4
+                c0-3.6,1.1-6,3.7-9.2c2.6-3.3,3.6-5.6,3.6-9.1C37.8,7,31.8,1,24.4,1z"/>
+                    <line id="XMLID_41_" class="wh" x1="18.2" y1="30.7" x2="30.6" y2="30.7"/>
+                </g>
+            </svg>
+            <div class="align_bottom">
+
                 <div class="post_category"><?php echo get_post_categories(); ?></div>
                 <div class="post_title"><?php echo $post->post_title; ?></div>
                 <div class="post_author">with <span><?php echo $post_author->display_name; ?></span></div>
@@ -326,26 +332,28 @@ $home = get_site_url();
     if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
         $post = get_post();
         ?>
-        <div class="author_post_read">
+        <div class="author_post_read love_section">
             <?php echo get_the_post_thumbnail($post->ID, "mobile_posts");
             if (!has_post_thumbnail()) {
                 echo '<img src="' . $home . '/wp-content/themes/rangoli_mobile/images/no-background_posts.png" />';
             }
             ?>
-            <div class="overlay-text"></div>
-            <div class="align_bottom">
-                <svg width="48px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 48.9 25.3" style="enable-background:new 0 0 48.9 25.3;" xml:space="preserve">
+
+        </div>
+        <div class="featured_post_title">
+            <svg width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 48.9 25.3" style="enable-background:new 0 0 48.9 25.3;" xml:space="preserve">
                 <style type="text/css">
-                .st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+                    .st0-love{fill:none;stroke:#555 !important; stroke-width: 2px; stroke-miterlimit:10;}
                 </style>
                 <g id="XMLID_40_">
-                <path id="XMLID_42_" class="st0" d="M6.5,2.8c-2.2,2.2-2.2,5.9,0,8.1l1.7,1.7l-1.7,1.7c-2.2,2.2-2.2,5.9,0,8.1
+                    <path id="XMLID_42_" class="st0-love" d="M6.5,2.8c-2.2,2.2-2.2,5.9,0,8.1l1.7,1.7l-1.7,1.7c-2.2,2.2-2.2,5.9,0,8.1
                 c2.2,2.2,5.9,2.2,8.1,0l9.8-9.8l-9.8-9.8C12.4,0.6,8.7,0.6,6.5,2.8z"/>
-                <path id="XMLID_41_" class="st0" d="M42.4,2.8c2.2,2.2,2.2,5.9,0,8.1l-1.7,1.7l1.7,1.7c2.2,2.2,2.2,5.9,0,8.1
+                    <path id="XMLID_41_" class="st0-love" d="M42.4,2.8c2.2,2.2,2.2,5.9,0,8.1l-1.7,1.7l1.7,1.7c2.2,2.2,2.2,5.9,0,8.1
                 c-2.2,2.2-5.9,2.2-8.1,0l-9.8-9.8l9.8-9.8C36.5,0.6,40.2,0.6,42.4,2.8z"/>
                 </g>
-                </svg>
+            </svg>
+            <div class="align_bottom">
                 <div class="post_category"><?php echo get_post_categories(); ?></div>
                 <div class="post_title"><?php echo $post->post_title; ?></div>
                 <div class="post_author">with <span><?php echo $post_author->display_name; ?></span></div>

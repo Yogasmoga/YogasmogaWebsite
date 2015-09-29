@@ -405,10 +405,10 @@ jQuery(document).ready(function($){
         $(this).next().slideToggle();
     });
 
-    $(".invite-friend a").click(function(e){
+    /*$(".invite-friend a").click(function(e){
         e.preventDefault();
         openLogin();
-    });
+    });*/
     $("#shopping_arrow").click(function(){
        $(".section").removeClass("active");
         $("#opc-billing .head + div").hide();

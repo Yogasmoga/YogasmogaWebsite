@@ -880,11 +880,6 @@ input:focus{
     float: left;
     width: 25%;
 }
-.homepagegrid .align_bottom {
-    text-align: center;
-    padding: 0 14px 35px;
-    width: 100%;
-}
 .rating {
     width: 108px;
 }
@@ -928,4 +923,60 @@ input:focus{
 .align-center.author_posts_heading > span {
     font-weight: 800;
     letter-spacing: normal;
+}
+
+.homepagegrid .featured_post_title .align_bottom .post_category {
+    border-bottom: 1px solid #555;
+    color: #555;
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 7px 50px;
+}
+
+.homepagegrid .align_bottom .post_category a{
+    color: #555;
+    font: 500 12px freight-test-pro;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+.homepagegrid .align_bottom {
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+.homepagegrid .featured_post_title{
+    padding: 0 14px 25px;
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.featured_post_title > svg {
+    left: 14px;
+    position: absolute;
+    top: 14px;
+}
+.learn_section + .featured_post_title > svg {
+    left: 10px;
+}
+.learn_section .featured_post_title > svg {
+    
+}
+.homepagegrid .align_bottom .post_title{
+    color: #555;
+    font: 22px ITCAvantGardeStd-Bk;
+}
+.homepagegrid .align_bottom .post_author span{
+    color: #555;
+    font: normal 400 16px/23px freight-text-pro;
+}
+.homepagegrid .align_bottom .post_author {
+    color: #555;
+    font: italic 300 16px/23px freight-text-pro;
+}
+.homepagegrid .video {
+    left: 50%;
+    margin-left: -22px;
+    margin-top: -22px;
+    position: absolute;
+    top: 50%;
 }
