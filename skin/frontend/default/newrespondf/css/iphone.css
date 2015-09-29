@@ -3220,15 +3220,15 @@ label[for="shipping:street1"] {
 /* Display Edit button in active selection */
 .one-page-checkout .section .head .arrow-tag {
     display: block;
-    visibility: hidden;
+    /*visibility: hidden;*/
     position: absolute;
     right: 0px;
     top: 0px;
 }
 
-#shopping_arrow.is-active.arrow-tag svg line:nth-child(3) {
+/*#shopping_arrow.is-active.arrow-tag svg line:nth-child(3) {
     stroke: none;
-}
+}*/
 
 .one-page-checkout .section .head .arrow-tag img {
     float: right;
@@ -3238,6 +3238,7 @@ label[for="shipping:street1"] {
     top: 0 !important;
     transition-duration: 200ms;
     width: 44px;
+    opacity: 0;
 }
 
 .one-page-checkout .head .arrow-tag img {
@@ -3326,6 +3327,7 @@ label[for="shipping:street1"] {
     background: #eee !important;
 }
 
+
 .one-page-checkout .section .step-count {
     color: #555;
     background: #EEE;
@@ -3339,7 +3341,6 @@ label[for="shipping:street1"] {
     position: absolute;
     left: 0;
 }
-
 .one-page-checkout h3 {
     position: relative;
 }
@@ -5506,13 +5507,13 @@ table.redeem-giftcard {
 }
 
 p.apply_promo_label {
-    /*margin-bottom: 14px;*/
-    margin-top: -10px;
+    float: left;
+    font-family: graphikregular;
     line-height: 30px;
+    margin-bottom: 3px;
     position: relative;
     text-align: left;
-    margin-bottom: 3px;
-    font-family: graphikregular;
+    width: 100%;
 }
 
 p.apply_promo_label > span {
@@ -6439,7 +6440,16 @@ button.btn-invite.button {
     margin-left: 20px;
     padding-top: 18px;
 }
+.section.always_allow .head svg line{
+    stroke: #666;
+}
 
+.section.allow.completed .head svg line {
+    stroke: #666;
+}
+.section .head svg line {
+    stroke: none;
+}
 .section.allow.active .head svg line {
     stroke: none;
 }
@@ -6556,7 +6566,6 @@ button#send2 {
     position: absolute;
     left: 7px;
     top: 0;
-    z-index: 1;
 }
 
 /*
@@ -7218,7 +7227,9 @@ video {
     box-sizing: border-box;
     position: relative;
 }
-
+.product_details_checkout .messages{
+    overflow: visible;
+}
 .row {
     width: 100%;
 }
@@ -7706,4 +7717,8 @@ label[for="billing-address-select"] {
 
 #address-update .messages{
     background: transparent !important;
+}
+#discountFormPoints2 fieldset{
+    float: left;
+    width: 100%;
 }

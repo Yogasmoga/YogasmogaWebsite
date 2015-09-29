@@ -421,6 +421,7 @@ else
                     <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374" y1="21.39" x2="30.374" y2="21.39"></line>
                     <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374" y1="13.39" x2="22.374" y2="29.39"></line>
                 </svg>
+                <img class="" src="<?php echo $this->getSkinUrl('images/black-arrw.png') ;?>" alt="arrow">
 			</span>
                     <div class="clear"></div>
                 </div>
@@ -680,10 +681,13 @@ jQuery(".apply_smogi_bucks").click(function(){
                 jQuery("#shopping_arrow").removeClass("is-active");
                 var offset =  jQuery("#opc-billing").offset().top;
                 jQuery(window).scrollTop(offset-120);
+                jQuery("#opc-billing .head").click();
+                jQuery("#opc-cart").addClass("always_allow");
             });
             jQuery("#shopping_arrow").click(function(){
                 jQuery("#checkout-step-billing").hide();
                 jQuery("#opc-billing").removeClass("active");
+                jQuery("#opc-cart").removeClass("always_allow");
             });
 
 
