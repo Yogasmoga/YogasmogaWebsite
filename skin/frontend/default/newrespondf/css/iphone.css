@@ -6556,6 +6556,7 @@ button#send2 {
     position: absolute;
     left: 7px;
     top: 0;
+    z-index: 1;
 }
 
 /*
