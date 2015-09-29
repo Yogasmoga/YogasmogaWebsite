@@ -91,7 +91,7 @@ Checkout.prototype = {
 
     gotoSection: function(section)
     {
-        //showCompletedSections(section);
+        showCompletedSections(section);
         section = $('opc-'+section);
         section.addClassName('allow');
         this.accordion.openSection(section);

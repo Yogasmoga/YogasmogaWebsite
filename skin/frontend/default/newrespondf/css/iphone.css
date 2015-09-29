@@ -3220,7 +3220,7 @@ label[for="shipping:street1"] {
 /* Display Edit button in active selection */
 .one-page-checkout .section .head .arrow-tag {
     display: block;
-    visibility: hidden;
+    /*visibility: hidden;*/
     position: absolute;
     right: 0px;
     top: 0px;
@@ -3238,6 +3238,7 @@ label[for="shipping:street1"] {
     top: 0 !important;
     transition-duration: 200ms;
     width: 44px;
+    opacity: 0;
 }
 
 .one-page-checkout .head .arrow-tag img {
@@ -3326,6 +3327,7 @@ label[for="shipping:street1"] {
     background: #eee !important;
 }
 
+
 .one-page-checkout .section .step-count {
     color: #555;
     background: #EEE;
@@ -3339,7 +3341,6 @@ label[for="shipping:street1"] {
     position: absolute;
     left: 0;
 }
-
 .one-page-checkout h3 {
     position: relative;
 }
@@ -6440,6 +6441,12 @@ button.btn-invite.button {
     padding-top: 18px;
 }
 
+.section.allow .head svg line {
+    stroke: #666;
+}
+.section .head svg line {
+    stroke: none;
+}
 .section.allow.active .head svg line {
     stroke: none;
 }
