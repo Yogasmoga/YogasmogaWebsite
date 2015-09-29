@@ -4829,7 +4829,7 @@ table.productdetailtable div#colorcontainer div table {
 
 #form-validate .fieldset {
     margin-top: 40px;
-    padding: 0 12px;
+    padding: 0 14px;
     float: left;
     width: 100%;
 }
@@ -4901,7 +4901,7 @@ table.productdetailtable div#colorcontainer div table {
     float: left;
     overflow: hidden;
     height: 48px;
-    margin: 30px 0 0 0;
+    margin: 26px 0 0 0;
     position: relative;
     width: 50%;
     border: 2px solid #fff;
@@ -4927,6 +4927,7 @@ button.place-order {
     left: 0;
     position: fixed;
     top: 0;
+    right: 0;
 }
 
 .thanks-page .thanks-block p {
@@ -4946,11 +4947,13 @@ button.place-order {
     background: #00b900 none repeat scroll 0 0;
     color: hsl(0, 0%, 100%);
     display: block;
-    font: 16px/50px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     height: 44px;
     letter-spacing: 1px;
     text-decoration: none;
     text-transform: uppercase;
+    width: 275px;
+    margin: 0 auto;
 }
 
 .thanks-page .thanks-block p .shop-tag {
@@ -5062,7 +5065,7 @@ button.place-order {
 
 .dashboard-index .pg-content .account-login .page-title h1 {
     font-family: ITCAvantGardeStd-Bk;
-    font-size: 24px;
+    font-size: 19px;
     font-weight: normal;
 }
 
@@ -5739,9 +5742,9 @@ table#checkout-review-table tfoot td .price {
 }
 
 .page-title h1 {
-    font: 24px ITCavantGardestd-bk;
+    font: 19px ITCavantGardestd-bk;
     text-transform: uppercase;
-    margin-top: 30px;
+    margin-top: 15px;
     padding: 0 12px;
 }
 
@@ -6138,7 +6141,8 @@ table#checkout-review-table tfoot td .price {
 }
 
 #form-validate .input-box input {
-    border-radius: 4px;
+    border: 1px solid #999;
+    border-radius: 0;
     font: 13px GraphikRegular !important;
     letter-spacing: 1px;
     padding: 10px 5px;
@@ -6159,7 +6163,7 @@ table#checkout-review-table tfoot td .price {
 
 #form-validate .wide input {
     margin-bottom: 10px;
-    border-radius: 4px;
+    border-radius: 0;
     font: 12px GraphikRegular !important;
     letter-spacing: 1px;
     padding: 10px 5px;
@@ -6173,6 +6177,7 @@ table#checkout-review-table tfoot td .price {
 #form-validate .fields .field label {
     float: left;
     margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 
 #form-validate .fields .field label em {
@@ -7678,4 +7683,26 @@ label[for="billing-address-select"] {
 
 #co-shipping-form > fieldset#shipping-new-address-form:nth-child(2) {
     margin-top: 5px;
+}
+
+#address-update {
+    background: rgba(255, 255, 255, 0.95) none repeat scroll 0 0;
+    bottom: 0;
+    color: #ff6600;
+    float: left;
+    font: 12px/44px graphikregular;
+    left: 0;
+    padding: 0 14px;
+    position: fixed;
+    right: 0;
+}
+
+#address-update .success-msg, #address-update .error-msg, #address-update .notice-msg,#address-update .note-msg{
+    padding: 0;
+    background: none;
+    margin: 0 !important;
+}
+
+#address-update .messages{
+    background: transparent !important;
 }
