@@ -7217,7 +7217,9 @@ video {
     box-sizing: border-box;
     position: relative;
 }
-
+.product_details_checkout .messages{
+    overflow: visible;
+}
 .row {
     width: 100%;
 }
