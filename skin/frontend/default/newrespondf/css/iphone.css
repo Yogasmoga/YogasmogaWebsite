@@ -6717,7 +6717,9 @@ button#send2 {
     float: right;
     font: 12px ITCAvantGardeStd-Bk;
     margin: 0;
+    position: relative !important;
     text-transform: uppercase;
+    top: 0;
 }
 
 .checkout-cart-index .main-container {
