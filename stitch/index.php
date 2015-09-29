@@ -140,7 +140,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
 
 ksort($all_products);
 ?>
-<div id="divdata" style="padding-top: 155px;">
+<div id="divdata" style="padding-top: 175px;">
 <table style="width:100%; margin:auto; padding: 20px; border-collapse: collapse;font-size: 12px; font-family: arial, helvetica, sans-serif">
     <thead>
 
