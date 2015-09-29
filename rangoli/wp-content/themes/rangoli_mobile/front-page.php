@@ -61,7 +61,7 @@ $home = get_site_url();
 
 </div>
 <div class="all_categories_block row lh0">
-    <div class="category_block">
+    <div class="category_block" onclick="window.location='/rangoli/read'">
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              x="0px" y="0px"
              viewBox="0 0 89.9 89.6" style="enable-background:new 0 0 89.9 89.6;" xml:space="preserve">
@@ -83,7 +83,7 @@ $home = get_site_url();
             </g>
 </svg>
     </div>
-    <div class="category_block">
+    <div class="category_block" onclick="window.location='/rangoli/look'">
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              x="0px" y="0px"
              viewBox="0 0 89.9 89.6" style="enable-background:new 0 0 89.9 89.6;" xml:space="preserve">
@@ -106,7 +106,7 @@ $home = get_site_url();
             </g>
 </svg>
     </div>
-    <div class="category_block">
+    <div class="category_block" onclick="window.location='/rangoli/learn'">
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              x="0px" y="0px"
              viewBox="0 0 89.9 89.6" style="enable-background:new 0 0 89.9 89.6;" xml:space="preserve">
@@ -129,7 +129,7 @@ $home = get_site_url();
             </g>
 </svg>
     </div>
-    <div class="category_block">
+    <div class="category_block" onclick="window.location='/rangoli/love-yogasmoga'">
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              x="0px" y="0px"
              viewBox="0 0 89.9 89.6" style="enable-background:new 0 0 89.9 89.6;" xml:space="preserve">
@@ -171,11 +171,13 @@ $home = get_site_url();
         $post = get_post();
 ?>
         <div class="author_post_read read_section">
+            <a href="<?php echo get_permalink()?>">
             <?php echo get_the_post_thumbnail($post->ID, "mobile_posts");
             if (!has_post_thumbnail()) {
                 echo '<img src="' . $home . '/wp-content/themes/rangoli_mobile/images/no-background_posts.png" />';
             }
             ?>
+            </a>
         </div>
         <div class="featured_post_title">
             <svg width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -211,6 +213,7 @@ $home = get_site_url();
         $post = get_post();
         ?>
         <div class="author_post_read look_section">
+            <a href="<?php echo get_permalink()?>">
             <?php echo get_the_post_thumbnail($post->ID, "mobile_posts");
             if (!has_post_thumbnail()) {
                 echo '<img src="' . $home . '/wp-content/themes/rangoli_mobile/images/no-background_posts.png" />';
@@ -235,6 +238,7 @@ $home = get_site_url();
                 <?php
             }
             ?>
+                </a>
         </div>
         <div class="featured_post_title">
             <svg width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -272,6 +276,7 @@ $home = get_site_url();
         $post = get_post();
         ?>
         <div class="author_post_read learn_section">
+            <a href="<?php echo get_permalink()?>">
             <?php echo get_the_post_thumbnail($post->ID, "mobile_posts");
             if (!has_post_thumbnail()) {
                 echo '<img src="' . $home . '/wp-content/themes/rangoli_mobile/images/no-background_posts.png" />';
@@ -295,7 +300,7 @@ $home = get_site_url();
                 <?php
             }
             ?>
-
+            </a>
         </div>
         <div class="featured_post_title">
             <svg width="23px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -333,12 +338,13 @@ $home = get_site_url();
         $post = get_post();
         ?>
         <div class="author_post_read love_section">
+            <a href="<?php echo get_permalink()?>">
             <?php echo get_the_post_thumbnail($post->ID, "mobile_posts");
             if (!has_post_thumbnail()) {
                 echo '<img src="' . $home . '/wp-content/themes/rangoli_mobile/images/no-background_posts.png" />';
             }
             ?>
-
+            </a>
         </div>
         <div class="featured_post_title">
             <svg width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
