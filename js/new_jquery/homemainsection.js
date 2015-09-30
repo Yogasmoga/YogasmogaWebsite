@@ -1,10 +1,14 @@
 jQuery(document).ready(function($){
     // sliderHeight();
-    var sliderHeight = $(window).width() * 0.523;
-    var bannerFliudHeight = $(window).width() * 0.3125;
+    var ww = $(window).width();
+    if(ww < 1007){
+        ww = 1007;
+    }
+    var sliderHeight = ww * 0.523;
+    var bannerFliudHeight = ww * 0.3125;
     $(".gridfull").css('min-height',$(window).width()*0.48);
     $("#bucket1_slider.flexslider li").css({"height": sliderHeight});
-    //$("#Allproducts .bannerFluid").css({"height": bannerFliudHeight});
+    $("#Allproducts .bannerFluid").css({"min-height": bannerFliudHeight});
 
     $('.flexslider').flexslider({
         controlNav: true,
@@ -51,6 +55,15 @@ jQuery(document).ready(function($){
         
         //positionDiscoverSection();
         // sliderHeight();
+        var ww = $(window).width();
+        if(ww < 1007){
+            ww = 1007;
+        }
+        var sliderHeight = ww * 0.523;
+        var bannerFliudHeight = ww * 0.3125;
+        $(".gridfull").css('min-height',$(window).width()*0.48);
+        $("#bucket1_slider.flexslider li").css({"height": sliderHeight});
+        $("#Allproducts .bannerFluid").css({"min-height": bannerFliudHeight});
     });
     
     setTimeout(function(){ fixmainimage();}, 100);
