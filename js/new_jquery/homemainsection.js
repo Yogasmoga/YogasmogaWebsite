@@ -4,7 +4,7 @@ jQuery(document).ready(function($){
     var bannerFliudHeight = $(window).width() * 0.3125;
     $(".gridfull").css('min-height',$(window).width()*0.48);
     $("#bucket1_slider.flexslider li").css({"height": sliderHeight});
-    $("#Allproducts .bannerFluid").css({"height": bannerFliudHeight});
+    //$("#Allproducts .bannerFluid").css({"height": bannerFliudHeight});
 
     $('.flexslider').flexslider({
         controlNav: true,
