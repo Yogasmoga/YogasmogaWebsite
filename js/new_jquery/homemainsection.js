@@ -55,15 +55,15 @@ jQuery(document).ready(function($){
         
         //positionDiscoverSection();
         // sliderHeight();
-        var ww = $(window).width();
+        var ww = jQuery(window).width();
         if(ww < 1007){
             ww = 1007;
         }
         var sliderHeight = ww * 0.523;
         var bannerFliudHeight = ww * 0.3125;
-        $(".gridfull").css('min-height',$(window).width()*0.48);
-        $("#bucket1_slider.flexslider li").css({"height": sliderHeight});
-        $("#Allproducts .bannerFluid").css({"min-height": bannerFliudHeight});
+        jQuery(".gridfull").css('min-height',$(window).width()*0.48);
+        jQuery("#bucket1_slider.flexslider li").css({"height": sliderHeight});
+        jQuery("#Allproducts .bannerFluid").css({"min-height": bannerFliudHeight});
     });
     
     setTimeout(function(){ fixmainimage();}, 100);
