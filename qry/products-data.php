@@ -1,6 +1,6 @@
 <?php 
 
-	require_once 'app/Mage.php';
+	require_once '../app/Mage.php';
 	Mage::app();
 	$productsCollection = Mage::getResourceModel('catalog/product_collection')
                 ->addAttributeToSelect('*')
