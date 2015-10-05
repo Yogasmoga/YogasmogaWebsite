@@ -19,7 +19,7 @@ $inputFileName = 'stitch.xls';
 $upload_display = "display:none";
 $filter_display = "display:none";
 
-$stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich', 'magentofallriver');
+$stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich', 'magentofallriver', 'fashion_island');
 $ar_sizes = array('One', 'S', 'M', 'L', 'XL', 'XXL', '2', '4', '6', '8', '10', '12', '14', '16', '18');
 
 $store = 'all';
@@ -89,6 +89,7 @@ if (file_exists($inputFileName)) {
         $magento_stock = $rowData[0][18+$available];
         $greenwich_stock = $rowData[0][21+$available];
         $beverley_hills_stock = $rowData[0][24+$available];
+        $fashion_island_stock = $rowData[0][57+$available];
         $magento_fallriver = $fallriver_stock + $magento_stock;
         $magento_price = $rowData[0][30];
 
@@ -131,6 +132,7 @@ if (file_exists($inputFileName)) {
             'beverley_hills_stock' => $beverley_hills_stock,
             'brentwood_stock' => $brentwood_stock,
             'fallriver_stock' => $fallriver_stock,
+            'fashion_island_stock' => $fashion_island_stock,
             'magento_stock' => $magento_stock,
             'magentofallriver_stock' => $magento_fallriver,
             'greenwich_stock' => $greenwich_stock,
