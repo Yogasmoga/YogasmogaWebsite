@@ -5,7 +5,7 @@
 	$productsCollection = Mage::getResourceModel('catalog/product_collection')
                 ->addAttributeToSelect('*')
                 ->addAttributeToFilter('type_id','configurable')
-				->addAttributeToFilter('status',array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED);
+				->addAttributeToFilter('status',array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED));
         
 	header('Content-Type: text/csv; charset=utf-8');
 	header('Content-Disposition: attachment; filename=configurable-products.csv');
