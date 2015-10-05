@@ -22,7 +22,7 @@
 				<class>Ysindia_Customer_Model</class>
 			</Ysindia_Customer>
 		</models>
-
+<!--
 		<events>
             <checkout_cart_save_before>
                 <observers>
@@ -34,6 +34,6 @@
                 </observers>
             </checkout_cart_save_before>
 		</events>
-
+-->
 	</global>
 </config>
