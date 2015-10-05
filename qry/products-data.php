@@ -4,7 +4,8 @@
 	Mage::app();
 	$productsCollection = Mage::getResourceModel('catalog/product_collection')
                 ->addAttributeToSelect('*')
-                ->addAttributeToFilter('type_id','configurable');
+                ->addAttributeToFilter('type_id','configurable')
+				->addAttributeToFilter('status',array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED);
         
 	header('Content-Type: text/csv; charset=utf-8');
 	header('Content-Disposition: attachment; filename=configurable-products.csv');
@@ -14,8 +15,8 @@
 	fputcsv($output, array('parent_product_name', 'simple_sku', 'simple_product_name','qty','price','category_ids','hidden'));
 	foreach($productsCollection as $product){
 	 
-		$configurableProducts = Mage::getModel('catalog/product_type_configurable')->setProduct($product);
-		$simple_collection = $configurableProducts->getUsedProductCollection()->addAttributeToSelect('*')->addFilterByRequiredOptions();
+		$configurableProduct = Mage::getModel('catalog/product_type_configurable')->setProduct($product);
+		$simple_collection = $configurableProduct->getUsedProductCollection()->addAttributeToSelect('*')->addFilterByRequiredOptions();
 		foreach($simple_collection as $simple_product){
 			
 			$categoryIds = $simple_product->getCategoryIds();
