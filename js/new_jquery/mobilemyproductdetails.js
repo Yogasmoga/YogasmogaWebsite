@@ -878,7 +878,7 @@ function insertBraOption() {
         /*jQuery(this).siblings().toggleClass("selected");*/
         var textvalue = jQuery.trim(jQuery(this).text());
         if (textvalue == "Y" || textvalue == "y") {
-            if (_braSelected == 0) {0
+            if (_braSelected == 0) {
                 var productCost = jQuery(".productcost").text().split("$");
                 var productCostV = parseInt(productCost[1]) + braValue;
                 console.log(productCost[1]);
@@ -906,9 +906,34 @@ jQuery(document).ready(function($){
         $("#orderitem").addClass("active");
         $("#preorderitem").addClass("active");
     }
+    $(".selectedlength div").click(function(){
+        $("#orderitem").removeClass("active");
+        $("#preorderitem").removeClass("active");
+        if($("table.productdetailtable div#sizecontainer table td div.dvselectedsize").length>0){
+                $("#orderitem").addClass("active");
+                $("#preorderitem").addClass("active");
+        }
+        //alert($("table.productdetailtable div#sizecontainer table td div.dvselectedsize").length);
+    });
     $("table.productdetailtable div#sizecontainer table td div").click(function(){
-        $("#orderitem").addClass("active");
-        $("#preorderitem").addClass("active");
+        $(".selectedlength div").removeClass("selected");
+        $("#orderitem").removeClass("active");
+        $("#preorderitem").removeClass("active");
+        if($(".selectedlength div").length>0) {
+            if ($(".selectedlength div.selected").length > 0) {
+                $("#orderitem").addClass("active");
+                $("#preorderitem").addClass("active");
+            }
+            else{
+                $("#orderitem").removeClass("active");
+                $("#preorderitem").removeClass("active");
+            }
+        }
+        else {
+                $("#orderitem").addClass("active");
+                $("#preorderitem").addClass("active");
+        }
+        //alert($(".selectedlength div").length + "," + $(".selectedlength div.selected").length);
     });
     $("#colorcontainer div").click(function(){
         if($(".selectedsize").css("display")!="none"){
@@ -919,6 +944,7 @@ jQuery(document).ready(function($){
             $("#orderitem").addClass("active");
             $("#preorderitem").addClass("active");
         }
+        sizeselected = false;
     });
     $(".close_cart_addition_popup").click(function(){
         $(".product_add_conf_popup").fadeOut();
