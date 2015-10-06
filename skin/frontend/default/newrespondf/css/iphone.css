@@ -5053,12 +5053,11 @@ button.place-order {
     margin: 30px 0;
     background: #f3f3f4;
     border-collapse: collapse;
-    margin: 30px 0;
 }
 
 .colorbg.dashboard-index .pg-content .in-page .page-head h3 {
-    font-size: 21px;
-    margin: 24px 0;
+    font-size: 19px;
+    margin: 15px 0;
 }
 
 .dashboard-index .pg-content .account-login {
@@ -5774,7 +5773,7 @@ table#checkout-review-table tfoot td .price {
 }
 
 .smogi-info-box {
-    font: 19px ITCAvantGardeStd-Bk;
+    font: 18px ITCAvantGardeStd-Bk;
 }
 
 .smogi-counting .smogi-count {
@@ -5789,7 +5788,7 @@ table#checkout-review-table tfoot td .price {
     border-bottom: 1px solid #999;
     color: #AD8536;
     float: left;
-    font: 13px/23px GraphikRegular;
+    font: 12px/18px GraphikRegular;
     margin-top: 8px;
     padding-bottom: 15px;
     width: 100%;
@@ -6055,7 +6054,7 @@ table#checkout-review-table tfoot td .price {
     color: #AD8536;
     display: block;
     float: left;
-    font: 13px GraphikRegular;
+    font: 12px GraphikRegular;
     margin: 0;
     padding: 0;
     position: relative !important;
@@ -6308,6 +6307,8 @@ h2.legend {
     border-bottom: 1px solid #999;
     padding: 5px 0 20px;
     margin: 0;
+    font: 12px/18px GraphikRegular;
+    letter-spacing: 1px;
 }
 
 #my-orders-table {
@@ -7417,7 +7418,8 @@ video {
 }
 
 .wishlist-items .span5 p a {
-    color: #AD8536;
+    color: #ad8536;
+    font: 12px/18px GraphikRegular;
 }
 
 .wishlist-items .span5:nth-child(2n+1) {
@@ -7727,4 +7729,32 @@ label[for="billing-address-select"] {
 }
 input#giftcard_use{
     height: 30px !important;
+}
+
+.gift-card-history h3{
+    font: 12px AvantGarde-Demi;
+    letter-spacing: 1px;
+    margin: 10px 0;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.gift-card-history {
+    padding: 0 14px;
+}
+
+.errortext {
+    display: block;
+    margin: -21px 0 0 14px;
+}
+
+.button.add-new-addr {
+    background: none;
+    border: none;
+    color: #555;
+    float: left;
+    font: 12px/18px AvantGarde-Demi;
+    letter-spacing: 1px;
+    padding: 5px 14px;
+    text-transform: uppercase;
 }

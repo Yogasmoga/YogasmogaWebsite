@@ -32,8 +32,10 @@
 <div style="margin-top: 80px;margin-left : 83px; display:none;">
     <h3 class="heading-track">Purchased Gift of ys cards</h3>    
 </div>
+<div class="gift-card-history">
 <?php //echo $this->getPagerHtml(); ?>
 <?php if($_cards->getSize()): ?>
+    <h3>Gift card purchase history</h3>
 <table class="data-table ys" id="my-orders-table">
     <col width="1" />
     <col width="1" />
@@ -77,7 +79,7 @@
     </tbody>
 </table>
 <script type="text/javascript">decorateTable('my-orders-table');</script>
-<?php echo $this->getPagerHtml(); ?>
+<?php //echo $this->getPagerHtml(); ?>
 <?php else: ?>
 <p><?php echo $this->__('<div class="emptyrecord">You have placed no orders.</div>'); ?></p>
 <?php endif ?>
@@ -130,6 +132,7 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+</div>
 <script type="text/javascript">decorateTable('my-orders-table');</script>
 <?php echo $this->getPagerHtml(); ?>
 <?php else: ?>

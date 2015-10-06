@@ -1618,6 +1618,14 @@ p.small.err_msg {
     font-style: normal;
 }
 
+.invite_link .link {
+    font-style: normal;
+    left: 14px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
 .post_content > ul {
     padding: 0;
 }
