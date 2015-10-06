@@ -440,6 +440,7 @@ function get_post_comments($post_id)
     $comments = get_comments(array('post_id' => $post->ID, "order" => "DESC"));
 
     $count = count($comments);
+    if($count>0){
     $i = 0;
     $print = 0;
     if ($count > 3):
@@ -497,7 +498,10 @@ function get_post_comments($post_id)
                             $name = get_the_author_meta('display_name', $user_id);
                         }
                         echo $name; ?></p>
-
+                        <?php
+//                            $comment_rating = get_user_post_comment_rating($comment->ID,$user_id, "comment");
+                         ?>
+<!--                    <div class="rating" rel="--><?php //echo $comment_rating; ?><!--"></div>-->
                     <p class='comment'><?php echo nl2br($comment->comment_content); ?></p>
                 </div>
                 <div class='span12'>
@@ -510,9 +514,13 @@ function get_post_comments($post_id)
 
             $i++;
         }
-    endforeach;
-    if ($hasMore) {
-        echo "</div>";
+        endforeach;
+        if ($hasMore) {
+            echo "</div>";
+        }
+    }
+    else{
+        echo "<p class='no-comment'>Be the first to comment</p>";
     }
 
     ?>
@@ -562,23 +570,27 @@ function get_post_comments($post_id)
 function get_author_shared_posts($author_id)
 {
     $author_data = get_userdata($author_id);
-    $name = strtoupper($author_data->display_name);
+    $name = $author_data->display_name;
     $author_profile = get_user_profile($author_id);
     $color = '#' . $author_profile->color_shade;
     ?>
-    <p class="align-center author_posts_heading"><?php echo $name ?>'S POSTS</p>
+
     <div class="flexslider shared_posts">
         <ul class="slides">
 
             <?php
             $args = array(
                 'order' => 'DESC',
-                'order' => 'DESC',
                 'post_type' => 'post',
                 'author_name' => $author_data->user_nicename
             );
 
             $the_query = new WP_Query($args);
+            if ($the_query->have_posts()){
+            ?>
+            <p class="align-center author_posts_heading"><span><?php echo $name ?></span>&rsquo;s Posts</p>
+            <?php
+            }
 
             if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
                 $post = get_post();
@@ -621,7 +633,7 @@ function get_author_shared_posts($author_id)
                             <div class="align_bottom">
                                 <div class="post_category"><?php echo get_post_categories(); ?></div>
                                 <div class="post_title"><?php echo $post->post_title; ?></div>
-                                <div class="post_author">with
+                                <div class="post_author">by
                                     <span><?php echo $post_author->display_name; ?></span></div>
                             </div>
                             <?php
@@ -681,11 +693,7 @@ function get_author_events_posts($author_id){
     $author_profile = get_user_profile($author_id);
     $color = "#" . $author_profile->color_shade;
     ?>
-    <div class="align-center author_posts_heading">
-        <?php
-        echo strtoupper($author->display_name) . "'S EVENTS";
-        ?>
-    </div>
+
     <?php
     $args = array(
         'order' => 'DESC',
@@ -694,6 +702,15 @@ function get_author_events_posts($author_id){
     );
     $i = 0;
     $the_query = new WP_Query($args);
+    if($the_query->have_posts()){
+    ?>
+    <div class="align-center author_posts_heading">
+        <?php
+            echo "<span >".$author->display_name."</span>&rsquo;s Events";
+        ?>
+    </div>
+    <?php
+    }
     echo '<div class="author_events row">';
     ?>
     <div class="flexslider">
@@ -757,11 +774,11 @@ function get_author_events_posts($author_id){
 function get_author_liked_posts($author_id)
 {
     $author_data = get_userdata($author_id);
-    $name = strtoupper($author_data->display_name);
+    $name = $author_data->display_name;
     $author_profile = get_user_profile($author_id);
     $color = '#' . $author_profile->color_shade;
     ?>
-    <p class="align-center author_posts_heading"><?php echo $name ?>'S LIKES</p>
+    <p class="align-center author_posts_heading"><span><?php echo $name ?></span>&rsquo;s Likes</p>
     <div class="flexslider liked_posts">
         <ul class="slides">
 
@@ -817,7 +834,7 @@ function get_author_liked_posts($author_id)
                             <div class="align_bottom">
                                 <div class="post_category"><?php echo get_post_categories(); ?></div>
                                 <div class="post_title"><?php echo $post->post_title; ?></div>
-                                <div class="post_author">with
+                                <div class="post_author">by
                                     <span><?php echo $post_author->display_name; ?></span></div>
                             </div>
                             <?php
@@ -844,12 +861,12 @@ function get_author_liked_posts($author_id)
 function get_user_recent_activities($user_id)
 {
     $author_data = get_userdata($user_id);
-    $name = strtoupper($author_data->display_name);
+    $name = $author_data->display_name;
     $author_profile = get_user_profile($user_id);
     $color = '#' . $author_profile->color_shade;
     ?>
     <div class="flexslider liked_posts">
-        <p class="align-center author_posts_heading"><?php echo $name ?>'S POSTS</p>
+        <p class="align-center author_posts_heading"><span><?php echo $name ?><span>&rsquo;s Posts</p>
         <ul class="slides">
 
             <?php
@@ -1042,7 +1059,7 @@ function get_the_look($post)
         ?>
         <div class="row">
             <div class="get_the_look">
-                <p><?php echo $name; ?>'s wearing:</p>
+                <p><?php echo $name; ?>&rsquo;s wearing:</p>
 
                 <div class="span6">
                     <a href="<?php echo implode("", $left_product_url) ?>">
@@ -1099,7 +1116,7 @@ function get_user_feeds($user_id)
     $name = $profile->user_display_name;
     if ($name == null)
         $name = $user_info->display_name;
-    $name = strtoupper($name);
+//    $name = strtoupper($name);
 
     if ($user_favs) {
 
@@ -1107,7 +1124,7 @@ function get_user_feeds($user_id)
             $post = get_post($user_fav);
             if ($post->post_type == "post") {
 
-                echo '<p class="align-center author_posts_heading">' . $name . '\'S SHARES</p>';
+                echo '<p class="align-center author_posts_heading"><span>' . $name . '</span>&rsquo;s Shares</p>';
                 break;
 
             }
@@ -1198,12 +1215,12 @@ function get_user_liked_posts($author_id)
 
     $name = $author_profile->user_display_name;
     if ($name == null)
-        $name = strtoupper($author_data->display_name);
+        $name = $author_data->display_name;
 
 
     $color = '#' . $author_profile->color_shade;
     ?>
-    <p class="align-center author_posts_heading"><?php echo $name ?>'S LIKES</p>
+    <p class="align-center author_posts_heading"><span><?php echo $name ?></span>&rsquo;s Likes</p>
     <div class="flexslider liked_posts">
         <ul class="slides">
         <?php
@@ -1256,7 +1273,7 @@ function get_user_liked_posts($author_id)
                             <div class="align_bottom">
                                 <div class="post_category"><?php echo get_post_categories(); ?></div>
                                 <div class="post_title"><?php echo $post->post_title; ?></div>
-                                <div class="post_author">with
+                                <div class="post_author">by
                                     <span><?php echo $post_author->display_name; ?></span></div>
                             </div>
                             <?php
@@ -1297,3 +1314,18 @@ function user_id_exists($user)
 
 }
 
+function get_user_post_comment_rating($subject_id,$user_id, $subject_type)
+{
+    global $wpdb;
+    $query = "select avg(rating_value) as rating_value from rangoli_ratings where subject_id=$subject_id and user_id=$user_id and subject_type='$subject_type'";
+
+    $rating = $wpdb->get_results($query);
+
+    if ($rating && count($rating) > 0) {
+
+        $post_rating = get_object_vars($rating[0]);
+        return $post_rating['rating_value'];
+    } else {
+        return 0;
+    }
+}

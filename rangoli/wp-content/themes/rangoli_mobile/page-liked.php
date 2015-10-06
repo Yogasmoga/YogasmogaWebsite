@@ -51,7 +51,7 @@ $color = '#' . $author_profile->color_shade;
                                     <div class="align_bottom">
                                         <div class="post_category"><?php echo get_post_categories(); ?></div>
                                         <div class="post_title"><?php echo $post->post_title; ?></div>
-                                        <div class="post_author">with
+                                        <div class="post_author">by
                                             <span><?php echo $post_author->display_name; ?></span></div>
                                     </div>
                                     <?php
@@ -130,7 +130,7 @@ $color = '#' . $author_profile->color_shade;
                                     <?php wpfp_link(); ?>
                                 </div>
                                 <div class="post_comments">
-                                    <p class="comments_heading">COMMENTS</p>
+                                    <p class="comments_heading">Comments</p>
                                     <?php echo get_post_comments($post->ID); ?>
 
                                 </div>

@@ -2,6 +2,21 @@
 get_header();
 $logged_in = get_site_url();
 ?>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            resize_tiles();
+        });
+        $(window).resize(function(){
+            resize_tiles();
+        });
+        function resize_tiles(){
+            var width = $(".smogi .author_post_read").width();
+            var height = width * 0.75;
+            $(".smogi .author_post_read").each(function () {
+                $(this).height(height);
+            });
+        }
+    </script>
 
 <div class="smogi-content">
 <?php $blogusers = get_users('role=store');
@@ -20,13 +35,8 @@ if ($blogusers) {
         ?>
 
         <div class="smogi">
-            <div class="author_post_read">
-                        <?php
-                        if ($imgURL == "") {
-                            echo '<img src="' . get_site_url() . '/wp-content/themes/rangoli/images/default.jpg" />';
-                        } else
-                            echo '<img src="' . $imgURL . '" />';
-                        ?>
+            <div class="author_post_read"style="background: url('<?php echo $imgURL; ?>') no-repeat scroll center center / auto 100%;">
+
                 <div class="overlay-text">
                     <div class="align_bottom">
                     <a class="author-link" href="<?php echo esc_url(get_author_posts_url($user->ID)); ?>"><?php echo get_the_author_meta('display_name', $user->ID) ?></a>

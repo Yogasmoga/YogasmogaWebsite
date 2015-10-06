@@ -78,7 +78,7 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
                 <div class="align_bottom">
                     <div class="post_category"><?php echo get_post_categories(); ?></div>
                     <div class="post_title"><?php echo $post->post_title; ?></div>
-                    <div class="post_author">with <span><?php echo $post_author->display_name; ?></span></div>
+                    <div class="post_author">by <span><?php echo $post_author->display_name; ?></span></div>
                 </div>
                 <?php
                 $post_author_image_urls = get_user_meta($post->post_author, 'cupp_upload_meta');
@@ -89,7 +89,11 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
                 ?>
             </div>
             <div class="author_picture"
-                 style="background: url('<?php echo $post_author_image_url; ?>') no-repeat; background-position: center center; background-size: cover"></div>
+                 style="background: url('<?php echo $post_author_image_url; ?>') no-repeat;
+                     background-position: center center; background-size: cover;
+                     <?php if(has_post_video()){echo "bottom: 48px;";} ?>
+                     "></div>
+            <?php if(has_post_video()){echo "<div class='video_time' style='background: $author_color;'></div>";} ?>
             <div class="close_post  <?php if($logged_in){echo 'user-color-shade-trans';} ?>">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
@@ -232,7 +236,7 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
 
 
             <div class="post_comments">
-                <p class="comments_heading">COMMENTS</p>
+                <p class="comments_heading">Comments</p>
                 <?php echo get_post_comments($post->ID); ?>
 
             </div>

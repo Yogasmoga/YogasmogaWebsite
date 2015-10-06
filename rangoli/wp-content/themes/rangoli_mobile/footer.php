@@ -16,7 +16,7 @@ if(!is_user_logged_in()) {
 }
 ?>
 <div class="row">
-    <p class="copyright">&copy;2015 YOGASMOGA. All Rights Reserved.</p>
+    <p class="copyright">&copy; 2015 YOGASMOGA. All Rights Reserved.</p>
 </div>
 <?php
 if(!is_user_logged_in()  && is_home()) {
@@ -29,12 +29,16 @@ if(!is_user_logged_in()  && is_home()) {
 <!-- ------popups---- -->
 <div class="popup">
     <div class="signin_popup">
-        <span class="close_login_popup"><svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
-                        <g>
-                            <line y2="30.218" x2="30.975" y1="15.751" x1="16.508" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-                            <line y2="30.218" x2="16.508" y1="15.751" x1="30.975" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-                        </g>
+        <span class="close_login_popup">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <rect fill="#555555" width="44" height="44"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="14" y1="14" x2="30" y2="30"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30" y1="14" x2="14" y2="30"/>
+</g>
 </svg>
+
 </span>
         <p>ALREADY A SMOGI</p>
         <p class="gold">SIGN IN HERE</p>
@@ -46,7 +50,12 @@ if(!is_user_logged_in()  && is_home()) {
             <p class="forgot_y_p open_signup"><a href="javascript:void(0);">I don't have an account here?</a></p>
             <p class="small err_msg" style="text-align: left;"></p>
             <button class="login_customer">
-                <img src="<?php echo $media ?>/accept.png" />
+                <svg width="44px" height="44px" xml:space="preserve" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+                                            <style type="text/css">
+                                                .st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+                                            </style>
+                    <polyline points="5.9,25.6 14.6,34.3 39.1,9.8 " class="st0"/>
+                                        </svg>
             </button>
         </div>
         <div class="forgot_password_form">
@@ -59,12 +68,17 @@ if(!is_user_logged_in()  && is_home()) {
         </div>
     </div>
     <div class="signup_popup">
-        <span class="close_signup_popup"><svg viewBox="0 0 44 44" height="44px" width="44px">
-                        <g>
-                            <line y2="30.218" x2="30.975" y1="15.751" x1="16.508" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-                            <line y2="30.218" x2="16.508" y1="15.751" x1="30.975" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-                        </g>
-</svg></span>
+        <span class="close_signup_popup">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <rect fill="#555555" width="44" height="44"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="14" y1="14" x2="30" y2="30"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30" y1="14" x2="14" y2="30"/>
+</g>
+</svg>
+
+        </span>
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              width="172.684px" height="25px" viewBox="0 0 172.684 25" enable-background="new 0 0 172.684 25" xml:space="preserve">
 <g>
@@ -118,19 +132,27 @@ if(!is_user_logged_in()  && is_home()) {
             <p class="forgot_y_p open_signin"><a href="javascript:void(0);">Already signed up? Sign in here</a></p>
             <p class="small err_msg" style="text-align: left"></p>
             <button class="create_account">
-                <img src="<?php echo $media ?>/accept.png" />
+                <svg xml:space="preserve" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" width="44px" height="44px">
+                                            <style type="text/css">
+                                                .st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+                                            </style>
+                    <polyline points="5.9,25.6 14.6,34.3 39.1,9.8 " class="st0"/>
+                                        </svg>
             </button>
 
         </div>
     </div>
     <div class="after_signup_popup">
         <span class="close_after_signup_popup">
-            <svg width="37px" height="37px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
-                <g>
-                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="12.517" y1="12.517" x2="31.482" y2="31.483"/>
-                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="31.482" y1="12.517" x2="12.517" y2="31.483"/>
-                </g>
-                </svg></span>
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <rect fill="#555555" width="44" height="44"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="14" y1="14" x2="30" y2="30"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30" y1="14" x2="14" y2="30"/>
+</g>
+</svg>
+        </span>
         <p>THANK YOU</p>
         <p>FOR SIGNING UP</p>
         <p class="smogi_bucks_banner"><img src="<?php echo $media?>/25smogi_bucks.png" /></p>

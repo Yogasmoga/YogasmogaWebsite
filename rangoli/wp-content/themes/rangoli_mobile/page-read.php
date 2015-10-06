@@ -54,7 +54,7 @@ $logged_in = is_user_logged_in();
                     <div class="align_bottom">
                         <div class="post_category"><?php echo get_post_categories(); ?></div>
                         <div class="post_title"><?php echo $post->post_title; ?></div>
-                        <div class="post_author">with <span><?php echo $post_author->display_name; ?></span></div>
+                        <div class="post_author">by <span><?php echo $post_author->display_name; ?></span></div>
                     </div>
                     <?php
                     $post_author_image_urls = get_user_meta($post->post_author, 'cupp_upload_meta');
@@ -163,7 +163,7 @@ $logged_in = is_user_logged_in();
                     <?php wpfp_link(); ?>
                 </div>
                 <div class="post_comments">
-                    <p class="comments_heading">COMMENTS</p>
+                    <p class="comments_heading">Comments</p>
                     <?php echo get_post_comments($post->ID); ?>
 
                 </div>
