@@ -16,6 +16,7 @@ $collection = Mage::getModel('customer/customer')->getCollection()
     ->addAttributeToSelect('firstname')
     ->addAttributeToSelect('lastname')
     ->addAttributeToSelect('email')
+    ->addAttributeToSelect('gender')
     ->addAttributeToFilter('created_at', array('gteq' => $date_to_start . ' 00:00:01'))
     ->addAttributeToFilter('created_at', array('lteq' => $date_to_end . ' 23:59:59'));
 
