@@ -26,6 +26,8 @@ if($collection && count($collection)==0){
 else
     echo count($collection) . " records found<br/><br/>";
 
+$unsubscribeCount = 0;
+
 foreach ($collection as $item) {
     $row = $item->getData();
 
@@ -35,7 +37,7 @@ foreach ($collection as $item) {
     $rows = $readConnection->fetchAll($query);
 
     if(isset($rows) && count($rows)>0) {
-        echo "<br/>$email is unsubscribed";
+        ++$unsubscribeCount;
         continue;
     }
 
@@ -68,5 +70,9 @@ foreach ($collection as $item) {
     );
 }
 
+echo $unsubscribeCount . " unsubscribed <hr/>";
+
+echo "<pre>";
 print_r($batch);
+echo "</pre>";
 ?>
