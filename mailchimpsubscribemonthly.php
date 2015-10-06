@@ -23,6 +23,8 @@ if($collection && count($collection)==0){
     echo "No records found";
     return;
 }
+else
+    echo count($collection) . " records found<br/><br/>";
 
 foreach ($collection as $item) {
     $row = $item->getData();
@@ -30,13 +32,14 @@ foreach ($collection as $item) {
     $email = $row['email'];
 
     $query = "select email from unsubscribed_customers where email='$email'";
-    echo $query . "<br/>";
     $rows = $readConnection->fetchAll($query);
 
     if(isset($rows) && count($rows)>0) {
         echo "<br/>$email is unsubscribed";
         continue;
     }
+
+    unset($rows);
 
     $customerId = $row['entity_id'];
 
