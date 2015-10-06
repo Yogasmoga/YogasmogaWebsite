@@ -6,7 +6,7 @@ umask(0);
 $resource = Mage::getSingleton('core/resource');
 $readConnection = $resource->getConnection('core_read');
 
-$date_to_start = '2015-01-01';
+$date_to_start = '2015-07-01';
 $date_to_end = '2015-07-31';
 
 echo "Between " . $date_to_start . " and " . $date_to_end . "<br/><br/>";
