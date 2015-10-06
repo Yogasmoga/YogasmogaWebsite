@@ -6,8 +6,8 @@ umask(0);
 $resource = Mage::getSingleton('core/resource');
 $readConnection = $resource->getConnection('core_read');
 
-$date_to_start = '2015-07-01';
-$date_to_end = '2015-07-31';
+$date_to_start = '2015-08-01';
+$date_to_end = '2015-08-31';
 
 echo "Between " . $date_to_start . " and " . $date_to_end . "<br/><br/>";
 
@@ -61,13 +61,22 @@ foreach ($collection as $item) {
         $state = $customerAddress['region'];
     }
 
+    if(isset($row['gender'])){
+        if($row['gender']=="1")
+            $gender = "MALE";
+        else
+            $gender = "FEMALE";
+    }
+    else
+        $gender = '';
+
     $batch[] = array(
         'EMAIL' => $row['email'],
         'FNAME' => $row['firstname'],
         'LNAME' => $row['lastname'],
         'STATE' => $state,
         'COUNTRY' => $country,
-        'GENDER' => $row['gender']
+        'GENDER' => $gender
     );
 }
 
