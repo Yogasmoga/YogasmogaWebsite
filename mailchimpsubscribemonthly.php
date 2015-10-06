@@ -16,7 +16,6 @@ $collection = Mage::getModel('customer/customer')->getCollection()
     ->addAttributeToSelect('firstname')
     ->addAttributeToSelect('lastname')
     ->addAttributeToSelect('email')
-    ->addAttributeToSelect('gender')
     ->addAttributeToFilter('created_at', array('gteq' => $date_to_start . ' 00:00:01'))
     ->addAttributeToFilter('created_at', array('lteq' => $date_to_end . ' 23:59:59'));
 
@@ -48,6 +47,8 @@ foreach ($collection as $item) {
 
     $customer = Mage::getModel('customer/customer')->load($customerId);
 
+    $gender = $customer->getGender();
+
     $customerAddress = null;
 
     foreach ($customer->getAddresses() as $address) {
@@ -62,8 +63,8 @@ foreach ($collection as $item) {
         $state = $customerAddress['region'];
     }
 
-    if(isset($row['gender'])){
-        if($row['gender']=="1")
+    if(isset($gender) && strlen(trim($gender))>0){
+        if($gender=="1")
             $gender = "MALE";
         else
             $gender = "FEMALE";
