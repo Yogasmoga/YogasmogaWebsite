@@ -66,7 +66,8 @@ foreach ($collection as $item) {
         'FNAME' => $row['firstname'],
         'LNAME' => $row['lastname'],
         'STATE' => $state,
-        'COUNTRY' => $country
+        'COUNTRY' => $country,
+        'GENDER' => $row['gender']
     );
 }
 
