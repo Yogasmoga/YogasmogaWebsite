@@ -3,6 +3,8 @@ require 'app/Mage.php';
 $app = Mage::app('');
 umask(0);
 
+ini_set('max_execution_time', 60);
+
 $myfile = fopen("mailchimp_list.txt", "r") or die("Unable to open file!");
 $apikey_listid = trim(fgets($myfile));
 fclose($myfile);
@@ -49,7 +51,7 @@ if ($correct) {
         $rows = $readConnection->fetchAll($query);
 
         if (isset($rows) && count($rows) > 0) {
-            ++$unsubscribeCount;
+            echo $rows[0] . " is unsubscribed<br/>";
             continue;
         }
 
