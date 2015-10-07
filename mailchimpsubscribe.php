@@ -89,15 +89,15 @@ if ($correct) {
             echo $result["data"][0]["email"] . " is " . $result["data"][0]["status"] . ", not changing values<br/>";
         }
         else{
-            $result = $mailChimp->call('lists/subscribe', array(
-                'id' => $list_id,
-                'email' => array('email' => $email),
-                'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country),
-                'double_optin' => false,
-                'update_existing' => true,
-                'replace_interests' => false,
-                'send_welcome' => false,
-            ));
+//            $result = $mailChimp->call('lists/subscribe', array(
+//                'id' => $list_id,
+//                'email' => array('email' => $email),
+//                'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country),
+//                'double_optin' => false,
+//                'update_existing' => true,
+//                'replace_interests' => false,
+//                'send_welcome' => false,
+//            ));
 
             print_r($result);
         }
