@@ -51,7 +51,7 @@ if ($correct) {
         $rows = $readConnection->fetchAll($query);
 
         if (isset($rows) && count($rows) > 0) {
-            echo $rows[0] . " is unsubscribed<br/>";
+            echo $rows[0][0] . " is unsubscribed<br/>";
             continue;
         }
 
@@ -139,7 +139,7 @@ if ($correct) {
 //                'send_welcome' => false,
 //            ));
 
-            echo "To add = " . $email . " , $gender \n";
+            echo "To add = " . $email . " , $gender <br/>";
         }
     }
 
