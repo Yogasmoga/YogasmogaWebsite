@@ -3,7 +3,7 @@ require 'app/Mage.php';
 $app = Mage::app('');
 umask(0);
 
-ini_set('max_execution_time', 60);
+ini_set('max_execution_time', 120);
 
 $myfile = fopen("mailchimp_list.txt", "r") or die("Unable to open file!");
 $apikey_listid = trim(fgets($myfile));
@@ -51,7 +51,7 @@ if ($correct) {
         $rows = $readConnection->fetchAll($query);
 
         if (isset($rows) && count($rows) > 0) {
-            echo $rows[0] . " is unsubscribed<br/>";
+            echo $rows[0]["email"] . " is unsubscribed<br/>";
             continue;
         }
 
@@ -139,7 +139,7 @@ if ($correct) {
 //                'send_welcome' => false,
 //            ));
 
-            echo "To add = " . $email . " , $gender \n";
+            echo "To add = " . $email . " , $gender <br/>";
         }
     }
 
