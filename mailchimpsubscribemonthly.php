@@ -21,8 +21,8 @@ if ($correct) {
     $resource = Mage::getSingleton('core/resource');
     $readConnection = $resource->getConnection('core_read');
 
-    $date_to_start = '2015-08-01';
-    $date_to_end = '2015-08-31';
+    $date_to_start = '2015-09-01';
+    $date_to_end = '2015-09-30';
 
     echo "Between " . $date_to_start . " and " . $date_to_end . "<br/><br/>";
 
