@@ -1,4 +1,5 @@
 <?php
+die;
 require 'app/Mage.php';
 $app = Mage::app('');
 umask(0);
