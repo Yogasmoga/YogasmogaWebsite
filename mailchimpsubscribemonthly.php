@@ -21,8 +21,8 @@ if ($correct) {
     $resource = Mage::getSingleton('core/resource');
     $readConnection = $resource->getConnection('core_read');
 
-    $date_to_start = '2015-07-01';
-    $date_to_end = '2015-07-31';
+    $date_to_start = '2015-08-01';
+    $date_to_end = '2015-08-31';
 
     echo "Between " . $date_to_start . " and " . $date_to_end . "<br/><br/>";
 
@@ -142,5 +142,5 @@ if ($correct) {
         }
     }
 
-//    echo "\nMailchimp Synchronize Task Completed at : " . date("Y-m-d h:i:s");
+    echo "\nMailchimp Synchronize Task Completed at : " . date("Y-m-d h:i:s");
 }
