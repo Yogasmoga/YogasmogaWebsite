@@ -607,9 +607,9 @@ table.productimagecontainer table.tdbigimagecontainer td
 }
 
 table.productimagecontainer table.tdbigimagecontainer td img{
-    /*width: 100%;*/
+    width: 100%;
     /*width: 72%;*/
-    width: auto;
+    /*width: auto;*/
 }
 
 table.productimagecontainer td.tddivider
@@ -625,7 +625,7 @@ table.productimagecontainer td.tddivider div
 
 table.productimagecontainer table.smallimagecontiner
 {
-    margin: 5px auto;
+    margin: 0 auto;
 }
 
 table.productimagecontainer table.smallimagecontiner td
@@ -771,7 +771,7 @@ td#tdpopupproductsmallimages td
     min-height : 75px;
     vertical-align: bottom;
     text-align: center;
-    padding-top : 20px;
+    padding-bottom : 20px;
     cursor : pointer;
 }
 
@@ -785,8 +785,11 @@ td#tdpopupproductsmallimages
 
 td#tdpopupproductbigimage
 {
-    padding-top : 3px;
+    padding-top : 0;
     text-align : center;
+}
+td#tdpopupproductbigimage > img{
+    width: 94%;
 }
 
 img#closelightbox

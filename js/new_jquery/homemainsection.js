@@ -1,7 +1,13 @@
 jQuery(document).ready(function($){
-    var sliderHeight = $(window).width() * 0.523;
+//    var sliderHeight = $(window).width() * 0.523;
+    var ww = $(window).width();
+    if(ww < 1007){
+        ww = 1007;
+    }
+    var sliderHeight = ww * 0.523;
+//    var bannerFliudHeight = ww * 0.3125;
     $(".gridfull").css('min-height',$(window).width()*0.48);
-    $("#bucket1_slider.flexslider li").css({"height": sliderHeight});
+    $("#bucket1_slider.flexslider .slides li").css({"height": sliderHeight});
 
     //$(flexslider)
     $('.flexslider').flexslider({
@@ -52,6 +58,15 @@ jQuery(document).ready(function($){
     $(window).resize(function($) {
         jQuery(".gridfull").css('min-height',jQuery(window).width()*0.48);
         fixmainimage();
+
+        var ww = jQuery(window).width();
+        if(ww < 1007){
+            ww = 1007;
+        }
+        var sliderHeight = ww * 0.523;
+        var bannerFliudHeight = ww * 0.3125;
+        jQuery(".gridfull").css('min-height',jQuery(window).width()*0.48);
+        jQuery("#bucket1_slider.flexslider .slides li").css({"height": sliderHeight});
         //alert("resized");
         // positionfloatingimages();
         
