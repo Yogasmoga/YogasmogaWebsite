@@ -932,6 +932,17 @@ table.redeem-giftcard {
     display: none;
 }
 
+#createcardform .errortext > div {
+    font: 12px GraphikRegular;
+    margin: 0;
+    text-align: left;
+    display: none;
+}
+
+#createcardform  .error {
+    margin: 0 !important;
+}
+
 .gfredeem .inputholder:nth-child(1) {
     padding-right: 5px;
 }
@@ -997,7 +1008,7 @@ form#cardbalanceform table.redeem-giftcard {
 }
 
 .goy-form .button.btn-reset {
-    background: #999999;
+    background: #CCC;
     border: medium none;
     color: #fff;
     float: left;
@@ -1010,7 +1021,7 @@ form#cardbalanceform table.redeem-giftcard {
 }
 
 .goy-form .button.btn-addtobag {
-    background: none repeat scroll 0 0 #42ac00;
+    background: none repeat scroll 0 0 #CCC;
     border: medium none;
     color: #fff;
     float: left;
@@ -1020,6 +1031,10 @@ form#cardbalanceform table.redeem-giftcard {
     text-transform: uppercase;
     height: 44px;
     margin-bottom: 14px;
+}
+
+.goy-form .button.btn-addtobag.active {
+    background: none repeat scroll 0 0 #00B900;
 }
 
 .txt-cnt {

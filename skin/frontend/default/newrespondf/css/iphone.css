@@ -7748,6 +7748,10 @@ input#giftcard_use{
     margin: -21px 0 0 14px;
 }
 
+#createcardform .errortext {
+    display: block;
+    margin: 0 0 0 14px;
+}
 .button.add-new-addr {
     background: none;
     border: none;
