@@ -546,10 +546,10 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     font-size: 19px;
     font-weight: normal;
     color: #545454;
-    font-weight: normal;
     font-family: ITCAvantGardeStd-Bk;
     text-transform: uppercase;
     display: inline-block;
+    letter-spacing: 1px;
 }
 
 .redeem-giftcard td.inputholder {
