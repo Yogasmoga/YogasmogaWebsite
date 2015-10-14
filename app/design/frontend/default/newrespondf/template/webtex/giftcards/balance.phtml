@@ -283,7 +283,7 @@
                                 </tr>
                                 <tr>
                                     <td class="errortext" colspan="2">
-                                        <div>State / Province is required</div>
+                                        <div></div>
                                     </td>
                                 </tr>
                             </table>
@@ -328,8 +328,10 @@
         var form = jQuery("#createcardform");
 
 
+
         jQuery("#createcardform input, #createcardform textarea").blur(function () {
             var showError = false;
+            var sameEmail = false;
             if (jQuery(this).hasClass("requiredfield")) {
                 if (jQuery(this).hasClass("is_email")) {
                     if (!validateEmail(jQuery(this).val())) {
@@ -341,53 +343,53 @@
                         showError = true;
                     }
                 }
+                if(jQuery(this).attr("id") =="mail-to-email-conf") {
+                    if (jQuery("#mail-to-email-conf").val() == jQuery("#mail-to-email").val()) {
+                        sameEmail = true;
+                    }
+                    else{
+                        showError =  true;
+                    }
+                }
                 var error = jQuery(this).parent().parent().next().find(".errortext > div");
                 error.html("");
-                if (showError == true) {
+                if (showError) {
 
                     if (error) {
                         error.html(jQuery(this).attr("defaulterrormsg"));
+                        if(!sameEmail){
+                            error.html("Please make sure the Recipient's Email Addresses match.");
+                        }
+
                         error.show();
                         jQuery(this).closest(".inputtable").addClass("error");
+
                         checkforerros();
                     }
                 }
                 else {
                     error.hide();
+                    checkforerros();
                 }
             }
         });
         function checkforerros() {
-            var showError = false;
-            var conf = false;
-            form.find("tr").each(function () {
-                var input = jQuery(this).find("input,textarea");
-                if (input) {
-                    if (input.hasClass("is_email")) {
-                        if (!validateEmail(jQuery(this).val())) {
-                            showError = true;
-                        }
-                    }
-                    if (input.hasClass("is_no")) {
-                        if (isNaN(jQuery(this).val())) {
-                            showError = true;
-                        }
-                    }
-                    var error = jQuery(this).find(".errortext > div");
-                    if (showError == true) {
-
-                        if (error.length>0 && error.html() != "" && error.html() != null) {
-                            jQuery(".goy-form .button.btn-addtobag").addClass("active");
-                        }
-                        else {
-                            jQuery(".goy-form .button.btn-addtobag").removeClass("active");
-                        }
-                    }
-                    else{
-                        error.hide();
-                    }
+            var btnStatus = true;
+            var sameEmail = false;
+            jQuery("#createcardform .errortext > div").each(function(){
+                if(jQuery(this).html() && jQuery(this).html()!="" && jQuery(this).html()!=null){
+                    btnStatus = false;
                 }
             });
+            if(jQuery("#mail-to-email-conf").val()==jQuery("#mail-to-email").val()){
+                sameEmail = true;
+            }
+            if(!sameEmail){
+                jQuery(".goy-form .button.btn-addtobag").removeClass("active");
+            }
+            if(btnStatus && sameEmail){
+                jQuery(".goy-form .button.btn-addtobag").addClass("active");
+            }
         }
         function validateEmail(email) {
             var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
