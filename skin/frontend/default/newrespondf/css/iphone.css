@@ -3041,7 +3041,7 @@ h4.legend {
     letter-spacing: 1px;
     position: absolute;
     right: 0;
-    top: 5px;
+    top: 24px;
 }
 
 .discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
@@ -5540,12 +5540,11 @@ p.apply_promo_label > span {
     font: 12px AvantGarde-Demi !important;
     height: 25px;
     letter-spacing: 1px;
-    margin-left: -44px;
-    margin-top: -41px;
+    margin-top: -21px;
     position: absolute;
+    right: -7px;
     width: 50px;
 }
-
 .apply_promo_code_div {
     display: none;
     float: left;
@@ -7728,6 +7727,7 @@ label[for="billing-address-select"] {
 #discountFormPoints2 fieldset{
     float: left;
     width: 100%;
+    position: relative;
 }
 input#giftcard_use{
     height: 30px !important;
