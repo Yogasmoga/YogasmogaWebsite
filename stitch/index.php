@@ -81,7 +81,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $sku = $rowData[0][1];
     $name = $rowData[0][2];
     $unit_price = $rowData[0][4];
-    $all_stock = $rowData[0][9];
+    $all_stock = $rowData[0][9+$available];
     $fallriver_stock = $rowData[0][12+$available];
     $brentwood_stock = $rowData[0][15+$available];
     $magento_stock = $rowData[0][18+$available];
@@ -442,7 +442,7 @@ ksort($all_products);
     <input type="button" style="padding:5px; margin-right: 20px;" id="showupload" value="Upload File"/>
     </form>
     <br/>
-    <a id="exceldownload" href="download.php?available=$available&store=<?php echo $store;?>" style="margin-right:20px;">Download Excel</a>
+    <a id="exceldownload" href="download.php?available=<?php echo $available;?>&store=<?php echo $store;?>" style="margin-right:20px;">Download Excel</a>
 
     <div style="float:left; padding-left: 20px;">
         <table style="width:600px;">

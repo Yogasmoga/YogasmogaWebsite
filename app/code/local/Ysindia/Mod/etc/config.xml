@@ -11,6 +11,16 @@
 
     <!-- ******************* global section ******************** -->
 
+    <global>
+        <models>
+            <tax>
+                <rewrite>
+                    <sales_total_quote_subtotal>Ysindia_Mod_Model_Newyork</sales_total_quote_subtotal>
+                </rewrite>
+            </tax>
+        </models>
+    </global>
+
     <frontend>
         <routers>
             <mod>
