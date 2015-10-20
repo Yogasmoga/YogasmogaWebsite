@@ -675,7 +675,7 @@ function trimDetailTxt(){
 function dynAddressVal(){
     var defaultvalue = jQuery("form#checkout-shipping-form select#shipping\\:country_id").find("option:selected").text();
     jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
-
+alert(defaultvalue + " , " + (defaultvalue == "United States"));
     if(defaultvalue == "United States"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
