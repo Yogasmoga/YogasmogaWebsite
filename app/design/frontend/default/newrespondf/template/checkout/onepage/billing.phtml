@@ -27,7 +27,7 @@
 <form id="co-billing-form" action="">
 <?php if ($this->customerHasAddresses()): ?>
     <p><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></p>
-    <ul><li><p class="select300inner"><?php echo $this->getAddressesHtmlSelect('billing') ?></p></li></ul>
+    <ul><li><p class="select300inner"><?php echo $this->getAddressesMobileSelect('billing') ?></p></li></ul>
 
 <?php endif ?>
     <fieldset class="group-select" id="billing-new-address-form" <?php if ($this->customerHasAddresses()): ?>style="display:none"<?php endif ?>>

@@ -27,7 +27,7 @@
 <form id="co-shipping-form" action="">
 <?php if ($this->customerHasAddresses()): ?>
    <p><?php echo $this->__('Select a shipping address from your address book or enter a new address.') ?></p>
-   <p class="select300inner"><?php echo $this->getAddressesHtmlSelect('shipping') ?></p>
+   <p class="select300inner"><?php echo $this->getAddressesMobileSelect('shipping') ?></p>
 <?php endif ?>
 
 <fieldset class="group-select" id="shipping-new-address-form" <?php if ($this->customerHasAddresses()): ?>style="display:none"<?php endif ?>>
