@@ -91,6 +91,9 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $magento_fallriver = $fallriver_stock + $magento_stock;
     $magento_price = $rowData[0][30];
 
+    if(strpos($name, '&rsquo;')!==FALSE)
+        $name = str_replace('&rsquo;','\'',$name);
+
     $height = '';
     if(strpos($name, '(')===false){
         $actual_name = $name;
