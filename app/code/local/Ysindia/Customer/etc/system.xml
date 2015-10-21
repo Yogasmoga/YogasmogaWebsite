@@ -32,7 +32,7 @@
 				<address_templates translate="label">
                     <fields>
                         <add_mobile>
-                            <label>Text Mobile</label>
+                            <label>One Line Mobile</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
