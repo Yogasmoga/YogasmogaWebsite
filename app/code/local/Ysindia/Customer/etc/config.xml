@@ -39,7 +39,7 @@
             <address>
                 <formats>
 					<add_mobile translate="title" module="customer">
-                        <title>Text Mobile</title>
+                        <title>Oneline Mobile</title>
                     </add_mobile>
                 </formats>
             </address>
