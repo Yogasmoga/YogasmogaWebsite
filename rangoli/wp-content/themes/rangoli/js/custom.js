@@ -1680,7 +1680,7 @@ function adjustTileHeightAndLoad(){
     var TileHeight = TileWidth * 0.75;
     $(document).find(".author_post.read").height(TileHeight);
     $(document).find(".author_post.read img").unbind("each,load");
-    $(ocument).find(".author_post.read img").each(function(){
+    $(document).find(".author_post.read img").each(function(){
         $(this).load(function() {
             $(this).animate({
                 "opacity": 1
