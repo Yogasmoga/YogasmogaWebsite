@@ -120,10 +120,11 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
     protected function _unitBaseCalculation($item, $request)
     {
         // If USD and from NY Region, apply tax rate based on grand total
-       if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "43") {
+        if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "43") {
             $price_minus_discount = $item['price'] - $item['discount_amount'];
             if($price_minus_discount < 110) {
-                $rate = 0;
+                //$rate = "1%";
+                $item->getProduct()->setTaxClassId('8');
             }
         }
 
