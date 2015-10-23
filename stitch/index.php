@@ -469,10 +469,10 @@ ksort($all_products);
         <option value="walnut_creek">Walnut Creek</option>
         <option value="westchester">Westchester</option>
     </select>
-        <select name="available" style="padding: 5px;">
-            <option value="0">Stock</option>
-            <option value="1">Available Stock</option>
-        </select>
+    <select name="available" style="padding: 5px;">
+        <option value="0">Stock</option>
+        <option value="1">Available Stock</option>
+    </select>
     <select id="products" style="display: inline; padding: 5px;">
         <?php
             foreach($product_names as $product){
