@@ -22,7 +22,7 @@
     else
         $upload_display = "display:block";
 
-    $stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich', 'magentofallriver', 'fashion_island');
+    $stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich', 'magentofallriver', 'fashion_island', 'la_jolla');
     $ar_sizes = array('One', 'S', 'M', 'L', 'XL', 'XXL', '2', '4', '6', '8', '10', '12', '14', '16', '18');
 
     $store = 'all';
@@ -87,6 +87,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $magento_stock = $rowData[0][18+$available];
     $greenwich_stock = $rowData[0][21+$available];
     $beverley_hills_stock = $rowData[0][24+$available];
+    $la_jolla_stock = $rowData[0][27+$available];
     $fashion_island_stock = $rowData[0][57+$available];
     $magento_fallriver = $fallriver_stock + $magento_stock;
     $magento_price = $rowData[0][30];
@@ -130,6 +131,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
         'brentwood_stock' => $brentwood_stock,
         'fallriver_stock' => $fallriver_stock,
         'magento_stock' => $magento_stock,
+        'la_jolla_stock' => $la_jolla_stock,
         'fashion_island_stock' => $fashion_island_stock,
         'magentofallriver_stock' => $magento_fallriver,
         'greenwich_stock' => $greenwich_stock,
@@ -423,6 +425,7 @@ ksort($all_products);
         <option value="brentwood">Brentwood</option>
         <option value="fallriver">Fall River</option>
         <option value="fashion_island">Fashion Island</option>
+        <option value="la_jolla">La Jolla</option>
         <option value="greenwich">Greenwich</option>
         <option value="magento">Magento</option>
         <option value="magentofallriver">Magento+Fallriver</option>
