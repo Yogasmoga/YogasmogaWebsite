@@ -19,7 +19,26 @@ $inputFileName = 'stitch.xls';
 $upload_display = "display:none";
 $filter_display = "display:none";
 
-$stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich', 'magentofallriver', 'fashion_island');
+$stores = array(
+    'all',
+    'beverley_hills',
+    'brentwood',
+    'fallriver',
+    'magento',
+    'greenwich',
+    'magentofallriver',
+    'fashion_island',
+    'la_jolla',
+    'short_hills',
+    'westchester',
+    'boston',
+    'corte_madera',
+    'san_francisco',
+    'malibu',
+    'walnut_creek',
+    'bond_street',
+    'hawaii'
+);
 $ar_sizes = array('One', 'S', 'M', 'L', 'XL', 'XXL', '2', '4', '6', '8', '10', '12', '14', '16', '18');
 
 $store = 'all';
@@ -83,15 +102,30 @@ if (file_exists($inputFileName)) {
         $sku = $rowData[0][1];
         $name = $rowData[0][2];
         $unit_price = $rowData[0][4];
-        $all_stock = $rowData[0][9];
+        $all_stock = $rowData[0][9+$available];
         $fallriver_stock = $rowData[0][12+$available];
         $brentwood_stock = $rowData[0][15+$available];
         $magento_stock = $rowData[0][18+$available];
         $greenwich_stock = $rowData[0][21+$available];
         $beverley_hills_stock = $rowData[0][24+$available];
+        $la_jolla_stock = $rowData[0][27+$available];
+
+        $short_hills_stock = $rowData[0][30+$available];
+        $westchester_stock = $rowData[0][33+$available];
+        $boston_stock = $rowData[0][36+$available];
+        $corte_madera_stock = $rowData[0][39+$available];
+        $san_francisco_stock = $rowData[0][42+$available];
+        $malibu_stock = $rowData[0][45+$available];
+        $walnut_creek_stock = $rowData[0][48+$available];
+        $bond_street_stock = $rowData[0][51+$available];
+        $hawaii_stock = $rowData[0][54+$available];
+
         $fashion_island_stock = $rowData[0][57+$available];
         $magento_fallriver = $fallriver_stock + $magento_stock;
         $magento_price = $rowData[0][30];
+
+        if(strpos($name, '&rsquo;')!==FALSE)
+            $name = str_replace('&rsquo;','\'',$name);
 
         $height = '';
         if(strpos($name, '(')===false){

@@ -22,7 +22,26 @@
     else
         $upload_display = "display:block";
 
-    $stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich', 'magentofallriver', 'fashion_island');
+    $stores = array(
+        'all',
+        'beverley_hills',
+        'brentwood',
+        'fallriver',
+        'magento',
+        'greenwich',
+        'magentofallriver',
+        'fashion_island',
+        'la_jolla',
+        'short_hills',
+        'westchester',
+        'boston',
+        'corte_madera',
+        'san_francisco',
+        'malibu',
+        'walnut_creek',
+        'bond_street',
+        'hawaii'
+    );
     $ar_sizes = array('One', 'S', 'M', 'L', 'XL', 'XXL', '2', '4', '6', '8', '10', '12', '14', '16', '18');
 
     $store = 'all';
@@ -87,12 +106,21 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $magento_stock = $rowData[0][18+$available];
     $greenwich_stock = $rowData[0][21+$available];
     $beverley_hills_stock = $rowData[0][24+$available];
+    $la_jolla_stock = $rowData[0][27+$available];
+
+    $short_hills_stock = $rowData[0][30+$available];
+    $westchester_stock = $rowData[0][33+$available];
+    $boston_stock = $rowData[0][36+$available];
+    $corte_madera_stock = $rowData[0][39+$available];
+    $san_francisco_stock = $rowData[0][42+$available];
+    $malibu_stock = $rowData[0][45+$available];
+    $walnut_creek_stock = $rowData[0][48+$available];
+    $bond_street_stock = $rowData[0][51+$available];
+    $hawaii_stock = $rowData[0][54+$available];
+
     $fashion_island_stock = $rowData[0][57+$available];
     $magento_fallriver = $fallriver_stock + $magento_stock;
     $magento_price = $rowData[0][30];
-
-    if(strpos($name, '&rsquo;')!==FALSE)
-        $name = str_replace('&rsquo;','\'',$name);
 
     $height = '';
     if(strpos($name, '(')===false){
@@ -132,8 +160,9 @@ for ($row = 2; $row <= $highestRow; $row++) {
         'all_stock' => $all_stock,
         'brentwood_stock' => $brentwood_stock,
         'fallriver_stock' => $fallriver_stock,
-        'fashion_island_stock' => $fashion_island_stock,
         'magento_stock' => $magento_stock,
+        'la_jolla_stock' => $la_jolla_stock,
+        'fashion_island_stock' => $fashion_island_stock,
         'magentofallriver_stock' => $magento_fallriver,
         'greenwich_stock' => $greenwich_stock,
         'beverley_hills_stock' => $beverley_hills_stock,
@@ -423,17 +452,27 @@ ksort($all_products);
     <select name="store" style="padding: 5px;">
         <option value="all">All</option>
         <option value="beverley_hills">Beverley Hills</option>
+        <option value="bond_street">Bond Street</option>
+        <option value="boston">Boston</option>
         <option value="brentwood">Brentwood</option>
-        <option value="fallriver">Fall river</option>
+        <option value="corte_madera">Corte Madera</option>
+        <option value="fallriver">Fall River</option>
         <option value="fashion_island">Fashion Island</option>
+        <option value="hawaii">Hawaii</option>
+        <option value="la_jolla">La Jolla</option>
         <option value="greenwich">Greenwich</option>
         <option value="magento">Magento</option>
         <option value="magentofallriver">Magento+Fallriver</option>
+        <option value="malibu">Malibu</option>
+        <option value="san_francisco">San Francisco</option>
+        <option value="short_hills">Short Hills</option>
+        <option value="walnut_creek">Walnut Creek</option>
+        <option value="westchester">Westchester</option>
     </select>
-        <select name="available" style="padding: 5px;">
-            <option value="0">Stock</option>
-            <option value="1">Available Stock</option>
-        </select>
+    <select name="available" style="padding: 5px;">
+        <option value="0">Stock</option>
+        <option value="1">Available Stock</option>
+    </select>
     <select id="products" style="display: inline; padding: 5px;">
         <?php
             foreach($product_names as $product){
