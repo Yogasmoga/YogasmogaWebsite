@@ -3,17 +3,16 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 {
     protected function _rowBaseCalculation($item, $request)
     {
-        Mage::log("Row base", null, "newyork110.log", true);
-        $request->setProductClassId($item->getProduct()->getTaxClassId());
-        $rate   = $this->_calculator->getRate($request);
-
+        // If USD and from NY Region, apply tax rate based on grand total
         if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "43") {
             $price_minus_discount = $item['price'] - $item['discount_amount'];
             if($price_minus_discount < 110) {
-                $rate = 0;
-                Mage::log("Row rate is 0", null, "newyork110.log", true);
+               $item->getProduct()->setTaxClassId('30');
             }
         }
+
+        $request->setProductClassId($item->getProduct()->getTaxClassId());
+        $rate   = $this->_calculator->getRate($request);
 
         $qty    = $item->getTotalQty();
 
@@ -121,18 +120,18 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 
     protected function _unitBaseCalculation($item, $request)
     {
-        Mage::log("Unit base", null, "newyork110.log", true);
-        $request->setProductClassId($item->getProduct()->getTaxClassId());
+	
+		 $request->setProductClassId($item->getProduct()->getTaxClassId());
         $rate   = $this->_calculator->getRate($request);
 
         if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "43") {
             $price_minus_discount = $item['price'] - $item['discount_amount'];
             if($price_minus_discount < 110) {
                 $rate = 0;
-                Mage::log("Unit rate is 0", null, "newyork110.log", true);
             }
         }
-
+	
+        
         $qty    = $item->getTotalQty();
 
         $price          = $taxPrice         = $item->getCalculationPriceOriginal();
