@@ -5,46 +5,37 @@ get_header();
 
 
         <!--- Flex slider--------- -->
-        <div class="flexslider homepage_slider">
-            <div class="rangoli_logo">
-                <img src="<?php bloginfo('template_directory') ?>/images/logo.png"/>
-            </div>
-            <?php if (!is_user_logged_in()) {
-    ?>
-<!--<div class="home_signup">-->
-<!--    <div id="signup_signin_btn">-->
-<!--        Sign in / Sign up-->
-<!--    </div>-->
-<!--</div>-->
-<?php
-}
-?>
-            <ul class="slides">
+   <div class="flexslider homepage_slider">
+    <div class="rangoli_logo">
+        <img src="<?php bloginfo('template_directory') ?>/images/logo.png"/>
+    </div>
+    <ul class="slides">
                 <?php
                 $args = array(
-                    "post_type" => "slider",
+                    "post_type" => "post",
+                    "posts_per_page"=>10
                 );
+                $i = 0;
                 $the_query = new WP_Query($args);
                 if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
                 $post = get_post();
-                $banner_img_url="";
-                //    $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+                    if(has_category("read", $post) || has_category("learn", $post) || has_category("look", $post)) {
+                        $i++;
 
-                $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
-                $author_color = '#' . $authors[0]->color_shade;
-                $author = get_userdata($post->post_author);
-                $name = $author->display_name;
-                if($name){
-                    $name = "<span>by</span> ".$name;
-                }
+                        $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
+                        $author_color = '#' . $authors[0]->color_shade;
+                        $author = get_userdata($post->post_author);
+                        $name = $author->display_name;
+                        if($name){
+                            $name = "<span>by</span> ".$name;
+                        }
 
-                ?>
-                <li style="background: <?php echo $author_color; ?>">
-                    <?php
-                    echo get_the_post_thumbnail();
-                    ?>
-
-                    <div class='over-the-slide homepage_page_banner' onclick='ajax_load_pages("<?php $url = get_post_meta($post->ID,"wpcf-posturl");  if($url){echo $url[0];}  ?>")' >
+                        ?>
+                        <li style="background: <?php echo $author_color; ?>">
+                        <?php
+                        echo get_the_post_thumbnail();
+                        ?>
+                        <div class='over-the-slide homepage_page_banner' onclick='ajax_load_pages("<?php $url = get_the_permalink($post->ID);  if($url){echo $url;}  ?>")' >
                         <?php
                         if (has_post_video()) {
                             ?>
@@ -58,34 +49,30 @@ get_header();
                                           d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
                     </svg>
                             </div>
-                        <?php
+                            <?php
                         }
                         echo "<div class='post_excerpt_slider'><p class='slider_post_title'>$post->post_title</p> $post->post_excerpt
-    <p class='slider_post_author'>$name</p>
+                        <p class='slider_post_author'>$name</p>
 
-    </div>";
+                        </div>";
 
                         echo "</div>";
 
 
-                        /*
-                            if (has_post_video()) {
-                                echo "<div class='play_video'>";
-                                the_post_video();
-                                echo "</div> ";
-                            }
-                        */
-
-                        echo "</li>";
-
-                        endwhile;
-                        endif;
                         ?>
+                        </li>
+                        <?php
+                    }
+                if($i == 5){
+                    break;
+                }
+                endwhile;
+                endif;
+                ?>
+        </ul>
+    </div>
 
-            </ul>
 
-
-        </div>
 
         <section class="first">
             <div class="pad3 grey align-center">
