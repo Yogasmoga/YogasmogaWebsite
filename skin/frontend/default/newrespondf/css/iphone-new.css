@@ -66,7 +66,6 @@
 }
 
 .story-box span {
-    bottom: 4px;
     color: #fff;
     font-family: freighttextbook;
     font-size: 18px;
@@ -174,7 +173,7 @@
     width: 100%;
     z-index: 9;
     top: 88px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .account-nav .sub-nav {
@@ -943,7 +942,7 @@ table.redeem-giftcard {
     display: none;
 }
 
-#createcardform  .error {
+#createcardform .error {
     margin: 0 !important;
 }
 
@@ -981,9 +980,11 @@ form#cardbalanceform table.redeem-giftcard {
 #createcardform > table .inputtable .inputholder input {
     width: 100%;
 }
+
 #createcardform .inputtable .inputholder {
     padding: 0 14px !important;
 }
+
 #createcardform > table .inputtable .inputholder input {
     box-sizing: border-box;
     padding: 10px;
