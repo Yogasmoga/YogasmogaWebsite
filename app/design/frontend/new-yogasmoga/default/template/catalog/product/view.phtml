@@ -32,10 +32,24 @@
  */
 ?>
 <?php
+$storeId = Mage::app()->getStore()->getStoreId();
+
+$resourceModel = Mage::getResourceModel('catalog/product');
 
 $_helper = $this->helper('catalog/output');
-$_product = $this->getProduct();
-$_product = Mage::getModel('catalog/product')->load($_product->getId());
+$_conf_product = $this->getProduct();
+$_conf_product = Mage::getModel('catalog/product')->load($_conf_product->getId());
+
+
+$bundled_product_ids = $resourceModel->getAttributeRawValue($_conf_product->getId(), 'bundle_products', $storeId);
+
+$bundledProduct = isset($bundled_product_ids) && strlen($bundled_product_ids) > 0 && strpos($bundled_product_ids, ",") != false;
+
+if (!$bundledProduct) {
+    $_product = $this->getProduct();
+    $_product = Mage::getModel('catalog/product')->load($_product->getId());
+    $productName = $_product->getName();
+    $productId = intval($_product->getId());
 
     /*********************** hidden page logic ********************/
     $forNormal = true;
@@ -72,17 +86,10 @@ $_product = Mage::getModel('catalog/product')->load($_product->getId());
             }
         })
     </script>
-    <img style="display:none;" src="<?php echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>"/>
+<img style="display:none;" src="<?php echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>"/>
 
     <?php
-    $productName = $_product->getName();
-    $productId = intval($_product->getId());
-
     $isRewardAble = false;
-
-    $storeId = Mage::app()->getStore()->getStoreId();
-
-    $resourceModel = Mage::getResourceModel('catalog/product');
 
     $howDoesItFitBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'how_does_it_fit', $storeId);
     $sizeChartBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'size_chart', $storeId);
@@ -457,14 +464,13 @@ $_product = Mage::getModel('catalog/product')->load($_product->getId());
     ?>
 
     <?php if ($productId === 172 && false) { ?>
-        <div
-            style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">
-            BUY 1 SLIMMIE PANT AND WE'LL SHIP YOU 2! <span
-                style="font-family: helvetica;font-weight: bold;">&lt;&lt;</span>
-            SECOND SLIMMIE: SAME SIZE, SURPRISE COLOR <span
-                style="font-family: helvetica;font-weight: bold;">&gt;&gt;</span> FINAL SALE.
-        </div>
-    <?php } ?>
+    <div
+        style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">
+        BUY 1 SLIMMIE PANT AND WE'LL SHIP YOU 2! <span style="font-family: helvetica;font-weight: bold;">&lt;&lt;</span>
+        SECOND SLIMMIE: SAME SIZE, SURPRISE COLOR <span
+            style="font-family: helvetica;font-weight: bold;">&gt;&gt;</span> FINAL SALE.
+    </div>
+<?php } ?>
 
     <?php
     if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $productId === 1828 || $productId === 1836 || $productId === 1851) {
@@ -1997,3 +2003,994 @@ $_product = Mage::getModel('catalog/product')->load($_product->getId());
             //        jQuery(".selectedcolor").load(changeFabric);
             //    }
         </script>
+
+        <?php
+        }
+else {
+/*********************** logic for bundle products ******************/
+
+        $arBundledIds = explode(",", $bundled_product_ids);
+
+        $imageHelper = $this->helper('catalog/image');
+        $_conf_gallery = Mage::getModel('catalog/product')->load($_conf_product->getId())->getMediaGalleryImages();
+        foreach ($_conf_gallery as $_image) {
+            $imageLabelData = json_decode(trim($_image->getLabel()), true);
+            $confImageUrl = $this->helper('adaptiveResize/image')->init($_conf_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+            break;
+        }
+
+        $_product = Mage::getModel('catalog/product')->load(intval($arBundledIds[0]));
+        $_bundle_product = Mage::getModel('catalog/product')->load(intval($arBundledIds[1]));
+
+        $productId = $_product->getId();
+        $bundled_product_id = $_bundle_product->getId();
+
+        $productName = $_product->getName();
+        $bundledProductName = $_bundle_product->getName();
+
+?>
+
+<style>
+        .colorName{
+            margin: 10px 0 10px 0;
+            font-size: 20px;;
+        }
+        .row.product {
+            position: relative;
+            padding-right: 321px;
+            max-width: 1600px;
+            margin: 20px auto;
+            padding-left: 40px;
+        }
+
+        .row.product .productDetail {
+            position: absolute;
+            right: 40px;
+            width: 281px;
+            top: 0;
+        }
+
+        #largeImage > img {
+            width: 712px;
+        }
+
+        .row.productBuilder {
+            margin: 0 auto;
+            padding: 0 321px 0 40px;
+            text-align: center;
+        }
+
+        .row.productBuilder .col-6 {
+            display: inline-block;
+            text-align: center;
+            width: 356px;
+            vertical-align: top;
+        }
+
+        .row.productBuilder .col-6:nth-child(odd) {
+            padding: 0 10px 0 1px;
+        }
+
+        .row.productBuilder .col-6:nth-child(even) {
+            padding: 0 1px 0 10px;
+        }
+
+        .row.productBuilder .col-6 img {
+            width: 100%;
+        }
+
+        .row.product .productDetail .detail, .row.product .productDetail .description {
+            background: #f4f4f4;
+            min-height: 300px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .chooseColors{
+            min-height: 100px;
+        }
+
+        .chooseColors .color {
+            display: inline-block;
+            margin-top: 10px;
+            margin: 5px 5px 0 0;
+            cursor: pointer;
+        }
+
+        .chooseSize .size {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #555;
+            line-height: 30px;
+            margin: 5px 5px 0 0;
+            cursor: pointer;
+        }
+
+        .chooseSize .size.selected{
+            background: #666;
+            color: #fff;
+        }
+
+        #largeImage {
+            text-align: center;
+        }
+
+        button.addProduct {
+            background: #00b900 none repeat scroll 0 0;
+            border: medium none;
+            color: #fff;
+            margin: 50px;
+            padding: 7px 20px;
+            text-transform: uppercase;
+        }
+    </style>
+<script type="text/javascript">
+
+    _productid = "<?php echo $productId;?>"
+    var _bundleproductid = "<?php echo $bundled_product_id;?>"
+
+    var productNames = [];
+    var productHexCodes = [];
+    var productColorCodes = [];
+    var productProductNames = [];
+    var productSmallImages = [];
+    var productBigImages = [];
+    var productZoomImages = [];
+
+    var bundleProductNames = [];
+    var bundleHexCodes = [];
+    var bundleColorCodes = [];
+    var bundleProductNames = [];
+    var bundleSmallImages = [];
+    var bundleBigImages = [];
+    var bundleZoomImages = [];
+
+    var productSizes = [];
+    var bundleSizes = [];
+
+    var arSizeValue = [];
+
+    var currentBundleColorCode;
+    var currentProductColorCode;
+
+    var currentBundleSize;
+    var currentProductSize;
+    _productorderqty = 1;
+</script>
+
+<div class="row product">
+    <div id="largeImage">
+        <img src="<?php echo $confImageUrl;?>"/>
+    </div>
+    <div class="productDetail">
+        <div class="detail">
+            <h2>LA JOLLA SET</h2>
+        </div>
+        <div class="description">
+
+        </div>
+    </div>
+</div>
+<div class="row productBuilder">
+    <div class="col-6" id="productcontainer">
+        <h3><?php echo $productName;?></h3>
+        <img src="index_files/largeImage.jpg"/>
+
+        <div class="colorName">
+        </div>
+        <div class="chooseColors">
+        </div>
+        <div class="chooseSize">
+        </div>
+    </div>
+    <div class="col-6" id="bundlecontainer">
+        <h3><?php echo $bundledProductName;?></h3>
+        <img src="index_files/largeImage.jpg"/>
+
+        <div class="colorName">
+        </div>
+
+        <div class="chooseColors">
+        </div>
+
+        <div class="chooseSize">
+        </div>
+    </div>
+    <div>
+        <button class="addProduct" id="addtobag">Add to bag</button>
+        <div id="addtobagloader" style="display: none;">
+            <img src="<?php echo $this->getSkinUrl("images/new-loader.gif");?>"/>
+        </div>
+    </div>
+</div>
+
+<?php
+/********************* logic for normal product ***********************/
+        $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+        $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+
+        $configurableAttributeCollection = $_product->getTypeInstance()->getConfigurableAttributes();
+
+        $arProductAllSizes = array();
+        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+        $allOptions = $attribute->getSource()->getAllOptions(true, true);
+        foreach ($allOptions as $instance) {
+            if ($instance['label'] != "")
+                $arProductAllSizes[$instance['label']] = $instance['value'];
+                //array_push($arProductAllSizes, array("label" => $instance['label'], "value" => $instance['value']));
+        }
+
+        $arProductAllLength = array();
+        if ($lengthAvailable) {
+            $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'length'); //here, "color" is the attribute_code
+            $allOptions = $attribute->getSource()->getAllOptions(true, true);
+            foreach ($allOptions as $instance) {
+                if ($instance['label'] != "")
+                    array_push($arProductAllLength, array("label" => $instance['label'], "value" => $instance['value']));
+            }
+        }
+
+        $lengthAvailable = 0;
+        foreach ($configurableAttributeCollection as $attribute) {
+            if ($attribute->getProductAttribute()->getAttributeCode() == "size") {
+                $isSizeAvailable = true;
+                break;
+            }
+        }
+
+        foreach ($configurableAttributeCollection as $attribute) {
+            if ($attribute->getProductAttribute()->getAttributeCode() == "length") {
+                $lengthAvailable = 1;
+                break;
+            }
+        }
+
+        foreach ($_childProducts as $_childProduct) {
+
+            $colorAttributeValue = $_childProduct->getAttributeText('color');
+
+            $childProductName = $_childProduct->getName();          // ex. U & Me Bra - Carbon 6-2
+            $pos = strrpos($childProductName, '-');                 // find position of last -
+            $nameWithColor = substr($childProductName, 0, $pos);    // remove last -
+            $pos = strrpos($nameWithColor, '-');
+            $colorName = trim(substr($nameWithColor, $pos + 1));       // get color name =>  Carbon
+
+            $sku = $_childProduct->getSku();
+
+            if (strpos($colorAttributeValue, "|") !== FALSE) {
+                $hexCodes = substr($colorAttributeValue, strpos($colorAttributeValue, "|") + 1);
+                $hexCodes = explode(",", $hexCodes);
+                $colorAttributeValue = substr($colorAttributeValue, 0, strpos($colorAttributeValue, "|"));
+
+                if (!isset($arProductColorInfo[$colorAttributeValue]))
+                    $arProductColorInfo[$colorAttributeValue] = array();
+
+                $arProductColorInfo[$colorAttributeValue]['hex'] = $hexCodes;
+                $arProductColorInfo[$colorAttributeValue]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', $storeId);
+
+                $tempFabricStoryBlockId = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'fabric_story', $storeId);
+                if (isset($tempFabricStoryBlockId) && strlen($tempFabricStoryBlockId) > 0) {
+                    $fabric_changed = true;
+
+                    $colorNameLowercase = strtolower($colorName);
+
+                    if (!isset($arFabricArray[$colorNameLowercase]))
+                        $arFabricArray[$colorNameLowercase] = $tempFabricStoryBlockId;
+                }
+            }
+
+            /*********************** check if product is in sale or not **********************/
+            if (!isset($arProductColorInfo[$colorAttributeValue]["insale"])) {
+                $inSaleValue = $_childProduct->getAttributeText('insale');
+                if ($inSaleValue == 'Yes')
+                    $arProductColorInfo[$colorAttributeValue]["insale"] = $inSaleValue;
+            }
+            /*********************** check if product is in sale or not **********************/
+
+            /*********************** child price and reward points **********************/
+            $price = $_childProduct->getSpecialPrice();
+            if ($price == "")
+                $price = $_childProduct->getPrice();
+            $price = round($price, 2);
+            if (floor($price) == $price)
+                $price = floor($price);
+
+            $rewardPoints = Mage::helper('rewardpoints/data')->getProductPointsText($_childProduct, false, false);
+            $rewardPoints = strip_tags($rewardPoints);
+
+            $rewardPoints = trim(substr($rewardPoints, strpos($rewardPoints, "earn") + strlen("earn"), strpos($rewardPoints, "smogi") - 3 - strlen("smogi") - strpos($rewardPoints, "earn") + strlen("earn")));
+            if ($rewardPoints > 0)
+                $isRewardAble = true;
+            /*********************** child price and reward points **********************/
+
+            // for Length attribute if available
+            if ($lengthAvailable) {
+                if (!isset($arProductColorInfo[$colorAttributeValue]["sizes"]))
+                    $arProductColorInfo[$colorAttributeValue]["sizes"] = array($_childProduct->getAttributeText('size'));
+                else {
+                    if (!in_array($_childProduct->getAttributeText('size'), $arProductColorInfo[$colorAttributeValue]["sizes"]))
+                        array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $_childProduct->getAttributeText('size'));
+                }
+
+                $temp1 = $_childProduct->getAttributeText('length') . "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
+                $temp1 .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
+                $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
+                $temp1 .= "|" . $backOrderCheck;
+
+                if (!isset($arProductColorInfo[$colorAttributeValue]["length"])) {
+                    $arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')] = array($temp1);
+                    foreach ($_gallery as $_image) {
+
+                        $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                        if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                            continue;
+                        if ($imageLabelData['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', Mage::app()->getStore()->getStoreId())) //if(str_replace("*", "", $_image->getLabel()) == $temp)
+                        {
+                            $alt = "";
+                            if (isset($imageLabelData['alt']))
+                                $alt = $imageLabelData['alt'];
+
+                            try {
+                                if ($alt == "") {
+                                    $abcclr = $_childProduct->getAttributeText('color');
+                                    if (strpos($abcclr, "|") !== false)
+                                        $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                                    $alt = $productName . " - " . $abcclr;
+                                }
+                            } catch (Exception $e) {
+                                //echo $e->getMessage();
+                                Mage::logException($e);
+                            }
+                            //echo $alt;
+                            //echo $imageurl;
+                            $smallImageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt;
+                            $imageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90) . "|" . $alt;
+                            $zoomImageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(90) . "|" . $alt;
+
+                            $imagePath = substr($zoomImageUrl, 1);
+                            $dirImg = Mage::getBaseDir() . str_replace("/", DS, strstr($imagePath, '/media'));
+                            if (file_exists($dirImg)) {
+                                $imageObj = new Varien_Image($dirImg);
+                                $width = $imageObj->getOriginalWidth();
+                                $height = $imageObj->getOriginalHeight();
+                                //echo $dirImg." - ".$width." x ".$height."<br/>";
+                                $zoomImageUrl .= "|" . $width . "|" . $height;
+                            }
+                            //else {
+                            //                        echo "File doesn't exist.";
+                            //                    }
+
+                            //if(count($productcolorinfo[$temp]["images"]) == 0)
+                            if (!isset($arProductColorInfo[$colorAttributeValue]["images"])) {
+                                $arProductColorInfo[$colorAttributeValue]["images"] = array();
+                                $arProductColorInfo[$colorAttributeValue]["images"]["small"] = array($smallImageUrl);
+                                $arProductColorInfo[$colorAttributeValue]["images"]["zoom"] = array($zoomImageUrl);
+                                $arProductColorInfo[$colorAttributeValue]["images"]["big"] = array($imageUrl);
+                                //echo "creating"."<br/>";
+                            } else
+                                if (count($arProductColorInfo[$colorAttributeValue]["images"]["small"]) < 4) {
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["big"], $imageUrl);
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["small"], $smallImageUrl);
+                                    //echo "pushing"."<br/>";
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["zoom"], $zoomImageUrl);
+                                }
+                        }
+                    }
+                } else {
+                    if (isset($arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')]))
+                        array_push($arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')], $temp1);
+                    else
+                        $arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')] = array($temp1);
+                }
+
+            } else {
+                if ($isSizeAvailable)
+                    $temp1 = $_childProduct->getAttributeText('size') . "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
+                else
+                    $temp1 = "2|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
+                $temp1 .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
+
+                $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
+                $temp1 .= "|" . $backOrderCheck;
+                if (isset($arProductColorInfo[$colorAttributeValue]["sizes"])) {
+                    array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $temp1);
+                } else {
+                    $arProductColorInfo[$colorAttributeValue]["sizes"] = array($temp1);
+                    if (!isset($arProductColorInfo[$colorAttributeValue]["sizes"]))
+                        echo "not set";
+
+                    foreach ($_gallery as $_image) {
+                        $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                        if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                            continue;
+                        if ($imageLabelData['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', $storeId)) {
+                            $alt = '';
+                            if (isset($imageLabelData['alt']))
+                                $alt = $imageLabelData['alt'];
+
+                            try {
+                                if ($alt == "") {
+                                    $abcclr = $_childProduct->getAttributeText('color');
+                                    if (strpos($abcclr, "|") !== false)
+                                        $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                                    $alt = $productName . " - " . $abcclr;
+                                }
+                            } catch (Exception $e) {
+                                Mage::logException($e);
+                            }
+
+                            $imageHelper = $this->helper('catalog/image');
+
+                            $smallImageUrl = $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt;
+                            #$imageUrl = $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90) . "|" . $alt;
+                            $imageUrl = $this->helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320) . "|" . $alt;
+                            $zoomImageUrl = $imageHelper->init($_product, 'thumbnail', $_image->getFile())->setQuality(90) . "|" . $alt;
+
+                            $imagePath = substr($zoomImageUrl, 1);
+                            $dirImg = Mage::getBaseDir() . str_replace("/", DS, strstr($imagePath, '/media'));
+                            if (file_exists($dirImg)) {
+                                $imageObj = new Varien_Image($dirImg);
+                                $width = $imageObj->getOriginalWidth();
+                                $height = $imageObj->getOriginalHeight();
+
+                                $zoomImageUrl .= "|" . $width . "|" . $height;
+                            }
+
+                            if (!isset($arProductColorInfo[$colorAttributeValue]["images"])) {
+                                $arProductColorInfo[$colorAttributeValue]["images"] = array();
+                                $arProductColorInfo[$colorAttributeValue]["images"]["small"] = array($smallImageUrl);
+                                $arProductColorInfo[$colorAttributeValue]["images"]["zoom"] = array($zoomImageUrl);
+                                $arProductColorInfo[$colorAttributeValue]["images"]["big"] = array($imageUrl);
+                            } else {
+                                if (count($arProductColorInfo[$colorAttributeValue]["images"]["small"]) < 4) {
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["big"], $imageUrl);
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["small"], $smallImageUrl);
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["zoom"], $zoomImageUrl);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        $tempProductColorInfo = array();
+        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+        $allOptions = $attribute->getSource()->getAllOptions(true, true);
+        foreach ($allOptions as $instance) {
+            if (array_key_exists($instance['label'], $arProductColorInfo)) {
+                $tempProductColorInfo[$instance['label']] = $arProductColorInfo[$instance['label']];
+
+            }
+        }
+        $arProductColorInfo = $tempProductColorInfo;
+
+        $i = -1;
+        foreach($arProductColorInfo as $productName => $data) {
+
+            ++$i;
+
+            $arHex = $data['hex'];
+            if(is_array($arHex))
+                $hexCode = implode(' ', $arHex);
+            else
+                $hexCode = $arHex;
+
+            $colorCode = $data['value'];
+
+            $images = $data['images'];
+            $smallImages = $images['small'];
+            $zoomImages = $images['zoom'];
+            $bigImages = $images['big'];
+
+            $sizes = $data['sizes'];
+
+            echo "<script type='text/javascript'>";
+            echo "productNames[$i] = '$productName';";
+            echo "productHexCodes[$i] = '$hexCode';";
+            echo "productColorCodes[$i] = '$colorCode';";
+            echo "productSmallImages[$i] = [];";
+            echo "productBigImages[$i] = [];";
+            echo "productZoomImages[$i] = [];";
+            echo "productSizes[$i] = [];";
+            $j = -1;
+            foreach($smallImages as $image){
+                ++$j;
+                $ar  = explode('|', $image);
+                $imagePath = $ar[0];
+
+                echo "productSmallImages[$i][$j] = '$imagePath';";
+            }
+            $j = -1;
+            foreach($bigImages as $image){
+                ++$j;
+                $ar  = explode('|', $image);
+                $imagePath = $ar[0];
+
+                echo "productBigImages[$i][$j] = '$imagePath';";
+            }
+            $j = -1;
+            foreach($zoomImages as $image){
+                ++$j;
+                $ar  = explode('|', $image);
+                $imagePath = $ar[0];
+
+                echo "productZoomImages[$i][$j] = '$imagePath';";
+            }
+            $j = -1;
+            foreach($sizes as $size){
+                ++$j;
+
+                echo "productSizes[$i][$j] = '$size';";
+            }
+            echo "</script>";
+        }
+?>
+
+
+<?php
+/********************* logic for bundled products ***********************/
+        unset($arProductColorInfo);
+
+        $_bundle_product = Mage::getModel('catalog/product')->load($bundled_product_id);
+        $_bundle_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
+        $_bundleChildProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
+
+        $configurableAttributeCollection = $_bundle_product->getTypeInstance()->getConfigurableAttributes();
+
+        foreach ($configurableAttributeCollection as $attribute) {
+            if ($attribute->getProductAttribute()->getAttributeCode() == "size") {
+                $isSizeAvailable = true;
+                break;
+            }
+        }
+
+        foreach ($configurableAttributeCollection as $attribute) {
+            if ($attribute->getProductAttribute()->getAttributeCode() == "length") {
+                $lengthAvailable = 1;
+                break;
+            }
+        }
+
+        foreach ($_bundleChildProducts as $_childProduct) {
+
+            $colorAttributeValue = $_childProduct->getAttributeText('color');
+
+            $childProductName = $_childProduct->getName();          // ex. U & Me Bra - Carbon 6-2
+            $pos = strrpos($childProductName, '-');                 // find position of last -
+            $nameWithColor = substr($childProductName, 0, $pos);    // remove last -
+            $pos = strrpos($nameWithColor, '-');
+            $colorName = trim(substr($nameWithColor, $pos + 1));       // get color name =>  Carbon
+
+            $sku = $_childProduct->getSku();
+
+            if (strpos($colorAttributeValue, "|") !== FALSE) {
+                $hexCodes = substr($colorAttributeValue, strpos($colorAttributeValue, "|") + 1);
+                $hexCodes = explode(",", $hexCodes);
+                $colorAttributeValue = substr($colorAttributeValue, 0, strpos($colorAttributeValue, "|"));
+
+                if (!isset($arProductColorInfo[$colorAttributeValue]))
+                    $arProductColorInfo[$colorAttributeValue] = array();
+
+                $arProductColorInfo[$colorAttributeValue]['hex'] = $hexCodes;
+                $arProductColorInfo[$colorAttributeValue]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', $storeId);
+
+                $tempFabricStoryBlockId = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'fabric_story', $storeId);
+                if (isset($tempFabricStoryBlockId) && strlen($tempFabricStoryBlockId) > 0) {
+                    $fabric_changed = true;
+
+                    $colorNameLowercase = strtolower($colorName);
+
+                    if (!isset($arFabricArray[$colorNameLowercase]))
+                        $arFabricArray[$colorNameLowercase] = $tempFabricStoryBlockId;
+                }
+            }
+
+            /*********************** check if product is in sale or not **********************/
+            if (!isset($arProductColorInfo[$colorAttributeValue]["insale"])) {
+                $inSaleValue = $_childProduct->getAttributeText('insale');
+                if ($inSaleValue == 'Yes')
+                    $arProductColorInfo[$colorAttributeValue]["insale"] = $inSaleValue;
+            }
+            /*********************** check if product is in sale or not **********************/
+
+            /*********************** child price and reward points **********************/
+            $price = $_childProduct->getSpecialPrice();
+            if ($price == "")
+                $price = $_childProduct->getPrice();
+            $price = round($price, 2);
+            if (floor($price) == $price)
+                $price = floor($price);
+
+            $rewardPoints = Mage::helper('rewardpoints/data')->getProductPointsText($_childProduct, false, false);
+            $rewardPoints = strip_tags($rewardPoints);
+
+            $rewardPoints = trim(substr($rewardPoints, strpos($rewardPoints, "earn") + strlen("earn"), strpos($rewardPoints, "smogi") - 3 - strlen("smogi") - strpos($rewardPoints, "earn") + strlen("earn")));
+            if ($rewardPoints > 0)
+                $isRewardAble = true;
+            /*********************** child price and reward points **********************/
+
+            // for Length attribute if available
+            if ($lengthAvailable) {
+                if (!isset($arProductColorInfo[$colorAttributeValue]["sizes"]))
+                    $arProductColorInfo[$colorAttributeValue]["sizes"] = array($_childProduct->getAttributeText('size'));
+                else {
+                    if (!in_array($_childProduct->getAttributeText('size'), $arProductColorInfo[$colorAttributeValue]["sizes"]))
+                        array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $_childProduct->getAttributeText('size'));
+                }
+
+                $temp1 = $_childProduct->getAttributeText('length') . "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
+                $temp1 .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
+                $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
+                $temp1 .= "|" . $backOrderCheck;
+
+                if (!isset($arProductColorInfo[$colorAttributeValue]["length"])) {
+                    $arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')] = array($temp1);
+                    foreach ($_bundle_gallery as $_image) {
+
+                        $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                        if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                            continue;
+                        if ($imageLabelData['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', Mage::app()->getStore()->getStoreId())) //if(str_replace("*", "", $_image->getLabel()) == $temp)
+                        {
+                            $alt = "";
+                            if (isset($imageLabelData['alt']))
+                                $alt = $imageLabelData['alt'];
+
+                            try {
+                                if ($alt == "") {
+                                    $abcclr = $_childProduct->getAttributeText('color');
+                                    if (strpos($abcclr, "|") !== false)
+                                        $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                                    $alt = $productName . " - " . $abcclr;
+                                }
+                            } catch (Exception $e) {
+                                Mage::logException($e);
+                            }
+
+                            $smallImageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt;
+                            //$imageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90) . "|" . $alt;
+                            $imageUrl = $this->helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320) . "|" . $alt;
+                            $zoomImageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(90) . "|" . $alt;
+
+                            $imagePath = substr($zoomImageUrl, 1);
+                            $dirImg = Mage::getBaseDir() . str_replace("/", DS, strstr($imagePath, '/media'));
+                            if (file_exists($dirImg)) {
+                                $imageObj = new Varien_Image($dirImg);
+                                $width = $imageObj->getOriginalWidth();
+                                $height = $imageObj->getOriginalHeight();
+                                //echo $dirImg." - ".$width." x ".$height."<br/>";
+                                $zoomImageUrl .= "|" . $width . "|" . $height;
+                            }
+
+                            if (!isset($arProductColorInfo[$colorAttributeValue]["images"])) {
+                                $arProductColorInfo[$colorAttributeValue]["images"] = array();
+                                $arProductColorInfo[$colorAttributeValue]["images"]["small"] = array($smallImageUrl);
+                                $arProductColorInfo[$colorAttributeValue]["images"]["zoom"] = array($zoomImageUrl);
+                                $arProductColorInfo[$colorAttributeValue]["images"]["big"] = array($imageUrl);
+                            } else
+                                if (count($arProductColorInfo[$colorAttributeValue]["images"]["small"]) < 4) {
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["big"], $imageUrl);
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["small"], $smallImageUrl);
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["zoom"], $zoomImageUrl);
+                                }
+                        }
+                    }
+                } else {
+                    if (isset($arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')]))
+                        array_push($arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')], $temp1);
+                    else
+                        $arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')] = array($temp1);
+                }
+
+            } else {
+                if ($isSizeAvailable)
+                    $temp1 = $_childProduct->getAttributeText('size') . "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
+                else
+                    $temp1 = "2|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
+                $temp1 .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
+
+                $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
+                $temp1 .= "|" . $backOrderCheck;
+                if (isset($arProductColorInfo[$colorAttributeValue]["sizes"])) {
+                    array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $temp1);
+                } else {
+                    $arProductColorInfo[$colorAttributeValue]["sizes"] = array($temp1);
+                    if (!isset($arProductColorInfo[$colorAttributeValue]["sizes"]))
+                        echo "not set";
+
+                    foreach ($_bundle_gallery as $_image) {
+                        $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                        if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                            continue;
+                        if ($imageLabelData['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', $storeId)) {
+                            $alt = '';
+                            if (isset($imageLabelData['alt']))
+                                $alt = $imageLabelData['alt'];
+
+                            try {
+                                if ($alt == "") {
+                                    $abcclr = $_childProduct->getAttributeText('color');
+                                    if (strpos($abcclr, "|") !== false)
+                                        $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                                    $alt = $bundleProductName . " - " . $abcclr;
+                                }
+                            } catch (Exception $e) {
+                                Mage::logException($e);
+                            }
+
+                            $imageHelper = $this->helper('catalog/image');
+
+                            $smallImageUrl = $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt;
+                            //$imageUrl = $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90) . "|" . $alt;
+                            $imageUrl = $this->helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320) . "|" . $alt;
+                            $zoomImageUrl = $imageHelper->init($_product, 'thumbnail', $_image->getFile())->setQuality(90) . "|" . $alt;
+
+                            $imagePath = substr($zoomImageUrl, 1);
+                            $dirImg = Mage::getBaseDir() . str_replace("/", DS, strstr($imagePath, '/media'));
+                            if (file_exists($dirImg)) {
+                                $imageObj = new Varien_Image($dirImg);
+                                $width = $imageObj->getOriginalWidth();
+                                $height = $imageObj->getOriginalHeight();
+
+                                $zoomImageUrl .= "|" . $width . "|" . $height;
+                            }
+
+                            if (!isset($arProductColorInfo[$colorAttributeValue]["images"])) {
+                                $arProductColorInfo[$colorAttributeValue]["images"] = array();
+                                $arProductColorInfo[$colorAttributeValue]["images"]["small"] = array($smallImageUrl);
+                                $arProductColorInfo[$colorAttributeValue]["images"]["zoom"] = array($zoomImageUrl);
+                                $arProductColorInfo[$colorAttributeValue]["images"]["big"] = array($imageUrl);
+                            } else {
+                                if (count($arProductColorInfo[$colorAttributeValue]["images"]["small"]) < 4) {
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["big"], $imageUrl);
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["small"], $smallImageUrl);
+                                    array_push($arProductColorInfo[$colorAttributeValue]["images"]["zoom"], $zoomImageUrl);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        $tempProductColorInfo = array();
+        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+        $allOptions = $attribute->getSource()->getAllOptions(true, true);
+        foreach ($allOptions as $instance) {
+            if (array_key_exists($instance['label'], $arProductColorInfo)) {
+                $tempProductColorInfo[$instance['label']] = $arProductColorInfo[$instance['label']];
+
+            }
+        }
+        $arProductColorInfo = $tempProductColorInfo;
+
+        $i = -1;
+        foreach($arProductColorInfo as $bundleProductName => $data) {
+
+            ++$i;
+
+            $arHex = $data['hex'];
+            if(is_array($arHex))
+                $hexCode = implode(' ', $arHex);
+            else
+                $hexCode = $arHex;
+
+            $colorCode = $data['value'];
+            $sizes = $data['sizes'];
+
+            $images = $data['images'];
+            $smallImages = $images['small'];
+            $zoomImages = $images['zoom'];
+            $bigImages = $images['big'];
+
+            echo "<script type='text/javascript'>";
+            echo "bundleProductNames[$i] = '$bundleProductName';";
+            echo "bundleHexCodes[$i] = '$hexCode';";
+            echo "bundleColorCodes[$i] = '$colorCode';";
+            echo "bundleSmallImages[$i] = [];";
+            echo "bundleBigImages[$i] = [];";
+            echo "bundleZoomImages[$i] = [];";
+            echo "bundleSizes[$i] = [];";
+            $j = -1;
+            foreach($smallImages as $image){
+                ++$j;
+                $ar  = explode('|', $image);
+                $imagePath = $ar[0];
+
+                echo "bundleSmallImages[$i][$j] = '$imagePath';";
+            }
+            $j = -1;
+            foreach($bigImages as $image){
+                ++$j;
+                $ar  = explode('|', $image);
+                $imagePath = $ar[0];
+
+                echo "bundleBigImages[$i][$j] = '$imagePath';";
+            }
+            $j = -1;
+            foreach($zoomImages as $image){
+                ++$j;
+                $ar  = explode('|', $image);
+                $imagePath = $ar[0];
+
+                echo "bundleZoomImages[$i][$j] = '$imagePath';";
+            }
+            $j = -1;
+            foreach($sizes as $size){
+                ++$j;
+
+                echo "bundleSizes[$i][$j] = '$size';";
+            }
+            echo "</script>";
+        }
+
+        echo "<script type='text/javascript'>";
+        foreach($arProductAllSizes as $key => $value)
+            echo "arSizeValue['$key'] = '$value';";
+        echo "</script>";
+?>
+
+<script type="text/javascript">
+    var currentProductColorIndex = 0;
+    var currentBundleColorIndex = 0;
+
+    jQuery(document).ready(function(){
+
+        var str = "";
+
+/*************** setting product data **************************/
+
+        for(var i=0; i< productNames.length;i++){
+            var color = productHexCodes[i];
+            var arColors = color.split(' ');
+            if(arColors.length>1)
+                str = "<div class='color product-color' rel='" + i + "' style='border-left: 15px solid " + arColors[0] + "; border-bottom:  15px solid " + arColors[0] + "; border-top: 15px solid " + arColors[1] + "; border-right: 15px solid " + arColors[1] + ";'></div>";
+            else
+                str = "<div class='color product-color' rel='" + i + "' style='border-left: 15px solid " + arColors[0] + "; border-bottom:  15px solid " + arColors[0] + "; border-top: 15px solid " + arColors[0] + "; border-right: 15px solid " + arColors[0] + ";'></div>";
+            jQuery("#productcontainer .chooseColors").append(str);
+        }
+
+        jQuery(".product-color").click(function(){
+            currentProductColorIndex = jQuery(this).attr('rel');
+            currentProductColorCode = productColorCodes[currentProductColorIndex];
+            showColorData('product');
+        });
+/*************** setting bundle data **************************/
+        str = "";
+        for(var i=0; i< bundleProductNames.length;i++){
+            var color = bundleHexCodes[i];
+            var arColors = color.split(' ');
+            if(arColors.length>1)
+                str = "<div class='color bundle-color' rel='" + i + "' style='border-left: 15px solid " + arColors[0] + "; border-bottom:  15px solid " + arColors[0] + "; border-top: 15px solid " + arColors[1] + "; border-right: 15px solid " + arColors[1] + ";'></div>";
+            else
+                str = "<div class='color bundle-color' rel='" + i + "' style='border-left: 15px solid " + arColors[0] + "; border-bottom:  15px solid " + arColors[0] + "; border-top: 15px solid " + arColors[0] + "; border-right: 15px solid " + arColors[0] + ";'></div>";
+            jQuery("#bundlecontainer .chooseColors").append(str);
+        }
+
+        jQuery(".bundle-color").click(function(){
+            currentBundleColorIndex = jQuery(this).attr('rel');
+            currentBundleColorCode = bundleColorCodes[currentBundleColorIndex];
+            showColorData('bundled');
+        });
+
+        showColorData('product');
+        showColorData('bundled');
+
+        jQuery("#addtobag").click(function(){
+            _colorattributeid = 92;
+            _sizeattributeid = 138;
+
+            var productUrl = homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + currentProductColorCode;
+            var bundledProductUrl = homeUrl + 'mycheckout/mycart/add?product=' + _bundleproductid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + currentBundleColorCode;
+
+            if (_sizesuperattribute)
+                productUrl = productUrl + '&super_attribute[' + _sizeattributeid + ']=' + currentProductSize;
+
+            if (_islengthavailable)
+                productUrl = productUrl + '&super_attribute[' + _lengthattributeid + ']=' + length;
+
+            if (_sizesuperattribute)
+                bundledProductUrl = bundledProductUrl + '&super_attribute[' + _sizeattributeid + ']=' + currentBundleSize;
+
+            if (_islengthavailable)
+                bundledProductUrl = bundledProductUrl + '&super_attribute[' + _lengthattributeid + ']=' + length;
+
+            productUrl += '&showhtml=0';
+            bundledProductUrl += '&showhtml=0';
+
+            jQuery("#addtobagloader").show();
+
+            jQuery.ajax({
+                type: 'POST',
+                url: productUrl,
+                data: {},
+                success: function (result) {
+                console.log(result);
+
+                    jQuery.ajax({
+                        type: 'POST',
+                        url: bundledProductUrl,
+                        data: {},
+                        success: function (result) {
+                            jQuery("#addtobagloader").show();
+                            jQuery("div#myminicart").html(result.html);
+                            showShoppingBagHtmlOpen();
+                        }
+                    });
+                }
+             });
+        });
+    });
+
+/*************** show data when a color is clicked **************************/
+    function showColorData(productType){
+
+        if(productType=='bundled'){
+
+            var name = bundleProductNames[currentBundleColorIndex];
+            jQuery("#bundlecontainer .colorName").html(name);
+
+            jQuery(".bundle-images").html('');
+            for(var i=0; i< bundleSmallImages.length;i++){
+                if(i==currentBundleColorIndex){
+                    jQuery("#bundlecontainer").find("img").attr("src", bundleBigImages[i][0]);
+                }
+            }
+
+            jQuery("#bundlecontainer .chooseSize").html('');
+            for(var i=0; i< productSizes.length;i++){
+                if(i==currentBundleColorIndex){
+                    for(var j=0; j< bundleSizes[i].length;j++){
+
+                        var ar = bundleSizes[i][j].split('|');
+                        var sizevalue = arSizeValue[ar[0]];
+
+                        var sizeStr = "<div class='size sizediv' value='" + sizevalue + "' size='" + ar[0] + "' qty='" + ar[1] + "' price='" + ar[2] + "' rewardpoints='" + ar[3] + "'>" + ar[0] + "</div>";
+                        jQuery("#bundlecontainer .chooseSize").append(sizeStr);       // [0] is size value
+                    }
+                }
+            }
+
+            jQuery("#bundlecontainer .sizediv").click(function(){
+                jQuery("#bundlecontainer .sizediv").removeClass('selected');
+                jQuery(this).addClass('selected');
+                currentBundleSize = jQuery(this).attr('value');
+            });
+        }
+        else{
+            var name = productNames[currentProductColorIndex];
+            jQuery("#productcontainer .colorName").html(name);
+
+            jQuery(".product-images").html('');
+            for(var i=0; i< productSmallImages.length;i++){
+                if(i==currentProductColorIndex){
+                    jQuery("#productcontainer").find("img").attr("src", productBigImages[i][0]);
+                }
+            }
+
+            jQuery("#productcontainer .chooseSize").html('');
+            for(var i=0; i< productSizes.length;i++){
+                if(i==currentProductColorIndex){
+                    for(var j=0; j< productSizes[i].length;j++){
+
+                        var ar = productSizes[i][j].split('|');
+                        var sizevalue = arSizeValue[ar[0]];
+
+                        var sizeStr = "<span class='size sizediv' value='" + sizevalue + "' size='" + ar[0] + "' qty='" + ar[1] + "' price='" + ar[2] + "' rewardpoints='" + ar[3] + "'>" + ar[0] + "</div>";
+                        jQuery("#productcontainer .chooseSize").append(sizeStr);
+                    }
+                }
+            }
+
+            jQuery("#productcontainer .sizediv").click(function(){
+                jQuery("#productcontainer .sizediv").removeClass('selected');
+                jQuery(this).addClass('selected');
+                currentProductSize = jQuery(this).attr('value');
+            });
+        }
+    }
+</script>
+
+<?php } ?>
