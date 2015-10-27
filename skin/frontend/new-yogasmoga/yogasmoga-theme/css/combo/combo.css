@@ -1,0 +1,36 @@
+.top-fixed-header {
+    position: fixed;
+    top: 69px;
+    background: #fff;
+	border-top: solid 1px #ccc;
+	border-bottom: solid 1px #ccc;
+    height: 40px;
+    z-index: 5;
+    width: 100%;
+	margin: auto;
+	padding-top: 20px;
+}
+.top-fixed-header #weather{
+	width: 1200px;
+	margin: auto;
+}
+
+#fullpage {
+    width: 1200px;
+    margin: 69px auto 0;
+}
+
+.combos {
+    margin-bottom: 30px;
+	/*background:#999;*/
+}
+
+.combos .fp-tableCell {
+	position: relative;
+	height: 100% !important;
+}
+
+.combos .fp-tableCell  img{
+	height: 100%;
+	width: auto;
+}

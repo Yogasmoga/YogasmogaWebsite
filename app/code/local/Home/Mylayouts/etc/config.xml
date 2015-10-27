@@ -122,6 +122,14 @@
           </nominate>
           <!-- Nominate layouts here end -->
 
+        <!-- Combo's layouts here start -->
+        <combo translate="label">
+          <label>Combo</label>
+          <template>page/combo.phtml</template>
+          <layout_handle>combo</layout_handle>
+        </combo>
+        <!-- Combo's layouts here end -->
+
       </layouts>
     </page>
   </global>
