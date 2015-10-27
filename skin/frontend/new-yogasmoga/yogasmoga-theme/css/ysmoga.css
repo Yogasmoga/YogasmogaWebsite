@@ -1228,7 +1228,15 @@ html[xmlns] body.mac-os .gridFullWidth:after {
     font-family: AvantGardeGothicITCW01X;
     /*margin: 5px 0 0;*/
 }
-
+.cntntheading .content-wrapper > span{
+	
+	  display: block;
+    font-family: AvantGardeGothicITCW01X;
+}
+.contnttxt > span {
+  display: block;
+  margin-bottom: 20px;
+}
 .contnttxt{
     /*margin: auto 3.90625%;*/
     margin: auto 4.90625%;

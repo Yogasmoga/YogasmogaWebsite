@@ -2104,7 +2104,10 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 17px !important; line-height: 35px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 24px !important; line-height: 29px !important;}
     .presstxt p{font-size: 17px !important; line-height: 19px !important;}
+	
+	
 }
+
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc,.contWom h4 span {
@@ -2153,6 +2156,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 19px !important; line-height: 39px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 28px !important; line-height: 33px !important;}
     .presstxt p{font-size: 19px !important; line-height: 23px !important;}
+	
 }
 
 
@@ -2163,7 +2167,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     p.block-head {
         font-size: 17px;
     }
-
+	
     .vivacity-custom1{font-size: 28px; line-height: 32px;}
     .vivacity-custom2{font: 16px/18px itcavantgardeprobk;}
 
@@ -2199,6 +2203,9 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 22px !important; line-height: 45px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 32px !important; line-height: 37px !important;}
     .presstxt p{font-size: 22px !important; line-height: 29px !important;}
+	
+	
+	
 }
 
 @media screen and (min-width: 1600px) {
@@ -2247,7 +2254,9 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 24px !important; line-height: 50px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 36px !important; line-height: 41px !important;}
     .presstxt p{font-size: 24px !important; line-height: 34px !important;}
+	
 }
+
 
 .selectedlength div{display: inline-block; border: 1px solid #A9A9A9; text-align: center; cursor: pointer; padding: 2px 8px; margin: 0 7px 0 0; font-size:11px; font-family:gothambook;}
 .selectedlength div.selected{background: #666; border-color: #666; color: #fff;}
@@ -2710,14 +2719,4 @@ table.smallimagecontiner td.selectedimage{
 .bundlePop img#closelightbox { padding: 0; right: 5px !important; top: 3px !important;  width: auto !important;}
 .cs-addPrd{visibility:hidden; height:0;}
 
-/*===============Edited By Ankur Start===============*/
 
-
-
-
-
-
-
-
-
-/*===============Edited By Ankur End===============*/
