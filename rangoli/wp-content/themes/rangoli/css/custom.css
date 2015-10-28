@@ -2115,3 +2115,6 @@ button.next-confirmation-page {
 .single_post.span4:nth-child(3n) {
     clear: right;
 }
+.single_post.span4:nth-child(3n+1) {
+  clear: left;
+}
