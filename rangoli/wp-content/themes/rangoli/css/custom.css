@@ -2101,3 +2101,7 @@ button.next-confirmation-page {
     width: 40%;
     letter-spacing: 1px;
 }
+
+.single_post.span4:nth-child(3n+1){
+    clear: left;
+}

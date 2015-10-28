@@ -1895,6 +1895,9 @@ button[name="update_cart_action_checkout"] {
     line-height: 30px;
     text-align: left;
     font-family: graphikregular;
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 .apply_promo_login > span {
@@ -3041,7 +3044,7 @@ h4.legend {
     letter-spacing: 1px;
     position: absolute;
     right: 0;
-    top: 24px;
+    top: 5px;
 }
 
 .discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
@@ -5540,7 +5543,7 @@ p.apply_promo_label > span {
     font: 12px AvantGarde-Demi !important;
     height: 25px;
     letter-spacing: 1px;
-    margin-top: -21px;
+    margin-top: -40px;
     position: absolute;
     right: -7px;
     width: 50px;
@@ -7747,7 +7750,7 @@ input#giftcard_use{
 
 .errortext {
     display: block;
-    margin: -21px 0 0 14px;
+    /*margin: -21px 0 0 14px;*/
 }
 
 #createcardform .errortext {

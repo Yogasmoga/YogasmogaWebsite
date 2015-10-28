@@ -784,8 +784,12 @@
                                     </g>
                                 </svg></span>
                         </li>
-                        <li class="menu-item has-dropdown c-text_small r_grey_text <?php echo $inviteFriendClassIfLogged;?>">
-                            <a href="/rangoli/connect/" class="menu-link main-txt">Connect</a>
+                        <li class="menu-item has-dropdown c-text_small r_grey_text ">
+                            <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+                                <a href="javascript:void(0)" onClick="openLogin()" class="menu-link main-txt">Connect</a>
+                            <?php else: ?>
+                                <a href="/rangoli/connect/" class="menu-link main-txt">Connect</a>
+                            <?php endif ?>
                             <span><svg>
 <!--                                    <use xlink:href="#connect" x="0" y="0" width="44px" height="44px"/>-->
                                     <g id="XMLID_24_">
