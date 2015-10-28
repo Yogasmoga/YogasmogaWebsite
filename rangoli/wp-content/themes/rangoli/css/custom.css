@@ -2112,3 +2112,6 @@ button.next-confirmation-page {
 .post_content > ul {
     margin: 1em;
 }
+.single_post.span4:nth-child(3n) {
+    clear: right;
+}
