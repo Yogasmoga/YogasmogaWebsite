@@ -2118,3 +2118,7 @@ button.next-confirmation-page {
 .single_post.span4:nth-child(3n+1) {
   clear: left;
 }
+input[type="button"], input[type="submit"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}

@@ -349,7 +349,7 @@
     top: 50%;
     margin-top:-56px;
     width: 70px;
-    z-index: 555;
+    z-index: 5;
     color:transparent;
     left:0;
 }
@@ -359,7 +359,7 @@
     top: 0;
     margin-top:0px;
     width: 70px;
-    z-index: 555;
+    z-index: 5;
     color:transparent;
     right:0;
 }
