@@ -72,6 +72,7 @@ function searchTweets($hash_tag)
                             src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/tw-w.png"/></a>
                 </div>
             <?php
+                break;
             }
         }
     }
