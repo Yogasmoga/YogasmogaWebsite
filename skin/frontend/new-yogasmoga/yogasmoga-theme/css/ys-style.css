@@ -1959,7 +1959,8 @@ ul.new-arrivals a.quick-view{display: none;}
     /*
     background: #d7ea98;
     */
-    background: #b10707;
+    /*background: #b10707; */
+	background: #333333;
 }
 .wl-color-story-prd .bottom-right-block{background: #7c7f65;}
 .category-women{margin: 0 !important;}
