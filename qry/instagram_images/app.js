@@ -9,7 +9,8 @@ app.controller("instagramController", function ($http) {
     this.data = [];
     this.images = [];
     var scope = this;
-    this.loaded = false;
+    this.nextPage = false;
+    this.noImages = true;
     this.submit = function () {
         this.ImageUser = [];
         this.data = [];
@@ -23,8 +24,10 @@ app.controller("instagramController", function ($http) {
         $http.jsonp(scope.jsonUrl + "&callback=JSON_CALLBACK")
             .success(function (response) {
                 scope.json = response;
-
+                console.debug(scope.json);
                 scope.data = scope.json.data;
+
+                var i=0;
 
                 angular.forEach(scope.data, function (value, key) {
                     var access = false;
@@ -46,11 +49,18 @@ app.controller("instagramController", function ($http) {
                                 "username": "@" + value.user.username
                             };
                             scope.images.push(data);
+                            i++;
                         }
                     }
 
                 });
-                scope.loaded = true;
+                if(i>0) {
+                    scope.nextPage = true;
+                    scope.noImages = true;
+                }else{
+                    scope.nextPage = false;
+                    scope.noImages = false;
+                }
 
             });
 

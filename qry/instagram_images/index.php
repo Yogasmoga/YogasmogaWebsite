@@ -18,8 +18,9 @@
             <label>{{images.username}}</label>
         </div>
     </div>
-    <div class="row a-center" ng-show="instagram.loaded">
-        <button class="load-more" ng-click="instagram.next()">Load Next Images</button>
+    <div class="row a-center">
+        <button class="load-more" ng-click="instagram.next()" ng-show="instagram.nextPage">Load Next Images</button>
+        <p ng-hide="instagram.noImages">Thats all folks...No more images to display.</p>
     </div>
 </div>
 
