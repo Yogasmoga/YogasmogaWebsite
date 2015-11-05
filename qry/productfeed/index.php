@@ -79,9 +79,13 @@ while (!feof($fileIn)) {
 
             if (isset($images) && count($images) > 0) {
                 foreach ($images as $image) {
-                    //$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile());
-                    $image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);
-                    break;
+				
+				    $imgdata = json_decode(trim($_image->getLabel()), true);
+					if (isset($imgdata['type'] && $imgdata['type'] == 'product image') {
+						//$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile());
+						$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
+						break;
+					}
                 }
             }
 
