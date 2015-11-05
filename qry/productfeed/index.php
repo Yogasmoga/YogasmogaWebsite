@@ -2,6 +2,7 @@
 ini_set('max_execution_time', 300); //300 seconds = 5 minutes
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+ini_set('max_execution_time', 3000);
 
 require '../../app/Mage.php';
 Mage::app();
@@ -40,7 +41,7 @@ while (!feof($fileIn)) {
 
 
     if (!isset($product) || !is_object($product) || !$product->getId()) {
-        echo "Bad product = $name ( $sku ) <br/>";
+        ;//echo "Bad product = $name ( $sku ) <br/>";
     } else {
         if ($product->getTypeId() == 'simple') {
 
@@ -78,12 +79,20 @@ while (!feof($fileIn)) {
 
             if (isset($images) && count($images) > 0) {
                 foreach ($images as $image) {
-                    //$image_url = Mage::helper('catalog/image')->init($configurableProduct, 'small_image', $image->getFile())->resize(400,400);
-                    $image_url = Mage::getModel('catalog/product_media_config')->getMediaUrl($configurableProduct->getImage());
+                    //$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile());
+                    $image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);
                     break;
                 }
             }
 
+/* checking
+            if(isset($imageArr[$childProduct['color']])) {
+                foreach ($imageArr[$childProduct['color']] as $img) {
+                    $image_url = (string)Mage::helper('catalog/image')->init($confProduct, 'thumbnail', $img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
+                    break;
+                }
+            }
+*/
             $sku = str_replace('.', '-', $sku);
             $upc = $sku;
 
