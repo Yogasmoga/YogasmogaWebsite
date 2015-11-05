@@ -2172,8 +2172,8 @@ div.new-arrivals-block{
     position: absolute;
     top: auto;
 }
-.top-left-block.purple{
-    background: #5a0a5f;
+.bottom-right-block.purple{
+    background: #272845;
 }
 .bottom-right-block.purple{
     background: #1248a1;
@@ -2182,8 +2182,9 @@ div.new-arrivals-block{
     background: #787e6a;
 }
 .top-left-block.dark-red {
-    background: #333;
+    background: #302b25;
 }
+
 
 /*////////////////////////////////////////*/
 
