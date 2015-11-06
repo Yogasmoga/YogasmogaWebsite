@@ -26,10 +26,6 @@ while (!feof($fileIn)) {
 
     $sku = $ar[0];
     $name = $ar[1];
-	
-	//$pos = strrpos($name, '-');
-	//$name = substr($name, 0, $pos);
-	
     $price = $ar[2];
     $description = trim($ar[3]);
     $available = $ar[4] === "1" ? 'YES' : 'NO';
@@ -39,6 +35,12 @@ while (!feof($fileIn)) {
     $advertise_category = 'yoga apparel';
     $merchandiseType = '';
 
+	$pos = strrpos($name,'-');
+	$name = substr($name,0,$pos);
+
+	$pos = strpos($name,'-');
+	$name = substr($name,0,$pos);
+
     $description = trim(preg_replace('/\s+/', ' ', $description));
 
     $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
@@ -47,19 +49,19 @@ while (!feof($fileIn)) {
     if (!isset($product) || !is_object($product) || !$product->getId()) {
         ;//echo "Bad product = $name ( $sku ) <br/>";
     } else {
-        if ($product->getTypeId() == 'configurable') {
+        if ($product->getTypeId() == 'simple') {
 
             $forHidden = $product->getAttributeText('hidden_product');
             if (isset($forHidden) && strtolower($forHidden) == "yes")
                 continue;
-/*
+
             $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
                 ->getParentIdsByChild($product->getId());
 
             if (!isset($parentIds) || count($parentIds) == 0)
                 continue;
-*/
-            $configurableProduct = $product; //Mage::getModel('catalog/product')->load($parentIds[0]);
+
+            $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
 
             $categoryIds = $product->getCategoryIds();
 
@@ -83,13 +85,9 @@ while (!feof($fileIn)) {
 
             if (isset($images) && count($images) > 0) {
                 foreach ($images as $image) {
-				
-				    $imgdata = json_decode(trim($image->getLabel()), true);
-					if (isset($imgdata['type']) && $imgdata['type'] == 'product image') {
-						//$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile());
-						$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
-						break;
-					}
+                    //$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile());
+                    $image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);
+                    break;
                 }
             }
 
