@@ -26,6 +26,10 @@ while (!feof($fileIn)) {
 
     $sku = $ar[0];
     $name = $ar[1];
+	
+	//$pos = strrpos($name, '-');
+	//$name = substr($name, 0, $pos);
+	
     $price = $ar[2];
     $description = trim($ar[3]);
     $available = $ar[4] === "1" ? 'YES' : 'NO';
@@ -43,19 +47,19 @@ while (!feof($fileIn)) {
     if (!isset($product) || !is_object($product) || !$product->getId()) {
         ;//echo "Bad product = $name ( $sku ) <br/>";
     } else {
-        if ($product->getTypeId() == 'simple') {
+        if ($product->getTypeId() == 'configurable') {
 
             $forHidden = $product->getAttributeText('hidden_product');
             if (isset($forHidden) && strtolower($forHidden) == "yes")
                 continue;
-
+/*
             $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
                 ->getParentIdsByChild($product->getId());
 
             if (!isset($parentIds) || count($parentIds) == 0)
                 continue;
-
-            $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+*/
+            $configurableProduct = $product; //Mage::getModel('catalog/product')->load($parentIds[0]);
 
             $categoryIds = $product->getCategoryIds();
 
