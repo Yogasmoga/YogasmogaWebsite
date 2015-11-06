@@ -22,8 +22,8 @@
 				<class>Ysindia_Customer_Model</class>
 			</Ysindia_Customer>
 		</models>
-<!--
-		<events>
+
+	<!--<events>
             <checkout_cart_save_before>
                 <observers>
                     <ysindia_customer_model_observer>
@@ -33,8 +33,20 @@
                     </ysindia_customer_model_observer>
                 </observers>
             </checkout_cart_save_before>
+		</events>-->
+	
+		<events>
+            <sales_quote_collect_totals_after>
+                <observers>
+                    <ysindia_customer_model_observer>
+                        <type>singleton</type>
+                        <class>Ysindia_Customer_Model_Observer</class>
+						<method>checkTopBottom75DollarOff</method>
+                    </ysindia_customer_model_observer>
+                </observers>
+            </sales_quote_collect_totals_after>
 		</events>
--->
+
 		<customer>
             <address>
                 <formats>
