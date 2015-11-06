@@ -124,8 +124,8 @@ class Ysindia_Customer_Model_Observer
     public function checkTopBottom75DollarOff(Varien_Event_Observer $observer){
 
         $womenBottomCategoryId = 7;
-        $womenBottomRangoliCategoryId = 70;
-        $womenTopRangoliCategoryId = 69;
+        $womenBottomRangoliCategoryId = 68;
+        $womenTopRangoliCategoryId = 67;
         $womenTopCategoryId = 6;
 
         $discountAmount = 75;
