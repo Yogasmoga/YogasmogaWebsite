@@ -33,7 +33,13 @@ get_header();
                         ?>
                         <li style="background: <?php echo $author_color; ?>">
                         <?php
+                        if(has_post_thumbnail($post->ID)){
                         echo get_the_post_thumbnail();
+                        }
+                        else{
+                            $imgUrl = get_bloginfo("template_url")."/images/no-slide.png";
+                            echo "<img src='$imgUrl' />";
+                        }
                         ?>
                         <div class='over-the-slide homepage_page_banner' onclick='ajax_load_pages("<?php $url = get_the_permalink($post->ID);  if($url){echo $url;}  ?>")' >
                         <?php
