@@ -2002,8 +2002,8 @@ if (!$bundledProduct) {
             //    function initFabric() {
             //        jQuery(".selectedcolor").load(changeFabric);
             //    }
-			jQuery(function(){
-			var currentColor = $("#colorcontainer div.selected table").attr('value');
+			jQuery(function($){
+			var currentColor = $("#colorcontainer div.selected").find('table').attr('value');
 			alert(currentColor);
 			wishList();
 		
