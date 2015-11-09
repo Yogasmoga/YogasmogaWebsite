@@ -26,6 +26,8 @@
 ?>
 <?php
     $columns = $this->getColumns();
+	$colorCode = Mage::app()->getRequest()->getParam('colorcode');
+	echo $colorCode; 
 ?>
 <table class="tblwishlist" id="wishlist-table">
     <thead>
@@ -47,11 +49,37 @@
         </tr>
     </thead>
     <tbody>
-        <?php if (count($this->getItems())): ?>
-            <?php foreach ($this->getItems() as $item): ?>
-            <?php
-                $_product = $item->getProduct();
+        <?php if (count($this->getItems())): 
+		
+			
+		?>
+            <?php foreach ($this->getItems() as $item): 
+
+			    $_product = $item->getProduct();
                 $_product = Mage::getModel('catalog/product')->load($_product->getId());
+				$gallery = $_product->getMediaGalleryImages();
+				$buyRequest = $item->getBuyRequest();
+				
+				$colorCode = $buyRequest['colorcode'];
+				$product_image ='';
+				if(isset($colorCode)){
+					$colorCodeText = "?color=" . $colorCode;
+					foreach($gallery as $image){
+					$imageLabelData = json_decode(trim($image->getLabel()), true);
+					if($imageLabelData['type'] ='product image'){
+					if($imageLabelData['color']==$colorCode){
+					$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
+						break;
+					}
+					}
+					}	
+					
+					}		
+						
+				
+				else{
+					$colorCodeText = "";
+				}
             ?>
                 <tr id="item_<?php echo $item->getId();?>">
                     <?php
@@ -60,12 +88,12 @@
                     </td> */
                     ?>
                     <td class="primage">
-                        <img src="<?php echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100); ?>" />
+                        <img src="<?php echo $product_image; ?>" />
                     </td>
                     <td class="prname">
                         <span class="prd-nam"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?> </span>
                         <span class="prd-deldet">
-                            <a href="<?php echo $_product->getProductUrl(); ?>">View Details</a>
+                            <a href="<?php echo $_product->getProductUrl(); ?><?php echo $colorCodeText;?>">View Details</a>
                             <a class="prd-remove" title="Remove Item" href="<?php echo Mage::helper('core/url')->getHomeUrl()."/wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Delete</a>
                         </span>                        
                     </td>
