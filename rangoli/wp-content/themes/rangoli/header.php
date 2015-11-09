@@ -250,8 +250,8 @@ if(!is_user_logged_in()){
                         <li><a href="/women/accessories"> Accessories </a>
                             <ul>
                                 <li><a href="/women/accessories/head-bands">Head Bands</a></li>
-                                <li><a href="/women/accessories/yoga-mats">Yoga Mats</a></li>
-                                <li><a href="/women/accessories/yoga-towels">Yoga Towels</a></li>
+                                <!--<li><a href="/women/accessories/yoga-mats">Yoga Mats</a></li>
+                                <li><a href="/women/accessories/yoga-towels">Yoga Towels</a></li>-->
                                 <li><a href="/women/accessories/yoga-flops">Yoga Flops</a></li>
                                 <li><a href="/women/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>
                             </ul>
@@ -282,8 +282,8 @@ if(!is_user_logged_in()){
                         </li>
                         <li><a href="/men/accessories"> Accessories</a>
                             <ul>
-                                <li><a href="/men/accessories/yoga-mats">Yoga Mats</a></li>
-                                <li><a href="/men/accessories/yoga-towels">Yoga Towels</a></li>
+                                <!--<li><a href="/men/accessories/yoga-mats">Yoga Mats</a></li>
+                                <li><a href="/men/accessories/yoga-towels">Yoga Towels</a></li>-->
                                 <li><a href="/men/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>
                             </ul>
                         </li>
