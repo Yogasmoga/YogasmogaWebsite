@@ -88,7 +88,6 @@ while (!feof($fileIn)) {
 					if (isset($imgdata['type']) && $imgdata['type'] == 'product image') {
 						//$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile());
 						$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
-						echo "<img src='" . $image_url . "'/>";
 						break;
 					}
                 }
