@@ -87,7 +87,7 @@ while (!feof($fileIn)) {
 				    $imgdata = json_decode(trim($image->getLabel()), true);
 					if (isset($imgdata['type']) && $imgdata['type'] == 'product image') {
 						//$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile());
-						echo "<img src=".$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91).">";
+						$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
 						break;
 					}
                 }
@@ -106,12 +106,12 @@ while (!feof($fileIn)) {
 
             $data = "$name|$keywords|$description|$sku|$buy_url|$available|$image_url|$price|$upc|$advertise_category|$merchandiseType\n";
 
-  //          fwrite($fileOut, $data);
+            fwrite($fileOut, $data);
         }
     }
 }
 
-//fclose($fileOut);
+fclose($fileOut);
 
 echo "<br/><br/>Product feed ready, <a href='download.php'>click here</a> to download";
 ?>
