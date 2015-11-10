@@ -126,6 +126,7 @@ class Ysindia_Customer_Model_Observer
         $womenBottomCategoryId = 7;
         $womenBottomRangoliCategoryId = 68;
         $womenTopRangoliCategoryId = 67;
+		$onetomany = 43;
         $womenTopCategoryId = 6;
 
         $discountAmount = 75;
@@ -144,10 +145,16 @@ class Ysindia_Customer_Model_Observer
                 if (isset($product) && $product->isConfigurable()) {
 
                     $categoryIds = $product->getCategoryIds();
-
-                    if (isset($categoryIds) && count($categoryIds) > 0) {
-
-                        if (in_array($womenBottomCategoryId, $categoryIds) || in_array($womenBottomRangoliCategoryId, $categoryIds)) {
+				
+					
+				if (isset($categoryIds) && count($categoryIds) > 0) {
+					
+					$simpleProduct = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
+					$simpleCategories = $simpleProduct->getCategoryIds();	
+						
+						if(in_array($onetomany, $simpleCategories))
+							;		
+                        else if (in_array($womenBottomCategoryId, $categoryIds) || in_array($womenBottomRangoliCategoryId, $categoryIds)) {
 
                             $bottomCount++;
 							
@@ -160,9 +167,9 @@ class Ysindia_Customer_Model_Observer
                     }
                 }
             }
-				
+			//Mage::log("bottom found: ".$bottomCount."top found: ".$topCount, null, 'disc.log');
             if($bottomCount>0 && $topCount>0){
-				Mage::log("bottom found: ".$bottomCount."top found: ".$topCount, null, 'disc.log');
+				
                 $discountCount = $bottomCount < $topCount ? $bottomCount : $topCount;
 
                 $totalDiscount = $discountAmount * $discountCount;
