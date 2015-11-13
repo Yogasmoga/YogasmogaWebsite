@@ -157,12 +157,13 @@ class Ysindia_Customer_Model_Observer
 							;		
                         else if (in_array($womenBottomCategoryId, $categoryIds) || in_array($womenBottomRangoliCategoryId, $categoryIds) || in_array($menBottomCategoryId, $categoryIds)) {
 
-                            $bottomCount++;
-							
+                            //$bottomCount++;
+							$bottomCount += $item->getQty();
                         }
                         else if (in_array($womenTopCategoryId, $categoryIds) || in_array($womenTopRangoliCategoryId, $categoryIds) || in_array($menTopCategoryId, $categoryIds)) {
 
-                            $topCount++;
+                            //$topCount++;
+							$topCount += $item->getQty();
 							
                         }
                     }
