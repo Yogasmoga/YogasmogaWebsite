@@ -1,3 +1,5 @@
+<div id="div_sizes" style="padding-left: 235px; text-align: left">&nbsp;</div>
+
 <!-- productGridView -->
 <?php
 /*********************** hidden page logic ********************/
@@ -190,8 +192,33 @@ $i = 0;
 // carbon 6 end
 
 $firsth1 = 1;
+$allSkuSizes = array();
+
+/**************** size filter *****************/
+$productColorIndex=0;
+/**************** size filter *****************/
+
 foreach ($configurableProductArr as $key => $val) {
+
     $confProduct = Mage::getModel('catalog/product')->load($key);
+
+/**************** size filter *****************/
+    ++$productColorIndex;
+
+    $confProductForSku = Mage::getModel('catalog/product_type_configurable')->setProduct($confProduct);
+
+    $skuSizes = array();
+    $simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFilterByRequiredOptions();
+    foreach($simpleCollectionForSku as $simpleProductForSku){
+        $sku = $simpleProductForSku->getSku();
+        $colorName = $simpleProductForSku->getAttributeText('color');
+        $skuar = explode("-", $sku);
+        $size = $skuar[1];
+        $skuSizes[$colorName][] = $size;
+        $allSkuSizes[] = $size;
+    }
+/**************** size filter *****************/
+
     // get all images for the product
     $_gallery = Mage::getModel('catalog/product')->load($key)->getMediaGalleryImages();
     $imageArr = array();
@@ -242,17 +269,32 @@ foreach ($configurableProductArr as $key => $val) {
     <!-- GridHeading -->
     <?php if ($firsth1 == 1) {
         $firsth1 = 2; ?>
-        <h1><?php echo $confProduct->getName(); ?></h1>
+        <h1 class="product-header-<?php echo $productColorIndex;?>"><?php echo $confProduct->getName(); ?></h1>
     <?php } else { ?>
-        <h4><?php echo $confProduct->getName(); ?></h4>
+        <h4 class="product-header-<?php echo $productColorIndex;?>"><?php echo $confProduct->getName(); ?></h4>
 
     <?php } ?>
     <!-- GridHeading -->
 
     <?php
     foreach ($configurableProductArr[$key] as $childProduct) {
+
+/****************** size filter **********************************/
+        $productColorName = $clrinfo[$childProduct['color']];
+        $arColorSizes = array();
+
+        foreach($skuSizes as $key => $sizes) {
+
+            $keyColor = substr($key, 0, strpos($key, "|"));
+            if ($keyColor == $productColorName) {
+                $strSizes = implode(",", $sizes);
+                break;
+            }
+        }
+
+/****************** size filter **********************************/
         ?>
-        <div class="productCont">
+        <div class="productCont product-color-<?php echo $productColorIndex;?>" rel="<?php echo $strSizes;?>">
             <div class="prod-img">
 
                 <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?>">
@@ -301,7 +343,87 @@ foreach ($configurableProductArr as $key => $val) {
     }
 }
 
+/************** size filter ***********************/
+$allSkuSizes = array_unique($allSkuSizes);
+
+$sizeResult = "<b>Sizes:</b> ";
+foreach($allSkuSizes as $strSize){
+    $sizeResult .= "<label style='margin-left: 10px;'><input type='checkbox' class='chk-size' value='$strSize'> $strSize</label>";
+}
+/************** size filter ***********************/
+
 ?>
+<!-- ********************************* checkbox filter ********************** -->
+    <script type="text/javascript">
+
+        var productColorIndex = "<?php echo $productColorIndex;?>";
+
+        jQuery("#div_sizes").html("<?php echo $sizeResult;?>");
+
+        jQuery(".chk-size").click(function(){
+
+            var arSizesToCheck = Array();
+            jQuery(".chk-size").each(function(){
+               if(jQuery(this).prop('checked'))
+                arSizesToCheck.push(jQuery(this).val());
+            });
+
+            if(arSizesToCheck.length>0) {                // if any of the checkbox is checked
+                jQuery(".productCont").each(function () {
+
+                    var strSizes = jQuery(this).attr('rel');
+
+                    if (strSizes != undefined && strSizes.length > 0) {
+                        var arColorSizes = strSizes.split(",");
+
+                        if (arColorSizes.length > 0) {
+                            var sizesFound = false;
+                            for (var i = 0; i < arSizesToCheck.length; i++) {
+                                for (var j = 0; j < arColorSizes.length; j++) {
+                                    if (arSizesToCheck[i]==arColorSizes[j]) {
+                                        sizesFound = true;
+                                        break;
+                                    }
+                                }
+
+                                if(sizesFound) {
+                                    break;
+                                }
+                            }
+
+                            if (sizesFound)
+                                jQuery(this).show();
+                            else
+                                jQuery(this).hide();
+                        }
+                        else
+                            jQuery(this).show();
+                    }
+                    else
+                        jQuery(this).show();
+                });
+            }
+            else
+                jQuery(".productCont").show();
+
+/*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
+            for(var i=1;i<=productColorIndex;i++){
+                var hideHeader = true;
+                jQuery(".product-color-" + i).each(function(){
+                    if(jQuery(this).is(":visible")){
+                        hideHeader = false;
+                    }
+                });
+
+                if(hideHeader)
+                    jQuery(".product-header-" + i).hide();
+                else
+                    jQuery(".product-header-" + i).show();
+            }
+/*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
+        });
+    </script>
+<!-- ********************************* checkbox filter ********************** -->
 
 <?php
 /*
