@@ -152,7 +152,7 @@ class Ysindia_Customer_Model_Observer
 					$simpleProduct = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
 					$simpleCategories = $simpleProduct->getCategoryIds();	
 						Mage::log("Simple category ids: ".print_r($simpleCategories,true), null, 'Simcat.log');
-						if(in_array($onetomany, $simpleCategories))
+						if(in_array($onetomanycopy, $simpleCategories))
 							;		
                         else if (in_array($womenBottomCategoryId, $categoryIds) || in_array($womenBottomRangoliCategoryId, $categoryIds)) {
 
