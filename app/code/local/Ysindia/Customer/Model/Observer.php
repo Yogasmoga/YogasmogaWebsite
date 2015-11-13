@@ -126,7 +126,7 @@ class Ysindia_Customer_Model_Observer
         $womenBottomCategoryId = 7;
         $womenBottomRangoliCategoryId = 68;
         $womenTopRangoliCategoryId = 67;
-		$onetomany = 43;
+		$onetomanycopy = 52;
         $womenTopCategoryId = 6;
 
         $discountAmount = 75;
@@ -146,12 +146,12 @@ class Ysindia_Customer_Model_Observer
 
                     $categoryIds = $product->getCategoryIds();
 				
-					
+					Mage::log("category ids: ".print_r($categoryIds,true), null, 'confcat.log');
 				if (isset($categoryIds) && count($categoryIds) > 0) {
 					
 					$simpleProduct = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
 					$simpleCategories = $simpleProduct->getCategoryIds();	
-						
+						Mage::log("Simple category ids: ".print_r($simpleCategories,true), null, 'Simcat.log');
 						if(in_array($onetomany, $simpleCategories))
 							;		
                         else if (in_array($womenBottomCategoryId, $categoryIds) || in_array($womenBottomRangoliCategoryId, $categoryIds)) {
