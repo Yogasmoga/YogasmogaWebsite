@@ -11,7 +11,7 @@
 
     <!-- ******************* global section ******************** -->
 
-    <!--<global>
+    <global>
         <models>
             <tax>
                 <rewrite>
@@ -19,7 +19,7 @@
                 </rewrite>
             </tax>
         </models>
-    </global>-->
+    </global>
 
     <frontend>
         <routers>
