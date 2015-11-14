@@ -1,4 +1,4 @@
-<div id="div_sizes" style="padding-left: 235px; text-align: left">&nbsp;</div>
+<div id="div_sizes" style="padding-left: 235px; text-align: left; padding-top: 20px;">&nbsp;</div>
 
 <!-- productGridView -->
 <?php
@@ -192,9 +192,11 @@ $i = 0;
 // carbon 6 end
 
 $firsth1 = 1;
-$allSkuSizes = array();
 
 /**************** size filter *****************/
+$allSkuSizes = array();
+$alphabeticSkuSizes = array();
+
 $productColorIndex=0;
 /**************** size filter *****************/
 
@@ -214,8 +216,26 @@ foreach ($configurableProductArr as $key => $val) {
         $colorName = $simpleProductForSku->getAttributeText('color');
         $skuar = explode("-", $sku);
         $size = $skuar[1];
-        $skuSizes[$colorName][] = $size;
-        $allSkuSizes[] = $size;
+
+        if(strpos($size, "T")===false) {
+            if (is_numeric($size)) {
+                $allSkuSizes[] = intval($size);
+                $skuSizes[$colorName][] = $size;
+            }
+            else{
+                $alphabeticSkuSizes[] = $size;
+                $skuSizes[$colorName][] = $size;
+            }
+        }
+        else {
+            if (is_numeric(substr($size, 0, 1))) {
+                //$alphabeticSkuSizes[] = "T";
+                //$skuSizes[$colorName][] = "T";
+            } else {
+                //$alphabeticSkuSizes[] = $size;
+                //$skuSizes[$colorName][] = $size;
+            }
+        }
     }
 /**************** size filter *****************/
 
@@ -345,11 +365,17 @@ foreach ($configurableProductArr as $key => $val) {
 
 /************** size filter ***********************/
 $allSkuSizes = array_unique($allSkuSizes);
+$alphabeticSkuSizes = array_unique($alphabeticSkuSizes);
+
+ksort($allSkuSizes);
 
 $sizeResult = "<b>Sizes:</b> ";
-foreach($allSkuSizes as $strSize){
+foreach($allSkuSizes as $strSize)
     $sizeResult .= "<label style='margin-left: 10px;'><input type='checkbox' class='chk-size' value='$strSize'> $strSize</label>";
-}
+
+foreach($alphabeticSkuSizes as $strSize)
+    $sizeResult .= "<label style='margin-left: 10px;'><input type='checkbox' class='chk-size' value='$strSize'> $strSize</label>";
+
 /************** size filter ***********************/
 
 ?>
