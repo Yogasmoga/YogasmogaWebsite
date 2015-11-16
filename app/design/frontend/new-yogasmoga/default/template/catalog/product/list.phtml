@@ -211,20 +211,27 @@ foreach ($configurableProductArr as $key => $val) {
 
     $skuSizes = array();
     $simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFilterByRequiredOptions();
+
     foreach($simpleCollectionForSku as $simpleProductForSku){
         $sku = $simpleProductForSku->getSku();
         $colorName = $simpleProductForSku->getAttributeText('color');
         $skuar = explode("-", $sku);
         $size = $skuar[1];
 
+      $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
+       
         if(strpos($size, "T")===false) {
             if (is_numeric($size)) {
                 $allSkuSizes[] = intval($size);
-                $skuSizes[$colorName][] = $size;
+
+                if($stock>0)
+                    $skuSizes[$colorName][] = $size;
             }
             else{
                 $alphabeticSkuSizes[] = $size;
-                $skuSizes[$colorName][] = $size;
+
+                if($stock>0)
+                    $skuSizes[$colorName][] = $size;
             }
         }
         else {
