@@ -379,12 +379,12 @@ $alphabeticSkuSizes = array_unique($alphabeticSkuSizes);
 
 ksort($allSkuSizes);
 
-$sizeResult = "<b>Sizes:</b> ";
+$sizeResult = "<b>FILTER BY SIZE: </b> ";
 foreach($allSkuSizes as $strSize)
-    $sizeResult .= "<label style='margin-left: 10px;'><input type='checkbox' class='chk-size' value='$strSize'> $strSize</label>";
+    $sizeResult .= "<span class='chk-size' rel='$strSize'>$strSize</span>";
 
 foreach($alphabeticSkuSizes as $strSize)
-    $sizeResult .= "<label style='margin-left: 10px;'><input type='checkbox' class='chk-size' value='$strSize'> $strSize</label>";
+    $sizeResult .= "<span class='chk-size' rel='$strSize'>$strSize</span>";
 
 /************** size filter ***********************/
 
@@ -400,9 +400,19 @@ foreach($alphabeticSkuSizes as $strSize)
 
             var arSizesToCheck = Array();
             jQuery(".chk-size").each(function(){
-               if(jQuery(this).prop('checked'))
-                    arSizesToCheck.push(jQuery(this).val());
+
+                arSizesToCheck = [];
+
+                if(jQuery(this).hasClass('chk-size-selected'))
+                    ;
+                else
+                    arSizesToCheck.push(jQuery(this).attr('rel'));
             });
+
+            if(jQuery(this).hasClass('chk-size-selected'))
+                jQuery(this).removeClass('chk-size-selected')
+            else
+                jQuery(this).addClass('chk-size-selected')
 
             if(arSizesToCheck.length>0) {                // if any of the checkbox is checked
                 jQuery(".productCont").each(function () {

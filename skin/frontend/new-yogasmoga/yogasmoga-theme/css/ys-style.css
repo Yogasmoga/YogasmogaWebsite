@@ -2719,4 +2719,21 @@ table.smallimagecontiner td.selectedimage{
 .bundlePop img#closelightbox { padding: 0; right: 5px !important; top: 3px !important;  width: auto !important;}
 .cs-addPrd{visibility:hidden; height:0;}
 
+/*************** size filter on category pages ***************/
+.chk-size{
+    margin: 0 7px 0 0;
+    padding: 1px 4px;
+    min-width: 20px;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid #A9A9A9;
+    cursor: pointer;
+    background: #fff;
+    color: #666;
+}
 
+.chk-size-selected{
+    background: #666;
+    color: #fff;
+}
