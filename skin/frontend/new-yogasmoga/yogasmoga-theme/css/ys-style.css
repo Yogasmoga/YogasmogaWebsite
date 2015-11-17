@@ -2724,7 +2724,7 @@ table.smallimagecontiner td.selectedimage{
     display: none;
     color: #666;
 }
-.div_sizes{
+#div_sizes{
     padding-left: 235px;
     text-align: left;
     padding-top: 20px;
