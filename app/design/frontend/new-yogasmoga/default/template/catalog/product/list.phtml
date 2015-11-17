@@ -409,8 +409,7 @@ foreach($alphabeticSkuSizes as $strSize)
                 if(jQuery(this).hasClass('chk-size-selected'))
                     arSizesToCheck.push(jQuery(this).attr('rel'));
             });
-console.log(arSizesToCheck);
-            alert(arSizesToCheck.length);
+
             if(arSizesToCheck.length>0) {                // if any of the checkbox is checked
                 jQuery(".productCont").each(function () {
 
