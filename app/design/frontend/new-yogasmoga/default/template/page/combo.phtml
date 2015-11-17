@@ -9,53 +9,252 @@
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="shopping-cart"></div>
     <div class="page">
-        <?php echo $this->getChildHtml('header') ?>
-        <div class="top-fixed-header">
-            <div id="weather"></div>
+        <div id="top_banner">
+            <p>YOGASMOGA 2015 HOLIDAY GIFTSETS: AVAILABLE UNTIL 12.30.2015</p>
         </div>
-
-        <div id="fullpage">
+        <?php echo $this->getChildHtml('header') ?>
+        <!--<div id="body_compensator"></div>-->
+        <div style="height: 20px"></div>
+        <div id="fullpage" class="slider set_section">
+            <div class="section">
+                <div class="main_banner">
+                    <div class="map_box_container">
+                        #landing_page
+                    </div>
+                </div>
+                <div class="map_data_section">
+                    <div class="map_data_container">
+                        <div class="box">
+                            <div><img rel="map" src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/combo/map.jpeg"/></div>
+                            <p></p>
+                        </div>
+                        <div class="box temprature">
+                            <div>41&deg;F</div>
+                            <p></p>
+                        </div>
+                        <div class="box time">
+                            <div></div>
+                            <p></p>
+                        </div>
+                        <div class="box flora">
+                            <div class="square"></div>
+                            <p>CHICAGO FAUNA</p>
+                        </div>
+                        <div class="box fauna">
+                            <div class="square"></div>
+                            <p>CHICAGO FLORA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <?php
+            $storeId = Mage::app()->getStore()->getStoreId();
             $catId  = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
             $_helper = Mage::helper('catalog/output');
+
             $productCollection = Mage::getModel('catalog/category')->load($catId)
                 ->getProductCollection()
                 ->addAttributeToSelect('*');
 
-            ?>
-            <?php 
-			$cities = array();
-			
-			foreach($productCollection as $_product)
-            { 
-				$_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
-				
-				if(isset($_gallery)){
-					foreach ($_gallery as $_image) {
-						$imageLabelData = json_decode(trim($_image->getLabel()), true);
-						$city = $imageLabelData["city"];
-						
-						$cities[] = $city;
-						break;					// we want to read first image only
-					}
-				}
-			?>
-                <div class="section combos">
-					<a href="<?php echo $_product->getProductUrl();?>">
-                        <img src="<?php echo $this->helper('adaptiveResize/image')->init($_product, 'image')->resize(400); ?>" width="400" height="400"/>
-                        <span style="display:block"><?php echo $_product->getName(); ?></span>
-                    </a>
+            $cities = array();
+            $latlongs = array();
+            $cityTimes = array();
+
+            $resourceModel = Mage::getResourceModel('catalog/product');
+
+            foreach($productCollection as $_product_single)
+            {
+                $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
+
+                $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
+
+                $ar_bundled_product_ids = explode(",", $bundled_product_ids);
+
+                $ar_bundle_sizes = array();
+
+                for($i=0;$i<count($ar_bundled_product_ids);$i++) {
+
+                    $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);
+
+                    $_bundle_product = Mage::getModel('catalog/product')->load(intval($ar_id_color_code[0]));
+
+                    $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
+
+                    $bundle_product_images = array();
+
+                    if(isset($_gallery)){
+                        foreach ($_gallery as $_image) {
+                            $imageLabelData = json_decode(trim($_image->getLabel()), true);
+
+                            if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                                continue;
+
+                            if ($imageLabelData['color'] == $ar_id_color_code[1]) {
+                                $url = $this->helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
+                                $bundle_product_images[] = $url;
+                            }
+                        }
+                    }
+
+                    $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
+
+                    $ar_child_sizes = array();
+                    foreach($_childProducts as $_childProduct) {
+                        $size = $_childProduct->getAttributeText('size');
+
+                        if(is_numeric($size))
+                            $ar_child_sizes[] = intval($size);
+                        else
+                            $ar_child_sizes[] = $size;
+                    }
+
+                    $ar_child_sizes = array_unique($ar_child_sizes);
+                    ksort($ar_child_sizes);
+
+//                    $ar_bundle_sizes[$i] = array("sizes" => $ar_child_sizes, "images" => $bundle_product_images);
+                    $ar_bundle_sizes[$i] = array("product" => $_bundle_product, "sizes" => $ar_child_sizes, "images" => $bundle_product_images);
+                }
+
+                // main set images
+                $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                if(isset($_gallery)){
+                    foreach ($_gallery as $_image) {
+                        $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                        $city = $imageLabelData["city"];
+                        $latlong = $imageLabelData["latlong"];
+                        $cityTime = $imageLabelData["cityTime"];
+
+                        $cities[] = $city;
+                        $latlongs[] = $latlong;
+                        $cityTimes[] = $cityTime;
+                        break;					// we want to read first image only
+                    }
+                }
+                ?>
+
+                <div class="section contain_product">
+                    <div class="product_set">
+                        <div class="side1">
+                            <p class="product_name"><?php echo $_product->getName(); ?></p>
+
+                            <p class="product_price">$250</p>
+
+                            <p class="buy_product">BUY <?php echo $_product->getName(); ?> &gt;</p>
+
+                            <p class="toggle_description">See Details</p>
+
+                            <div class="description_box">
+                                <div class="rel_container">
+                                    <span class="close_desc">&plus;</span>
+                                    <div class="set_desc">
+                                        <b>THE CHICAGO SET</b><br/>
+                                        Quis nec pede maecenas suspendisse dui pede. Massa lectus felis est mollis urna. Maecenas
+                                        sit
+                                        vestibulum
+                                        est hac rutrum augue. Molestie vel sed integer, accumsan mollis, elementum egestas hac sem
+                                        sit,
+                                        congue
+                                        vivamus nisl sed ante. Erat delectus, at sapien ac. Nisl adipiscing nam magna praesent,
+                                        vivamus
+                                        a,
+                                        sit
+                                        in quis arcu lectus a consectetuer.
+                                    </div>
+                                    <div class="middle_desc">
+                                        <div>
+                                            <b>Cuddle Me Wrap</b><br/>
+                                            KOEL BLUE<br/>
+                                            $000<br/>
+                                            Buy Individually
+                                        </div>
+                                        <div>
+                                            <b>Cuddle Me Wrap</b><br/>
+                                            KOEL BLUE<br/>
+                                            $000<br/>
+                                            Buy Individually
+                                        </div>
+                                        <div>
+                                            <b>Cuddle Me Wrap</b><br/>
+                                            KOEL BLUE<br/>
+                                            $000<br/>
+                                            Buy Individually
+                                        </div>
+                                    </div>
+                                    <div class="right_desc">
+                                        <p>SEE NEW ORLEANS &gt;</p>
+                                        <b>9 left</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side2 flipped">
+
+                            <span class="reverse_flip">&plus;</span>
+                            <div class="product_container">
+
+                                <div class="thumbnails">
+                                <?php for($x=0; $x<count($ar_bundle_sizes); $x++) { ?>
+                                    <div class="thumbnail"><img src="<?php echo $ar_bundle_sizes[$x]['images'][0];?>"/></div>
+                                <?php } ?>
+                                </div>
+
+                                <div class="product_slider">
+                                    <div class="slider"></div>
+                                </div>
+
+                                <div class="product_filters">
+                                    <p class="product_name"><?php echo $_product->getName();?></p>
+
+                                    <p class="product_price">$<?php echo round($_product->getPrice(),0);?> <span>5 SETS REMAINING</span></p>
+                                    <?php
+                                        $sizeDivCount = -1;
+                                        foreach($ar_bundle_sizes as $product=>$data) {
+                                            ++$sizeDivCount;
+                                    ?>
+                                    <div class="set_item">
+                                        <div class="product_image">
+                                            <img src="<?php echo $data['images'][0];?>" />
+                                        </div>
+
+                                        <div class="product_detail">
+                                            <p class="pname"><?php echo $data["product"]->getName();?></p>
+                                            <p class="pcolor">KOEL BLUE</p>
+                                            <p class="psize">SIZE <span class="size-chart-bundle">SIZE CHART</span></p>
+                                            <div class="sizes">
+                                                <?php foreach($data["sizes"] as $size){ ?>
+                                                <div class="size size-<?php echo $sizeDivCount;?>" rel="<?php echo $size;?>"><?php echo $size;?></div>
+                                                <?php } ?>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <?php } ?>
+
+                                    <div class="add_to_bag" rel="<?php echo $_product_single->getId();?>:<?php echo count($ar_bundled_product_ids);?>">ADD TO BAG</div>
+                                    <p class="free_shipping">Free and fast shipping to US and Canada</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <?php 
-			}
-			?>
-			
-			<script type="text/javascript">
-				<?php foreach($cities as $city){ ?>
-					cities.push("<?php echo $city;?>");
-					temperatures.push('');
-				<?php } ?>
-			</script>
+
+            <?php } ?>
+
+            <script type="text/javascript">
+                <?php foreach($cities as $city){ ?>
+                    cities.push("<?php echo $city;?>");
+                    temperatures.push('');
+                <?php } ?>
+
+                <?php foreach($latlongs as $latlong){ ?>
+                    latlongs.push("<?php echo $latlong;?>");
+                <?php } ?>
+
+                <?php foreach($cityTimes as $cityTime){ ?>
+                    cityTimes.push("<?php echo $cityTime;?>");
+                <?php } ?>
+            </script>
         </div>
         <?php echo $this->getChildHtml('footer') ?>
         <?php echo $this->getChildHtml('before_body_end') ?>

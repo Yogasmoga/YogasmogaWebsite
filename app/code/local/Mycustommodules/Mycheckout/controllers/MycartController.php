@@ -128,6 +128,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         $cart   = $this->_getCart();
         $params = $this->getRequest()->getParams();
         $showhtml = $params['showhtml'];
+
         try {
             if (isset($params['qty'])) {
                 $filter = new Zend_Filter_LocalizedToNormalized(
@@ -147,6 +148,30 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 return;
             }
 
+            $uniqueTimeStamp = date("Ymdhis");
+
+            /************* checking if product is gift-set ****************/
+            if($params["type"]=="gift"){
+                $data = array(
+                    'qty' => 1,
+                    'super_attribute' => array(92 => 281, 138 => 16),
+                    'product' => 2764,
+                    'type' => 'gift-bundled',
+                    'unique_time_stamp' => $uniqueTimeStamp
+                );
+
+                $bundledProduct = Mage::getModel('catalog/product')
+                    ->setStoreId(Mage::app()->getStore()->getId())
+                    ->load(2764);
+
+                $bundledProduct->setPrice(0);
+                $bundledProduct->setOriginalCustomPrice(0);
+
+                $cart->addProduct($bundledProduct, $data);
+            }
+            /************* checking if product is gift-set ****************/
+
+            $params['unique_time_stamp'] = $uniqueTimeStamp;
             $cart->addProduct($product, $params);
             if (!empty($related)) {
                 $cart->addProductsByIds(explode(',', $related));
@@ -175,7 +200,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 //                $this->_goBack();
 //            }
         } catch (Mage_Core_Exception $e) {
-            echo json_encode(array("status" => "error"));
+            echo json_encode(array("status" => "error", "reason" => $e->getMessage()));
             //if ($this->_getSession()->getUseNotice(true)) {
 //                $this->_getSession()->addNotice(Mage::helper('core')->escapeHtml($e->getMessage()));
 //            } else {
@@ -307,25 +332,53 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     {
         $id = (int) $this->getRequest()->getParam('id');
         if ($id) {
+
+/************** original code *********************/
+/*
             try {
                 $this->_getCart()->removeItem($id)
-                  ->save();
+                    ->save();
             } catch (Exception $e) {
                 echo json_encode(array("status" => "error"));
                 //$this->_getSession()->addError($this->__('Cannot remove the item.'));
                 Mage::logException($e);
                 return;
             }
+*/
+/************** original code *********************/
+
+/*************** code after gift set *********************/
+            $data = "";
+            try {
+                $item = $this->_getCart()->getItem($id);
+                $uniqueTimeStamp = $item->getBuyRequest()['unique_time_stamp'];
+
+                foreach($this->_getCart()->getItems() as $cartItem){
+                    $tempUniqueTimeStamp = $item->getBuyRequest()['unique_time_stamp'];
+$data .= "[ $uniqueTimeStamp , $tempUniqueTimeStamp ]";
+                    if($uniqueTimeStamp==$tempUniqueTimeStamp)
+                        $this->_getCart()->removeItem($id)
+                            ->save();
+                }
+
+            } catch (Exception $e) {
+                echo json_encode(array("status" => "error"));
+                //$this->_getSession()->addError($this->__('Cannot remove the item.'));
+                Mage::logException($e);
+                return;
+            }
+/*************** code after gift set *********************/
         }
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
-        echo json_encode(array("status" => "success", "count" => $this->getcartcount(), "grandtotal" => "$".number_format((float)$subtotal, 2, '.','')));
+        echo json_encode(array("status" => "success", "data" => $data, "count" => $this->getcartcount(), "grandtotal" => "$".number_format((float)$subtotal, 2, '.','')));
     }
     
     
     function getMiniImage($productid, $color)
     {
-        $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+        $_product = Mage::getModel('catalog/product')->load($productid);
+        $_gallery = $_product->getMediaGalleryImages();
         foreach($_gallery as $_image)
         {
             $imgdata = json_decode(trim($_image->getLabel()), true);

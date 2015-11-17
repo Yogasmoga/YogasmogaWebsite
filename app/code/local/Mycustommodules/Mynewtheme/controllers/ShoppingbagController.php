@@ -1110,7 +1110,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
     public function deleteAction()
     {
-
+/************** original code *************************/
+/*
         $id = (int) $this->getRequest()->getParam('id');
         $deletedqty = (int) $this->getRequest()->getParam('deleteqty');
         if ($id) {
@@ -1142,6 +1143,67 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 return;
             }
         }
+*/
+/************** original code *************************/
+
+        $id = (int) $this->getRequest()->getParam('id');
+        $deletedqty = (int) $this->getRequest()->getParam('deleteqty');
+        if ($id) {
+            try {
+                $quote = Mage::getSingleton('checkout/session')->getQuote();
+                $cartItems = $quote->getAllVisibleItems();
+                $cart = Mage::getSingleton('checkout/cart');
+
+                foreach ($cartItems as $item) {
+                    if ($id == $item->getId()) {
+                        $buyRequest = $item->getBuyRequest();
+
+                        if(isset($buyRequest))
+                            $uniqueTimeStamp = $buyRequest['unique_time_stamp'];
+                    }
+                }
+
+                if($deletedqty >1)
+                {
+                    // update item quantity in cart -1 for each time
+                    foreach ($cartItems as $item) {
+                        if($id==$item->getId())
+                        {
+                            $tempUniqueTimeStamp = $item->getBuyRequest()['unique_time_stamp'];
+                            $item->setQty($deletedqty-1);
+                            //$item->setQty($_POST['qty']); // UPDATE ONLY THE QTY, NOTHING ELSE!
+                            $cart->save();  // SAVE
+                            //Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
+                        }
+
+                    }
+                    // end update item quantity in cart -1 for each time
+                }
+                else {
+                    $this->_getCart()->removeItem($id)->save();
+
+                    if(isset($uniqueTimeStamp)){
+                        $cartItems = $quote->getAllVisibleItems();
+                        foreach ($cartItems as $item) {
+                            $buyRequest = $item->getBuyRequest();
+
+                            if(isset($buyRequest)){
+                                $tempUniqueTimeStamp = $buyRequest['unique_time_stamp'];
+
+                                if($uniqueTimeStamp==$tempUniqueTimeStamp)
+                                    $this->_getCart()->removeItem($item->getId())->save();
+                            }
+                        }
+                    }
+                }
+            } catch (Exception $e) {
+                echo json_encode(array("status" => "error"));
+                //$this->_getSession()->addError($this->__('Cannot remove the item.'));
+                Mage::logException($e);
+                return;
+            }
+        }
+
         // check for whick type of promotion code is apply in the cart (this is because of to fix grand total in cart)
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
@@ -1225,9 +1287,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                 if($this->searchcartnew($miniitems, $item->getSku(),$productselectedoptioncount) == false  )
                 {// echo $item->getSku().'--';
-
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
+                    /******************* bundled check ****************/
+                    $product_type = $item->getBuyRequest()['type'];
+
+                    if(isset($product_type))
+                        $temparray['product_type'] = $product_type;         // there should not be any remove icon on cart for this
+                    else
+                        $temparray['product_type'] = null;
+
+                    /******************* bundled check ****************/
                     $temparray['pid'] = $item->getProductId();
                     $temparray['sku'] = $item->getSku();
                     $temparray['pavailableqty'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty();
@@ -1410,7 +1480,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $allow = $this->countDiscountType();
         if($allow > 1)
         {
-            $html = '
+            $html .= '
             <!-- ContinueShoppingBtn -->
             <div class="cont-full capstxt">
                 <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Keep Shopping</a>
@@ -1423,7 +1493,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             <!-- productOption -->
             <div class="cont-full contfull2">';
         }
-        else{   $html = '
+        else{   $html .= '
             <!-- ContinueShoppingBtn -->
             <div class="cont-full capstxt">
                 <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Keep Shopping</a>
@@ -1768,6 +1838,40 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
                     <span class="pname">'.$item['name'].'</span>';
 
+
+/*********** added for gift set **********************/
+            if($item['product_type']=="gift") {
+                if(isset($item['insale']) && $item['insale'] == 'Yes')
+                {
+                    $html .='<span class="amnt" style="color : #c03;">'.$item['price'].'</span>
+                            <span class="insale"  > was '.$item['confPrice'].'</span>';
+                }
+                else{
+                    $html .='<span class="amnt">'.$item['price'].'</span>';
+                }
+            }
+            else if($item['product_type']=="gift-bundled") {
+                $html .= '<span class="clr">' . $item['color'] . '</span>';
+                if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size ' . $item['size'] . '</span>';
+                if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
+            }
+            else{
+                if(isset($item['insale']) && $item['insale'] == 'Yes')
+                {
+                    $html .='<span class="amnt" style="color : #c03;">'.$item['price'].'</span>
+                            <span class="insale"  > was '.$item['confPrice'].'</span>';
+                }
+                else{
+                    $html .='<span class="amnt">'.$item['price'].'</span>';
+                }
+                $html .= '<span class="clr">' . $item['color'] . '</span>';
+                if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size ' . $item['size'] . '</span>';
+                if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
+            }
+/*********** added for gift set **********************/
+
+/************* original code is below *************/
+/*
             if(isset($item['insale']) && $item['insale'] == 'Yes')
             {
                 $html .='<span class="amnt" style="color : #c03;">'.$item['price'].'</span>
@@ -1776,10 +1880,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             else{
                 $html .='<span class="amnt">'.$item['price'].'</span>';
             }
+            $html .= '<span class="clr">' . $item['color'] . '</span>';
+            if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size ' . $item['size'] . '</span>';
+            if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
+*/
+/************* original code is above *************/
 
-            $html .='<span class="clr">'.$item['color'].'</span>';
-            if(isset($item['size']) && $item['size'] !='') $html .='<span class="size">size '.$item['size'].'</span>';
-            if(isset($item['length']) && $item['length'] !='') $html .='<span class="size">'.$item['length'].'</span>';
             if(isset($item['optionlabel']) && $item['optionlabel'] != '')
             {
                 $html .='<span class="size">'.$item['optionlabel'].'</span>';
@@ -1789,8 +1895,19 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             {
                 $html .='<span class="size" style="color: #c03;">This Item is Final Sale. Cannot be exchanged or returned.</span>';
             }
-            $html .='</span>
-<a href="#" class="close"></a>';
+            $html .='</span>';
+
+/************* for gift set ***************/
+            if($item['product_type']=='gift-bundled')
+                ;
+            else
+                $html .='<a href="#" class="close"></a>';
+/************* for gift set ***************/
+
+/************* original code before gift set ***************/
+//            $html .='<a href="#" class="close"></a>';
+/************* original code before gift set ***************/
+
             // Preorder
             if($item['pavailableqty'] - $item['quantity'] < 0 && $item['preorder'] == 1 && $item['instock']&& ($item['typeid'] != "giftcards" && $item['typeid'] != ''))
             {
