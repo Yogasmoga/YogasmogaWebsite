@@ -2720,6 +2720,15 @@ table.smallimagecontiner td.selectedimage{
 .cs-addPrd{visibility:hidden; height:0;}
 
 /*************** size filter on category pages ***************/
+#no-filtered-products{
+    display: none;
+    color: #666;
+}
+.div_sizes{
+    padding-left: 235px;
+    text-align: left;
+    padding-top: 20px;
+}
 .chk-size{
     margin: 0 7px 0 0;
     padding: 1px 4px;
