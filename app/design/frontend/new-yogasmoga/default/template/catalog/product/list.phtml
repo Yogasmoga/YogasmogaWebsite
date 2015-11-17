@@ -398,22 +398,19 @@ foreach($alphabeticSkuSizes as $strSize)
 
         jQuery(".chk-size").click(function(){
 
-            var arSizesToCheck = Array();
-            jQuery(".chk-size").each(function(){
-
-                arSizesToCheck = [];
-
-                if(jQuery(this).hasClass('chk-size-selected'))
-                    ;
-                else
-                    arSizesToCheck.push(jQuery(this).attr('rel'));
-            });
-
             if(jQuery(this).hasClass('chk-size-selected'))
                 jQuery(this).removeClass('chk-size-selected')
             else
                 jQuery(this).addClass('chk-size-selected')
 
+            var arSizesToCheck = Array();
+            jQuery(".chk-size").each(function(){
+
+                if(jQuery(this).hasClass('chk-size-selected'))
+                    arSizesToCheck.push(jQuery(this).attr('rel'));
+            });
+console.log(arSizesToCheck);
+            alert(arSizesToCheck.length);
             if(arSizesToCheck.length>0) {                // if any of the checkbox is checked
                 jQuery(".productCont").each(function () {
 
