@@ -8,8 +8,12 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
             
             if($item['price'] < 110) {
 			$price_minus_discount = $item['price'] - $item['discount_amount'];
-               $item->getProduct()->setTaxClassId('30');
+			$item->getProduct()->setTaxClassId('30');
             }
+			if($item['product_id']==4){
+			$item->getProduct()->setTaxClassId('30');
+			}
+			
         }
 
         $request->setProductClassId($item->getProduct()->getTaxClassId());
@@ -131,6 +135,9 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 			$price_minus_discount = $item['price'] - $item['discount_amount'];
                 $rate = 0;
             }
+			if($item['product_id']==4){
+				$rate = 0;
+			}
         }
 	
         
