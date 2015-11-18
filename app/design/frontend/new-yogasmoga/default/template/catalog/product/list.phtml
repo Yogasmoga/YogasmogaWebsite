@@ -222,7 +222,7 @@ foreach ($configurableProductArr as $key => $val) {
         $size = $simpleProductForSku->getAttributeText('size');
 
         $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
-echo "[ stock = $stock ]<br/>";
+//echo "[ stock = $stock ]<br/>";
         if(!isset($skuSizes[$filterColorName]))
             $skuSizes[$filterColorName] = array();
 
@@ -242,7 +242,7 @@ echo "[ stock = $stock ]<br/>";
             }
         }
     }
-    print_r($skuSizes);
+    //print_r($skuSizes);
 /**************** size filter *****************/
 
     // get all images for the product
