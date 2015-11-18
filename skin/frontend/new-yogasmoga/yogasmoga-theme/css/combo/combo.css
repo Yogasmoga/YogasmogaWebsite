@@ -168,6 +168,10 @@ div#bodycompensator{
     text-align: center;
 }
 
+.contain_product .side1 .product_price {
+    text-align: center;
+}   
+
 .contain_product .product_name, .contain_product .product_price {
     font: 24px/32px AvantGardeGothicITCW01B;
 }
