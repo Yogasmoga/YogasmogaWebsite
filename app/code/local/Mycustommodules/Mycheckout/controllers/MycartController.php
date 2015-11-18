@@ -152,22 +152,36 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
             /************* checking if product is gift-set ****************/
             if($params["type"]=="gift"){
-                $data = array(
-                    'qty' => 1,
-                    'super_attribute' => array(92 => 281, 138 => 16),
-                    'product' => 2764,
-                    'type' => 'gift-bundled',
-                    'unique_time_stamp' => $uniqueTimeStamp
-                );
 
-                $bundledProduct = Mage::getModel('catalog/product')
-                    ->setStoreId(Mage::app()->getStore()->getId())
-                    ->load(2764);
+                $bundle = $params['bundle'];
 
-                $bundledProduct->setPrice(0);
-                $bundledProduct->setOriginalCustomPrice(0);
+                $arBundle = explode(",", $bundle);
 
-                $cart->addProduct($bundledProduct, $data);
+                foreach($arBundle as $bundleProduct){
+
+                    $arBundleProductOptions = explode(":", $bundleProduct);
+
+                    $bundleProductId = $arBundleProductOptions[0];
+                    $colorData = $arBundleProductOptions[1];
+                    $sizeData = $arBundleProductOptions[2];
+
+                    $arColorData = explode("-", $colorData);
+                    $arSizeData = explode("-", $sizeData);
+
+                    $data = array(
+                        'qty' => 1,
+                        'super_attribute' => array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1]),
+                        'product' => $bundleProductId,
+                        'type' => 'gift-bundled',
+                        'unique_time_stamp' => $uniqueTimeStamp
+                    );
+
+                    $bundledProduct = Mage::getModel('catalog/product')
+                        ->setStoreId(Mage::app()->getStore()->getId())
+                        ->load($bundleProductId);
+
+                    $cart->addProduct($bundledProduct, $data);
+                }
             }
             /************* checking if product is gift-set ****************/
 
@@ -355,7 +369,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                 foreach($this->_getCart()->getItems() as $cartItem){
                     $tempUniqueTimeStamp = $item->getBuyRequest()['unique_time_stamp'];
-
+$data .= "[ $uniqueTimeStamp , $tempUniqueTimeStamp ]";
                     if($uniqueTimeStamp==$tempUniqueTimeStamp)
                         $this->_getCart()->removeItem($id)
                             ->save();

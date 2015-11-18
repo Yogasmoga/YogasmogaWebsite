@@ -62,6 +62,7 @@
 
             $resourceModel = Mage::getResourceModel('catalog/product');
 
+/***************** get all colors from database ***********************/
             $allColors = array();
             $allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
             $allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
@@ -69,6 +70,14 @@
                 if (!array_key_exists($instance['value'], $allColors)) {
                     $allColors[$instance['value']] = $instance['label'];
                 }
+            }
+/***************** get all sizes from database ***********************/
+            $allSizes = array();
+            $allSizeAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+            $allSizeOptions = $allSizeAttribute->getSource()->getAllOptions(true, true);
+            foreach ($allSizeOptions as $instance) {
+                if ($instance['label'] != "")
+                    $allSizes[$instance['label']] = $instance['value'];
             }
 
             foreach($productCollection as $_product_single)
@@ -80,6 +89,21 @@
                 $ar_bundled_product_ids = explode(",", $bundled_product_ids);
 
                 $ar_bundle_sizes = array();
+
+                /************ get color code of configurable product **************/
+                $productAttributeOptions = $_product->getTypeInstance(true)->getConfigurableAttributesAsArray($_product);
+                foreach ($productAttributeOptions as $productAttribute) {
+                    foreach ($productAttribute['values'] as $attribute) {
+                        if($productAttribute['label']=='Color') {
+                            $gift_simple_color = $attribute['value_index'];
+                            break;
+                        }
+                    }
+                }
+                /************ get color code of configurable product **************/
+
+                $gift_simple_id = $_product_single->getId();
+                $gift_bundle_count = count($ar_bundled_product_ids);
 
                 for($i=0;$i<count($ar_bundled_product_ids);$i++) {
 
@@ -123,7 +147,13 @@
                     $ar_child_sizes = array_unique($ar_child_sizes);
                     ksort($ar_child_sizes);
 
-                    $ar_bundle_sizes[$i] = array("product" => $_bundle_product, "sizes" => $ar_child_sizes, "images" => $bundle_product_images, "color" => $allColors[$bundle_color_id]);
+                    $ar_bundle_sizes[$i] = array(
+                        "product" => $_bundle_product,
+                        "sizes" => $ar_child_sizes,
+                        "images" => $bundle_product_images,
+                        "color" => $allColors[$bundle_color_id],
+                        "color_code" => $bundle_color_id,
+                    );
                 }
 
                 // main set images
@@ -223,17 +253,17 @@
                                             ++$sizeDivCount;
                                     ?>
                                     <div class="set_item">
-                                        <div class="product_image">
+                                        <div class="product_image product-color-<?php echo $sizeDivCount;?>" rel="<?php echo $data["color_code"];?>">
                                             <img src="<?php echo $data['images'][0];?>" />
                                         </div>
 
-                                        <div class="product_detail">
+                                        <div class="product_detail product-detail-<?php echo $sizeDivCount;?>" rel="<?php echo $data["product"]->getId();?>">
                                             <p class="pname"><?php echo $data["product"]->getName();?></p>
                                             <p class="pcolor"><?php echo $data["color"];?></p>
                                             <p class="psize">SIZE <span class="size-chart-bundle">SIZE CHART</span></p>
                                             <div class="sizes">
                                                 <?php foreach($data["sizes"] as $size){ ?>
-                                                <div class="size size-<?php echo $sizeDivCount;?>" rel="<?php echo $size;?>"><?php echo $size;?></div>
+                                                <div class="size size-<?php echo $sizeDivCount;?>" rel="<?php echo $allSizes[$size];?>"><?php echo $size;?></div>
                                                 <?php } ?>
                                             </div>
 
@@ -242,7 +272,7 @@
                                     </div>
                                     <?php } ?>
 
-                                    <div class="add_to_bag" rel="<?php echo $_product_single->getId();?>:<?php echo count($ar_bundled_product_ids);?>">ADD TO BAG</div>
+                                    <div class="add_to_bag" rel="<?php echo $gift_simple_id;?>:<?php echo $gift_simple_color;?>:<?php echo $gift_bundle_count;?>">ADD TO BAG</div>
                                     <p class="free_shipping">Free and fast shipping to US and Canada</p>
                                 </div>
                             </div>

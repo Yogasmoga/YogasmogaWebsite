@@ -31,9 +31,10 @@ jm(document).ready(function() {
 			var arGiftIdCount = giftIdCount.split(':');
 
 			var giftId = arGiftIdCount[0];
-			var count = arGiftIdCount[1];
+			var currentProductColorCode = arGiftIdCount[1];
+			var count = arGiftIdCount[2];
 
-			addToBag(giftId, count, jm(this).closest(".product_filters"));
+			addToBag(giftId, count, jm(this).closest(".product_filters"), currentProductColorCode);
 		}
 	});
 
@@ -238,21 +239,26 @@ function showTemperature(){
 	}
 }
 
-function addToBag(giftProductId, count, parent){
-	_colorattributeid = 92;
-	var currentProductColorCode = 216;
+function addToBag(giftProductId, count, parent, currentProductColorCode){
+	var colorAttributeId = 92;
+	var sizeAttributeId = 138;
 
 	var ar = Array();
 	for(var i=0;i<count;i++){
-		var size = parent.find("size-" + i + ".active").attr("rel");
-		ar.push(size);
+		var size = parent.find(".size-" + i + ".active-size").attr("rel");
+		var size_data = sizeAttributeId + "-" + size;
+		var color_data = colorAttributeId + "-" + parent.find(".product-color-" + i).attr("rel");
+		var product_id = parent.find(".product-detail-" + i).attr("rel");
+		ar.push(product_id + ":" + color_data + ":" + size_data);
 	}
-console.log(ar);
+
+	var bundle_data = ar.join();
+
 	var productUrl = homeUrl + 'mycheckout/mycart/add?product=' + giftProductId;
 	productUrl += '&qty=' + _productorderqty;
-	productUrl += '&super_attribute[' + _colorattributeid + ']=' + currentProductColorCode;
+	productUrl += '&super_attribute[' + colorAttributeId + ']=' + currentProductColorCode;
 	productUrl += '&type=gift';
-//	productUrl = productUrl + '&super_attribute[' + _sizeattributeid + ']=' + currentProductSize;
+	productUrl += '&bundle=' + bundle_data;
 
 	productUrl += '&showhtml=0';
 
