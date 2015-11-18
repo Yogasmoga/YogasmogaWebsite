@@ -116,6 +116,7 @@ foreach ($allSizeOptions as $instance) {
         foreach($productCollection as $_product_single)
         {
             $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
+            $setProductUrl = $_product->getProductUrl();
 
             $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
 
@@ -266,7 +267,7 @@ foreach ($allSizeOptions as $instance) {
 
                         <p class="product_price">$<?php echo round($_product->getPrice(),0);?></p>
 
-                        <p class="buy_product"><a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a><a class="buy_gift_set" href="">GET CHICAGO <b>&gt;</b></a></p>
+                        <p class="buy_product"><a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a><a class="buy_gift_set" href="<?php echo $setProductUrl;?>">GET <?php echo $_product->getName();?> <b>&gt;</b></a></p>
 
                         <p class="toggle_description">SEE DETAILS <b>&gt;</b></p>
                     </div>
