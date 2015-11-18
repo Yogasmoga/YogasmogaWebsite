@@ -1,4 +1,9 @@
-	//	var productColorIndex; 
+//	var productColorIndex;
+
+jQuery(function(){
+
+    filterSizes();
+
 		jQuery(".chk-size").click(function(){
 
             if(jQuery(this).hasClass('chk-size-selected'))
@@ -65,3 +70,22 @@
             }
 /*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
         });
+});
+
+function filterSizes(){
+
+    var sizes = "<b>FILTER BY SIZE: </b> ";
+
+    for(var i=0;i<arAllSizes.length;i++){
+
+        for(var j=0;j<arProductSizes.length;j++){
+
+            if(arAllSizes[i]==arProductSizes[j]){
+                sizes += "<span class='chk-size' rel='" + arAllSizes[i] + "'>" + arAllSizes[i] + "</span>";
+                break;
+            }
+        }
+    }
+
+    jQuery("#div_sizes").html(sizes);
+}

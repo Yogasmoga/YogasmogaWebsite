@@ -371,25 +371,31 @@ foreach ($configurableProductArr as $key => $val) {
 $allSkuSizes = array_unique($allSkuSizes);
 $alphabeticSkuSizes = array_unique($alphabeticSkuSizes);
 
-if($characterSizeFound)
-    ksort($allSkuSizes);
-else
-    ksort($allSkuSizes, SORT_NUMERIC);
-
-$sizeResult = "<b>FILTER BY SIZE: </b> ";
-foreach($allSkuSizes as $strSize)
-    $sizeResult .= "<span class='chk-size' rel='$strSize'>$strSize</span>";
-
-foreach($alphabeticSkuSizes as $strSize)
-    $sizeResult .= "<span class='chk-size' rel='$strSize'>$strSize</span>";
+$arProductAllSizes = array();
+$attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+$allOptions = $attribute->getSource()->getAllOptions(true, true);
+foreach ($allOptions as $instance) {
+    if ($instance['label'] != "" && strpos($instance['label'], "T")===false)
+        $arProductAllSizes[] = $instance['label'];
+}
 
 /************** size filter ***********************/
 
 ?>
 <!-- ********************************* checkbox filter ********************** -->
     <script type="text/javascript">
-	 var productColorIndex = "<?php echo $productColorIndex;?>";
-		jQuery("#div_sizes").html("<?php echo $sizeResult;?>");
+        var arAllSizes = Array();
+        var arProductSizes = Array();
+        var productColorIndex;
+
+        productColorIndex = "<?php echo $productColorIndex;?>";
+
+        <?php foreach($allSkuSizes as $size){ ?>
+            arProductSizes.push("<?php echo $size;?>");
+        <?php
+        } foreach($arProductAllSizes as $size){ ?>
+            arAllSizes.push("<?php echo $size;?>");
+        <?php } ?>
     </script>
 	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter.js"></script>
 <!-- ********************************* checkbox filter ********************** -->
