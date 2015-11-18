@@ -1,0 +1,282 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    color: #555;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+header {
+    height: 69px;
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background: #fff;
+    border-bottom: 1px solid brown;
+}
+
+#body_compensator {
+    margin-top: 89px;
+}
+
+#top_banner {
+    background: #AE8637;
+    color: #fff;
+}
+
+#top_banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 100%;
+    text-align: center;
+    font: 11px/20px ITCAvantGardeProBk;
+    z-index: 10;
+}
+
+/* *******************MAIN CSS ***************************** */
+.product_page_container {
+    padding: 0 50px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.gift_sets_container {
+    padding-left: 55px;
+    position: relative;
+}
+.breadcrumbs {
+    font: 11px/25px GothamBold;
+    text-transform: uppercase;
+}
+.gift_set_filter {
+    position: absolute;
+    left: 0;
+    bottom: 16px;
+    width: 55px;
+}
+.gift_set_filter label,.gift_set > p {
+    font: 11px/15px Gothambold;
+    display: block;
+}
+
+.gift_set_filter span.selected {
+    font: 11px/15px Gothambold;
+}
+.gift_set_filter span {
+    font: 11px/15px GothamBook;
+    cursor: pointer;
+    display: block;
+}
+.set_image {
+    background: #f3f3f3 none repeat scroll 0 0;
+    height: 42px;
+    width: 42px;
+    margin: 0 auto 10px;
+    transition-duration: 200ms;
+}
+
+.gift_set {
+    display: inline-block;
+    text-align: center;
+    width: 12%;
+    cursor: pointer;
+}
+
+.gift_set.active .set_image, .gift_set:hover .set_image {
+    width: 76px;
+    height: 76px;
+    transition-duration: 200ms;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.product_details {
+    position: relative;
+    padding: 25px 328px 25px 0;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.product_details .purchase_box_container{
+    position: absolute;
+    right: 0;
+    top: 25px;
+    width: 288px;
+}
+
+.product_details .purchase_box_container .purchase_box{
+    background: #f3f3f3;
+    padding: 20px;
+}
+.product_details .purchase_box_container .product_desc{
+    padding: 20px 0;
+}
+.product_details .purchase_box_container .product_desc .desc_box{
+    border-top: 1px solid #999;
+    padding: 5px 0;
+}
+.product_details .purchase_box_container .product_desc .desc_box p:first-child{
+    font: 11px /17px GothamBold;
+    margin-bottom: 25px;
+}
+.product_details .purchase_box_container .product_desc .desc_box p {
+    font: 12px /15px GothamBook;
+}
+.slider {
+    height: 306px;
+    background: #f3f3f3;
+}
+
+.purchase_box .product_price > span {
+    float: right;
+    font: 11px/32px Gothambook;
+}
+
+.purchase_box .set_item {
+    border-top: 1px solid #fff;
+    padding: 20px 0 0 80px;
+    position: relative;
+}
+
+.purchase_box .set_item .product_image {
+    position: absolute;
+    left: 0;
+    top: 20px;
+}
+
+.purchase_box .set_item:nth-last-child(3) {
+    border-bottom: 1px solid #fff;
+}
+
+.purchase_box .product_image {
+    position: absolute;
+    height: 60px;
+    margin-right: 20px;
+    width: 60px;
+    left: 0;
+    top: 20px;
+}
+
+.purchase_box .pname {
+    font: 11px/15px Gothambold;
+}
+
+.purchase_box .pcolor, .purchase_box .pprice {
+    font: 11px/15px Gothambook;
+    margin-bottom: 20px;
+}
+
+.purchase_box .psize {
+    font: 11px/15px Gothambook;
+    margin-bottom: 15px;
+}
+
+.purchase_box span.size-chart-bundle {
+    float: right;
+    border-bottom: 1px solid #CC0033;
+    font: 11px/15px Gothambook;
+
+}
+
+.purchase_box .sizes .size {
+    border: 1px solid #999;
+    display: inline-block;
+    font: 11px/17px Gothambook;
+    height: 19px;
+    margin: 0 5px 20px 0;
+    text-align: center;
+    width: 19px;
+    cursor: pointer;
+}
+
+.purchase_box .add_to_bag {
+    background: #999 none repeat scroll 0 0;
+    color: #fff;
+    font: 11px/38px GothamMedium;
+    height: 38px;
+    text-align: center;
+    margin: 20px 0;
+    cursor: pointer;
+    width: 100%;
+    float: left;
+}
+
+.purchase_box .product_name, .purchase_box .product_price {
+    font: 24px/29px AvantGardeGothicITCW01B;
+}
+
+.purchase_box .product_price {
+    margin-bottom: 13px;
+}
+
+.purchase_box p.free_shipping {
+    font: 11px/15px GothamBookItalic;
+}
+
+/* ******************* */
+.set_individual_products {
+    min-height: 500px;
+    padding: 40px 0;
+}
+.individual_product {
+    float: left;
+    width: 50%;
+}
+.individual_product .product{
+    padding-left: 164px;
+    position: relative;
+    margin-bottom: 40px;
+    min-height: 124px;
+}
+.individual_product .product .product_img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #f3f3f3;
+    width: 124px;
+    height: 124px;
+}
+
+.individual_product .product .pname {
+    font: 11px/15px Gothambold;
+}
+
+.individual_product .product .pcolor, .individual_product .product .pprice {
+    font: 11px/15px Gothambook;
+}
+.individual_product .product a{
+    color: #555;
+    text-decoration: none;
+    font: 11px/15px Gothambook;
+}
