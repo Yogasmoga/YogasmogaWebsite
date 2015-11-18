@@ -215,29 +215,30 @@ foreach ($configurableProductArr as $key => $val) {
     $characterSizeFound = false;
     foreach($simpleCollectionForSku as $simpleProductForSku){
         //$sku = $simpleProductForSku->getSku();
-        $colorName = $simpleProductForSku->getAttributeText('color');
+        $filterColorName = $simpleProductForSku->getAttributeText('color');
+        $filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
         //$skuar = explode("-", $sku);
         //$size = $skuar[1];
         $size = $simpleProductForSku->getAttributeText('size');
 
         $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
 
-        if(!isset($skuSizes[$colorName]))
-            $skuSizes[$colorName] = array();
+        if(!isset($skuSizes[$filterColorName]))
+            $skuSizes[$filterColorName] = array();
 
         if(strpos($size, "T")===false) {
             if (is_numeric($size)) {
                 $allSkuSizes[] = intval($size);
 
                 if($stock>0)
-                    $skuSizes[$colorName][] = $size;
+                    $skuSizes[$filterColorName][] = $size;
             }
             else{
                 $characterSizeFound = true;
                 $alphabeticSkuSizes[] = $size;
 
                 if($stock>0)
-                    $skuSizes[$colorName][] = $size;
+                    $skuSizes[$filterColorName][] = $size;
             }
         }
     }
