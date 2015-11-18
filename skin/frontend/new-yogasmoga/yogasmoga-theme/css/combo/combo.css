@@ -2,9 +2,11 @@
     box-sizing: border-box;
     text-align: left;
 }
-
-#body_compensator {
-    margin-top: 94px;
+p{
+    margin: 0;
+}
+a, a:hover{
+  color: #555;
 }
 
 /* *******************MAIN CSS ***************************** */
@@ -159,9 +161,6 @@
     margin-top: 25px;
     text-align: center;
 }
-.contain_product .side1 .product_price {
-    text-align: center;
-}
 
 .contain_product .product_name, .contain_product .product_price {
     font: 24px/32px AvantGardeGothicITCW01B;
@@ -178,7 +177,7 @@
     text-decoration: none;
     color: #555;
 }
-.contain_product .buy_product a:first-child{
+.contain_product .buy_product a.quick_look{
     margin-right: 15px;
 }
 .contain_product .buy_product a b{
@@ -369,6 +368,7 @@
 
 .pname {
     font: 11px/15px Gothambold;
+    text-transform: uppercase;
 }
 
 .pcolor, .pprice {
@@ -497,6 +497,7 @@ p.free_shipping {
 .box.set_name .product_name {
     font: 36px/80px AvantGardeGothicITCW01B;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .gift_sets_container {

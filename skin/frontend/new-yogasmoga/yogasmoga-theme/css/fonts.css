@@ -305,3 +305,15 @@ src:url("../fonts/daa5c000-4e87-40e9-9689-eec7fd2a19e1.eot?#iefix") format("eot"
     font-weight: normal;
     font-style: normal;
 }
+
+
+@font-face
+{
+	font-family: GothamBookItalic;
+	src:			url('../fonts/Gotham-BookItalic.ttf') format('truetype');
+	src:			url('../fonts/Gotham-BookItalic.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/Gotham-BookItalic.ttf') format('truetype'),
+	url('../fonts/Gotham-BookItalic.svg#Gotham-BookItalic') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
