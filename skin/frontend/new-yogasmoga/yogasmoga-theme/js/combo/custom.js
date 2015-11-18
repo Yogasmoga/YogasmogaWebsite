@@ -87,65 +87,8 @@ function updateTimes(){
 	});
 }
 
-jm(document).ready(function () {
-    var wh = jm(window).height();
-	jm('#fullpage').fullpage({
-
-		css3:false,
-
-        afterLoad: function (anchorLink, index) {
-            currentCityIndex = jm(".contain_product.active").index()-1;
-            showTemperature();
-        },
-        onLeave: function (anchorLink, index) {
-
-			if (index == 2) {
-				setTimeout(function(){
-					jm(".map_data_section").addClass("fixed");
-				},400);
-			}
-			if(index==1){
-				setTimeout(function(){
-					jm(".map_data_section").removeClass("fixed");
-				},300);
-			}
-			jm(".product_set>div.side1").removeClass("inverse-flipped");
-			jm(".product_set>div.side2").addClass("flipped");
-
-        },
-        afterResize: function () {
-            wh = jm(window).height();
-			jm("#fullpage .section,.fp-tableCell").height(wh - 89);
-        }
-    });
-
-	jm("#fullpage .section,.fp-tableCell").height(wh - 89);
-
-
-    init();
-
-});
-
-
-function init() {
-	jm(".contain_product .side1 .buy_product, .product_set .side2 span.reverse_flip").click(function () {
-		jm(this).closest(".product_set").find(".side1").toggleClass("inverse-flipped");
-		jm(this).closest(".product_set").find(".side2").toggleClass("flipped");
-	});
-
-	jm(".toggle_description").click(function () {
-		jm(this).closest(".product_set").find(".description_box").css({
-			"bottom": 0
-		});
-	});
-	jm(".close_desc").click(function () {
-		jm(this).closest(".product_set").find(".description_box").css({
-			"bottom": "-130px"
-		});
-	});
-
-}
-
+//currentCityIndex = jm(".contain_product.active").index()-1;
+//showTemperature();
 
 function getWeather(){
 
@@ -203,7 +146,16 @@ function showTemperature(){
 			jm(".latlong").html(latlongs[0]);
 
 			jm(".time p").html(cities[0] + " TIME");
-			jm(".time div").html(cityTimeValues[0]);
+
+			var tempTime = cityTimeValues[0];
+			if(tempTime!=undefined) {
+				var tempTimeNoAM_PM = tempTime.substr(0, tempTime.indexOf(" "));
+
+				if (tempTime.indexOf("a") > -1 || tempTime.indexOf("A") > -1)
+					jm(".time div").html(tempTimeNoAM_PM + "<span class='am'></span>");
+				else
+					jm(".time div").html(tempTimeNoAM_PM + "<span class='pm'></span>");
+			}
 
 			jm(".flora p").html(cities[0] + " FLORA");
 			jm(".fauna p").html(cities[0] + " FAUNA");
@@ -212,25 +164,37 @@ function showTemperature(){
 		}
 		else{
 			if(currentCityIndex>=0) {
-				jm(".temprature p").html(cities[currentCityIndex] + " TEMP");
-				jm(".temprature div").html(temperatures[currentCityIndex]);
+				jm(".temprature div").html("<span class='temp'></span> " + temperatures[currentCityIndex]);
 
 				jm(".latlong").html(latlongs[currentCityIndex]);
 
-				jm(".time p").html(cities[currentCityIndex] + " TIME");
-				jm(".time div").html(cityTimeValues[currentCityIndex]);
+				var tempTime = cityTimeValues[currentCityIndex];
+				if(tempTime!=undefined) {
+					var tempTimeNoAM_PM = tempTime.substr(0, tempTime.indexOf(" "));
+
+					if (tempTime.indexOf("a") > -1 || tempTime.indexOf("A") > -1)
+						jm(".time div").html(tempTimeNoAM_PM + "<span class='am'></span>");
+					else
+						jm(".time div").html(tempTimeNoAM_PM + "<span class='pm'></span>");
+				}
 
 				jm(".flora p").html(cities[currentCityIndex] + " FLORA");
 				jm(".fauna p").html(cities[currentCityIndex] + " FAUNA");
 			}
 			else{
-				jm(".temprature p").html(cities[0] + " TEMP");
 				jm(".temprature div").html(temperatures[0]);
 
 				jm(".latlong").html(latlongs[0]);
 
-				jm(".time p").html(cities[0] + " TIME");
-				jm(".time div").html(cityTimeValues[0]);
+				var tempTime = cityTimeValues[0];
+				if(tempTime!=undefined) {
+					tempTime = tempTime.substr(0, tempTime.indexOf(" "));
+
+					if (tempTime.indexOf("a") > -1 || tempTime.indexOf("A") > -1)
+						jm(".time div").html(tempTime + "<span class='am'></span>");
+					else
+						jm(".time div").html(tempTime + "<span class='pm'></span>");
+				}
 
 				jm(".flora p").html(cities[0] + " FLORA");
 				jm(".fauna p").html(cities[0] + " FAUNA");
