@@ -217,32 +217,18 @@ foreach ($configurableProductArr as $key => $val) {
         //$sku = $simpleProductForSku->getSku();
         $filterColorName = $simpleProductForSku->getAttributeText('color');
         $filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
-        //$skuar = explode("-", $sku);
-        //$size = $skuar[1];
+
         $size = $simpleProductForSku->getAttributeText('size');
 
         $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
-//echo "[ stock = $stock ]<br/>";
+
         if(!isset($skuSizes[$filterColorName]))
             $skuSizes[$filterColorName] = array();
 
-        if(strpos($size, "T")===false) {
-            if (is_numeric($size)) {
-                $allSkuSizes[] = intval($size);
-
-                if($stock>0)
-                    $skuSizes[$filterColorName][] = $size;
-            }
-            else{
-                $characterSizeFound = true;
-                $alphabeticSkuSizes[] = $size;
-
-                if($stock>0)
-                    $skuSizes[$filterColorName][] = $size;
-            }
-        }
+        $allSkuSizes[] = $size;
+        if($stock>0)
+            $skuSizes[$filterColorName][] = $size;
     }
-    //print_r($skuSizes);
 /**************** size filter *****************/
 
     // get all images for the product
@@ -309,9 +295,8 @@ foreach ($configurableProductArr as $key => $val) {
         $productColorName = $clrinfo[$childProduct['color']];
         $arColorSizes = array();
 
-        foreach($skuSizes as $key => $sizes) {
+        foreach($skuSizes as $keyColor => $sizes) {
 
-            $keyColor = substr($key, 0, strpos($key, "|"));
             if ($keyColor == $productColorName) {
                 $strSizes = implode(",", $sizes);
                 break;
@@ -371,7 +356,6 @@ foreach ($configurableProductArr as $key => $val) {
 
 /************** size filter ***********************/
 $allSkuSizes = array_unique($allSkuSizes);
-$alphabeticSkuSizes = array_unique($alphabeticSkuSizes);
 
 $arProductAllSizes = array();
 $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
@@ -392,12 +376,18 @@ foreach ($allOptions as $instance) {
 
         productColorIndex = "<?php echo $productColorIndex;?>";
 
-        <?php foreach($allSkuSizes as $size){ ?>
-            arProductSizes.push("<?php echo $size;?>");
         <?php
-        } foreach($arProductAllSizes as $size){ ?>
-            arAllSizes.push("<?php echo $size;?>");
-        <?php } ?>
+            foreach($allSkuSizes as $size){
+        ?>
+                arProductSizes.push("<?php echo $size;?>");
+        <?php
+            }
+            foreach($arProductAllSizes as $size){
+        ?>
+                arAllSizes.push("<?php echo $size;?>");
+        <?php
+            }
+        ?>
     </script>
 	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter.js"></script>
 <!-- ********************************* checkbox filter ********************** -->
