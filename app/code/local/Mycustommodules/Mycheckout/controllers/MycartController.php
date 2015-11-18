@@ -355,7 +355,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                 foreach($this->_getCart()->getItems() as $cartItem){
                     $tempUniqueTimeStamp = $item->getBuyRequest()['unique_time_stamp'];
-$data .= "[ $uniqueTimeStamp , $tempUniqueTimeStamp ]";
+
                     if($uniqueTimeStamp==$tempUniqueTimeStamp)
                         $this->_getCart()->removeItem($id)
                             ->save();
