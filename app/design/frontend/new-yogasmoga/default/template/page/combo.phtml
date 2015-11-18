@@ -238,8 +238,8 @@ foreach ($allSizeOptions as $instance) {
                                     <div class="product_detail product-detail-<?php echo $sizeDivCount;?>" rel="<?php echo $data["product"]->getId();?>">
                                         <p class="pname"><a href="<?php echo $data["url"];?>" target="_blank"><?php echo $data["product"]->getName();?><a/> <span class="pcolor product-color-<?php echo $sizeDivCount;?>" rel="<?php echo $data["color_code"];?>"><?php echo $data["color"];?></span></p>
 
-                                        <p class="psize">SIZE
-                                            <span class="gap"></span>
+                                        <p class="psize">
+                                            <span class="gap">SIZE</span>
                                             <span class="sizes">
                                                 <?php foreach($data["sizes"] as $size){ ?>
                                                     <span  class="size size-<?php echo $sizeDivCount;?>" rel="<?php echo $allSizes[$size];?>"><?php echo $size;?></span>

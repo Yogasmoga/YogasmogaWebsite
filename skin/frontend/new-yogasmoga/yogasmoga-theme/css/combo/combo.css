@@ -1,21 +1,25 @@
-*{
+* {
     box-sizing: border-box;
     text-align: left;
 }
-p{
+
+p {
     margin: 0;
 }
-a, a:hover{
-  color: #555;
+
+a, a:hover {
+    color: #555;
 }
 
 /* *******************MAIN CSS ***************************** */
 .header-container {
     top: 25px !important;
 }
-div#bodycompensator{
+
+div#bodycompensator {
     height: 94px !important;
 }
+
 #top_banner {
     background: #AE8637;
     color: #fff;
@@ -35,6 +39,7 @@ div#bodycompensator{
 #fullpage .section {
     position: relative;
 }
+
 #top_banner {
     position: fixed;
     top: 0;
@@ -44,10 +49,12 @@ div#bodycompensator{
     font: 11px/25px ITCAvantGardeProBk;
     z-index: 10;
 }
-#top_banner p{
+
+#top_banner p {
     text-align: center;
 }
-.map_data_container *{
+
+.map_data_container * {
     box-sizing: border-box;
 }
 
@@ -107,7 +114,8 @@ div#bodycompensator{
 .map_data_section .box.coordinate {
     padding-left: 150px;
 }
-.map_data_section .box.coordinate p{
+
+.map_data_section .box.coordinate p {
     text-align: center;
 }
 
@@ -170,7 +178,7 @@ div#bodycompensator{
 
 .contain_product .side1 .product_price {
     text-align: center;
-}   
+}
 
 .contain_product .product_name, .contain_product .product_price {
     font: 24px/32px AvantGardeGothicITCW01B;
@@ -183,16 +191,20 @@ div#bodycompensator{
     right: 40px;
     cursor: pointer;
 }
-.contain_product .buy_product a{
+
+.contain_product .buy_product a {
     text-decoration: none;
     color: #555;
 }
-.contain_product .buy_product a.quick_look{
+
+.contain_product .buy_product a.quick_look {
     margin-right: 15px;
 }
-.contain_product .buy_product a b{
+
+.contain_product .buy_product a b {
     color: #CC0033;
 }
+
 .product_set {
     /*box-shadow: 0 0 10px #000;*/
     position: relative;
@@ -318,9 +330,11 @@ div#bodycompensator{
     position: absolute;
     text-transform: uppercase;
 }
-.toggle_description b{
+
+.toggle_description b {
     color: #CC0033;
 }
+
 .rel_container {
     position: relative;
 }
@@ -390,6 +404,8 @@ div#bodycompensator{
     display: inline-block;
     font: 11px/15px Gothambook;
     margin-bottom: 5px;
+    padding-left: 34px;
+    position: relative;
     width: 240px;
 }
 
@@ -544,7 +560,7 @@ span.pm {
     background: rgba(0, 0, 0, 0) url("../../images/combo/pm.svg") no-repeat scroll 0 100%;
     display: inline-block;
     height: 18px;
-    margin-left: -3px;
+    margin-left: 0;
     margin-top: -20px;
     vertical-align: middle;
     width: 15px;
@@ -592,7 +608,12 @@ span.temp {
 
 .gap {
     display: inline-block;
-    width: 15px;
+    margin: 0 !important;
+    border: none;
+    left: 0;
+    position: absolute;
+    top: 22px;
+    width: 34px;
 }
 
 .page-title_fixed {
@@ -604,11 +625,11 @@ span.temp {
     text-align: center;
 }
 
-.active-size{
+.active-size {
     background: #666;
     color: #fff;
 }
 
-.bag-active{
+.bag-active {
     background: url('/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/add-to-bag-on.png') no-repeat center center;
 }
