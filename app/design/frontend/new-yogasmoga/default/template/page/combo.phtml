@@ -62,6 +62,15 @@
 
             $resourceModel = Mage::getResourceModel('catalog/product');
 
+            $allColors = array();
+            $allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+            $allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
+            foreach ($allColorOptions as $instance) {
+                if (!array_key_exists($instance['value'], $allColors)) {
+                    $allColors[$instance['value']] = $instance['label'];
+                }
+            }
+
             foreach($productCollection as $_product_single)
             {
                 $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
@@ -74,9 +83,12 @@
 
                 for($i=0;$i<count($ar_bundled_product_ids);$i++) {
 
-                    $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);
+                    $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);          // id:color_code
 
-                    $_bundle_product = Mage::getModel('catalog/product')->load(intval($ar_id_color_code[0]));
+                    $bundle_configurable_id = $ar_id_color_code[0];
+                    $bundle_color_id = $ar_id_color_code[1];
+
+                    $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
 
                     $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
 
@@ -111,8 +123,7 @@
                     $ar_child_sizes = array_unique($ar_child_sizes);
                     ksort($ar_child_sizes);
 
-//                    $ar_bundle_sizes[$i] = array("sizes" => $ar_child_sizes, "images" => $bundle_product_images);
-                    $ar_bundle_sizes[$i] = array("product" => $_bundle_product, "sizes" => $ar_child_sizes, "images" => $bundle_product_images);
+                    $ar_bundle_sizes[$i] = array("product" => $_bundle_product, "sizes" => $ar_child_sizes, "images" => $bundle_product_images, "color" => $allColors[$bundle_color_id]);
                 }
 
                 // main set images
@@ -218,7 +229,7 @@
 
                                         <div class="product_detail">
                                             <p class="pname"><?php echo $data["product"]->getName();?></p>
-                                            <p class="pcolor">KOEL BLUE</p>
+                                            <p class="pcolor"><?php echo $data["color"];?></p>
                                             <p class="psize">SIZE <span class="size-chart-bundle">SIZE CHART</span></p>
                                             <div class="sizes">
                                                 <?php foreach($data["sizes"] as $size){ ?>
