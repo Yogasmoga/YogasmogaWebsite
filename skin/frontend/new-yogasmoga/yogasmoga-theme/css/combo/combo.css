@@ -10,7 +10,12 @@ a, a:hover{
 }
 
 /* *******************MAIN CSS ***************************** */
-
+.header-container {
+    top: 25px !important;
+}
+div#bodycompensator{
+    height: 94px !important;
+}
 #top_banner {
     background: #AE8637;
     color: #fff;
@@ -36,11 +41,12 @@ a, a:hover{
     left: 0;
     height: 25px;
     width: 100%;
-    text-align: center;
     font: 11px/25px ITCAvantGardeProBk;
     z-index: 10;
 }
-
+#top_banner p{
+    text-align: center;
+}
 .map_data_container *{
     box-sizing: border-box;
 }
