@@ -958,13 +958,19 @@ span.country {
     .avant_extra_light{
         font:38px/43px AvantGardeGothicITCW01X;
     }
-
+		.avant_grade_medium{
+				 font:53px/43px AvantGardeGothicITCW01M;	
+			 }
+			 .avant_grade_demi{
+		font:40px/45px AvantGardeGothicITCW01D;
+	}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
 
     .coloumn-list li span {
         font-size: 16px !important;
     }
-
+	.sweat-detail-bold{font:36px/41px AvantGardeGothicITCW01D!important;}
+	.sweat-detail-light{font:36px/41px ITCAvantGardeProBk!important;}
     .coloumn-list li {
         width: 28% !important;
     }
@@ -2075,9 +2081,17 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .avant_demi_bold{
         font:40px/43px AvantGardeGothicITCW01D;
     }
+	.avant_grade_demi{
+		font:40px/43px AvantGardeGothicITCW01D;
+	}
+	
     .avant_extra_light{
         font:38px/43px AvantGardeGothicITCW01X;
     }
+	.avant_grade_medium{
+				 font:53px/43px AvantGardeGothicITCW01M;	
+			 }
+
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
 
     /**new**/
@@ -2149,6 +2163,12 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .avant_extra_light{
         font:38px/43px AvantGardeGothicITCW01X;
     }
+	.avant_grade_medium{
+				 font:53px/43px AvantGardeGothicITCW01M;	
+			 }
+	.avant_grade_demi{
+		font:40px/45px AvantGardeGothicITCW01D;
+	}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
 
     /* cmsheading */
@@ -2195,7 +2215,12 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .avant_extra_light{
                  font:38px/43px AvantGardeGothicITCW01X;
              }
-
+			 .avant_grade_medium{
+				 font:53px/43px AvantGardeGothicITCW01M;	
+			 }
+	.avant_grade_demi{
+		font:40px/45px AvantGardeGothicITCW01D;
+	}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
 
     /* cmsheading */
@@ -2237,6 +2262,12 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .avant_extra_light{
                  font:48px/53px AvantGardeGothicITCW01X;
              }
+	.avant_grade_medium{
+				 font:83px/53px AvantGardeGothicITCW01M;	
+			 }
+	.avant_grade_demi{
+		font:60px/55px AvantGardeGothicITCW01D;
+	}
 
     .avant_grade_book{font:50px/53px ITCAvantGardeProBk;}
 
