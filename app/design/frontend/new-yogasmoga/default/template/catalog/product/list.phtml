@@ -212,6 +212,7 @@ foreach ($configurableProductArr as $key => $val) {
     $skuSizes = array();
     $simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFilterByRequiredOptions();
 
+    $characterSizeFound = false;
     foreach($simpleCollectionForSku as $simpleProductForSku){
         //$sku = $simpleProductForSku->getSku();
         $colorName = $simpleProductForSku->getAttributeText('color');
@@ -232,19 +233,11 @@ foreach ($configurableProductArr as $key => $val) {
                     $skuSizes[$colorName][] = $size;
             }
             else{
+                $characterSizeFound = true;
                 $alphabeticSkuSizes[] = $size;
 
                 if($stock>0)
                     $skuSizes[$colorName][] = $size;
-            }
-        }
-        else {
-            if (is_numeric(substr($size, 0, 1))) {
-                //$alphabeticSkuSizes[] = "T";
-                //$skuSizes[$colorName][] = "T";
-            } else {
-                //$alphabeticSkuSizes[] = $size;
-                //$skuSizes[$colorName][] = $size;
             }
         }
     }
@@ -378,7 +371,10 @@ foreach ($configurableProductArr as $key => $val) {
 $allSkuSizes = array_unique($allSkuSizes);
 $alphabeticSkuSizes = array_unique($alphabeticSkuSizes);
 
-ksort($allSkuSizes);
+if($characterSizeFound)
+    ksort($allSkuSizes);
+else
+    ksort($allSkuSizes, SORT_NUMERIC);
 
 $sizeResult = "<b>FILTER BY SIZE: </b> ";
 foreach($allSkuSizes as $strSize)
