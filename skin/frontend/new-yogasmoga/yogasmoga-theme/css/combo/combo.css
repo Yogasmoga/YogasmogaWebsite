@@ -140,8 +140,20 @@ div#bodycompensator {
     padding: 0 20px;
 }
 
-.set_desc, .middle_desc, .middle_desc div, .right_desc {
+.set_desc {
     float: left;
+}
+
+.middle_desc .desc_product_color {
+    text-transform: uppercase;
+}
+
+.middle_desc, .middle_desc div, .right_desc {
+    float: left;
+    font: 11px/15px GothamBook;
+}
+
+.set_desc p {
     font: 12px/15px GothamBook;
 }
 
@@ -398,6 +410,7 @@ div#bodycompensator {
 .pcolor, .pprice {
     font: 11px/15px Gothambook;
     margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .psize {
@@ -632,4 +645,28 @@ span.temp {
 
 .bag-active {
     background: url('/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/add-to-bag-on.png') no-repeat center center;
+}
+
+.contain_product.active .buy_product a.quick_look {
+    position: fixed;
+    right: 145px;
+    top: 280px;
+}
+
+.contain_product.active .buy_product a.quick_look {
+    position: fixed;
+    right: 145px;
+    top: 280px;
+}
+
+.contain_product.active .buy_product a.buy_gift_set {
+    position: fixed;
+    right: 40px;
+    top: 280px;
+}
+
+.section.active .side1 .toggle_description {
+    position: fixed;
+    left: 40px;
+    top: 280px;
 }

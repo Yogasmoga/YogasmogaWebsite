@@ -279,7 +279,7 @@ foreach ($allSizeOptions as $instance) {
 
                         <div class="set_desc">
                             <b>THE CHICAGO SET</b><br/>
-                            Quis nec pede maecenas suspendisse dui pede. Massa lectus felis est mollis urna. Maecenas
+                            <p>Quis nec pede maecenas suspendisse dui pede. Massa lectus felis est mollis urna. Maecenas
                             sit
                             vestibulum
                             est hac rutrum augue. Molestie vel sed integer, accumsan mollis, elementum egestas hac sem
@@ -290,6 +290,7 @@ foreach ($allSizeOptions as $instance) {
                             a,
                             sit
                             in quis arcu lectus a consectetuer.
+                            </p>
                         </div>
                         <div class="middle_desc">
                             <?php
@@ -297,7 +298,7 @@ foreach ($allSizeOptions as $instance) {
                             ?>
                             <div>
                                 <b><?php echo $data["product"]->getName();?></b><br/>
-                                <?php echo $data["color"];?><br/>
+                                <span class="desc_product_color"><?php echo $data["color"];?></span><br/>
                                 $<?php echo $data["price"];?><br/>
                                 <a href="<?php echo $data["url"];?>" target="_blank">Buy Individually</a>
                             </div>
