@@ -36,6 +36,7 @@ function init() {
     });
 
     jQuery(".toggle_description").click(function () {
+        $(".close_desc").click();
         descriptionPosition();
         jQuery(this).closest(".section").find(".description_box").css({
             "bottom": 0,

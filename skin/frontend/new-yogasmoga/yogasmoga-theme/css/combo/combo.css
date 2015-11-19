@@ -647,12 +647,6 @@ span.temp {
     background: url('/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/add-to-bag-on.png') no-repeat center center;
 }
 
-.contain_product.active .buy_product a.quick_look {
-    position: fixed;
-    right: 145px;
-    top: 280px;
-}
-
 /*
 .contain_product.active .buy_product a.quick_look {
     position: fixed;

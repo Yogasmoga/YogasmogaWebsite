@@ -89,3 +89,22 @@ function filterSizes(){
 
     jQuery("#div_sizes").html(sizes);
 }
+
+
+(function($){
+    $(document).ready(function($){
+        var filterOffsetTop = $("#div_sizes").offset().top - 69;
+        positionFilter(filterOffsetTop);
+        $(window).scroll(function(){
+            positionFilter(filterOffsetTop);
+        });
+        function positionFilter(filterOffsetTop){
+            var winScrollTop = $(window).scrollTop();
+            if( winScrollTop > filterOffsetTop){
+                $("#div_sizes").addClass("fixed_top");
+            }else{
+                $("#div_sizes").removeClass("fixed_top");
+            }
+        }
+    });
+})(jQuery);
