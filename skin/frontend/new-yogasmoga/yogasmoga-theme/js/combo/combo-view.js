@@ -37,7 +37,7 @@ function changeProduct(product_id){
 
     var ids = allComboProducts[product_id]["bundle_ids"];
 
-    var url = homeUrl + '/ys/utility/getcombodata';
+    var url = homeUrl + '/ys/utility/getcombodata?s=' + new Date().getMilliseconds();
 
     jQuery.ajax({
         url: url,
