@@ -36,6 +36,7 @@ function init() {
     });
 
     jQuery(".toggle_description").click(function () {
+        $(".close_desc").click();
         descriptionPosition();
         jQuery(this).closest(".section").find(".description_box").css({
             "bottom": 0,
@@ -95,7 +96,7 @@ function setActiveLink(sectionOffsets) {
     jQuery(".box.set_name .product_name").html(setName);
     jQuery(".box.set_name .product_price").html(setPrice);
 
-    currentCityIndex = sectionIndex-1;
+    currentCityIndex = sectionIndex - 1;
     showTemperature();
 
     var mapPoint = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").attr("data-map");
