@@ -183,7 +183,7 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 			?>
 			<ul>
 			    <?php 
-				if(isset($parentCategoryId) && $parentCategoryId =='3') { $whtsmaincatid ='71'; }
+			if(isset($parentCategoryId) && $parentCategoryId =='3') { $whtsmaincatid ='16'; } else { $whtsmaincatid ='19'; }
 				$printscatid = Mage::getModel('catalog/category')->load($whtsmaincatid); ?>
                 <li><a title="What's New" class="has_no_childs" href="<?php echo $printscatid->getUrl(); ?>"><?php echo $printscatid->getName(); ?></a>
 				<ul></ul>
@@ -193,7 +193,7 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 					{
 					  $_category = Mage::getModel('catalog/category')->load($subCatid);
 					  if($_category->getIsActive()) { ?>
-						<li style="<?php if($_category->getId() =='16' || $_category->getId() =='19') { echo 'display:none';} ?>">
+							<li style="<?php if($_category->getId() =='16' || $_category->getId() =='19') { echo 'display:none';} ?>">
 
 						<?php 
 						$sub_cat = Mage::getModel('catalog/category')->load($_category->getId());
