@@ -149,12 +149,12 @@ ul.site-map > li{
 }
 
 .grid65{
-    width: 66.633565044687189672293942403178%;
+    width: 66.7%;
     /*float: left;*/    
 }
 
 .grid35{
-    width: 33.366434955312810327706057596822%;
+    width: 33.3%;
     /*float: right;*/
     position: absolute;
     height: 100%;
@@ -2019,11 +2019,11 @@ background: #f7e8eb;
 }
 
 .ysfabricpart .grid35, .factorypart .grid35 {
-    left:66.633565044687189672293942403178%;
+    left:66.7%;
 }
 
 .namaskarpart .grid35, .yscolorpart .grid35{
-    right:66.633565044687189672293942403178%;
+    right:66.7%;
 }
 
 body.mac-os .grnbtn{
