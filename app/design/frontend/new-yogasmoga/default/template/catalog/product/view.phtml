@@ -2084,7 +2084,7 @@ foreach($productCollection as $_product_single)
 
     $arComboProduct[$_product->getId()] = array(
         "name" => $_product->getName(),
-        "price" => $_product->getPrice(),
+        "price" => "$".$_product->getPrice(),
         "quantity" => $_product->getQty(),
         "description" => $_product->getDescription(),
         "bundle_ids" => $bundled_product_ids
