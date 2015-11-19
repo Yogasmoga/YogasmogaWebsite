@@ -122,6 +122,14 @@
           </nominate>
           <!-- Nominate layouts here end -->
 
+        <!-- prints category layouts start here -->
+        <prints translate="label">
+          <label>Prints</label>
+          <template>page/prints.phtml</template>
+          <layout_handle>prints</layout_handle>
+        </prints>
+        <!-- Prints category layouts end here -->
+
       </layouts>
     </page>
   </global>
