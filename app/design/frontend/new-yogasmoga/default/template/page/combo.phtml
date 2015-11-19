@@ -290,8 +290,10 @@ foreach ($allSizeOptions as $instance) {
                         <span class="close_desc">&plus;</span>
 
                         <div class="set_desc">
+
                             <b><?php echo $_product->getName();?></b><br/>
-                            <?php echo $_product->getDescription();?>
+                            <p><?php echo $_product->getDescription();?></p>
+
                         </div>
                         <div class="middle_desc">
                             <?php
@@ -299,7 +301,7 @@ foreach ($allSizeOptions as $instance) {
                             ?>
                             <div>
                                 <b><?php echo $data["product"]->getName();?></b><br/>
-                                <?php echo $data["color"];?><br/>
+                                <span class="desc_product_color"><?php echo $data["color"];?></span><br/>
                                 $<?php echo $data["price"];?><br/>
                                 <a href="<?php echo $data["url"];?>" target="_blank">Buy Individually</a>
                             </div>
