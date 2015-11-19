@@ -1,6 +1,7 @@
 var allSizes = [];
 var allColors = [];
 var allComboProducts = [];
+var setProductCount = 0;
 
 jQuery(document).ready(function () {
 
@@ -56,6 +57,8 @@ function changeProduct(product_id){
                     strSets += "<p class='product_price'>" + allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " SETS REMAINING</span>" + "</p>";
 
                     jQuery(".purchase_box").append(strSets);
+
+                    setProductCount = data.length;
 
                     for(var i=0;i<data.length;i++){
 
@@ -155,7 +158,7 @@ function bindSizes(){
         else
             jQuery(this).addClass("active-size");
 
-        if(jQuery(this).closest(".purchase_box").find(".active-size").length==2) {
+        if(jQuery(this).closest(".purchase_box").find(".active-size").length==setProductCount) {
             jQuery(this).closest(".purchase_box").find(".add_to_bag").addClass("bag-active");
             jQuery(this).closest(".purchase_box").find(".add_to_bag").html('');
         }
