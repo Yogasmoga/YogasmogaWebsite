@@ -957,7 +957,14 @@ span.country {
     .avant_extra_light{
         font:38px/43px AvantGardeGothicITCW01X;
     }
-
+    .avant_grade_demi{
+        font:55px/54px AvantGardeGothicITCW01D;
+    }
+    .avant_grade_medium{
+        font:53px/43px AvantGardeGothicITCW01M;
+    }
+    .avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
+    .avant-grade-bk-small{font:30px/38px ITCAvantGardeProBk;}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
 
     .coloumn-list li span {
@@ -2074,9 +2081,17 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .avant_demi_bold{
         font:40px/43px AvantGardeGothicITCW01D;
     }
+    .avant_grade_demi{
+        font:55px/54px AvantGardeGothicITCW01D;
+    }
+    .avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
     .avant_extra_light{
         font:38px/43px AvantGardeGothicITCW01X;
     }
+    .avant_grade_medium{
+        font:53px/43px AvantGardeGothicITCW01M;
+    }
+    .avant-grade-bk-small{font:32px/32px ITCAvantGardeProBk;}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
 
     /**new**/
@@ -2145,6 +2160,14 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .avant_extra_light{
         font:38px/43px AvantGardeGothicITCW01X;
     }
+    .avant_grade_medium{
+        font:68px/43px AvantGardeGothicITCW01M;
+    }
+    .avant_grade_demi{
+        font:55px/54px AvantGardeGothicITCW01D;
+    }
+    .avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
+    .avant-grade-bk-small{font:30px/38px ITCAvantGardeProBk;}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
 
     /* cmsheading */
@@ -2190,7 +2213,15 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .avant_extra_light{
                  font:38px/43px AvantGardeGothicITCW01X;
              }
+    .avant_grade_medium{
+        font:70px/53px AvantGardeGothicITCW01M;
+    }
+    .avant_grade_demi{
+        font:55px/54px AvantGardeGothicITCW01D;
 
+    }
+    .avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
+    .avant-grade-bk-small{font:32px/32px ITCAvantGardeProBk;}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
 
     /* cmsheading */
@@ -2226,6 +2257,18 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .avant_demi_bold{
                 font:50px/53px AvantGardeGothicITCW01D;
             }
+    .avant_grade_demi{
+        font:66px/64px AvantGardeGothicITCW01D;
+    }
+    .avant_grade_medium{
+        font:83px/53px AvantGardeGothicITCW01M;
+    }
+    .avant_grade_demi .run-jump-txt{font:50px/71px AvantGardeGothicITCW01D;}
+    .sweat-detail-light{font:58px/55px ITCAvantGardeProBk!important;}
+
+
+    .avant-grade-bk-small{font:40px/48px ITCAvantGardeProBk;}
+
     .avant_extra_light{
                  font:48px/53px AvantGardeGothicITCW01X;
              }
@@ -2711,11 +2754,15 @@ table.smallimagecontiner td.selectedimage{
 
 /*===============Edited By Ankur Start===============*/
 
-
-
-
-
-
+.fall-river {
+    background: transparent url("../images/new-elements/manufacture-in-fall-river.jpg") no-repeat scroll center center / 100% 100%;
+    display: table;
+    height: 50% !important;
+    position: absolute;
+    vertical-align: middle;
+    width: 100%;
+    top: 50%;
+}
 
 
 

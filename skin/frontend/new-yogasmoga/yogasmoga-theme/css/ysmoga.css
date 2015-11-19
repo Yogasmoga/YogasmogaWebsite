@@ -149,12 +149,12 @@ ul.site-map > li{
 }
 
 .grid65{
-    width: 66.633565044687189672293942403178%;
+    width: 66.7%;
     /*float: left;*/    
 }
 
 .grid35{
-    width: 33.366434955312810327706057596822%;
+    width: 33.4% !important;
     /*float: right;*/
     position: absolute;
     height: 100%;
@@ -273,21 +273,27 @@ ul.site-map > li{
     height: 50% !important;
     position: absolute;
 }
-
+/*
 .multicolorcont{
-/*    background: url("../images/homepage/color-world.jpg") no-repeat center center transparent; */
+   background: url("../images/homepage/color-world.jpg") no-repeat center center transparent;
     background: #f2542f;
     background-size: 100% 100%;
+}*/
+.multicolorcont {
+    background: #03310f none repeat scroll 0 0 / 100% 100%;
 }
 
+
+
 .factorythread{
-    background: url("../images/new-elements/facthread.jpg") no-repeat center center transparent;
+    /*background: url("../images/new-elements/facthread.jpg") no-repeat center center transparent;*/
+    background: url("../images/new-elements/made-in-usa-top-section.jpg") no-repeat center center transparent;
     background-size: 100% 100%;
     /*height:100%;*/
 }
 
 .usamap{
-    background: url("../images/new-elements/usamap.jpg") no-repeat center center transparent;
+    background: url("../images/new-elements/made-in-usa-bottom-section.jpg") no-repeat center center transparent;
     background-size: 100% 100%;
     top:50%;
 }
@@ -1999,11 +2005,11 @@ table#searchBox div.searchbutton{
 }
 
 .ysfabricpart .grid35, .factorypart .grid35 {
-    left:66.633565044687189672293942403178%;
+    left:66.6%;
 }
 
 .namaskarpart .grid35, .yscolorpart .grid35{
-    right:66.633565044687189672293942403178%;
+    right:66.6%;
 }
 
 body.mac-os .grnbtn{

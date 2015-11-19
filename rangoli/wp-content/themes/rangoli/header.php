@@ -223,10 +223,11 @@ if(!is_user_logged_in()){
                         <li>
                             <ul>
                                 <li><a href="/women/whats-new"> What's New</a></li>
+                                <li><a href="/women/prints"> Prints</a></li>
                                 <li><a href="/women/one-too-many"> One 2 Many</a></li>
                                 <li><a href="/women/additional-sizes"> ADDITIONAL SIZES</a></li>
                                 <li><a href="/women/vivacity-collection"> VIVACITY COLLECTION</a></li>
-                                <li><a href="/women/rangoli-collection"> RANGOLI COLLECTION</a></li>
+                                <!--<li><a href="/women/rangoli-collection"> RANGOLI COLLECTION</a></li>-->
                             </ul>
                         </li>
                         <li><a href="/women/tops"> Tops</a>
@@ -235,7 +236,7 @@ if(!is_user_logged_in()){
                                 <li><a href="/women/tops/tees">TEES</a></li>
                                 <li><a href="/women/tops/sweaters">SWEATERS</a></li>
                                 <li><a href="/women/tops/jackets">Jackets & Hoodies</a></li>
-                                <li><a href="/women/tops/rangoli">Rangoli</a></li>
+                                <!--<li><a href="/women/tops/rangoli">Rangoli</a></li>-->
                             </ul>
                         </li>
                         <li><a href="/women/bottoms"> Bottoms</a>
@@ -244,7 +245,7 @@ if(!is_user_logged_in()){
                                 <li><a href="/women/bottoms/crops">Crops</a></li>
                                 <li><a href="/women/bottoms/leggings">Leggings</a></li>
                                 <li><a href="/women/bottoms/pants">Pants</a></li>
-                                <li><a href="/women/bottoms/rangoli">Rangoli</a></li>
+                              <!--  <li><a href="/women/bottoms/rangoli">Rangoli</a></li>-->
                             </ul>
                         </li>
                         <li><a href="/women/accessories"> Accessories </a>
