@@ -963,12 +963,12 @@ span.country {
 		font:53px/43px AvantGardeGothicITCW01M;	
 	}
 	.avant_grade_demi{
-		font:50px/55px AvantGardeGothicITCW01D;
+		font:55px/54px AvantGardeGothicITCW01D;
 	}
 	
 	.avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
-	.avant-grade-bk-small{font:30px/38px ITCAvantGardeProBk;}
+	.avant-grade-bk-small{font:32px/32px ITCAvantGardeProBk;}
     .coloumn-list li span {
         font-size: 16px !important;
     }
@@ -2085,7 +2085,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
         font:40px/43px AvantGardeGothicITCW01D;
     }
 	.avant_grade_demi{
-		font:50px/55px AvantGardeGothicITCW01D;
+		font:55px/54px AvantGardeGothicITCW01D;
 	}
 	
 	.avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
@@ -2098,7 +2098,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 			 }
 
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
-	.avant-grade-bk-small{font:30px/38px ITCAvantGardeProBk;}
+	.avant-grade-bk-small{font:32px/32px ITCAvantGardeProBk;}
 
     /**new**/
     .contentSlider h2{font-size: 11px; line-height: 35px;}
@@ -2173,13 +2173,13 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 				 font:53px/43px AvantGardeGothicITCW01M;	
 			 }
 	.avant_grade_demi{
-		font:50px/55px AvantGardeGothicITCW01D;
+		font:55px/54px AvantGardeGothicITCW01D;
 	}
 	
 	
 	.avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
-	.avant-grade-bk-small{font:30px/38px ITCAvantGardeProBk;}
+	.avant-grade-bk-small{font:32px/32px ITCAvantGardeProBk;}
 
     /* cmsheading */
     .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 40px !important; line-height: 43px !important;}
@@ -2226,16 +2226,16 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
                  font:38px/43px AvantGardeGothicITCW01X;
              }
 			 .avant_grade_medium{
-				 font:53px/43px AvantGardeGothicITCW01M;	
+				 font:70px/53px AvantGardeGothicITCW01M;	
 			 }
 	.avant_grade_demi{
-		font:40px/45px AvantGardeGothicITCW01D;
+		font:55px/54px AvantGardeGothicITCW01D;
 	
 	}
 	
 	.avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
-	.avant-grade-bk-small{font:30px/38px ITCAvantGardeProBk;}
+	.avant-grade-bk-small{font:32px/32px ITCAvantGardeProBk;}
 
     /* cmsheading */
     .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 45px !important; line-height: 48px !important;}
