@@ -132,6 +132,9 @@ foreach ($allSizeOptions as $instance) {
 
             $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
 
+            if(isset($bundled_product_ids))
+                $bundled_product_ids = trim($bundled_product_ids);
+
             $ar_bundled_product_ids = explode(",", $bundled_product_ids);
 
             $ar_bundle_sizes = array();
