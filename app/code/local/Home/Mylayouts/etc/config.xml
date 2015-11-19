@@ -129,7 +129,14 @@
           <layout_handle>combo</layout_handle>
         </combo>
         <!-- Combo's layouts here end -->
-
+		
+		<!-- Prints Category layouts Start here -->
+		<prints translate="label">
+          <label>Prints</label>
+          <template>page/prints.phtml</template>
+          <layout_handle>prints</layout_handle>
+        </prints>
+		<!-- Prints Category layouts End here -->
       </layouts>
     </page>
   </global>
