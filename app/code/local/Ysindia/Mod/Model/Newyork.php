@@ -4,13 +4,21 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
     protected function _rowBaseCalculation($item, $request)
     {
         // If USD and from NY Region, apply tax rate based on grand total
-        if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "43") {
+        if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD") {
             
-            if($item['price'] < 110) {
-			   $price_minus_discount = $item['price'] - $item['discount_amount'];
-               $item->getProduct()->setTaxClassId('30');
-            }
-        }
+			if($request['region_id'] == "43"){
+				if($item['price'] < 110) {
+					$price_minus_discount = $item['price'] - $item['discount_amount'];
+					$item->getProduct()->setTaxClassId('30');
+				}
+			}
+			if($request['region_id'] == "43" || $request['region_id'] == "12" || $request['region_id'] == "14"){
+				if($item['product_id']==4){
+				$price_minus_discount = $item['price'] - $item['discount_amount'];
+				$item->getProduct()->setTaxClassId('30');
+				}
+			}   
+		}
 
         $request->setProductClassId($item->getProduct()->getTaxClassId());
         $rate   = $this->_calculator->getRate($request);
@@ -125,13 +133,20 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 		 $request->setProductClassId($item->getProduct()->getTaxClassId());
         $rate   = $this->_calculator->getRate($request);
 
-        if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "43") {
+         if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "43") {
             
-            if($item['price'] < 110) {
-				$price_minus_discount = $item['price'] - $item['discount_amount'];
+			if($item['price'] < 110) {
+			$price_minus_discount = $item['price'] - $item['discount_amount'];
                 $rate = 0;
             }
-        }
+			
+			if($request['region_id'] == "43" || $request['region_id'] == "12" || $request['region_id'] == "14"){
+				if($item['product_id']==4){
+					$price_minus_discount = $item['price'] - $item['discount_amount'];
+					$rate = 0;
+				}
+			}
+		}
 	
         
         $qty    = $item->getTotalQty();
