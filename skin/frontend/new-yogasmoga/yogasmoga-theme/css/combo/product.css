@@ -1,9 +1,3 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    text-align: left;
-}
-
 #top_banner {
     background: #AE8637;
     color: #fff;
@@ -27,6 +21,11 @@
     margin: 0 auto;
 }
 
+.product_page_container *{
+    text-align: left;
+    box-sizing: border-box;
+}
+
 .gift_sets_container {
     padding-left: 55px;
     position: relative;
@@ -41,7 +40,11 @@
     bottom: 16px;
     width: 55px;
 }
-.gift_set_filter label,.gift_set > p {
+.gift_set_filter label{
+    font: 11px/15px Gothambold;
+    display: block;
+}
+.gift_set > p {
     font: 11px/15px Gothambold;
     display: block;
     text-align: center;
@@ -252,4 +255,12 @@
     color: #555;
     text-decoration: none;
     font: 11px/15px Gothambook;
+}
+.active-size {
+    background: #666;
+    color: #fff;
+}
+
+.bag-active {
+    background: url('/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/add-to-bag-on.png') no-repeat center center !important;
 }

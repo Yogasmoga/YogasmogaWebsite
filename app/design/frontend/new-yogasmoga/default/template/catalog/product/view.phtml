@@ -2089,7 +2089,7 @@ foreach($productCollection as $_product_single)
         "bundle_ids" => $bundled_product_ids
     );
 }
-    
+
 /***************** get all colors from database ***********************/
 $allColors = array();
 $allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
@@ -2178,6 +2178,5 @@ foreach ($allSizeOptions as $instance) {
         echo "changeProduct(" . $_conf_product->getId() . ")";
     ?>
 </script>
-/**************************************************** logic for gift set ***************************************/
 <?php } ?>
 

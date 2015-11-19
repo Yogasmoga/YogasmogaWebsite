@@ -1,7 +1,6 @@
 var allSizes = [];
 var allColors = [];
 var allComboProducts = [];
-var allDescriptions = [];
 
 jQuery(document).ready(function () {
 
@@ -16,22 +15,6 @@ jQuery(document).ready(function () {
 
         changeProduct(product_id);
     });
-    
-    jQuery(".add_to_bag").click(function(){
-
-        if(jQuery(this).hasClass("bag-active")) {
-
-            var giftIdCount = jQuery(this).attr('rel');
-
-            var arGiftIdCount = giftIdCount.split(':');
-
-            var giftId = arGiftIdCount[0];
-            var currentProductColorCode = arGiftIdCount[1];
-            var count = arGiftIdCount[2];
-
-            addToBag(giftId, count, jQuery(this).closest(".product_filters"), currentProductColorCode);
-        }
-    });
 });
 
 function resizeSlider(){
@@ -42,6 +25,8 @@ function resizeSlider(){
 }
 
 function changeProduct(product_id){
+
+    var color_code = 216;    // by default all gift set has color "Andaman Green"
 
     jQuery(".purchase_box").html("");
     jQuery(".set_individual_products").html("");
@@ -80,10 +65,13 @@ function changeProduct(product_id){
                     }
 
                     strSets = "";
-                    strSets += "<div class='add_to_bag'>ADD TO BAG</div>";
+                    strSets += "<div class='add_to_bag' rel='" + product_id + ":" + color_code + ":" + data.length + "'>ADD TO BAG</div>";
                     strSets += "<p class='free_shipping'>Free and fast shipping to US and Canada</p>";
 
                     jQuery(".purchase_box").append(strSets);
+
+                    bindSizes();
+                    bindBag();
                 }
             }
         }
@@ -99,9 +87,9 @@ function addSideBundleProduct(data, i){
 
     strSets += "<div class='set_item'>";
     strSets += "<div class='product_image'><img src='" + data.image_url + "'/></div>";
-    strSets += "<div class='product_detail'>";
+    strSets += "<div class='product_detail product_detail-" + i + "' rel='" + data.id + "'>";
     strSets += "<p class='pname'><a href='" + data.url + "' target='_blank'>" + data.name + "</a></p>";
-    strSets += "<p class='pcolor'>" + allColors[data.color_code] + "</p>";
+    strSets += "<p class='pcolor pcolor-" + i + "' rel='" + data.color_code + "'>" + allColors[data.color_code] + "</p>";
     strSets += "<p class='psize'>SIZE <span class='size-chart-bundle'>SIZE CHART</span></p>";
     strSets += "<div class='sizes'>";
 
@@ -135,6 +123,25 @@ function addIndividualBundleProduct(data){
     strSets += "</div>";    // individual_item
 
     jQuery(".set_individual_products").append(strSets);
+}
+
+function bindBag(){
+
+    jQuery(".add_to_bag").click(function(){
+
+        if(jQuery(this).hasClass("bag-active")) {
+
+            var giftIdCount = jQuery(this).attr('rel');
+
+            var arGiftIdCount = giftIdCount.split(':');
+
+            var giftId = arGiftIdCount[0];
+            var currentProductColorCode = arGiftIdCount[1];
+            var count = arGiftIdCount[2];
+
+            addToBag(giftId, count, jQuery(this).closest(".purchase_box"), currentProductColorCode);
+        }
+    });
 }
 
 function bindSizes(){
@@ -171,8 +178,8 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
     for(var i=0;i<count;i++){
         var size = parent.find(".size-" + i + ".active-size").attr("rel");
         var size_data = sizeAttributeId + "-" + size;
-        var color_data = colorAttributeId + "-" + parent.find(".product-color-" + i).attr("rel");
-        var product_id = parent.find(".product-detail-" + i).attr("rel");
+        var color_data = colorAttributeId + "-" + parent.find(".pcolor-" + i).attr("rel");
+        var product_id = parent.find(".product_detail-" + i).attr("rel");
         ar.push(product_id + ":" + color_data + ":" + size_data);
     }
 

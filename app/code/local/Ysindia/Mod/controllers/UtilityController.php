@@ -31,6 +31,7 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
     public function getcombodataAction(){
 
         $bundledIds = $this->getRequest()->getParam('ids');
+        $productSetId = $this->getRequest()->getParam('set_id');
 
         $ar_bundled_product_ids = explode(",", $bundledIds);            // 23:56,56:67 etc.
 
