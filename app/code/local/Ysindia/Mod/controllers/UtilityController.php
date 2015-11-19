@@ -73,7 +73,8 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
                     if($colorCode != $bundle_color_id)
                         continue;
 
-                    $image = (string)Mage::helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450);
+                    //$image = (string)Mage::helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450);
+                    $image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
 
                     $arImages[] = $image;
                 }

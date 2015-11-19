@@ -114,7 +114,7 @@ function addIndividualBundleProduct(data){
 
     strSets += "<div class='individual_product'>";
     strSets += "<div class='product'>";
-    strSets += "<div class='product_img'><img src='" + data.image_url + "'/></div>";
+    strSets += "<div class='product_img'><img src='" + data.default_image + "'/></div>";
     strSets += "<p class='pname'><a href='" + data.url + "' target='_blank'>" + data.name + "</a></p>";
     strSets += "<p class='pcolor'>" + allColors[data.color_code] + "</p>";
     strSets += "<p class='pprice'>" + data.price + "</p>";
