@@ -225,9 +225,11 @@ foreach ($configurableProductArr as $key => $val) {
         if(!isset($skuSizes[$filterColorName]))
             $skuSizes[$filterColorName] = array();
 
-        $allSkuSizes[] = $size;
-        if($stock>0)
-            $skuSizes[$filterColorName][] = $size;
+        if(isset($size) && strlen(trim($size))>0) {
+            $allSkuSizes[] = $size;
+            if ($stock > 0)
+                $skuSizes[$filterColorName][] = $size;
+        }
     }
 /**************** size filter *****************/
 
@@ -355,7 +357,8 @@ foreach ($configurableProductArr as $key => $val) {
 }
 
 /************** size filter ***********************/
-$allSkuSizes = array_unique($allSkuSizes);
+if(isset($allSkuSizes) && count($allSkuSizes)>0)
+    $allSkuSizes = array_unique($allSkuSizes);
 
 $arProductAllSizes = array();
 $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code

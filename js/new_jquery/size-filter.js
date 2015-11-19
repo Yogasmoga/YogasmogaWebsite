@@ -74,6 +74,11 @@ jQuery(function(){
 
 function filterSizes(){
 
+    if(arAllSizes.length==0){
+        jQuery("#div_sizes").hide();
+        return;
+    }
+
     var sizes = "<b>FILTER BY SIZE: </b> ";
 
     for(var i=0;i<arAllSizes.length;i++){
@@ -87,7 +92,7 @@ function filterSizes(){
         }
     }
 
-    jQuery("#div_sizes").html(sizes);
+    jQuery("#div_sizes").html(sizes).show();
 }
 
 
