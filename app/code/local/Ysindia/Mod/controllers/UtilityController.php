@@ -79,7 +79,10 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
                     $arImages[] = $image;
                 }
 
-                $default_image = $arImages[0];
+                if(count($arImages)>0)
+                    $default_image = $arImages[0];
+                else
+                    $default_image = "";
             }
 
             $arBundledData[] = array(
