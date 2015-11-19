@@ -441,7 +441,8 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .bannerFluid {
     background: none repeat scroll 0 0 #fafafa;
     /*height: 400px;*/
-    margin: 0 0 16px;
+    /*margin: 0 0 16px;*/
+    margin: 0;
     position: relative;
     width: 100%;
     z-index: 9999;
@@ -2760,7 +2761,7 @@ table.smallimagecontiner td.selectedimage{
     box-sizing: border-box;
     height: 50px;
     line-height: 50px;
-    margin-top: -17px;
+    margin-top: 0;
     padding-left: 235px;
     position: absolute;
     text-align: left;
