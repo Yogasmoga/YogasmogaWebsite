@@ -31,7 +31,7 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
     public function getcombodataAction(){
 
         $bundledIds = $this->getRequest()->getParam('ids');
-        $productSetId = $this->getRequest()->getParam('set_id');
+        $_helper = Mage::helper('catalog/output');
 
         $ar_bundled_product_ids = explode(",", $bundledIds);            // 23:56,56:67 etc.
 
@@ -59,6 +59,32 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
 
             $ar_child_sizes = array_unique($ar_child_sizes);
 
+            $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
+            $arImages = array();
+            if (isset($_gallery)) {
+                $first = true;
+                foreach ($_gallery as $_image) {
+                    $imageLabelData = json_decode(trim($_image->getLabel()), true);
+
+                    if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                        continue;
+
+                    $colorCode = $imageLabelData['color'];
+
+                    if($colorCode != $bundle_color_id)
+                        continue;
+
+                    $default_image = "";
+                    $image = Mage::helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450);
+                    if($first){
+                        $first = !$first;
+                        $default_image = $image;
+                    }
+
+                    $arImages[] = $image;
+                }
+            }
+
             $arBundledData[] = array(
                 "id" => $product_id,
                 "color_code" => $bundle_color_id,
@@ -66,7 +92,9 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
                 "url" => $bundledProductUrl,
                 "description" => $_bundle_product->getDescription(),
                 "price" => "$" . round($_bundle_product->getPrice(),2),
-                "sizes" => implode(",", $ar_child_sizes)
+                "sizes" => implode(",", $ar_child_sizes),
+                "default_image" => $default_image,
+                "images" => $arImages
             );
         }
 

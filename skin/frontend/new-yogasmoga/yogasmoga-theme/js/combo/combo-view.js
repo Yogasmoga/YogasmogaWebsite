@@ -86,7 +86,7 @@ function addSideBundleProduct(data, i){
     var arSizes = sizes.split(",");
 
     strSets += "<div class='set_item'>";
-    strSets += "<div class='product_image'><img src='" + data.image_url + "'/></div>";
+    strSets += "<div class='product_image'><img src='" + data.default_image + "'/></div>";
     strSets += "<div class='product_detail product_detail-" + i + "' rel='" + data.id + "'>";
     strSets += "<p class='pname'><a href='" + data.url + "' target='_blank'>" + data.name + "</a></p>";
     strSets += "<p class='pcolor pcolor-" + i + "' rel='" + data.color_code + "'>" + allColors[data.color_code] + "</p>";
