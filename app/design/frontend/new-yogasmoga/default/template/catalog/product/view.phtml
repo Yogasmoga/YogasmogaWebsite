@@ -2082,6 +2082,9 @@ foreach($productCollection as $_product_single)
 
     $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
 
+    if(isset($bundled_product_ids))
+        $bundled_product_ids = trim($bundled_product_ids);
+
     $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
     foreach($_childProducts as $simple) {
         $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
@@ -2179,7 +2182,7 @@ foreach ($allSizeOptions as $instance) {
             echo "allComboProducts[$key]['description'] = '" . $comboProduct["description"] . "';";
             echo "allComboProducts[$key]['price'] = '$" . round($comboProduct["price"],2) . "';";
             echo "allComboProducts[$key]['quantity'] = '" . $comboProduct["quantity"]. "';";
-            echo "allComboProducts[$key]['bundle_ids'] = '" . $comboProduct["bundle_ids"]. "';";
+            echo "allComboProducts[$key]['bundle_ids'] = '".$comboProduct["bundle_ids"]."';";
         }
 
         echo "changeProduct(" . $_conf_product->getId() . ")";
