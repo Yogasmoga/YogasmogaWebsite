@@ -958,14 +958,16 @@ span.country {
     .avant_extra_light{
         font:38px/43px AvantGardeGothicITCW01X;
     }
-		.avant_grade_medium{
-				 font:53px/43px AvantGardeGothicITCW01M;	
-			 }
-			 .avant_grade_demi{
+	.avant_grade_medium{
+		font:53px/43px AvantGardeGothicITCW01M;	
+	}
+	.avant_grade_demi{
 		font:40px/45px AvantGardeGothicITCW01D;
 	}
+	
+	.avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
-
+	.avant-grade-bk-small{font:30px/38px ITCAvantGardeProBk;}
     .coloumn-list li span {
         font-size: 16px !important;
     }
@@ -2085,6 +2087,8 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 		font:40px/43px AvantGardeGothicITCW01D;
 	}
 	
+	.avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
+	
     .avant_extra_light{
         font:38px/43px AvantGardeGothicITCW01X;
     }
@@ -2093,6 +2097,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 			 }
 
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
+	.avant-grade-bk-small{font:30px/38px ITCAvantGardeProBk;}
 
     /**new**/
     .contentSlider h2{font-size: 11px; line-height: 35px;}
@@ -2169,7 +2174,11 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 	.avant_grade_demi{
 		font:40px/45px AvantGardeGothicITCW01D;
 	}
+	
+	
+	.avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
+	.avant-grade-bk-small{font:30px/38px ITCAvantGardeProBk;}
 
     /* cmsheading */
     .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 40px !important; line-height: 43px !important;}
@@ -2220,8 +2229,12 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 			 }
 	.avant_grade_demi{
 		font:40px/45px AvantGardeGothicITCW01D;
+	
 	}
+	
+	.avant_grade_demi .run-jump-txt{font:30px/35px AvantGardeGothicITCW01D;}
     .avant_grade_book{font:40px/43px ITCAvantGardeProBk;}
+	.avant-grade-bk-small{font:30px/38px ITCAvantGardeProBk;}
 
     /* cmsheading */
     .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 45px !important; line-height: 48px !important;}
@@ -2266,10 +2279,13 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 				 font:83px/53px AvantGardeGothicITCW01M;	
 			 }
 	.avant_grade_demi{
-		font:60px/55px AvantGardeGothicITCW01D;
+		font:66px/64px AvantGardeGothicITCW01D;
 	}
+	.avant_grade_demi .run-jump-txt{font:50px/71px AvantGardeGothicITCW01D;}
+	.sweat-detail-light{font:58px/55px ITCAvantGardeProBk!important;}
 
     .avant_grade_book{font:50px/53px ITCAvantGardeProBk;}
+	.avant-grade-bk-small{font:40px/48px ITCAvantGardeProBk;}
 
     .yoga-day-container .yoga-day-banner .heading-text {
         display: inline-block;
