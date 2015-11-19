@@ -440,7 +440,6 @@ if (!$bundledProduct) {
     }
     $arProductColorInfo = $tempProductColorInfo;
 
-
     $arProductAllSizes = array();
 
     $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
@@ -897,7 +896,7 @@ if (!$bundledProduct) {
                                                 <?php
                                                 $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
                                                 $first = true;
-                                                //print_r($productcolorinfo);
+
                                                 $colorCount = 0;
                                                 for ($incr = 0; $incr < 2; $incr++) {
                                                     foreach ($arProductColorInfo as $key => $colorInfo) {
@@ -915,7 +914,7 @@ if (!$bundledProduct) {
                                                                    value="<?php echo $colorInfo['value']; ?>">
                                                                 <tr>
                                                                     <?php
-                                                                    //echo '<pre>'; print_r($colorinfo); echo count($colorinfo['hex']); die('test');
+
                                                                     foreach ($colorInfo['hex'] as $hex) {
                                                                         if (count($colorInfo['hex']) == 1) {
 
@@ -1268,7 +1267,7 @@ if (!$bundledProduct) {
                                 $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($upsell->getId());
                                 if (isset($parentIds[0])) {
                                     $parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);
-                                    //print_r($parentproduct);die;
+
                                     $_gallery = Mage::getModel('catalog/product')->load($parentproduct->getId())->getMediaGalleryImages();
                                     foreach ($_gallery as $_image) {
                                         $imageLabelData = json_decode(trim($_image->getLabel()), true);
@@ -1890,7 +1889,7 @@ if (!$bundledProduct) {
                                                     <?php
                                                     $first = true;
                                                     $colorCount = 0;
-                                                    //print_r($productcolorinfo);
+
                                                     foreach ($arProductColorInfo as $key => $colorInfo) {
                                                         $colorCount++;
                                                         ?>
@@ -1899,7 +1898,7 @@ if (!$bundledProduct) {
                                                                    value="<?php echo $colorInfo['value']; ?>">
                                                                 <tr>
                                                                     <?php
-                                                                    //echo '<pre>'; print_r($colorinfo); echo count($colorinfo['hex']); die('test');
+
                                                                     foreach ($colorInfo['hex'] as $hex) {
                                                                         if (count($colorInfo['hex']) == 1) {
 
@@ -2065,6 +2064,8 @@ if (!$bundledProduct) {
         <?php
         }
 else {
+/**************************************************** logic for gift set ***************************************/
+$setDescription = $_conf_product->getDescription();
 
 $categoryIdGiftSet = 69;
 $_helper = Mage::helper('catalog/output');
@@ -2084,9 +2085,11 @@ foreach($productCollection as $_product_single)
     $arComboProduct[$_product->getId()] = array(
         "name" => $_product->getName(),
         "price" => $_product->getPrice(),
+        "description" => $_product->getDescription(),
         "bundle_ids" => $bundled_product_ids
     );
 }
+    
 /***************** get all colors from database ***********************/
 $allColors = array();
 $allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
@@ -2104,8 +2107,6 @@ foreach ($allSizeOptions as $instance) {
     if ($instance['label'] != "")
         $allSizes[$instance['label']] = $instance['value'];
 }
-
-
 ?>
 
 
@@ -2141,140 +2142,22 @@ foreach ($allSizeOptions as $instance) {
 
         </div>
         <div class="set_individual_products">
-            <div class="individual_product">
-                <div class="product">
-                    <div class="product_img">
-                        <!--<img src="../images/Cuddle-Me-Wrap-Koel-Blue-1_014_thumb.jpg"/>-->
-                    </div>
-                    <p class="pname">PRODUCT NAME</p>
-
-                    <p class="pcolor">COLOR / COLOR</p>
-
-                    <p class="pprice">$1000</p>
-                    <a href="">Buy individually</a>
-                </div>
-            </div>
-            <div class="individual_product">
-                <div class="product">
-                    <div class="product_img">
-                        <!--<img src="../images/Cuddle-Me-Wrap-Koel-Blue-1_014_thumb.jpg"/>-->
-                    </div>
-                    <p class="pname">PRODUCT NAME</p>
-
-                    <p class="pcolor">COLOR / COLOR</p>
-
-                    <p class="pprice">$1000</p>
-                    <a href="">Buy individually</a>
-                </div>
-            </div>
-            <div class="individual_product">
-                <div class="product">
-                    <div class="product_img">
-                        <!--<img src="../images/Cuddle-Me-Wrap-Koel-Blue-1_014_thumb.jpg"/>-->
-                    </div>
-                    <p class="pname">PRODUCT NAME</p>
-
-                    <p class="pcolor">COLOR / COLOR</p>
-
-                    <p class="pprice">$1000</p>
-                    <a href="">Buy individually</a>
-                </div>
-            </div>
         </div>
         <div class="purchase_box_container">
             <div class="purchase_box">
-                <p class="product_name">CHICAGO SET</p>
-
-                <p class="product_price">$250 <span>9 SETS REMAINING</span></p>
-
-                <div class="set_item">
-                    <div class="product_image">
-                        <img src="../images/Cuddle-Me-Wrap-Koel-Blue-1_014_thumb.jpg"/>
-                    </div>
-                    <div class="product_detail">
-                        <p class="pname">PRODUCT NAME</p>
-
-                        <p class="pcolor">KOEL BLUE</p>
-
-                        <p class="psize">SIZE <span class="size-chart-bundle">SIZE CHART</span></p>
-
-                        <div class="sizes">
-                            <span class="size">2</span>
-                            <span class="size">4</span>
-                            <span class="size">6</span>
-                            <span class="size">8</span>
-                            <span class="size">10</span>
-                            <span class="size">12</span>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="set_item">
-                    <div class="product_image">
-                        <img src="../images/Cuddle-Me-Wrap-Koel-Blue-1_014_thumb.jpg"/>
-                    </div>
-                    <div class="product_detail">
-                        <p class="pname">PRODUCT NAME</p>
-
-                        <p class="pcolor">KOEL BLUE</p>
-
-                        <p class="psize">SIZE <span class="size-chart-bundle">SIZE CHART</span></p>
-
-                        <div class="sizes">
-                            <span class="size">2</span>
-                            <span class="size">4</span>
-                            <span class="size">6</span>
-                            <span class="size">8</span>
-                            <span class="size">10</span>
-                            <span class="size">12</span>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="set_item">
-                    <div class="product_image">
-                        <img src="../images/Cuddle-Me-Wrap-Koel-Blue-1_014_thumb.jpg"/>
-                    </div>
-                    <div class="product_detail">
-                        <p class="pname">PRODUCT NAME</p>
-
-                        <p class="pcolor">KOEL BLUE</p>
-
-                        <p class="psize">SIZE <span class="size-chart-bundle">SIZE CHART</span></p>
-
-                        <div class="sizes">
-                            <span class="size">2</span>
-                            <span class="size">4</span>
-                            <span class="size">6</span>
-                            <span class="size">8</span>
-                            <span class="size">10</span>
-                            <span class="size">12</span>
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="add_to_bag">ADD TO BAG</div>
-                <p class="free_shipping">Free and fast shipping to US and Canada</p>
             </div>
             <div class="product_desc">
                 <div class="desc_box">
                     <p>SET DESCRIPTION</p>
 
-                    <p>Lorem ipsum dolor sit amet, vocibus laboramus mediocritatem te has. Nam ne zril consul platonem.
-                        Nisl aliquando quo id, et his intellegat incorrupte. Nam ne zril consul platonem.
-                        Nisl aliquando quo id, et his intellegat incorrupte.  Nam lucilius honestatis intellegebat ei,
-                        tantas percipit scriptorem sit in.</p>
+                    <p class="set_description"></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
+<script type="text/javascript">
 
     <?php
         foreach($allSizes as $key => $value)
@@ -2286,6 +2169,7 @@ foreach ($allSizeOptions as $instance) {
         foreach($arComboProduct as $key => $comboProduct){
             echo "allComboProducts[$key] = [];";
             echo "allComboProducts[$key]['name'] = '" . $comboProduct["name"] . "';";
+            echo "allComboProducts[$key]['description'] = '" . $comboProduct["description"] . "';";
             echo "allComboProducts[$key]['price'] = '" . round($comboProduct["price"],2) . "';";
             echo "allComboProducts[$key]['quantity'] = '" . $comboProduct["quantity"]. "';";
             echo "allComboProducts[$key]['bundle_ids'] = '" . $comboProduct["bundle_ids"]. "';";
@@ -2294,5 +2178,6 @@ foreach ($allSizeOptions as $instance) {
         echo "changeProduct(" . $_conf_product->getId() . ")";
     ?>
 </script>
-
+/**************************************************** logic for gift set ***************************************/
 <?php } ?>
+

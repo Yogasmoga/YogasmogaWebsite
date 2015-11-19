@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    text-align: left;
 }
 
 #top_banner {
@@ -43,6 +44,7 @@
 .gift_set_filter label,.gift_set > p {
     font: 11px/15px Gothambold;
     display: block;
+    text-align: center;
 }
 
 .gift_set_filter span.selected {
@@ -186,7 +188,8 @@
     height: 19px;
     margin: 0 5px 20px 0;
     text-align: center;
-    width: 19px;
+    min-width: 19px;
+    padding: 0px 3px;
     cursor: pointer;
 }
 

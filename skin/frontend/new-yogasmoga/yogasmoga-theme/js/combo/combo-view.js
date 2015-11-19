@@ -1,6 +1,7 @@
 var allSizes = [];
 var allColors = [];
 var allComboProducts = [];
+var allDescriptions = [];
 
 jQuery(document).ready(function () {
 
@@ -31,25 +32,6 @@ jQuery(document).ready(function () {
             addToBag(giftId, count, jQuery(this).closest(".product_filters"), currentProductColorCode);
         }
     });
-
-    jQuery(".size").click(function(){
-
-        jQuery(this).closest(".sizes").find(".size").removeClass("active-size");
-
-        if(jQuery(this).hasClass("active-size"))
-            jQuery(this).removeClass("active-size");
-        else
-            jQuery(this).addClass("active-size");
-
-        if(jQuery(this).closest(".product_filters").find(".active-size").length==2) {
-            jQuery(this).closest(".product_filters").find(".add_to_bag").addClass("bag-active");
-            jQuery(this).closest(".product_filters").find(".add_to_bag").html('');
-        }
-        else {
-            jQuery(this).closest(".product_filters").find(".add_to_bag").removeClass("bag-active");
-            jQuery(this).closest(".product_filters").find(".add_to_bag").html('ADD TO BAG');
-        }
-    });
 });
 
 function resizeSlider(){
@@ -60,46 +42,126 @@ function resizeSlider(){
 }
 
 function changeProduct(product_id){
-console.log(allComboProducts);
-    alert(product_id);
+
+    jQuery(".purchase_box").html("");
+    jQuery(".set_individual_products").html("");
+
     jQuery(".product_name").html(allComboProducts[product_id]["name"]);
+    jQuery(".set_description").html(allComboProducts[product_id]["description"]);
     jQuery(".product_price").html(allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " SETS REMAINING</span>");
 
-/*
-    var url = homeUrl + '/ys/utility/giftsetdata';
+    var ids = allComboProducts[product_id]["bundle_ids"];
+
+    var url = homeUrl + '/ys/utility/getcombodata';
 
     jQuery.ajax({
         url: url,
         type: 'GET',
-        data: 'id=' + product_id,
+        data: 'ids=' + ids,
+        dataType: 'json',
         success: function(result){
 
-            changeNames(id);
-            changeSizes(id);
-            changeImages(id);
+            if(result.message!=undefined && result.message.indexOf("found")>-1) {
+
+                if(result.data!=undefined) {
+                    var data = result.data;
+                    var strSets = "";
+
+                    strSets += "<p class='product_name'>" + allComboProducts[product_id]["name"] + "</p>";
+                    strSets += "<p class='product_price'>" + allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " SETS REMAINING</span>" + "</p>";
+
+                    jQuery(".purchase_box").append(strSets);
+
+                    for(var i=0;i<data.length;i++){
+
+                        addSideBundleProduct(data[i], i);
+
+                        addIndividualBundleProduct(data[i]);
+                    }
+
+                    strSets = "";
+                    strSets += "<div class='add_to_bag'>ADD TO BAG</div>";
+                    strSets += "<p class='free_shipping'>Free and fast shipping to US and Canada</p>";
+
+                    jQuery(".purchase_box").append(strSets);
+                }
+            }
         }
     });
-*/
 }
 
-function changeNames(id){
-    jQuery(".sizes").html("");
+function addSideBundleProduct(data, i){
 
-    for(var i=0; i< sizes[id].length;i++) {
-        var size = sizes[id][i];
-        var str = "class='size size-" + i + "' rel='" + allSizes[size] + "'>" + size + "</span>";
-        jQuery(".sizes").append(str);
+    var strSets = "";
+
+    var sizes = data.sizes;
+    var arSizes = sizes.split(",");
+
+    strSets += "<div class='set_item'>";
+    strSets += "<div class='product_image'><img src='" + data.image_url + "'/></div>";
+    strSets += "<div class='product_detail'>";
+    strSets += "<p class='pname'><a href='" + data.url + "' target='_blank'>" + data.name + "</a></p>";
+    strSets += "<p class='pcolor'>" + allColors[data.color_code] + "</p>";
+    strSets += "<p class='psize'>SIZE <span class='size-chart-bundle'>SIZE CHART</span></p>";
+    strSets += "<div class='sizes'>";
+
+    for(var j=0; j<arSizes.length; j++) {
+        var size = arSizes[j];
+        strSets += "<span class='size size-" + i + "' rel='" + allSizes[size] + "'>" + size + "</span>";
     }
+
+    strSets += "</div>";    // sizes
+    strSets += "</div>";    // product_detail
+    strSets += "</div>";    // set_item
+
+    jQuery(".purchase_box").append(strSets);
 }
 
-function changeSizes(id){
+function addIndividualBundleProduct(data){
 
+    var strSets = "";
+
+    var sizes = data.sizes;
+    var arSizes = sizes.split(",");
+
+    strSets += "<div class='individual_product'>";
+    strSets += "<div class='product'>";
+    strSets += "<div class='product_img'><img src='" + data.image_url + "'/></div>";
+    strSets += "<p class='pname'><a href='" + data.url + "' target='_blank'>" + data.name + "</a></p>";
+    strSets += "<p class='pcolor'>" + allColors[data.color_code] + "</p>";
+    strSets += "<p class='pprice'>" + data.price + "</p>";
+    strSets += "<a href='" + data.url + "' target='_blank'>Buy individually</a>";
+    strSets += "</div>";    // product
+    strSets += "</div>";    // individual_item
+
+    jQuery(".set_individual_products").append(strSets);
 }
 
-function changeImages(id){
+function bindSizes(){
 
+    jQuery(".size").click(function(){
+
+        jQuery(this).closest(".sizes").find(".size").removeClass("active-size");
+
+        if(jQuery(this).hasClass("active-size"))
+            jQuery(this).removeClass("active-size");
+        else
+            jQuery(this).addClass("active-size");
+
+        if(jQuery(this).closest(".purchase_box").find(".active-size").length==2) {
+            jQuery(this).closest(".purchase_box").find(".add_to_bag").addClass("bag-active");
+            jQuery(this).closest(".purchase_box").find(".add_to_bag").html('');
+        }
+        else {
+            jQuery(this).closest(".purchase_box").find(".add_to_bag").removeClass("bag-active");
+            jQuery(this).closest(".purchase_box").find(".add_to_bag").html('ADD TO BAG');
+        }
+    });
 }
 
+function changeImages(product_id){
+
+}
 
 function addToBag(giftProductId, count, parent, currentProductColorCode){
     var colorAttributeId = 92;
