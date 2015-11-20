@@ -209,7 +209,8 @@ function startSlider(product_id){
         for(var i=0;i<images.length;i++){
             str += "<li><img src='" + images[i] + "'/></li>";
         }
-
+        console.log("product id = " + product_id);
+console.log(allComboProducts);
         jQuery(".current_slider_product").html(allComboProducts[product_id]["name"]);
         jQuery(".flexslider ul.slides").html(str);
         jQuery('.flexslider').removeData("flexslider");
