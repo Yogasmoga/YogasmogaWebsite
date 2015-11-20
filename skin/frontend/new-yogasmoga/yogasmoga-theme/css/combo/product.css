@@ -256,6 +256,7 @@ p{
     background: #f3f3f3;
     width: 124px;
     height: 124px;
+    cursor: pointer;
 }
 .individual_product .product .product_img img, .product_image img{
     width: 100%;
