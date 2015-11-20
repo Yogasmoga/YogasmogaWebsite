@@ -2,7 +2,7 @@ var allSizes = [];
 var allColors = [];
 var bundleImages = [];
 var allComboProducts = [];
-var setProducts = [];
+var setProducts = {};
 var setProductCount = 0;
 
 jQuery(document).ready(function () {
@@ -58,6 +58,7 @@ function changeProduct(product_id){
 
                     var data = result.data;
                     var strSets = "";
+                    bundleImages = {};
 
                     strSets += "<p class='product_name'>" + allComboProducts[product_id]["name"] + "</p>";
                     strSets += "<p class='product_price'>" + allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " SETS REMAINING</span>" + "</p>";
@@ -75,7 +76,7 @@ function changeProduct(product_id){
 
                         addBundleProductImages(data[i]);
 
-                        setProducts[data.id] = [];
+                        setProducts[data.id] = {};
                         setProducts[data.id]["name"] = data[i].name;
                     }
 
@@ -143,7 +144,6 @@ function addIndividualBundleProduct(data, classToApply){
 
 
 function addBundleProductImages(data){
-    bundleImages = [];
 
     if(data.images!=undefined && data.images.length>0) {
 
