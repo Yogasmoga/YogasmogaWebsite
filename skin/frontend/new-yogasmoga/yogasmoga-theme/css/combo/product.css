@@ -240,8 +240,13 @@ p{
     padding: 40px 0;
 }
 .individual_product {
-    /*float: left;*/
-    /*width: 50%;*/
+    float: left;
+}
+.individual_product.two {
+    width: 50%;
+}
+.individual_product.three {
+    width: 33.33%;
 }
 .individual_product .product{
     padding-left: 164px;
