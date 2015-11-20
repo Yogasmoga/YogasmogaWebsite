@@ -64,7 +64,7 @@ function changeProduct(product_id){
                     jQuery(".purchase_box").append(strSets);
 
                     setProductCount = data.length;
-                    var classToApply = data.length>2 ? ".individual_product.three" : ".individual_product.two";
+                    var classToApply = data.length>2 ? "individual_product.three" : "individual_product.two";
 
                     for(var i=0;i<data.length;i++){
 
