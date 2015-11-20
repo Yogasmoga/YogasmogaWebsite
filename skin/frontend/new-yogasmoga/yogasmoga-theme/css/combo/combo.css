@@ -164,6 +164,7 @@ div#bodycompensator {
 .middle_desc div {
     width: 33.33%;
     padding: 0 10px;
+    cursor: pointer;
 }
 
 .right_desc {
@@ -524,9 +525,6 @@ p.free_shipping {
     color: #fff;
 }
 
-.gift_sets_container .flexslider .flex-control-nav {
-    display: none;
-}
 
 .map_data_section .coordinate p {
     color: #ae8637;
