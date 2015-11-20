@@ -138,6 +138,8 @@ function addBundleProductImages(data){
 
     if(data.images!=undefined && data.images.length>0) {
 
+        bundleImages[data.id] = [];
+
         for(var i=0; i<data.images.length; i++)
             bundleImages[data.id].push(data.images[i]);
 
