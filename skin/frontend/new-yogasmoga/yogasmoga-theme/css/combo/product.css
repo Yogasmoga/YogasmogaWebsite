@@ -1,3 +1,7 @@
+p{
+    margin: 0;
+}
+
 #top_banner {
     background: #AE8637;
     color: #fff;
@@ -27,7 +31,7 @@
 }
 
 .gift_sets_container {
-    padding-left: 55px;
+    /*padding-left: 55px;*/
     position: relative;
 }
 .breadcrumbs {
@@ -80,7 +84,7 @@
 }*/
 
 .gift_sets_container {
-    border-bottom: 1px solid #555;
+    /*border-bottom: 1px solid #555;*/
     /*float: left;*/
     width: 100%;
 }
@@ -135,7 +139,7 @@
 
 .product_details {
     position: relative;
-    padding: 25px 328px 25px 0;
+    padding: 16px 328px 25px 0;
     max-width: 1600px;
     margin: 0 auto;
 }
@@ -202,11 +206,13 @@
 
 .purchase_box .pname {
     font: 11px/15px Gothambold;
+    text-transform: uppercase;
 }
 
 .purchase_box .pcolor, .purchase_box .pprice {
     font: 11px/15px Gothambook;
     margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .purchase_box .psize {
@@ -284,12 +290,14 @@
     width: 100%;
 }
 
-.individual_product .product .pname {
+.individual_product .product .pname a{
     font: 11px/15px Gothambold;
+    text-transform: uppercase;
 }
 
 .individual_product .product .pcolor, .individual_product .product .pprice {
     font: 11px/15px Gothambook;
+    text-transform: uppercase;
 }
 .individual_product .product a{
     color: #555;
