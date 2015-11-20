@@ -91,12 +91,7 @@ p{
 }
 
 .psize {
-    display: inline-block;
     font: 11px/15px Gothambook;
-    margin-bottom: 5px;
-    padding-left: 34px;
-    position: relative;
-    width: 240px;
 }
 
 
