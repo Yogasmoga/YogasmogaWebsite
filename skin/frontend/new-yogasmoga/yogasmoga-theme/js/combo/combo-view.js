@@ -82,6 +82,7 @@ function changeProduct(product_id){
 
                     bindSizes();
                     bindBag();
+                    bindSlider();
                 }
             }
         }
@@ -123,7 +124,7 @@ function addIndividualBundleProduct(data){
     var arSizes = sizes.split(",");
 
     strSets += "<div class='individual_product'>";
-    strSets += "<div class='product'>";
+    strSets += "<div class='product' rel='" + data.id + "'>";
     strSets += "<div class='product_img'><img src='" + data.default_image + "'/></div>";
     strSets += "<p class='pname'><a href='" + data.url + "' target='_blank'>" + data.name + "</a></p>";
     strSets += "<p class='pcolor'>" + allColors[data.color_code] + "</p>";
@@ -190,8 +191,27 @@ function bindSizes(){
     });
 }
 
-function changeImages(product_id){
+function bindSlider(){
+    jQuery(".individual_product .product_img").click(function(){
+        var product_id = jQuery(this).attr('rel');
 
+        startSlider(product_id);
+    });
+}
+
+function startSlider(product_id){
+
+    var images = bundleImages[product_id];
+
+    if(images!=undefined){
+
+        for(var i=0;i<images.length;i++){
+            str += "<li><img src='" + images[i] + "'/>";
+        }
+
+        jQuery(".product_name").html(allComboProducts[product_id]["name"]);
+        //jQuery(".ul").append(str);
+    }
 }
 
 function addToBag(giftProductId, count, parent, currentProductColorCode){
