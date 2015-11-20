@@ -81,7 +81,7 @@ function updateTimes(){
 					for (var i = 0; i < result.times.length; i++) {
 						cityTimeValues[i] = result.times[i];
 					}
-console.log(cityTimeValues);
+
 					showTemperature();
 				}
 			}
@@ -122,6 +122,102 @@ function getWeather(){
 		},
 		error: function(error) {
 			temperatures[1] = "N/A";
+		}
+	});
+
+	jm.simpleWeather({
+		location: cities[2],
+		woeid: '',
+		unit: 'f',
+		success: function(weather) {
+
+			temperatures[2] = weather.temp+'&deg;'+weather.units.temp;
+			temperature3Loaded = true;
+
+			checkTemperaturesLoaded();
+		},
+		error: function(error) {
+			temperatures[2] = "N/A";
+		}
+	});
+
+	jm.simpleWeather({
+		location: cities[3],
+		woeid: '',
+		unit: 'f',
+		success: function(weather) {
+
+			temperatures[3] = weather.temp+'&deg;'+weather.units.temp;
+			temperature4Loaded = true;
+
+			checkTemperaturesLoaded();
+		},
+		error: function(error) {
+			temperatures[3] = "N/A";
+		}
+	});
+
+	jm.simpleWeather({
+		location: cities[4],
+		woeid: '',
+		unit: 'f',
+		success: function(weather) {
+
+			temperatures[4] = weather.temp+'&deg;'+weather.units.temp;
+			temperature5Loaded = true;
+
+			checkTemperaturesLoaded();
+		},
+		error: function(error) {
+			temperatures[4] = "N/A";
+		}
+	});
+
+	jm.simpleWeather({
+		location: cities[5],
+		woeid: '',
+		unit: 'f',
+		success: function(weather) {
+
+			temperatures[5] = weather.temp+'&deg;'+weather.units.temp;
+			temperature6Loaded = true;
+
+			checkTemperaturesLoaded();
+		},
+		error: function(error) {
+			temperatures[5] = "N/A";
+		}
+	});
+
+	jm.simpleWeather({
+		location: cities[6],
+		woeid: '',
+		unit: 'f',
+		success: function(weather) {
+
+			temperatures[6] = weather.temp+'&deg;'+weather.units.temp;
+			temperature7Loaded = true;
+
+			checkTemperaturesLoaded();
+		},
+		error: function(error) {
+			temperatures[6] = "N/A";
+		}
+	});
+
+	jm.simpleWeather({
+		location: cities[7],
+		woeid: '',
+		unit: 'f',
+		success: function(weather) {
+
+			temperatures[7] = weather.temp+'&deg;'+weather.units.temp;
+			temperature8Loaded = true;
+
+			checkTemperaturesLoaded();
+		},
+		error: function(error) {
+			temperatures[7] = "N/A";
 		}
 	});
 }
@@ -171,7 +267,7 @@ function showTemperature(){
 				jm(".latlong").html(latlongs[currentCityIndex]);
 
 				var tempTime = cityTimeValues[currentCityIndex];
-				console.log("city time = " + cityTimeValues[currentCityIndex]);
+
 				if(tempTime!=undefined) {
 					var tempTimeNoAM_PM = tempTime.substr(0, tempTime.indexOf(" "));
 
