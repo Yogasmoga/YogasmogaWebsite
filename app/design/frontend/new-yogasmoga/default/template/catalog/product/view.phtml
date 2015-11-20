@@ -2065,7 +2065,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 }
 else {
 /**************************************************** logic for gift set ***************************************/
-$setDescription = $_conf_product->getDescription();
+    $homeUrl = Mage::getBaseUrl();
+
+    $setDescription = $_conf_product->getDescription();
 
 $categoryIdGiftSet = 70;
 $_helper = Mage::helper('catalog/output');
@@ -2124,12 +2126,13 @@ foreach ($allSizeOptions as $instance) {
     if ($instance['label'] != "")
         $allSizes[$instance['label']] = $instance['value'];
 }
+
 ?>
 
 
 <div class="product_page_container">
     <div class="breadcrumbs">
-        <span>Home</span> / <span>$250 GIFT SETS</span> / <span>CHICAGO SET</span>
+        <a href="<?php echo $homeUrl;?>">Home</a> / <a href="<?php echo $homeUrl;?>gift-sets">$250 GIFT SETS</a> / <span id="bread-set-name"></span>
     </div>
     <div class="gift_sets_container">
         <div class="gift_set_filter">
@@ -2141,12 +2144,18 @@ foreach ($allSizeOptions as $instance) {
         <div class="git_sets_list">
 
             <?php foreach($arComboProduct as $id => $comboProduct){ ?>
-
+<!--
             <div class="gift_set" rel="<?php echo $id;?>">
                 <div class="set_image"></div>
                 <p><?php echo $comboProduct["name"];?></p>
             </div>
+-->
+                <div class="gift_set_link active">
+                    <!--top,left-->
+                    <p class="pname"><?php echo $comboProduct["name"];?></p>
 
+                    <p class="pprice">$<?php echo round($comboProduct["price"],0);?></p>
+                </div>
             <?php } ?>
         </div>
     </div>
