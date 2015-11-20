@@ -140,7 +140,7 @@ function addIndividualBundleProduct(data){
 function addBundleProductImages(data){
 
     bundleImages = [];
-
+    console.debug(data);
     if(data.images!=undefined && data.images.length>0) {
 
         bundleImages[data.id] = [];
