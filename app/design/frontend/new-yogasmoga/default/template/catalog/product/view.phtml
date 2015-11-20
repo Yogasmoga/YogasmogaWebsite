@@ -2135,12 +2135,12 @@ foreach ($allSizeOptions as $instance) {
         <a href="<?php echo $homeUrl;?>">Home</a> / <a href="<?php echo $homeUrl;?>gift-sets">$250 GIFT SETS</a> / <span id="bread-set-name"></span>
     </div>
     <div class="gift_sets_container">
-        <div class="gift_set_filter">
+        <!--<div class="gift_set_filter">
             <label>VIEW:</label>
             <span class="selected">ALL</span>
             <span>WOMEN</span>
             <span>MEN</span>
-        </div>
+        </div>-->
         <div class="git_sets_list">
 
             <?php foreach($arComboProduct as $id => $comboProduct){ ?>
@@ -2150,7 +2150,7 @@ foreach ($allSizeOptions as $instance) {
                 <p><?php echo $comboProduct["name"];?></p>
             </div>
 -->
-                <div class="gift_set_link active gift_set" rel="<?php echo $id;?>">
+                <div class="gift_set_link gift_set" rel="<?php echo $id;?>">
                     <!--top,left-->
                     <p class="pname"><?php echo $comboProduct["name"];?></p>
 
