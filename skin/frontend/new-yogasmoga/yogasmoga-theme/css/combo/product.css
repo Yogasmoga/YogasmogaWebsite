@@ -241,6 +241,7 @@ ul.main-menu > li[rel="70"] ul {
 /* ******************* */
 .set_individual_products {
     padding: 40px 0;
+    min-height: 350px;
 }
 .individual_product {
     float: left;
