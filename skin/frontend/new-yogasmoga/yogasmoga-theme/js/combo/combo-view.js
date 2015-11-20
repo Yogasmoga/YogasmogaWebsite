@@ -141,6 +141,7 @@ function addIndividualBundleProduct(data, classToApply){
 function addBundleProductImages(data){
 console.log(data);
     console.log("images = " + data.images);
+    console.log("size = " + data.images.length);
     bundleImages = [];
 
     if(data.images!=undefined && data.images.length>0) {
@@ -208,6 +209,8 @@ function startSlider(product_id){
 
     if(images!=undefined){
 
+        var str = "";
+        
         for(var i=0;i<images.length;i++){
             str += "<li><img src='" + images[i] + "'/></li>";
         }
