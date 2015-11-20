@@ -125,8 +125,8 @@ function addIndividualBundleProduct(data, classToApply){
     var arSizes = sizes.split(",");
 
     strSets += "<div class='" + classToApply + "'>";
-    strSets += "<div class='product' rel='" + data.id + "'>";
-    strSets += "<div class='product_img'><img src='" + data.default_image + "'/></div>";
+    strSets += "<div class='product'>";
+    strSets += "<div class='product_img' rel='" + data.id + "'><img src='" + data.default_image + "'/></div>";
     strSets += "<p class='pname'><a href='" + data.url + "' target='_blank'>" + data.name + "</a></p>";
     strSets += "<p class='pcolor'>" + allColors[data.color_code] + "</p>";
     strSets += "<p class='pprice'>" + data.price + "</p>";
@@ -139,19 +139,14 @@ function addIndividualBundleProduct(data, classToApply){
 
 
 function addBundleProductImages(data){
-console.log(data);
-    console.log("images = " + data.images);
-    console.log("size = " + data.images.length);
     bundleImages = [];
 
     if(data.images!=undefined && data.images.length>0) {
-console.log("id = " + data.id);
+
         bundleImages[data.id] = [];
 
-        for(var i=0; i<data.images.length; i++) {
+        for(var i=0; i<data.images.length; i++)
             bundleImages[data.id].push(data.images[i]);
-            console.log("image = " + data.images[i]);
-        }
     }
 }
 
@@ -210,7 +205,7 @@ function startSlider(product_id){
     if(images!=undefined){
 
         var str = "";
-        
+
         for(var i=0;i<images.length;i++){
             str += "<li><img src='" + images[i] + "'/></li>";
         }
