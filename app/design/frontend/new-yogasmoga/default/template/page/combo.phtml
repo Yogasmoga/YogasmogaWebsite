@@ -31,6 +31,9 @@ foreach ($allSizeOptions as $instance) {
         if(is_numeric($instance['label']) && intval($instance['label'])>12)
             continue;
 
+        if(strpos(strtoupper($instance['label']), "T")!==false)
+            continue;
+
         $allSizes[$instance['label']] = $instance['value'];
     }
 }
