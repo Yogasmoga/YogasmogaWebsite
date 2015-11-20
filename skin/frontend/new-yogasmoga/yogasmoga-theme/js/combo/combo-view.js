@@ -1,5 +1,6 @@
 var allSizes = [];
 var allColors = [];
+var bundleImages = [];
 var allComboProducts = [];
 var setProductCount = 0;
 
@@ -65,6 +66,8 @@ function changeProduct(product_id){
                         addSideBundleProduct(data[i], i);
 
                         addIndividualBundleProduct(data[i]);
+
+                        addBundleProductImages(data[i]);
                     }
 
                     strSets = "";
@@ -126,6 +129,20 @@ function addIndividualBundleProduct(data){
     strSets += "</div>";    // individual_item
 
     jQuery(".set_individual_products").append(strSets);
+}
+
+
+function addBundleProductImages(data){
+
+    bundleImages = [];
+
+    if(data.images!=undefined && data.images.length>0) {
+
+        for(var i=0; i<data.images.length; i++)
+            bundleImages[data.id].push(data.images[i]);
+
+        console.log(bundleImages);
+    }
 }
 
 function bindBag(){
