@@ -1,4 +1,11 @@
+<?php
+    $currentCategoryId = Mage::registry('current_category')->getId();
+    $categoriesWithNoFilter = array(8,12,29,32,33,40);
+    $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
+    if($showSizeFilter){
+?>
 <div id="div_sizes">&nbsp;</div>
+<?php } ?>
 
 <!-- productGridView -->
 <?php
@@ -356,6 +363,7 @@ foreach ($configurableProductArr as $key => $val) {
     }
 }
 
+if($showSizeFilter){
 /************** size filter ***********************/
 if(isset($allSkuSizes) && count($allSkuSizes)>0)
     $allSkuSizes = array_unique($allSkuSizes);
@@ -394,6 +402,7 @@ foreach ($allOptions as $instance) {
     </script>
 	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter.js"></script>
 <!-- ********************************* checkbox filter ********************** -->
+<?php } ?>
 
 <?php
 /*
