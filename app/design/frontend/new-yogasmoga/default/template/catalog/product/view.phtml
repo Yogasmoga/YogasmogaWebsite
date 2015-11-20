@@ -2114,6 +2114,13 @@ $allSizes = array();
 $allSizeAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
 $allSizeOptions = $allSizeAttribute->getSource()->getAllOptions(true, true);
 foreach ($allSizeOptions as $instance) {
+
+    if(is_numeric($instance['label']) && intval($instance['label'])>12)
+        continue;
+
+    if(strpos(strtoupper($instance['label']), "T")!==false)
+        continue;
+
     if ($instance['label'] != "")
         $allSizes[$instance['label']] = $instance['value'];
 }

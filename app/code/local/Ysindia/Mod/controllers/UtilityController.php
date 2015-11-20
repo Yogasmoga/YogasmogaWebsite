@@ -50,6 +50,12 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
             foreach ($_childProducts as $_childProduct) {
                 $size = $_childProduct->getAttributeText('size');
 
+                if(is_numeric($size) && intval($size)>12)
+                    continue;
+
+                if(strpos(strtoupper($size), "T")!==false)
+                    continue;
+
                 if (is_numeric($size))
                     $ar_child_sizes[] = intval($size);
                 else
