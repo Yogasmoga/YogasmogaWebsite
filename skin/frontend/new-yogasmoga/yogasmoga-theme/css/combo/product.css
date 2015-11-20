@@ -48,44 +48,8 @@ p{
     font: 11px/15px Gothambold;
     display: block;
 }
-/*.gift_set > p {
-    font: 11px/15px Gothambold;
-    display: block;
-    text-align: center;
-}
-
-.gift_set_filter span.selected {
-    font: 11px/15px Gothambold;
-}
-.gift_set_filter span {
-    font: 11px/15px GothamBook;
-    cursor: pointer;
-    display: block;
-}
-.set_image {
-    background: #f3f3f3 none repeat scroll 0 0;
-    height: 42px;
-    width: 42px;
-    margin: 0 auto 10px;
-    transition-duration: 200ms;
-}
-
-.gift_set {
-    display: inline-block;
-    text-align: center;
-    width: 12%;
-    cursor: pointer;
-}
-
-.gift_set.active .set_image, .gift_set:hover .set_image {
-    width: 76px;
-    height: 76px;
-    transition-duration: 200ms;
-}*/
-
 .gift_sets_container {
-    /*border-bottom: 1px solid #555;*/
-    /*float: left;*/
+    text-transform: uppercase;
     width: 100%;
 }
 
@@ -108,18 +72,32 @@ p{
     color: transparent;
 }
 
-/*.gift_set_link:hover{
-    transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    transition-duration: 200ms;
-}*/
-
 .gift_set_link.active, .gift_set_link:hover {
     background: #AE8637;
     color: #fff;
 }
 
 
+
+.pname {
+    font: 11px/15px Gothambold;
+    text-transform: uppercase;
+}
+
+.pcolor, .pprice {
+    font: 11px/15px Gothambook;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.psize {
+    display: inline-block;
+    font: 11px/15px Gothambook;
+    margin-bottom: 5px;
+    padding-left: 34px;
+    position: relative;
+    width: 240px;
+}
 
 
 
