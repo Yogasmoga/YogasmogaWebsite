@@ -22,7 +22,7 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
                 $times[] = $time;
             }
 
-            echo json_encode(array('message'=>'found', 'times' => $times, 'date' => date("H:i")));
+            echo json_encode(array('message'=>'found', 'times' => $times));
         }
         else
             echo json_encode(array('message'=>'none'));
