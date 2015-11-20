@@ -147,6 +147,8 @@ function addBundleProductImages(data){
 
         for(var i=0; i<data.images.length; i++)
             bundleImages[data.id].push(data.images[i]);
+
+        console.log(bundleImages);
     }
 }
 
