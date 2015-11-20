@@ -33,7 +33,7 @@ function changeProduct(product_id){
     jQuery(".purchase_box").html("");
     jQuery(".set_individual_products").html("");
 
-    jQuery(".bread-set-name").html(allComboProducts[product_id]["name"]);
+    jQuery("#bread-set-name").html(allComboProducts[product_id]["name"]);
     jQuery(".product_name").html(allComboProducts[product_id]["name"]);
     jQuery(".set_description").html(allComboProducts[product_id]["description"]);
     jQuery(".product_price").html(allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " SETS REMAINING</span>");
