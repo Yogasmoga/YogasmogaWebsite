@@ -147,6 +147,8 @@ function addBundleProductImages(data){
 
         for(var i=0; i<data.images.length; i++)
             bundleImages[data.id].push(data.images[i]);
+
+        console.debug(bundleImages);
     }
 }
 
@@ -193,15 +195,14 @@ function bindSizes(){
 
 function bindSlider(){
     jQuery(".individual_product .product_img").click(function(){
-        alert();
         var product_id = jQuery(this).closest(".product").attr('rel');
-        console.debug(product_id);
         startSlider(product_id);
     });
 }
 
 function startSlider(product_id){
 
+    console.debug(product_id);
     var images = bundleImages[product_id];
     console.debug(images);
 
