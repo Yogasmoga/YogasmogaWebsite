@@ -62,6 +62,14 @@ function init() {
         }
     });
 
+    jQuery(".middle_desc>div a").click(function(e){
+        e.preventDefault();
+    });
+    jQuery(".middle_desc>div").click(function(){
+        var url = jQuery(this).find("a").attr("href");
+        window.open(url,'_blank');
+    });
+
 }
 
 var sectionIndex = 1;
