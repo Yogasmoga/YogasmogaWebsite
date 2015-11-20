@@ -240,8 +240,8 @@ p{
     padding: 40px 0;
 }
 .individual_product {
-    float: left;
-    width: 50%;
+    /*float: left;*/
+    /*width: 50%;*/
 }
 .individual_product .product{
     padding-left: 164px;
