@@ -51,11 +51,11 @@ jm(document).ready(function() {
 
 		if(jm(this).closest(".product_filters").find(".active-size").length==totalSetProducts) {
 			jm(this).closest(".product_filters").find(".add_to_bag").addClass("bag-active");
-			jm(this).closest(".product_filters").find(".add_to_bag").html('');
+			jm(this).closest(".product_filters").find(".add_to_wishlist").addClass("bag-active");
 		}
 		else {
 			jm(this).closest(".product_filters").find(".add_to_bag").removeClass("bag-active");
-			jm(this).closest(".product_filters").find(".add_to_bag").html('ADD TO BAG');
+			jm(this).closest(".product_filters").find(".add_to_wishlist").removeClass("bag-active");
 		}
 	});
 
