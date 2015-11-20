@@ -194,8 +194,9 @@ function bindSizes(){
 }
 
 function bindSlider(){
-    jQuery(".individual_product .product_img").click(function(){
+    jQuery(".individual_product").find(".product_img").click(function(){
         var product_id = jQuery(this).attr('rel');
+        alert(product_id);
         startSlider(product_id);
     });
 }
