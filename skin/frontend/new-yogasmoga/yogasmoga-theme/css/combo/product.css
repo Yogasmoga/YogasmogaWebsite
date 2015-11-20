@@ -1,6 +1,9 @@
 p{
     margin: 0;
 }
+ul.main-menu > li[rel="70"] ul {
+    display: none !important;
+}
 
 #top_banner {
     background: #AE8637;

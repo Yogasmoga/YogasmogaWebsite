@@ -10,7 +10,9 @@ p {
 a, a:hover {
     color: #555;
 }
-
+ul.main-menu > li[rel="70"] ul {
+    display: none !important;
+}
 /* *******************MAIN CSS ***************************** */
 .header-container {
     top: 25px !important;
