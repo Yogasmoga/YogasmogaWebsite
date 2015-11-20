@@ -76,7 +76,7 @@ function changeProduct(product_id){
                         addBundleProductImages(data[i]);
 
                         setProducts[data.id] = [];
-                        setProductCount[data.id]["name"] = data[i].name;
+                        setProducts[data.id]["name"] = data[i].name;
                     }
 
                     strSets = "";
