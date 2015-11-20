@@ -76,8 +76,8 @@ function changeProduct(product_id){
 
                         addBundleProductImages(data[i]);
 
-                        setProducts[data.id] = {};
-                        setProducts[data.id]["name"] = data[i].name;
+                        setProducts[data[i].id] = {};
+                        setProducts[data[i].id]["name"] = data[i].name;
                     }
 
                     strSets = "";
