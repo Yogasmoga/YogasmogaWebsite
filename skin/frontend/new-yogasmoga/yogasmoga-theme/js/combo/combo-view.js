@@ -2,6 +2,7 @@ var allSizes = [];
 var allColors = [];
 var bundleImages = [];
 var allComboProducts = [];
+var setProducts = [];
 var setProductCount = 0;
 
 jQuery(document).ready(function () {
@@ -73,6 +74,9 @@ function changeProduct(product_id){
                         addIndividualBundleProduct(data[i], classToApply);
 
                         addBundleProductImages(data[i]);
+
+                        setProducts[data.id] = [];
+                        setProductCount[data.id]["name"] = data[i].name;
                     }
 
                     strSets = "";
@@ -196,7 +200,6 @@ function bindSizes(){
 function bindSlider(){
     jQuery(".individual_product").find(".product_img").click(function(){
         var product_id = jQuery(this).attr('rel');
-        alert(product_id);
         startSlider(product_id);
     });
 }
@@ -209,16 +212,13 @@ function startSlider(product_id){
 
         var str = "";
 
-        for(var i=0;i<images.length;i++){
+        for(var i=0;i<images.length;i++)
             str += "<li><img src='" + images[i] + "'/></li>";
-        }
-        console.log("product id = " + product_id);
-console.log(allComboProducts);
-        jQuery(".current_slider_product").html(allComboProducts[product_id]["name"]);
+
+        jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
         jQuery(".flexslider ul.slides").html(str);
         jQuery('.flexslider').removeData("flexslider");
         jQuery("div.flexslider").flexslider();
-
     }
 }
 
