@@ -264,9 +264,19 @@ foreach ($allSizeOptions as $instance) {
                                         <p class="psize">
                                             <span class="gap">SIZE</span>
                                             <span class="sizes">
-                                                <?php foreach($data["sizes"] as $size){ ?>
-                                                    <span  class="size size-<?php echo $sizeDivCount;?>" rel="<?php echo $allSizes[$size];?>"><?php echo $size;?></span>
-                                                <?php } ?>
+                                                <?php
+                                                    foreach($allSizes as $key => $value){
+                                                    foreach ($data["sizes"] as $size) {
+
+                                                        if($size==$key) {
+                                                            ?>
+                                                            <span class="size size-<?php echo $sizeDivCount; ?>"
+                                                                  rel="<?php echo $key; ?>"><?php echo $key; ?></span>
+                                                            <?php
+                                                        }
+                                                    }
+                                                }
+                                                ?>
                                             </span>
 
                                         </p>

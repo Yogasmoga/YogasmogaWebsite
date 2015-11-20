@@ -47,7 +47,9 @@ jm(document).ready(function() {
 		else
 			jm(this).addClass("active-size");
 
-		if(jm(this).closest(".product_filters").find(".active-size").length==2) {
+		var totalSetProducts = jm(this).closest(".product_filters").find(".set_item").length;
+
+		if(jm(this).closest(".product_filters").find(".active-size").length==totalSetProducts) {
 			jm(this).closest(".product_filters").find(".add_to_bag").addClass("bag-active");
 			jm(this).closest(".product_filters").find(".add_to_bag").html('');
 		}
