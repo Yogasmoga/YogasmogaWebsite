@@ -81,7 +81,7 @@ function updateTimes(){
 					for (var i = 0; i < result.times.length; i++) {
 						cityTimeValues[i] = result.times[i];
 					}
-
+console.log(cityTimeValues);
 					showTemperature();
 				}
 			}
@@ -171,7 +171,7 @@ function showTemperature(){
 				jm(".latlong").html(latlongs[currentCityIndex]);
 
 				var tempTime = cityTimeValues[currentCityIndex];
-				console.log("city index = " + currentCityIndex);
+				console.log("city time = " + cityTimeValues[currentCityIndex]);
 				if(tempTime!=undefined) {
 					var tempTimeNoAM_PM = tempTime.substr(0, tempTime.indexOf(" "));
 
