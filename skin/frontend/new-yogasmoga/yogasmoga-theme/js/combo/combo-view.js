@@ -139,7 +139,8 @@ function addIndividualBundleProduct(data, classToApply){
 
 
 function addBundleProductImages(data){
-
+console.log(data);
+    console.log("images = " + data.images);
     bundleImages = [];
 
     if(data.images!=undefined && data.images.length>0) {
@@ -203,9 +204,7 @@ function bindSlider(){
 
 function startSlider(product_id){
 
-    console.debug(product_id);
     var images = bundleImages[product_id];
-    console.debug(images);
 
     if(images!=undefined){
 
