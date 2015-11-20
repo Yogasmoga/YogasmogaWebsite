@@ -64,12 +64,13 @@ function changeProduct(product_id){
                     jQuery(".purchase_box").append(strSets);
 
                     setProductCount = data.length;
+                    var classToApply = data.length>2 ? ".individual_product.three" : ".individual_product.two";
 
                     for(var i=0;i<data.length;i++){
 
                         addSideBundleProduct(data[i], i);
 
-                        addIndividualBundleProduct(data[i]);
+                        addIndividualBundleProduct(data[i], classToApply);
 
                         addBundleProductImages(data[i]);
                     }
@@ -116,14 +117,14 @@ function addSideBundleProduct(data, i){
     jQuery(".purchase_box").append(strSets);
 }
 
-function addIndividualBundleProduct(data){
+function addIndividualBundleProduct(data, classToApply){
 
     var strSets = "";
 
     var sizes = data.sizes;
     var arSizes = sizes.split(",");
 
-    strSets += "<div class='individual_product'>";
+    strSets += "<div class='" + classToApply + "'>";
     strSets += "<div class='product' rel='" + data.id + "'>";
     strSets += "<div class='product_img'><img src='" + data.default_image + "'/></div>";
     strSets += "<p class='pname'><a href='" + data.url + "' target='_blank'>" + data.name + "</a></p>";
@@ -140,15 +141,15 @@ function addIndividualBundleProduct(data){
 function addBundleProductImages(data){
 
     bundleImages = [];
-    console.debug(data);
-    if(data.images!=undefined && data.images.length>0) {
 
+    if(data.images!=undefined && data.images.length>0) {
+console.log("id = " + data.id);
         bundleImages[data.id] = [];
 
-        for(var i=0; i<data.images.length; i++)
+        for(var i=0; i<data.images.length; i++) {
             bundleImages[data.id].push(data.images[i]);
-
-        console.debug(bundleImages);
+            console.log("image = " + data.images[i]);
+        }
     }
 }
 
