@@ -284,3 +284,10 @@ p{
 .bag-active {
     background: url('/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/add-to-bag-on.png') no-repeat center center !important;
 }
+.slider.flexslider{
+    min-height: 0px !important;
+}
+.slider.flexslider .slides img{
+    height: 100% !important;
+    width: auto !important;
+}
