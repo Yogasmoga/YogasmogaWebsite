@@ -30,9 +30,8 @@ function changeProduct(product_id){
 
     var color_code = 216;    // by default all gift set has color "Andaman Green"
 
-    jQuery(".purchase_box").html("");
-    jQuery(".set_individual_products").html("");
-
+    jQuery(".gift_set").removeClass('active');
+    jQuery(".gift_set[rel='" + product_id + "']").addClass('active');
     jQuery("#bread-set-name").html(allComboProducts[product_id]["name"]);
     jQuery(".product_name").html(allComboProducts[product_id]["name"]);
     jQuery(".set_description").html(allComboProducts[product_id]["description"]);
@@ -52,6 +51,10 @@ function changeProduct(product_id){
             if(result.message!=undefined && result.message.indexOf("found")>-1) {
 
                 if(result.data!=undefined) {
+
+                    jQuery(".purchase_box").html("");
+                    jQuery(".set_individual_products").html("");
+
                     var data = result.data;
                     var strSets = "";
 
