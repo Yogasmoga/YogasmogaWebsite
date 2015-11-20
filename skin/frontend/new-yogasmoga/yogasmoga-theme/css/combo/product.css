@@ -291,7 +291,7 @@ ul.main-menu > li[rel="70"] ul {
 }
 
 .bag-active {
-    background: url('/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/add-to-bag-on.png') no-repeat center center !important;
+    background-color: #5EC52F;
 }
 .slider.flexslider{
     min-height: 0px !important;
