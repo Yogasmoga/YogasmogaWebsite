@@ -1,6 +1,9 @@
 p{
     margin: 0;
 }
+ul.main-menu > li[rel="70"] ul {
+    display: none !important;
+}
 
 #top_banner {
     background: #AE8637;
@@ -238,6 +241,7 @@ p{
 /* ******************* */
 .set_individual_products {
     padding: 40px 0;
+    min-height: 350px;
 }
 .individual_product {
     float: left;
