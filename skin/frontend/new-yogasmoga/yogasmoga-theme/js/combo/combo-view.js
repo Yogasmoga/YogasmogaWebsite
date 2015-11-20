@@ -202,6 +202,7 @@ function bindSlider(){
 function startSlider(product_id){
 
     var images = bundleImages[product_id];
+    console.debug(images);
 
     if(images!=undefined){
 
