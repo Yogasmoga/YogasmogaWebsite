@@ -27,8 +27,12 @@ $allSizes = array();
 $allSizeAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
 $allSizeOptions = $allSizeAttribute->getSource()->getAllOptions(true, true);
 foreach ($allSizeOptions as $instance) {
-    if ($instance['label'] != "")
+    if ($instance['label'] != "") {
+        if(is_numeric($instance['label']) && intval($instance['label'])>12)
+            continue;
+
         $allSizes[$instance['label']] = $instance['value'];
+    }
 }
 ?>
 
@@ -187,6 +191,9 @@ foreach ($allSizeOptions as $instance) {
                 foreach ($_childProducts as $_childProduct) {
                     $size = $_childProduct->getAttributeText('size');
 
+                    if(is_numeric($size) && intval($size)>12)
+                        continue;
+
                     if (is_numeric($size))
                         $ar_child_sizes[] = intval($size);
                     else
@@ -264,7 +271,7 @@ foreach ($allSizeOptions as $instance) {
 
                                         </p>
 
-                                        <span class="size-chart-bundle">SIZE CHART</span>
+                                        <!--<span class="size-chart-bundle">SIZE CHART</span>-->
 
                                     </div>
                                 </div>
