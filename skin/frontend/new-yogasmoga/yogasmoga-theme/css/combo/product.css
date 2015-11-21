@@ -72,7 +72,8 @@ ul.main-menu > li[rel="70"] ul {
     margin: 0 14px 14px 0;
     cursor: pointer;
     transition-duration: 200ms;
-    color: transparent;
+    color: white;
+    background-color: #A5A7AA;
 }
 
 .gift_set_link.active, .gift_set_link:hover {
@@ -85,8 +86,6 @@ ul.main-menu > li[rel="70"] ul {
 .pname {
     font: 11px/15px Gothambold;
     text-transform: uppercase;
-    color: white;
-    background-color: #A5A7AA;
 }
 
 .pcolor, .pprice {
