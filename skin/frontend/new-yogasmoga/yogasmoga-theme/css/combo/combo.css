@@ -203,7 +203,7 @@ div#bodycompensator {
 }
 
 .contain_product .buy_product {
-    font: 13px / 15px GothamBook;
+    font: 11px / 15px GothamBook;
     position: absolute;
     top: 25px;
     right: 40px;
@@ -344,7 +344,7 @@ div#bodycompensator {
 .toggle_description {
     top: 25px;
     cursor: pointer;
-    font: 13px Gothambook;
+    font: 11px Gothambook;
     left: 40px;
     position: absolute;
     text-transform: uppercase;
