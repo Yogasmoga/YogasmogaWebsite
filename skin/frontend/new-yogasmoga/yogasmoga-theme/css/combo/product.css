@@ -75,9 +75,12 @@ ul.main-menu > li[rel="70"] ul {
     color: transparent;
 }
 
-.gift_set_link.active, .gift_set_link:hover {
-/*    background: #AE8637; */
+.gift_set_link:hover {
     background-color: #A5A7AA;
+    color: #fff;
+}
+.gift_set_link.active{
+    background: #AE8637;
     color: #fff;
 }
 
