@@ -89,7 +89,7 @@ foreach ($allSizeOptions as $instance) {
                 ?>
                 <div class="gift_set_link active" data-map="<?php echo $dataMap;?>">
                     <!--top,left-->
-                    <p class="pname"><?php echo $_product->getName();?></p>
+                    <p class="pname"><?php echo $_product->getName();?><br/>SET</p>
 
                     <p class="pprice">$<?php echo round($_product->getPrice(),0);?></p>
                 </div>
@@ -106,7 +106,6 @@ foreach ($allSizeOptions as $instance) {
                     <div class="box set_name">
                         <p class="page-title_fixed">YS IN WANDERLAND</p>
                         <p class="product_name"><?php echo $firstProduct->getName();?></p>
-
                         <p class="product_price">$<?php echo round($firstProduct->getPrice(),0);?></p>
                     </div>
                     <div class="box map">
