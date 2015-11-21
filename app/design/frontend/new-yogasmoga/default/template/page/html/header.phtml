@@ -446,8 +446,11 @@ if($currentUrl != $checkoutpage){
                         $remainingcolumn = '';
                         $subcategory = Mage::getModel('catalog/category')->load($child1->getId());
                         $subcategories = $subcategory->getChildrenCategories();
+
+                        $subCategeroiesFound = false;
                         foreach ($subcategories as $child2)
                         {
+                            $subCategeroiesFound = true;
                             $subsubcategory = Mage::getModel('catalog/category')->load($child2->getId());
 
                             if($child2->getIsActive() && $subsubcategory->getIncludeInMenu()) {
@@ -475,8 +478,10 @@ if($currentUrl != $checkoutpage){
 
                             }
                         }
-                        $firstcolumn .= "</ul>";
-                        echo $firstcolumn.$remainingcolumn;
+                        if($subCategeroiesFound) {
+                            $firstcolumn .= "</ul>";
+                            echo $firstcolumn . $remainingcolumn;
+                        }
                         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
                         $categoryName = explode('/', $currentUrl);
                         $urlKey = $categoryName[3];
