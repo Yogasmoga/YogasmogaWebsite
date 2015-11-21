@@ -513,7 +513,8 @@ p.free_shipping {
     margin: 14px 14px 14px 0;
     cursor: pointer;
     transition-duration: 200ms;
-    color: transparent;
+    color: white;
+    background-color: #A5A7AA;
 }
 
 /*.gift_set_link:hover{
