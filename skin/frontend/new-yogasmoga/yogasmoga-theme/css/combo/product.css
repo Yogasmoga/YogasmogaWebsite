@@ -85,6 +85,8 @@ ul.main-menu > li[rel="70"] ul {
 .pname {
     font: 11px/15px Gothambold;
     text-transform: uppercase;
+    color: white;
+    background-color: #A5A7AA;
 }
 
 .pcolor, .pprice {
