@@ -509,12 +509,11 @@ p.free_shipping {
     padding: 6px;
     width: 102px;
     height: 52px;
-    background: #f3f3f3;
+    background: #f4f4f4;
     margin: 14px 14px 14px 0;
     cursor: pointer;
     transition-duration: 200ms;
-    color: white;
-    background-color: #A5A7AA;
+    color: transparent;
 }
 
 /*.gift_set_link:hover{
@@ -524,7 +523,8 @@ p.free_shipping {
 }*/
 
 .gift_set_link.active, .gift_set_link:hover {
-    background: #AE8637;
+    /*    background: #AE8637; */
+    background-color: #A5A7AA;
     color: #fff;
 }
 
