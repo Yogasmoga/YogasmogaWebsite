@@ -89,7 +89,7 @@ foreach ($allSizeOptions as $instance) {
                 ?>
                 <div class="gift_set_link active" data-map="<?php echo $dataMap;?>">
                     <!--top,left-->
-                    <p class="pname"><?php echo $_product->getName();?> SET</p>
+                    <p class="pname"><?php echo $_product->getName();?><br/>SET</p>
 
                     <p class="pprice">$<?php echo round($_product->getPrice(),0);?></p>
                 </div>
@@ -267,7 +267,7 @@ foreach ($allSizeOptions as $instance) {
                                         <p class="pname"><a href="<?php echo $data["url"];?>" target="_blank"><?php echo $data["product"]->getName();?><a/> <span class="pcolor product-color-<?php echo $sizeDivCount;?>" rel="<?php echo $data["color_code"];?>"><?php echo $data["color"];?></span></p>
 
                                         <p class="psize">
-                                            <span class="gap">SIZE</span>
+                                            <span class="gap">SIZE:</span>
                                             <span class="sizes">
                                                 <?php
                                                     foreach($allSizes as $key => $value){
