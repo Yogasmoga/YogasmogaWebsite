@@ -135,7 +135,7 @@ function addIndividualBundleProduct(data, classToApply){
     strSets += "<p class='pname'><a href='" + data.url + "' target='_blank'>" + data.name + "</a></p>";
     strSets += "<p class='pcolor'>" + allColors[data.color_code] + "</p>";
     strSets += "<p class='pprice'>" + data.price + "</p>";
-    strSets += "<a href='" + data.url + "' target='_blank'>Buy individually</a>";
+    strSets += "<a href='" + data.url + "' target='_blank'>Sold individually</a>";
     strSets += "</div>";    // product
     strSets += "</div>";    // individual_item
 
