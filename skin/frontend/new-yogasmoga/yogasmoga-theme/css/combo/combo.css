@@ -154,6 +154,9 @@ div#bodycompensator {
     float: left;
     font: 11px/15px GothamBook;
 }
+.right_desc p{
+    text-transform: uppercase;
+}
 
 .set_desc p {
     font: 12px/15px GothamBook;
@@ -205,6 +208,7 @@ div#bodycompensator {
     top: 25px;
     right: 40px;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .contain_product .buy_product a {
