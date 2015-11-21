@@ -107,7 +107,7 @@ function addSideBundleProduct(data, i){
     strSets += "<div class='product_detail product_detail-" + i + "' rel='" + data.id + "'>";
     strSets += "<p class='pname'><a href='" + data.url + "' target='_blank'>" + data.name + "</a></p>";
     strSets += "<p class='pcolor pcolor-" + i + "' rel='" + data.color_code + "'>" + allColors[data.color_code] + "</p>";
-    strSets += "<p class='psize'>SIZE <span class='size-chart-bundle'>SIZE CHART</span></p>";
+    strSets += "<p class='psize'>SIZE: <span class='size-chart-bundle'>SIZE CHART</span></p>";
     strSets += "<div class='sizes'>";
 
     for(var j=0; j<arSizes.length; j++) {

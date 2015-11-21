@@ -1865,7 +1865,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $html .='<span class="amnt">'.$item['price'].'</span>';
                 }
                 $html .= '<span class="clr">' . $item['color'] . '</span>';
-                if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size ' . $item['size'] . '</span>';
+                if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
                 if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
             }
 /*********** added for gift set **********************/
