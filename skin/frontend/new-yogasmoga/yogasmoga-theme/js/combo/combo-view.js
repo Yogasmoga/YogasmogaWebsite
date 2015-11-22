@@ -203,7 +203,7 @@ function bindSlider(){
         var product_id = jQuery(this).attr('rel');
         //startSlider(product_id);
         jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
-        jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["default_image"] + "'/>");
+        jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["big_image"] + "'/>");
     });
 }
 /*
