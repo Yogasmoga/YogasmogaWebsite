@@ -198,8 +198,12 @@ div#bodycompensator {
     text-align: center;
 }
 
-.contain_product .product_name, .contain_product .product_price {
+.contain_product .product_price {
     font: 24px/32px AvantGardeGothicITCW01B;
+}
+.contain_product .product_name{
+    font: 24px/32px AvantGardeGothicITCW01B;
+    text-transform: uppercase;
 }
 
 .contain_product .buy_product {
