@@ -65,7 +65,7 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
             $ar_child_sizes = array_unique($ar_child_sizes);
 
             $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
-            $arImages = array();
+            //$arImages = array();
             if (isset($_gallery)) {
 
                 foreach ($_gallery as $_image) {
@@ -80,15 +80,18 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
                         continue;
 
                     //$image = (string)Mage::helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450);
-                    $image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
+                    $default_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
+                    $big_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
 
-                    $arImages[] = $image;
+                    //$arImages[] = $image;
+                    break;
                 }
-
+/*
                 if(count($arImages)>0)
                     $default_image = $arImages[0];
                 else
                     $default_image = "";
+*/
             }
 
             $arBundledData[] = array(
@@ -100,7 +103,8 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
                 "price" => "$" . round($_bundle_product->getPrice(),2),
                 "sizes" => implode(",", $ar_child_sizes),
                 "default_image" => $default_image,
-                "images" => $arImages
+                "big_image" => $big_image
+                //"images" => $arImages
             );
         }
 

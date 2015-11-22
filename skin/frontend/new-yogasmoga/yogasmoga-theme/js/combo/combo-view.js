@@ -79,7 +79,7 @@ function changeProduct(product_id){
 
                         setProducts[data[i].id] = {};
                         setProducts[data[i].id]["name"] = data[i].name;
-                        setProducts[data[i].id]["default_image"] = data[i].default_image;
+                        setProducts[data[i].id]["big_image"] = data[i].big_image;
                     }
 
                     strSets = "";
