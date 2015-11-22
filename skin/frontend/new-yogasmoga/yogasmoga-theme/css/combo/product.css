@@ -230,8 +230,12 @@ ul.main-menu > li[rel="70"] ul {
     float: left;
 }
 
-.purchase_box .product_name, .purchase_box .product_price {
+.purchase_box .product_price {
     font: 24px/29px AvantGardeGothicITCW01B;
+}
+.purchase_box .product_name{
+    font: 24px/29px AvantGardeGothicITCW01B;
+    text-transform: uppercase;
 }
 
 .purchase_box .product_price {
@@ -303,4 +307,13 @@ ul.main-menu > li[rel="70"] ul {
 .slider.flexslider .slides img{
     height: 100% !important;
     width: auto !important;
+}
+
+.current_slider_product{
+    margin: 10px;
+}
+.current_slider_image{
+    height: 100%;
+    width: auto !important;
+    margin: auto;
 }
