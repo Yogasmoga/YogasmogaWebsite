@@ -201,7 +201,8 @@ function bindSlider(){
     jQuery(".individual_product").find(".product_img").click(function(){
         var product_id = jQuery(this).attr('rel');
         //startSlider(product_id);
-        jQuery(".flexslider ul.slides").html("<li><img src='" + setProducts[product_id]["default_image"] + "'/>");
+        jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
+        jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["default_image"] + "'/>");
     });
 }
 /*

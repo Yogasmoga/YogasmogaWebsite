@@ -311,6 +311,7 @@ ul.main-menu > li[rel="70"] ul {
 
 .current_slider_product{
     margin: 10px;
+    text-transform: uppercase;
 }
 .current_slider_image{
     height: 100%;
