@@ -1852,7 +1852,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             else if($item['product_type']=="gift-bundled") {
                 $html .= '<span class="clr">' . $item['color'] . '</span>';
-                if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size ' . $item['size'] . '</span>';
+                if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
                 if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
             }
             else{

@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    text-align: left;
 }
 
 p {
@@ -192,6 +191,7 @@ div#bodycompensator {
 .contain_product .side1 .product_name {
     margin-top: 25px;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .contain_product .side1 .product_price {
@@ -615,6 +615,7 @@ span.temp {
 
 .section.active .side1 .product_name, .section.active .side1 .product_price {
     display: none;
+    text-transform: uppercase;
 }
 
 .section .side1 .buy_product, .section .side1 .toggle_description {
