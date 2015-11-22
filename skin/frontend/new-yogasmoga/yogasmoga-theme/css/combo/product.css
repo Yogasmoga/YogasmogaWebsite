@@ -313,6 +313,9 @@ ul.main-menu > li[rel="70"] ul {
     margin: 10px;
     text-transform: uppercase;
 }
+.current_slider_image{
+    text-align: center;
+}
 .current_slider_image img{
     height: 100%;
     width: auto !important;
