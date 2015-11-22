@@ -74,10 +74,11 @@ function changeProduct(product_id){
 
                         addIndividualBundleProduct(data[i], classToApply);
 
-                        addBundleProductImages(data[i]);
+                        //addBundleProductImages(data[i]);
 
                         setProducts[data[i].id] = {};
                         setProducts[data[i].id]["name"] = data[i].name;
+                        setProducts[data[i].id]["default_image"] = data[i].default_image;
                     }
 
                     strSets = "";
@@ -142,7 +143,7 @@ function addIndividualBundleProduct(data, classToApply){
     jQuery(".set_individual_products").append(strSets);
 }
 
-
+/*
 function addBundleProductImages(data){
 
     if(data.images!=undefined && data.images.length>0) {
@@ -151,10 +152,9 @@ function addBundleProductImages(data){
 
         for(var i=0; i<data.images.length; i++)
             bundleImages[data.id].push(data.images[i]);
-
-        console.log(bundleImages);
     }
 }
+*/
 
 function bindBag(){
 
@@ -200,10 +200,11 @@ function bindSizes(){
 function bindSlider(){
     jQuery(".individual_product").find(".product_img").click(function(){
         var product_id = jQuery(this).attr('rel');
-        startSlider(product_id);
+        //startSlider(product_id);
+        jQuery(".flexslider ul.slides").html("<li><img src='" + setProducts[product_id]["default_image"] + "'/>");
     });
 }
-
+/*
 function startSlider(product_id){
 
     var images = bundleImages[product_id];
@@ -221,7 +222,7 @@ function startSlider(product_id){
         jQuery("div.flexslider").flexslider();
     }
 }
-
+*/
 function addToBag(giftProductId, count, parent, currentProductColorCode){
     var colorAttributeId = 92;
     var sizeAttributeId = 138;
