@@ -257,7 +257,7 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
     productUrl += '&bundle=' + bundle_data;
 
     productUrl += '&showhtml=0';
-    var loader = '<span class="loader" <img src="/skin/frontend/new-yogasmoga/yogasmoga-theme/images/zoom_assets/preloader.gif" /></span>';
+    var loader = '<span class="loader"> <img src="/skin/frontend/new-yogasmoga/yogasmoga-theme/images/zoom_assets/preloader.gif" /></span>';
     //jQuery("#addtobagloader").show();
     jQuery(".add_to_bag").html(loader);
 

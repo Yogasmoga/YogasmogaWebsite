@@ -317,6 +317,12 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 .add_to_bag.bag-active {
     background-color: #5EC52F;
 }
+
+.add_to_bag.bag-active .loader img{
+    margin: 12px;
+}
+
+
 .slider.flexslider{
     min-height: 0 !important;
 }
