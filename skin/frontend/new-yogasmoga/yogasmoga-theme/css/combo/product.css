@@ -247,8 +247,12 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     position: relative;
 }
 
-.add_to_bag .loader {
+#loader {
+    float: left;
+    margin-top: -10px;
     text-align: center;
+    width: 100%;
+    display: none;
 }
 
 .purchase_box .product_price {

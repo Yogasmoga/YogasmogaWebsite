@@ -94,7 +94,7 @@ function changeProduct(product_id){
 
                     strSets = "";
                     strSets += "<div class='add_to_bag' rel='" + product_id + ":" + color_code + ":" + data.length + "'>ADD TO BAG</div>";
-                    strSets += "<p class='loader'> <img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/zoom_assets/preloader.gif' /></p>";
+                    strSets += "<p id='loader'> <img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/zoom_assets/preloader.gif' /></p>";
                     strSets += "<p class='free_shipping'>Free and fast shipping to US and Canada</p>";
 
                     jQuery(".purchase_box").append(strSets);
@@ -267,9 +267,8 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
         success: function (result) {
             jQuery(".sizes").find(".size").removeClass("active-size");
             jQuery(".add_to_bag").removeClass("bag-active");
-            jQuery(".add_to_bag").html('ADD TO BAG');
 
-            jQuery("#addtobagloader").show();
+            jQuery("#loader").hide();
             jQuery("div#myminicart").html(result.html);
             showShoppingBagHtmlOpen();
         }
