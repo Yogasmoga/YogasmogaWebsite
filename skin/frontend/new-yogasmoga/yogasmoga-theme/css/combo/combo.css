@@ -9,12 +9,6 @@ p {
 a, a:hover {
     color: #555;
 }
-ul.main-menu > li.over[rel="70"] > ul.sub-menu {
-    left: auto;
-    width: 54px;
-    height: 50px;
-    margin-left: -18px;
-}
 /* *******************MAIN CSS ***************************** */
 .header-container {
     top: 25px !important;

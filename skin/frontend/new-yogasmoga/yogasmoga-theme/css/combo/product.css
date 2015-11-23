@@ -1,12 +1,14 @@
 p{
     margin: 0;
 }
-ul.main-menu > li.over[rel="70"] > ul.sub-menu {
+/*
+ul.main-menu > li.over.gift-sets > ul.sub-menu{
     left: auto;
     width: 54px;
     height: 50px;
     margin-left: -18px;
 }
+*/
 
 #top_banner {
     background: #AE8637;
