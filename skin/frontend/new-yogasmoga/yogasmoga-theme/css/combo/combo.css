@@ -32,7 +32,7 @@ div#bodycompensator {
 }
 
 .section {
-    height: 512px;
+    min-height: 512px;
     overflow-x: hidden;
     margin-bottom: 14px;
     overflow-y: hidden;
@@ -298,14 +298,14 @@ div#bodycompensator {
 }
 
 .product_set .side2 .product_container {
-    width: 1024px;
+    max-width: 1600px;
     margin: 0 auto;
     position: relative;
     height: 100%;
 }
 
 .product_set .side2 .product_container .thumbnails {
-    width: 196px;
+    width: 19.14%;
     float: left;
     padding: 0 40px;
 }
@@ -318,26 +318,31 @@ div#bodycompensator {
 }
 
 .product_set .side2 .product_container .product_slider {
-    padding: 40px 0;
-    width: 432px;
     float: left;
+    padding: 40px 0;
+    width: 42.86%;
 }
 
 .product_set .side2 .product_container .product_slider .slider {
     background: #fff none repeat scroll 0 0;
-    height: 432px;
-    width: 432px;
+    width: 100%;
     margin: 0 auto;
+}
+
+.product_set .side2 .product_container .product_slider .slider img {
+    width: 100%;
+    height: auto;
 }
 
 .product_set .side2 .product_container .product_filters {
     float: left;
-    text-align: left;
     padding: 40px;
-    width: 393px;
+    text-align: left;
+    width: 38%;
 }
 
 .product_set .side2 span.reverse_flip {
+    background: #fff none repeat scroll 0 0;
     border: 1px solid #999;
     border-radius: 50%;
     color: #999;
@@ -352,6 +357,7 @@ div#bodycompensator {
     top: 40px;
     transform: rotateZ(45deg);
     width: 28px;
+    z-index: 1;
 }
 
 .side2.flipped span.reverse_flip {
@@ -472,6 +478,7 @@ span.size-chart-bundle {
     text-align: center;
     min-width: 19px;
     cursor: pointer;
+    background: #fff;
 }
 
 .add_to_bag, .add_to_wishlist {
@@ -492,6 +499,8 @@ span.size-chart-bundle {
 
 p.free_shipping {
     font: 11px/15px GothamBookItalic;
+    float: left;
+    width: 100%;
 }
 
 .ys_in_wanderland {
