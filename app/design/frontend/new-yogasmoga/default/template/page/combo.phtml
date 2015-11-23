@@ -225,8 +225,6 @@ foreach ($allSizeOptions as $instance) {
                 );
             }
 
-            print_r($ar_bundle_sizes);
-
             // main set images
             $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
             if(isset($_gallery)) {
