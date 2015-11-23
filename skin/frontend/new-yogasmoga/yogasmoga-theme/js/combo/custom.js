@@ -72,9 +72,7 @@ jm(document).ready(function() {
 
 	jQuery(".thumbnail").click(function(){
 
-		var productId = jQuery(this).attr("rel");
-
-		var imageSrc = arBundledProductBigImages[productId];
+		var imageSrc = jQuery(this).find("img").attr('src');
 
 		jQuery(this).closest(".product_container").find(".slider").find("img").attr('src', imageSrc);
 	});

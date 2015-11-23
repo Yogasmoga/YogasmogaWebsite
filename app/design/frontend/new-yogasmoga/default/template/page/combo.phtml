@@ -83,6 +83,7 @@ foreach ($allSizeOptions as $instance) {
                             $imageLabelData = json_decode(trim($_image->getLabel()), true);
                             $dataMap = $imageLabelData['dataMap'];
                             $person = $imageLabelData['person'];
+                            $setImage = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
                             break;
                         }
                     }
@@ -187,7 +188,6 @@ foreach ($allSizeOptions as $instance) {
                             continue;
 
                         if ($imageLabelData['color'] == $ar_id_color_code[1]) {
-                            $small_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
                             $big_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
                             //$bundle_product_images[] = $url;
                             break;
@@ -216,11 +216,10 @@ foreach ($allSizeOptions as $instance) {
                 ksort($ar_child_sizes);
 
                 $ar_bundle_sizes[$i] = array(
-                    "product" => $_bundle_product,
+                    "product_name" => $_bundle_product->getName(),
                     "product_id" => $_bundle_product->getId(),
                     "price" => round($_bundle_product->getPrice(),2),
                     "sizes" => $ar_child_sizes,
-                    "small_image" => $small_image,
                     "big_image" => $big_image,
                     //"images" => $bundle_product_images,
                     "color" => $allColors[$bundle_color_id],
@@ -264,7 +263,7 @@ foreach ($allSizeOptions as $instance) {
                                 ?>
 
                                 <div class="thumbnail" rel="<?php echo $bundle['product_id'];?>">
-                                    <img src="<?php echo $bundle['small_image'];?>" />
+                                    <img src="<?php echo $bundle['big_image'];?>" />
                                 </div>
 
                                 <?php } ?>
@@ -272,7 +271,7 @@ foreach ($allSizeOptions as $instance) {
                             </div>
                             <div class="product_slider">
                                 <div class="slider">
-                                    <img src="http://cdn.yogasmoga.com/media/catalog/product/cache/1/thumbnail/771x700/17c2151a3f12ebf0226ce1e5826e3ed5/u/-/u--me-twist-bra-c6-helix-1_013.jpg" />
+                                    <img src="<?php echo $setImage;?>" />
                                 </div>
                             </div>
                             <div class="product_filters">
@@ -287,8 +286,8 @@ foreach ($allSizeOptions as $instance) {
                                 ?>
                                 <div class="set_item">
 
-                                    <div class="product_detail product-detail-<?php echo $sizeDivCount;?>" rel="<?php echo $data["product"]->getId();?>">
-                                        <p class="pname"><a href="<?php echo $data["url"];?>" target="_blank"><?php echo $data["product"]->getName();?></a> <span class="pcolor product-color-<?php echo $sizeDivCount;?>" rel="<?php echo $data["color_code"];?>"><?php echo $data["color"];?></span></p>
+                                    <div class="product_detail product-detail-<?php echo $sizeDivCount;?>" rel="<?php echo $data["product_id"];?>">
+                                        <p class="pname"><a href="<?php echo $data["url"];?>" target="_blank"><?php echo $data["product_name"];?></a> <span class="pcolor product-color-<?php echo $sizeDivCount;?>" rel="<?php echo $data["color_code"];?>"><?php echo $data["color"];?></span></p>
 
                                         <p class="psize">
                                             <span class="gap">SIZE:</span>
@@ -348,7 +347,7 @@ foreach ($allSizeOptions as $instance) {
                                 foreach($ar_bundle_sizes as $data){
                             ?>
                             <div>
-                                <b><?php echo $data["product"]->getName();?></b><br/>
+                                <b><?php echo $data["product_name"];?></b><br/>
                                 <span class="desc_product_color"><?php echo $data["color"];?></span><br/>
                                 $<?php echo $data["price"];?><br/>
                                 <a href="<?php echo $data["url"];?>" target="_blank">Sold Individually</a>
@@ -377,11 +376,6 @@ foreach ($allSizeOptions as $instance) {
 
                     <?php foreach($cityTimes as $cityTime){ ?>
                     cityTimes.push("<?php echo $cityTime;?>");
-                    <?php } ?>
-
-                    <?php foreach($arBundledProductImages as $id => $imageData){ ?>
-                        arBundledProductSmallImages["<?php echo $id;?>"] = "<?php echo $imageData['small_image'];?>";
-                        arBundledProductBigImages["<?php echo $id;?>"] = "<?php echo $imageData['big_image'];?>";
                     <?php } ?>
 
                 </script>
