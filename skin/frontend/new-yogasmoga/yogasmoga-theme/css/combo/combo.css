@@ -360,6 +360,16 @@ div#bodycompensator {
     text-transform: uppercase;
 }
 
+.toggle_description.close::before {
+    color: #CC0033;
+    content: "+";
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
 .toggle_description b {
     color: #CC0033;
 }
