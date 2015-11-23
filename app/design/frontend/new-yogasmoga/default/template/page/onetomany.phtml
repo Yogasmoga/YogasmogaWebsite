@@ -133,7 +133,7 @@
                                     $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
                                 ?>
                                 <!-- bannerContainer -->
-								<?php if(echo $shopthecolor_imgUrl):?>
+								<?php if($shopthecolor_imgUrl):?>
                                 <div class="bannerFluid" style="background: url('<?php echo $shopthecolor_imgUrl; ?>'); background-size: cover;">
                                     <!-- <img src="--><?php //echo $shopthecolor_imgUrl; ?><!--">-->
                                         <?php
