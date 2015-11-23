@@ -342,6 +342,7 @@ div#bodycompensator {
 }
 
 .product_set .side2 span.reverse_flip {
+    background: #fff none repeat scroll 0 0;
     border: 1px solid #999;
     border-radius: 50%;
     color: #999;
@@ -356,6 +357,7 @@ div#bodycompensator {
     top: 40px;
     transform: rotateZ(45deg);
     width: 28px;
+    z-index: 1;
 }
 
 .side2.flipped span.reverse_flip {
@@ -476,6 +478,7 @@ span.size-chart-bundle {
     text-align: center;
     min-width: 19px;
     cursor: pointer;
+    background: #fff;
 }
 
 .add_to_bag, .add_to_wishlist {
@@ -496,6 +499,8 @@ span.size-chart-bundle {
 
 p.free_shipping {
     font: 11px/15px GothamBookItalic;
+    float: left;
+    width: 100%;
 }
 
 .ys_in_wanderland {
