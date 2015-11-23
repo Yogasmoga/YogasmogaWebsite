@@ -206,13 +206,13 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 
 .purchase_box .pcolor, .purchase_box .pprice {
     font: 11px/15px Gothambook;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     text-transform: uppercase;
 }
 
 .purchase_box .psize {
     font: 11px/15px Gothambook;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
 }
 
 .purchase_box span.size-chart-bundle {

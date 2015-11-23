@@ -312,9 +312,9 @@ div#bodycompensator {
 }
 
 .product_set .side2 .product_container .thumbnails .thumbnail {
-    width: 117px;
-    height: 117px;
+    width: 100%;
     margin: 41px 0;
+    cursor: pointer;
     background: #fff;
 }
 

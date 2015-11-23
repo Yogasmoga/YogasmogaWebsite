@@ -259,7 +259,7 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
     productUrl += '&showhtml=0';
     var loader = '<span class="loader"> <img src="/skin/frontend/new-yogasmoga/yogasmoga-theme/images/zoom_assets/preloader.gif" /></span>';
     //jQuery("#addtobagloader").show();
-    jQuery(".add_to_bag").html(loader);
+    jQuery(".add_to_bag").append(loader);
 
     jQuery.ajax({
         type: 'POST',
