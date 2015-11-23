@@ -1,3 +1,4 @@
+var sectionOffsets = [0];
 var winH;
 jQuery(document).ready(function () {
     positionBanners();
@@ -97,7 +98,7 @@ function init() {
 var sectionIndex = 1;
 
 function getActiveSlide() {
-    var sectionOffsets = [0];
+
     jQuery(".section").each(function () {
         sectionOffsets.push(jQuery(this).offset().top);
     });
@@ -146,6 +147,7 @@ jQuery(window).resize(function () {
     var sliderMainImageHeight = jQuery(".product_set .side2 .product_container .product_slider .slider img").height();
     jQuery(".section").height(sliderMainImageHeight + 80);
     descriptionPosition();
+    getActiveSlide();
 });
 
 function descriptionPosition() {
