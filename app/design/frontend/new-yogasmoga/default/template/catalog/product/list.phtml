@@ -1,3 +1,12 @@
+<?php
+$currentCategoryId = Mage::registry('current_category')->getId();
+$categoriesWithNoFilter = array(8,12,29,30,31,32,33,38,39,40,50);
+$showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
+if($showSizeFilter){
+    ?>
+    <div id="div_sizes">&nbsp;</div>
+<?php } ?>
+
 <!-- productGridView -->
 <?php
 /*********************** hidden page logic ********************/
@@ -312,11 +321,47 @@ if ($this->getRequest()->getParam('hidden')) {
         }
         ?>
         <?php
-        // carbon 6 end
-
         $firsth1 = 1;
+
+        /**************** size filter *****************/
+        $allSkuSizes = array();
+        $alphabeticSkuSizes = array();
+
+        $productColorIndex=0;
+        /**************** size filter *****************/
+
         foreach ($configurableProductArr as $key => $val) {
             $confProduct = Mage::getModel('catalog/product')->load($key);
+
+            /**************** size filter *****************/
+            ++$productColorIndex;
+
+            $confProductForSku = Mage::getModel('catalog/product_type_configurable')->setProduct($confProduct);
+
+            $skuSizes = array();
+            $simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFilterByRequiredOptions();
+
+            $characterSizeFound = false;
+            foreach($simpleCollectionForSku as $simpleProductForSku){
+                //$sku = $simpleProductForSku->getSku();
+                $filterColorName = $simpleProductForSku->getAttributeText('color');
+                $filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
+
+                $size = $simpleProductForSku->getAttributeText('size');
+
+                $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
+
+                if(!isset($skuSizes[$filterColorName]))
+                    $skuSizes[$filterColorName] = array();
+
+                if(isset($size) && strlen(trim($size))>0) {
+                    $allSkuSizes[] = $size;
+                    if ($stock > 0)
+                        $skuSizes[$filterColorName][] = $size;
+                }
+            }
+            /**************** size filter *****************/
+
             // get all images for the product
             $_gallery = Mage::getModel('catalog/product')->load($key)->getMediaGalleryImages();
             $imageArr = array();
@@ -356,17 +401,33 @@ if ($this->getRequest()->getParam('hidden')) {
             <!-- GridHeading -->
             <?php if ($firsth1 == 1) {
                 $firsth1 = 2; ?>
-                <h1><?php echo $confProduct->getName(); ?></h1>
+                <h1 class="product-header-<?php echo $productColorIndex;?>"><?php echo $confProduct->getName(); ?></h1>
             <?php } else { ?>
-                <h4><?php echo $confProduct->getName(); ?></h4>
+                <h4 class="product-header-<?php echo $productColorIndex;?>"><?php echo $confProduct->getName(); ?></h4>
 
             <?php } ?>
             <!-- GridHeading -->
 
             <?php
             foreach ($configurableProductArr[$key] as $childProduct) {
+
+
+                /****************** size filter **********************************/
+                $productColorName = $clrinfo[$childProduct['color']];
+                $arColorSizes = array();
+
+                foreach($skuSizes as $keyColor => $sizes) {
+
+                    if ($keyColor == $productColorName) {
+                        $strSizes = implode(",", $sizes);
+                        break;
+                    }
+                }
+
+                /****************** size filter **********************************/
+
                 ?>
-                <div class="productCont">
+                <div class="productCont product-color-<?php echo $productColorIndex;?>" rel="<?php echo $strSizes;?>">
                     <div class="prod-img">
                         <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl; ?>">
                             <?php
@@ -407,14 +468,46 @@ if ($this->getRequest()->getParam('hidden')) {
         }
 
 
-        //print_r($configurableProductSort);
-        // print_r($configurableProductSort2);
-        //print_r($clrinfo);
-        //print_r($configurableProductArr);
-        //print_r($configurableProductArrKey);die;
+        if($showSizeFilter){
+            /************** size filter ***********************/
+            if(isset($allSkuSizes) && count($allSkuSizes)>0)
+                $allSkuSizes = array_unique($allSkuSizes);
 
+            $arProductAllSizes = array();
+            $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+            $allOptions = $attribute->getSource()->getAllOptions(true, true);
+            foreach ($allOptions as $instance) {
+                if ($instance['label'] != "" && strpos($instance['label'], "T")===false)
+                    $arProductAllSizes[] = $instance['label'];
+            }
 
-        ?>
+            /************** size filter ***********************/
+
+            ?>
+            <!-- ********************************* checkbox filter ********************** -->
+            <script type="text/javascript">
+                var arAllSizes = Array();
+                var arProductSizes = Array();
+                var productColorIndex;
+
+                productColorIndex = "<?php echo $productColorIndex;?>";
+
+                <?php
+                    foreach($allSkuSizes as $size){
+                ?>
+                arProductSizes.push("<?php echo $size;?>");
+                <?php
+                    }
+                    foreach($arProductAllSizes as $size){
+                ?>
+                arAllSizes.push("<?php echo $size;?>");
+                <?php
+                    }
+                ?>
+            </script>
+            <script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter.js"></script>
+            <!-- ********************************* checkbox filter ********************** -->
+        <?php } ?>
 
         <?php
         /*

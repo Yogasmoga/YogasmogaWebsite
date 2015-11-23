@@ -66,7 +66,7 @@
             <?php
             /////////////BLOCK 3////////////
             //                    $post = get_post(1507);
-            $post = get_post(953);
+            $post = get_post(6656);
             ?>
             <?php echo get_the_post_thumbnail($post->ID, "thumb");
             if (!has_post_thumbnail($post->ID)) {
