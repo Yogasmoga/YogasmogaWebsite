@@ -34,34 +34,87 @@
 <head>
     <?php echo $this->getChildHtml('head') ?>
 </head>
-<body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" <?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?> onload="setTimeout(scrollTo, 0, 0, 1)">
- <div class="wrapper">
-   <div class="page">
-<?php echo $this->getChildHtml('after_body_start') ?>
-<?php echo $this->getChildHtml('global_notices') ?>
-<div class="header-container">
-<div class="header">
-    <?php echo $this->getChildHtml('header') ?>
-</div>
-</div>
-<div class="clearfix"></div>
-<div class="main-container">
-   
-	<?php //echo $this->getChildHtml('breadcrumbs') ?>
-	<div id="main" class="col-main">
-	    <?php echo $this->getChildHtml('global_messages') ?>
-		<?php echo $this->getChildHtml('content') ?>
-	</div>
+<body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" topmargin="0"
+      leftmargin="0" <?php echo $this->getBodyClass() ? ' class="' . $this->getBodyClass() . '"' : '' ?>
+      onload="setTimeout(scrollTo, 0, 0, 1)">
+<div class="wrapper">
+    <div class="page">
+        <?php echo $this->getChildHtml('after_body_start') ?>
+        <?php echo $this->getChildHtml('global_notices') ?>
+        <div class="header-container">
+            <div class="header">
+                <?php echo $this->getChildHtml('header') ?>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="main-container">
+            <?php echo $this->getChildHtml('global_messages') ?>
+            <?php echo $this->getChildHtml('content') ?>
+        </div>
+        <div class="pageThumbnail table">
+            <div class="table-cell">
+                <h1 class="page-title">#YSWANDERLAND</h1>
+            </div>
+        </div>
+        <div class="gift-sets-collection">
+            <div class="gift-set">
+                <div class="gift-set-title">THE NEW ORLEANS SET</div>
+                <div class="thumbnail">
+                    <span class="setPrice">$250</span>
+                </div>
+                <div class="details">
+                    <p class="left_item">9 left</p>
 
-</div>
-<div class="footer-container">
-    <div class="footer">
-        <?php echo $this->getChildHtml('footer') ?>
+                    <p class="desc">
+                        Quis nec pede maecenas suspendisse dui pede. Massa lectus felis est mollis urna. Maecenas sit
+                        vestibulum est hac rutrum augue. Molestie vel sed integer, accumsan mollis, elementum egestas
+                        hac sem sit, congue vivamus nisl sed
+                    </p>
+
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                <img src="http://staging.yogasmoga.com/media/catalog/product/cache/1/thumbnail/500x500/17f82f742ffe127f42dca9de82fb58b1/l/a/laguna-bra-topo-print-koel-carbon-1_012_2.jpg"/>
+                            </li>
+                            <li>
+                                <img src="http://staging.yogasmoga.com/media/catalog/product/cache/1/thumbnail/500x500/17f82f742ffe127f42dca9de82fb58b1/l/a/laguna-bra-topo-print-koel-carbon-1_012_2.jpg"/>
+                            </li>
+                            <li>
+                                <img src="http://staging.yogasmoga.com/media/catalog/product/cache/1/thumbnail/500x500/17f82f742ffe127f42dca9de82fb58b1/l/a/laguna-bra-topo-print-koel-carbon-1_012_2.jpg"/>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="gift-set">
+                <div class="gift-set-title">THE NEW ORLEANS SET</div>
+                <div class="thumbnail">
+                    <span class="setPrice">$250</span>
+                </div>
+                <div class="details">
+
+                </div>
+            </div>
+            <div class="gift-set">
+                <div class="gift-set-title">THE NEW ORLEANS SET</div>
+                <div class="thumbnail">
+                    <span class="setPrice">$250</span>
+                </div>
+                <div class="details">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-container">
+            <div class="footer">
+                <?php echo $this->getChildHtml('footer') ?>
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+        <?php echo $this->getAbsoluteFooter() ?>
     </div>
-</div>
-<?php echo $this->getChildHtml('before_body_end') ?>
-<?php echo $this->getAbsoluteFooter() ?>
-  </div>
 </div>
 </body>
 </html>
