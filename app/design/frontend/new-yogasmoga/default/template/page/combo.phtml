@@ -184,10 +184,8 @@ foreach ($allSizeOptions as $instance) {
                             continue;
 
                         if ($imageLabelData['color'] == $ar_id_color_code[1]) {
-                            $url = $this->helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(150, 150)->setQuality(100);
-                            $small_image = $url;
-                            $url = $this->helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(500, 500)->setQuality(100);
-                            $big_image = $url;
+                            $small_image = $this->helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(150, 150)->setQuality(100);
+                            $big_image = $this->helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(500, 500)->setQuality(100);
                             //$bundle_product_images[] = $url;
                             break;
                         }
@@ -226,6 +224,8 @@ foreach ($allSizeOptions as $instance) {
                     "url" => $bundledProductUrl
                 );
             }
+
+            print_r($ar_bundle_sizes);
 
             // main set images
             $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
