@@ -35,7 +35,7 @@
             </checkout_cart_save_before>
 		</events>
 	
-	<!--	<events>
+		<events>
             <sales_quote_collect_totals_after>
                 <observers>
                     <ysindia_customer_model_observer>
@@ -45,7 +45,7 @@
 					</ysindia_customer_model_observer>
                 </observers>
             </sales_quote_collect_totals_after>
-		</events>-->
+		</events>
 
 		<customer>
             <address>
