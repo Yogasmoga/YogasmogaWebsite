@@ -134,6 +134,7 @@ div#bodycompensator {
     padding: 20px;
     transition-duration: 500ms;
     z-index: 11;
+    text-align: left;
 }
 
 .description_box.show{
@@ -178,8 +179,9 @@ div#bodycompensator {
 }
 
 .right_desc {
-    width: 20%;
     float: right;
+    padding-right: 20px;
+    width: 215px;
 }
 
 .set_desc b, .middle_desc b, .middle_desc div b {
