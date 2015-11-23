@@ -9,8 +9,11 @@ p {
 a, a:hover {
     color: #555;
 }
-ul.main-menu > li[rel="70"] ul {
-    display: none !important;
+ul.main-menu > li.over[rel="70"] > ul.sub-menu {
+    left: auto;
+    width: 54px;
+    height: 50px;
+    margin-left: -18px;
 }
 /* *******************MAIN CSS ***************************** */
 .header-container {
@@ -527,19 +530,20 @@ p.free_shipping {
     background: #fff none repeat scroll 0 0;
     height: 80px;
     margin: 0;
-    text-align: left;
+    text-align: center;
 }
 
 .gift_set_link {
-    float: left;
-    padding: 6px;
-    width: 102px;
-    height: 56px;
-    background: #f4f4f4;
-    margin: 14px 14px 14px 0;
-    cursor: pointer;
-    transition-duration: 200ms;
+    background: #f4f4f4 none repeat scroll 0 0;
     color: transparent;
+    cursor: pointer;
+    display: inline-block;
+    height: 56px;
+    margin: 14px 14px 14px 0;
+    padding: 6px;
+    text-align: left;
+    transition-duration: 200ms;
+    width: 102px;
 }
 
 /*.gift_set_link:hover{
@@ -677,23 +681,3 @@ span.temp {
 .bag-active {
     background-color: #5EC52F;
 }
-
-/*
-.contain_product.active .buy_product a.quick_look {
-    position: fixed;
-    right: 145px;
-    top: 280px;
-}
-
-.contain_product.active .buy_product a.buy_gift_set {
-    position: fixed;
-    right: 40px;
-    top: 280px;
-}
-
-.section.active .side1 .toggle_description {
-    position: fixed;
-    left: 40px;
-    top: 280px;
-    margin: 0;
-}*/

@@ -26,6 +26,9 @@ function positionBanners() {
 function init() {
     jQuery(".contain_product .side1 .buy_product a.quick_look, .product_set .side2 span.reverse_flip").click(function (e) {
         e.preventDefault();
+        var linkHtml = "SEE DETAILS <b>&gt;</b>";
+        jQuery(".toggle_description").not(jQuery(this)).html(linkHtml);
+        jQuery(".toggle_description").not(jQuery(this)).removeClass("close");
         var thisSide1 = jQuery(this).closest(".product_set").find(".side1");
         var thisSide2 = jQuery(this).closest(".product_set").find(".side2");
         jQuery(".side1").not(thisSide1).removeClass("inverse-flipped");
