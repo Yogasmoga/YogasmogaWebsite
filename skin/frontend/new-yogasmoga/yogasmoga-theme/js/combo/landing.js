@@ -34,6 +34,8 @@ function init() {
         var linkHtml = "SEE DETAILS <b>&gt;</b>";
         jQuery(".toggle_description").not(jQuery(this)).html(linkHtml);
         jQuery(".toggle_description").not(jQuery(this)).removeClass("close");
+        jQuery(".description_box").removeClass("show");
+
         var thisSide1 = jQuery(this).closest(".product_set").find(".side1");
         var thisSide2 = jQuery(this).closest(".product_set").find(".side2");
         jQuery(".side1").not(thisSide1).removeClass("inverse-flipped");

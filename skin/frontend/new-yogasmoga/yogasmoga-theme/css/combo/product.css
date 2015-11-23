@@ -314,11 +314,11 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     color: #fff;
 }
 
-.bag-active {
+.add_to_bag.bag-active {
     background-color: #5EC52F;
 }
 .slider.flexslider{
-    min-height: 0px !important;
+    min-height: 0 !important;
 }
 .slider.flexslider .slides img{
     height: 100% !important;
