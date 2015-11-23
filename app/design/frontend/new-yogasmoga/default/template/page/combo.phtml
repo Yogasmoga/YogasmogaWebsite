@@ -82,12 +82,14 @@ foreach ($allSizeOptions as $instance) {
                         foreach ($_gallery as $_image) {
                             $imageLabelData = json_decode(trim($_image->getLabel()), true);
                             $dataMap = $imageLabelData['dataMap'];
+                            $person = $imageLabelData['person'];
                             break;
                         }
                     }
 
+                    $personClass = "person." . $person;
                 ?>
-                <div class="gift_set_link active" data-map="<?php echo $dataMap;?>">
+                <div class="gift_set_link <?php echo $personClass;?> active" data-map="<?php echo $dataMap;?>">
                     <!--top,left-->
                     <p class="pname"><?php echo $_product->getName();?></p>SET
 
