@@ -136,6 +136,12 @@ div#bodycompensator {
     z-index: 11;
 }
 
+.description_box.show{
+    opacity: 1;
+    bottom: 0;
+    transition-duration: 200ms;
+}
+
 .set_desc, .middle_desc {
     width: 40%;
     padding: 0 20px;
