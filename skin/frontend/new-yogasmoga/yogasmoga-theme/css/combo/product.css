@@ -244,6 +244,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     cursor: pointer;
     width: 100%;
     float: left;
+    position: relative;
 }
 
 .add_to_bag .loader {
