@@ -24,6 +24,9 @@ jQuery(document).ready(function () {
 
         jQuery(".gift_set_link").hide();
         jQuery(".person_" + personType).show();
+
+        jQuery(".person_" + personType + ":eq(0)").attr("rel");
+        changeProduct(product_id);
     });
 });
 
