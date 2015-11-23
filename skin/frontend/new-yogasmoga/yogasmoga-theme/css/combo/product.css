@@ -248,10 +248,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 }
 
 .add_to_bag .loader {
-    left: 50%;
-    margin-left: -8px;
-    position: absolute;
-    top: 40px;
+    text-align: center;
 }
 
 .purchase_box .product_price {

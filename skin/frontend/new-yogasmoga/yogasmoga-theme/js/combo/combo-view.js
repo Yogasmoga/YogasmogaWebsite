@@ -94,6 +94,7 @@ function changeProduct(product_id){
 
                     strSets = "";
                     strSets += "<div class='add_to_bag' rel='" + product_id + ":" + color_code + ":" + data.length + "'>ADD TO BAG</div>";
+                    strSets += "<p class='loader'> <img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/zoom_assets/preloader.gif' /></p>";
                     strSets += "<p class='free_shipping'>Free and fast shipping to US and Canada</p>";
 
                     jQuery(".purchase_box").append(strSets);
@@ -257,9 +258,7 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
     productUrl += '&bundle=' + bundle_data;
 
     productUrl += '&showhtml=0';
-    var loader = '<span class="loader"> <img src="/skin/frontend/new-yogasmoga/yogasmoga-theme/images/zoom_assets/preloader.gif" /></span>';
-    //jQuery("#addtobagloader").show();
-    jQuery(".add_to_bag").append(loader);
+    jQuery("#loader").show();
 
     jQuery.ajax({
         type: 'POST',
