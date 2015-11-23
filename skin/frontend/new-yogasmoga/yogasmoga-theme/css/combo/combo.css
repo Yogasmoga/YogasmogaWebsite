@@ -9,6 +9,14 @@ p {
 a, a:hover {
     color: #555;
 }
+
+.header-container::after {
+    border-top: 1px solid #555;
+    left: 50px;
+    position: absolute;
+    right: 50px;
+}
+
 /* *******************MAIN CSS ***************************** */
 .header-container {
     top: 25px !important;

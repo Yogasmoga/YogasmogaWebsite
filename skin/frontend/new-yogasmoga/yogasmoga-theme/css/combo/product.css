@@ -9,6 +9,12 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     margin-left: -18px;
 }
 */
+.header-container::after {
+    border-top: 1px solid #555;
+    left: 50px;
+    position: absolute;
+    right: 50px;
+}
 
 #top_banner {
     background: #AE8637;
