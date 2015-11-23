@@ -1,4 +1,3 @@
-var sectionOffsets = [0];
 var winH;
 jQuery(document).ready(function () {
     positionBanners();
@@ -98,7 +97,7 @@ function init() {
 var sectionIndex = 1;
 
 function getActiveSlide() {
-
+    var sectionOffsets = [0];
     jQuery(".section").each(function () {
         sectionOffsets.push(jQuery(this).offset().top);
     });
