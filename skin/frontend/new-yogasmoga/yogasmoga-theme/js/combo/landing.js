@@ -24,6 +24,11 @@ function positionBanners() {
 
 
 function init() {
+
+    var sliderMainImageHeight = jQuery(".product_set .side2 .product_container .product_slider .slider img").height();
+    jQuery(".section").height(sliderMainImageHeight + 80);
+
+
     jQuery(".contain_product .side1 .buy_product a.quick_look, .product_set .side2 span.reverse_flip").click(function (e) {
         e.preventDefault();
         var linkHtml = "SEE DETAILS <b>&gt;</b>";
@@ -138,6 +143,8 @@ function setActiveLink(sectionOffsets) {
 
 jQuery(window).resize(function () {
     winH = jQuery(window).height();
+    var sliderMainImageHeight = jQuery(".product_set .side2 .product_container .product_slider .slider img").height();
+    jQuery(".section").height(sliderMainImageHeight + 80);
     descriptionPosition();
 });
 
