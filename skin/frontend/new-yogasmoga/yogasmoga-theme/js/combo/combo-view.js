@@ -23,7 +23,7 @@ jQuery(document).ready(function () {
        var personType = jQuery(this).text().toLowerCase();
 
         jQuery(".gift_set_link").hide();
-        jQuery(".person." + personType).show();
+        jQuery(".person_" + personType).show();
     });
 });
 
