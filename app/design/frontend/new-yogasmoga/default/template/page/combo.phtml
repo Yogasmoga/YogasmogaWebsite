@@ -84,6 +84,7 @@ foreach ($allSizeOptions as $instance) {
                             $dataMap = $imageLabelData['dataMap'];
                             $person = $imageLabelData['person'];
                             $setImage = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                            ehco "[ set image = $setImage ] <br/>";
                             break;
                         }
                     }
