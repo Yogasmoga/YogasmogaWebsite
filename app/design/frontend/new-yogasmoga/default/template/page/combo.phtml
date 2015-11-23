@@ -82,12 +82,14 @@ foreach ($allSizeOptions as $instance) {
                         foreach ($_gallery as $_image) {
                             $imageLabelData = json_decode(trim($_image->getLabel()), true);
                             $dataMap = $imageLabelData['dataMap'];
+                            $person = $imageLabelData['person'];
                             break;
                         }
                     }
 
+                    $personClass = "person_" . $person;
                 ?>
-                <div class="gift_set_link active" data-map="<?php echo $dataMap;?>">
+                <div class="gift_set_link <?php echo $personClass;?> active" data-map="<?php echo $dataMap;?>">
                     <!--top,left-->
                     <p class="pname"><?php echo $_product->getName();?></p>SET
 
@@ -244,12 +246,20 @@ foreach ($allSizeOptions as $instance) {
 
                         <div class="product_container">
                             <div class="thumbnails">
-                                <div class="thumbnail"></div>
-                                <div class="thumbnail"></div>
-                                <div class="thumbnail"></div>
+                                <div class="thumbnail">
+                                    <img src="http://cdn.yogasmoga.com/media/catalog/product/cache/1/thumbnail/138x180/17c2151a3f12ebf0226ce1e5826e3ed5/u/-/u--me-twist-bra-c6-helix-2.jpg" />
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="http://cdn.yogasmoga.com/media/catalog/product/cache/1/thumbnail/138x180/17c2151a3f12ebf0226ce1e5826e3ed5/u/-/u--me-twist-bra-c6-helix-2.jpg" />
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="http://cdn.yogasmoga.com/media/catalog/product/cache/1/thumbnail/138x180/17c2151a3f12ebf0226ce1e5826e3ed5/u/-/u--me-twist-bra-c6-helix-2.jpg" />
+                                </div>
                             </div>
                             <div class="product_slider">
-                                <div class="slider"></div>
+                                <div class="slider">
+                                    <img src="http://cdn.yogasmoga.com/media/catalog/product/cache/1/thumbnail/771x700/17c2151a3f12ebf0226ce1e5826e3ed5/u/-/u--me-twist-bra-c6-helix-1_013.jpg" />
+                                </div>
                             </div>
                             <div class="product_filters">
                                 <p class="product_name"><?php echo $_product->getName();?></p>
@@ -264,7 +274,7 @@ foreach ($allSizeOptions as $instance) {
                                 <div class="set_item">
 
                                     <div class="product_detail product-detail-<?php echo $sizeDivCount;?>" rel="<?php echo $data["product"]->getId();?>">
-                                        <p class="pname"><a href="<?php echo $data["url"];?>" target="_blank"><?php echo $data["product"]->getName();?><a/> <span class="pcolor product-color-<?php echo $sizeDivCount;?>" rel="<?php echo $data["color_code"];?>"><?php echo $data["color"];?></span></p>
+                                        <p class="pname"><a href="<?php echo $data["url"];?>" target="_blank"><?php echo $data["product"]->getName();?></a> <span class="pcolor product-color-<?php echo $sizeDivCount;?>" rel="<?php echo $data["color_code"];?>"><?php echo $data["color"];?></span></p>
 
                                         <p class="psize">
                                             <span class="gap">SIZE:</span>

@@ -2819,3 +2819,12 @@ table.smallimagecontiner td.selectedimage{
     background: #666;
     color: #fff;
 }
+
+
+ul.main-menu > li.over.gift-sets > ul.sub-menu{
+    left: auto;
+    width: 89px;
+    height: 57px;
+    margin-left: -18px;
+    box-sizing: border-box;
+}

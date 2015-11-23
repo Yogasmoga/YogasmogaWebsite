@@ -45,12 +45,13 @@ $bundled_product_ids = $resourceModel->getAttributeRawValue($_conf_product->getI
 
 $bundledProduct = isset($bundled_product_ids) && strlen($bundled_product_ids) > 0 && strpos($bundled_product_ids, ",") != false;
 
+
 if (!$bundledProduct) {
+
 $_product = $this->getProduct();
 $_product = Mage::getModel('catalog/product')->load($_product->getId());
 $productName = $_product->getName();
 $productId = intval($_product->getId());
-
 /*********************** hidden page logic ********************/
 $forNormal = true;
 if ($this->getRequest()->getParam('hidden')) {
@@ -2061,151 +2062,162 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
         });
     </script>
 
-<?php
-}
-else {
-/**************************************************** logic for gift set ***************************************/
-    $homeUrl = Mage::getBaseUrl();
-
-    $setDescription = $_conf_product->getDescription();
-
-$categoryIdGiftSet = 70;
-$_helper = Mage::helper('catalog/output');
-
-$productCollection = Mage::getModel('catalog/category')->load($categoryIdGiftSet)
-    ->getProductCollection()
-    ->addAttributeToSelect('*');
-
-/************ reading all combo products *****************/
-$arComboProduct = array();
-foreach($productCollection as $_product_single)
-{
-    $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
-
-    $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
-
-    if(isset($bundled_product_ids))
-        $bundled_product_ids = trim($bundled_product_ids);
-
-    $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
-    foreach($_childProducts as $simple) {
-        $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
-        break;
-    }
-
-    $arComboProduct[$_product->getId()] = array(
-        "name" => $_product->getName(),
-        "price" => $_product->getPrice(),
-        "quantity" => round($stock,0),
-        "description" => $_product->getDescription(),
-        "bundle_ids" => $bundled_product_ids
-    );
-}
-
-/***************** get all colors from database ***********************/
-$allColors = array();
-$allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
-$allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
-foreach ($allColorOptions as $instance) {
-    if (!array_key_exists($instance['value'], $allColors)) {
-        $allColors[$instance['value']] = $instance['label'];
-    }
-}
-/***************** get all sizes from database ***********************/
-$allSizes = array();
-$allSizeAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
-$allSizeOptions = $allSizeAttribute->getSource()->getAllOptions(true, true);
-foreach ($allSizeOptions as $instance) {
-
-    if(is_numeric($instance['label']) && intval($instance['label'])>12)
-        continue;
-
-    if(strpos(strtoupper($instance['label']), "T")!==false)
-        continue;
-
-    if ($instance['label'] != "")
-        $allSizes[$instance['label']] = $instance['value'];
-}
-
-?>
-
-
-<div class="product_page_container">
-    <div class="breadcrumbs">
-        <a href="<?php echo $homeUrl;?>">Home</a> / <a href="<?php echo $homeUrl;?>gift-sets">$250 GIFT SETS</a> / <span id="bread-set-name"></span>
-    </div>
-    <div class="gift_sets_container">
-        <!--<div class="gift_set_filter">
-            <label>VIEW:</label>
-            <span class="selected">ALL</span>
-            <span>WOMEN</span>
-            <span>MEN</span>
-        </div>-->
-        <div class="git_sets_list">
-
-            <?php foreach($arComboProduct as $id => $comboProduct){ ?>
-
-                <div class="gift_set_link gift_set" rel="<?php echo $id;?>">
-                    <!--top,left-->
-                    <p class="pname"><?php echo $comboProduct["name"];?><br/>SET</p>
-
-                    <p class="pprice">$<?php echo round($comboProduct["price"],0);?></p>
-                </div>
-            <?php } ?>
-        </div>
-    </div>
-</div>
-
-<div class="product_page_container">
-    <div class="product_details">
-
-        <div class="slider">
-            <p class="current_slider_product"></p>
-            <div class="current_slider_image"></div>
-<!--
-            <div class="flexslider slider">
-                <ul class="slides">
-                    <li><img src="http://staging.yogasmoga.com/media/catalog/product/cache/1/thumbnail/320x320/17f82f742ffe127f42dca9de82fb58b1/m/y/my-racer-back-amelia-pink-1.jpg" /></li>
-                </ul>
-            </div>
--->
-        </div>
-        <div class="set_individual_products">
-        </div>
-        <div class="purchase_box_container">
-            <div class="purchase_box">
-            </div>
-            <div class="product_desc">
-                <div class="desc_box">
-                    <p>SET DESCRIPTION</p>
-
-                    <p class="set_description"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-
     <?php
-        foreach($allSizes as $key => $value)
-            echo "allSizes['$key'] = '$value';";
+    }
+    else {
+        /**************************************************** logic for gift set ***************************************/
+        $homeUrl = Mage::getBaseUrl();
 
-        foreach($allColors as $key => $value)
-            echo "allColors['$key'] = '$value';";
+        $setDescription = $_conf_product->getDescription();
 
-        foreach($arComboProduct as $key => $comboProduct){
-            echo "allComboProducts[$key] = [];";
-            echo "allComboProducts[$key]['name'] = '" . $comboProduct["name"] . "';";
-            echo "allComboProducts[$key]['description'] = '" . $comboProduct["description"] . "';";
-            echo "allComboProducts[$key]['price'] = '$" . round($comboProduct["price"],2) . "';";
-            echo "allComboProducts[$key]['quantity'] = '" . $comboProduct["quantity"]. "';";
-            echo "allComboProducts[$key]['bundle_ids'] = '".$comboProduct["bundle_ids"]."';";
+        $categoryIdGiftSet = 70;
+        $_helper = Mage::helper('catalog/output');
+
+        $productCollection = Mage::getModel('catalog/category')->load($categoryIdGiftSet)
+            ->getProductCollection()
+            ->addAttributeToSelect('*');
+
+        /************ reading all combo products *****************/
+        $arComboProduct = array();
+        foreach ($productCollection as $_product_single) {
+            $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
+
+            $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
+
+            if (isset($bundled_product_ids))
+                $bundled_product_ids = trim($bundled_product_ids);
+
+            $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
+            foreach ($_childProducts as $simple) {
+                $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
+                break;
+            }
+
+            $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+            if (isset($_gallery)) {
+                foreach ($_gallery as $_image) {
+                    $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                    $person = $imageLabelData['person'];
+                    break;
+                }
+            }
+
+            $arComboProduct[$_product->getId()] = array(
+                "name" => $_product->getName(),
+                "price" => $_product->getPrice(),
+                "quantity" => round($stock, 0),
+                "description" => $_product->getDescription(),
+                "bundle_ids" => $bundled_product_ids,
+                "personClass" => "person_" . $person
+            );
         }
 
-        echo "changeProduct(" . $_conf_product->getId() . ")";
-    ?>
-</script>
-<?php } ?>
+        /***************** get all colors from database ***********************/
+        $allColors = array();
+        $allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+        $allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
+        foreach ($allColorOptions as $instance) {
+            if (!array_key_exists($instance['value'], $allColors)) {
+                $allColors[$instance['value']] = $instance['label'];
+            }
+        }
+        /***************** get all sizes from database ***********************/
+        $allSizes = array();
+        $allSizeAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+        $allSizeOptions = $allSizeAttribute->getSource()->getAllOptions(true, true);
+        foreach ($allSizeOptions as $instance) {
+
+            if (is_numeric($instance['label']) && intval($instance['label']) > 12)
+                continue;
+
+            if (strpos(strtoupper($instance['label']), "T") !== false)
+                continue;
+
+            if ($instance['label'] != "")
+                $allSizes[$instance['label']] = $instance['value'];
+        }
+
+        ?>
+
+
+        <div class="product_page_container">
+            <div class="breadcrumbs">
+                <a href="<?php echo $homeUrl; ?>">Home</a> / <a href="<?php echo $homeUrl; ?>gift-sets">$250 GIFT
+                    SETS</a> / <span id="bread-set-name"></span>
+            </div>
+            <div class="gift_sets_container">
+                <!--<div class="gift_set_filter">
+                    <label>VIEW:</label>
+                    <span class="selected">ALL</span>
+                    <span>WOMEN</span>
+                    <span>MEN</span>
+                </div>-->
+                <div class="git_sets_list">
+
+                    <?php foreach ($arComboProduct as $id => $comboProduct) { ?>
+
+                        <div class="gift_set_link <?php echo $personClass;?> gift_set" rel="<?php echo $id; ?>">
+                            <!--top,left-->
+                            <p class="pname"><?php echo $comboProduct["name"]; ?><br/>SET</p>
+
+                            <p class="pprice">$<?php echo round($comboProduct["price"], 0); ?></p>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="product_page_container">
+            <div class="product_details">
+
+                <div class="slider">
+                    <p class="current_slider_product"></p>
+
+                    <div class="current_slider_image"></div>
+                    <!--
+                                <div class="flexslider slider">
+                                    <ul class="slides">
+                                        <li><img src="http://staging.yogasmoga.com/media/catalog/product/cache/1/thumbnail/320x320/17f82f742ffe127f42dca9de82fb58b1/m/y/my-racer-back-amelia-pink-1.jpg" /></li>
+                                    </ul>
+                                </div>
+                    -->
+                </div>
+                <div class="set_individual_products">
+                </div>
+                <div class="purchase_box_container">
+                    <div class="purchase_box">
+                    </div>
+                    <div class="product_desc">
+                        <div class="desc_box">
+                            <p>SET DESCRIPTION</p>
+
+                            <p class="set_description"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            <?php
+                foreach($allSizes as $key => $value)
+                    echo "allSizes['$key'] = '$value';";
+
+                foreach($allColors as $key => $value)
+                    echo "allColors['$key'] = '$value';";
+
+                foreach($arComboProduct as $key => $comboProduct){
+                    echo "allComboProducts[$key] = [];";
+                    echo "allComboProducts[$key]['name'] = '" . $comboProduct["name"] . "';";
+                    echo "allComboProducts[$key]['description'] = '" . $comboProduct["description"] . "';";
+                    echo "allComboProducts[$key]['price'] = '$" . round($comboProduct["price"],2) . "';";
+                    echo "allComboProducts[$key]['quantity'] = '" . $comboProduct["quantity"]. "';";
+                    echo "allComboProducts[$key]['bundle_ids'] = '".$comboProduct["bundle_ids"]."';";
+                }
+
+                echo "changeProduct(" . $_conf_product->getId() . ")";
+            ?>
+        </script>
+    <?php } ?>
 

@@ -1,8 +1,19 @@
 p{
     margin: 0;
 }
-ul.main-menu > li[rel="70"] ul {
-    display: none !important;
+/*
+ul.main-menu > li.over.gift-sets > ul.sub-menu{
+    left: auto;
+    width: 54px;
+    height: 50px;
+    margin-left: -18px;
+}
+*/
+.header-container::after {
+    border-top: 1px solid #555;
+    left: 50px;
+    position: absolute;
+    right: 50px;
 }
 
 #top_banner {
@@ -309,12 +320,18 @@ ul.main-menu > li[rel="70"] ul {
     width: auto !important;
 }
 
-.current_slider_product{
-    margin: 10px;
+.current_slider_product {
+    color: #555;
+    font: 11px GothamBold;
+    margin: 20px;
+    position: absolute;
     text-transform: uppercase;
 }
-.current_slider_image{
+.current_slider_image {
+    float: left;
+    height: 100%;
     text-align: center;
+    width: 100%;
 }
 .current_slider_image img{
     height: 100%;
