@@ -184,8 +184,12 @@ foreach ($allSizeOptions as $instance) {
                             continue;
 
                         if ($imageLabelData['color'] == $ar_id_color_code[1]) {
-                            $url = $this->helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
-                            $bundle_product_images[] = $url;
+                            $url = $this->helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(150, 150)->setQuality(100);
+                            $small_image = $url;
+                            $url = $this->helper('catalog/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(500, 500)->setQuality(100);
+                            $big_image = $url;
+                            //$bundle_product_images[] = $url;
+                            break;
                         }
                     }
                 }
@@ -214,7 +218,9 @@ foreach ($allSizeOptions as $instance) {
                     "product" => $_bundle_product,
                     "price" => round($_bundle_product->getPrice(),2),
                     "sizes" => $ar_child_sizes,
-                    "images" => $bundle_product_images,
+                    "small_image" => $small_image,
+                    "big_image" => $big_image,
+                    //"images" => $bundle_product_images,
                     "color" => $allColors[$bundle_color_id],
                     "color_code" => $bundle_color_id,
                     "url" => $bundledProductUrl
@@ -246,15 +252,15 @@ foreach ($allSizeOptions as $instance) {
 
                         <div class="product_container">
                             <div class="thumbnails">
+
+                                <?php foreach($ar_bundle_sizes as $key => $value){ ?>
+
                                 <div class="thumbnail">
-                                    <img src="http://cdn.yogasmoga.com/media/catalog/product/cache/1/thumbnail/138x180/17c2151a3f12ebf0226ce1e5826e3ed5/u/-/u--me-twist-bra-c6-helix-2.jpg" />
+                                    <img src="<?php echo $value['small_image'];?>" />
                                 </div>
-                                <div class="thumbnail">
-                                    <img src="http://cdn.yogasmoga.com/media/catalog/product/cache/1/thumbnail/138x180/17c2151a3f12ebf0226ce1e5826e3ed5/u/-/u--me-twist-bra-c6-helix-2.jpg" />
-                                </div>
-                                <div class="thumbnail">
-                                    <img src="http://cdn.yogasmoga.com/media/catalog/product/cache/1/thumbnail/138x180/17c2151a3f12ebf0226ce1e5826e3ed5/u/-/u--me-twist-bra-c6-helix-2.jpg" />
-                                </div>
+
+                                <?php } ?>
+
                             </div>
                             <div class="product_slider">
                                 <div class="slider">
