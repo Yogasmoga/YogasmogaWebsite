@@ -628,8 +628,8 @@ span.am {
     background: rgba(0, 0, 0, 0) url("../../images/combo/am.svg") no-repeat scroll 0 100%;
     display: inline-block;
     height: 32px;
-    margin-left: 0;
-    margin-top: -20px;
+    margin-left: 5px;
+    margin-top: -12px;
     vertical-align: middle;
     width: 32px;
 }
