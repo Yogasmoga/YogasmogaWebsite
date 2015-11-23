@@ -145,6 +145,7 @@ div#bodycompensator {
 .description_box.show{
     opacity: 1;
     bottom: 0;
+    color: #555;
     transition-duration: 200ms;
 }
 
@@ -707,4 +708,8 @@ span.temp {
 
 .bag-active {
     background-color: #5EC52F;
+}
+
+.right_desc > b {
+    font: 11px/15px GothamBold;
 }
