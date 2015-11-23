@@ -24,6 +24,9 @@ jQuery(document).ready(function () {
 
         jQuery(".gift_set_link").hide();
         jQuery(".person_" + personType).show();
+
+        var product_id = jQuery(".person_" + personType + ":eq(0)").attr("rel");
+        changeProduct(product_id);
     });
 });
 
@@ -196,11 +199,11 @@ function bindSizes(){
 
         if(jQuery(this).closest(".purchase_box").find(".active-size").length==setProductCount) {
             jQuery(this).closest(".purchase_box").find(".add_to_bag").addClass("bag-active");
-            jQuery(this).closest(".purchase_box").find(".add_to_bag").html('');
+//            jQuery(this).closest(".purchase_box").find(".add_to_bag").html('');
         }
         else {
             jQuery(this).closest(".purchase_box").find(".add_to_bag").removeClass("bag-active");
-            jQuery(this).closest(".purchase_box").find(".add_to_bag").html('ADD TO BAG');
+//            jQuery(this).closest(".purchase_box").find(".add_to_bag").html('ADD TO BAG');
         }
     });
 }
@@ -254,8 +257,9 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
     productUrl += '&bundle=' + bundle_data;
 
     productUrl += '&showhtml=0';
-
-    jQuery("#addtobagloader").show();
+    var loader = '<span class="loader" <img src="/skin/frontend/new-yogasmoga/yogasmoga-theme/images/zoom_assets/preloader.gif" /></span>';
+    //jQuery("#addtobagloader").show();
+    jQuery(".add_to_bag").html(loader);
 
     jQuery.ajax({
         type: 'POST',

@@ -191,6 +191,7 @@ div#bodycompensator {
 
 .set_desc b, .middle_desc b, .middle_desc div b {
     font: normal 11px/15px GothamBold;
+    text-transform: uppercase;
 }
 
 .middle_desc div b {
@@ -315,6 +316,11 @@ div#bodycompensator {
     height: 117px;
     margin: 41px 0;
     background: #fff;
+}
+
+.product_set .side2 .product_container .thumbnails .thumbnail img {
+    width: 100%;
+    height: auto;
 }
 
 .product_set .side2 .product_container .product_slider {
@@ -622,6 +628,16 @@ span.pm {
     margin-top: -20px;
     vertical-align: middle;
     width: 15px;
+}
+
+span.am {
+    background: rgba(0, 0, 0, 0) url("../../images/combo/am.svg") no-repeat scroll 0 100%;
+    display: inline-block;
+    height: 32px;
+    margin-left: 5px;
+    margin-top: -12px;
+    vertical-align: middle;
+    width: 32px;
 }
 
 span.world_map {
