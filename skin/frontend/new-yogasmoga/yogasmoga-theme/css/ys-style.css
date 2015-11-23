@@ -73,7 +73,7 @@ ul.main-menu2 > li{position: relative; padding: 0 10px; height: 33px;-webkit-box
 ul.main-menu2 a.main-heading{display: block; height: 32px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
 ul.main-menu2 > li:hover > ul.sub-menu /*ul.main-menu > li:hover > ul.sub-menu*/{display: block;}
-ul.main-menu > li.over > ul.sub-menu{display: block;}
+ul.main-menu > li.over > ul.sub-menu{display: block; z-index: 1}
 .sub-menu a:hover{color:#cc0033 !important;}
 /**Search Bar**/
 .right-block{height: 80px;}

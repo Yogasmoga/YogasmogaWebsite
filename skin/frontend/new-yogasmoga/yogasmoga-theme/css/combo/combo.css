@@ -624,6 +624,16 @@ span.pm {
     width: 15px;
 }
 
+span.am {
+    background: rgba(0, 0, 0, 0) url("../../images/combo/am.svg") no-repeat scroll 0 100%;
+    display: inline-block;
+    height: 32px;
+    margin-left: 0;
+    margin-top: -20px;
+    vertical-align: middle;
+    width: 32px;
+}
+
 span.world_map {
     background: rgba(0, 0, 0, 0) url("../../images/combo/map.svg") no-repeat scroll 100% 100%;
     display: inline-block;
