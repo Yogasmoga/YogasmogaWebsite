@@ -12,6 +12,9 @@ var temperaturesLoaded = true;
 var temperature1Loaded = true;
 var temperature2Loaded = true;
 
+var arBundledProductSmallImages = {};
+var arBundledProductBigImages = {};
+
 var firstTemperature = true;
 
 var wh=0;
@@ -65,6 +68,15 @@ jm(document).ready(function() {
 
 		jQuery(".gift_set_link").hide();
 		jQuery(".person_" + personType).show();
+	});
+
+	jQuery(".thumbnail").click(function(){
+
+		var productId = jQuery(this).attr("rel");
+
+		var imageSrc = arBundledProductBigImages[productId];
+
+		jQuery(this).closest(".product_container").find(".slider").find("img").attr('src', imageSrc);
 	});
 
 	updateTimes();

@@ -127,6 +127,9 @@ foreach ($allSizeOptions as $instance) {
         <div id="fullpage" class="slider set_section">
 
         <?php
+
+        $arBundledProductImages = array();
+
         foreach($productCollection as $_product_single)
         {
             $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
@@ -214,6 +217,7 @@ foreach ($allSizeOptions as $instance) {
 
                 $ar_bundle_sizes[$i] = array(
                     "product" => $_bundle_product,
+                    "product_id" => $_bundle_product->getId(),
                     "price" => round($_bundle_product->getPrice(),2),
                     "sizes" => $ar_child_sizes,
                     "small_image" => $small_image,
@@ -223,6 +227,8 @@ foreach ($allSizeOptions as $instance) {
                     "color_code" => $bundle_color_id,
                     "url" => $bundledProductUrl
                 );
+
+                $arBundledProductImages[$_bundle_product->getId()] = array("small_image" => $small_image, "big_image" => $big_image);
             }
 
             // main set images
@@ -257,7 +263,7 @@ foreach ($allSizeOptions as $instance) {
                                         $bundle = $ar_bundle_sizes[$x];
                                 ?>
 
-                                <div class="thumbnail">
+                                <div class="thumbnail" rel="<?php echo $bundle['product_id'];?>">
                                     <img src="<?php echo $bundle['small_image'];?>" />
                                 </div>
 
@@ -372,6 +378,12 @@ foreach ($allSizeOptions as $instance) {
                     <?php foreach($cityTimes as $cityTime){ ?>
                     cityTimes.push("<?php echo $cityTime;?>");
                     <?php } ?>
+
+                    <?php foreach($arBundledProductImages as $id => $imageData){ ?>
+                        arBundledProductSmallImages["<?php echo $id;?>"] = "<?php echo $imageData['small_image'];?>";
+                        arBundledProductBigImages["<?php echo $id;?>"] = "<?php echo $imageData['big_image'];?>";
+                    <?php } ?>
+
                 </script>
 
                 <?php echo $this->getChildHtml('footer') ?>
