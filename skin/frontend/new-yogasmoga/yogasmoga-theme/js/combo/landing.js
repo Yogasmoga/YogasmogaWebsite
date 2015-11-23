@@ -36,19 +36,33 @@ function init() {
     });
 
     jQuery(".toggle_description").click(function () {
-        jQuery(".close_desc").click();
+        //jQuery(".close_desc").click();
         descriptionPosition();
-        jQuery(this).closest(".section").find(".description_box").css({
-            "bottom": 0,
-            "opacity": 1
-        });
+        var linkHtml = jQuery(this).html();
+        if(linkHtml == "SEE DETAILS <b>&gt;</b>"){
+            jQuery(".description_box").removeClass("show");
+            linkHtml = "CLOSE DETAILS";
+            jQuery(this).html(linkHtml);
+            jQuery(this).addClass("close");
+        }else{
+            jQuery(this).removeClass("close");
+            linkHtml = "SEE DETAILS <b>&gt;</b>";
+            jQuery(this).html(linkHtml);
+        }
+
+        linkHtml = "SEE DETAILS <b>&gt;</b>";
+        jQuery(".toggle_description").not(jQuery(this)).html(linkHtml);
+        jQuery(".toggle_description").not(jQuery(this)).removeClass("close");
+
+        jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show");
+        jQuery(this).closest(".section").find(".description_box").toggleClass("show");
     });
-    jQuery(".close_desc").click(function () {
+    /*jQuery(".close_desc").click(function () {
         jQuery(".description_box").css({
             "bottom": "-130px",
             "opacity": 0
         });
-    });
+    });*/
     jQuery(".gift_set_link").click(function () {
         var index = jQuery(this).index() + 1;
         if (jQuery(".section:nth-child(" + index + ")").length > 0) {

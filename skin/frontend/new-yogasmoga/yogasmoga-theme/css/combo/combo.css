@@ -134,6 +134,13 @@ div#bodycompensator {
     padding: 20px;
     transition-duration: 500ms;
     z-index: 11;
+    text-align: left;
+}
+
+.description_box.show{
+    opacity: 1;
+    bottom: 0;
+    transition-duration: 200ms;
 }
 
 .set_desc, .middle_desc {
@@ -172,8 +179,9 @@ div#bodycompensator {
 }
 
 .right_desc {
-    width: 20%;
     float: right;
+    padding-right: 20px;
+    width: 215px;
 }
 
 .set_desc b, .middle_desc b, .middle_desc div b {
@@ -352,6 +360,16 @@ div#bodycompensator {
     left: 40px;
     position: absolute;
     text-transform: uppercase;
+}
+
+.toggle_description.close::before {
+    color: #CC0033;
+    content: "+";
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }
 
 .toggle_description b {

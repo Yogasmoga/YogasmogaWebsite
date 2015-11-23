@@ -128,9 +128,7 @@ class Ysindia_Customer_Model_Observer
         $womenTopRangoliCategoryId = 67;
 		$onetomanycopy = 52;
         $womenTopCategoryId = 6;
-		$menTopCategoryId = 10;
-		$menBottomCategoryId = 11;
-        $discountAmount = 75;
+		$discountAmount = 75;
         $bottomCount = 0;
         $topCount = 0;
 
@@ -155,12 +153,12 @@ class Ysindia_Customer_Model_Observer
 						Mage::log("Simple category ids: ".print_r($simpleCategories,true), null, 'Simcat.log');
 						if(in_array($onetomanycopy, $simpleCategories))
 							;		
-                        else if (in_array($womenBottomCategoryId, $categoryIds) || in_array($womenBottomRangoliCategoryId, $categoryIds) || in_array($menBottomCategoryId, $categoryIds)) {
+                        else if (in_array($womenBottomCategoryId, $categoryIds) || in_array($womenBottomRangoliCategoryId, $categoryIds)) {
 
                             //$bottomCount++;
 							$bottomCount += $item->getQty();
                         }
-                        else if (in_array($womenTopCategoryId, $categoryIds) || in_array($womenTopRangoliCategoryId, $categoryIds) || in_array($menTopCategoryId, $categoryIds)) {
+                        else if (in_array($womenTopCategoryId, $categoryIds) || in_array($womenTopRangoliCategoryId, $categoryIds)) {
 
                             //$topCount++;
 							$topCount += $item->getQty();
