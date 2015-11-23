@@ -251,10 +251,14 @@ foreach ($allSizeOptions as $instance) {
                         <div class="product_container">
                             <div class="thumbnails">
 
-                                <?php foreach($ar_bundle_sizes as $key => $value){ ?>
+                                <?php
+                                    for($x=0;$x<count($ar_bundle_sizes);$x++){
+
+                                        $bundle = $ar_bundle_sizes[$x];
+                                ?>
 
                                 <div class="thumbnail">
-                                    <img src="<?php echo $value['small_image'];?>" />
+                                    <img src="<?php echo $bundle['small_image'];?>" />
                                 </div>
 
                                 <?php } ?>

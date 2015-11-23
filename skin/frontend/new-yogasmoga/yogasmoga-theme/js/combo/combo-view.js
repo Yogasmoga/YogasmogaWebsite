@@ -199,11 +199,11 @@ function bindSizes(){
 
         if(jQuery(this).closest(".purchase_box").find(".active-size").length==setProductCount) {
             jQuery(this).closest(".purchase_box").find(".add_to_bag").addClass("bag-active");
-            jQuery(this).closest(".purchase_box").find(".add_to_bag").html('');
+//            jQuery(this).closest(".purchase_box").find(".add_to_bag").html('');
         }
         else {
             jQuery(this).closest(".purchase_box").find(".add_to_bag").removeClass("bag-active");
-            jQuery(this).closest(".purchase_box").find(".add_to_bag").html('ADD TO BAG');
+//            jQuery(this).closest(".purchase_box").find(".add_to_bag").html('ADD TO BAG');
         }
     });
 }
