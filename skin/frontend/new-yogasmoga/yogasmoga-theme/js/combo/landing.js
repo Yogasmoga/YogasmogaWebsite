@@ -123,6 +123,7 @@ function setActiveLink(sectionOffsets) {
     jQuery(".section").removeClass("active");
     jQuery(".section:nth-child(" + sectionIndex + ")").addClass("active");
     if(jQuery(".description_box").hasClass("show")){
+        if(!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close"))
         jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").click();
     }
     var setName = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pname>span").text()+" SET";
