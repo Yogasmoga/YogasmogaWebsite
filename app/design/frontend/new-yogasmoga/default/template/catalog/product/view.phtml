@@ -2156,7 +2156,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                     <?php foreach ($arComboProduct as $id => $comboProduct) { ?>
 
-                        <div class="gift_set_link <?php echo $personClass;?> gift_set" rel="<?php echo $id; ?>">
+                        <div class="gift_set_link <?php echo $comboProduct["personClass"];?> gift_set" rel="<?php echo $id; ?>">
                             <!--top,left-->
                             <p class="pname"><?php echo $comboProduct["name"]; ?><br/>SET</p>
 
