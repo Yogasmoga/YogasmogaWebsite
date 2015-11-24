@@ -346,7 +346,7 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
 
 	productUrl += '&showhtml=0';
 
-	jm("#addtobagloader").show();
+	parent.find(".add_to_bag").html("Adding...");
 
 	jm.ajax({
 		type: 'POST',
@@ -357,7 +357,7 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
 			jm(".add_to_bag").removeClass("bag-active");
 			jm(".add_to_bag").html('ADD TO BAG');
 
-			jm("#addtobagloader").show();
+			parent.find(".add_to_bag").html("ADD TO BAG");
 			jm("div#myminicart").html(result.html);
 			showShoppingBagHtmlOpen();
 		}
