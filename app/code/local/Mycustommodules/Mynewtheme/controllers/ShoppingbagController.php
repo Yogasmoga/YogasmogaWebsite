@@ -1169,7 +1169,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     foreach ($cartItems as $item) {
                         if($id==$item->getId())
                         {
-                            $tempUniqueTimeStamp = $item->getBuyRequest()['unique_time_stamp'];
+                            //$tempUniqueTimeStamp = $item->getBuyRequest()['unique_time_stamp'];
                             $item->setQty($deletedqty-1);
                             //$item->setQty($_POST['qty']); // UPDATE ONLY THE QTY, NOTHING ELSE!
                             $cart->save();  // SAVE
@@ -1290,7 +1290,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
                     /******************* bundled check ****************/
-                    $product_type = $item->getBuyRequest()['type'];
+                    $buyRequest = $item->getBuyRequest();
+                    $product_type = $buyRequest['type'];
 
                     if(isset($product_type))
                         $temparray['product_type'] = $product_type;         // there should not be any remove icon on cart for this

@@ -702,7 +702,7 @@ span.temp {
 }
 
 .active-size {
-    background: #666;
+    background: #666 !important;
     color: #fff;
 }
 

@@ -347,8 +347,6 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         $id = (int) $this->getRequest()->getParam('id');
         if ($id) {
 
-/************** original code *********************/
-/*
             try {
                 $this->_getCart()->removeItem($id)
                     ->save();
@@ -358,30 +356,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 Mage::logException($e);
                 return;
             }
-*/
-/************** original code *********************/
 
-/*************** code after gift set *********************/
-            $data = "";
-            try {
-                $item = $this->_getCart()->getItem($id);
-                $uniqueTimeStamp = $item->getBuyRequest()['unique_time_stamp'];
-
-                foreach($this->_getCart()->getItems() as $cartItem){
-                    $tempUniqueTimeStamp = $item->getBuyRequest()['unique_time_stamp'];
-$data .= "[ $uniqueTimeStamp , $tempUniqueTimeStamp ]";
-                    if($uniqueTimeStamp==$tempUniqueTimeStamp)
-                        $this->_getCart()->removeItem($id)
-                            ->save();
-                }
-
-            } catch (Exception $e) {
-                echo json_encode(array("status" => "error"));
-                //$this->_getSession()->addError($this->__('Cannot remove the item.'));
-                Mage::logException($e);
-                return;
-            }
-/*************** code after gift set *********************/
         }
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
