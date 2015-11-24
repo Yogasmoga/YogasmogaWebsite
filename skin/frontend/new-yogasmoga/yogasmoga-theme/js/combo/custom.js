@@ -69,6 +69,7 @@ jm(document).ready(function() {
 		jQuery(".gift_set_link").hide();
 		jQuery(".person_" + personType).show();
 
+		jQuery(".gift_set_link").removeClass('active');
 		jQuery(".person_" + personType + ":eq(0)").addClass('active');
 	});
 
