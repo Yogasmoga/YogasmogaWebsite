@@ -98,7 +98,7 @@ div#bodycompensator {
 }
 
 .map_data_section .temprature, .map_data_section .time {
-    font: 40px /80px AvantGardeGothicITCW01X;
+    font: 36px /80px AvantGardeGothicITCW01X;
 }
 
 .map_data_section .time {
@@ -214,10 +214,10 @@ div#bodycompensator {
 }
 
 .contain_product .product_price {
-    font: 24px/32px AvantGardeGothicITCW01B;
+    font: 11px/40px AvantGardeGothicITCW01B;
 }
 .contain_product .product_name{
-    font: 24px/32px AvantGardeGothicITCW01B;
+    font: 36px/20px AvantGardeGothicITCW01B;
     text-transform: uppercase;
 }
 
@@ -521,7 +521,7 @@ p.free_shipping {
 .ys_in_wanderland .page-title {
     color: #ae8637;
     font: 36px/36px AVANTGARDEGOTHICITCW01B;
-    margin: 0;
+    margin: 16px 0 0 ;
 }
 
 .ys_in_wanderland .page-sub-title {
@@ -556,9 +556,9 @@ p.free_shipping {
     color: transparent;
     cursor: pointer;
     display: inline-block;
-    height: 56px;
+    height: 52px;
     margin: 14px 14px 14px 0;
-    padding: 6px;
+    padding: 5px;
     text-align: left;
     transition-duration: 200ms;
     width: 102px;
@@ -604,7 +604,7 @@ p.free_shipping {
 
 .top_banners.fixed {
     position: fixed;
-    top: 89px;
+    top: 94px;
     left: 0;
     right: 0;
     background: #fff;
