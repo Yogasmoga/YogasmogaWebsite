@@ -411,10 +411,12 @@
 .two-three .post_title {
     font: 30px/35px ITCAvantGardeStd-Bk !important;
 }
+/*
 .two-three.double-width .post_category > a {
     color: #555 !important;
     transition-duration: 500ms;
 }
+*/
 .one-three .overlay-text .post_category a,.two-three .overlay-text .post_category a{
     font-size: 11px;
     line-height: 0;
