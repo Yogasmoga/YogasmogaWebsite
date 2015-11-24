@@ -10,6 +10,7 @@
     text-align: center;
     width: 100%;
 }
+/*
 .double-width .overlay-text{
     color:#555;
 }
@@ -17,11 +18,12 @@
     border-color: #555;
     color:#555;
 }
-.second .one-three .overlay-text p{
-    opacity: 0;
-}
 .double-width .overlay-text .post_title{
     color: #fff;
+}
+*/
+.second .one-three .overlay-text p{
+    opacity: 0;
 }
 .one-three, .two-three{
     position: relative;
