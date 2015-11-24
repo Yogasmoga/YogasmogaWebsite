@@ -38,8 +38,12 @@ div#bodycompensator {
     overflow-y: hidden;
 }
 
-.section .product_set .side1, .section .product_set .side2 {
+.section .product_set .side1 {
     background: #f3f3f3;
+}
+
+.section .product_set .side2 {
+    background: #e6e6e5;
 }
 
 #fullpage .section {
@@ -142,7 +146,7 @@ div#bodycompensator {
     text-align: left;
 }
 
-.description_box.show{
+.description_box.show {
     opacity: 1;
     bottom: 0;
     color: #555;
@@ -166,7 +170,8 @@ div#bodycompensator {
     float: left;
     font: 11px/15px GothamBook;
 }
-.right_desc p{
+
+.right_desc p {
     text-transform: uppercase;
 }
 
@@ -216,7 +221,8 @@ div#bodycompensator {
 .contain_product .product_price {
     font: 11px/40px AvantGardeGothicITCW01B;
 }
-.contain_product .product_name{
+
+.contain_product .product_name {
     font: 36px/20px AvantGardeGothicITCW01B;
     text-transform: uppercase;
 }
@@ -521,7 +527,7 @@ p.free_shipping {
 .ys_in_wanderland .page-title {
     color: #ae8637;
     font: 36px/36px AVANTGARDEGOTHICITCW01B;
-    margin: 16px 0 0 ;
+    margin: 16px 0 0;
 }
 
 .ys_in_wanderland .page-sub-title {
@@ -574,11 +580,11 @@ p.free_shipping {
     background-color: #A5A7AA;
     color: #fff;
 }
-.gift_set_link.active{
+
+.gift_set_link.active {
     background: #AE8637;
     color: #fff;
 }
-
 
 .map_data_section .coordinate p {
     color: #ae8637;
