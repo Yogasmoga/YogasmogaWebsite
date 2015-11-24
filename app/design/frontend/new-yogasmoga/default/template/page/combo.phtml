@@ -347,7 +347,7 @@ foreach ($allSizeOptions as $instance) {
 
                                 <p class="buy_product"><a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a><a
                                         class="buy_gift_set"
-                                        href="<?php echo $setProductUrl; ?>">GET <?php echo $_product->getName(); ?> <b>
+                                        href="<?php echo $setProductUrl; ?>">GET <?php echo $_product->getName(); ?> SET <b>
                                             &gt;</b></a></p>
 
                                 <p class="toggle_description">SEE DETAILS <b>&gt;</b></p>
@@ -377,7 +377,7 @@ foreach ($allSizeOptions as $instance) {
                                     <?php } ?>
                                 </div>
                                 <div class="right_desc">
-                                    <p>SEE <?php echo $_product->getName(); ?> SET &gt;</p>
+                                    <p><a href="<?php echo $setProductUrl;?>">SEE <?php echo $_product->getName(); ?> SET &gt;</a></p>
                                     <b><?php echo round($stock, 0); ?> left</b>
                                 </div>
                             </div>

@@ -123,10 +123,16 @@ function addSideBundleProduct(data, i){
     strSets += "<p class='psize'>SIZE: <span class='size-chart-bundle'>SIZE CHART</span></p>";
     strSets += "<div class='sizes'>";
 
-    for(var j=0; j<arSizes.length; j++) {
-        var size = arSizes[j];
-        strSets += "<span class='size size-" + i + "' rel='" + allSizes[size] + "'>" + size + "</span>";
-    }
+    Object.keys(allSizes).forEach(function (key) {
+        for (var j = 0; j < arSizes.length; j++) {
+            var size = arSizes[j];
+
+            if(key==size) {
+                strSets += "<span class='size size-" + i + "' rel='" + allSizes[size] + "'>" + size + "</span>";
+                break;
+            }
+        }
+    });
 
     strSets += "</div>";    // sizes
     strSets += "</div>";    // product_detail
