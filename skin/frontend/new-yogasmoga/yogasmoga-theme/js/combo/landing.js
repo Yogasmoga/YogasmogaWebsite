@@ -122,7 +122,7 @@ function setActiveLink(sectionOffsets) {
     jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").addClass("active");
     jQuery(".section").removeClass("active");
     jQuery(".section:nth-child(" + sectionIndex + ")").addClass("active");
-    var setName = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pname").text();
+    var setName = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pname>span").text()+" SET";
     var setPrice = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pprice").text();
 
     jQuery(".box.set_name .product_name").html(setName);
