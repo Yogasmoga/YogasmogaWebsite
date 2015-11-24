@@ -124,6 +124,7 @@
             </div>
         </div>
 		<?php } ?>
+	   <?php if($_category->getUrlKey()!= "gift-sets"){?>
         <div class="dropdown_links">
 
 			<?php
@@ -236,6 +237,16 @@
 
             </ul>
         </div>
+	   <?php }else{ ?>
+		   <div class="dropdown_links gift_sets_filter">
+
+			   <ul>
+				   <li><a href="">Women</a></li>
+				   <li><a href="">Men</a></li>
+			   </ul>
+		   </div>
+	   <?php } ?>
+	   <!- ------------------ End --->
     </div>
  <div class="clearfix"></div>
   <?php echo $this->getProductListHtml() ?>

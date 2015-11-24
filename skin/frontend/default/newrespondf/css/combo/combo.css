@@ -6,7 +6,7 @@
 }
 .gift-set-title {
     height: 44px;
-    font: 19px/58px ITCAvantGardeStd-Bk;
+    font: 19px/44px ITCAvantGardeStd-Bk;
     text-transform: uppercase;
 }
 
@@ -48,7 +48,7 @@ h1.page-title {
 
 .gift-set .thumbnail .setPrice {
     background: #CCC none repeat scroll 0 0;
-    font: 12px/58px ITCAvantGardeStd-Bk;
+    font: 12px/44px ITCAvantGardeStd-Bk;
     height: 44px;
     left: 0;
     position: absolute;
@@ -197,7 +197,7 @@ h1.page-title {
     height: 44px;
     float: left;
     width: 50%;
-    font: 16px/50px ITCAvantGardeStd-Bk;
+    font: 16px/44px ITCAvantGardeStd-Bk;
     color: #fff;
     text-align: center;
 }
@@ -215,4 +215,12 @@ h1.page-title {
     right: 0;
     display: none;
     z-index: 11;
+}
+
+.dropdown_links.gift_sets_filter{
+    height: auto;
+}
+
+.dropdown_links.gift_sets_filter>ul li:last-child a{
+    color: #555 !important;
 }

@@ -29,6 +29,15 @@
             $(this).hide();
         });
 
+        $(".dropdown_links.gift_sets_filter>ul li a").click(function(e){
+            e.preventDefault();
+            if($(this).text()=="WOMEN"){
+                $(".gift-set[data-filter='men']").hide();
+            }else{
+                $(".gift-set[data-filter='women']").hide();
+            }
+            $(".sign-in-box .toggle_dropdown").click();
+        });
     });
 
     $(window).resize(function () {
