@@ -1833,7 +1833,14 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 }
             }
 
-            $html .='<li id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
+/*********** added for gift set **********************/
+            if($item['product_type']=="gift" || $item['product_type']=="gift-bundled")
+                $giftStyle = "border-bottom: none";
+            else
+                $giftStyle = "";
+/*********** added for gift set **********************/
+
+            $html .='<li ' . $giftStyle . ' id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
                 <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ></span></a>
 <span>
                     <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
