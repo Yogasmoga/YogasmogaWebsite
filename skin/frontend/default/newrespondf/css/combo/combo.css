@@ -1,3 +1,9 @@
+.go_to_parent{
+    display: none;
+}
+.gift-set {
+    clear: both;
+}
 .gift-set-title {
     height: 44px;
     font: 19px/58px ITCAvantGardeStd-Bk;
@@ -6,6 +12,7 @@
 
 .pageThumbnail {
     background: #f3f3f3 url('../../images/combo/map-usa.svg') no-repeat scroll center center;
+    position: relative;
 }
 
 h1.page-title {
@@ -13,10 +20,30 @@ h1.page-title {
     text-transform: uppercase;
 }
 
+.pageThumbnail .table-cell > p {
+    bottom: 15px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    font: 18px/22px freighttextbook;
+}
+
 .gift-set .thumbnail {
     min-height: 240px;
     background: #f3f3f3;
     position: relative;
+}
+
+.gift-set .thumbnail > p {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    font: 18px/35px freighttextbook;
+}
+
+.thumbnail > p span{
+    color: #CC0033;
 }
 
 .gift-set .thumbnail .setPrice {
@@ -31,21 +58,161 @@ h1.page-title {
 
 .gift-set .details {
     padding: 14px;
+    text-align: left;
+    color: #555;
+    border-bottom: 1px solid #999;
+    float: left;
+    width: 100%;
+    display: none;
 }
-.gift-set .details .left_item{
+
+.gift-set .details .left_item {
     text-align: right;
     font: 12px GraphikRegular;
     margin: 6px 0 11px;
     text-transform: uppercase;
 }
-.gift-set .details .flexslider{
+
+.gift-set .details .flexslider {
     float: none;
     margin: 27px 0 14px;
 }
-.gift-set .details .flexslider .slides li img{
+
+.gift-set .details .flexslider .slides li img {
     width: 100%;
 }
-.gift-set .details .desc{
+
+.gift-set .details .desc {
     font: 14px/20px GraphikRegular;
     text-align: left;
+}
+
+.product_name {
+    padding-right: 130px;
+    position: relative;
+    font: 12px/18px AvantGarde-Demi;
+    text-transform: uppercase;
+}
+
+.product_color {
+    font: 12px/15px ITCAvantGardeStd-Bk;
+    text-transform: capitalize;
+}
+
+.product_name span {
+    right: 0;
+    top: 0;
+    position: absolute;
+    font: 12px/18px GraphikRegular;
+    text-transform: capitalize;
+}
+
+.sizes .size {
+    float: none;
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #999;
+    margin: 14px 12px 0 0;
+    font: 15px/42px ITCAvantGardeStd-Bk;
+    text-align: center;
+}
+
+.size_selection_box {
+    position: relative;
+    margin: 15px 0;
+}
+
+.size_selection_box p {
+    font: 12px/18px GraphikRegular;
+}
+
+.bra_cup_selection {
+    margin: 15px 0;
+    font: 12px /30px GraphikRegular;
+}
+
+.bra_cup_selection p {
+    font: 12px /30px GraphikRegular;
+}
+
+.bra_cup_selection .bra_cup_toggle {
+    position: relative;
+    float: right;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    background: #eee;
+}
+
+.bra_cup_selection .bra_cup_toggle .no {
+    width: 30px;
+    height: 30px;
+    background: #999;
+    float: left;
+    border-radius: 30px;
+    display: none;
+}
+.bra_cup_selection .bra_cup_toggle .yes {
+    width: 30px;
+    height: 30px;
+    background: #00b900;
+    float: right;
+    border-radius: 30px;
+    display: none;
+}
+.bra_cup_selection .bra_cup_toggle span.selected{
+    display: block;
+}
+
+.size_selection_box .size_chart_link {
+    position: absolute;
+    right: 0;
+    color: #AE8637;
+}
+
+.sold_indidually a,.sold_indidually {
+    font: 12px/18px GraphikRegular;
+    color: #AE8637;
+}
+
+.free_shipping_text {
+    font: 14px/18px GraphikRegular;
+    padding-left: 44px;
+    background: url("../../images/shipping.svg") no-repeat scroll 0 -10px;
+    min-height: 44px;
+    margin: 20px 0 5px;
+}
+
+.add_to_wishlist{
+    background: #eee;
+    height: 44px;
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.add_to_shopping_bag {
+    background: #999;
+    height: 44px;
+    float: left;
+    width: 50%;
+    font: 16px/50px ITCAvantGardeStd-Bk;
+    color: #fff;
+    text-align: center;
+}
+
+.details .related_blocks > div{
+    display: none;
+}
+
+.details .related_blocks > div:first-child{
+    display: block;
+}
+.close_icon{
+    position: fixed;
+    top: 88px;
+    right: 0;
+    display: none;
+    z-index: 11;
 }
