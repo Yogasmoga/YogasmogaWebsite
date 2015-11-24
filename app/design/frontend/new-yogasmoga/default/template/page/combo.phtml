@@ -1,6 +1,6 @@
 <?php
 $storeId = Mage::app()->getStore()->getStoreId();
-$catId  = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+$catId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
 $_helper = Mage::helper('catalog/output');
 
 $productCollection = Mage::getModel('catalog/category')->load($catId)
@@ -28,10 +28,10 @@ $allSizeAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product'
 $allSizeOptions = $allSizeAttribute->getSource()->getAllOptions(true, true);
 foreach ($allSizeOptions as $instance) {
     if ($instance['label'] != "") {
-        if(is_numeric($instance['label']) && intval($instance['label'])>12)
+        if (is_numeric($instance['label']) && intval($instance['label']) > 12)
             continue;
 
-        if(strpos(strtoupper($instance['label']), "T")!==false)
+        if (strpos(strtoupper($instance['label']), "T") !== false)
             continue;
 
         $allSizes[$instance['label']] = $instance['value'];
@@ -40,13 +40,14 @@ foreach ($allSizeOptions as $instance) {
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+      lang="<?php echo $this->getLang() ?>">
 <head>
     <?php echo $this->getChildHtml('head') ?>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<body<?php echo $this->getBodyClass() ? ' class="' . $this->getBodyClass() . '"' : '' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
-<div class="wrapper gift_sets_landing_page">
+<div class="wrapper">
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="shopping-cart"></div>
     <div class="page">
@@ -56,251 +57,258 @@ foreach ($allSizeOptions as $instance) {
         </div>
 
         <?php echo $this->getChildHtml('header') ?>
+        <div class="gift_sets_landing_page">
+            <div class="ys_in_wanderland">
+                <h1 class="page-title">YS IN WANDERLAND</h1>
 
-        <div class="ys_in_wanderland">
-            <h1 class="page-title">YS IN WANDERLAND</h1>
+                <p class="page-sub-title">2015 HOLIDAY GIFT SETS</p>
 
-            <p class="page-sub-title">2015 HOLIDAY GIFT SETS</p>
-
-            <p class="line"></p>
-        </div>
-        <div class="top_banners">
-            <div class="gift_sets_container">
-                <?php
-                $first = true;
-                $productSetImages = array();
-                foreach($productCollection as $_product_single)
-                {
-                    $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
-
-                    if($first){
-                        $first = false;
-                        $firstProduct = $_product;
-                    }
-
-                    $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
-                    $setImage = "";
-                    if (isset($_gallery)) {
-                        foreach ($_gallery as $_image) {
-                            $imageLabelData = json_decode(trim($_image->getLabel()), true);
-                            $dataMap = $imageLabelData['dataMap'];
-                            $person = $imageLabelData['person'];
-                            $setImage = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
-                            break;
-                        }
-                    }
-
-                    $productSetImages[$_product_single->getId()] = $setImage;
-
-                    $personClass = "person_" . $person;
-                ?>
-                <div class="gift_set_link <?php echo $personClass;?> active" data-map="<?php echo $dataMap;?>">
-                    <!--top,left-->
-                    <p class="pname"><?php echo $_product->getName();?></p>SET
-
-                    <p class="pprice">$<?php echo round($_product->getPrice(),0);?></p>
-                </div>
-                <?php } ?>
+                <p class="line"></p>
             </div>
-            <div class="map_data_section">
-                <div class="map_data_container">
-                    <div class="box coordinate">
-                        <div class="time">
-                            <div></div>
+            <div class="top_banners">
+                <div class="gift_sets_container">
+                    <?php
+                    $first = true;
+                    $productSetImages = array();
+                    foreach ($productCollection as $_product_single) {
+                        $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
+
+                        if ($first) {
+                            $first = false;
+                            $firstProduct = $_product;
+                        }
+
+                        $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                        $setImage = "";
+                        if (isset($_gallery)) {
+                            foreach ($_gallery as $_image) {
+                                $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                                $dataMap = $imageLabelData['dataMap'];
+                                $person = $imageLabelData['person'];
+                                $setImage = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                                break;
+                            }
+                        }
+
+                        $productSetImages[$_product_single->getId()] = $setImage;
+
+                        $personClass = "person_" . $person;
+                        ?>
+                        <div class="gift_set_link <?php echo $personClass; ?> active"
+                             data-map="<?php echo $dataMap; ?>">
+                            <!--top,left-->
+                            <p class="pname"><?php echo $_product->getName(); ?></p>SET
+
+                            <p class="pprice">$<?php echo round($_product->getPrice(), 0); ?></p>
                         </div>
-                        <p class="latlong"></p>
-                    </div>
-                    <div class="box set_name">
-                        <p class="page-title_fixed">YS IN WANDERLAND</p>
-                        <p class="product_name"><?php echo $firstProduct->getName();?></p>
-                        <p class="product_price">$<?php echo round($firstProduct->getPrice(),0);?></p>
-                    </div>
-                    <div class="box map">
+                    <?php } ?>
+                </div>
+                <div class="map_data_section">
+                    <div class="map_data_container">
+                        <div class="box coordinate">
+                            <div class="time">
+                                <div></div>
+                            </div>
+                            <p class="latlong"></p>
+                        </div>
+                        <div class="box set_name">
+                            <p class="page-title_fixed">YS IN WANDERLAND</p>
+
+                            <p class="product_name"><?php echo $firstProduct->getName(); ?></p>
+
+                            <p class="product_price">$<?php echo round($firstProduct->getPrice(), 0); ?></p>
+                        </div>
+                        <div class="box map">
                         <span class="world_map">
                             <i></i>
                         </span>
 
-                        <div class="temprature">
-                            <div><span class="temp"></span> 42&deg;F</div>
+                            <div class="temprature">
+                                <div><span class="temp"></span> 42&deg;F</div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
+            <div class="setmargin" style="height: 160px; display: none;"></div>
+            <div id="fullpage" class="slider set_section">
 
-        </div>
-        <div class="setmargin" style="height: 160px; display: none;"></div>
-        <div id="fullpage" class="slider set_section">
+                <?php
 
-        <?php
+                $arBundledProductImages = array();
 
-        $arBundledProductImages = array();
+                foreach ($productCollection as $_product_single) {
+                    $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
+                    $setProductUrl = $_product->getProductUrl();
 
-        foreach($productCollection as $_product_single)
-        {
-            $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
-            $setProductUrl = $_product->getProductUrl();
-
-            $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
-            foreach($_childProducts as $simple) {
-                $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
-                break;
-            }
-
-            $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
-
-            if(isset($bundled_product_ids))
-                $bundled_product_ids = trim($bundled_product_ids);
-
-            $ar_bundled_product_ids = explode(",", $bundled_product_ids);
-
-            $ar_bundle_sizes = array();
-
-            /************ get color code of configurable product **************/
-            $productAttributeOptions = $_product->getTypeInstance(true)->getConfigurableAttributesAsArray($_product);
-            foreach ($productAttributeOptions as $productAttribute) {
-                foreach ($productAttribute['values'] as $attribute) {
-                    if ($productAttribute['label'] == 'Color') {
-                        $gift_simple_color = $attribute['value_index'];
+                    $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
+                    foreach ($_childProducts as $simple) {
+                        $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
                         break;
                     }
-                }
-            }
-            /************ get color code of configurable product **************/
 
-            $gift_simple_id = $_product_single->getId();
-            $gift_bundle_count = count($ar_bundled_product_ids);
+                    $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
 
-            for($i=0;$i<count($ar_bundled_product_ids);$i++) {
+                    if (isset($bundled_product_ids))
+                        $bundled_product_ids = trim($bundled_product_ids);
 
-                $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);          // id:color_code
+                    $ar_bundled_product_ids = explode(",", $bundled_product_ids);
 
-                $bundle_configurable_id = $ar_id_color_code[0];
-                $bundle_color_id = $ar_id_color_code[1];
+                    $ar_bundle_sizes = array();
 
-                $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
-                $bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
-
-                $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
-
-                $bundle_product_images = array();
-
-                if (isset($_gallery)) {
-                    foreach ($_gallery as $_image) {
-                        $imageLabelData = json_decode(trim($_image->getLabel()), true);
-
-                        if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
-                            continue;
-
-                        if ($imageLabelData['color'] == $ar_id_color_code[1]) {
-                            $big_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
-                            //$bundle_product_images[] = $url;
-                            break;
+                    /************ get color code of configurable product **************/
+                    $productAttributeOptions = $_product->getTypeInstance(true)->getConfigurableAttributesAsArray($_product);
+                    foreach ($productAttributeOptions as $productAttribute) {
+                        foreach ($productAttribute['values'] as $attribute) {
+                            if ($productAttribute['label'] == 'Color') {
+                                $gift_simple_color = $attribute['value_index'];
+                                break;
+                            }
                         }
                     }
-                }
+                    /************ get color code of configurable product **************/
 
-                $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
-                $ar_child_sizes = array();
-                foreach ($_childProducts as $_childProduct) {
-                    $size = $_childProduct->getAttributeText('size');
+                    $gift_simple_id = $_product_single->getId();
+                    $gift_bundle_count = count($ar_bundled_product_ids);
 
-                    if(is_numeric($size) && intval($size)>12)
-                        continue;
+                    for ($i = 0; $i < count($ar_bundled_product_ids); $i++) {
 
-                    if(strpos(strtoupper($size), "T")!==false)
-                        continue;
+                        $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);          // id:color_code
 
-                    if (is_numeric($size))
-                        $ar_child_sizes[] = intval($size);
-                    else
-                        $ar_child_sizes[] = $size;
-                }
+                        $bundle_configurable_id = $ar_id_color_code[0];
+                        $bundle_color_id = $ar_id_color_code[1];
 
-                $ar_child_sizes = array_unique($ar_child_sizes);
-                ksort($ar_child_sizes);
+                        $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
+                        $bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
 
-                $ar_bundle_sizes[$i] = array(
-                    "product_name" => $_bundle_product->getName(),
-                    "product_id" => $_bundle_product->getId(),
-                    "price" => round($_bundle_product->getPrice(),2),
-                    "sizes" => $ar_child_sizes,
-                    "big_image" => $big_image,
-                    //"images" => $bundle_product_images,
-                    "color" => $allColors[$bundle_color_id],
-                    "color_code" => $bundle_color_id,
-                    "url" => $bundledProductUrl
-                );
+                        $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
 
-                $arBundledProductImages[$_bundle_product->getId()] = array("small_image" => $small_image, "big_image" => $big_image);
-            }
+                        $bundle_product_images = array();
 
-            // main set images
-            $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
-            if(isset($_gallery)) {
-                foreach ($_gallery as $_image) {
-                    $imageLabelData = json_decode(trim($_image->getLabel()), true);
-                    $city = $imageLabelData["city"];
-                    $latlong = $imageLabelData["latlong"];
-                    $cityTime = $imageLabelData["cityTime"];
+                        if (isset($_gallery)) {
+                            foreach ($_gallery as $_image) {
+                                $imageLabelData = json_decode(trim($_image->getLabel()), true);
 
-                    $cities[] = $city;
-                    $latlongs[] = $latlong;
-                    $cityTimes[] = $cityTime;
-                    break;                    // we want to read first image only
-                }
-            }
-            ?>
+                                if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                                    continue;
 
-            <div class="section contain_product">
-                <div class="product_set">
-                    <div class="side2 flipped">
+                                if ($imageLabelData['color'] == $ar_id_color_code[1]) {
+                                    $big_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                                    //$bundle_product_images[] = $url;
+                                    break;
+                                }
+                            }
+                        }
 
-                        <span class="reverse_flip">&plus;</span>
+                        $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
+                        $ar_child_sizes = array();
+                        foreach ($_childProducts as $_childProduct) {
+                            $size = $_childProduct->getAttributeText('size');
 
-                        <div class="product_container">
-                            <div class="thumbnails">
+                            if (is_numeric($size) && intval($size) > 12)
+                                continue;
 
-                                <?php
-                                    for($x=0;$x<count($ar_bundle_sizes);$x++){
+                            if (strpos(strtoupper($size), "T") !== false)
+                                continue;
 
-                                        $bundle = $ar_bundle_sizes[$x];
-                                ?>
+                            if (is_numeric($size))
+                                $ar_child_sizes[] = intval($size);
+                            else
+                                $ar_child_sizes[] = $size;
+                        }
 
-                                <div class="thumbnail" rel="<?php echo $bundle['product_id'];?>">
-                                    <img src="<?php echo $bundle['big_image'];?>" />
-                                </div>
+                        $ar_child_sizes = array_unique($ar_child_sizes);
+                        ksort($ar_child_sizes);
 
-                                <?php } ?>
+                        $ar_bundle_sizes[$i] = array(
+                            "product_name" => $_bundle_product->getName(),
+                            "product_id" => $_bundle_product->getId(),
+                            "price" => round($_bundle_product->getPrice(), 2),
+                            "sizes" => $ar_child_sizes,
+                            "big_image" => $big_image,
+                            //"images" => $bundle_product_images,
+                            "color" => $allColors[$bundle_color_id],
+                            "color_code" => $bundle_color_id,
+                            "url" => $bundledProductUrl
+                        );
 
-                            </div>
-                            <div class="product_slider">
-                                <div class="slider">
-                                    <img src="<?php echo $productSetImages[$_product_single->getId()];?>" />
-                                </div>
-                            </div>
-                            <div class="product_filters">
-                                <p class="product_name"><?php echo $_product->getName();?></p>
+                        $arBundledProductImages[$_bundle_product->getId()] = array("small_image" => $small_image, "big_image" => $big_image);
+                    }
 
-                                <p class="product_price">$<?php echo round($_product->getPrice(),0);?> <span><?php echo round($stock,2);?> SETS REMAINING</span></p>
+                    // main set images
+                    $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                    if (isset($_gallery)) {
+                        foreach ($_gallery as $_image) {
+                            $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                            $city = $imageLabelData["city"];
+                            $latlong = $imageLabelData["latlong"];
+                            $cityTime = $imageLabelData["cityTime"];
 
-                                <?php
-                                    $sizeDivCount = -1;
-                                    foreach($ar_bundle_sizes as $product=>$data) {
-                                        ++$sizeDivCount;
-                                ?>
-                                <div class="set_item">
+                            $cities[] = $city;
+                            $latlongs[] = $latlong;
+                            $cityTimes[] = $cityTime;
+                            break;                    // we want to read first image only
+                        }
+                    }
+                    ?>
 
-                                    <div class="product_detail product-detail-<?php echo $sizeDivCount;?>" rel="<?php echo $data["product_id"];?>">
-                                        <p class="pname"><a href="<?php echo $data["url"];?>" target="_blank"><?php echo $data["product_name"];?></a> <span class="pcolor product-color-<?php echo $sizeDivCount;?>" rel="<?php echo $data["color_code"];?>"><?php echo $data["color"];?></span></p>
+                    <div class="section contain_product">
+                        <div class="product_set">
+                            <div class="side2 flipped">
 
-                                        <p class="psize">
-                                            <span class="gap">SIZE:</span>
+                                <span class="reverse_flip">&plus;</span>
+
+                                <div class="product_container">
+                                    <div class="thumbnails">
+
+                                        <?php
+                                        for ($x = 0; $x < count($ar_bundle_sizes); $x++) {
+
+                                            $bundle = $ar_bundle_sizes[$x];
+                                            ?>
+
+                                            <div class="thumbnail" rel="<?php echo $bundle['product_id']; ?>">
+                                                <img src="<?php echo $bundle['big_image']; ?>"/>
+                                            </div>
+
+                                        <?php } ?>
+
+                                    </div>
+                                    <div class="product_slider">
+                                        <div class="slider">
+                                            <img src="<?php echo $productSetImages[$_product_single->getId()]; ?>"/>
+                                        </div>
+                                    </div>
+                                    <div class="product_filters">
+                                        <p class="product_name"><?php echo $_product->getName(); ?></p>
+
+                                        <p class="product_price">$<?php echo round($_product->getPrice(), 0); ?>
+                                            <span><?php echo round($stock, 2); ?> SETS REMAINING</span></p>
+
+                                        <?php
+                                        $sizeDivCount = -1;
+                                        foreach ($ar_bundle_sizes as $product => $data) {
+                                            ++$sizeDivCount;
+                                            ?>
+                                            <div class="set_item">
+
+                                                <div class="product_detail product-detail-<?php echo $sizeDivCount; ?>"
+                                                     rel="<?php echo $data["product_id"]; ?>">
+                                                    <p class="pname"><a href="<?php echo $data["url"]; ?>"
+                                                                        target="_blank"><?php echo $data["product_name"]; ?></a>
+                                                        <span class="pcolor product-color-<?php echo $sizeDivCount; ?>"
+                                                              rel="<?php echo $data["color_code"]; ?>"><?php echo $data["color"]; ?></span>
+                                                    </p>
+
+                                                    <p class="psize">
+                                                        <span class="gap">SIZE:</span>
                                             <span class="sizes">
                                                 <?php
-                                                    foreach($allSizes as $key => $value){
+                                                foreach ($allSizes as $key => $value) {
                                                     foreach ($data["sizes"] as $size) {
 
-                                                        if($size==$key) {
+                                                        if ($size == $key) {
                                                             ?>
                                                             <span class="size size-<?php echo $sizeDivCount; ?>"
                                                                   rel="<?php echo $value; ?>"><?php echo $key; ?></span>
@@ -311,62 +319,72 @@ foreach ($allSizeOptions as $instance) {
                                                 ?>
                                             </span>
 
-                                        </p>
+                                                    </p>
 
-                                        <!--<span class="size-chart-bundle">SIZE CHART</span>-->
+                                                    <!--<span class="size-chart-bundle">SIZE CHART</span>-->
 
+                                                </div>
+                                            </div>
+
+                                        <?php } ?>
+
+                                        <div class="add_to_wishlist"
+                                             rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">
+                                            ADD TO WISHLIST +
+                                        </div>
+                                        <div class="add_to_bag"
+                                             rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">
+                                            ADD TO BAG
+                                        </div>
+                                        <p class="free_shipping">Free and fast shipping to US and Canada</p>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="side1">
+                                <p class="product_name"><?php echo $_product->getName(); ?></p>
 
-                                <?php } ?>
+                                <p class="product_price">$<?php echo round($_product->getPrice(), 0); ?></p>
 
-                                <div class="add_to_wishlist" rel="<?php echo $gift_simple_id;?>:<?php echo $gift_simple_color;?>:<?php echo $gift_bundle_count;?>">ADD TO WISHLIST +</div>
-                                <div class="add_to_bag" rel="<?php echo $gift_simple_id;?>:<?php echo $gift_simple_color;?>:<?php echo $gift_bundle_count;?>">ADD TO BAG</div>
-                                <p class="free_shipping">Free and fast shipping to US and Canada</p>
+                                <p class="buy_product"><a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a><a
+                                        class="buy_gift_set"
+                                        href="<?php echo $setProductUrl; ?>">GET <?php echo $_product->getName(); ?> <b>
+                                            &gt;</b></a></p>
+
+                                <p class="toggle_description">SEE DETAILS <b>&gt;</b></p>
+                            </div>
+                        </div>
+
+                        <div class="description_box">
+                            <div class="rel_container">
+                                <!--                        <span class="close_desc">&plus;</span>-->
+                                <div class="set_desc">
+
+                                    <b><?php echo $_product->getName(); ?></b><br/>
+
+                                    <p><?php echo $_product->getDescription(); ?></p>
+
+                                </div>
+                                <div class="middle_desc">
+                                    <?php
+                                    foreach ($ar_bundle_sizes as $data) {
+                                        ?>
+                                        <div>
+                                            <b><?php echo $data["product_name"]; ?></b><br/>
+                                            <span class="desc_product_color"><?php echo $data["color"]; ?></span><br/>
+                                            $<?php echo $data["price"]; ?><br/>
+                                            <a href="<?php echo $data["url"]; ?>" target="_blank">Sold Individually</a>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                                <div class="right_desc">
+                                    <p>SEE <?php echo $_product->getName(); ?> SET &gt;</p>
+                                    <b><?php echo round($stock, 0); ?> left</b>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="side1">
-                        <p class="product_name"><?php echo $_product->getName();?></p>
 
-                        <p class="product_price">$<?php echo round($_product->getPrice(),0);?></p>
-
-                        <p class="buy_product"><a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a><a class="buy_gift_set" href="<?php echo $setProductUrl;?>">GET <?php echo $_product->getName();?> <b>&gt;</b></a></p>
-
-                        <p class="toggle_description">SEE DETAILS <b>&gt;</b></p>
-                    </div>
-                </div>
-
-                <div class="description_box">
-                    <div class="rel_container">
-<!--                        <span class="close_desc">&plus;</span>-->
-                        <div class="set_desc">
-
-                            <b><?php echo $_product->getName();?></b><br/>
-                            <p><?php echo $_product->getDescription();?></p>
-
-                        </div>
-                        <div class="middle_desc">
-                            <?php
-                                foreach($ar_bundle_sizes as $data){
-                            ?>
-                            <div>
-                                <b><?php echo $data["product_name"];?></b><br/>
-                                <span class="desc_product_color"><?php echo $data["color"];?></span><br/>
-                                $<?php echo $data["price"];?><br/>
-                                <a href="<?php echo $data["url"];?>" target="_blank">Sold Individually</a>
-                            </div>
-                            <?php } ?>
-                        </div>
-                        <div class="right_desc">
-                            <p>SEE <?php echo $_product->getName();?> SET &gt;</p>
-                            <b><?php echo round($stock,0);?> left</b>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <?php } ?>
+                <?php } ?>
 
                 <script type="text/javascript">
                     <?php foreach($cities as $city){ ?>
@@ -388,6 +406,7 @@ foreach ($allSizeOptions as $instance) {
                 <?php echo $this->getChildHtml('before_body_end') ?>
             </div>
         </div>
-        <?php echo $this->getAbsoluteFooter() ?>
+    </div>
+    <?php echo $this->getAbsoluteFooter() ?>
 </body>
 </html>

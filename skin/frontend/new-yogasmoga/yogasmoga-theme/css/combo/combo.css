@@ -713,3 +713,7 @@ span.temp {
 .right_desc > b {
     font: 11px/15px GothamBold;
 }
+
+.ui-widget-overlay {
+    top: 94px !important;
+}
