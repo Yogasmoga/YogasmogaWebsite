@@ -380,7 +380,7 @@ div#bodycompensator {
     text-transform: uppercase;
 }
 
-.toggle_description.close::before {
+.toggle_description.close_description::before {
     color: #CC0033;
     content: "+";
     display: inline-block;

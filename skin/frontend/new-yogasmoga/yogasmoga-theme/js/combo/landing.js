@@ -33,7 +33,7 @@ function init() {
         e.preventDefault();
         var linkHtml = "SEE DETAILS <b>&gt;</b>";
         jQuery(".toggle_description").not(jQuery(this)).html(linkHtml);
-        jQuery(".toggle_description").not(jQuery(this)).removeClass("close");
+        jQuery(".toggle_description").not(jQuery(this)).removeClass("close_description");
         jQuery(".description_box").removeClass("show");
 
         var thisSide1 = jQuery(this).closest(".product_set").find(".side1");
@@ -53,16 +53,16 @@ function init() {
             jQuery(".description_box").removeClass("show");
             linkHtml = "CLOSE DETAILS";
             jQuery(this).html(linkHtml);
-            jQuery(this).addClass("close");
+            jQuery(this).addClass("close_description");
         }else{
-            jQuery(this).removeClass("close");
+            jQuery(this).removeClass("close_description");
             linkHtml = "SEE DETAILS <b>&gt;</b>";
             jQuery(this).html(linkHtml);
         }
 
         linkHtml = "SEE DETAILS <b>&gt;</b>";
         jQuery(".toggle_description").not(jQuery(this)).html(linkHtml);
-        jQuery(".toggle_description").not(jQuery(this)).removeClass("close");
+        jQuery(".toggle_description").not(jQuery(this)).removeClass("close_description");
 
         jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show");
         jQuery(this).closest(".section").find(".description_box").toggleClass("show");
@@ -122,10 +122,12 @@ function setActiveLink(sectionOffsets) {
     jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").addClass("active");
     jQuery(".section").removeClass("active");
     jQuery(".section:nth-child(" + sectionIndex + ")").addClass("active");
+
     if(jQuery(".description_box").hasClass("show")){
-        if(!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close"))
+        if(!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close_description"))
         jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").click();
     }
+
     var setName = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pname>span").text()+" SET";
     var setPrice = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pprice").text();
 
