@@ -122,6 +122,9 @@ function setActiveLink(sectionOffsets) {
     jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").addClass("active");
     jQuery(".section").removeClass("active");
     jQuery(".section:nth-child(" + sectionIndex + ")").addClass("active");
+    if(jQuery(".description_box").hasClass("show")){
+        jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").click();
+    }
     var setName = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pname>span").text()+" SET";
     var setPrice = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pprice").text();
 

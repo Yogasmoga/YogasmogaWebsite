@@ -169,6 +169,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 .purchase_box .product_price > span {
     float: right;
     font: 11px/32px Gothambook;
+    margin-top: 5px;
 }
 
 .purchase_box .set_item {
