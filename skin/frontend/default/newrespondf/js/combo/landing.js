@@ -13,7 +13,7 @@
         $(".gift-set .thumbnail").click(function () {
             $(".close_icon").show();
             $(this).find("p").hide();
-            var offsetTop = $(this).offset().top;
+            var offsetTop = $(window).scrollTop();
             $(".gift-set .details").hide();
             $(this).next().slideDown();
             setTimeout(function () {
