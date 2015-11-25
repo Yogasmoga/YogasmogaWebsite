@@ -123,13 +123,17 @@ function setActiveLink(sectionOffsets) {
     jQuery(".section").removeClass("active");
     jQuery(".section:nth-child(" + sectionIndex + ")").addClass("active");
 
+    ////////////////////////////////////////////////////////
+    // Code for description slider keep changing once open//
+    ////////////////////////////////////////////////////////
+
     if(jQuery(".description_box").hasClass("show") || jQuery(".description_box").hasClass("show_fast")){
         if(!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close_description")) {
             //jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").click();
             descriptionPosition();
             var linkHtml = jQuery(this).html();
             if(linkHtml == "SEE DETAILS <b>&gt;</b>"){
-                jQuery(".description_box").removeClass("show_fast").removeClass("slow");
+                jQuery(".description_box").removeClass("show_fast").removeClass("show");
                 linkHtml = "CLOSE DETAILS";
                 jQuery(this).html(linkHtml);
                 jQuery(this).addClass("close_description");
@@ -143,10 +147,12 @@ function setActiveLink(sectionOffsets) {
             jQuery(".toggle_description").not(jQuery(this)).html(linkHtml);
             jQuery(".toggle_description").not(jQuery(this)).removeClass("close_description");
 
-            jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("slow").removeClass("show_fast");
-            jQuery(this).closest(".section").find(".description_box").toggleClass("show_fast").removeClass("slow");
+            jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show").removeClass("show_fast");
+            jQuery(this).closest(".section").find(".description_box").toggleClass("show_fast").removeClass("show").removeClass("show_fast");
         }
     }
+    ///////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
 
     var setName = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pname>span").text()+" SET";
     var setPrice = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pprice").text();
