@@ -2558,6 +2558,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             return 0;
         }
     }
+
     public function searchcart($minidetails, $sku)
     {
         foreach($minidetails as $item)
@@ -2567,6 +2568,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
         return false;
     }
+
     public function searchcartnew($minidetails, $sku, $productselectedoptioncount = null)
     {
         if($productselectedoptioncount > 0)
@@ -2593,6 +2595,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
         return false;
     }
+
     public function searchforoptionproduct($productarr,$sku)
     {
         foreach($productarr as $key=>$value)
@@ -2625,6 +2628,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
         return "";
     }
+
     public function issuperattribute($_product, $superattribute)
     {
         $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
@@ -2637,10 +2641,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
         return false;
     }
+
     protected function getSkinUrl($path)
     {
         return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."frontend/new-yogasmoga/yogasmoga-theme/".$path;
     }
+
     function getShippingCost($code)
     {
         //$rates = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->collectShippingRates()->getGroupedAllShippingRates();

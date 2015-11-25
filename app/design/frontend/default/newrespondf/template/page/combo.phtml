@@ -1,4 +1,44 @@
 <?php
+$storeId = Mage::app()->getStore()->getStoreId();
+$catId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+$_helper = Mage::helper('catalog/output');
+
+$productCollection = Mage::getModel('catalog/category')->load($catId)
+    ->getProductCollection()
+    ->addAttributeToSelect('*');
+
+$cities = array();
+$latlongs = array();
+$cityTimes = array();
+
+$resourceModel = Mage::getResourceModel('catalog/product');
+
+/***************** get all colors from database ***********************/
+$allColors = array();
+$allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+$allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
+foreach ($allColorOptions as $instance) {
+    if (!array_key_exists($instance['value'], $allColors)) {
+        $allColors[$instance['value']] = $instance['label'];
+    }
+}
+/***************** get all sizes from database ***********************/
+$allSizes = array();
+$allSizeAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+$allSizeOptions = $allSizeAttribute->getSource()->getAllOptions(true, true);
+foreach ($allSizeOptions as $instance) {
+    if ($instance['label'] != "") {
+        if (is_numeric($instance['label']) && intval($instance['label']) > 12)
+            continue;
+
+        if (strpos(strtoupper($instance['label']), "T") !== false)
+            continue;
+
+        $allSizes[$instance['label']] = $instance['value'];
+    }
+}
+?>
+<?php
 /**
  * Magento
  *
@@ -59,54 +99,189 @@
             </div>
         </div>
         <div class="gift-sets-collection">
+
+            <?php
+
+            $arBundledProductImages = array();
+
+            foreach ($productCollection as $_product_single) {
+            $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
+            $setProductUrl = $_product->getProductUrl();
+
+            $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
+            foreach ($_childProducts as $simple) {
+                $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
+                break;
+            }
+
+            $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
+
+            if (isset($bundled_product_ids))
+                $bundled_product_ids = trim($bundled_product_ids);
+
+            $ar_bundled_product_ids = explode(",", $bundled_product_ids);
+
+            $ar_bundle_sizes = array();
+
+            /************ get color code of configurable product **************/
+            $productAttributeOptions = $_product->getTypeInstance(true)->getConfigurableAttributesAsArray($_product);
+            foreach ($productAttributeOptions as $productAttribute) {
+                foreach ($productAttribute['values'] as $attribute) {
+                    if ($productAttribute['label'] == 'Color') {
+                        $gift_simple_color = $attribute['value_index'];
+                        break;
+                    }
+                }
+            }
+            /************ get color code of configurable product **************/
+
+            $gift_simple_id = $_product_single->getId();
+            $gift_bundle_count = count($ar_bundled_product_ids);
+
+            for ($i = 0; $i < count($ar_bundled_product_ids); $i++) {
+
+                $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);          // id:color_code
+
+                $bundle_configurable_id = $ar_id_color_code[0];
+                $bundle_color_id = $ar_id_color_code[1];
+
+                $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
+                $bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
+
+                $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
+
+                $bundle_product_images = array();
+
+                if (isset($_gallery)) {
+                    foreach ($_gallery as $_image) {
+                        $imageLabelData = json_decode(trim($_image->getLabel()), true);
+
+                        if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                            continue;
+
+                        if ($imageLabelData['color'] == $ar_id_color_code[1]) {
+                            $big_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                            //$bundle_product_images[] = $url;
+                            break;
+                        }
+                    }
+                }
+
+                $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
+                $ar_child_sizes = array();
+                foreach ($_childProducts as $_childProduct) {
+                    $size = $_childProduct->getAttributeText('size');
+
+                    if (is_numeric($size) && intval($size) > 12)
+                        continue;
+
+                    if (strpos(strtoupper($size), "T") !== false)
+                        continue;
+
+                    if (is_numeric($size))
+                        $ar_child_sizes[] = intval($size);
+                    else
+                        $ar_child_sizes[] = $size;
+                }
+
+                $ar_child_sizes = array_unique($ar_child_sizes);
+                ksort($ar_child_sizes);
+
+                $ar_bundle_sizes[$i] = array(
+                    "product_name" => $_bundle_product->getName(),
+                    "product_id" => $_bundle_product->getId(),
+                    "price" => round($_bundle_product->getPrice(), 2),
+                    "sizes" => $ar_child_sizes,
+                    "big_image" => $big_image,
+                    //"images" => $bundle_product_images,
+                    "color" => $allColors[$bundle_color_id],
+                    "color_code" => $bundle_color_id,
+                    "url" => $bundledProductUrl
+                );
+
+                $arBundledProductImages[$_bundle_product->getId()] = array("small_image" => $small_image, "big_image" => $big_image);
+            }
+/*
+            // main set images
+            $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+            if (isset($_gallery)) {
+                foreach ($_gallery as $_image) {
+                    $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                    $city = $imageLabelData["city"];
+                    $latlong = $imageLabelData["latlong"];
+                    $cityTime = $imageLabelData["cityTime"];
+
+                    $cities[] = $city;
+                    $latlongs[] = $latlong;
+                    $cityTimes[] = $cityTime;
+                    break;                    // we want to read first image only
+                }
+            }
+*/
+            ?>
+
             <div class="gift-set" data-filter="women">
-                <div class="gift-set-title">THE NEW ORLEANS SET</div>
+                <div class="gift-set-title"><?php echo $_product->getName(); ?> SET</div>
                 <div class="thumbnail">
-                    <span class="setPrice">$250</span>
+                    <span class="setPrice">$<?php echo round($_product->getPrice(), 0); ?></span>
 
                     <p>Buy Now <span>&gt;</span></p>
                 </div>
                 <div class="details">
-                    <p class="left_item">9 left</p>
+                    <p class="left_item"><?php echo round($stock, 0); ?> left</p>
 
                     <p class="desc">
-                        Quis nec pede maecenas suspendisse dui pede. Massa lectus felis est mollis urna. Maecenas sit
-                        vestibulum est hac rutrum augue. Molestie vel sed integer, accumsan mollis, elementum egestas
-                        hac sem sit, congue vivamus nisl sed
+                        <?php echo $_product->getDescription(); ?>
                     </p>
 
                     <div class="flexslider">
                         <ul class="slides">
-                            <li rel="product_1_details">
-                                <img
-                                    src="http://staging.yogasmoga.com/media/catalog/product/cache/1/thumbnail/500x500/17f82f742ffe127f42dca9de82fb58b1/l/a/laguna-bra-topo-print-koel-carbon-1_012_2.jpg"/>
+
+                            <?php
+                            for ($x = 0; $x < count($ar_bundle_sizes); $x++) {
+
+                            $bundle = $ar_bundle_sizes[$x];
+                            ?>
+
+                            <li rel="product_<?php echo ($x+1);?>_details" rel="<?php echo $bundle['product_id']; ?>">
+                                <img src="<?php echo $bundle['big_image']; ?>"/>
                             </li>
-                            <li rel="product_2_details">
-                                <img
-                                    src="http://staging.yogasmoga.com/media/catalog/product/cache/1/thumbnail/500x500/17f82f742ffe127f42dca9de82fb58b1/l/a/laguna-bra-topo-print-koel-carbon-1_012_2.jpg"/>
-                            </li>
-                            <li rel="product_3_details">
-                                <img
-                                    src="http://staging.yogasmoga.com/media/catalog/product/cache/1/thumbnail/500x500/17f82f742ffe127f42dca9de82fb58b1/l/a/laguna-bra-topo-print-koel-carbon-1_012_2.jpg"/>
-                            </li>
+
+                            <?php } ?>
                         </ul>
                     </div>
                     <div class="related_blocks">
-                        <div class="product_1_details">
-                            <p class="product_name">THE VIVACITY SHORT SLEEVE TEE <span>1 of 3 Products</span></p>
+                        <?php
+                            $ct = 0;
+                            $totalProducts = count($ar_bundle_sizes);
+                            foreach ($ar_bundle_sizes as $data) {
+                                ++$ct;
+                        ?>
 
-                            <p class="product_color">Everest Avalanche</p>
+                        <div class="product_<?php echo $ct;?>_details">
+                            <p class="product_name"><?php echo $data["product_name"]; ?> <span><?php echo $ct;?> of <?php echo $totalProducts;?> Products</span></p>
+
+                            <p class="product_color"><?php echo $data["color"]; ?></p>
 
                             <div class="size_selection_box">
                                 <p>Choose Size <span class="size_chart_link">Size Chart</span></p>
 
                                 <div class="sizes">
-                                    <span class="size">2</span>
-                                    <span class="size">4</span>
-                                    <span class="size">6</span>
-                                    <span class="size">8</span>
-                                    <span class="size">10</span>
-                                    <span class="size">12</span>
+                                    <?php
+                                    foreach ($allSizes as $key => $value) {
+                                        foreach ($data["sizes"] as $size) {
+
+                                            if ($size == $key) {
+                                    ?>
+
+                                                <span class="size size-<?php echo $sizeDivCount; ?>"
+                                                      rel="<?php echo $value; ?>"><?php echo $key; ?></span>
+
+                                    <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <div class="bra_cup_selection">
@@ -114,64 +289,13 @@
                                             class="yes"></span></span></p>
                             </div>
                             <p class="sold_indidually">
-                                <a href="">Sold Individually &gt;</a><br/>
+                                <a href="<?php echo $data['url']; ?>">Sold Individually &gt;</a><br/>
                                 $1000
                             </p>
                         </div>
 
-                        <div class="product_2_details">
-                            <p class="product_name">THE VIVACITY SHORT SLEEVE TEE <span>2 of 3 Products</span></p>
+                        <?php } ?>
 
-                            <p class="product_color">Everest Avalanche</p>
-
-                            <div class="size_selection_box">
-                                <p>Choose Size <span class="size_chart_link">Size Chart</span></p>
-
-                                <div class="sizes">
-                                    <span class="size">2</span>
-                                    <span class="size">4</span>
-                                    <span class="size">6</span>
-                                    <span class="size">8</span>
-                                    <span class="size">10</span>
-                                    <span class="size">12</span>
-                                </div>
-                            </div>
-                            <div class="bra_cup_selection">
-                                <p>Include bra cup? <span class="bra_cup_toggle"><span class="no selected"></span><span
-                                            class="yes"></span></span></p>
-                            </div>
-                            <p class="sold_indidually">
-                                <a href="">Sold Individually &gt;</a><br/>
-                                $1000
-                            </p>
-                        </div>
-
-                        <div class="product_3_details">
-                            <p class="product_name">THE VIVACITY SHORT SLEEVE TEE <span>3 of 3 Products</span></p>
-
-                            <p class="product_color">Everest Avalanche</p>
-
-                            <div class="size_selection_box">
-                                <p>Choose Size <span class="size_chart_link">Size Chart</span></p>
-
-                                <div class="sizes">
-                                    <span class="size">2</span>
-                                    <span class="size">4</span>
-                                    <span class="size">6</span>
-                                    <span class="size">8</span>
-                                    <span class="size">10</span>
-                                    <span class="size">12</span>
-                                </div>
-                            </div>
-                            <div class="bra_cup_selection">
-                                <p>Include bra cup? <span class="bra_cup_toggle"><span class="no selected"></span><span
-                                            class="yes"></span></span></p>
-                            </div>
-                            <p class="sold_indidually">
-                                <a href="">Sold Individually &gt;</a><br/>
-                                $1000
-                            </p>
-                        </div>
                     </div>
 
                     <p class="free_shipping_text">
@@ -193,139 +317,7 @@
                 </div>
             </div>
 
-            <div class="gift-set" data-filter="men">
-                <div class="gift-set-title">THE NEW ORLEANS SET</div>
-                <div class="thumbnail">
-                    <span class="setPrice">$250</span>
-
-                    <p>Buy Now <span>&gt;</span></p>
-                </div>
-                <div class="details">
-                    <p class="left_item">9 left</p>
-
-                    <p class="desc">
-                        Quis nec pede maecenas suspendisse dui pede. Massa lectus felis est mollis urna. Maecenas sit
-                        vestibulum est hac rutrum augue. Molestie vel sed integer, accumsan mollis, elementum egestas
-                        hac sem sit, congue vivamus nisl sed
-                    </p>
-
-                    <div class="flexslider">
-                        <ul class="slides">
-                            <li rel="product_1_details">
-                                <img
-                                    src="http://staging.yogasmoga.com/media/catalog/product/cache/1/thumbnail/500x500/17f82f742ffe127f42dca9de82fb58b1/l/a/laguna-bra-topo-print-koel-carbon-1_012_2.jpg"/>
-                            </li>
-                            <li rel="product_2_details">
-                                <img
-                                    src="http://staging.yogasmoga.com/media/catalog/product/cache/1/thumbnail/500x500/17f82f742ffe127f42dca9de82fb58b1/l/a/laguna-bra-topo-print-koel-carbon-1_012_2.jpg"/>
-                            </li>
-                            <li rel="product_3_details">
-                                <img
-                                    src="http://staging.yogasmoga.com/media/catalog/product/cache/1/thumbnail/500x500/17f82f742ffe127f42dca9de82fb58b1/l/a/laguna-bra-topo-print-koel-carbon-1_012_2.jpg"/>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="related_blocks">
-                        <div class="product_1_details">
-                            <p class="product_name">THE VIVACITY SHORT SLEEVE TEE <span>1 of 3 Products</span></p>
-
-                            <p class="product_color">Everest Avalanche</p>
-
-                            <div class="size_selection_box">
-                                <p>Choose Size <span class="size_chart_link">Size Chart</span></p>
-
-                                <div class="sizes">
-                                    <span class="size">2</span>
-                                    <span class="size">4</span>
-                                    <span class="size">6</span>
-                                    <span class="size">8</span>
-                                    <span class="size">10</span>
-                                    <span class="size">12</span>
-                                </div>
-                            </div>
-                            <div class="bra_cup_selection">
-                                <p>Include bra cup? <span class="bra_cup_toggle"><span class="no selected"></span><span
-                                            class="yes"></span></span></p>
-                            </div>
-                            <p class="sold_indidually">
-                                <a href="">Sold Individually &gt;</a><br/>
-                                $1000
-                            </p>
-                        </div>
-
-                        <div class="product_2_details">
-                            <p class="product_name">THE VIVACITY SHORT SLEEVE TEE <span>2 of 3 Products</span></p>
-
-                            <p class="product_color">Everest Avalanche</p>
-
-                            <div class="size_selection_box">
-                                <p>Choose Size <span class="size_chart_link">Size Chart</span></p>
-
-                                <div class="sizes">
-                                    <span class="size">2</span>
-                                    <span class="size">4</span>
-                                    <span class="size">6</span>
-                                    <span class="size">8</span>
-                                    <span class="size">10</span>
-                                    <span class="size">12</span>
-                                </div>
-                            </div>
-                            <div class="bra_cup_selection">
-                                <p>Include bra cup? <span class="bra_cup_toggle"><span class="no selected"></span><span
-                                            class="yes"></span></span></p>
-                            </div>
-                            <p class="sold_indidually">
-                                <a href="">Sold Individually &gt;</a><br/>
-                                $1000
-                            </p>
-                        </div>
-
-                        <div class="product_3_details">
-                            <p class="product_name">THE VIVACITY SHORT SLEEVE TEE <span>3 of 3 Products</span></p>
-
-                            <p class="product_color">Everest Avalanche</p>
-
-                            <div class="size_selection_box">
-                                <p>Choose Size <span class="size_chart_link">Size Chart</span></p>
-
-                                <div class="sizes">
-                                    <span class="size">2</span>
-                                    <span class="size">4</span>
-                                    <span class="size">6</span>
-                                    <span class="size">8</span>
-                                    <span class="size">10</span>
-                                    <span class="size">12</span>
-                                </div>
-                            </div>
-                            <div class="bra_cup_selection">
-                                <p>Include bra cup? <span class="bra_cup_toggle"><span class="no selected"></span><span
-                                            class="yes"></span></span></p>
-                            </div>
-                            <p class="sold_indidually">
-                                <a href="">Sold Individually &gt;</a><br/>
-                                $1000
-                            </p>
-                        </div>
-                    </div>
-
-                    <p class="free_shipping_text">
-                        Free and fast shipping to US & Canada
-                    </p>
-
-                    <div class="row">
-                        <div class="add_to_wishlist">
-                            <svg height="44px" width="44px" xml:space="preserve"
-                                 style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px"
-                                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-                                 id="Layer_1" version="1.1">
-                                <path d="M21.9,35.4L34,19.8c0.8-1.1,1.2-2.4,1.2-3.8c0-3.7-3-6.6-6.6-6.6c-3.7,0-6.6,3-6.6,6.6c0-3.7-3-6.6-6.6-6.6
-                                c-3.7,0-6.6,3-6.6,6.6c0,1.4,0.5,2.7,1.2,3.8L21.9,35.4z" fill="#fff"/>
-                                </svg>
-                        </div>
-                        <div class="add_to_shopping_bag">ADD TO BAG</div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
 
         </div>
 

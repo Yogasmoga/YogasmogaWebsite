@@ -41,6 +41,6 @@
     });
 
     $(window).resize(function () {
-        $(".thumbnail,.pageThumbnail").height($(this).width() * 3 / 4);
+        $(".thumbnail,.pageThumbnail").height($(".page").width() * 3 / 4);
     });
 }(jQuery));
