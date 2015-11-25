@@ -8,26 +8,33 @@ require '../../app/Mage.php';
 Mage::app();
 
 $fileIn = fopen("products.csv", "r");
-//$fileOut = fopen(Mage::getBaseDir() . "/var/productfeed/result.txt", "w");
-
-//fwrite($fileOut, "&CID=4521127\n");
-//fwrite($fileOut, "&SUBID=171706\n");
-//fwrite($fileOut, "&PROCESSTYPE=UPDATE\n");
-//fwrite($fileOut, "&AID=12186878\n");
-//fwrite($fileOut, "&PARAMETERS=NAME|KEYWORDS|DESCRIPTION|SKU|BUYURL|AVAILABLE|IMAGEURL|PRICE|UPC|ADVERTISERCATEGORY|MERCHANDISETYPE\n");
-
 
 header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=googlefeed.csv');
+header('Content-Disposition: attachment; filename=google_feed.csv');
 
 $output = fopen('php://output', 'w');
 
-	
-	
-	
-	fputcsv($output, array('id','name','description','google product category','category of item','link','mobile link','image link','additional image link','condition'));
+fputcsv($output, array(
+    'Id',
+    'Title',
+    'Description',
+    'google product category',
+    'Link',
+    'Image link',
+    'Condition',
+    'Availability',
+    'Price',
+    'Sale price',
+    'Sale price effective date',
+    'Brand',
+    'MPN',
+    'Gender',
+    'Age group',
+    'Size'
+));
 
-
+$womenCategory = 3;
+$womenCategory = 5;
 $count = 0;
 
 while (!feof($fileIn)) {
@@ -39,17 +46,16 @@ while (!feof($fileIn)) {
     $sku = $ar[0];
     $name = $ar[1];
 	
-	//$pos = strrpos($name, '-');
-	//$name = substr($name, 0, $pos);
+	$pos = strrpos($name, '-');
+	$name = substr($name, 0, $pos);
+    $size = substr($pos+1);
 	
     $price = $ar[2];
     $description = trim($ar[3]);
-    $available = $ar[4] === "1" ? 'YES' : 'NO';
+    $available = $ar[4] === "1" ? 'in stock' : 'out of stock';
     $keyword = '';
     $buy_url = '';
     $image_url = '';
-    $advertise_category = 'yoga apparel';
-    $merchandiseType = '';
 
     $description = trim(preg_replace('/\s+/', ' ', $description));
 
@@ -57,31 +63,24 @@ while (!feof($fileIn)) {
 
 
     if (!isset($product) || !is_object($product) || !$product->getId()) {
-        ;//echo "Bad product = $name ( $sku ) <br/>";
+        ;
     } else {
         if ($product->getTypeId() == 'configurable') {
 
             $forHidden = $product->getAttributeText('hidden_product');
             if (isset($forHidden) && strtolower($forHidden) == "yes")
                 continue;
-/*
-            $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
-                ->getParentIdsByChild($product->getId());
 
-            if (!isset($parentIds) || count($parentIds) == 0)
-                continue;
-*/
-            $configurableProduct = $product; //Mage::getModel('catalog/product')->load($parentIds[0]);
+            $configurableProduct = $product;
 
             $categoryIds = $product->getCategoryIds();
 
             if (isset($categoryIds) && is_array($categoryIds) && count($categoryIds) > 0) {
                 foreach ($categoryIds as $id) {
-
-                    if (intval($id) === 43 || intval($id) === 12 || intval($id) === 8) {
-                        $merchandiseType = "Non-commissionable Items";
-                        break;
-                    }
+                    if (intval($id) === $womenCategory)
+                        $gender = "female";
+                    else if (intval($id) === $menCategory)
+                        $gender = "male";
                 }
             } else
                 continue;
@@ -90,6 +89,7 @@ while (!feof($fileIn)) {
 
             $buy_url = $configurableProduct->getUrlInStore();
             $keywords = $configurableProduct->getMetaKeyword();
+            $price = round($configurableProduct->getPrice(),2);
 
             $images = Mage::getModel('catalog/product')->load($configurableProduct->getId())->getMediaGalleryImages();
 
@@ -104,21 +104,30 @@ while (!feof($fileIn)) {
                 }
             }
 
-            $sku = str_replace('.', '-', $sku);
-            $upc = $sku;
-
             //$data = "$name|$keywords|$description|$sku|$buy_url|$available|$image_url|$price|$upc|$advertise_category|$merchandiseType\n";
-			array('id','name','description','google product category','category of item','link','mobile link','image link','additional image link','condition');
+			//array('id','title','description','google product category','link','image link','condition');
 			
-			$arr = array($sku,$name,$description,'','',$buy_url,'',$image_url,'','');
+			$arr = array(
+                $sku,
+                $name . ' YOGA - YOGASMOGA',
+                strip_tags($description),
+                '',
+                $buy_url,
+                $image_url,
+                'New',
+                $available,      // In Stock / Out of stock
+                $price,            // to-do
+                '',
+                '',
+                'YOGASMOGA',
+                '',
+                $gender,       // to-do
+                $age_group,    // to-do
+                $size          // to-do
+            );
 			fputcsv($output, $arr);
-			
-            //fwrite($fileOut, $data);
         }
     }
 }
 fclose($fp);
-//fclose($fileOut);
-
-echo "<br/><br/>Product feed ready, <a href='download.php'>click here</a> to download";
 ?>
