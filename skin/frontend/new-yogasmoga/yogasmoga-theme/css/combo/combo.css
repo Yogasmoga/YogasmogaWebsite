@@ -360,10 +360,11 @@ div#bodycompensator {
     margin: 0 auto;
 }
 
-/*.product_set .side2 .product_container .product_slider .slider img {
+.product_set .side2 .product_container .product_slider .slider img {
     width: 100%;
+    max-width: 700px;
     height: auto;
-}*/
+}
 
 .product_set .side2 .product_container .product_filters {
     float: right;
