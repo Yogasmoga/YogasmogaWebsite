@@ -50,7 +50,7 @@ function init() {
         descriptionPosition();
         var linkHtml = jQuery(this).html();
         if(linkHtml == "SEE DETAILS <b>&gt;</b>"){
-            jQuery(".description_box").removeClass("show");
+            jQuery(".description_box").removeClass("show").removeClass("show_fast");
             linkHtml = "CLOSE DETAILS";
             jQuery(this).html(linkHtml);
             jQuery(this).addClass("close_description");
@@ -64,7 +64,7 @@ function init() {
         jQuery(".toggle_description").not(jQuery(this)).html(linkHtml);
         jQuery(".toggle_description").not(jQuery(this)).removeClass("close_description");
 
-        jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show");
+        jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show").removeClass("show_fast");
         jQuery(this).closest(".section").find(".description_box").toggleClass("show");
     });
     /*jQuery(".close_desc").click(function () {
