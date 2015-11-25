@@ -154,6 +154,13 @@ div#bodycompensator {
     transition-duration: 200ms;
 }
 
+.description_box.show_fast {
+    opacity: 1;
+    bottom: 0;
+    color: #555;
+    transition-duration: 0ms;
+}
+
 .set_desc, .middle_desc {
     width: 40%;
     padding: 0 20px;
@@ -588,7 +595,7 @@ p.free_shipping {
 
 .map_data_section .coordinate p {
     color: #ae8637;
-    margin-top: 34px;
+    margin-top: 41px;
 }
 
 .box.set_name .product_name {
@@ -633,7 +640,7 @@ span.pm {
     background: rgba(0, 0, 0, 0) url("../../images/combo/pm.svg") no-repeat scroll 0 100%;
     display: inline-block;
     height: 18px;
-    margin-left: 0;
+    margin-left: 5px;
     margin-top: -20px;
     vertical-align: middle;
     width: 15px;

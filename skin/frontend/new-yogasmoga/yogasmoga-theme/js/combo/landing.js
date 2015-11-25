@@ -124,8 +124,28 @@ function setActiveLink(sectionOffsets) {
     jQuery(".section:nth-child(" + sectionIndex + ")").addClass("active");
 
     if(jQuery(".description_box").hasClass("show")){
-        if(!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close_description"))
-        jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").click();
+        if(!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close_description")) {
+            //jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").click();
+            descriptionPosition();
+            var linkHtml = jQuery(this).html();
+            if(linkHtml == "SEE DETAILS <b>&gt;</b>"){
+                jQuery(".description_box").removeClass("show_fast");
+                linkHtml = "CLOSE DETAILS";
+                jQuery(this).html(linkHtml);
+                jQuery(this).addClass("close_description");
+            }else{
+                jQuery(this).removeClass("close_description");
+                linkHtml = "SEE DETAILS <b>&gt;</b>";
+                jQuery(this).html(linkHtml);
+            }
+
+            linkHtml = "SEE DETAILS <b>&gt;</b>";
+            jQuery(".toggle_description").not(jQuery(this)).html(linkHtml);
+            jQuery(".toggle_description").not(jQuery(this)).removeClass("close_description");
+
+            jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show_fast");
+            jQuery(this).closest(".section").find(".description_box").toggleClass("show_fast");
+        }
     }
 
     var setName = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pname>span").text()+" SET";

@@ -2829,6 +2829,6 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
      box-sizing: border-box;
  }
 
-ul.main-menu > li.over.gift-sets > ul.sub-menu .gift {
-    font-family: gothambook;
+ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
+    font-family: gothambook !important
 }
