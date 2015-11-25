@@ -33,8 +33,8 @@ fputcsv($output, array(
     'Size'
 ));
 
-$womenCategory = 3;
-$womenCategory = 5;
+$arWomenCategory = array(3,6,7,8,16,71,43,59,65);
+$arMenCategory = array(5,10,11,12,19);
 $count = 0;
 
 while (!feof($fileIn)) {
@@ -46,9 +46,11 @@ while (!feof($fileIn)) {
     $sku = $ar[0];
     $name = $ar[1];
 	
-	$pos = strrpos($name, '-');
-	$name = substr($name, 0, $pos);
-    $size = substr($pos+1);
+
+	//$pos = strrpos($name, '-');
+	//$name = substr($name, 0, $pos);
+    //$size = substr($pos+1);
+	$size = "";
 	
     $price = $ar[2];
     $description = trim($ar[3]);
@@ -72,14 +74,36 @@ while (!feof($fileIn)) {
                 continue;
 
             $configurableProduct = $product;
+			
+			
+			$_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $configurableProduct);
+			$ar_child_sizes = array();
+			foreach ($_childProducts as $_childProduct) {
+				$size = $_childProduct->getAttributeText('size');
 
+				if (is_numeric($size) && intval($size) > 12)
+					continue;
+
+				if (strpos(strtoupper($size), "T") !== false)
+					continue;
+
+				if (is_numeric($size))
+					$ar_child_sizes[] = intval($size);
+				else
+					$ar_child_sizes[] = $size;
+			}
+
+			$ar_child_sizes = array_unique($ar_child_sizes);
+			
+			
+			
             $categoryIds = $product->getCategoryIds();
 
             if (isset($categoryIds) && is_array($categoryIds) && count($categoryIds) > 0) {
                 foreach ($categoryIds as $id) {
-                    if (intval($id) === $womenCategory)
+                    if (in_array(intval($id),$arWomenCategory))
                         $gender = "female";
-                    else if (intval($id) === $menCategory)
+                    else if (in_array(intval($id),$arMenCategory))
                         $gender = "male";
                 }
             } else
@@ -107,6 +131,8 @@ while (!feof($fileIn)) {
             //$data = "$name|$keywords|$description|$sku|$buy_url|$available|$image_url|$price|$upc|$advertise_category|$merchandiseType\n";
 			//array('id','title','description','google product category','link','image link','condition');
 			
+			$age_group = "16-50";
+			
 			$arr = array(
                 $sku,
                 $name . ' YOGA - YOGASMOGA',
@@ -123,7 +149,7 @@ while (!feof($fileIn)) {
                 '',
                 $gender,       // to-do
                 $age_group,    // to-do
-                $size          // to-do
+                implode(',',$ar_child_sizes)          // to-do
             );
 			fputcsv($output, $arr);
         }
