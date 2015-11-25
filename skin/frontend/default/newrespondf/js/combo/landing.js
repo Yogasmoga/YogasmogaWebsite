@@ -13,9 +13,9 @@
         $(".gift-set .thumbnail").click(function () {
             $(".close_icon").show();
             $(this).find("p").hide();
-            var offsetTop = $(this).offset().top;
             $(".gift-set .details").hide();
-            $(this).next().slideDown();
+            var offsetTop = $(window).scrollTop();
+            $(this).next().show();
             setTimeout(function () {
                 $("body,html").animate({
                     'scrollTop': offsetTop
