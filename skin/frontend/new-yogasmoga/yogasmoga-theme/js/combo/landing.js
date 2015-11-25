@@ -129,7 +129,7 @@ function setActiveLink(sectionOffsets) {
             descriptionPosition();
             var linkHtml = jQuery(this).html();
             if(linkHtml == "SEE DETAILS <b>&gt;</b>"){
-                jQuery(".description_box").removeClass("show_fast");
+                jQuery(".description_box").removeClass("show_fast").removeClass("slow");
                 linkHtml = "CLOSE DETAILS";
                 jQuery(this).html(linkHtml);
                 jQuery(this).addClass("close_description");
@@ -143,8 +143,8 @@ function setActiveLink(sectionOffsets) {
             jQuery(".toggle_description").not(jQuery(this)).html(linkHtml);
             jQuery(".toggle_description").not(jQuery(this)).removeClass("close_description");
 
-            jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show_fast");
-            jQuery(this).closest(".section").find(".description_box").toggleClass("show_fast");
+            jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("slow").removeClass("show_fast");
+            jQuery(this).closest(".section").find(".description_box").toggleClass("show_fast").removeClass("slow");
         }
     }
 
