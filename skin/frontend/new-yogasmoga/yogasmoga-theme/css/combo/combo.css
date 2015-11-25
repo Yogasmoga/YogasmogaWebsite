@@ -234,6 +234,14 @@ div#bodycompensator {
     text-transform: uppercase;
 }
 
+.contain_product .side2 .product_name {
+    font: 20px/20px AvantGardeGothicITCW01B;
+}
+
+.contain_product .side2 .product_price {
+    font: 20px/20px AvantGardeGothicITCW01B;
+}
+
 .contain_product .buy_product {
     font: 11px / 15px GothamBook;
     position: absolute;
@@ -374,7 +382,7 @@ div#bodycompensator {
     position: absolute;
     right: 40px;
     text-align: center;
-    top: 40px;
+    top: 33px;
     transform: rotateZ(45deg);
     width: 28px;
     z-index: 1;
@@ -437,10 +445,12 @@ div#bodycompensator {
 .product_price > span {
     float: right;
     font: 11px/39px Gothambook;
+    display: none;
 }
 
 .product_filters .product_price {
     margin-bottom: 16px;
+    margin-top: 7px;
 }
 
 .set_item {
