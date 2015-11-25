@@ -2867,10 +2867,9 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     color:#fff;
     width:100%;
     height:25px;
-    letter-spacing:.75px;
     display:block;
     text-align:center;
-    font: 12px/25px AvantGardeGothicITCW01B;
+    font: 11px/25px ITCAvantGardeProBk;
     position:absolute;
     top:0;
     text-transform:uppercase;
