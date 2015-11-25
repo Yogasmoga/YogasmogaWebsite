@@ -239,7 +239,7 @@ div#bodycompensator {
 }
 
 .contain_product .side2 .product_price {
-    font: 11px/17px AvantGardeGothicITCW01B;
+    font: 11px/17px GothamBook;
 }
 
 .contain_product .buy_product {
@@ -321,14 +321,15 @@ div#bodycompensator {
 }
 
 .product_set .side2 .product_container {
-    max-width: 1600px;
-    margin: 0 auto;
-    position: relative;
     height: 100%;
+    margin: 0 auto;
+    max-width: 1600px;
+    padding-right: 392px;
+    position: relative;
 }
 
 .product_set .side2 .product_container .thumbnails {
-    width: 17.14%;
+    width: 31.21%;
     float: left;
     padding: 0 40px;
 }
@@ -348,7 +349,7 @@ div#bodycompensator {
 .product_set .side2 .product_container .product_slider {
     float: left;
     padding: 40px 0;
-    width: 44.86%;
+    width: 68.79%;
 }
 
 .product_set .side2 .product_container .product_slider .slider {
@@ -363,28 +364,30 @@ div#bodycompensator {
 }
 
 .product_set .side2 .product_container .product_filters {
-    float: left;
+    float: right;
     padding: 40px;
+    position: absolute;
+    right: 0;
     text-align: left;
-    width: 38%;
+    width: 398px;
 }
 
 .product_set .side2 span.reverse_flip {
     background: #fff none repeat scroll 0 0;
-    /*border: 1px solid #999;*/
     border-radius: 50%;
-    color: #CCC;
+    color: #ccc;
     cursor: pointer;
     display: block;
     float: right;
-    font: 20px/21px AvantGardeGothicITCW01B;
-    height: 28px;
+    font: 27px/22px AvantGardeGothicITCW01X;
+    height: 26px;
     position: absolute;
     right: 40px;
     text-align: center;
     top: 33px;
     transform: rotateZ(45deg);
-    width: 28px;
+    transform-origin: center center 0;
+    width: 26px;
     z-index: 1;
 }
 
