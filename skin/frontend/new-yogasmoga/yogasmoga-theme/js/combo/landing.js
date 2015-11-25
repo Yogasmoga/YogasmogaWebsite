@@ -133,7 +133,7 @@ function setActiveLink(sectionOffsets) {
             descriptionPosition();
             var linkHtml = jQuery(this).html();
             if(linkHtml == "SEE DETAILS <b>&gt;</b>"){
-                jQuery(".description_box").removeClass("show_fast").removeClass("show");
+                jQuery(".description_box").removeClass("show").removeClass("show_fast");
                 linkHtml = "CLOSE DETAILS";
                 jQuery(this).html(linkHtml);
                 jQuery(this).addClass("close_description");
