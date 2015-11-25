@@ -243,7 +243,7 @@ foreach ($allSizeOptions as $instance) {
                             $bundle = $ar_bundle_sizes[$x];
                             ?>
 
-                            <li rel="product_<?php echo ($x+1);?>_details" rel="<?php echo $bundle['product_id']; ?>">
+                            <li rel="product_<?php echo $x;?>_details" rel="<?php echo $bundle['product_id']; ?>">
                                 <img src="<?php echo $bundle['big_image']; ?>"/>
                             </li>
 
@@ -252,16 +252,16 @@ foreach ($allSizeOptions as $instance) {
                     </div>
                     <div class="related_blocks">
                         <?php
-                            $ct = 0;
+                            $ct = -1;
                             $totalProducts = count($ar_bundle_sizes);
-                            foreach ($ar_bundle_sizes as $data) {
+                        foreach ($ar_bundle_sizes as $data) {
                                 ++$ct;
                         ?>
 
-                        <div class="product_<?php echo $ct;?>_details">
+                        <div class="product_detail product_<?php echo $ct;?>_details" rel="<?php echo $data['product_id'];?>">
                             <p class="product_name"><?php echo $data["product_name"]; ?> <span><?php echo $ct;?> of <?php echo $totalProducts;?> Products</span></p>
 
-                            <p class="product_color"><?php echo $data["color"]; ?></p>
+                            <p class="product_color product-color-<?php echo $ct; ?>" rel="<?php echo $data["color_code"]; ?>"><?php echo $data["color"]; ?></p>
 
                             <div class="size_selection_box">
                                 <p>Choose Size <span class="size_chart_link">Size Chart</span></p>
@@ -274,10 +274,11 @@ foreach ($allSizeOptions as $instance) {
                                             if ($size == $key) {
                                     ?>
 
-                                                <span class="size size-<?php echo $sizeDivCount; ?>"
+                                                <span class="size size-<?php echo $ct; ?>"
                                                       rel="<?php echo $value; ?>"><?php echo $key; ?></span>
 
                                     <?php
+                                                break;
                                             }
                                         }
                                     }
@@ -312,7 +313,8 @@ foreach ($allSizeOptions as $instance) {
                                 c-3.7,0-6.6,3-6.6,6.6c0,1.4,0.5,2.7,1.2,3.8L21.9,35.4z" fill="#fff"/>
                                 </svg>
                         </div>
-                        <div class="add_to_shopping_bag">ADD TO BAG</div>
+                        <div class="add_to_shopping_bag"
+                             rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">ADD TO BAG</div>
                     </div>
                 </div>
             </div>
