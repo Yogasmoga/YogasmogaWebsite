@@ -371,9 +371,9 @@ div#bodycompensator {
 
 .product_set .side2 span.reverse_flip {
     background: #fff none repeat scroll 0 0;
-    border: 1px solid #999;
+    /*border: 1px solid #999;*/
     border-radius: 50%;
-    color: #999;
+    color: #CCC;
     cursor: pointer;
     display: block;
     float: right;
