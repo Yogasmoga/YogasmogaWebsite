@@ -75,7 +75,7 @@ h1.page-title {
 
 .gift-set .details .flexslider {
     float: none;
-    margin: 27px 0 14px;
+    margin: 27px 0 17px;
 }
 
 .gift-set .details .flexslider .slides li img {
@@ -104,7 +104,7 @@ h1.page-title {
     top: 0;
     position: absolute;
     font: 12px/18px GraphikRegular;
-    text-transform: capitalize;
+    text-transform: none;
 }
 
 .sizes .size {
@@ -119,8 +119,8 @@ h1.page-title {
 }
 
 .size_selection_box {
+    margin: 27px 0 19px;
     position: relative;
-    margin: 15px 0;
 }
 
 .size_selection_box p {
@@ -169,6 +169,7 @@ h1.page-title {
     position: absolute;
     right: 0;
     color: #AE8637;
+    top: 3px;
 }
 
 .sold_indidually a,.sold_indidually {
@@ -181,7 +182,7 @@ h1.page-title {
     padding-left: 44px;
     background: url("../../images/shipping.svg") no-repeat scroll 0 -10px;
     min-height: 44px;
-    margin: 20px 0 5px;
+    margin: 13px 0 10px;
 }
 
 .add_to_wishlist{
@@ -190,6 +191,7 @@ h1.page-title {
     float: left;
     width: 50%;
     text-align: center;
+    margin-bottom: 11px;
 }
 
 .add_to_shopping_bag {
@@ -199,6 +201,7 @@ h1.page-title {
     width: 50%;
     font: 16px/44px ITCAvantGardeStd-Bk;
     color: #fff;
+    margin-bottom: 11px;
     text-align: center;
 }
 
@@ -233,4 +236,13 @@ h1.page-title {
 .bag-active{
     color: #fff;
     background-color: #00b900;
+}
+
+.gift-set .details .flexslider .flex-prev {
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/dark_arrows_slider.png") no-repeat scroll 0 0 / auto 100%;
+}
+
+.gift-set .details .flexslider .flex-next {
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/dark_arrows_slider.png") no-repeat scroll 100% 0 / auto 100%;
+
 }
