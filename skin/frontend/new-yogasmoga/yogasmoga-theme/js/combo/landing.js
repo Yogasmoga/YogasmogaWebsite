@@ -129,10 +129,13 @@ function setActiveLink(sectionOffsets) {
 
     if(jQuery(".description_box").hasClass("show") || jQuery(".description_box").hasClass("show_fast")){
         if(!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close_description")) {
+
             jQuery(".description_box").css({
-               'transition_duration': '0ms'
+               'transition-duration': '0ms'
             });
+
             descriptionPosition();
+
             var currentToggleDescriptionLink = jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description");
             var currentDescriptionBox = jQuery(".section:nth-child(" + sectionIndex + ")").find(".description_box");
             var linkHtml;
@@ -148,7 +151,7 @@ function setActiveLink(sectionOffsets) {
         }
     }else{
         jQuery(".description_box").css({
-            'transition_duration': '500ms'
+            'transition-duration': '500ms'
         });
     }
     ///////////////////////////////////////////////////////////
