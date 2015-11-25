@@ -335,7 +335,7 @@ div#bodycompensator {
 
 .product_set .side2 .product_container .thumbnails .thumbnail {
     width: 100%;
-    margin: 41px 0;
+    margin: 40px 0;
     cursor: pointer;
     background: #fff;
 }
@@ -455,7 +455,7 @@ div#bodycompensator {
 
 .product_filters .product_price {
     margin-bottom: 16px;
-    margin-top: 7px;
+    margin-top: 3px;
 }
 
 .set_item {
@@ -491,10 +491,10 @@ div#bodycompensator {
 .psize {
     display: inline-block;
     font: 11px/15px Gothambook;
-    margin-bottom: 5px;
+    margin: -3px 0 0;
     padding-left: 34px;
     position: relative;
-    width: 240px;
+    /*width: 240px;*/
 }
 
 span.size-chart-bundle {
@@ -505,13 +505,13 @@ span.size-chart-bundle {
 }
 
 .sizes .size {
-    border: 1px solid #999;
+    /*border: 1px solid #999;*/
     display: inline-block;
-    font: 11px/17px Gothambook;
-    height: 19px;
+    font: 11px/20px Gothambook;
+    height: 20px;
     margin: 20px 0 0 5px;
     text-align: center;
-    min-width: 19px;
+    min-width: 20px;
     cursor: pointer;
     background: #fff;
 }
@@ -731,8 +731,8 @@ span.temp {
     text-align: center;
 }
 
-.active-size {
-    background: #666 !important;
+.sizes .size.active-size {
+    background: #999 !important;
     color: #fff;
 }
 
