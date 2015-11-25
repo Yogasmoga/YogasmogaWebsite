@@ -224,3 +224,11 @@ h1.page-title {
 .dropdown_links.gift_sets_filter>ul li:last-child a{
     color: #555 !important;
 }
+
+.gift-set .details .flexslider .flex-prev {
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/dark_arrows_slider.png") no-repeat scroll 0 0 / auto 100%;
+}
+
+.gift-set .details .flexslider .flex-next {
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/dark_arrows_slider.png") no-repeat scroll 100% 0 / auto 100%;
+}
