@@ -356,15 +356,14 @@ div#bodycompensator {
 }
 
 .product_set .side2 .product_container .product_slider .slider {
-    background: #fff none repeat scroll 0 0;
     width: 100%;
     margin: 0 auto;
 }
 
-.product_set .side2 .product_container .product_slider .slider img {
+/*.product_set .side2 .product_container .product_slider .slider img {
     width: 100%;
     height: auto;
-}
+}*/
 
 .product_set .side2 .product_container .product_filters {
     float: right;
