@@ -131,24 +131,17 @@ function setActiveLink(sectionOffsets) {
         if(!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close_description")) {
             //jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").click();
             descriptionPosition();
-            var linkHtml = jQuery(this).html();
-            if(linkHtml == "SEE DETAILS <b>&gt;</b>"){
-                jQuery(".description_box").removeClass("show").removeClass("show_fast");
-                linkHtml = "CLOSE DETAILS";
-                jQuery(this).html(linkHtml);
-                jQuery(this).addClass("close_description");
-            }else{
-                jQuery(this).removeClass("close_description");
-                linkHtml = "SEE DETAILS <b>&gt;</b>";
-                jQuery(this).html(linkHtml);
-            }
+            var currentDescriptionBox = jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description");
+            var linkHtml;
+            jQuery(".description_box").removeClass("show").removeClass("show_fast");
+            linkHtml = "CLOSE DETAILS";
+            currentDescriptionBox.html(linkHtml).addClass("close_description");
 
             linkHtml = "SEE DETAILS <b>&gt;</b>";
-            jQuery(".toggle_description").not(jQuery(this)).html(linkHtml);
-            jQuery(".toggle_description").not(jQuery(this)).removeClass("close_description");
+            jQuery(".toggle_description").not(currentDescriptionBox).html(linkHtml).removeClass("close_description");
 
-            jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show").removeClass("show_fast");
-            jQuery(this).closest(".section").find(".description_box").toggleClass("show_fast").removeClass("show").removeClass("show_fast");
+            jQuery(".description_box").not(currentDescriptionBox).removeClass("show").removeClass("show_fast");
+            currentDescriptionBox.addClass("show_fast");
         }
     }
     ///////////////////////////////////////////////////////////
