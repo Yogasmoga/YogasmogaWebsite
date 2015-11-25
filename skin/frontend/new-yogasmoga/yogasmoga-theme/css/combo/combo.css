@@ -103,6 +103,7 @@ div#bodycompensator {
 
 .map_data_section .temprature, .map_data_section .time {
     font: 36px /80px AvantGardeGothicITCW01X;
+    color: #555;
 }
 
 .map_data_section .time {
@@ -222,7 +223,7 @@ div#bodycompensator {
 }
 
 .contain_product .product_name {
-    font: 24px/29px AvantGardeGothicITCW01B;
+    font: 36px/20px AvantGardeGothicITCW01B;
     text-transform: uppercase;
 }
 
@@ -592,6 +593,7 @@ p.free_shipping {
 
 .box.set_name .product_name {
     font: 36px/80px AvantGardeGothicITCW01B;
+    color: #555;
     text-align: center;
     text-transform: uppercase;
 }
@@ -619,6 +621,7 @@ p.free_shipping {
 .box.set_name .product_price {
     margin-top: -22px;
     text-align: center;
+    color: #555;
 }
 
 .box.set_name .product_price {

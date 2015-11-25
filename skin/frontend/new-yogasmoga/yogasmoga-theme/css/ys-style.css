@@ -2822,9 +2822,13 @@ table.smallimagecontiner td.selectedimage{
 
 
 ul.main-menu > li.over.gift-sets > ul.sub-menu{
-    left: auto;
-    width: 89px;
-    height: 57px;
-    margin-left: -18px;
-    box-sizing: border-box;
+     left: auto;
+     width: 89px;
+     height: 57px;
+     margin-left: -18px;
+     box-sizing: border-box;
+ }
+
+ul.main-menu > li.over.gift-sets > ul.sub-menu .gift {
+    font-family: gothambook;
 }
