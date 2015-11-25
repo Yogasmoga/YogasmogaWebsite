@@ -54,18 +54,21 @@ function init() {
             linkHtml = "CLOSE DETAILS";
             jQuery(this).html(linkHtml);
             jQuery(this).addClass("close_description");
+
+            jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show");
+            jQuery(this).closest(".section").find(".description_box").addClass("show");
+
         }else{
             jQuery(this).removeClass("close_description");
             linkHtml = "SEE DETAILS <b>&gt;</b>";
             jQuery(this).html(linkHtml);
+            jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show").removeClass("show_fast");
         }
 
         linkHtml = "SEE DETAILS <b>&gt;</b>";
         jQuery(".toggle_description").not(jQuery(this)).html(linkHtml);
         jQuery(".toggle_description").not(jQuery(this)).removeClass("close_description");
 
-        jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show").removeClass("show_fast");
-        jQuery(this).closest(".section").find(".description_box").toggleClass("show");
     });
     /*jQuery(".close_desc").click(function () {
         jQuery(".description_box").css({
