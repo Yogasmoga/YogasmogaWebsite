@@ -19,7 +19,7 @@ jQuery(document).ready(function () {
         changeProduct(product_id);
     });
 
-    jQuery(".gift").click(function(e){
+    jQuery(".gift a").click(function(e){
 		e.preventDefault();
 		
         var personType = jQuery(this).text().toLowerCase();
