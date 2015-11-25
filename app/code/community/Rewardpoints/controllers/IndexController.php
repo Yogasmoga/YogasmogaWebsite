@@ -213,10 +213,21 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
             {
               
 			   Mage::getSingleton("core/session")->addError("SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items"); 
-			   //$response['error'] = "SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items";
-              //  echo json_encode($response);
                $refererUrl = $this->_getRefererUrl();
-            } 
+            }
+
+            $data = Mage::getSingleton('checkout/cart')->getQuote()->getAllVisibleItems();
+            if(isset($data)) {
+                foreach ($data as $item) {
+                    if (isset($item['discount_amount']) && floatval($item['discount_amount'] > 0)) {
+                        Mage::getSingleton("core/session")->addError("SMOGI Bucks cannot be used with discounts");
+                        $refererUrl = $this->_getRefererUrl();
+                        $this->getResponse()->setRedirect($refererUrl);
+                        $flag = 1;
+                        return;
+                    }
+                }
+            }
         }
         
         $session = Mage::getSingleton('core/session');
