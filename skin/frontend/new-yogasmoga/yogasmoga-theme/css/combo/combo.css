@@ -325,13 +325,16 @@ div#bodycompensator {
     margin: 0 auto;
     max-width: 1600px;
     padding-right: 392px;
+    padding-left: 198px;
     position: relative;
 }
 
 .product_set .side2 .product_container .thumbnails {
-    width: 31.21%;
     float: left;
+    left: 0;
     padding: 0 40px;
+    position: absolute;
+    width: 198px;
 }
 
 .product_set .side2 .product_container .thumbnails .thumbnail {
@@ -349,7 +352,7 @@ div#bodycompensator {
 .product_set .side2 .product_container .product_slider {
     float: left;
     padding: 40px 0;
-    width: 68.79%;
+    width: 100%;
 }
 
 .product_set .side2 .product_container .product_slider .slider {
