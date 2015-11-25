@@ -12,6 +12,7 @@
 
         $(".gift-set .thumbnail").click(function () {
             $(".close_icon").show();
+            $(".gift-set .thumbnail > p").show();
             $(this).find("p").hide();
             $(".gift-set .details").hide();
             var offsetTop = $(window).scrollTop();
