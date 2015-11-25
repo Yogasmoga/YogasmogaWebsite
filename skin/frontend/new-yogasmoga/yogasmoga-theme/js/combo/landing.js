@@ -123,7 +123,7 @@ function setActiveLink(sectionOffsets) {
     jQuery(".section").removeClass("active");
     jQuery(".section:nth-child(" + sectionIndex + ")").addClass("active");
 
-    if(jQuery(".description_box").hasClass("show")){
+    if(jQuery(".description_box").hasClass("show") || jQuery(".description_box").hasClass("show_fast")){
         if(!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close_description")) {
             //jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").click();
             descriptionPosition();
