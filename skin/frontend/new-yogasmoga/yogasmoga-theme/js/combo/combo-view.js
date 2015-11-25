@@ -19,8 +19,10 @@ jQuery(document).ready(function () {
         changeProduct(product_id);
     });
 
-    jQuery(".gift").click(function(){
-       var personType = jQuery(this).text().toLowerCase();
+    jQuery(".gift").click(function(e){
+		e.preventDefault();
+		
+        var personType = jQuery(this).text().toLowerCase();
 
         jQuery(".gift_set_link").hide();
         jQuery(".person_" + personType).show();
