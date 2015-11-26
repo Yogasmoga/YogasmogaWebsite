@@ -475,10 +475,10 @@
     width: 40% !important;
 }
 
-section{
+#fixed_container section.row{
     opacity: 0;
 }
-section.row.animated{
+#fixed_container section.row.animated{
     opacity: 1;
     transition-duration: 500ms;
 }
