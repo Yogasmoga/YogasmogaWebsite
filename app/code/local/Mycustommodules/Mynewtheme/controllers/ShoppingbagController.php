@@ -1276,9 +1276,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $session = Mage::getSingleton('checkout/session');
         $i=0;
         foreach ($session->getQuote()->getAllItems() as $item)
-        {//echo ++$i.'--';
-            //echo $item->getProductId().'--'.$item->getSku().'<br>';
-
+        {
             $temparray = array();
             if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
             {
@@ -1286,7 +1284,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $productselectedoptioncount = isset($productselectedoption['options']) ? count($productselectedoption['options']) : 0;
 
                 if($this->searchcartnew($miniitems, $item->getSku(),$productselectedoptioncount) == false  )
-                {// echo $item->getSku().'--';
+                {
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
                     /******************* bundled check ****************/
@@ -1312,19 +1310,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     {
                         $confProduct = Mage::getModel('catalog/product')->load($item->getProductId());
                         $temparray['confPrice'] = "$".number_format((float)( $confProduct->getPrice()), 2, '.', '');
-
-
                     }
 
-
-
-
-
-
-                    //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
-                    //if(strlen($temparray['name']) > 20)
-                        //$temparray['name'] = substr($temparray['name'], 0, 19)."...";
 
                     if($this->issuperattribute($product, "color"))
                     {
@@ -1341,10 +1329,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         $temparray['optionlabel'] = $productselectedoption['options'][0]['label'];
                         $temparray['optionvalue'] = $productselectedoption['options'][0]['value'];
                     }
+
                     $temparray['quantity'] = $item->getQty();
-                    //$temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     $temparray['price'] = "$".number_format((float)( $item->getBaseCalculationPrice()), 2, '.', '');
-                    //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
                     $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
                     $temparray['itemid'] = $item->getItemId();
                     $temparray['producturl'] = Mage::getModel('catalog/product')->load($item->getProductId())->getProductUrl();
@@ -1403,15 +1390,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 //}
             }
         }
-        //$totalItems = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
-//        echo "Total Items:".$totalItems."<br/>";
-//        $grandTotal = Mage::getModel('checkout/cart')->getQuote()->getGrandTotal();
-//        echo "Grand total:".$grandTotal."<br/>";
-//
-//        print $output;
-        //print_r($miniitems);die('tst');
+
         $miniitems = array_reverse($miniitems);
-        //print_r($miniitems);
+
         $customerId = Mage::getModel('customer/session')->getCustomerId();
 
         if($customerId)

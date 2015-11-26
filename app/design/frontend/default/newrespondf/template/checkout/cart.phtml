@@ -443,7 +443,14 @@ else
                     <fieldset>
                         <div id="shopping-cart-table" class="data-table cart-table">
 
-                                <div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>
+                            <?php
+                                $totalItemCount = 0;
+                                foreach($this->getItems() as $_item)
+                                    $totalItemCount += $_item->getQty();
+                            ?>
+
+                                <!--<div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>-->
+                            <div class="no_of_cart_items"><?php echo $totalItemCount; echo $this->__(' ITEMS') ?></div>
                                 <div class="cart_total"><?php
                                     $subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
                                     $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
@@ -452,9 +459,16 @@ else
                                 </div>
                         </div>
 
-                        <?php foreach($this->getItems() as $_item): ?>
-                                <?php echo $this->getItemHtml($_item) ?>
-                            <?php endforeach ?>
+                        <?php
+                        foreach($this->getItems() as $_item) {
+                            if ($_item->getQty() > 1) {
+                                for($i = 0;$i < $_item->getQty();$i++)
+                                    echo $this->getItemHtml($_item);
+                            }
+                            else
+                                echo $this->getItemHtml($_item);
+                        }
+                        ?>
 
                     </fieldset>
                 </form>
