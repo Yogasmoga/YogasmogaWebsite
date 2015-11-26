@@ -478,7 +478,7 @@
 section{
     opacity: 0;
 }
-section.animated{
+section.row.animated{
     opacity: 1;
     transition-duration: 500ms;
 }
