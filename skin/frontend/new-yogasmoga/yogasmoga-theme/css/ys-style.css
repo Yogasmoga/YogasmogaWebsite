@@ -948,9 +948,7 @@ span.country {
 .cntn-scroll{position: absolute;}
 .seventy-five{width:72% !important; margin-right:0 !important; }
 @media only screen and (max-width : 1024px) {
-
-
-
+    
     .avant_demi_bold{
         font:40px/43px AvantGardeGothicITCW01D;
     }
