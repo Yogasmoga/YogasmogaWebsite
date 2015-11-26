@@ -7,7 +7,20 @@ ini_set('max_execution_time', 3000);
 require '../../app/Mage.php';
 Mage::app();
 
+/***************** get all colors from database ***********************/
+$allColors = array();
+$allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+$allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
+foreach ($allColorOptions as $instance) {
+    if (!array_key_exists($instance['value'], $allColors)) {
+        $allColors[$instance['value']] = $instance['label'];
+    }
+}
+/***************** get all colors from database end ***********************/
+
 $fileIn = fopen("products.csv", "r");
+
+
 
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=google_feed.csv');
@@ -117,40 +130,55 @@ while (!feof($fileIn)) {
 
             $images = Mage::getModel('catalog/product')->load($configurableProduct->getId())->getMediaGalleryImages();
 
+			$productColors = array();
             if (isset($images) && count($images) > 0) {
+				$first = true;
                 foreach ($images as $image) {
 					$imgdata = json_decode(trim($image->getLabel()), true);
 					if (isset($imgdata['type']) && $imgdata['type'] == 'product image') {
-						//$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile());
-						$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
-						break;
+						
+						if($first){
+							$first = !$first;
+							$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
+						}
+						
+						$productColors[] = $imgdata['color'];
 					}
                 }
             }
+			
+			$productColors = array_unique($productColors);
 
             //$data = "$name|$keywords|$description|$sku|$buy_url|$available|$image_url|$price|$upc|$advertise_category|$merchandiseType\n";
 			//array('id','title','description','google product category','link','image link','condition');
 			
 			$age_group = "16-50";
 			
-			$arr = array(
-                $sku,
-                $name . ' YOGA - YOGASMOGA',
-                strip_tags($description),
-                '',
-                $buy_url,
-                $image_url,
-                'New',
-                $available,      // In Stock / Out of stock
-                $price,            // to-do
-                '',
-                '',
-                'YOGASMOGA',
-                '',
-                $gender,       // to-do
-                $age_group,    // to-do
-                implode(',',$ar_child_sizes)          // to-do
-            );
+			foreach($productColors as $colorCode){
+
+				$total_name = $name . "-" . $allColors[$colorCode];
+				$total_buy_url = $buy_url . "?color=" . $colorCode;
+			
+				$arr = array(
+					$sku,
+					$total_name . ' YOGA - YOGASMOGA',
+					strip_tags($description),
+					'',
+					$total_buy_url,
+					$image_url,
+					'New',
+					$available,      // In Stock / Out of stock
+					$price,            // to-do
+					'',
+					'',
+					'YOGASMOGA',
+					'',
+					$gender,       // to-do
+					$age_group,    // to-do
+					implode(',',$ar_child_sizes)          // to-do
+				);
+			
+			}
 			fputcsv($output, $arr);
         }
     }
