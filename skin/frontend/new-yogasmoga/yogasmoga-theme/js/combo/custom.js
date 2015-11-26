@@ -65,7 +65,9 @@ jm(document).ready(function() {
 	});
 
 
-	jQuery(".gift").click(function(){
+	jQuery(".gift a").click(function(e){
+		e.preventDefault();
+
 		var personType = jQuery(this).text().toLowerCase();
 
 		jQuery(".gift_set_link").hide();
