@@ -2698,3 +2698,14 @@ a.learn-more {
     vertical-align: middle;
     width: 100%;
 }
+
+
+
+.cntntheading .content-wrapper>span {
+    display: block;
+    font-family: AvantGardeGothicITCW01X;
+}
+.contnttxt>span {
+    display: block;
+    margin-bottom: 20px;
+}

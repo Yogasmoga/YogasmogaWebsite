@@ -147,14 +147,15 @@ while (!feof($fileIn)) {
                 }
             }
 			
-			$productColors = array_unique($productColors);
-
-            //$data = "$name|$keywords|$description|$sku|$buy_url|$available|$image_url|$price|$upc|$advertise_category|$merchandiseType\n";
-			//array('id','title','description','google product category','link','image link','condition');
+			$productColors = array_unique($productColors, SORT_REGULAR);
 			
+			$productColorsIndexed = array();
+			foreach($productColors as $color)
+				$productColorsIndexed[] = $color;
+
 			$age_group = "16-50";
 			
-			foreach($productColors as $colorCode){
+			foreach($productColorsIndexed as $colorCode){
 
 				$total_name = $name . "-" . $allColors[$colorCode];
 				$total_buy_url = $buy_url . "?color=" . $colorCode;
@@ -177,9 +178,9 @@ while (!feof($fileIn)) {
 					$age_group,    // to-do
 					implode(',',$ar_child_sizes)          // to-do
 				);
-			
-			}
-			fputcsv($output, $arr);
+
+				fputcsv($output, $arr);
+			}			
         }
     }
 }
