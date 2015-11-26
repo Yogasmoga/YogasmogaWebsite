@@ -474,3 +474,11 @@
 .two-three .overlay-text .post_category {
     width: 40% !important;
 }
+
+section{
+    opacity: 0;
+}
+section.animated{
+    opacity: 1;
+    transition-duration: 500ms;
+}
