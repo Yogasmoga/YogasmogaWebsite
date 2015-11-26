@@ -2877,3 +2877,10 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
 
 /***************** top banners ******************/
+
+
+
+.black-friday-text > span {
+    display: inline-block;
+    vertical-align: middle;
+}
