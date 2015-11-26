@@ -113,53 +113,35 @@
                                     // end code for left nav
 
 
-                                    $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('additionalsize_categoryid')->getValue('plain')), true);
+                                    $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('onetomany_categoryid')->getValue('plain')), true);
 
                                 $categoryId = '';
                                 $bannerTxt = '';
                                     if($urlKey == 'women')
                                     {
-                                        $categoryId = $categoryIds['additionalsize_women'];
+                                        $categoryId = $categoryIds['onetomany_women'];
                                         //$categoryId = '46'; //replace with your own
                                         $category = new Varien_Object(array('id'=>$categoryId));
                                         $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
                                         //print_r($positions);die;
                                         $bannerTxt = 'white';
                                     }
-                                    if($urlKey == 'mens' || $urlKey == 'men')
-                                    {
-                                        $categoryId = $categoryIds['additionalsize_men'];
-                                        $bannerTxt = 'white';
-                                    }
+                                    
 
                                     $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
                                     $shopthecolor_imgUrl = $shopthecolorCategory -> getImageUrl();
                                     $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
                                 ?>
                                 <!-- bannerContainer -->
-                                <div class="bannerFluid">
-                                    <img title="Additional sizes" alt="Additional sizes" src="<?php echo $shopthecolor_imgUrl; ?>">
-                                    <div class="bnrtxt newbanner">
-                                        <div class="over-the-slide ls-sport bucket-slide  ">
-                                            <div style="" class="white text-align-middle">
-                                                <p class="bold">FITNESS<br/> SHOULD NOT STOP AT SIZE 12</p>
-                                                <p  class="light"><span>INTRODUCING</span><br/></p>
-                                                <div class="number">
-                                                    <p><span>size</span>14</p>
-                                                    <p><span>size</span>16</p>
-                                                    <p><span>size</span>18</p>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-<!--                                        <p class="bottom-text"><a style=" text-transform: uppercase;" class="learn-more white" href="--><?php //echo Mage::getBaseUrl().'women/tops/tanks-tops/free-easy-tank?color=76'; ?><!--">SHOP free &#38; easy tank</a></p>-->
-                                    </div>
+								<?php if($shopthecolor_imgUrl):?>
+                                <div class="bannerFluid" style="background: url('<?php echo $shopthecolor_imgUrl; ?>'); background-size: cover;">
+                                    <!-- <img src="--><?php //echo $shopthecolor_imgUrl; ?><!--">-->
                                         <?php
                                         if($urlKey == 'women')
-                                    {
+                                        {
                                             ?>
-                                        
+                                        <div class="bnrtxt bnr white">One To Many</div>
+
                                     <div style="position: absolute; width: 700px; left: 8%; top: 22%; float: left; color: #555555; text-align: left;">
                                        <!-- <h2 style="font-size: 30px; line-height: 30px; padding-bottom: 0px; color: #555555; margin-bottom: 0px;"><strong>KNIT COLLECTION</strong></h2>
                                         <span style="font-size: 26px; line-height: 28px; color: #555555;font-weight: 300;">Introducing SONA<sup>TM___</sup> <br/> Our new custom blend of silk, wool <br/>and cashmere.</span>
@@ -172,12 +154,15 @@
                                         -->
 
                                     </div>
+                                    <?php } else {?>
+                                            <div class="bnrtxt bnr white">One To Many</div>
                                     <?php } ?>
                                 </div>
+								<?php endif; ?>
                                 <!-- bannerContainer -->
 
                                 <!-- middleContainer -->
-                                <div class="gridProdCubix" style="min-height: 798px;">
+                                <div class="gridProdCubix" style="margin-top:0!important;min-height: 798px;">
                                 <?php
                                     $currentUrl = Mage::helper('core/url')->getCurrentUrl();
                                     $categoryName = explode('/', $currentUrl);
@@ -309,7 +294,7 @@
                                                 // show html of the product
                                             ?>
                                                 
-                                                    <div class="productCont">
+                                                    <div class="productCont" style="min-height:325px;">
                                                         <div class="prod-img">
                                                             <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
                                                                 <?php
@@ -327,16 +312,8 @@
                                                         <div class="caption">
                                                             <div class="caption">
                                                                 <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a>
-                                                                <?php
-                                                                $simpleProductPrice = round($product->getPrice(),2);
-                                                                $configurableProductPrice = round($confProduct->getPrice(),2);
-
-                                                                if($configurableProductPrice > $simpleProductPrice):?>
-                                                                    <span style="color:#c03;">$<?php  echo $simpleProductPrice;?></span>
-                                                                    <span>was $<?php  echo  $configurableProductPrice;?></span>
-                                                                <?php else:?>
-                                                                    <span><?php  echo $configurableProductPrice;?></span>
-                                                                <?php endif; ?>
+																<span style="color:#c03;">$<?php  echo  round($product->getPrice(),2);?></span>
+																<span>was $<?php  echo  round($confProduct->getPrice(),2);?></span>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -130,6 +130,14 @@
         </prints>
         <!-- Prints category layouts end here -->
 
+        <!-- One to many Category layouts Start here -->
+        <onetomany translate="label">
+          <label>One to Many</label>
+          <template>page/onetomany.phtml</template>
+          <layout_handle>onetomany</layout_handle>
+        </onetomany>
+        <!-- One to many Category layouts End here -->
+
       </layouts>
     </page>
   </global>

@@ -311,7 +311,18 @@
                                                         </div>
                                                         <div class="caption">
                                                             <div class="caption">
-                                                                <a href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
+                                                                <a href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a>
+
+                                                                <?php
+                                                                $simpleProductPrice = round($product->getPrice(),2);
+                                                                $configurableProductPrice = round($confProduct->getPrice(),2);
+
+                                                                if($configurableProductPrice > $simpleProductPrice):?>
+                                                                    <span style="color:#c03;">$<?php  echo $simpleProductPrice;?></span>
+                                                                    <span>was $<?php  echo  $configurableProductPrice;?></span>
+                                                                <?php else:?>
+                                                                    <span><?php  echo $configurableProductPrice;?></span>
+                                                                <?php endif; ?>
                                                             </div>
                                                         </div>
                                                     </div>
