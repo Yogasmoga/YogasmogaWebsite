@@ -409,7 +409,7 @@ $logged_in = is_user_logged_in();
                                             </svg>
                                         </span>
                                         <ul>
-                                            <li><a href="/women/bottoms/shorts">Shorts</a></li>
+                                            <!--<li><a href="/women/bottoms/shorts">Shorts</a></li>-->
                                             <li><a href="/women/bottoms/crops">Crops</a></li>
                                             <li><a href="/women/bottoms/leggings">Leggings</a></li>
                                             <li><a href="/women/bottoms/pants">Pants</a></li>
