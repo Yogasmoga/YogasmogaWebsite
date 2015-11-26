@@ -64,7 +64,6 @@ jm(document).ready(function() {
 		}
 	});
 
-
 	jQuery(".gift a").click(function(e){
 		e.preventDefault();
 
@@ -99,6 +98,7 @@ function initializeBanner(){
 	jQuery(".ui-widget-overlay").css({"top":"94px","position":"fixed"});
 	jQuery(".ui-widget-overlay").css({top:94});
 	jQuery(".header-container").css("padding-top", "25px");
+	jQuery(".header-container").css("top", "0");
 	jQuery("#bodycompensator").css("height", "94px");
 }
 
