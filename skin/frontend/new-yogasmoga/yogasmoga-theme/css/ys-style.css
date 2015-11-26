@@ -2861,6 +2861,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     position:absolute;
     top:0;
     text-transform:uppercase;
+    cursor: pointer;
 }
 .golden-banner{
     background:#ae8637;
