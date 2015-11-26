@@ -23,6 +23,8 @@ jm(document).ready(function() {
 	//setInterval(getWeather, 300000);		// every 5 minutes
 	setInterval(updateTimes, 60000);		// every 1 minute
 
+	initializeBanner();
+
 	jm(".header-container").css('top','20px');
 
 	jm(".add_to_bag").click(function(){
@@ -82,6 +84,21 @@ jm(document).ready(function() {
 
 	updateTimes();
 });
+
+function initializeBanner(){
+	jQuery(".top-banner").addClass("golden-banner");
+	jQuery(".top-banner").removeClass("orange-banner");
+
+	var str = "<p>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</p>";
+
+	jQuery(".top-banner").html(str);
+
+	jQuery(".namaskar-overlay1").css("top","94px");
+	jQuery(".ui-widget-overlay").css({"top":"94px","position":"fixed"});
+	jQuery(".ui-widget-overlay").css({top:94});
+	jQuery(".header-container").css("padding-top", "25px");
+	jQuery("#bodycompensator").css("height", "94px");
+}
 
 function updateTimes(){
 

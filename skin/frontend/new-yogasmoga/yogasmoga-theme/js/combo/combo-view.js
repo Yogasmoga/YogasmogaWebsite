@@ -7,6 +7,8 @@ var setProductCount = 0;
 
 jQuery(document).ready(function () {
 
+    initializeBanner();
+
     resizeSlider();
 
     jQuery(window).resize(function () {
@@ -31,6 +33,21 @@ jQuery(document).ready(function () {
         changeProduct(product_id);
     });
 });
+
+function initializeBanner(){
+    jQuery(".top-banner").addClass("golden-banner");
+    jQuery(".top-banner").removeClass("orange-banner");
+
+    var str = "<p>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</p>";
+
+    jQuery(".top-banner").html(str);
+
+    jQuery(".namaskar-overlay1").css("top","94px");
+    jQuery(".ui-widget-overlay").css({"top":"94px","position":"fixed"});
+    jQuery(".ui-widget-overlay").css({top:94});
+    jQuery(".header-container").css("padding-top", "25px");
+    jQuery("#bodycompensator").css("height", "94px");
+}
 
 function resizeSlider(){
     var SliderWidth = jQuery(".slider").width();
