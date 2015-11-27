@@ -307,6 +307,10 @@
 
 
                                             /****************** size filter **********************************/
+
+                                            $currentColor = $product->getAttributeText('color');
+                                            $currentColor = substr($currentColor, 0, strpos($currentColor, "|"));
+
                                             ++$productColorIndex;
                                             $confProductForSku = Mage::getModel('catalog/product_type_configurable')->setProduct($confProduct);
 
@@ -315,27 +319,29 @@
 
                                             $characterSizeFound = false;
                                             foreach($simpleCollectionForSku as $simpleProductForSku){
-                                                //$sku = $simpleProductForSku->getSku();
+                                                
                                                 $filterColorName = $simpleProductForSku->getAttributeText('color');
                                                 $filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
 
-                                                $size = $simpleProductForSku->getAttributeText('size');
+                                                //if($filterColorName==$currentColor) {   // show only for current color
 
-                                                $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
+                                                    $size = $simpleProductForSku->getAttributeText('size');
 
-                                                if(!isset($skuSizes[$filterColorName]))
-                                                    $skuSizes[$filterColorName] = array();
+                                                    $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
 
-                                                if(isset($size) && strlen(trim($size))>0) {
-                                                    if ($stock > 0) {
-                                                        $allSkuSizes[] = $size;
-                                                        $skuSizes[$filterColorName][] = $size;
+                                                    if (!isset($skuSizes[$filterColorName]))
+                                                        $skuSizes[$filterColorName] = array();
+
+                                                    if (isset($size) && strlen(trim($size)) > 0) {
+                                                        if ($stock > 0) {
+                                                            $allSkuSizes[] = $size;
+                                                            $skuSizes[$filterColorName][] = $size;
+
+                                                            //echo ">> $filterColorName , $size <br/>";
+                                                        }
                                                     }
-                                                }
+                                               // }
                                             }
-
-                                            $currentColor = $product->getAttributeText('color');
-                                            $currentColor = substr($currentColor, 0, strpos($currentColor, "|"));
 
                                             $productSizes = $skuSizes[$currentColor];
                                             $strSizes = implode(",", $productSizes);
