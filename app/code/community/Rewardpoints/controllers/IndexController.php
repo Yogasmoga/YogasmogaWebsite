@@ -215,7 +215,22 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
 			   //$response['error'] = "SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items";
               //  echo json_encode($response);
                $refererUrl = $this->_getRefererUrl();
-            } 
+            }
+
+            /********** smogi bucks should not be applied when discount is there ***************/
+            $data = Mage::getSingleton('checkout/cart')->getQuote()->getAllVisibleItems();
+            if(isset($data)) {
+                foreach ($data as $item) {
+                    if (isset($item['discount_amount']) && floatval($item['discount_amount'] > 0)) {
+                        Mage::getSingleton("core/session")->addError("SMOGI Bucks cannot be used with Promo Codes");
+                        $refererUrl = $this->_getRefererUrl();
+                        $this->getResponse()->setRedirect($refererUrl);
+                        $flag = 1;
+                        return;
+                    }
+                }
+            }
+            /********** smogi bucks should not be applied when discount is there ***************/
         }
         
         $session = Mage::getSingleton('core/session');

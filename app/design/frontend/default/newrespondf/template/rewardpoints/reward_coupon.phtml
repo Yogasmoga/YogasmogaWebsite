@@ -136,7 +136,13 @@
 				<?php	if($points_currently_used == 0 && Mage::getSingleton('core/session')->getCPmsg() > 0) 
 				{	
 				echo "<br/>You cannot use SMOGI Bucks on Accessories and the Namaskar Bracelet.<br/>"; 
-				} ?>
+				}
+
+				if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+                {
+                    echo "<br/>You cannot apply Smogi Bucks with Promotion Code.<br/>";
+                }
+                ?>
 				</div>
               
                 
