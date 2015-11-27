@@ -111,6 +111,7 @@
                 <div class="product-grid">
                     <div class="2-columns-wrapper">
                         <div id="div_sizes">&nbsp;</div>
+
                         <?php
                         // code for get left nav
                         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
@@ -319,7 +320,7 @@
 
                                             $characterSizeFound = false;
                                             foreach($simpleCollectionForSku as $simpleProductForSku){
-                                                
+
                                                 $filterColorName = $simpleProductForSku->getAttributeText('color');
                                                 $filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
 

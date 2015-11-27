@@ -2836,6 +2836,13 @@ table.smallimagecontiner td.selectedimage{
     color: #fff;
 }
 
+#no-product-found {
+    font: 11px/18px Gothambold;
+    height: 18px;
+    text-transform: uppercase;
+    display: none;
+}
+/*************** size filter on category pages ***************/
 
 ul.main-menu > li.over.gift-sets > ul.sub-menu{
      left: auto;

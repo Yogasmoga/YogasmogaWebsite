@@ -6,6 +6,8 @@ jQuery(function(){
 
 		jQuery(".chk-size").click(function(){
 
+            jQuery("#no-product-found").hide();
+
             if(jQuery(this).hasClass('chk-size-selected'))
                 jQuery(this).removeClass('chk-size-selected')
             else
@@ -19,6 +21,9 @@ jQuery(function(){
             });
 
             if(arSizesToCheck.length>0) {                // if any of the checkbox is checked
+
+                var productsDisplayed = false;
+
                 jQuery(".productCont").each(function () {
 
                     var strSizes = jQuery(this).attr('rel');
@@ -41,8 +46,10 @@ jQuery(function(){
                                 }
                             }
 
-                            if (sizesFound)
+                            if (sizesFound) {
                                 jQuery(this).show();
+                                productsDisplayed = true;
+                            }
                             else
                                 jQuery(this).hide();
                         }
@@ -50,6 +57,11 @@ jQuery(function(){
                     else
                         jQuery(this).hide();
                 });
+
+                if(productsDisplayed)
+                    jQuery("#no-product-found").hide();
+                else
+                    jQuery("#no-product-found").show();
             }
             else
                 jQuery(".productCont").show();
@@ -91,6 +103,8 @@ function filterSizes(){
             }
         }
     }
+
+    sizes += "<div id='no-product-found'>Size not found</div>";
 
     jQuery("#div_sizes").html(sizes).show();
 }
