@@ -853,7 +853,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if($checkpromoapplied)
             {
-                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes";
+                $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
                 $applysmogi="";
@@ -868,7 +868,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if($checkgiftapplied)
             {
                 //$gryclassgift = "gry";
-                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes";
+                $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";
@@ -1695,7 +1695,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if($checkpromoapplied)
             {
-                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes";
+                $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
                 $applysmogi="";
@@ -1710,7 +1710,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if($checkgiftapplied)
             {
                 //$gryclassgift = "gry";
-                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes";
+                $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";

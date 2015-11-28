@@ -220,7 +220,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
             if(isset($data)) {
                 foreach ($data as $item) {
                     if (isset($item['discount_amount']) && floatval($item['discount_amount'] > 0)) {
-                        Mage::getSingleton("core/session")->addError("SMOGI Bucks cannot be used with Promo Codes");
+                        Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.");
                         $refererUrl = $this->_getRefererUrl();
                         $this->getResponse()->setRedirect($refererUrl);
                         $flag = 1;
