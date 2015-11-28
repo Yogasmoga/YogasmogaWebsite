@@ -104,7 +104,7 @@ function filterSizes(){
         }
     }
 
-    sizes += "<div id='no-product-found'>Size not found</div>";
+    sizes += "<div id='no-product-found'>Size not available</div>";
 
     jQuery("#div_sizes").html(sizes).show();
 }

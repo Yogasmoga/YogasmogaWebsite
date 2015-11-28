@@ -212,7 +212,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
             if($flag == 1)
             {
               
-			   Mage::getSingleton("core/session")->addError("SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items"); 
+			   Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.");
                $refererUrl = $this->_getRefererUrl();
             }
 
