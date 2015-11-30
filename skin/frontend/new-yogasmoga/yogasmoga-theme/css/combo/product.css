@@ -278,6 +278,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 
 .individual_product {
     float: left;
+    cursor: pointer;
 }
 
 .individual_product.two {
