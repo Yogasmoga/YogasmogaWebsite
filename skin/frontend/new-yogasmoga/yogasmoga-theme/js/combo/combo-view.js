@@ -33,16 +33,6 @@ jQuery(document).ready(function () {
         changeProduct(product_id);
     });
 
-    jQuery(".individual_product .product").click(function(){
-        alert();
-        window.location = jQuery(this).find("a").attr("href");
-        console.log(jQuery(this).find("a").attr("href"));
-    });
-
-    jQuery(".individual_product .product a").click(function(e){
-        e.preventDefault();
-    });
-
 });
 
 function initializeBanner(){
@@ -133,6 +123,16 @@ function changeProduct(product_id){
                     bindSizes();
                     bindBag();
                     bindSlider();
+
+
+
+                    jQuery(".individual_product .product").click(function(){
+                        window.location = jQuery(this).find("a").attr("href");
+                    });
+
+                    jQuery(".individual_product .product a").click(function(e){
+                        e.preventDefault();
+                    });
                 }
             }
         }
