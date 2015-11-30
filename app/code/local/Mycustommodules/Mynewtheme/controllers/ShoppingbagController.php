@@ -1339,7 +1339,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 }
             }
             else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
-            {//echo $item->getSku().'++';
+            {
                 if($this->searchcart($miniitems, $item->getSku()) == false)
                 {
                     $_product = Mage::getModel('catalog/product')->load($item->getProductId());
