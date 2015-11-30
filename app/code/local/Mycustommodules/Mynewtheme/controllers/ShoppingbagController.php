@@ -62,7 +62,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
-                    $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+
+                    if(isset($item['product_type']) && $item['product_type']=='gift')
+                        $temparray['imageurl'] = $this->getGiftSetMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                    else
+                        $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+
                     $temparray['itemid'] = $item->getItemId();
                     $temparray['producturl'] = Mage::getModel('catalog/product')->load($item->getProductId())->getProductUrl();
                     array_push($miniitems, $temparray);
@@ -2606,7 +2611,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         return false;
     }
 
-    // this method returns the
+    // return image for cart
     function getMiniImage($productid, $color)
     {
         $_product = Mage::getModel('catalog/product')->load($productid);
@@ -2621,6 +2626,19 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             //if(strpos($_image->getLabel(), $color) === false)
 //            //if(strpos($_image->getLabel(),"*") === false)
 //                continue;
+            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
+        }
+        return "";
+    }
+
+    // return gift set image for cart
+    function getGiftSetMiniImage($productid)
+    {
+        $_product = Mage::getModel('catalog/product')->load($productid);
+        $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+        foreach($_gallery as $_image)
+        {
+            $imgdata = json_decode(trim($_image->getLabel()), true);
             return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
         }
         return "";
