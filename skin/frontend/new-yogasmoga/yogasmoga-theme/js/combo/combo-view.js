@@ -34,7 +34,9 @@ jQuery(document).ready(function () {
     });
 
     jQuery(".individual_product .product").click(function(){
+        alert();
         window.location = jQuery(this).find("a").attr("href");
+        console.log(jQuery(this).find("a").attr("href"));
     });
 
     jQuery(".individual_product .product a").click(function(e){
