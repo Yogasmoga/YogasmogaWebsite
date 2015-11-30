@@ -758,3 +758,7 @@ span.temp {
 .ui-widget-overlay {
     top: 94px !important;
 }
+
+.gift_sets_landing_page, .ys_in_wanderland, .top_banners {
+    min-width: 1080px;
+}
