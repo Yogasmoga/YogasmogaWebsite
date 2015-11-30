@@ -621,7 +621,7 @@ p.free_shipping {
 
 .map_data_section .coordinate p {
     color: #ae8637;
-    margin-top: 41px;
+    margin-top: 42px;
 }
 
 .box.set_name .product_name {
@@ -736,7 +736,7 @@ span.temp {
 .page-title_fixed {
     color: #ae8637;
     font: 11px/15px GothamMedium !important;
-    margin-bottom: -23px;
+    margin-bottom: -22px;
     margin-top: 6px;
     visibility: hidden;
     text-align: center;
