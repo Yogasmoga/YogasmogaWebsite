@@ -32,6 +32,15 @@ jQuery(document).ready(function () {
         var product_id = jQuery(".person_" + personType + ":eq(0)").attr("rel");
         changeProduct(product_id);
     });
+
+    jQuery(".individual_product .product").click(function(){
+        window.location = jQuery(this).find("a").attr("href");
+    });
+
+    jQuery(".individual_product .product a").click(function(e){
+        e.preventDefault();
+    });
+
 });
 
 function initializeBanner(){
