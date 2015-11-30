@@ -648,7 +648,7 @@ p.free_shipping {
     left: 0;
     right: 0;
     background: #fff;
-    z-index: 5;
+    z-index: 12;
 }
 
 .box.set_name .product_price {
@@ -752,7 +752,7 @@ span.temp {
 }
 
 .right_desc > b {
-    font: 11px/15px GothamBook;
+    font: 11px/20px GothamBook;
 }
 
 .ui-widget-overlay {
