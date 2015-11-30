@@ -84,7 +84,7 @@ function changeProduct(product_id){
 
                     jQuery("#bread-set-name").html(allComboProducts[product_id]["name"]);
                     jQuery(".product_name").html(allComboProducts[product_id]["name"] + " SET");
-                    jQuery(".product_price").html(allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " SETS REMAINING</span>");
+                    jQuery(".product_price").html(allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " REMAINING</span>");
                     jQuery(".set_description").html(allComboProducts[product_id]["description"]);
 
                     var data = result.data;
@@ -92,7 +92,7 @@ function changeProduct(product_id){
                     bundleImages = {};
 
                     strSets += "<p class='product_name'>" + allComboProducts[product_id]["name"] + " SET</p>";
-                    strSets += "<p class='product_price'>" + allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " SETS REMAINING</span>" + "</p>";
+                    strSets += "<p class='product_price'>" + allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " REMAINING</span>" + "</p>";
 
                     jQuery(".purchase_box").append(strSets);
 

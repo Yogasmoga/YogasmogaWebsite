@@ -544,7 +544,7 @@ span.size-chart-bundle {
 }
 
 p.free_shipping {
-    font: 11px/15px GothamBookItalic;
+    font: 12px/15px GothamBookItalic;
     float: left;
     width: 100%;
 }
@@ -752,7 +752,7 @@ span.temp {
 }
 
 .right_desc > b {
-    font: 11px/15px GothamBold;
+    font: 11px/15px GothamBook;
 }
 
 .ui-widget-overlay {
