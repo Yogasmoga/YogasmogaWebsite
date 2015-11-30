@@ -2528,13 +2528,32 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
     public function getcartcount()
     {
-        //return Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
+/*
         $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
         if(isset($cart['items_qty'])){
             return (int)$cart['items_qty'];
         } else {
             return 0;
         }
+*/
+/*********** bundled logic **********/
+        $session = Mage::getSingleton('checkout/session');
+        $count = 0;
+        foreach ($session->getQuote()->getAllItems() as $item)
+        {
+            if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
+            {
+                $buyRequest = $item->getBuyRequest();
+                $product_type = $buyRequest['type'];
+
+                if(isset($product_type) && $product_type=="gift-bundled")
+                    continue;
+
+                ++$count;
+            }
+        }
+
+        return $count;
     }
 
     public function searchcart($minidetails, $sku)

@@ -420,6 +420,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 ++$count;
             }
         }
+
+        return $count;
     }
     
     public function issuperattribute($_product, $superattribute)
