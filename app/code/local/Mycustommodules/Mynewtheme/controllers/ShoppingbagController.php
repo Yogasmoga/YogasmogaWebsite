@@ -1416,14 +1416,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
 
         }
-        //print_r($miniitems);die('test');
-        // end show every quantity
 
-        //echo $foundOnlyNoSmogiProduct;
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         $grandtotal = $totals["grand_total"]->getValue();
-        //echo $totals['tax'];die('tax');
 
         $tax = 0;
         if(isset($totals['tax']) && $totals['tax']->getValue()) {
@@ -1434,7 +1430,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
 
         $minidetails['items'] = $miniitems;
-        //$minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
+
         $minidetails['totalitems'] = $this->getcartcount();
         $minidetails['cartlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/cart";
         $minidetails['subtotal'] = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
@@ -1815,10 +1811,13 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
 
 /*********** added for gift set **********************/
-            if($item['product_type']=="gift" || $item['product_type']=="gift-bundled")
+            if($item['product_type']=="gift")
                 $giftStyle = "border-bottom: none";
             else
                 $giftStyle = "";
+
+            if($item['product_type']=="gift-bundled")
+                continue;
 /*********** added for gift set **********************/
 
             $html .='<li ' . $giftStyle . ' id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
@@ -1839,11 +1838,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $html .='<span class="amnt">'.$item['price'].'</span>';
                 }
             }
-            else if($item['product_type']=="gift-bundled") {
+/*            else if($item['product_type']=="gift-bundled") {
                 $html .= '<span class="clr">' . $item['color'] . '</span>';
                 if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
                 if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
-            }
+            } */
             else{
                 if(isset($item['insale']) && $item['insale'] == 'Yes')
                 {
@@ -1917,7 +1916,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
 /************** code update, show namaskaar bracelet in cart whether it is present or not ********************/
-        // commenting the logic below
         // show bracelet if it is not in cart else do not show
 /*
 
@@ -2272,7 +2270,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         else
             $vivacityStr = '<span  style="display:none;" class="vivacity" rel="no"></span>';
 
-        // end to show braclet
         $html .= '</ul>' . $vivacityStr . '</div>';
 
         return $html;
