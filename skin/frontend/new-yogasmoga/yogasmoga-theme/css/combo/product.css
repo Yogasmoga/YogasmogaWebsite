@@ -289,7 +289,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 }
 
 .individual_product .product {
-    padding-left: 164px;
+    padding-left: 144px;
     position: relative;
     margin-bottom: 40px;
     min-height: 124px;
@@ -349,7 +349,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 
 .current_slider_product {
     color: #555;
-    font: 11px GothamBold;
+    font: 24px/29px AvantGardeGothicITCW01B;
     margin: 20px;
     position: absolute;
     text-transform: uppercase;
@@ -366,4 +366,14 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     height: 100%;
     width: auto !important;
     margin: auto;
+}
+
+
+
+
+/* ///////////////////MEDIA QUERIES///////////////////////// */
+@media screen and (max-width:1400px){
+    .individual_product.three{
+        width: 50%;
+    }
 }

@@ -91,7 +91,7 @@ function changeProduct(product_id){
                     var strSets = "";
                     bundleImages = {};
 
-                    strSets += "<p class='product_name'>" + allComboProducts[product_id]["name"] + "</p>";
+                    strSets += "<p class='product_name'>" + allComboProducts[product_id]["name"] + " SET</p>";
                     strSets += "<p class='product_price'>" + allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " SETS REMAINING</span>" + "</p>";
 
                     jQuery(".purchase_box").append(strSets);
