@@ -7,10 +7,14 @@
                 var relatedContentClass = slider.find("li:nth-child(" + slideNo + ")").attr("rel");
                 slider.closest(".details").find(".related_blocks>div").hide();
                 $("." + relatedContentClass).fadeIn();
-                $("." + relatedContentClass).find("choose_next").click(function(){
+            },
+
+            start: function (slider) {
+                slider.closest(".details").find("choose_next").click(function () {
                     $('.flex-next').trigger('click');
                 });
             }
+
         });
 
         $(".gift-set .thumbnail").click(function () {
@@ -27,17 +31,17 @@
             }, 400);
         });
 
-        $(".close_icon").click(function(){
+        $(".close_icon").click(function () {
             $(".gift-set .details").hide();
             $(".gift-set .thumbnail > p").show();
             $(this).hide();
         });
 
-        $(".dropdown_links.gift_sets_filter>ul li a").click(function(e){
+        $(".dropdown_links.gift_sets_filter>ul li a").click(function (e) {
             e.preventDefault();
-            if($(this).text()=="WOMEN"){
+            if ($(this).text() == "WOMEN") {
                 $(".gift-set[data-filter='men']").hide();
-            }else{
+            } else {
                 $(".gift-set[data-filter='women']").hide();
             }
             $(".sign-in-box .toggle_dropdown").click();
