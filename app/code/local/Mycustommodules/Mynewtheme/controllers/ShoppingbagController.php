@@ -1815,7 +1815,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $circleBorder = "";
             if($item['product_type']=="gift"){
                 $giftStyle = "border-bottom: none";
-                $circleBorder = '"style="border-radius: 50%; border: solid 1px rgba(204, 204, 204, 0.7);"';
+                $circleBorder = 'style="border-radius: 50%; border: solid 1px rgba(204, 204, 204, 0.7);"';
             }
             else
                 $giftStyle = "";
