@@ -39,7 +39,7 @@
         color: #555 !important;
     }
 
-    #pagecontainer{margin-top:25px !important;}
+   /* #pagecontainer{margin-top:25px !important;}*/
 
 </style>
 
@@ -367,12 +367,12 @@ if($currentUrl != $checkoutpage){
 <?php //} ?>
 
 <div class="pageoverlay"></div>
- <div class="header-container" style="padding-top: 25px">
+ <div style="height:69px !important;" class="header-container">
 
      <!--  <div class="header-container" style="padding-top:25px; height:69px !important">-->
 
      <!--banner strip start-->
-
+	<?php if(false) { ?>
     <?php
         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
         $categoryName = explode('/', $currentUrl);
@@ -392,9 +392,10 @@ if($currentUrl != $checkoutpage){
     <div class="orange-banner" onclick="window.location.replace('/women/whats-new')">$75 OFF ON ANY FULL PRICE WOMEN’s TOP & BOTTOM COMBO—All sales are final. Ends 11/30 at 11:59PM PST.</div>
 
     <?php  } ?>
+	
 
      <!--banner strip finish-->
-
+	<?php  } ?>
 <div id="globalheader" class="header
     <?php
     if ($this->getIsHomePage())
