@@ -1815,7 +1815,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $circleBorder = "";
             if($item['product_type']=="gift"){
                 $giftStyle = "border-bottom: none";
-                $circleBorder = '"style="border-radius: 50%"';
+                $circleBorder = '"style="border-radius: 50%; border: solid 1px rgba(204, 204, 204, 0.7);"';
             }
             else
                 $giftStyle = "";
@@ -1825,7 +1825,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 /*********** added for gift set **********************/
 
             $html .='<li ' . $giftStyle . ' id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
-                <a href="'.$item['producturl'].'"><span class="wdth100"' . $circleBorder . '><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ></span></a>
+                <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ' . $circleBorder . '/></span></a>
 <span>
                     <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
                     <span class="pname">'.$item['name'].'</span>';
