@@ -49,7 +49,7 @@ function init() {
         //jQuery(".close_desc").click();
         descriptionPosition();
         var linkHtml = jQuery(this).html();
-        if(linkHtml == "SEE DETAILS <b>&gt;</b>"){
+        if (linkHtml == "SEE DETAILS <b>&gt;</b>") {
             jQuery(".description_box").removeClass("show").removeClass("show_fast");
             linkHtml = "CLOSE DETAILS";
             jQuery(this).html(linkHtml);
@@ -58,11 +58,11 @@ function init() {
             jQuery(".description_box").not(jQuery(this).closest(".section").find(".description_box")).removeClass("show");
             jQuery(this).closest(".section").find(".description_box").addClass("show");
 
-        }else{
+        } else {
             jQuery(this).removeClass("close_description");
             linkHtml = "SEE DETAILS <b>&gt;</b>";
             jQuery(this).html(linkHtml);
-            jQuery(".description_box").css('transition-duration','500ms').removeClass("show").removeClass("show_fast");
+            jQuery(".description_box").css('transition-duration', '500ms').removeClass("show").removeClass("show_fast");
         }
 
         linkHtml = "SEE DETAILS <b>&gt;</b>";
@@ -71,11 +71,11 @@ function init() {
 
     });
     /*jQuery(".close_desc").click(function () {
-        jQuery(".description_box").css({
-            "bottom": "-130px",
-            "opacity": 0
-        });
-    });*/
+     jQuery(".description_box").css({
+     "bottom": "-130px",
+     "opacity": 0
+     });
+     });*/
     jQuery(".gift_set_link").click(function () {
         var index = jQuery(this).index() + 1;
         if (jQuery(".section:nth-child(" + index + ")").length > 0) {
@@ -89,10 +89,10 @@ function init() {
         }
     });
 
-    jQuery(".middle_desc>div a").click(function(e){
+    jQuery(".middle_desc>div a").click(function (e) {
         e.preventDefault();
     });
-    jQuery(".middle_desc>div").click(function(){
+    jQuery(".middle_desc>div").click(function () {
         var url = jQuery(this).find("a").attr("href");
         //window.open(url,'_blank');
         window.location = url;
@@ -130,30 +130,32 @@ function setActiveLink(sectionOffsets) {
     ////////////////////////////////////////////////////////
     // Code for description slider keep changing once open//
     ////////////////////////////////////////////////////////
+    var sectionH = jQuery(".section").height();
+    if (winH - 250 < sectionH) {
+        if (jQuery(".description_box").hasClass("show") || jQuery(".description_box").hasClass("show_fast")) {
+            if (!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close_description")) {
 
-    if(jQuery(".description_box").hasClass("show") || jQuery(".description_box").hasClass("show_fast")){
-        if(!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close_description")) {
+                jQuery(".description_box").css({
+                    'transition-duration': '0ms'
+                });
 
-            jQuery(".description_box").css({
-               'transition-duration': '0ms'
-            });
+                descriptionPosition();
 
-            descriptionPosition();
+                var currentToggleDescriptionLink = jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description");
+                var currentDescriptionBox = jQuery(".section:nth-child(" + sectionIndex + ")").find(".description_box");
+                var linkHtml;
+                jQuery(".description_box").removeClass("show").removeClass("show_fast");
+                linkHtml = "CLOSE DETAILS";
+                currentToggleDescriptionLink.html(linkHtml).addClass("close_description");
 
-            var currentToggleDescriptionLink = jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description");
-            var currentDescriptionBox = jQuery(".section:nth-child(" + sectionIndex + ")").find(".description_box");
-            var linkHtml;
-            jQuery(".description_box").removeClass("show").removeClass("show_fast");
-            linkHtml = "CLOSE DETAILS";
-            currentToggleDescriptionLink.html(linkHtml).addClass("close_description");
+                linkHtml = "SEE DETAILS <b>&gt;</b>";
+                jQuery(".toggle_description").not(currentToggleDescriptionLink).html(linkHtml).removeClass("close_description");
 
-            linkHtml = "SEE DETAILS <b>&gt;</b>";
-            jQuery(".toggle_description").not(currentToggleDescriptionLink).html(linkHtml).removeClass("close_description");
-
-            jQuery(".description_box").not(currentDescriptionBox).removeClass("show").removeClass("show_fast");
-            currentDescriptionBox.addClass("show_fast");
+                jQuery(".description_box").not(currentDescriptionBox).removeClass("show").removeClass("show_fast");
+                currentDescriptionBox.addClass("show_fast");
+            }
         }
-    }else{
+    } else {
         jQuery(".description_box").css({
             'transition-duration': '500ms'
         });
@@ -161,7 +163,7 @@ function setActiveLink(sectionOffsets) {
     ///////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////
 
-    var setName = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pname>span").text()+" SET";
+    var setName = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pname>span").text() + " SET";
     var setPrice = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pprice").text();
 
     jQuery(".box.set_name .product_name").html(setName);
