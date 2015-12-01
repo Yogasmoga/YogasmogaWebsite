@@ -6,7 +6,7 @@
 }
 .gift-set-title {
     font: 19px/44px ITCAvantGardeStd-Bk;
-    height: 44px;
+    height: 39px;
     margin-top: 4px;
     text-transform: uppercase;
 }
@@ -98,7 +98,7 @@ h1.page-title {
 
 .product_color {
     font: 12px/15px ITCAvantGardeStd-Bk;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 
 .product_name span {
