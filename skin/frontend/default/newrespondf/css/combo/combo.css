@@ -244,6 +244,7 @@ h1.page-title {
 .bag-active{
     color: #fff;
     background-color: #00b900;
+    display: block;
 }
 
 .gift-set .details .flexslider .flex-prev {

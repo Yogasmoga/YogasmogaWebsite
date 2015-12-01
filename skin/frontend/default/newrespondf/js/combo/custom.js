@@ -31,10 +31,12 @@ jm(document).ready(function() {
 
         if(jm(this).closest(".details").find(".active-size").length==totalSetProducts) {
             jm(this).closest(".details").find(".add_to_shopping_bag").addClass("bag-active");
+            jm(this).closest(".details").find(".choose_next").hide();
 //			jm(this).closest(".product_filters").find(".add_to_wishlist").addClass("bag-active");
         }
         else {
             jm(this).closest(".product_filters").find(".add_to_bag").removeClass("bag-active");
+            jm(this).closest(".details").find(".choose_next").show();
 //			jm(this).closest(".product_filters").find(".add_to_wishlist").removeClass("bag-active");
         }
     });
