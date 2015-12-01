@@ -1371,8 +1371,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             else
             {
-                //if($this->searchcart($miniitems, $item->getSku()) == false)
-//                {
                 $_product = Mage::getModel('catalog/product')->load($item->getProductId());
                 $temparray['pid'] = $item->getProductId();
                 $temparray['sku'] = $item->getSku();
@@ -1380,12 +1378,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $temparray['preorder'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getBackorders();
                 $temparray['instock'] = $_product->stock_item->is_in_stock;
                 $temparray['typeid'] = '';
-                //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
+
                 $temparray['name'] = $item->getName();
-                //if(strlen($temparray['name']) > 20)
-                    //$temparray['name'] = substr($temparray['name'], 0, 19)."...";
                 $temparray['quantity'] = $item->getQty();
-                //$temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+
                 $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');
                 $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
                 $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
@@ -1816,8 +1812,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
 
 /*********** added for gift set **********************/
-            if($item['product_type']=="gift")
+            $circleBorder = "";
+            if($item['product_type']=="gift"){
                 $giftStyle = "border-bottom: none";
+                $circleBorder = '"style="border-radius: 50%"';
+            }
             else
                 $giftStyle = "";
 
@@ -1826,7 +1825,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 /*********** added for gift set **********************/
 
             $html .='<li ' . $giftStyle . ' id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
-                <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ></span></a>
+                <a href="'.$item['producturl'].'"><span class="wdth100"' . $circleBorder . '><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ></span></a>
 <span>
                     <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
                     <span class="pname">'.$item['name'].'</span>';
