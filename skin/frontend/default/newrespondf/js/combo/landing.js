@@ -21,7 +21,7 @@
             $(".close_icon").show();
             $(".gift-set .thumbnail > p").show();
             $(this).find("p").hide();
-            $(".gift-set .details").hide();
+            $(".gift-set .details").not($(this).closest(".thumbnail").find(".details")).hide();
             $(".gift-set .details .related_blocks>div").hide();
             $(this).next().find(".related_blocks>div:first-child").show();
             var offsetTop = $(window).scrollTop();
