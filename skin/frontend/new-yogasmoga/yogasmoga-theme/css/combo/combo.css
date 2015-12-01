@@ -233,6 +233,7 @@ div#bodycompensator {
 
 .contain_product .product_price {
     font: 11px/36px GothamBook;
+    color: #555;
 }
 
 .contain_product .product_name {
