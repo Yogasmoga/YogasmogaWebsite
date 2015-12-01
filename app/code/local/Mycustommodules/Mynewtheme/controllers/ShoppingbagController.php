@@ -1149,47 +1149,50 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $cart = Mage::getSingleton('checkout/cart');
 
                 foreach ($cartItems as $item) {
+
                     if ($id == $item->getId()) {
+
                         $buyRequest = $item->getBuyRequest();
 
-                        if(isset($buyRequest))
-                            $uniqueTimeStamp = $buyRequest['unique_time_stamp'];
-                    }
-                }
+                        // if we are trying to remove gift set
+                        if(isset($buyRequest) && isset($buyRequest['product_type']) && isset($buyRequest['bundle'])){
 
-                if($deletedqty >1)
-                {
-                    // update item quantity in cart -1 for each time
-                    foreach ($cartItems as $item) {
-                        if($id==$item->getId())
-                        {
-                            //$tempUniqueTimeStamp = $item->getBuyRequest()['unique_time_stamp'];
-                            $item->setQty($deletedqty-1);
-                            //$item->setQty($_POST['qty']); // UPDATE ONLY THE QTY, NOTHING ELSE!
-                            $cart->save();  // SAVE
-                            //Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
-                        }
+                            $bundle = $buyRequest['bundle'];        // 123:44,374:45 etc.
 
-                    }
-                    // end update item quantity in cart -1 for each time
-                }
-                else {
-                    $this->_getCart()->removeItem($id)->save();
+                            $arBundle = explode(",", $bundle);
 
-                    if(isset($uniqueTimeStamp)){
-                        $cartItems = $quote->getAllVisibleItems();
-                        foreach ($cartItems as $item) {
-                            $buyRequest = $item->getBuyRequest();
+                            // loop each product bundled with gift set
+                            foreach($arBundle as $bundleProduct){
 
-                            if(isset($buyRequest)){
-                                $tempUniqueTimeStamp = $buyRequest['unique_time_stamp'];
+                                $arBundleProductOptions = explode(":", $bundleProduct);  // 123:44
 
-                                if($uniqueTimeStamp==$tempUniqueTimeStamp)
-                                    $this->_getCart()->removeItem($item->getId())->save();
+                                $bundleProductId = $arBundleProductOptions[0];
+
+                                // loop the cart again and find the bundled item
+                                foreach ($cartItems as $bitem) {
+
+                                    if ($bundleProductId == $bitem->getId()) {
+                                        $this->_getCart()->removeItem($bitem->getId())->save();
+                                        break;
+                                    }
+                                }
                             }
+
+                            $this->_getCart()->removeItem($id)->save(); // remove the main gift product
+                        }
+                        else{       // for normal products
+                            if($deletedqty>1){
+                                $item->setQty($deletedqty-1);
+                                $cart->save();
+                            }
+                            else
+                                $this->_getCart()->removeItem($id)->save();
+
+                            break;
                         }
                     }
                 }
+
             } catch (Exception $e) {
                 echo json_encode(array("status" => "error"));
                 //$this->_getSession()->addError($this->__('Cannot remove the item.'));
@@ -1232,8 +1235,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         */
 
         echo json_encode(array("status" => "success", "count" => $this->getcartcount()));
-        return;
-        echo json_encode(array("status" => "success","html" => $this->createshoppingbaghtml(), "count" => $this->getcartcount()));
+//        return;
+//        echo json_encode(array("status" => "success","html" => $this->createshoppingbaghtml(), "count" => $this->getcartcount()));
     }
 
     protected function createshoppingbaghtml()
