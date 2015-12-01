@@ -126,13 +126,10 @@ function changeProduct(product_id){
 
 
 
-                    jQuery(".individual_product .product").click(function(){
-                        window.location = jQuery(this).find("a").attr("href");
+                    jQuery(".individual_product .product>p").click(function(){
+                        window.location = jQuery(this).closest(".product").find("a").attr("href");
                     });
 
-                    jQuery(".individual_product .product a").click(function(e){
-                        e.preventDefault();
-                    });
                 }
             }
         }

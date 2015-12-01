@@ -78,7 +78,7 @@ div#bodycompensator {
 }
 
 .map_data_section .box p {
-    font: 11px/15px GothamBook;
+    font: 11px/20px GothamBook;
 }
 
 .map_data_section .box .square {
@@ -515,6 +515,10 @@ span.size-chart-bundle {
     margin-top: 20px;
 }
 
+.psize .sizes {
+    padding: 1px 0 0;
+}
+
 .sizes .size {
     /*border: 1px solid #999;*/
     display: inline-block;
@@ -721,6 +725,7 @@ span.temp {
 .section.active .side1 .buy_product, .section.active .side1 .toggle_description {
     visibility: visible;
     transition-duration: 200ms;
+    color: #555;
 }
 
 .gap {

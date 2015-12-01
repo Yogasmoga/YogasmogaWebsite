@@ -94,7 +94,8 @@ function init() {
     });
     jQuery(".middle_desc>div").click(function(){
         var url = jQuery(this).find("a").attr("href");
-        window.open(url,'_blank');
+        //window.open(url,'_blank');
+        window.location = url;
     });
 
 }

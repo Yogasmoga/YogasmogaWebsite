@@ -1,3 +1,7 @@
+#pagecontainer {
+    margin-top: 0 !important;
+}
+
 p {
     margin: 0;
 }
@@ -55,8 +59,9 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 }
 
 .breadcrumbs {
-    font: 11px/25px GothamBold;
+    font: 11px/30px GothamBold;
     text-transform: uppercase;
+    margin: 0 !important;
 }
 
 .gift_set_filter {
@@ -155,6 +160,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 
 .product_details .purchase_box_container .product_desc .desc_box p {
     font: 12px /15px GothamBook;
+    color: #555;
 }
 
 .slider {
@@ -278,7 +284,6 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 
 .individual_product {
     float: left;
-    cursor: pointer;
 }
 
 .individual_product.two {
@@ -318,6 +323,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 .individual_product .product .pcolor, .individual_product .product .pprice {
     font: 11px/15px Gothambook;
     text-transform: uppercase;
+    color: #555;
 }
 
 .individual_product .product a {
