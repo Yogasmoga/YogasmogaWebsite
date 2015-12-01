@@ -198,15 +198,16 @@ h1.page-title {
     margin-bottom: 11px;
 }
 
-.add_to_shopping_bag,.choose_next {
-    background: #999;
-    height: 44px;
-    float: left;
-    width: 50%;
-    font: 16px/44px ITCAvantGardeStd-Bk;
+.add_to_shopping_bag, .choose_next {
+    background: #999 none repeat scroll 0 0;
     color: #fff;
+    float: left;
+    font: 16px/44px ITCAvantGardeStd-Bk;
+    height: 44px;
+    letter-spacing: 0.03em;
     margin-bottom: 11px;
     text-align: center;
+    width: 50%;
 }
 
 .add_to_shopping_bag {
