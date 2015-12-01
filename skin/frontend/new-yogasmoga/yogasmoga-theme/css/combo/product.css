@@ -52,6 +52,9 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     box-sizing: border-box;
 }
 
+.product_page_container a:hover{
+    color: #555;
+}
 .git_sets_list {
     text-align: center;
 }
