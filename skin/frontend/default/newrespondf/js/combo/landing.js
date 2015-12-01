@@ -10,9 +10,7 @@
             },
 
             start: function (slider) {
-                console.debug(slider.closest(".details").find(".choose_next").length);
                 slider.closest(".details").find(".choose_next").click(function () {
-                    alert("clicked");
                     slider.find('.flex-next').trigger('click');
                 });
             }
@@ -24,6 +22,8 @@
             $(".gift-set .thumbnail > p").show();
             $(this).find("p").hide();
             $(".gift-set .details").hide();
+            $(".gift-set .details .related_blocks>div").hide();
+            $(this).next().find(".related_blocks>div:first-child").show();
             var offsetTop = $(window).scrollTop();
             $(this).next().show();
             setTimeout(function () {
