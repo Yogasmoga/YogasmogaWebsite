@@ -7,6 +7,9 @@
                 var relatedContentClass = slider.find("li:nth-child(" + slideNo + ")").attr("rel");
                 slider.closest(".details").find(".related_blocks>div").hide();
                 $("." + relatedContentClass).fadeIn();
+                $("." + relatedContentClass).find("choose_next").click(function(){
+                    $('.flex-next').trigger('click');
+                });
             }
         });
 
