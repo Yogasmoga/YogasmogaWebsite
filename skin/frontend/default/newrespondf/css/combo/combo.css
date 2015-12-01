@@ -58,7 +58,7 @@ h1.page-title {
 }
 
 .gift-set .details {
-    padding: 14px;
+    padding: 14px 14px 0;
     text-align: left;
     color: #555;
     border-bottom: 1px solid #999;
@@ -184,7 +184,7 @@ h1.page-title {
     padding-left: 44px;
     background: url("../../images/shipping.svg") no-repeat scroll 0 -10px;
     min-height: 44px;
-    margin: 13px 0 10px;
+    margin: 23px 0 4px;
     float: left;
     width: 100%;
 }
