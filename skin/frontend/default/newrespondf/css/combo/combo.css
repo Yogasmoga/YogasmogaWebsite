@@ -180,11 +180,13 @@ h1.page-title {
 }
 
 .free_shipping_text {
-    font: 14px/18px GraphikRegular;
+    font: 12px/18px GraphikRegular;
     padding-left: 44px;
     background: url("../../images/shipping.svg") no-repeat scroll 0 -10px;
     min-height: 44px;
     margin: 13px 0 10px;
+    float: left;
+    width: 100%;
 }
 
 .add_to_wishlist{
@@ -196,7 +198,7 @@ h1.page-title {
     margin-bottom: 11px;
 }
 
-.add_to_shopping_bag {
+.add_to_shopping_bag,.choose_next {
     background: #999;
     height: 44px;
     float: left;
@@ -205,6 +207,10 @@ h1.page-title {
     color: #fff;
     margin-bottom: 11px;
     text-align: center;
+}
+
+.add_to_shopping_bag {
+    display: none;
 }
 
 .details .related_blocks > div{
