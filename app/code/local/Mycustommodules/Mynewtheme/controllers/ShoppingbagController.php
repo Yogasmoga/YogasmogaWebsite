@@ -46,7 +46,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
                     $temparray['sku'] = $item->getSku();
-                    //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
+
                     $temparray['name'] = $item->getName();
                     if(strlen($temparray['name']) > 20)
                         $temparray['name'] = substr($temparray['name'], 0, 19)."...";
@@ -57,19 +57,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         if(strpos($temparray['color'], "|") !== false)
                             $temparray['color'] = substr($temparray['color'], 0, strpos($temparray['color'], "|"));
                     }
+
                     if($this->issuperattribute($product, "size"))
                         $temparray['size'] = $_product->getAttributeText('size');
+
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
-                    //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
-
-                    if(isset($temparray['product_type']) && $temparray['product_type']=='gift')
-                        $temparray['imageurl'] = $this->getGiftSetMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
-                    else
-                        $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                    $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
 
                     $temparray['itemid'] = $item->getItemId();
                     $temparray['producturl'] = Mage::getModel('catalog/product')->load($item->getProductId())->getProductUrl();
+
                     array_push($miniitems, $temparray);
                 }
             }
@@ -94,11 +92,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             else
             {
-                //if($this->searchcart($miniitems, $item->getSku()) == false)
-//                {
                 $_product = Mage::getModel('catalog/product')->load($item->getProductId());
                 $temparray['sku'] = $item->getSku();
-                //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
+
                 $temparray['name'] = $item->getName();
                 if(strlen($temparray['name']) > 20)
                     $temparray['name'] = substr($temparray['name'], 0, 19)."...";
@@ -109,15 +105,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $temparray['producturl'] = $_product->getProductUrl();
                 $temparray['itemid'] = $item->getItemId();
                 array_push($miniitems, $temparray);
-                //}
             }
         }
-        //$totalItems = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
-//        echo "Total Items:".$totalItems."<br/>";
-//        $grandTotal = Mage::getModel('checkout/cart')->getQuote()->getGrandTotal();
-//        echo "Grand total:".$grandTotal."<br/>";
-//
-//        print $output;
 
         $miniitems = array_reverse($miniitems);
 
@@ -1292,16 +1281,27 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 {
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
+
                     /******************* bundled check ****************/
+
                     $buyRequest = $item->getBuyRequest();
                     $product_type = $buyRequest['type'];
 
-                    if(isset($product_type))
+                    if(isset($product_type)){
                         $temparray['product_type'] = $product_type;         // there should not be any remove icon on cart for this
-                    else
+
+                        if($product_type=='gift')
+                            $temparray['imageurl'] = $this->getGiftSetMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                        else
+                            $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                    }
+                    else{
                         $temparray['product_type'] = null;
+                        $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                    }
 
                     /******************* bundled check ****************/
+
                     $temparray['pid'] = $item->getProductId();
                     $temparray['sku'] = $item->getSku();
                     $temparray['pavailableqty'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty();
@@ -1337,7 +1337,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)( $item->getBaseCalculationPrice()), 2, '.', '');
-                    $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                  //  $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
                     $temparray['itemid'] = $item->getItemId();
                     $temparray['producturl'] = Mage::getModel('catalog/product')->load($item->getProductId())->getProductUrl();
                     array_push($miniitems, $temparray);
