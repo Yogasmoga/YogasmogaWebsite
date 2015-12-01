@@ -38,7 +38,7 @@
         color: #555 !important;
     }
 
-    #pagecontainer{margin-top:25px !important;}
+   /* #pagecontainer{margin-top:25px !important;}*/
 </style>
 
 <!-- Paste this code right after the <body> tag on every page of your site. -->
@@ -364,10 +364,10 @@ if($currentUrl != $checkoutpage){
 
 <div class="pageoverlay"></div>
 <!--<div class="header-container"> -->
-    <div class="header-container" style="padding-top:25px; height:69px !important">
+    <div class="header-container" style="height:69px !important">
 
         <!--banner strip start-->
-    <?php
+    <?php /*
         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
         $categoryName = explode('/', $currentUrl);
         $urlKey = "";
@@ -385,7 +385,7 @@ if($currentUrl != $checkoutpage){
 
     <div class="orange-banner" onclick="window.location.replace('/women/whats-new')">$75 OFF ON ANY FULL PRICE WOMEN’s TOP & BOTTOM COMBO—All sales are final. Ends 11/30 at 11:59PM PST.</div>
 
-    <?php  } ?>
+    <?php  } */ ?>
 
         <!--banner strip finish-->
 
