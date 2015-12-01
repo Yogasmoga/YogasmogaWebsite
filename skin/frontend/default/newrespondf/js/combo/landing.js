@@ -43,8 +43,11 @@
             e.preventDefault();
             if ($(this).text() == "WOMEN") {
                 $(".gift-set[data-filter='men']").hide();
+            }
+            if ($(this).text() == "MEN") {
+                $(".gift-set[data-filter='men']").hide();
             } else {
-                $(".gift-set[data-filter='women']").hide();
+                $(".gift-set").show();
             }
             $(".sign-in-box .toggle_dropdown").click();
         });
