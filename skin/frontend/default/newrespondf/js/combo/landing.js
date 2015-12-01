@@ -10,8 +10,10 @@
             },
 
             start: function (slider) {
+                console.debug(slider.closest(".details").find("choose_next").length);
                 slider.closest(".details").find("choose_next").click(function () {
-                    $('.flex-next').trigger('click');
+                    alert("clicked");
+                    slider.find('.flex-next').trigger('click');
                 });
             }
 
