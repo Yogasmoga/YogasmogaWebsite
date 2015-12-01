@@ -5,8 +5,9 @@
     clear: both;
 }
 .gift-set-title {
-    height: 44px;
     font: 19px/44px ITCAvantGardeStd-Bk;
+    height: 44px;
+    margin-top: 4px;
     text-transform: uppercase;
 }
 
@@ -84,6 +85,7 @@ h1.page-title {
 
 .gift-set .details .desc {
     font: 14px/20px GraphikRegular;
+    margin-top: 3px;
     text-align: left;
 }
 
@@ -173,7 +175,7 @@ h1.page-title {
 }
 
 .sold_indidually a,.sold_indidually {
-    font: 12px/18px GraphikRegular;
+    font: 12px/16px GraphikRegular;
     color: #AE8637;
 }
 
@@ -245,4 +247,10 @@ h1.page-title {
 .gift-set .details .flexslider .flex-next {
     background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/dark_arrows_slider.png") no-repeat scroll 100% 0 / auto 100%;
 
+}
+
+.gift-set .left_item {
+    font: 12px/12px GraphikRegular;
+    margin-bottom: 16px;
+    margin-top: -2px;
 }

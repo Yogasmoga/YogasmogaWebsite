@@ -222,7 +222,7 @@ foreach ($allSizeOptions as $instance) {
 
             <div class="gift-set" data-filter="women">
                 <div class="gift-set-title"><?php echo $_product->getName(); ?> SET</div>
-                <p class="left_item"><?php echo round($stock, 0); ?> left</p>
+                <p class="left_item"><?php echo round($stock, 0); ?> remaining</p>
                 <div class="thumbnail">
                     <span class="setPrice">$<?php echo round($_product->getPrice(), 0); ?></span>
 
@@ -262,7 +262,9 @@ foreach ($allSizeOptions as $instance) {
                             <p class="product_name"><?php echo $data["product_name"]; ?> <span><?php echo $ct;?> of <?php echo $totalProducts;?> Products</span></p>
 
                             <p class="product_color"><?php echo $data["color"]; ?></p>
-
+                            <p class="sold_indidually">
+                                <a href="<?php echo $data['url']; ?>">$1000 Sold Individually &gt;</a>
+                            </p>
                             <div class="size_selection_box">
                                 <p>Choose Size <span class="size_chart_link">Size Chart</span></p>
 
@@ -288,19 +290,13 @@ foreach ($allSizeOptions as $instance) {
                                 <p>Include bra cup? <span class="bra_cup_toggle"><span class="no selected"></span><span
                                             class="yes"></span></span></p>
                             </div>
-                            <p class="sold_indidually">
-                                <a href="<?php echo $data['url']; ?>">Sold Individually &gt;</a><br/>
-                                $1000
-                            </p>
+
                         </div>
 
                         <?php } ?>
 
                     </div>
 
-                    <p class="free_shipping_text">
-                        Free and fast shipping to US & Canada
-                    </p>
 
                     <div class="row">
                         <div class="add_to_wishlist">
@@ -313,7 +309,12 @@ foreach ($allSizeOptions as $instance) {
                                 </svg>
                         </div>
                         <div class="add_to_shopping_bag">ADD TO BAG</div>
+                        <div class="choose_next">CHOOSE NEXT</div>
                     </div>
+
+                    <p class="free_shipping_text">
+                        Free and fast shipping to US & Canada
+                    </p>
                 </div>
             </div>
 
@@ -343,5 +344,13 @@ foreach ($allSizeOptions as $instance) {
         <?php echo $this->getAbsoluteFooter() ?>
     </div>
 </div>
+<script type="text/javascript">
+    (function($){
+        $(document).ready(function(){
+            $(".sign-in-box h1").html("8 GIFT SETS");
+        })
+    }(jQuery));
+</script>
+
 </body>
 </html>
