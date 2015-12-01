@@ -98,7 +98,7 @@ h1.page-title {
 
 .product_color {
     font: 12px/15px ITCAvantGardeStd-Bk;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 
 .product_name span {
