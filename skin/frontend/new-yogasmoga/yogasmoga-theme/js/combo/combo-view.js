@@ -128,7 +128,7 @@ function changeProduct(product_id){
                         var index = jQuery(this).attr("rel");
 
                         jQuery(".size-chart").hide();
-                        jQuery(".size-chart[rel='" + index + "']").show();
+                        jQuery(".size-chart-" + index).show();
 
                         $(window).scrollTop($('.size-charts').offset().top);
                     });
