@@ -27,7 +27,7 @@ jm(document).ready(function() {
         else
             jm(this).addClass("active-size");
 
-        var totalSetProducts = jm(this).closest(".details").find(".product_detail").length;
+        var totalSetProducts = jm(this).closest(".details").find(".related_blocks>div").length;
         console.debug(jm(this).closest(".details").find(".active-size").length==totalSetProducts);
         console.debug("============" + totalSetProducts);
         if(jm(this).closest(".details").find(".active-size").length==totalSetProducts) {
