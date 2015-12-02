@@ -30,6 +30,9 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
 
     public function getcombodataAction(){
 
+        $storeId = Mage::app()->getStore()->getStoreId();
+        $resourceModel = Mage::getResourceModel('catalog/product');
+
         $bundledIds = $this->getRequest()->getParam('ids');
 
         $ar_bundled_product_ids = explode(",", $bundledIds);            // 23:56,56:67 etc.
@@ -43,6 +46,9 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
 
             $_bundle_product = Mage::getModel('catalog/product')->load(intval($product_id));
             $bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
+
+            $sizeChartBlockId = $resourceModel->getAttributeRawValue($_bundle_product->getId(), 'size_chart', $storeId);
+            $sizeChart =  Mage::app()->getLayout()->createBlock('cms/block')->setBlockId($sizeChartBlockId)->toHtml();
 
             $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
 
@@ -103,7 +109,8 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
                 "price" => "$" . round($_bundle_product->getPrice(),2),
                 "sizes" => implode(",", $ar_child_sizes),
                 "default_image" => $default_image,
-                "big_image" => $big_image
+                "big_image" => $big_image,
+                "size_chart" => $sizeChart
                 //"images" => $arImages
             );
         }
