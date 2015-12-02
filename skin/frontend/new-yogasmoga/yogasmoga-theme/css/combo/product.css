@@ -229,7 +229,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     float: right;
     border-bottom: 1px solid #CC0033;
     font: 11px/15px Gothambook;
-
+    cursor: pointer;
 }
 
 .purchase_box .sizes .size {

@@ -108,6 +108,10 @@ function changeProduct(product_id){
                         setProducts[data[i].id] = {};
                         setProducts[data[i].id]["name"] = data[i].name;
                         setProducts[data[i].id]["big_image"] = data[i].big_image;
+
+                        var sizeChart = "<div class='size-chart size-chart-'" + i + ">" + data[i].size_chart + "</div>";
+
+                        jQuery(".size-charts").append(sizeChart);
                     }
 
                     strSets = "";
@@ -117,10 +121,21 @@ function changeProduct(product_id){
 
                     jQuery(".purchase_box").append(strSets);
 
+                    // show first product size chart
+                    jQuery(".size-chart").hide();
+                    jQuery(".size-chart[rel='0']").show();
+                    jQuery(".size-chart-bundle").click(function(){
+                        var index = jQuery(this).attr("rel");
+
+                        jQuery(".size-chart").hide();
+                        jQuery(".size-chart[rel='" + index + "']").show();
+
+                        $(window).scrollTop($('.size-charts').offset().top);
+                    });
+
                     bindSizes();
                     bindBag();
                     bindSlider();
-
 
 
                     jQuery(".individual_product .product>p").click(function(){
@@ -145,7 +160,7 @@ function addSideBundleProduct(data, i){
     strSets += "<div class='product_detail product_detail-" + i + "' rel='" + data.id + "'>";
     strSets += "<p class='pname'>" + data.name + "</p>";
     strSets += "<p class='pcolor pcolor-" + i + "' rel='" + data.color_code + "'>" + allColors[data.color_code] + "</p>";
-    strSets += "<p class='psize'>SIZE: <span class='size-chart-bundle'>SIZE CHART</span></p>";
+    strSets += "<p class='psize'>SIZE: <span class='size-chart-bundle' rel='" + i + "'>SIZE CHART</span></p>";
     strSets += "<div class='sizes'>";
 
     Object.keys(allSizes).forEach(function (key) {
