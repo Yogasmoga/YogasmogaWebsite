@@ -2883,6 +2883,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     top:0;
     text-transform:uppercase;
     cursor: pointer;
+    letter-spacing:  0.055em;
 }
 
 
