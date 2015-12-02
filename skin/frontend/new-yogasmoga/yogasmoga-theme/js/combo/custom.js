@@ -154,9 +154,8 @@ function getWeather(){
 		woeid: '',
 		unit: 'f',
 		success: function (weather) {
-			temperatures[0] = weather.temp + '&deg;' + weather.units.temp;
+			temperatures[0] =  "<span class='temp icon-"+weather.code+"'></span>" + weather.temp + '&deg;' + weather.units.temp;
 			temperature1Loaded = true;
-
 			checkTemperaturesLoaded();
 		},
 		error: function (error) {
@@ -170,7 +169,7 @@ function getWeather(){
 		unit: 'f',
 		success: function(weather) {
 
-			temperatures[1] = weather.temp+'&deg;'+weather.units.temp;
+			temperatures[1] =  "<span class='temp icon-"+weather.code+"'></span>" + weather.temp+'&deg;'+weather.units.temp;
 			temperature2Loaded = true;
 
 			checkTemperaturesLoaded();
@@ -186,7 +185,7 @@ function getWeather(){
 		unit: 'f',
 		success: function(weather) {
 
-			temperatures[2] = weather.temp+'&deg;'+weather.units.temp;
+			temperatures[2] =  "<span class='temp icon-"+weather.code+"'></span>" + weather.temp+'&deg;'+weather.units.temp;
 			temperature3Loaded = true;
 
 			checkTemperaturesLoaded();
@@ -202,7 +201,7 @@ function getWeather(){
 		unit: 'f',
 		success: function(weather) {
 
-			temperatures[3] = weather.temp+'&deg;'+weather.units.temp;
+			temperatures[3] =  "<span class='temp icon-"+weather.code+"'></span>" + weather.temp+'&deg;'+weather.units.temp;
 			temperature4Loaded = true;
 
 			checkTemperaturesLoaded();
@@ -218,7 +217,7 @@ function getWeather(){
 		unit: 'f',
 		success: function(weather) {
 
-			temperatures[4] = weather.temp+'&deg;'+weather.units.temp;
+			temperatures[4] =  "<span class='temp icon-"+weather.code+"'></span>" + weather.temp+'&deg;'+weather.units.temp;
 			temperature5Loaded = true;
 
 			checkTemperaturesLoaded();
@@ -234,7 +233,7 @@ function getWeather(){
 		unit: 'f',
 		success: function(weather) {
 
-			temperatures[5] = weather.temp+'&deg;'+weather.units.temp;
+			temperatures[5] =  "<span class='temp icon-"+weather.code+"'></span>" + weather.temp+'&deg;'+weather.units.temp;
 			temperature6Loaded = true;
 
 			checkTemperaturesLoaded();
@@ -250,7 +249,7 @@ function getWeather(){
 		unit: 'f',
 		success: function(weather) {
 
-			temperatures[6] = weather.temp+'&deg;'+weather.units.temp;
+			temperatures[6] =  "<span class='temp icon-"+weather.code+"'></span>" + weather.temp+'&deg;'+weather.units.temp;
 			temperature7Loaded = true;
 
 			checkTemperaturesLoaded();
@@ -265,8 +264,7 @@ function getWeather(){
 		woeid: '',
 		unit: 'f',
 		success: function(weather) {
-
-			temperatures[7] = weather.temp+'&deg;'+weather.units.temp;
+			temperatures[7] =  "<span class='temp icon-"+weather.code+"'></span>" + weather.temp+'&deg;'+weather.units.temp;
 			temperature8Loaded = true;
 
 			checkTemperaturesLoaded();
@@ -295,7 +293,6 @@ function showTemperature(){
 		if(firstTemperature){
 			jm(".temprature p").html(cities[0] + " TEMP");
 			jm(".temprature div").html(temperatures[0]);
-
 			jm(".latlong").html(latlongs[0]);
 
 			jm(".time p").html(cities[0] + " TIME");
@@ -317,7 +314,7 @@ function showTemperature(){
 		}
 		else{
 			if(currentCityIndex>=0) {
-				jm(".temprature div").html("<span class='temp'></span> " + temperatures[currentCityIndex]);
+				jm(".temprature div").html(temperatures[currentCityIndex]);
 
 				jm(".latlong").html(latlongs[currentCityIndex]);
 
