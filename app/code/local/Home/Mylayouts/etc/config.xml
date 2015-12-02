@@ -137,6 +137,14 @@
           <layout_handle>onetomany</layout_handle>
         </onetomany>
         <!-- One to many Category layouts End here -->
+		
+		<!-- Super Sale Category layouts Start here -->
+        <super_sale translate="label">
+          <label>Super Sale</label>
+          <template>page/supersale.phtml</template>
+          <layout_handle>supersale</layout_handle>
+        </super_sale>
+        <!-- Super Sale Category layouts End here -->
 
       </layouts>
     </page>
