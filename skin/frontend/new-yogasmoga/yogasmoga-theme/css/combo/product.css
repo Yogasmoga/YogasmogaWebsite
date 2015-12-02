@@ -401,6 +401,26 @@ p.prd-read-reviews a, .com-a-prd-links {
 .size-chart {
     border: none;
 }
+
+.individual_product.bundle_image .product {
+    margin-bottom: 40px;
+    min-height: 124px;
+    padding-left: 0;
+    position: relative;
+}
+
+.individual_product.bundle_image .product .product_img {
+    background: #f3f3f3;
+    cursor: pointer;
+    height: 124px;
+    position: static;
+    width: 100%;
+}
+
+.individual_product.bundle_image .product .product_img img {
+    height: 124px;
+}
+
 /* ///////////////////MEDIA QUERIES///////////////////////// */
 @media screen and (max-width: 1400px) {
     .individual_product.three {

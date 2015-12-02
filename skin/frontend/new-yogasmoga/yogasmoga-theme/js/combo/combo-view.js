@@ -11,54 +11,59 @@ jQuery(document).ready(function () {
 
     resizeSlider();
 
+    var viewAllLink = "<li class='gift'><a href=''>View All</a></li>";
+    jQuery("ul.main-menu > li.gift-sets > ul.sub-menu>li>ul").append(viewAllLink);
+
     jQuery(window).resize(function () {
         resizeSlider();
     });
 
-    jQuery(".gift_set").click(function(){
+    jQuery(".gift_set").click(function () {
         var product_id = jQuery(this).attr("rel");
 
         changeProduct(product_id);
     });
 
-    jQuery(".gift a").click(function(e){
-		e.preventDefault();
-		
+    jQuery("ul.main-menu > li.gift-sets > ul.sub-menu>li>ul").find(".gift a").click(function (e) {
+        e.preventDefault();
+
         var personType = jQuery(this).text().toLowerCase();
+        if (personType != "view all") {
+            jQuery(".gift_set_link").hide();
+            jQuery(".person_" + personType).show();
 
-        jQuery(".gift_set_link").hide();
-        jQuery(".person_" + personType).show();
+            var product_id = jQuery(".person_" + personType + ":eq(0)").attr("rel");
+            changeProduct(product_id);
+        }else{
+            jQuery(".gift_set_link").show();
+        }
 
-        var product_id = jQuery(".person_" + personType + ":eq(0)").attr("rel");
-        changeProduct(product_id);
     });
 
 
-    var viewAllLink = "<li class='gift'><a href=''>View All</a></li>";
-    jQuery("ul.main-menu > li.gift-sets > ul.sub-menu>li>ul").append(viewAllLink);
 });
 
-function initializeBanner(){
+function initializeBanner() {
     var str = "<p>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</p>";
 
     jQuery(".golden-banner").html(str);
 
-    jQuery(".namaskar-overlay1").css("top","94px");
-    jQuery(".ui-widget-overlay").css({"top":"94px","position":"fixed"});
-    jQuery(".ui-widget-overlay").css({top:94});
+    jQuery(".namaskar-overlay1").css("top", "94px");
+    jQuery(".ui-widget-overlay").css({"top": "94px", "position": "fixed"});
+    jQuery(".ui-widget-overlay").css({top: 94});
     jQuery(".header-container").css("padding-top", "25px");
     jQuery(".header-container").css("top", "0");
     jQuery("#bodycompensator").css("height", "94px");
 }
 
-function resizeSlider(){
+function resizeSlider() {
     var SliderWidth = jQuery(".slider").width();
     var SliderHeight = SliderWidth * 0.5;
 
-    jQuery(".slider").height(SliderHeight)
+    jQuery(".slider").height(SliderHeight);
 }
 
-function changeProduct(product_id){
+function changeProduct(product_id) {
 
     var color_code = 216;    // by default all gift set has color "Andaman Green"
 
@@ -74,11 +79,11 @@ function changeProduct(product_id){
         type: 'GET',
         data: 'ids=' + ids,
         dataType: 'json',
-        success: function(result){
+        success: function (result) {
 
-            if(result.message!=undefined && result.message.indexOf("found")>-1) {
+            if (result.message != undefined && result.message.indexOf("found") > -1) {
 
-                if(result.data!=undefined) {
+                if (result.data != undefined) {
 
                     jQuery(".purchase_box").html("");
                     jQuery(".set_individual_products").html("");
@@ -98,11 +103,11 @@ function changeProduct(product_id){
                     jQuery(".purchase_box").append(strSets);
 
                     setProductCount = data.length;
-                    var classToApply = data.length>2 ? "individual_product three" : "individual_product two";
+                    var classToApply = data.length > 2 ? "individual_product three" : "individual_product two";
 
                     jQuery(".size-charts").html('');
 
-                    for(var i=0;i<data.length;i++){
+                    for (var i = 0; i < data.length; i++) {
 
                         addSideBundleProduct(data[i], i);
 
@@ -129,14 +134,14 @@ function changeProduct(product_id){
                     // show first product size chart
                     jQuery(".size-chart").hide();
                     jQuery(".size-chart-0").show();
-                    jQuery(".size-chart-bundle").click(function(){
+                    jQuery(".size-chart-bundle").click(function () {
                         var index = jQuery(this).attr("rel");
 
                         jQuery(".size-chart").hide();
                         jQuery(".size-chart-" + index).show();
 
                         jQuery('html, body').animate({
-                            scrollTop: jQuery(".size-charts").offset().top - jQuery(window).height()/2 + jQuery(".size-charts").height()/2
+                            scrollTop: jQuery(".size-charts").offset().top - jQuery(window).height() / 2 + jQuery(".size-charts").height() / 2
                         }, 200);
                     });
 
@@ -145,7 +150,7 @@ function changeProduct(product_id){
                     bindSlider();
 
 
-                    jQuery(".individual_product .product>p").click(function(){
+                    jQuery(".individual_product .product>p").click(function () {
                         window.location = jQuery(this).closest(".product").find("a").attr("href");
                     });
 
@@ -155,7 +160,7 @@ function changeProduct(product_id){
     });
 }
 
-function addSideBundleProduct(data, i){
+function addSideBundleProduct(data, i) {
 
     var strSets = "";
 
@@ -174,7 +179,7 @@ function addSideBundleProduct(data, i){
         for (var j = 0; j < arSizes.length; j++) {
             var size = arSizes[j];
 
-            if(key==size) {
+            if (key == size) {
                 strSets += "<span class='size size-" + i + "' rel='" + allSizes[size] + "'>" + size + "</span>";
                 break;
             }
@@ -188,7 +193,7 @@ function addSideBundleProduct(data, i){
     jQuery(".purchase_box").append(strSets);
 }
 
-function addIndividualBundleProduct(data, classToApply){
+function addIndividualBundleProduct(data, classToApply) {
 
     var strSets = "";
 
@@ -209,23 +214,23 @@ function addIndividualBundleProduct(data, classToApply){
 }
 
 /*
-function addBundleProductImages(data){
+ function addBundleProductImages(data){
 
-    if(data.images!=undefined && data.images.length>0) {
+ if(data.images!=undefined && data.images.length>0) {
 
-        bundleImages[data.id] = [];
+ bundleImages[data.id] = [];
 
-        for(var i=0; i<data.images.length; i++)
-            bundleImages[data.id].push(data.images[i]);
-    }
-}
-*/
+ for(var i=0; i<data.images.length; i++)
+ bundleImages[data.id].push(data.images[i]);
+ }
+ }
+ */
 
-function bindBag(){
+function bindBag() {
 
-    jQuery(".add_to_bag").click(function(){
+    jQuery(".add_to_bag").click(function () {
 
-        if(jQuery(this).hasClass("bag-active")) {
+        if (jQuery(this).hasClass("bag-active")) {
 
             var giftIdCount = jQuery(this).attr('rel');
 
@@ -240,18 +245,18 @@ function bindBag(){
     });
 }
 
-function bindSizes(){
+function bindSizes() {
 
-    jQuery(".size").click(function(){
+    jQuery(".size").click(function () {
 
         jQuery(this).closest(".sizes").find(".size").removeClass("active-size");
 
-        if(jQuery(this).hasClass("active-size"))
+        if (jQuery(this).hasClass("active-size"))
             jQuery(this).removeClass("active-size");
         else
             jQuery(this).addClass("active-size");
 
-        if(jQuery(this).closest(".purchase_box").find(".active-size").length==setProductCount) {
+        if (jQuery(this).closest(".purchase_box").find(".active-size").length == setProductCount) {
             jQuery(this).closest(".purchase_box").find(".add_to_bag").addClass("bag-active");
 //            jQuery(this).closest(".purchase_box").find(".add_to_bag").html('');
         }
@@ -262,42 +267,42 @@ function bindSizes(){
     });
 }
 
-function bindSlider(){
-    jQuery(".individual_product").find(".product_img").click(function(){
+function bindSlider() {
+    jQuery(".individual_product").find(".product_img").click(function () {
         var product_id = jQuery(this).attr('rel');
         //startSlider(product_id);
         var SizeChartIndex = jQuery(this).closest(".individual_product").index();
         jQuery(".size-chart").hide();
-        jQuery(".size-chart-"+SizeChartIndex+"").show();
+        jQuery(".size-chart-" + SizeChartIndex + "").show();
         jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
         jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["big_image"] + "'/>");
     });
 }
 /*
-function startSlider(product_id){
+ function startSlider(product_id){
 
-    var images = bundleImages[product_id];
+ var images = bundleImages[product_id];
 
-    if(images!=undefined){
+ if(images!=undefined){
 
-        var str = "";
+ var str = "";
 
-        for(var i=0;i<images.length;i++)
-            str += "<li><img src='" + images[i] + "'/></li>";
+ for(var i=0;i<images.length;i++)
+ str += "<li><img src='" + images[i] + "'/></li>";
 
-        jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
-        jQuery(".flexslider ul.slides").html(str);
-        jQuery('.flexslider').removeData("flexslider");
-        jQuery("div.flexslider").flexslider();
-    }
-}
-*/
-function addToBag(giftProductId, count, parent, currentProductColorCode){
+ jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
+ jQuery(".flexslider ul.slides").html(str);
+ jQuery('.flexslider').removeData("flexslider");
+ jQuery("div.flexslider").flexslider();
+ }
+ }
+ */
+function addToBag(giftProductId, count, parent, currentProductColorCode) {
     var colorAttributeId = 92;
     var sizeAttributeId = 138;
 
     var ar = Array();
-    for(var i=0;i<count;i++){
+    for (var i = 0; i < count; i++) {
         var size = parent.find(".size-" + i + ".active-size").attr("rel");
         var size_data = sizeAttributeId + "-" + size;
         var color_data = colorAttributeId + "-" + parent.find(".pcolor-" + i).attr("rel");
