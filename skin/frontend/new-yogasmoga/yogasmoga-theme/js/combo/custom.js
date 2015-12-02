@@ -70,6 +70,7 @@ jm(document).ready(function() {
 		var personType = jQuery(this).text().toLowerCase();
 
 		jQuery(".gift_set_link").hide();
+        jQuery(".contain_product").hide();
 		jQuery(".person_" + personType).show();
 
 		jQuery(".gift_set_link").removeClass('active');
@@ -87,12 +88,10 @@ jm(document).ready(function() {
 });
 
 function initializeBanner(){
-	jQuery(".top-banner").addClass("golden-banner");
-	jQuery(".top-banner").removeClass("orange-banner");
 
 	var str = "<p>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</p>";
 
-	jQuery(".top-banner").html(str);
+	jQuery(".golden-banner").html(str);
 
 	jQuery(".namaskar-overlay1").css("top","94px");
 	jQuery(".ui-widget-overlay").css({"top":"94px","position":"fixed"});

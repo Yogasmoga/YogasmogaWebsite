@@ -372,7 +372,6 @@ if($currentUrl != $checkoutpage){
      <!--  <div class="header-container" style="padding-top:25px; height:69px !important">-->
 
      <!--banner strip start-->
-	<?php if(false) { ?>
     <?php
         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
         $categoryName = explode('/', $currentUrl);
@@ -380,22 +379,29 @@ if($currentUrl != $checkoutpage){
         if(isset($categoryName[3]))
             $urlKey = $categoryName[3];
 
-        if(strtolower($urlKey)=="men"){
+        if(strtolower($urlKey)=="gift-sets"){
+            echo "<div class='golden-banner'></div>";
+        }
+        else{
+            if(false){          // not showing banner on normal pages
+
+                if(strtolower($urlKey)=="men"){
     ?>
 
-        <div class="orange-banner" onclick="window.location.replace('/men/whats-new')">25% OFF ON ALL MEN’S APPAREL—All sales are final. Ends 11/30 at 11:59PM PST.</div>
+                    <div class="orange-banner" onclick="window.location.replace('/men/whats-new')">25% OFF ON ALL MEN’S APPAREL—All sales are final. Ends 11/30 at 11:59PM PST.</div>
 
     <?php
-        } else {
+                } else {
     ?>
 
-    <div class="orange-banner" onclick="window.location.replace('/women/whats-new')">$75 OFF ON ANY FULL PRICE WOMEN’s TOP & BOTTOM COMBO—All sales are final. Ends 11/30 at 11:59PM PST.</div>
+                    <div class="orange-banner" onclick="window.location.replace('/women/whats-new')">$75 OFF ON ANY FULL PRICE WOMEN’s TOP & BOTTOM COMBO—All sales are final. Ends 11/30 at 11:59PM PST.</div>
 
-    <?php  } ?>
-	
+    <?php
+                }
+            }
+        }
+    ?>
 
-     <!--banner strip finish-->
-	<?php  } ?>
 <div id="globalheader" class="header
     <?php
     if ($this->getIsHomePage())
