@@ -243,12 +243,13 @@ foreach ($allSizeOptions as $instance) {
                             $cities[] = $city;
                             $latlongs[] = $latlong;
                             $cityTimes[] = $cityTime;
+                            $person = $imageLabelData['person'];
                             break;                    // we want to read first image only
                         }
                     }
                     ?>
 
-                    <div class="section contain_product">
+                    <div class="section contain_product person_<?php echo $person;?>">
                         <div class="product_set">
                             <div class="side2 flipped">
 
