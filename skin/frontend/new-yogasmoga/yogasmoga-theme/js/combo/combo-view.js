@@ -123,14 +123,14 @@ function changeProduct(product_id){
 
                     // show first product size chart
                     jQuery(".size-chart").hide();
-                    jQuery(".size-chart[rel='0']").show();
+                    jQuery(".size-chart-0").show();
                     jQuery(".size-chart-bundle").click(function(){
                         var index = jQuery(this).attr("rel");
 
                         jQuery(".size-chart").hide();
                         jQuery(".size-chart-" + index).show();
 
-                        $(window).scrollTop($('.size-charts').offset().top);
+                        $(window).scrollTop(jQuery('.size-charts').offset().top);
                     });
 
                     bindSizes();
