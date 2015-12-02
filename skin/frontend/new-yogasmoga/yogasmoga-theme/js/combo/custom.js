@@ -82,7 +82,9 @@ jm(document).ready(function() {
             jQuery(".person_" + personType).show();
 
             jQuery(".gift_set_link").removeClass('active');
-            jQuery(".person_" + personType + ":eq(0)").addClass('active');
+            jQuery(".person_" + personType + ":first-child").addClass('active');
+
+			getActiveSlide();
         }
 	});
 

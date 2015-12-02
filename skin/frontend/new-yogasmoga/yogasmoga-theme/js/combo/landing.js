@@ -100,11 +100,11 @@ function init() {
 
 }
 
-var sectionIndex = 1;
+var sectionIndex = 0;
 
 function getActiveSlide() {
     var sectionOffsets = [0];
-    jQuery(".section").each(function () {
+    jQuery(".section:visible").each(function () {
         sectionOffsets.push(jQuery(this).offset().top);
     });
     setActiveLink(sectionOffsets);
@@ -114,18 +114,18 @@ function getActiveSlide() {
 
 }
 function setActiveLink(sectionOffsets) {
-    var winScrollTop = jQuery(window).scrollTop() - jQuery(".section").height() + 255;
+    var winScrollTop = jQuery(window).scrollTop() - jQuery(".section:visible").height() + 255;
     jQuery.each(sectionOffsets, function (index) {
         if (sectionOffsets.length > index + 1) {
             if (winScrollTop > sectionOffsets[index]) {
-                sectionIndex = index + 1;
+                sectionIndex = index;
             }
         }
     });
     jQuery(".gift_set_link").removeClass("active");
-    jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").addClass("active");
+    jQuery(".gift_set_link:visible").eq(sectionIndex).addClass("active");
     jQuery(".section").removeClass("active");
-    jQuery(".section:nth-child(" + sectionIndex + ")").addClass("active");
+    jQuery(".section:visible").eq(sectionIndex).addClass("active");
 
     ////////////////////////////////////////////////////////
     // Code for description slider keep changing once open//
@@ -163,24 +163,26 @@ function setActiveLink(sectionOffsets) {
     ///////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////
 
-    var setName = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pname>span").text() + " SET";
-    var setPrice = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").find(".pprice").text();
+    if(jQuery.trim(jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pname>span").text()) != "" && jQuery.trim(jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pname>span").text()) != null) {
+        var setName = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pname>span").text() + " SET";
+        var setPrice = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pprice").text();
 
-    jQuery(".box.set_name .product_name").html(setName);
-    jQuery(".box.set_name .product_price").html(setPrice);
+        jQuery(".box.set_name .product_name").html(setName);
+        jQuery(".box.set_name .product_price").html(setPrice);
 
-    currentCityIndex = sectionIndex - 1;
-    showTemperature();
+        currentCityIndex = sectionIndex - 1;
+        showTemperature();
 
-    var mapPoint = jQuery(".gift_set_link:nth-child(" + sectionIndex + ")").attr("data-map");
-    mapPoint = mapPoint.split(",");
-    var topPosition = mapPoint[0];
-    var leftPosition = mapPoint[1];
+        var mapPoint = jQuery(".gift_set_link:visible").eq(sectionIndex).attr("data-map");
+        mapPoint = mapPoint.split(",");
+        var topPosition = mapPoint[0];
+        var leftPosition = mapPoint[1];
 
-    jQuery(".world_map i").css({
-        "top": topPosition + "px",
-        "left": leftPosition + "px"
-    })
+        jQuery(".world_map i").css({
+            "top": topPosition + "px",
+            "left": leftPosition + "px"
+        })
+    }
 }
 
 
