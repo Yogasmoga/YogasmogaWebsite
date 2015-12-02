@@ -64,9 +64,6 @@ jm(document).ready(function() {
 		}
 	});
 
-    var viewAllLink = "<li class='gift'><a href=''>View All</a></li>";
-    jQuery(".gift-sets").find(".sub-menu").find("ul").append(viewAllLink);
-
 	jQuery(".gift a").click(function(e){
 		e.preventDefault();
 

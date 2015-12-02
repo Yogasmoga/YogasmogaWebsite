@@ -386,7 +386,11 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     margin: auto;
 }
 
-
+ul.main-menu > li.over.gift-sets > ul.sub-menu {
+    height: 81px;
+    margin-left: -19px;
+    width: 94px;
+}
 
 
 /* ///////////////////MEDIA QUERIES///////////////////////// */
@@ -395,3 +399,4 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
         width: 50%;
     }
 }
+

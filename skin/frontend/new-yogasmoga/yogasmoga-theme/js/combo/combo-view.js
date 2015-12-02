@@ -33,6 +33,9 @@ jQuery(document).ready(function () {
         changeProduct(product_id);
     });
 
+
+    var viewAllLink = "<li class='gift'><a href=''>View All</a></li>";
+    jQuery("ul.main-menu > li.gift-sets > ul.sub-menu>li>ul").append(viewAllLink);
 });
 
 function initializeBanner(){
