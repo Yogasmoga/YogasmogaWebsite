@@ -262,3 +262,7 @@ h1.page-title {
     margin-bottom: 16px;
     margin-top: -2px;
 }
+
+.gift-set .details .flexslider .slides li{
+    background: #f3f3f3;
+}
