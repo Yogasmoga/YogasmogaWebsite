@@ -19,7 +19,7 @@ jm(document).ready(function() {
     });
 
     jm(".size").click(function(){
-
+        alert();
         jm(this).closest(".sizes").find(".size").removeClass("active-size");
 
         if(jm(this).hasClass("active-size"))
@@ -30,6 +30,7 @@ jm(document).ready(function() {
         var totalSetProducts = jm(this).closest(".details").find(".product_detail").length;
 
         if(jm(this).closest(".details").find(".active-size").length==totalSetProducts) {
+            alert("Condition Matched");
             jm(this).closest(".details").find(".add_to_shopping_bag").addClass("bag-active");
             jm(this).closest(".details").find(".choose_next").hide();
 //			jm(this).closest(".product_filters").find(".add_to_wishlist").addClass("bag-active");
