@@ -130,7 +130,9 @@ function changeProduct(product_id){
                         jQuery(".size-chart").hide();
                         jQuery(".size-chart-" + index).show();
 
-                        $(window).scrollTop(jQuery('.size-charts').offset().top);
+                        jQuery('html, body').animate({
+                            scrollTop: jQuery(".size-charts").offset().top
+                        }, 1000);
                     });
 
                     bindSizes();
