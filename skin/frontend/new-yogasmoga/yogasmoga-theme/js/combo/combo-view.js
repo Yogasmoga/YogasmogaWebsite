@@ -136,8 +136,8 @@ function changeProduct(product_id){
                         jQuery(".size-chart-" + index).show();
 
                         jQuery('html, body').animate({
-                            scrollTop: jQuery(".size-charts").offset().top
-                        }, 1000);
+                            scrollTop: jQuery(".size-charts").offset().top - jQuery(window).height()/2 + jQuery(".size-charts").height()/2
+                        }, 200);
                     });
 
                     bindSizes();
@@ -266,6 +266,9 @@ function bindSlider(){
     jQuery(".individual_product").find(".product_img").click(function(){
         var product_id = jQuery(this).attr('rel');
         //startSlider(product_id);
+        var SizeChartIndex = jQuery(this).closest(".individual_product").index();
+        jQuery(".size-chart").hide();
+        jQuery(".size-chart-"+SizeChartIndex+"").show();
         jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
         jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["big_image"] + "'/>");
     });
