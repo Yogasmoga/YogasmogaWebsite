@@ -37,6 +37,7 @@
             $(".gift-set .details").hide();
             $(".gift-set .thumbnail > p").show();
             $(this).hide();
+            $(".size").removeClass("active-size");
         });
 
         $(".dropdown_links.gift_sets_filter>ul li a").click(function (e) {

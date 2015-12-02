@@ -7,9 +7,9 @@ jm(document).ready(function() {
         if(jm(this).hasClass("bag-active")) {
 
             var giftIdCount = jm(this).attr('rel');
-
+            console.debug(giftIdCount);
             var arGiftIdCount = giftIdCount.split(':');
-
+            console.debug(arGiftIdCount);
             var giftId = arGiftIdCount[0];
             var currentProductColorCode = arGiftIdCount[1];
             var count = arGiftIdCount[2];
@@ -19,17 +19,13 @@ jm(document).ready(function() {
     });
 
     jm(".size").click(function(){
-        alert();
         jm(this).closest(".sizes").find(".size").removeClass("active-size");
-
         if(jm(this).hasClass("active-size"))
             jm(this).removeClass("active-size");
         else
             jm(this).addClass("active-size");
 
         var totalSetProducts = jm(this).closest(".details").find(".related_blocks>div").length;
-        console.debug(jm(this).closest(".details").find(".active-size").length==totalSetProducts);
-        console.debug("============" + totalSetProducts);
         if(jm(this).closest(".details").find(".active-size").length==totalSetProducts) {
             alert("Condition Matched");
             jm(this).closest(".details").find(".add_to_shopping_bag").addClass("bag-active");
