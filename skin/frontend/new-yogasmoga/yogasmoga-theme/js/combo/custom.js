@@ -64,17 +64,29 @@ jm(document).ready(function() {
 		}
 	});
 
+    var viewAllLink = "<li class='gift'><a href=''>View All</a></li>";
+    jQuery(".gift-sets").find(".sub-menu").find("ul").append(viewAllLink);
+
 	jQuery(".gift a").click(function(e){
 		e.preventDefault();
 
 		var personType = jQuery(this).text().toLowerCase();
 
-		jQuery(".gift_set_link").hide();
-        jQuery(".contain_product").hide();
-		jQuery(".person_" + personType).show();
+        if(personType=="view all"){
+            jQuery(".gift_set_link").removeClass('active');
+            jQuery(".person_women:eq(0)").addClass('active');
 
-		jQuery(".gift_set_link").removeClass('active');
-		jQuery(".person_" + personType + ":eq(0)").addClass('active');
+            jQuery(".gift_set_link").show();
+            jQuery(".contain_product").show();
+        }
+        else{
+            jQuery(".gift_set_link").hide();
+            jQuery(".contain_product").hide();
+            jQuery(".person_" + personType).show();
+
+            jQuery(".gift_set_link").removeClass('active');
+            jQuery(".person_" + personType + ":eq(0)").addClass('active');
+        }
 	});
 
 	jQuery(".thumbnail").click(function(){
