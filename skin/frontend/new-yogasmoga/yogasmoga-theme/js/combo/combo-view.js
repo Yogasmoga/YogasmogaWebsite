@@ -97,6 +97,8 @@ function changeProduct(product_id){
                     setProductCount = data.length;
                     var classToApply = data.length>2 ? "individual_product three" : "individual_product two";
 
+                    jQuery(".size-charts").html('');
+
                     for(var i=0;i<data.length;i++){
 
                         addSideBundleProduct(data[i], i);
