@@ -109,7 +109,7 @@ function changeProduct(product_id){
                         setProducts[data[i].id]["name"] = data[i].name;
                         setProducts[data[i].id]["big_image"] = data[i].big_image;
 
-                        var sizeChart = "<div class='size-chart size-chart-'" + i + ">" + data[i].size_chart + "</div>";
+                        var sizeChart = "<div class='size-chart size-chart-" + i + "'>" + data[i].size_chart + "</div>";
 
                         jQuery(".size-charts").append(sizeChart);
                     }
