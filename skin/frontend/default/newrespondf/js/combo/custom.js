@@ -28,7 +28,8 @@ jm(document).ready(function() {
             jm(this).addClass("active-size");
 
         var totalSetProducts = jm(this).closest(".details").find(".product_detail").length;
-
+        console.debug(jm(this).closest(".details").find(".active-size").length==totalSetProducts);
+        console.debug("============" + totalSetProducts);
         if(jm(this).closest(".details").find(".active-size").length==totalSetProducts) {
             alert("Condition Matched");
             jm(this).closest(".details").find(".add_to_shopping_bag").addClass("bag-active");
