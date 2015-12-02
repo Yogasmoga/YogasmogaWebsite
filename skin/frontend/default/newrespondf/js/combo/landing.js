@@ -2,7 +2,7 @@
     $(document).ready(function () {
         $(".thumbnail,.pageThumbnail").height($(".page").width() * 3 / 4);
         $(".gift-set .details .flexslider .slides li").height($(".gift-set .details").width() * 3 / 4);
-        
+
         $(".gift-set .details .flexslider").flexslider({
             after: function (slider) {
                 var slideNo = slider.currentSlide + 1;
