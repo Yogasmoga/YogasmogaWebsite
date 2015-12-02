@@ -133,7 +133,7 @@ function setActiveLink(sectionOffsets) {
     var sectionH = jQuery(".section").height();
     if (winH - 250 < sectionH) {
         if (jQuery(".description_box").hasClass("show") || jQuery(".description_box").hasClass("show_fast")) {
-            if (!jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description").hasClass("close_description")) {
+            if (!jQuery(".section:visible").eq(sectionIndex).find(".toggle_description").hasClass("close_description")) {
 
                 jQuery(".description_box").css({
                     'transition-duration': '0ms'
@@ -141,8 +141,8 @@ function setActiveLink(sectionOffsets) {
 
                 descriptionPosition();
 
-                var currentToggleDescriptionLink = jQuery(".section:nth-child(" + sectionIndex + ")").find(".toggle_description");
-                var currentDescriptionBox = jQuery(".section:nth-child(" + sectionIndex + ")").find(".description_box");
+                var currentToggleDescriptionLink = jQuery(".section:visible").eq(sectionIndex).find(".toggle_description");
+                var currentDescriptionBox = jQuery(".section:visible").eq(sectionIndex).find(".description_box");
                 var linkHtml;
                 jQuery(".description_box").removeClass("show").removeClass("show_fast");
                 linkHtml = "CLOSE DETAILS";

@@ -772,3 +772,9 @@ span.temp {
 .gift_sets_landing_page, .ys_in_wanderland, .top_banners {
     min-width: 1080px;
 }
+
+ul.main-menu > li.over.gift-sets > ul.sub-menu {
+    height: 81px;
+    margin-left: -19px;
+    width: 94px;
+}

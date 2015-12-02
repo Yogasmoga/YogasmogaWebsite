@@ -19,7 +19,11 @@ var firstTemperature = true;
 
 var wh=0;
 jm(document).ready(function() {
-	getWeather(); //Get the initial weather.
+
+    var viewAllLink = "<li class='gift'><a href=''>View All</a></li>";
+    jm("ul.main-menu > li.gift-sets > ul.sub-menu>li>ul").append(viewAllLink);
+
+    getWeather(); //Get the initial weather.
 	//setInterval(getWeather, 300000);		// every 5 minutes
 	setInterval(updateTimes, 60000);		// every 1 minute
 
@@ -64,7 +68,9 @@ jm(document).ready(function() {
 		}
 	});
 
-	jQuery(".gift a").click(function(e){
+
+
+    jQuery("ul.main-menu > li.gift-sets > ul.sub-menu>li>ul").find(".gift a").click(function (e) {
 		e.preventDefault();
 
 		var personType = jQuery(this).text().toLowerCase();
@@ -83,9 +89,8 @@ jm(document).ready(function() {
 
             jQuery(".gift_set_link").removeClass('active');
             jQuery(".person_" + personType + ":first-child").addClass('active');
-
-			getActiveSlide();
         }
+        getActiveSlide();
 	});
 
 	jQuery(".thumbnail").click(function(){
