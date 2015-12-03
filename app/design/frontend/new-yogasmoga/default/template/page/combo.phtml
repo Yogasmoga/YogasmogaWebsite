@@ -190,7 +190,7 @@ foreach ($allSizeOptions as $instance) {
                                     continue;
 
                                 if ($imageLabelData['color'] == $ar_id_color_code[1]) {
-                                    $big_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                                    $big_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(900);
                                     //$bundle_product_images[] = $url;
                                     break;
                                 }
