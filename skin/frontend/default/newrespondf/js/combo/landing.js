@@ -12,8 +12,17 @@
             },
 
             start: function (slider) {
-                slider.closest(".details").find(".choose_next").click(function () {
-                    slider.find('.flex-next').trigger('click');
+                var chooseNext = slider.closest(".details").find(".choose_next");
+                chooseNext.click(function () {
+                    var slideNo = slider.currentSlide + 1;
+                    console.debug(slideNo+", product_"+slideNo +"_details");
+                    console.debug(chooseNext.closest(".details").find(".product_"+slideNo +"_details").find(".size.active-size").length);
+                    if(chooseNext.closest(".details").find(".product_"+slideNo +"_details").find(".size.active-size").length>0) {
+                        slider.find('.flex-next').trigger('click');
+                        chooseNext.closest(".details").find(".error-text").html("");
+                    }else{
+                        chooseNext.closest(".details").find(".error-text").html("Please Choose a size to continue.");
+                    }
                 });
             }
 
