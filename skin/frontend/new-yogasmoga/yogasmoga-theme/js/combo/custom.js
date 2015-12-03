@@ -216,7 +216,7 @@ function getWeather(){
 		woeid: '',
 		unit: 'f',
 		success: function(weather) {
-
+			console.debug(weather);
 			temperatures[4] =  "<span class='temp icon-"+weather.code+"'></span>" + weather.temp+'&deg;'+weather.units.temp;
 			temperature5Loaded = true;
 

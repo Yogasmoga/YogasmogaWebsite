@@ -65,6 +65,11 @@
             }
             $(".sign-in-box .toggle_dropdown").click();
         });
+
+        $(".bra_cup_toggle").click(function(){
+            $(this).find("span").toggleClass("selected");
+        })
+
     });
 
     $(window).resize(function () {
