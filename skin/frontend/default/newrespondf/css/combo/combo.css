@@ -282,6 +282,10 @@ h1.page-title {
     position: absolute;
 }
 
+.related_blocks {
+    margin-bottom: 30px;
+}
+
 /* ///////////////////////CSS RESET HACK FOR BUTTONS FONT RENDERING ISSUE////////////////// */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     .add_to_shopping_bag, .choose_next {

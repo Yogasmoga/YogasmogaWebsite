@@ -68,7 +68,7 @@
 
         $(".bra_cup_toggle").click(function(){
             $(this).find("span").toggleClass("selected");
-        })
+        });
 
     });
 
