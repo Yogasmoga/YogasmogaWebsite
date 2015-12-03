@@ -238,6 +238,7 @@ h1.page-title {
 
 .dropdown_links.gift_sets_filter {
     height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown_links.gift_sets_filter > ul li:last-child a {

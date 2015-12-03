@@ -55,13 +55,13 @@
 
         $(".dropdown_links.gift_sets_filter>ul li a").click(function (e) {
             e.preventDefault();
-            if ($(this).text() == "WOMEN") {
+            var linkText = $(this).text().toUpperCase();
+            $(".gift-set").show();
+            if (linkText == "WOMEN") {
                 $(".gift-set[data-filter='men']").hide();
             }
-            if ($(this).text() == "MEN") {
-                $(".gift-set[data-filter='men']").hide();
-            } else {
-                $(".gift-set").show();
+            if (linkText == "MEN") {
+                $(".gift-set[data-filter='women']").hide();
             }
             $(".sign-in-box .toggle_dropdown").click();
         });

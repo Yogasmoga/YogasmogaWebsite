@@ -201,26 +201,27 @@ foreach ($allSizeOptions as $instance) {
 
                 $arBundledProductImages[$_bundle_product->getId()] = array("small_image" => $small_image, "big_image" => $big_image);
             }
-/*
+                $person= "";
             // main set images
             $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
             if (isset($_gallery)) {
                 foreach ($_gallery as $_image) {
                     $imageLabelData = json_decode(trim($_image->getLabel()), true);
-                    $city = $imageLabelData["city"];
+                    /*$city = $imageLabelData["city"];
                     $latlong = $imageLabelData["latlong"];
                     $cityTime = $imageLabelData["cityTime"];
 
                     $cities[] = $city;
                     $latlongs[] = $latlong;
-                    $cityTimes[] = $cityTime;
+                    $cityTimes[] = $cityTime;*/
+                    $person = $imageLabelData['person'];
                     break;                    // we want to read first image only
                 }
             }
-*/
+
             ?>
 
-            <div class="gift-set" data-filter="women">
+            <div class="gift-set" data-filter="<?php echo $person; ?>">
                 <div class="gift-set-title"><?php echo $_product->getName(); ?> SET</div>
                 <p class="left_item"><?php echo round($stock, 0); ?> remaining</p>
                 <div class="thumbnail">
