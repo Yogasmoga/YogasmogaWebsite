@@ -1,4 +1,12 @@
 var jm = jQuery.noConflict();
+var isBraCupSelected = false;
+var braOptionId;
+var braOptionTypeId;
+
+var braOptionYesId;
+var braOptionTypeYesId;
+var braOptionNoId;
+var braOptionTypeNoId;
 
 jm(document).ready(function() {
 
@@ -57,6 +65,13 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
     var productUrl = homeUrl + 'mycheckout/mycart/add?product=' + giftProductId;
     productUrl += '&qty=' + _productorderqty;
     productUrl += '&super_attribute[' + colorAttributeId + ']=' + currentProductColorCode;
+
+    if(isBraCupSelected){
+        var optId = jQuery(".bra_cup_selection").find('selected').attr("optionid");
+        var optTypeId = jQuery(".bra_cup_selection").find('selected').attr("optiontypeid");
+        productUrl += '&options[' + optId + ']=' + optTypeId;
+    }
+
     productUrl += '&type=gift';
     productUrl += '&bundle=' + bundle_data;
 

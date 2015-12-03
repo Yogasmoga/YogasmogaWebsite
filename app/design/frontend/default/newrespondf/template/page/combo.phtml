@@ -187,6 +187,35 @@ foreach ($allSizeOptions as $instance) {
                 $ar_child_sizes = array_unique($ar_child_sizes);
                 ksort($ar_child_sizes);
 
+                /****************** check Include Bra option *********************/
+                $hasBraCup = "n";
+                foreach ($_bundle_product->getOptions() as $option) {
+                    $optionType = $option->getType(); // get option type
+
+                    $optionValues = $option->getValues();
+
+                    $hasBraCup = "n";
+                    if(isset($optionValues) && count($optionValues)>0) {
+
+                        if (isset($optionValues["remove_bracup_insert"])) {
+                            $hasBraCup = "n";
+                            break;
+                        }
+
+                        foreach ($optionValues as $optionValue) {
+                            $hasBraCup = "y";
+                            if (strtolower($optionValue['default_title']) == "y") {
+                                $braCupYesOptionId = $optionValue['option_id'];
+                                $braCupYesOptionTypeId = $optionValue['option_type_id'];
+                            } else if (strtolower($optionValue['default_title']) == "n") {
+                                $braCupNoOptionId = $optionValue['option_id'];
+                                $braCupNoOptionTypeId = $optionValue['option_type_id'];
+                            }
+                        }
+                    }
+                }
+                /****************** finish checking Include Bra option *********************/
+
                 $ar_bundle_sizes[$i] = array(
                     "product_name" => $_bundle_product->getName(),
                     "product_id" => $_bundle_product->getId(),
@@ -196,7 +225,8 @@ foreach ($allSizeOptions as $instance) {
                     //"images" => $bundle_product_images,
                     "color" => $allColors[$bundle_color_id],
                     "color_code" => $bundle_color_id,
-                    "url" => $bundledProductUrl
+                    "url" => $bundledProductUrl,
+                    "hasBraCup" => $hasBraCup
                 );
 
                 $arBundledProductImages[$_bundle_product->getId()] = array("small_image" => $small_image, "big_image" => $big_image);
@@ -286,11 +316,13 @@ foreach ($allSizeOptions as $instance) {
                                     ?>
                                 </div>
                             </div>
+
+                            <?php if($data["hasBraCup"]=="y"){ ?>
                             <div class="bra_cup_selection">
-                                <p>Include bra cup? <span class="bra_cup_toggle"><span class="no selected"></span><span
+                                <p>Include bra cup? <span class="bra_cup_toggle" optiontypeid="<?php echo $braCupYesOptionTypeId;?>" optionid="<?php echo $braCupYesOptionId;?>"><span class="no selected" optiontypeid="<?php echo $braCupNoOptionTypeId;?>" optionid="<?php echo $braCupNoOptionId;?>"></span><span
                                             class="yes"></span></span></p>
                             </div>
-
+                            <?php } ?>
                         </div>
 
                         <?php } ?>
@@ -347,6 +379,12 @@ foreach ($allSizeOptions as $instance) {
 <script type="text/javascript">
     (function($){
         $(document).ready(function(){
+
+            braOptionYesId = "<?php echo $braCupYesOptionId;?>";
+            braOptionTypeYesId = "<?php echo $braCupYesOptionTypeId;?>";
+            braOptionNoId = "<?php echo $braCupNoOptionId;?>";
+            braOptionTypeNoId = "<?php echo $braCupNoOptionTypeId;?>";
+
             $(".sign-in-box h1").html("8 GIFT SETS");
         })
     }(jQuery));
