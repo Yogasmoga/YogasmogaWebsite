@@ -20,6 +20,7 @@ jm(document).ready(function() {
 
     jm(".size").click(function(){
         jm(this).closest(".sizes").find(".size").removeClass("active-size");
+        jm(".error-text").html("");
         if(jm(this).hasClass("active-size"))
             jm(this).removeClass("active-size");
         else

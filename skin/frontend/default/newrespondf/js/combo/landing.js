@@ -21,7 +21,7 @@
                         slider.find('.flex-next').trigger('click');
                         chooseNext.closest(".details").find(".error-text").html("");
                     }else{
-                        chooseNext.closest(".details").find(".error-text").html("Please Choose a size to continue.");
+                        chooseNext.closest(".details").find(".error-text").html("Please choose a size to continue.");
                     }
                 });
             }
