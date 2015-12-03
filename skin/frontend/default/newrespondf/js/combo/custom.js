@@ -28,6 +28,7 @@ jm(document).ready(function() {
 
     jm(".size").click(function(){
         jm(this).closest(".sizes").find(".size").removeClass("active-size");
+        jm(".error-text").html("");
         if(jm(this).hasClass("active-size"))
             jm(this).removeClass("active-size");
         else
@@ -88,6 +89,8 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
             jm(".add_to_shopping_bag").removeClass("bag-active");
             parent.find(".add_to_shopping_bag").html("ADD TO BAG");
             jm(".shoping-cart .cartgo").html(result.count);
+            jm(".add_to_bag").removeClass("bag-active");
+            jm(".details").find(".choose_next").show();
         }
     });
 }
