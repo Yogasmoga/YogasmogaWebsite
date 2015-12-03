@@ -421,6 +421,38 @@ p.prd-read-reviews a, .com-a-prd-links {
     height: 124px;
 }
 
+.size-charts .tble td {
+    text-align: left;
+    border-top: 1px solid #999;
+    border-right: 1px solid #ccc;
+}
+
+.size-charts .tble td:last-child {
+    border-right: none;
+}
+
+.size-charts .tble tr:first-child td {
+    padding: 0 6px 6px;
+}
+
+.size-charts .tble tr:first-child td, .size-charts .tble tr td:first-child {
+    font-family: GothamBold;
+}
+
+.size-charts .tble tr td:first-child {
+    padding-left: 0 !important;
+    width: 30.31%;
+}
+
+.size-chart td {
+    padding:  4px 6px;
+    height: 30px;
+}
+
+.size-charts .tble tr:last-child td {
+    border-bottom: 1px solid #999;
+}
+
 /* ///////////////////MEDIA QUERIES///////////////////////// */
 @media screen and (max-width: 1400px) {
     .individual_product.three {
