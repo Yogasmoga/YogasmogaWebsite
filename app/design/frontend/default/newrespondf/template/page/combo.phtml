@@ -283,16 +283,16 @@ foreach ($allSizeOptions as $instance) {
                     </div>
                     <div class="related_blocks">
                         <?php
-                            $ct = 0;
+                            $sizeDivCount = 0;
                             $totalProducts = count($ar_bundle_sizes);
                             foreach ($ar_bundle_sizes as $data) {
-                                ++$ct;
+                                ++$sizeDivCount;
                         ?>
 
-                        <div class="product_<?php echo $ct;?>_details">
-                            <p class="product_name"><?php echo $data["product_name"]; ?> <span><?php echo $ct;?> of <?php echo $totalProducts;?> Products</span></p>
+                        <div class="product_<?php echo $sizeDivCount;?>_details" rel="<?php echo $data['product_id']; ?>">
+                            <p class="product_name"><?php echo $data["product_name"]; ?> <span><?php echo $sizeDivCount;?> of <?php echo $totalProducts;?> Products</span></p>
 
-                            <p class="product_color"><?php echo $data["color"]; ?></p>
+                            <p class="product_color product-color-<?php echo $sizeDivCount;?>" rel="<?php echo $data['color_code'];?>"><?php echo $data["color"]; ?></p>
                             <p class="sold_indidually">
                                 <a href="<?php echo $data['url']; ?>">$1000 Sold Individually</a>
                             </p>
@@ -319,9 +319,13 @@ foreach ($allSizeOptions as $instance) {
                             </div>
 
                             <?php if($data["hasBraCup"]=="y"){ ?>
-                            <div class="bra_cup_selection">
-                                <p>Include bra cup? <span class="bra_cup_toggle" optiontypeid="<?php echo $braCupYesOptionTypeId;?>" optionid="<?php echo $braCupYesOptionId;?>"><span class="no selected" optiontypeid="<?php echo $braCupNoOptionTypeId;?>" optionid="<?php echo $braCupNoOptionId;?>"></span><span
-                                            class="yes"></span></span></p>
+                            <div class="bra_cup_selection bra-cup-<?php echo $sizeDivCount;?>">
+                                <p>Include bra cup?
+                                    <span class="bra_cup_toggle">
+                                        <span class="no selected" optiontypeid="<?php echo $braCupYesOptionTypeId;?>" optionid="<?php echo $braCupYesOptionId;?>"></span>
+                                        <span class="yes" optiontypeid="<?php echo $braCupNoOptionTypeId;?>" optionid="<?php echo $braCupNoOptionId;?>"></span>
+                                    </span>
+                                </p>
                             </div>
                             <?php } ?>
                         </div>
@@ -342,7 +346,7 @@ foreach ($allSizeOptions as $instance) {
                                 c-3.7,0-6.6,3-6.6,6.6c0,1.4,0.5,2.7,1.2,3.8L21.9,35.4z" fill="#fff"/>
                                 </svg>
                         </div>
-                        <div class="add_to_shopping_bag">ADD TO BAG</div>
+                        <div class="add_to_shopping_bag" rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">ADD TO BAG</div>
                         <div class="choose_next">CHOOSE NEXT</div>
                     </div>
 

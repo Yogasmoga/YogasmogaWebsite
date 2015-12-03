@@ -163,16 +163,32 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                     $arBundleProductOptions = explode(":", $bundleProduct);
 
-                    $bundleProductId = $arBundleProductOptions[0];
-                    $colorData = $arBundleProductOptions[1];
-                    $sizeData = $arBundleProductOptions[2];
+                    if(count($arBundleProductOptions)==4) {                  // product id, color, size, bra-cup
+                        $bundleProductId = $arBundleProductOptions[0];
+                        $colorData = $arBundleProductOptions[1];
+                        $sizeData = $arBundleProductOptions[2];
+                        $braData = $arBundleProductOptions[3];
 
-                    $arColorData = explode("-", $colorData);
-                    $arSizeData = explode("-", $sizeData);
+                        $arColorData = explode("-", $colorData);
+                        $arSizeData = explode("-", $sizeData);
+                        $arBraData = explode("-", $braData);
+
+                        $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1], $arBraData[0] => $arBraData[1]);
+                    }
+                    else{
+                        $bundleProductId = $arBundleProductOptions[0];
+                        $colorData = $arBundleProductOptions[1];
+                        $sizeData = $arBundleProductOptions[2];
+
+                        $arColorData = explode("-", $colorData);
+                        $arSizeData = explode("-", $sizeData);
+
+                        $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1]);
+                    }
 
                     $data = array(
                         'qty' => 1,
-                        'super_attribute' => array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1]),
+                        'super_attribute' => $arSuper,
                         'product' => $bundleProductId,
                         'type' => 'gift-bundled',
                         'unique_time_stamp' => $uniqueTimeStamp

@@ -53,12 +53,22 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
     var sizeAttributeId = 138;
 
     var ar = Array();
-    for(var i=0;i<count;i++){
+    for(var i=1;i<=count;i++){
         var size = parent.find(".size-" + i + ".active-size").attr("rel");
         var size_data = sizeAttributeId + "-" + size;
         var color_data = colorAttributeId + "-" + parent.find(".product-color-" + i).attr("rel");
         var product_id = parent.find(".product_" + i + "_details").attr("rel");
-        ar.push(product_id + ":" + color_data + ":" + size_data);
+
+        isBraCupSelected = parent.find(".bra-cup-" + i).find(".bra_cup_toggle").find(".selected").hasClass("yes");
+        if(isBraCupSelected){
+            var optId = jQuery(".bra-cup-" + i).find('.selected').attr("optionid");
+            var optTypeId = jQuery(".bra-cup-" + i).find('.selected').attr("optiontypeid");
+            var bra_data = optId + "-" + optTypeId;
+
+            ar.push(product_id + ":" + color_data + ":" + size_data + ":" + bra_data);
+        }
+        else
+            ar.push(product_id + ":" + color_data + ":" + size_data);
     }
 
     var bundle_data = ar.join();
@@ -67,17 +77,11 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
     productUrl += '&qty=' + _productorderqty;
     productUrl += '&super_attribute[' + colorAttributeId + ']=' + currentProductColorCode;
 
-    if(isBraCupSelected){
-        var optId = jQuery(".bra_cup_selection").find('selected').attr("optionid");
-        var optTypeId = jQuery(".bra_cup_selection").find('selected').attr("optiontypeid");
-        productUrl += '&options[' + optId + ']=' + optTypeId;
-    }
-
     productUrl += '&type=gift';
     productUrl += '&bundle=' + bundle_data;
 
     productUrl += '&showhtml=0';
-
+console.log(productUrl);
     parent.find(".add_to_bag").html("Adding...");
 
     jm.ajax({
