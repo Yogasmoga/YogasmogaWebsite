@@ -170,7 +170,7 @@ function setActiveLink(sectionOffsets) {
         jQuery(".box.set_name .product_name").html(setName);
         jQuery(".box.set_name .product_price").html(setPrice);
 
-        currentCityIndex = sectionIndex - 1;
+        currentCityIndex = sectionIndex;
         console.log("city index = " + currentCityIndex);
         showTemperature();
 
