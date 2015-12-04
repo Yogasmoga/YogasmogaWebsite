@@ -555,6 +555,7 @@ img{
 }
 .post_link a{
     color:#fff;
+    text-transform: capitalize;
 }
 .post_content_box {
     float: left;
