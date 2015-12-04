@@ -65,4 +65,13 @@
         failure: '<?php echo $this->getUrl('checkout/onepage') ?>'}
     );
 //]]>
+
+
+jQuery(document).ready(function(){
+    jQuery(document).find("#checkout-step-cart .row.show_details").click(function () {
+        var giftIdClass = jQuery(this).prev().attr("rel");
+        jQuery(document).find("#checkout-step-cart .row.gift_child." + giftIdClass + "_product").toggle();
+        jQuery(this).toggleClass("open");
+    });
+});
 </script>

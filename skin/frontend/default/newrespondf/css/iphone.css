@@ -7767,3 +7767,41 @@ input#giftcard_use{
     padding: 5px 14px;
     text-transform: uppercase;
 }
+
+
+#checkout-step-cart .row.show_details:hover {
+    background: #f3f3f3;
+}
+
+#checkout-step-cart .row.show_details {
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    height: 44px;
+    padding: 13px 0;
+    position: relative;
+}
+
+#checkout-step-cart .row.gift_child{
+    display: none;
+    border-top: none;
+}
+
+#checkout-step-cart .row.show_details b {
+    color: #999;
+    cursor: pointer;
+    font: 27px/22px ITCAvantGardeStd-XLt;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 8px;
+    width: 15px;
+}
+
+#checkout-step-cart .row.show_details.open{
+    border-bottom: none;
+}
+
+#checkout-step-cart .row.show_details.open b::before {
+    content: "---";
+    letter-spacing: -3px;
+}
