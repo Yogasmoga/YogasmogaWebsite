@@ -73,9 +73,10 @@ if ($this->getRequest()->getParam('hidden')) {
 $_helper = $this->helper('catalog/output');
 $_product = $this->getProduct();
 $_product = Mage::getModel('catalog/product')->load($_product->getId());
-$storeId = Mage::app()->getStore()->getStoreId();
-$bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
 
+$storeId = Mage::app()->getStore()->getStoreId();
+$resourceModel = Mage::getResourceModel('catalog/product');
+$bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
 $bundledProduct = isset($bundled_product_ids) && strlen($bundled_product_ids) > 0 && strpos($bundled_product_ids, ",") != false;
 
 if (!$bundledProduct) {
