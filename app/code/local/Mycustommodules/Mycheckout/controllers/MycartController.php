@@ -191,7 +191,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                         'super_attribute' => $arSuper,
                         'product' => $bundleProductId,
                         'type' => 'gift-bundled',
-                        'unique_time_stamp' => $uniqueTimeStamp
+                        'unique_time_stamp' => $uniqueTimeStamp,
+                        'main_product_id' => $product->getId()
                     );
 
                     $bundledProduct = Mage::getModel('catalog/product')

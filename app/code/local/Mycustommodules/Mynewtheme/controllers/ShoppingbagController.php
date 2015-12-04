@@ -1829,8 +1829,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             else
                 $giftStyle = "";
 
-            if($item['product_type']=="gift-bundled")
-                continue;
+            //if($item['product_type']=="gift-bundled")
+             //   continue;
 /*********** added for gift set **********************/
 
             $html .='<li ' . $giftStyle . ' id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
@@ -1851,11 +1851,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $html .='<span class="amnt">'.$item['price'].'</span>';
                 }
             }
-/*            else if($item['product_type']=="gift-bundled") {
+            else if($item['product_type']=="gift-bundled") {
                 $html .= '<span class="clr">' . $item['color'] . '</span>';
                 if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
                 if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
-            } */
+            }
             else{
                 if(isset($item['insale']) && $item['insale'] == 'Yes')
                 {
