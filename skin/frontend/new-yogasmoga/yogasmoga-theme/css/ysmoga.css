@@ -2737,6 +2737,7 @@ a.learn-more {
     right: 0;
     top: 13px;
     width: 15px;
+    height: 21px;
 }
 
 .shopping-cart .addedItem .show_details b.opened::before {

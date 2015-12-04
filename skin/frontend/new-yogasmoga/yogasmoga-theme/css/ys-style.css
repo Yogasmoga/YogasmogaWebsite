@@ -2895,3 +2895,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     display: inline-block;
     vertical-align: middle;
 }
+
+.part-of-gift-set{
+    font: 11px GothamBook;
+}

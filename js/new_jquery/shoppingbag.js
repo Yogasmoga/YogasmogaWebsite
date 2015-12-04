@@ -429,6 +429,7 @@ function giftcart() {
     else showerror('Invalid gift of YS code.');
 }
 function showShoppingBagHtml() {
+
     if (window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
     else
@@ -473,6 +474,7 @@ function showShoppingBagHtml() {
                 // alert(data.html);
                 jQuery(".shopping-cart").html(data.html);
                 jQuery(".cartitemcount").html(data.count);
+
                 initializeCartGiftSet();
 /************ added by ys team ************/
                 jQuery("#addtobagloader").hide();
@@ -741,6 +743,8 @@ function addbracelettobag(pid, colorattributeid, sizeattributeid) {
                     jQuery(".shopping-cart").html(result.html);
                     jQuery(".cartitemcount").html(result.count);
 
+                    initializeCartGiftSet();
+
                     /***************** code update for bracelet **************************/
                     jQuery(".addbracelet").show();
                     jQuery(".addedItem").find("a.close").show();
@@ -772,6 +776,7 @@ function addbracelettobag(pid, colorattributeid, sizeattributeid) {
 
 /************************** updated code ***************************/
 function deleteproduct(deletedproducid, productcartqty) {
+
     if (deletedproducid > 0) {
         var addurl = homeUrl + 'mynewtheme/shoppingbag/delete/';
         jQuery.ajax({
