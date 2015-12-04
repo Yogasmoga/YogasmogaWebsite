@@ -478,7 +478,14 @@ else
 
                         $index = 0;
                         foreach($items as $_item){
-                            $_item->setIndex(++$index);
+
+                            $buyRequest = $_item->getBuyRequest();
+
+                            if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=='gift')
+                                ++$index;
+
+                            $_item->setIndex($index);
+
                             if ($_item->getQty() > 1) {
                                 for($i = 0;$i < $_item->getQty();$i++)
                                     echo $this->getItemHtml($_item);
