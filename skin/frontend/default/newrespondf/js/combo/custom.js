@@ -73,7 +73,7 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
 
     var bundle_data = ar.join();
 
-    var productUrl = homeUrl + 'mycheckout/mycart/add?product=' + giftProductId;
+    var productUrl = homeUrl + 'mycheckout/mycart/addmobile?product=' + giftProductId;
     productUrl += '&qty=' + _productorderqty;
     productUrl += '&super_attribute[' + colorAttributeId + ']=' + currentProductColorCode;
 
