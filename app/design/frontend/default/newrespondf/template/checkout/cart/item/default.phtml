@@ -123,7 +123,7 @@ foreach ($_options as $_option) {
 <?php //echo $_item->getProductId()."hel" ?>
 
 
-<div class="row selected_cart_products <?php echo $giftClass;?>">
+<div class="row selected_cart_products <?php echo $giftClass;?>" rel="gift_<?php echo $itemIndex;?>">
     <div class="span2">
 
         <div class="col_left_img">
@@ -555,7 +555,7 @@ foreach ($_options as $_option) {
 
         </td>
     </div>
-    <?php if($productType=="gift"){?>
-        <div class="show_details">SET DETAILS <b>&plus;</b></div>
-    <?php } ?>
 </div>
+<?php if($productType=="gift"){?>
+    <div class="show_details row">SET DETAILS <b>&plus;</b></div>
+<?php } ?>
