@@ -29,6 +29,8 @@
 
 <?php
     $_item = $this->getItem();
+    $itemIndex = $_item->getIndex();        // passed from cart.phtml
+
     $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
     $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
     $messages = $this->getMessages();
@@ -38,8 +40,16 @@
 
     $productType = "normal";
     // if we are trying to remove gift set
-    if(isset($buyRequest) && isset($buyRequest['type']))
+    if(isset($buyRequest) && isset($buyRequest['type'])) {
         $productType = $buyRequest['type'];
+
+        if($productType=="gift")
+            $giftClass = "gift_parent gift_$itemIndex";
+        else if($productType=="gift-bundled")
+            $giftClass = "gift_" . $itemIndex . "_product gift_child";
+        else
+            $giftClass = "";
+    }
 ?>
 
 <?php
@@ -113,9 +123,7 @@ foreach ($_options as $_option) {
 <?php //echo $_item->getProductId()."hel" ?>
 
 
-<div class="row selected_cart_products">
-	
-
+<div class="row selected_cart_products <?php echo $giftClass;?>">
     <div class="span2">
 
         <div class="col_left_img">
@@ -547,4 +555,7 @@ foreach ($_options as $_option) {
 
         </td>
     </div>
-    </div>
+    <?php if($productType=="gift"){?>
+        <div class="show_details">SET DETAILS <b>&plus;</b></div>
+    <?php } ?>
+</div>
