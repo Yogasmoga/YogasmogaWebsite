@@ -879,6 +879,11 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                         <span class="productcost amount "><?php echo $productPrice; ?></span>
                                             <span class="was-amount no-display"
                                                   style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
+												  <?php 
+												  $text = $_product->getAttributeText('gift_set');
+												  $arr = explode(',',$text);
+												  ?>
+										<span style="font-size: 12px;">Part of <?php echo $arr[0]?> </span>		  
                                     </div>
                                     <!-- heading -->
 
