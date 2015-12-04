@@ -1813,6 +1813,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $vivacityConfigurableIds = array(2599,1990,1846,1843);
         $vivacityFound = false;
 
+        $giftCount = 0;
         foreach($minidetails['items'] as $item)
         {
             foreach($vivacityConfigurableIds as $vivacityId){
@@ -1824,18 +1825,25 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 /*********** added for gift set **********************/
             $circleBorder = "";
+            $giftStyle = "";
+            $giftClass = "";
+            $giftMainClass = "";
             if($item['product_type']=="gift"){
+
+                ++$giftCount;
+
                 $giftStyle = "border-bottom: none";
+                $giftClass = "gift_parent gift_" . $giftCount;
                 $circleBorder = 'style="border-radius: 50%; border: solid 1px rgba(204, 204, 204, 0.7);"';
             }
-            else
-                $giftStyle = "";
+            else if($item['product_type']=="gift-bundled")
+                $giftClass = "gift_" . $giftCount . "_product gift_child";
 
             //if($item['product_type']=="gift-bundled")
             //    continue;
 /*********** added for gift set **********************/
 
-            $html .='<li ' . $giftStyle . ' id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
+            $html .='<li class="' . $giftClass . '" ' . $giftStyle . ' id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
                 <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ' . $circleBorder . '/></span></a>
 <span>
                     <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
@@ -1909,6 +1917,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 /************* for gift set ***************/
             if($item['product_type']=='gift-bundled')
                 ;
+            else if($item['product_type']=='gift') {
+                $html .= '<a href="#" class="close"></a>';
+                $html .= '<div class="show_details">SET DETAILS <b class="show_gift_items">&plus;</b></div>';
+            }
             else
                 $html .='<a href="#" class="close"></a>';
 /************* for gift set ***************/
