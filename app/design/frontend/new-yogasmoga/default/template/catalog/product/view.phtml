@@ -880,8 +880,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                             <span class="was-amount no-display"
                                                   style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
 												  <?php 
-													$partOfGiftSet = $_product->getAttributeText('gift_set');
-												  echo "[" . implode(",",$partOfGiftSet) . "]";
+													$partOfGiftSet = $_helper->productAttribute($_product, $_product->getGiftSet(), 'gift_set');											  
+												  echo $partOfGiftSet;
 													if(isset($partOfGiftSet)){
 														$giftSetPartArr = explode(',',$partOfGiftSet);
 														$giftSetTitle = $giftSetPartArr[0];
