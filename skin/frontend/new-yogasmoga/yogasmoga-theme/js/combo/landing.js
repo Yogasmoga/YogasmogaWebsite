@@ -171,6 +171,7 @@ function setActiveLink(sectionOffsets) {
         jQuery(".box.set_name .product_price").html(setPrice);
 
         currentCityIndex = sectionIndex - 1;
+        console.log("city index = " + currentCityIndex);
         showTemperature();
 
         var mapPoint = jQuery(".gift_set_link:visible").eq(sectionIndex).attr("data-map");
