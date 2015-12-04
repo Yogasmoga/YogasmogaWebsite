@@ -1289,25 +1289,31 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
 
-                    /******************* bundled check ****************/
+                    /******************* gift set check ****************/
 
                     $buyRequest = $item->getBuyRequest();
-                    $product_type = $buyRequest['type'];
 
-                    if(isset($product_type)){
-                        $temparray['product_type'] = $product_type;         // there should not be any remove icon on cart for this
+                    if(isset($buyRequest['type'])) {
+                        $product_type = $buyRequest['type'];
 
-                        if($product_type=='gift')
-                            $temparray['imageurl'] = $this->getGiftSetMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
-                        else
+                        if (isset($product_type)) {
+                            $temparray['product_type'] = $product_type;         // there should not be any remove icon on cart for this
+
+                            if ($product_type == 'gift')
+                                $temparray['imageurl'] = $this->getGiftSetMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                            else
+                                $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                        } else {
+                            $temparray['product_type'] = null;
                             $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                        }
                     }
                     else{
                         $temparray['product_type'] = null;
                         $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
                     }
 
-                    /******************* bundled check ****************/
+                    /******************* gift set  check ****************/
 
                     $temparray['pid'] = $item->getProductId();
                     $temparray['sku'] = $item->getSku();
@@ -1829,8 +1835,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             else
                 $giftStyle = "";
 
-            //if($item['product_type']=="gift-bundled")
-             //   continue;
+            if($item['product_type']=="gift-bundled")
+                continue;
 /*********** added for gift set **********************/
 
             $html .='<li ' . $giftStyle . ' id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
@@ -1851,11 +1857,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $html .='<span class="amnt">'.$item['price'].'</span>';
                 }
             }
-            else if($item['product_type']=="gift-bundled") {
+/*            else if($item['product_type']=="gift-bundled") {
                 $html .= '<span class="clr">' . $item['color'] . '</span>';
                 if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
                 if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
-            }
+            }*/
             else{
                 if(isset($item['insale']) && $item['insale'] == 'Yes')
                 {
@@ -1953,8 +1959,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
             foreach($_childproducts as $_childproduct)
             {
-                //echo '<pre>'; print_r($_childproduct);die;
-
                 $qty = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
                 $stock = $_childproduct->getStockItem();
                 $inStock = $stock->getIsInStock();
