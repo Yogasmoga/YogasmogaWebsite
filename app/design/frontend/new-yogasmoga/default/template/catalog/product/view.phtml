@@ -882,8 +882,10 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 												  <?php 
 												  $text = $_product->getAttributeText('gift_set');
 												  $arr = explode(',',$text);
+												  if($arr[0]){
 												  ?>
-										<span style="font-size: 12px;">Part of <?php echo $arr[0]?> </span>		  
+											<span style="font-size: 12px;">Part of <?php echo $arr[0]?> </span>		  
+											<?php }?>
                                     </div>
                                     <!-- heading -->
 
