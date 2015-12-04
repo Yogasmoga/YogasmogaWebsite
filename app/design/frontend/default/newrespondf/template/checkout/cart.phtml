@@ -183,6 +183,7 @@ if(!function_exists('getPointsCurrentlyUsed'))
             array_push($itemids, $item->getProductId());
         }
 
+        $cattotal = 0;
         foreach ($items as $item) {
             if($item->getPrice() > 0)
             {
@@ -460,7 +461,22 @@ else
                         </div>
 
                         <?php
-                        foreach($this->getItems() as $_item) {
+                        //foreach($this->getItems() as $_item) {
+
+/******************* code updated to reverse the cart *************************************/
+                        $cartItems = Mage::getModel('sales/quote_item')->getCollection()
+                            ->setQuote($this->getQuote())
+                            ->addOrder('item_id', 'desc');
+
+                        $items = array();
+                        foreach ($cartItems as $item) {
+                            if (!$item->isDeleted() && !$item->getParentItemId()) {
+                                $items[] = $item;
+                            }
+                        }
+/******************* code updated to reverse the cart *************************************/
+
+                        foreach($items as $_item){
                             if ($_item->getQty() > 1) {
                                 for($i = 0;$i < $_item->getQty();$i++)
                                     echo $this->getItemHtml($_item);

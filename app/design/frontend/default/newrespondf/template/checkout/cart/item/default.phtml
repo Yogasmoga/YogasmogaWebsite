@@ -28,12 +28,18 @@
 
 
 <?php
-$_item = $this->getItem();
-$isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
-$canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
-$messages = $this->getMessages();
-$_options = $this->getOptionList();
-//print_r($this->getProductOptions());
+    $_item = $this->getItem();
+    $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
+    $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
+    $messages = $this->getMessages();
+    $_options = $this->getOptionList();
+
+    $buyRequest = $_item->getBuyRequest();
+
+    $productType = "normal";
+    // if we are trying to remove gift set
+    if(isset($buyRequest) && isset($buyRequest['type']))
+        $productType = $buyRequest['type'];
 ?>
 
 <?php
@@ -87,7 +93,7 @@ if (!function_exists('getImage')) {
 ?>
 
 <?php
-//echo "ravi".$_options = $this->getOptionList();
+
 $colorlabel = "";
 foreach ($_options as $_option) {
     //echo "<pre>";
@@ -138,10 +144,11 @@ foreach ($_options as $_option) {
 
                     <div class="item_option_color">
 
+                        <?php if($productType!="gift"){ ?>
+
                         <?php foreach ($_options as $_option) : ?>
                             <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
 
-                            <!--  <span><?php //echo $this->htmlEscape($_option['label']) ?>:</span> -->
                             <?php if (strtolower($_option['label']) == "color"): ?>
                                 <?php
                                 $colorcode = $_formatedOptionValue['value'];
@@ -166,6 +173,9 @@ foreach ($_options as $_option) {
                     </span>
                             <?php endif; ?>
                         <?php endforeach; ?>
+
+                        <?php } ?>
+
                     </div>
 
 
@@ -273,6 +283,9 @@ foreach ($_options as $_option) {
     <div class="span1">
 
         <?php endif; ?>
+
+        <?php if($productType!="gift-bundled"){ ?>
+
         <div class="item_remove">
             <a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2">
 <!--                --><?php //echo $this->__('Remove item')?>
@@ -290,6 +303,11 @@ foreach ($_options as $_option) {
 </svg>
             </a>
         </div>
+
+        <?php } ?>
+
+        <?php if($productType!="gift-bundled"){ ?>
+
         <div class="price-box">
 
             <div class="cart-price-box"<?php //if ($this->getQty() == 1) echo ' style="display:none;"' ?>
@@ -525,6 +543,7 @@ foreach ($_options as $_option) {
 
         </div>
 
+        <?php } ?>
 
         </td>
     </div>

@@ -81,7 +81,7 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
     productUrl += '&bundle=' + bundle_data;
 
     productUrl += '&showhtml=0';
-console.log(productUrl);
+
     parent.find(".add_to_bag").html("Adding...");
 
     jm.ajax({
