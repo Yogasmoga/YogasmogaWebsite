@@ -473,7 +473,7 @@ function showShoppingBagHtml() {
                 // alert(data.html);
                 jQuery(".shopping-cart").html(data.html);
                 jQuery(".cartitemcount").html(data.count);
-
+                initializeCartGiftSet();
 /************ added by ys team ************/
                 jQuery("#addtobagloader").hide();
 /************ added by ys team ************/
@@ -1154,3 +1154,17 @@ function vivacityPromotion(e){
     }
 }
 */
+
+function initializeCartGiftSet(){
+    alert("initialized");
+    jQuery(document).find(".shopping-cart .addedItem .show_details b").click(function(){
+        alert("u clicked me");
+        var classes = jQuery(this).closest("li").attr("class");
+        var classesArray = classes.split(" ");
+        var giftIdClass = classesArray[1];
+        jQuery(document).find(".shopping-cart .addedItem .gift_child."+giftIdClass+"_product").toggle();
+        jQuery(this).toggleClass("opened");
+        jQuery(this).closest(".show_details").toggleClass("open");
+    });
+
+}

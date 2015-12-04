@@ -2713,3 +2713,50 @@ a.learn-more {
     vertical-align: middle;
     width: 100%;
 }
+
+
+/* /////////////////////SHOPPING CART WITH GIFT SETS//////////////////////// */
+.shopping-cart .addedItem .show_details {
+    border-top: 1px solid #e6e6e6;
+    float: left;
+    font: 11px gothamBold;
+    margin-bottom: -20px;
+    margin-top: 20px;
+    padding: 20px 0 20px 50px;
+    text-align: left;
+    width: 294px;
+    position: relative;
+}
+
+.shopping-cart .addedItem .show_details b {
+    color: #999;
+    cursor: pointer;
+    font: 27px/22px AvantGardeGothicITCW01X;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 13px;
+    width: 15px;
+}
+
+.shopping-cart .addedItem .show_details b.opened::before {
+    content: "--";
+    letter-spacing: 0;
+}
+
+.shopping-cart .addedItem .gift_child {
+    border: medium none;
+    display: none;
+}
+
+.shopping-cart .addedItem .gift_child .pname {
+    font-family: gothamBook;
+}
+
+.shopping-cart .addedItem .gift_child:last-child {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.shopping-cart .addedItem .show_details.open {
+    border-bottom: 1px solid #e6e6e6;
+}
