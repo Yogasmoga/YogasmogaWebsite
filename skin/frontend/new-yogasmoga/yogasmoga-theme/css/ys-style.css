@@ -694,7 +694,7 @@ a.continuelink:hover{
 .adddields span {background: 0 #eeefef; border: 1px solid #999; float: left; height: 15px; padding: 7px 4px 6px; width: 6%; cursor: pointer; font-size: 16px; line-height: 15px;}
 .addedItem {background: #fff; float: right; width: 99.5%;margin-bottom: 10px;}
 .addedItem .similarProdList {font-size: 11px; width: 90%; text-transform: uppercase;}
-.addedItem .similarProdList > li {border-bottom: 1px solid #E6E6E6; margin: 0; padding: 20px 0; position: relative;}
+.addedItem .similarProdList > li {border-top: 1px solid #E6E6E6; margin: 0; padding: 20px 0; position: relative;}
 .addedItem .similarProdList > li:last-child{margin: 0;/* padding: 10px 0 0*/}
 .addedItem .similarProdList span {width: 50%; float: left; text-align: left; line-height: 17px;}
 .addedItem .similarProdList span.wdth100{text-align: center;}
