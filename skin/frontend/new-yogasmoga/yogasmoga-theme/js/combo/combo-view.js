@@ -4,7 +4,7 @@ var bundleImages = [];
 var allComboProducts = [];
 var setProducts = {};
 var setProductCount = 0;
-
+var blockHtml;
 jQuery(document).ready(function () {
 
     initializeBanner();
@@ -275,6 +275,18 @@ function bindSlider() {
         jQuery(".size-chart").hide();
         jQuery(".size-chart-" + SizeChartIndex + "").show();
         jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
+
+        //////////////// Swapping images//////////////
+
+        var product = jQuery(this).closest(".product");
+        if(parent.find(".product_img").length>0) {
+            product.addClass("bundle_image");
+            blockHtml = product.html();
+            product.html(jQuery(".current_slider_image").html());
+        }
+
+        //////////////////////////////////////////////
+
         jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["big_image"] + "'/>");
     });
 }

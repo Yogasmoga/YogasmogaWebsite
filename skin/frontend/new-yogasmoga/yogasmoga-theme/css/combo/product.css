@@ -402,23 +402,22 @@ p.prd-read-reviews a, .com-a-prd-links {
     border: none;
 }
 
-.individual_product.bundle_image .product {
+.individual_product .product.bundle_image {
     margin-bottom: 40px;
-    min-height: 124px;
     padding-left: 0;
     position: relative;
 }
 
-.individual_product.bundle_image .product .product_img {
+.individual_product .product.bundle_image {
     background: #f3f3f3;
     cursor: pointer;
-    height: 124px;
     position: static;
-    width: 100%;
+    width: 247px;
 }
 
-.individual_product.bundle_image .product .product_img img {
-    height: 124px;
+.individual_product .product.bundle_image img {
+    width: 100%;
+    height: auto;
 }
 
 .size-charts .tble td {
