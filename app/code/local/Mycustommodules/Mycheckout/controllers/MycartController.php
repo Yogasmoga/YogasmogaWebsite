@@ -485,8 +485,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 $buyRequest = $item->getBuyRequest();
                 $product_type = $buyRequest['type'];
 
-                //if(isset($product_type) && $product_type=="gift-bundled")
-                    //continue;
+                if(isset($product_type) && $product_type=="gift-bundled")
+                    continue;
 
                 ++$count;
             }

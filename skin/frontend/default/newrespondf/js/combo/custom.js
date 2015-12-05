@@ -82,19 +82,37 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
 
     productUrl += '&showhtml=0';
 
-    parent.find(".add_to_bag").html("Adding...");
+    parent.find(".add_to_shopping_bag").html("Adding...");
 
     jm.ajax({
         type: 'POST',
         url: productUrl,
         data: {},
         success: function (result) {
-            jm(".sizes").find(".size").removeClass("active-size");
-            jm(".add_to_shopping_bag").removeClass("bag-active");
-            parent.find(".add_to_shopping_bag").html("ADD TO BAG");
-            jm(".shoping-cart .cartgo").html(result.count);
-            jm(".add_to_bag").removeClass("bag-active");
-            jm(".details").find(".choose_next").show();
+
+            result = eval('(' + result + ')');
+
+            if (result.status == 'success') {
+                jm(".sizes").find(".size").removeClass("active-size");
+                jm(".add_to_shopping_bag").removeClass("bag-active");
+                parent.find(".add_to_shopping_bag").html("ADD TO BAG");
+                jm(".shoping-cart .cartgo").html(result.count);
+                jm(".add_to_bag").removeClass("bag-active");
+                jm(".details").find(".choose_next").show();
+
+                jQuery(".shoping-cart svg path").css("fill","#fff");
+                jQuery(".shoping-cart svg rect").css("fill","#fff");
+
+                jQuery(".product_add_conf_popup").fadeIn();
+            }
+            else{
+                jm(".sizes").find(".size").removeClass("active-size");
+                jm(".add_to_shopping_bag").removeClass("bag-active");
+                parent.find(".add_to_shopping_bag").html("ADD TO BAG");
+                jm(".add_to_bag").removeClass("bag-active");
+                jm(".details").find(".choose_next").show();
+                alert("This item is out of stock");
+            }
         }
     });
 }

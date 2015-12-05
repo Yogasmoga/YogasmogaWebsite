@@ -292,3 +292,16 @@ h1.page-title {
         padding-top: 1px;
     }
 }
+
+.product_add_conf_popup {
+    background: rgba(255, 255, 255, 0.95) none repeat scroll 0 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 44px;
+    width: 100%;
+    z-index: 100;
+    display: none;
+    padding-bottom: 44px;
+    text-align: center;
+}
