@@ -15,9 +15,9 @@ jm(document).ready(function() {
         if(jm(this).hasClass("bag-active")) {
 
             var giftIdCount = jm(this).attr('rel');
-            console.debug(giftIdCount);
+
             var arGiftIdCount = giftIdCount.split(':');
-            console.debug(arGiftIdCount);
+
             var giftId = arGiftIdCount[0];
             var currentProductColorCode = arGiftIdCount[1];
             var count = arGiftIdCount[2];
