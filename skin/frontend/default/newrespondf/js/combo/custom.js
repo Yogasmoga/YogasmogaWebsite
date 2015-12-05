@@ -105,6 +105,14 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
 
                 jQuery(".product_add_conf_popup").fadeIn();
             }
+            else if(result.status == "exists"){
+                alert("This gift set already exists in the cart");
+                jm(".sizes").find(".size").removeClass("active-size");
+                jm(".add_to_shopping_bag").removeClass("bag-active");
+                parent.find(".add_to_shopping_bag").html("ADD TO BAG");
+                jm(".add_to_bag").removeClass("bag-active");
+                jm(".details").find(".choose_next").show();
+            }
             else{
                 jm(".sizes").find(".size").removeClass("active-size");
                 jm(".add_to_shopping_bag").removeClass("bag-active");

@@ -384,13 +384,27 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
 		url: productUrl,
 		data: {},
 		success: function (result) {
-			jm(".sizes").find(".size").removeClass("active-size");
-			jm(".add_to_bag").removeClass("bag-active");
-			jm(".add_to_bag").html('ADD TO BAG');
 
-			parent.find(".add_to_bag").html("ADD TO BAG");
-			jm("div#myminicart").html(result.html);
-			showShoppingBagHtmlOpen();
+			result = eval('(' + result + ')');
+
+			if(result.status=="success") {
+				jm(".sizes").find(".size").removeClass("active-size");
+				jm(".add_to_bag").removeClass("bag-active");
+				jm(".add_to_bag").html('ADD TO BAG');
+
+				parent.find(".add_to_bag").html("ADD TO BAG");
+				jm("div#myminicart").html(result.html);
+				showShoppingBagHtmlOpen();
+			}
+			else{
+				jm(".sizes").find(".size").removeClass("active-size");
+				jm(".add_to_bag").removeClass("bag-active");
+				jm(".add_to_bag").html('ADD TO BAG');
+
+				parent.find(".add_to_bag").html("ADD TO BAG");
+				showShoppingBagHtmlOpen();
+				alert("This gift set already exists in the cart");
+			}
 		}
 	});
 }

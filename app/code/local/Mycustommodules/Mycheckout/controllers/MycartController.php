@@ -98,7 +98,19 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         }
         return false;
     }
-    
+
+    public function giftExistsInCard($productId){
+        $session = Mage::getSingleton('checkout/session');
+        $count = 0;
+        foreach ($session->getQuote()->getAllItems() as $item)
+        {
+            if($item->getProductId()==$productId)
+                return true;
+        }
+
+        return false;
+    }
+
     public function addAction()
     {
         Mage::getModel('smogiexpirationnotifier/applyremovediscount')->removesmogibucks();
@@ -154,6 +166,12 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
             /************* checking if product is gift-set ****************/
             if($params["type"]=="gift"){
+
+                $productId = (int) $this->getRequest()->getParam('product');
+                if($this->giftExistsInCard($productId)){
+                    echo json_encode(array("status" => "exists"));
+                    return;
+                }
 
                 $bundle = $params['bundle'];
 
@@ -295,6 +313,12 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
             /************* checking if product is gift-set ****************/
             if($params["type"]=="gift"){
+
+                $productId = (int) $this->getRequest()->getParam('product');
+                if($this->giftExistsInCard($productId)){
+                    echo json_encode(array("status" => "exists"));
+                    return;
+                }
 
                 $bundle = $params['bundle'];
 
