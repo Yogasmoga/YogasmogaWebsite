@@ -232,6 +232,7 @@ foreach ($allSizeOptions as $instance) {
                     }
 
                     // main set images
+                    $setImage = "";
                     $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
                     if (isset($_gallery)) {
                         foreach ($_gallery as $_image) {
@@ -244,6 +245,8 @@ foreach ($allSizeOptions as $instance) {
                             $latlongs[] = $latlong;
                             $cityTimes[] = $cityTime;
                             $person = $imageLabelData['person'];
+
+                            $setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
                             break;                    // we want to read first image only
                         }
                     }
@@ -336,7 +339,7 @@ foreach ($allSizeOptions as $instance) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="side1">
+                            <div class="side1" style="url('<?php echo $setImage;?>'); background-size:auto 100%; background-position: center center;">
                                 <p class="product_name"><?php echo $_product->getName(); ?> SET</p>
 
                                 <p class="product_price">$<?php echo round($_product->getPrice(), 0); ?></p>
