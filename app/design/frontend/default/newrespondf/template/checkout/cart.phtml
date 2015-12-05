@@ -446,8 +446,15 @@ else
 
                             <?php
                                 $totalItemCount = 0;
-                                foreach($this->getItems() as $_item)
+                                foreach($this->getItems() as $_item) {
+
+                                    $buyRequest = $_item->getBuyRequest();
+
+                                    if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift-bundled")
+                                            continue;
+
                                     $totalItemCount += $_item->getQty();
+                                }
                             ?>
 
                                 <!--<div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>-->
@@ -483,6 +490,8 @@ else
 
                             if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=='gift')
                                 ++$index;
+
+                            $_item->setIndex($index);
 
                             if ($_item->getQty() > 1) {
                                 for($i = 0;$i < $_item->getQty();$i++)
