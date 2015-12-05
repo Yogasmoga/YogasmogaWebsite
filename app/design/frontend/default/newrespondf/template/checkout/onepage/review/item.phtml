@@ -76,7 +76,17 @@
             return $url;
         }   
     }
-    
+
+    $buyRequest = $_item->getBuyRequest();
+
+    $isGiftSet = false;
+    // for showing gift set
+    if(isset($buyRequest) && isset($buyRequest['type'])) {
+        $productType = $buyRequest['type'];
+
+        if ($productType == "gift")
+            $isGiftSet = true;
+    }
     //echo getImage(51, 'Green');
 ?>
 <?php if ($_options = $this->getOptionList()):?>
@@ -110,6 +120,8 @@
           </div>
 		  <div class="col_right_options">
             <h3 class="product-name"><?php echo html_entity_decode($this->escapeHtml($this->getProductName())) ?></h3>
+
+              <?php if(!$isGiftSet){ ?>
 
             <?php if ($_options = $this->getOptionList()):?>
                 <div class="item-options">Color:
@@ -165,6 +177,8 @@
                     <?php endforeach; ?>
                 </div>
             <?php endif;?>
+
+              <?php } ?>
 
             <?php if ($addtInfoBlock = $this->getProductAdditionalInformationBlock()):?>
                 <?php echo $addtInfoBlock->setItem($_item)->toHtml() ?>
