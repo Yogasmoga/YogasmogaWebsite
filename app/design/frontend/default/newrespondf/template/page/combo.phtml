@@ -105,256 +105,284 @@ foreach ($allSizeOptions as $instance) {
             $arBundledProductImages = array();
 
             foreach ($productCollection as $_product_single) {
-            $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
-            $setProductUrl = $_product->getProductUrl();
+                $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
+                $setProductUrl = $_product->getProductUrl();
 
-            $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
-            foreach ($_childProducts as $simple) {
-                $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
-                break;
-            }
-
-            $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
-
-            if (isset($bundled_product_ids))
-                $bundled_product_ids = trim($bundled_product_ids);
-
-            $ar_bundled_product_ids = explode(",", $bundled_product_ids);
-
-            $ar_bundle_sizes = array();
-
-            /************ get color code of configurable product **************/
-            $productAttributeOptions = $_product->getTypeInstance(true)->getConfigurableAttributesAsArray($_product);
-            foreach ($productAttributeOptions as $productAttribute) {
-                foreach ($productAttribute['values'] as $attribute) {
-                    if ($productAttribute['label'] == 'Color') {
-                        $gift_simple_color = $attribute['value_index'];
-                        break;
-                    }
+                $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
+                foreach ($_childProducts as $simple) {
+                    $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
+                    break;
                 }
-            }
-            /************ get color code of configurable product **************/
 
-            $gift_simple_id = $_product_single->getId();
-            $gift_bundle_count = count($ar_bundled_product_ids);
+                $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
 
-            for ($i = 0; $i < count($ar_bundled_product_ids); $i++) {
-
-                $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);          // id:color_code
-
-                $bundle_configurable_id = $ar_id_color_code[0];
-                $bundle_color_id = $ar_id_color_code[1];
-
-                $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
-                $bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
-
-                $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
-
-                $bundle_product_images = array();
-
+                // get set image
+                $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
                 if (isset($_gallery)) {
                     foreach ($_gallery as $_image) {
                         $imageLabelData = json_decode(trim($_image->getLabel()), true);
 
-                        if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                        if ($imageLabelData == NULL)
                             continue;
 
-                        if ($imageLabelData['color'] == $ar_id_color_code[1]) {
-                            $big_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
-                            //$bundle_product_images[] = $url;
+                        $setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                        break;
+                    }
+                }
+
+                if (isset($bundled_product_ids))
+                    $bundled_product_ids = trim($bundled_product_ids);
+
+                $ar_bundled_product_ids = explode(",", $bundled_product_ids);
+
+                $ar_bundle_sizes = array();
+
+                /************ get color code of configurable product **************/
+                $productAttributeOptions = $_product->getTypeInstance(true)->getConfigurableAttributesAsArray($_product);
+                foreach ($productAttributeOptions as $productAttribute) {
+                    foreach ($productAttribute['values'] as $attribute) {
+                        if ($productAttribute['label'] == 'Color') {
+                            $gift_simple_color = $attribute['value_index'];
                             break;
                         }
                     }
                 }
+                /************ get color code of configurable product **************/
 
-                $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
-                $ar_child_sizes = array();
-                foreach ($_childProducts as $_childProduct) {
-                    $size = $_childProduct->getAttributeText('size');
+                $gift_simple_id = $_product_single->getId();
+                $gift_bundle_count = count($ar_bundled_product_ids);
 
-                    if (is_numeric($size) && intval($size) > 12)
-                        continue;
+                for ($i = 0; $i < count($ar_bundled_product_ids); $i++) {
 
-                    if (strpos(strtoupper($size), "T") !== false)
-                        continue;
+                    $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);          // id:color_code
 
-                    if (is_numeric($size))
-                        $ar_child_sizes[] = intval($size);
-                    else
-                        $ar_child_sizes[] = $size;
-                }
+                    $bundle_configurable_id = $ar_id_color_code[0];
+                    $bundle_color_id = $ar_id_color_code[1];
 
-                $ar_child_sizes = array_unique($ar_child_sizes);
-                ksort($ar_child_sizes);
+                    $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
+                    $bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
 
-                /****************** check Include Bra option *********************/
-                $hasBraCup = "n";
-                foreach ($_bundle_product->getOptions() as $option) {
-                    $optionType = $option->getType(); // get option type
+                    $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
 
-                    $optionValues = $option->getValues();
+                    $bundle_product_images = array();
 
-                    $hasBraCup = "n";
-                    if(isset($optionValues) && count($optionValues)>0) {
+                    if (isset($_gallery)) {
+                        foreach ($_gallery as $_image) {
+                            $imageLabelData = json_decode(trim($_image->getLabel()), true);
 
-                        if (isset($optionValues["remove_bracup_insert"])) {
-                            $hasBraCup = "n";
-                            break;
-                        }
+                            if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                                continue;
 
-                        foreach ($optionValues as $optionValue) {
-                            $hasBraCup = "y";
-                            if (strtolower($optionValue['default_title']) == "y") {
-                                $braCupYesOptionId = $optionValue['option_id'];
-                                $braCupYesOptionTypeId = $optionValue['option_type_id'];
-                            } else if (strtolower($optionValue['default_title']) == "n") {
-                                $braCupNoOptionId = $optionValue['option_id'];
-                                $braCupNoOptionTypeId = $optionValue['option_type_id'];
+                            if ($imageLabelData['color'] == $ar_id_color_code[1]) {
+                                $big_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                                //$bundle_product_images[] = $url;
+                                break;
                             }
                         }
                     }
+
+                    $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
+                    $ar_child_sizes = array();
+                    foreach ($_childProducts as $_childProduct) {
+                        $size = $_childProduct->getAttributeText('size');
+
+                        if (is_numeric($size) && intval($size) > 12)
+                            continue;
+
+                        if (strpos(strtoupper($size), "T") !== false)
+                            continue;
+
+                        if (is_numeric($size))
+                            $ar_child_sizes[] = intval($size);
+                        else
+                            $ar_child_sizes[] = $size;
+                    }
+
+                    $ar_child_sizes = array_unique($ar_child_sizes);
+                    ksort($ar_child_sizes);
+
+                    /****************** check Include Bra option *********************/
+                    $hasBraCup = "n";
+                    foreach ($_bundle_product->getOptions() as $option) {
+                        $optionType = $option->getType(); // get option type
+
+                        $optionValues = $option->getValues();
+
+                        $hasBraCup = "n";
+                        if (isset($optionValues) && count($optionValues) > 0) {
+
+                            if (isset($optionValues["remove_bracup_insert"])) {
+                                $hasBraCup = "n";
+                                break;
+                            }
+
+                            foreach ($optionValues as $optionValue) {
+                                $hasBraCup = "y";
+                                if (strtolower($optionValue['default_title']) == "y") {
+                                    $braCupYesOptionId = $optionValue['option_id'];
+                                    $braCupYesOptionTypeId = $optionValue['option_type_id'];
+                                } else if (strtolower($optionValue['default_title']) == "n") {
+                                    $braCupNoOptionId = $optionValue['option_id'];
+                                    $braCupNoOptionTypeId = $optionValue['option_type_id'];
+                                }
+                            }
+                        }
+                    }
+                    /****************** finish checking Include Bra option *********************/
+
+                    $ar_bundle_sizes[$i] = array(
+                        "product_name" => $_bundle_product->getName(),
+                        "product_id" => $_bundle_product->getId(),
+                        "price" => round($_bundle_product->getPrice(), 2),
+                        "sizes" => $ar_child_sizes,
+                        "big_image" => $big_image,
+                        //"images" => $bundle_product_images,
+                        "color" => $allColors[$bundle_color_id],
+                        "color_code" => $bundle_color_id,
+                        "url" => $bundledProductUrl,
+                        "hasBraCup" => $hasBraCup
+                    );
+
+                    $arBundledProductImages[$_bundle_product->getId()] = array("big_image" => $big_image);
                 }
-                /****************** finish checking Include Bra option *********************/
+                $person = "";
+                // main set images
+                $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                if (isset($_gallery)) {
+                    foreach ($_gallery as $_image) {
+                        $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                        /*$city = $imageLabelData["city"];
+                        $latlong = $imageLabelData["latlong"];
+                        $cityTime = $imageLabelData["cityTime"];
 
-                $ar_bundle_sizes[$i] = array(
-                    "product_name" => $_bundle_product->getName(),
-                    "product_id" => $_bundle_product->getId(),
-                    "price" => round($_bundle_product->getPrice(), 2),
-                    "sizes" => $ar_child_sizes,
-                    "big_image" => $big_image,
-                    //"images" => $bundle_product_images,
-                    "color" => $allColors[$bundle_color_id],
-                    "color_code" => $bundle_color_id,
-                    "url" => $bundledProductUrl,
-                    "hasBraCup" => $hasBraCup
-                );
-
-                $arBundledProductImages[$_bundle_product->getId()] = array("big_image" => $big_image);
-            }
-                $person= "";
-            // main set images
-            $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
-            if (isset($_gallery)) {
-                foreach ($_gallery as $_image) {
-                    $imageLabelData = json_decode(trim($_image->getLabel()), true);
-                    /*$city = $imageLabelData["city"];
-                    $latlong = $imageLabelData["latlong"];
-                    $cityTime = $imageLabelData["cityTime"];
-
-                    $cities[] = $city;
-                    $latlongs[] = $latlong;
-                    $cityTimes[] = $cityTime;*/
-                    $person = $imageLabelData['person'];
-                    break;                    // we want to read first image only
+                        $cities[] = $city;
+                        $latlongs[] = $latlong;
+                        $cityTimes[] = $cityTime;*/
+                        $person = $imageLabelData['person'];
+                        break;                    // we want to read first image only
+                    }
                 }
-            }
 
-            ?>
+                ?>
 
-            <div class="gift-set" data-filter="<?php echo $person; ?>">
-                <div class="gift-set-title"><?php echo $_product->getName(); ?> SET</div>
-                <p class="left_item"><?php echo round($stock, 0); ?> remaining</p>
-                <div class="thumbnail">
-                    <span class="setPrice">$<?php echo round($_product->getPrice(), 0); ?></span>
+                <div class="gift-set" data-filter="<?php echo $person; ?>">
+                    <div class="gift-set-title"><?php echo $_product->getName(); ?> SET</div>
+                    <p class="left_item"><?php echo round($stock, 0); ?> remaining</p>
 
-                    <p>Buy Now <span>&gt;</span></p>
-                </div>
-                <div class="details">
+                    <div class="thumbnail" style="background: <?php echo $setImage; ?>; background-size: cover">
+                        <span class="setPrice">$<?php echo round($_product->getPrice(), 0); ?></span>
 
-                    <p class="desc">
-                        <?php echo $_product->getDescription(); ?>
-                    </p>
-
-                    <div class="flexslider">
-                        <ul class="slides">
-
-                            <?php
-                            for ($x = 0; $x < count($ar_bundle_sizes); $x++) {
-
-                            $bundle = $ar_bundle_sizes[$x];
-                            ?>
-
-                            <li rel="product_<?php echo ($x+1);?>_details" rel="<?php echo $bundle['product_id']; ?>">
-                                <img src="<?php echo $bundle['big_image']; ?>"/>
-                            </li>
-
-                            <?php } ?>
-                        </ul>
+                        <p>Buy Now <span>&gt;</span></p>
                     </div>
-                    <div class="related_blocks">
-                        <?php
+                    <div class="details">
+
+                        <p class="desc">
+                            <?php echo $_product->getDescription(); ?>
+                        </p>
+
+                        <div class="flexslider">
+                            <ul class="slides">
+
+                                <?php
+                                for ($x = 0; $x < count($ar_bundle_sizes); $x++) {
+
+                                    $bundle = $ar_bundle_sizes[$x];
+                                    ?>
+
+                                    <li rel="product_<?php echo($x + 1); ?>_details"
+                                        rel="<?php echo $bundle['product_id']; ?>">
+                                        <img src="<?php echo $bundle['big_image']; ?>"/>
+                                    </li>
+
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <div class="related_blocks">
+                            <?php
                             $sizeDivCount = 0;
                             $totalProducts = count($ar_bundle_sizes);
                             foreach ($ar_bundle_sizes as $data) {
                                 ++$sizeDivCount;
-                        ?>
+                                ?>
 
-                        <div class="product_<?php echo $sizeDivCount;?>_details" rel="<?php echo $data['product_id']; ?>">
-                            <p class="product_name"><?php echo $data["product_name"]; ?> <span><?php echo $sizeDivCount;?> of <?php echo $totalProducts;?> Products</span></p>
+                                <div class="product_<?php echo $sizeDivCount; ?>_details"
+                                     rel="<?php echo $data['product_id']; ?>">
+                                    <p class="product_name"><?php echo $data["product_name"]; ?>
+                                        <span><?php echo $sizeDivCount; ?> of <?php echo $totalProducts; ?>
+                                            Products</span></p>
 
-                            <p class="product_color product-color-<?php echo $sizeDivCount;?>" rel="<?php echo $data['color_code'];?>"><?php echo $data["color"]; ?></p>
-                            <p class="sold_indidually">
-                                <a href="<?php echo $data['url']; ?>">$1000 Sold Individually</a>
-                            </p>
-                            <div class="size_selection_box">
-                                <p>Choose Size <span class="size_chart_link">Size Chart</span></p>
+                                    <p class="product_color product-color-<?php echo $sizeDivCount; ?>"
+                                       rel="<?php echo $data['color_code']; ?>"><?php echo $data["color"]; ?></p>
 
-                                <div class="sizes">
-                                    <?php
-                                    foreach ($allSizes as $key => $value) {
-                                        foreach ($data["sizes"] as $size) {
+                                    <p class="sold_indidually">
+                                        <a href="<?php echo $data['url']; ?>">$1000 Sold Individually</a>
+                                    </p>
 
-                                            if ($size == $key) {
-                                    ?>
+                                    <div class="size_selection_box">
+                                        <p>Choose Size <span class="size_chart_link">Size Chart</span></p>
 
-                                                <span class="size size-<?php echo $sizeDivCount; ?>"
-                                                      rel="<?php echo $value; ?>"><?php echo $key; ?></span>
+                                        <div class="sizes">
+                                            <?php
+                                            foreach ($allSizes as $key => $value) {
+                                                foreach ($data["sizes"] as $size) {
 
-                                    <?php
+                                                    if ($size == $key) {
+                                                        ?>
+
+                                                        <span class="size size-<?php echo $sizeDivCount; ?>"
+                                                              rel="<?php echo $value; ?>"><?php echo $key; ?></span>
+
+                                                        <?php
+                                                    }
+                                                }
                                             }
-                                        }
-                                    }
-                                    ?>
-                                </div>
-                            </div>
+                                            ?>
+                                        </div>
+                                    </div>
 
-                            <?php if($data["hasBraCup"]=="y"){ ?>
-                            <div class="bra_cup_selection bra-cup-<?php echo $sizeDivCount;?>">
-                                <p>Include bra cup?
+                                    <?php if ($data["hasBraCup"] == "y") { ?>
+                                        <div class="bra_cup_selection bra-cup-<?php echo $sizeDivCount; ?>">
+                                            <p>Include bra cup?
                                     <span class="bra_cup_toggle">
-                                        <span class="no selected" optiontypeid="<?php echo $braCupYesOptionTypeId;?>" optionid="<?php echo $braCupYesOptionId;?>"></span>
-                                        <span class="yes" optiontypeid="<?php echo $braCupNoOptionTypeId;?>" optionid="<?php echo $braCupNoOptionId;?>"></span>
+                                        <span class="no selected" optiontypeid="<?php echo $braCupYesOptionTypeId; ?>"
+                                              optionid="<?php echo $braCupYesOptionId; ?>"></span>
+                                        <span class="yes" optiontypeid="<?php echo $braCupNoOptionTypeId; ?>"
+                                              optionid="<?php echo $braCupNoOptionId; ?>"></span>
                                     </span>
-                                </p>
-                            </div>
+                                            </p>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+
                             <?php } ?>
+
                         </div>
 
-                        <?php } ?>
 
-                    </div>
+                        <div class="row">
+                            <p class="error-text"></p>
 
-
-                    <div class="row">
-                        <p class="error-text"></p>
-                        <div class="add_to_wishlist">
-                            <svg height="44px" width="44px" xml:space="preserve"
-                                 style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px"
-                                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-                                 id="Layer_1" version="1.1">
+                            <div class="add_to_wishlist">
+                                <svg height="44px" width="44px" xml:space="preserve"
+                                     style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                                     id="Layer_1" version="1.1">
                                 <path d="M21.9,35.4L34,19.8c0.8-1.1,1.2-2.4,1.2-3.8c0-3.7-3-6.6-6.6-6.6c-3.7,0-6.6,3-6.6,6.6c0-3.7-3-6.6-6.6-6.6
                                 c-3.7,0-6.6,3-6.6,6.6c0,1.4,0.5,2.7,1.2,3.8L21.9,35.4z" fill="#fff"/>
                                 </svg>
+                            </div>
+                            <div class="add_to_shopping_bag"
+                                 rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">
+                                ADD TO BAG
+                            </div>
+                            <div class="choose_next">CHOOSE NEXT</div>
                         </div>
-                        <div class="add_to_shopping_bag" rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">ADD TO BAG</div>
-                        <div class="choose_next">CHOOSE NEXT</div>
-                    </div>
 
-                    <p class="free_shipping_text">
-                        Free and fast shipping to US &amp; Canada
-                    </p>
+                        <p class="free_shipping_text">
+                            Free and fast shipping to US &amp; Canada
+                        </p>
+                    </div>
                 </div>
-            </div>
 
             <?php } ?>
 
@@ -362,13 +390,13 @@ foreach ($allSizeOptions as $instance) {
 
         <span class="close_icon">
             <svg xml:space="preserve" enable-background="new 0 0 44 44"
-                viewBox="0 0 44 44" height="44px" width="44px" y="0px"
-                x="0px" xmlns:xlink="http://www.w3.org/1999/xlink"
-                xmlns="http://www.w3.org/2000/svg" id="Layer_1"
-                version="1.1"><g>
-                <rect height="44" width="44" fill="#555555"/>
-                <line y2="30" x2="30" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-                <line y2="30" x2="14" y1="14" x1="30" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                 viewBox="0 0 44 44" height="44px" width="44px" y="0px"
+                 x="0px" xmlns:xlink="http://www.w3.org/1999/xlink"
+                 xmlns="http://www.w3.org/2000/svg" id="Layer_1"
+                 version="1.1"><g>
+                    <rect height="44" width="44" fill="#555555"/>
+                    <line y2="30" x2="30" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                    <line y2="30" x2="14" y1="14" x1="30" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
                 </g>
             </svg>
         </span>
@@ -429,8 +457,8 @@ foreach ($allSizeOptions as $instance) {
     </div>
 </div>
 <script type="text/javascript">
-    (function($){
-        $(document).ready(function(){
+    (function ($) {
+        $(document).ready(function () {
 
             braOptionYesId = "<?php echo $braCupYesOptionId;?>";
             braOptionTypeYesId = "<?php echo $braCupYesOptionTypeId;?>";
