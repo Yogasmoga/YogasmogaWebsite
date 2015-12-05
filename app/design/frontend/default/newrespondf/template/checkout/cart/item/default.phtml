@@ -63,11 +63,21 @@ if (!function_exists('getMiniImage')) {
                 continue;
             if ($imgdata['color'] != $color)
                 continue;
-            //if(strpos($_image->getLabel(), $color) === false)
-            //            //if(strpos($_image->getLabel(),"*") === false)
-            //                continue;
             return "_" . Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
-			//return "_" . Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(320, 320)->setQuality(100);
+        }
+        return "";
+    }
+}
+
+if (!function_exists('getGiftImage')) {
+    function getGiftImage($productid)
+    {
+        $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+        foreach ($_gallery as $_image) {
+            $imgdata = json_decode(trim($_image->getLabel()), true);
+            if ($imgdata == NULL)
+                continue;
+            return "_" . Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
         }
         return "";
     }
@@ -131,8 +141,21 @@ foreach ($_options as $_option) {
         <?php //echo $colorlabel; ?>
             <a href="<?php echo $this->getProductUrl() ?>"
                title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif; ?>
-                <img src="<?php echo getImage($_item->getProductId(), $colorlabel); ?>" width="320" height="320"
-                     alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/><?php if ($this->hasProductUrl()): ?>
+
+                <?php if($productType=="gift"){ ?>
+
+                <img src="<?php echo getGiftImage($_item->getProductId()); ?>" width="320" height="320"
+                     alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/>
+
+                <?php }else{ ?>
+
+                    <img src="<?php echo getImage($_item->getProductId(), $colorlabel); ?>" width="320" height="320"
+                         alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/>
+
+                <?php } ?>
+
+                <?php if ($this->hasProductUrl()): ?>
+
             </a><?php endif; ?>
 
         </div>
