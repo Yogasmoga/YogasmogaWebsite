@@ -93,6 +93,8 @@ function changeProduct(product_id) {
                     jQuery(".product_price").html(allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " REMAINING</span>");
                     jQuery(".set_description").html(allComboProducts[product_id]["description"]);
 
+                    jQUery(".current_slider_image img").attr("src", allComboProducts[product_id]["image"] );
+
                     var data = result.data;
                     var strSets = "";
                     bundleImages = {};
