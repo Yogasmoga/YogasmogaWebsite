@@ -1,7 +1,8 @@
 var winH;
 jQuery(document).ready(function () {
     positionBanners();
-    descriptionPosition()
+    jQuery("#fullpage").css("visibility","hidden");
+    descriptionPosition();
     init();
     getActiveSlide();
     winH = jQuery(window).height();
@@ -9,6 +10,13 @@ jQuery(document).ready(function () {
         positionBanners();
     });
 });
+
+jQuery(window).load(function(){
+    var sliderMainImageHeight = jQuery(".product_set .side2 .product_container .product_slider .slider img").height();
+    jQuery(".section").height(sliderMainImageHeight + 80);
+    jQuery("#fullpage").css("visibility","visible");
+});
+
 function positionBanners() {
     if (jQuery(window).scrollTop() >= 103) {
         jQuery(".setmargin").show();
@@ -25,8 +33,6 @@ function positionBanners() {
 
 function init() {
 
-    var sliderMainImageHeight = jQuery(".product_set .side2 .product_container .product_slider .slider img").height();
-    jQuery(".section").height(sliderMainImageHeight + 80);
 
 
     jQuery(".contain_product .side1 .buy_product a.quick_look, .product_set .side2 span.reverse_flip").click(function (e) {
