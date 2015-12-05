@@ -1,7 +1,7 @@
 var winH;
 jQuery(document).ready(function () {
     positionBanners();
-    jQuery("#fulpage").css("visibility","hidden");
+    jQuery("#fullpage").css("visibility","hidden");
     descriptionPosition();
     init();
     getActiveSlide();
