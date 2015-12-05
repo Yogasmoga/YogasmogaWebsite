@@ -104,6 +104,8 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
                 jQuery(".shoping-cart svg rect").css("fill","#fff");
 
                 jQuery(".product_add_conf_popup").fadeIn();
+
+                jQuery(".product_add_conf_popup").find(".qty").html(result.count);
             }
             else if(result.status == "exists"){
                 alert("This gift set already exists in the cart");
