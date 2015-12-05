@@ -7795,6 +7795,7 @@ input#giftcard_use{
     right: 0;
     top: 8px;
     width: 15px;
+    height: 27px;
 }
 
 #checkout-step-cart .row.show_details.open{
