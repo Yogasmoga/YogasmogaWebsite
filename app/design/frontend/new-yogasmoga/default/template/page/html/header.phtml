@@ -447,11 +447,35 @@ if($currentUrl != $checkoutpage){
                 $base_url = Mage::helper('core/url')->getHomeUrl();
                 $currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
                 $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
+
+/*********** original code before gift set ********************/
+/*
                 if(isset($cart['items_qty'])){
                     $itemcount = (int)$cart['items_qty'];
                 } else {
                     $itemcount = 0;
                 }
+*/
+/*********** original code before gift set ********************/
+
+                /*********** cart count after gift set ***************/
+                $session = Mage::getSingleton('checkout/session');
+                $itemcount = 0;
+                foreach ($session->getQuote()->getAllItems() as $item)
+                {
+                    if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
+                    {
+                        $buyRequest = $item->getBuyRequest();
+                        $product_type = $buyRequest['type'];
+
+                        if(isset($product_type) && $product_type=="gift-bundled")
+                            continue;
+
+                        ++$itemcount;
+                    }
+                }
+                /*********** cart count after gift set ***************/
+
                 $i = 1;
                 foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
                     if ($child1->getIsActive()) {
