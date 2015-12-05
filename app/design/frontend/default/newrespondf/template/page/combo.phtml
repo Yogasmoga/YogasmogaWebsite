@@ -249,7 +249,7 @@ foreach ($allSizeOptions as $instance) {
                     <div class="gift-set-title"><?php echo $_product->getName(); ?> SET</div>
                     <p class="left_item"><?php echo round($stock, 0); ?> remaining</p>
 
-                    <div class="thumbnail" style="background-image: <?php echo $setImage; ?>; background-size: cover">
+                    <div class="thumbnail" style="background: url('<?php echo $setImage; ?>'); background-size: cover">
                         <span class="setPrice">$<?php echo round($_product->getPrice(), 0); ?></span>
 
                         <p>Buy Now <span>&gt;</span></p>
