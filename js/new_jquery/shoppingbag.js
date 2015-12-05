@@ -443,7 +443,7 @@ function showShoppingBagHtml() {
         checkouturl = securehomeUrl + 'checkout/onepage';
     }
     // check if user click on sign in from drop down menu
-//    alert(_isClickSigninMenu);
+
     if (_isClickSigninMenu == true) {
         _showShoppingbagLoader = true;
         _isClickSigninMenu = false;
@@ -470,8 +470,6 @@ function showShoppingBagHtml() {
             cache: false,
             success: function (data) {
                 data = eval('(' + data + ')');
-                //console.log(data.html);
-                // alert(data.html);
                 jQuery(".shopping-cart").html(data.html);
                 jQuery(".cartitemcount").html(data.count);
 
@@ -483,9 +481,6 @@ function showShoppingBagHtml() {
                 if (data.countdiscount > 1)
                     showerror(data.discounttypeerror);
                 outofstockDisable();
-//                    ////alert(jQuery(".contfull2").outerHeight());
-//                    jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
-//                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
             }
         });
     //}, 500);
@@ -530,11 +525,11 @@ function showShoppingBagHtmlOpen() {
         cache: false,
         success: function (data) {
             data = eval('(' + data + ')');
-            //console.log(data.html);
-            // alert(data.html);
+
             jQuery(".shopping-cart").html(data.html);
             jQuery(".cartitemcount").html(data.count);
 
+            initializeCartGiftSet();
             /************ added by ys team ************/
             jQuery("#addtobagloader").hide();
             jQuery(".open-cart").trigger("click");
@@ -543,7 +538,7 @@ function showShoppingBagHtmlOpen() {
             if (data.countdiscount > 1)
                 showerror(data.discounttypeerror);
             outofstockDisable();
-//                    ////alert(jQuery(".contfull2").outerHeight());
+
 //                    jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
 //                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
         }
