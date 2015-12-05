@@ -77,7 +77,7 @@ if (!function_exists('getGiftImage')) {
             $imgdata = json_decode(trim($_image->getLabel()), true);
             if ($imgdata == NULL)
                 continue;
-            return "_" . Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
+            return Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
         }
         return "";
     }
