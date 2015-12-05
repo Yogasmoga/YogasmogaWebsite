@@ -307,8 +307,8 @@ function showTemperature(){
 					jm(".time div").html(tempTimeNoAM_PM + "<span class='pm'></span>");
 			}
 
-			jm(".flora p").html(cities[0] + " FLORA");
-			jm(".fauna p").html(cities[0] + " FAUNA");
+			//jm(".flora p").html(cities[0] + " FLORA");
+			//jm(".fauna p").html(cities[0] + " FAUNA");
 
 			firstTemperature = false;
 		}
@@ -329,8 +329,8 @@ function showTemperature(){
 						jm(".time div").html(tempTimeNoAM_PM + "<span class='pm'></span>");
 				}
 
-				jm(".flora p").html(cities[currentCityIndex] + " FLORA");
-				jm(".fauna p").html(cities[currentCityIndex] + " FAUNA");
+				//jm(".flora p").html(cities[currentCityIndex] + " FLORA");
+				//jm(".fauna p").html(cities[currentCityIndex] + " FAUNA");
 			}
 			else{
 				jm(".temprature div").html(temperatures[0]);
@@ -347,8 +347,8 @@ function showTemperature(){
 						jm(".time div").html(tempTime + "<span class='pm'></span>");
 				}
 
-				jm(".flora p").html(cities[0] + " FLORA");
-				jm(".fauna p").html(cities[0] + " FAUNA");
+				//jm(".flora p").html(cities[0] + " FLORA");
+				//jm(".fauna p").html(cities[0] + " FAUNA");
 			}
 		}
 	}
