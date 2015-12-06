@@ -285,11 +285,12 @@ function bindSlider() {
 
         //////////////// Swapping images//////////////
 
+        if(currentProductDiv!=undefined)
+            currentProductDiv.removeClass('bundle_image');
+
         currentProductDiv = jQuery(this).closest(".product");
         if(currentProductDiv.find(".product_img").length>0) {
             //currentProductDiv.html(jQuery(".current_slider_image").html());
-
-            jQuery(this).removeClass('bundle_image');
 
             var tempBlockHtml = currentProductDiv.html();
             currentProductDiv.html(blockHtml);
