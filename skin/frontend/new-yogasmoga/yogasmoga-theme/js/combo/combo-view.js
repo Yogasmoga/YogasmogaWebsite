@@ -206,7 +206,7 @@ function addIndividualBundleProduct(data, classToApply) {
 
     strSets += "<div class='" + classToApply + "'>";
     strSets += "<div class='product'>";
-    strSets += "<div class='product_img' rel='" + data.id + "'><img src='" + data.default_image + "'/></div>";
+    strSets += "<div class='product_img individual_img' rel='" + data.id + "'><img src='" + data.default_image + "'/></div>";
     strSets += "<p class='pname'>" + data.name + "</p>";
     strSets += "<p class='pcolor'>" + allColors[data.color_code] + "</p>";
     strSets += "<p class='pprice'>" + data.price + "</p>";
@@ -275,22 +275,22 @@ function bindSlider() {
 
     blockHtml = jQuery(".current_slider_image").html();
 
-    jQuery(".individual_product").find(".product_img").click(function () {
-        var product_id = jQuery(this).attr('rel');
-        //startSlider(product_id);
-        var SizeChartIndex = jQuery(this).closest(".individual_product").index();
-        jQuery(".size-chart").hide();
-        jQuery(".size-chart-" + SizeChartIndex + "").show();
-        jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
+    jQuery(".individual_product").find(".individual_img").click(function () {
 
         //////////////// Swapping images//////////////
-
-        if(currentProductDiv!=undefined)
-            currentProductDiv.removeClass('bundle_image');
 
         currentProductDiv = jQuery(this).closest(".product");
         if(currentProductDiv.find(".product_img").length>0) {
             //currentProductDiv.html(jQuery(".current_slider_image").html());
+
+            var product_id = jQuery(this).attr('rel');
+            //startSlider(product_id);
+            var sizeChartIndex = jQuery(this).closest(".individual_product").index();
+            jQuery(".size-chart").hide();
+            jQuery(".size-chart-" + sizeChartIndex + "").show();
+            jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
+
+            currentProductDiv.removeClass('bundle_image');
 
             var tempBlockHtml = currentProductDiv.html();
             currentProductDiv.html(blockHtml);
