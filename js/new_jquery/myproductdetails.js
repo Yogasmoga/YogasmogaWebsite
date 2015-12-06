@@ -2,6 +2,8 @@ _preorderinfohovered = false;
 var _rewardpoints = 0;
 var currentColorObject;     // to store what color is clicked
 
+var arPartOfGiftSets = [];
+
 var fabrics = Array();
 var bra_cup_insert_value_array = Array();
 var bra_cup_insert_color_array = Array();
@@ -90,6 +92,7 @@ jQuery(document).ready(function ($) {
     });
 
     if (_defaultprcolor != '') {
+        changePartOfGiftSet(_defaultprcolor);
         if ($("div#colorcontainer table[value='" + _defaultprcolor + "']").length > 0)
             changeColor($("div#colorcontainer table[value='" + _defaultprcolor + "']").attr("color"));
         else {
@@ -99,8 +102,10 @@ jQuery(document).ready(function ($) {
         //_defaultprcolor = '';
     }
     else {
-        if ($("div#colorcontainer table:first").length > 0)
+        if ($("div#colorcontainer table:first").length > 0) {
             changeColor($("div#colorcontainer table:first").attr("color"));
+            changePartOfGiftSet(changeColor($("div#colorcontainer table:first").attr("value")));
+        }
     }
 
 
