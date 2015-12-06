@@ -283,7 +283,7 @@ function bindSlider() {
         if(currentProductDiv.find(".product_img").length>0) {
             //currentProductDiv.html(jQuery(".current_slider_image").html());
 
-            var product_id = jQuery(this).attr('rel');
+            var product_id = jQuery(this).closest(".product_img").attr('rel');
             //startSlider(product_id);
             var sizeChartIndex = jQuery(this).closest(".individual_product").index();
             jQuery(".size-chart").hide();
