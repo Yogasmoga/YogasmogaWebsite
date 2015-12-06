@@ -276,7 +276,7 @@ function bindSlider() {
     blockHtml = jQuery(".current_slider_image").html();
 
     jQuery(".individual_product").find(".individual_img").click(function () {
-alert(jQuery(this).html());
+
         //////////////// Swapping images//////////////
 
         currentProductDiv = jQuery(this).closest(".product");
