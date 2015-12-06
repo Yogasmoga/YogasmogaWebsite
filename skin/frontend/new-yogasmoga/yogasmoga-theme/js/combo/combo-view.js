@@ -4,7 +4,12 @@ var bundleImages = [];
 var allComboProducts = [];
 var setProducts = {};
 var setProductCount = 0;
+
+/******* variables for image swapping logic **********/
 var blockHtml;
+var currentProductDiv;
+/******* variables for image swapping logic **********/
+
 jQuery(document).ready(function () {
 
     initializeBanner();
@@ -199,9 +204,6 @@ function addIndividualBundleProduct(data, classToApply) {
 
     var strSets = "";
 
-    var sizes = data.sizes;
-    var arSizes = sizes.split(",");
-
     strSets += "<div class='" + classToApply + "'>";
     strSets += "<div class='product'>";
     strSets += "<div class='product_img' rel='" + data.id + "'><img src='" + data.default_image + "'/></div>";
@@ -270,6 +272,9 @@ function bindSizes() {
 }
 
 function bindSlider() {
+
+    blockHtml = jQuery(".current_slider_image").html();
+
     jQuery(".individual_product").find(".product_img").click(function () {
         var product_id = jQuery(this).attr('rel');
         //startSlider(product_id);
@@ -280,16 +285,20 @@ function bindSlider() {
 
         //////////////// Swapping images//////////////
 
-        var product = jQuery(this).closest(".product");
-        if(parent.find(".product_img").length>0) {
-            product.addClass("bundle_image");
-            blockHtml = product.html();
-            product.html(jQuery(".current_slider_image").html());
+        currentProductDiv = jQuery(this).closest(".product");
+        if(currentProductDiv.find(".product_img").length>0) {
+            //currentProductDiv.html(jQuery(".current_slider_image").html());
+            currentProductDiv.html(blockHtml);
+            currentProductDiv.addClass("bundle_image");
+            blockHtml = currentProductDiv.html();
+            jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["big_image"] + "'/>");
+        }
+        else{
+            jQuery(".current_slider_image").html(currentProductDiv.html());
+            currentProductDiv.html(blockHtml);
         }
 
         //////////////////////////////////////////////
-
-        jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["big_image"] + "'/>");
     });
 }
 /*
