@@ -289,6 +289,8 @@ function bindSlider() {
         if(currentProductDiv.find(".product_img").length>0) {
             //currentProductDiv.html(jQuery(".current_slider_image").html());
 
+            jQuery(this).removeClass('bundle_image');
+
             var tempBlockHtml = currentProductDiv.html();
             currentProductDiv.html(blockHtml);
             blockHtml = tempBlockHtml;
