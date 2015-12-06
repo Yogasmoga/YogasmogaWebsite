@@ -66,6 +66,7 @@ foreach ($allSizeOptions as $instance) {
                     <?php
                     $first = true;
                     $productSetImages = array();
+                    $outOfStockSets = array();
                     foreach ($productCollection as $_product_single) {
                         $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
 
@@ -73,6 +74,26 @@ foreach ($allSizeOptions as $instance) {
                             $first = false;
                             $firstProduct = $_product;
                         }
+
+                        $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
+                        $outOfStock = false;
+                        foreach ($_childProducts as $simple) {
+
+                            $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple);
+
+                            $stock = $productStock->getQty();
+                            $inStock = $productStock->getIsInStock();
+
+                            if($stock<=0 || !$inStock) {
+                                $outOfStock = true;
+                                $outOfStockSets[] = $_product_single->getId();
+                            }
+
+                            break;
+                        }
+
+                        if($outOfStock)
+                            continue;
 
                         $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
                         $setImage = "";

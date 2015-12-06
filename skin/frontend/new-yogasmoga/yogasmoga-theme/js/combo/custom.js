@@ -392,9 +392,9 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
 				jm(".add_to_bag").removeClass("bag-active");
 				jm(".add_to_bag").html('ADD TO BAG');
 
-				parent.find(".add_to_bag").html("ADD TO BAG");
 				jm("div#myminicart").html(result.html);
 				showShoppingBagHtmlOpen();
+				parent.find(".add_to_bag").html("ADD TO BAG");
 			}
 			else{
 				jm(".sizes").find(".size").removeClass("active-size");

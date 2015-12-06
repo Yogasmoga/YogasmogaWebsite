@@ -2127,10 +2127,18 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 $bundled_product_ids = trim($bundled_product_ids);
 
             $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
+            $giftSetAvailable = false;
             foreach ($_childProducts as $simple) {
-                $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
+                $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple);
+
+                if($stock->getQty()>0 && $stock->getIsInStock())
+                    $giftSetAvailable = true;
+
                 break;
             }
+
+            if(!$giftSetAvailable)
+                continue;           // skip this gift set
 
             $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
             if (isset($_gallery)) {

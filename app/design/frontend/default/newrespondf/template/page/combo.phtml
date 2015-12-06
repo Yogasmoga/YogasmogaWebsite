@@ -113,9 +113,9 @@ foreach ($allSizeOptions as $instance) {
                 $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
                 $giftSetAvailable = false;
                 foreach ($_childProducts as $simple) {
-                    $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
+                    $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple);
 
-                    if($stock>0)
+                    if($stock->getQty()>0 && $stock->getIsInStock())
                         $giftSetAvailable = true;
 
                     break;
