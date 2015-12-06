@@ -189,12 +189,17 @@
                     <?php if (count($_categories) > 0): ?>
                     <ul class="nav-dropdown menu level2" style="display: block;">
                         <?php foreach ($_categories as $_category): ?>
+                            <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+                            <?php $_subcategories = $_category->getChildrenCategories() ?>
+
                             <li class="menu-item has-dropdown c-text">
                             <i></i>
 
                                 <a class="menu-link main-txt" rel="cat_<?php echo $_category->getId();?>" href="<?php echo $_helper->getCategoryUrl($_category) ?>">
                                     <?php echo $_category->getName() ?>
                                 </a>
+
+                                <?php if(isset($_subcategories) && count($_subcategories)>0){ ?>
                                         <span class="arrow-tag toggle-ys-menu">
                                         <!--											<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -209,9 +214,9 @@
                                         </svg>
                                         </span>
 
+                                <?php } ?>
+                                
                                 <?php //if ($currentCategory && $currentCategory->getId() == $_category->getId()): ?>
-                                <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
-                                <?php $_subcategories = $_category->getChildrenCategories() ?>
                                 <?php if (count($_subcategories) > 0): ?>
                                     <ul class="nav-dropdown menu level3">
                                         <?php foreach ($_subcategories as $_subcategory): ?>
