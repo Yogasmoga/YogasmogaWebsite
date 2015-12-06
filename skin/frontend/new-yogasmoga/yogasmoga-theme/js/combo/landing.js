@@ -49,6 +49,13 @@ function init() {
 
         jQuery(this).closest(".product_set").find(".side1").toggleClass("inverse-flipped");
         jQuery(this).closest(".product_set").find(".side2").toggleClass("flipped");
+
+        /********* close description when quick look is clicked *************/
+        jQuery(".toggle_description").removeClass("close_description");
+        linkHtml = "SEE DETAILS <b>&gt;</b>";
+        jQuery(".toggle_description").html(linkHtml);
+        jQuery(".description_box").css('transition-duration', '500ms').removeClass("show").removeClass("show_fast");
+
     });
 
     jQuery(".toggle_description").click(function () {
