@@ -103,22 +103,39 @@ foreach ($allSizeOptions as $instance) {
             <?php
 
             $arBundledProductImages = array();
-
+            $giftSetCount = 0;
             foreach ($productCollection as $_product_single) {
+
                 $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
                 $setProductUrl = $_product->getProductUrl();
 
+                // checking stock of simple product of gift set
                 $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
+                $giftSetAvailable = false;
                 foreach ($_childProducts as $simple) {
                     $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
+
+                    if($stock>0)
+                        $giftSetAvailable = true;
+
                     break;
                 }
+
+                // check if all gift set products have inventory
+                if($giftSetAvailable)
+                    $giftSetCount++;
+                else
+                    continue;           // skip this gift set
 
                 $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
                 if (isset($bundled_product_ids))
                     $bundled_product_ids = trim($bundled_product_ids);
 
                 $ar_bundled_product_ids = explode(",", $bundled_product_ids);
+
+                /*************** check if all simple products of child product are out of size ************/
+
+                /*************** check if all simple products of child product are out of size ************/
 
                 $ar_bundle_sizes = array();
 
@@ -364,7 +381,9 @@ foreach ($allSizeOptions as $instance) {
                     </div>
                 </div>
 
-            <?php } ?>
+            <?php
+            }
+            ?>
 
         </div>
 
@@ -445,7 +464,7 @@ foreach ($allSizeOptions as $instance) {
             braOptionNoId = "<?php echo $braCupNoOptionId;?>";
             braOptionTypeNoId = "<?php echo $braCupNoOptionTypeId;?>";
 
-            $(".sign-in-box h1").html("8 GIFT SETS");
+            $(".sign-in-box h1").html("<?php echo $giftSetCount;?> GIFT SETS");
         })
     }(jQuery));
 </script>

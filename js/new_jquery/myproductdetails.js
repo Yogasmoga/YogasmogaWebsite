@@ -37,6 +37,7 @@ jQuery(document).ready(function ($) {
         jQuery("#orderitem").addClass('spbutton');
         changeColor($(this).attr("color"));
         selectfirstsizeonload();
+        changePartOfGiftSet($(this).attr("value"));
     });
 
     $("table.smallimagecontiner td:not(.selectedimage)").live("click", function () {
@@ -496,6 +497,17 @@ function searchproductcolorinfoarrray(clr) {
     return -1;
 }
 
+function changePartOfGiftSet(clr){
+
+    if(arPartOfGiftSets[clr]!=undefined) {
+        var title = arPartOfGiftSets[clr][0];
+        var url = arPartOfGiftSets[clr][1];
+        var str = "<span>Part of</span> <a href='" + url + "'>" + title + "</a>";
+        jQuery(".part-of-gift-set").html(str).show();
+    }
+    else
+        jQuery(".part-of-gift-set").html("").hide();
+}
 
 function changeColor(clr) {
     changeFabric(clr);

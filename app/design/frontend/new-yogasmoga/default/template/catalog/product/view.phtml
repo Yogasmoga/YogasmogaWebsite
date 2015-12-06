@@ -61,6 +61,29 @@ if ($this->getRequest()->getParam('hidden')) {
         $forNormal = false;
 }
 /*********************** hidden page logic ********************/
+
+
+/************** checking if product is part of gift set *************/
+    $partOfGiftSet = $_helper->productAttribute($_product, $_product->getGiftSet(), 'gift_set');
+
+    if(isset($partOfGiftSet) && strlen(trim($partOfGiftSet))>0) {
+
+        $allPartOfGiftSets = explode(':', $partOfGiftSet);
+
+        $arPartOfGiftSets = array();
+        foreach($allPartOfGiftSets as $partOfGiftSet) {
+            $giftSetPartArr = explode(',', $partOfGiftSet);
+            $giftSetTitle = $giftSetPartArr[0];
+            $giftSetUrl = $giftSetPartArr[1];
+            $giftSetColorCode = $giftSetPartArr[2];
+            $giftSetUrl = Mage::getBaseUrl() . 'gift-sets/' . $giftSetUrl;
+
+            $arPartOfGiftSets[$giftSetColorCode] = array("giftSetTitle" => $giftSetTitle, "giftSetUrl" => $giftSetUrl, "giftSetColorCode" => $giftSetColorCode);
+        }
+    }
+
+/************** checking if product is part of gift set *************/
+
 ?>
 
 <div class="namaskar-overlay1">&nbsp;</div>
@@ -879,20 +902,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                         <span class="productcost amount "><?php echo $productPrice; ?></span>
                                             <span class="was-amount no-display"
                                                   style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
-												  <?php 
-													$partOfGiftSet = $_helper->productAttribute($_product, $_product->getGiftSet(), 'gift_set');											  
-												  
-													if(isset($partOfGiftSet)){
-														$giftSetPartArr = explode(',',$partOfGiftSet);
-														$giftSetTitle = $giftSetPartArr[0];
-														$giftSetUrl = $giftSetPartArr[1];
-														$giftSetColorCode = $giftSetPartArr[2];													
-														$giftSetUrl = Mage::getBaseUrl() . 'gift-sets/' . $giftSetUrl;
-														
-														echo "<div class='part-of-gift-set'><span>Part of</span> <a href='$giftSetUrl'>$giftSetTitle</a></div>";
-													}
-												  ?>											
-											
+
+                                        <div class='part-of-gift-set' style="display: none;"></div>
+
                                     </div>
                                     <!-- heading -->
 
@@ -2002,6 +2014,20 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
         _isOnProductDetailPage = true;
         bra_cup_insert_count = parseInt("<?php echo $optionAvailable; ?>");
 
+        var arPartOfGiftSets = [];
+
+        <?php
+            if(isset($arPartOfGiftSets)){
+                foreach($arPartOfGiftSets as $key => $data){
+        ?>
+                    arPartOfGiftSets[<?php echo $key;?>] = Array();
+                    arPartOfGiftSets[<?php echo $key;?>][0] = "<?php echo $data['giftSetTitle'];?>";
+                    arPartOfGiftSets[<?php echo $key;?>][1] = "<?php echo $data['giftSetUrl'];?>";
+                    arPartOfGiftSets[<?php echo $key;?>][2] = "<?php echo $data['giftSetColorCode'];?>";
+        <?php
+                }
+            }
+        ?>
         //    window.onload = initFabric;
 
         <?php
