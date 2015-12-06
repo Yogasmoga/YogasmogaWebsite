@@ -308,8 +308,12 @@ function swapImage(obj){
     }
     else{
         jQuery(".current_slider_image").html(currentProductDiv.html());
-        currentProductDiv.removeClass("bundle_image");
+
+        var tempBlockHtml = currentProductDiv.html();
         currentProductDiv.html(blockHtml);
+        blockHtml = tempBlockHtml;
+
+        currentProductDiv.removeClass("bundle_image");
     }
 
     jQuery(".individual_product").find(".individual_img").unbind('click');
