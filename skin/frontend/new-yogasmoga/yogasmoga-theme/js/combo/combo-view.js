@@ -276,7 +276,7 @@ function bindSlider() {
     blockHtml = jQuery(".current_slider_image").html();
 
     jQuery(".individual_product").find(".individual_img").click(function () {
-
+alert(jQuery(this).html());
         //////////////// Swapping images//////////////
 
         currentProductDiv = jQuery(this).closest(".product");
@@ -292,15 +292,18 @@ function bindSlider() {
 
             currentProductDiv.removeClass('bundle_image');
 
+            if(blockHtml.indexOf('product_img')==-1)           // if set image is being swapped
+                currentProductDiv.addClass("bundle_image");
+
             var tempBlockHtml = currentProductDiv.html();
             currentProductDiv.html(blockHtml);
             blockHtml = tempBlockHtml;
 
-            currentProductDiv.addClass("bundle_image");
             jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["big_image"] + "'/>");
         }
         else{
             jQuery(".current_slider_image").html(currentProductDiv.html());
+            currentProductDiv.removeClass("bundle_image");
             currentProductDiv.html(blockHtml);
         }
 
