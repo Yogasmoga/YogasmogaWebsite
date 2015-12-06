@@ -288,9 +288,9 @@ function bindSlider() {
         currentProductDiv = jQuery(this).closest(".product");
         if(currentProductDiv.find(".product_img").length>0) {
             //currentProductDiv.html(jQuery(".current_slider_image").html());
+            blockHtml = currentProductDiv.html();
             currentProductDiv.html(blockHtml);
             currentProductDiv.addClass("bundle_image");
-            blockHtml = currentProductDiv.html();
             jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["big_image"] + "'/>");
         }
         else{
