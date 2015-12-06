@@ -276,40 +276,49 @@ function bindSlider() {
     blockHtml = jQuery(".current_slider_image").html();
 
     jQuery(".individual_product").find(".individual_img").click(function () {
-
-        //////////////// Swapping images//////////////
-
-        currentProductDiv = jQuery(this).closest(".product");
-        if(currentProductDiv.find(".product_img").length>0) {
-            //currentProductDiv.html(jQuery(".current_slider_image").html());
-
-            var product_id = jQuery(this).closest(".product_img").attr('rel');
-            //startSlider(product_id);
-            var sizeChartIndex = jQuery(this).closest(".individual_product").index();
-            jQuery(".size-chart").hide();
-            jQuery(".size-chart-" + sizeChartIndex + "").show();
-            jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
-
-            currentProductDiv.removeClass('bundle_image');
-
-            if(blockHtml.indexOf('product_img')==-1)           // if set image is being swapped
-                currentProductDiv.addClass("bundle_image");
-
-            var tempBlockHtml = currentProductDiv.html();
-            currentProductDiv.html(blockHtml);
-            blockHtml = tempBlockHtml;
-
-            jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["big_image"] + "'/>");
-        }
-        else{
-            jQuery(".current_slider_image").html(currentProductDiv.html());
-            currentProductDiv.removeClass("bundle_image");
-            currentProductDiv.html(blockHtml);
-        }
-
-        //////////////////////////////////////////////
+        swapImage(jQuery(this));
     });
 }
+
+//////////////// Swapping images//////////////
+function swapImage(obj){
+
+    currentProductDiv = obj.closest(".product");
+
+    if(currentProductDiv.find(".product_img").length>0) {
+        //currentProductDiv.html(jQuery(".current_slider_image").html());
+
+        var product_id = obj.closest(".product_img").attr('rel');
+        //startSlider(product_id);
+        var sizeChartIndex = obj.closest(".individual_product").index();
+        jQuery(".size-chart").hide();
+        jQuery(".size-chart-" + sizeChartIndex + "").show();
+        jQuery(".current_slider_product").html(setProducts[product_id]["name"]);
+
+        currentProductDiv.removeClass('bundle_image');
+
+        if(blockHtml.indexOf('product_img')==-1)           // if set image is being swapped
+            currentProductDiv.addClass("bundle_image");
+
+        var tempBlockHtml = currentProductDiv.html();
+        currentProductDiv.html(blockHtml);
+        blockHtml = tempBlockHtml;
+
+        jQuery(".current_slider_image").html("<img src='" + setProducts[product_id]["big_image"] + "'/>");
+    }
+    else{
+        jQuery(".current_slider_image").html(currentProductDiv.html());
+        currentProductDiv.removeClass("bundle_image");
+        currentProductDiv.html(blockHtml);
+    }
+
+    jQuery(".individual_product").find(".individual_img").unbind('click');
+    jQuery(".individual_product").find(".individual_img").click(function () {
+        swapImage(jQuery(this));
+    });
+}
+//////////////////////////////////////////////
+
 /*
  function startSlider(product_id){
 
