@@ -16,6 +16,10 @@ jQuery(document).ready(function () {
 
     resizeSlider();
 
+    jQuery(".gift-set-sorry-popup .content-sorry-popup > button").click(function(){
+        jQuery(".gift-set-sorry-popup").hide();
+    });
+
     var viewAllLink = "<li class='gift'><a href=''>View All</a></li>";
     jQuery("ul.main-menu > li.gift-sets > ul.sub-menu>li>ul").append(viewAllLink);
 
@@ -400,7 +404,7 @@ function addToBag(giftProductId, count, parent, currentProductColorCode) {
                 jQuery("#loader").hide();
                 parent.find(".add_to_bag").html("ADD TO BAG");
                 showShoppingBagHtmlOpen();
-                alert("This gift set already exists in the cart");
+                jQuery(".gift-set-sorry-popup").show();
             }
         }
     });

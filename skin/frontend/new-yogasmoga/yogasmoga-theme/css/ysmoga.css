@@ -2761,3 +2761,51 @@ a.learn-more {
 .shopping-cart .addedItem .show_details.open {
     border-bottom: 1px solid #e6e6e6;
 }
+
+
+/* //////////////////POPUP GIFT SETS//////////////////// */
+.gift-set-sorry-popup {
+    background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99999;
+    display: none;
+}
+
+.gift-set-sorry-popup .content-sorry-popup {
+    background: #fff none repeat scroll 0 0;
+    height: 228px;
+    left: 50%;
+    margin-left: -184px;
+    margin-top: -106px;
+    padding: 30px 40px 40px;
+    position: fixed;
+    text-align: left;
+    top: 50%;
+    width: 368px;
+}
+
+.gift-set-sorry-popup .content-sorry-popup>p:first-child {
+    font: 11px GothamBold;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.gift-set-sorry-popup .content-sorry-popup>p:nth-child(2) {
+    font: 12px GothamBook;
+}
+
+.gift-set-sorry-popup .content-sorry-popup > button {
+    background: #999 none repeat scroll 0 0;
+    border: medium none;
+    color: #fff;
+    display: block;
+    font: 11px GothamMedium;
+    height: 40px;
+    margin: 46px auto 0;
+    width: 144px;
+    cursor: pointer;
+}
