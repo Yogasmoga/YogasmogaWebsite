@@ -108,7 +108,7 @@ foreach ($productCollection as $_product_single) {
 
                 if ($stock > 0 && $inStock) {
                     $stockStatus = "In stock";
-                    $stockValue = $stock;
+                    $stockValue = intval($stock);
                 }
                 else {
                     $stockStatus = "Out of stock";
@@ -116,7 +116,7 @@ foreach ($productCollection as $_product_single) {
                 }
 ?>
                         <tr>
-                            <td style="width: 300px;"><?php echo $_bundleChildProduct->getName();?></td>
+                            <td style="width: 350px;"><?php echo $_bundleChildProduct->getName();?></td>
                             <td style="width: 100px;"><?php echo $stockStatus;?></td>
                             <td style="width: 100px;"><?php echo $stockValue;?></td>
                         </tr>
