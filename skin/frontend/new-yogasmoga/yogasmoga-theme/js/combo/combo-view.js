@@ -383,19 +383,19 @@ function addToBag(giftProductId, count, parent, currentProductColorCode) {
             result = eval('(' + result + ')');
 
             if(result.status=="success") {
-                jm(".sizes").find(".size").removeClass("active-size");
-                jm(".add_to_bag").removeClass("bag-active");
-                jm(".add_to_bag").html('ADD TO BAG');
+                jQuery(".sizes").find(".size").removeClass("active-size");
+                jQuery(".add_to_bag").removeClass("bag-active");
+                jQuery(".add_to_bag").html('ADD TO BAG');
 
                 jQuery("#loader").hide();
-                jm("div#myminicart").html(result.html);
+                jQuery("div#myminicart").html(result.html);
                 showShoppingBagHtmlOpen();
                 parent.find(".add_to_bag").html("ADD TO BAG");
             }
             else{
-                jm(".sizes").find(".size").removeClass("active-size");
-                jm(".add_to_bag").removeClass("bag-active");
-                jm(".add_to_bag").html('ADD TO BAG');
+                jQuery(".sizes").find(".size").removeClass("active-size");
+                jQuery(".add_to_bag").removeClass("bag-active");
+                jQuery(".add_to_bag").html('ADD TO BAG');
 
                 jQuery("#loader").hide();
                 parent.find(".add_to_bag").html("ADD TO BAG");
