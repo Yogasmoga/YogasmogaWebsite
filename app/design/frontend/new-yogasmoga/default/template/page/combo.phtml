@@ -262,7 +262,8 @@ foreach ($allSizeOptions as $instance) {
                         $bundle_color_id = $ar_id_color_code[1];
 
                         $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
-                        $bundledProductUrl = $_bundle_product->getProductUrl($_bundle_product) . '?color=' . $bundle_color_id;
+                        //$bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
+						$bundledProductUrl = Mage::getBaseUrl().'gift-sets/'.$_bundle_product->getUrlKey() . '?color=' . $bundle_color_id;
 
                         $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
 
@@ -312,6 +313,7 @@ foreach ($allSizeOptions as $instance) {
                             "color" => $allColors[$bundle_color_id],
                             "color_code" => $bundle_color_id,
                             "url" => $bundledProductUrl
+							
                         );
 
                         $arBundledProductImages[$_bundle_product->getId()] = array("big_image" => $big_image);
