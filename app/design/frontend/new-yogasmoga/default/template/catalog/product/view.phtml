@@ -2116,6 +2116,19 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             ->getProductCollection()
             ->addAttributeToSelect('*');
 
+        /***************** get all colors from database ***********************/
+        $allColors = array();
+        $allColorsNames = array();
+        $allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+        $allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
+        foreach ($allColorOptions as $instance) {
+            if (!array_key_exists($instance['value'], $allColors)) {
+                $allColors[$instance['value']] = $instance['label'];
+                $allColorsNames[$instance['label']] = $instance['value'];
+            }
+        }
+        /***************** get all sizes from database ***********************/
+
         /************ reading all combo products *****************/
         $arComboProduct = array();
         foreach ($productCollection as $_product_single) {
