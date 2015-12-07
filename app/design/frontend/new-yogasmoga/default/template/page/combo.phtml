@@ -67,7 +67,8 @@ foreach ($allSizeOptions as $instance) {
                 <div class="gift_sets_container">
                     <?php
                     $first = true;
-                    $productSetImages = array();
+                    $productSetImagesLanding = array();
+                    $productSetImagesQuick = array();
                     $outOfStockSets = array();      // stores ids of sets who itself or its bundled products are out of stock
                     foreach ($productCollection as $_product_single) {
                         $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
@@ -162,12 +163,17 @@ foreach ($allSizeOptions as $instance) {
                                 $imageLabelData = json_decode(trim($_image->getLabel()), true);
                                 $dataMap = $imageLabelData['dataMap'];
                                 $person = $imageLabelData['person'];
-                                $setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(900);
-                                break;
+                                $image_type = $imageLabelData['image_type'];
+
+                                if($image_type=="landing")
+                                    $setImageLanding = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(900);
+                                else if($image_type=="quick")
+                                    $setImageQuick = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(900);
                             }
                         }
 
-                        $productSetImages[$_product_single->getId()] = $setImage;
+                        $productSetImagesLanding[$_product_single->getId()] = $setImageLanding;
+                        $productSetImagesQuick[$_product_single->getId()] = $setImageQuick;
 
                         $personClass = "person_" . $person;
                         ?>
@@ -364,7 +370,7 @@ foreach ($allSizeOptions as $instance) {
                                     </div>
                                     <div class="product_slider">
                                         <div class="slider">
-                                            <img src="<?php echo $productSetImages[$_product_single->getId()]; ?>"/>
+                                            <img src="<?php echo $productSetImagesQuick[$_product_single->getId()]; ?>"/>
                                         </div>
                                     </div>
                                     <div class="product_filters">
@@ -427,7 +433,7 @@ foreach ($allSizeOptions as $instance) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="side1" style="background:#f3f3f3 url('<?php echo $setImage;?>') no-repeat scroll center center/auto 100%;">
+                            <div class="side1" style="background:#f3f3f3 url('<?php echo $setImageLanding;?>') no-repeat scroll center center/auto 100%;">
                                 <p class="product_name"><?php echo $_product->getName(); ?> SET</p>
 
                                 <p class="product_price">$<?php echo round($_product->getPrice(), 0); ?></p>

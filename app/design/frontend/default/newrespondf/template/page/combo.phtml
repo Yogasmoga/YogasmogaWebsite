@@ -301,8 +301,12 @@ foreach ($allSizeOptions as $instance) {
                     foreach ($_gallery as $_image) {
                         $imageLabelData = json_decode(trim($_image->getLabel()), true);
                         $person = $imageLabelData['person'];
-                        $setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
-                        break;                    // we want to read first image only
+                        $image_type = $imageLabelData['image_type'];
+
+                        if($image_type=="mobile") {
+                            $setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                            break;                    // we want to read first image only
+                        }
                     }
                 }
 
