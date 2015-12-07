@@ -4,7 +4,7 @@ Mage::app();
 umask(0);
 
 $storeId = Mage::app()->getStore()->getStoreId();
-$catId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+$catId = 69;
 $_helper = Mage::helper('catalog/output');
 
 $productCollection = Mage::getModel('catalog/category')->load($catId)
@@ -47,7 +47,7 @@ foreach ($allSizeOptions as $instance) {
 foreach ($productCollection as $_product_single) {
     $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
 
-    echo "<b>Gift Set : " . $_product->getName() . "</b> , ";
+    echo "<div style='font-weight: bold;'>Gift Set : " . $_product->getName() . "</div>";
 
     // check if gift set simple product is out of stock
     $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
@@ -67,7 +67,7 @@ foreach ($productCollection as $_product_single) {
         break;
     }
 
-    echo $outOfStock ? "Out of stock" : "In stock <br/>";
+    echo "<div style='padding:10px 0; font-weight:bold'>" . ($outOfStock ? "Out of stock" : "In stock") . "</div>";
 
     /******************************  check if any of the gift set bundled products are out of stock *************************/
     $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
@@ -104,11 +104,12 @@ foreach ($productCollection as $_product_single) {
                 $stock = $productStock->getQty();
                 $inStock = $productStock->getIsInStock();
 
-                echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                echo "<div style='padding: 10px 0 0 30px'>";
                 if ($stock > 0 && $inStock)
                     echo $_bundleChildProduct->getName() . " : In stock";
                 else
                     echo $_bundleChildProduct->getName() . " : Out of stock";
+                echo "</div>";
             }
         }
     }
