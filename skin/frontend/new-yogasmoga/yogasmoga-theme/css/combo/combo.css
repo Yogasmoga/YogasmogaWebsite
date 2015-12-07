@@ -49,10 +49,6 @@ div#bodycompensator {
     background: #e6e6e5;
 }
 
-#fullpage{
-    visibility: hidden;
-}
-
 #fullpage .section {
     position: relative;
 }
