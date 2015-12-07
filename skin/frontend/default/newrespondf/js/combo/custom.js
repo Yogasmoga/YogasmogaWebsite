@@ -10,6 +10,10 @@ var braOptionTypeNoId;
 
 jm(document).ready(function() {
 
+    jm(".close_gift_duplicate_popup").click(function(){
+        jm(".gift_duplicate_popup").fadeOut();
+    });
+
     jm(".add_to_shopping_bag").click(function(){
 
         if(jm(this).hasClass("bag-active")) {
@@ -108,12 +112,13 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
                 jQuery(".product_add_conf_popup").find(".qty").html(result.count);
             }
             else if(result.status == "exists"){
-                alert("This gift set already exists in the cart");
+                //alert("This gift set already exists in the cart");
                 jm(".sizes").find(".size").removeClass("active-size");
                 jm(".add_to_shopping_bag").removeClass("bag-active");
                 parent.find(".add_to_shopping_bag").html("ADD TO BAG");
                 jm(".add_to_bag").removeClass("bag-active");
                 jm(".details").find(".choose_next").show();
+                jm(".gift_duplicate_popup").show();
             }
             else{
                 jm(".sizes").find(".size").removeClass("active-size");

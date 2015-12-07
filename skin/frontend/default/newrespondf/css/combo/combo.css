@@ -293,7 +293,7 @@ h1.page-title {
     }
 }
 
-.product_add_conf_popup {
+.product_add_conf_popup, .gift_duplicate_popup {
     background: rgba(255, 255, 255, 0.95) none repeat scroll 0 0;
     height: 100%;
     left: 0;
