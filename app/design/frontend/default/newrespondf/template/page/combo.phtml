@@ -133,9 +133,53 @@ foreach ($allSizeOptions as $instance) {
 
                 $ar_bundled_product_ids = explode(",", $bundled_product_ids);
 
-                /*************** check if all simple products of child product are out of size ************/
+                /******************************  check if any of the gift set bundled products are out of stock *************************/
+                $anyBundledOutOfStock = false;
+                for ($i = 0; $i < count($ar_bundled_product_ids); $i++) {
 
-                /*************** check if all simple products of child product are out of size ************/
+                    $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);          // id:color_code
+
+                    $bundle_configurable_id = $ar_id_color_code[0];
+                    $bundle_color_id = $ar_id_color_code[1];
+
+                    $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
+
+                    /************** check if all simple products are out of stock or not ********************/
+                    $allOutOfStock = true;
+                    $_bundleChildProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
+                    foreach($_bundleChildProducts as $_bundleChildProduct){
+
+                        /************ get color code of simple product and match it with passed color code **************/
+                        $bundleChildName = $_bundleChildProduct->getName();
+                        $bundleChildColor = $_bundleChildProduct->getAttributeText('color');
+                        $bundleChildColorName = substr($bundleChildColor, 0, strpos($bundleChildColor, "|"));
+                        $bundleChildColorCode = $allColorsNames[$bundleChildColorName];
+
+                        if($bundleChildColorCode==$bundle_color_id) {
+
+                            $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_bundleChildProduct);
+
+                            $stock = $productStock->getQty();
+                            $inStock = $productStock->getIsInStock();
+
+                            if ($stock > 0 && $inStock) {
+                                $allOutOfStock = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if($allOutOfStock){
+                        $anyBundledOutOfStock = true;
+                        break;
+                    }
+                }
+
+                if($anyBundledOutOfStock) {
+                    $outOfStockSets[] = $_product_single->getId();
+                    continue;
+                }
+                /******************************  check if any of the gift set bundled products are out of stock *************************/
 
                 $ar_bundle_sizes = array();
 
