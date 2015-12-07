@@ -65,7 +65,7 @@ foreach ($productCollection as $_product_single) {
         break;
     }
 
-    echo "<div style='padding:10px 0; font-weight:bold'>" . ($outOfStock ? "Out of stock" : "In stock ($stock)") . "</div>";
+    echo "<div style='padding:10px 0; font-weight:bold'>" . ($outOfStock ? "Out of stock" : "In stock (" . intval($stock) . ")") . "</div>";
 
     /******************************  check if any of the gift set bundled products are out of stock *************************/
     $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
@@ -104,7 +104,7 @@ foreach ($productCollection as $_product_single) {
 
                 echo "<div style='padding: 10px 0 0 30px'>";
                 if ($stock > 0 && $inStock)
-                    echo $_bundleChildProduct->getName() . " : In stock ($stock)";
+                    echo $_bundleChildProduct->getName() . " : In stock (" . intval($stock) . ")";
                 else
                     echo $_bundleChildProduct->getName() . " : Out of stock";
                 echo "</div>";
