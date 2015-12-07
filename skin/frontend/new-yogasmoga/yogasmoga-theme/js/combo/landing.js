@@ -20,7 +20,6 @@ jQuery(window).load(function(){
     jQuery("#fullpage").css("visibility","hidden");
     descriptionPosition();
 
-    getActiveSlide();
     winH = jQuery(window).height();
     jQuery(window).scroll(function () {
         positionBanners();
@@ -31,6 +30,8 @@ jQuery(window).load(function(){
     var sliderMainImageHeight = jQuery(".product_set .side2 .product_container .product_slider .slider img").height();
     jQuery(".section").height(sliderMainImageHeight + 80);
     jQuery("#fullpage").css("visibility","visible");
+
+    getActiveSlide();
 });
 
 function positionBanners() {
