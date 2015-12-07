@@ -32,18 +32,20 @@ fputcsv($output, array(
     'Title',
     'Description',
     'google product category',
+    'Product Type',
     'Link',
     'Image link',
     'Condition',
     'Availability',
     'Price',
-    'Sale price',
-    'Sale price effective date',
+    'Sale_price',
+    'Sale_price_effective_date',
     'Brand',
-    'MPN',
+    'Color',
     'Gender',
     'Age group',
-    'Size'
+    'Size',
+    'promotion_id'
 ));
 
 $arWomenCategory = array(3,6,7,8,16,71,43,59,65);
@@ -153,7 +155,7 @@ while (!feof($fileIn)) {
 			foreach($productColors as $color)
 				$productColorsIndexed[] = $color;
 
-			$age_group = "16-50";
+			$age_group = "Adult";
 			
 			foreach($productColorsIndexed as $colorCode){
 
@@ -162,9 +164,10 @@ while (!feof($fileIn)) {
 			
 				$arr = array(
 					$sku,
-					$total_name . ' YOGA - YOGASMOGA',
-					strip_tags($description),
-					'',
+					'YOGASMOGA ' . $total_name . ' YOGA',
+					'YOGASMOGA ' . strip_tags($description),
+					'Apparel & Accessories > Clothing > Activewear',
+                    '',
 					$total_buy_url,
 					$image_url,
 					'New',
@@ -173,10 +176,11 @@ while (!feof($fileIn)) {
 					'',
 					'',
 					'YOGASMOGA',
-					'',
+					'Black',
 					$gender,       // to-do
 					$age_group,    // to-do
-					implode(',',$ar_child_sizes)          // to-do
+					implode(',',$ar_child_sizes),          // to-do
+                    ''
 				);
 
 				fputcsv($output, $arr);
