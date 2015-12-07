@@ -95,9 +95,13 @@ jm(document).ready(function() {
 
 	jQuery(".thumbnail").click(function(){
 
+		var previousQuickLookImage = jQuery(this).closest(".product_container").find(".slider").find("img").attr('src');
+
 		var imageSrc = jQuery(this).find("img").attr('src');
 
 		jQuery(this).closest(".product_container").find(".slider").find("img").attr('src', imageSrc);
+
+		jQuery(this).find("img").attr('src', previousQuickLookImage);
 	});
 
 	updateTimes();
