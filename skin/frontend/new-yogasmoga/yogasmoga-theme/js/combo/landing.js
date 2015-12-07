@@ -1,8 +1,11 @@
 var winH;
 
 jQuery(document).ready(function () {
-/*
+
     positionBanners();
+    jQuery("#fullpage").css("visibility","hidden");
+
+/*
     jQuery("#fullpage").css("visibility","hidden");
     descriptionPosition();
 
@@ -17,7 +20,6 @@ jQuery(document).ready(function () {
 jQuery(window).load(function(){
 
     positionBanners();
-    jQuery("#fullpage").css("visibility","hidden");
     descriptionPosition();
 
     winH = jQuery(window).height();
