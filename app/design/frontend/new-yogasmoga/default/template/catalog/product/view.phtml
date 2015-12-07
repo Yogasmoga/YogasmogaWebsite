@@ -2214,9 +2214,13 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             if (isset($_gallery)) {
                 foreach ($_gallery as $_image) {
                     $imageLabelData = json_decode(trim($_image->getLabel()), true);
-                    $image = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(700);
                     $person = $imageLabelData['person'];
-                    break;
+                    $image_type = $imageLabelData['image_type'];
+
+                    if($image_type=="quick"){
+                        $image = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(700);
+                        break;
+                    }
                 }
             }
 
