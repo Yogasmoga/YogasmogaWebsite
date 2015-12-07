@@ -1,6 +1,7 @@
 var winH;
 
 jQuery(document).ready(function () {
+/*
     positionBanners();
     jQuery("#fullpage").css("visibility","hidden");
     descriptionPosition();
@@ -10,9 +11,20 @@ jQuery(document).ready(function () {
     jQuery(window).scroll(function () {
         positionBanners();
     });
+*/
 });
 
 jQuery(window).load(function(){
+
+    positionBanners();
+    jQuery("#fullpage").css("visibility","hidden");
+    descriptionPosition();
+
+    getActiveSlide();
+    winH = jQuery(window).height();
+    jQuery(window).scroll(function () {
+        positionBanners();
+    });
 
     init();
 
