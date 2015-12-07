@@ -84,7 +84,11 @@ foreach ($productCollection as $_product_single) {
         $bundle_color_id = $ar_id_color_code[1];
 
         $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
+?>
 
+        <div style='padding: 10px 0 0 30px'>
+            <table style="width:600px;">
+<?php
         /************** check if all simple products are out of stock or not ********************/
         $_bundleChildProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
         foreach ($_bundleChildProducts as $_bundleChildProduct) {
@@ -102,14 +106,28 @@ foreach ($productCollection as $_product_single) {
                 $stock = $productStock->getQty();
                 $inStock = $productStock->getIsInStock();
 
-                echo "<div style='padding: 10px 0 0 30px'>";
-                if ($stock > 0 && $inStock)
-                    echo $_bundleChildProduct->getName() . " : In stock (" . intval($stock) . ")";
-                else
-                    echo $_bundleChildProduct->getName() . " : Out of stock";
-                echo "</div>";
+                if ($stock > 0 && $inStock) {
+                    $stockStatus = "In stock";
+                    $stockValue = $stock;
+                }
+                else {
+                    $stockStatus = "Out of stock";
+                    $stockValue = "-";
+                }
+?>
+                        <tr>
+                            <td style="width: 300px;"><?php echo $_bundleChildProduct->getName();?></td>
+                            <td style="width: 100px;"><?php echo $stockStatus;?></td>
+                            <td style="width: 100px;"><?php echo $stockValue;?></td>
+                        </tr>
+<?php
             }
         }
+?>
+
+        </table>
+    </div>
+<?php
     }
 
     echo "<hr/>";

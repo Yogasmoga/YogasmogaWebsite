@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "restricted area"
-AuthUserFile /var/www/vhosts/staging.yogasmoga.com/qry/.htpasswd
-require valid-user
