@@ -242,7 +242,7 @@ if(!is_user_logged_in()){
                         </li>
                         <li><a href="/women/bottoms"> Bottoms</a>
                             <ul>
-                                <!--<li><a href="/women/bottoms/shorts">Shorts</a></li>-->
+                                <li><a href="/women/bottoms/shorts">Shorts</a></li>
                                 <li><a href="/women/bottoms/crops">Crops</a></li>
                                 <li><a href="/women/bottoms/leggings">Leggings</a></li>
                                 <li><a href="/women/bottoms/pants">Pants</a></li>
@@ -251,6 +251,7 @@ if(!is_user_logged_in()){
                         </li>
                         <li><a href="/women/accessories"> Accessories </a>
                             <ul>
+								<li><a href="/women/accessories/scarves">Scarves</a></li>
                                 <li><a href="/women/accessories/head-bands">Head Bands</a></li>
                                 <!--<li><a href="/women/accessories/yoga-mats">Yoga Mats</a></li>
                                 <li><a href="/women/accessories/yoga-towels">Yoga Towels</a></li>-->
