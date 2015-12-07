@@ -2217,7 +2217,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     $person = $imageLabelData['person'];
                     $image_type = $imageLabelData['image_type'];
 
-                    if($image_type=="quick"){
+                    if($image_type=="landing"){
                         $image = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
                         break;
                     }
