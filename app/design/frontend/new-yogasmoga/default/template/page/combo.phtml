@@ -262,7 +262,7 @@ foreach ($allSizeOptions as $instance) {
                         $bundle_color_id = $ar_id_color_code[1];
 
                         $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
-                        $bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
+                        $bundledProductUrl = $_bundle_product->getProductUrl($_bundle_product) . '?color=' . $bundle_color_id;
 
                         $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
 
@@ -461,6 +461,7 @@ foreach ($allSizeOptions as $instance) {
                                         </div>
                                     <?php } ?>
                                 </div>
+								
                                 <div class="right_desc">
                                     <p><a href="<?php echo $setProductUrl;?>">GET <?php echo $_product->getName(); ?> <span style="color:#c03;">&gt;</span></a></p>
                                     <b><?php echo round($stock, 0); ?> remaining</b>
