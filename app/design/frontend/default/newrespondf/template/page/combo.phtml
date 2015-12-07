@@ -208,7 +208,8 @@ foreach ($allSizeOptions as $instance) {
                     $bundle_color_id = $ar_id_color_code[1];
 
                     $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
-                    $bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
+                    //$bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
+					$bundledProductUrl = Mage::getBaseUrl().$_bundle_product->getUrlKey() . '?color=' . $bundle_color_id;
 
                     $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
 
