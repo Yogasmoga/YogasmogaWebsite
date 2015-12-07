@@ -1,7 +1,5 @@
 var winH;
 
-window.onload = init;
-
 jQuery(document).ready(function () {
     positionBanners();
     jQuery("#fullpage").css("visibility","hidden");
@@ -15,6 +13,9 @@ jQuery(document).ready(function () {
 });
 
 jQuery(window).load(function(){
+
+    init();
+
     var sliderMainImageHeight = jQuery(".product_set .side2 .product_container .product_slider .slider img").height();
     jQuery(".section").height(sliderMainImageHeight + 80);
     jQuery("#fullpage").css("visibility","visible");
