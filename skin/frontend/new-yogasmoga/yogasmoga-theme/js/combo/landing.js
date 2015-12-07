@@ -1,8 +1,6 @@
 var winH;
 
-window.onload(function(){
-    init();
-});
+window.onload = init;
 
 jQuery(document).ready(function () {
     positionBanners();
@@ -37,8 +35,6 @@ function positionBanners() {
 
 
 function init() {
-
-
 
     jQuery(".contain_product .side1 .buy_product a.quick_look, .product_set .side2 span.reverse_flip").click(function (e) {
         e.preventDefault();
@@ -116,6 +112,7 @@ function init() {
         window.location = url;
     });
 
+//    jQuery(".gift_sets_landing_page").show();
 }
 
 var sectionIndex = 0;
