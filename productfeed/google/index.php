@@ -129,7 +129,7 @@ while (!feof($fileIn)) {
             $buy_url = $configurableProduct->getUrlInStore();
             $keywords = $configurableProduct->getMetaKeyword();
             $price = round($configurableProduct->getPrice(),2);
-
+/*
             $images = Mage::getModel('catalog/product')->load($configurableProduct->getId())->getMediaGalleryImages();
 
 			$productColors = array();
@@ -153,14 +153,14 @@ while (!feof($fileIn)) {
 			
 			$productColorsIndexed = array();
 			foreach($productColors as $color)
-				$productColorsIndexed[] = $color;
+				$productColorsIndexed[] = $color;*/
 
 			$age_group = "Adult";
 			
-			foreach($productColorsIndexed as $colorCode){
+			//foreach($productColorsIndexed as $colorCode){
 
-				$total_name = $name . "-" . $allColors[$colorCode];
-				$total_buy_url = $buy_url . "?color=" . $colorCode;
+				$total_name = $name;//  . "-" . $allColors[$colorCode];
+				$total_buy_url = $buy_url;// . "?color=" . $colorCode;
 			
 				$arr = array(
 					$sku,
@@ -184,7 +184,7 @@ while (!feof($fileIn)) {
 				);
 
 				fputcsv($output, $arr);
-			}			
+			//}			
         }
     }
 }
