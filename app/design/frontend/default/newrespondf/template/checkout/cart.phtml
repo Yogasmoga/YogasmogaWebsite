@@ -447,7 +447,7 @@ else
                                 <div class="cart_total"><?php
                                     $subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
                                     $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
-                                    echo "$". (int)substr($formattedPrice, 1,strlen($formattedPrice));
+                                    echo "$". substr($formattedPrice, 1,strlen($formattedPrice));
                                     ?>
                                 </div>
                         </div>
