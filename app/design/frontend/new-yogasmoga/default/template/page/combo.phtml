@@ -218,6 +218,11 @@ foreach ($allSizeOptions as $instance) {
                 $arBundledProductImages = array();
 
                 foreach ($productCollection as $_product_single) {
+
+                    // if this gift set is out of stock or any of its bundled items are out of stock
+                    if(in_array($_product_single->getId(), $outOfStockSets))
+                        continue;
+
                     $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
                     $setProductUrl = $_product->getProductUrl();
 
