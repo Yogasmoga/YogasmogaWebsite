@@ -4,7 +4,7 @@ Mage::app();
 umask(0);
 
 $storeId = Mage::app()->getStore()->getStoreId();
-$catId = 69;
+$catId = 70;
 $_helper = Mage::helper('catalog/output');
 
 $productCollection = Mage::getModel('catalog/category')->load($catId)
