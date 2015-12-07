@@ -289,21 +289,23 @@ div#bodycompensator {
 .flipped {
     transform: rotate3d(0, 1, 0, 180deg) translateZ(1px);
     -webkit-transform: rotate3d(0, 1, 0, 180deg) translateZ(1px);
-    transition-duration: 5s;
     transform-style: preserve-3d;
-    /*box-shadow: 0 0 50px rgba(0, 0, 0, 1);*/
+    -webkit-transform-style: preserve-3d;
+    transform-origin: center 50%;
     -webkit-transform-origin: center 50%;
     transition: all 2s ease 0s;
+    -webkit-transition: all 2s ease 0s;
 }
 
 .inverse-flipped {
     transform: rotate3d(0, 1, 0, -180deg) translateZ(1px);
     -webkit-transform: rotate3d(0, 1, 0, -180deg) translateZ(1px);
-    transition-duration: 5s;
     transform-style: preserve-3d;
-    /*box-shadow: 0 0 50px rgba(0, 0, 0, 1);*/
+    -webkit-transform-style: preserve-3d;
+    transform-origin: center 50%;
     -webkit-transform-origin: center 50%;
     transition: all 2s ease 0s;
+    -webkit-transition: all 2s ease 0s;
 }
 
 .product_set .side1 {
@@ -313,6 +315,7 @@ div#bodycompensator {
     left: 0;
     position: absolute;
     transition: all 2s ease 0s;
+    -webkit-transition: all 2s ease 0s;
     right: 0;
     top: 0;
     padding: 0;
@@ -325,6 +328,7 @@ div#bodycompensator {
     bottom: 0;
     left: 0;
     transition: all 2s ease 0s;
+    -webkit-transition: all 2s ease 0s;
     position: absolute;
     right: 0;
     top: 0;
