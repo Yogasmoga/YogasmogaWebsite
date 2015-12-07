@@ -2218,7 +2218,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     $image_type = $imageLabelData['image_type'];
 
                     if($image_type=="quick"){
-                        $image = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(700);
+                        $image = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
                         break;
                     }
                 }

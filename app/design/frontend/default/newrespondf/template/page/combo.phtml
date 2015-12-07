@@ -305,7 +305,7 @@ foreach ($allSizeOptions as $instance) {
                         $image_type = $imageLabelData['image_type'];
 
                         if($image_type=="mobile") {
-                            $setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                            $setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
                             break;                    // we want to read first image only
                         }
                     }

@@ -166,9 +166,9 @@ foreach ($allSizeOptions as $instance) {
                                 $image_type = $imageLabelData['image_type'];
 
                                 if($image_type=="landing")
-                                    $setImageLanding = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(900);
+                                    $setImageLanding = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
                                 else if($image_type=="quick")
-                                    $setImageQuick = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(900);
+                                    $setImageQuick = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
                             }
                         }
 
@@ -340,7 +340,8 @@ foreach ($allSizeOptions as $instance) {
                             $cityTimes[] = $cityTime;
                             $person = $imageLabelData['person'];
 
-                            $setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                            //$setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                            $setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
                             break;                    // we want to read first image only
                         }
                     }
@@ -496,11 +497,14 @@ foreach ($allSizeOptions as $instance) {
 
                 </script>
 
+                <div style="font:12px/15px gotham book; color:#555">*To order more than 1 of the same set, please place a separate order.</div>
                 <?php echo $this->getChildHtml('footer') ?>
                 <?php echo $this->getChildHtml('before_body_end') ?>
             </div>
+
         </div>
     </div>
+
     <?php echo $this->getAbsoluteFooter() ?>
 </body>
 </html>
