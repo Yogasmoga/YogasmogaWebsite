@@ -333,7 +333,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 			
 			$uniqueTimeStamp = date("Ymdhis");
 
-            if($params["type"]=="gift"){
+            if(isset($params["type"]) && $params["type"]=="gift"){
 
                 /************* checking if product is gift-set ****************/
 
