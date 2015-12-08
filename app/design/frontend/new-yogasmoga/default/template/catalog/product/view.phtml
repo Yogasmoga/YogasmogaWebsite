@@ -2228,7 +2228,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 "name" => $_product->getName(),
                 "price" => $_product->getPrice(),
                 "quantity" => round($stock, 0),
-                "description" => $_product->getDescription(),
+                "description" => nl2br($_product->getDescription()),
                 "bundle_ids" => $bundled_product_ids,
                 "personClass" => "person_" . $person,
                 "image" => $image
@@ -2337,7 +2337,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     echo "allComboProducts[$key] = [];";
                     echo "allComboProducts[$key]['name'] = '" . $comboProduct["name"] . "';";
                     echo "allComboProducts[$key]['image'] = '" . $comboProduct["image"] . "';";
-                    echo "allComboProducts[$key]['description'] = '" . htmlentities($comboProduct["description"]) . "';";
+                    echo "allComboProducts[$key]['description'] = '" . $comboProduct["description"] . "';";
                     echo "allComboProducts[$key]['price'] = '$" . round($comboProduct["price"],2) . "';";
                     echo "allComboProducts[$key]['quantity'] = '" . $comboProduct["quantity"]. "';";
                     echo "allComboProducts[$key]['bundle_ids'] = '".$comboProduct["bundle_ids"]."';";
