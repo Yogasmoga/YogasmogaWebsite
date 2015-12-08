@@ -746,10 +746,6 @@ function addbracelettobag(pid, colorattributeid, sizeattributeid) {
                     jQuery(".namaskarloader").hide();
                     /***************** code update for bracelet **************************/
                 }
-                else if(result.status=="ingiftset"){
-                    jQuery(".gift-set-sorry-popup").show();
-                    jQuery(".gift-set-sorry-popup").find(".message").html("This product is already in your gift set, please place a separate order.");
-                }
                 else {
                     jQuery(".addbracelet").show();
                     jQuery(".namaskarloader").hide();

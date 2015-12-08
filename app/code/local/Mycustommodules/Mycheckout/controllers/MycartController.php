@@ -165,8 +165,9 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             $uniqueTimeStamp = date("Ymdhis");
             $productId = (int) $this->getRequest()->getParam('product');
 
-            /************* checking if product is gift-set ****************/
-            if($params["type"]=="gift"){
+            if(isset($params["type"]) && $params["type"]=="gift"){
+
+                /************* checking if product is gift-set ****************/
 
                 if($this->giftExistsInCard($productId)){
                     echo json_encode(array("status" => "exists"));
@@ -219,30 +220,40 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                     $cart->addProduct($bundledProduct, $data);
                 }
+                /************* checking if product is gift-set ****************/
             }
-            /************* checking if product is gift-set ****************/
+            else{
+                /************** check if we are purchasing a product that is part of gift set *********/
 
-            /************** check if we are purchasing a product that is part of gift set *********/
-            $isAlreadyPartOfGiftSet = false;
+                $isAlreadyPartOfGiftSet = false;
 
-            $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getData('super_attribute'), $product);
-            echo json_encode(array("child id = " . $childProduct->getId()));
-            return;
+                $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getParam('super_attribute'), $product);
 
-            $cartItems = $cart->getAllVisibleItems();
+                if($childProduct) {
+                    $cartItems = $cart->getQuote()->getAllItems();
 
-            foreach($cartItems as $item){
-                if($productId==$item->getProductid()){
-                    $isAlreadyPartOfGiftSet = false;
-                    break;
+                    foreach ($cartItems as $item) {
+
+                        $buyRequest = $item->getBuyRequest();
+
+                        // if we are trying to remove gift set
+                        if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift-bundled") {
+
+                            if ($childProduct->getId() == $item->getProductId()) {
+                                $isAlreadyPartOfGiftSet = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if ($isAlreadyPartOfGiftSet) {
+                        echo json_encode(array("status" => "ingiftset"));
+                        return;
+                    }
                 }
+                /************** check if we are purchasing a product that is part of gift set *********/
             }
 
-            if($isAlreadyPartOfGiftSet){
-                echo json_encode(array("status" => "ingiftset"));
-                return;
-            }
-            /************** check if we are purchasing a product that is part of gift set *********/
 
             $params['unique_time_stamp'] = $uniqueTimeStamp;
             $cart->addProduct($product, $params);
@@ -398,18 +409,27 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                 $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getParam('super_attribute'), $product);
 
-                $cartItems = $cart->getQuote()->getAllItems();
+                if($childProduct) {
+                    $cartItems = $cart->getQuote()->getAllItems();
 
-                foreach($cartItems as $item){
-                    if($childProduct->getId()==$item->getProductId()){
-                        $isAlreadyPartOfGiftSet = true;
-                        break;
+                    foreach ($cartItems as $item) {
+
+                        $buyRequest = $item->getBuyRequest();
+
+                        // if we are trying to remove gift set
+                        if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift-bundled") {
+
+                            if ($childProduct->getId() == $item->getProductId()) {
+                                $isAlreadyPartOfGiftSet = true;
+                                break;
+                            }
+                        }
                     }
-                }
 
-                if($isAlreadyPartOfGiftSet){
-                    echo json_encode(array("status" => "ingiftset"));
-                    return;
+                    if ($isAlreadyPartOfGiftSet) {
+                        echo json_encode(array("status" => "ingiftset"));
+                        return;
+                    }
                 }
                 /************** check if we are purchasing a product that is part of gift set *********/
             }

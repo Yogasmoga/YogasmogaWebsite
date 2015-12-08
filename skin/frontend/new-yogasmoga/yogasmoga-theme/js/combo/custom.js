@@ -103,9 +103,6 @@ jm(document).ready(function() {
 
 		jQuery(this).find("img").attr('src', previousQuickLookImage);
 	});
-    jQuery(".gift-set-sorry-popup .content-sorry-popup > button").click(function(){
-        jQuery(".gift-set-sorry-popup").hide();
-    });
 	updateTimes();
 });
 

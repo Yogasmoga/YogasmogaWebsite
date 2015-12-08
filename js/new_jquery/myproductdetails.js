@@ -748,6 +748,7 @@ function addtocart() {
             result = eval('(' + result + ')');
             //jQuery("#addtobagloader").hide();
             _addingtocart = false;
+
             if (result.status == 'success') {
                 if (_productdisplaymode == "popup") {
                     jQuery("#productdetailpopup").dialog("close");
@@ -782,6 +783,11 @@ function addtocart() {
                 //                        filter : 100
                 //                    },500);
                 //                });
+            }
+            else if(result.status=="ingiftset"){
+                jQuery(".gift-set-sorry-popup").show();
+                jQuery(".gift-set-sorry-popup").find(".message").html("This product is already in your gift set, please place a separate order.");
+                jQuery("#addtobagloader").hide();
             }
             else {
                 jQuery("#addtobagloader").hide();
