@@ -403,7 +403,7 @@ function addToBag(giftProductId, count, parent, currentProductColorCode) {
 
                 jQuery("#loader").hide();
                 parent.find(".add_to_bag").html("ADD TO BAG");
-                showShoppingBagHtmlOpen();
+                //showShoppingBagHtmlOpen();
                 jQuery(".gift-set-sorry-popup").show();
                 jQuery(".gift-set-sorry-popup").find(".message").html("To order more than 1 of the same set, please place a separate order.");
             }
