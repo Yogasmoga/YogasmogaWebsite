@@ -2667,7 +2667,13 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         foreach($_gallery as $_image)
         {
             $imgdata = json_decode(trim($_image->getLabel()), true);
-            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
+
+            if(isset($imgdata) && isset($imgdata['image_type'])) {
+                $image_type = $imgdata['image_type'];
+
+                if($image_type=="quick")
+                    return "_" . Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
+            }
         }
         return "";
     }
