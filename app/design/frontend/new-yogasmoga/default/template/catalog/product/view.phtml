@@ -2229,7 +2229,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 "name" => $_product->getName(),
                 "price" => $_product->getPrice(),
                 "quantity" => round($stock, 0),
-                "description" => $_product->getDescription(),
+                "description" => htmlentities($_product->getDescription()),
                 "bundle_ids" => $bundled_product_ids,
                 "personClass" => "person_" . $person,
                 "image" => $image
