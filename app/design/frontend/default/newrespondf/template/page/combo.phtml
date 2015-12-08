@@ -179,6 +179,7 @@ foreach ($allSizeOptions as $instance) {
 
                 if($anyBundledOutOfStock) {
                     $outOfStockSets[] = $_product_single->getId();
+                    $giftSetCount--;
                     continue;
                 }
                 /******************************  check if any of the gift set bundled products are out of stock *************************/
