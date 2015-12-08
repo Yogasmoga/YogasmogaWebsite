@@ -183,6 +183,7 @@ if(!function_exists('getPointsCurrentlyUsed'))
             array_push($itemids, $item->getProductId());
         }
 
+        $cattotal = 0;
         foreach ($items as $item) {
             if($item->getPrice() > 0)
             {
@@ -443,7 +444,22 @@ else
                     <fieldset>
                         <div id="shopping-cart-table" class="data-table cart-table">
 
-                                <div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>
+                            <?php
+                                $totalItemCount = 0;
+                                foreach($this->getItems() as $_item) {
+
+                                    $buyRequest = $_item->getBuyRequest();
+
+                                    if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift-bundled")
+                                            continue;
+
+                                    //$totalItemCount += $_item->getQty();
+                                    $totalItemCount++;
+                                }
+                            ?>
+
+                                <!--<div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>-->
+                            <div class="no_of_cart_items"><?php echo $totalItemCount; echo $this->__(' ITEMS') ?></div>
                                 <div class="cart_total"><?php
                                     $subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
                                     $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
@@ -452,9 +468,40 @@ else
                                 </div>
                         </div>
 
-                        <?php foreach($this->getItems() as $_item): ?>
-                                <?php echo $this->getItemHtml($_item) ?>
-                            <?php endforeach ?>
+                        <?php
+                        //foreach($this->getItems() as $_item) {
+
+/******************* code updated to reverse the cart *************************************/
+                        $cartItems = Mage::getModel('sales/quote_item')->getCollection()
+                            ->setQuote($this->getQuote())
+                            ->addOrder('item_id', 'desc');
+
+                        $items = array();
+                        foreach ($cartItems as $item) {
+                            if (!$item->isDeleted() && !$item->getParentItemId()) {
+                                $items[] = $item;
+                            }
+                        }
+/******************* code updated to reverse the cart *************************************/
+
+                        $index = 0;
+                        foreach($items as $_item){
+
+                            $buyRequest = $_item->getBuyRequest();
+
+                            if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=='gift')
+                                ++$index;
+
+                            $_item->setIndex($index);
+
+//                            if ($_item->getQty() > 1) {
+//                                for($i = 0;$i < $_item->getQty();$i++)
+//                                    echo $this->getItemHtml($_item);
+//                            }
+//                            else
+                                echo $this->getItemHtml($_item);
+                        }
+                        ?>
 
                     </fieldset>
                 </form>

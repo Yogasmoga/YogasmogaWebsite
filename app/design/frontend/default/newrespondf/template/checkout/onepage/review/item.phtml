@@ -47,7 +47,21 @@
             return "";
         }   
     }
-    
+
+    if (!function_exists('getGiftImage')) {
+        function getGiftImage($productid)
+        {
+            $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+            foreach ($_gallery as $_image) {
+                $imgdata = json_decode(trim($_image->getLabel()), true);
+                if ($imgdata == NULL)
+                    continue;
+                return Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
+            }
+            return "";
+        }
+    }
+
     if (!function_exists('getColorId'))
     {
         function getColorId($label)
@@ -76,7 +90,18 @@
             return $url;
         }   
     }
-    
+
+    $buyRequest = $_item->getBuyRequest();
+
+    $isGiftSet = false;
+    $productType = "normal";
+    // for showing gift set
+    if(isset($buyRequest) && isset($buyRequest['type'])) {
+        $productType = $buyRequest['type'];
+
+        if ($productType == "gift")
+            $isGiftSet = true;
+    }
     //echo getImage(51, 'Green');
 ?>
 <?php if ($_options = $this->getOptionList()):?>
@@ -104,12 +129,28 @@
          <?php if ($this->hasProductUrl()):?>
             <?php //echo $colorlabel; ?>
             <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?>
-			<img src="<?php echo getImage($_item->getProductId(),$colorlabel); ?>" width="320" height="320" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
+			<!--<img src="<?php echo getImage($_item->getProductId(),$colorlabel); ?>" width="320" height="320" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />-->
+
+            <?php if($productType=="gift"){ ?>
+
+                <img src="<?php echo getGiftImage($_item->getProductId()); ?>" width="320" height="320"
+                     alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/>
+
+            <?php }else{ ?>
+
+                <img src="<?php echo getImage($_item->getProductId(), $colorlabel); ?>" width="320" height="320"
+                     alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/>
+
+            <?php } ?>
+
+
 			<?php if ($this->hasProductUrl()):?></a><?php endif;?>
 
           </div>
 		  <div class="col_right_options">
             <h3 class="product-name"><?php echo html_entity_decode($this->escapeHtml($this->getProductName())) ?></h3>
+
+              <?php if(!$isGiftSet){ ?>
 
             <?php if ($_options = $this->getOptionList()):?>
                 <div class="item-options">Color:
@@ -165,6 +206,8 @@
                     <?php endforeach; ?>
                 </div>
             <?php endif;?>
+
+              <?php } ?>
 
             <?php if ($addtInfoBlock = $this->getProductAdditionalInformationBlock()):?>
                 <?php echo $addtInfoBlock->setItem($_item)->toHtml() ?>

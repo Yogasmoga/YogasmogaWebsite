@@ -95,10 +95,18 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             $flag = 0;
             foreach($miniitems as $mitem)
             {
-                //$mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
+                $productType = $mitem['product_type'];
+
+                if(isset($productType) && ($productType=='gift' || $productType=='bundled-gift')){
+                    $response['error'] = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+                    echo json_encode($response);
+                    return;
+                }
+
+				//$mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
                 $mitemProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $mitem['sku']);
                 $cids = $mitemProduct->getCategoryIds();
-                //print_r($cids);
+
                 $flag = 0;
                 foreach($excludecats as $key=>$val)
                 {
@@ -108,43 +116,36 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
 
                 }
                 if($flag == 0)break;
-//                echo $foundOnlyNoSmogiProduct;
-//                if($foundOnlyNoSmogiProduct == 0)die('treast');
-//                else die('dddd');
-                //echo $flag;
             }
-            //echo $foundOnlyNoSmogiProduct;
 
-            //check promotion
+			//check promotion
 /*
-            if($flag==0){
-                foreach($miniitems as $mitem)
-                {
-                    $price = $mitem['price'];
-                    if(substr($price,0,1)=='$'){
-                        $price = substr($price, 1,strlen($price)-1);
-                        if(intval($price)==0){
-
-                            $response['error'] = "SMOGI Bucks cannot be used for Promotion";
-                            echo json_encode($response);
-                            return;
-                        }
-                    }
-                    else{
-                        if(intval($price)==0){
-                            $response['error'] = "SMOGI Bucks cannot be used for Promotion";
-                            echo json_encode($response);
-                            return;
-                        }
-                    }
-                }
-            }
+			if($flag==0){
+				foreach($miniitems as $mitem)
+				{
+					$price = $mitem['price'];
+					if(substr($price,0,1)=='$'){
+						$price = substr($price, 1,strlen($price)-1);
+						if(intval($price)==0){
+						
+							$response['error'] = "SMOGI Bucks cannot be used for Promotion";
+							echo json_encode($response);
+							return;
+						}
+					}
+					else{
+						if(intval($price)==0){
+							$response['error'] = "SMOGI Bucks cannot be used for Promotion";
+							echo json_encode($response);
+							return;
+						}
+					}	
+				}
+			}				
 */
-
             if($flag == 1)
             {
-                //$response['error'] = "SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
-				$response['error'] = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+                $response['error'] = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
                 echo json_encode($response);
                 return;
             }

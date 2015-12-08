@@ -28,12 +28,28 @@
 
 
 <?php
-$_item = $this->getItem();
-$isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
-$canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
-$messages = $this->getMessages();
-$_options = $this->getOptionList();
-//print_r($this->getProductOptions());
+    $_item = $this->getItem();
+    $itemIndex = $_item->getIndex();        // passed from cart.phtml
+
+    $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
+    $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
+    $messages = $this->getMessages();
+    $_options = $this->getOptionList();
+
+    $buyRequest = $_item->getBuyRequest();
+
+    $productType = "normal";
+    // if we are trying to remove gift set
+    if(isset($buyRequest) && isset($buyRequest['type'])) {
+        $productType = $buyRequest['type'];
+
+        if($productType=="gift")
+            $giftClass = "gift_parent gift_$itemIndex";
+        else if($productType=="gift-bundled")
+            $giftClass = "gift_" . $itemIndex . "_product gift_child";
+        else
+            $giftClass = "";
+    }
 ?>
 
 <?php
@@ -47,11 +63,21 @@ if (!function_exists('getMiniImage')) {
                 continue;
             if ($imgdata['color'] != $color)
                 continue;
-            //if(strpos($_image->getLabel(), $color) === false)
-            //            //if(strpos($_image->getLabel(),"*") === false)
-            //                continue;
             return "_" . Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
-			//return "_" . Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(320, 320)->setQuality(100);
+        }
+        return "";
+    }
+}
+
+if (!function_exists('getGiftImage')) {
+    function getGiftImage($productid)
+    {
+        $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+        foreach ($_gallery as $_image) {
+            $imgdata = json_decode(trim($_image->getLabel()), true);
+            if ($imgdata == NULL)
+                continue;
+            return Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
         }
         return "";
     }
@@ -87,7 +113,7 @@ if (!function_exists('getImage')) {
 ?>
 
 <?php
-//echo "ravi".$_options = $this->getOptionList();
+
 $colorlabel = "";
 foreach ($_options as $_option) {
     //echo "<pre>";
@@ -107,9 +133,7 @@ foreach ($_options as $_option) {
 <?php //echo $_item->getProductId()."hel" ?>
 
 
-<div class="row selected_cart_products">
-	
-
+<div class="row selected_cart_products <?php echo $giftClass;?>" rel="gift_<?php echo $itemIndex;?>">
     <div class="span2">
 
         <div class="col_left_img">
@@ -117,8 +141,21 @@ foreach ($_options as $_option) {
         <?php //echo $colorlabel; ?>
             <a href="<?php echo $this->getProductUrl() ?>"
                title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif; ?>
-                <img src="<?php echo getImage($_item->getProductId(), $colorlabel); ?>" width="320" height="320"
-                     alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/><?php if ($this->hasProductUrl()): ?>
+
+                <?php if($productType=="gift"){ ?>
+
+                <img src="<?php echo getGiftImage($_item->getProductId()); ?>" width="320" height="320"
+                     alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/>
+
+                <?php }else{ ?>
+
+                    <img src="<?php echo getImage($_item->getProductId(), $colorlabel); ?>" width="320" height="320"
+                         alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/>
+
+                <?php } ?>
+
+                <?php if ($this->hasProductUrl()): ?>
+
             </a><?php endif; ?>
 
         </div>
@@ -138,10 +175,11 @@ foreach ($_options as $_option) {
 
                     <div class="item_option_color">
 
+                        <?php if($productType!="gift"){ ?>
+
                         <?php foreach ($_options as $_option) : ?>
                             <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
 
-                            <!--  <span><?php //echo $this->htmlEscape($_option['label']) ?>:</span> -->
                             <?php if (strtolower($_option['label']) == "color"): ?>
                                 <?php
                                 $colorcode = $_formatedOptionValue['value'];
@@ -166,6 +204,9 @@ foreach ($_options as $_option) {
                     </span>
                             <?php endif; ?>
                         <?php endforeach; ?>
+
+                        <?php } ?>
+
                     </div>
 
 
@@ -273,6 +314,9 @@ foreach ($_options as $_option) {
     <div class="span1">
 
         <?php endif; ?>
+
+        <?php if($productType!="gift-bundled"){ ?>
+
         <div class="item_remove">
             <a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2">
 <!--                --><?php //echo $this->__('Remove item')?>
@@ -290,6 +334,11 @@ foreach ($_options as $_option) {
 </svg>
             </a>
         </div>
+
+        <?php } ?>
+
+        <?php if($productType!="gift-bundled"){ ?>
+
         <div class="price-box">
 
             <div class="cart-price-box"<?php //if ($this->getQty() == 1) echo ' style="display:none;"' ?>
@@ -381,7 +430,7 @@ foreach ($_options as $_option) {
                                 <?php if (Mage::helper('weee')->typeOfDisplay($_item, 1, 'sales') && $_item->getWeeeTaxAppliedAmount()): ?>
                                     <?php foreach (Mage::helper('weee')->getApplied($_item) as $tax): ?>
                                         <span class="weee"><?php echo $tax['title']; ?>
-                                            : <?php echo Mage::helper('checkout')->formatPrice($tax['amount'], true, true); ?></span>
+                                                : <?php echo Mage::helper('checkout')->formatPrice($tax['amount'], true, true); ?></span>
                                     <?php endforeach; ?>
                                 <?php elseif (Mage::helper('weee')->typeOfDisplay($_item, 2, 'sales') && $_item->getWeeeTaxAppliedAmount()): ?>
                                     <?php foreach (Mage::helper('weee')->getApplied($_item) as $tax): ?>
@@ -525,7 +574,11 @@ foreach ($_options as $_option) {
 
         </div>
 
+        <?php } ?>
 
         </td>
     </div>
-    </div>
+</div>
+<?php if($productType=="gift"){?>
+    <div class="show_details row">SET DETAILS <b>&plus;</b></div>
+<?php } ?>

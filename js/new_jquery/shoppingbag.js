@@ -469,6 +469,7 @@ function showShoppingBagHtml() {
                 jQuery(".shopping-cart").html(data.html);
                 jQuery(".cartitemcount").html(data.count);
 
+                initializeCartGiftSet();
 /************ added by ys team ************/
                 jQuery("#addtobagloader").hide();
 /************ added by ys team ************/
@@ -525,6 +526,7 @@ function showShoppingBagHtmlOpen() {
             jQuery(".shopping-cart").html(data.html);
             jQuery(".cartitemcount").html(data.count);
 
+            initializeCartGiftSet();
             /************ added by ys team ************/
             jQuery("#addtobagloader").hide();
             jQuery(".open-cart").trigger("click");
@@ -725,6 +727,7 @@ function addbracelettobag(pid, colorattributeid, sizeattributeid) {
                     jQuery(".shopping-cart").html(result.html);
                     jQuery(".cartitemcount").html(result.count);
 
+                    initializeCartGiftSet();
                     /***************** code update for bracelet **************************/
                     jQuery(".addbracelet").show();
                     jQuery(".addedItem").find("a.close").show();
@@ -1136,3 +1139,15 @@ function vivacityPromotion(e){
     }
 }
 */
+
+function initializeCartGiftSet(){
+    jQuery(document).find(".shopping-cart .addedItem .show_details b").click(function(){
+        var classes = jQuery(this).closest("li").attr("class");
+        var classesArray = classes.split(" ");
+        var giftIdClass = classesArray[1];
+        jQuery(document).find(".shopping-cart .addedItem .gift_child."+giftIdClass+"_product").toggle();
+        jQuery(this).toggleClass("opened");
+        jQuery(this).closest(".show_details").toggleClass("open");
+    });
+
+}

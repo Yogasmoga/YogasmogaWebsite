@@ -35,7 +35,28 @@
     <?php
     $cartTotal = $this->helper('checkout/cart')->getQuote()->getGrandTotal();
     $cartItemsCount = Mage::helper('checkout/cart')->getCart()->getItemsCount();
-    $cartItemsQuantity = Mage::helper('checkout/cart')->getCart()->getItemsQty();
+
+    /******** original code ***********/
+    //$cartItemsQuantity = Mage::helper('checkout/cart')->getCart()->getItemsQty();
+    /******** original code ***********/
+
+/*************** after adding gift set ***********************/
+    $session = Mage::getSingleton('checkout/session');
+    $cartItemsQuantity = 0;
+    foreach ($session->getQuote()->getAllItems() as $item)
+    {
+        if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
+        {
+            $buyRequest = $item->getBuyRequest();
+            $product_type = $buyRequest['type'];
+
+            if(isset($product_type) && $product_type=="gift-bundled")
+                continue;
+
+            ++$cartItemsQuantity;
+        }
+    }
+/*************** after adding gift set ***********************/
     ?>
 
 
@@ -112,7 +133,7 @@
 <!--						   <img src="/rangoli/wp-content/themes/rangoli/images/default.jpg" alt=""/>-->
 	                    </span>
                         <a class="menu-link m-link "
-                           href="javascript:void(0)">Hi <?php echo $customerData['firstname']; ?></a>
+                           href="javascript:void(0)" onclick="jQuery(this).next().click();">Hi <?php echo $customerData['firstname']; ?></a>
 							<span class="arrow-tag toggle-ys-menu">
 <!--								<img alt="V" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png')?><!--" class="responsive">-->
 								<svg width="44px" height="44px">
@@ -168,12 +189,17 @@
                     <?php if (count($_categories) > 0): ?>
                     <ul class="nav-dropdown menu level2" style="display: block;">
                         <?php foreach ($_categories as $_category): ?>
+                            <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+                            <?php $_subcategories = $_category->getChildrenCategories() ?>
+
                             <li class="menu-item has-dropdown c-text">
                             <i></i>
 
                                 <a class="menu-link main-txt" rel="cat_<?php echo $_category->getId();?>" href="<?php echo $_helper->getCategoryUrl($_category) ?>">
                                     <?php echo $_category->getName() ?>
                                 </a>
+
+                                <?php if(isset($_subcategories) && count($_subcategories)>0){ ?>
                                         <span class="arrow-tag toggle-ys-menu">
                                         <!--											<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -188,9 +214,9 @@
                                         </svg>
                                         </span>
 
+                                <?php } ?>
+
                                 <?php //if ($currentCategory && $currentCategory->getId() == $_category->getId()): ?>
-                                <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
-                                <?php $_subcategories = $_category->getChildrenCategories() ?>
                                 <?php if (count($_subcategories) > 0): ?>
                                     <ul class="nav-dropdown menu level3">
                                         <?php foreach ($_subcategories as $_subcategory): ?>
@@ -682,7 +708,7 @@
                             <span>
                                 <svg viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px"> <g>     <path d="M12.274,16.006c-1.265,1.265-1.265,3.315,0,4.58l0.973,0.972   l-0.973,0.972c-1.265,1.265-1.265,3.315,0,4.579c1.265,1.265,3.314,1.265,4.579,0l5.552-5.551l-5.552-5.552   C15.589,14.742,13.539,14.742,12.274,16.006z" stroke-miterlimit="10" stroke="#CCCCCC" fill="none"/>     <path d="M32.536,16.006c1.265,1.265,1.265,3.315,0,4.58l-0.973,0.972   l0.973,0.972c1.265,1.265,1.265,3.315,0,4.579c-1.265,1.265-3.314,1.265-4.579,0l-5.552-5.551l5.552-5.552   C29.222,14.742,31.271,14.742,32.536,16.006z" stroke-miterlimit="10" stroke="#CCCCCC" fill="none"/> </g> </svg>
                             </span>
-                            <a href="/rangoli/love-yogasmoga" class="menu-link main-txt">Love</a>
+                            <a href="/rangoli/iloveyogasmoga/" class="menu-link main-txt">Love</a>
                         </li>
                         <li class="menu-item has-dropdown c-text_small r_grey_text">
                             <a href="/rangoli/smogis/" class="menu-link main-txt">SMOGIs</a>
@@ -784,8 +810,12 @@
                                     </g>
                                 </svg></span>
                         </li>
-                        <li class="menu-item has-dropdown c-text_small r_grey_text <?php echo $inviteFriendClassIfLogged;?>">
-                            <a href="/rangoli/connect/" class="menu-link main-txt">Connect</a>
+                        <li class="menu-item has-dropdown c-text_small r_grey_text ">
+                            <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+                                <a href="javascript:void(0)" onClick="openLogin()" class="menu-link main-txt">Connect</a>
+                            <?php else: ?>
+                                <a href="/rangoli/connect/" class="menu-link main-txt">Connect</a>
+                            <?php endif ?>
                             <span><svg>
 <!--                                    <use xlink:href="#connect" x="0" y="0" width="44px" height="44px"/>-->
                                     <g id="XMLID_24_">

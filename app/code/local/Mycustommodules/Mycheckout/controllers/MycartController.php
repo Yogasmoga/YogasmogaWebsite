@@ -1,4 +1,6 @@
-<?php 
+
+
+<?php
 class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_Front_Action
 {
     public function testAction()
@@ -96,7 +98,19 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         }
         return false;
     }
-    
+
+    public function giftExistsInCard($productId){
+        $session = Mage::getSingleton('checkout/session');
+        $count = 0;
+        foreach ($session->getQuote()->getAllItems() as $item)
+        {
+            if($item->getProductId()==$productId)
+                return true;
+        }
+
+        return false;
+    }
+
     public function addAction()
     {
         Mage::getModel('smogiexpirationnotifier/applyremovediscount')->removesmogibucks();
@@ -128,6 +142,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         $cart   = $this->_getCart();
         $params = $this->getRequest()->getParams();
         $showhtml = $params['showhtml'];
+
         try {
             if (isset($params['qty'])) {
                 $filter = new Zend_Filter_LocalizedToNormalized(
@@ -147,6 +162,100 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 return;
             }
 
+            $uniqueTimeStamp = date("Ymdhis");
+            $productId = (int) $this->getRequest()->getParam('product');
+
+            if(isset($params["type"]) && $params["type"]=="gift"){
+
+                /************* checking if product is gift-set ****************/
+
+                if($this->giftExistsInCard($productId)){
+                    echo json_encode(array("status" => "exists"));
+                    return;
+                }
+
+                $bundle = $params['bundle'];
+
+                $arBundle = explode(",", $bundle);
+
+                foreach($arBundle as $bundleProduct){
+
+                    $arBundleProductOptions = explode(":", $bundleProduct);
+
+                    if(count($arBundleProductOptions)==4) {                  // product id, color, size, bra-cup
+                        $bundleProductId = $arBundleProductOptions[0];
+                        $colorData = $arBundleProductOptions[1];
+                        $sizeData = $arBundleProductOptions[2];
+                        $braData = $arBundleProductOptions[3];
+
+                        $arColorData = explode("-", $colorData);
+                        $arSizeData = explode("-", $sizeData);
+                        $arBraData = explode("-", $braData);
+
+                        $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1], $arBraData[0] => $arBraData[1]);
+                    }
+                    else{
+                        $bundleProductId = $arBundleProductOptions[0];
+                        $colorData = $arBundleProductOptions[1];
+                        $sizeData = $arBundleProductOptions[2];
+
+                        $arColorData = explode("-", $colorData);
+                        $arSizeData = explode("-", $sizeData);
+
+                        $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1]);
+                    }
+
+                    $data = array(
+                        'qty' => 1,
+                        'super_attribute' => $arSuper,
+                        'product' => $bundleProductId,
+                        'type' => 'gift-bundled',
+                        'unique_time_stamp' => $uniqueTimeStamp,
+                        'main_product_id' => $product->getId()
+                    );
+
+                    $bundledProduct = Mage::getModel('catalog/product')
+                        ->setStoreId(Mage::app()->getStore()->getId())
+                        ->load($bundleProductId);
+
+                    $cart->addProduct($bundledProduct, $data);
+                }
+                /************* checking if product is gift-set ****************/
+            }
+            else{
+                /************** check if we are purchasing a product that is part of gift set *********/
+
+                $isAlreadyPartOfGiftSet = false;
+
+                $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getParam('super_attribute'), $product);
+
+                if($childProduct) {
+                    $cartItems = $cart->getQuote()->getAllItems();
+
+                    foreach ($cartItems as $item) {
+
+                        $buyRequest = $item->getBuyRequest();
+
+                        // if we are trying to remove gift set
+                        if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift-bundled") {
+
+                            if ($childProduct->getId() == $item->getProductId()) {
+                                $isAlreadyPartOfGiftSet = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if ($isAlreadyPartOfGiftSet) {
+                        echo json_encode(array("status" => "ingiftset"));
+                        return;
+                    }
+                }
+                /************** check if we are purchasing a product that is part of gift set *********/
+            }
+
+
+            $params['unique_time_stamp'] = $uniqueTimeStamp;
             $cart->addProduct($product, $params);
             if (!empty($related)) {
                 $cart->addProductsByIds(explode(',', $related));
@@ -166,31 +275,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             if($showhtml == '')
                 $minicarthtml = $this->getminicarthtml();
             echo json_encode(array("status" => "success","html" => $minicarthtml , "count" => $this->getcartcount()));
-            //echo "success";
-            //if (!$this->_getSession()->getNoCartRedirect(true)) {
-//                if (!$cart->getQuote()->getHasError()){
-//                    $message = $this->__('%s was added to your shopping cart.', Mage::helper('core')->escapeHtml($product->getName()));
-//                    $this->_getSession()->addSuccess($message);
-//                }
-//                $this->_goBack();
-//            }
         } catch (Mage_Core_Exception $e) {
-            echo json_encode(array("status" => "error"));
-            //if ($this->_getSession()->getUseNotice(true)) {
-//                $this->_getSession()->addNotice(Mage::helper('core')->escapeHtml($e->getMessage()));
-//            } else {
-//                $messages = array_unique(explode("\n", $e->getMessage()));
-//                foreach ($messages as $message) {
-//                    $this->_getSession()->addError(Mage::helper('core')->escapeHtml($message));
-//                }
-//            }
-//
-//            $url = $this->_getSession()->getRedirectUrl(true);
-//            if ($url) {
-//                $this->getResponse()->setRedirect($url);
-//            } else {
-//                $this->_redirectReferer(Mage::helper('checkout/cart')->getCartUrl());
-//            }
+            echo json_encode(array("status" => "error", "reason" => $e->getMessage()));
         } catch (Exception $e) {
             echo json_encode(array("status" => "error"));
             //$this->_getSession()->addException($e, $this->__('Cannot add the item to shopping cart.'));
@@ -199,11 +285,9 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         }
     }
 
-    public function addmobileAction()
+	public function addmobileAction()
     {
-        // print_r('ravi');
-        //exit;
-        Mage::getModel('smogiexpirationnotifier/applyremovediscount')->removesmogibucks();
+		Mage::getModel('smogiexpirationnotifier/applyremovediscount')->removesmogibucks();
         if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode() != ''){
             try{
                 $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
@@ -251,11 +335,115 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 return;
             }
 
+          //  $cart->addProduct($product, $params);
+           // if (!empty($related)) {
+            //    $cart->addProductsByIds(explode(',', $related));
+            //}
+
+			
+			
+			$uniqueTimeStamp = date("Ymdhis");
+
+            if(isset($params["type"]) && $params["type"]=="gift"){
+
+                /************* checking if product is gift-set ****************/
+
+                $productId = (int) $this->getRequest()->getParam('product');
+                if($this->giftExistsInCard($productId)){
+                    echo json_encode(array("status" => "exists"));
+                    return;
+                }
+
+                $bundle = $params['bundle'];
+
+                $arBundle = explode(",", $bundle);
+
+                foreach($arBundle as $bundleProduct){
+
+                    $arBundleProductOptions = explode(":", $bundleProduct);
+
+                    if(count($arBundleProductOptions)==4) {                  // product id, color, size, bra-cup
+                        $bundleProductId = $arBundleProductOptions[0];
+                        $colorData = $arBundleProductOptions[1];
+                        $sizeData = $arBundleProductOptions[2];
+                        $braData = $arBundleProductOptions[3];
+
+                        $arColorData = explode("-", $colorData);
+                        $arSizeData = explode("-", $sizeData);
+                        $arBraData = explode("-", $braData);
+
+                        $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1], $arBraData[0] => $arBraData[1]);
+                    }
+                    else{
+                        $bundleProductId = $arBundleProductOptions[0];
+                        $colorData = $arBundleProductOptions[1];
+                        $sizeData = $arBundleProductOptions[2];
+
+                        $arColorData = explode("-", $colorData);
+                        $arSizeData = explode("-", $sizeData);
+
+                        $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1]);
+                    }
+
+                    $data = array(
+                        'qty' => 1,
+                        'super_attribute' => $arSuper,
+                        'product' => $bundleProductId,
+                        'type' => 'gift-bundled',
+                        'unique_time_stamp' => $uniqueTimeStamp,
+                        'main_product_id' => $product->getId()
+                    );
+
+                    $bundledProduct = Mage::getModel('catalog/product')
+                        ->setStoreId(Mage::app()->getStore()->getId())
+                        ->load($bundleProductId);
+
+                    $cart->addProduct($bundledProduct, $data);
+                }
+                /************* checking if product is gift-set ****************/
+            }
+            else{
+                /************** check if we are purchasing a product that is part of gift set *********/
+
+                $isAlreadyPartOfGiftSet = false;
+
+                $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getParam('super_attribute'), $product);
+
+                if($childProduct) {
+                    $cartItems = $cart->getQuote()->getAllItems();
+
+                    foreach ($cartItems as $item) {
+
+                        $buyRequest = $item->getBuyRequest();
+
+                        // if we are trying to remove gift set
+                        if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift-bundled") {
+
+                            if ($childProduct->getId() == $item->getProductId()) {
+                                $isAlreadyPartOfGiftSet = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if ($isAlreadyPartOfGiftSet) {
+                        echo json_encode(array("status" => "ingiftset"));
+                        return;
+                    }
+                }
+                /************** check if we are purchasing a product that is part of gift set *********/
+            }
+
+
+            $params['unique_time_stamp'] = $uniqueTimeStamp;
             $cart->addProduct($product, $params);
             if (!empty($related)) {
                 $cart->addProductsByIds(explode(',', $related));
             }
 
+			
+			
+			
             $cart->save();
 
             $this->_getSession()->setCartWasUpdated(true);
@@ -267,23 +455,23 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 array('product' => $product, 'request' => $this->getRequest(), 'response' => $this->getResponse())
             );
 
+			
 
+			ob_start();
+			?>
+			
+			<?php echo $this->getcartcount();?>
+		    
+			<?php
+			$mincarthtml = ob_get_clean();
+			ob_flush();
 
-            ob_start();
-            ?>
-
-            <?php echo $this->getcartcount();?>
-
-            <?php
-            $mincarthtml = ob_get_clean();
-            ob_flush();
-
-
-            // $minicarthtml = '';
+			
+           // $minicarthtml = '';
             //if($showhtml == '')
-            // $minicarthtml = $this->getminicarthtml();
-            // echo json_encode(array("status" => "success", "count" => $this->getcartcount()));
-            echo json_encode(array("status" => "success","html" => $mincarthtml , "count" => $this->getcartcount()));
+               // $minicarthtml = $this->getminicarthtml();
+           // echo json_encode(array("status" => "success", "count" => $this->getcartcount()));
+		   echo json_encode(array("status" => "success","html" => $mincarthtml , "count" => $this->getcartcount()));
             //echo "success";
             //if (!$this->_getSession()->getNoCartRedirect(true)) {
 //                if (!$cart->getQuote()->getHasError()){
@@ -294,7 +482,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 //            }
         } catch (Mage_Core_Exception $e) {
             echo json_encode(array("status" => "error"));
-
+        
         } catch (Exception $e) {
             echo json_encode(array("status" => "error"));
             //$this->_getSession()->addException($e, $this->__('Cannot add the item to shopping cart.'));
@@ -302,31 +490,33 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 //            $this->_goBack();
         }
     }
-
-
+    
     public function deleteAction()
     {
         $id = (int) $this->getRequest()->getParam('id');
         if ($id) {
+
             try {
                 $this->_getCart()->removeItem($id)
-                  ->save();
+                    ->save();
             } catch (Exception $e) {
                 echo json_encode(array("status" => "error"));
                 //$this->_getSession()->addError($this->__('Cannot remove the item.'));
                 Mage::logException($e);
                 return;
             }
+
         }
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
-        echo json_encode(array("status" => "success", "count" => $this->getcartcount(), "grandtotal" => "$".number_format((float)$subtotal, 2, '.','')));
+        echo json_encode(array("status" => "success", "data" => $data, "count" => $this->getcartcount(), "grandtotal" => "$".number_format((float)$subtotal, 2, '.','')));
     }
     
     
     function getMiniImage($productid, $color)
     {
-        $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+        $_product = Mage::getModel('catalog/product')->load($productid);
+        $_gallery = $_product->getMediaGalleryImages();
         foreach($_gallery as $_image)
         {
             $imgdata = json_decode(trim($_image->getLabel()), true);
@@ -341,7 +531,20 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         }
         return "";
     }
-    
+
+    // return gift set image for cart
+    function getGiftSetMiniImage($productid)
+    {
+        $_product = Mage::getModel('catalog/product')->load($productid);
+        $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+        foreach($_gallery as $_image)
+        {
+            $imgdata = json_decode(trim($_image->getLabel()), true);
+            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
+        }
+        return "";
+    }
+
     public function searchcart($minidetails, $sku)
     {
         foreach($minidetails as $item)
@@ -354,13 +557,32 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     
     public function getcartcount()
     {
-        //return Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
+/*************** original code ***************/
+/*
         $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
         if(isset($cart['items_qty'])){
             return (int)$cart['items_qty'];
         } else {
             return 0;
         }
+*/
+        $session = Mage::getSingleton('checkout/session');
+        $count = 0;
+        foreach ($session->getQuote()->getAllItems() as $item)
+        {
+            if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
+            {
+                $buyRequest = $item->getBuyRequest();
+                $product_type = $buyRequest['type'];
+
+                if(isset($product_type) && $product_type=="gift-bundled")
+                    continue;
+
+                ++$count;
+            }
+        }
+
+        return $count;
     }
     
     public function issuperattribute($_product, $superattribute)
@@ -378,15 +600,6 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     
     public function getminicarthtml()
     {
-        $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-
-        $homeUrl = Mage::helper('core/url')->getHomeUrl();
-        if(strstr(strtolower($currentUrl), 'https://')===false)
-            ;
-        else {
-            $homeUrl = Mage::getUrl('/', array('_secure' => true));
-        }
-
         //$output .= "SKU = ".Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() . "<br>";
 //        $output .= "SKU = ".$item->getSku() . "<br>";
 //        $output .= "Namw = ".$item->getName() . "<br>";
@@ -437,7 +650,35 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
-                    $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));                    
+                    //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+
+                    /******************* gift set check ****************/
+
+                    $buyRequest = $item->getBuyRequest();
+
+                    if(isset($buyRequest['type'])) {
+                        $product_type = $buyRequest['type'];
+
+                        if (isset($product_type)) {
+                            $temparray['product_type'] = $product_type;         // there should not be any remove icon on cart for this
+
+                            if ($product_type == 'gift')
+                                $temparray['imageurl'] = $this->getGiftSetMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                            else
+                                $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                        } else {
+                            $temparray['product_type'] = null;
+                            $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                        }
+                    }
+                    else{
+                        $temparray['product_type'] = null;
+                        $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                    }
+
+                    /******************* gift set  check ****************/
+
+
                     $temparray['itemid'] = $item->getItemId();
                     $temparray['producturl'] = Mage::getModel('catalog/product')->load($item->getProductId())->getProductUrl();
                     array_push($miniitems, $temparray);
@@ -497,13 +738,9 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         $minidetails['items'] = $miniitems;
         //$minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
         $minidetails['totalitems'] = $this->getcartcount();
+        $minidetails['cartlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/cart";
         $minidetails['subtotal'] = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
-
-        //$minidetails['cartlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/cart";
-        //$minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
-
-        $minidetails['cartlink'] = $homeUrl . "checkout/cart";
-        $minidetails['checkoutlink'] =  $homeUrl . "checkout/onepage";
+        $minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
         
         //echo "<pre>";
 //        print_r($minidetails);
@@ -529,7 +766,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             $productcount++;
         }
         //$output .= "<div class='bottomlinks'><a href='".$minidetails['cartlink']."'><div class='gotoshoppingbag spbutton' imageurl='".$this->getSkinUrl('images/go_to_shopping_bag_01off.png')."' downimageurl='".$this->getSkinUrl('images/go_to_shopping_bag_01on.png')."'></div></a> <div class='subtotal'> <table> <tr> <td class='anchor'> SUBTOTAL </td> <td class='totalprice'> ".$minidetails['subtotal']." </td> </tr> </table> </div> <a href='".$minidetails['checkoutlink']."'> <div class='minicheckout spbutton' imageurl='".$this->getSkinUrl('images/checkout_off.png')."' downimageurl='".$this->getSkinUrl('images/checkout_on.png')."'></div></a></div>";
-        $output .= "<div class='bottomlinks'><div class='subtotal'> <table> <tr> <td class='anchor'> SUBTOTAL </td> <td class='totalprice'> ".$minidetails['subtotal']." </td> </tr> </table> </div> <a href='".$minidetails['cartlink']."'> <div class='minicheckout spbutton' imageurl='".$this->getSkinUrl('images/checkout_off.png', array("_secure" => true))."' downimageurl='".$this->getSkinUrl('images/checkout_on.png', array("_secure" => true))."'></div></a></div>";
+        $output .= "<div class='bottomlinks'><div class='subtotal'> <table> <tr> <td class='anchor'> SUBTOTAL </td> <td class='totalprice'> ".$minidetails['subtotal']." </td> </tr> </table> </div> <a href='".$minidetails['cartlink']."'> <div class='minicheckout spbutton' imageurl='".$this->getSkinUrl('images/checkout_off.png')."' downimageurl='".$this->getSkinUrl('images/checkout_on.png')."'></div></a></div>";
         return $output;
     }
     

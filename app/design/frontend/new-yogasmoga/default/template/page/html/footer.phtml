@@ -28,6 +28,21 @@
     <!-- call invite popup  -->
 <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_invite.phtml')->toHtml(); ?>
 <!-- <div class="footer-container"> -->
+    <div class="gift-set-sorry-popup">
+        <div class="content-sorry-popup">
+            <p>SORRY!</p>
+            <p class="message">To order more than 1 of the same set, please place a separate order.</p>
+            <button>KEEP SHOPPING</button>
+        </div>
+    </div>
+<script>
+    jQuery(function(){
+        jQuery(".gift-set-sorry-popup .content-sorry-popup > button").click(function(){
+            jQuery(".gift-set-sorry-popup").hide();
+        });
+    });
+</script>
+
     <div id="sitemap" class="l-align">
         <div class="logoCont">
             <a class="logo" href="<?php echo $this->getUrl('') ?>" title="YOGASMOGA logo" style="padding-left:5px">

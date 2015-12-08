@@ -46,7 +46,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
                     $temparray['sku'] = $item->getSku();
-                    //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
+
                     $temparray['name'] = $item->getName();
                     if(strlen($temparray['name']) > 20)
                         $temparray['name'] = substr($temparray['name'], 0, 19)."...";
@@ -57,14 +57,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         if(strpos($temparray['color'], "|") !== false)
                             $temparray['color'] = substr($temparray['color'], 0, strpos($temparray['color'], "|"));
                     }
+
                     if($this->issuperattribute($product, "size"))
                         $temparray['size'] = $_product->getAttributeText('size');
+
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
-                    //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
                     $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+
                     $temparray['itemid'] = $item->getItemId();
                     $temparray['producturl'] = Mage::getModel('catalog/product')->load($item->getProductId())->getProductUrl();
+
                     array_push($miniitems, $temparray);
                 }
             }
@@ -89,11 +92,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             else
             {
-                //if($this->searchcart($miniitems, $item->getSku()) == false)
-//                {
                 $_product = Mage::getModel('catalog/product')->load($item->getProductId());
                 $temparray['sku'] = $item->getSku();
-                //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
+
                 $temparray['name'] = $item->getName();
                 if(strlen($temparray['name']) > 20)
                     $temparray['name'] = substr($temparray['name'], 0, 19)."...";
@@ -104,15 +105,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $temparray['producturl'] = $_product->getProductUrl();
                 $temparray['itemid'] = $item->getItemId();
                 array_push($miniitems, $temparray);
-                //}
             }
         }
-        //$totalItems = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
-//        echo "Total Items:".$totalItems."<br/>";
-//        $grandTotal = Mage::getModel('checkout/cart')->getQuote()->getGrandTotal();
-//        echo "Grand total:".$grandTotal."<br/>";
-//
-//        print $output;
 
         $miniitems = array_reverse($miniitems);
 
@@ -853,7 +847,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if($checkpromoapplied)
             {
-                $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
+            
+			//  $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
+				$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+			
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
                 $applysmogi="";
@@ -868,7 +865,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if($checkgiftapplied)
             {
                 //$gryclassgift = "gry";
-                $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
+               // $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
+			   $smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";
@@ -1110,7 +1108,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
     public function deleteAction()
     {
-
+/************** original code *************************/
+/*
         $id = (int) $this->getRequest()->getParam('id');
         $deletedqty = (int) $this->getRequest()->getParam('deleteqty');
         if ($id) {
@@ -1142,6 +1141,66 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 return;
             }
         }
+*/
+/************** original code *************************/
+
+        $id = (int) $this->getRequest()->getParam('id');
+        $deletedqty = (int) $this->getRequest()->getParam('deleteqty');
+        if ($id) {
+            try {
+                $quote = Mage::getSingleton('checkout/session')->getQuote();
+                $cartItems = $quote->getAllVisibleItems();
+                $cart = Mage::getSingleton('checkout/cart');
+
+                foreach ($cartItems as $item) {
+
+                    if ($id == $item->getId()) {
+
+                        $buyRequest = $item->getBuyRequest();
+
+                        // if we are trying to remove gift set
+                        if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift"){
+
+                            $giftProductId = $item->getProductId();
+
+                            // remove all child products of this gift
+                            foreach ($cartItems as $childItem){
+                                $buyRequest = $childItem->getBuyRequest();
+
+                                if(isset($buyRequest) && isset($buyRequest["type"]) && $buyRequest["type"]=="gift-bundled"){
+
+                                    $main_product_id = $buyRequest["main_product_id"];
+
+                                    if($main_product_id===$giftProductId){
+                                        $this->_getCart()->removeItem($childItem->getId())->save();
+                                    }
+                                }
+                            }
+
+                            $this->_getCart()->removeItem($id)->save(); // remove the main gift product
+                            break;
+                        }
+                        else{       // for normal products
+                            if($deletedqty>1){
+                                $item->setQty($deletedqty-1);
+                                $cart->save();
+                            }
+                            else
+                                $this->_getCart()->removeItem($id)->save();
+
+                            break;
+                        }
+                    }
+                }
+
+            } catch (Exception $e) {
+                echo json_encode(array("status" => "error"));
+                //$this->_getSession()->addError($this->__('Cannot remove the item.'));
+                Mage::logException($e);
+                return;
+            }
+        }
+
         // check for whick type of promotion code is apply in the cart (this is because of to fix grand total in cart)
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
@@ -1175,9 +1234,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
          }
         */
 
-        echo json_encode(array("status" => "success", "count" => $this->getcartcount()));
-        return;
-        echo json_encode(array("status" => "success","html" => $this->createshoppingbaghtml(), "count" => $this->getcartcount()));
+        echo json_encode(array("status" => "success", "count" => $this->getcartcount(), "message" => $message));
+//        return;
+//        echo json_encode(array("status" => "success","html" => $this->createshoppingbaghtml(), "count" => $this->getcartcount()));
     }
 
     protected function createshoppingbaghtml()
@@ -1214,9 +1273,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $session = Mage::getSingleton('checkout/session');
         $i=0;
         foreach ($session->getQuote()->getAllItems() as $item)
-        {//echo ++$i.'--';
-            //echo $item->getProductId().'--'.$item->getSku().'<br>';
-
+        {
             $temparray = array();
             if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
             {
@@ -1224,10 +1281,38 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $productselectedoptioncount = isset($productselectedoption['options']) ? count($productselectedoption['options']) : 0;
 
                 if($this->searchcartnew($miniitems, $item->getSku(),$productselectedoptioncount) == false  )
-                {// echo $item->getSku().'--';
-
+                {
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
+
+                    /******************* gift set check ****************/
+
+                    $buyRequest = $item->getBuyRequest();
+
+                    if(isset($buyRequest['type'])) {
+                        $product_type = $buyRequest['type'];
+
+                        if (isset($product_type)) {
+                            $temparray['product_type'] = $product_type;         // there should not be any remove icon on cart for this
+
+                            if ($product_type == 'gift')
+                                $temparray['imageurl'] = $this->getGiftSetMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                            else
+                                $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                        } else {
+                            $temparray['product_type'] = null;
+                            $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                        }
+
+                        $temparray['product_type'] = $product_type;
+                    }
+                    else{
+                        $temparray['product_type'] = 'normal';
+                        $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                    }
+
+                    /******************* gift set  check ****************/
+
                     $temparray['pid'] = $item->getProductId();
                     $temparray['sku'] = $item->getSku();
                     $temparray['pavailableqty'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty();
@@ -1241,19 +1326,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     {
                         $confProduct = Mage::getModel('catalog/product')->load($item->getProductId());
                         $temparray['confPrice'] = "$".number_format((float)( $confProduct->getPrice()), 2, '.', '');
-
-
                     }
 
-
-
-
-
-
-                    //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
-                    //if(strlen($temparray['name']) > 20)
-                        //$temparray['name'] = substr($temparray['name'], 0, 19)."...";
 
                     if($this->issuperattribute($product, "color"))
                     {
@@ -1270,18 +1345,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         $temparray['optionlabel'] = $productselectedoption['options'][0]['label'];
                         $temparray['optionvalue'] = $productselectedoption['options'][0]['value'];
                     }
+
                     $temparray['quantity'] = $item->getQty();
-                    //$temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     $temparray['price'] = "$".number_format((float)( $item->getBaseCalculationPrice()), 2, '.', '');
-                    //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
-                    $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                  //  $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
                     $temparray['itemid'] = $item->getItemId();
                     $temparray['producturl'] = Mage::getModel('catalog/product')->load($item->getProductId())->getProductUrl();
                     array_push($miniitems, $temparray);
                 }
             }
             else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
-            {//echo $item->getSku().'++';
+            {
                 if($this->searchcart($miniitems, $item->getSku()) == false)
                 {
                     $_product = Mage::getModel('catalog/product')->load($item->getProductId());
@@ -1308,8 +1382,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             else
             {
-                //if($this->searchcart($miniitems, $item->getSku()) == false)
-//                {
                 $_product = Mage::getModel('catalog/product')->load($item->getProductId());
                 $temparray['pid'] = $item->getProductId();
                 $temparray['sku'] = $item->getSku();
@@ -1317,12 +1389,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $temparray['preorder'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getBackorders();
                 $temparray['instock'] = $_product->stock_item->is_in_stock;
                 $temparray['typeid'] = '';
-                //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
+
                 $temparray['name'] = $item->getName();
-                //if(strlen($temparray['name']) > 20)
-                    //$temparray['name'] = substr($temparray['name'], 0, 19)."...";
                 $temparray['quantity'] = $item->getQty();
-                //$temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+
                 $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');
                 $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
                 $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
@@ -1332,15 +1402,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 //}
             }
         }
-        //$totalItems = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
-//        echo "Total Items:".$totalItems."<br/>";
-//        $grandTotal = Mage::getModel('checkout/cart')->getQuote()->getGrandTotal();
-//        echo "Grand total:".$grandTotal."<br/>";
-//
-//        print $output;
-        //print_r($miniitems);die('tst');
+
         $miniitems = array_reverse($miniitems);
-        //print_r($miniitems);
+
         $customerId = Mage::getModel('customer/session')->getCustomerId();
 
         if($customerId)
@@ -1364,14 +1428,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
 
         }
-        //print_r($miniitems);die('test');
-        // end show every quantity
 
-        //echo $foundOnlyNoSmogiProduct;
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         $grandtotal = $totals["grand_total"]->getValue();
-        //echo $totals['tax'];die('tax');
 
         $tax = 0;
         if(isset($totals['tax']) && $totals['tax']->getValue()) {
@@ -1382,7 +1442,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
 
         $minidetails['items'] = $miniitems;
-        //$minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
+
         $minidetails['totalitems'] = $this->getcartcount();
         $minidetails['cartlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/cart";
         $minidetails['subtotal'] = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
@@ -1410,7 +1470,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $allow = $this->countDiscountType();
         if($allow > 1)
         {
-            $html = '
+            $html .= '
             <!-- ContinueShoppingBtn -->
             <div class="cont-full capstxt">
                 <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Keep Shopping</a>
@@ -1423,7 +1483,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             <!-- productOption -->
             <div class="cont-full contfull2">';
         }
-        else{   $html = '
+        else{   $html .= '
             <!-- ContinueShoppingBtn -->
             <div class="cont-full capstxt">
                 <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Keep Shopping</a>
@@ -1643,7 +1703,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if($checkpromoapplied)
             {
-                $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
+            //$smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
+			$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
                 $applysmogi="";
@@ -1658,7 +1719,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if($checkgiftapplied)
             {
                 //$gryclassgift = "gry";
-                $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
+            //  $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
+				$smogiplaceholder = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";
@@ -1753,6 +1815,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $vivacityConfigurableIds = array(2599,1990,1846,1843);
         $vivacityFound = false;
 
+        $giftCount = 0;
         foreach($minidetails['items'] as $item)
         {
             foreach($vivacityConfigurableIds as $vivacityId){
@@ -1762,12 +1825,72 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 }
             }
 
-            $html .='<li id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
-                <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ></span></a>
+/*********** added for gift set **********************/
+            $circleBorder = "";
+            $giftStyle = "";
+            $giftClass = "";
+            $giftMainClass = "";
+            if($item['product_type']=="gift"){
+
+                ++$giftCount;
+
+                $giftStyle = "border-bottom: none";
+                $giftClass = "gift_parent gift_" . $giftCount;
+                $circleBorder = 'style="border-radius: 50%; border: solid 1px rgba(204, 204, 204, 0.7);"';
+            }
+            else if($item['product_type']=="gift-bundled")
+                $giftClass = "gift_" . $giftCount . "_product gift_child";
+
+            //if($item['product_type']=="gift-bundled")
+            //    continue;
+/*********** added for gift set **********************/
+
+            $html .='<li class="' . $giftClass . '" ' . $giftStyle . ' id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
+                <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ' . $circleBorder . '/></span></a>
 <span>
                     <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
                     <span class="pname">'.$item['name'].'</span>';
 
+
+/*********** added for gift set **********************/
+
+            if($item['product_type']=="gift") {
+                if(isset($item['insale']) && $item['insale'] == 'Yes')
+                {
+                    $html .='<span class="amnt" style="color : #c03;">'.$item['price'].'</span>
+                            <span class="insale"  > was '.$item['confPrice'].'</span>';
+                }
+                else{
+                    $html .='<span class="amnt">'.$item['price'].'</span>';
+                }
+            }
+/*            else if($item['product_type']=="gift-bundled") {
+                $html .= '<span class="clr">' . $item['color'] . '</span>';
+                if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
+                if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
+            }*/
+            else{
+                if($item['product_type']=='gift-bundled'){
+                    $html .= '<span class="clr">' . $item['color'] . '</span>';
+                    if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
+                    if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
+                }
+                else {
+                    if (isset($item['insale']) && $item['insale'] == 'Yes') {
+                        $html .= '<span class="amnt" style="color : #c03;">' . $item['price'] . '</span>
+                            <span class="insale"  > was ' . $item['confPrice'] . '</span>';
+                    } else {
+                        $html .= '<span class="amnt">' . $item['price'] . '</span>';
+                    }
+                    $html .= '<span class="clr">' . $item['color'] . '</span>';
+                    if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
+                    if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
+                }
+            }
+/*********** added for gift set **********************/
+
+/************* original code is below *************/
+/*
             if(isset($item['insale']) && $item['insale'] == 'Yes')
             {
                 $html .='<span class="amnt" style="color : #c03;">'.$item['price'].'</span>
@@ -1776,10 +1899,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             else{
                 $html .='<span class="amnt">'.$item['price'].'</span>';
             }
+            $html .= '<span class="clr">' . $item['color'] . '</span>';
+            if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size ' . $item['size'] . '</span>';
+            if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
+*/
+/************* original code is above *************/
 
-            $html .='<span class="clr">'.$item['color'].'</span>';
-            if(isset($item['size']) && $item['size'] !='') $html .='<span class="size">size '.$item['size'].'</span>';
-            if(isset($item['length']) && $item['length'] !='') $html .='<span class="size">'.$item['length'].'</span>';
             if(isset($item['optionlabel']) && $item['optionlabel'] != '')
             {
                 $html .='<span class="size">'.$item['optionlabel'].'</span>';
@@ -1789,8 +1914,23 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             {
                 $html .='<span class="size" style="color: #c03;">This Item is Final Sale. Cannot be exchanged or returned.</span>';
             }
-            $html .='</span>
-<a href="#" class="close"></a>';
+            $html .='</span>';
+
+/************* for gift set ***************/
+            if($item['product_type']=='gift-bundled')
+                ;
+            else if($item['product_type']=='gift') {
+                $html .= '<a href="#" class="close"></a>';
+                $html .= '<div class="show_details">SET DETAILS <b class="show_gift_items">&plus;</b></div>';
+            }
+            else
+                $html .='<a href="#" class="close"></a>';
+/************* for gift set ***************/
+
+/************* original code before gift set ***************/
+//            $html .='<a href="#" class="close"></a>';
+/************* original code before gift set ***************/
+
             // Preorder
             if($item['pavailableqty'] - $item['quantity'] < 0 && $item['preorder'] == 1 && $item['instock']&& ($item['typeid'] != "giftcards" && $item['typeid'] != ''))
             {
@@ -1811,7 +1951,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
 /************** code update, show namaskaar bracelet in cart whether it is present or not ********************/
-        // commenting the logic below
         // show bracelet if it is not in cart else do not show
 /*
 
@@ -1836,8 +1975,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
             foreach($_childproducts as $_childproduct)
             {
-                //echo '<pre>'; print_r($_childproduct);die;
-
                 $qty = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
                 $stock = $_childproduct->getStockItem();
                 $inStock = $stock->getIsInStock();
@@ -2166,7 +2303,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         else
             $vivacityStr = '<span  style="display:none;" class="vivacity" rel="no"></span>';
 
-        // end to show braclet
         $html .= '</ul>' . $vivacityStr . '</div>';
 
         return $html;
@@ -2425,14 +2561,34 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
     public function getcartcount()
     {
-        //return Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
+/*
         $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
         if(isset($cart['items_qty'])){
             return (int)$cart['items_qty'];
         } else {
             return 0;
         }
+*/
+/*********** bundled logic **********/
+        $session = Mage::getSingleton('checkout/session');
+        $count = 0;
+        foreach ($session->getQuote()->getAllItems() as $item)
+        {
+            if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
+            {
+                $buyRequest = $item->getBuyRequest();
+                $product_type = $buyRequest['type'];
+
+                if(isset($product_type) && $product_type=="gift-bundled")
+                    continue;
+
+                ++$count;
+            }
+        }
+
+        return $count;
     }
+
     public function searchcart($minidetails, $sku)
     {
         foreach($minidetails as $item)
@@ -2442,6 +2598,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
         return false;
     }
+
     public function searchcartnew($minidetails, $sku, $productselectedoptioncount = null)
     {
         if($productselectedoptioncount > 0)
@@ -2468,6 +2625,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
         return false;
     }
+
     public function searchforoptionproduct($productarr,$sku)
     {
         foreach($productarr as $key=>$value)
@@ -2481,7 +2639,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         return false;
     }
 
-    // this method returns the
+    // return image for cart
     function getMiniImage($productid, $color)
     {
         $_product = Mage::getModel('catalog/product')->load($productid);
@@ -2500,6 +2658,20 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
         return "";
     }
+
+    // return gift set image for cart
+    function getGiftSetMiniImage($productid)
+    {
+        $_product = Mage::getModel('catalog/product')->load($productid);
+        $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+        foreach($_gallery as $_image)
+        {
+            $imgdata = json_decode(trim($_image->getLabel()), true);
+            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
+        }
+        return "";
+    }
+
     public function issuperattribute($_product, $superattribute)
     {
         $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
@@ -2512,10 +2684,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
         return false;
     }
+
     protected function getSkinUrl($path)
     {
         return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."frontend/new-yogasmoga/yogasmoga-theme/".$path;
     }
+
     function getShippingCost($code)
     {
         //$rates = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->collectShippingRates()->getGroupedAllShippingRates();

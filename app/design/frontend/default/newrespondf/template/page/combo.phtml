@@ -1,0 +1,554 @@
+<?php
+$storeId = Mage::app()->getStore()->getStoreId();
+$catId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+$_helper = Mage::helper('catalog/output');
+
+$productCollection = Mage::getModel('catalog/category')->load($catId)
+    ->getProductCollection()
+    ->addAttributeToSelect('*');
+
+$cities = array();
+$latlongs = array();
+$cityTimes = array();
+
+$resourceModel = Mage::getResourceModel('catalog/product');
+
+/***************** get all colors from database ***********************/
+$allColors = array();
+$allColorsNames = array();
+$allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+$allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
+foreach ($allColorOptions as $instance) {
+    if (!array_key_exists($instance['value'], $allColors)) {
+        $allColors[$instance['value']] = $instance['label'];
+        $allColorsNames[$instance['label']] = $instance['value'];
+    }
+}
+/***************** get all sizes from database ***********************/
+$allSizes = array();
+$allSizeAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+$allSizeOptions = $allSizeAttribute->getSource()->getAllOptions(true, true);
+foreach ($allSizeOptions as $instance) {
+    if ($instance['label'] != "") {
+        if (is_numeric($instance['label']) && intval($instance['label']) > 12)
+            continue;
+
+        if (strpos(strtoupper($instance['label']), "T") !== false)
+            continue;
+
+        $allSizes[$instance['label']] = $instance['value'];
+    }
+}
+?>
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_iphone
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" topmargin="0"
+      leftmargin="0" <?php echo $this->getBodyClass() ? ' class="' . $this->getBodyClass() . '"' : '' ?>
+      onload="setTimeout(scrollTo, 0, 0, 1)">
+<div class="wrapper">
+    <div class="page">
+        <?php echo $this->getChildHtml('after_body_start') ?>
+        <?php echo $this->getChildHtml('global_notices') ?>
+        <div class="header-container">
+            <div class="header">
+                <?php echo $this->getChildHtml('header') ?>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="main-container">
+            <?php echo $this->getChildHtml('global_messages') ?>
+            <?php echo $this->getChildHtml('content') ?>
+        </div>
+        <div class="pageThumbnail table">
+            <div class="table-cell">
+                <h1 class="page-title">#YSWANDERLAND</h1>
+
+                <p>Giftsets inspired by cities that inspire us.</p>
+            </div>
+        </div>
+        <div class="gift-sets-collection">
+
+            <?php
+
+            $arBundledProductImages = array();
+            $giftSetCount = 0;
+            foreach ($productCollection as $_product_single) {
+
+                $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
+                $setProductUrl = $_product->getProductUrl();
+
+                // checking stock of simple product of gift set
+                $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
+                $giftSetAvailable = false;
+                foreach ($_childProducts as $simple) {
+                    $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple);
+
+                    if($stock->getQty()>0 && $stock->getIsInStock())
+                        $giftSetAvailable = true;
+
+                    break;
+                }
+
+                // check if all gift set products have inventory
+                if($giftSetAvailable)
+                    $giftSetCount++;
+                else
+                    continue;           // skip this gift set
+
+                $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
+                if (isset($bundled_product_ids))
+                    $bundled_product_ids = trim($bundled_product_ids);
+
+                $ar_bundled_product_ids = explode(",", $bundled_product_ids);
+
+                /******************************  check if any of the gift set bundled products are out of stock *************************/
+                $anyBundledOutOfStock = false;
+                for ($i = 0; $i < count($ar_bundled_product_ids); $i++) {
+
+                    $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);          // id:color_code
+
+                    $bundle_configurable_id = $ar_id_color_code[0];
+                    $bundle_color_id = $ar_id_color_code[1];
+
+                    $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
+
+                    /************** check if all simple products are out of stock or not ********************/
+                    $allOutOfStock = true;
+                    $_bundleChildProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
+                    foreach($_bundleChildProducts as $_bundleChildProduct){
+
+                        /************ get color code of simple product and match it with passed color code **************/
+                        $bundleChildName = $_bundleChildProduct->getName();
+                        $bundleChildColor = $_bundleChildProduct->getAttributeText('color');
+                        $bundleChildColorName = substr($bundleChildColor, 0, strpos($bundleChildColor, "|"));
+                        $bundleChildColorCode = $allColorsNames[$bundleChildColorName];
+
+                        if($bundleChildColorCode==$bundle_color_id) {
+
+                            $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_bundleChildProduct);
+
+                            $stock = $productStock->getQty();
+                            $inStock = $productStock->getIsInStock();
+
+                            if ($stock > 0 && $inStock) {
+                                $allOutOfStock = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if($allOutOfStock){
+                        $anyBundledOutOfStock = true;
+                        break;
+                    }
+                }
+
+                if($anyBundledOutOfStock) {
+                    $outOfStockSets[] = $_product_single->getId();
+                    continue;
+                }
+                /******************************  check if any of the gift set bundled products are out of stock *************************/
+
+                $ar_bundle_sizes = array();
+
+                /************ get color code of configurable product **************/
+                $productAttributeOptions = $_product->getTypeInstance(true)->getConfigurableAttributesAsArray($_product);
+                foreach ($productAttributeOptions as $productAttribute) {
+                    foreach ($productAttribute['values'] as $attribute) {
+                        if ($productAttribute['label'] == 'Color') {
+                            $gift_simple_color = $attribute['value_index'];
+                            break;
+                        }
+                    }
+                }
+                /************ get color code of configurable product **************/
+
+                $gift_simple_id = $_product_single->getId();
+                $gift_bundle_count = count($ar_bundled_product_ids);
+
+                for ($i = 0; $i < count($ar_bundled_product_ids); $i++) {
+
+                    $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);          // id:color_code
+
+                    $bundle_configurable_id = $ar_id_color_code[0];
+                    $bundle_color_id = $ar_id_color_code[1];
+
+                    $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
+                    //$bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
+					$bundledProductUrl = Mage::getBaseUrl().$_bundle_product->getUrlKey() . '?color=' . $bundle_color_id;
+
+                    $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
+
+                    $bundle_product_images = array();
+
+                    if (isset($_gallery)) {
+                        foreach ($_gallery as $_image) {
+                            $imageLabelData = json_decode(trim($_image->getLabel()), true);
+
+                            if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                                continue;
+
+                            if ($imageLabelData['color'] == $ar_id_color_code[1]) {
+                                $big_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                                //$bundle_product_images[] = $url;
+                                break;
+                            }
+                        }
+                    }
+
+                    $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
+                    $ar_child_sizes = array();
+                    foreach ($_childProducts as $_childProduct) {
+                        $size = $_childProduct->getAttributeText('size');
+
+                        if (is_numeric($size) && intval($size) > 12)
+                            continue;
+
+                        if (strpos(strtoupper($size), "T") !== false)
+                            continue;
+
+                        if (is_numeric($size))
+                            $ar_child_sizes[] = intval($size);
+                        else
+                            $ar_child_sizes[] = $size;
+                    }
+
+                    $ar_child_sizes = array_unique($ar_child_sizes);
+                    ksort($ar_child_sizes);
+
+                    /****************** check Include Bra option *********************/
+                    $hasBraCup = "n";
+                    foreach ($_bundle_product->getOptions() as $option) {
+                        $optionType = $option->getType(); // get option type
+
+                        $optionValues = $option->getValues();
+
+                        $hasBraCup = "n";
+/*
+                        if (isset($optionValues) && count($optionValues) > 0) {
+
+                            if (isset($optionValues["remove_bracup_insert"])) {
+                                $hasBraCup = "n";
+                                break;
+                            }
+
+                            foreach ($optionValues as $optionValue) {
+                                $hasBraCup = "y";
+                                if (strtolower($optionValue['default_title']) == "y") {
+                                    $braCupYesOptionId = $optionValue['option_id'];
+                                    $braCupYesOptionTypeId = $optionValue['option_type_id'];
+                                } else if (strtolower($optionValue['default_title']) == "n") {
+                                    $braCupNoOptionId = $optionValue['option_id'];
+                                    $braCupNoOptionTypeId = $optionValue['option_type_id'];
+                                }
+                            }
+                        }
+*/
+                    }
+                    /****************** finish checking Include Bra option *********************/
+
+                    $ar_bundle_sizes[$i] = array(
+                        "product_name" => $_bundle_product->getName(),
+                        "product_id" => $_bundle_product->getId(),
+                        "price" => round($_bundle_product->getPrice(), 2),
+                        "sizes" => $ar_child_sizes,
+                        "big_image" => $big_image,
+                        //"images" => $bundle_product_images,
+                        "color" => $allColors[$bundle_color_id],
+                        "color_code" => $bundle_color_id,
+                        "url" => $bundledProductUrl,
+                        "hasBraCup" => $hasBraCup
+                    );
+
+                    $arBundledProductImages[$_bundle_product->getId()] = array("big_image" => $big_image);
+                }
+                $person = "";
+                // main set images
+                $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                $setImage = "";
+                if (isset($_gallery)) {
+                    foreach ($_gallery as $_image) {
+                        $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                        $person = $imageLabelData['person'];
+                        $image_type = $imageLabelData['image_type'];
+
+                        if($image_type=="mobile") {
+                            $setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
+                            break;                    // we want to read first image only
+                        }
+                    }
+                }
+
+                ?>
+
+                <div class="gift-set" data-filter="<?php echo $person; ?>">
+                    <div class="gift-set-title"><?php echo $_product->getName(); ?> SET</div>
+                    <p class="left_item"><?php echo round($stock, 0); ?> remaining</p>
+
+                    <div class="thumbnail" style="background: url('<?php echo $setImage; ?>'); background-size: cover">
+                        <span class="setPrice">$<?php echo round($_product->getPrice(), 0); ?></span>
+
+                        <p>Buy Now <span>&gt;</span></p>
+                    </div>
+                    <div class="details">
+
+                        <p class="desc">
+                            <?php echo $_product->getDescription(); ?>
+                        </p>
+
+                        <div class="flexslider">
+                            <ul class="slides">
+
+                                <?php
+                                for ($x = 0; $x < count($ar_bundle_sizes); $x++) {
+
+                                    $bundle = $ar_bundle_sizes[$x];
+                                    ?>
+
+                                    <li rel="product_<?php echo($x + 1); ?>_details"
+                                        rel="<?php echo $bundle['product_id']; ?>">
+                                        <img src="<?php echo $bundle['big_image']; ?>"/>
+                                    </li>
+
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <div class="related_blocks">
+                            <?php
+                            $sizeDivCount = 0;
+                            $totalProducts = count($ar_bundle_sizes);
+                            foreach ($ar_bundle_sizes as $data) {
+                                ++$sizeDivCount;
+                                ?>
+
+                                <div class="product_<?php echo $sizeDivCount; ?>_details"
+                                     rel="<?php echo $data['product_id']; ?>">
+                                    <p class="product_name"><?php echo $data["product_name"]; ?>
+                                        <span><?php echo $sizeDivCount; ?> of <?php echo $totalProducts; ?>
+                                            Products</span></p>
+
+                                    <p class="product_color product-color-<?php echo $sizeDivCount; ?>"
+                                       rel="<?php echo $data['color_code']; ?>"><?php echo $data["color"]; ?></p>
+
+                                    <p class="sold_indidually">
+                                        <a href="<?php echo $data['url']; ?>">$<?php echo $data["price"];?> Sold Individually</a>
+                                    </p>
+
+                                    <div class="size_selection_box">
+                                        <p>Choose Size <!--<span class="size_chart_link">Size Chart</span>--></p>
+
+                                        <div class="sizes">
+                                            <?php
+                                            foreach ($allSizes as $key => $value) {
+                                                foreach ($data["sizes"] as $size) {
+
+                                                    if ($size == $key) {
+                                                        ?>
+
+                                                        <span class="size size-<?php echo $sizeDivCount; ?>"
+                                                              rel="<?php echo $value; ?>"><?php echo $key; ?></span>
+
+                                                        <?php
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+
+                                    <?php if ($data["hasBraCup"] == "y") { ?>
+                                        <div class="bra_cup_selection bra-cup-<?php echo $sizeDivCount; ?>">
+                                            <p>Include bra cup?
+                                    <span class="bra_cup_toggle">
+                                        <span class="no selected" optiontypeid="<?php echo $braCupYesOptionTypeId; ?>"
+                                              optionid="<?php echo $braCupYesOptionId; ?>"></span>
+                                        <span class="yes" optiontypeid="<?php echo $braCupNoOptionTypeId; ?>"
+                                              optionid="<?php echo $braCupNoOptionId; ?>"></span>
+                                    </span>
+                                            </p>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+
+                            <?php } ?>
+
+                        </div>
+
+
+                        <div class="row">
+                            <p class="error-text"></p>
+
+                            <!--
+                            <div class="add_to_wishlist">
+                                <svg height="44px" width="44px" xml:space="preserve"
+                                     style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                                     id="Layer_1" version="1.1">
+                                <path d="M21.9,35.4L34,19.8c0.8-1.1,1.2-2.4,1.2-3.8c0-3.7-3-6.6-6.6-6.6c-3.7,0-6.6,3-6.6,6.6c0-3.7-3-6.6-6.6-6.6
+                                c-3.7,0-6.6,3-6.6,6.6c0,1.4,0.5,2.7,1.2,3.8L21.9,35.4z" fill="#fff"/>
+                                </svg>
+                            </div>
+                            -->
+                            <div class="add_to_shopping_bag"
+                                 rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">
+                                ADD TO BAG
+                            </div>
+                            <div class="choose_next">CHOOSE NEXT</div>
+                        </div>
+
+                        <p class="free_shipping_text">
+                            Free and fast shipping to US &amp; Canada
+                        </p>
+                    </div>
+                </div>
+
+            <?php
+            }
+            ?>
+
+        </div>
+
+        <span class="close_icon">
+            <svg xml:space="preserve" enable-background="new 0 0 44 44"
+                 viewBox="0 0 44 44" height="44px" width="44px" y="0px"
+                 x="0px" xmlns:xlink="http://www.w3.org/1999/xlink"
+                 xmlns="http://www.w3.org/2000/svg" id="Layer_1"
+                 version="1.1"><g>
+                    <rect height="44" width="44" fill="#555555"/>
+                    <line y2="30" x2="30" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                    <line y2="30" x2="14" y1="14" x1="30" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                </g>
+            </svg>
+        </span>
+
+        <div class="footer-container">
+            <div class="footer">
+                <?php echo $this->getChildHtml('footer') ?>
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+        <?php echo $this->getAbsoluteFooter() ?>
+    </div>
+</div>
+<div class="product_add_conf_popup">
+    <div class="table">
+        <div class="table-row">
+            <div class="close_cart_addition_popup">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="44px"
+                     viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+                <g>
+                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="16.508" y1="15.751" x2="30.975"
+                          y2="30.218"/>
+                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30.975" y1="15.751" x2="16.508"
+                          y2="30.218"/>
+                </g>
+            </svg>
+            </div>
+            <div class="table-cell">
+                <div class="bag">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve" width="44px"
+                         height="44px">
+                <style type="text/css">
+                    .st0 {
+                        fill: none;
+                        stroke: #AE8637 !important;
+                        stroke-miterlimit: 10;
+                    }
+                </style>
+                        <g>
+                            <rect x="8.5" y="12.6" class="st0" width="27" height="29.7"/>
+                            <path class="st0" d="M30,12.5H26V6.8c0-0.4-0.3-0.7-0.7-0.7h-6.6c-0.4,0-0.7,0.3-0.7,0.7v5.6H14V6.8c0-2.6,2.1-4.7,4.7-4.7h6.6
+                c2.6,0,4.7,2.1,4.7,4.7V12.5z"/>
+                        </g>
+                </svg>
+                    <div class="qty"></div>
+                </div>
+                <p class="cart_addition_msg">
+                    This item has been added to your bag.
+                </p>
+                <a href="javascript:void(0);" onclick="jQuery('.close_cart_addition_popup').click();"
+                   class="keep_shopping_btn">KEEP SHOPPING</a>
+                <a href="/checkout/onepage" class="checkout_btn">CHECK OUT</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="gift_duplicate_popup">
+    <div class="table">
+        <div class="table-row">
+            <div class="close_cart_addition_popup close_gift_duplicate_popup">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="44px"
+                     viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+                <g>
+                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="16.508" y1="15.751" x2="30.975"
+                          y2="30.218"/>
+                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30.975" y1="15.751" x2="16.508"
+                          y2="30.218"/>
+                </g>
+            </svg>
+            </div>
+            <div class="table-cell">
+                <p class="cart_addition_msg">
+                    To order more than 1 of the same set,<br/> please place a separate order.
+                </p>
+                <br/>
+                <a href="javascript:void(0);" onclick="jQuery('.close_gift_duplicate_popup').click();"
+                   class="keep_shopping_btn">KEEP SHOPPING</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+
+            braOptionYesId = "<?php echo $braCupYesOptionId;?>";
+            braOptionTypeYesId = "<?php echo $braCupYesOptionTypeId;?>";
+            braOptionNoId = "<?php echo $braCupNoOptionId;?>";
+            braOptionTypeNoId = "<?php echo $braCupNoOptionTypeId;?>";
+
+            $(".sign-in-box h1").html("<?php echo $giftSetCount;?> GIFT SETS");
+        })
+    }(jQuery));
+</script>
+
+</body>
+</html>

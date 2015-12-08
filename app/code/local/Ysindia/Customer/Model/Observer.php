@@ -120,4 +120,32 @@ class Ysindia_Customer_Model_Observer
             }
         }
     }
-}
+
+    public function checkGiftSet(Varien_Event_Observer $observer){
+
+        $cart = $observer->getCart();
+
+        if(isset($cart)) {
+            $quote = $cart->getQuote();
+
+            $cartItems = $quote->getAllVisibleItems();
+
+            foreach($cartItems as $cartItem){
+
+                $buyRequest = $cartItem->getBuyRequest();
+
+                if(isset($buyRequest)){
+                    $type = $buyRequest['type'];
+
+                    if(isset($type)){
+
+                        if($type=='gift-bundled') {
+                            $cartItem->setCustomPrice(0);
+                            $cartItem->setOriginalCustomPrice(0);
+                            $cartItem->getProduct()->setIsSuperMode(true);
+                        }
+                    }
+                }
+            }
+        }
+    }}

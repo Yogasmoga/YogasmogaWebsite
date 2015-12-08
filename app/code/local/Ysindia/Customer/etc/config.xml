@@ -22,18 +22,17 @@
 				<class>Ysindia_Customer_Model</class>
 			</Ysindia_Customer>
 		</models>
-<!--
+
 		<events>
 			<checkout_cart_save_before>
 				<observers>
 					<ysindia_customer_model_observer>
 						<type>singleton</type>
 						<class>Ysindia_Customer_Model_Observer</class>
-						<method>checkCart</method>
+						<method>checkGiftSet</method>
 					</ysindia_customer_model_observer>
 				</observers>
 			</checkout_cart_save_before>
 		</events>
--->
 	</global>
 </config>

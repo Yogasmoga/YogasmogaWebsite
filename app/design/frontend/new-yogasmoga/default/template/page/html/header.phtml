@@ -367,26 +367,35 @@ if($currentUrl != $checkoutpage){
     <div class="header-container" style="height:69px !important">
 
         <!--banner strip start-->
-    <?php /*
+        <?php
         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
         $categoryName = explode('/', $currentUrl);
         $urlKey = "";
         if(isset($categoryName[3]))
             $urlKey = $categoryName[3];
 
-        if(strtolower($urlKey)=="men"){
-    ?>
+        if(strtolower($urlKey)=="gift-sets"){
+            echo "<div class='golden-banner'>&nbsp;</div>";
+        }
+        else{
+            if(false){          // not showing banner on normal pages
 
-        <div class="orange-banner" onclick="window.location.replace('/men/whats-new')">25% OFF ON ALL MEN’S APPAREL—All sales are final. Ends 11/30 at 11:59PM PST.</div>
+                if(strtolower($urlKey)=="men"){
+                    ?>
 
-    <?php
-        } else {
-    ?>
+                    <div class="orange-banner" onclick="window.location.replace('/men/whats-new')">25% OFF ON ALL MEN’S APPAREL—All sales are final. Ends 11/30 at 11:59PM PST.</div>
 
-    <div class="orange-banner" onclick="window.location.replace('/women/whats-new')">$75 OFF ON ANY FULL PRICE WOMEN’s TOP & BOTTOM COMBO—All sales are final. Ends 11/30 at 11:59PM PST.</div>
+                    <?php
+                } else {
+                    ?>
 
-    <?php  } */ ?>
+                    <div class="orange-banner" onclick="window.location.replace('/women/whats-new')">$75 OFF ON ANY FULL PRICE WOMEN’s TOP & BOTTOM COMBO—All sales are final. Ends 11/30 at 11:59PM PST.</div>
 
+                    <?php
+                }
+            }
+        }
+        ?>
         <!--banner strip finish-->
 
     <div id="globalheader" class="header
@@ -434,21 +443,43 @@ if($currentUrl != $checkoutpage){
                 $base_url = Mage::helper('core/url')->getHomeUrl();
                 $currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
                 $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
-                if(isset($cart['items_qty'])){
-                    $itemcount = (int)$cart['items_qty'];
-                } else {
-                    $itemcount = 0;
+                /*********** original code before gift set ********************/
+                /*
+                                if(isset($cart['items_qty'])){
+                                    $itemcount = (int)$cart['items_qty'];
+                                } else {
+                                    $itemcount = 0;
+                                }
+                */
+                /*********** original code before gift set ********************/
+
+                /*********** cart count after gift set ***************/
+                $session = Mage::getSingleton('checkout/session');
+                $itemcount = 0;
+                foreach ($session->getQuote()->getAllItems() as $item)
+                {
+                    if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
+                    {
+                        $buyRequest = $item->getBuyRequest();
+                        $product_type = $buyRequest['type'];
+
+                        if(isset($product_type) && $product_type=="gift-bundled")
+                            continue;
+
+                        ++$itemcount;
+                    }
                 }
+                /*********** cart count after gift set ***************/
                 $i = 1;
                 foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
                     if ($child1->getIsActive()) {
                         //show Main parent categories first level
                         if($child1->getId() == $currentcategoryid)
-                            echo "<li><a class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        //echo "<li><a class='menu-heading posRel' href='".Mage::getUrl('/', array('_secure'=>true))."women_landing'>".$child1->getName()."</a>";
+                            echo "<li rel='".Mage::getModel("catalog/category")->load($child1->getId())->getId()."' class='".Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey()."' ><a  class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                        //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         else
-                            echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        //echo "<li><a class='menu-heading posRel' href='".Mage::getUrl('/', array('_secure'=>true))."women_landing'>".$child1->getName()."</a>";
+                            echo "<li rel='".Mage::getModel("catalog/category")->load($child1->getId())->getId()."' class='".Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey()."'><a  class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                        //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         // show sub categories second level
 
 //                        echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
@@ -457,8 +488,11 @@ if($currentUrl != $checkoutpage){
                         $remainingcolumn = '';
                         $subcategory = Mage::getModel('catalog/category')->load($child1->getId());
                         $subcategories = $subcategory->getChildrenCategories();
+
+                        $subCategeroiesFound = false;
                         foreach ($subcategories as $child2)
                         {
+                            $subCategeroiesFound = true;
                             $subsubcategory = Mage::getModel('catalog/category')->load($child2->getId());
 
                             if($child2->getIsActive() && $subsubcategory->getIncludeInMenu()) {
@@ -486,8 +520,13 @@ if($currentUrl != $checkoutpage){
 
                             }
                         }
-                        $firstcolumn .= "</ul>";
-                        echo $firstcolumn.$remainingcolumn;
+                        if($subCategeroiesFound) {
+                            $firstcolumn .= "</ul>";
+                            echo $firstcolumn . $remainingcolumn;
+                        }else{
+                            $giftSetLinks = $firstcolumn . "<li class='gift'><a href='/gift-sets?style=women'>Women</a></li><li class='gift'><a href='/gift-sets?style=men'>Men</a></li>";
+                            echo $giftSetLinks;
+                        }
                         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
                         $categoryName = explode('/', $currentUrl);
                         $urlKey = $categoryName[3];

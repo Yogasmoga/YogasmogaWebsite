@@ -90,9 +90,21 @@ function format_bill($html)
 				</th>
             </tr>
         </thead>
-        <?php foreach($this->getItems() as $_item): ?>
-            <?php echo $this->getItemHtml($_item)?>
-        <?php endforeach ?>
+        <?php
+        foreach($this->getItems() as $_item){
+
+            $buyRequest = $_item->getBuyRequest();
+
+            if(isset($buyRequest) && isset($buyRequest['type'])) {
+                $productType = $buyRequest['type'];
+
+                if ($productType == "gift-bundled")
+                    continue;
+            }
+
+            echo $this->getItemHtml($_item);
+        }
+        ?>
     </table>
 </div>
 <?php echo $this->getChildHtml('items_after'); ?>

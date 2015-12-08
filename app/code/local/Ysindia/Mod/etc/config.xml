@@ -30,6 +30,13 @@
                     <frontName>ys</frontName>
                 </args>
             </mod>
+            <checkout>
+                <args>
+                    <modules>
+                        <Ysindia_Mod before="Mage_Checkout_CartController">Ysindia_Mod</Ysindia_Mod>
+                    </modules>
+                </args>
+            </checkout>
         </routers>
     </frontend>
     <!-- ******************* admin section ******************** -->
