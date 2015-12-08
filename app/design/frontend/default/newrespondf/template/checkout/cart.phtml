@@ -453,7 +453,8 @@ else
                                     if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift-bundled")
                                             continue;
 
-                                    $totalItemCount += $_item->getQty();
+                                    //$totalItemCount += $_item->getQty();
+                                    $totalItemCount++;
                                 }
                             ?>
 
