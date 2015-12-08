@@ -7769,6 +7769,8 @@ input#giftcard_use{
 }
 
 
+/********** gift set cart show details *************/
+
 #checkout-step-cart .row.show_details:hover {
     background: #f3f3f3;
 }

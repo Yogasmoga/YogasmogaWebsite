@@ -412,6 +412,16 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
 				jQuery(".gift-set-sorry-popup").show();
 				jQuery(".gift-set-sorry-popup").find(".message").html("To order more than 1 of the same set, please place a separate order.");
 			}
+			else if(result.status=="ingiftset"){
+				jm(".sizes").find(".size").removeClass("active-size");
+				jm(".add_to_bag").removeClass("bag-active");
+				jm(".add_to_bag").html('ADD TO BAG');
+
+				parent.find(".add_to_bag").html("ADD TO BAG");
+				//showShoppingBagHtmlOpen();
+				jQuery(".gift-set-sorry-popup").show();
+				jQuery(".gift-set-sorry-popup").find(".message").html("This product is already in your gift set, please place a separate order.");
+			}
 			else{
 				jm(".sizes").find(".size").removeClass("active-size");
 				jm(".add_to_bag").removeClass("bag-active");
@@ -420,7 +430,7 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
 				parent.find(".add_to_bag").html("ADD TO BAG");
 				//showShoppingBagHtmlOpen();
 				jQuery(".gift-set-sorry-popup").show();
-				jQuery(".gift-set-sorry-popup").find(".message").html("This product is out of stock");
+				jQuery(".gift-set-sorry-popup").find(".message").html("This product is out of stock.");
 			}
 		}
 	});

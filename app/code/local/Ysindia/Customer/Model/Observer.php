@@ -269,7 +269,6 @@ class Ysindia_Customer_Model_Observer
 
                 if(isset($buyRequest)){
                     $type = $buyRequest['type'];
-                    Mage::log("Buy request present : " . $type, null, 'gift.log');
 
                     if(isset($type)){
 

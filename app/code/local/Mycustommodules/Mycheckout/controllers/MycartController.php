@@ -163,11 +163,11 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             }
 
             $uniqueTimeStamp = date("Ymdhis");
+            $productId = (int) $this->getRequest()->getParam('product');
 
             /************* checking if product is gift-set ****************/
             if($params["type"]=="gift"){
 
-                $productId = (int) $this->getRequest()->getParam('product');
                 if($this->giftExistsInCard($productId)){
                     echo json_encode(array("status" => "exists"));
                     return;
@@ -221,6 +221,28 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 }
             }
             /************* checking if product is gift-set ****************/
+
+            /************** check if we are purchasing a product that is part of gift set *********/
+            $isAlreadyPartOfGiftSet = false;
+
+            $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getData('super_attribute'), $product);
+            echo json_encode(array("child id = " . $childProduct->getId()));
+            return;
+
+            $cartItems = $cart->getAllVisibleItems();
+
+            foreach($cartItems as $item){
+                if($productId==$item->getProductid()){
+                    $isAlreadyPartOfGiftSet = false;
+                    break;
+                }
+            }
+
+            if($isAlreadyPartOfGiftSet){
+                echo json_encode(array("status" => "ingiftset"));
+                return;
+            }
+            /************** check if we are purchasing a product that is part of gift set *********/
 
             $params['unique_time_stamp'] = $uniqueTimeStamp;
             $cart->addProduct($product, $params);
@@ -311,8 +333,9 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 			
 			$uniqueTimeStamp = date("Ymdhis");
 
-            /************* checking if product is gift-set ****************/
             if($params["type"]=="gift"){
+
+                /************* checking if product is gift-set ****************/
 
                 $productId = (int) $this->getRequest()->getParam('product');
                 if($this->giftExistsInCard($productId)){
@@ -366,8 +389,31 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                     $cart->addProduct($bundledProduct, $data);
                 }
+                /************* checking if product is gift-set ****************/
             }
-            /************* checking if product is gift-set ****************/
+            else{
+                /************** check if we are purchasing a product that is part of gift set *********/
+
+                $isAlreadyPartOfGiftSet = false;
+
+                $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getParam('super_attribute'), $product);
+
+                $cartItems = $cart->getQuote()->getAllItems();
+
+                foreach($cartItems as $item){
+                    if($childProduct->getId()==$item->getProductId()){
+                        $isAlreadyPartOfGiftSet = true;
+                        break;
+                    }
+                }
+
+                if($isAlreadyPartOfGiftSet){
+                    echo json_encode(array("status" => "ingiftset"));
+                    return;
+                }
+                /************** check if we are purchasing a product that is part of gift set *********/
+            }
+
 
             $params['unique_time_stamp'] = $uniqueTimeStamp;
             $cart->addProduct($product, $params);
