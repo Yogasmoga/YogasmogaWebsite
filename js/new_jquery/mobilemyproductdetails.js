@@ -787,6 +787,7 @@ function addtocart() {
             //jQuery("#addtobagloader").hide();
             jQuery("#orderitem").html("ADD TO BAG");
             _addingtocart = false;
+
             if (result.status == 'success') {
                 if (_productdisplaymode == "popup") {
                     jQuery("#productdetailpopup").dialog("close");

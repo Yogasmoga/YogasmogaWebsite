@@ -95,8 +95,6 @@ function format_bill($html)
 
                 $buyRequest = $_item->getBuyRequest();
 
-                $productType = "normal";
-                // if we are trying to remove gift set
                 if(isset($buyRequest) && isset($buyRequest['type'])) {
                     $productType = $buyRequest['type'];
 
