@@ -105,7 +105,7 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
                 "color_code" => $bundle_color_id,
                 "name" => $_bundle_product->getName(),
                 "url" => $bundledProductUrl,
-                "description" => $_bundle_product->getDescription(),
+                "description" => htmlentities($_bundle_product->getDescription()),
                 "price" => "$" . round($_bundle_product->getPrice(),2),
                 "sizes" => implode(",", $ar_child_sizes),
                 "default_image" => $default_image,

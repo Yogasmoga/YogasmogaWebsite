@@ -1303,9 +1303,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                             $temparray['product_type'] = null;
                             $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
                         }
+
+                        $temparray['product_type'] = $product_type;
                     }
                     else{
-                        $temparray['product_type'] = null;
+                        $temparray['product_type'] = 'normal';
                         $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
                     }
 
