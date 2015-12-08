@@ -412,6 +412,7 @@ function addToBag(giftProductId, count, parent, currentProductColorCode) {
                 jQuery(".add_to_bag").removeClass("bag-active");
                 jQuery(".add_to_bag").html('ADD TO BAG');
 
+                jQuery("#loader").hide();
                 parent.find(".add_to_bag").html("ADD TO BAG");
                 //showShoppingBagHtmlOpen();
                 jQuery(".gift-set-sorry-popup").show();
