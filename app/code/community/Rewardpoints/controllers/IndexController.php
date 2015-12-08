@@ -171,13 +171,15 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
             $flag = 0;
             foreach($miniitems as $mitem)
             {
-                $productType = $mitem['product_type'];
+                if(isset($mitem['type'])) {
+                    $productType = $mitem['type'];
 
-                if(isset($productType) && ($productType=='gift' || $productType=='bundled-gift')){
-                    Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.");
-                    $refererUrl = $this->_getRefererUrl();
-                    $this->getResponse()->setRedirect($refererUrl);
-                    return;
+                    if (isset($productType) && ($productType == 'gift' || $productType == 'bundled-gift')) {
+                        Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.");
+                        $refererUrl = $this->_getRefererUrl();
+                        $this->getResponse()->setRedirect($refererUrl);
+                        return;
+                    }
                 }
 
                 $mitemProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $mitem['sku']);
