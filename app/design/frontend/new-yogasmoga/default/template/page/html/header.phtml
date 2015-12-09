@@ -373,8 +373,10 @@ if($currentUrl != $checkoutpage){
         $urlKey = "";
         if(isset($categoryName[3]))
             $urlKey = $categoryName[3];
+?>
+        <div class='golden-banner' onclick="window.location.replace('/gift-sets')"><p>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</p></div>
 
-        echo "<div class='golden-banner'><p>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</p></div>";
+<?php
         if(strtolower($urlKey)=="gift-sets"){
             ;//echo "<div class='golden-banner'>&nbsp;</div>";
         }
