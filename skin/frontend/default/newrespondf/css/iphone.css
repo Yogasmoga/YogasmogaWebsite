@@ -7628,7 +7628,6 @@ table#checkout-review-table tfoot tr.reward-point td .price {
 }
 
 .outofstock img {
-    display: none !important;
     height: 100%;
     left: 0;
     position: absolute;
