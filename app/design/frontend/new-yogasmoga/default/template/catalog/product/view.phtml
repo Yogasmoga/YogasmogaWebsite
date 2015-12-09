@@ -2211,6 +2211,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
             $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
             if (isset($_gallery)) {
+
+                $thumbnailPath = "";
+
                 foreach ($_gallery as $_image) {
                     $imageLabelData = json_decode(trim($_image->getLabel()), true);
                     $person = $imageLabelData['person'];
@@ -2218,9 +2221,12 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                     if($image_type=="landing"){
                         $image = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
+                        $thumbnail = $imageLabelData['thumbnail'];
                         break;
                     }
                 }
+
+                $thumbnailPath = $this->getSkinUrl('images/combo/sets/final/' . $thumbnail);
             }
 
             $arComboProduct[$_product->getId()] = array(
@@ -2230,6 +2236,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 "description" => $_helper->productAttribute($_product, $_product->getDescription(),'description'),
                 "bundle_ids" => $bundled_product_ids,
                 "personClass" => "person_" . $person,
+                "thumbnailPath" => $thumbnailPath,
                 "image" => $image
             );
         }
@@ -2276,13 +2283,19 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 </div>-->
                 <div class="git_sets_list">
 
-                    <?php foreach ($arComboProduct as $id => $comboProduct) { ?>
+                    <?php
+                        foreach ($arComboProduct as $id => $comboProduct) {
+                            $thumbnailPath = $comboProduct["thumbnailPath"];
+                    ?>
 
-                        <div class="gift_set_link <?php echo $comboProduct["personClass"];?> gift_set" rel="<?php echo $id; ?>">
+                        <div class="gift_set_link <?php echo $comboProduct["personClass"];?> gift_set" rel="<?php echo $id; ?>" style="background: url('<?php echo $thumbnailPath;?>') no-repeat scroll center center/auto 100%">
                             <!--top,left-->
+                            <!--
                             <p class="pname"><?php echo $comboProduct["name"]; ?><br/>SET</p>
 
                             <p class="pprice">$<?php echo round($comboProduct["price"], 0); ?></p>
+                            -->
+                            &nbsp;
                         </div>
                     <?php } ?>
                 </div>
