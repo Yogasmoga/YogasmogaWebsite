@@ -148,8 +148,10 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
             );
         }
 
+        $outOfStockImage = Mage::getSkinUrl('/images/out-of-stock.png');
+
         if(count($arBundledData)>0)
-            echo json_encode(array("message" => "found", "data" => $arBundledData));
+            echo json_encode(array("message" => "found", "data" => $arBundledData, "outofstockimage" => $outOfStockImage));
         else
             echo json_encode(array("message" => "empty"));
     }

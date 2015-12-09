@@ -94,6 +94,8 @@ function changeProduct(product_id) {
 
                 if (result.data != undefined) {
 
+                    var outOfStockImage = result.outofstockimage;
+
                     jQuery(".purchase_box").html("");
                     jQuery(".set_individual_products").html("");
 
@@ -120,7 +122,7 @@ function changeProduct(product_id) {
 
                     for (var i = 0; i < data.length; i++) {
 
-                        addSideBundleProduct(data[i], i);
+                        addSideBundleProduct(data[i], i, outOfStockImage);
 
                         addIndividualBundleProduct(data[i], classToApply);
 
@@ -171,7 +173,7 @@ function changeProduct(product_id) {
     });
 }
 
-function addSideBundleProduct(data, i) {
+function addSideBundleProduct(data, i, outOfStockImage) {
 
     var strSets = "";
 
@@ -195,7 +197,7 @@ function addSideBundleProduct(data, i) {
                 size = size.substring(1);
 
                 if (key == size) {
-                    strSets += "<span class='size size-" + i + " outofstock' rel='" + allSizes[size] + "'>" + size + "</span><img src="<?php echo $this->getSkinUrl('/images/out-of-stock.png'); ?>"/>";
+                    strSets += "<span class='size size-" + i + " outofstock' rel='" + allSizes[size] + "'>" + size + "</span><img src='" + outOfStockImage + "'/>";
                     break;
                 }
             }
