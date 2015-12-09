@@ -199,7 +199,7 @@ function addSideBundleProduct(data, i) {
                 size = size.substring(1);
 
                 if (key == size) {
-                    strSets += "<span class='size size-" + i + " outofstock' rel='" + allSizes[size] + "'>" + size + "</span><img src='" + outOfStockImage + "'/>";
+                    strSets += "<span class='size size-" + i + " outofstock' rel='" + allSizes[size] + "'>" + size + "<img src='" + outOfStockImage + "'/></span>";
                     break;
                 }
             }
