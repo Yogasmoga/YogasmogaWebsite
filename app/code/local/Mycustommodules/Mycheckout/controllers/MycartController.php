@@ -178,6 +178,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                 $arBundle = explode(",", $bundle);
 
+                $cartItems = $cart->getQuote()->getAllItems();
+
                 foreach($arBundle as $bundleProduct){
 
                     $arBundleProductOptions = explode(":", $bundleProduct);
@@ -213,6 +215,21 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                         'unique_time_stamp' => $uniqueTimeStamp,
                         'main_product_id' => $product->getId()
                     );
+
+                    /************* check if part of gift set is already in cart, if yes, remove it ****************/
+                    foreach ($cartItems as $item) {
+                        $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($arSuper, $product);
+
+                        $buyRequest = $item->getBuyRequest();
+
+                        // if we are trying to remove gift set
+                        if (!isset($buyRequest)) {      // a normal product is found
+                            if($childProduct->getProductId()==$item->getProductId()){
+                                $cart->removeItem($item->getId());
+                            }
+                        }
+                    }
+                    /************* check if part of gift set is already in cart, if yes, remove it ****************/
 
                     $bundledProduct = Mage::getModel('catalog/product')
                         ->setStoreId(Mage::app()->getStore()->getId())
