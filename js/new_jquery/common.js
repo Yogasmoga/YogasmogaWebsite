@@ -729,4 +729,17 @@ function smogifootervalue()
         
     });
 }
+function initializeBanner(source, str) {
+    //var str = "<p>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</p>";
+
+    //jQuery(".golden-banner").html(str);
+	jQuery(source).html(str);
+
+    jQuery(".namaskar-overlay1").css("top", "94px");
+    jQuery(".ui-widget-overlay").css({"top": "94px", "position": "fixed"});
+    jQuery(".ui-widget-overlay").css({top: 94});
+    jQuery(".header-container").css("padding-top", "25px");
+    jQuery(".header-container").css("top", "0");
+    jQuery("#bodycompensator").css("height", "94px");
+}
 
