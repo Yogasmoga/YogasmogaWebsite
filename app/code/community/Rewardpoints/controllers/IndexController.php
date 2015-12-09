@@ -197,7 +197,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
 				   $flag = 1;
 				   }
 				   if (in_array($val, $giftsetcategoryId)) { 
-				   Mage::log('category id'.$mitem['product_id']. $giftsetcategoryId,null "giftset.log");
+				   Mage::log('category id'.$mitem['product_id']. $giftsetcategoryId,null, "giftset.log");
 				   $flag = 1;
 				   }
 				  
