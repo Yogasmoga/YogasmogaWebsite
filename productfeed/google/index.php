@@ -9,16 +9,20 @@ Mage::app();
 
 /***************** get all colors from database ***********************/
 $allColors = array();
-$allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
-$allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
-foreach ($allColorOptions as $instance) {
-    if (!array_key_exists($instance['value'], $allColors)) {
-        $allColors[$instance['value']] = $instance['label'];
-    }
-}
-/***************** get all colors from database end ***********************/
+$productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('*')->addAttributeToFilter('status', array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED));
 
-$fileIn = fopen("products.csv", "r");
+ /* get all colors from database ******/
+        $allColors = array();
+        $allColorsNames = array();
+        $allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+        $allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
+        foreach ($allColorOptions as $instance) {
+            if (!array_key_exists($instance['value'], $allColors)) {
+                $allColors[$instance['value']] = $instance['label'];
+                $allColorsNames[$instance['label']] = $instance['value'];
+            }
+        }
+
 
 
 
@@ -48,35 +52,25 @@ fputcsv($output, array(
     'promotion_id'
 ));
 
+
+
+
+/***************** get all colors from database end ***********************/
+
 $arWomenCategory = array(3,6,7,8,16,71,43,59,65);
 $arMenCategory = array(5,10,11,12,19);
 $count = 0;
-
-while (!feof($fileIn)) {
-
-    $ar = fgetcsv($fileIn);
-    if (++$count == 1)
-        continue;
-
-    $sku = $ar[0];
-    $name = $ar[1];
+$_helper = Mage::helper('catalog/output');
+foreach($productCollection as $_product)
+{
 	
-
-	//$pos = strrpos($name, '-');
-	//$name = substr($name, 0, $pos);
-    //$size = substr($pos+1);
-	$size = "";
+    $description = $_helper->productAttribute($_product,$_product->getDescription(),'description');
 	
-    $price = $ar[2];
-    $description = trim($ar[3]);
-    $available = $ar[4] === "1" ? 'in stock' : 'out of stock';
-    $keyword = '';
-    $buy_url = '';
-    $image_url = '';
+	
+	
+    //$description = trim(preg_replace('/\s+/', ' ', $description));
 
-    $description = trim(preg_replace('/\s+/', ' ', $description));
-
-    $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+    $product = Mage::getModel('catalog/product')->load($_product->getId());
 
 
     if (!isset($product) || !is_object($product) || !$product->getId()) {
@@ -92,6 +86,7 @@ while (!feof($fileIn)) {
 			
 			
 			$_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $configurableProduct);
+/*			
 			$ar_child_sizes = array();
 			foreach ($_childProducts as $_childProduct) {
 				$size = $_childProduct->getAttributeText('size');
@@ -109,7 +104,7 @@ while (!feof($fileIn)) {
 			}
 
 			$ar_child_sizes = array_unique($ar_child_sizes);
-			
+*/			
 			
 			
             $categoryIds = $product->getCategoryIds();
@@ -126,40 +121,70 @@ while (!feof($fileIn)) {
 
             unset($categoryIds);
 
-            $buy_url = $configurableProduct->getUrlInStore();
-            $keywords = $configurableProduct->getMetaKeyword();
-            $price = round($configurableProduct->getPrice(),2);
+			foreach ($_childProducts as $_childProduct) {
+			
+				$buy_url = $configurableProduct->getUrlInStore();
+				$keywords = $configurableProduct->getMetaKeyword();
+				$price = round($configurableProduct->getPrice(),2);
+				$sku = $_childProduct->getSku();
+				$description = $_helper->productAttribute($configurableProduct,$configurableProduct->getDescription(),'description');
 
-            $images = Mage::getModel('catalog/product')->load($configurableProduct->getId())->getMediaGalleryImages();
+				$size = $_childProduct->getAttributeText('size');
+				
+				$color = $_childProduct->getAttributeText('color');
+				$color = substr($color, 0, strpos($color, "|"));
+                $colorCode = $allColorsNames[$childColorName];
+				
+				$productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct);
+				$stock = $productStock->getQty();
+                $inStock = $productStock->getIsInStock();
+				if($stock<=0 || !$inStock)
+					$available = 'out of stock';
+				else
+					$available = 'in stock';
+				
+				
+				
+				$_gallery = Mage::getModel('catalog/product')->load($configurableProduct->getId())->getMediaGalleryImages();
+				
+				
+				
+				 if (isset($_gallery)) {
 
-			$productColors = array();
-            if (isset($images) && count($images) > 0) {
-				$first = true;
-                foreach ($images as $image) {
-					$imgdata = json_decode(trim($image->getLabel()), true);
-					if (isset($imgdata['type']) && $imgdata['type'] == 'product image') {
-						
-						if($first){
-							$first = !$first;
-							$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
+					foreach ($_gallery as $_image) {
+						$imageLabelData = json_decode(trim($_image->getLabel()), true);
+
+						if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+							continue;
+
+						$colorCode = $imageLabelData['color'];
+
+						if($colorCode !=  $colorCode)
+							continue;
+							$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $_image)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
+							break;
 						}
-						
-						$productColors[] = $imgdata['color'];
-					}
-                }
-            }
+				}
+				
 			
-			$productColors = array_unique($productColors, SORT_REGULAR);
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				$age_group = "Adult";
 			
-			$productColorsIndexed = array();
-			foreach($productColors as $color)
-				$productColorsIndexed[] = $color;
-
-			$age_group = "Adult";
-			
-			foreach($productColorsIndexed as $colorCode){
-
-				$total_name = $name . "-" . $allColors[$colorCode];
+				$total_name = $_childProduct->getName();
 				$total_buy_url = $buy_url . "?color=" . $colorCode;
 			
 				$arr = array(
@@ -176,17 +201,18 @@ while (!feof($fileIn)) {
 					'',
 					'',
 					'YOGASMOGA',
-					'Black',
+					$color,
 					$gender,       // to-do
 					$age_group,    // to-do
-					implode(',',$ar_child_sizes),          // to-do
+					$size,          // to-do
                     ''
 				);
 
 				fputcsv($output, $arr);
+				}
 			}			
         }
     }
-}
-fclose($fp);
+
+
 ?>
