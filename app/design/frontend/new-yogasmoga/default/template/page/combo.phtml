@@ -301,10 +301,30 @@ foreach ($allSizeOptions as $instance) {
                             if (strpos(strtoupper($size), "T") !== false)
                                 continue;
 
+                            $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct);
+
+                            $childColor = $_childProduct->getAttributeText('color');
+                            $childColorName = substr($childColor, 0, strpos($childColor, "|"));
+                            $childColorCode = $allColorsNames[$childColorName];
+
+                            if($childColorCode!=$bundle_color_id)
+                                continue;
+
+                            $stock = $productStock->getQty();
+                            $inStock = $productStock->getIsInStock();
+
+                            $sizeInStock = "";
+                            if($stock<=0 || !$inStock)
+                                $sizeInStock = "_";
+
+                            $ar_child_sizes[] = $sizeInStock . $size;
+
+/*
                             if (is_numeric($size))
                                 $ar_child_sizes[] = intval($size);
                             else
                                 $ar_child_sizes[] = $size;
+*/
                         }
 
                         $ar_child_sizes = array_unique($ar_child_sizes);
@@ -402,11 +422,25 @@ foreach ($allSizeOptions as $instance) {
                                                 foreach ($allSizes as $key => $value) {
                                                     foreach ($data["sizes"] as $size) {
 
-                                                        if ($size == $key) {
-                                                            ?>
-                                                            <span class="size size-<?php echo $sizeDivCount; ?>"
-                                                                  rel="<?php echo $value; ?>"><?php echo $key; ?></span>
-                                                            <?php
+                                                        if(substr($size,0,1)=="_") {        // underscore means size is out of stock
+
+                                                            $size = substr($size,1);
+
+                                                            if ($size == $key) {
+                                                                ?>
+                                                                <span class="size size-<?php echo $sizeDivCount; ?> outofstock"
+                                                                      rel="<?php echo $value; ?>"><?php echo $key; ?><img src="<?php echo $this->getSkinUrl('/images/out-of-stock.png'); ?>"/></span>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        else {
+
+                                                            if ($size == $key) {
+                                                                ?>
+                                                                <span class="size size-<?php echo $sizeDivCount; ?>"
+                                                                      rel="<?php echo $value; ?>"><?php echo $key; ?></span>
+                                                                <?php
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -457,7 +491,7 @@ foreach ($allSizeOptions as $instance) {
 
                                     <b><?php echo $_product->getName(); ?> SET</b><br/>
 
-                                    <p><?php echo $_product->getDescription(); ?></p>
+                                    <p><?php echo $_helper->productAttribute($_product, $_product->getShortDescription(),'short_description');//$_product->getDescription(); ?></p>
 
                                 </div>
                                 <div class="middle_desc">

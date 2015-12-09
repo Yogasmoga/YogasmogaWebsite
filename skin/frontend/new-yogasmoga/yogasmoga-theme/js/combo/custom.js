@@ -47,9 +47,14 @@ jm(document).ready(function() {
 		}
 	});
 
+	jm(".outofstock img").show();
+
 	jm(".size").click(function(){
 
 		jm(this).closest(".sizes").find(".size").removeClass("active-size");
+
+		if(jm(this).hasClass("outofstock"))
+			return;
 
 		if(jm(this).hasClass("active-size"))
 			jm(this).removeClass("active-size");

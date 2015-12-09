@@ -2229,7 +2229,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 "name" => $_product->getName(),
                 "price" => $_product->getPrice(),
                 "quantity" => round($stock, 0),
-                "description" => htmlentities($_product->getDescription()),
+                "description" => $_helper->productAttribute($_product, $_product->getDescription(),'description'),
                 "bundle_ids" => $bundled_product_ids,
                 "personClass" => "person_" . $person,
                 "image" => $image
@@ -2325,6 +2325,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
         </div>
 
         <div style="font:12px/15px gotham book; color:#555">*To order more than 1 of the same set, please place a separate order.</div>
+        <div style="display: none" id="outofstockimage"><img src="<?php echo $this->getSkinUrl('/images/out-of-stock.png');?>"/></div>
         <script type="text/javascript">
 
             <?php

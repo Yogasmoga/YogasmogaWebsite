@@ -10,7 +10,11 @@ var blockHtml;
 var currentProductDiv;
 /******* variables for image swapping logic **********/
 
+var outOfStockImage;
+
 jQuery(document).ready(function () {
+
+    outOfStockImage = jQuery("#outofstockimage").find("img").attr("src");
 
     initializeBanner();
 
@@ -49,7 +53,7 @@ jQuery(document).ready(function () {
 
     });
 
-
+    jQuery(".outofstock img").show();
 });
 
 function initializeBanner() {
@@ -160,11 +164,11 @@ function changeProduct(product_id) {
                     bindBag();
                     bindSlider();
 
-
                     jQuery(".individual_product .product>p").click(function () {
                         window.location = jQuery(this).closest(".product").find("a").attr("href");
                     });
 
+                    jQuery(".outofstock img").show();
                 }
             }
         }
@@ -190,9 +194,20 @@ function addSideBundleProduct(data, i) {
         for (var j = 0; j < arSizes.length; j++) {
             var size = arSizes[j];
 
-            if (key == size) {
-                strSets += "<span class='size size-" + i + "' rel='" + allSizes[size] + "'>" + size + "</span>";
-                break;
+            if(size.substring(0,1)=="_") {        // underscore means size is out of stock
+
+                size = size.substring(1);
+
+                if (key == size) {
+                    strSets += "<span class='size size-" + i + " outofstock' rel='" + allSizes[size] + "'>" + size + "<img src='" + outOfStockImage + "'/></span>";
+                    break;
+                }
+            }
+            else{
+                if (key == size) {
+                    strSets += "<span class='size size-" + i + "' rel='" + allSizes[size] + "'>" + size + "</span>";
+                    break;
+                }
             }
         }
     });
@@ -256,6 +271,9 @@ function bindBag() {
 function bindSizes() {
 
     jQuery(".size").click(function () {
+
+        if(jQuery(this).hasClass("outofstock"))
+            return;
 
         jQuery(this).closest(".sizes").find(".size").removeClass("active-size");
 
@@ -408,11 +426,10 @@ function addToBag(giftProductId, count, parent, currentProductColorCode) {
                 jQuery(".gift-set-sorry-popup").find(".message").html("To order more than 1 of the same set, please place a separate order.");
             }
             else{
-                jQuery(".sizes").find(".size").removeClass("active-size");
-                jQuery(".add_to_bag").removeClass("bag-active");
-                jQuery(".add_to_bag").html('ADD TO BAG');
+                jm(".sizes").find(".size").removeClass("active-size");
+                jm(".add_to_bag").removeClass("bag-active");
+                jm(".add_to_bag").html('ADD TO BAG');
 
-                jQuery("#loader").hide();
                 parent.find(".add_to_bag").html("ADD TO BAG");
                 //showShoppingBagHtmlOpen();
                 jQuery(".gift-set-sorry-popup").show();
