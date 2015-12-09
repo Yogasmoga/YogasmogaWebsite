@@ -187,11 +187,9 @@ foreach ($allSizeOptions as $instance) {
                         <div class="gift_set_link <?php echo $personClass; ?> active"
                              data-map="<?php echo $dataMap; ?>" style="background: url('<?php echo $thumbnailPath;?>') no-repeat scroll center center/auto 100%">
                             <!--top,left-->
-                            <!--
-                            <p class="pname"><span><?php echo $_product->getName(); ?></span><br/>SET</p>
+                            <p class="pname" style="visibility: hidden"><span><?php echo $_product->getName(); ?></span><br/>SET</p>
 
-                            <p class="pprice">$<?php echo round($_product->getPrice(), 0); ?></p>
-                            -->&nbsp;
+                            <p class="pprice" style="visibility: hidden">$<?php echo round($_product->getPrice(), 0); ?></p>
                         </div>
                     <?php } ?>
                 </div>
