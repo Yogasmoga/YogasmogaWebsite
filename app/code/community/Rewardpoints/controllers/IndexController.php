@@ -187,7 +187,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
 				
 				$giftsetProduct = Mage::getModel('catalog/product')->load($mitem['product_id']);
                 $giftsetcategoryId = $giftsetProduct->getCategoryIds();
-				
+				Mage::log(print_r($giftsetcategoryId,true),null, "giftset.log");
 				//echo "<pre>";
                 //print_r($excludecats);
                 $flag = 0;
@@ -197,7 +197,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
 				   $flag = 1;
 				   }
 				   if (in_array($val, $giftsetcategoryId)) { 
-				   Mage::log('category id'.$mitem['product_id']. $giftsetcategoryId,null, "giftset.log");
+				   
 				   $flag = 1;
 				   }
 				  
