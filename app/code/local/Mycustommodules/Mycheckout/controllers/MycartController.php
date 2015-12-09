@@ -225,7 +225,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                         // if we are trying to remove gift set
                         if (!isset($buyRequest)) {      // a normal product is found
                             if($childProduct->getProductId()==$item->getProductId()){
-                                $cart->removeItem($item->getId());
+                                $cart->removeItem($item->getId())->save();
                             }
                         }
                     }
