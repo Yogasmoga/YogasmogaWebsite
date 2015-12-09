@@ -74,14 +74,18 @@ $_helper = $this->helper('catalog/output');
 $_product = $this->getProduct();
 $_product = Mage::getModel('catalog/product')->load($_product->getId());
 
-$productName = $_product->getName();
-$productId = intval($_product->getId());
 
 $isRewardAble = false;
 
 $storeId = Mage::app()->getStore()->getStoreId();
-
 $resourceModel = Mage::getResourceModel('catalog/product');
+$bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
+$bundledProduct = isset($bundled_product_ids) && strlen($bundled_product_ids) > 0 && strpos($bundled_product_ids, ",") != false;
+
+if (!$bundledProduct) {
+
+$productName = $_product->getName();
+$productId = intval($_product->getId());
 
 $howDoesItFitBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'how_does_it_fit', $storeId);
 $sizeChartBlockId = 'mobile_' . $resourceModel->getAttributeRawValue($_product->getId(), 'size_chart', $storeId);
@@ -1929,3 +1933,10 @@ if ($ftimage != "" && $ftimagesmall != "") {
 
     });
 </script>
+
+
+<?php } else { ?>
+<script type="text/javascript">
+	window.location.replace("<?php echo Mage::getBaseUrl();?>gift-sets");
+</script>
+<?php } ?>
