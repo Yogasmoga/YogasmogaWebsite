@@ -30,8 +30,6 @@ jm(document).ready(function() {
         }
     });
 
-    jm(".outofstock img").show();
-
     jm(".size").click(function(){
 
         if(jm(this).hasClass("outofstock"))
