@@ -121,7 +121,8 @@ function init() {
 
             jQuery(this).removeClass("gift-set-hover");
             jQuery(this).addClass("gift-set-final");
-        });
+        }
+    );
 
     jQuery(".gift_set_link").click(function () {
         var index = jQuery(this).index() + 1;
