@@ -10,7 +10,11 @@ var blockHtml;
 var currentProductDiv;
 /******* variables for image swapping logic **********/
 
+var outOfStockImage;
+
 jQuery(document).ready(function () {
+
+    outOfStockImage = jQuery("#outofstockimage").find("img").attr("src");
 
     initializeBanner();
 
@@ -94,8 +98,6 @@ function changeProduct(product_id) {
 
                 if (result.data != undefined) {
 
-                    var outOfStockImage = result.outofstockimage;
-
                     jQuery(".purchase_box").html("");
                     jQuery(".set_individual_products").html("");
 
@@ -122,7 +124,7 @@ function changeProduct(product_id) {
 
                     for (var i = 0; i < data.length; i++) {
 
-                        addSideBundleProduct(data[i], i, outOfStockImage);
+                        addSideBundleProduct(data[i], i);
 
                         addIndividualBundleProduct(data[i], classToApply);
 
@@ -173,7 +175,7 @@ function changeProduct(product_id) {
     });
 }
 
-function addSideBundleProduct(data, i, outOfStockImage) {
+function addSideBundleProduct(data, i) {
 
     var strSets = "";
 
