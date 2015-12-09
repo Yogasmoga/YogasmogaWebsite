@@ -1872,7 +1872,7 @@ button.button.btn-addtoaccount{margin: 0 !important;}
     right: 40px;
     text-transform: initial;
      top: 45px;
-    /*top: 69px;*/  /* with banner */
+    top: 69px;  /* with banner */
 }
 .choose-file-cont #file_upload{
     height: auto !important;
@@ -2651,8 +2651,8 @@ table.smallimagecontiner td.selectedimage{
 .share-strip,.new-arrivals-block{opacity: 0;}
 .cat-slide .flex-direction-nav{display: none;}
 
-.namaskar-overlay1{top:69px;}
-/*.namaskar-overlay1{top:94px;} /* with banner */
+/*.namaskar-overlay1{top:69px;}*/
+.namaskar-overlay1{top:94px;} /* with banner */
 
 .productCont .prod-img img:nth-child(1){
     visibility: visible;
@@ -2808,7 +2808,8 @@ table.smallimagecontiner td.selectedimage{
     margin-top: 0;
     position: fixed;
     right: 0;
-    top: 69px;
+/*    top: 69px; */
+    top: 94px;          /* with banner */
     z-index: 11;
     padding: 0;
 }

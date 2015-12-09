@@ -2143,10 +2143,12 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
             $giftSetAvailable = false;
             foreach ($_childProducts as $simple) {
-                $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple);
+                $giftSetStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple);
 
-                if($stock->getQty()>0 && $stock->getIsInStock())
+                if($giftSetStock->getQty()>0 && $giftSetStock->getIsInStock()) {
                     $giftSetAvailable = true;
+                    $parentStock = $giftSetStock->getQty();
+                }
 
                 break;
             }
@@ -2234,7 +2236,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             $arComboProduct[$_product->getId()] = array(
                 "name" => $_product->getName(),
                 "price" => $_product->getPrice(),
-                "quantity" => round($stock, 0),
+                "quantity" => round($parentStock, 0),
                 "description" => $_helper->productAttribute($_product, $_product->getDescription(),'description'),
                 "bundle_ids" => $bundled_product_ids,
                 "personClass" => "person_" . $person,
