@@ -107,23 +107,20 @@ function init() {
      });
      });*/
 
-    jQuery(".gift_set_link").hover(function () {
-
-            if(jQuery(this).hasClass("active"))
-                return;
-
-        var productId = jQuery(this).attr("rel");
-        var thumbnailUrl = arThumbnailImages[productId]["hover"];
-        jQuery(this).css("background", "url('" + thumbnailUrl + "') no-repeat scroll center center/auto 100%");
-    },
+    jQuery(".gift_set_link").hover(
         function () {
-
             if(jQuery(this).hasClass("active"))
                 return;
 
-            var productId = jQuery(this).attr("rel");
-            var thumbnailUrl = arThumbnailImages[productId]["final"];
-            jQuery(this).css("background", "url('" + thumbnailUrl + "') no-repeat scroll center center/auto 100%");
+            jQuery(this).removeClass("gift-set-final");
+            jQuery(this).addClass("gift-set-hover");
+        },
+        function () {
+            if(jQuery(this).hasClass("active"))
+                return;
+
+            jQuery(this).removeClass("gift-set-hover");
+            jQuery(this).addClass("gift-set-final");
         });
 
     jQuery(".gift_set_link").click(function () {
@@ -177,19 +174,6 @@ function setActiveLink(sectionOffsets) {
     jQuery(".gift_set_link:visible").eq(sectionIndex).addClass("active");
     jQuery(".section").removeClass("active");
     jQuery(".section:visible").eq(sectionIndex).addClass("active");
-
-/*********** logic for gift set image change ************/
-    var i = -1;
-    jQuery(".gift_set_link").each(function(){
-        var productId = jQuery(".gift_set_link").eq(++i).attr("rel");
-        var thumbnailUrl = arThumbnailImages[productId]["final"];
-        jQuery(this).css("background", "url('" + thumbnailUrl + "') no-repeat scroll center center/auto 100%");
-    });
-
-    var productId = jQuery(".gift_set_link:visible").eq(sectionIndex).attr("rel");
-    var thumbnailUrl = arThumbnailImages[productId]["gold"];
-    jQuery(".gift_set_link").eq(sectionIndex).css("background", "url('" + thumbnailUrl + "') no-repeat scroll center center/auto 100%");
-/*********** logic for gift set image change ************/
 
     ////////////////////////////////////////////////////////
     // Code for description slider keep changing once open//
