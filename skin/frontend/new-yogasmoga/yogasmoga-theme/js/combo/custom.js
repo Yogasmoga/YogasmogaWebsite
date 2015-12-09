@@ -27,7 +27,7 @@ jm(document).ready(function() {
 	//setInterval(getWeather, 300000);		// every 5 minutes
 	setInterval(updateTimes, 60000);		// every 1 minute
 
-	initializeBanner();
+	//initializeBanner();
 
 	jm(".header-container").css('top','20px');
 

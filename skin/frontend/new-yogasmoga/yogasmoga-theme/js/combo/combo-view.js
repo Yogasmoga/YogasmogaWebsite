@@ -16,7 +16,7 @@ jQuery(document).ready(function () {
 
     outOfStockImage = jQuery("#outofstockimage").find("img").attr("src");
 
-    initializeBanner();
+    //initializeBanner();
 
     resizeSlider();
 

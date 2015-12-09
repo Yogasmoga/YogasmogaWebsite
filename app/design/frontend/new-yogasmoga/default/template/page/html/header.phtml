@@ -38,7 +38,7 @@
         color: #555 !important;
     }
 
-   /* #pagecontainer{margin-top:25px !important;}*/
+    #pagecontainer{margin-top:25px !important;}
 </style>
 
 <!-- Paste this code right after the <body> tag on every page of your site. -->
@@ -364,7 +364,7 @@ if($currentUrl != $checkoutpage){
 
 <div class="pageoverlay"></div>
 <!--<div class="header-container"> -->
-    <div class="header-container" style="height:69px !important">
+    <div class="header-container" style="height:69px !important; padding-top: 25px" onclick="window.location.replace('/gift-sets')">
 
         <!--banner strip start-->
         <?php
@@ -374,8 +374,9 @@ if($currentUrl != $checkoutpage){
         if(isset($categoryName[3]))
             $urlKey = $categoryName[3];
 
+        echo "<div class='golden-banner'><p>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</p></div>";
         if(strtolower($urlKey)=="gift-sets"){
-            echo "<div class='golden-banner'>&nbsp;</div>";
+            ;//echo "<div class='golden-banner'>&nbsp;</div>";
         }
         else{
             if(false){          // not showing banner on normal pages
