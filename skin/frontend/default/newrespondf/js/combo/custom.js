@@ -30,7 +30,13 @@ jm(document).ready(function() {
         }
     });
 
+    jm(".outofstock img").show();
+
     jm(".size").click(function(){
+
+        if(jm(this).hasClass("outofstock"))
+            return;
+
         jm(this).closest(".sizes").find(".size").removeClass("active-size");
         jm(".error-text").html("");
         if(jm(this).hasClass("active-size"))

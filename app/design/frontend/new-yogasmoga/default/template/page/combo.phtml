@@ -164,10 +164,11 @@ foreach ($allSizeOptions as $instance) {
                                 $dataMap = $imageLabelData['dataMap'];
                                 $person = $imageLabelData['person'];
                                 $image_type = $imageLabelData['image_type'];
-                                $thumbnail = $imageLabelData['thumbnail'];
 
-                                if($image_type=="landing")
+                                if($image_type=="landing") {
                                     $setImageLanding = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
+                                    $thumbnail = $imageLabelData['thumbnail'];
+                                }
                                 else if($image_type=="quick")
                                     $setImageQuick = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
                             }

@@ -530,7 +530,7 @@ if($currentUrl != $checkoutpage){
                             $firstcolumn .= "</ul>";
                             echo $firstcolumn . $remainingcolumn;
                         }else{
-                            $giftSetLinks =$firstcolumn . "<li class='gift'><a href='/gift-sets?style=women'>Women</a></li><li class='gift'><a href='/gift-sets?style=men'>Men</a></li>";
+                            $giftSetLinks = $firstcolumn . "<li class='gift'><a href='/gift-sets?style=women'>Women</a></li><li class='gift'><a href='/gift-sets?style=men'>Men</a></li>";
                             echo $giftSetLinks;
                         }
                         $currentUrl = Mage::helper('core/url')->getCurrentUrl();

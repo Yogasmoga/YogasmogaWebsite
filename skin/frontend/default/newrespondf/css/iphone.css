@@ -7633,6 +7633,15 @@ table#checkout-review-table tfoot tr.reward-point td .price {
     width: 100%;
 }
 
+.outofstock img {
+    display: none !important;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
 .chart-table tr td:first-child {
     padding-right: 6px;
     width: 12% !important;
