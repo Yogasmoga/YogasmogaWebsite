@@ -1031,8 +1031,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                                             <div class="sizediv"
                                                                  value="<?php echo $size['value']; ?>"
                                                                  size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?>
-                                                                <img
-                                                                    src="<?php echo $this->getSkinUrl('/images/out-of-stock.png'); ?>"/>
+                                                                <img src="<?php echo $this->getSkinUrl('/images/out-of-stock.png'); ?>"/>
                                                             </div>
                                                         </td>
                                                         <?php
@@ -2228,7 +2227,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 "name" => $_product->getName(),
                 "price" => $_product->getPrice(),
                 "quantity" => round($stock, 0),
-                "description" => htmlentities($_product->getShortDescription()),
+                "description" => $_helper->productAttribute($_product, $_product->getDescription(),'description'),
                 "bundle_ids" => $bundled_product_ids,
                 "personClass" => "person_" . $person,
                 "image" => $image
