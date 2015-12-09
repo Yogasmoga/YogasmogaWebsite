@@ -33,6 +33,19 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
         $storeId = Mage::app()->getStore()->getStoreId();
         $resourceModel = Mage::getResourceModel('catalog/product');
 
+        /***************** get all colors from database ***********************/
+        $allColors = array();
+        $allColorsNames = array();
+        $allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+        $allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
+        foreach ($allColorOptions as $instance) {
+            if (!array_key_exists($instance['value'], $allColors)) {
+                $allColors[$instance['value']] = $instance['label'];
+                $allColorsNames[$instance['label']] = $instance['value'];
+            }
+        }
+        /***************** get all sizes from database ***********************/
+
         $bundledIds = $this->getRequest()->getParam('ids');
 
         $ar_bundled_product_ids = explode(",", $bundledIds);            // 23:56,56:67 etc.
@@ -62,10 +75,30 @@ class Ysindia_Mod_UtilityController extends Mage_Core_Controller_Front_Action
                 if(strpos(strtoupper($size), "T")!==false)
                     continue;
 
+                $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct);
+
+                $childColor = $_childProduct->getAttributeText('color');
+                $childColorName = substr($childColor, 0, strpos($childColor, "|"));
+                $childColorCode = $allColorsNames[$childColorName];
+
+                if($childColorCode!=$bundle_color_id)
+                    continue;
+
+                $stock = $productStock->getQty();
+                $inStock = $productStock->getIsInStock();
+
+                $sizeInStock = "";
+                if($stock<=0 || !$inStock)
+                    $sizeInStock = "_";
+
+                $ar_child_sizes[] = $sizeInStock . $size;
+
+/*
                 if (is_numeric($size))
                     $ar_child_sizes[] = intval($size);
                 else
                     $ar_child_sizes[] = $size;
+*/
             }
 
             $ar_child_sizes = array_unique($ar_child_sizes);

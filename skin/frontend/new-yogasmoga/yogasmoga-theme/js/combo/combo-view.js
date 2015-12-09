@@ -49,7 +49,7 @@ jQuery(document).ready(function () {
 
     });
 
-
+    jQuery(".outofstock img").show();
 });
 
 function initializeBanner() {
@@ -160,11 +160,11 @@ function changeProduct(product_id) {
                     bindBag();
                     bindSlider();
 
-
                     jQuery(".individual_product .product>p").click(function () {
                         window.location = jQuery(this).closest(".product").find("a").attr("href");
                     });
 
+                    jQuery(".outofstock img").show();
                 }
             }
         }
@@ -190,9 +190,20 @@ function addSideBundleProduct(data, i) {
         for (var j = 0; j < arSizes.length; j++) {
             var size = arSizes[j];
 
-            if (key == size) {
-                strSets += "<span class='size size-" + i + "' rel='" + allSizes[size] + "'>" + size + "</span>";
-                break;
+            if(size.substring(0,1)=="_") {        // underscore means size is out of stock
+
+                size = size.substring(1);
+
+                if (key == size) {
+                    strSets += "<span class='size size-" + i + " outofstock' rel='" + allSizes[size] + "'>" + size + "</span><img src="<?php echo $this->getSkinUrl('/images/out-of-stock.png'); ?>"/>";
+                    break;
+                }
+            }
+            else{
+                if (key == size) {
+                    strSets += "<span class='size size-" + i + "' rel='" + allSizes[size] + "'>" + size + "</span>";
+                    break;
+                }
             }
         }
     });

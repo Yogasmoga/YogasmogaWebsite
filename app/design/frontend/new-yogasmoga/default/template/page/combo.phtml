@@ -309,7 +309,6 @@ foreach ($allSizeOptions as $instance) {
 
                             $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct);
 
-                            $childName = $_childProduct->getName();
                             $childColor = $_childProduct->getAttributeText('color');
                             $childColorName = substr($childColor, 0, strpos($childColor, "|"));
                             $childColorCode = $allColorsNames[$childColorName];
