@@ -162,7 +162,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
             "success_message" => ""
         );
         //check do not apply smogi bucks for only accesories in cart
-		   $miniitems = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+		   $miniitems = Mage::getSingleton('checkout/session')->getQuote()->getAllVisibleItems();
 		   
         if(isset($miniitems))
         {
@@ -185,8 +185,10 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
                 $mitemProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $mitem['sku']);
 				$cids = $mitemProduct->getCategoryIds();
 				
-				$giftsetProduct = Mage::getModel('catalog/product')->load($mitem['product_id']);
+				$productId = $mitem->getProductId();
+				$giftsetProduct = Mage::getModel('catalog/product')->load($productId);
                 $giftsetcategoryId = $giftsetProduct->getCategoryIds();
+				
 				Mage::log('product Ids: '.$mitem['product_id'],null, "giftsetproduct.log");
 				Mage::log(print_r($giftsetcategoryId,true),null, "giftset.log");
 				//echo "<pre>";
