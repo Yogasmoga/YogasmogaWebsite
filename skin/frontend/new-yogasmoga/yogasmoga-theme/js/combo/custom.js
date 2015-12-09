@@ -14,6 +14,7 @@ var temperature2Loaded = true;
 
 var arBundledProductSmallImages = {};
 var arBundledProductBigImages = {};
+var arThumbnailImages = {};
 
 var firstTemperature = true;
 
