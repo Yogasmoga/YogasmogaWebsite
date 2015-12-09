@@ -2285,7 +2285,10 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 </div>-->
                 <div class="git_sets_list">
 
-                    <?php foreach ($arComboProduct as $id => $comboProduct) { ?>
+                    <?php
+                        foreach ($arComboProduct as $id => $comboProduct) {
+                            $thumbnailPath = $comboProduct["thumbnailPath"];
+                    ?>
 
                         <div class="gift_set_link <?php echo $comboProduct["personClass"];?> gift_set" rel="<?php echo $id; ?>" style="background: url('<?php echo $thumbnailPath;?>') no-repeat scroll center center/auto 100%">
                             <!--top,left-->
