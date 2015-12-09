@@ -189,8 +189,8 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
 				$giftsetProduct = Mage::getModel('catalog/product')->load($productId);
                 $giftsetcategoryId = $giftsetProduct->getCategoryIds();
 				
-				Mage::log('product Ids: '.print_r($mitem->getOptions(),true),null, "giftsetproduct.log");
-				Mage::log(print_r($giftsetcategoryId,true),null, "giftset.log");
+				Mage::log(print_r($mitem->getOptions(),true),null, "giftsetproduct.log");
+				
 				//echo "<pre>";
                 //print_r($excludecats);
                 $flag = 0;
