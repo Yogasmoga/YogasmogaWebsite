@@ -226,6 +226,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                         if (!isset($buyRequest)) {      // a normal product is found
                             if($childProduct->getProductId()==$item->getProductId()){
                                 $cart->removeItem($item->getId())->save();
+                                break;
                             }
                         }
                     }
