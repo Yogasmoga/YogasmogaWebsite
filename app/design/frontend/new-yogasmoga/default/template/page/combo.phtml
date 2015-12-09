@@ -165,8 +165,10 @@ foreach ($allSizeOptions as $instance) {
                                 $person = $imageLabelData['person'];
                                 $image_type = $imageLabelData['image_type'];
 
-                                if($image_type=="landing")
+                                if($image_type=="landing") {
                                     $setImageLanding = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
+                                    $thumbnail = $imageLabelData['thumbnail'];
+                                }
                                 else if($image_type=="quick")
                                     $setImageQuick = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
                             }
@@ -176,13 +178,17 @@ foreach ($allSizeOptions as $instance) {
                         $productSetImagesQuick[$_product_single->getId()] = $setImageQuick;
 
                         $personClass = "person_" . $person;
+
+                        $thumbnailPath = $this->getSkinUrl('images/combo/sets/final/' . $thumbnail);
                         ?>
                         <div class="gift_set_link <?php echo $personClass; ?> active"
-                             data-map="<?php echo $dataMap; ?>">
+                             data-map="<?php echo $dataMap; ?>" style="background: url('<?php echo $thumbnailPath;?>') no-repeat scroll center center/auto 100%">
                             <!--top,left-->
+                            <!--
                             <p class="pname"><span><?php echo $_product->getName(); ?></span><br/>SET</p>
 
                             <p class="pprice">$<?php echo round($_product->getPrice(), 0); ?></p>
+                            -->&nbsp;
                         </div>
                     <?php } ?>
                 </div>
