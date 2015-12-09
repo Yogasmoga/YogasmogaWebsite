@@ -171,7 +171,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
             $flag = 0;
             foreach($miniitems as $mitem)
             {
-                if(isset($mitem['type'])) {
+                /*if(isset($mitem['type'])) {
                     $productType = $mitem['type'];
 
                     if (isset($productType) && ($productType == 'gift' || $productType == 'bundled-gift')) {
@@ -180,13 +180,14 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
                         $this->getResponse()->setRedirect($refererUrl);
                         return;
                     }
-                }
+                }*/
 
                 $mitemProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $mitem['sku']);
 				$cids = $mitemProduct->getCategoryIds();
 				
 				$giftsetProduct = Mage::getModel('catalog/product')->load($mitem['product_id']);
                 $giftsetcategoryId = $giftsetProduct->getCategoryIds();
+				Mage::log('product Ids: '.$mitem['product_id'],null, "giftsetproduct.log");
 				Mage::log(print_r($giftsetcategoryId,true),null, "giftset.log");
 				//echo "<pre>";
                 //print_r($excludecats);
