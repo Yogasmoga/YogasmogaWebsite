@@ -272,6 +272,9 @@ function bindSizes() {
 
     jQuery(".size").click(function () {
 
+        if(jQuery(this).hasClass("outofstock"))
+            return;
+
         jQuery(this).closest(".sizes").find(".size").removeClass("active-size");
 
         if (jQuery(this).hasClass("active-size"))
