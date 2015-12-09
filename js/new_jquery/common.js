@@ -741,6 +741,6 @@ function initializeBanner(source, str) {
     //jQuery(".ui-widget-overlay").css("top", "94px");
     jQuery(".header-container").css("padding-top", "25px");
     jQuery(".header-container").css("top", "0");
-    jQuery("#bodycompensator").css("height", "94px");
+    //jQuery("#bodycompensator").css("height", "94px");
 }
 
