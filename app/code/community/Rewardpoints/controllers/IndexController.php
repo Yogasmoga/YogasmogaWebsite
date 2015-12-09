@@ -183,13 +183,18 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
                 }
 
                 $mitemProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $mitem['sku']);
+				$giftsetProduct = Mage::getModel('catalog/product')->load($mitem['product_id']);
                 $cids = $mitemProduct->getCategoryIds();
+				$giftsetcategoryId = $giftsetProduct->getCategoryIds();
 				//echo "<pre>";
                 //print_r($excludecats);
                 $flag = 0;
                 foreach($excludecats as $key=>$val)
                 {
                    if (in_array($val, $cids)) { 
+				   $flag = 1;
+				   }
+				   if (in_array($val, $giftsetcategoryId)) { 
 				   $flag = 1;
 				   }
 				  
