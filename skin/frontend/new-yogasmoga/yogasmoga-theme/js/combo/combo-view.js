@@ -31,6 +31,23 @@ jQuery(document).ready(function () {
         resizeSlider();
     });
 
+    jQuery(".gift_set_link").hover(
+        function () {
+            if(jQuery(this).hasClass("active"))
+                return;
+
+            jQuery(this).removeClass("gift-set-final");
+            jQuery(this).addClass("gift-set-hover");
+        },
+        function () {
+            if(jQuery(this).hasClass("active"))
+                return;
+
+            jQuery(this).removeClass("gift-set-hover");
+            jQuery(this).addClass("gift-set-final");
+        }
+    );
+
     jQuery(".gift_set").click(function () {
         var product_id = jQuery(this).attr("rel");
 
@@ -126,7 +143,7 @@ function changeProduct(product_id) {
 
                         addSideBundleProduct(data[i], i);
 
-                        addIndividualBundleProduct(data[i], classToApply, i+1);
+                        addIndividualBundleProduct(data[i], classToApply);
 
                         //addBundleProductImages(data[i]);
 
@@ -163,11 +180,11 @@ function changeProduct(product_id) {
                     bindSizes();
                     bindBag();
                     bindSlider();
-/*
+
                     jQuery(".individual_product .product>p").click(function () {
                         window.location = jQuery(this).closest(".product").find("a").attr("href");
                     });
-*/
+
                     jQuery(".outofstock img").show();
                 }
             }
@@ -219,14 +236,14 @@ function addSideBundleProduct(data, i) {
     jQuery(".purchase_box").append(strSets);
 }
 
-function addIndividualBundleProduct(data, classToApply, count) {
+function addIndividualBundleProduct(data, classToApply) {
 
     var strSets = "";
 
     strSets += "<div class='" + classToApply + "'>";
     strSets += "<div class='product'>";
     strSets += "<div class='product_img' rel='" + data.id + "'><img src='" + data.default_image + "' class='individual_img'/></div>";
-    strSets += "<p class='pname quickview' id='" + data.id + "-" + count + "'>" + data.name + "</p>";
+    strSets += "<p class='pname'>" + data.name + "</p>";
     strSets += "<p class='pcolor'>" + allColors[data.color_code] + "</p>";
     strSets += "<p class='pprice'>" + data.price + "</p>";
     strSets += "<a href='" + data.url + "' target='_blank'>Sold individually</a>";
