@@ -163,11 +163,11 @@ function changeProduct(product_id) {
                     bindSizes();
                     bindBag();
                     bindSlider();
-
+/*
                     jQuery(".individual_product .product>p").click(function () {
                         window.location = jQuery(this).closest(".product").find("a").attr("href");
                     });
-
+*/
                     jQuery(".outofstock img").show();
                 }
             }
