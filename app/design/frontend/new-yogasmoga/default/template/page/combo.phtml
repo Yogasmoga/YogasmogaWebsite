@@ -182,18 +182,20 @@ foreach ($allSizeOptions as $instance) {
                         $personClass = "person_" . $person;
 
                         $thumbnailPathFinal = $this->getSkinUrl('images/combo/sets/final/' . $thumbnail);
-                        $thumbnailPathHover = $this->getSkinUrl('images/combo/sets/hover/' . $thumbnail);
-                        $thumbnailPathGold = $this->getSkinUrl('images/combo/sets/gold/' . $thumbnail);
+                        //$thumbnailPathHover = $this->getSkinUrl('images/combo/sets/hover/' . $thumbnail);
+                        //$thumbnailPathGold = $this->getSkinUrl('images/combo/sets/gold/' . $thumbnail);
 
                         $productSetThumbnail[$_product_single->getId()] = array("final" => $thumbnailPathFinal, "hover" => $thumbnailPathHover, "gold" => $thumbnailPathGold);
 
                         ?>
-                        <div rel="<?php echo $_product_single->getId();?>" class="gift_set_link <?php echo $personClass; ?> active"
-                             data-map="<?php echo $dataMap; ?>" style="background: url('<?php echo $thumbnailPathFinal;?>') no-repeat scroll center center/auto 100%">
+                        <div rel="<?php echo $_product_single->getId();?>" class="gift_set_link <?php echo $personClass; ?>"
+                             data-map="<?php echo $dataMap; ?>">
                             <!--top,left-->
-                            <p class="pname" style="visibility: hidden"><span><?php echo $_product->getName(); ?></span><br/>SET</p>
+                            <p class="pname" style="display: none"><span><?php echo $_product->getName(); ?></span><br/>SET</p>
 
-                            <p class="pprice" style="visibility: hidden">$<?php echo round($_product->getPrice(), 0); ?></p>
+                            <p class="pprice" style="display: none">$<?php echo round($_product->getPrice(), 0); ?></p>
+
+                            <img src="<?php echo $thumbnailPathFinal;?>"/>
                         </div>
                     <?php } ?>
                 </div>
@@ -540,12 +542,12 @@ foreach ($allSizeOptions as $instance) {
                     cityTimes.push("<?php echo $cityTime;?>");
                     <?php } ?>
 
-                    <?php foreach($productSetThumbnail as $key => $value){ ?>
+                    <?php/* foreach($productSetThumbnail as $key => $value){ ?>
                     arThumbnailImages[<?php echo $key;?>] = Array();
                     arThumbnailImages[<?php echo $key;?>]["final"] = "<?php echo $value['final'];?>";
                     arThumbnailImages[<?php echo $key;?>]["hover"] = "<?php echo $value['hover'];?>";
                     arThumbnailImages[<?php echo $key;?>]["gold"] = "<?php echo $value['gold'];?>";
-                    <?php } ?>
+                    <?php }*/ ?>
                 </script>
 
                 <div style="font:12px/15px gotham book; color:#555">*To order more than 1 of the same set, please place a separate order.</div>

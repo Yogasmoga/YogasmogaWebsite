@@ -31,23 +31,6 @@ jQuery(document).ready(function () {
         resizeSlider();
     });
 
-    jQuery(".gift_set_link").hover(
-        function () {
-            if(jQuery(this).hasClass("active"))
-                return;
-
-            jQuery(this).removeClass("gift-set-final");
-            jQuery(this).addClass("gift-set-hover");
-        },
-        function () {
-            if(jQuery(this).hasClass("active"))
-                return;
-
-            jQuery(this).removeClass("gift-set-hover");
-            jQuery(this).addClass("gift-set-final");
-        }
-    );
-
     jQuery(".gift_set").click(function () {
         var product_id = jQuery(this).attr("rel");
 

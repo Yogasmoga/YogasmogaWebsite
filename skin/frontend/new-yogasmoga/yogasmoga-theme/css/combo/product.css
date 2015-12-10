@@ -116,7 +116,6 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 
 .gift_set_link.active {
     background: #AE8637;
-    color: #fff;
 }
 
 .pname {
@@ -458,4 +457,3 @@ p.prd-read-reviews a, .com-a-prd-links {
         width: 50%;
     }
 }
-
