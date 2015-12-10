@@ -64,4 +64,12 @@
             <block type="giftcards/coupon" after="coupon" name="checkout.cart.giftcards" as="giftcards" template="webtex/giftcards/coupon.phtml"/>
         </reference>
     </checkout_cart_index>
+	
+	<checkout_onepage_review>
+        <reference name="checkout.cart">
+            <action method="addItemRender"><type>giftcards</type><block>checkout/cart_item_renderer</block><template>webtex/giftcards/cart_item.phtml</template></action>
+            <block type="giftcards/coupon" after="coupon" name="checkout.cart.giftcards" as="giftcards" template="webtex/giftcards/coupon.phtml"/>
+        </reference>
+    </checkout_onepage_review>
+	
 </layout>
