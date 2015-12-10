@@ -126,7 +126,7 @@ function changeProduct(product_id) {
 
                         addSideBundleProduct(data[i], i);
 
-                        addIndividualBundleProduct(data[i], classToApply);
+                        addIndividualBundleProduct(data[i], classToApply, i+1);
 
                         //addBundleProductImages(data[i]);
 
@@ -219,14 +219,14 @@ function addSideBundleProduct(data, i) {
     jQuery(".purchase_box").append(strSets);
 }
 
-function addIndividualBundleProduct(data, classToApply) {
+function addIndividualBundleProduct(data, classToApply, count) {
 
     var strSets = "";
 
     strSets += "<div class='" + classToApply + "'>";
     strSets += "<div class='product'>";
     strSets += "<div class='product_img' rel='" + data.id + "'><img src='" + data.default_image + "' class='individual_img'/></div>";
-    strSets += "<p class='pname'>" + data.name + "</p>";
+    strSets += "<p class='pname quickview' id='" + data.id + "-" + count + "'>" + data.name + "</p>";
     strSets += "<p class='pcolor'>" + allColors[data.color_code] + "</p>";
     strSets += "<p class='pprice'>" + data.price + "</p>";
     strSets += "<a href='" + data.url + "' target='_blank'>Sold individually</a>";
