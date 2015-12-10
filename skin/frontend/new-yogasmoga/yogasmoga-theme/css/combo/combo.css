@@ -621,6 +621,15 @@ p.free_shipping {
     text-align: left;
     transition-duration: 200ms;
     width: 102px;
+    position: relative;
+}
+
+.gift_set_link img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
 }
 
 /*.gift_set_link:hover{
@@ -631,12 +640,10 @@ p.free_shipping {
 
 .gift_set_link:hover {
     background-color: #A5A7AA;
-    color: #fff;
 }
 
 .gift_set_link.active {
     background: #AE8637;
-    color: #fff;
 }
 
 .map_data_section .coordinate p {

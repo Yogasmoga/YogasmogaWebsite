@@ -182,11 +182,11 @@ foreach ($allSizeOptions as $instance) {
                         $thumbnailPath = $this->getSkinUrl('images/combo/sets/final/' . $thumbnail);
                         ?>
                         <div class="gift_set_link <?php echo $personClass; ?> active"
-                             data-map="<?php echo $dataMap; ?>" style="background: url('<?php echo $thumbnailPath;?>') no-repeat scroll center center/auto 100%">
+                             data-map="<?php echo $dataMap; ?>">
                             <!--top,left-->
-                            <p class="pname" style="visibility: hidden"><span><?php echo $_product->getName(); ?></span><br/>SET</p>
-
-                            <p class="pprice" style="visibility: hidden">$<?php echo round($_product->getPrice(), 0); ?></p>
+                            <p class="pname" style="display: none"><span><?php echo $_product->getName(); ?></span><br/>SET</p>
+                            <p class="pprice" style="display: none">$<?php echo round($_product->getPrice(), 0); ?></p>
+                            <img src="<?php echo $thumbnailPath;?>"/>
                         </div>
                     <?php } ?>
                 </div>
