@@ -180,6 +180,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                 $cartItems = $cart->getQuote()->getAllItems();
 
+                $str = "";
                 foreach($arBundle as $bundleProduct){
 
                     $arBundleProductOptions = explode(":", $bundleProduct);
@@ -207,6 +208,10 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                         $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1]);
                     }
 
+                    $bundledProduct = Mage::getModel('catalog/product')
+                        ->setStoreId(Mage::app()->getStore()->getId())
+                        ->load($bundleProductId);
+
                     $data = array(
                         'qty' => 1,
                         'super_attribute' => $arSuper,
@@ -218,23 +223,26 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                     /************* check if part of gift set is already in cart, if yes, remove it ****************/
                     foreach ($cartItems as $item) {
-                        $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($arSuper, $product);
+                        $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($arSuper, $bundledProduct);
 
-                        $buyRequest = $item->getBuyRequest();
+                        if(isset($childProduct)) {
 
-                        // if we are trying to remove gift set
-                        if (!isset($buyRequest)) {      // a normal product is found
-                            if($childProduct->getProductId()==$item->getProductId()){
-                                $cart->removeItem($item->getId())->save();
-                                break;
+                            $buyRequest = $item->getBuyRequest();
+                            // if we are trying to remove gift set
+                            if (isset($buyRequest)) {
+                                if(isset($buyRequest['type'])){
+                                    ;   // don't check gift set product
+                                }
+                                else{      // a normal product is found
+                                    if ($childProduct->getId() == $item->getProductId()) {
+                                        $cart->removeItem($item->getId())->save();
+                                        break;
+                                    }
+                                }
                             }
                         }
                     }
                     /************* check if part of gift set is already in cart, if yes, remove it ****************/
-
-                    $bundledProduct = Mage::getModel('catalog/product')
-                        ->setStoreId(Mage::app()->getStore()->getId())
-                        ->load($bundleProductId);
 
                     $cart->addProduct($bundledProduct, $data);
                 }
