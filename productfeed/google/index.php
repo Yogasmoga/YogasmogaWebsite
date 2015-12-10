@@ -160,6 +160,10 @@ foreach ($productCollection as $_product) {
                 $age_group = "Adult";
 
                 $total_name = $_childProduct->getName();
+				
+				if(strpos($total_name, "-")!==false)
+					$total_name = substr($total_name, 0, strpos($total_name,"-"));
+				
                 $total_buy_url = $buy_url . "?color=" . $colorCode;
 
                 $arr = array(
