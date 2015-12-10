@@ -152,7 +152,7 @@ foreach ($productCollection as $_product) {
                         if ($colorCode != $productColorCode)
                             continue;
 
-                        $image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $_image)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
+                        $image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
                         break;
                     }
                 }
