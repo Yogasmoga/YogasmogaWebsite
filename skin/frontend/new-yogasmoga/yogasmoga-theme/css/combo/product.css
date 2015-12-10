@@ -126,6 +126,21 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     width: 100%;
     height: auto;
 }
+
+.gift_set_link p{
+    opacity: 0;
+    color:#fff;
+
+}
+.gift_set_link:hover p{
+    opacity: 1;
+}
+
+.gift_set_link.active p{
+    opacity: 1;
+}
+
+
 .pname {
     font: 11px/15px Gothambold;
     text-transform: uppercase;

@@ -641,6 +641,38 @@ p.free_shipping {
 .gift_set_link:hover {
     background-color: #A5A7AA;
 }
+/*
+.gift_set_link p{
+    display: none;
+
+}
+
+.gift_set_link:hover p{
+    display: block;
+    color: #fff;
+}
+
+/*
+.gift_set_link.active p{
+    display: block;
+    color: #fff;
+}*/
+/************ ankur**********/
+
+.gift_set_link p{
+   opacity: 0;
+    color:#fff;
+
+}
+.gift_set_link:hover p{
+    opacity: 1;
+}
+
+.gift_set_link.active p{
+    opacity: 1;
+}
+
+
 
 .gift_set_link.active {
     background: #AE8637;
