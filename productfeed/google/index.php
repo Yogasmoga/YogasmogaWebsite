@@ -183,7 +183,7 @@ foreach ($productCollection as $_product) {
                     ''
                 );
 
-               // fputcsv($output, $arr);
+               fputcsv($output, $arr);
             }
         }
     }
