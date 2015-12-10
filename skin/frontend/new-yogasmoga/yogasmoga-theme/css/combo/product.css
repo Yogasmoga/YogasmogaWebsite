@@ -107,6 +107,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     transition-duration: 200ms;
     color: transparent;
     text-align: left;
+    position: relative;
 }
 
 .gift_set_link:hover {
