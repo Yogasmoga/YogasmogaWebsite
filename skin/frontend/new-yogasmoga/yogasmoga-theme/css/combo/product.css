@@ -118,6 +118,13 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     background: #AE8637;
 }
 
+.gift_set_link img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
 .pname {
     font: 11px/15px Gothambold;
     text-transform: uppercase;
