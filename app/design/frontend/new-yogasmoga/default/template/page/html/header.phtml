@@ -373,14 +373,21 @@ if($currentUrl != $checkoutpage){
         $urlKey = "";
         if(isset($categoryName[3]))
             $urlKey = $categoryName[3];
+
+        if(strtolower($urlKey)=="gift-sets"){
 ?>
-        <div class='golden-banner' onclick="window.location.replace('/gift-sets')"><p>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</p></div>
+
+            <div class='golden-banner' onclick="window.location.replace('/gift-sets')"><p>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</p></div>
 
 <?php
-        if(strtolower($urlKey)=="gift-sets"){
-            ;//echo "<div class='golden-banner'>&nbsp;</div>";
         }
         else{
+?>
+
+            <div class='orange-banner'>RECEIVE A FREE Infinity Scarf WITH YOUR PURCHASE OF $250 OR MORE&#8212;Ends December 31, 2015 at 11:59PM PST or while supplies last.</div>
+            <!--<div class='orange-banner'><p>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</p></div>-->
+
+<?php
             if(false){          // not showing banner on normal pages
 
                 if(strtolower($urlKey)=="men"){

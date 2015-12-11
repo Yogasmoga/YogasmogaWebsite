@@ -2865,7 +2865,6 @@ table.smallimagecontiner td.selectedimage{
     position:absolute;
     top:0;
     text-transform:uppercase;
-    cursor: pointer;
 }
 
 .golden-banner{
