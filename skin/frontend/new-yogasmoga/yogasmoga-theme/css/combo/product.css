@@ -135,6 +135,10 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     opacity: 0;
 }
 
+.gift_set_link.active:hover img{
+    opacity: 1;
+}
+
 .gift_set_link:hover {
     background-color: #A5A7AA;
     color: #fff;
