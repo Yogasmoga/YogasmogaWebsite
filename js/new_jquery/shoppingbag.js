@@ -772,8 +772,15 @@ function addbracelettobag(pid, colorattributeid, sizeattributeid) {
 /************************** updated code ***************************/
 function deleteproduct(deletedproducid, productcartqty) {
 
+    var deleteUrl;
+
+    if (window.location.href.indexOf('https://') >= 0)
+        deleteUrl = homeUrl;
+    else
+        deleteUrl = securehomeUrl;
+
     if (deletedproducid > 0) {
-        var addurl = homeUrl + 'mynewtheme/shoppingbag/delete/';
+        var addurl = deleteUrl + 'mynewtheme/shoppingbag/delete/';
         jQuery.ajax({
             type: 'POST',
             url: addurl,
