@@ -131,6 +131,12 @@
                     //print_r($positions);die;
                     $bannerTxt = 'white';
                 }
+				if($urlKey == 'men'){
+					$categoryId = $categoryIds['supersale_men'];
+					$category = new Varien_Object(array('id' => $categoryId));
+                    $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+					$bannerTxt = 'white';
+				}
 
 
                 $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
