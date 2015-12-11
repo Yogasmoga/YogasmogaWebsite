@@ -580,6 +580,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                 ++$count;
             }
+            else
+                ++$count;
         }
 
         return $count;
