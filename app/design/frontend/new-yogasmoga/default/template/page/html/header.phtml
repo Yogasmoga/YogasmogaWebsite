@@ -469,8 +469,12 @@ if($currentUrl != $checkoutpage){
                         if(isset($product_type) && $product_type=="gift-bundled")
                             continue;
 
-                        ++$itemcount;
+                        $itemcount = $itemcount + $item->getQty();
                     }
+                    else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+                        ;
+                    else
+                        ++$itemcount;
                 }
                 /*********** cart count after gift set ***************/
                 $i = 1;

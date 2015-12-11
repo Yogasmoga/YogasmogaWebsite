@@ -2582,8 +2582,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 if(isset($product_type) && $product_type=="gift-bundled")
                     continue;
 
-                ++$count;
+                $count = $count + $item->getQty();
             }
+            else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+                ;
             else
                 ++$count;
         }
