@@ -653,7 +653,7 @@ p.free_shipping {
 }
 
 .gift_set_link.active p{
-    opacity: 1;
+    opacity: 0;
 }
 
 .gift_set_link:hover {

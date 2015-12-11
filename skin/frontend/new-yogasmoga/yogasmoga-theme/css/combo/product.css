@@ -132,7 +132,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 }
 
 .gift_set_link.active p{
-    opacity: 1;
+    opacity: 0;
 }
 
 .gift_set_link:hover {
