@@ -140,6 +140,12 @@
 		<action method="setIsHandle"><applied>1</applied></action>
   </reference>
 </CATEGORY_72>
+<CATEGORY_73>
+ <reference name="root">
+        <action method="setTemplate"><template>page/category.phtml</template></action>
+		<action method="setIsHandle"><applied>1</applied></action>
+  </reference>
+</CATEGORY_73>
 
 	
 </layout>
