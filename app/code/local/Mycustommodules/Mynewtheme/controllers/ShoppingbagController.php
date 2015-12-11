@@ -2584,6 +2584,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                 ++$count;
             }
+            else
+                ++$count;
         }
 
         return $count;
