@@ -501,7 +501,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             //if($showhtml == '')
                // $minicarthtml = $this->getminicarthtml();
            // echo json_encode(array("status" => "success", "count" => $this->getcartcount()));
-		   echo json_encode(array("status" => "success","html" => $mincarthtml , "count" => $this->getcartcount()));
+		   echo json_encode(array("status" => "success","html" => $mincarthtml , "count" => $this->getcartcountmobile()));
             //echo "success";
             //if (!$this->_getSession()->getNoCartRedirect(true)) {
 //                if (!$cart->getQuote()->getHasError()){
@@ -618,7 +618,41 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
         return $count;
     }
-    
+
+    public function getcartcountmobile()
+    {
+        /*************** original code ***************/
+        /*
+                $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
+                if(isset($cart['items_qty'])){
+                    return (int)$cart['items_qty'];
+                } else {
+                    return 0;
+                }
+        */
+        $session = Mage::getSingleton('checkout/session');
+        $count = 0;
+        foreach ($session->getQuote()->getAllItems() as $item)
+        {
+            if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
+            {
+                $buyRequest = $item->getBuyRequest();
+                $product_type = $buyRequest['type'];
+
+                if(isset($product_type) && $product_type=="gift-bundled")
+                    continue;
+
+                $count++;
+            }
+            else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+                ;
+            else
+                ++$count;
+        }
+
+        return $count;
+    }
+
     public function issuperattribute($_product, $superattribute)
     {
         $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
