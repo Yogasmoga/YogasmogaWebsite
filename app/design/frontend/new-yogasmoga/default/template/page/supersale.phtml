@@ -108,41 +108,47 @@
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
             <div id="Allproducts" class="fullscreen pgsection " desc="Top Sellers" style="min-height: 422px;">
-                
-				 <?php
-                        // code for get left nav
-                        $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-                        $categoryName = explode('/', $currentUrl);
-                        $urlKey = $categoryName[3];
-                        $_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
-                        $parentCategoryId = $_category->getId();
+                <?php
+                // code for get left nav
+                $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                $categoryName = explode('/', $currentUrl);
+                $urlKey = $categoryName[3];
+                $_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
+                $parentCategoryId = $_category->getId();
 
-                        // end code for left nav
-
-
-                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('supersale_categoryid')->getValue('plain')), true);
-
-                        $categoryId = '';
-                        $bannerTxt = '';
-                        if ($urlKey == 'women') {
-                            $categoryId = $categoryIds['supersale_women'];
-                            //$categoryId = '46'; //replace with your own
-                            $category = new Varien_Object(array('id' => $categoryId));
-                            $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
-                            //print_r($positions);die;
-                            $bannerTxt = 'white';
-                        }
+                // end code for left nav
 
 
-                        $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
-                        $shopthecolor_imgUrl = $shopthecolorCategory->getImageUrl();
-                        $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
-                        ?>
-                        <!-- bannerContainer -->
-                        <?php if ($shopthecolor_imgUrl): ?>
-                            <div class="bannerFluid">
-                                <img src="<?php echo $shopthecolor_imgUrl; ?>"/>
-                                <?php /*
+                $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('supersale_categoryid')->getValue('plain')), true);
+
+                $categoryId = '';
+                $bannerTxt = '';
+                if ($urlKey == 'women') {
+                    $categoryId = $categoryIds['supersale_women'];
+                    //$categoryId = '46'; //replace with your own
+                    $category = new Varien_Object(array('id' => $categoryId));
+                    $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+                    //print_r($positions);die;
+                    $bannerTxt = 'white';
+                }
+				if($urlKey == 'men'){
+					$categoryId = $categoryIds['supersale_men'];
+					$category = new Varien_Object(array('id' => $categoryId));
+                    $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+					$bannerTxt = 'white';
+				}
+
+
+                $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
+                $shopthecolor_imgUrl = $shopthecolorCategory->getImageUrl();
+                $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
+                ?>
+                <!-- bannerContainer -->
+                <?php if ($shopthecolor_imgUrl): ?>
+                    <div class="bannerFluid"
+                         style="background: url('<?php echo $shopthecolor_imgUrl; ?>'); background-size: cover;">
+                        <!-- <img src="--><?php //echo $shopthecolor_imgUrl; ?><!--">-->
+                        <?php /*
                                 if ($urlKey == 'women') {
                                     ?>
                                     <div class="bnrtxt bnr white">WHAT&prime;S NEW</div>
@@ -163,17 +169,15 @@
                                 <?php } else { ?>
                                     <div class="bnrtxt bnr white">WHAT&prime;S NEW</div>
                                 <?php } */ ?>
-                            </div>
-                        <?php endif; ?>
-                        <!-- bannerContainer -->
-				
-				
-				
-				<div class="product-grid">
+                    </div>
+                <?php endif; ?>
+                <!-- bannerContainer -->
+                <div class="product-grid">
                     <div class="2-columns-wrapper">
-                        <div id="div_sizes">&nbsp;</div>
-                       
 
+
+
+                        <div id="div_sizes">&nbsp;</div>
                         <!-- middleContainer -->
                         <div class="gridProdCubix" style="margin-top:59px!important; min-height: 798px;">
                             <?php
@@ -193,7 +197,7 @@
                             ?>
 
                             <!-- leftNav -->
-                            <!--                            <div class="scroller_anchor" style="height: 29px;"></div>-->
+<!--                            <div class="scroller_anchor" style="height: 29px;"></div>-->
                             <div class="leftnav f-left l-align cntn-scroll">
                                 <ul class="ctglink">
                                     <?php
@@ -329,22 +333,22 @@
 
                                                 //if($filterColorName==$currentColor) {   // show only for current color
 
-                                                $size = $simpleProductForSku->getAttributeText('size');
+                                                    $size = $simpleProductForSku->getAttributeText('size');
 
-                                                $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
+                                                    $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
 
-                                                if (!isset($skuSizes[$filterColorName]))
-                                                    $skuSizes[$filterColorName] = array();
+                                                    if (!isset($skuSizes[$filterColorName]))
+                                                        $skuSizes[$filterColorName] = array();
 
-                                                if (isset($size) && strlen(trim($size)) > 0) {
-                                                    if ($stock > 0) {
-                                                        $allSkuSizes[] = $size;
-                                                        $skuSizes[$filterColorName][] = $size;
+                                                    if (isset($size) && strlen(trim($size)) > 0) {
+                                                        if ($stock > 0) {
+                                                            $allSkuSizes[] = $size;
+                                                            $skuSizes[$filterColorName][] = $size;
 
-                                                        //echo ">> $filterColorName , $size <br/>";
+                                                            //echo ">> $filterColorName , $size <br/>";
+                                                        }
                                                     }
-                                                }
-                                                // }
+                                               // }
                                             }
 
                                             $productSizes = $skuSizes[$currentColor];

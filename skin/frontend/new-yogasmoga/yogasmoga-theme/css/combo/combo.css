@@ -630,6 +630,7 @@ p.free_shipping {
     left: 0;
     width: 100%;
     height: auto;
+    opacity: 1;
 }
 
 /*.gift_set_link:hover{
@@ -637,6 +638,23 @@ p.free_shipping {
     -webkit-transform: scale(1.2);
     transition-duration: 200ms;
 }*/
+
+.gift_set_link p{
+    opacity: 0;
+    color:#fff;
+
+}
+.gift_set_link:hover p{
+    opacity: 1;
+}
+
+.gift_set_link:hover img{
+    opacity: 0;
+}
+
+.gift_set_link.active p{
+    opacity: 1;
+}
 
 .gift_set_link:hover {
     background-color: #A5A7AA;

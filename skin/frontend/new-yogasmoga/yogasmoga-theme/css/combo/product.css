@@ -116,6 +116,24 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     left: 0;
     width: 100%;
     height: auto;
+    opacity: 1;
+}
+
+.gift_set_link p{
+    opacity: 0;
+    color:#fff;
+
+}
+.gift_set_link:hover p{
+    opacity: 1;
+}
+
+.gift_set_link:hover img{
+    opacity: 0;
+}
+
+.gift_set_link.active p{
+    opacity: 1;
 }
 
 .gift_set_link:hover {
