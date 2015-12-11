@@ -349,7 +349,7 @@ foreach ($allSizeOptions as $instance) {
                     <div class="details">
 
                         <p class="desc">
-                            <?php echo $_product->getDescription(); ?>
+                            <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(),'short_description'); ?>
                         </p>
 
                         <div class="flexslider">
