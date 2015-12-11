@@ -253,28 +253,32 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                 $isAlreadyPartOfGiftSet = false;
 
-                $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getParam('super_attribute'), $product);
+                $superAttribute = $this->getRequest()->getParam('super_attribute');
 
-                if($childProduct) {
-                    $cartItems = $cart->getQuote()->getAllItems();
+                if(isset($superAttribute)) {
+                    $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($superAttribute, $product);
 
-                    foreach ($cartItems as $item) {
+                    if ($childProduct) {
+                        $cartItems = $cart->getQuote()->getAllItems();
 
-                        $buyRequest = $item->getBuyRequest();
+                        foreach ($cartItems as $item) {
 
-                        // if we are trying to remove gift set
-                        if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift-bundled") {
+                            $buyRequest = $item->getBuyRequest();
 
-                            if ($childProduct->getId() == $item->getProductId()) {
-                                $isAlreadyPartOfGiftSet = true;
-                                break;
+                            // if we are trying to remove gift set
+                            if (isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type'] == "gift-bundled") {
+
+                                if ($childProduct->getId() == $item->getProductId()) {
+                                    $isAlreadyPartOfGiftSet = true;
+                                    break;
+                                }
                             }
                         }
-                    }
 
-                    if ($isAlreadyPartOfGiftSet) {
-                        echo json_encode(array("status" => "ingiftset"));
-                        return;
+                        if ($isAlreadyPartOfGiftSet) {
+                            echo json_encode(array("status" => "ingiftset"));
+                            return;
+                        }
                     }
                 }
                 /************** check if we are purchasing a product that is part of gift set *********/
