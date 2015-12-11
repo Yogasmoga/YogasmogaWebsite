@@ -775,9 +775,9 @@ function deleteproduct(deletedproducid, productcartqty) {
     var deleteUrl;
 
     if (window.location.href.indexOf('https://') >= 0)
-        deleteUrl = homeUrl;
-    else
         deleteUrl = securehomeUrl;
+    else
+        deleteUrl = homeUrl;
 
     if (deletedproducid > 0) {
         var addurl = deleteUrl + 'mynewtheme/shoppingbag/delete/';
