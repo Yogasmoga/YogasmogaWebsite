@@ -24,25 +24,6 @@ foreach ($productCollection as $_product) {
 
     $product = Mage::getModel('catalog/product')->load($_product->getId());
 
-    $sku = $product->getSku();
-    $name = $product->getName();
-    $price = round($product->getPrice(), 2);
-    $description = $_helper->productAttribute($configurableProduct, $configurableProduct->getDescription(), 'description');
-
-    $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct);
-    $stock = $productStock->getQty();
-    $inStock = $productStock->getIsInStock();
-    if ($stock <= 0 || !$inStock)
-        $available = 'NO';
-    else
-        $available = 'YES';
-
-    $keyword = '';
-    $buy_url = '';
-    $image_url = '';
-    $advertise_category = 'yoga apparel';
-    $merchandiseType = '';
-
 /*
     $ar = fgetcsv($fileIn);
     if (++$count == 1)
@@ -70,17 +51,28 @@ foreach ($productCollection as $_product) {
     } else {
         if ($product->getTypeId() == 'configurable') {
 
+            $sku = $product->getSku();
+            $name = $product->getName();
+            $price = round($product->getPrice(), 2);
+            $description = $_helper->productAttribute($product, $product->getDescription(), 'description');
+
+            $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product);
+            $stock = $productStock->getQty();
+            $inStock = $productStock->getIsInStock();
+            if ($stock <= 0 || !$inStock)
+                $available = 'NO';
+            else
+                $available = 'YES';
+
+            $keyword = '';
+            $buy_url = '';
+            $image_url = '';
+            $advertise_category = 'yoga apparel';
+            $merchandiseType = '';
+
             $forHidden = $product->getAttributeText('hidden_product');
             if (isset($forHidden) && strtolower($forHidden) == "yes")
                 continue;
-            /*
-                        $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
-                            ->getParentIdsByChild($product->getId());
-
-                        if (!isset($parentIds) || count($parentIds) == 0)
-                            continue;
-            */
-            $configurableProduct = $product; //Mage::getModel('catalog/product')->load($parentIds[0]);
 
             $categoryIds = $product->getCategoryIds();
 
@@ -97,18 +89,17 @@ foreach ($productCollection as $_product) {
 
             unset($categoryIds);
 
-            $buy_url = $configurableProduct->getUrlInStore();
-            $keywords = $configurableProduct->getMetaKeyword();
+            $buy_url = $product->getUrlInStore();
+            $keywords = $product->getMetaKeyword();
 
-            $images = Mage::getModel('catalog/product')->load($configurableProduct->getId())->getMediaGalleryImages();
+            $images = Mage::getModel('catalog/product')->load($product->getId())->getMediaGalleryImages();
 
             if (isset($images) && count($images) > 0) {
                 foreach ($images as $image) {
 
                     $imgdata = json_decode(trim($image->getLabel()), true);
                     if (isset($imgdata['type']) && $imgdata['type'] == 'product image') {
-                        //$image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile());
-                        $image_url = (string)Mage::helper('catalog/image')->init($configurableProduct, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91);
+                        $image_url = (string)Mage::helper('catalog/image')->init($product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(91);
                         break;
                     }
                 }
