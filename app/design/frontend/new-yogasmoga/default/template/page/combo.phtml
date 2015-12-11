@@ -87,10 +87,10 @@ foreach ($allSizeOptions as $instance) {
 
                             $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple);
 
-                            $stock = $productStock->getQty();
+                            $parentStock = $productStock->getQty();
                             $inStock = $productStock->getIsInStock();
 
-                            if($stock<=0 || !$inStock) {
+                            if($parentStock<=0 || !$inStock) {
                                 $outOfStock = true;
                                 $outOfStockSets[] = $_product_single->getId();
                             }
@@ -245,7 +245,7 @@ foreach ($allSizeOptions as $instance) {
 
                     $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
                     foreach ($_childProducts as $simple) {
-                        $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
+                        $parentStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
                         break;
                     }
 
@@ -410,7 +410,7 @@ foreach ($allSizeOptions as $instance) {
                                         <p class="product_name"><?php echo $_product->getName(); ?> SET</p>
 
                                         <p class="product_price">$<?php echo round($_product->getPrice(), 0); ?>
-                                            <span><?php echo round($stock, 2); ?> SETS REMAINING</span></p>
+                                            <span><?php echo round($parentStock, 2); ?> SETS REMAINING</span></p>
 
                                         <?php
                                         $sizeDivCount = -1;
@@ -520,7 +520,7 @@ foreach ($allSizeOptions as $instance) {
 								
                                 <div class="right_desc">
                                     <p><a href="<?php echo $setProductUrl;?>">GET <?php echo $_product->getName(); ?> <span style="color:#c03;">&gt;</span></a></p>
-                                    <b><?php echo round($stock, 0); ?> remaining</b>
+                                    <b><?php echo round($parentStock, 0); ?> remaining</b>
                                 </div>
                             </div>
                         </div>
