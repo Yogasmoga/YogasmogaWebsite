@@ -7,7 +7,7 @@ ini_set('max_execution_time', 3000);
 require '../../app/Mage.php';
 Mage::app();
 
-$fileIn = fopen("products.csv", "r");
+//$fileIn = fopen("products.csv", "r");
 $fileOut = fopen(Mage::getBaseDir() . "/var/productfeed/result.txt", "w");
 
 fwrite($fileOut, "&CID=4521127\n");
@@ -109,7 +109,6 @@ foreach ($productCollection as $_product) {
 
         fwrite($fileOut, $data);
     }
-
 }
 
 fclose($fileOut);
