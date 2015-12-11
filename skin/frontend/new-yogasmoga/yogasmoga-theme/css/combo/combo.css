@@ -644,11 +644,19 @@ p.free_shipping {
 
 .gift_set_link p{
    opacity: 0;
-    color:#fff;
-
+   color:#fff;
 }
+
+.gift_set_link img{
+    opacity: 1;
+}
+
 .gift_set_link:hover p{
     opacity: 1;
+}
+
+.gift_set_link:hover img{
+    opacity: 0;
 }
 
 .gift_set_link.active p{
