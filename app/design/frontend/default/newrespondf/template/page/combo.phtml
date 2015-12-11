@@ -117,6 +117,8 @@ foreach ($allSizeOptions as $instance) {
                 foreach ($_childProducts as $simple) {
                     $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple);
 
+                    $setStock = $stock->getQty();
+
                     if($stock->getQty()>0 && $stock->getIsInStock())
                         $giftSetAvailable = true;
 
@@ -337,7 +339,7 @@ foreach ($allSizeOptions as $instance) {
 
                 <div class="gift-set" data-filter="<?php echo $person; ?>">
                     <div class="gift-set-title"><?php echo $_product->getName(); ?> SET</div>
-                    <p class="left_item"><?php echo round($stock, 0); ?> remaining</p>
+                    <p class="left_item"><?php echo round($setStock, 0); ?> remaining</p>
 
                     <div class="thumbnail" style="background: url('<?php echo $setImage; ?>'); background-size: cover">
                         <span class="setPrice">$<?php echo round($_product->getPrice(), 0); ?></span>
