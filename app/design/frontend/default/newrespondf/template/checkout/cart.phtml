@@ -450,7 +450,7 @@ else
 
                                     if(Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "configurable")
                                     {
-                                        $buyRequest = $item->getBuyRequest();
+                                        $buyRequest = $_item->getBuyRequest();
                                         $product_type = $buyRequest['type'];
 
                                         if(isset($product_type) && $product_type=="gift-bundled")
