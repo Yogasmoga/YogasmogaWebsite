@@ -78,6 +78,8 @@ function resizeSlider() {
 
 function changeProduct(product_id) {
 
+	jQuery(".current_slider_product").html("");
+
     var color_code = 216;    // by default all gift set has color "Andaman Green"
 
     jQuery(".gift_set").removeClass('active');
