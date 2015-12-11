@@ -53,8 +53,12 @@
             if(isset($product_type) && $product_type=="gift-bundled")
                 continue;
 
-            ++$cartItemsQuantity;
+            $cartItemsQuantity = $cartItemsQuantity + $item->getQty();
         }
+        else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+            ;
+        else
+            ++$cartItemsQuantity;
     }
 /*************** after adding gift set ***********************/
     ?>
