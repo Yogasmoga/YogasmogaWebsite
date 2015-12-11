@@ -446,7 +446,6 @@ else
 
                             <?php
                                 $totalItemCount = 0;
-
                                 foreach($this->getItems() as $_item) {
 
                                     if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
@@ -457,7 +456,8 @@ else
                                         if(isset($product_type) && $product_type=="gift-bundled")
                                             continue;
 
-                                        $totalItemCount = $totalItemCount + $item->getQty();
+                                        //$cartItemsQuantity = $cartItemsQuantity + $item->getQty();
+                                        $totalItemCount++;
                                     }
                                     else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
                                         ;

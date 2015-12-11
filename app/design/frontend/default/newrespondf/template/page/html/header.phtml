@@ -53,7 +53,8 @@
             if(isset($product_type) && $product_type=="gift-bundled")
                 continue;
 
-            $cartItemsQuantity = $cartItemsQuantity + $item->getQty();
+            //$cartItemsQuantity = $cartItemsQuantity + $item->getQty();
+            $cartItemsQuantity++;
         }
         else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
             ;
