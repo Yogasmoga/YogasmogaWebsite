@@ -410,7 +410,7 @@ foreach ($allSizeOptions as $instance) {
                                         <p class="product_name"><?php echo $_product->getName(); ?> SET</p>
 
                                         <p class="product_price">$<?php echo round($_product->getPrice(), 0); ?>
-                                            <span><?php echo round($parentStock, 2); ?> SETS REMAINING</span></p>
+                                            <span style="display: block;"><?php echo round($parentStock, 2); ?> SETS REMAINING</span></p>
 
                                         <?php
                                         $sizeDivCount = -1;
