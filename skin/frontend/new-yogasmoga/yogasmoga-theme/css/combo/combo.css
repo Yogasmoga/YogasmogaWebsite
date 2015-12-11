@@ -630,6 +630,7 @@ p.free_shipping {
     left: 0;
     width: 100%;
     height: auto;
+    opacity: 1;
 }
 
 /*.gift_set_link:hover{
@@ -645,10 +646,6 @@ p.free_shipping {
 .gift_set_link p{
    opacity: 0;
    color:#fff;
-}
-
-.gift_set_link img{
-    opacity: 1;
 }
 
 .gift_set_link:hover p{
