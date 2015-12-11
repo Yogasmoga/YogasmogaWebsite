@@ -122,7 +122,6 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 .gift_set_link p{
     opacity: 0;
     color:#fff;
-
 }
 .gift_set_link:hover p{
     opacity: 1;

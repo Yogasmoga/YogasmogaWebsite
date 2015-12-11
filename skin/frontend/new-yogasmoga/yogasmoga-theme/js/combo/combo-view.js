@@ -331,6 +331,7 @@ function swapImage(obj){
     else{
         jQuery(".current_slider_image").html(currentProductDiv.html());
 
+        jQuery(".current_slider_product").html("");
         var tempBlockHtml = currentProductDiv.html();
         currentProductDiv.html(blockHtml);
         blockHtml = tempBlockHtml;
