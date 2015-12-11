@@ -22,7 +22,7 @@ $_helper = Mage::helper('catalog/output');
 $count = 0;
 foreach ($productCollection as $_product) {
 
-    $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+    $product = Mage::getModel('catalog/product')->load($_product->getId());
 
     $sku = $product->getSku();
     $name = $product->getName();
