@@ -448,7 +448,7 @@ else
                                 $totalItemCount = 0;
                                 foreach($this->getItems() as $_item) {
 
-                                    if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
+                                    if(Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "configurable")
                                     {
                                         $buyRequest = $item->getBuyRequest();
                                         $product_type = $buyRequest['type'];
@@ -459,7 +459,7 @@ else
                                         //$cartItemsQuantity = $cartItemsQuantity + $item->getQty();
                                         $totalItemCount++;
                                     }
-                                    else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+                                    else if(Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "simple")
                                         ;
                                     else
                                         ++$totalItemCount;
