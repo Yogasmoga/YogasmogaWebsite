@@ -600,6 +600,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         $count = 0;
         foreach ($session->getQuote()->getAllItems() as $item)
         {
+            echo "type = " . Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID();
+
             if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
             {
                 $buyRequest = $item->getBuyRequest();
@@ -608,10 +610,14 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 if(isset($product_type) && $product_type=="gift-bundled")
                     continue;
 
-                ++$count;
+                ++$count; echo " > *";
             }
-            else
+            else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+                ;
+            else {
                 ++$count;
+                echo " > %";
+            }
         }
 
         return $count;
