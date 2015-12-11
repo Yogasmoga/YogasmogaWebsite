@@ -448,13 +448,21 @@ else
                                 $totalItemCount = 0;
                                 foreach($this->getItems() as $_item) {
 
-                                    $buyRequest = $_item->getBuyRequest();
+                                    if(Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "configurable")
+                                    {
+                                        $buyRequest = $_item->getBuyRequest();
+                                        $product_type = $buyRequest['type'];
 
-                                    if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift-bundled")
+                                        if(isset($product_type) && $product_type=="gift-bundled")
                                             continue;
 
-                                    //$totalItemCount += $_item->getQty();
-                                    $totalItemCount++;
+//                                        $cartItemsQuantity = $cartItemsQuantity + $item->getQty();
+                                        ++$totalItemCount;
+                                    }
+                                    else if(Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "simple")
+                                        ;
+                                    else
+                                        ++$totalItemCount;
                                 }
                             ?>
 
