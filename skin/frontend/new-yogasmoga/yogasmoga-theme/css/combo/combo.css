@@ -652,6 +652,10 @@ p.free_shipping {
     opacity: 0;
 }
 
+.gift_set_link.active:hover img{
+    opacity: 1;
+}
+
 .gift_set_link.active p{
     opacity: 0;
 }
