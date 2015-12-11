@@ -1234,7 +1234,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
          }
         */
 
-        echo json_encode(array("status" => "success", "count" => $this->getcartcount(), "message" => $message));
+        echo json_encode(array("status" => "success", "count" => $this->getcartcount()));
 //        return;
 //        echo json_encode(array("status" => "success","html" => $this->createshoppingbaghtml(), "count" => $this->getcartcount()));
     }
