@@ -2,7 +2,7 @@
     $currentCategoryId = Mage::registry('current_category')->getId();
     //$categoriesWithNoFilter = array(8,12,29,30,31,32,33,38,39,40,46,50);
     $categoriesWithNoFilterVariable = Mage::getModel('core/variable')->loadByCode('no_filter_categories')->getValue('plain');
-    $categoriesWithNoFilter = explode(",", $categoriesWithNoFilter);
+    $categoriesWithNoFilter = explode(",", $categoriesWithNoFilterVariable);
     $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
     if($showSizeFilter){
 ?>
