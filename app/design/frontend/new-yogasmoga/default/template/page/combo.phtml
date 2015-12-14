@@ -489,15 +489,15 @@ foreach ($allSizeOptions as $instance) {
 
                                 if (($customerId = Mage::getSingleton('customer/session')->getCustomerId()) && ($_in_wishlist)) {
                                     ?>
-                                    <p class="" style="position: absolute; bottom: 0; margin-bottom: 4px; right:0;">
+                                    <div class="add_to_wishlist">
                                         <a
-                                            onlick="javascript:void(0)">ADDED TO WISH LIST</a></p>
+                                            onlick="javascript:void(0)">ADDED TO WISH LIST</a></div>
                                     <?php
                                 } else {
                                     ?>
-									<p class="wishlist-link"><a class="" id="<?php echo $_product->getId(); ?>"
+									<div class="wishlist-link add_to_wishlist"><a class="" id="<?php echo $_product->getId(); ?>"
                                                                 href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $_product->getId(); ?>/">ADD
-                                            TO WISH LIST +</a></p>
+                                            TO WISH LIST +</a></div>
                                 <?php } ?>
 										
 										
@@ -610,7 +610,7 @@ foreach ($allSizeOptions as $instance) {
 									jQuery.ajax({
 										type: 'POST',
 										url: url,
-										data: {'productid': productid, 'colorcode': currentColor},
+										data: {'productid': productid},
 											success: function (data) {
 											data = eval('(' + data + ')');
 											var status = data.status;
