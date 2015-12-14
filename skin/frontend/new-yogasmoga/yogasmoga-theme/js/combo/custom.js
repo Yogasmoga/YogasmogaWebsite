@@ -75,9 +75,10 @@ jm(document).ready(function() {
 	});
 
 	var personType = getParameterByName('style');
-	console.log("**** " + personType);
+
 	if(personType!=undefined){
-		if(personType=='male' || personType=='female')
+		console.log("***** now filtering");
+		if(personType=='men' || personType=='women')
 			filterGiftSet(personType);
 	}
 
@@ -104,7 +105,7 @@ jm(document).ready(function() {
 });
 
 function filterGiftSet(personType){
-
+	
 	if(personType=="view all"){
 		jQuery(".gift_set_link").removeClass('active');
 		jQuery(".person_women:eq(0)").addClass('active');
