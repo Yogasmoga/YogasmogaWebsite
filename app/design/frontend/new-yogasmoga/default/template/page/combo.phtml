@@ -99,7 +99,7 @@ foreach ($allSizeOptions as $instance) {
                         }
 
                         if($outOfStock)
-                            continue;
+                            ;//continue;
 
                         /******************************  check if any of the gift set bundled products are out of stock *************************/
                         $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
