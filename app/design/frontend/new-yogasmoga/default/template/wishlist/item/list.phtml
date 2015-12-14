@@ -56,13 +56,14 @@
             <?php foreach ($this->getItems() as $item): 
 
 			    $_product = $item->getProduct();
-				echo $_product->getId()."***<br/>";
+				
                 $_product = Mage::getModel('catalog/product')->load($_product->getId());
 				$gallery = $_product->getMediaGalleryImages();
 				$buyRequest = $item->getBuyRequest();
 				
 				$colorCode = $buyRequest['colorcode'];
 				$image_type = $buyRequest['imagetype'];
+				echo $buyRequest."-----".$image_type."<br/>"; 
 				$product_image ='';
 				if(isset($colorCode)){
 					$colorCodeText = "?color=" . $colorCode;
