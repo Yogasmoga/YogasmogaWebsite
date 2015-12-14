@@ -24,27 +24,27 @@
         $reward_model = Mage::getModel('rewardpoints/stats');
 		$points = $reward_model->getPointsCurrent($customerId, $store_id);
 		if($points > 0){
-		$smogiBucks = $points;
-        }
-		
-		$rows = array(
-					'customer id'=>$customerId,
-					'customer email'=>$customerEmail,
-					'smogi bucks'=>$smogiBucks
-					);
-		
-		//echo "<br/>Removing<br/>";
-        //$reward_model->setPointsSpent($points);
-        //$reward_model->setCustomerId($customerId);
-        //$reward_model->setStoreId($store_id);
-        //$reward_model->setOrderId(Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN);
-        //$reward_model->save();
+			$smogiBucks = $points;
+			
+			
+			$rows = array(
+						'customer id'=>$customerId,
+						'customer email'=>$customerEmail,
+						'smogi bucks'=>$smogiBucks
+						);
+			
+			//echo "<br/>Removing<br/>";
+			//$reward_model->setPointsSpent($points);
+			//$reward_model->setCustomerId($customerId);
+			//$reward_model->setStoreId($store_id);
+			//$reward_model->setOrderId(Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN);
+			//$reward_model->save();
 
-        //$points = $reward_model->getPointsCurrent($customerId, $store_id);
-        //echo "Points now = $points";
-        //echo "<hr/>";
-		fputcsv($output, $rows);	
-		
+			//$points = $reward_model->getPointsCurrent($customerId, $store_id);
+			//echo "Points now = $points";
+			//echo "<hr/>";
+			fputcsv($output, $rows);	
+		}
     }
 ?>
 
