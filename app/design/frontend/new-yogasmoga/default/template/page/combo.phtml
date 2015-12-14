@@ -495,8 +495,8 @@ foreach ($allSizeOptions as $instance) {
                                     <?php
                                 } else {
                                     ?>
-									<p class="wishlist-link"><a class="" id="<?php echo $productId; ?>"
-                                                                href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productId; ?>/">ADD
+									<p class="wishlist-link"><a class="" id="<?php echo $_product->getId(); ?>"
+                                                                href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $_product->getId(); ?>/">ADD
                                             TO WISH LIST +</a></p>
                                 <?php } ?>
 										
