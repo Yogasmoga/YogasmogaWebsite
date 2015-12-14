@@ -2675,7 +2675,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if(isset($imgdata) && isset($imgdata['image_type'])) {
                 $image_type = $imgdata['image_type'];
 
-                if($image_type=="quick")
+                if($image_type=="cart_desktop")
                     return "_" . Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
             }
         }

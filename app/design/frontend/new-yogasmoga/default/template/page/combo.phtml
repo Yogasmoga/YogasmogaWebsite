@@ -99,7 +99,7 @@ foreach ($allSizeOptions as $instance) {
                         }
 
                         if($outOfStock)
-                            continue;
+                            ;//continue;
 
                         /******************************  check if any of the gift set bundled products are out of stock *************************/
                         $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
@@ -146,13 +146,13 @@ foreach ($allSizeOptions as $instance) {
 
                             if($allOutOfStock){
                                 $anyBundledOutOfStock = true;
-                                break;
+                                //break;
                             }
                         }
 
                         if($anyBundledOutOfStock) {
                             $outOfStockSets[] = $_product_single->getId();
-                            continue;
+                            //continue;
                         }
 
                         /******************************  check if any of the gift set bundled products are out of stock *************************/
@@ -237,8 +237,9 @@ foreach ($allSizeOptions as $instance) {
                 foreach ($productCollection as $_product_single) {
 
                     // if this gift set is out of stock or any of its bundled items are out of stock
+                    $outOfStock = false;
                     if(in_array($_product_single->getId(), $outOfStockSets))
-                        continue;
+                        $outOfStock = true;
 
                     $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
                     $setProductUrl = $_product->getProductUrl();
@@ -520,10 +521,23 @@ foreach ($allSizeOptions as $instance) {
 
                                 <p class="product_price">$<?php echo round($_product->getPrice(), 0); ?></p>
 
-                                <p class="buy_product"><a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a><a
+                                <p class="buy_product">
+                                    <?php if($outOfStock){ ?>
+
+                                    <a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a><a
+                                        class="buy_gift_set"
+                                        href="javascript:void(0)">OUT OF STOCK</a>
+
+                                    <?php }else{ ?>
+
+                                    <a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a><a
                                         class="buy_gift_set"
                                         href="<?php echo $setProductUrl; ?>">GET <?php echo $_product->getName(); ?> <b>
-                                            &gt;</b></a></p>
+                                            &gt;</b></a>
+
+                                <?php } ?>
+
+                                </p>
 
                                 <p class="toggle_description">SEE DETAILS <b>&gt;</b></p>
                             </div>
@@ -553,8 +567,18 @@ foreach ($allSizeOptions as $instance) {
                                 </div>
 								
                                 <div class="right_desc">
+
+                                    <?php if($outOfStock){ ?>
+
+                                        <p><a href="javascript:void(0)"><?php echo $_product->getName(); ?> <span style="color:#c03;">&gt;</span></a></p>
+                                        <b>OUT OF STOCK</b>
+
+                                    <?php }else{ ?>
+
                                     <p><a href="<?php echo $setProductUrl;?>">GET <?php echo $_product->getName(); ?> <span style="color:#c03;">&gt;</span></a></p>
                                     <b><?php echo round($parentStock, 0); ?> remaining</b>
+
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
