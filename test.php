@@ -14,7 +14,7 @@
         $reward_model = Mage::getModel('rewardpoints/stats');
 		$points = $reward_model->getPointsCurrent($customerId, $store_id);
 		if($points > 0){
-		echo $customerId."--Points = $points";
+		echo $customerId."--Points = $points<br/>";
         }
 		//echo "<br/>Removing<br/>";
         //$reward_model->setPointsSpent($points);
