@@ -59,11 +59,13 @@
 				
                 $_product = Mage::getModel('catalog/product')->load($_product->getId());
 				$gallery = $_product->getMediaGalleryImages();
+				$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail')->resize(138);
+				
 				$buyRequest = $item->getBuyRequest();
 				
 				$colorCode = $buyRequest['colorcode'];
 				$image_type = $buyRequest['imagetype'];
-				echo $buyRequest."-----".$image_type."<br/>"; 
+				
 				$product_image ='';
 				if(isset($colorCode)){
 					$colorCodeText = "?color=" . $colorCode;
@@ -78,16 +80,14 @@
 					}	
 					
 				}
-				if(isset($image_type)){
 				
-						foreach($gallery as $image){
-							$imageLabelData = json_decode(trim($image->getLabel()), true);
-								if($imageLabelData['image_type'] ='quick'){
-									$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
+				
+						
+								
 									
-								}
-						}	
-				}	
+							
+							
+				
 				
             ?>
                 <tr id="item_<?php echo $item->getId();?>">
