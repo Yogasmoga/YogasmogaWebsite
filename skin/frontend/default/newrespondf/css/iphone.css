@@ -94,7 +94,7 @@ input.validation-failed, textarea.validation-failed, select.validation-failed {
 }
 
 .col-main {
-    min-height: 150px;
+   /* min-height: 150px;*/
 }
 
 /********************** Main */
