@@ -56,39 +56,30 @@
             <?php foreach ($this->getItems() as $item): 
 
 			    $_product = $item->getProduct();
-				
                 $_product = Mage::getModel('catalog/product')->load($_product->getId());
 				$gallery = $_product->getMediaGalleryImages();
-				$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail')->resize(138);
-				
 				$buyRequest = $item->getBuyRequest();
 				
 				$colorCode = $buyRequest['colorcode'];
-				$image_type = $buyRequest['imagetype'];
-				
 				$product_image ='';
 				if(isset($colorCode)){
 					$colorCodeText = "?color=" . $colorCode;
 					foreach($gallery as $image){
 					$imageLabelData = json_decode(trim($image->getLabel()), true);
-						if($imageLabelData['type'] ='product image'){
-								if($imageLabelData['color']==$colorCode){
-								$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
-									break;
-								}
-						}
+					if($imageLabelData['type'] ='product image'){
+					if($imageLabelData['color']==$colorCode){
+					$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
+						break;
+					}
+					}
 					}	
 					
-				}
-				
-				
+					}		
 						
-								
-									
-							
-							
 				
-				
+				else{
+					$colorCodeText = "";
+				}
             ?>
                 <tr id="item_<?php echo $item->getId();?>">
                     <?php
