@@ -55,7 +55,8 @@
 		?>
             <?php foreach ($this->getItems() as $item): 
 
-			    $_product = $item->getProduct();
+			    echo $_product = $item->getProduct()."*****";
+				echo $_product->getId().'***';
                 $_product = Mage::getModel('catalog/product')->load($_product->getId());
 				$gallery = $_product->getMediaGalleryImages();
 				$buyRequest = $item->getBuyRequest();
