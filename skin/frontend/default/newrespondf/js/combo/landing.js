@@ -56,6 +56,8 @@
         var personType = getParameterByName('style');
         if(personType!=undefined){
 
+			personType = personType.toLowerCase();
+		
             if(personType=='men' || personType=='women') {
 				if (personType == "women") {
 					$(".gift-set[data-filter='men']").hide();
@@ -70,7 +72,14 @@
             e.preventDefault();
             var linkText = $(this).text().toUpperCase();
 
-            filterGiftSet(linkText);
+			$(".gift-set").show();
+			if (linkText == "WOMEN") {
+				$(".gift-set[data-filter='men']").hide();
+			}
+			if (linkText == "MEN") {
+				$(".gift-set[data-filter='women']").hide();
+			}
+			$(".sign-in-box .toggle_dropdown").click();
         });
 
         $(".bra_cup_toggle").click(function(){
@@ -84,17 +93,6 @@
         $(".gift-set .details .flexslider .slides li").height($(".gift-set .details").width() * 3 / 4);
     });
 }(jQuery));
-
-function filterGiftSet(linkText){
-    $(".gift-set").show();
-    if (linkText == "WOMEN") {
-        $(".gift-set[data-filter='men']").hide();
-    }
-    if (linkText == "MEN") {
-        $(".gift-set[data-filter='women']").hide();
-    }
-    $(".sign-in-box .toggle_dropdown").click();
-}
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
