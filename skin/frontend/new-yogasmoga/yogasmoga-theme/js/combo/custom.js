@@ -75,6 +75,7 @@ jm(document).ready(function() {
 	});
 
 	var personType = getParameterByName('style');
+	console.log("**** " + personType);
 	if(personType!=undefined){
 		if(personType=='male' || personType=='female')
 			filterGiftSet(personType);
