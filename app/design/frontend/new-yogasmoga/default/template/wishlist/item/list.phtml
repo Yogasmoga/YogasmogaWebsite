@@ -81,8 +81,8 @@
 						foreach($gallery as $image){
 							$imageLabelData = json_decode(trim($image->getLabel()), true);
 								if($imageLabelData['image_type'] ='quick'){
-									$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
-									break;
+									$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
+									
 								}
 						}	
 				}	
