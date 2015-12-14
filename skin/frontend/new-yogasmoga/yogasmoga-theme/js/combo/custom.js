@@ -74,6 +74,11 @@ jm(document).ready(function() {
 		}
 	});
 
+	var personType = getParameterByName('style');
+	if(personType!=undefined){
+		if(personType=='male' || personType=='female')
+			filterGiftSet(personType);
+	}
 
 
     jQuery("ul.main-menu > li.gift-sets > ul.sub-menu>li>ul").find(".gift a").click(function (e) {
@@ -81,22 +86,7 @@ jm(document).ready(function() {
 
 		var personType = jQuery(this).text().toLowerCase();
 
-        if(personType=="view all"){
-            jQuery(".gift_set_link").removeClass('active');
-            jQuery(".person_women:eq(0)").addClass('active');
-
-            jQuery(".gift_set_link").show();
-            jQuery(".contain_product").show();
-        }
-        else{
-            jQuery(".gift_set_link").hide();
-            jQuery(".contain_product").hide();
-            jQuery(".person_" + personType).show();
-
-            jQuery(".gift_set_link").removeClass('active');
-            jQuery(".person_" + personType + ":first-child").addClass('active');
-        }
-        getActiveSlide();
+		filterGiftSet(personType);
 	});
 
 	jQuery(".thumbnail").click(function(){
@@ -111,6 +101,26 @@ jm(document).ready(function() {
 	});
 	updateTimes();
 });
+
+function filterGiftSet(personType){
+
+	if(personType=="view all"){
+		jQuery(".gift_set_link").removeClass('active');
+		jQuery(".person_women:eq(0)").addClass('active');
+
+		jQuery(".gift_set_link").show();
+		jQuery(".contain_product").show();
+	}
+	else{
+		jQuery(".gift_set_link").hide();
+		jQuery(".contain_product").hide();
+		jQuery(".person_" + personType).show();
+
+		jQuery(".gift_set_link").removeClass('active');
+		jQuery(".person_" + personType + ":first-child").addClass('active');
+	}
+	getActiveSlide();
+}
 
 function initializeBanner(){
 
@@ -427,4 +437,11 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
 			}
 		}
 	});
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		results = regex.exec(location.search);
+	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
