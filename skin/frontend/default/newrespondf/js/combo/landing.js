@@ -52,17 +52,20 @@
             $(".choose_next").show();
         });
 
+
+        var personType = getParameterByName('style');
+        if(personType!=undefined){
+
+            if(personType=='men' || personType=='women') {
+                filterGiftSet(personType.toUpperCase());
+            }
+        }
+
         $(".dropdown_links.gift_sets_filter>ul li a").click(function (e) {
             e.preventDefault();
             var linkText = $(this).text().toUpperCase();
-            $(".gift-set").show();
-            if (linkText == "WOMEN") {
-                $(".gift-set[data-filter='men']").hide();
-            }
-            if (linkText == "MEN") {
-                $(".gift-set[data-filter='women']").hide();
-            }
-            $(".sign-in-box .toggle_dropdown").click();
+
+            filterGiftSet(linkText);
         });
 
         $(".bra_cup_toggle").click(function(){
@@ -76,3 +79,21 @@
         $(".gift-set .details .flexslider .slides li").height($(".gift-set .details").width() * 3 / 4);
     });
 }(jQuery));
+
+function filterGiftSet(linkText){
+    $(".gift-set").show();
+    if (linkText == "WOMEN") {
+        $(".gift-set[data-filter='men']").hide();
+    }
+    if (linkText == "MEN") {
+        $(".gift-set[data-filter='women']").hide();
+    }
+    $(".sign-in-box .toggle_dropdown").click();
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
