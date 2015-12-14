@@ -57,7 +57,12 @@
         if(personType!=undefined){
 
             if(personType=='men' || personType=='women') {
-                filterGiftSet(personType.toUpperCase());
+				if (personType == "women") {
+					$(".gift-set[data-filter='men']").hide();
+				}
+				else if (personType == "men") {
+					$(".gift-set[data-filter='women']").hide();
+				}                
             }
         }
 
