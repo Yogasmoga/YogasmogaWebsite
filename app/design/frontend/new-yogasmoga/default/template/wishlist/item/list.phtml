@@ -79,6 +79,11 @@
 				
 				else{
 					$colorCodeText = "";
+					$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
+					if(isset($product_image)){
+					$product_image;
+					break;
+					}
 				}
             ?>
                 <tr id="item_<?php echo $item->getId();?>">
