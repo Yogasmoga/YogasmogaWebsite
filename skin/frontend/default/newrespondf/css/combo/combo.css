@@ -213,7 +213,8 @@ h1.page-title {
     letter-spacing: 0.03em;
     margin-bottom: 11px;
     text-align: center;
-    width: 50%;
+    /* width: 50%; */ /* wish list hidden for now */
+    width: 100%;
 }
 
 .add_to_shopping_bag {
