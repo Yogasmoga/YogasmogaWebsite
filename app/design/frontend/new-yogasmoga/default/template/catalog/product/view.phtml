@@ -2131,6 +2131,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
         /************ reading all combo products *****************/
         $arComboProduct = array();
         foreach ($productCollection as $_product_single) {
+
+            $productInventoryStatus = "available";
+
             $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
 
             $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
@@ -2152,7 +2155,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             }
 
             if(!$giftSetAvailable)
-                continue;           // skip this gift set
+                $productInventoryStatus = "out of stock"; //continue;           // skip this gift set
 
             /******************************  check if any of the gift set bundled products are out of stock *************************/
             $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
@@ -2206,7 +2209,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             }
 
             if($anyBundledOutOfStock)
-                continue;
+                $productInventoryStatus = "out of stock"; //continue;
 
             /******************************  check if any of the gift set bundled products are out of stock *************************/
 
@@ -2239,7 +2242,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 "bundle_ids" => $bundled_product_ids,
                 "personClass" => "person_" . $person,
                 "thumbnailPath" => $thumbnailPath,
-                "image" => $image
+                "image" => $image,
+                "status" => $productInventoryStatus
             );
         }
 
@@ -2349,6 +2353,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                 foreach($arComboProduct as $key => $comboProduct){
                     echo "allComboProducts[$key] = [];";
+                    echo "allComboProducts[$key]['name'] = '" . $comboProduct["status"] . "';";
                     echo "allComboProducts[$key]['name'] = '" . $comboProduct["name"] . "';";
                     echo "allComboProducts[$key]['image'] = '" . $comboProduct["image"] . "';";
                     echo "allComboProducts[$key]['description'] = '" . $comboProduct["description"] . "';";

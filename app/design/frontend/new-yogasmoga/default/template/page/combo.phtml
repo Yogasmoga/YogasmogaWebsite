@@ -352,7 +352,7 @@ foreach ($allSizeOptions as $instance) {
                             "color" => $allColors[$bundle_color_id],
                             "color_code" => $bundle_color_id,
                             "url" => $bundledProductUrl
-							
+
                         );
 
                         $arBundledProductImages[$_bundle_product->getId()] = array("big_image" => $big_image);
@@ -474,10 +474,10 @@ foreach ($allSizeOptions as $instance) {
                                              rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">
                                             ADD TO WISHLIST +
                                         </div>
-									-->	
-										
-										
-	
+									-->
+
+
+
 								<?php
                                 $_in_wishlist = false;
                                 foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item) {
@@ -499,15 +499,15 @@ foreach ($allSizeOptions as $instance) {
                                                                 href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $_product->getId(); ?>/">ADD
                                             TO WISH LIST +</a></div>
                                 <?php } ?>
-										
-										
-										
-										
-										
-										
-										
-										
-										
+
+
+
+
+
+
+
+
+
                                         <div class="add_to_bag"
                                              rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">
                                             ADD TO BAG
@@ -565,7 +565,7 @@ foreach ($allSizeOptions as $instance) {
                                         </div>
                                     <?php } ?>
                                 </div>
-								
+
                                 <div class="right_desc">
 
                                     <?php if($outOfStock){ ?>
@@ -584,9 +584,10 @@ foreach ($allSizeOptions as $instance) {
                         </div>
                     </div>
 
-                <?php } ?>
-				
-				
+                <?php }
+
+                ?>
+
 				<script>
 				 jQuery(function ($) {
 					wishList();
@@ -631,7 +632,7 @@ foreach ($allSizeOptions as $instance) {
 
 					});
 				</script>
-			
+
                 <script type="text/javascript">
                     <?php foreach($cities as $city){ ?>
                     cities.push("<?php echo $city;?>");
@@ -645,13 +646,6 @@ foreach ($allSizeOptions as $instance) {
                     <?php foreach($cityTimes as $cityTime){ ?>
                     cityTimes.push("<?php echo $cityTime;?>");
                     <?php } ?>
-
-                    <?php/* foreach($productSetThumbnail as $key => $value){ ?>
-                    arThumbnailImages[<?php echo $key;?>] = Array();
-                    arThumbnailImages[<?php echo $key;?>]["final"] = "<?php echo $value['final'];?>";
-                    arThumbnailImages[<?php echo $key;?>]["hover"] = "<?php echo $value['hover'];?>";
-                    arThumbnailImages[<?php echo $key;?>]["gold"] = "<?php echo $value['gold'];?>";
-                    <?php }*/ ?>
                 </script>
 
                 <div style="font:12px/15px GothamBook; color:#555; padding: 25px 50px 0px; text-align: left">*To order more than 1 of the same set, please place a separate order.</div>
