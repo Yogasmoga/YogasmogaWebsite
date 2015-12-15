@@ -436,6 +436,7 @@ $logged_in = is_user_logged_in();
 <!--                                            <li><a href="/women/accessories/yoga-towels">Yoga Towels</a></li>-->
                                             <li><a href="/women/accessories/yoga-flops">Yoga Flops</a></li>
                                             <li><a href="/women/accessories/namaskar-bracelets">Namask&aacute;r Bracelets</a>
+											<li><a href="/women/accessories/bags">Bags</a></li>
                                             </li>
                                         </ul>
                                     </li>
@@ -517,10 +518,12 @@ $logged_in = is_user_logged_in();
 <!--                                            <li><a href="/men/accessories/yoga-mats">Yoga Mats</a></li>-->
 <!--                                            <li><a href="/men/accessories/yoga-towels">Yoga Towels</a></li>-->
                                             <li><a href="/men/accessories/namaskar-bracelets">Namask&aacute;r Bracelets</a>
+											<li><a href="/men/accessories/bags">Bags</a></li>
                                             </li>
                                         </ul>
                                     </li>
                                     <li><a href="/men/whats-new">WHAT'S NEW</a></li>
+									<li><a href="/men/super-sale"> Super Sale</a></li>
                                 </ul>
                             </li>
 
