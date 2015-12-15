@@ -520,7 +520,8 @@ foreach ($allSizeOptions as $instance) {
                                     <?php
                                 } else {
                                     ?>
-									<div class="wishlist-link add_to_wishlist"><a style="border:none;color:#fff" class="" id="<?php echo $_product->getId(); ?>"
+									<div class="add_to_wishlist wishlist_<?php echo $_product->getId(); ?>" rel="<?php echo $_product->getId(); ?>">
+									<a style="border:none;color:#fff" id="<?php echo $_product->getId(); ?>"
                                                                 href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $_product->getId(); ?>/">ADD
                                             TO WISH LIST +</a></div>
                                 <?php } ?>
@@ -616,15 +617,20 @@ foreach ($allSizeOptions as $instance) {
 				 jQuery(function ($) {
 					wishList();
 						function wishList() {
-							var wishlist = ".wishlist-link";
-							jQuery(wishlist).live("click", "a", function (event) {
+							var wishlist = ".add_to_wishlist";
+							//jQuery(wishlist).live("click", "a", function (event) {
+							jQuery(".add_to_wishlist a").click(function (event) {
+								
+								var currentObject = jQuery(this);
+								
 								event.preventDefault();
 								if (!_islogedinuser) {
 									_isClickAddtowishlist = true;
 									jQuery("#signing_popup").dialog("open");
 								}
 								if (_islogedinuser) {
-									var productid = jQuery(wishlist).find("a").attr('id');
+									var productid = jQuery(this).attr('id');
+									
 										if (window.location.href.indexOf('https://') >= 0)
 										_usesecureurl = true;
 									else
@@ -640,7 +646,7 @@ foreach ($allSizeOptions as $instance) {
 											data = eval('(' + data + ')');
 											var status = data.status;
 											if (status == "success") {
-												jQuery(wishlist).text("ADDED TO WISH LIST").css("color", "#D90D3D");
+												currentObject.text("ADDED TO WISH LIST").css("color", "#D90D3D");
 											}
 											else {
 												jQuery(this).text(data.errors).css("color", "#D90D3D");
