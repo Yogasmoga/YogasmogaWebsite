@@ -691,6 +691,7 @@ p.free_shipping {
     padding: 0 50px;
     background: #fff;
     height: 160px;
+    display: none;
 }
 
 .top_banners.fixed {
