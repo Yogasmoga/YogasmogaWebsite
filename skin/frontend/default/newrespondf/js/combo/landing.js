@@ -35,9 +35,9 @@
             //$(this).find("p").hide();
             $(".gift-set .details").not($(this).closest(".thumbnail").find(".details")).hide();
             $(".gift-set .details .related_blocks>div").hide();
-            $(this).parent().find(".related_blocks>div:first-child").show();
+            $(this).closest(".gift-set").find(".related_blocks>div:first-child").show();
             var offsetTop = $(window).scrollTop();
-            $(this).parent().find(".details").show();
+            $(this).closest(".gift-set").find(".details").show();
 
 
 /*
