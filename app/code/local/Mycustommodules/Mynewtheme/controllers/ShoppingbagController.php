@@ -1836,7 +1836,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                 $giftStyle = "border-bottom: none";
                 $giftClass = "gift_parent gift_" . $giftCount;
-                $circleBorder = 'style="border-radius: 50%; border: solid 1px rgba(204, 204, 204, 0.7);"';
+                //$circleBorder = 'style="border-radius: 50%; border: solid 1px rgba(204, 204, 204, 0.7);"';
             }
             else if($item['product_type']=="gift-bundled")
                 $giftClass = "gift_" . $giftCount . "_product gift_child";
