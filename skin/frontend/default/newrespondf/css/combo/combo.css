@@ -75,13 +75,6 @@ h1.page-title {
     font: 12px GraphikRegular;
     margin: 6px 0 11px;
     text-transform: uppercase;
-    text-align: left;
-    position: relative;
-}
-.gift-set .details .left_item span{
-    color: #AE8637;
-    position: absolute;
-    right: 0;
 }
 
 .gift-set .details .flexslider {
@@ -278,6 +271,13 @@ h1.page-title {
     font: 12px/12px GraphikRegular;
     margin-bottom: 16px;
     margin-top: -2px;
+    text-align: left;
+    position: relative;
+}
+.gift-set .left_item  span{
+    color: #AE8637;
+    position: absolute;
+    right: 0;
 }
 
 .gift-set .details .flexslider .slides li {
