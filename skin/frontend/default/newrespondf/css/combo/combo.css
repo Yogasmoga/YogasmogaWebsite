@@ -12,7 +12,7 @@
     margin-top: 4px;
     text-transform: uppercase;
     text-align: left;
-    padding: 0 5px 0 5px;
+    padding: 0 14px 0 14px;
 }
 
 .pageThumbnail {
@@ -275,13 +275,12 @@ h1.page-title {
     margin-top: -2px;
     text-align: left;
     position: relative;
-    padding: 0 5px 0 5px;
+    padding: 0 14px 0 14px;
 }
 .gift-set .left_item  span{
     color: #AE8637;
     position: absolute;
     right: 0;
-    padding: 5px;
 }
 
 .gift-set .details .flexslider .slides li {
