@@ -280,7 +280,7 @@ h1.page-title {
 .gift-set .left_item  span{
     color: #AE8637;
     position: absolute;
-    right: 0;
+    right: 14px;
 }
 
 .gift-set .details .flexslider .slides li {
