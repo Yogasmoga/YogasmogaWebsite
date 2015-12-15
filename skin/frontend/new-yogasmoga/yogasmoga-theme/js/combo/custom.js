@@ -82,6 +82,12 @@ jm(document).ready(function() {
 	}
 
 
+	var slideId = getParameterByName('id');
+	if(slideId!=undefined){
+		jQuery(".gift_set_link[rel='" + slideId + "']").click();
+	}
+
+
     jQuery("ul.main-menu > li.gift-sets > ul.sub-menu>li>ul").find(".gift a").click(function (e) {
 		e.preventDefault();
 
