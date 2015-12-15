@@ -37,8 +37,9 @@ div#bodycompensator {
 .section {
     min-height: 512px;
     overflow-x: hidden;
-    margin-bottom: 14px;
+    margin:auto auto 14px;
     overflow-y: hidden;
+	max-width: 1600px;
 }
 
 .section .product_set .side1 {
@@ -149,7 +150,7 @@ div#bodycompensator {
     left: 0;
     right: 0;
     opacity: 0;
-    padding: 20px;
+    padding: 22px;
     transition-duration: 500ms;
     z-index: 11;
     text-align: left;
@@ -179,7 +180,7 @@ div#bodycompensator {
 }
 
 .middle_desc {
-    width: 40.1367%;
+    width: 38.28%;
 }
 
 .middle_desc .desc_product_color {
@@ -199,9 +200,9 @@ div#bodycompensator {
     font: 11px/15px GothamBook;
 }
 
-.middle_desc {
+/*.middle_desc {
     width: 35%;
-}
+}*/
 
 .middle_desc div {
     width: 33.33%;
