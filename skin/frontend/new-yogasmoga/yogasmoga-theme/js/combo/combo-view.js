@@ -183,6 +183,7 @@ function changeProduct(product_id) {
                         jQuery(".sizes").remove();
                         jQuery(".add_to_bag").remove();
                         jQuery(".size-charts").remove();
+                        jQuery(".free_shipping").remove();
                         jQuery(".product_price span").html("SOLD OUT");
                     }
                     else{

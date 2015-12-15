@@ -351,7 +351,8 @@ foreach ($allSizeOptions as $instance) {
                             "big_image" => $big_image,
                             "color" => $allColors[$bundle_color_id],
                             "color_code" => $bundle_color_id,
-                            "url" => $bundledProductUrl
+                            "url" => $bundledProductUrl,
+                            "inventory_status" => $inventoryStatus
 
                         );
 
@@ -429,6 +430,7 @@ foreach ($allSizeOptions as $instance) {
                                                               rel="<?php echo $data["color_code"]; ?>"><?php echo $data["color"]; ?></span>
                                                     </p>
 
+                                                    <?php if(!$outOfStock){ ?>
                                                     <p class="psize">
                                                         <span class="gap">SIZE:</span>
                                             <span class="sizes">
@@ -462,6 +464,8 @@ foreach ($allSizeOptions as $instance) {
                                             </span>
 
                                                     </p>
+
+                                                    <?php } ?>
 
                                                     <!--<span class="size-chart-bundle">SIZE CHART</span>-->
 
