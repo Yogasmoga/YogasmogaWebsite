@@ -20,7 +20,7 @@ jQuery(document).ready(function () {
 jQuery(window).load(function(){
 
     jQuery(".top_banners").show();
-    
+
     positionBanners();
     descriptionPosition();
 
