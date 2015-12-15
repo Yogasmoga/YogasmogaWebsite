@@ -177,15 +177,24 @@ function changeProduct(product_id) {
                         }, 200);
                     });
 
-                    bindSizes();
-                    bindBag();
+                    var status = allComboProducts[product_id]["status"];
+                    if(status=="out of stock"){
+                        jQuery(".psize").remove();
+                        jQuery(".sizes").remove();
+                        jQuery(".add_to_bag").remove();
+                        jQuery(".product_price span").html("SOLD OUT");
+                    }
+                    else{
+                        bindSizes();
+                        bindBag();
+                        jQuery(".outofstock img").show();
+                    }
+
                     bindSlider();
 
                     jQuery(".individual_product .product>p").click(function () {
                         window.location = jQuery(this).closest(".product").find("a").attr("href");
                     });
-
-                    jQuery(".outofstock img").show();
                 }
             }
         }
