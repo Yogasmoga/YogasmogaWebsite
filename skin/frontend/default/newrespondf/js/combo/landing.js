@@ -27,7 +27,20 @@
 
         });
 
-        $(".gift-set .thumbnail").click(function () {
+        $(".gift-set .thumbnail, .gift-set .left_item > span").click(function () {
+
+            /********* new design udpate ***********/
+            $(".close_icon").show();
+            //$(".gift-set .thumbnail > p").show();
+            //$(this).find("p").hide();
+            $(".gift-set .details").not($(this).closest(".thumbnail").find(".details")).hide();
+            $(".gift-set .details .related_blocks>div").hide();
+            $(this).closest(".gift-set").find(".related_blocks>div:first-child").show();
+            var offsetTop = $(window).scrollTop();
+            $(this).closest(".gift-set").find(".details").show();
+
+
+/*
             $(".close_icon").show();
             $(".gift-set .thumbnail > p").show();
             $(this).find("p").hide();
@@ -36,6 +49,7 @@
             $(this).next().find(".related_blocks>div:first-child").show();
             var offsetTop = $(window).scrollTop();
             $(this).next().show();
+*/
             setTimeout(function () {
                 $("body,html").animate({
                     'scrollTop': offsetTop

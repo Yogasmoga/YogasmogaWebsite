@@ -229,6 +229,7 @@ if(!is_user_logged_in()){
 <!--                                <li><a href="/women/accessories/yoga-towels">Yoga Towels</a></li>-->
                                 <li><a href="/women/accessories/yoga-flops">Yoga Flops</a></li>
                                 <li><a href="/women/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>
+								<li><a href="/women/accessories/bags">Bags</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -238,28 +239,30 @@ if(!is_user_logged_in()){
                     <ul class="sub-menu menu-ovr second-list">
                         <li>
                             <ul>
-                                <li><a href="/mens/whats-new"> What's New</a></li>
+                                <li><a href="/men/whats-new"> What's New</a></li>
+								<li><a href="/men/super-sale"> Super Sale</a></li>
 <!--                                <li><a href="/mens/top-sellers"> Top Sellers</a></li>-->
                             </ul>
                         </li>
 
-                        <li><a href="/mens/tops"> Tops</a>
+                        <li><a href="/men/tops"> Tops</a>
                             <ul>
-                                <li><a href="/mens/tops/tees">Tees</a></li>
-                                <li><a href="/mens/tops/tanks">TANKS</a></li>
-                                <li><a href="/mens/tops/jackets">Jackets</a></li>
+                                <li><a href="/men/tops/tees">Tees</a></li>
+                                <li><a href="/men/tops/tanks">TANKS</a></li>
+                                <li><a href="/men/tops/jackets">Jackets</a></li>
                             </ul>
                         </li>
                         <li><a href="/mens/bottoms"> Bottoms</a>
                             <ul>
-                                <li><a href="/mens/bottoms/shorts">Shorts</a></li>
-                                <li><a href="/mens/bottoms/pants">Pants</a></li></ul>
+                                <li><a href="/men/bottoms/shorts">Shorts</a></li>
+                                <li><a href="/men/bottoms/pants">Pants</a></li></ul>
                         </li>
-                        <li><a href="/mens/accessories"> Accessories</a>
+                        <li><a href="/men/accessories"> Accessories</a>
                             <ul>
 <!--                                <li><a href="/mens/accessories/yoga-mats">Yoga Mats</a></li>-->
 <!--                                <li><a href="/mens/accessories/yoga-towels">Yoga Towels</a></li>-->
-                                <li><a href="/mens/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>
+                                <li><a href="/men/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>
+								<li><a href="/men/accessories/bags">Bags</a></li>
                             </ul>
                         </li>
                     </ul>

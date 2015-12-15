@@ -31,7 +31,7 @@ div#bodycompensator {
 
 #top_banner {
     background: #AE8637;
-    color: #fff;	
+    color: #fff;
 }
 
 .section {
@@ -692,6 +692,7 @@ p.free_shipping {
     padding: 0 50px;
     background: #fff;
     height: 160px;
+    display: none;
 }
 
 .top_banners.fixed {
