@@ -12,11 +12,13 @@
     margin-top: 4px;
     text-transform: uppercase;
     text-align: left;
+    padding: 0 5px 0 5px;
 }
 
 .pageThumbnail {
     background: #f3f3f3 url('../../images/combo/map-usa.svg') no-repeat scroll center center / 100%;
     position: relative;
+    margin-bottom: 10px;
 }
 
 h1.page-title {
@@ -273,11 +275,13 @@ h1.page-title {
     margin-top: -2px;
     text-align: left;
     position: relative;
+    padding: 0 5px 0 5px;
 }
 .gift-set .left_item  span{
     color: #AE8637;
     position: absolute;
     right: 0;
+    padding: 5px;
 }
 
 .gift-set .details .flexslider .slides li {

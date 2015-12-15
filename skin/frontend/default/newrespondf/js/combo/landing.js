@@ -27,7 +27,7 @@
 
         });
 
-        $(".gift-set .thumbnail").click(function () {
+        $(".gift-set .thumbnail, .gift-set .left_item > span").click(function () {
 
             /********* new design udpate ***********/
             $(".close_icon").show();
