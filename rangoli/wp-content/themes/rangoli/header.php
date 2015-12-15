@@ -251,6 +251,7 @@ if(!is_user_logged_in()){
                         </li>
                         <li><a href="/women/accessories"> Accessories </a>
                             <ul>
+                                <li><a href="/women/accessories/bags">Bags</a></li>
 								<li><a href="/women/accessories/scarves">Scarves</a></li>
                                 <li><a href="/women/accessories/head-bands">Head Bands</a></li>
                                 <!--<li><a href="/women/accessories/yoga-mats">Yoga Mats</a></li>
@@ -267,6 +268,7 @@ if(!is_user_logged_in()){
                         <li>
                             <ul>
                                 <li><a href="/men/whats-new"> What's New</a></li>
+                                <li><a href="/men/super-sale"> Super Sale</a></li>
 <!--                                <li><a href="/men/top-sellers"> Top Sellers</a></li>-->
                             </ul>
                         </li>
@@ -285,6 +287,7 @@ if(!is_user_logged_in()){
                         </li>
                         <li><a href="/men/accessories"> Accessories</a>
                             <ul>
+                                <li><a href="/men/accessories/bags">Bags</a></li>
                                 <!--<li><a href="/men/accessories/yoga-mats">Yoga Mats</a></li>
                                 <li><a href="/men/accessories/yoga-towels">Yoga Towels</a></li>-->
                                 <li><a href="/men/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>

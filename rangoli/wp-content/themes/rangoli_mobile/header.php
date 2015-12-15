@@ -430,6 +430,7 @@ $logged_in = is_user_logged_in();
                                             </svg>
                                         </span>
                                         <ul>
+                                            <li><a href="/women/accessories/bags">Bags</a></li>
 											<li><a href="/women/accessories/scarves">Scarves</a></li>
                                             <li><a href="/women/accessories/head-bands">Head Bands</a></li>
                                             <!--<li><a href="/women/accessories/yoga-mats">Yoga Mats</a></li>
@@ -515,6 +516,7 @@ $logged_in = is_user_logged_in();
                                             </svg>
                                         </span>
                                         <ul>
+                                            <li><a href="/men/accessories/bags">Bags</a></li>
                                             <!--<li><a href="/men/accessories/yoga-mats">Yoga Mats</a></li>
                                             <li><a href="/men/accessories/yoga-towels">Yoga Towels</a></li>-->
                                             <li><a href="/men/accessories/namaskar-bracelets">Namask&aacute;r Bracelets</a>
@@ -522,6 +524,7 @@ $logged_in = is_user_logged_in();
                                         </ul>
                                     </li>
                                     <li><a href="/men/whats-new">WHAT'S NEW</a></li>
+                                    <li><a href="/men/super-sale">SUPER SALE</a></li>
                                 </ul>
                             </li>
 
