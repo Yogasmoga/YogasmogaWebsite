@@ -11,6 +11,7 @@
     height: 39px;
     margin-top: 4px;
     text-transform: uppercase;
+    text-align: left;
 }
 
 .pageThumbnail {
@@ -74,6 +75,13 @@ h1.page-title {
     font: 12px GraphikRegular;
     margin: 6px 0 11px;
     text-transform: uppercase;
+    text-align: left;
+    position: relative;
+}
+.gift-set .details .left_item span{
+    color: #AE8637;
+    position: absolute;
+    right: 0;
 }
 
 .gift-set .details .flexslider {
