@@ -411,8 +411,18 @@ foreach ($allSizeOptions as $instance) {
                                     <div class="product_filters">
                                         <p class="product_name"><?php echo $_product->getName(); ?> SET</p>
 
-                                        <p class="product_price">$<?php echo round($_product->getPrice(), 0); ?>
-                                            <span style="display: block;"><?php echo round($parentStock, 2); ?> SETS REMAINING</span></p>
+                                        <p class="product_price">
+                                            <?php if(!$outOfStock){ ?>
+
+                                            $<?php echo round($_product->getPrice(), 0); ?>
+                                            <span style="display: block;"><?php echo round($parentStock, 2); ?> SETS REMAINING</span>
+
+                                            <?php }else{ ?>
+
+                                                SOLD OUT
+
+                                            <?php } ?>
+                                        </p>
 
                                         <?php
                                         $sizeDivCount = -1;
@@ -482,7 +492,9 @@ foreach ($allSizeOptions as $instance) {
 
 
 
-								<?php
+                                <?php if(!$outOfStock){ ?>
+
+                                <?php
                                 $_in_wishlist = false;
                                 foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item) {
                                     if ($productId == $_wishlist_item->getProduct()->getId()) {
@@ -504,19 +516,18 @@ foreach ($allSizeOptions as $instance) {
                                             TO WISH LIST +</a></div>
                                 <?php } ?>
 
+                                <?php } ?>
 
-
-
-
-
-
-
+                                <?php if(!$outOfStock){ ?>
 
                                         <div class="add_to_bag"
                                              rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">
                                             ADD TO BAG
                                         </div>
                                         <p class="free_shipping">Free and fast shipping to US and Canada</p>
+
+                                <?php } ?>
+
                                     </div>
                                 </div>
                             </div>
