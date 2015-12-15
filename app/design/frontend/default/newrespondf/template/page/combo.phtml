@@ -346,7 +346,14 @@ foreach ($allSizeOptions as $instance) {
                     </div>
 
                     <div class="gift-set-title"><?php echo $_product->getName(); ?> SET</div>
-                    <p class="left_item"><?php echo round($setStock, 0); ?> remaining<span>Buy Now</span></p>
+                    <p class="left_item">
+                        <?php if($giftSetAvailable){ ?>
+
+                        <?php echo round($setStock, 0); ?> remaining<span>Buy Now</span>
+
+                        <?php }else { echo "SOLD OUT"; ?>}
+
+                    </p>
 
                     <div class="details">
 
