@@ -6,7 +6,7 @@ $_helper = Mage::helper('catalog/output');
 $productCollection = Mage::getModel('catalog/category')->load($catId)
     ->getProductCollection()
     ->addAttributeToSelect('*');
-echo "count = " . count($productCollection);
+
 $cities = array();
 $latlongs = array();
 $cityTimes = array();
