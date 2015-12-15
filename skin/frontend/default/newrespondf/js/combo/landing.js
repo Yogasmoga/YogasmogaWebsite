@@ -52,6 +52,22 @@
             $(".choose_next").show();
         });
 
+        var personType = getParameterByName('style');
+        if(personType!=undefined){
+
+            personType = personType.toLowerCase();
+
+            if(personType=='men' || personType=='women') {
+                if (personType == "women") {
+                    $(".gift-set[data-filter='men']").hide();
+                }
+                else if (personType == "men") {
+                    $(".gift-set[data-filter='women']").hide();
+                }
+            }
+        }
+
+
         $(".dropdown_links.gift_sets_filter>ul li a").click(function (e) {
             e.preventDefault();
             var linkText = $(this).text().toUpperCase();
@@ -76,3 +92,10 @@
         $(".gift-set .details .flexslider .slides li").height($(".gift-set .details").width() * 3 / 4);
     });
 }(jQuery));
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
