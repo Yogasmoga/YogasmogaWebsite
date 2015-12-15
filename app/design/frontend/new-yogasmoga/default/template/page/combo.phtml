@@ -193,7 +193,16 @@ foreach ($allSizeOptions as $instance) {
                             <!--top,left-->
                             <p class="pname"><span><?php echo $_product->getName(); ?></span><br/>SET</p>
 
-                            <p class="pprice">$<?php echo round($_product->getPrice(), 0); ?></p>
+                            <p class="pprice">
+                                <?php
+                                    if($outOfStock){
+                                        echo "SOLD OUT";
+                                    }
+                                    else{
+                             ?>
+                                $<?php echo round($_product->getPrice(), 0); ?>
+                                <?php } ?>
+                            </p>
 
                             <img src="<?php echo $thumbnailPathFinal;?>"/>
                         </div>
