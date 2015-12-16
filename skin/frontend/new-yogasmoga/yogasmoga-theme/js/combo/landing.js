@@ -108,6 +108,24 @@ function init() {
      "opacity": 0
      });
      });*/
+
+    jQuery(".gift_set_link").hover(
+        function () {
+            if(jQuery(this).hasClass("active"))
+                return;
+
+            jQuery(this).removeClass("gift-set-final");
+            jQuery(this).addClass("gift-set-hover");
+        },
+        function () {
+            if(jQuery(this).hasClass("active"))
+                return;
+
+            jQuery(this).removeClass("gift-set-hover");
+            jQuery(this).addClass("gift-set-final");
+        }
+    );
+
     jQuery(".gift_set_link").click(function () {
         var index = jQuery(this).index() + 1;
         if (jQuery(".section:nth-child(" + index + ")").length > 0) {

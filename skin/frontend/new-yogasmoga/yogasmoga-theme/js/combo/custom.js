@@ -14,6 +14,7 @@ var temperature2Loaded = true;
 
 var arBundledProductSmallImages = {};
 var arBundledProductBigImages = {};
+var arThumbnailImages = {};
 
 var firstTemperature = true;
 
@@ -27,7 +28,7 @@ jm(document).ready(function() {
 	//setInterval(getWeather, 300000);		// every 5 minutes
 	setInterval(updateTimes, 60000);		// every 1 minute
 
-	//initializeBanner();
+	initializeBanner();
 
 	jm(".header-container").css('top','20px');
 
@@ -79,6 +80,13 @@ jm(document).ready(function() {
 		if(personType=='men' || personType=='women')
 			filterGiftSet(personType);
 	}
+
+
+	var slideId = getParameterByName('id');
+	if(slideId!=undefined){
+		jQuery(".gift_set_link[rel='" + slideId + "']").click();
+	}
+
 
     jQuery("ul.main-menu > li.gift-sets > ul.sub-menu>li>ul").find(".gift a").click(function (e) {
 		e.preventDefault();
@@ -436,13 +444,6 @@ function addToBag(giftProductId, count, parent, currentProductColorCode){
 			}
 		}
 	});
-}
-
-function getParameterByName(name) {
-	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-		results = regex.exec(location.search);
-	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
 function getParameterByName(name) {
