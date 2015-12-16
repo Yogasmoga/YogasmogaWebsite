@@ -2107,8 +2107,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
         $homeUrl = Mage::getBaseUrl();
 
         $setDescription = $_conf_product->getDescription();
-		$categoriesWithNoFilterVariable = Mage::getModel('core/variable')->loadByCode('gift_set_category_id')->getValue('plain');
+		$categoryIdGiftSet = Mage::getModel('core/variable')->loadByCode('gift_set_category_id')->getValue('plain');
         //$categoryIdGiftSet = 70;
+		echo $categoryIdGiftSet;
         $_helper = Mage::helper('catalog/output');
 
         $productCollection = Mage::getModel('catalog/category')->load($categoryIdGiftSet)
