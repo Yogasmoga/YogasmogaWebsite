@@ -177,7 +177,7 @@
 
 
 
-                        <div id="div_sizes">&nbsp;</div>
+                        <?php /* ?><div id="div_sizes">&nbsp;</div><?php */?>
                         <!-- middleContainer -->
                         <div class="gridProdCubix" style="margin-top:59px!important; min-height: 798px;">
                             <?php
@@ -376,9 +376,17 @@
                                                 <div class="caption">
                                                     <div class="caption">
                                                         <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl() . '?color=' . $simpleproductarr['color']; ?>"><?php echo $confProduct->getName() . '<br/>'; ?><?php echo $clrinfo[$simpleproductarr['color']] ?></a>
-                                                        <span
-                                                            style="color:#c03;">$<?php echo round($product->getPrice(), 2); ?></span>
+                                                        <?php
+														$simplePrice = round($product->getPrice(), 2);
+														$configurablePrice = round($confProduct->getPrice(), 2);
+														if($configurablePrice > $simplePrice){
+														?>
+														<span style="color:#c03;">$<?php echo round($product->getPrice(), 2); ?></span>
                                                         <span>was $<?php echo round($confProduct->getPrice(), 2); ?></span>
+														<?php } else{?>
+														<span>$<?php echo round($confProduct->getPrice(), 2); ?></span>
+														<?php }?>
+														
                                                     </div>
                                                 </div>
                                             </div>
