@@ -265,6 +265,7 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
  </div>
 <?php  $cat = Mage::getModel('catalog/layer')->getCurrentCategory();?>
  <div class="product-box">
+  <?php  if($_category->getThumbnail()) { ?>
   <a href="javascript:void(0)">
   <img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$cat->load($cat->getId())->getThumbnail() ?>" width="360" height="270" />
 	<!-- <span><?php //echo $cat->getDescription(); ?></span> -->
@@ -272,6 +273,8 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 	<span class="over-text"><?php echo $cat->getName(); ?></span>
 	<?php  } ?>
 	</a>
+	<?php  } ?>
+	
 	 <a class="go_to_parent" href="<?php echo $goBackUrl; ?>" >
 		 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 			  width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
