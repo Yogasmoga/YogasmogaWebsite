@@ -216,10 +216,14 @@ function setActiveLink(sectionOffsets) {
 
     if(jQuery.trim(jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pname>span").text()) != "" && jQuery.trim(jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pname>span").text()) != null) {
         var setName = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pname>span").text() + " SET";
-        var setPrice = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pprice").text();
+        //var setPrice = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pprice").text();
+        var setPrice = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pprice").attr('rel');
+
+        var arSetPrice = setPrice.split(":");
 
         jQuery(".box.set_name .product_name").html(setName);
-        jQuery(".box.set_name .product_price").html(setPrice);
+        //jQuery(".box.set_name .product_price").html(setPrice);
+        jQuery(".box.set_name .product_price").html("$" + arSetPrice[1] + " <b style='color:#555; font-weight:normal'>($" + arSetPrice[0] + " value)</b>");
 
         currentCityIndex = sectionIndex;
 
