@@ -152,6 +152,7 @@ foreach ($allSizeOptions as $instance) {
 
                         if($anyBundledOutOfStock) {
                             $outOfStockSets[] = $_product_single->getId();
+                            $outOfStock = true;
                             //continue;
                         }
 

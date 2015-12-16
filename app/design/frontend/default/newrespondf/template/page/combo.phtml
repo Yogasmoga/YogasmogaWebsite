@@ -108,6 +108,8 @@ foreach ($allSizeOptions as $instance) {
             $giftSetCount = 0;
             foreach ($productCollection as $_product_single) {
 
+                ++$giftSetCount;
+
                 $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
                 $setProductUrl = $_product->getProductUrl();
 
@@ -126,8 +128,8 @@ foreach ($allSizeOptions as $instance) {
                 }
 
                 // check if all gift set products have inventory
-                if($giftSetAvailable)
-                    $giftSetCount++;
+                //if($giftSetAvailable)
+                //    $giftSetCount++;
                 //else
                 //    continue;           // skip this gift set
 
@@ -181,7 +183,8 @@ foreach ($allSizeOptions as $instance) {
 
                 if($anyBundledOutOfStock) {
                     $outOfStockSets[] = $_product_single->getId();
-                    continue;
+                    $giftSetAvailable = false;
+                    ;//continue;
                 }
                 /******************************  check if any of the gift set bundled products are out of stock *************************/
 
