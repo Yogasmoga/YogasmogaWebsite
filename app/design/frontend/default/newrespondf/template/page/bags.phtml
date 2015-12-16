@@ -265,7 +265,7 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
  </div>
 <?php  $cat = Mage::getModel('catalog/layer')->getCurrentCategory();?>
  <div class="product-box">
-  <?php  if($_category->getThumbnail()) { ?>
+  <?php  if($cat->load($cat->getId())->getThumbnail()) { ?>
   <a href="javascript:void(0)">
   <img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$cat->load($cat->getId())->getThumbnail() ?>" width="360" height="270" />
 	<!-- <span><?php //echo $cat->getDescription(); ?></span> -->
