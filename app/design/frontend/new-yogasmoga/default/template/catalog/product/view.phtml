@@ -2135,6 +2135,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
         /************ reading all combo products *****************/
         $arComboProduct = array();
         foreach ($productCollection as $_product_single) {
+
+            $productInventoryStatus = "available";
+
             $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
 
             $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);

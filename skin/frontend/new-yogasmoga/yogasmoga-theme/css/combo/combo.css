@@ -511,10 +511,19 @@ div#bodycompensator {
     text-transform: uppercase;
 }
 
-.pcolor, .pprice {
+.pcolor{
     font: 11px/15px Gothambook;
     margin-bottom: 20px;
     text-transform: uppercase;
+}
+.pprice {
+    font: 11px/15px Gothambook;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.buy_gift_set{
+    text-transform: capitalize;
 }
 
 .psize {
