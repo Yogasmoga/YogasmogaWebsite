@@ -254,6 +254,7 @@ foreach ($allSizeOptions as $instance) {
                     $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
                     foreach ($_childProducts as $simple) {
                         $parentStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
+                        $childSetPrice = $simple->getPrice();
                         break;
                     }
 
