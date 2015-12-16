@@ -424,7 +424,7 @@ foreach ($allSizeOptions as $instance) {
                                             <?php if(!$outOfStock){ ?>
 
                                             $<?php echo round($_product->getPrice(), 0); ?>
-                                            <span style="display: block;"><?php echo round($parentStock, 2); ?> SETS REMAINING</span>
+                                            <span style="display: block;"><?php echo round($parentStock, 2); ?> REMAINING</span>
 
                                             <?php }else{ ?>
                                                 Sold Out
@@ -542,19 +542,25 @@ foreach ($allSizeOptions as $instance) {
                             <div class="side1" style="background:#f3f3f3 url('<?php echo $productSetImagesLanding[$_product_single->getId()];?>') no-repeat scroll center center/auto 100%;">
                                 <p class="product_name"><?php echo $_product->getName(); ?> SET</p>
 
-                                <p class="product_price">$<?php echo round($_product->getPrice(), 0); ?></p>
+                                <?php if(!$outOfStock){ ?>
+                                    <p class="product_price">$<?php echo round($_product->getPrice(), 0); ?></p>
+                                <?php }else{ ?>
+                                    <p class="product_price">Sold Out</p>
+                                <?php } ?>
 
                                 <p class="buy_product">
+
+                                    <a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a>
+
                                     <?php if($outOfStock){ ?>
 
-                                    <a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a><a
-                                        class="buy_gift_set"
-                                        href="javascript:void(0)">Sold Out</a>
+                                        <a class="buy_gift_set" style="color:#ccc"
+                                           href="<?php echo $setProductUrl; ?>">GET <?php echo $_product->getName(); ?> <b>
+                                                &gt;</b></a>
 
                                     <?php }else{ ?>
 
-                                    <a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a><a
-                                        class="buy_gift_set"
+                                    <a class="buy_gift_set"
                                         href="<?php echo $setProductUrl; ?>">GET <?php echo $_product->getName(); ?> <b>
                                             &gt;</b></a>
 

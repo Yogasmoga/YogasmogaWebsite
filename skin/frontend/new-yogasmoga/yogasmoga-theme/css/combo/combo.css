@@ -256,6 +256,7 @@ div#bodycompensator {
 
 .contain_product .side2 .product_price {
     font: 11px/17px GothamBook;
+    position: relative;
 }
 
 .contain_product .buy_product {
@@ -473,8 +474,13 @@ div#bodycompensator {
 
 .product_price > span {
     float: right;
-    font: 11px/39px Gothambook;
+    /* font: 11px/39px Gothambook; */
+    font: 11px/15px Gothambook;
     display: none;
+
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .product_filters{
