@@ -422,7 +422,7 @@ foreach ($allSizeOptions as $instance) {
                                         <p class="product_price">
                                             <?php if(!$outOfStock){ ?>
 
-                                            $<?php echo round($_product->getPrice(), 0); ?> <b style="font-weight: normal; color:#999">($ <?php echo round($childSetPrice,0);?> value)</b>
+                                            $<?php echo round($childSetPrice, 0); ?> <b style="font-weight: normal; color:#999">($ <?php echo round($_product->getPrice(),0);?> value)</b>
                                             <span style="display: block;"><?php echo round($parentStock, 2); ?> SETS REMAINING</span>
 
                                             <?php }else{ ?>
