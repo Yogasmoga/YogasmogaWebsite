@@ -194,16 +194,13 @@ foreach ($allSizeOptions as $instance) {
                             <!--top,left-->
                             <p class="pname"><span><?php echo $_product->getName(); ?></span><br/>SET</p>
 
-                            <p class="pprice" rel="<?php echo round($_product->getPrice(), 0) . ":" . round($childSetPrice, 0); ?>">
-                                <?php
-                                    if($outOfStock){
-                                        echo "SOLD OUT";
-                                    }
-                                    else{
-                             ?>
-                                $<?php echo round($_product->getPrice(), 0); ?>
-                                <?php } ?>
-                            </p>
+                            <?php if($outOfStock){ ?>
+                                <p class="pprice" rel="sold out">Sold Out</p>
+                            <?php }else{ ?>
+                                <p class="pprice" rel="<?php echo round($_product->getPrice(), 0) . ":" . round($childSetPrice, 0); ?>">
+                                    $<?php echo round($_product->getPrice(), 0); ?>
+                                </p>
+                            <?php } ?>
 
                             <img src="<?php echo $thumbnailPathFinal;?>"/>
                         </div>
@@ -424,12 +421,12 @@ foreach ($allSizeOptions as $instance) {
                                         <p class="product_price">
                                             <?php if(!$outOfStock){ ?>
 
-                                            $<?php echo round($_product->getPrice(), 0); ?> <b style="font-weight: normal; color:#555">($ <?php echo round($childSetPrice,0);?> value)</b>
+                                            $<?php echo round($_product->getPrice(), 0); ?> <b style="font-weight: normal; color:#999">($ <?php echo round($childSetPrice,0);?> value)</b>
                                             <span style="display: block;"><?php echo round($parentStock, 2); ?> SETS REMAINING</span>
 
                                             <?php }else{ ?>
 
-                                                SOLD OUT
+                                                Sold Out
 
                                             <?php } ?>
                                         </p>

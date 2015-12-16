@@ -219,11 +219,15 @@ function setActiveLink(sectionOffsets) {
         //var setPrice = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pprice").text();
         var setPrice = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pprice").attr('rel');
 
-        var arSetPrice = setPrice.split(":");
+        if(setPrice=="sold out")
+            jQuery(".box.set_name .product_price").html("Sold Out");
+        else {
+            var arSetPrice = setPrice.split(":");
+            jQuery(".box.set_name .product_price").html("$" + arSetPrice[1] + " <b style='color:#999; font-weight:normal'>($" + arSetPrice[0] + " value)</b>");
+        }
 
         jQuery(".box.set_name .product_name").html(setName);
         //jQuery(".box.set_name .product_price").html(setPrice);
-        jQuery(".box.set_name .product_price").html("$" + arSetPrice[1] + " <b style='color:#555; font-weight:normal'>($" + arSetPrice[0] + " value)</b>");
 
         currentCityIndex = sectionIndex;
 
