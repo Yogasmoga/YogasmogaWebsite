@@ -2110,7 +2110,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
         $setDescription = $_conf_product->getDescription();
 
-        $categoryIdGiftSet = 73;
+        //$categoryIdGiftSet = 73;
+        $categoryIdGiftSet = Mage::getModel('core/variable')->loadByCode('gift_set_category_id')->getValue('plain');
+
         $_helper = Mage::helper('catalog/output');
 
         $productCollection = Mage::getModel('catalog/category')->load($categoryIdGiftSet)
@@ -2154,7 +2156,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             }
 
             if(!$giftSetAvailable)
-                continue;           // skip this gift set
+                $productInventoryStatus = "out of stock"; //continue;           // skip this gift set
 
             /******************************  check if any of the gift set bundled products are out of stock *************************/
             $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
@@ -2208,7 +2210,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             }
 
             if($anyBundledOutOfStock)
-                continue;
+                $productInventoryStatus = "out of stock"; //continue;
 
             /******************************  check if any of the gift set bundled products are out of stock *************************/
 
@@ -2241,7 +2243,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 "bundle_ids" => $bundled_product_ids,
                 "personClass" => "person_" . $person,
                 "thumbnailPath" => $thumbnailPath,
-                "image" => $image
+                "image" => $image,
+                "status" => $productInventoryStatus
             );
         }
 
@@ -2295,7 +2298,13 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                         <div class="gift_set_link <?php echo $comboProduct["personClass"];?> gift_set" rel="<?php echo $id; ?>">
                             <!--top,left-->
                             <p class="pname"><?php echo $comboProduct["name"]; ?><br/>SET</p>
-                            <p class="pprice">$<?php echo round($comboProduct["price"], 0); ?></p>
+                            <p class="pprice">
+                            <?php if($comboProduct["status"]=="out of stock"){ ?>
+                                Sold Out
+                            <?php }else{ ?>
+                                $<?php echo round($comboProduct["price"], 0); ?>
+                            <?php } ?>
+                            </p>
                             <img src="<?php echo $thumbnailPath;?>"/>
                         </div>
                     <?php } ?>
@@ -2349,6 +2358,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                 foreach($arComboProduct as $key => $comboProduct){
                     echo "allComboProducts[$key] = [];";
+                    echo "allComboProducts[$key]['status'] = '" . $comboProduct["status"] . "';";
                     echo "allComboProducts[$key]['name'] = '" . $comboProduct["name"] . "';";
                     echo "allComboProducts[$key]['image'] = '" . $comboProduct["image"] . "';";
                     echo "allComboProducts[$key]['description'] = '" . $comboProduct["description"] . "';";

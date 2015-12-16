@@ -110,6 +110,15 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     position: relative;
 }
 
+.gift_set_link:hover {
+    background-color: #A5A7AA;
+    color: #fff;
+}
+
+.gift_set_link.active {
+    background: #AE8637;
+}
+
 .gift_set_link img{
     position: absolute;
     top: 0;
@@ -122,6 +131,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 .gift_set_link p{
     opacity: 0;
     color:#fff;
+
 }
 .gift_set_link:hover p{
     opacity: 1;
@@ -131,32 +141,27 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     opacity: 0;
 }
 
-.gift_set_link.active p{
-    opacity: 0;
-}
-
 .gift_set_link.active:hover img{
     opacity: 1;
 }
 
-.gift_set_link:hover {
-    background-color: #A5A7AA;
-    color: #fff;
+.gift_set_link.active p{
+    opacity: 0;
 }
 
-.gift_set_link.active {
-    background: #AE8637;
-    color: #fff;
-}
 
 .pname {
     font: 11px/15px Gothambold;
     text-transform: uppercase;
 }
 
-.pcolor, .pprice {
+.pcolor{
     font: 11px/15px Gothambook;
     text-transform: uppercase;
+}
+.pprice {
+    font: 11px/15px Gothambook;
+    text-transform: capitalize;
 }
 
 .psize {
@@ -488,4 +493,3 @@ p.prd-read-reviews a, .com-a-prd-links {
         width: 50%;
     }
 }
-

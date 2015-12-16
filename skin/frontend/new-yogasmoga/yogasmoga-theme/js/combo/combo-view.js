@@ -16,7 +16,7 @@ jQuery(document).ready(function () {
 
     outOfStockImage = jQuery("#outofstockimage").find("img").attr("src");
 
-    //initializeBanner();
+    initializeBanner();
 
     resizeSlider();
 
@@ -30,6 +30,23 @@ jQuery(document).ready(function () {
     jQuery(window).resize(function () {
         resizeSlider();
     });
+
+    jQuery(".gift_set_link").hover(
+        function () {
+            if(jQuery(this).hasClass("active"))
+                return;
+
+            jQuery(this).removeClass("gift-set-final");
+            jQuery(this).addClass("gift-set-hover");
+        },
+        function () {
+            if(jQuery(this).hasClass("active"))
+                return;
+
+            jQuery(this).removeClass("gift-set-hover");
+            jQuery(this).addClass("gift-set-final");
+        }
+    );
 
     jQuery(".gift_set").click(function () {
         var product_id = jQuery(this).attr("rel");
@@ -77,8 +94,6 @@ function resizeSlider() {
 }
 
 function changeProduct(product_id) {
-
-	jQuery(".current_slider_product").html("");
 
     var color_code = 216;    // by default all gift set has color "Andaman Green"
 
@@ -162,15 +177,26 @@ function changeProduct(product_id) {
                         }, 200);
                     });
 
-                    bindSizes();
-                    bindBag();
+                    var status = allComboProducts[product_id]["status"];
+                    if(status=="out of stock"){
+                        jQuery(".psize").remove();
+                        jQuery(".sizes").remove();
+                        jQuery(".add_to_bag").remove();
+                        jQuery(".size-charts").remove();
+                        jQuery(".free_shipping").remove();
+                        jQuery(".product_price span").html("Sold Out");
+                    }
+                    else{
+                        bindSizes();
+                        bindBag();
+                        jQuery(".outofstock img").show();
+                    }
+
                     bindSlider();
 
                     jQuery(".individual_product .product>p").click(function () {
                         window.location = jQuery(this).closest(".product").find("a").attr("href");
                     });
-
-                    jQuery(".outofstock img").show();
                 }
             }
         }
@@ -333,7 +359,6 @@ function swapImage(obj){
     else{
         jQuery(".current_slider_image").html(currentProductDiv.html());
 
-        jQuery(".current_slider_product").html("");
         var tempBlockHtml = currentProductDiv.html();
         currentProductDiv.html(blockHtml);
         blockHtml = tempBlockHtml;
