@@ -154,6 +154,14 @@
         </super_sale>
         <!-- Super Sale Category layouts End here -->
 
+        <!-- Bags Category layouts Start here -->
+        <bags translate="label">
+          <label>Bags</label>
+          <template>page/bags.phtml</template>
+          <layout_handle>bags</layout_handle>
+        </bags>
+        <!-- Bags Category layouts End here -->
+
       </layouts>
     </page>
   </global>
