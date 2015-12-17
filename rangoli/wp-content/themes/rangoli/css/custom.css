@@ -10,7 +10,7 @@
     position: fixed;
     right: 18px;
     top: 140px;
-    z-index: 555;
+    z-index: 565;
     cursor:pointer;
 }
 #signin_popup {
@@ -512,11 +512,6 @@ img{
     height: 100% !important;
     width: 100% !important;
 }
-.featured-video-plus.responsive {
-    float: left !important;
-    height: 100% !important;
-    width: 100% !important;
-}
 .wp-video {
     width: 100% !important;
     float: left !important;
@@ -560,6 +555,7 @@ img{
 }
 .post_link a{
     color:#fff;
+    text-transform: capitalize;
 }
 .post_content_box {
     float: left;
@@ -2100,18 +2096,30 @@ button.next-confirmation-page {
 .slider_post_title {
     border-bottom: 1px solid #fff;
     display: block;
-    font: 20px freight-text-pro;
+    font: 30px/35px ITCAvantGardeStd-Bk;
     margin: 0 auto 15px;
     text-transform: uppercase;
     width: 40%;
     letter-spacing: 1px;
 }
 
-.single_post.span4:nth-child(3n+1){
-    clear: left;
+.post_content li {
+    float: none;
+    list-style: initial;
+    list-style-position: inside;
+    margin: initial;
+    padding: initial;
+}
+.post_content > ul {
+    margin: 1em;
+}
+.single_post.span4:nth-child(3n) {
+    clear: right;
+}
+.single_post.span4:nth-child(3n+1) {
+  clear: left;
 }
 input[type="button"], input[type="submit"] {
     -webkit-appearance: none;
     border-radius: 0;
 }
-
