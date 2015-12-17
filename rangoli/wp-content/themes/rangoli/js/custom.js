@@ -921,6 +921,7 @@ function ajax_load_pages(link) {
                 play();
                 $(".play_video").fadeIn();
                 //$(document).find(".wp_page_banner .play-video").remove();
+                console.log("making height 100%");
                 $(document).find(".wp_page_banner .play-video .featured-video-plus").css("height","100%");
                 $(document).find(".wp_page_banner").css("background","none");
             });
