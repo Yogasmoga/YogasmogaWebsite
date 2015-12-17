@@ -1004,7 +1004,7 @@ function init() {
         $(".play_video").fadeIn();
 
         $(".wp_page_banner").css("background", "none");
-        $(".featured-video-plus").css("height", "100% !important");
+        $(".featured-video-plus.fvp-center").css("height", "758px");
 
         play();
 
