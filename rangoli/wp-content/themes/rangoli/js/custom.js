@@ -1006,7 +1006,7 @@ function init() {
         console.log("height to 100%");
 
         $(".wp_page_banner").css("background", "none");
-        $(".wp_page_banner").find(".featured-video-plus").css("height", "100% !important");
+        $(this).find(".featured-video-plus").css("height", "100% !important");
 
         play();
 
