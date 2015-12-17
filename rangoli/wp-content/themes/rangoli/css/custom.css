@@ -10,7 +10,7 @@
     position: fixed;
     right: 18px;
     top: 140px;
-    z-index: 565;
+    z-index: 555;
     cursor:pointer;
 }
 #signin_popup {
@@ -555,7 +555,6 @@ img{
 }
 .post_link a{
     color:#fff;
-    text-transform: capitalize;
 }
 .post_content_box {
     float: left;
@@ -2096,30 +2095,18 @@ button.next-confirmation-page {
 .slider_post_title {
     border-bottom: 1px solid #fff;
     display: block;
-    font: 30px/35px ITCAvantGardeStd-Bk;
+    font: 20px freight-text-pro;
     margin: 0 auto 15px;
     text-transform: uppercase;
     width: 40%;
     letter-spacing: 1px;
 }
 
-.post_content li {
-    float: none;
-    list-style: initial;
-    list-style-position: inside;
-    margin: initial;
-    padding: initial;
-}
-.post_content > ul {
-    margin: 1em;
-}
-.single_post.span4:nth-child(3n) {
-    clear: right;
-}
-.single_post.span4:nth-child(3n+1) {
-  clear: left;
+.single_post.span4:nth-child(3n+1){
+    clear: left;
 }
 input[type="button"], input[type="submit"] {
     -webkit-appearance: none;
     border-radius: 0;
 }
+
