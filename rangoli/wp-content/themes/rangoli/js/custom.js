@@ -1004,12 +1004,15 @@ function init() {
         $(".play_video").fadeIn();
 
         $(".wp_page_banner").css("background", "none");
-        $(".play_video").find(".featured-video-plus").css("height", "100% !important");
+        $(".featured-video-plus").css("height", "100% !important");
 
         play();
 
         $(this).remove();
     });
+
+    $(".featured-video-plus").css("height", "100% !important");
+
     $(".homepage_page_banner .play-video").click(function () {
         $(".play_video").fadeIn();
         $(".rangoli_logo").remove();
