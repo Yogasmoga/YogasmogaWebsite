@@ -271,6 +271,7 @@ div#bodycompensator {
 .contain_product .buy_product a {
     text-decoration: none;
     color: #555;
+    text-transform: uppercase;
 }
 
 .contain_product .buy_product a.quick_look {
