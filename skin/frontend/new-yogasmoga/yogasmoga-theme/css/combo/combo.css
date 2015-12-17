@@ -151,7 +151,7 @@ div#bodycompensator {
     left: 0;
     right: 0;
     opacity: 0;
-    padding: 20px;
+    padding: 22px;
     transition-duration: 500ms;
     z-index: 11;
     text-align: left;
@@ -181,7 +181,7 @@ div#bodycompensator {
 }
 
 .middle_desc {
-    width: 40.1367%;
+    width: 38.28%;
 }
 
 .middle_desc .desc_product_color {
@@ -200,11 +200,11 @@ div#bodycompensator {
 .set_desc p {
     font: 11px/15px GothamBook;
 }
-
+/*
 .middle_desc {
     width: 35%;
 }
-
+*/
 .middle_desc div {
     width: 33.33%;
     padding: 0 10px;
