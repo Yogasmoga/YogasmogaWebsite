@@ -959,7 +959,8 @@ function ajax_load_pages(link) {
 
 }
 function play() {
-    var player = $(document).find(".featured_video_plus").find("iframe");
+    //var player = $(document).find(".featured_video_plus").find("iframe");
+    var player = $(document).find(".featured-video-plus").find("iframe");
     var src = player.attr("src");
     src = src.replace("autoplay=0", "autoplay=1");
     player.attr("src", src);
