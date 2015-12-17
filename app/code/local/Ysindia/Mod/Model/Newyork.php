@@ -12,6 +12,14 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 					$item->getProduct()->setTaxClassId('30');
 				}
 			}
+			//for boston.
+			if($request['region_id'] == "32"){
+				
+				if($item['price'] < 175) {
+					$price_minus_discount = $item['price'] - $item['discount_amount'];
+					$item->getProduct()->setTaxClassId('30');
+				}
+			}
 			if($request['region_id'] == "43" || $request['region_id'] == "12" || $request['region_id'] == "14"){
 				if($item['product_id']==4){
 				$price_minus_discount = $item['price'] - $item['discount_amount'];
@@ -140,20 +148,22 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
                 $rate = 0;
             }
 			
+			
 			if($request['region_id'] == "43" || $request['region_id'] == "12" || $request['region_id'] == "14"){
 				if($item['product_id']==4){
 					$price_minus_discount = $item['price'] - $item['discount_amount'];
 					$rate = 0;
 				}
 			}
+		}
+		if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "32") {
 			
-			
-			
-			
-			
-			
-			
-        }
+			if($item['price'] < 175) {
+			$price_minus_discount = $item['price'] - $item['discount_amount'];
+                $rate = 0;
+            }
+		}	
+		
 	
         
         $qty    = $item->getTotalQty();
