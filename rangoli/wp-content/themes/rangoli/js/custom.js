@@ -920,10 +920,7 @@ function ajax_load_pages(link) {
                 $(document).find(".wp_page_banner .play-video").hide();
                 play();
                 $(".play_video").fadeIn();
-                //$(document).find(".wp_page_banner .play-video").remove();
-                console.log("making height 100%");
-                $(document).find(".wp_page_banner .play-video .featured-video-plus").css("height","100%");
-                $(document).find(".wp_page_banner").css("background","none");
+                $(document).find(".wp_page_banner .play-video").remove();
             });
 
             //$(window).load(function(){
@@ -1007,6 +1004,9 @@ function init() {
         $(".play_video").fadeIn();
 
         play();
+
+        $(".wp_page_banner .play-video .featured-video-plus").css("height", "100%");
+        $(".wp_page_banner").css("background", "none");
 
         $(this).remove();
     });
