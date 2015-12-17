@@ -507,7 +507,7 @@ function changePartOfGiftSet(clr){
     if(arPartOfGiftSets[clr]!=undefined) {
         var title = arPartOfGiftSets[clr][0];
         var url = arPartOfGiftSets[clr][1];
-        var str = "<span>Part of</span> <a style='border-bottom:solid 2px #cc0033' href='" + url + "'>" + title + "</a>";
+        var str = "<span>Part of</span> <a style='border-bottom:solid 1px #cc0033; padding-bottom: 2px;' href='" + url + "'>" + title + "</a>";
         jQuery(".part-of-gift-set").html(str).show();
     }
     else
