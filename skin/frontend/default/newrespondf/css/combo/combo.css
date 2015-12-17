@@ -18,7 +18,7 @@
 .pageThumbnail {
     background: #f3f3f3 url('../../images/combo/map-usa.svg') no-repeat scroll center center / 100%;
     position: relative;
-    margin-bottom: 10px;
+   /* margin-bottom: 10px;*/ /*** Edit by Ankur ***/
 }
 
 h1.page-title {
@@ -317,3 +317,6 @@ h1.page-title {
     padding-bottom: 44px;
     text-align: center;
 }
+/**** Edit by Ankur****/
+.gift-set-blurb{  height: 65px;}
+.gift-set-blurb p{font: 18px/65px freighttextbook;}
