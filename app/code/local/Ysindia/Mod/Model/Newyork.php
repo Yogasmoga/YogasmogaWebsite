@@ -12,8 +12,7 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 					$item->getProduct()->setTaxClassId('30');
 				}
 			}
-			//for boston.
-			if($request['region_id'] == "32"){
+			else if($request['region_id'] == "32"){
 				
 				if($item['price'] < 175) {
 					$price_minus_discount = $item['price'] - $item['discount_amount'];
@@ -156,7 +155,7 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 				}
 			}
 		}
-		if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "32") {
+		else if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "32") {
 			
 			if($item['price'] < 175) {
 			$price_minus_discount = $item['price'] - $item['discount_amount'];
