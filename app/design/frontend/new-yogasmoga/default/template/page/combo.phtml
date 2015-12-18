@@ -545,7 +545,7 @@ foreach ($allSizeOptions as $instance) {
                                 <p class="product_name"><?php echo $_product->getName(); ?> SET</p>
 
                                 <?php if(!$outOfStock){ ?>
-                                    <p class="product_price">$<?php echo round($childSetPrice, 0); ?> <span>(A $<?php echo round($_product->getPrice(), 0); ?> Value)</span></p>
+                                    <p class="product_price">$<?php echo round($childSetPrice, 0); ?> <span>(a $<?php echo round($_product->getPrice(), 0); ?> value)</span></p>
                                 <?php }else{ ?>
                                     <p class="product_price">Sold Out</p>
                                 <?php } ?>
