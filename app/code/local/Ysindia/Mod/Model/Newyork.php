@@ -18,18 +18,18 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 				$product = Mage::getModel('catalog/product')->load($productId);
 				$categoryIds = $product->getCategoryIds(); 
 				Mage::log("Query category".print_r($categoryIds, true),null,'row.log');
-				$isAccessory = '';
+				$isAccessory = 0;
 				foreach($categoryIds as $category) {	
 					if(in_array($category, $accessoriesCategories)){
-						$isAccessory = true;
+						$isAccessory = 1;
 						break;
 					}
 					else{
-					$isAccessory = false;	
+					$isAccessory = 2;	
 					break;
 					}
 				}
-				if($isAccessory==false){
+				if($isAccessory==2){
 					if($item['price'] < 175) {
 						$price_minus_discount = $item['price'] - $item['discount_amount'];
 						$item->getProduct()->setTaxClassId('30');
@@ -179,18 +179,18 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 				$product = Mage::getModel('catalog/product')->load($productId);
 				$categoryIds = $product->getCategoryIds(); 
 				Mage::log("Query category".print_r($categoryIds, true),null,'unit.log');
-				$isAccessory = '';
+				$isAccessory = 0;
 				foreach($categoryIds as $category) {	
 					if(in_array($category, $accessoriesCategories)){
-						$isAccessory = true;
+						$isAccessory = 1;
 						break;
 					}
 					else{
-						$isAccessory = false;
+						$isAccessory = 2;
 						break;
 					}
 				}
-				if($isAccessory==false){
+				if($isAccessory==2){
 						if($item['price'] < 175) {
 							$price_minus_discount = $item['price'] - $item['discount_amount'];
 							$rate = 0;
