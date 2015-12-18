@@ -27,7 +27,7 @@
 
         });
 
-        $(".gift-set .thumbnail, .gift-set .left_item > span").click(function () {
+        $(".gift-set .thumbnail, .gift-set .gift-set-title > span").click(function () {
 
             /********* new design udpate ***********/
             $(".close_icon").show();
@@ -38,6 +38,7 @@
             $(this).closest(".gift-set").find(".related_blocks>div:first-child").show();
             var offsetTop = $(window).scrollTop();
             $(this).closest(".gift-set").find(".details").show();
+            $(this).closest(".gift-set").find(".gift-set-title span").hide();
 
 
 /*
@@ -59,7 +60,8 @@
 
         $(".close_icon").click(function () {
             $(".gift-set .details").hide();
-            $(".gift-set .thumbnail > p").show();
+            //$(".gift-set .thumbnail > p").show();
+            $(".gift-set .gift-set-title span").show();
             $(this).hide();
             $(".size").removeClass("active-size");
             $(".add_to_shopping_bag").removeClass("bag-active");

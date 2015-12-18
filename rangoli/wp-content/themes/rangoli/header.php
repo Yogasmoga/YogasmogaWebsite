@@ -267,6 +267,16 @@ if(!is_user_logged_in()){
                         </li>
                     </ul>
                 </li>
+				<li class="gift-sets" rel="70">
+						<a href="/gift-sets" class="menu-heading">Gift Sets</a>
+							<ul class="sub-menu menu-ovr">
+								<li><ul>
+										<li class="gift"><a href="/gift-sets?style=women">Women</a></li>
+										<li class="gift"><a href="/gift-sets?style=men">Men</a></li>
+									</ul>
+								</li>
+							</ul>
+				</li>
             </ul>
         </div>
         <div class="f-right header-right">

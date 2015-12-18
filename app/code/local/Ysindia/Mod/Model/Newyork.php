@@ -17,7 +17,7 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 				$productId = $item->getProductId();
 				$product = Mage::getModel('catalog/product')->load($productId);
 				$categoryIds = $product->getCategoryIds(); 
-				Mage::log("Query category".print_r($categoryIds, true),null,'row.log');
+				//Mage::log("Query category".print_r($categoryIds, true),null,'row.log');
 				$isAccessory = 0;
 				foreach($categoryIds as $category) {	
 					if(in_array($category, $accessoriesCategories)){
@@ -174,7 +174,7 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 				$productId = $item->getProductId();
 				$product = Mage::getModel('catalog/product')->load($productId);
 				$categoryIds = $product->getCategoryIds(); 
-				Mage::log("Query category".print_r($categoryIds, true),null,'unit.log');
+				//Mage::log("Query category".print_r($categoryIds, true),null,'unit.log');
 				$isAccessory = 0;
 				foreach($categoryIds as $category) {	
 					if(in_array($category, $accessoriesCategories)){
