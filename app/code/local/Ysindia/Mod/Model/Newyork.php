@@ -3,16 +3,36 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 {
     protected function _rowBaseCalculation($item, $request)
     {
+		$accessoriesCategories = array(8,12,75,76);
         // If USD and from NY Region, apply tax rate based on grand total
         if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD") {
             
-			if($request['region_id'] == "43"){
+			if($request['region_id'] == "43"){		// new york
 				if($item['price'] < 110) {
 					$price_minus_discount = $item['price'] - $item['discount_amount'];
 					$item->getProduct()->setTaxClassId('30');
 				}
 			}
-			if($request['region_id'] == "43" || $request['region_id'] == "12" || $request['region_id'] == "14"){
+			else if($request['region_id'] == "32"){		// boston
+				$productId = $item->getProductId();
+				$product = Mage::getModel('catalog/product')->load($productId);
+				$categoryIds = $product->getCategoryIds(); 
+				
+				$isAccessory = 0;
+				foreach($categoryIds as $category) {	
+					if(in_array($category, $accessoriesCategories)){
+						$isAccessory = 1;
+						break;
+					}
+				}
+				if($isAccessory===0){
+					if($item['price'] < 175) {
+						$price_minus_discount = $item['price'] - $item['discount_amount'];
+						$item->getProduct()->setTaxClassId('30');
+					}
+				}					
+			}
+			if($request['region_id'] == "43" || $request['region_id'] == "12" || $request['region_id'] == "14" || $request['region_id'] == "32"){
 				if($item['product_id']==4){
 				$price_minus_discount = $item['price'] - $item['discount_amount'];
 				$item->getProduct()->setTaxClassId('30');
@@ -130,23 +150,46 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
     protected function _unitBaseCalculation($item, $request)
     {
 	
-		 $request->setProductClassId($item->getProduct()->getTaxClassId());
+		$accessoriesCategories = array(8,12,75,76);
+		$request->setProductClassId($item->getProduct()->getTaxClassId());
         $rate   = $this->_calculator->getRate($request);
 
-         if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "43") {
+        if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "43") {		// new york
             
 			if($item['price'] < 110) {
 			$price_minus_discount = $item['price'] - $item['discount_amount'];
                 $rate = 0;
             }
 			
-			if($request['region_id'] == "43" || $request['region_id'] == "12" || $request['region_id'] == "14"){
+			
+			if($request['region_id'] == "43" || $request['region_id'] == "12" || $request['region_id'] == "14" || $request['region_id'] == "32"){
 				if($item['product_id']==4){
 					$price_minus_discount = $item['price'] - $item['discount_amount'];
 					$rate = 0;
 				}
 			}
 		}
+		else if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "32") {		// new york
+
+				$productId = $item->getProductId();
+				$product = Mage::getModel('catalog/product')->load($productId);
+				$categoryIds = $product->getCategoryIds(); 
+				
+				$isAccessory = 0;
+				foreach($categoryIds as $category) {	
+					if(in_array($category, $accessoriesCategories)){
+						$isAccessory = 1;
+						break;
+					}
+				}
+				if($isAccessory===0){
+						if($item['price'] < 175) {
+							$price_minus_discount = $item['price'] - $item['discount_amount'];
+							$rate = 0;
+						}
+					}		
+		}	
+		
 	
         
         $qty    = $item->getTotalQty();
