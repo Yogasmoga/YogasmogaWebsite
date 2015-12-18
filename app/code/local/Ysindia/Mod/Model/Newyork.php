@@ -16,6 +16,7 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 			else if($request['region_id'] == "32"){
 				$product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item['sku']);
 				$categoryIds = $product->getCategoryIds();
+				Mage::log(print_r($categoryIds,true),null,'cat.log');
 				$isAccessory = false;
 				foreach($categoryIds as $category) {	
 					if(in_array($category, $accessoriesCategories)){
@@ -172,6 +173,7 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 
 				$product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item['sku']);
 				$categoryIds = $product->getCategoryIds();
+				Mage::log(print_r($categoryIds,true),null,'catunit.log');
 				$isAccessory = false;
 				foreach($categoryIds as $category) {	
 					if(in_array($category, $accessoriesCategories)){
