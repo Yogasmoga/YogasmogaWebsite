@@ -878,7 +878,14 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu {
 .icon-23:before { content: "Z"; }
 .icon-24:before { content: "E"; }
 .icon-25:before { content: "E"; }
-.icon-26:before { content: "3"; }
+/***** edit by Ankur****/
+.icon-26:before { content: " ";
+background: rgba(0, 0, 0, 0) url("../../images/combo/weather_cloudy.svg") no-repeat scroll 100% 100%;
+ display: inline-block;
+  height: 50px;
+  width: 50px;
+} 
+ /***** edit by Ankur ends****/
 .icon-27:before { content: "a"; }
 .icon-28:before { content: "A"; }
 .icon-29:before { content: "a"; }
