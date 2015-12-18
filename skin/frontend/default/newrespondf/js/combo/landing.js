@@ -38,7 +38,7 @@
             $(this).closest(".gift-set").find(".related_blocks>div:first-child").show();
             var offsetTop = $(window).scrollTop();
             $(this).closest(".gift-set").find(".details").show();
-            $(this).hide();
+            $(this).closest(".gift-set").find(".gift-set-title span").hide();
 
 
 /*
