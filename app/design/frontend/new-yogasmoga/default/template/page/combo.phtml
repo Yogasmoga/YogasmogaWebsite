@@ -198,7 +198,7 @@ foreach ($allSizeOptions as $instance) {
                                 <p class="pprice" rel="sold out">Sold Out</p>
                             <?php }else{ ?>
                                 <p class="pprice" rel="<?php echo round($_product->getPrice(), 0) . ":" . round($childSetPrice, 0); ?>">
-                                    $<?php echo round($_product->getPrice(), 0); ?>
+                                    $<?php echo round($childSetPrice, 0); ?>
                                 </p>
                             <?php } ?>
 
