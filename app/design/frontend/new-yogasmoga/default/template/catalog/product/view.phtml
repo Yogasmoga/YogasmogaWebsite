@@ -2309,7 +2309,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                             <?php if($comboProduct["status"]=="out of stock"){ ?>
                                 SOLD OUT
                             <?php }else{ ?>
-                                $<?php echo round($setSimplePrice, 0); ?>
+                                $<?php echo round($comboProduct["original_price"], 0); ?>
                             <?php } ?>
                             </p>
                             <img src="<?php echo $thumbnailPath;?>"/>
