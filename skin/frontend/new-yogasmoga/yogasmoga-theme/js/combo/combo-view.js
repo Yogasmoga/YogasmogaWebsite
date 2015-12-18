@@ -118,11 +118,6 @@ function changeProduct(product_id) {
                     jQuery(".purchase_box").html("");
                     jQuery(".set_individual_products").html("");
 
-                    jQuery("#bread-set-name").html(allComboProducts[product_id]["name"]);
-                    jQuery(".product_name").html(allComboProducts[product_id]["name"] + " SET");
-                    jQuery(".product_price").html(allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " REMAINING</span>");
-                    jQuery(".set_description").html(allComboProducts[product_id]["description"]);
-
                     jQuery(".current_slider_image img").attr("src", allComboProducts[product_id]["image"] );
 
                     var data = result.data;
@@ -177,8 +172,13 @@ function changeProduct(product_id) {
                         }, 200);
                     });
 
+                    jQuery("#bread-set-name").html(allComboProducts[product_id]["name"]);
+                    jQuery(".product_name").html(allComboProducts[product_id]["name"] + " SET");
+                    jQuery(".set_description").html(allComboProducts[product_id]["description"]);
+
                     var status = allComboProducts[product_id]["status"];
                     if(status=="out of stock"){
+                        jQuery(".product_price").html(allComboProducts[product_id]["price"] + "<span>" + allComboProducts[product_id]["quantity"] + " REMAINING</span>");
                         jQuery(".psize").remove();
                         jQuery(".sizes").remove();
                         jQuery(".add_to_bag").remove();
@@ -187,6 +187,8 @@ function changeProduct(product_id) {
                         jQuery(".product_price span").html("SOLD OUT");
                     }
                     else{
+                        jQuery(".product_price").html(allComboProducts[product_id]["price"] + "<b>(a $" + allComboProducts[product_id]["original_price"] + " value)</b><span>" + allComboProducts[product_id]["quantity"] + " REMAINING</span>");
+
                         bindSizes();
                         bindBag();
                         jQuery(".outofstock img").show();
@@ -214,6 +216,7 @@ function addSideBundleProduct(data, i) {
     //strSets += "<div class='product_image'><img src='" + data.default_image + "'/></div>";
     strSets += "<div class='product_detail product_detail-" + i + "' rel='" + data.id + "'>";
     strSets += "<p class='pname'>" + data.name + "</p>";
+    strSets += "<p class='psold'>$" + data.price + " Sold Individually</p>";
     strSets += "<p class='pcolor pcolor-" + i + "' rel='" + data.color_code + "'>" + allColors[data.color_code] + "</p>";
     strSets += "<p class='psize'>SIZE: <span class='size-chart-bundle' rel='" + i + "'>SIZE CHART</span></p>";
     strSets += "<div class='sizes'>";

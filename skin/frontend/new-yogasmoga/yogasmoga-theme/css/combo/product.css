@@ -217,6 +217,20 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
     margin-top: 4px;
 }
 
+.purchase_box .product_price > span {
+    /*float: right;*/
+    font: 11px/30px Gothambook;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.purchase_box .product_price > b {
+    font: 11px/17px GothamBook;
+    color: #555;
+    font-weight: normal;
+}
+
 .purchase_box .set_item {
     border-top: 1px solid #fff;
     padding: 20px 0 0 0;
