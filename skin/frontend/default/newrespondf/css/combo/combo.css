@@ -13,10 +13,20 @@
     text-transform: uppercase;
     text-align: left;
     padding: 0 14px 0 14px;
+    position: relative;
 }
+.gift-set-title > span{
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    color: #AE8637;
+    font: 12px/12px GraphikRegular;
+}
+
 .pageThumbnail {
     background: #f3f3f3 url('../../images/combo/map-usa.svg') no-repeat scroll center center / 100%;
     position: relative;
+    /* margin-bottom: 10px;*/ /*** Edit by Ankur ***/
 }
 
 h1.page-title {
@@ -276,10 +286,14 @@ h1.page-title {
     padding: 0 14px 0 14px;
 }
 .gift-set .left_item  span{
-    color: #AE8637;
+    color: #555;
+}
+.gift-set .left_item  b{
+    color: #555;
     position: absolute;
     right: 14px;
     top: 0;
+    font-weight: normal;
 }
 
 .gift-set .details .flexslider .slides li {
@@ -316,5 +330,6 @@ h1.page-title {
     padding-bottom: 44px;
     text-align: center;
 }
+/**** Edit by Ankur****/
 .gift-set-blurb{  height: 65px;}
 .gift-set-blurb p{font: 18px/65px freighttextbook;}

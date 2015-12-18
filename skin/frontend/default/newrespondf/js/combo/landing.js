@@ -27,7 +27,7 @@
 
         });
 
-        $(".gift-set .thumbnail, .gift-set .left_item > span").click(function () {
+        $(".gift-set .thumbnail, .gift-set .gift-set-title > span").click(function () {
 
             /********* new design udpate ***********/
             $(".close_icon").show();
@@ -35,23 +35,21 @@
             //$(this).find("p").hide();
             $(".gift-set .details").not($(this).closest(".thumbnail").find(".details")).hide();
             $(".gift-set .details .related_blocks>div").hide();
-            $(".gift-set .left_item span").show();
-            $(this).closest(".gift-set").find(".left_item span").hide();
             $(this).closest(".gift-set").find(".related_blocks>div:first-child").show();
             var offsetTop = $(window).scrollTop();
             $(this).closest(".gift-set").find(".details").show();
+            $(this).closest(".gift-set").find(".gift-set-title span").hide();
 
-
-/*
-            $(".close_icon").show();
-            $(".gift-set .thumbnail > p").show();
-            $(this).find("p").hide();
-            $(".gift-set .details").not($(this).closest(".thumbnail").find(".details")).hide();
-            $(".gift-set .details .related_blocks>div").hide();
-            $(this).next().find(".related_blocks>div:first-child").show();
-            var offsetTop = $(window).scrollTop();
-            $(this).next().show();
-*/
+            /*
+             $(".close_icon").show();
+             $(".gift-set .thumbnail > p").show();
+             $(this).find("p").hide();
+             $(".gift-set .details").not($(this).closest(".thumbnail").find(".details")).hide();
+             $(".gift-set .details .related_blocks>div").hide();
+             $(this).next().find(".related_blocks>div:first-child").show();
+             var offsetTop = $(window).scrollTop();
+             $(this).next().show();
+             */
             setTimeout(function () {
                 $("body,html").animate({
                     'scrollTop': offsetTop
@@ -62,7 +60,7 @@
         $(".close_icon").click(function () {
             $(".gift-set .details").hide();
             //$(".gift-set .thumbnail > p").show();
-            $(".gift-set .left_item span").show();
+            $(".gift-set .gift-set-title span").show();
             $(this).hide();
             $(".size").removeClass("active-size");
             $(".add_to_shopping_bag").removeClass("bag-active");
@@ -73,15 +71,15 @@
         var personType = getParameterByName('style');
         if(personType!=undefined){
 
-			personType = personType.toLowerCase();
-		
+            personType = personType.toLowerCase();
+
             if(personType=='men' || personType=='women') {
-				if (personType == "women") {
-					$(".gift-set[data-filter='men']").hide();
-				}
-				else if (personType == "men") {
-					$(".gift-set[data-filter='women']").hide();
-				}                
+                if (personType == "women") {
+                    $(".gift-set[data-filter='men']").hide();
+                }
+                else if (personType == "men") {
+                    $(".gift-set[data-filter='women']").hide();
+                }
             }
         }
 
@@ -89,14 +87,14 @@
             e.preventDefault();
             var linkText = $(this).text().toUpperCase();
 
-			$(".gift-set").show();
-			if (linkText == "WOMEN") {
-				$(".gift-set[data-filter='men']").hide();
-			}
-			if (linkText == "MEN") {
-				$(".gift-set[data-filter='women']").hide();
-			}
-			$(".sign-in-box .toggle_dropdown").click();
+            $(".gift-set").show();
+            if (linkText == "WOMEN") {
+                $(".gift-set[data-filter='men']").hide();
+            }
+            if (linkText == "MEN") {
+                $(".gift-set[data-filter='women']").hide();
+            }
+            $(".sign-in-box .toggle_dropdown").click();
         });
 
         $(".bra_cup_toggle").click(function(){

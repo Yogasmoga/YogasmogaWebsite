@@ -111,7 +111,7 @@ foreach ($allSizeOptions as $instance) {
             $giftSetCount = 0;
             foreach ($productCollection as $_product_single) {
 
-                ++$giftSetCount;
+                $giftSetCount++;
 
                 $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
                 $setProductUrl = $_product->getProductUrl();
@@ -191,7 +191,7 @@ foreach ($allSizeOptions as $instance) {
                 if($anyBundledOutOfStock) {
                     $outOfStockSets[] = $_product_single->getId();
                     $giftSetAvailable = false;
-                    ;//continue;
+                    //continue;
                 }
                 /******************************  check if any of the gift set bundled products are out of stock *************************/
 
@@ -221,7 +221,7 @@ foreach ($allSizeOptions as $instance) {
 
                     $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
                     //$bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
-					$bundledProductUrl = Mage::getBaseUrl().$_bundle_product->getUrlKey() . '?color=' . $bundle_color_id;
+                    $bundledProductUrl = Mage::getBaseUrl().$_bundle_product->getUrlKey() . '?color=' . $bundle_color_id;
 
                     $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
 
@@ -271,12 +271,12 @@ foreach ($allSizeOptions as $instance) {
 
                         $ar_child_sizes[] = $sizeInStock . $size;
 
-/*
-                        if (is_numeric($size))
-                            $ar_child_sizes[] = intval($size);
-                        else
-                            $ar_child_sizes[] = $size;
-*/
+                        /*
+                                                if (is_numeric($size))
+                                                    $ar_child_sizes[] = intval($size);
+                                                else
+                                                    $ar_child_sizes[] = $size;
+                        */
                     }
 
                     $ar_child_sizes = array_unique($ar_child_sizes);
@@ -290,26 +290,26 @@ foreach ($allSizeOptions as $instance) {
                         $optionValues = $option->getValues();
 
                         $hasBraCup = "n";
-/*
-                        if (isset($optionValues) && count($optionValues) > 0) {
+                        /*
+                                                if (isset($optionValues) && count($optionValues) > 0) {
 
-                            if (isset($optionValues["remove_bracup_insert"])) {
-                                $hasBraCup = "n";
-                                break;
-                            }
+                                                    if (isset($optionValues["remove_bracup_insert"])) {
+                                                        $hasBraCup = "n";
+                                                        break;
+                                                    }
 
-                            foreach ($optionValues as $optionValue) {
-                                $hasBraCup = "y";
-                                if (strtolower($optionValue['default_title']) == "y") {
-                                    $braCupYesOptionId = $optionValue['option_id'];
-                                    $braCupYesOptionTypeId = $optionValue['option_type_id'];
-                                } else if (strtolower($optionValue['default_title']) == "n") {
-                                    $braCupNoOptionId = $optionValue['option_id'];
-                                    $braCupNoOptionTypeId = $optionValue['option_type_id'];
-                                }
-                            }
-                        }
-*/
+                                                    foreach ($optionValues as $optionValue) {
+                                                        $hasBraCup = "y";
+                                                        if (strtolower($optionValue['default_title']) == "y") {
+                                                            $braCupYesOptionId = $optionValue['option_id'];
+                                                            $braCupYesOptionTypeId = $optionValue['option_type_id'];
+                                                        } else if (strtolower($optionValue['default_title']) == "n") {
+                                                            $braCupNoOptionId = $optionValue['option_id'];
+                                                            $braCupNoOptionTypeId = $optionValue['option_type_id'];
+                                                        }
+                                                    }
+                                                }
+                        */
                     }
                     /****************** finish checking Include Bra option *********************/
 
@@ -355,13 +355,17 @@ foreach ($allSizeOptions as $instance) {
                         <!--<p>Buy Now <span>&gt;</span></p> -->
                     </div>
 
-                    <div class="gift-set-title"><?php echo $_product->getName(); ?> SET</div>
+                    <?php if($giftSetAvailable){ ?>
+                        <div class="gift-set-title"><?php echo $_product->getName(); ?> SET <span>Buy Now</span></div>
+                    <?php }else { ?>
+                        <div class="gift-set-title"><?php echo $_product->getName(); ?> SET <span>Sold Out</span></div>
+                    <?php } ?>
+
                     <p class="left_item">
-                        <?php if($giftSetAvailable){ ?>
 
-                        <?php echo round($setStock, 0); ?> remaining<span>Buy Now</span>
+                        <span>$<?php echo round($childSetPrice, 0);?> (A $<?php echo round($configurableSetPrice, 0);?> Value)</span>
 
-                        <?php }else { echo "Sold Out"; } ?>
+                        <b><?php echo round($setStock, 0); ?> remaining</b>
 
                     </p>
 
@@ -411,55 +415,55 @@ foreach ($allSizeOptions as $instance) {
 
                                     <?php if($giftSetAvailable){ ?>
 
-                                    <div class="size_selection_box">
-                                        <p>Choose Size <!--<span class="size_chart_link">Size Chart</span>--></p>
+                                        <div class="size_selection_box">
+                                            <p>Choose Size <!--<span class="size_chart_link">Size Chart</span>--></p>
 
-                                        <div class="sizes">
-                                            <?php
-                                            foreach ($allSizes as $key => $value) {
-                                                foreach ($data["sizes"] as $size) {
+                                            <div class="sizes">
+                                                <?php
+                                                foreach ($allSizes as $key => $value) {
+                                                    foreach ($data["sizes"] as $size) {
 
-                                                    if(substr($size,0,1)=="_") {        // underscore means size is out of stock
+                                                        if(substr($size,0,1)=="_") {        // underscore means size is out of stock
 
-                                                        $size = substr($size,1);
+                                                            $size = substr($size,1);
 
-                                                        if ($size == $key) {
-                                                            ?>
-                                                            <span class="size size-<?php echo $sizeDivCount; ?> outofstock"
-                                                                  rel="<?php echo $value; ?>"><?php echo $key; ?><img src="<?php echo $this->getSkinUrl('/images/not_available.png'); ?>"/></span>
-                                                            <?php
+                                                            if ($size == $key) {
+                                                                ?>
+                                                                <span class="size size-<?php echo $sizeDivCount; ?> outofstock"
+                                                                      rel="<?php echo $value; ?>"><?php echo $key; ?><img src="<?php echo $this->getSkinUrl('/images/not_available.png'); ?>"/></span>
+                                                                <?php
+                                                            }
                                                         }
-                                                    }
-                                                    else {
+                                                        else {
 
 
-                                                        if ($size == $key) {
-                                                            ?>
+                                                            if ($size == $key) {
+                                                                ?>
 
-                                                            <span class="size size-<?php echo $sizeDivCount; ?>"
-                                                                  rel="<?php echo $value; ?>"><?php echo $key; ?></span>
+                                                                <span class="size size-<?php echo $sizeDivCount; ?>"
+                                                                      rel="<?php echo $value; ?>"><?php echo $key; ?></span>
 
-                                                            <?php
+                                                                <?php
+                                                            }
                                                         }
                                                     }
                                                 }
-                                            }
-                                            ?>
+                                                ?>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <?php if ($data["hasBraCup"] == "y") { ?>
-                                        <div class="bra_cup_selection bra-cup-<?php echo $sizeDivCount; ?>">
-                                            <p>Include bra cup?
+                                        <?php if ($data["hasBraCup"] == "y") { ?>
+                                            <div class="bra_cup_selection bra-cup-<?php echo $sizeDivCount; ?>">
+                                                <p>Include bra cup?
                                     <span class="bra_cup_toggle">
                                         <span class="no selected" optiontypeid="<?php echo $braCupYesOptionTypeId; ?>"
                                               optionid="<?php echo $braCupYesOptionId; ?>"></span>
                                         <span class="yes" optiontypeid="<?php echo $braCupNoOptionTypeId; ?>"
                                               optionid="<?php echo $braCupNoOptionId; ?>"></span>
                                     </span>
-                                            </p>
-                                        </div>
-                                    <?php } ?>
+                                                </p>
+                                            </div>
+                                        <?php } ?>
 
                                     <?php } // gift set available check ?>
 
@@ -471,37 +475,37 @@ foreach ($allSizeOptions as $instance) {
 
                         <?php if($giftSetAvailable){ ?>
 
-                        <div class="row">
-                            <p class="error-text"></p>
+                            <div class="row">
+                                <p class="error-text"></p>
 
-                            <?php if(false){ // disabling wishlist ?>
-                            <div class="add_to_wishlist">
-                                <svg height="44px" width="44px" xml:space="preserve"
-                                     style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px"
-                                     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-                                     id="Layer_1" version="1.1">
+                                <?php if(false){ // disabling wishlist ?>
+                                    <div class="add_to_wishlist">
+                                        <svg height="44px" width="44px" xml:space="preserve"
+                                             style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                                             id="Layer_1" version="1.1">
                                 <path d="M21.9,35.4L34,19.8c0.8-1.1,1.2-2.4,1.2-3.8c0-3.7-3-6.6-6.6-6.6c-3.7,0-6.6,3-6.6,6.6c0-3.7-3-6.6-6.6-6.6
                                 c-3.7,0-6.6,3-6.6,6.6c0,1.4,0.5,2.7,1.2,3.8L21.9,35.4z" fill="#fff"/>
                                 </svg>
+                                    </div>
+                                <?php } ?>
+                                <div class="add_to_shopping_bag"
+                                     rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">
+                                    ADD TO BAG
+                                </div>
+                                <div class="choose_next">CHOOSE NEXT</div>
                             </div>
-                            <?php } ?>
-                            <div class="add_to_shopping_bag"
-                                 rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">
-                                ADD TO BAG
-                            </div>
-                            <div class="choose_next">CHOOSE NEXT</div>
-                        </div>
 
-                        <p class="free_shipping_text">
-                            Free and fast shipping to US &amp; Canada
-                        </p>
+                            <p class="free_shipping_text">
+                                Free and fast shipping to US &amp; Canada
+                            </p>
 
                         <?php }  // gift set available check ?>
 
                     </div>
                 </div>
 
-            <?php
+                <?php
             }
             ?>
 
