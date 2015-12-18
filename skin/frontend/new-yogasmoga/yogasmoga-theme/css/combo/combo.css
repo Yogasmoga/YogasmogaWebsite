@@ -489,7 +489,7 @@ div#bodycompensator {
     right: 0;
     top: 0;
 }
-.product_price > b {
+.product_filters .product_price > b {
     font: 11px/17px GothamBook;
     color: #555;
     font-weight: normal;
@@ -737,9 +737,9 @@ p.free_shipping {
     font: 16px/20px AvantGardeGothicITCW01B;
 }
 
-.box.set_name .product_price {
-    margin-top: -22px;
-    text-align: center;
+.box.set_name .product_price b{
+    color: #999;
+    font-weight: normal;
 }
 
 span.pm {
