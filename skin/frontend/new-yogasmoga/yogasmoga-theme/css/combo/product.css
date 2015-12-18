@@ -214,11 +214,24 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 .purchase_box {
     color: #555;
 }
-
 .purchase_box .product_price > span {
     float: right;
     font: 11px/32px Gothambook;
     margin-top: 4px;
+}
+
+.purchase_box .product_price > span {
+    /*float: right;*/
+    font: 11px/30px Gothambook;
+    /*display: none; */
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.purchase_box .product_price > b {
+    font: 11px/17px GothamBook;
+    color: #555;
+    font-weight: normal;
 }
 
 .purchase_box .set_item {
@@ -253,8 +266,11 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 
 .purchase_box .pcolor, .purchase_box .pprice {
     font: 11px/15px Gothambook;
-    margin-bottom: 14px;
     text-transform: uppercase;
+}
+
+.purchase_box .psold{
+    margin-bottom: 14px;
 }
 
 .purchase_box .psize {
@@ -304,6 +320,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 
 .purchase_box .product_price {
     font: 24px/29px AvantGardeGothicITCW01B;
+    position: relative;
 }
 
 .purchase_box .product_name {

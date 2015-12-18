@@ -216,10 +216,18 @@ function setActiveLink(sectionOffsets) {
 
     if(jQuery.trim(jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pname>span").text()) != "" && jQuery.trim(jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pname>span").text()) != null) {
         var setName = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pname>span").text() + " SET";
-        var setPrice = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pprice").text();
+//        var setPrice = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pprice").text();
+        var setPrice = jQuery(".gift_set_link:visible").eq(sectionIndex).find(".pprice").attr('rel');
+
+        if(setPrice=="sold out")
+            jQuery(".box.set_name .product_price").html("Sold Out");
+        else {
+            var arSetPrice = setPrice.split(":");
+            jQuery(".box.set_name .product_price").html("$" + arSetPrice[1] + " <b>(a $" + arSetPrice[0] + " value)</b>");
+        }
 
         jQuery(".box.set_name .product_name").html(setName);
-        jQuery(".box.set_name .product_price").html(setPrice);
+        //jQuery(".box.set_name .product_price").html(setPrice);
 
         currentCityIndex = sectionIndex;
 

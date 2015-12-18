@@ -86,6 +86,7 @@ foreach ($allSizeOptions as $instance) {
                         foreach ($_childProducts as $simple) {
 
                             $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple);
+                            $childSetPrice = $simple->getPrice();
 
                             $parentStock = $productStock->getQty();
                             $inStock = $productStock->getIsInStock();
@@ -194,16 +195,13 @@ foreach ($allSizeOptions as $instance) {
                             <!--top,left-->
                             <p class="pname"><span><?php echo $_product->getName(); ?></span><br/>SET</p>
 
-                            <p class="pprice">
-                                <?php
-                                    if($outOfStock){
-                                        echo "Sold Out";
-                                    }
-                                    else{
-                             ?>
-                                $<?php echo round($_product->getPrice(), 0); ?>
-                                <?php } ?>
-                            </p>
+                            <?php if($outOfStock){ ?>
+                                <p class="pprice" rel="sold out">Sold Out</p>
+                            <?php }else{ ?>
+                                <p class="pprice" rel="<?php echo round($_product->getPrice(), 0) . ":" . round($childSetPrice, 0); ?>">
+                                    $<?php echo round($childSetPrice, 0); ?>
+                                </p>
+                            <?php } ?>
 
                             <img src="<?php echo $thumbnailPathFinal;?>"/>
                         </div>
@@ -257,6 +255,7 @@ foreach ($allSizeOptions as $instance) {
                     $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
                     foreach ($_childProducts as $simple) {
                         $parentStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
+                        $childSetPrice = $simple->getPrice();
                         break;
                     }
 
@@ -424,8 +423,8 @@ foreach ($allSizeOptions as $instance) {
                                         <p class="product_price">
                                             <?php if(!$outOfStock){ ?>
 
-                                            $<?php echo round($_product->getPrice(), 0); ?>
-                                            <span style="display: block;"><?php echo round($parentStock, 2); ?> REMAINING</span>
+                                                $<?php echo round($childSetPrice, 0); ?> <b>(a $<?php echo round($_product->getPrice(),0);?> value)</b>
+                                                <span style="display: block;"><?php echo round($parentStock, 2); ?> SETS REMAINING</span>
 
                                             <?php }else{ ?>
                                                 Sold Out
@@ -447,6 +446,8 @@ foreach ($allSizeOptions as $instance) {
                                                         <span class="pcolor product-color-<?php echo $sizeDivCount; ?>"
                                                               rel="<?php echo $data["color_code"]; ?>"><?php echo $data["color"]; ?></span>
                                                     </p>
+
+                                                    <p class="psold">$<?php echo $data["price"];?> Sold Individually</p>
 
                                                     <?php if(!$outOfStock){ ?>
                                                     <p class="psize">
@@ -544,7 +545,7 @@ foreach ($allSizeOptions as $instance) {
                                 <p class="product_name"><?php echo $_product->getName(); ?> SET</p>
 
                                 <?php if(!$outOfStock){ ?>
-                                    <p class="product_price">$<?php echo round($_product->getPrice(), 0); ?></p>
+                                    <p class="product_price">$<?php echo round($childSetPrice, 0); ?></p>
                                 <?php }else{ ?>
                                     <p class="product_price">Sold Out</p>
                                 <?php } ?>
