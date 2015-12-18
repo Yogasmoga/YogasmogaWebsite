@@ -216,8 +216,8 @@ function addSideBundleProduct(data, i) {
     //strSets += "<div class='product_image'><img src='" + data.default_image + "'/></div>";
     strSets += "<div class='product_detail product_detail-" + i + "' rel='" + data.id + "'>";
     strSets += "<p class='pname'>" + data.name + "</p>";
-    strSets += "<p class='psold'>$" + data.price + " Sold Individually</p>";
     strSets += "<p class='pcolor pcolor-" + i + "' rel='" + data.color_code + "'>" + allColors[data.color_code] + "</p>";
+    strSets += "<p class='psold'>$" + data.price + " Sold Individually</p>";
     strSets += "<p class='psize'>SIZE: <span class='size-chart-bundle' rel='" + i + "'>SIZE CHART</span></p>";
     strSets += "<div class='sizes'>";
 
