@@ -187,7 +187,7 @@ function changeProduct(product_id) {
                         jQuery(".product_price span").html("SOLD OUT");
                     }
                     else{
-                        jQuery(".product_price").html(allComboProducts[product_id]["price"] + "<b>(a $" + allComboProducts[product_id]["original_price"] + " value)</b><span>" + allComboProducts[product_id]["quantity"] + " REMAINING</span>");
+                        jQuery(".product_price").html(allComboProducts[product_id]["price"] + " <b>(a $" + allComboProducts[product_id]["original_price"] + " value)</b><span>" + allComboProducts[product_id]["quantity"] + " REMAINING</span>");
 
                         bindSizes();
                         bindBag();
@@ -217,7 +217,7 @@ function addSideBundleProduct(data, i) {
     strSets += "<div class='product_detail product_detail-" + i + "' rel='" + data.id + "'>";
     strSets += "<p class='pname'>" + data.name + "</p>";
     strSets += "<p class='pcolor pcolor-" + i + "' rel='" + data.color_code + "'>" + allColors[data.color_code] + "</p>";
-    strSets += "<p class='psold'>$" + data.price + " Sold Individually</p>";
+    strSets += "<p class='psold'>" + data.price + " Sold Individually</p>";
     strSets += "<p class='psize'>SIZE: <span class='size-chart-bundle' rel='" + i + "'>SIZE CHART</span></p>";
     strSets += "<div class='sizes'>";
 
