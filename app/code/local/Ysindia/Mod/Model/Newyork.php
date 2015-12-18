@@ -3,6 +3,7 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 {
     protected function _rowBaseCalculation($item, $request)
     {
+		$accessoriesCategories = array(8,12,75,76);
         // If USD and from NY Region, apply tax rate based on grand total
         if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD") {
             
@@ -13,11 +14,22 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 				}
 			}
 			else if($request['region_id'] == "32"){
-				
-				if($item['price'] < 175) {
-					$price_minus_discount = $item['price'] - $item['discount_amount'];
-					$item->getProduct()->setTaxClassId('30');
+				$product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item['sku']);
+				$categoryIds = $product->getCategoryIds();
+				$isAccessory = false;
+				foreach($categoryIds as $category) {	
+					if(in_array($category, $accessoriesCategories)){
+						$isAccessory = true;
+						break;
+					}
 				}
+				
+				if(!$isAccessory){
+					if($item['price'] < 175) {
+						$price_minus_discount = $item['price'] - $item['discount_amount'];
+						$item->getProduct()->setTaxClassId('30');
+					}
+				}					
 			}
 			if($request['region_id'] == "43" || $request['region_id'] == "12" || $request['region_id'] == "14"){
 				if($item['product_id']==4){
@@ -137,7 +149,8 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
     protected function _unitBaseCalculation($item, $request)
     {
 	
-		 $request->setProductClassId($item->getProduct()->getTaxClassId());
+		$accessoriesCategories = array(8,12,75,76);
+		$request->setProductClassId($item->getProduct()->getTaxClassId());
         $rate   = $this->_calculator->getRate($request);
 
         if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "43") {
@@ -156,11 +169,22 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 			}
 		}
 		else if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "32") {
-			
-			if($item['price'] < 175) {
-			$price_minus_discount = $item['price'] - $item['discount_amount'];
-                $rate = 0;
-            }
+
+				$product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item['sku']);
+				$categoryIds = $product->getCategoryIds();
+				$isAccessory = false;
+				foreach($categoryIds as $category) {	
+					if(in_array($category, $accessoriesCategories)){
+						$isAccessory = true;
+						break;
+					}
+				}
+				if(!$isAccessory){
+						if($item['price'] < 175) {
+							$price_minus_discount = $item['price'] - $item['discount_amount'];
+							$rate = 0;
+						}
+					}		
 		}	
 		
 	
