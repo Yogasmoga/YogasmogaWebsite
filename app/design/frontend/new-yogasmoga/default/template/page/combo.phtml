@@ -198,7 +198,7 @@ foreach ($allSizeOptions as $instance) {
                                 <p class="pprice" rel="sold out">Sold Out</p>
                             <?php }else{ ?>
                                 <p class="pprice" rel="<?php echo round($_product->getPrice(), 0) . ":" . round($childSetPrice, 0); ?>">
-                                    $<?php echo round($_product->getPrice(), 0); ?>
+                                    $<?php echo round($childSetPrice, 0); ?>
                                 </p>
                             <?php } ?>
 
@@ -422,7 +422,7 @@ foreach ($allSizeOptions as $instance) {
                                         <p class="product_price">
                                             <?php if(!$outOfStock){ ?>
 
-                                            $<?php echo round($childSetPrice, 0); ?> <b>(a $ <?php echo round($_product->getPrice(),0);?> value)</b>
+                                            $<?php echo round($childSetPrice, 0); ?> <b>(a $<?php echo round($_product->getPrice(),0);?> value)</b>
                                             <span style="display: block;"><?php echo round($parentStock, 2); ?> SETS REMAINING</span>
 
                                             <?php }else{ ?>
@@ -448,7 +448,7 @@ foreach ($allSizeOptions as $instance) {
                                                               rel="<?php echo $data["color_code"]; ?>"><?php echo $data["color"]; ?></span>
                                                     </p>
 
-                                                    <p class="psold">$ <?php echo $data["price"];?> Sold Individually</p>
+                                                    <p class="psold">$<?php echo $data["price"];?> Sold Individually</p>
 
                                                     <?php if(!$outOfStock){ ?>
                                                     <p class="psize">
