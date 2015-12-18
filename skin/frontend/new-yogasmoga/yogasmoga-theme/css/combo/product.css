@@ -188,17 +188,19 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 }
 
 .product_details .purchase_box_container .product_desc {
-    padding: 20px 0;
+    padding: 37px 0;
 }
 
+/*
 .product_details .purchase_box_container .product_desc .desc_box {
     border-top: 1px solid #999;
     padding: 5px 0;
 }
+*/
 
 .product_details .purchase_box_container .product_desc .desc_box p:first-child {
     font: 11px /17px GothamBold;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .product_details .purchase_box_container .product_desc .desc_box p {
@@ -271,6 +273,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 
 .purchase_box .psold{
     margin-bottom: 14px;
+    font: 11px/15px Gothambook;
 }
 
 .purchase_box .psize {

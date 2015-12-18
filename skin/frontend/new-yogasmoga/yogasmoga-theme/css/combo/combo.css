@@ -238,6 +238,13 @@ div#bodycompensator {
 
 .contain_product .side1 .product_price {
     text-align: center;
+    font: 16px/20px AvantGardeGothicITCW01B;
+    color: #555;
+    padding-top: 10px;
+}
+.contain_product .side1 .product_price span{
+    text-align: center;
+    color: #999;
 }
 
 .contain_product .product_price {
@@ -474,7 +481,7 @@ div#bodycompensator {
     top: 169px !important;
 }
 
-.product_price > span {
+.product_filters .product_price > span {
     /*float: right;*/
     font: 11px/30px Gothambook;
     display: none;
@@ -727,6 +734,7 @@ p.free_shipping {
     margin-top: -22px;
     text-align: center;
     color: #555;
+    font: 16px/20px AvantGardeGothicITCW01B;
 }
 
 .box.set_name .product_price {
@@ -788,6 +796,7 @@ span.temp {
     display: none;
     text-transform: uppercase;
 }
+
 
 .section .side1 .buy_product, .section .side1 .toggle_description {
     /*visibility: hidden;*/
@@ -857,6 +866,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu {
     line-height: 1.0;
 }
 
+/*
 .icon-0:before { content: ":"; }
 .icon-1:before { content: "p"; }
 .icon-2:before { content: "S"; }
@@ -905,3 +915,163 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu {
 .icon-45:before { content: "S"; }
 .icon-46:before { content: "U"; }
 .icon-47:before { content: "S"; }
+*/
+
+
+
+/****** icons thunderstorms starts *****/
+
+.icon-0:before,.icon-1:before,.icon-2:before,.icon-3:before,.icon-4:before,.icon-37:before,.icon-38:before,.icon-39:before,.icon-45:before,.icon-47:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_thunderstorms.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+
+/****** icons thunderstorms ends *****/
+
+/****** icons rain starts *****/
+
+.icon-5:before,.icon-6:before,.icon-8:before,.icon-9:before,.icon-10:before,.icon-11:before,.icon-12:before,.icon-17:before,.icon-35:before,.icon-40:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_rain.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+
+/****** icons rain ends *****/
+
+
+/***** icons snow start *****/
+
+.icon-7:before,.icon-13:before,.icon-14:before ,.icon-15:before ,.icon-16:before ,.icon-18:before,.icon-42:before ,.icon-43:before ,.icon-46:before  {
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_snow.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+
+}
+/***** icons snow ends *****/
+
+
+
+/****** icons fog start ******/
+
+.icon-19:before,.icon-20:before,.icon-21:before,.icon-22:before
+{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_fog.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+/****** icons fog ends ******/
+
+/******icons  wind start ******/
+
+
+.icon-23:before,.icon-24:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_wind.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+
+/******icons  wind ends ******/
+
+/******icons cold start ******/
+/*.icon-25:before { content: "E"; }*/
+.icon-25:before {
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_cold.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+/****** icons cold ends ******/
+
+/***** icons cloudy start****/
+.icon-26:before,.icon-27:before,.icon-28:before ,.icon-29:before {
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_cloudy.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+/***** icons cloudy ends ****/
+
+
+
+/***** whether partly cloudy start****/
+
+.icon-30:before,.icon-44:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_partly-cloudy.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+/***** whether partly cloudy ends****/
+
+/****** whether stars start ****/
+
+
+.icon-31:before,.icon-33:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_stars.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+
+}
+/****** whether stars ends ****/
+
+
+/****** whether sunny start ****/
+
+.icon-32:before,.icon-34:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_sunny.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+
+}
+
+/****** whether sunny ends ****/
+
+
+
+/****** whether hot start ****/
+
+
+.icon-36:before {
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_hot.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+/****** whether hot ends ****/
+
+
+
+
+/****** whether freezing start ****/
+
+.icon-41:before {
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_freezing.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+
+}
+
+
+/****** whether freezing ends ****/
+
