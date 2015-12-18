@@ -14,8 +14,9 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 				}
 			}
 			else if($request['region_id'] == "32"){
-				
-				$categoryIds = $item->getProduct()->getCategoryIds(); 
+				$productId = $item->getProductId();
+				$product = Mage::getModel('catalog/product')->load($productId);
+				$categoryIds = $product->getCategoryIds(); 
 				Mage::log("Query category".print_r($categoryIds, true),null,'row.log');
 				$isAccessory = false;
 				foreach($categoryIds as $category) {	
@@ -171,7 +172,9 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 		}
 		else if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "32") {
 
-				$categoryIds = $item->getProduct()->getCategoryIds(); 
+				$productId = $item->getProductId();
+				$product = Mage::getModel('catalog/product')->load($productId);
+				$categoryIds = $product->getCategoryIds(); 
 				Mage::log("Query category".print_r($categoryIds, true),null,'unit.log');
 				$isAccessory = false;
 				foreach($categoryIds as $category) {	
