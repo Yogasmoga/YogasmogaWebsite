@@ -254,7 +254,9 @@ div#bodycompensator {
 }
 
 .contain_product .side2 .product_price {
-    font: 11px/17px GothamBook;
+    /* font: 11px/17px GothamBook; */
+    font: 24px/20px AvantGardeGothicITCW01B;
+    position: relative;
 }
 
 .contain_product .buy_product {
@@ -471,9 +473,21 @@ div#bodycompensator {
 }
 
 .product_price > span {
-    float: right;
-    font: 11px/39px Gothambook;
+    /*float: right;*/
+    font: 11px/30px Gothambook;
     display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.product_price > b {
+    font: 11px/17px GothamBook;
+    color: #555;
+    font-weight: normal;
+}
+
+.psold{
+    
 }
 
 .product_filters{

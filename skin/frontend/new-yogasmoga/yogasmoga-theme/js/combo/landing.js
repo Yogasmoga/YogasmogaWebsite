@@ -223,7 +223,7 @@ function setActiveLink(sectionOffsets) {
             jQuery(".box.set_name .product_price").html("Sold Out");
         else {
             var arSetPrice = setPrice.split(":");
-            jQuery(".box.set_name .product_price").html("$" + arSetPrice[1] + " <b style='color:#999; font-weight:normal'>($" + arSetPrice[0] + " value)</b>");
+            jQuery(".box.set_name .product_price").html("$" + arSetPrice[1] + " <b style='color:#999; font-weight:normal'>(a $" + arSetPrice[0] + " value)</b>");
         }
 
         jQuery(".box.set_name .product_name").html(setName);
