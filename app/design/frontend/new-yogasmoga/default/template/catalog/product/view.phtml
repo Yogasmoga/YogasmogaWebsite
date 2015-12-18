@@ -2137,6 +2137,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
             $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
 
+            $setConfigurablePrice = $_product->getPrice();
+
             $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
 
             if (isset($bundled_product_ids))
@@ -2146,6 +2148,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             $giftSetAvailable = false;
             foreach ($_childProducts as $simple) {
                 $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple);
+
+                $setSimplePrice = $simple->getPrice();
 
                 $setStock = $stock->getQty();
 
@@ -2237,7 +2241,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
             $arComboProduct[$_product->getId()] = array(
                 "name" => $_product->getName(),
-                "price" => $_product->getPrice(),
+                "price" => $setConfigurablePrice,
+                "original_price" => $setSimplePrice,
                 "quantity" => round($setStock, 0),
                 "description" => $_helper->productAttribute($_product, $_product->getDescription(),'description'),
                 "bundle_ids" => $bundled_product_ids,
@@ -2365,6 +2370,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     echo "allComboProducts[$key]['image'] = '" . $comboProduct["image"] . "';";
                     echo "allComboProducts[$key]['description'] = '" . $comboProduct["description"] . "';";
                     echo "allComboProducts[$key]['price'] = '$" . round($comboProduct["price"],2) . "';";
+                    echo "allComboProducts[$key]['original_price'] = '$" . round($comboProduct["original_price"],2) . "';";
                     echo "allComboProducts[$key]['quantity'] = '" . $comboProduct["quantity"]. "';";
                     echo "allComboProducts[$key]['bundle_ids'] = '".$comboProduct["bundle_ids"]."';";
                 }
