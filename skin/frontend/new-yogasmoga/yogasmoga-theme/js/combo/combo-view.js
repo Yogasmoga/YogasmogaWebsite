@@ -14,6 +14,11 @@ var outOfStockImage;
 
 jQuery(document).ready(function () {
 
+    jQuery.on("click", ".individual_product img", function() {
+        swapImage(jQuery(this));
+    });
+
+
     outOfStockImage = jQuery("#outofstockimage").find("img").attr("src");
 
     initializeBanner();
@@ -327,15 +332,16 @@ function bindSizes() {
 function bindSlider() {
 
     blockHtml = jQuery(".current_slider_image").html();
-
+/*
     jQuery(".individual_product").find("img").click(function () {
         swapImage(jQuery(this));
     });
+*/
 }
 
 //////////////// Swapping images//////////////
 function swapImage(obj){
-console.log("**** swapping");
+
     currentProductDiv = obj.closest(".product");
 
     if(currentProductDiv.find(".product_img").length>0) {
@@ -368,11 +374,12 @@ console.log("**** swapping");
 
         currentProductDiv.removeClass("bundle_image");
     }
-
+/*
     jQuery(".individual_product").find(".individual_img").unbind('click');
     jQuery(".individual_product").find(".individual_img").click(function () {
         swapImage(jQuery(this));
     });
+*/
 }
 //////////////////////////////////////////////
 
