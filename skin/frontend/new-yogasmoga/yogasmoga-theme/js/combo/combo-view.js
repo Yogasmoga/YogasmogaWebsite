@@ -328,7 +328,8 @@ function bindSlider() {
 
     blockHtml = jQuery(".current_slider_image").html();
 
-    jQuery(".individual_product").find(".individual_img").click(function () {
+    //jQuery(".individual_product").find(".individual_img").click(function () {
+    jQuery(".individual_product").find("img").click(function () {
         swapImage(jQuery(this));
     });
 }
