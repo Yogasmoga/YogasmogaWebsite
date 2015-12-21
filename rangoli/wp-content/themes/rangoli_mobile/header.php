@@ -524,7 +524,6 @@ $logged_in = is_user_logged_in();
                                         </ul>
                                     </li>
                                     <li><a href="/men/whats-new">WHAT'S NEW</a></li>
-                                    <li><a href="/men/super-sale">SUPER SALE</a></li>
                                 </ul>
                             </li>
 
