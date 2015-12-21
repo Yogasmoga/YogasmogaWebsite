@@ -14,6 +14,10 @@ var outOfStockImage;
 
 jQuery(document).ready(function () {
 
+    jQuery(document).on("click", ".individual_product img", function() {
+        swapImage(jQuery(this));
+    });
+
     outOfStockImage = jQuery("#outofstockimage").find("img").attr("src");
 
     initializeBanner();
@@ -327,10 +331,11 @@ function bindSizes() {
 function bindSlider() {
 
     blockHtml = jQuery(".current_slider_image").html();
-
+/*
     jQuery(".individual_product").find(".individual_img").click(function () {
         swapImage(jQuery(this));
     });
+*/
 }
 
 //////////////// Swapping images//////////////
@@ -368,11 +373,12 @@ function swapImage(obj){
 
         currentProductDiv.removeClass("bundle_image");
     }
-
+/*
     jQuery(".individual_product").find(".individual_img").unbind('click');
     jQuery(".individual_product").find(".individual_img").click(function () {
         swapImage(jQuery(this));
     });
+*/
 }
 //////////////////////////////////////////////
 
