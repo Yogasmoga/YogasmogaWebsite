@@ -441,7 +441,7 @@ $logged_in = is_user_logged_in();
                                         </ul>
                                     </li>
                                     <li><a href="/women/whats-new">What&rsquo;s New</a></li>
-                                    <li><a href="/women/prints"> Prints</a></li>
+                                    <li><a href="/women/prints"> ENGINEERED PRINTS</a></li>
                                     <!--<li><a href="/women/one-too-many">ONE 2 MANY</a></li>-->
 									<li><a href="/women/super-sale">Super Sale</a></li>
                                     <li><a href="/women/additional-sizes">ADDITIONAL SIZES</a></li>
