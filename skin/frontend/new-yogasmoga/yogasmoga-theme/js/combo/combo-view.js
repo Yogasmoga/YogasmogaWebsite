@@ -14,7 +14,7 @@ var outOfStockImage;
 
 jQuery(document).ready(function () {
 
-    jQuery.on("click", ".individual_product img", function() {
+    jQuery(document).on("click", ".individual_product img", function() {
         swapImage(jQuery(this));
     });
 
