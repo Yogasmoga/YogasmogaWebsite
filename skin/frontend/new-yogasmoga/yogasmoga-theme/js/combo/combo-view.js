@@ -343,6 +343,8 @@ function swapImage(obj){
 
     currentProductDiv = obj.closest(".product");
 
+    jQuery(".current_slider_product").html("");
+
     if(currentProductDiv.find(".product_img").length>0) {
         //currentProductDiv.html(jQuery(".current_slider_image").html());
 
