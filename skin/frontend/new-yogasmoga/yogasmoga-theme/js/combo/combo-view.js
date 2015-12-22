@@ -121,6 +121,7 @@ function changeProduct(product_id) {
 
                     jQuery(".purchase_box").html("");
                     jQuery(".set_individual_products").html("");
+                    jQuery(".current_slider_product").html("");
 
                     jQuery(".current_slider_image img").attr("src", allComboProducts[product_id]["image"] );
 
