@@ -383,7 +383,9 @@ if($currentUrl != $checkoutpage){
             echo "<div class='golden-banner'>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</div>";
         }
         else{
-            echo "<div class='orange-banner'>LAST CHANCE TO USE YOUR SMOGI BUCKS BEFORE THEY EXPIRE. &#124; TODAY ONLY: COMPLIMENTARY OVERNIGHT SHIPPING. ORDER BY 3PM EST.</div>";
+			?>
+            <div  onclick="window.location.replace('/women/super-sale')" class='orange-banner'>ENJOY 60% OFF SELECT SUPER SALE ITEMS. ENDS DECEMBER 31, 2015 AT 11:59PM PST.</div>
+			<?php
             if(false){          // not showing banner on normal pages
 
                 if(strtolower($urlKey)=="men"){
