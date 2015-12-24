@@ -253,7 +253,7 @@ if(!is_user_logged_in()){
                             <ul>
                                 <li><a href="/women/accessories/bags">Bags</a></li>
 								<li><a href="/women/accessories/scarves">Scarves</a></li>
-                                <li><a href="/women/accessories/head-bands">Head Bands</a></li>
+                                <!--<li><a href="/women/accessories/head-bands">Head Bands</a></li>-->
                                 <!--<li><a href="/women/accessories/yoga-mats">Yoga Mats</a></li>
                                 <li><a href="/women/accessories/yoga-towels">Yoga Towels</a></li>-->
                                 <li><a href="/women/accessories/yoga-flops">Yoga Flops</a></li>
