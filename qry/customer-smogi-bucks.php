@@ -1,6 +1,8 @@
 <?php
     require '../app/Mage.php';
 
+	ini_set('max_execution_time', 600);
+
     Mage::app();
 
 	$expire = false;
@@ -12,7 +14,6 @@
     
 	$customers = Mage::getModel('customer/customer')->getCollection();
 
-	$smogiCount = 0;
     foreach($customers as $customer) {
 
 		$customerId = $customer->getId();
@@ -23,25 +24,24 @@
 
 		if($points > 0){
 
-			++$smogiCount;
-
-			$smogiBucks = $points;
-
-			echo "$customerId , $smogiBucks <br/>";
-
 			if($expire) {
 				$reward_model->setPointsSpent($points);
 				$reward_model->setCustomerId($customerId);
 				$reward_model->setStoreId($store_id);
 				$reward_model->setOrderId(Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN);
+
+				$startDate = Mage::getModel('core/date')->gmtDate(null, Mage::getModel('core/date')->timestamp(time()));
+				$endDate = date('Y-m-d', strtotime($startDate . ' + 183 days'));
+
+				$reward_model->setDateStart($startDate);
+				$reward_model->setDateEnd($endDate);
+
 				$reward_model->save();
 			}
-
-			if($smogiCount>=500) break;
+			else
+				echo "$customerId , $points <br/>";
 		}
     }
-
-	echo "<br/>Total with smogi bucks = " . $smogiCount;
 ?>
 
 
