@@ -999,13 +999,31 @@ function init() {
     });
 
 
+    $(".wp_page_banner .play-video").click(function () {
+        $(".play_video").fadeIn();
+
+        var ht = $(".play_video").height();
+        $(".play_video").find(".featured-video-plus").height(ht);
+
+        console.log("****** " + $(".play_video").height() + " , " + $(".play_video").find(".featured-video-plus").height());
+
+        play();
+
+        $(this).remove();
+    });
+
 
     $(".wp_page_banner .play-video").click(function () {
         $(".play_video").fadeIn();
 
         $(".wp_page_banner").css("background", "none");
-        var h = $(".wp_page_banner").height();
-        $(".featured-video-plus.fvp-center").css("height", h + "px");
+//        var h = $(".wp_page_banner").height();
+//        $(".featured-video-plus.fvp-center").css("height", h + "px");
+
+        var ht = $(".wp_page_banner").height();
+        $(".play_video").find(".featured-video-plus").height(ht);
+
+        console.log("****** " + $(".wp_page_banner").height() + " , " + $(".play_video").find(".featured-video-plus").height());
 
         play();
 
