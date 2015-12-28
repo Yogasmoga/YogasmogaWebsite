@@ -682,6 +682,10 @@ $(window).load(function () {
     var wh = $(window).height();
     var ww = $(window).width();
     $(".wp_page_banner").height(wh-70);
+
+    var ht = $(".wp_page_banner").height();
+    $(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
+
     //$(".wp_page_banner").height(ww*0.5625)
 });
 $(window).resize(function () {
@@ -691,6 +695,10 @@ $(window).resize(function () {
     if(playing_video == true) {
         $(".wp_page_banner").height(ww * 0.5625);
     }
+
+    var ht = $(".wp_page_banner").height();
+    $(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
+
 });
 
 /* ////////////////////////////////////GET CUSTOMER COLOR////////////////////////////// */
