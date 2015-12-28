@@ -918,6 +918,12 @@ function ajax_load_pages(link) {
             $(document).find(".wp_page_banner .play-video").unbind("click");
             $(document).find(".wp_page_banner .play-video").click(function () {
                 $(document).find(".wp_page_banner .play-video").hide();
+
+                var ht = $(document).find(".wp_page_banner").height();
+                $(document).find(".wp_page_banner").find(".featured-video-plus").height(ht);
+
+                console.log("****** " + $(".wp_page_banner").height() + " , " + $(".play_video").find(".featured-video-plus").height());
+
                 play();
                 $(".play_video").fadeIn();
                 $(document).find(".wp_page_banner .play-video").remove();
@@ -999,6 +1005,7 @@ function init() {
     });
 
 
+/*
     $(".wp_page_banner .play-video").click(function () {
         $(".play_video").fadeIn();
 
@@ -1011,6 +1018,7 @@ function init() {
 
         $(this).remove();
     });
+*/
 
 
     $(".wp_page_banner .play-video").click(function () {
