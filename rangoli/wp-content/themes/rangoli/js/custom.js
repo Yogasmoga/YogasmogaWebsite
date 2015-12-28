@@ -920,7 +920,7 @@ function ajax_load_pages(link) {
                 $(document).find(".wp_page_banner .play-video").hide();
 
                 var ht = $(document).find(".wp_page_banner").height();
-                $(document).find(".wp_page_banner").find(".featured-video-plus").height(ht);
+                $(document).find(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
 
                 console.log("****** " + $(".wp_page_banner").height() + " , " + $(".play_video").find(".featured-video-plus").height());
 
@@ -1029,7 +1029,8 @@ function init() {
 //        $(".featured-video-plus.fvp-center").css("height", h + "px");
 
         var ht = $(".wp_page_banner").height();
-        $(".play_video").find(".featured-video-plus").height(ht);
+        //$(".play_video").find(".featured-video-plus").height(ht);
+        $(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
 
         console.log("****** " + $(".wp_page_banner").height() + " , " + $(".play_video").find(".featured-video-plus").height());
 
