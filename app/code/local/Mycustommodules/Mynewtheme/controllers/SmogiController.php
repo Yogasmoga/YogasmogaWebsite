@@ -99,7 +99,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
                     $productType = $mitem['product_type'];
 
                     if (isset($productType) && ($productType == 'gift' || $productType == 'bundled-gift')) {
-                        $response['error'] = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+                        $response['error'] = "SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
                         echo json_encode($response);
                         return;
                     }
@@ -147,7 +147,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
 */
             if($flag == 1)
             {
-                $response['error'] = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+                $response['error'] = "SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
                 echo json_encode($response);
                 return;
             }
