@@ -36,19 +36,22 @@
     $messages = $this->getMessages();
     $_options = $this->getOptionList();
 
-    $buyRequest = $_item->getBuyRequest();
+    // disabling gift set
+    if(false) {
+        $buyRequest = $_item->getBuyRequest();
 
-    $productType = "normal";
-    // if we are trying to remove gift set
-    if(isset($buyRequest) && isset($buyRequest['type'])) {
-        $productType = $buyRequest['type'];
+        $productType = "normal";
+        // if we are trying to remove gift set
+        if (isset($buyRequest) && isset($buyRequest['type'])) {
+            $productType = $buyRequest['type'];
 
-        if($productType=="gift")
-            $giftClass = "gift_parent gift_$itemIndex";
-        else if($productType=="gift-bundled")
-            $giftClass = "gift_" . $itemIndex . "_product gift_child";
-        else
-            $giftClass = "";
+            if ($productType == "gift")
+                $giftClass = "gift_parent gift_$itemIndex";
+            else if ($productType == "gift-bundled")
+                $giftClass = "gift_" . $itemIndex . "_product gift_child";
+            else
+                $giftClass = "";
+        }
     }
 ?>
 
@@ -136,8 +139,14 @@ foreach ($_options as $_option) {
 
 <?php //echo $_item->getProductId()."hel" ?>
 
+<?php
+    // disabling gift set
+    if(false){
+?>
+    <div class="row selected_cart_products <?php echo $giftClass;?>" rel="gift_<?php echo $itemIndex;?>">
+<?php } ?>
 
-<div class="row selected_cart_products <?php echo $giftClass;?>" rel="gift_<?php echo $itemIndex;?>">
+<div class="row selected_cart_products">
     <div class="span2">
 
         <div class="col_left_img">
@@ -146,7 +155,7 @@ foreach ($_options as $_option) {
             <a href="<?php echo $this->getProductUrl() ?>"
                title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif; ?>
 
-                <?php if($productType=="gift"){ ?>
+                <?php if(false && $productType=="gift"){ ?>
 
                 <img src="<?php echo getGiftImage($_item->getProductId()); ?>" width="320" height="320"
                      alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/>

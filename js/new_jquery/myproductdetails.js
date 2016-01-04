@@ -39,7 +39,7 @@ jQuery(document).ready(function ($) {
         jQuery("#orderitem").addClass('spbutton');
         changeColor($(this).attr("color"));
         selectfirstsizeonload();
-        changePartOfGiftSet($(this).attr("value"));
+        //changePartOfGiftSet($(this).attr("value"));
     });
 
     $("table.smallimagecontiner td:not(.selectedimage)").live("click", function () {
@@ -92,7 +92,7 @@ jQuery(document).ready(function ($) {
     });
 
     if (_defaultprcolor != '') {
-        changePartOfGiftSet(_defaultprcolor);
+        //changePartOfGiftSet(_defaultprcolor);
         if ($("div#colorcontainer table[value='" + _defaultprcolor + "']").length > 0)
             changeColor($("div#colorcontainer table[value='" + _defaultprcolor + "']").attr("color"));
         else {
@@ -104,7 +104,7 @@ jQuery(document).ready(function ($) {
     else {
         if ($("div#colorcontainer table:first").length > 0) {
             changeColor($("div#colorcontainer table:first").attr("color"));
-            changePartOfGiftSet(changeColor($("div#colorcontainer table:first").attr("value")));
+            //changePartOfGiftSet(changeColor($("div#colorcontainer table:first").attr("value")));
         }
     }
 

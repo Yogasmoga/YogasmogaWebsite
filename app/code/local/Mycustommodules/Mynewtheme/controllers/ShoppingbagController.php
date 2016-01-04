@@ -1289,7 +1289,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                     $buyRequest = $item->getBuyRequest();
 
-                    if(isset($buyRequest['type'])) {
+                    // disable gift set
+                    if(false && isset($buyRequest['type'])) {
                         $product_type = $buyRequest['type'];
 
                         if (isset($product_type)) {
@@ -1826,26 +1827,35 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
 
 /*********** added for gift set **********************/
-            $circleBorder = "";
-            $giftStyle = "";
-            $giftClass = "";
-            $giftMainClass = "";
-            if($item['product_type']=="gift"){
+            // disabling gift set
+            if(false) {
+                $circleBorder = "";
+                $giftStyle = "";
+                $giftClass = "";
+                $giftMainClass = "";
+                if ($item['product_type'] == "gift") {
 
-                ++$giftCount;
+                    ++$giftCount;
 
-                $giftStyle = "border-bottom: none";
-                $giftClass = "gift_parent gift_" . $giftCount;
-                //$circleBorder = 'style="border-radius: 50%; border: solid 1px rgba(204, 204, 204, 0.7);"';
+                    $giftStyle = "border-bottom: none";
+                    $giftClass = "gift_parent gift_" . $giftCount;
+                    //$circleBorder = 'style="border-radius: 50%; border: solid 1px rgba(204, 204, 204, 0.7);"';
+                } else if ($item['product_type'] == "gift-bundled")
+                    $giftClass = "gift_" . $giftCount . "_product gift_child";
+
+                //if($item['product_type']=="gift-bundled")
+                //    continue;
+
+                $html .='<li class="' . $giftClass . '" ' . $giftStyle . ' id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
+                <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ' . $circleBorder . '/></span></a>
+<span>
+                    <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
+                    <span class="pname">'.$item['name'].'</span>';
+
             }
-            else if($item['product_type']=="gift-bundled")
-                $giftClass = "gift_" . $giftCount . "_product gift_child";
-
-            //if($item['product_type']=="gift-bundled")
-            //    continue;
 /*********** added for gift set **********************/
 
-            $html .='<li class="' . $giftClass . '" ' . $giftStyle . ' id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
+            $html .='<li id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
                 <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ' . $circleBorder . '/></span></a>
 <span>
                     <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
@@ -1853,44 +1863,42 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
 /*********** added for gift set **********************/
-
-            if($item['product_type']=="gift") {
-                if(isset($item['insale']) && $item['insale'] == 'Yes')
-                {
-                    $html .='<span class="amnt" style="color : #c03;">'.$item['price'].'</span>
-                            <span class="insale"  > was '.$item['confPrice'].'</span>';
-                }
-                else{
-                    $html .='<span class="amnt">'.$item['price'].'</span>';
-                }
-            }
-/*            else if($item['product_type']=="gift-bundled") {
-                $html .= '<span class="clr">' . $item['color'] . '</span>';
-                if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
-                if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
-            }*/
-            else{
-                if($item['product_type']=='gift-bundled'){
-                    $html .= '<span class="clr">' . $item['color'] . '</span>';
-                    if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
-                    if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
-                }
-                else {
+            // disabling gift set
+            if(false) {
+                if ($item['product_type'] == "gift") {
                     if (isset($item['insale']) && $item['insale'] == 'Yes') {
                         $html .= '<span class="amnt" style="color : #c03;">' . $item['price'] . '</span>
                             <span class="insale"  > was ' . $item['confPrice'] . '</span>';
                     } else {
                         $html .= '<span class="amnt">' . $item['price'] . '</span>';
                     }
-                    $html .= '<span class="clr">' . $item['color'] . '</span>';
-                    if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
-                    if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
+                } /*            else if($item['product_type']=="gift-bundled") {
+                $html .= '<span class="clr">' . $item['color'] . '</span>';
+                if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
+                if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
+            }*/
+                else {
+                    if ($item['product_type'] == 'gift-bundled') {
+                        $html .= '<span class="clr">' . $item['color'] . '</span>';
+                        if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
+                        if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
+                    } else {
+                        if (isset($item['insale']) && $item['insale'] == 'Yes') {
+                            $html .= '<span class="amnt" style="color : #c03;">' . $item['price'] . '</span>
+                            <span class="insale"  > was ' . $item['confPrice'] . '</span>';
+                        } else {
+                            $html .= '<span class="amnt">' . $item['price'] . '</span>';
+                        }
+                        $html .= '<span class="clr">' . $item['color'] . '</span>';
+                        if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size: ' . $item['size'] . '</span>';
+                        if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
+                    }
                 }
             }
 /*********** added for gift set **********************/
 
 /************* original code is below *************/
-/*
+
             if(isset($item['insale']) && $item['insale'] == 'Yes')
             {
                 $html .='<span class="amnt" style="color : #c03;">'.$item['price'].'</span>
@@ -1902,7 +1910,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $html .= '<span class="clr">' . $item['color'] . '</span>';
             if (isset($item['size']) && $item['size'] != '') $html .= '<span class="size">size ' . $item['size'] . '</span>';
             if (isset($item['length']) && $item['length'] != '') $html .= '<span class="size">' . $item['length'] . '</span>';
-*/
+
 /************* original code is above *************/
 
             if(isset($item['optionlabel']) && $item['optionlabel'] != '')
@@ -1917,18 +1925,20 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $html .='</span>';
 
 /************* for gift set ***************/
-            if($item['product_type']=='gift-bundled')
-                ;
-            else if($item['product_type']=='gift') {
-                $html .= '<a href="#" class="close"></a>';
-                $html .= '<div class="show_details">SET DETAILS <b class="show_gift_items">&plus;</b></div>';
+            // disabling gift set
+            if(false) {
+                if ($item['product_type'] == 'gift-bundled')
+                    ;
+                else if ($item['product_type'] == 'gift') {
+                    $html .= '<a href="#" class="close"></a>';
+                    $html .= '<div class="show_details">SET DETAILS <b class="show_gift_items">&plus;</b></div>';
+                } else
+                    $html .= '<a href="#" class="close"></a>';
             }
-            else
-                $html .='<a href="#" class="close"></a>';
 /************* for gift set ***************/
 
 /************* original code before gift set ***************/
-//            $html .='<a href="#" class="close"></a>';
+            $html .='<a href="#" class="close"></a>';
 /************* original code before gift set ***************/
 
             // Preorder

@@ -445,29 +445,37 @@ else
                         <div id="shopping-cart-table" class="data-table cart-table">
 
                             <?php
-                                $totalItemCount = 0;
-                                foreach($this->getItems() as $_item) {
+                                // disabling gift set cart count
+                                if(false) {
+                                    $totalItemCount = 0;
+                                    foreach ($this->getItems() as $_item) {
 
-                                    if(Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "configurable")
-                                    {
-                                        $buyRequest = $_item->getBuyRequest();
-                                        $product_type = $buyRequest['type'];
+                                        if (Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "configurable") {
+                                            $buyRequest = $_item->getBuyRequest();
+                                            $product_type = $buyRequest['type'];
 
-                                        if(isset($product_type) && $product_type=="gift-bundled")
-                                            continue;
+                                            if (isset($product_type) && $product_type == "gift-bundled")
+                                                continue;
 
 //                                        $cartItemsQuantity = $cartItemsQuantity + $item->getQty();
-                                        ++$totalItemCount;
+                                            ++$totalItemCount;
+                                        } else if (Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "simple")
+                                            ;
+                                        else
+                                            ++$totalItemCount;
                                     }
-                                    else if(Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "simple")
-                                        ;
-                                    else
-                                        ++$totalItemCount;
                                 }
                             ?>
 
-                                <!--<div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>-->
-                            <div class="no_of_cart_items"><?php echo $totalItemCount; echo $this->__(' ITEMS') ?></div>
+                            <div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>
+
+                            <?php
+                                // disabling gift set
+                                if(false){
+                            ?>
+                                <div class="no_of_cart_items"><?php echo $totalItemCount; echo $this->__(' ITEMS') ?></div>
+                            <?php } ?>
+
                                 <div class="cart_total"><?php
                                     $subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
                                     $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
@@ -495,10 +503,13 @@ else
                         $index = 0;
                         foreach($items as $_item){
 
-                            $buyRequest = $_item->getBuyRequest();
+                            // disabling gift set
+                            if(false) {
+                                $buyRequest = $_item->getBuyRequest();
 
-                            if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=='gift')
-                                ++$index;
+                                if (isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type'] == 'gift')
+                                    ++$index;
+                            }
 
                             $_item->setIndex($index);
 

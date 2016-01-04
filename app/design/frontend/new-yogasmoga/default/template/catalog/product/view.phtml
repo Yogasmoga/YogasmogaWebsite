@@ -40,13 +40,17 @@ $_helper = $this->helper('catalog/output');
 $_conf_product = $this->getProduct();
 $_conf_product = Mage::getModel('catalog/product')->load($_conf_product->getId());
 
+/********** disabling gift set view ***************/
+if(false){
+    $bundled_product_ids = $resourceModel->getAttributeRawValue($_conf_product->getId(), 'bundle_products', $storeId);
 
-$bundled_product_ids = $resourceModel->getAttributeRawValue($_conf_product->getId(), 'bundle_products', $storeId);
+    $bundledProduct = isset($bundled_product_ids) && strlen($bundled_product_ids) > 0 && strpos($bundled_product_ids, ",") != false;
 
-$bundledProduct = isset($bundled_product_ids) && strlen($bundled_product_ids) > 0 && strpos($bundled_product_ids, ",") != false;
+    //if (!$bundledProduct) {
+}
+/********** disabling gift set view ***************/
 
-
-if (!$bundledProduct) {
+if(true){
 
 $_product = $this->getProduct();
 $_product = Mage::getModel('catalog/product')->load($_product->getId());
@@ -64,14 +68,15 @@ if ($this->getRequest()->getParam('hidden')) {
 
 
 /************** checking if product is part of gift set *************/
+if(false) {
     $partOfGiftSet = $_helper->productAttribute($_product, $_product->getGiftSet(), 'gift_set');
 
-    if(isset($partOfGiftSet) && strlen(trim($partOfGiftSet))>0) {
+    if (isset($partOfGiftSet) && strlen(trim($partOfGiftSet)) > 0) {
 
         $allPartOfGiftSets = explode(':', $partOfGiftSet);
 
         $arPartOfGiftSets = array();
-        foreach($allPartOfGiftSets as $partOfGiftSet) {
+        foreach ($allPartOfGiftSets as $partOfGiftSet) {
             $giftSetPartArr = explode(',', $partOfGiftSet);
             $giftSetTitle = $giftSetPartArr[0];
             $giftSetUrl = $giftSetPartArr[1];
@@ -81,7 +86,7 @@ if ($this->getRequest()->getParam('hidden')) {
             $arPartOfGiftSets[$giftSetColorCode] = array("giftSetTitle" => $giftSetTitle, "giftSetUrl" => $giftSetUrl, "giftSetColorCode" => $giftSetColorCode);
         }
     }
-
+}
 /************** checking if product is part of gift set *************/
 
 ?>
@@ -2016,7 +2021,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
         bra_cup_insert_count = parseInt("<?php echo $optionAvailable; ?>");
 
         <?php
-            if(isset($arPartOfGiftSets)){
+            if(false && isset($arPartOfGiftSets)){          // gift set disabled
                 foreach($arPartOfGiftSets as $key => $data){
         ?>
                     arPartOfGiftSets[<?php echo $key;?>] = Array();

@@ -37,29 +37,29 @@
     $cartItemsCount = Mage::helper('checkout/cart')->getCart()->getItemsCount();
 
     /******** original code ***********/
-    //$cartItemsQuantity = Mage::helper('checkout/cart')->getCart()->getItemsQty();
+    $cartItemsQuantity = Mage::helper('checkout/cart')->getCart()->getItemsQty();
     /******** original code ***********/
 
 /*************** after adding gift set ***********************/
-    $session = Mage::getSingleton('checkout/session');
-    $cartItemsQuantity = 0;
-    foreach ($session->getQuote()->getAllItems() as $item)
-    {
-        if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
-        {
-            $buyRequest = $item->getBuyRequest();
-            $product_type = $buyRequest['type'];
+    // disabling gift set cart count
+    if(false) {
+        $session = Mage::getSingleton('checkout/session');
+        $cartItemsQuantity = 0;
+        foreach ($session->getQuote()->getAllItems() as $item) {
+            if (Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable") {
+                $buyRequest = $item->getBuyRequest();
+                $product_type = $buyRequest['type'];
 
-            if(isset($product_type) && $product_type=="gift-bundled")
-                continue;
+                if (isset($product_type) && $product_type == "gift-bundled")
+                    continue;
 
-            //$cartItemsQuantity = $cartItemsQuantity + $item->getQty();
-            $cartItemsQuantity++;
+                //$cartItemsQuantity = $cartItemsQuantity + $item->getQty();
+                $cartItemsQuantity++;
+            } else if (Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+                ;
+            else
+                ++$cartItemsQuantity;
         }
-        else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
-            ;
-        else
-            ++$cartItemsQuantity;
     }
 /*************** after adding gift set ***********************/
     ?>
@@ -73,7 +73,7 @@
     <use xlink:href="#shopping_cart"></use>
 </svg>
             <span><a href="<?php echo $this->getUrl('checkout/onepage'); ?>"
-                     class="cartgo"><?php echo $cartItemsQuantity; ?></a></span>
+                     class="cartgo"><?php echo $cartItemsCount; ?></a></span>
         </div>
     <?php } else { ?>
         <div class="shoping-cart" onclick="window.location='<?php echo $this->getUrl('checkout/onepage'); ?>'">

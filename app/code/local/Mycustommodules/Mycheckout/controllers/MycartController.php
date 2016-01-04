@@ -162,100 +162,100 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 return;
             }
 
-            $uniqueTimeStamp = date("Ymdhis");
             $productId = (int) $this->getRequest()->getParam('product');
 
-            if(isset($params["type"]) && $params["type"]=="gift"){
+            //disabling gift set
+            if(false) {
+                $uniqueTimeStamp = date("Ymdhis");
+                if (isset($params["type"]) && $params["type"] == "gift") {
 
-                /************* checking if product is gift-set ****************/
+                    /************* checking if product is gift-set ****************/
 
-                if($this->giftExistsInCard($productId)){
-                    echo json_encode(array("status" => "exists"));
-                    return;
-                }
-
-                $bundle = $params['bundle'];
-
-                $arBundle = explode(",", $bundle);
-
-                foreach($arBundle as $bundleProduct){
-
-                    $arBundleProductOptions = explode(":", $bundleProduct);
-
-                    if(count($arBundleProductOptions)==4) {                  // product id, color, size, bra-cup
-                        $bundleProductId = $arBundleProductOptions[0];
-                        $colorData = $arBundleProductOptions[1];
-                        $sizeData = $arBundleProductOptions[2];
-                        $braData = $arBundleProductOptions[3];
-
-                        $arColorData = explode("-", $colorData);
-                        $arSizeData = explode("-", $sizeData);
-                        $arBraData = explode("-", $braData);
-
-                        $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1], $arBraData[0] => $arBraData[1]);
-                    }
-                    else{
-                        $bundleProductId = $arBundleProductOptions[0];
-                        $colorData = $arBundleProductOptions[1];
-                        $sizeData = $arBundleProductOptions[2];
-
-                        $arColorData = explode("-", $colorData);
-                        $arSizeData = explode("-", $sizeData);
-
-                        $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1]);
-                    }
-
-                    $data = array(
-                        'qty' => 1,
-                        'super_attribute' => $arSuper,
-                        'product' => $bundleProductId,
-                        'type' => 'gift-bundled',
-                        'unique_time_stamp' => $uniqueTimeStamp,
-                        'main_product_id' => $product->getId()
-                    );
-
-                    $bundledProduct = Mage::getModel('catalog/product')
-                        ->setStoreId(Mage::app()->getStore()->getId())
-                        ->load($bundleProductId);
-
-                    $cart->addProduct($bundledProduct, $data);
-                }
-                /************* checking if product is gift-set ****************/
-            }
-            else{
-                /************** check if we are purchasing a product that is part of gift set *********/
-
-                $isAlreadyPartOfGiftSet = false;
-
-                $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getParam('super_attribute'), $product);
-
-                if($childProduct) {
-                    $cartItems = $cart->getQuote()->getAllItems();
-
-                    foreach ($cartItems as $item) {
-
-                        $buyRequest = $item->getBuyRequest();
-
-                        // if we are trying to remove gift set
-                        if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift-bundled") {
-
-                            if ($childProduct->getId() == $item->getProductId()) {
-                                $isAlreadyPartOfGiftSet = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    if ($isAlreadyPartOfGiftSet) {
-                        echo json_encode(array("status" => "ingiftset"));
+                    if ($this->giftExistsInCard($productId)) {
+                        echo json_encode(array("status" => "exists"));
                         return;
                     }
+
+                    $bundle = $params['bundle'];
+
+                    $arBundle = explode(",", $bundle);
+
+                    foreach ($arBundle as $bundleProduct) {
+
+                        $arBundleProductOptions = explode(":", $bundleProduct);
+
+                        if (count($arBundleProductOptions) == 4) {                  // product id, color, size, bra-cup
+                            $bundleProductId = $arBundleProductOptions[0];
+                            $colorData = $arBundleProductOptions[1];
+                            $sizeData = $arBundleProductOptions[2];
+                            $braData = $arBundleProductOptions[3];
+
+                            $arColorData = explode("-", $colorData);
+                            $arSizeData = explode("-", $sizeData);
+                            $arBraData = explode("-", $braData);
+
+                            $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1], $arBraData[0] => $arBraData[1]);
+                        } else {
+                            $bundleProductId = $arBundleProductOptions[0];
+                            $colorData = $arBundleProductOptions[1];
+                            $sizeData = $arBundleProductOptions[2];
+
+                            $arColorData = explode("-", $colorData);
+                            $arSizeData = explode("-", $sizeData);
+
+                            $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1]);
+                        }
+
+                        $data = array(
+                            'qty' => 1,
+                            'super_attribute' => $arSuper,
+                            'product' => $bundleProductId,
+                            'type' => 'gift-bundled',
+                            'unique_time_stamp' => $uniqueTimeStamp,
+                            'main_product_id' => $product->getId()
+                        );
+
+                        $bundledProduct = Mage::getModel('catalog/product')
+                            ->setStoreId(Mage::app()->getStore()->getId())
+                            ->load($bundleProductId);
+
+                        $cart->addProduct($bundledProduct, $data);
+                    }
+                    /************* checking if product is gift-set ****************/
+                } else {
+                    /************** check if we are purchasing a product that is part of gift set *********/
+
+                    $isAlreadyPartOfGiftSet = false;
+
+                    $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getParam('super_attribute'), $product);
+
+                    if ($childProduct) {
+                        $cartItems = $cart->getQuote()->getAllItems();
+
+                        foreach ($cartItems as $item) {
+
+                            $buyRequest = $item->getBuyRequest();
+
+                            // if we are trying to remove gift set
+                            if (isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type'] == "gift-bundled") {
+
+                                if ($childProduct->getId() == $item->getProductId()) {
+                                    $isAlreadyPartOfGiftSet = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ($isAlreadyPartOfGiftSet) {
+                            echo json_encode(array("status" => "ingiftset"));
+                            return;
+                        }
+                    }
+                    /************** check if we are purchasing a product that is part of gift set *********/
                 }
-                /************** check if we are purchasing a product that is part of gift set *********/
+                $params['unique_time_stamp'] = $uniqueTimeStamp;
             }
 
-
-            $params['unique_time_stamp'] = $uniqueTimeStamp;
             $cart->addProduct($product, $params);
             if (!empty($related)) {
                 $cart->addProductsByIds(explode(',', $related));
@@ -340,102 +340,101 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             //    $cart->addProductsByIds(explode(',', $related));
             //}
 
-			
-			
-			$uniqueTimeStamp = date("Ymdhis");
+			//disabling gift set
+			if(false) {
+                $uniqueTimeStamp = date("Ymdhis");
 
-            if(isset($params["type"]) && $params["type"]=="gift"){
+                if (isset($params["type"]) && $params["type"] == "gift") {
 
-                /************* checking if product is gift-set ****************/
+                    /************* checking if product is gift-set ****************/
 
-                $productId = (int) $this->getRequest()->getParam('product');
-                if($this->giftExistsInCard($productId)){
-                    echo json_encode(array("status" => "exists"));
-                    return;
-                }
-
-                $bundle = $params['bundle'];
-
-                $arBundle = explode(",", $bundle);
-
-                foreach($arBundle as $bundleProduct){
-
-                    $arBundleProductOptions = explode(":", $bundleProduct);
-
-                    if(count($arBundleProductOptions)==4) {                  // product id, color, size, bra-cup
-                        $bundleProductId = $arBundleProductOptions[0];
-                        $colorData = $arBundleProductOptions[1];
-                        $sizeData = $arBundleProductOptions[2];
-                        $braData = $arBundleProductOptions[3];
-
-                        $arColorData = explode("-", $colorData);
-                        $arSizeData = explode("-", $sizeData);
-                        $arBraData = explode("-", $braData);
-
-                        $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1], $arBraData[0] => $arBraData[1]);
-                    }
-                    else{
-                        $bundleProductId = $arBundleProductOptions[0];
-                        $colorData = $arBundleProductOptions[1];
-                        $sizeData = $arBundleProductOptions[2];
-
-                        $arColorData = explode("-", $colorData);
-                        $arSizeData = explode("-", $sizeData);
-
-                        $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1]);
-                    }
-
-                    $data = array(
-                        'qty' => 1,
-                        'super_attribute' => $arSuper,
-                        'product' => $bundleProductId,
-                        'type' => 'gift-bundled',
-                        'unique_time_stamp' => $uniqueTimeStamp,
-                        'main_product_id' => $product->getId()
-                    );
-
-                    $bundledProduct = Mage::getModel('catalog/product')
-                        ->setStoreId(Mage::app()->getStore()->getId())
-                        ->load($bundleProductId);
-
-                    $cart->addProduct($bundledProduct, $data);
-                }
-                /************* checking if product is gift-set ****************/
-            }
-            else{
-                /************** check if we are purchasing a product that is part of gift set *********/
-
-                $isAlreadyPartOfGiftSet = false;
-
-                $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getParam('super_attribute'), $product);
-
-                if($childProduct) {
-                    $cartItems = $cart->getQuote()->getAllItems();
-
-                    foreach ($cartItems as $item) {
-
-                        $buyRequest = $item->getBuyRequest();
-
-                        // if we are trying to remove gift set
-                        if(isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type']=="gift-bundled") {
-
-                            if ($childProduct->getId() == $item->getProductId()) {
-                                $isAlreadyPartOfGiftSet = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    if ($isAlreadyPartOfGiftSet) {
-                        echo json_encode(array("status" => "ingiftset"));
+                    $productId = (int)$this->getRequest()->getParam('product');
+                    if ($this->giftExistsInCard($productId)) {
+                        echo json_encode(array("status" => "exists"));
                         return;
                     }
+
+                    $bundle = $params['bundle'];
+
+                    $arBundle = explode(",", $bundle);
+
+                    foreach ($arBundle as $bundleProduct) {
+
+                        $arBundleProductOptions = explode(":", $bundleProduct);
+
+                        if (count($arBundleProductOptions) == 4) {                  // product id, color, size, bra-cup
+                            $bundleProductId = $arBundleProductOptions[0];
+                            $colorData = $arBundleProductOptions[1];
+                            $sizeData = $arBundleProductOptions[2];
+                            $braData = $arBundleProductOptions[3];
+
+                            $arColorData = explode("-", $colorData);
+                            $arSizeData = explode("-", $sizeData);
+                            $arBraData = explode("-", $braData);
+
+                            $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1], $arBraData[0] => $arBraData[1]);
+                        } else {
+                            $bundleProductId = $arBundleProductOptions[0];
+                            $colorData = $arBundleProductOptions[1];
+                            $sizeData = $arBundleProductOptions[2];
+
+                            $arColorData = explode("-", $colorData);
+                            $arSizeData = explode("-", $sizeData);
+
+                            $arSuper = array($arColorData[0] => $arColorData[1], $arSizeData[0] => $arSizeData[1]);
+                        }
+
+                        $data = array(
+                            'qty' => 1,
+                            'super_attribute' => $arSuper,
+                            'product' => $bundleProductId,
+                            'type' => 'gift-bundled',
+                            'unique_time_stamp' => $uniqueTimeStamp,
+                            'main_product_id' => $product->getId()
+                        );
+
+                        $bundledProduct = Mage::getModel('catalog/product')
+                            ->setStoreId(Mage::app()->getStore()->getId())
+                            ->load($bundleProductId);
+
+                        $cart->addProduct($bundledProduct, $data);
+                    }
+                    /************* checking if product is gift-set ****************/
+                } else {
+                    /************** check if we are purchasing a product that is part of gift set *********/
+
+                    $isAlreadyPartOfGiftSet = false;
+
+                    $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($this->getRequest()->getParam('super_attribute'), $product);
+
+                    if ($childProduct) {
+                        $cartItems = $cart->getQuote()->getAllItems();
+
+                        foreach ($cartItems as $item) {
+
+                            $buyRequest = $item->getBuyRequest();
+
+                            // if we are trying to remove gift set
+                            if (isset($buyRequest) && isset($buyRequest['type']) && $buyRequest['type'] == "gift-bundled") {
+
+                                if ($childProduct->getId() == $item->getProductId()) {
+                                    $isAlreadyPartOfGiftSet = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ($isAlreadyPartOfGiftSet) {
+                            echo json_encode(array("status" => "ingiftset"));
+                            return;
+                        }
+                    }
+                    /************** check if we are purchasing a product that is part of gift set *********/
                 }
-                /************** check if we are purchasing a product that is part of gift set *********/
+
+                $params['unique_time_stamp'] = $uniqueTimeStamp;
             }
 
-
-            $params['unique_time_stamp'] = $uniqueTimeStamp;
             $cart->addProduct($product, $params);
             if (!empty($related)) {
                 $cart->addProductsByIds(explode(',', $related));
@@ -558,69 +557,69 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     public function getcartcount()
     {
 /*************** original code ***************/
-/*
+
         $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
         if(isset($cart['items_qty'])){
             return (int)$cart['items_qty'];
         } else {
             return 0;
         }
-*/
-        $session = Mage::getSingleton('checkout/session');
-        $count = 0;
-        foreach ($session->getQuote()->getAllItems() as $item)
-        {
-            if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
-            {
-                $buyRequest = $item->getBuyRequest();
-                $product_type = $buyRequest['type'];
 
-                if(isset($product_type) && $product_type=="gift-bundled")
-                    continue;
+        // disabling gift set cart count
+        if(false) {
+            $session = Mage::getSingleton('checkout/session');
+            $count = 0;
+            foreach ($session->getQuote()->getAllItems() as $item) {
+                if (Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable") {
+                    $buyRequest = $item->getBuyRequest();
+                    $product_type = $buyRequest['type'];
 
-                $count = $count + $item->getQty();
+                    if (isset($product_type) && $product_type == "gift-bundled")
+                        continue;
+
+                    $count = $count + $item->getQty();
+                } else if (Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+                    ;
+                else
+                    ++$count;
             }
-            else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
-                ;
-            else
-                ++$count;
-        }
 
-        return $count;
+            return $count;
+        }
     }
 
     public function getcartcountmobile()
     {
         /*************** original code ***************/
-        /*
+
                 $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
                 if(isset($cart['items_qty'])){
                     return (int)$cart['items_qty'];
                 } else {
                     return 0;
                 }
-        */
-        $session = Mage::getSingleton('checkout/session');
-        $count = 0;
-        foreach ($session->getQuote()->getAllItems() as $item)
-        {
-            if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
-            {
-                $buyRequest = $item->getBuyRequest();
-                $product_type = $buyRequest['type'];
 
-                if(isset($product_type) && $product_type=="gift-bundled")
-                    continue;
+        // disable gift set cart count
+        if(false) {
+            $session = Mage::getSingleton('checkout/session');
+            $count = 0;
+            foreach ($session->getQuote()->getAllItems() as $item) {
+                if (Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable") {
+                    $buyRequest = $item->getBuyRequest();
+                    $product_type = $buyRequest['type'];
 
-                $count++;
+                    if (isset($product_type) && $product_type == "gift-bundled")
+                        continue;
+
+                    $count++;
+                } else if (Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+                    ;
+                else
+                    ++$count;
             }
-            else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
-                ;
-            else
-                ++$count;
-        }
 
-        return $count;
+            return $count;
+        }
     }
 
     public function issuperattribute($_product, $superattribute)
@@ -694,7 +693,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
                     $buyRequest = $item->getBuyRequest();
 
-                    if(isset($buyRequest['type'])) {
+                    // disable gift set
+                    if(false && isset($buyRequest['type'])) {
                         $product_type = $buyRequest['type'];
 
                         if (isset($product_type)) {
