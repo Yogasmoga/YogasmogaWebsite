@@ -95,12 +95,14 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             $flag = 0;
             foreach($miniitems as $mitem)
             {
-                $productType = $mitem['product_type'];
+                if(false) {
+                    $productType = $mitem['product_type'];
 
-                if(isset($productType) && ($productType=='gift' || $productType=='bundled-gift')){
-                    $response['error'] = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
-                    echo json_encode($response);
-                    return;
+                    if (isset($productType) && ($productType == 'gift' || $productType == 'bundled-gift')) {
+                        $response['error'] = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+                        echo json_encode($response);
+                        return;
+                    }
                 }
 
 				//$mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
