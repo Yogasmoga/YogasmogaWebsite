@@ -269,7 +269,7 @@ if(!is_user_logged_in()){
                         </li>
                     </ul>
                 </li>
-				<li class="gift-sets" rel="70">
+				<!--<li class="gift-sets" rel="70">
 						<a href="/gift-sets" class="menu-heading">Gift Sets</a>
 							<ul class="sub-menu menu-ovr">
 								<li><ul>
@@ -278,7 +278,7 @@ if(!is_user_logged_in()){
 									</ul>
 								</li>
 							</ul>
-				</li>
+				</li>-->
             </ul>
         </div>
         <div class="f-right header-right">
