@@ -39,7 +39,7 @@
         color: #555 !important;
     }
 
-    #pagecontainer{margin-top:25px !important;}
+  /*  #pagecontainer{margin-top:25px !important;}*/
 
 </style>
 
@@ -367,18 +367,19 @@ if($currentUrl != $checkoutpage){
 <?php //} ?>
 
 <div class="pageoverlay"></div>
- <?php /* ?><div style="height:69px !important;" class="header-container"><?php */ ?>
+ <div style="height:69px !important;" class="header-container">
 
-     <div class="header-container" style="padding-top:25px; height:69px !important">
+ <?php /* ?>    <div class="header-container" style="padding-top:25px; height:69px !important"><?php */ ?>
 
      <!--banner strip start-->
     <?php
+	  if(false){
         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
         $categoryName = explode('/', $currentUrl);
         $urlKey = "";
         if(isset($categoryName[3]))
             $urlKey = $categoryName[3];
-
+		
         if(strtolower($urlKey)=="gift-sets"){
             echo "<div class='golden-banner'>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</div>";
         }
@@ -403,6 +404,7 @@ if($currentUrl != $checkoutpage){
                 }
             }
         }
+	}	
     ?>
 
 <div id="globalheader" class="header
