@@ -683,8 +683,9 @@ $(window).load(function () {
     var ww = $(window).width();
     $(".wp_page_banner").height(wh-70);
 
-    var ht = $(document).find(".wp_page_banner").find(".featured-video-plus").parent().height();
-    $(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
+    var ht = $(".play_video").height();
+    $(".featured-video-plus").css("height", ht + "px");
+    $(".featured-video-plus").height(ht);
 
     //$(".wp_page_banner").height(ww*0.5625)
 });
@@ -696,8 +697,10 @@ $(window).resize(function () {
         $(".wp_page_banner").height(ww * 0.5625);
     }
 
-    var ht = $(document).find(".wp_page_banner").find(".featured-video-plus").parent().height();
-    $(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
+    var ht = $(".play_video").height();
+    $(".featured-video-plus").css("height", ht + "px");
+    $(".featured-video-plus").height(ht);
+
 
 });
 
@@ -927,10 +930,11 @@ function ajax_load_pages(link) {
             $(document).find(".wp_page_banner .play-video").click(function () {
                 $(document).find(".wp_page_banner .play-video").hide();
 
-                var ht = $(document).find(".wp_page_banner").find(".featured-video-plus").parent().height();
-                $(document).find(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
+                var ht = $(".play_video").height();
+                $(".featured-video-plus").css("height", ht + "px");
+                $(".featured-video-plus").height(ht);
 
-                console.log("****** " + $(".wp_page_banner").height() + " , " + $(".play_video").find(".featured-video-plus").height());
+                console.log("****** " + $(".wp_page_banner").height() + " , " + $(".featured-video-plus").height());
 
                 play();
                 $(".play_video").fadeIn();
@@ -1036,8 +1040,9 @@ function init() {
 //        var h = $(".wp_page_banner").height();
 //        $(".featured-video-plus.fvp-center").css("height", h + "px");
 
-        var ht = $(document).find(".wp_page_banner").find(".featured-video-plus").parent().height();
-        $(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
+        var ht = $(".play_video").height();
+        $(".featured-video-plus").css("height", ht + "px");
+        $(".featured-video-plus").height(ht);
 
         play();
 

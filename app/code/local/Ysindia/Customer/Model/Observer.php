@@ -122,7 +122,7 @@ class Ysindia_Customer_Model_Observer
     }
 
     public function checkGiftSet(Varien_Event_Observer $observer){
-
+        return;
         $cart = $observer->getCart();
 
         if(isset($cart)) {
