@@ -683,7 +683,7 @@ $(window).load(function () {
     var ww = $(window).width();
     $(".wp_page_banner").height(wh-70);
 
-    var ht = $(".wp_page_banner").height();
+    var ht = $(document).find(".wp_page_banner").find(".featured-video-plus").parent().height();
     $(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
 
     //$(".wp_page_banner").height(ww*0.5625)
@@ -696,7 +696,7 @@ $(window).resize(function () {
         $(".wp_page_banner").height(ww * 0.5625);
     }
 
-    var ht = $(".wp_page_banner").height();
+    var ht = $(document).find(".wp_page_banner").find(".featured-video-plus").parent().height();
     $(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
 
 });
@@ -927,7 +927,7 @@ function ajax_load_pages(link) {
             $(document).find(".wp_page_banner .play-video").click(function () {
                 $(document).find(".wp_page_banner .play-video").hide();
 
-                var ht = $(document).find(".wp_page_banner").height();
+                var ht = $(document).find(".wp_page_banner").find(".featured-video-plus").parent().height();
                 $(document).find(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
 
                 console.log("****** " + $(".wp_page_banner").height() + " , " + $(".play_video").find(".featured-video-plus").height());
@@ -1036,18 +1036,15 @@ function init() {
 //        var h = $(".wp_page_banner").height();
 //        $(".featured-video-plus.fvp-center").css("height", h + "px");
 
-        var ht = $(".wp_page_banner").height();
-        //$(".play_video").find(".featured-video-plus").height(ht);
+        var ht = $(document).find(".wp_page_banner").find(".featured-video-plus").parent().height();
         $(".wp_page_banner").find(".featured-video-plus").css("height", ht + "px");
-
-        console.log("****** " + $(".wp_page_banner").height() + " , " + $(".play_video").find(".featured-video-plus").height());
 
         play();
 
         $(this).remove();
     });
 
-    $(".featured-video-plus").css("height", "100% !important");
+    //$(".featured-video-plus").css("height", "100% !important");
 
     $(".homepage_page_banner .play-video").click(function () {
         $(".play_video").fadeIn();
