@@ -445,29 +445,29 @@ else
                         <div id="shopping-cart-table" class="data-table cart-table">
 
                             <?php
-                                $totalItemCount = 0;
-                                foreach($this->getItems() as $_item) {
+                                if(false) {
+                                    $totalItemCount = 0;
+                                    foreach ($this->getItems() as $_item) {
 
-                                    if(Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "configurable")
-                                    {
-                                        $buyRequest = $_item->getBuyRequest();
-                                        $product_type = $buyRequest['type'];
+                                        if (Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "configurable") {
+                                            $buyRequest = $_item->getBuyRequest();
+                                            $product_type = $buyRequest['type'];
 
-                                        if(isset($product_type) && $product_type=="gift-bundled")
-                                            continue;
+                                            if (isset($product_type) && $product_type == "gift-bundled")
+                                                continue;
 
-                                        //$cartItemsQuantity = $cartItemsQuantity + $item->getQty();
-                                        $totalItemCount++;
+                                            //$cartItemsQuantity = $cartItemsQuantity + $item->getQty();
+                                            $totalItemCount++;
+                                        } else if (Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "simple")
+                                            ;
+                                        else
+                                            ++$totalItemCount;
                                     }
-                                    else if(Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "simple")
-                                        ;
-                                    else
-                                        ++$totalItemCount;
                                 }
                             ?>
 
-                                <!--<div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>-->
-                            <div class="no_of_cart_items"><?php echo $totalItemCount; echo $this->__(' ITEMS') ?></div>
+                                <div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsQty(); echo $this->__(' ITEMS') ?></div>
+                            <!--<div class="no_of_cart_items"><?php echo $totalItemCount; echo $this->__(' ITEMS') ?></div>-->
                                 <div class="cart_total"><?php
                                     $subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
                                     $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
@@ -502,11 +502,11 @@ else
 
                             $_item->setIndex($index);
 
-//                            if ($_item->getQty() > 1) {
-//                                for($i = 0;$i < $_item->getQty();$i++)
-//                                    echo $this->getItemHtml($_item);
-//                            }
-//                            else
+                            if ($_item->getQty() > 1) {
+                                for($i = 0;$i < $_item->getQty();$i++)
+                                    echo $this->getItemHtml($_item);
+                            }
+                            else
                                 echo $this->getItemHtml($_item);
                         }
                         ?>

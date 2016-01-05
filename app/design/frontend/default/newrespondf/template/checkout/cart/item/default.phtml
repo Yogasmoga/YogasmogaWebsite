@@ -36,19 +36,21 @@
     $messages = $this->getMessages();
     $_options = $this->getOptionList();
 
-    $buyRequest = $_item->getBuyRequest();
+    // disabling gift set
+    if(false) {
+        $buyRequest = $_item->getBuyRequest();
+        $productType = "normal";
+        // if we are trying to remove gift set
+        if (isset($buyRequest) && isset($buyRequest['type'])) {
+            $productType = $buyRequest['type'];
 
-    $productType = "normal";
-    // if we are trying to remove gift set
-    if(isset($buyRequest) && isset($buyRequest['type'])) {
-        $productType = $buyRequest['type'];
-
-        if($productType=="gift")
-            $giftClass = "gift_parent gift_$itemIndex";
-        else if($productType=="gift-bundled")
-            $giftClass = "gift_" . $itemIndex . "_product gift_child";
-        else
-            $giftClass = "";
+            if ($productType == "gift")
+                $giftClass = "gift_parent gift_$itemIndex";
+            else if ($productType == "gift-bundled")
+                $giftClass = "gift_" . $itemIndex . "_product gift_child";
+            else
+                $giftClass = "";
+        }
     }
 ?>
 
@@ -148,7 +150,7 @@ foreach ($_options as $_option) {
             <a href="<?php echo $this->getProductUrl() ?>"
                title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif; ?>
 
-                <?php if($productType=="gift"){ ?>
+                <?php if(false && $productType=="gift"){ ?>
 
                 <img src="<?php echo getGiftImage($_item->getProductId()); ?>" width="320" height="320"
                      alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/>
@@ -181,7 +183,7 @@ foreach ($_options as $_option) {
 
                     <div class="item_option_color">
 
-                        <?php if($productType!="gift"){ ?>
+                        <?php if(true || $productType!="gift"){ ?>
 
                         <?php foreach ($_options as $_option) : ?>
                             <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
@@ -482,7 +484,7 @@ foreach ($_options as $_option) {
                             <?php if (Mage::helper('weee')->typeOfDisplay($_item, array(0, 1, 4), 'sales') && $_item->getWeeeTaxAppliedAmount()): ?>
                                 <?php echo $this->helper('checkout')->formatPrice($_item->getRowTotal() + $_item->getWeeeTaxAppliedRowAmount() + $_item->getWeeeTaxRowDisposition()); ?>
                             <?php else: ?>
-                                <?php echo $this->helper('checkout')->formatPrice($_item->getRowTotal()) ?>
+                                <?php echo $this->helper('checkout')->formatPrice($_item->getPrice()) ?>
                             <?php endif; ?>
                         <?php endif; ?>
 
@@ -585,6 +587,6 @@ foreach ($_options as $_option) {
         </td>
     </div>
 </div>
-<?php if($productType=="gift"){?>
+<?php if(false && $productType=="gift"){?>
     <div class="show_details row">SET DETAILS <b>&plus;</b></div>
 <?php } ?>

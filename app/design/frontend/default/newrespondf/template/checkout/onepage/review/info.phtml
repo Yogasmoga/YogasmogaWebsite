@@ -93,16 +93,24 @@ function format_bill($html)
         <?php
             foreach($this->getItems() as $_item){
 
-                $buyRequest = $_item->getBuyRequest();
+                // disable gift set
+                if(false) {
+                    $buyRequest = $_item->getBuyRequest();
 
-                if(isset($buyRequest) && isset($buyRequest['type'])) {
-                    $productType = $buyRequest['type'];
+                    if (isset($buyRequest) && isset($buyRequest['type'])) {
+                        $productType = $buyRequest['type'];
 
-                    if ($productType == "gift-bundled")
-                        continue;
+                        if ($productType == "gift-bundled")
+                            continue;
+                    }
                 }
 
-                echo $this->getItemHtml($_item);
+                if ($_item->getQty() > 1) {
+                    for($i = 0;$i < $_item->getQty();$i++)
+                        echo $this->getItemHtml($_item);
+                }
+                else
+                    echo $this->getItemHtml($_item);
             }
         ?>
     </table>
