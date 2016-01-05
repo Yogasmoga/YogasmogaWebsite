@@ -196,7 +196,7 @@ if(!is_user_logged_in()){
                         <li>
                             <ul>
                                 <li><a href="/women/whats-new"> What's New</a></li>
-                                <li><a href="/women/one-too-many"> One 2 Many</a></li>
+                                <!--<li><a href="/women/one-too-many"> One 2 Many</a></li>-->
 								<li><a href="/women/prints">PRINTS</a></li>
 								<!--<li><a href="/women/super-sale"> Super Sale</a></li>-->
 								<li><a href="/women/additional-sizes"> ADDITIONAL SIZES</a></li>
