@@ -73,7 +73,7 @@
     <use xlink:href="#shopping_cart"></use>
 </svg>
             <span><a href="<?php echo $this->getUrl('checkout/onepage'); ?>"
-                     class="cartgo"><?php echo $cartItemsCount; ?></a></span>
+                     class="cartgo"><?php echo $cartItemsQuantity; ?></a></span>
         </div>
     <?php } else { ?>
         <div class="shoping-cart" onclick="window.location='<?php echo $this->getUrl('checkout/onepage'); ?>'">

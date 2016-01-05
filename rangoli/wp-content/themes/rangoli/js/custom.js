@@ -683,9 +683,9 @@ $(window).load(function () {
     var ww = $(window).width();
     $(".wp_page_banner").height(wh-70);
 
-    var ht = $(".play_video").height();
-    $(".featured-video-plus").css("height", ht + "px");
-    $(".featured-video-plus").height(ht);
+    //var ht = $(".play_video").height();
+    //$(".featured-video-plus").css("height", ht + "px");
+    //$(".featured-video-plus").height(ht);
 
     //$(".wp_page_banner").height(ww*0.5625)
 });
@@ -932,9 +932,7 @@ function ajax_load_pages(link) {
 
                 var ht = $(".play_video").height();
                 $(".featured-video-plus").css("height", ht + "px");
-                $(".featured-video-plus").height(ht);
-
-                console.log("****** " + $(".wp_page_banner").height() + " , " + $(".featured-video-plus").height());
+                //$(".featured-video-plus").height(ht);
 
                 play();
                 $(".play_video").fadeIn();

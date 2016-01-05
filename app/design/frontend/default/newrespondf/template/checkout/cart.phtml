@@ -467,7 +467,7 @@ else
                                 }
                             ?>
 
-                            <div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>
+                            <div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsQty(); echo $this->__(' ITEMS') ?></div>
 
                             <?php
                                 // disabling gift set
@@ -513,11 +513,11 @@ else
 
                             $_item->setIndex($index);
 
-//                            if ($_item->getQty() > 1) {
-//                                for($i = 0;$i < $_item->getQty();$i++)
-//                                    echo $this->getItemHtml($_item);
-//                            }
-//                            else
+                            if ($_item->getQty() > 1) {
+                                for($i = 0;$i < $_item->getQty();$i++)
+                                    echo $this->getItemHtml($_item);
+                            }
+                            else
                                 echo $this->getItemHtml($_item);
                         }
                         ?>
