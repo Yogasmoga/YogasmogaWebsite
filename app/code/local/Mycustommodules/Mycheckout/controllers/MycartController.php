@@ -157,22 +157,22 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 
 			$childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($super_attribute, $product);
 			$productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($childProduct);
-	if($productStock->getIsInStock()){
-		$stockValue = $productStock->getQty();
+			if($productStock->getIsInStock()){
+				$stockValue = $productStock->getQty();
 
-		$cartItems = $cart->getQuote()->getAllItems();
-		foreach ($cartItems as $item) {
+				$cartItems = $cart->getQuote()->getAllItems();
+				foreach ($cartItems as $item) {
 
-			if ($childProduct->getSku() == $item->getSku()) {
-				$qty = $item->getQty();
+					if ($childProduct->getSku() == $item->getSku()) {
+						$qty = $item->getQty();
 
-				if($qty >= $stockValue){
-					echo json_encode(array('status'=>'not available'));
-					return;
+						if($qty >= $stockValue){
+							echo json_encode(array('status'=>'not available'));
+							return;
+						}
+					}
 				}
 			}
-		}
-	}
 			/*------------------------*/
 			
             $product = $this->_initProduct();
@@ -378,6 +378,31 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 );
                 $params['qty'] = $filter->filter($params['qty']);
             }
+			
+			/*----------*/
+			$productId = (int)$this->getRequest()->getParam('product');
+			$product = Mage::getModel("catalog/product")->load($productId);
+			$super_attribute = $params['super_attribute'];
+
+			$childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($super_attribute, $product);
+			$productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($childProduct);
+			if($productStock->getIsInStock()){
+				$stockValue = $productStock->getQty();
+
+				$cartItems = $cart->getQuote()->getAllItems();
+				foreach ($cartItems as $item) {
+
+					if ($childProduct->getSku() == $item->getSku()) {
+						$qty = $item->getQty();
+
+						if($qty >= $stockValue){
+							echo json_encode(array('status'=>'not available'));
+							return;
+						}
+					}
+				}
+			}
+			/*------------*/
 
             $product = $this->_initProduct();
             $related = $this->getRequest()->getParam('related_product');
