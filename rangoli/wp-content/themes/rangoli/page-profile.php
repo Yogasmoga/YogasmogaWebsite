@@ -48,7 +48,7 @@
 				$current_user_id  = get_current_user_id();
 					if($current_user_id == $user_id){
 						?>
-							<a class="edit" href="/profile/manage" ><img src="/rangoli/wp-content/themes/rangoli/images/edit_profile.png" /> </a>
+							<a class="edit" href="https://yogasmoga.com/profile/manage" ><img src="/rangoli/wp-content/themes/rangoli/images/edit_profile.png" /> </a>
 						<?php
 					}
 				}
