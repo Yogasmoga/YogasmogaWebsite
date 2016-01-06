@@ -167,7 +167,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 				$qty = $item->getQty();
 
 				if($qty >= $stockValue){
-					echo json_encode(array('message'=>'not available'));
+					echo json_encode(array('status'=>'not available'));
 					return;
 				}
 			}
