@@ -3,7 +3,7 @@ jQuery(window).load(function ($) {
 });
 jQuery(document).ready(function ($) {
     // scrollingLink();
-    wishList();
+//    wishList();
     readmore();
     detailHeight();
 
@@ -271,6 +271,7 @@ function readmore() {
     });
 }
 
+/*
 function wishList() {
     var wishlist = ".wishlist-link";
     //$(wishlist).find("a").removeAttr("href").css("cursor", "pointer");
@@ -317,7 +318,7 @@ function wishList() {
 
     });
 }
-
+*/
 
 function scrollingContentLink() {
     var wdth = jQuery(".top-divider").width();

@@ -52,6 +52,38 @@
             <?php
                 $_product = $item->getProduct();
                 $_product = Mage::getModel('catalog/product')->load($_product->getId());
+
+                $gallery = $_product->getMediaGalleryImages();
+
+                $buyRequest = $item->getBuyRequest();
+
+                $colorCode = $buyRequest['colorcode'];
+
+                $product_image ='';
+                //this is for normal product item list.
+                if(isset($colorCode)){
+                    $colorCodeText = "?color=" . $colorCode;
+                    foreach($gallery as $image){
+                        $imageLabelData = json_decode(trim($image->getLabel()), true);
+                        if($imageLabelData['type'] ='product image'){
+                            if($imageLabelData['color']==$colorCode){
+                                $product_image = (string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);
+                                break;
+                            }
+                        }
+                    }
+
+                }
+                else
+                    $colorCodeText = "";
+
+                if(false) {
+                    $image_type = $buyRequest['imagetype'];
+                    //this is for gift set product item list.
+                    if (isset($image_type)) {
+                        $product_image = (string)Mage::helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);
+                    }
+                }
             ?>
                 <tr id="item_<?php echo $item->getId();?>">
                     <?php
@@ -60,8 +92,14 @@
                     </td> */
                     ?>
                     <td class="primage">
-                        <img src="<?php echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100); ?>" />
+
+                        <?php if(false){ ?>
+                            <img src="<?php echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100); ?>" />
+                        <?php } ?>
+
+                        <img src="<?php echo $product_image; ?>" />
                     </td>
+
                     <td class="prname">
                         <span class="prd-nam"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?> </span>
                         <span class="prd-deldet">
