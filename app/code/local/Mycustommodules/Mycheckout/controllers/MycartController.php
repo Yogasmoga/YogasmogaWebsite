@@ -151,6 +151,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 $params['qty'] = $filter->filter($params['qty']);
             }
 			/* ----------------------  */
+			
 			$productId = (int)$this->getRequest()->getParam('product');
 			$product = Mage::getModel("catalog/product")->load($productId);
 			$super_attribute = $params['super_attribute'];
@@ -158,19 +159,22 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 			$childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($super_attribute, $product);
 			$productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($childProduct);
 			if($productStock->getIsInStock()){
-				$stockValue = $productStock->getQty();
+				$stockValue = (int)$productStock->getQty();
 
-				$cartItems = $cart->getQuote()->getAllItems();
+				$cartItems = $cart->getQuote()->getAllVisibleItems();
+				$productCartQuantity = 0;
+				$x = 0;
 				foreach ($cartItems as $item) {
-
+					 ++$x;
 					if ($childProduct->getSku() == $item->getSku()) {
 						$qty = $item->getQty();
-
-						if($qty >= $stockValue){
-							echo json_encode(array('status'=>'not available'));
-							return;
-						}
+						$productCartQuantity += $qty;
 					}
+				}
+
+				if($productCartQuantity >= $stockValue){
+					echo json_encode(array('status'=>'not available', 'x'=>$x, 'stock' => $stockValue, 'cart qty' => $productCartQuantity));
+					return;
 				}
 			}
 			/*------------------------*/
@@ -387,19 +391,22 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 			$childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($super_attribute, $product);
 			$productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($childProduct);
 			if($productStock->getIsInStock()){
-				$stockValue = $productStock->getQty();
+				$stockValue = (int)$productStock->getQty();
 
-				$cartItems = $cart->getQuote()->getAllItems();
+				$cartItems = $cart->getQuote()->getAllVisibleItems();
+				$productCartQuantity = 0;
+				$x = 0;
 				foreach ($cartItems as $item) {
-
+					 ++$x;
 					if ($childProduct->getSku() == $item->getSku()) {
 						$qty = $item->getQty();
-
-						if($qty >= $stockValue){
-							echo json_encode(array('status'=>'not available'));
-							return;
-						}
+						$productCartQuantity += $qty;
 					}
+				}
+
+				if($productCartQuantity >= $stockValue){
+					echo json_encode(array('status'=>'not available', 'x'=>$x, 'stock' => $stockValue, 'cart qty' => $productCartQuantity));
+					return;
 				}
 			}
 			/*------------*/
