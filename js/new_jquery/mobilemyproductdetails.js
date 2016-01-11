@@ -846,6 +846,10 @@ function addtocart() {
                 jQuery(".product_add_conf_popup").fadeIn();
                 jQuery(".product_add_conf_popup").find(".cart_addition_msg").html("This product is already in your gift set,<br/>please place a separate order.");
             }
+            else if(result.status=="not available"){
+                jQuery("#addtobagloader").hide();
+                alert('The requested quantity for this product is not available.');
+            }
             else {
                 jQuery("#addtobagloader").hide();
                 alert('This item is out of stock.');
