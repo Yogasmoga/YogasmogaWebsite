@@ -104,7 +104,7 @@
                         <span class="prd-nam"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?> </span>
                         <span class="prd-deldet">
                             <a href="<?php echo $_product->getProductUrl(); ?><?php echo $colorCodeText;?>">View Details</a>
-                            <a class="prd-remove" title="Remove Item" href="<?php echo Mage::helper('core/url')->getHomeUrl()."/wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Delete</a>
+                            <a class="prd-remove" title="Remove Item" href="<?php echo Mage::getUrl('',array('_secure'=>true))."wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Delete</a>
                         </span>                        
                     </td>
 
