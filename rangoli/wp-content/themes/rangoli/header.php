@@ -276,7 +276,7 @@ if(!is_user_logged_in()){
                             <ul>
                                 <li><a href="/men/tops/tees">Tees</a></li>
                                 <li><a href="/men/tops/tanks">TANKS</a></li>
-                                <li><a href="/men/tops/jackets">Jackets</a></li>
+                                <li><a href="/men/tops/jackets">Jackets & Hoodies</a></li>
                             </ul>
                         </li>
                         <li><a href="/men/bottoms"> Bottoms</a>
