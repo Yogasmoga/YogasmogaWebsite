@@ -150,7 +150,7 @@ $columns = $this->getColumns();
         </div>
         <p>
             <a class="prd-remove" title="Remove Item"
-               href="<?php echo Mage::helper('core/url')->getHomeUrl() . "/wishlist/index/remove/item/" . $item->getWishlistItemId(); ?>">Delete</a>
+               href="<?php echo Mage::getUrl('',array('_secure'=>true)) . "wishlist/index/remove/item/" . $item->getWishlistItemId(); ?>">Delete</a>
         </p>
 
         <textarea style="display: none;" placeholder="Notes. ." title="Comment"
