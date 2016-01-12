@@ -67,8 +67,10 @@ $columns = $this->getColumns();
 						$imageLabelData = json_decode(trim($image->getLabel()), true);
 						if($imageLabelData['type'] ='product image'){
 								if($imageLabelData['color']==$colorCode){
-								$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
-									break;
+								//$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
+									
+								$product_image =(string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail',$image->getFile())->setCropPosition('top')->adaptiveResize(320,320);		
+								break;
 								}
 						}
 					}	
@@ -79,12 +81,12 @@ $columns = $this->getColumns();
 				}
 				//this is for gift set product item list.
 				if(isset($image_type)){
-					$product_image =(string)Mage::helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
+					$product_image =(string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail')->setCropPosition('top')->adaptiveResize(320,320);	
 					
 					
 				}
         ?>
-
+		<?php echo $this->; ?>
         <div id="item_<?php echo $item->getId(); ?>" class="span5">
 
 
