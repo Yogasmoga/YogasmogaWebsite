@@ -25,138 +25,138 @@
  */
 ?>
 <?php
-    $columns = $this->getColumns();
-	$colorCode = Mage::app()->getRequest()->getParam('colorcode');
-	echo $colorCode; 
+$columns = $this->getColumns();
 ?>
 <table class="tblwishlist" id="wishlist-table">
     <thead>
-        <tr>
-            <?php /*
+    <tr>
+        <?php /*
             <?php foreach ($columns as $column): ?>
                 <th><?php echo $column->getTitle();?></th>
             <?php endforeach; ?>
             */ ?>
-            <th>&nbsp;</th>
-            <th>ITEM</th>
-            <th style="text-align: left; padding-right: 10px;">PRICE</th>
+        <th>&nbsp;</th>
+        <th>ITEM</th>
+        <th style="text-align: left; padding-right: 10px;">PRICE</th>
 
-        </tr>
-         <tr class="bar" style="height: 5px;">
-            <td colspan="3" style="font-size: 0;">
-                <img src="<?php echo $this->getSkinUrl('images/big-divider.png'); ?>" style="width: 100%;">
-            </td>
-        </tr>
+    </tr>
+    <tr class="bar" style="height: 5px;">
+        <td colspan="3" style="font-size: 0;">
+            <img src="<?php echo $this->getSkinUrl('images/big-divider.png'); ?>" style="width: 100%;">
+        </td>
+    </tr>
     </thead>
     <tbody>
-        <?php if (count($this->getItems())): 
-		
-			
-		?>
-            <?php foreach ($this->getItems() as $item): 
+    <?php if (count($this->getItems())): ?>
+        <?php foreach ($this->getItems() as $item): ?>
+            <?php
+            $_product = $item->getProduct();
+            $_product = Mage::getModel('catalog/product')->load($_product->getId());
 
-			    $_product = $item->getProduct();
-                $_product = Mage::getModel('catalog/product')->load($_product->getId());
-				$gallery = $_product->getMediaGalleryImages();
-				
-				$buyRequest = $item->getBuyRequest();
-				
-				$colorCode = $buyRequest['colorcode'];
-				$image_type = $buyRequest['imagetype'];
-				
-				$product_image ='';
-				//this is for normal product item list.
-				if(isset($colorCode)){
-					$colorCodeText = "?color=" . $colorCode;
-					foreach($gallery as $image){
-						$imageLabelData = json_decode(trim($image->getLabel()), true);
-						if($imageLabelData['type'] ='product image'){
-								if($imageLabelData['color']==$colorCode){
-								$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
-									break;
-								}
-						}
-					}	
-					
-				}		
-				else{
-					$colorCodeText = "";
-				}
-				//this is for gift set product item list.
-				if(isset($image_type)){
-					$product_image =(string)Mage::helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
-					
-					
-				}
-				
-				
+            $gallery = $_product->getMediaGalleryImages();
+
+            $buyRequest = $item->getBuyRequest();
+
+            $colorCode = $buyRequest['colorcode'];
+
+            $product_image ='';
+            //this is for normal product item list.
+            if(isset($colorCode)){
+                $colorCodeText = "?color=" . $colorCode;
+                foreach($gallery as $image){
+                    $imageLabelData = json_decode(trim($image->getLabel()), true);
+                    if($imageLabelData['type'] ='product image'){
+                        if($imageLabelData['color']==$colorCode){
+                            $product_image = (string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);
+                            break;
+                        }
+                    }
+                }
+
+            }
+            else
+                $colorCodeText = "";
+
+            if(false) {
+                $image_type = $buyRequest['imagetype'];
+                //this is for gift set product item list.
+                if (isset($image_type)) {
+                    $product_image = (string)Mage::helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);
+                }
+            }
             ?>
-                <tr id="item_<?php echo $item->getId();?>">
-                    <?php
-                    /* <td class="removeitem">
-                        <a class="btn-remove btn-remove2" title="Remove Item" href="<?php echo Mage::helper('core/url')->getHomeUrl()."/wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Remove item</a> 
-                    </td> */
-                    ?>
-                    <td class="primage">
+            <tr id="item_<?php echo $item->getId();?>">
+                <?php
+                /* <td class="removeitem">
+                    <a class="btn-remove btn-remove2" title="Remove Item" href="<?php echo Mage::helper('core/url')->getHomeUrl()."/wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Remove item</a>
+                </td> */
+                ?>
+                <td class="primage">
+
+                    <?php if($colorCodeText==""){ ?>
+                        <img src="<?php echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100); ?>" />
+                    <?php }else{ ?>
                         <img src="<?php echo $product_image; ?>" />
-                    </td>
-                    <td class="prname">
-                        <span class="prd-nam"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?> </span>
+                    <?php } ?>
+                </td>
+
+                <td class="prname">
+                    <span class="prd-nam"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?> </span>
                         <span class="prd-deldet">
                             <a href="<?php echo $_product->getProductUrl(); ?><?php echo $colorCodeText;?>">View Details</a>
                             <a class="prd-remove" title="Remove Item" href="<?php echo Mage::getUrl('',array('_secure'=>true))."wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Delete</a>
-                        </span>                        
-                    </td>
+                        </span>
+                </td>
 
-                    <td class="prnote">
-                        <textarea style="display: none;" placeholder="Notes. ." title="Comment" name="description[<?php echo $item->getWishlistItemId(); ?>]"><?php echo trim(($this->escapeHtml($item->getDescription()))); ?></textarea>
-                    </td>
+                <td class="prnote">
+                    <textarea style="display: none;" placeholder="Notes. ." title="Comment" name="description[<?php echo $item->getWishlistItemId(); ?>]"><?php echo trim(($this->escapeHtml($item->getDescription()))); ?></textarea>
+                </td>
 
-                    <td class="prprice">
-                        <?php
-                            $price = $_product->getSpecialPrice();
-                            if($price == "")
-                                $price = $_product->getPrice();
-                            $price = round($price,2);
-                              if (floor($price)==$price)
-                                $price = floor($price);
-                            echo "$".number_format((float)($price), 0, '.', '');
-                        ?>
-                    </td>
-                    <?php /*
+                <td class="prprice">
+                    <?php
+                    $price = $_product->getSpecialPrice();
+                    if($price == "")
+                        $price = $_product->getPrice();
+                    $price = round($price,2);
+                    if (floor($price)==$price)
+                        $price = floor($price);
+                    echo "$".number_format((float)($price), 0, '.', '');
+                    ?>
+                </td>
+                <?php /*
                     <td class="praddtocart">
                         <?php /*
                         <button onclick="addWItemToCart(<?php echo $item->getWishlistItemId(); ?>);" downimageurl="<?php echo $this->getSkinUrl('images/add_to_cart_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/add_to_cart_off.png'); ?>" class="addtocartbtn spbutton custombtn" type="button"></button>
-                        
+
                         <button onclick="window.location = '<?php echo $_product->getProductUrl(); ?>';" downimageurl="<?php echo $this->getSkinUrl('images/add_to_cart_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/add_to_cart_off.png'); ?>" class="addtocartbtn spbutton custombtn" type="button"></button>
-                        
+
                         <a href="<?php echo $_product->getProductUrl(); ?>">View Details</a>
                     </td>*/ ?>
-                    <?php /*
+                <?php /*
                     <?php foreach ($columns as $column): ?>
                         <td><?php $column->setItem($item); echo $column->toHtml($item);?>
                             <?php
-                                $product = $item->getProduct(); 
+                                $product = $item->getProduct();
                                 echo $product->getId(); ?>
                         </td>
                     <?php endforeach; ?>
                     */ ?>
-                </tr>                
-            <?php endforeach ?>
-        <?php else: ?>
-            <td colspan="<?php echo count($columns);?>" class="wishlist-empty"><?php echo $this->__('This Wish list has no Items');?></td>
-        <?php endif; ?>
+            </tr>
+        <?php endforeach ?>
+    <?php else: ?>
+        <td colspan="<?php echo count($columns);?>" class="wishlist-empty"><?php echo $this->__('This Wish list has no Items');?></td>
+    <?php endif; ?>
     </tbody>
 </table>
 <?php foreach ($columns as $column): ?>
     <?php echo $column->getAdditionalHtml();?>
 <?php endforeach; ?>
 <script type="text/javascript">
-//<![CDATA[
+    //<![CDATA[
     decorateTable('wishlist-table');
 
-<?php foreach ($columns as $column): ?>
+    <?php foreach ($columns as $column): ?>
     <?php echo $column->getJs();?>
-<?php endforeach; ?>
-//]]>
+    <?php endforeach; ?>
+    //]]>
 </script>
