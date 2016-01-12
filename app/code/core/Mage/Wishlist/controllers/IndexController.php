@@ -436,7 +436,8 @@ class Mage_Wishlist_IndexController extends Mage_Wishlist_Controller_Abstract
 
         Mage::helper('wishlist')->calculate();
 
-        $this->_redirectReferer(Mage::getUrl('*/*'));
+        //$this->_redirectReferer(Mage::getUrl('*/*'));
+		$this->_redirectReferer(Mage::getUrl('wishlist'));
     }
 
     /**
