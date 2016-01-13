@@ -64,7 +64,9 @@ foreach ($productCollection as $_product) {
             $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $configurableProduct);
 
             foreach ($_childProducts as $_childProduct) {
-
+				 $forHidden = $_childProduct->getAttributeText('hidden_product');
+            if (isset($forHidden) && strtolower($forHidden) == "yes")
+                continue;
                 $buy_url = $configurableProduct->getUrlInStore();
                 $price = round($configurableProduct->getPrice(), 2);
                 $sku = $_childProduct->getSku();
