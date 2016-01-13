@@ -65,6 +65,10 @@ foreach ($productCollection as $_product) {
 
             foreach ($_childProducts as $_childProduct) {
 
+                $forHiddenChild = $_childProduct->getAttributeText('hidden_product');
+                if (isset($forHiddenChild) && strtolower($forHiddenChild) == "yes")
+                    continue;
+
                 $buy_url = $configurableProduct->getUrlInStore();
                 $price = round($configurableProduct->getPrice(), 2);
                 $sku = $_childProduct->getSku();
