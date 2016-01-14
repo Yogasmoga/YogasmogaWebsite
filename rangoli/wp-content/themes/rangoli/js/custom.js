@@ -982,7 +982,7 @@ function play() {
     player.attr("src", src);
     var ww=$(window).width();
     playing_video = true;
-    $(".wp_page_banner").height(ww*0.5625);
+    //$(".wp_page_banner").height(ww*0.5625);
     $(".homepage_slider .slides li").height(ww*0.5625);
 }
 
