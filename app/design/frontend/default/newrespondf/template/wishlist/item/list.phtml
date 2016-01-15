@@ -53,6 +53,7 @@ $columns = $this->getColumns();
         $_product = $item->getProduct();
         $_product = Mage::getModel('catalog/product')->load($_product->getId());
 
+        $gallery = $_product->getMediaGalleryImages();
         $buyRequest = $item->getBuyRequest();
 
         $colorCode = $buyRequest['colorcode'];
