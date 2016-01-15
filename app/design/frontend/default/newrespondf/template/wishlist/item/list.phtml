@@ -91,30 +91,17 @@ $columns = $this->getColumns();
 
 
             <div class="col_left_img">
-                <a class="product-image" title="" href="<?php echo $_product->getProductUrl(); ?>">
+                <a class="product-image" title="" href="<?php echo $_product->getProductUrl().$colorCodeText; ?>">
 						<?php if($colorCodeText==""){ ?>
                           
 						  <img src="<?php echo (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail')->setCropPosition('top')->adaptiveResize(320,320); ?>" />
 						<?php }else{ ?>
                             <img src="<?php echo $product_image; ?>" />
                         <?php } ?>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-					<?php /*?> <img alt="<?php echo $_product->getName() ?>" width="320" height="320" alt="" src="<?php echo $this->helper('adaptiveResize/image')->init($_product, 'thumbnail')->setCropPosition('top')->adaptiveResize(320,320); ?>"/></a><?php */?>
 			</div>
             <div class="col_right_options">
                 <div class="product-name">
-                    <a href="<?php echo $_product->getProductUrl(); ?>"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?></a>
+                    <a href="<?php echo $_product->getProductUrl().$colorCodeText; ?>"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?></a>
 					
 					<span style="display:block"><?php 
 					
