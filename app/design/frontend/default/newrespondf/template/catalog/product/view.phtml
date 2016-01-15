@@ -1011,7 +1011,7 @@ if ($lengthAvailable) {
                                 $wishid = $_wishlist_item->getWishlistItemId();
                             }
                             ?>
-                            <a class="btn wish"
+                            <a class="btn wish" id="<?php echo $productId; ?>"
                                href="<?php echo Mage::getUrl('', array('_secure' => false)) . "mynewtheme/addtowishlist/removemobile/item/" . $wishid; ?>">
                                 <!--                                <img class="" src="-->
                                 <?php //echo $this->getSkinUrl('images/added_to_wishlist.png'); ?><!--" width="28px" height="28px" alt=""/>-->

@@ -968,13 +968,19 @@ jQuery(document).ready(function($){
         $(".product_add_conf_popup").fadeOut();
     });
     $(".btn.wish").click(function(e){
+
+        var currentColor = $("#colorcontainer div.selected table").attr('value');
+
         var btn = $(this);
+        var productid = btn.attr('id');
+
         e.preventDefault();
         if(!$(this).hasClass("not_login")) {
             var href = $(this).attr('href');
             $.ajax({
                 url: href,
                 type: 'POST',
+                data:{'productid': productid, 'colorcode': currentColor},
                 success: function (response) {
                     btn.attr("href", response);
                     var index = response.search("addmobile");

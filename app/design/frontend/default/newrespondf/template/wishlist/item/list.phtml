@@ -52,41 +52,77 @@ $columns = $this->getColumns();
         <?php
         $_product = $item->getProduct();
         $_product = Mage::getModel('catalog/product')->load($_product->getId());
+
+        $buyRequest = $item->getBuyRequest();
+
+        $colorCode = $buyRequest['colorcode'];
+//        $image_type = $buyRequest['imagetype'];
+
+        $product_image = '';
+        //this is for normal product item list.
+        if(isset($colorCode)){
+            $colorCodeText = "?color=" . $colorCode;
+            foreach($gallery as $image){
+                $imageLabelData = json_decode(trim($image->getLabel()), true);
+                if($imageLabelData['type'] ='product image'){
+                    if($imageLabelData['color']==$colorCode){
+                        //$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);
+
+                        $product_image =(string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail',$image->getFile())->setCropPosition('top')->adaptiveResize(320,320);
+                        break;
+                    }
+                }
+            }
+
+        }
+        else{
+            $colorCodeText = "";
+        }
+
+        //this is for gift set product item list.
+        if (false && isset($image_type)) {
+            $product_image = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail')->setCropPosition('top')->adaptiveResize(320, 320);
+        }
         ?>
 
         <div id="item_<?php echo $item->getId(); ?>" class="span5">
 
 
             <div class="col_left_img">
-                <a class="product-image" title="" href="<?php echo $_product->getProductUrl(); ?>">
-                    
-					 <img alt="<?php echo $_product->getName() ?>" width="320" height="320" alt="" src="<?php echo $this->helper('adaptiveResize/image')->init($_product, 'thumbnail')->setCropPosition('top')->adaptiveResize(320,320); ?>"/></a>
-					
-					<!--<img width="100" height="150"
+                <a class="product-image" title="" href="<?php echo $_product->getProductUrl(); ?><?php echo $colorCodeText;?>">
+
+                    <?php if($colorCodeText==""){ ?>
+
+                        <img src="<?php echo (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail')->setCropPosition('top')->adaptiveResize(320,320); ?>" />
+                    <?php }else{ ?>
+                        <img src="<?php echo $product_image; ?>"/>
+                    <?php } ?>
+
+                <!--<img width="100" height="150"
                          src="<?php //echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100); ?>"/></a>-->
             </div>
             <div class="col_right_options">
                 <div class="product-name">
                     <a href="<?php echo $_product->getProductUrl(); ?>"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?></a>
 					
-					<span style="display:block"><?php 
-					
-					$resource = Mage::getSingleton('core/resource');  
-					$read = $resource->getConnection('catalog_read');  
-					$imageJson = json_decode($_product->getImageLabel());
-					$imageJson = get_object_vars($imageJson);
-					
-					
-					if(isset($imageJson['color'])){
-						$colorCode = $imageJson['color'];
-						$result = $read->fetchAll('SELECT value FROM eav_attribute_option_value  where option_id =' .$colorCode .' limit 1');
-						foreach($result as $color){
-						echo $color['value'];
-						
-						}
-						
-					}
-					?>
+					<span style="display:block"><?php
+
+                        $resource = Mage::getSingleton('core/resource');
+                        $read = $resource->getConnection('catalog_read');
+                        $imageJson = json_decode($_product->getImageLabel());
+                        $imageJson = get_object_vars($imageJson);
+
+
+                        if (isset($imageJson['color'])) {
+                            $colorCode = $imageJson['color'];
+                            $result = $read->fetchAll('SELECT value FROM eav_attribute_option_value  where option_id =' . $colorCode . ' limit 1');
+                            foreach ($result as $color) {
+                                echo $color['value'];
+
+                            }
+
+                        }
+                        ?>
 					
 					</span>
                 </div>
@@ -150,7 +186,7 @@ $columns = $this->getColumns();
         </div>
         <p>
             <a class="prd-remove" title="Remove Item"
-               href="<?php echo Mage::getUrl('',array('_secure'=>true)) . "wishlist/index/remove/item/" . $item->getWishlistItemId(); ?>">Delete</a>
+               href="<?php echo Mage::getUrl('', array('_secure' => true)) . "wishlist/index/remove/item/" . $item->getWishlistItemId(); ?>">Delete</a>
         </p>
 
         <textarea style="display: none;" placeholder="Notes. ." title="Comment"
