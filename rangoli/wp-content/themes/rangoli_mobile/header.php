@@ -744,7 +744,7 @@ $logged_in = is_user_logged_in();
                 </div>
                 <div class="additional_links">
                     <ul>
-                        <li><a href="javascript:void(0);">&copy; 2015 YOGASMOGA</a></li>
+                        <li><a href="javascript:void(0);">&copy; 2016 YOGASMOGA</a></li>
                         <li><a href="/privacy-policy/">Privacy Policy</a></li>
                         <li><a href="/terms-and-conditions/">Terms &amp; Conditions</a></li>
                     </ul>

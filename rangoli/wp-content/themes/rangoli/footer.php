@@ -315,7 +315,7 @@ if(!is_user_logged_in()) {
         </div>
         <div class="privacy">
             <ul>
-                <li>Copyright &copy; 2015 YOGASMOGA. All Rights Reserved. </li>
+                <li>Copyright &copy; 2016 YOGASMOGA. All Rights Reserved. </li>
                 <li> | </li>
                 <li><a href="/privacy-policy/">Privacy Policy</a></li>
                 <li> | </li>
