@@ -471,7 +471,14 @@ else
                                 <div class="cart_total"><?php
                                     $subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
                                     $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
-                                    echo "$". substr($formattedPrice, 1,strlen($formattedPrice));
+									$price = floatval(substr($formattedPrice, 1,strlen($formattedPrice)));
+									
+									if($price==intval($price))
+										echo "$". intval($price);
+									else
+										echo "$". $price;
+									//echo $formattedPrice;
+									//echo strrpos($formattedPrice,'.',-1);
                                     ?>
                                 </div>
                         </div>
