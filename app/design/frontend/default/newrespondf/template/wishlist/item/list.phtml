@@ -67,8 +67,10 @@ $columns = $this->getColumns();
 						$imageLabelData = json_decode(trim($image->getLabel()), true);
 						if($imageLabelData['type'] ='product image'){
 								if($imageLabelData['color']==$colorCode){
-								$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
-									break;
+								//$product_image =	(string)Mage::helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
+									
+								$product_image =(string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail',$image->getFile())->setCropPosition('top')->adaptiveResize(320,320);		
+								break;
 								}
 						}
 					}	
@@ -79,23 +81,27 @@ $columns = $this->getColumns();
 				}
 				//this is for gift set product item list.
 				if(isset($image_type)){
-					$product_image =(string)Mage::helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);	
+					$product_image =(string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail')->setCropPosition('top')->adaptiveResize(320,320);	
 					
 					
 				}
         ?>
-
+	
         <div id="item_<?php echo $item->getId(); ?>" class="span5">
 
 
             <div class="col_left_img">
-                <a class="product-image" title="" href="<?php echo $_product->getProductUrl(); ?>">
-						<img src="<?php echo $product_image; ?>" />
-					<?php /*?> <img alt="<?php echo $_product->getName() ?>" width="320" height="320" alt="" src="<?php echo $this->helper('adaptiveResize/image')->init($_product, 'thumbnail')->setCropPosition('top')->adaptiveResize(320,320); ?>"/></a><?php */?>
+                <a class="product-image" title="" href="<?php echo $_product->getProductUrl().$colorCodeText; ?>">
+						<?php if($colorCodeText==""){ ?>
+                          
+						  <img src="<?php echo (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail')->setCropPosition('top')->adaptiveResize(320,320); ?>" />
+						<?php }else{ ?>
+                            <img src="<?php echo $product_image; ?>" />
+                        <?php } ?>
 			</div>
             <div class="col_right_options">
                 <div class="product-name">
-                    <a href="<?php echo $_product->getProductUrl(); ?>"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?></a>
+                    <a href="<?php echo $_product->getProductUrl().$colorCodeText; ?>"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?></a>
 					
 					<span style="display:block"><?php 
 					

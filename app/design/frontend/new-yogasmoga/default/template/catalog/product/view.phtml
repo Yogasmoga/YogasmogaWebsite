@@ -1249,13 +1249,13 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                     <h2 style="margin-bottom:20px;">Product description</h2>
                     <!-- description -->
-                    <?php if (strlen($_product->getDescription()) < 200) { ?>
+                    <?php if (strlen($_product->getDescription()) < 210) { ?>
                         <div class="shortdesc"><?php echo $_product->getDescription(); ?> </div>
                         <?php
                     } else {
                         $str = $_product->getDescription();
-                        $firststr = substr($str, 0, 200);
-                        $secondstr = substr($str, 200, strlen($str));
+                        $firststr = substr($str, 0, 210);
+                        $secondstr = substr($str, 210, strlen($str));
 
                         ?>
                         <div class="shortdesc"><span><?php echo $firststr; ?></span><span
