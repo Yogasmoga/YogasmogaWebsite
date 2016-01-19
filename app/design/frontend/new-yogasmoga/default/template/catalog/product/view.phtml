@@ -88,7 +88,8 @@ if ($this->getRequest()->getParam('hidden')) {
 
 <div class="namaskar-overlay1">&nbsp;</div>
 <script type="text/javascript">
-    jQuery(window).load(function () {
+    /*jQuery(window).load(function () {*/
+	 jQuery(document).ready(function(){
         setImageContheightPDP();
         jQuery('body').css('overflow', 'auto');
         jQuery('.namaskar-overlay1').fadeOut('slow');
