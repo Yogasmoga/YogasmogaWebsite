@@ -87,6 +87,7 @@ if ($this->getRequest()->getParam('hidden')) {
 ?>
 
 <div class="namaskar-overlay1">&nbsp;</div>
+<script src="http://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <script type="text/javascript">
     /*jQuery(window).load(function () {*/
 	 jQuery(document).ready(function(){
@@ -110,6 +111,18 @@ if ($this->getRequest()->getParam('hidden')) {
             }
         }
     })
+</script>
+<script type="text/javascript">
+
+ jQuery('document').ready(function(){  
+ jQuery('#productdetails').before('<div class="block-loader"><img src="<?php echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>"/></div>')
+  jQuery('#productdetails').imagesLoaded( function() {
+  // images have loaded
+  jQuery('#productdetails').addClass("loaded");
+  jQuery('.block-loader').remove();
+  //alert('product images loaded');
+  });
+ });
 </script>
 <img style="display:none;" src="<?php echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>"/>
 
@@ -719,6 +732,10 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 table.zoomsmallimagecontainer td {
                     text-align: center;
                 }
+				/*.upper-container{ min-height:400px;opacity:0;}
+				.upper-container.loaded{ opacity:1;}*/
+				#productdetails .block-elm{opacity:0;}
+				#productdetails.loaded .block-elm{opacity:1;}
             </style>
             <script type="text/javascript">
                 _canzoomimages = true;
@@ -2100,6 +2117,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
         });
     </script>
+	
 
     <?php
     }
