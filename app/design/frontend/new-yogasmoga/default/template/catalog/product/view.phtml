@@ -86,14 +86,14 @@ if ($this->getRequest()->getParam('hidden')) {
 
 ?>
 
-<div class="namaskar-overlay1">&nbsp;</div>
-<script src="http://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+<!--<div class="namaskar-overlay1">&nbsp;</div>-->
+<script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>imagesloaded/imagesloaded.js"></script>
 <script type="text/javascript">
     /*jQuery(window).load(function () {*/
 	 jQuery(document).ready(function(){
         setImageContheightPDP();
         jQuery('body').css('overflow', 'auto');
-        jQuery('.namaskar-overlay1').fadeOut('slow');
+       /* jQuery('.namaskar-overlay1').fadeOut('slow');*/
         jQuery("body").on("click", ".vid-popup-overlay", function () {
             var dfVid = document.getElementById("df-vid");
             var measureVid = document.getElementById("measure-vid");
@@ -115,8 +115,8 @@ if ($this->getRequest()->getParam('hidden')) {
 <script type="text/javascript">
 
  jQuery('document').ready(function(){  
- jQuery('#productdetails').before('<div class="block-loader"><img src="<?php echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>"/></div>')
-  jQuery('#productdetails').imagesLoaded( function() {
+ jQuery('#productdetails').before('<div class="block-loader"><img src="<?php echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>"/></div>');
+   jQuery('#productdetails').imagesLoaded( function() {
   // images have loaded
   jQuery('#productdetails').addClass("loaded");
   jQuery('.block-loader').remove();
@@ -732,14 +732,16 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 table.zoomsmallimagecontainer td {
                     text-align: center;
                 }
-				/*.upper-container{ min-height:400px;opacity:0;}
-				.upper-container.loaded{ opacity:1;}*/
+				
 				#productdetails .block-elm{opacity:0;}
 				#productdetails.loaded .block-elm{opacity:1;}
 				.block-loader {
 					height: 500px;
 					text-align:center;
 					width: 100%;
+					position:absolute;
+					top:0;
+					left:0;
 					}
 					.block-loader > img {
 						position: relative;
@@ -747,6 +749,11 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 						transform: translateY(-50%);
 						-webkit-transform: translateY(-50%);
 					}	
+					.product-details{position:relative;}
+					ul.featureList li.last-df img.vid-pl-btn{
+						left: 50%!important;top: 50%!important; transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);						
+					}
+					.featureList span.ftrFig{position:relative;}
             </style>
             <script type="text/javascript">
                 _canzoomimages = true;

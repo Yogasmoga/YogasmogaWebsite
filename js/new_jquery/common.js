@@ -1,5 +1,5 @@
 var _refercount = 1;
-jQuery(window).load(function($){
+jQuery(document).ready(function($){
     //featuredSec();
     //colorStorySec();
     featLiHeightAd(); 
