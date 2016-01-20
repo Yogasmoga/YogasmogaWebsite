@@ -124,7 +124,7 @@ if ($this->getRequest()->getParam('hidden')) {
   });
  });
 </script>
-<img style="display:none;" src="<?php echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>"/>
+<!--<img style="display:none;" src="<?php// echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>"/>-->
 
 <?php
 $isRewardAble = false;
@@ -736,6 +736,17 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 				.upper-container.loaded{ opacity:1;}*/
 				#productdetails .block-elm{opacity:0;}
 				#productdetails.loaded .block-elm{opacity:1;}
+				.block-loader {
+					height: 500px;
+					text-align:center;
+					width: 100%;
+					}
+					.block-loader > img {
+						position: relative;
+						top: 50%;
+						transform: translateY(-50%);
+						-webkit-transform: translateY(-50%);
+					}	
             </style>
             <script type="text/javascript">
                 _canzoomimages = true;
