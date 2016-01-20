@@ -175,7 +175,7 @@ function detailHeight() {
     var wdth35H = jQuery(".wdth35").height();
     wdth35H = wdth35H;
     console.log(wdth35H);
-    jQuery(".wdth65").css("min-height", wdth35H);
+    //jQuery(".wdth65").css("min-height", wdth35H);
 }
 
 
