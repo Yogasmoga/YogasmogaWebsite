@@ -5,8 +5,13 @@ jQuery(document).ready(function($){
     //featLiHeightAd(); 
     //browserTest();
     setFeatureVideoWidth();    
-    var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
-    jQuery(".featureList span.ftrFig").css("height", featLiH);   
+	setTimeout(function() {
+      // Do something after 1 seconds
+   var featLiH=jQuery(".featureList span.ftrFig img.df-img").first().height();
+jQuery(".featureList span.ftrFig").css("height",featLiH);
+ }, 1000);
+   /* var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
+    jQuery(".featureList span.ftrFig").css("height", featLiH);   */
     playBtnPos();
     sizeChartScroll();
 
