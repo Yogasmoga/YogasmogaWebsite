@@ -744,10 +744,12 @@ function initializeBanner(source, str) {
     jQuery(".header-container").css("top", "0");
     //jQuery("#bodycompensator").css("height", "94px");
 }
-jQuery(document).ready(function(){
-setTimeout(function() {
+jQuery(window).load(function(){
+/*setTimeout(function() {
       // Do something after 1 seconds
    var featLiH=jQuery(".featureList span.ftrFig img.df-img").first().height();
 jQuery(".featureList span.ftrFig").css("height",featLiH);
- }, 1000);
+ }, 1000);*/
+  var featLiH=jQuery(".featureList span.ftrFig img.df-img").first().height();
+jQuery(".featureList span.ftrFig").css("height",featLiH);
 });
