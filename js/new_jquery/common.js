@@ -2,11 +2,11 @@ var _refercount = 1;
 jQuery(document).ready(function($){
     //featuredSec();
     //colorStorySec();
-    //featLiHeightAd(); 
+    featLiHeightAd(); 
     //browserTest();
     setFeatureVideoWidth();    
-    var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
-    jQuery(".featureList span.ftrFig").css("height", featLiH);   
+    //var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
+    //jQuery(".featureList span.ftrFig").css("height", featLiH);   
     playBtnPos();
     sizeChartScroll();
 
