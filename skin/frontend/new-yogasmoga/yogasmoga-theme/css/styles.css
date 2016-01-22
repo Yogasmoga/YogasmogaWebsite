@@ -4472,3 +4472,7 @@ body.checkout-onepage-index #payment_form_stripe
 .paypal-review-order .paypal-details tbody tr.pritem td{border-bottom: 1px solid #999; padding: 24px 0 18px; width: auto !important;}
 .paypal-review-order .paypal-details .productname{font-family: gothambold; color: #555; font-size: 11px; text-transform: uppercase;}
 .paypal-review-order .paypal-details .productdetail span{font-size: 11px;}
+
+/************ Edit 22-jan-2016 ***/
+
+#createcardform table.inputtable td.inputholder input[type="text"],#createcardform table.inputtable td.inputholder input[type="password"]{height:34px;}
