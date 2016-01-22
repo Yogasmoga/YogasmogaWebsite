@@ -150,35 +150,40 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 );
                 $params['qty'] = $filter->filter($params['qty']);
             }
-			/* ----------------------  */
+
+
+			/* ---------------------- pre-order check ------------ */
 			
 			$productId = (int)$this->getRequest()->getParam('product');
-			$product = Mage::getModel("catalog/product")->load($productId);
-			$super_attribute = $params['super_attribute'];
 
-			$childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($super_attribute, $product);
-			$productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($childProduct);
-			if($productStock->getBackorders()!= 1){	
-				if($productStock->getIsInStock()){
-					$stockValue = (int)$productStock->getQty();
+            if($productId!=4) {
+                $product = Mage::getModel("catalog/product")->load($productId);
+                $super_attribute = $params['super_attribute'];
 
-					$cartItems = $cart->getQuote()->getAllVisibleItems();
-					$productCartQuantity = 0;
-					$x = 0;
-					foreach ($cartItems as $item) {
-						 ++$x;
-						if ($childProduct->getSku() == $item->getSku()) {
-							$qty = $item->getQty();
-							$productCartQuantity += $qty;
-						}
-					}
+                $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($super_attribute, $product);
+                $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($childProduct);
+                if ($productStock->getBackorders() != 1) {
+                    if ($productStock->getIsInStock()) {
+                        $stockValue = (int)$productStock->getQty();
 
-					if($productCartQuantity >= $stockValue){
-						echo json_encode(array('status'=>'not available', 'x'=>$x, 'stock' => $stockValue, 'cart qty' => $productCartQuantity));
-						return;
-					}
-				}
-			}	
+                        $cartItems = $cart->getQuote()->getAllVisibleItems();
+                        $productCartQuantity = 0;
+                        $x = 0;
+                        foreach ($cartItems as $item) {
+                            ++$x;
+                            if ($childProduct->getSku() == $item->getSku()) {
+                                $qty = $item->getQty();
+                                $productCartQuantity += $qty;
+                            }
+                        }
+
+                        if ($productCartQuantity >= $stockValue) {
+                            echo json_encode(array('status' => 'not available', 'x' => $x, 'stock' => $stockValue, 'cart qty' => $productCartQuantity));
+                            return;
+                        }
+                    }
+                }
+            }
 			/*------------------------*/
 			
             $product = $this->_initProduct();
