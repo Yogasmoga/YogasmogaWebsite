@@ -1,12 +1,13 @@
 var _refercount = 1;
-jQuery(window).load(function($){
+jQuery(document).ready(function($){
     //featuredSec();
     //colorStorySec();
-    featLiHeightAd(); 
+    //featLiHeightAd(); 
     //browserTest();
     setFeatureVideoWidth();    
-    var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
-    jQuery(".featureList span.ftrFig").css("height", featLiH);   
+	
+   /* var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
+    jQuery(".featureList span.ftrFig").css("height", featLiH);   */
     playBtnPos();
     sizeChartScroll();
 
@@ -743,4 +744,15 @@ function initializeBanner(source, str) {
     jQuery(".header-container").css("top", "0");
     //jQuery("#bodycompensator").css("height", "94px");
 }
+jQuery(window).load(function(){
+/*setTimeout(function() {
+      // Do something after 1 seconds
+   var featLiH=jQuery(".featureList span.ftrFig img.df-img").first().height();
+jQuery(".featureList span.ftrFig").css("height",featLiH);
+ }, 1000);*/
+  var featLiH=jQuery(".featureList span.ftrFig img.df-img").first().height();
+jQuery(".featureList span.ftrFig").css("height",featLiH);
+var spn_h = jQuery(".featureList span.ftrFig").height();
+jQuery(".featureList span.ftrFig img").css("max-height",spn_h);
 
+});

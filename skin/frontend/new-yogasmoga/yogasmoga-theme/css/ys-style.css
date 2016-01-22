@@ -2009,8 +2009,10 @@ div.cms-side-nav{display: none;}
 .terms-conditions .pg-heading,.terms-conditions > p,.terms-conditions section{width: 60%; max-width: 1040px; margin-left:auto; margin-right: auto; }
 .terms-conditions > p{margin-bottom: 30px !important;}
 
-div.product-details .wdth65{width: auto; float: none; margin: 0 321px 0 0;}
-div.product-details .wdth35{width: 281px; position: absolute; right: 0; display: inline-block; vertical-align: top; float: none; top: 0; /*height: 100%;*/}
+/*div.product-details .wdth65{width: auto; float: none; margin: 0 321px 0 0;}*/
+div.product-details .wdth65{width: calc(100% - 321px); float: left; margin: 0 0 0 0;}
+/*div.product-details .wdth35{width: 281px; position: absolute; right: 0; display: inline-block; vertical-align: top; float: none; top: 0; /*height: 100%;}*/
+div.product-details .wdth35{width: 281px; position: static; right: 0; display: inline-block; vertical-align: top; float: right; top: 0;}
 div.product-details .block-elm{width: 100%;}
 ul.sub-nav li { margin: 0; display: block; line-height: normal; }
 ul.sub-nav li a:hover, ul.sub-nav li.current a { color: #c03; }
