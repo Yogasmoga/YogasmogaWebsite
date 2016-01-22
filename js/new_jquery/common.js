@@ -6,8 +6,8 @@ jQuery(document).ready(function($){
     //browserTest();
     setFeatureVideoWidth();    
 	
-   /* var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
-    jQuery(".featureList span.ftrFig").css("height", featLiH);   */
+    var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
+    jQuery(".featureList span.ftrFig").css("height", featLiH);   
     playBtnPos();
     sizeChartScroll();
 
@@ -750,7 +750,7 @@ jQuery(window).load(function(){
    var featLiH=jQuery(".featureList span.ftrFig img.df-img").first().height();
 jQuery(".featureList span.ftrFig").css("height",featLiH);
  }, 1000);*/
-  var featLiH=jQuery(".featureList span.ftrFig img.df-img").first().height();
+var featLiH=jQuery(".featureList span.ftrFig img.df-img").first().height();
 jQuery(".featureList span.ftrFig").css("height",featLiH);
 var spn_h = jQuery(".featureList span.ftrFig").height();
 jQuery(".featureList span.ftrFig img").css("max-height",spn_h);
