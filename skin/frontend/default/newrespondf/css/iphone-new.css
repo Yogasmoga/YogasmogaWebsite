@@ -1013,9 +1013,8 @@ form#cardbalanceform table.redeem-giftcard {
 }
 
 .goy-form .button.btn-reset {
-    /*background: #CCC;*/
-	background: hsl(97, 100%, 34%) none repeat scroll 0 0;
-    border: medium none;
+    background: #CCC;
+	border: medium none;
     color: #fff;
     float: left;
     font: 14px/50px ITCAvantGardeStd-Bk;
