@@ -34,7 +34,6 @@ $(document).ready(function () {
     $(".author_post.read img").css("opacity",0);
     adjustTileHeightAndLoad();
 });
-
 $(window).load(function(){
     if(logged_in==false) {
         $.ajax({
@@ -62,12 +61,10 @@ $(window).load(function(){
     }
 
 });
-
 $('document').ready(function () {
     submit_comment();
     jQuery("#signup").css("background","url('"+root+"/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png')");
 });
-
 function submit_comment() {
     current_user_img_url = $("span[rel='current_user_img_url']").html();
     logged_in = $("span[rel='logged-in-user']").html();
@@ -76,7 +73,6 @@ function submit_comment() {
     var commentform = $('#commentform'); // find the comment form
     commentform.prepend('<div id="comment-status" ></div>'); // add info panel before the form to provide feedback or errors
     var statusdiv = $('#comment-status'); // define the infopanel
-
     commentform.submit(function () {
         if (logged_in != null && logged_in != '' && logged_in != undefined) {
             //serialize and store form data in a variable
@@ -117,31 +113,25 @@ function submit_comment() {
             });
         }
         else {
-            //statusdiv.html('<p>You must be logged in to share a comment...</p>');
-
             $("#signin_popup").fadeIn();
             $(".signin-block").hide();
             $(".login-box").fadeIn();
             is_login_box_open = true;
-
         }
         return false;
     });
 }
-
 $(document).ready(function () {
     $(".login_magento").keydown(function(e){
         if(e.keyCode==13){
             $("#sign-in-button").click();
         }
     });
-
     $(".register_new").keydown(function(e){
         if(e.keyCode==13){
             $("#sign-up-button").click();
         }
     });
-
     $("input[rel='password']").focus(function () {
         $(this).attr("type", "password");
     });
@@ -152,7 +142,6 @@ $(document).ready(function () {
             $(this).attr("type", "password");
         }
     });
-
     $(":input[data-watermark]").each(function () {
         $(this).val($(this).attr("data-watermark"));
         $(this).bind('focus', function () {
@@ -166,16 +155,12 @@ $(document).ready(function () {
         /************************************SIGN UP FUNCTION GOES HERE*******************************/
         createCustomerAccount_from_popup();
         /********************************************************************************************/
-
-
     });
     $(".close_signin_popup").click(function () {
         $("#signin_popup").fadeOut();
         $(".gender_p span").removeClass("selected");
     })
 });
-
-
 $(document).ready(function () {
 
     checkIsUserLogged();
@@ -183,7 +168,6 @@ $(document).ready(function () {
     $("#sign-up-button").click(function () {
         createCustomerAccount();
     });
-
     $("#sign-in-button").click(function () {
         loginCustomer();
     });
@@ -200,8 +184,6 @@ $(document).ready(function () {
         })
     });
 });
-
-
 /* /////////////////////CREATE ACCOUNT FROM POPUP///////////////////////// */
 function createCustomerAccount_from_popup() {
     var error = "";
@@ -226,7 +208,6 @@ function createCustomerAccount_from_popup() {
             else {
                 var cpassword = pwd;
                 var url = homeUrl + 'mycatalog/myproduct/registercustomer';
-
                 jQuery.ajax({
                     url: url,
                     type: 'POST',
@@ -259,35 +240,28 @@ function createCustomerAccount_from_popup() {
                             /**************** code added by ys team *****************/
                             createRangoliUser(email_id, pwd, first_name, last_name, customer_id);
                             /**************** code added by ys team *****************/
-
                                 // console.log(data.status);
                             jQuery(".signin-block").fadeOut();
-  //                          window.location=homeUrl+"rangoli";
-
                             _islogedinuser = true;
                             jQuery("#signin").html("SIGN OUT").attr({
                                 href: homeUrl + 'customer/account/logout/',
                                 id: "sign-out"
                             });
-
                             if (name != '') {
                                 jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
                             }
                         }
-                        else {
-                            //jQuery("#sign-up-form .loader").hide();
+                        else {                            
                             jQuery("#signup").css("Sign up");
                             jQuery("#sign-up-form .err-msg").html(data.errors).css("visibility", "visible");
                         }
                     }
                 });
-
             }
         }
         else{
             error = "Enter valid email address.";
         }
-
     }
     else {
         error = "All fields are required.";
@@ -295,10 +269,7 @@ function createCustomerAccount_from_popup() {
     if(error!=""){
         $(".err-msg").html(error);
     }
-
 }
-
-
 function createCustomerAccount() {
     var fname = jQuery.trim(jQuery("#fname").val());
 
@@ -364,7 +335,6 @@ function createCustomerAccount() {
                         jQuery(".login-box").fadeOut();
                         is_login_box_open = false;
                         //window.location=homeUrl+"rangoli";
-
                         _islogedinuser = true;
                         jQuery("#signin").html("SIGN OUT").attr({
                             href: homeUrl + 'customer/account/logout/',
@@ -389,14 +359,8 @@ function createCustomerAccount() {
         jQuery(".err-msg.signup_err").html("All fields are required.").css("visibility", "visible");
     }
 }
-
-
-
-
 function createRangoliUser(email, password, first_name, last_name, customer_id) {
-
     var data = 'email=' + email + '&password=' + password + '&first_name=' + first_name + '&last_name=' + last_name + '&customer_id=' + customer_id;
-
     jQuery.ajax({
         url: root + 'rangoli/mage_wp_create_user.php',
         data: data,
@@ -407,9 +371,7 @@ function createRangoliUser(email, password, first_name, last_name, customer_id) 
         }
     });
 }
-
 /**************** ys team functions *****************/
-
 function loginCustomer() {
 
     var email_id = jQuery.trim(jQuery("#si_email").val());
@@ -424,7 +386,6 @@ function loginCustomer() {
     jQuery("#sign-in-form .err-msg").html("").css("visibility", "visible");
 
     if (email_id != undefined && email_id != "" && email_id!="Email" && pwd != undefined && pwd != "" && pwd!="Password") {
-
         if( !isValidEmailAddress(email_id)){
             jQuery("#sign-in-form .form-loader").html("");
             jQuery("#sign-in-button").parent().show();
@@ -459,7 +420,6 @@ function loginCustomer() {
                     var last_name = data.last_name;
                     var customer_id = data.customer_id;
                     //var pwd = data.password;
-
                     if (status == "success") {
                         /************** code update by ys team ******************/
                         doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
@@ -467,14 +427,9 @@ function loginCustomer() {
 
                     }
                     else {
-
                         jQuery("#sign-in-form .form-loader").html("");
                         jQuery("#sign-in-button").parent().show();
 
-                        //if (_smogiPageLogin) {
-                        //    jQuery("#sb-sign-in-form .err-msg").html(data.errors).css("visibility", "visible");
-                        //    jQuery(".signin-loader").html("");
-                        //} else
                         {
                             jQuery("#sign-in-form .err-msg").html(data.errors).css("visibility", "visible");
                             jQuery(".signin-loader").html("");
@@ -483,7 +438,6 @@ function loginCustomer() {
                         }
                     }
                 }
-
             });
         }
     }
@@ -494,13 +448,9 @@ function loginCustomer() {
         jQuery(".signin-loader").html("");
         jQuery("#sign-in-button").parent().show();
         jQuery("#sign-in-form .form-loader").hide();
-
     }
 }
-
-
 function doWordpressLogin(email, password, first_name, last_name, customer_id) {
-
     // now login to wordpress
     jQuery.ajax({
         url: root + 'rangoli/mage_wp_login.php',
@@ -516,7 +466,6 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
         }
     });
 }
-
 /**************** logout logic added by ys team *****************/
 function wplogout() {
     jQuery.ajax({
@@ -538,7 +487,6 @@ function wplogout() {
         }
     });
 }
-
 function wplogoutonly() {
     jQuery.ajax({
         url: root + 'rangoli/wp_logout.php',
@@ -549,9 +497,7 @@ function wplogoutonly() {
         }
     });
 }
-
 function checkIsUserLogged() {
-
     jQuery.ajax({
         url: root + 'ys/session/loggedcustomer',
         type: 'GET',
@@ -559,35 +505,25 @@ function checkIsUserLogged() {
         success: function (result) {
 
             if (result.message != null && result.message != undefined) {
-
                 if (result.message == "notlogged") {
                     jQuery(".login_logout_link").html("<a id='signin' href='javascript:void(0);'>Sign In</a>");
-
                     wplogoutonly();  // if magento user is not logged in and wordpress user is logged
-
                 }
                 else if (result.message == "logged") {
-
                     var name = result.first_name;
-
                     var email = result.email;
                     var name = result.name;
                     var first_name = result.first_name;
                     var last_name = result.last_name;
                     var customer_id = result.user_id;
-
                     jQuery("#welcome-name").html("Hi " + first_name).attr("href", homeUrl + 'customer/account/');
                     jQuery(".login_logout_link").html("<span style='cursor:pointer; margin-left:0;padding-left:0' onclick='wplogout()'>SIGN OUT</span>");
-
                 }
             }
         }
     });
 }
 /**************** logout logic added by ys team *****************/
-
-
-
 function getSelectedInterestCount(){
     var count = $(".interest_listing li a.remove").length;
     return count;
@@ -658,23 +594,17 @@ $(document).ready(function () {
         })
     });
 });
-
 $(window).resize(function () {
     var wh = $(window).height();
     var ww = $(window).width();
-
     if(logged_in==false)
         $(".homepage_slider .home_signup").css("top",wh-157);
     else {
         $(".homepage_slider .home_signup").css("top", wh - 112);
     }
-
     $(".fixed-container").css("min-height",wh/2);
-
-
     adjustTileHeightAndLoad();
 });
-
 $(window).load(function () {
     $(".wp_page").animate({
         'opacity': '1'
@@ -694,10 +624,7 @@ $(window).resize(function () {
         $(".wp_page_banner").height(ww * 0.5625);
     }
 });
-
 /* ////////////////////////////////////GET CUSTOMER COLOR////////////////////////////// */
-
-
 function hexToRgb(h) {
     var r = parseInt((cutHex(h)).substring(0, 2), 16);
     var g = parseInt((cutHex(h)).substring(2, 4), 16);
@@ -711,13 +638,10 @@ function hexToRgb(h) {
         return (i.charAt(0) == "#") ? i.substring(1, 7) : i;
     }
 }
-
-
 $(document).ready(function () {
     getloggedinuser();
     filter();
 });
-
 function bindHeartLink(obj) {
     $(obj).click(function (e) {
         e.preventDefault();
@@ -732,9 +656,7 @@ function bindHeartLink(obj) {
         });
     });
 }
-
 function getloggedinuser() {
-
     $.ajax({
         url: root + 'ys/session/getloggedrangoliprofile',
         type: 'POST',
@@ -745,11 +667,8 @@ function getloggedinuser() {
                 var id = result.user_id;
                 status = result.status;
                 user_email = result.email;
-
                 //get_magento_cstomerID(user_email);
-
                 if (user_color_shade != "#555555") {
-
                     if (status == "new") {
                         $("#signin_popup").fadeIn();
                         $.ajax({
@@ -764,7 +683,6 @@ function getloggedinuser() {
                                 fillcolor();
                             }
                         });
-
                     }
                     else if (status == "registered") {
                         $.ajax({
@@ -776,7 +694,6 @@ function getloggedinuser() {
                                 window.location = root + "rangoli/journey";
                             }
                         });
-
                     }
                 }
             }
@@ -785,59 +702,37 @@ function getloggedinuser() {
                 color = "85,85,85";
                 //wplogout();
             }
-            $(".one-three .overlay-text").hover(function () {
-                //$(this).css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'});
+            $(".one-three .overlay-text").hover(function () {                
                 $(this).css({'background-color': user_color_shade, 'transition-duration': '500ms'})
             }, function () {
                 $(this).css({
                     'background':'rgba(0,0,0,0.25)',
-                    //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
                     'transition-duration': '100ms'
                 });
             });
-            $(".two-three .overlay-text").hover(function () {
-                //$(this).css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'});
-                $(this).css({'background-color': user_color_shade, 'transition-duration': '500ms'});
-                //$(this).find("p").css({'color': '#fff', 'transition-duration': '500ms'});
-                //$(this).find(".post_category").css({"border-color": "#fff", 'transition-duration': '500ms'})
+            $(".two-three .overlay-text").hover(function () {                
+                $(this).css({'background-color': user_color_shade, 'transition-duration': '500ms'});                
             }, function () {
                 $(this).css({
-                    'background':'rgba(0,0,0,0.25)',
-                    //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'background':'rgba(0,0,0,0.25)',            
                     'transition-duration': '100ms'
-                })
-                /*$(this).find("p").css({'color': '#555', 'transition-duration': '500ms'})
-                $(this).find(".post_category").css({"border-color": "#555", 'transition-duration': '500ms'})*/
+                })                
             });
-
-
             fillcolor();
-
         }
     });
 }
-
 function fillcolor() {
-    //$(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.9)'});
     $(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.9)', 'transition-duration': '500ms'});
     $(".color-game polygon:nth-child(2)").css("fill", user_color_shade);
     $(".color-game polygon").css("stroke", user_color_shade);
     $(".menu-btn rect").css("fill", user_color_shade);
     $(".wpfp-link.remove path").css("fill", user_color_shade).css("stroke", user_color_shade);
     $(".smogi .like.subscribed path").css("fill", user_color_shade).css("stroke", user_color_shade);
-
     $(document).find(".author_recent_activity .img_in_circle").each(function(){
         $(this).html("<span style='background:rgba(" + color + ",0.9)'></span>");
     });
 }
-
-
 $(document).ready(function () {
     $("#menu-category a").click(function (e) {
         e.preventDefault();
@@ -845,36 +740,26 @@ $(document).ready(function () {
         ajax_load_pages($(this).attr('href'));
     });
     $(".author_post .overlay-text").css({
-        'background':'rgba(0,0,0,0.25)',
-        //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-        //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-        //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-        //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+        'background':'rgba(0,0,0,0.25)',        
         'transition-duration': '100ms'
     });
 });
-
-
 function ajax_load_pages(link) {
     $page = $(document).find(".fixed-container > div");
     $page.removeAttr("class");
     $(".close-menu-btn").click();
-
     $.ajax({
         url: link,
         success: function (response) {
             var newTitle = $(response).filter('title').html();
             $page.html("");
-
             var newData = $(response).find("#fixed_container").html();
-
             $(window).scrollTop(0);
             $page.html(newData).addClass("fadeIn").addClass("animated");
             get_bulls_eye();
             init();
             $("#filter").unbind();
-            filter();
-            //$(document).find(".flexslider").flexslider();
+            filter();            
             $a = $(document).find(".ajax-load");
             $a.unbind("click");
             $a.click(function (e) {
@@ -887,50 +772,29 @@ function ajax_load_pages(link) {
             raty_init();
             adjustTileHeightAndLoad();
             $(document).find(".one-three .overlay-text").css({
-                'background':'rgba(0,0,0,0.25)',
-                //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                'background':'rgba(0,0,0,0.25)',               
                 'transition-duration': '100ms'
             });
             $(document).find(".two-three .overlay-text").css({
-                'background':'rgba(0,0,0,0.25)',
-                //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                'background':'rgba(0,0,0,0.25)',                
                 'transition-duration': '100ms'
             });
             $(document).find(".author_post .overlay-text").css({
-                'background':'rgba(0,0,0,0.25)',
-                //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                'background':'rgba(0,0,0,0.25)',                
                 'transition-duration': '100ms'
             });
-
             $(".wp_page").animate({
                 'opacity': 1
             }, 500);
-
             submit_comment();
             save_shares();
-
             $(document).find(".wp_page_banner .play-video").unbind("click");
             $(document).find(".wp_page_banner .play-video").click(function () {
                 $(document).find(".wp_page_banner .play-video").hide();
                 play();
                 $(".play_video").fadeIn();
                 $(document).find(".wp_page_banner .play-video").remove();
-            });
-
-            //$(window).load(function(){
-            //animate_tiles();
-            //});
-
-
+            });            
             $(document).find(".homepage_page_banner .play-video").unbind("click");
             $(document).find(".homepage_page_banner .play-video").click(function () {
                 $(document).find(".homepage_page_banner .play-video").hide();
@@ -941,25 +805,18 @@ function ajax_load_pages(link) {
                 $(document).find("#signup_signin_btn").remove();
                 $(document).find(".homepage_page_banner .play-video").remove();
             });
-
             $(".single_post.span4").addClass("fadeInUp").addClass("animated");
             window.history.pushState({path: link}, null, link);
             document.title = newTitle;
-
-
-            $(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.9)'});
-            //$(".user-color-shade").css({'background-color': user_color_shade});
+            $(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.9)'});            
             $(".color-game polygon:nth-child(2)").css("fill", user_color_shade);
             $(".color-game polygon").css("stroke", user_color_shade);
             $(".menu-btn rect").css("fill", user_color_shade);
             $(".wpfp-link.remove path").css("fill", user_color_shade).css("stroke", user_color_shade);
             $(".smogi .like.subscribed path").css("fill", user_color_shade).css("stroke", user_color_shade);
-
         }
     });
     $(".close-menu-btn").click();
-
-
 }
 function play() {
     var player = $(document).find(".featured_video_plus").find("iframe");
@@ -971,17 +828,13 @@ function play() {
     $(".wp_page_banner").height(ww*0.5625);
     $(".homepage_slider .slides li").height(ww*0.5625);
 }
-
 function init() {
-
     var wh = $(window).height();
     var ww = $(window).width();
     $(".fixed-container").css("min-height",wh/2);
     $(".wp_page_banner").height(wh-70);
     //$(".wp_page_banner").height(ww*0.5625);
-
     $(".post_category a").each(function () {
-
         var href = $(this).attr("href");
         href = href.toLowerCase();
         $(this).attr("href", href);
@@ -991,22 +844,14 @@ function init() {
     })
     $(".wp_page_banner").css("min-height", wh - 70);
     $(".smogi-list").height(wh - 100);
-
     $(".post_category a").each(function () {
-
         var str = $(this).attr('href');
-
         if (str.indexOf('learn') > -1 || str.indexOf('look') > -1 || str.indexOf('read') > -1)
             $(this).remove();
     });
-
-
-
     $(".wp_page_banner .play-video").click(function () {
         $(".play_video").fadeIn();
-
         play();
-
         $(this).remove();
     });
     $(".homepage_page_banner .play-video").click(function () {
@@ -1014,7 +859,6 @@ function init() {
         $(".rangoli_logo").remove();
         $("#signup_signin_btn").remove();
         play();
-
         $(this).remove();
     });
     $('.video-popup .close').click(function () {
@@ -1022,7 +866,6 @@ function init() {
         $('.video-popup video').fadeOut();
         $('.video-popup video').attr('src', '');
     });
-
     $(".like-btn .wpfp-link").each(function () {
         bindHeartLink($(this));
     });
@@ -1040,21 +883,14 @@ function init() {
         if (user_color_shade == '') {
             user_color_shade = '#555555';
         }
-        var color = hexToRgb(user_color_shade);
-        //$(".author_post:hover .overlay-text").css({'background-color': 'rgba('+color+',0.5)','transition-duration':"500ms"});
+        var color = hexToRgb(user_color_shade);        
             $(".author_post:hover .overlay-text").css({'background-color': user_color_shade,'transition-duration':'500ms'});
     }, function () {
         $(".author_post .overlay-text").css({
-            'background':'rgba(0,0,0,0.25)',
-            //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-            //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-            //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-            //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+            'background':'rgba(0,0,0,0.25)',            
             'transition-duration': '100ms'
         });
     });
-
-
     $(".show_more_comments").click(function () {
         $(".more_comments").slideDown();
         $(this).text("");
@@ -1062,8 +898,6 @@ function init() {
     });
     fillcolor();
 }
-
-
 function filter() {
     $("#filter").on("click", function () {
         $(this).next().slideToggle(300);
@@ -1080,49 +914,30 @@ function filter() {
         var link = $(this).attr("href");
         $(".filter-container a").removeClass("active");
         $(this).addClass("active");
-
         $.ajax({
             url: link,
-
             success: function (data) {
-
                 $newData = $(data).find("#posts");
-
                 $newData.find(".single_post").addClass("fadeInUp").addClass("animated")
                 $(".post_listing").html($newData.html());
-
-
                 init();
-
                 $(".author_post .overlay-text").css({
-                    'background':'rgba(0,0,0,0.25)',
-                    //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'background':'rgba(0,0,0,0.25)',                   
                     'transition-duration': '100ms'
                 });
                 $(".liked_reads").flexslider();
                 $(".liked_watchs").flexslider();
                 $(".liked_learns").flexslider();
-
                 if($newData.find(".single_post").length==""){
-
                     $(".post_listing").html("<br/><br/><br/><p class='align-center' style='font-family: ITCAvantGardeStd-Bk; font-size:20px'>No post found !</p>");
                 }
-
-
             }
         });
         $(".filter-container").slideUp();
     });
 }
-
-
 $(document).ready(function () {
     raty_init();
-
-
     $(".menu-btn").click(function () {
         $(".menu-box").animate({
             'margin-left': 0,
@@ -1150,7 +965,6 @@ $(document).ready(function () {
         $("#smogis").fadeOut();
 
     });
-
     $("a[rel='ys-stores']").click(function (e) {
         e.preventDefault();
         $("#connect").hide();
@@ -1163,9 +977,7 @@ $(document).ready(function () {
         $(".menu-btn").css("opacity", 1);
         $(".close-menu-btn").click();
     });
-
     $(".smogi-content").height(wh - 230);
-
     $("a[rel='smogis']").click(function (e) {
         e.preventDefault();
         $("#connect").hide();
@@ -1175,15 +987,10 @@ $(document).ready(function () {
         $("#invite_friend").hide();
         $(".smogi").addClass("fadeInUp").addClass("animated");
         $("#stores").hide();
-
         $(".close-menu-btn").click();
     });
-
-
-
 });
 function raty_init() {
-
     //$(".rating").raty({
     //    path: root + 'rangoli/wp-content/themes/rangoli/images'
     //})
@@ -1216,7 +1023,6 @@ function raty_init() {
         });
     });
 }
-
 $(document).ready(function () {
     $(".invite_signup").click(function(){
         $("a[rel='connect']").click();
@@ -1253,8 +1059,6 @@ $(document).ready(function () {
     $(".switch").click(function () {
         $(this).toggleClass("active");
     });
-
-
     $(".invite-friends").click(function () {
         if (logged_in != null && logged_in != '' && logged_in != undefined) {
             $(".close-menu-btn").click();
@@ -1283,8 +1087,6 @@ $(document).ready(function () {
             is_login_box_open = true;
         }
     });
-
-
     $("li[rel='facebook']").click(function () {
         var shareUrl = $(document).find(".link").html();
         var url = "https://www.facebook.com/dialog/send?app_id=909386705751971&link=" + shareUrl + "&redirect_uri=http://yogasmoga.com";
@@ -1299,14 +1101,8 @@ $(document).ready(function () {
         var shareUrl = $(document).find(".link").html();
         window.open(root + "rangoli/wp-content/themes/rangoli/twt_redirect.php?l=" + shareUrl);
     });
-
-
     save_shares();
-
-
 });
-
-
 function save_shares() {
     $(".sharing_icons li a").click(function (e) {
         if (logged_in != null && logged_in != '' & logged_in != undefined) {
@@ -1314,54 +1110,34 @@ function save_shares() {
             var user_id = $(this).attr("user");
             var time = new Date();
             var sec = time.getSeconds();
-
             $.ajax({
                 url: root + "/rangoli/save_shares.php",
                 data: "post_id=" + post_id + "&user_id=" + user_id + "&s=" + sec,
                 type: "GET",
                 success: function (response) {
                     if (response) {
-
                     }
                 }
             });
         }
     });
-
 }
-
 $(window).load(function(){
-
     $(".confirmed_interests li a").click(function(e){
         e.preventDefault();
     });
-
-
     copytoClipboard();
 });
-
 function copytoClipboard(){
     var link =$(".link").html();
     $(".copy").attr("data-clipboard-text",link);
     var client = new ZeroClipboard($(".copy"));
-
     client.on( "ready", function( readyEvent ) {
-
         client.on( "aftercopy", function( event ) {
-
     } );
 } );
-
-
 }
-
-
-
-
-
 //////////////////////////// INFINITY SCROLL /////////////////////
-
-
 $(window).load(function(){
     infinity_scroll();
 });
@@ -1377,67 +1153,29 @@ function infinity_scroll(){
                     $.ajax({
                         url: link,
                         success: function (data) {
-
-
                             $newData = $(data).find("#posts .author_posts");
                             $newData.find(".single_post").addClass("fadeInUp").addClass("animated")
                             $(".post_listing .author_posts").append($newData.html());
-
-
                             init();
-
                             $(".author_post .overlay-text").css({
-                                'background':'rgba(0,0,0,0.25)',
-                                //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                                //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                                //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                                //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                'background':'rgba(0,0,0,0.25)',                                
                                 'transition-duration': '100ms'
                             });
-
-
                         }
                     });
                 }
             }
         }
     })
-
 }
-
-/*
-
- $(document).ready(function(){
- history_pop();
- });
-
-
- function history_pop(){
- $(window).bind('popstate', function(event){
- window.location = document.location;
- });
- }*/
-
-
-
-
 $(document).ready(function(){
     $.ajax({
         url:root +"ys/session/getcartcount",
         success : function(response){
             $("#cart span").html(response);
         }
-    })
-
-
-
-    /*$(".post_content a img").not('.get_the_look a img').each(function(){
-        $(this).parent().removeAttr("href");
-    });*/
-
-
+    })    
 });
-
 $(window).load(function(){
     setTimeout( function() {
         window.onpopstate = function (event) {
@@ -1447,7 +1185,6 @@ $(window).load(function(){
         };
     },500);
     animate_tiles();
-
 });
 
 var winH = $(window).height();
@@ -1462,7 +1199,6 @@ function animate_tiles(){
         }
     });
 }
-
 $(window).scroll(function(){
     var scrollTop = $(window).scrollTop();
     $(document).find(".section_animate").each(function() {
@@ -1472,9 +1208,6 @@ $(window).scroll(function(){
         }
     });
 });
-
-
-
 /******************** BUlls eye random popup **********************/
 var click_count=0;
 var is_bullseye_popup_open = false;
@@ -1509,17 +1242,12 @@ function open_bulls_popup(){
     $(".center_popup").fadeIn();
     $(".bullseye_popup_container").fadeIn();
 }
-
-
-
-
 function createCustomerAccount_from_animated_popup() {
     var error = "";
     var fname = jQuery.trim(jQuery("#ap_fname").val());
     var lname = jQuery.trim(jQuery("#ap_lname").val());
     var email_id = jQuery.trim(jQuery("#ap_signup_email").val());
     var pwd = jQuery.trim(jQuery("#ap_s_password").val());
-
     if (fname!="First Name" && lname!="Last Name" && email_id!="Email" && fname.length > 0 && lname.length > 0 && email_id.length > 0 && pwd.length>0 && pwd!="Select a password") {
         function IsEmail(email) {
             var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -1607,10 +1335,6 @@ function createCustomerAccount_from_animated_popup() {
     }
 
 }
-
-
-
-
 function open_red_popup(){
     $(".your-color-block").fadeOut();
     is_login_box_open = false;
@@ -1618,20 +1342,12 @@ function open_red_popup(){
     $("#signin_popup").fadeIn();
     $(".signin-block").fadeIn();
 }
-
-
-
-
-
 $(document).ready(function(){
 
     $(".gender_p span").click(function(){
         $(".gender_p span").removeClass("selected");
         $(this).addClass("selected");
     });
-
-
-
     $("#update_username").click(function(){
         var text = $("input.change_username");
         var username = text.val();
@@ -1657,15 +1373,10 @@ $(document).ready(function(){
         }
     });
 });
-
-
-
 function isValidEmailAddress(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
-
-
 function if_gender_is_selected(){
     if($(".gender_p span").hasClass("selected")){
         return true;
@@ -1674,7 +1385,6 @@ function if_gender_is_selected(){
         return false;
     }
 }
-
 function adjustTileHeightAndLoad(){
     var TileWidth = $(document).find(".author_post.read").width();
     var TileHeight = TileWidth * 0.75;

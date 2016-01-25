@@ -1,5 +1,3 @@
-
-
         $(document).ready(function(){
             $(".smogi-content .author-link").click(function(e){
                 e.preventDefault();
