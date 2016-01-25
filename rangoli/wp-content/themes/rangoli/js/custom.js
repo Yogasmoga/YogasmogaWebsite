@@ -1431,9 +1431,9 @@ $(document).ready(function(){
 
 
 
-    $(".post_content a img").each(function(){
+    /*$(".post_content a img").not('.get_the_look a img').each(function(){
         $(this).parent().removeAttr("href");
-    });
+    });*/
 
 
 });

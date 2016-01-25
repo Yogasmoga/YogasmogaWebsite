@@ -1,225 +1,56 @@
 .journey-wrapper,
 .color-page,
-.interest-page {
-    position: relative;
-}
-
-.interest-page {
-    display: none;
-}
-.interest_listing li a {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 35px;
-}
-.page-head {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-
-.step {
-    color: #444;
-    text-align: center;
-}
-
-.interest-page .step {
-    color: #444;
-}
-
-.step span {
-    border-bottom: 1px solid #444;
-    display: block;
-    font-family: freight-text-pro;
-    font-size: 12px;
-    letter-spacing: 1px;
-    line-height: 15px;
-    margin: 0 auto;
-    padding: 15px;
-    position: relative;
-    text-transform: uppercase;
-    width: 315px;
-}
-
-.interest-page .step span {
-    border-bottom: 1px solid #444;
-}
-
-.step span span.next {
-    padding: 0;
-    position: absolute;
-    top: 0;
-    right: 5px;
-    height: 100%;
-    display: block;
-    width: 60px;
-    background: url(../images/nxtarw1.png) 100% 50% no-repeat;
-    text-indent: -999em;
-    text-align: left;
-    border: 0;
-    cursor: pointer;
-    display: none;
-}
-.uname > a {
-    color: #fff;
-}
-.step span span.prev {
-    padding: 0;
-    position: absolute;
-    top: 0;
-    left: 5px;
-    height: 100%;
-    display: block;
-    width: 60px;
-    background: url(../images/prvarw.png) 0% 50% no-repeat;
-    text-indent: -999em;
-    text-align: left;
-    border: 0;
-    cursor: pointer;
-    display: none;
-}
-
-.interest-page .step span span.next {
-    background: url(../images/nxtarw1.png) 100% 50% no-repeat;
-}
-
-.interest-page .step span span.prev {
-    background: url(../images/prvarw1.png) 0% 50% no-repeat;
-}
-
-.page-title {
-    color: #fff;
-    text-align: center;
-    font-size: 40px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-.interest-page .page-title {
-    color: #000;
-}
-
-#color-slider {
-    padding-top: 160px;
-}
-
-#colors {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    /*min-width: 1024px !important;*/
-}
-
-#color-slider ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    left: 0;
-    top: 0;
-}
-
-#color-list li.color {
-    display: block;
-    float: left;
-    position: relative;
-}
-
-#color-list li.color .primary {
-    position: relative;
-    height: 100%;
-    margin: auto;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-}
-
-#color-list li.color .primary span {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    right: 50px;
-    bottom: 50px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.5s ease-out;
-    -webkit-transition: all 0.5s ease-out;
-    -moz-transition: all 0.5s ease-out;
-}
-
-#color-list li.animate .primary span {
-    opacity: 0;
-    transform: scale(0);
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    -ms-transform: scale(0);
-}
-
-#color-list li .primary .shades {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    right: 50px;
-    bottom: 50px;
-    transition: all 0.5s ease-in;
-    -webkit-transition: all 0.5s ease-in;
-    -moz-transition: all 0.5s ease-in;
-}
-
-#color-list li #anim_flower.shades {
-    opacity: 0;
-    transform: rotate(-90deg) scale(0.7);
-    -webkit-transform: rotate(-90deg) scale(0.7);
-    -moz-transform: rotate(-90deg) scale(0.7);
-    -ms-transform: rotate(-90deg) scale(0.7);
-}
-
+.interest-page { position: relative;}
+.interest-page { display: none;}
+.interest_listing li a {display: block; margin-top: 10px;margin-bottom: 35px;}
+.page-head {position: absolute;z-index: 0;top: 0;left: 0;width: 100%;}
+.step {color: #444;text-align: center;}
+.interest-page .step {color: #444;}
+.step span {border-bottom: 1px solid #444;display: block;font-family: freight-text-pro;font-size: 12px;letter-spacing: 1px;
+    line-height: 15px;margin: 0 auto;padding: 15px;position: relative;text-transform: uppercase;width: 315px;}
+.interest-page .step span {border-bottom: 1px solid #444;}
+.step span span.next {padding: 0;position: absolute;top: 0;right: 5px;height: 100%;display: block;width: 60px;
+	background: url(../images/nxtarw1.png) 100% 50% no-repeat;text-indent: -999em;text-align: left; border: 0;cursor: pointer;
+    display: none;}
+.uname > a {color: #fff;}
+.step span span.prev {padding: 0; position: absolute;top: 0; left: 5px; height: 100%; display: block; width: 60px;
+    background: url(../images/prvarw.png) 0% 50% no-repeat;text-indent: -999em;text-align: left;border: 0; cursor: pointer;
+    display: none;}
+.interest-page .step span span.next {background: url(../images/nxtarw1.png) 100% 50% no-repeat;}
+.interest-page .step span span.prev { background: url(../images/prvarw1.png) 0% 50% no-repeat;}
+.page-title {color: #fff;text-align: center;font-size: 40px;text-transform: uppercase;font-weight: bold;}
+.interest-page .page-title { color: #000;}
+#color-slider {padding-top: 160px;}
+#colors {overflow: hidden; position: relative;width: 100%; /*min-width: 1024px !important;*/}
+#color-slider ul {list-style: none;margin: 0;padding: 0;position: relative;left: 0;top: 0;}
+#color-list li.color {display: block;float: left;position: relative;}
+#color-list li.color .primary {position: relative;height: 100%;margin: auto;border-radius: 50%;-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;}
+#color-list li.color .primary span { position: absolute;top: 50px;left: 50px;right: 50px;bottom: 50px;border-radius: 50%;
+    -webkit-border-radius: 50%;-moz-border-radius: 50%;cursor: pointer;transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;-moz-transition: all 0.5s ease-out;}
+#color-list li.animate .primary span {opacity: 0;transform: scale(0);-webkit-transform: scale(0);-moz-transform: scale(0);
+    -ms-transform: scale(0);}
+#color-list li .primary .shades {position: absolute;top: 50px;left: 50px;right: 50px;bottom: 50px;transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;-moz-transition: all 0.5s ease-in;}
+#color-list li #anim_flower.shades { opacity: 0;transform: rotate(-90deg) scale(0.7);
+	-webkit-transform: rotate(-90deg) scale(0.7);-moz-transform: rotate(-90deg) scale(0.7);
+	-ms-transform: rotate(-90deg) scale(0.7);}
 #color-list li.animate #anim_flower.shades {
     /*transition-delay: 0.5s; -webkit-transition-delay: 0.5s; -moz-transition-delay: 0.5s;*/
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-    -webkit-transform: rotate(0deg) scale(1);
-    -moz-transform: rotate(0deg) scale(1);
-    -ms-transform: rotate(0deg) scale(1);
-}
-
-#anim_flower svg path {
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-#color-list li #anim_donut.shades {
-    opacity: 0;
-    transform: rotate(-90deg) scale(0.7);
-    -webkit-transform: rotate(-90deg) scale(0.7);
-    -moz-transform: rotate(-90deg) scale(0.7);
-    -ms-transform: rotate(-90deg) scale(0.7);
-}
-
+    opacity: 1; transform: rotate(0deg) scale(1); -webkit-transform: rotate(0deg) scale(1);
+    -moz-transform: rotate(0deg) scale(1); -ms-transform: rotate(0deg) scale(1);}
+#anim_flower svg path {cursor: pointer;transition: 0.2s;}
+#color-list li #anim_donut.shades { opacity: 0;transform: rotate(-90deg) scale(0.7);
+    -webkit-transform: rotate(-90deg) scale(0.7); -moz-transform: rotate(-90deg) scale(0.7);
+    -ms-transform: rotate(-90deg) scale(0.7);s}
 #color-list li.animate #anim_donut.shades {
     /*transition-delay: 0.5s; -webkit-transition-delay: 0.5s; -moz-transition-delay: 0.5s;*/
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-    -webkit-transform: rotate(0deg) scale(1);
-    -moz-transform: rotate(0deg) scale(1);
-    -ms-transform: rotate(0deg) scale(1);
-}
-
-#anim_donut svg path {
-    cursor: pointer;
-}
-
-#color-list li #anim_triangle.shades {
-    opacity: 0;
-    transform: scale(0.7);
-    -webkit-transform: scale(0.7);
-    -moz-transform: scale(0.7);
-    -ms-transform: scale(0.7);
-}
+    opacity: 1; transform: rotate(0deg) scale(1); -webkit-transform: rotate(0deg) scale(1);
+    -moz-transform: rotate(0deg) scale(1); -ms-transform: rotate(0deg) scale(1);}
+#anim_donut svg path {cursor: pointer;}
+#color-list li #anim_triangle.shades {opacity: 0;transform: scale(0.7);-webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7); -ms-transform: scale(0.7);}
 
 #color-list li.animate #anim_triangle.shades {
     /*transition-delay: 0.5s; -webkit-transition-delay: 0.5s; -moz-transition-delay: 0.5s;*/

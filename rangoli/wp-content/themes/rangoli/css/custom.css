@@ -570,6 +570,7 @@ img{
     margin-bottom: 50px;
     text-align: left;
 }
+.post_content_box .sixty .post_content  img{max-width:775px; height:auto;width:100%;}
 /*.post_content > p {*/
 /*text-align: left !important;*/
 /*}*/
