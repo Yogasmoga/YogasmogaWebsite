@@ -678,6 +678,11 @@
     var type = window.location.hash.substr(1);
     jQuery(".sign-in-box h1").html("HELP");
     jQuery(document).ready(function ($) {
+
+        var questionPos = type.indexOf("?");
+        if(questionPos>-1)
+            type = type.substring(0,questionPos);
+
         if (type == "") {
             type = "faq";
         }
