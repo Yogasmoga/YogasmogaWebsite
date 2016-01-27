@@ -287,9 +287,13 @@ if(!is_user_logged_in()){
                     <li class="free-shipping">
                         <span>Free shipping to US and Canada
                             <span>
-                                <img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index.png">
+                                <cite class="fs-icon1">flag</cite>
+								<cite class="fs-icon1">flag</cite>
+								<cite class="fs-icon3">globe</cite>
+								<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index.png">
 								<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index1.png">
-								<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index3.png">                           </span>
+								<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index3.png">
+							</span>
                         </span>
                     </li>
                     <li data-blockid="help-new">
