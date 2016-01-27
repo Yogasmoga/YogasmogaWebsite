@@ -128,12 +128,11 @@
     <?php
       //  the_block('head');
     ?>
-    <script src="<?php bloginfo('template_directory')?>/js/jquery.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/ajaxify.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/zeroClipboard.js" ></script>
-    <script data-pace-options='{ "ajax": true }'  src="<?php bloginfo('template_directory')?>/js/pace.min.js" ></script>
-
+    <script src="<?php bloginfo('template_directory')?>/js/min/jquery.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/min/jquery.flexslider.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/min/ajaxify.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/min/zeroClipboard.js" ></script>
+    <script data-pace-options='{ "ajax": true }'  src="<?php bloginfo('template_directory')?>/js/min/pace.min.js" ></script>
 
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url')  ?>" />
     <!--<link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/custom.css" />
@@ -145,25 +144,23 @@
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/rangoli.css" />
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/jquery.raty.css" />
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/pace.css" />-->
-	<link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/combine.css" /><!--combined css of custom.css,flexslider.css,animation.css,header.css,mystyle.css,homepage.css,rangoli.css,jquery.raty.css,page.css -->
+	<link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/combine.css" /><!--combined css of custom.css,flexslider.css,animation.css,header.css,mystyle.css,homepage.css,rangoli.css,jquery.raty.css,pace.css -->
 <!--    <link rel='stylesheet' href="--><?php //bloginfo('template_directory'); ?><!--/css/media.css" />-->
 
 
     <?php
         if(is_front_page()){
     ?>
-
-    <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider-min.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/homepage.js" ></script>
-
+    <script src="<?php bloginfo('template_directory')?>/js/min/jquery.flexslider.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/min/homepage.js" ></script>
     <?php
     }
     ?>
-    <script src="<?php bloginfo('template_directory')?>/js/custom.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/smogi.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/rangoli.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/magento_signin.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/jquery.raty.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/min/custom.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/min/smogi.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/min/rangoli.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/min/magento_signin.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/min/jquery.raty.js" ></script>
 
 </head>
 <body>
