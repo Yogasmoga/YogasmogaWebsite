@@ -152,7 +152,7 @@
         if(is_front_page()){
     ?>
 
-    <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider-min.js" ></script>
     <script src="<?php bloginfo('template_directory')?>/js/homepage.js" ></script>
 
     <?php
