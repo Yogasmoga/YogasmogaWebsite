@@ -130,8 +130,9 @@
     ?>
     <script src="<?php bloginfo('template_directory')?>/js/min/jquery.js" ></script>
     <script src="<?php bloginfo('template_directory')?>/js/min/jquery.flexslider.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/min/ajaxify.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/min/zeroClipboard.js" ></script>
+    <!--<script src="<?php bloginfo('template_directory')?>/js/min/ajaxify.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/min/zeroClipboard.js" ></script>-->
+	<script src="<?php bloginfo('template_directory')?>/js/min/combine1.js" ></script><!--combined ajaxify.js,zeroClipboard.js-->
     <script data-pace-options='{ "ajax": true }'  src="<?php bloginfo('template_directory')?>/js/min/pace.min.js" ></script>
 
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url')  ?>" />
@@ -156,11 +157,12 @@
     <?php
     }
     ?>
-    <script src="<?php bloginfo('template_directory')?>/js/min/custom.js" ></script>
+    <!--<script src="<?php bloginfo('template_directory')?>/js/min/custom.js" ></script>
     <script src="<?php bloginfo('template_directory')?>/js/min/smogi.js" ></script>
     <script src="<?php bloginfo('template_directory')?>/js/min/rangoli.js" ></script>
     <script src="<?php bloginfo('template_directory')?>/js/min/magento_signin.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/min/jquery.raty.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/min/jquery.raty.js" ></script>-->
+	<script src="<?php bloginfo('template_directory')?>/js/min/combine2.js" ></script><!--combined custom.js,smogi.js,rangoli.js,magento_signin.js,jquery.raty.js into combine2.js-->
 
 </head>
 <body>
