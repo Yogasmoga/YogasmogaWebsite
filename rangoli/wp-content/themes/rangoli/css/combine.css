@@ -371,35 +371,39 @@ img{
     width: 354px;
 }
 .fb-icon, .twtr-icon, .pin-icon, .insta-icon {
-    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/fb-icon.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/social-sprites.png") no-repeat scroll center top rgba(0, 0, 0, 0);
     display: inline-block;
     height: 21px;
     margin-top: 5px;
     width: 12px;
 }
+.fb-icon{background-position: -18px -16px ;}
 .fb-icon:hover {
-    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/fb-icon-ovr.png");
+    background-position: -64px -16px ;
 }
+.twtr-icon{background-position: -12px -68px ;}
 .twtr-icon:hover {
-    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/tw-icon-ovr.png");
+    background-position: -61px -68px ;
 }
+.insta-icon{background-position: -13px -117px ;}
 .insta-icon:hover {
-    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/insta-icon-ovr.png");
+    background-position: -64px -117px ;
 }
+.pin-icon{background-position: -14px -166px ;}
 .pin-icon:hover {
-    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/pin-icon-ovr.png");
+    background-position: -62px -166px ;
 }
 .insta-icon {
     width: 21px;
-    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/insta-icon.png");
+    /*background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/insta-icon.png");*/
 }
 .twtr-icon {
     width: 25px;
-    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/tw-icon.png");
+    /*background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/tw-icon.png");*/
 }
 .pin-icon {
     width: 21px;
-    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/pin-icon.png");
+    /*background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/pin-icon.png");*/
 }
 .footer .social-icons > li {
     display: inline-block;
