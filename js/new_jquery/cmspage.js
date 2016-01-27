@@ -20,6 +20,10 @@ jQuery(document).ready(function($){
     if(window.location.hash != '') {
         var blockid = window.location.hash;
         blockid = blockid.substring(1, blockid.length);
+		var questionPos = blockid.indexOf("?");
+        if(questionPos>-1)
+            blockid = blockid.substring(0,questionPos);
+			alert(blockid);
 
         // if(blockid == 'get-smogi-bucks') {
         //     scrollToAnchor('get-smogi-bucks');            

@@ -20,7 +20,7 @@ jQuery(document).ready(function($){
         }
 
 
-	    if(_currenturl.indexOf('#') > 0){
+	/*    if(_currenturl.indexOf('#') > 0){
 			//$(window).scrollTop($(window).scrollTop() - _headerHeight);
 			//console.log($("#"+ _currenturl.substr(_currenturl.indexOf('#') + 1)));
 			var curhash = _currenturl.substr(_currenturl.indexOf('#') + 1)
@@ -33,7 +33,7 @@ jQuery(document).ready(function($){
 					})
 				})
 			}
-		}
+		}*/
 	$(window).load(function(){
 			//$('.header-container').hover(
 	//        function() {
