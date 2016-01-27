@@ -136,7 +136,7 @@
 
 
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url')  ?>" />
-    <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/custom.css" />
+    <!--<link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/custom.css" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/flexslider.css" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/animation.css" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/header.css" />
@@ -144,7 +144,8 @@
     <link rel='stylesheet' href="<?php bloginfo('template_directory'); ?>/css/homepage.css" />
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/rangoli.css" />
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/jquery.raty.css" />
-    <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/pace.css" />
+    <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/pace.css" />-->
+	<link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/combine.css" /><!--combined css of custom.css,flexslider.css,animation.css,header.css,mystyle.css,homepage.css,rangoli.css,jquery.raty.css,page.css -->
 <!--    <link rel='stylesheet' href="--><?php //bloginfo('template_directory'); ?><!--/css/media.css" />-->
 
 
