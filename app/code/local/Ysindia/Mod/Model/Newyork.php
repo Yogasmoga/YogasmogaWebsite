@@ -33,7 +33,7 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 				}					
 			}
 			if($request['region_id'] == "43" || $request['region_id'] == "12" || $request['region_id'] == "14" || $request['region_id'] == "32"){
-				if($item['product_id']==4){
+				if($item['product_id']==4 || $item['product_id']==331){
 				$price_minus_discount = $item['price'] - $item['discount_amount'];
 				$item->getProduct()->setTaxClassId('30');
 				}
@@ -163,7 +163,7 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 			
 			
 			if($request['region_id'] == "43" || $request['region_id'] == "12" || $request['region_id'] == "14" || $request['region_id'] == "32"){
-				if($item['product_id']==4){
+				if($item['product_id']==4 || $item['product_id']==331){
 					$price_minus_discount = $item['price'] - $item['discount_amount'];
 					$rate = 0;
 				}
