@@ -678,9 +678,15 @@
 <script type="text/javascript">
 
     var type = window.location.hash.substr(1);
+	
     jQuery(".sign-in-box h1").html("HELP");
     jQuery(document).ready(function ($) {
-        if (type == "") {
+        
+		var questionPos = type.indexOf("?");
+        if(questionPos>-1)
+            type = type.substring(0,questionPos);
+		
+		if (type == "") {
             type = "faq";
         }
         $(".help_page").hide();
