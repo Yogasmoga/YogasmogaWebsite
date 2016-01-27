@@ -23,7 +23,7 @@ jQuery(document).ready(function($){
 		var questionPos = blockid.indexOf("?");
         if(questionPos>-1)
             blockid = blockid.substring(0,questionPos);
-			alert(blockid);
+			//alert(blockid);
 
         // if(blockid == 'get-smogi-bucks') {
         //     scrollToAnchor('get-smogi-bucks');            
