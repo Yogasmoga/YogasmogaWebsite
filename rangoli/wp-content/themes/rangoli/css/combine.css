@@ -375,7 +375,7 @@ img{
     display: inline-block;
     height: 21px;
     margin-top: 5px;
-    width: 12px;
+    width: 12px;transition:none;-webkit-transition:none;
 }
 .fb-icon{background-position: -18px -16px ;}
 .fb-icon:hover {
