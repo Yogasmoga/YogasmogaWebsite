@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
             $('#rangoli-head').attr('class', colour);
         }
 
-
+/*
 	    if(_currenturl.indexOf('#') > 0){
 			//$(window).scrollTop($(window).scrollTop() - _headerHeight);
 			//console.log($("#"+ _currenturl.substr(_currenturl.indexOf('#') + 1)));
@@ -34,6 +34,8 @@ jQuery(document).ready(function($){
 				})
 			}
 		}
+*/
+
 	$(window).load(function(){
 			//$('.header-container').hover(
 	//        function() {
