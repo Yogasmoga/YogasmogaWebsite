@@ -11,11 +11,10 @@ ul.navigation-bar > li{cursor:pointer;display:inline-block;height:69px;padding:0
 .r-align{text-align:right}
 .free-shipping > span span{margin:0 0 0 10px}
 .free-shipping img{height:16px;margin:-1px 0 0 1px;padding:0;vertical-align:top}
-.free-shipping .fs-icon1,.free-shipping .fs-icon2,.free-shipping .fs-icon3{background:url(../images/free_shipping_icon.png) no-repeat;}
-.fs-icon1{background-position: 0 0;width: 48px;height: 30px;}
-.fs-icon2{background-position: -64px 0;width: 25px;height: 16px;}
-.fs-icon3{background-position: -101px 0;width: 31px;height: 30px;}
-
+.free-shipping .fs-icon1,.free-shipping .fs-icon2,.free-shipping .fs-icon3{background:url(../images/free_shipping_icon.png) no-repeat; display:inline-block; text-indent:-9999px; text-align:left;}
+.fs-icon1{background-position: 0 0!important; background-size: auto 21px!important;width: 25px;height: 21px;}
+.fs-icon2{background-position: -60px 0!important;background-size: auto 38px!important;width: 25px;height: 16px;}
+.fs-icon3 {background-position: -53px 0 !important; background-size: auto 21px !important; height: 16px;width: 18px;}
 ul.shipping-menu{font-size:0;margin:8px 0 6px;padding:0}
 ul.shipping-menu > li{color:#555;display:inline-block;font:11px/19px gothambook;padding:0;position:relative}
 ul.shipping-menu > li.free-shipping{display:inline-block;font:italic 10px gothambook;margin:0 35px 0 0}

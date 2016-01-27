@@ -288,11 +288,11 @@ if(!is_user_logged_in()){
                         <span>Free shipping to US and Canada
                             <span>
                                 <cite class="fs-icon1">flag</cite>
-								<cite class="fs-icon1">flag</cite>
+								<cite class="fs-icon2">flag</cite>
 								<cite class="fs-icon3">globe</cite>
-								<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index.png">
-								<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index1.png">
-								<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index3.png">
+								<!--<img src="<?php //  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index.png">
+								<img src="<?php //  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index1.png">
+								<img src="<?php //  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index3.png">-->
 							</span>
                         </span>
                     </li>
