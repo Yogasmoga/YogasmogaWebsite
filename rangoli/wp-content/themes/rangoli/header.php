@@ -137,12 +137,13 @@
 
      <link rel="stylesheet" href="<?php bloginfo('stylesheet_url')  ?>" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/custom.css" />
+	<link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/flexslider.css" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/animation.css" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/header.css" />
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/rangoli.css" />
 
     <?php if(false){ ?>
-        <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/flexslider.css" />
+        
         <link rel='stylesheet' href="<?php bloginfo('template_directory'); ?>/css/homepage.css" />
         <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/rangoli_v1.css" />
         <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/mystyle.css" />
