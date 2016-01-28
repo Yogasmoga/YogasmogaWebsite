@@ -13,7 +13,7 @@ ul.navigation-bar > li{cursor:pointer;display:inline-block;height:69px;padding:0
 .free-shipping img{height:16px;margin:-1px 0 0 1px;padding:0;vertical-align:top}
 .free-shipping .fs-icon1,.free-shipping .fs-icon2,.free-shipping .fs-icon3{background:url(../images/free_shipping_icon.png) no-repeat; display:inline-block; text-indent:-9999px; text-align:left; height:16px; vertical-align:top;}
 .fs-icon1{background-position: 0 0!important; background-size: auto 21px!important;width: 25px;}
-.fs-icon2{background-position: -60px 0!important;background-size: auto 38px!important;width: 25px;}
+.fs-icon2{background-position: -64px 0!important;background-size: auto 40px!important;width: 25px; margin:0 1px;}
 .fs-icon3 {background-position: -53px 0 !important; background-size: auto 21px !important;width: 18px;}
 ul.shipping-menu{font-size:0;margin:8px 0 6px;padding:0}
 ul.shipping-menu > li{color:#555;display:inline-block;font:11px/19px gothambook;padding:0;position:relative}
