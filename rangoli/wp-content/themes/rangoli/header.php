@@ -135,19 +135,20 @@
 	<script src="<?php bloginfo('template_directory')?>/js/min/combine1.js" ></script><!--combined ajaxify.js,zeroClipboard.js-->
     <script data-pace-options='{ "ajax": true }'  src="<?php bloginfo('template_directory')?>/js/min/pace.min.js" ></script>
 
-    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url')  ?>" />
-    <!--<link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/custom.css" />
-    <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/flexslider.css" />
+     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url')  ?>" />
+    <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/custom.css" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/animation.css" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/header.css" />
-    <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/mystyle.css" />
-    <link rel='stylesheet' href="<?php bloginfo('template_directory'); ?>/css/homepage.css" />
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/rangoli.css" />
-    <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/jquery.raty.css" />
-    <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/pace.css" />-->
-	<link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/combine.css" /><!--combined css of custom.css,flexslider.css,animation.css,header.css,mystyle.css,homepage.css,rangoli.css,jquery.raty.css,pace.css -->
-<!--    <link rel='stylesheet' href="--><?php //bloginfo('template_directory'); ?><!--/css/media.css" />-->
 
+    <?php if(false){ ?>
+        <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/flexslider.css" />
+        <link rel='stylesheet' href="<?php bloginfo('template_directory'); ?>/css/homepage.css" />
+        <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/rangoli_v1.css" />
+        <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/mystyle.css" />
+        <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/jquery.raty.css" />
+        <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/pace.css" />
+    <?php } ?>
 
     <?php
         if(is_front_page()){
