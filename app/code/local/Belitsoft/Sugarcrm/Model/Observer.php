@@ -118,10 +118,6 @@ class Belitsoft_Sugarcrm_Model_Observer
 			if ($order instanceof Mage_Sales_Model_Order) {
 				$order->setOrderObjectName(Belitsoft_Sugarcrm_Model_Synchmap::ORDER_MODEL);
 				Mage::getModel('sugarcrm/connection')->synchOrder($order);
-
-				$customerId = $order->getCustomerId();
-				$customer = Mage::getModel('customer/customer')->load($customerId);
-				Mage::getModel('sugarcrm/connection')->synchCustomer($customer, Belitsoft_Sugarcrm_Model_Connection::OPERATION_UPDATE);
 			}
 		} catch(Exception $e) {
 			Mage::logException($e);
