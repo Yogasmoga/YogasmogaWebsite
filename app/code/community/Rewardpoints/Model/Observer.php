@@ -596,6 +596,10 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract
 
         if ($points_apply > 0) {
             $this->useCouponPoints($points_apply, $customerId, $order->getIncrementId());
+
+            // sync smogi bucks to sugar crm
+            $customer = Mage::getModel('customer/customer')->load($customerId);
+            Mage::getModel('sugarcrm/connection')->synchCustomer($customer, Belitsoft_Sugarcrm_Model_Connection::OPERATION_UPDATE);
         }
 
         //$this->sales_order_success_referral($order->getIncrementId());
