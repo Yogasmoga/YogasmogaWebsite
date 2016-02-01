@@ -10,18 +10,6 @@
     text-align: center;
     width: 100%;
 }
-/*
-.double-width .overlay-text{
-    color:#555;
-}
-.double-width .overlay-text .post_category{
-    border-color: #555;
-    color:#555;
-}
-.double-width .overlay-text .post_title{
-    color: #fff;
-}
-*/
 .second .one-three .overlay-text p{
     opacity: 0;
 }
@@ -411,12 +399,6 @@
 .two-three .post_title {
     font: 30px/35px ITCAvantGardeStd-Bk !important;
 }
-/*
-.two-three.double-width .post_category > a {
-    color: #555 !important;
-    transition-duration: 500ms;
-}
-*/
 .one-three .overlay-text .post_category a,.two-three .overlay-text .post_category a{
     font-size: 11px;
     line-height: 0;
