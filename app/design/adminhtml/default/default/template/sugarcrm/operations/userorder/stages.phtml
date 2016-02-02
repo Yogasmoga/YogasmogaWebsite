@@ -1,0 +1,17 @@
+<?php
+/**
+ * Sugarcrm bridge for Magento
+ *
+ * @category   Belitsoft
+ * @package    Belitsoft_Sugarcrm
+ * @author     Belitsoft <bits@belitsoft.com>
+ */
+?>
+
+<?php if($this->getStageType()): ?>
+<?php echo $this->getStages(); ?>
+<?php endif; ?>
+
+<?php if(!$this->getStageType()): ?>
+<?php echo Mage::helper('sugarcrm')->__("Please, select option from 'User orders to SugarCRM' field to load options"); ?>
+<?php endif; ?>

@@ -132,3 +132,103 @@ svg#hexa polygon:hover,svg#pie path:hover,svg#triangle path:hover,svg#donut path
 .charmBig{display:block;float:none;height:100px;margin:0 auto;width:100px}
 .uinfo .act-user .uact a:hover,.uname a:hover{color:#999}
 .your-color-block .charmBig{transform:rotate(180deg);margin-left:-3px;margin-top:-5px}
+.login-box .wrapper{width:100%;float:left;padding:34px 0}
+.login-box{background:none repeat scroll 0 0 #f3f3f5;height:376px;left:50%;margin-left:-375px;margin-top:-228px;position:absolute;top:50%;width:750px}
+.login-box .left-shift{float:left;width:50%!important}
+.login-box .right-shift{float:right}
+.login-box .sign-in,.sign-up{width:316px}
+.sign-in h2,.sign-up h2{font-size:14px;margin:0 0 30px;text-transform:uppercase;font-family:ITCAvantGardeStd-Md;font-weight:400;color:#58595B}
+.sign-up{border-right:1px solid #c6c6c6;padding:0 29px}
+.sign-in{padding:0 29px}
+.align{text-align:center}
+.form-1 table input,#form-2 table input{border:none;box-sizing:border-box;font:12px ITCAvantGardeStd-Bk;padding:8px 0 2px;width:100%;border-bottom:1px solid #58595B;color:#58595B;background:none;letter-spacing:1px}
+.form-1 table td,#form-2 table td{padding-bottom:10px}
+caption,th,td{font-weight:400;text-align:left;vertical-align:top}
+table{border:0 none;border-spacing:0;empty-cells:show;font-size:100%}
+#sign-up-button{background:url(../images/signUp_btn.png) left top no-repeat;background-size:100% 100%;border:none;height:39px;width:315px}
+#sign-in-button{background:url(../images/signIn_btn.png) left top no-repeat;background-size:100% 100%;border:none;height:39px;width:315px}
+.forgot{border-bottom:1px solid #c03;color:#58595B;display:inline-block;font-family:ITCAvantGardeStd-Bk;font-size:12px;letter-spacing:1px;line-height:18px;margin:22px 0 20px;padding:0;text-decoration:none;text-transform:none}
+table.inputtable td.label,table.gfredeem td.label,table#redeem td.label,input{color:#58595B!important}
+.err-msg,.err-msg.signup_err{color:#d90d3d!important;width:auto!important}
+.login-box .close_signin_popup{position:absolute;right:-124px;top:-57px;background:url(/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/close-sharepopup.png) no-repeat scroll center bottom / contain rgba(0,0,0,0)!important;cursor:pointer;float:right;height:49px;margin-right:100px;margin-top:33px;width:55px}
+.cancel-on-png,.cancel-off-png,.star-on-png,.star-off-png,.star-half-png{font-size:2em;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;font-style:normal;font-variant:normal;font-weight:400;line-height:1;speak:none;text-transform:none}
+.cancel-on-png:before{content:"\e600"}
+.cancel-off-png:before{content:"\e601"}
+.star-on-png:before{content:"\f005"}
+.star-off-png:before{content:"\f006"}
+.star-half-png:before{content:"\f123"}
+.rating{display:block;float:none;padding:5px 0;transition-duration:50ms;width:auto}
+.rating:hover{transition-duration:50ms}
+.rating img{display:inline-block;width:14px}
+.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}
+.pace-inactive{display:none}
+.pace .pace-progress{background:#AE8536;position:fixed;z-index:2000;top:70px;right:100%;width:100%;height:2px}
+.wp_page{opacity:1!important}
+.overlay-text{color:#fff;cursor:pointer;height:100%;padding-top:50px;position:absolute;text-align:center;width:100%}
+.second .one-three .overlay-text p{opacity:0}
+.one-three,.two-three{position:relative;background-size:100% 100%}
+.one-three{width:33.33%;min-width:341.33333333333px;min-height:227.555555px}
+.two-three{width:66.66%;min-width:682.66666666667px;min-height:455.11111106667px}
+.left{float:left}
+.one-three{overflow:hidden}
+.right{float:right}
+.one-three img,.two-three img{width:100%;height:100%;float:left}
+.rangoli_logo{opacity:1;margin:-30px 0 0;position:absolute;text-align:center;top:40%;width:100%;z-index:5}
+.flexslider .rangoli_logo{left:50%;margin:-30px 0 0 -119px;opacity:0;position:absolute;text-align:center;top:40%;width:238px;z-index:5}
+.login_signup{position:absolute;text-align:center;bottom:70px;width:100%;z-index:5}
+.huge_it_slideshow_image_2,.huge_it_slideshow_image_wrap_2,.huge_it_slideshow_image_container_2{width:100%!important;height:100%!important}
+.huge_it_slideshow_title_text_2{border-bottom:1px solid #fff!important;font-family:ITCAvantGardeStd-Md;font-weight:400!important;margin-top:45px!important;padding:4px!important;text-transform:uppercase}
+.huge_it_slideshow_description_text_2{bottom:unset!important;padding:0!important;font-size:20px!important;top:65%!important}
+.huge_it_slider_2 .huge_it_slideshow_title_text_2,.huge_it_slider_2 .huge_it_slideshow_title_text_2,.huge_it_slider_2 .huge_it_slideshow_description_text_2{background:transparent!important}
+.fts-jal-fb-group-display a,.fts-jal-fb-group-display a:hover{color:#fff}
+.fts-jal-fb-group-display,.fts-jal-fb-group-display div,.fts-jal-fb-group-display img{margin:0!important;float:left;padding:0!important}
+.fts-twitter-image{display:none}
+.fts-jal-fb-message{box-sizing:border-box;position:absolute;top:32%;width:100%!important;word-wrap:break-word;line-height:1.2;left:0;padding:20px!important}
+.fts-fb-caption{display:none}
+.tweeter-info .bold{top:67%;display:block;font-family:freight-text-pro;font-size:19px;font-weight:400;position:absolute;text-align:center;width:100%}
+.black{border-top:1px solid #fff;padding:2px 63px;text-transform:uppercase}
+.fts-jal-fb-message{color:#fff;font-family:freight-text-pro;font-size:24px;font-style:italic}
+.fts-jal-fb-group-display,.fts-jal-fb-group-display div{float:left;width:100%}
+.fts-jal-fb-group-display .overlay-text{padding:5%!important;text-align:center}
+.tweeter-info .right{color:#fff;float:none;font-family:freight-text-pro;font-size:24px;font-style:italic;font-weight:300;height:100%;line-height:1.3;opacity:0;overflow:hidden;padding:17% 20px 20px;position:absolute;text-align:center;top:0;width:100%}
+.fts-twitter-text{left:0;position:absolute;text-align:center;top:25%;width:100%;font-size:24px;padding:20px;word-wrap:break-word;color:#fff;box-sizing:border-box;font-family:freight-text-pro;font-weight:300;font-style:italic;line-height:1.2}
+.twitter_author{border-top:1px solid #fff;bottom:30%;box-sizing:border-box;color:#fff;font-size:20px;left:0;margin:0 25%;padding:7px;position:absolute;text-align:center;width:50%}
+.twitter-icon{bottom:30px;left:50%;margin-left:-25px;position:absolute}
+.twitter-icon > img{width:50px}
+.twitter_author a{font-family:freight-text-pro;font-weight:400;color:#fff}
+.instagram_post{position:absolute;width:100%;height:100%;top:0;left:0}
+.fts-instagram-wrapper .date,.instagram-image-likes,.instagram-image-comments{display:none}
+.fts-slicker-instagram,.fts-slicker-instagram div,.fts-slicker-instagram img{padding:0!important;margin:0!important;float:left;width:100%!important}
+.one-three.invite-friends .overlay-text > div:first-child{bottom:0;height:62%;position:absolute;width:100%}
+.one-three.right.get_app .overlay-text > div:first-child{height:74%;position:absolute;bottom:0;width:100%}
+.flexslider{background:none repeat scroll 0 0 #fff;border:medium none;border-radius:0;margin:0;position:relative;overflow:hidden;clear:both}
+.flexslider .home_signup{position:absolute;left:0;width:100%;display:block;z-index:5;text-align:center;top:60%}
+.flexslider #signup_signin_btn{border:1px solid #fff;box-sizing:border-box;color:#fff;cursor:pointer;display:inline-block;font-family:freight-text-pro;font-size:18px;left:50%;line-height:42px;margin:0 auto 30px;padding:0 50px;text-align:center;transition-duration:500ms}
+.over-the-slide{opacity:0;position:absolute;text-align:center;top:0;width:100%;height:100%;background:-webkit-linear-gradient(to top,rgba(85,85,85,0.7),transparent,transparent) repeat scroll 0 0 rgba(0,0,0,0);background:-o-linear-gradient(to top,rgba(85,85,85,0.7),transparent,transparent) repeat scroll 0 0 rgba(0,0,0,0);background:-moz-linear-gradient(to top,rgba(85,85,85,0.7),transparent,transparent) repeat scroll 0 0 rgba(0,0,0,0);background:linear-gradient(to top,rgba(85,85,85,0.7),transparent,transparent) repeat scroll 0 0 rgba(0,0,0,0)}
+.over-the-slide .post_category{margin:0 auto 10px}
+.over-the-slide .post_text{color:#fff;font-family:freight-text-pro;font-size:16px;font-weight:400;margin:0 auto;width:70%;line-height:1.1;margin-bottom:8px}
+.over-the-slide .post_author{color:#fff;font-size:15px;font-family:freight-text-pro;font-style:italic;font-weight:300}
+.over-the-slide .post_category{font-family:freight-text-pro;font-size:17px;font-weight:400;padding:8px}
+.over-the-slide .post_author span{font-family:freight-text-pro;font-weight:500;font-style:normal;text-transform:capitalize}
+.first,.second,.third,.fourth,.fifth{clear:both;opacity:0;margin:0!important;padding:0!important}
+.flex-direction-nav{display:none}
+.homepage_slider li{cursor:pointer}
+.homepage_slider .flex-direction-nav{display:block}
+.flex-direction-nav > li:first-child a{height:112px;position:absolute;top:50%;margin-top:-56px;width:70px;z-index:5;color:transparent;left:0}
+.flex-direction-nav > li:last-child a{height:100%;position:absolute;top:0;margin-top:0;width:70px;z-index:5;color:transparent;right:0}
+.flex-direction-nav a.flex-prev::before,.flex-direction-nav a.flex-next::before{content:''!important}
+.flex-direction-nav a{text-indent:-999px;text-shadow:none}
+.homepage_slider:hover .flex-direction-nav a{opacity:1}
+.homepage_slider .flex-direction-nav .flex-prev{background:rgba(0,0,0,0) url(/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/previous-slide.png) no-repeat scroll center center}
+.homepage_slider .flex-direction-nav .flex-next{background:rgba(0,0,0,0) url(/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/next-slide.png) no-repeat scroll center center}
+.homepage_slider .flex-control-nav.flex-control-paging{bottom:10px;position:absolute;z-index:2}
+.homepage_slider .flex-control-nav li{margin:0 4px}
+.homepage_slider .flex-control-paging li a{box-shadow:0 0 1px 1px #444;height:8px;text-indent:-9999px;width:8px;background:#fff}
+.homepage_slider .flex-control-paging li a.flex-active{background:#C03}
+.flexslider .slides img{height:auto}
+.fts-jal-fb-message{width:90%!important;left:5%}
+.two-three .post_title{font:30px/35px ITCAvantGardeStd-Bk!important}
+.one-three .overlay-text .post_category a,.two-three .overlay-text .post_category a{font-size:11px;line-height:0}
+.one-three .overlay-text .post_category,.two-three .overlay-text .post_category{font-size:11px;padding:0 0 10px!important;margin-bottom:25px!important}
+.one-three .overlay-text .post_category{width:60%!important}
+.two-three .overlay-text .post_category{width:40%!important}
