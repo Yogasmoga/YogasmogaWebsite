@@ -40,6 +40,7 @@ jQuery(document).ready(function($){
     if(!_isshippable){
         createBillingList();
         greyBillingBox();
+        $("#co-billing-form input[type='submit']").show();
 
         $(".edit-curr-billing-add").live("click", function(){
             $("#shippingDetails #co-billing-form input[type='submit']").show();
