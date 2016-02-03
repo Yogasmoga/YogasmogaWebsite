@@ -48,6 +48,8 @@ Default layout, loads most of the pages
 
                 <action method="addCss"><stylesheet>css/iphone.css</stylesheet></action>
 				<action method="addCss"><stylesheet>css/fonts.css</stylesheet></action>
+
+                <block type="core/text_list" name="before_head_end" as="before_head_end"/>
             </block>
 
             <block type="core/text_list" name="after_body_start" as="after_body_start"/>
