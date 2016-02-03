@@ -1724,3 +1724,10 @@ p.small.err_msg {
 .lh0 {
     line-height: 0;
 }
+.invite_link .link {
+    font-style: normal;
+    left: 14px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
