@@ -38,7 +38,6 @@
     <action method="addCss"><stylesheet>css/mywebfonts.css</stylesheet></action>
 
 
-    // to be removed
     <!--<action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
     <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action>
 
