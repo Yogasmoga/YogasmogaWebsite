@@ -486,19 +486,22 @@ if($currentUrl != $checkoutpage){
                 /*********** cart count after gift set ***************/
 
                 $i = 1;
+					 
+		$urlString = Mage::helper('core/url')->getCurrentUrl();
+		$url = Mage::getSingleton('core/url')->parseUrl($urlString);
+		$path = $url->getPath();
+		
+		 
+				if($path != strtolower('/checkout/onepage')){
                 foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
                     if ($child1->getIsActive()) {
                         //show Main parent categories first level
                         if($child1->getId() == $currentcategoryid)
                             echo "<li rel='".Mage::getModel("catalog/category")->load($child1->getId())->getId()."' class='".Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey()."' ><a  class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
+                       
                         else
                             echo "<li rel='".Mage::getModel("catalog/category")->load($child1->getId())->getId()."' class='".Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey()."'><a  class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
-                        // show sub categories second level
-
-//                        echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
-//                           </ul></li>';
+                       
                         $firstcolumn = '<ul class="sub-menu menu-ovr"><li><ul>';
                         $remainingcolumn = '';
                         $subcategory = Mage::getModel('catalog/category')->load($child1->getId());
@@ -545,65 +548,14 @@ if($currentUrl != $checkoutpage){
                         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
                         $categoryName = explode('/', $currentUrl);
                         $urlKey = $categoryName[3];
-                        /*if($i == 1){
-                            echo "<li>
-                                    <a href=".$this->getUrl()."women/gifts> GIFTS </a>
-                                    <ul>
-                                        <li><a href=".$this->getUrl()."women/gift-sets-for-150/>Gift Sets for $150</a></li>
-                                        <li><a href=".$this->getUrl()."women/gift-sets-for-250/>Gift Sets for $250</a></li>
-                                         <li><a href=".$this->getUrl()."gift_of_ys/>Gift Card</a></li>
-                                    </ul>
-                              </li>";
-                        }
-                        if($i == 2){
-                            echo "<li>
-                                    <a href='javascript:void(0)'> GIFTS </a>
-                                    <ul>
-                                        <li><a href=".$this->getUrl()."mens/gift-sets-for-150/>Gift Sets for $150</a></li>
-                                        <li><a href=".$this->getUrl()."gift_of_ys/>Gift Card</a></li>
-                                    </ul>
-                              </li>";
-                        }$i++;*/
+                        
 
                         echo "</ul></li>";
                     }
 
                 }
-                /*            foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
-                                if ($child1->getIsActive()) {
-                                    //show Main parent categories first level
-                                    if($child1->getId() == $currentcategoryid)
-                                        echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                                    else
-                                        echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                                    // show sub categories second level
-                                    echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
-                                       </ul></li>';
-                                            $subcategory = Mage::getModel('catalog/category')->load($child1->getId());
-                                            $subcategories = $subcategory->getChildrenCategories();
-                                            foreach ($subcategories as $child2)
-                                            {
-                                                if($child2->getIsActive()) {
-                                                echo "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a><ul>";
-                                                     // show sub categories third level
-                                                            $subsubcategory = Mage::getModel('catalog/category')->load($child2->getId());
-                                                            $subsubcategories = $subsubcategory->getChildrenCategories();
-                                                            foreach ($subsubcategories as $child3)
-                                                            {
-                                                                if($child3->getIsActive()) {
-                                                                    echo "<li><a href=\"".$child3->getUrl()."\">" . $child3->getName();
-                                                                    echo "</a></li>";
-                                                                }
-                                                            }
-
-                                                echo "</ul></li>";
-                                                }
-                                            }
-
-                                    echo "</ul></li>";
-                                }
-
-                            }*/
+			}	
+               
                 echo "</ul>";
                 ?>
 
