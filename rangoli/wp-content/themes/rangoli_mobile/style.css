@@ -1620,10 +1620,11 @@ p.small.err_msg {
 
 .invite_link .link {
     font-style: normal;
-    left: 14px;
+    left: 0;
     position: absolute;
     top: 0;
-    z-index: 1;
+    z-index: 1; text-align:center;
+	width: calc(100% - 120px);
 }
 
 .post_content > ul {
