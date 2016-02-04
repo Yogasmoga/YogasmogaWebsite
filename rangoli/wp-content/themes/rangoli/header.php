@@ -303,12 +303,24 @@ if(!is_user_logged_in()){
         <div class="f-right header-right">
             <div class="right-top r-align">
                 <ul class="shipping-menu tr-menu">
+
+                    <?php if(false){ // old code without sprite ?>
                     <li class="free-shipping">
                         <span>Free shipping to US and Canada
                             <span>
                                 <img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index.png">
 								<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index1.png">
 								<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/index3.png">                           </span>
+                        </span>
+                    </li>
+                    <?php } ?>
+                    <li class="free-shipping">
+                        <span>Free shipping to US and Canada
+                        <span>
+                          <cite class="fs-icon1">flag</cite>
+                          <cite class="fs-icon2">flag</cite>
+                          <cite class="fs-icon3">globe</cite>
+                        </span>
                         </span>
                     </li>
                     <li data-blockid="help-new">

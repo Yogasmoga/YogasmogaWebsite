@@ -305,7 +305,6 @@ if(!is_user_logged_in()) {
                             <li><a target="_blank"  class="twtr-icon" href="http://www.twitter.com/YOGASMOGA"></a></li>
                             <li><a target="_blank"  class="insta-icon" href="http://www.instagram.com/YOGASMOGA"></a></li>
                             <li><a  target="_blank" class="pin-icon" href="http://www.pinterest.com/YOGASMOGA"></a></li>
-
                         </ul>
                     </li>
                     <li>&nbsp;</li>

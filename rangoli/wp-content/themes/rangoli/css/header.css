@@ -110,3 +110,15 @@ area{cursor:pointer}
 #ap_signin_popup .close{background:url(/skin/frontend/yogasmoga/yogasmoga-theme/images/pop-close.png) no-repeat scroll 0 0 rgba(0,0,0,0);cursor:pointer;float:right;height:42px;margin-right:82px;margin-top:14px;width:41px}
 #ap_signin_popup .err-msg{box-sizing:border-box;clear:both;color:#fff;font-family:ITCAvantGardeStd-Bk;font-size:12px;margin:0 auto;min-height:18px;padding:0 0 0 8px;text-align:center;width:294px;color:#fff!important}
 #ap_signup{background:#ff4d4d!important;border:medium none!important;height:42px!important;display:block;margin:20px auto 0!important;width:184px!important;cursor:pointer}
+.free-shipping > span span{margin:0 0 0 10px}
+.free-shipping img{height:16px;margin:-1px 0 0 1px;padding:0;vertical-align:top}
+.free-shipping .fs-icon1,.free-shipping .fs-icon2,.free-shipping .fs-icon3{background:url(../images/free_shipping_icon.png) no-repeat; display:inline-block; text-indent:-9999px; text-align:left; height:16px; vertical-align:top;}
+.fs-icon1{background-position: 0 0!important; background-size: auto 21px!important;width: 25px;}
+.fs-icon2{background-position: -64px 0!important;background-size: auto 40px!important;width: 25px; margin:0 1px;}
+.fs-icon3 {background-position: -53px 0 !important; background-size: auto 21px !important;width: 18px;}
+ul.shipping-menu{font-size:0;margin:8px 0 6px;padding:0}
+ul.shipping-menu > li{color:#555;display:inline-block;font:11px/19px gothambook;padding:0;position:relative}
+ul.shipping-menu > li.free-shipping{display:inline-block;font:italic 10px gothambook;margin:0 35px 0 0}
+.shipping-menu li > span{padding:0 13px 0 10px;display:inline-block;}
+.shipping-menu li > span.open-cart{padding:0}
+.free-shipping > span{padding:2px 0 0}

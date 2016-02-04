@@ -67,6 +67,7 @@ img{border:none}
 .close-menu-btn{cursor:pointer;left:295px;position:absolute;top:85px}
 .menu-box{box-sizing:border-box;height:100%;overflow:hidden;padding:90px 0 0;position:fixed;width:321px;z-index:6}
 .menu-content{height:100%;margin-right:-17px;overflow-y:scroll;padding:0 15px 0 13px;width:354px}
+/*
 .fb-icon,.twtr-icon,.pin-icon,.insta-icon{background:url(/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/fb-icon.png) no-repeat scroll center top rgba(0,0,0,0);display:inline-block;height:21px;margin-top:5px;width:12px}
 .fb-icon:hover{background-image:url(/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/fb-icon-ovr.png)}
 .twtr-icon:hover{background-image:url(/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/tw-icon-ovr.png)}
@@ -76,6 +77,7 @@ img{border:none}
 .twtr-icon{width:25px;background-image:url(/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/tw-icon.png)}
 .pin-icon{width:21px;background-image:url(/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/pin-icon.png)}
 .footer .social-icons > li{display:inline-block}
+*/
 .profile-links{padding-top:30px!important}
 .menu-box .menu-content ul{border-bottom:1px solid #fff;float:left;font-size:16px;line-height:1.5;padding:10px 0;text-align:left;width:295px}
 .shop-yogasmoga,.about-rangoli{padding:5px 0!important}
@@ -358,3 +360,20 @@ button.next-confirmation-page{display:block;margin:30px auto 0}
 .single_post.span4:nth-child(3n){clear:right}
 .single_post.span4:nth-child(3n+1){clear:left}
 input[type="button"],input[type="submit"]{-webkit-appearance:none;border-radius:0}
+.fb-icon, .twtr-icon, .pin-icon, .insta-icon {
+    background: url("../images/social-sprites.png") no-repeat scroll center top rgba(0, 0, 0, 0);display: inline-block;height: 21px;margin-top: 5px; width: 12px;
+    transition:none;-webkit-transition:none;}
+.fb-icon:hover, .twtr-icon:hover, .pin-icon:hover, .insta-icon:hover {
+    background: url("../images/social-sprites.png") no-repeat scroll center top rgba(0, 0, 0, 0);display: inline-block; transition:none;-webkit-transition:none;}
+.fb-icon{background-position: -18px -16px ;}
+.fb-icon:hover {background-position: -64px -16px ;}
+.twtr-icon{background-position: -12px -68px ;}
+.twtr-icon:hover {background-position: -61px -68px ;}
+.insta-icon{background-position: -13px -117px ;}
+.insta-icon:hover {background-position: -64px -117px ;}
+.pin-icon{background-position: -14px -166px ;}
+.pin-icon:hover {background-position: -62px -166px ;}
+.insta-icon {width: 21px;}
+.twtr-icon { width: 25px;}
+.pin-icon { width: 21px;}
+.footer .social-icons > li{display:inline-block}
