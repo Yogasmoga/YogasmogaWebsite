@@ -4375,7 +4375,7 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block {
     width: 100%;
-    margin: 13px 0;
+    margin: 13px 0 8px;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block img {
@@ -4908,7 +4908,7 @@ table.productdetailtable div#colorcontainer div table {
     float: left;
     overflow: hidden;
     height: 48px;
-    margin: 26px 0 0 0;
+    margin: 35px 0 0 0;
     position: relative;
     width: 50%;
     border: 2px solid #fff;
@@ -6931,12 +6931,12 @@ button#send2 {
 }
 
 .help_page > p {
-    color: #555;
-    font: 19px/50px ITCAvantGardeStd-Bk;
-    height: 44px;
-    padding: 0;
-    text-align: center;
-    letter-spacing: 1px;
+  color: #555;
+  font: 19px/79px ITCAvantGardeStd-Bk;
+  height: 79px;
+  letter-spacing: 1px;
+  padding: 0;
+  text-align: center;
 }
 
 .help_page table tr:last-child td {
