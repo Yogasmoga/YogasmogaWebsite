@@ -3327,6 +3327,8 @@ label[for="shipping:street1"] {
     padding: 0 0;
 }
 
+#shipping-new-address-form{padding-top:8px;}
+
 .one-page-checkout .active .step-count {
     background: #eee !important;
 }
@@ -7816,3 +7818,4 @@ input#giftcard_use{
     content: "---";
     letter-spacing: -3px;
 }
+.ws-continue-link{display:none;}
