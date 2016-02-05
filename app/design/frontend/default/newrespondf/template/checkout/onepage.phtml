@@ -32,7 +32,7 @@
 <?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
     <li id="opc-<?php echo $_stepId ?>" class="section <?php echo !empty($_stepInfo['allow'])?'allow':'' ?> <?php echo !empty($_stepInfo['complete'])?'saved':'' ?>">
         <div class="head">
-            <div class="checkout_title"><span class="step-count"><?php echo $i ?></span> &nbsp;<span class="step-title"><?php echo $_stepInfo['label'] ?></span></div>
+            <div class="checkout_title"><span class="step-count"><?php echo $i ?></span><span class="step-title"><?php echo $_stepInfo['label'] ?></span></div>
             <span class="arrow-tag">
                 <svg height="44px" width="44px">
                     <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
