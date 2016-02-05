@@ -3319,7 +3319,7 @@ label[for="shipping:street1"] {
 
 #checkout-shipping-method-load {
     font-size: 12px;
-    padding: 13px 0 0 !important;
+    padding: 25px 0 5px !important;
     text-align: left;
 }
 
