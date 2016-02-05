@@ -26,3 +26,6 @@ mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
 <IfModule pagespeed_module>
     ModPagespeed off
 </IfModule>
+
+php_value upload_max_filesize 1M
+php_value post_max_size 1M
