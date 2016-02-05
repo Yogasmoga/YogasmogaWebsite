@@ -7821,3 +7821,5 @@ input#giftcard_use{
     letter-spacing: -3px;
 }
 .ws-continue-link{display:none;}
+.one-page-checkout .section .step-count{text-indent:0;}
+.one-page-checkout .section .step-title{text-indent:50px;}
