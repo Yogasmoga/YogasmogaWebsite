@@ -68,8 +68,9 @@ img{border:none}
 .menu-box{box-sizing:border-box;height:100%;overflow:hidden;padding:90px 0 0;position:fixed;width:321px;z-index:6}
 .menu-content{height:100%;margin-right:-17px;overflow-y:scroll;padding:0 15px 0 13px;width:354px}
 .fb-icon, .twtr-icon, .pin-icon, .insta-icon {
-    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/social-sprites.png") no-repeat scroll center top rgba(0, 0, 0, 0);display: inline-block;height: 21px;margin-top: 5px; width: 12px;
+    background: url("../images/social-sprites.png") no-repeat scroll center top rgba(0, 0, 0, 0);display: inline-block;height: 21px;margin-top: 5px; width: 12px;
 	transition:none;-webkit-transition:none;}
+.fb-icon:hover, .twtr-icon:hover, .pin-icon:hover, .insta-icon:hover {background: url("../images/social-sprites.png") no-repeat scroll center top rgba(0, 0, 0, 0);}	
 .fb-icon{background-position: -18px -16px ;}
 .fb-icon:hover {background-position: -64px -16px ;}
 .twtr-icon{background-position: -12px -68px ;}
