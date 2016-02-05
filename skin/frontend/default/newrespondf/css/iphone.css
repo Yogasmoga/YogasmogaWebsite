@@ -7578,6 +7578,8 @@ table#checkout-review-table tfoot tr.reward-point td .price {
 
 #payment_form_paypal_express li {
     height: 56px;
+	font-size:14px;
+	font-family:GraphikRegular;
 }
 
 .collat-wrap {
