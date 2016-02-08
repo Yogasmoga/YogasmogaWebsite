@@ -6112,9 +6112,10 @@ table#checkout-review-table tfoot td .price {
 }
 
 .addresses-list .item address span {
+   float: left;
+    font: 12px/18px GraphikRegular;
+    letter-spacing: 1px;
     width: 100%;
-    float: left;
-	 line-height: 18px;
 }
 
 .addresses-list .item a {
