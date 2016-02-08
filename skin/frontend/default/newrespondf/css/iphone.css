@@ -6080,6 +6080,7 @@ table#checkout-review-table tfoot td .price {
     margin-bottom: 20px;
     margin-top: 44px;
     text-transform: uppercase;
+	letter-spacing:1px;
 }
 
 .col-1.addresses-primary > h2 {
@@ -6103,6 +6104,7 @@ table#checkout-review-table tfoot td .price {
     font: 12px Avantgarde-demi;
     text-transform: uppercase;
     margin-bottom: 25px;
+	letter-spacing:1px;
 }
 
 .addresses-list .item address {
@@ -6142,6 +6144,7 @@ table#checkout-review-table tfoot td .price {
     font: 12px Avantgarde-demi;
     text-align: left;
     width: 100%;
+	letter-spacing:1px;
 }
 
 .back-link {
