@@ -698,7 +698,8 @@ Validation.addAllThese([
                 }
                 return Validation.get('validate-cc-type').test(ccNumberContainer.value, ccNumberContainer);
             }],
-     ['validate-cc-exp', 'Incorrect credit card expiration date', function(v, elm) {
+    /* ['validate-cc-exp', 'Incorrect credit card expiration date', function(v, elm) {*/
+	['validate-cc-exp', 'Incorrect expiration date', function(v, elm) {	 
                 var ccExpMonth   = v;
                 var ccExpYear    = $(elm.id.substr(0,elm.id.indexOf('_expiration')) + '_expiration_yr').value;
                 var currentTime  = new Date();
