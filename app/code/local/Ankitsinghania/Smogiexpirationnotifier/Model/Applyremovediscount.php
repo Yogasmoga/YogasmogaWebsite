@@ -197,7 +197,7 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Applyremovediscount extends M
                     );
 //                    $response['errors'] = "Promo code is not valid";
 //                    echo json_encode($response);
-                    return "Promo code is not valid";
+                    return "Promo code is invalid";
                 }
             } else {
                 //$this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
