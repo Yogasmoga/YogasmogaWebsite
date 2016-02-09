@@ -569,7 +569,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 #giftofys .btn-addtoaccount, #cardbalanceform .btn-check {
-    background: hsl(97, 100%, 34%) none repeat scroll 0 0;
+    background:#00b900;
     border: medium none;
     color: hsl(0, 0%, 100%);
     height: 44px;
