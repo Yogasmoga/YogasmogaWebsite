@@ -26,7 +26,7 @@
 ?>
 <?php $_orders = $this->getOrders(); ?>
 <div class="in-page">
-    <div class="page-head"><h3><?php echo $this->__('Track Orders') ?></h3></div>
+    <div class="pg-heading"><h2><?php echo $this->__('Track Orders') ?></h2></div>
     <?php echo $this->getPagerHtml(); ?>
     <?php if($_orders->getSize()): ?>
     <table cellspacing="0" class="shopping-cart checkout-review" id="my-orders-table">
