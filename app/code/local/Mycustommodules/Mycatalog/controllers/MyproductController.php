@@ -4354,14 +4354,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         }
                     } else {
                         //$session->addError($this->__('Invalid customer data'));
-                        array_push($errors, "Invalid customer data.");
+                        array_push($errors, "Invalid customer data");
                     }
                 }
             } catch (Mage_Core_Exception $e) {
                 //$session->unsetAll();
                 //$session->setCustomerFormData($this->getRequest()->getPost());
                 if ($e->getCode() === Mage_Customer_Model_Customer::EXCEPTION_EMAIL_EXISTS) {
-                    array_push($errors, "Email Already Exists.");
+                    array_push($errors, "Email Already Exists");
                 } else {
                     array_push($errors, $e->getMessage());
                 }
@@ -4454,8 +4454,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     // Mage::logException($e); // PA DSS violation: this exception log can disclose customer password
                 }
             } else {
-                array_push($errors,"Email and Password are required.");
-                $session->addError($this->__('Login and password are required.'));
+                array_push($errors,"Email and Password are required");
+                $session->addError($this->__('Login and password are required'));
             }
         }
         $response['status'] = "error";

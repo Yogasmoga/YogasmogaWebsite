@@ -539,7 +539,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
                     //  );
                 }
                 else {
-                    Mage::getSingleton("core/session")->addError("Promo code is not valid");
+                    Mage::getSingleton("core/session")->addError("Promo code is invalid");
                 }
             } else {
                 Mage::getSingleton("core/session")->addSuccess($this->__('Promo code has been removed successfully'));
