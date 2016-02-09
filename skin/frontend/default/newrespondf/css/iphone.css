@@ -2569,6 +2569,7 @@ tr.td-noborder td {
 
 #co-billing-form .form-list li:last-child {
     padding-top: 2px !important;
+	padding-bottom: 2px !important;
 }
 
 #co-billing-form .form-list li:last-child span {
@@ -7677,7 +7678,7 @@ label[for="shipping:same_as_billing"],
 }
 
 #shipping_billing_address {
-    margin: 17px 3px !important;
+   margin: 17px 3px 22px !important;
 }
 
 #shipping_save_address {
