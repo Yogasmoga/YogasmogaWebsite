@@ -1895,6 +1895,9 @@ button[name="update_cart_action_checkout"] {
     line-height: 30px;
     text-align: left;
     font-family: graphikregular;
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 .apply_promo_login > span {
@@ -3041,7 +3044,7 @@ h4.legend {
     letter-spacing: 1px;
     position: absolute;
     right: 0;
-    top: 5px;
+    top: 3px;
 }
 
 .discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
