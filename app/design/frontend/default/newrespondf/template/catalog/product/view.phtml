@@ -1378,12 +1378,15 @@ if ($lengthAvailable) {
                                             <?php //} ?>
 
                                             <div class="inner-feature">
-                                                <a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>">
+
+                                                <?php $url = Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor();?>
+
+                                                <a href="<?php echo $url; ?>">
                                                     <img class="img-responsive"
                                                          alt="<?php echo $parentproduct->getName() ?>"
-                                                         src="<?php echo $completelookimg; ?>"></a>
+                                                         src="<?php echo $completelookimg; ?>" onclick="window.location.replace('<?php echo $url; ?>')"></a>
 
-                                                <div class="caption">
+                                                <div class="caption" onclick="window.location.replace('<?php echo $url; ?>')">
 												<span class="prd_title"><a
                                                         href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>">
                                                         <?php echo $parentproduct->getName() ?></a></span>
