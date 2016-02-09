@@ -218,7 +218,7 @@ function createCustomerAccount() {
         jQuery("#error_msg").html("Please choose a password");
     }
     else if(pwd.length<6){
-        jQuery("#error_msg").html("Password should be of 6 characters.");
+        jQuery("#error_msg").html("Password should be of 6 characters");
     }
 
     else if(!gender_link.find(".f1").hasClass("current") && !gender_link.find(".f2").hasClass("current")){
@@ -256,7 +256,7 @@ function createCustomerAccount() {
                     location.reload(true) ;
                 }
                 else {
-                    jQuery("#error_msg").html("Email already exists.");
+                    jQuery("#error_msg").html("Email already exists");
                     jQuery(".create_account").html(button_html);
 
                     return false;
@@ -352,7 +352,7 @@ function loginCustomer() {
         jQuery("#err_msg").html("Invalid Email or Password");
     }
     else if(pwd=="" || pwd=="Last Name"){
-        jQuery("#err_msg").html("Please enter your password.");
+        jQuery("#err_msg").html("Please enter your password");
     }
     else {
         jQuery.ajax({

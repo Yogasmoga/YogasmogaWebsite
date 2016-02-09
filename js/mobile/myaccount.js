@@ -223,7 +223,7 @@ function validateSmogibuckpoints()
         {
             if(!isNormalInteger(jQuery("#points_to_be_used").val()))
             {
-                jQuery("#points_error").html('Invalid Amount. Must be an integer.').fadeIn('fast');
+                jQuery("#points_error").html('Invalid Amount. Must be an integer').fadeIn('fast');
                 jQuery("#points_to_be_used").addClass('error');
                 flag = false;
             }
@@ -512,7 +512,7 @@ function validateCreateGiftCardForm()
     {
         if(!validateEmail(jQuery("#mail-to-email").val()))
         {
-            setOnError(jQuery("#mail-to-email"), "Please enter a valid Recipient's Email Address.");
+            setOnError(jQuery("#mail-to-email"), "Please enter a valid Recipient's Email Address");
             flag = false;    
         }
     }
@@ -520,7 +520,7 @@ function validateCreateGiftCardForm()
     {
         if(!validateEmail(jQuery("#mail-to-email-conf").val()))
         {
-            setOnError(jQuery("#mail-to-email-conf"), "Please enter a valid Recipient's Email Address.");
+            setOnError(jQuery("#mail-to-email-conf"), "Please enter a valid Recipient's Email Address");
             flag = false;    
         }
     }
@@ -528,7 +528,7 @@ function validateCreateGiftCardForm()
     {
         if(jQuery("#mail-to-email").val() != jQuery("#mail-to-email-conf").val())
         {
-            setOnError(jQuery("#mail-to-email-conf"),"Please make sure the Recipient's Email Addresses match.");
+            setOnError(jQuery("#mail-to-email-conf"),"Please make sure the Recipient's Email Addresses match");
             flag = false;
         }
     }
@@ -536,7 +536,7 @@ function validateCreateGiftCardForm()
     {
         if(!isNormalInteger(jQuery("#card-amount").val()))
         {
-            setOnError(jQuery("#card-amount"),"Invalid Amount. Must be an integer.");
+            setOnError(jQuery("#card-amount"),"Invalid Amount. Must be an integer");
             flag = false;
         }
         else
@@ -549,7 +549,7 @@ function validateCreateGiftCardForm()
         }
         //else if((jQuery("#card-amount").val() * 1) <= 0)
 //        {
-//            setOnError(jQuery("#card-amount"),"Invalid Amount. Must be an integer.");
+//            setOnError(jQuery("#card-amount"),"Invalid Amount. Must be an integer");
 //            flag = false;
 //        }   
     }
