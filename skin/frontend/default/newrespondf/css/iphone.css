@@ -3045,7 +3045,7 @@ h4.legend {
     letter-spacing: 1px;
     position: absolute;
     right: 0;
-    top: 5px;
+    top: 3px;
 }
 
 .discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
@@ -6253,6 +6253,9 @@ table#checkout-review-table tfoot td .price {
     width: 100%;
 }
 
+.customer-address-form #account_content .buttons-set button.tick {
+    background: url("../images/tick.png") no-repeat scroll center center #ae8536;   
+}
 .tick2 {
     background: url("../images/tick.png") no-repeat scroll center center #AE8536;
     border: medium none;
@@ -6525,7 +6528,7 @@ p.design-paragraph {
 }
 
 #giftcardActive .input-box {
-    font: 13px GraphikRegular;
+    font: 12px GraphikRegular;
     text-align: left;
 }
 
