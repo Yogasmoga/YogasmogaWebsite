@@ -1027,7 +1027,7 @@ form#cardbalanceform table.redeem-giftcard {
 
 .goy-form .button.btn-addtobag {
     /*background: none repeat scroll 0 0 #CCC;*/
-	background: hsl(97, 100%, 34%) none repeat scroll 0 0;
+	background: #00b900;
     border: medium none;
    /* color: #fff;*/
     color: hsl(0, 0%, 100%);
