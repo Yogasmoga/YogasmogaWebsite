@@ -4373,13 +4373,10 @@ ul.checkout-cont > li {
     text-align: center;
     width: 19%;
 }
-4377
+
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block {
-  /*  width: 100%;
-    margin: 13px 0 10px;*/
-	float: left;
-    line-height: 0;
-	 width: 100%;
+    width: 100%;
+    margin: 13px 0 10px;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block img {
@@ -7494,8 +7491,7 @@ video {
 }
 
 .description-block .inner-content div.fitDetail table {
-  /*  margin-top: 15px;*/
-   margin-top: 20px;
+    margin-top: 15px;
 }
 
 #ajaxlogin_button_send .st0, #create_account .st0 {
