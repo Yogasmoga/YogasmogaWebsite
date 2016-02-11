@@ -195,9 +195,9 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Applyremovediscount extends M
                     $this->_getSession()->addError(
                         $this->__('cpnerror-msgCoupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
                     );
-//                    $response['errors'] = "Promo code is not valid";
+//                    $response['errors'] = "Promo code is invalid";
 //                    echo json_encode($response);
-                    return "Promo code is not valid";
+                    return "Promo code is invalid";
                 }
             } else {
                 //$this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
