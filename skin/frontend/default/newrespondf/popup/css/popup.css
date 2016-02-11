@@ -127,16 +127,6 @@ input, textarea, select {
 .popup_container .left_block .sign_signup_form ul li {
     margin-bottom: 10px;
 }
-
-/*
-.popup_container .left_block .sign_signup_form ul li span {
-    margin: 0 auto;
-    display: block;
-    font-size: 12px;
-    font-family: calibri, Arial, Helvetica, sans-serif;
-}
-*/
-
 .popup_container .left_block .sign_signup_form ul li input[type="text"],.popup_container .left_block .sign_signup_form ul li input[type="password"],.popup_container .left_block .sign_signup_form ul li select {
     width: 100%;
     box-sizing: border-box;
