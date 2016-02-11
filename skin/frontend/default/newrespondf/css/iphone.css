@@ -7787,7 +7787,7 @@ input#giftcard_use{
 }
 
 .one-page-checkout .section .step-count{text-indent:0;}
-.one-page-checkout .section .step-title{text-indent:44px;}
+.one-page-checkout .section .step-title{text-indent:44px;display: inline-block;}
 /*#checkout-payment-method-load dt {
     margin: 35px 0 0 0;
 }*/
