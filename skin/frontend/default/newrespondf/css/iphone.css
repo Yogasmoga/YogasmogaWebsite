@@ -4750,7 +4750,7 @@ table.productdetailtable div#colorcontainer div table {
     text-indent: -9999px;
     border-radius: 16px;
     float: left;
-    height: 30px;
+    height: 30px; line-height:30px;
     width: 50%;
 }
 
@@ -4759,11 +4759,11 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .includeoptionmain .include_option > div.selected {
-    background: #c2c3c4;
+    background: #00B900;
 }
 
 .includeoptionmain .include_option > div:first-child.selected {
-    background: #00B900 !important;
+    background: #c2c3c4 !important;
 }
 
 #discountFormPoints2 fieldset {
