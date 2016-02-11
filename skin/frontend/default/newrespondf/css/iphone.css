@@ -4374,7 +4374,8 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block {
     width: 100%;
-    margin: 13px 0 10px;
+    line-height: 0;
+    float: left;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block img {
@@ -7481,7 +7482,7 @@ video {
 }
 
 .description-block .inner-content div.fitDetail table {
-    margin-top: 15px;
+    margin-top: 21px;
 }
 
 #ajaxlogin_button_send .st0, #create_account .st0 {
