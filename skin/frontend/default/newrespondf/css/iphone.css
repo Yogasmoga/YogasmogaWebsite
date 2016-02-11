@@ -4375,8 +4375,10 @@ ul.checkout-cont > li {
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block {
-    width: 100%;
-    margin: 13px 0 10px;
+      
+	float: left;
+    line-height: 0;
+	 width: 100%;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block img {
@@ -6110,8 +6112,9 @@ table#checkout-review-table tfoot td .price {
 
 .addresses-list .item address {
     color: #555555;
-    font: 13px/18px GraphikRegular;
+    font: 12px/18px GraphikRegular;
     margin-bottom: 25px;
+	letter-spacing:1px;
 }
 
 .addresses-list .item address span {
@@ -7491,7 +7494,7 @@ video {
 }
 
 .description-block .inner-content div.fitDetail table {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 #ajaxlogin_button_send .st0, #create_account .st0 {
