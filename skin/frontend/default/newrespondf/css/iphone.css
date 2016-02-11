@@ -7793,7 +7793,7 @@ input#giftcard_use{
 }*/
 .ws-continue-link{display:none;}
 #shipping-new-address-form {
-    padding-top: 8px;
+    padding-top: 5px;
 }
 .customer-address-form #account_content .buttons-set button.tick {
     background: url("../images/tick.png") no-repeat scroll center center #ae8536;
