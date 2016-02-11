@@ -2543,7 +2543,7 @@ tr.td-noborder td {
 }
 
 #co-billing-form {
-    padding: 28px 0 13px;
+    padding: 35px 0 13px;
 }
 
 #co-billing-form input,
@@ -2568,6 +2568,7 @@ tr.td-noborder td {
 }
 
 #co-billing-form .form-list li:last-child {
+    padding-bottom: 2px !important;
     padding-top: 2px !important;
 }
 
@@ -3310,7 +3311,7 @@ label[for="shipping:street1"] {
 }
 
 #co-shipping-form p.select300inner {
-    margin-top: 28px;
+    margin-top: 35px;
 }
 
 #checkoutSteps #opc-cart .is-active .step-count, .one-page-checkout .active .step-count {
@@ -3319,7 +3320,7 @@ label[for="shipping:street1"] {
 
 #checkout-shipping-method-load {
     font-size: 12px;
-    padding: 13px 0 0 !important;
+    padding: 25px 0 5px !important;
     text-align: left;
 }
 
@@ -4373,7 +4374,7 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block {
     width: 100%;
-    margin: 13px 0;
+    margin: 13px 0 10px;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block img {
@@ -4901,12 +4902,12 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 #checkout-payment-method-load dt {
-    background: #00B900;
+    background: #00b900 none repeat scroll 0 0;
     border-radius: 0;
     float: left;
     overflow: hidden;
     height: 48px;
-    margin: 26px 0 0 0;
+    margin: 28px 0 0 0;
     position: relative;
     width: 50%;
     border: 2px solid #fff;
@@ -5877,6 +5878,7 @@ table#checkout-review-table tfoot td .price {
     border-bottom: 1px solid #999;
     border-collapse: collapse;
     width: 100%;
+    float: left;
 }
 
 #wishlist-table thead th {
@@ -6928,8 +6930,8 @@ button#send2 {
 
 .help_page > p {
     color: #555;
-    font: 19px/50px ITCAvantGardeStd-Bk;
-    height: 44px;
+    font: 19px/79px ITCAvantGardeStd-Bk;
+    height: 79px;
     padding: 0;
     text-align: center;
     letter-spacing: 1px;
@@ -7300,7 +7302,7 @@ video {
 }
 
 .no_of_cart_items, .cart_total {
-    font: 12px/18px Graphik-SemiBold;
+    font: 12px/18px AvantGarde-Demi;
     margin: 18px 0;
 }
 
@@ -7396,7 +7398,7 @@ video {
 }
 
 .fitDetail .video-box.f-left > ul {
-    padding-bottom: 14px;
+    padding-bottom: 28px;
     padding-top: 0;
 }
 
@@ -7421,6 +7423,7 @@ video {
 
 .wishlist-items .span5 p a {
     color: #AD8536;
+    font: 12px/18px GraphikRegular;
 }
 
 .wishlist-items .span5:nth-child(2n+1) {
@@ -7477,7 +7480,7 @@ video {
 }
 
 .description-block .inner-content div.fitDetail table {
-    margin-top: 6px;
+    margin-top: 15px;
 }
 
 #ajaxlogin_button_send .st0, #create_account .st0 {
@@ -7573,6 +7576,8 @@ table#checkout-review-table tfoot tr.reward-point td .price {
 
 #payment_form_paypal_express li {
     height: 56px;
+    font-size:14px;
+    font-family:GraphikRegular;
 }
 
 .collat-wrap {
@@ -7665,7 +7670,7 @@ label[for="shipping:same_as_billing"],
 }
 
 #shipping_billing_address {
-    margin: 17px 3px !important;
+    margin: 17px 3px 22px !important;
 }
 
 #shipping_save_address {
@@ -7779,4 +7784,17 @@ input#giftcard_use{
 #checkout-step-cart .row.show_details.open b::before {
     content: "---";
     letter-spacing: -3px;
+}
+
+.one-page-checkout .section .step-count{text-indent:0;}
+.one-page-checkout .section .step-title{text-indent:44px;}
+/*#checkout-payment-method-load dt {
+    margin: 35px 0 0 0;
+}*/
+.ws-continue-link{display:none;}
+#shipping-new-address-form {
+    padding-top: 8px;
+}
+.customer-address-form #account_content .buttons-set button.tick {
+    background: url("../images/tick.png") no-repeat scroll center center #ae8536;
 }
