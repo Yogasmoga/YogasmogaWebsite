@@ -3328,7 +3328,7 @@ label[for="shipping:street1"] {
     padding: 0 0;
 }
 
-#shipping-new-address-form{padding-top:8px;}
+#shipping-new-address-form{padding-top:5px;}
 
 .one-page-checkout .active .step-count {
     background: #eee !important;
@@ -7839,3 +7839,4 @@ input#giftcard_use{
 #co-billing-form li.ship-btn{padding: 2px 0 2px !important;}
 #co-billing-form li.ship-btn .custom-rd, .addr-book .custom-rd{top:10px;}
 #billing_save_address{margin:0 0 5px}
+#co-billing-form .form-list li:last-child{}
