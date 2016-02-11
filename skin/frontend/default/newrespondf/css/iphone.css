@@ -7823,3 +7823,10 @@ input#giftcard_use{
 .ws-continue-link{display:none;}
 .one-page-checkout .section .step-count{text-indent:0;}
 .one-page-checkout .section .step-title{text-indent:44px; display:inline-block;}
+
+#co-shipping-form #shipping-address-select{margin-top:7px;}
+
+#co-billing-form #billing-address-select{margin-bottom:15px;}
+#co-billing-form li.ship-btn{padding: 2px 0 2px !important;}
+#co-billing-form li.ship-btn .custom-rd, .addr-book .custom-rd{top:10px;}
+#billing_save_address{margin:0 0 5px}
