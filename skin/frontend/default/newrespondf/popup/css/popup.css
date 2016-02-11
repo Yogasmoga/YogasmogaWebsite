@@ -137,7 +137,7 @@ input, textarea, select {
 }
 */
 
-.popup_container .left_block .sign_signup_form ul li input[type="text"], input[type="password"], select {
+.popup_container .left_block .sign_signup_form ul li input[type="text"],.popup_container .left_block .sign_signup_form ul li input[type="password"],.popup_container .left_block .sign_signup_form ul li select {
     width: 100%;
     box-sizing: border-box;
     color: #fff;
