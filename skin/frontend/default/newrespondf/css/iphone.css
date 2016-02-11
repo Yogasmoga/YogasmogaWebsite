@@ -4375,8 +4375,11 @@ ul.checkout-cont > li {
 }
 4377
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block {
-    width: 100%;
-    margin: 13px 0 10px;
+  /*  width: 100%;
+    margin: 13px 0 10px;*/
+	float: left;
+    line-height: 0;
+	 width: 100%;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block img {
@@ -7409,7 +7412,7 @@ video {
 }
 
 .fitDetail .video-box.f-left > ul {
-    padding-bottom: 28px;
+    padding-bottom: 25px;
     padding-top: 0;
 }
 
@@ -7491,7 +7494,8 @@ video {
 }
 
 .description-block .inner-content div.fitDetail table {
-    margin-top: 15px;
+  /*  margin-top: 15px;*/
+   margin-top: 20px;
 }
 
 #ajaxlogin_button_send .st0, #create_account .st0 {
