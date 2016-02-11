@@ -103,7 +103,7 @@
             <div class="col2-alt-set"><div class="col-1">
                 <label for="shipping:postcode"><?php echo $this->__('Zip Code*') ?> </label>
             </div><div class="col-2">
-                <input type="text" title="<?php echo $this->__('Zip Code') ?>" name="shipping[postcode]" id="shipping:postcode" value="<?php echo $this->htmlEscape($this->getAddress()->getPostcode()) ?>" class="validate-zip required-entry input-text" onchange="shipping.setSameAsBilling(false);"/>
+                <input type="text" title="<?php echo $this->__('Zip Code') ?>" name="shipping[postcode]" id="shipping:postcode" value="<?php echo $this->htmlEscape($this->getAddress()->getPostcode()) ?>" class="validate-zip-international required-entry input-text" onchange="shipping.setSameAsBilling(false);"/>
             </div></div><div class="clear"></div>
         </li>
         <li>
