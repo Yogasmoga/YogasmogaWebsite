@@ -7836,7 +7836,6 @@ input#giftcard_use{
 .one-page-checkout .section .step-count{text-indent:0;}
 .one-page-checkout .section .step-title{text-indent:44px; display:inline-block;}
 
-#co-shipping-form #shipping-address-select{margin-top:7px;}
 
 /*--checkout billing section--*/
 #co-billing-form #billing-address-select{/*margin-bottom:15px;*/}
@@ -7845,3 +7844,6 @@ input#giftcard_use{
 #co-billing-form li.ship-btn .custom-rd, .addr-book .custom-rd{top:10px;}
 #billing_save_address{margin:0 0 5px}
 #co-billing-form .form-list li:last-child{padding-bottom:0!important;}
+
+/*--checkout shipping section--*/
+#co-shipping-form #shipping-address-select{margin-top:0px;}
