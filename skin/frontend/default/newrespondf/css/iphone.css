@@ -7836,10 +7836,14 @@ input#giftcard_use{
 .one-page-checkout .section .step-count{text-indent:0;}
 .one-page-checkout .section .step-title{text-indent:44px; display:inline-block;}
 
-#co-shipping-form #shipping-address-select{margin-top:7px;}
 
-#co-billing-form #billing-address-select{margin-bottom:15px;}
+/*--checkout billing section--*/
+#co-billing-form #billing-address-select{/*margin-bottom:15px;*/}
 #co-billing-form li.ship-btn{padding: 2px 0 2px !important;}
+#co-billing-form li.ship-btn#billing_this_address{margin-top:20px;}
 #co-billing-form li.ship-btn .custom-rd, .addr-book .custom-rd{top:10px;}
 #billing_save_address{margin:0 0 5px}
-#co-billing-form .form-list li:last-child{}
+#co-billing-form .form-list li:last-child{padding-bottom:0!important;}
+
+/*--checkout shipping section--*/
+#co-shipping-form #shipping-address-select{margin-top:0px;}
