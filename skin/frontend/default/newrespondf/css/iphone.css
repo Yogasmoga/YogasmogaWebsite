@@ -6933,7 +6933,7 @@ button#send2 {
 .help_page > p {
     color: #555;
     font: 19px/79px ITCAvantGardeStd-Bk;
-    height: 79px;
+    height: 74px;
     padding: 0;
     text-align: center;
     letter-spacing: 1px;
@@ -7400,7 +7400,7 @@ video {
 }
 
 .fitDetail .video-box.f-left > ul {
-    padding-bottom: 28px;
+    padding-bottom: 25px;
     padding-top: 0;
 }
 
