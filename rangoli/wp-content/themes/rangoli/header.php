@@ -135,7 +135,7 @@
 	<script src="<?php bloginfo('template_directory')?>/js/min/combine1.js" ></script><!--combined ajaxify.js,zeroClipboard.js-->
     <script data-pace-options='{ "ajax": true }'  src="<?php bloginfo('template_directory')?>/js/min/pace.min.js" ></script>
 
-     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url')  ?>" />
+    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url')  ?>" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/custom.css" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/flexslider.css" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/animation.css" />
@@ -160,10 +160,10 @@
     }
     ?>
     <script src="<?php bloginfo('template_directory')?>/js/custom.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/min/smogi.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/min/rangoli.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/min/magento_signin.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/min/jquery.raty.js" ></script>
+    <script async src="<?php bloginfo('template_directory')?>/js/min/smogi.js" ></script>
+    <script async src="<?php bloginfo('template_directory')?>/js/min/rangoli.js" ></script>
+    <script async src="<?php bloginfo('template_directory')?>/js/min/magento_signin.js" ></script>
+    <script async src="<?php bloginfo('template_directory')?>/js/min/jquery.raty.js" ></script>
 	<!--<script src="<?php bloginfo('template_directory')?>/js/min/combine2.js" >--></script><!--combined custom.js,smogi.js,rangoli.js,magento_signin.js,jquery.raty.js into combine2.js-->
 
 </head>
