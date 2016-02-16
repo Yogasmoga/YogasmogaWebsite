@@ -154,13 +154,15 @@
     <?php
         if(is_front_page()){
     ?>
-    <script src="<?php bloginfo('template_directory')?>/js/min/jquery.flexslider.js" ></script>
+    <script async src="<?php bloginfo('template_directory')?>/js/min/jquery.flexslider.js" ></script>
     <script src="<?php bloginfo('template_directory')?>/js/min/homepage.js" ></script>
     <?php
     }
     ?>
     <script src="<?php bloginfo('template_directory')?>/js/custom.js" ></script>
+    <?php if(false){ ?>
     <script async src="<?php bloginfo('template_directory')?>/js/min/smogi.js" ></script>
+    <?php } ?>
     <script async src="<?php bloginfo('template_directory')?>/js/min/rangoli.js" ></script>
     <script async src="<?php bloginfo('template_directory')?>/js/min/magento_signin.js" ></script>
     <script async src="<?php bloginfo('template_directory')?>/js/min/jquery.raty.js" ></script>
