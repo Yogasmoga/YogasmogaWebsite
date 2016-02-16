@@ -31,25 +31,25 @@ mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
 	# Enable expirations
 	ExpiresActive On 
 	# Default directive
-	ExpiresDefault "access plus 1 month"
+	ExpiresDefault "modification plus 1 month"
 	# My favicon
-	ExpiresByType image/x-icon "access plus 1 year"
+	ExpiresByType image/x-icon "modification plus 1 year"
 	# Images
-	ExpiresByType image/gif "access plus 1 month"
-	ExpiresByType image/png "access plus 1 month"
-	ExpiresByType image/jpg "access plus 1 month"
-	ExpiresByType image/jpeg "access plus 1 month"
+	ExpiresByType image/gif "modification plus 1 month"
+	ExpiresByType image/png "modification plus 1 month"
+	ExpiresByType image/jpg "modification plus 1 month"
+	ExpiresByType image/jpeg "modification plus 1 month"
 	# CSS
-	ExpiresByType text/css "access plus 1 month"
+	ExpiresByType text/css "modification plus 1 month"
 	# Javascript
-	ExpiresByType text/javascript "access plus 1 month"
-	ExpiresByType application/javascript "access plus 1 month"
-	ExpiresByType application/x-javascript "access plus 1 month"
+	ExpiresByType text/javascript "modification plus 1 month"
+	ExpiresByType application/javascript "modification plus 1 month"
+	ExpiresByType application/x-javascript "modification plus 1 month"
 	#html/xhtml+xml
-	ExpiresByType text/html "access plus 1 month"
-	ExpiresByType application/xhtml+xml "access plus 1 month"
+	ExpiresByType text/html "modification plus 1 month"
+	ExpiresByType application/xhtml+xml "modification plus 1 month"
 	#Shockwave-flash
-	ExpiresByType application/x-shockwave-flash "access plus 1 month"
+	ExpiresByType application/x-shockwave-flash "modification plus 1 month"
 </IfModule>
 # END Expire headers
 
