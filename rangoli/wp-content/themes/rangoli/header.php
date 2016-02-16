@@ -159,14 +159,14 @@
     <?php
     }
     ?>
-    <script src="<?php bloginfo('template_directory')?>/js/custom.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/combined.js" ></script>
     <?php if(false){ ?>
-    <script async src="<?php bloginfo('template_directory')?>/js/min/smogi.js" ></script>
+        <script src="<?php bloginfo('template_directory')?>/js/custom.js" ></script>
+        <script async src="<?php bloginfo('template_directory')?>/js/min/smogi.js" ></script>
+        <script async src="<?php bloginfo('template_directory')?>/js/min/rangoli.js" ></script>
+        <script async src="<?php bloginfo('template_directory')?>/js/min/magento_signin.js" ></script>
+        <script async src="<?php bloginfo('template_directory')?>/js/min/jquery.raty.js" ></script>
     <?php } ?>
-    <script async src="<?php bloginfo('template_directory')?>/js/min/rangoli.js" ></script>
-    <script async src="<?php bloginfo('template_directory')?>/js/min/magento_signin.js" ></script>
-    <script async src="<?php bloginfo('template_directory')?>/js/min/jquery.raty.js" ></script>
-	<!--<script src="<?php bloginfo('template_directory')?>/js/min/combine2.js" >--></script><!--combined custom.js,smogi.js,rangoli.js,magento_signin.js,jquery.raty.js into combine2.js-->
 
 </head>
 <body>
