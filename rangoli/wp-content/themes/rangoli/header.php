@@ -130,9 +130,11 @@
     ?>
     <script src="<?php bloginfo('template_directory')?>/js/min/jquery.js" ></script>
     <script src="<?php bloginfo('template_directory')?>/js/min/jquery.flexslider.js" ></script>
+
+    <?php if(false){ ?>
     <!--<script src="<?php bloginfo('template_directory')?>/js/min/ajaxify.js" ></script>
     <script src="<?php bloginfo('template_directory')?>/js/min/zeroClipboard.js" ></script>-->
-	<script src="<?php bloginfo('template_directory')?>/js/min/combine1.js" ></script><!--combined ajaxify.js,zeroClipboard.js-->
+    <?php } ?>
     <script data-pace-options='{ "ajax": true }'  src="<?php bloginfo('template_directory')?>/js/min/pace.min.js" ></script>
 
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url')  ?>" />
@@ -154,11 +156,10 @@
     <?php
         if(is_front_page()){
     ?>
-    <script async src="<?php bloginfo('template_directory')?>/js/min/jquery.flexslider.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/min/homepage.js" ></script>
-    <?php
-    }
-    ?>
+        <script src="<?php bloginfo('template_directory')?>/js/min/homepage.js" ></script>
+
+    <?php } ?>
+
     <script src="<?php bloginfo('template_directory')?>/js/combined.js" ></script>
     <?php if(false){ ?>
         <script src="<?php bloginfo('template_directory')?>/js/custom.js" ></script>
