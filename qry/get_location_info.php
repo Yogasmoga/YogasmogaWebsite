@@ -1,4 +1,5 @@
 <?php
+echo "hi"; die;
 require('DavidePastore\Ipinfo\Ipinfo.php');
 require('DavidePastore\Ipinfo\Host.php');
 
