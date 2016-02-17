@@ -1,8 +1,8 @@
 <?php
-echo "hi"; die;
+
 require('DavidePastore\Ipinfo\Ipinfo.php');
 require('DavidePastore\Ipinfo\Host.php');
-
+echo "hi2"; die;
 $ipInfo = new DavidePastore\Ipinfo\Ipinfo();
 
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
