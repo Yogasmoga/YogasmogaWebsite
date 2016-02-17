@@ -1,5 +1,6 @@
 <?php
 require('DavidePastore\Ipinfo\Ipinfo.php');
+require('DavidePastore\Ipinfo\Host.php');
 
 $ipInfo = new DavidePastore\Ipinfo\Ipinfo();
 
