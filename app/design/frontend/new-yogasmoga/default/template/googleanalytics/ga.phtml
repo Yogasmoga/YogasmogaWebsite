@@ -35,6 +35,7 @@ if($serverType == 'production')
  {
       $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 echo "[ current url = $currentUrl , " . (strpos($currentUrl,'checkout/onepage/success')) . " ]";
+     $testOrder = false;
      if (false !== strpos($currentUrl,'checkout/onepage/success')) {
         $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
         $order = Mage::getSingleton('sales/order');
