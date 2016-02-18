@@ -44,11 +44,16 @@ echo "[ current url = $currentUrl , " . (strpos($currentUrl,'checkout/onepage/su
 echo "success page <br/>";
 
          $email = $order->getCustomerEmail();
-         $testOrder = in_array($email, $testEmails);
 
          $strTestEmails = Mage::getModel('core/variable')->setStoreId(Mage::app()->getStore()->getId())->loadByCode('test_emails')->getValue('text');
          echo "[$strTestEmails]<br/>";
-         $arTestEmails = explode(",", $strTestEmails);
+         if(isset($strTestEmails)) {
+             $arTestEmails = explode(",", $strTestEmails);
+
+             $testOrder = in_array($email, $arTestEmails);
+         }
+         else
+             $testOrder = false;
 
          if($testOrder)
              echo "Email = $email, this is test order";
