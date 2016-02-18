@@ -29,7 +29,7 @@
 <!-- BEGIN GOOGLE ANALYTICS CODEs -->
 <?php
 $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
-
+echo "server type = $serverType";
 if($serverType == 'production')
  {
       $currentUrl = Mage::helper('core/url')->getCurrentUrl();
