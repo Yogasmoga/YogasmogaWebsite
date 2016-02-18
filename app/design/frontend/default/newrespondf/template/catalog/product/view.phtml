@@ -1416,7 +1416,7 @@ if ($lengthAvailable) {
                                                             class="prd-color"><span><?php echo $clrinfo[$product->getColor()] ?></span></span>
                                                         <!-- <span class="prd-price">$<?php echo number_format((float)($parentproduct->getPrice()), 2, '.', ''); ?></span> -->
                                                         <span
-                                                            class="prd-price"><?php echo Mage::helper('core')->currency($parentproduct->getPrice(), true, false); ?></span>
+                                                            class="prd-price">$<?php echo intval (Mage::helper('core')->currency($parentproduct->getPrice(), false, false)); ?></span>
                                                     </p>
                                                 </div>
 
