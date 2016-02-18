@@ -30,35 +30,17 @@ This is google analytics
 <!-- BEGIN GOOGLE ANALYTICS CODEs -->
 <?php
 $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
-echo "server type = $serverType";
+
 if($serverType == 'production')
  {
       $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-echo "[ current url = $currentUrl , " . (strpos($currentUrl,'checkout/onepage/success')) . " ]";
-     $testOrder = false;
+
      if (false !== strpos($currentUrl,'checkout/onepage/success')) {
         $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
         $order = Mage::getSingleton('sales/order');
         $order->load($lastOrderId);
         $transactionTotal = $order->getData('base_grand_total');
         $lastordernum = $order['increment_id'];
-echo "success page <br/>";
-
-         $email = $order->getCustomerEmail();
-         echo "( Email = $email )";
-         $strTestEmails = Mage::getModel('core/variable')->setStoreId(Mage::app()->getStore()->getId())->loadByCode('test_emails')->getValue('text');
-         echo "[*** $strTestEmails]<br/>";
-         if(isset($strTestEmails)) {
-             $arTestEmails = explode(",", $strTestEmails);
-
-             $testOrder = in_array($email, $arTestEmails);
-         }
-         else
-             $testOrder = false;
-
-         if($testOrder)
-             echo "This is test order";
-         else{
  ?>
        <script type="text/javascript">
 			 _isCheckoutSuccessPage = true;
@@ -66,7 +48,6 @@ echo "success page <br/>";
 			 _orderRevenueCheckout = '<?php echo number_format((float)$transactionTotal, 2, '.', '');?>';
 			
 		</script>
-             <?php } ?>
         <?php /* -- BELOW IS OLD GTM
 		<script>
             dataLayer = [{
@@ -84,8 +65,34 @@ echo "success page <br/>";
             })(window,document,'script','dataLayer','GTM-MG2242');</script>
         <!-- End Google Tag Manager ++++ -->
 */
-     } ?>
-<?php /*
+     }
+
+     /*************** code to check test order *********/
+     $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+     $order = Mage::getSingleton('sales/order');
+
+     $testOrder = false;
+     if(isset($lastOrderId)) {
+         $order->load($lastOrderId);
+
+         if (isset($order)) {
+             $email = $order->getCustomerEmail();
+
+             $strTestEmails = Mage::getModel('core/variable')->setStoreId(Mage::app()->getStore()->getId())->loadByCode('test_emails')->getValue('text');
+
+             if (isset($strTestEmails)) {
+
+                 $arTestEmails = explode(",", $strTestEmails);
+
+                 $testOrder = in_array($email, $arTestEmails);
+             }
+             else
+                 $testOrder = false;
+         }
+     }
+     ?>
+
+     <?php /*
 <!-- Google Tag Manager ****** -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MG2242"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
