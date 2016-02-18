@@ -44,9 +44,9 @@ echo "[ current url = $currentUrl , " . (strpos($currentUrl,'checkout/onepage/su
 echo "success page <br/>";
 
          $email = $order->getCustomerEmail();
-
+         echo "( Email = $email )";
          $strTestEmails = Mage::getModel('core/variable')->setStoreId(Mage::app()->getStore()->getId())->loadByCode('test_emails')->getValue('text');
-         echo "[$strTestEmails]<br/>";
+         echo "[*** $strTestEmails]<br/>";
          if(isset($strTestEmails)) {
              $arTestEmails = explode(",", $strTestEmails);
 
@@ -56,7 +56,7 @@ echo "success page <br/>";
              $testOrder = false;
 
          if($testOrder)
-             echo "Email = $email, this is test order";
+             echo "This is test order";
          else{
  ?>
        <script type="text/javascript">
@@ -96,6 +96,9 @@ echo "success page <br/>";
 <!-- End Google Tag Manager **** -->
 */
 ?>
+
+<?php if(!$testOrder){ ?>
+
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PGF5K4"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -120,6 +123,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 //]]>
 </script>
+
+<?php } ?>
+
 <?php } ?>
 <!-- END GOOGLE ANALYTICS CODE -->
 <?php endif; ?>
