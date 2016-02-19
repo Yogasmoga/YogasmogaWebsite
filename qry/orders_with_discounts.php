@@ -23,24 +23,35 @@ if(isset($_REQUEST['from_date'])) {
 }
     die;
 */
+
     header('Content-Type: text/csv; charset=utf-8');
     header('Content-Disposition: attachment; filename=orders_with_discounts.csv');
 
     $fp = fopen('php://output', 'w');
 
     fputcsv($fp, array($from_date, $to_date, '',''));
-    fputcsv($fp, array("Order ID", "Email", "Amount", "Discount", "Discount Type", "Date"));
+    fputcsv($fp, array("Order ID", "Email", "Amount", "Discount", "Discount Type", "Date", "Items"));
     fputcsv($fp, array('','','',''));
 
     foreach ($orders as $order) {
+
         $orderId = $order->getIncrementId();
         $email = $order->getCustomerEmail();
-        $amount = $order->getGrantTotal();
+        $amount = "$".$order->getBaseGrandTotal();
         $discount = $order->getBaseDiscountAmount();
         $discountDescription = $order->getDiscountDescription();
         $date = $order->getCreatedAt();
 
         fputcsv($fp, array($orderId, $email, $amount, $discount, $discountDescription, $date));
+
+        $items = $order->getAllVisibleItems();
+        foreach($items as $item) {
+            $sku = $item->getSku();
+            $price = "$".$item->getPrice();
+            fputcsv($fp, array('', '', '', '', '', '', $sku, $price));
+        }
+
+        fputcsv($fp, array('', '', '', '', '', '', ''));
     }
 
     fclose($fp);
