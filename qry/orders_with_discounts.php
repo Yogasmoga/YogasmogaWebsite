@@ -29,7 +29,7 @@ if(isset($_REQUEST['from_date'])) {
     $fp = fopen('php://output', 'w');
 
     fputcsv($fp, array($from_date, $to_date, '',''));
-    fputcsv($fp, array("Order ID", "Email", "Amount", "Discount", "Discount Type", "Date", "Items"));
+    fputcsv($fp, array("Order ID", "Email", "Amount", "Discount", "Discount Type", "Date", "Items", "Price"));
     fputcsv($fp, array('','','',''));
 
     foreach ($orders as $order) {
@@ -41,7 +41,7 @@ if(isset($_REQUEST['from_date'])) {
         $discountDescription = $order->getDiscountDescription();
         $date = $order->getCreatedAt();
 
-        fputcsv($fp, array($orderId, $email, $amount, $discount, $discountDescription, $date));
+        fputcsv($fp, array($orderId, $email, $amount, $discount, $discountDescription, date("d-M-Y", strtotime($date)), '', ''));
 
         $items = $order->getAllVisibleItems();
         foreach($items as $item) {
@@ -50,7 +50,7 @@ if(isset($_REQUEST['from_date'])) {
             fputcsv($fp, array('', '', '', '', '', '', $sku, $price));
         }
 
-        fputcsv($fp, array('', '', '', '', '', '', ''));
+        fputcsv($fp, array('', '', '', '', '', '', '', ''));
     }
 
     fclose($fp);
