@@ -196,7 +196,7 @@ video{background:#000}
 .post_date{font-family:GraphikRegular;font-size:12px;line-height:16px}
 .post_author{font-family:freight-text-pro;font-style:italic;font-weight:300}
 .post_date.right{color:#999;text-align:right}
-.do_rating img{display:inline-block;width:17px}
+.do_rating img,.post_content_box .sixty .do_rating img{display:inline-block;width:17px}
 .likeandshare{position:absolute;right:0;bottom:5px}
 .first_post.single_post .author_post{margin-bottom:0}
 .single_post .author_post{background:none repeat scroll 0 0 #f2f2f2;cursor:pointer;float:left;margin-bottom:90px;min-height:150px;position:relative;width:100%}
