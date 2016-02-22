@@ -24,17 +24,15 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+This is google analytics
 <?php if (!Mage::helper('core/cookie')->isUserNotAllowSaveCookie()): ?>
 <?php $accountId = Mage::getStoreConfig(Mage_GoogleAnalytics_Helper_Data::XML_PATH_ACCOUNT) ?>
 <!-- BEGIN GOOGLE ANALYTICS CODEs -->
 <?php
 $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
 
-
-
 if($serverType == 'production')
  {
-
       $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 
      if (false !== strpos($currentUrl,'checkout/onepage/success')) {
@@ -67,8 +65,34 @@ if($serverType == 'production')
             })(window,document,'script','dataLayer','GTM-MG2242');</script>
         <!-- End Google Tag Manager ++++ -->
 */
-     } ?>
-<?php /*
+     }
+
+     /*************** code to check test order *********/
+     $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+     $order = Mage::getSingleton('sales/order');
+
+     $testOrder = false;
+     if(isset($lastOrderId)) {
+         $order->load($lastOrderId);
+
+         if (isset($order)) {
+             $email = $order->getCustomerEmail();
+
+             $strTestEmails = Mage::getModel('core/variable')->setStoreId(Mage::app()->getStore()->getId())->loadByCode('test_emails')->getValue('text');
+
+             if (isset($strTestEmails)) {
+
+                 $arTestEmails = explode(",", $strTestEmails);
+
+                 $testOrder = in_array($email, $arTestEmails);
+             }
+             else
+                 $testOrder = false;
+         }
+     }
+     ?>
+
+     <?php /*
 <!-- Google Tag Manager ****** -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MG2242"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -80,6 +104,9 @@ if($serverType == 'production')
 <!-- End Google Tag Manager **** -->
 */
 ?>
+
+<?php if(!$testOrder){ ?>
+
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PGF5K4"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -104,6 +131,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 //]]>
 </script>
+
+<?php } ?>
+
 <?php } ?>
 <!-- END GOOGLE ANALYTICS CODE -->
 <?php endif; ?>
