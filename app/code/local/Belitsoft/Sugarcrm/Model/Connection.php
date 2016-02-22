@@ -759,6 +759,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 
 	public function synchOrder($order, $operation = self::OPERATION_INSERT)
 	{
+		Mage::log('Sugar 1', null, 'sugar.log');
 #		Varien_Profiler::start("SUGARCRM: connection_synch_order");
 
 		$order_id				= $order->getId();
@@ -822,7 +823,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 		}
 
 		$sid = $synchmapModel->getSid();
-
+		Mage::log('Sugar 2', null, 'sugar.log');
 #		Mage::log('Order ID: '.$order_id);
 #		Mage::log('Bean: '.$this->_module_name);
 #		Mage::log('Object name: '.$order->getOrderObjectName());
@@ -871,8 +872,8 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				->loadCustomerSynchData($order_id, $this->_module_name, $order->getOrderObjectName());
 			$sid = $synchmapModel->getSid();
 		}
-		
 
+		Mage::log('Sugar 3', null, 'sugar.log');
 		if(!$sid && ($operation != self::OPERATION_INSERT)) {
 #			Varien_Profiler::stop("SUGARCRM: connection_synch_order");
 			return $this;
@@ -900,6 +901,11 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 		$array_counter = array();
 		$item_info = array();
 		$number_counter = 1;
+
+		/******** ysindia : custom code to push order items *******/
+		$arOrderData = array();
+		/******** ysindia : custom code to push order items *******/
+		Mage::log('Sugar 4', null, 'sugar.log');
 		foreach($order_items as $order_item) {
 			if ($order_item->isDeleted()) {
 				continue;
@@ -914,6 +920,17 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 			}
 
 			$item_id = $order_item->getData('item_id');
+
+			/******** ysindia : custom code to push order items *******/
+			$arOrderData[$item_id] = array(
+				'name' => $order_item->getName(),
+				'sku' => $order_item->getSku(),
+				'price' => $order_item->getPrice(),
+				'order_id' => $order_id,
+				'customer_id' => $customer_id
+			);
+			/******** ysindia : custom code to push order items *******/
+
 			if(($parent_item_id = $order_item->getData('parent_item_id'))) {
 				if($order_item->getParentItem()->getData('product_type') == self::BUNDLE) {
 					if(empty($array_counter[$parent_item_id]['parent'])) {
@@ -931,7 +948,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				$item_info[$item_id] = $array_counter[$item_id]['parent'].'. '.$order_item_text . (!empty($item_info[$item_id]) ? $item_info[$item_id] : '').".\n";
 			}
 		}
-
+		Mage::log('Sugar 5', null, 'sugar.log');
 		$description .= implode('', $item_info);
 		if($total_qty = $order->getTotalQtyOrdered()) {
 			$description .= "\n" . Mage::helper('sales')->__('Total Qty') . ': ' . $total_qty;
@@ -1006,10 +1023,27 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 		$this->_checkErrors(__FUNCTION__, $set_entry);
 #		Varien_Profiler::stop("SUGARCRM: connection_synch_order_set_entry");
 
+		Mage::log('Now pushing order items to sugarcrm', null, 'sugar.log');
+		/************ ys custom code push order items ***************/
+		foreach($arOrderData as $item_id => $orderData){
 
+			Mage::log('Item = ' . $orderData['sku'], null, 'sugar.log');
+			$values = array(
+				array("name" => 'name', "value" => $orderData['name']),
+				array("name" => 'sku', "value" => $orderData['sku']),
+				array("name" => 'price', "value" => $orderData['price'])
+			);
+
+			$set_entry = $this->_soapclient->set_entry(
+				$this->_session_id, "YS_Products", $values
+			);
+		}
+		/************ ys custom code push order items ***************/
+
+		Mage::log('Sugar 6', null, 'sugar.log');
 		if (!empty($set_entry->id) && is_string($set_entry->id) && ($operation != self::OPERATION_DELETE)) {
 			$save_check = false;
-
+			Mage::log('Sugar 7', null, 'sugar.log');
 			if($customer_id) {
 //				$conf_beans = Mage::getSingleton('sugarcrm/config')->getBeans();
 				$conf_beans = array();
@@ -1022,24 +1056,25 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				if(!$synchmapModel->getContactsid()) {
 					$conf_beans[self::CONTACTS] = self::CONTACTS;
 				}
+				Mage::log('Sugar 7.1', null, 'sugar.log');
 				foreach($conf_beans as $conf_bean_name=>$conf_bean) {
 					$lower_conf_bean_name = strtolower($conf_bean_name);
 					if($synchmapModel->getData($lower_conf_bean_name.'id')) {
 						continue;
 					}
-					
+					Mage::log('Sugar 7.2', null, 'sugar.log');
 					$bean_id = Mage::getModel('sugarcrm/synchmap')->loadCustomerSynchData($customer_id, $conf_bean_name)->getSid();
 					if(!$bean_id) {
 						continue;
 					}
-
+					Mage::log('Sugar 7.3', null, 'sugar.log');
 					if((($conf_bean_name == self::LEADS) && $synchmapModel->getLeadsid())
 						|| (($conf_bean_name == self::CONTACTS) && $synchmapModel->getContactsid())
 						|| (($conf_bean_name == self::ACCOUNTS) && $synchmapModel->getAccountsid()))
 					{
 						continue;
 					}
-
+					Mage::log('Sugar 7.4', null, 'sugar.log');
 					if(($bean_name == self::OPPORTUNITIES) && ($conf_bean_name == self::LEADS)) {
 						$values = array();
 						$values[] = array('name' => self::ID, 'value' => $bean_id);
@@ -1057,7 +1092,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 
 						$this->_soapclient->set_entry($this->_session_id, self::LEADS, $values);
 					}
-
+					Mage::log('Sugar 7.5', null, 'sugar.log');
 					$set_relationship_value = array(
 						self::MODULE1		=> $conf_bean_name,
 						self::MODULE1_ID	=> $bean_id,
@@ -1072,6 +1107,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 						$save_check = true;
 
 					} catch (Exception $e) {
+						Mage::log('Sugar error 7.1', null, 'sugar.log');
 						$set_relationship_value = array(
 							self::MODULE1		=> $this->_module_name,
 							self::MODULE1_ID	=> $set_entry->id,
@@ -1087,13 +1123,14 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 							$save_check = true;
 
 						} catch(Exception $e) {
+							Mage::log('Sugar error 7.2 : ' , null, 'sugar.log');
 #							Mage::log('Relationship Error: '); Mage::log($e->getMessage());
 #							Mage::logException($e);
 						}
 					}
 				}
 			}
-
+			Mage::log('Sugar 8', null, 'sugar.log');
 			if(!$synchmapModel->getAccountsid()) {
 				$set_relationship_value = array(
 					self::MODULE1		=> $this->_module_name,
