@@ -1021,6 +1021,9 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 
 		$set_entry = $this->_soapclient->set_entry($this->_session_id, $this->_module_name, $values);
 		$this->_checkErrors(__FUNCTION__, $set_entry);
+
+		Mage::log('add order result = ' . serialize($set_entry), null, 'sugar.log');
+
 #		Varien_Profiler::stop("SUGARCRM: connection_synch_order_set_entry");
 
 		Mage::log('Now pushing order items to sugarcrm', null, 'sugar.log');
@@ -1038,7 +1041,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				$this->_session_id, "YS_Products", $values
 			);
 
-			Mage::log('Product add response = ' . serialize($productAddResponse), null, 'sugar.log');
+			//Mage::log('Product add response = ' . serialize($productAddResponse), null, 'sugar.log');
 /*
 			$relationParameters = array(
 				'session' => $session_id, //session id that comes after login by soap
@@ -1051,10 +1054,10 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 			$response = $client->call('set_relationship', $relationParameters);
 */
 
-			$opportunityId = "";
-			$productId = "";
+			$opportunityId = $set_entry->id;
+			$productId = $productAddResponse->id;
 
-			/*
+
 			$productOrderRelation = array(
 				'module1'		=> 'Opportunities',
 				'module1_id'	=> "$opportunityId",
@@ -1063,7 +1066,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 			);
 
 			$productOrderRelationResult = $this->_soapclient->set_relationship($this->_session_id, $productOrderRelation);
-			*/
+			Mage::log('Relation result = ' . serialize($productAddResponse), null, 'sugar.log');
 		}
 		/************ ys custom code push order items ***************/
 
