@@ -948,7 +948,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				$item_info[$item_id] = $array_counter[$item_id]['parent'].'. '.$order_item_text . (!empty($item_info[$item_id]) ? $item_info[$item_id] : '').".\n";
 			}
 		}
-		Mage::log('Sugar 5', null, 'sugar.log');
+
 		$description .= implode('', $item_info);
 		if($total_qty = $order->getTotalQtyOrdered()) {
 			$description .= "\n" . Mage::helper('sales')->__('Total Qty') . ': ' . $total_qty;
@@ -1034,16 +1034,43 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				array("name" => 'price', "value" => $orderData['price'])
 			);
 
-			$set_entry = $this->_soapclient->set_entry(
+			$productAddResponse = $this->_soapclient->set_entry(
 				$this->_session_id, "YS_Products", $values
 			);
+
+			Mage::log('Product add response = ' . serialize($productAddResponse), null, 'sugar.log');
+/*
+			$relationParameters = array(
+				'session' => $session_id, //session id that comes after login by soap
+				'module_name' => 'Opportunities',  // your module name
+				'module_id' => "$opportunityId", // your first module id
+				'link_field_name' => 'ap_ap_products_opportunities', // your second module
+				'related_ids' => array("$productId"), // send module id
+			);
+
+			$response = $client->call('set_relationship', $relationParameters);
+*/
+
+			$opportunityId = "";
+			$productId = "";
+
+			/*
+			$productOrderRelation = array(
+				'module1'		=> 'Opportunities',
+				'module1_id'	=> "$opportunityId",
+				'module2'		=> 'YS_Products',
+				'module2_id'	=> "$productId",
+			);
+
+			$productOrderRelationResult = $this->_soapclient->set_relationship($this->_session_id, $productOrderRelation);
+			*/
 		}
 		/************ ys custom code push order items ***************/
 
 		Mage::log('Sugar 6', null, 'sugar.log');
 		if (!empty($set_entry->id) && is_string($set_entry->id) && ($operation != self::OPERATION_DELETE)) {
 			$save_check = false;
-			Mage::log('Sugar 7', null, 'sugar.log');
+
 			if($customer_id) {
 //				$conf_beans = Mage::getSingleton('sugarcrm/config')->getBeans();
 				$conf_beans = array();
@@ -1056,25 +1083,25 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				if(!$synchmapModel->getContactsid()) {
 					$conf_beans[self::CONTACTS] = self::CONTACTS;
 				}
-				Mage::log('Sugar 7.1', null, 'sugar.log');
+
 				foreach($conf_beans as $conf_bean_name=>$conf_bean) {
 					$lower_conf_bean_name = strtolower($conf_bean_name);
 					if($synchmapModel->getData($lower_conf_bean_name.'id')) {
 						continue;
 					}
-					Mage::log('Sugar 7.2', null, 'sugar.log');
+
 					$bean_id = Mage::getModel('sugarcrm/synchmap')->loadCustomerSynchData($customer_id, $conf_bean_name)->getSid();
 					if(!$bean_id) {
 						continue;
 					}
-					Mage::log('Sugar 7.3', null, 'sugar.log');
+
 					if((($conf_bean_name == self::LEADS) && $synchmapModel->getLeadsid())
 						|| (($conf_bean_name == self::CONTACTS) && $synchmapModel->getContactsid())
 						|| (($conf_bean_name == self::ACCOUNTS) && $synchmapModel->getAccountsid()))
 					{
 						continue;
 					}
-					Mage::log('Sugar 7.4', null, 'sugar.log');
+
 					if(($bean_name == self::OPPORTUNITIES) && ($conf_bean_name == self::LEADS)) {
 						$values = array();
 						$values[] = array('name' => self::ID, 'value' => $bean_id);
@@ -1092,7 +1119,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 
 						$this->_soapclient->set_entry($this->_session_id, self::LEADS, $values);
 					}
-					Mage::log('Sugar 7.5', null, 'sugar.log');
+
 					$set_relationship_value = array(
 						self::MODULE1		=> $conf_bean_name,
 						self::MODULE1_ID	=> $bean_id,
