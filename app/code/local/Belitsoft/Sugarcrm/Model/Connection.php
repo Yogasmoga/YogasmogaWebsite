@@ -909,7 +909,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 
 			$size = $_product->getAttributeText('size');
 			$size = isset($size) ? $size : "N/A";
-
+			Mage::log("Color = $color, Size = $size", null, "sugar.log");
 			$arOrderData[$item_id] = array(
 				'name' => $order_item->getName(),
 				'sku' => $order_item->getSku(),
