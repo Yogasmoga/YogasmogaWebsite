@@ -70,5 +70,9 @@
             <?php echo $this->getTotal()->getTitle() ?>
         <?php endif;?>
     </td>
-    <td style="<?php echo $_style ?>" class="a-right"><?php echo $this->helper('checkout')->formatPrice($_value) ?></td>
+    <?php if(false){ ?>
+        <td style="<?php echo $_style ?>" class="a-right"><?php echo $this->helper('checkout')->formatPrice($_value) ?></td>
+    <?php }else { ?>
+        <td style="<?php echo $_style ?>" class="a-right">$<?php echo $_value;?></td>
+    <?php } ?>
 </tr>
