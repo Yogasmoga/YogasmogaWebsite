@@ -21,7 +21,7 @@
 				if(strpos($str, "-")!==FALSE)
 					$str = str_replace("-", "&ndash;", $str);
 					
-				echo "<span class='price'>$str</span>";
+				echo "<span class='price'>$" . $str . "</span>";
 			?>
         <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
     </td>
