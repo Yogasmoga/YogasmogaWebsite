@@ -275,8 +275,8 @@ ul.site-map > li{
 }
 
 .multicolorcont{
-/*    background: url("../images/homepage/color-world.jpg") no-repeat center center transparent; */
-    background: #03310f;
+   background: url("../images/homepage/california-yogasmoga-store.jpg") no-repeat center center transparent; 
+  /*  background: #03310f;*/
     background-size: 100% 100%;
 }
 
@@ -292,7 +292,7 @@ ul.site-map > li{
     top:50%;
 }
 .fall-river{
-    background: url("../images/new-elements/manufacture-in-fall-river.jpg") no-repeat center center transparent;
+    background: url("../images/new-elements/california-long-beach.jpg") no-repeat center center transparent;
     background-size: 100% 100%;
     top:50%;
 }
