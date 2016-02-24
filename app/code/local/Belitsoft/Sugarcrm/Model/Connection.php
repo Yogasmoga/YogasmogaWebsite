@@ -902,10 +902,15 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 			$item_id = $order_item->getData('item_id');
 
 			$_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$order_item->getSku());
-			$product = Mage::getModel('catalog/product')->load($order_item->getProductId());
 
-			$color = $product->getAttributeText('color');
-			$color = isset($color) ? $color : "N/A";
+			$color = $_product->getAttributeText('color');
+			if(isset($color)){
+				if (strpos($color, "|") !== FALSE) {
+					$color = substr($color, 0, strpos($color, "|"));
+				}
+			}
+			else
+				$color = "N/A";
 
 			$size = $_product->getAttributeText('size');
 			$size = isset($size) ? $size : "N/A";
@@ -920,7 +925,6 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				'customer_id' => $customer_id
 			);
 
-			unset($product);
 			unset($_product);
 		}
 		/******** ysindia : custom code to push order items *******/
