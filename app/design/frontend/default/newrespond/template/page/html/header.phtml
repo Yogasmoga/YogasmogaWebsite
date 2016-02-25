@@ -27,6 +27,36 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
+<?php
+$root = Mage::getBaseDir();
+
+include_once($root . '/Ipinfo/Host.php');
+include_once($root . '/Ipinfo/Ipinfo.php');
+
+$ipInfo = new Ipinfo\Ipinfo();
+
+if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+}
+
+$host = $ipInfo->getFullIpDetails($ip);
+
+if (isset($host)) {
+    $request_city = $host->getCity();
+    $request_state = $host->getRegion();
+    $request_zip = $host->getPostal();
+}
+else {
+    $request_city = "N/A";
+    $request_state = "N/A";
+    $request_zip = "N/A";
+}
+?>
+
 <!-- Paste this code right after the <body> tag on every page of your site. -->
 <!-- Qualaroo for yogasmoga.com  -->
 <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
@@ -241,6 +271,10 @@ if($serverType == 'production')
                     var lname = $.trim($("#plastname").val());
                     var email_id = $.trim($("#pemail_address").val());
                     var pwd = $.trim($("#p_password").val());
+                    var location_city = jQuery.trim(jQuery("#plocation_city").val());
+                    var location_state = jQuery.trim(jQuery("#plocation_state").val());
+                    var location_zip = jQuery.trim(jQuery("#plocation_zip").val());
+
                     if(fname == "" || fname == "First Name")
                     {
                         event.preventDefault();
@@ -319,7 +353,7 @@ if($serverType == 'production')
                         jQuery.ajax({
                             url : url,
                             type : 'POST',
-                            data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed},
+                            data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed, 'location_city':location_city, 'location_state':location_state, 'location_zip':location_zip},
                             beforeSend: function() {
                                 $("#signup-button").css("background-image","url("+imgurl+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
                             },

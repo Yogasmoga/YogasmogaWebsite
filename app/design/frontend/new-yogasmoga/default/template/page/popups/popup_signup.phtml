@@ -1,40 +1,10 @@
-<?php
-$root = Mage::getBaseDir();
-
-include_once($root . '/Ipinfo/Host.php');
-include_once($root . '/Ipinfo/Ipinfo.php');
-
-$ipInfo = new Ipinfo\Ipinfo();
-
-if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-    $ip = $_SERVER['HTTP_CLIENT_IP'];
-} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-} else {
-    $ip = $_SERVER['REMOTE_ADDR'];
-}
-
-$host = $ipInfo->getFullIpDetails($ip);
-
-if (isset($host)) {
-    $request_city = $host->getCity();
-    $request_state = $host->getRegion();
-    $request_zip = $host->getPostal();
-}
-else {
-    $request_city = "N/A";
-    $request_state = "N/A";
-    $request_zip = "N/A";
-}
-?>
-
 <div id="signup" style="display: none;">
     <div id="sign_up_box">
 <!--        <img nopin="nopin" style="width:50%; margin-top: 8%;" src="--><?php //echo $this->getSkinUrl('images/red_popup_text.png') ?><!--" alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." />-->
         <form action="" method="post" id="popup-register" style="display: block; ">
-            <input type="hidden" id="location_city" name="location_city" value="<?php echo $request_city;?>"/>
-            <input type="hidden" id="location_state" name="location_state" value="<?php echo $request_state;?>"/>
-            <input type="hidden" id="location_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
+            <input type="hidden" id="plocation_city" name="location_city" value="<?php echo $request_city;?>"/>
+            <input type="hidden" id="plocation_state" name="location_state" value="<?php echo $request_state;?>"/>
+            <input type="hidden" id="plocation_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
 
             <svg xml:space="preserve" enable-background="new 0 0 308 127.979" viewBox="0 0 308 127.979" height="127.979px" width="280px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" >
                     <g>

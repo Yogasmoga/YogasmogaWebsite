@@ -1,33 +1,3 @@
-<?php
-    $root = Mage::getBaseDir();
-
-    include_once($root . '/Ipinfo/Host.php');
-    include_once($root . '/Ipinfo/Ipinfo.php');
-
-    $ipInfo = new Ipinfo\Ipinfo();
-
-    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    } else {
-        $ip = $_SERVER['REMOTE_ADDR'];
-    }
-
-    $host = $ipInfo->getFullIpDetails($ip);
-
-    if (isset($host)) {
-        $request_city = $host->getCity();
-        $request_state = $host->getRegion();
-        $request_zip = $host->getPostal();
-    }
-    else {
-        $request_city = "N/A";
-        $request_state = "N/A";
-        $request_zip = "N/A";
-    }
-?>
-
 <div id="signing_popup" style="display: none;" path="<?php echo $root;?>">
     <div class="signing_popup_wrapper">  
         <div class="sign-up-block f-left">
