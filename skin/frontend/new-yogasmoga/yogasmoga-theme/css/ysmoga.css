@@ -294,7 +294,12 @@ ul.site-map > li{
 .fall-river{
     background: url("../images/new-elements/california-long-beach.jpg") no-repeat center center transparent;
     background-size: 100% 100%;
-    top:50%;
+     display: table;
+    height: 50% !important;
+    position: absolute;
+    top: 50%;
+    vertical-align: middle;
+    width: 100%;
 }
 .iconsparttwo{
     height: 50% !important;
