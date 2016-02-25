@@ -159,7 +159,7 @@ function widthConttwo(){
 };
 
 function block66height(){
-	/*var block66height = jQuery(".ystopsection .block66").height();
+	var block66height = jQuery(".ystopsection .block66").height();
 
 	jQuery(".ystopsection .cmsNavigation").css("height", block66height/2);
 
@@ -167,7 +167,7 @@ function block66height(){
     var gdHeightnew = block66height-block66height2;
 
     jQuery(".ystopsection .headingBlock").css("height", gdHeightnew);
-    jQuery(".ystopsection").animate({"opacity":1});*/
+    jQuery(".ystopsection").animate({"opacity":1});
 };
 
 function block50height(){	
@@ -258,13 +258,13 @@ function equalBlockImgH(){
 };
 
 function uifixes(){
-	/*jQuery(".colorFilterGrid a").each(function(){		
+	jQuery(".colorFilterGrid a").each(function(){		
 		var colorBoxHeight = jQuery(this).height();
 		var colorTextHeight = jQuery(this).find("span").height();
 		var calcColorheight = colorBoxHeight-colorTextHeight;
 		calcColorheight = calcColorheight/2;
 		jQuery(this).find("span").css("padding-top", calcColorheight);	
-	});*/
+	});
 };
 
 function showDiscover(discover){
