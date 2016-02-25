@@ -1,3 +1,33 @@
+<?php
+$root = Mage::getBaseDir();
+
+include_once($root . '/Ipinfo/Host.php');
+include_once($root . '/Ipinfo/Ipinfo.php');
+
+$ipInfo = new Ipinfo\Ipinfo();
+
+if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+}
+
+$host = $ipInfo->getFullIpDetails($ip);
+
+if (isset($host)) {
+    $request_city = $host->getCity();
+    $request_state = $host->getRegion();
+    $request_zip = $host->getPostal();
+}
+else {
+    $request_city = "N/A";
+    $request_state = "N/A";
+    $request_zip = "N/A";
+}
+?>
+
 <div id="signup" style="display: none;">
     <div id="sign_up_box">
 <!--        <img nopin="nopin" style="width:50%; margin-top: 8%;" src="--><?php //echo $this->getSkinUrl('images/red_popup_text.png') ?><!--" alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." />-->

@@ -271,9 +271,9 @@ if($serverType == 'production')
                     var lname = $.trim($("#plastname").val());
                     var email_id = $.trim($("#pemail_address").val());
                     var pwd = $.trim($("#p_password").val());
-                    var location_city = jQuery.trim(jQuery("#plocation_city").val());
-                    var location_state = jQuery.trim(jQuery("#plocation_state").val());
-                    var location_zip = jQuery.trim(jQuery("#plocation_zip").val());
+                    var plocation_city = jQuery.trim(jQuery("#plocation_city").val());
+                    var plocation_state = jQuery.trim(jQuery("#plocation_state").val());
+                    var plocation_zip = jQuery.trim(jQuery("#plocation_zip").val());
 
                     if(fname == "" || fname == "First Name")
                     {
@@ -353,7 +353,7 @@ if($serverType == 'production')
                         jQuery.ajax({
                             url : url,
                             type : 'POST',
-                            data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed, 'location_city':location_city, 'location_state':location_state, 'location_zip':location_zip},
+                            data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed, 'location_city':plocation_city, 'location_state':plocation_state, 'location_zip':plocation_zip},
                             beforeSend: function() {
                                 $("#signup-button").css("background-image","url("+imgurl+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
                             },
