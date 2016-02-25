@@ -280,7 +280,9 @@ ul.site-map > li{
     background-size: 100% 100%;
 }*/
 .multicolorcont {
-    background: #03310f none repeat scroll 0 0 / 100% 100%;
+/*    background: #03310f none repeat scroll 0 0 / 100% 100%; */
+    background: url("../images/homepage/california-yogasmoga-store.jpg") no-repeat center center transparent;
+    background-size: 100% 100%;
 }
 
 
