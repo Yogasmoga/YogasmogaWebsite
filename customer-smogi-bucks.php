@@ -10,7 +10,7 @@
 		$customer->setWebsiteId(Mage::app()->getWebsite()->getId());
 		$customer->loadByEmail($email);
 
-		if (isset($customer)) {
+		try {
 			$customerId = $customer->getId();
 			$store_id = Mage::app()->getStore()->getId();
 
@@ -28,8 +28,10 @@
 
 				//var_dump($proxy->call($sessionId, 'j2trewardapi.info', array($customerId, $storeId)));
 			}
-		} else
+		}
+		catch(Exception $e){
 			echo json_encode(array('points' => 0, "message" => "Customer not found"));
+		}
 	}
 	else
 		echo json_encode(array('points' => 0, "message" => "No email provided"));
