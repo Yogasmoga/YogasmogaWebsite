@@ -18,7 +18,7 @@
 
     if (isset($host)) {
         $request_city = $host->getCity();
-        $request_state = $host->getState();
+        $request_state = $host->getRegion();
         $request_zip = $host->getPostal();
     }
     else {
@@ -34,8 +34,8 @@
             <p class="c-align form-heading">New to YOGASMOGA</p>
             <form id="sign-up-form" class="bl" action="" method="post">
                 <input type="hidden" id="location_city" name="location_city" value="<?php echo $request_city;?>"/>
-                <input type="hidden" id="location_state" name="location_city" value="<?php echo $request_state;?>"/>
-                <input type="hidden" id="location_zip" name="location_city" value="<?php echo $request_zip;?>"/>
+                <input type="hidden" id="location_state" name="location_state" value="<?php echo $request_state;?>"/>
+                <input type="hidden" id="location_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
                 <table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
                         <td>
