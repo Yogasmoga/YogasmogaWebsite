@@ -12,27 +12,24 @@
 
 		try {
 			$customerId = $customer->getId();
-			$store_id = Mage::app()->getStore()->getId();
-
-			$reward_model = Mage::getModel('rewardpoints/stats');
-			$points = $reward_model->getPointsCurrent($customerId, $store_id);
-
-			echo json_encode(array('points' => $points, "message" => "Customer found"));
-
-			if (false) {
-				//$link = Mage::getBaseUrl().'api/soap/?wsdl';
-				$link = Mage::getBaseUrl() . "api/v2_soap/?wsdl";
-				$proxy = new SoapClient($link);
-				var_dump($proxy);
-				//$sessionId = $proxy->login('api_login', 'j2t_apikey');
-
-				//var_dump($proxy->call($sessionId, 'j2trewardapi.info', array($customerId, $storeId)));
-			}
+			$storeId = Mage::app()->getStore()->getId();
 		}
 		catch(Exception $e){
-			echo json_encode(array('points' => 0, "message" => "Customer not found"));
+			echo json_encode(array('points' => 0, "message" => "not found"));
+			die;
 		}
+
+		$link = Mage::getBaseUrl().'api/soap/?wsdl';
+		//$link = Mage::getBaseUrl() . "api/v2_soap/?wsdl";
+
+		$proxy = new SoapClient($link);
+
+		$sessionId = $proxy->login('j2t', 'j2t_apikey');
+
+		$result = $proxy->call($sessionId, 'j2trewardapi.info', array($customerId, $storeId));
+
+		echo json_encode(array('points' => $result["current"], "message" => "found"));
 	}
 	else
-		echo json_encode(array('points' => 0, "message" => "No email provided"));
+		echo json_encode(array('points' => 0, "message" => "blank"));
 ?>
