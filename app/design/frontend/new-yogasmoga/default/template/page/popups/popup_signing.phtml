@@ -1,8 +1,8 @@
 <?php
     $root = Mage::getBaseDir();
 
-    require($root . '/Ipinfo/Host.php');
-    require($root . '/Ipinfo/Ipinfo.php');
+    include_once($root . '/Ipinfo/Host.php');
+    include_once($root . '/Ipinfo/Ipinfo.php');
 
     $ipInfo = new Ipinfo\Ipinfo();
 
