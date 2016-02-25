@@ -258,13 +258,13 @@ function equalBlockImgH(){
 };
 
 function uifixes(){
-	jQuery(".colorFilterGrid a").each(function(){		
+	/*jQuery(".colorFilterGrid a").each(function(){		
 		var colorBoxHeight = jQuery(this).height();
 		var colorTextHeight = jQuery(this).find("span").height();
 		var calcColorheight = colorBoxHeight-colorTextHeight;
 		calcColorheight = calcColorheight/2;
 		jQuery(this).find("span").css("padding-top", calcColorheight);	
-	});
+	});*/
 };
 
 function showDiscover(discover){
