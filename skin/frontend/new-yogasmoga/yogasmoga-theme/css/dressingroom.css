@@ -417,7 +417,7 @@ h1.white{text-align: right!important;}
 /*----for static pages--*/
 .namaskar-overlay1{display:none;}
 .gridFullWidth{width:100%; display:table;}
-.block33, .block66 { display: table-cell; height: 100%; vertical-align: top;float:none;}
+.block33, .block66 { display: table-cell; height: 100%; vertical-align: top;float:none; position:static!important;}
 .block33 .cmsNavigation,.block33 .headingBlock{display:table;height:50%;width:100%;}
 .block33 .headingBlock{vertical-align:middle; position:relative;}
 .block33 .headingBlock .positionAbs{transform:translateY(-50%);top:50%!important; position:absolute;}
