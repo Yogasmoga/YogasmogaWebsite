@@ -16,12 +16,13 @@
         <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
             <?php 
 				//$str = $this->helper('checkout')->formatPrice($this->getTotal()->getValue());
-                $str = $this->getTotal()->getValue();
-				
-				if(strpos($str, "-")!==FALSE)
-					$str = str_replace("-", "&ndash;$", $str);
+                $number = $this->getTotal()->getValue();
+                $number = number_format((float)$number, 2, '.', '');
+
+				if(strpos($number, "-")!==FALSE)
+					$number = str_replace("-", "&ndash;$", $number);
 					
-				echo "<span class='price'>$str</span>";
+				echo "<span class='price'>$number</span>";
 			?>
         <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
     </td>

@@ -54,8 +54,11 @@
     <td style="<?php echo $this->getStyle() ?>" class="a-right">
         <?php if(false){ ?>
             <strong><?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?></strong>
-        <?php }else{ ?>
-            <strong>$<?php echo $this->getTotal()->getValue();?></strong>
+        <?php }else{
+            $number = $this->getTotal()->getValue();
+            $number = number_format((float)$number, 2, '.', '');
+            ?>
+            <strong>$<?php echo $number;?></strong>
         <?php } ?>
     </td>
 </tr>
