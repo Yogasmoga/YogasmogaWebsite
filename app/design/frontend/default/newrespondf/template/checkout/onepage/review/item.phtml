@@ -109,6 +109,7 @@
                 $isGiftSet = true;
         }
     }
+    //echo getImage(51, 'Green');
 ?>
 <?php if ($_options = $this->getOptionList()):?>
 <?php
@@ -135,16 +136,17 @@
          <?php if ($this->hasProductUrl()):?>
             <?php //echo $colorlabel; ?>
             <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?>
-			<!--<img src="<?php echo getImage($_item->getProductId(),$colorlabel); ?>" width="320" height="320" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />-->
+			<!--<img src="<?php //echo getImage($_item->getProductId(),$colorlabel); ?>" width="320" height="320" alt="<?php //echo $this->escapeHtml($this->getProductName()) ?>" />-->
 
             <?php if(false && $productType=="gift"){ ?>
 
-                <img src="<?php echo getGiftImage($_item->getProductId()); ?>" width="320" height="320"
+                
+             <img src="<?php echo $this->getProductThumbnail(); ?>" width="320" height="320"
                      alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/>
 
             <?php }else{ ?>
 
-                <img src="<?php echo getImage($_item->getProductId(), $colorlabel); ?>" width="320" height="320"
+                <img src="<?php echo $this->getProductThumbnail(); ?>" width="320" height="320"
                      alt="<?php echo $this->escapeHtml($this->getProductName()) ?>"/>
 
             <?php } ?>
