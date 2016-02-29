@@ -32,9 +32,10 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
         </div>
 
         <div class="sixty">
+			<h2 class="press-title"><?php the_title();   ?></h2>
             <div class="post_content">
+				
                 <?php
-//                
                 echo "<div class='clear'></div>";
                 $content = $post->post_content;
                 $content = apply_filters('the_content', $content);
