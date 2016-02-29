@@ -808,4 +808,8 @@ input.change_username {
     width: 478px;
 }
 
-
+/*--custom post type rangoli press--*/
+.rangoli_press_content blockquote{border-left:1px solid #AE8536; margin:1em 0 1em 1em; padding:10px; font-size:120%;}
+.press-icon a{ border-radius: 50%; cursor: pointer; display: inline-block; height: 40px; width: 40px; margin-bottom:10px;}
+.press-icon img{max-width:100%;}
+.press-name, .press-name a {font-family: ITCAvantGardeStd-Bk;font-size: 15px;font-style: normal; line-height: 15px; color:#2f2f2f;}
