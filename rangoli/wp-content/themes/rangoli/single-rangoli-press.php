@@ -1,14 +1,14 @@
 <?php
 get_header();
 $post=get_post();
-/*$user_id=$post->post_author;
+$user_id=$post->post_author;
 $users = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=".$user_id);
 if($users){
 $user=$users[0];
 $author_color=$user->color_shade;
 }
 $author_color="555555";
-*/
+
 $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
 
     ?>

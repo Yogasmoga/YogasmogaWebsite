@@ -228,7 +228,7 @@ video{background:#000}
 .get_the_look p{border-bottom:1px solid #555;text-align:center;font-family:freight-text-pro;font-weight:400;font-size:12pt}
 .get_the_look a{width:100%}
 .get_the_look .span6 a{color:#999}
-.get_the_look .span6 a img,.get_the_look .span6 span{box-sizing:border-box;display:block;float:left;font-family:sans-serif;font-size:15px;image-rendering:unset;margin:0 auto 10px;padding:0 10px;text-align:left;width:100%}
+.get_the_look .span6 a img,.get_the_look .span6 span{box-sizing:border-box;display:block;float:left;font-family:sans-serif;font-size:15px;image-rendering:unset;margin:0 auto 10px;padding:0 10px;text-align:center;width:100%}
 .smogi-content{margin-bottom:0;margin-left:-24px;margin-right:-20px;overflow:auto;padding:0 30px;width:779px}
 .smogi-list.row{overflow:hidden}
 .author_recent_activity{box-sizing:border-box;font-size:13px;padding:0;text-align:center;line-height:16px;font-family:freight-text-pro;font-weight:400}
