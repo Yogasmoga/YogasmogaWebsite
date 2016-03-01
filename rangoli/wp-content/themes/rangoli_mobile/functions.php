@@ -543,7 +543,7 @@ function get_post_comments($post_id)
         <div class='span12'>
             <?php
             comment_form($args);
-            if (has_category('learn', $post_id)) {
+            if (has_category('learn', $post_id) || post_type_exists( 'rangoli-press' )) {
                 ?>
                 <div class="rate_btn user-color-shade-trans">Rate
                     <?php
@@ -1329,3 +1329,4 @@ function get_user_post_comment_rating($subject_id,$user_id, $subject_type)
         return 0;
     }
 }
+include_once( 'admin/additional-userfield.php' );
