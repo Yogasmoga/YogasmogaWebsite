@@ -8,12 +8,69 @@ $user=$users[0];
 $author_color=$user->color_shade;
 }
 $author_color="555555";
-
-$banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );*/
+*/
+$banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
 
     ?>
 
-    
+     <div class="wp_page_banner" style="background: url('<?php echo $banner_img_url[0]; ?>') no-repeat; background-size: cover; <?php echo '#'.$author_color; ?>">
+        <?php
+            if(has_category("read"))
+                    echo "<a class='back_to_parent' href='".get_site_url()."/read'>BACK TO READ</a>";
+            else if(has_category("look"))
+                    echo "<a class='back_to_parent' href='".get_site_url()."/look'>BACK TO LOOK</a>";
+            else if(has_category("read"))
+                    echo "<a class='back_to_parent' href='".get_site_url()."/learn'>BACK TO LEARN</a>";
+        ?>
+        <?php
+        $categories = get_the_category_list(" ");
+        $categories_list = strtolower($categories);
+        $categories = str_replace('homepage', '', $categories_list);
+        $categories = str_replace('read', '', $categories);
+        $categories = str_replace('look', '', $categories);
+        $categories = str_replace('learn', '', $categories);
+        $categories = strtoupper($categories);
+
+
+        if (has_post_video()) {
+
+            $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $user_id);
+            $author_color = '#'.$authors[0]->color_shade;
+            ?>
+            <div class="play-video" video="<?php echo get_the_post_video_url($post->ID); ?>">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                    <defs>
+                    </defs>
+                    <path fill="<?php echo $author_color; ?>"
+                          opacity="0.9" enable-background="new" d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
+                </svg>
+            </div>
+        <?php
+        }
+
+
+        echo " <div class='overlay-text'>
+                    <div class='align-bottom'>
+                        <p class='post_category'>" . $categories . "</p>";
+
+
+//        echo "<p class='post_title'>" . $title . "</p>";
+//        if (!$category[0]) {
+                        echo "<p class='post_title'>".$post->post_title."</p>";
+                        echo "<p class='post_subtitle'>" . $post->post_excerpt . "<p>";
+//        }
+//        echo "<p class='post_link'><a href='" . get_the_permalink() . "'>" . $link_text[0] . "</a></p>";
+                    echo "</div>
+            </div>";
+
+        if(has_post_video()){
+            echo "<div class='play_video'>";
+                        the_post_video();
+            echo "</div>";
+        }
+
+        ?>
+    </div>
 
 
 
@@ -32,7 +89,7 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
         </div>
 
         <div class="sixty">
-			<h2 class="press-title"><?php the_title();   ?></h2>
+			
             <div class="post_content">
 				
                 <?php
@@ -43,6 +100,9 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
                 
                 ?>
             </div>
+			
+			<?php echo get_template_part("post", "getthelook"); ?>
+			
             <div class="comments row">
                 <p class="align-center">COMMENTS</p>
 
