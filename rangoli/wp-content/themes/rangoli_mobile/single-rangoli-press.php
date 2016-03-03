@@ -157,7 +157,7 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
 
 
         
-            echo get_the_look($post);
+            echo rangoli_presss_get_the_look($post);
         
         $post_link = get_permalink($post->ID);
         $b_pl = get_bitly_url($post_link);

@@ -813,4 +813,13 @@ input.change_username {
 .rangoli_press_content blockquote{border-left:1px solid #AE8536; margin:1em 0 1em 1em; padding:10px; font-size:120%;}
 .press-icon a{ border-radius: 50%; cursor: pointer; display: inline-block; height: 40px; width: 40px; margin-bottom:10px;}
 .press-icon img{max-width:100%;}
-.press-name, .press-name a {font-family: ITCAvantGardeStd-Bk;font-size: 15px;font-style: normal; line-height: 15px; color:#2f2f2f;}
+.press-name, .press-name a {font-family: ITCAvantGardeStd-Bk;font-size: 15px;font-style: normal; line-height: 15px; color:#444;}
+.rangoli_press_content .sharing_icons{margin:0; position:relative; text-align:center;}
+.rangoli_press_content  .get_the_look{}
+.rangoli_press_content  .get_the_look p {font-size:11px; line-height:15px; border-bottom:0 none;font-family: freight-text-book;
+	margin-bottom:26px;}
+.rangoli_press_content  .get_the_look .span12{margin-bottom:10px;}
+.rangoli_press_content  .get_the_look img{max-width:100%; margin-bottom:8px;}
+.rangoli_press_content .get_the_look span {display: block;font-family: graphikregular;font-size: 10px;line-height: 12px;
+  text-align: center;}
+.rangoli_press_content  .get_the_look  a{color:#666;}

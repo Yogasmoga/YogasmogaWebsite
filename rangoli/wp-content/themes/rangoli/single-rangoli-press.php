@@ -101,7 +101,7 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
                 ?>
             </div>
 			
-			<?php echo get_template_part("post", "getthelook"); ?>
+			
 			
             <div class="comments row">
                 <p class="align-center">COMMENTS</p>
@@ -119,7 +119,7 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
             </div>
 
 
-        <div class="right post_right_share_like">
+        <div class="twenty">
 <!--             style="margin-right: 50px;"-->
 
             <div class="sharing_icons">
@@ -154,7 +154,7 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
                     </li>
                 </ul>
             </div>
-
+			<?php echo get_template_part("rangoli-press", "getthelook"); ?>
             <!--<div class="post_share">
                 <?php
 /*                    echo  get_template_part("shareIcon");
