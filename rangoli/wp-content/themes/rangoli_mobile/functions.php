@@ -1081,7 +1081,8 @@ function get_the_look($post)
 }
 function rangoli_presss_get_the_look($post)
 {
-    $first_image = get_post_meta($post->ID, "wpcf-first-image");
+$heading_block = get_post_meta($post->ID, "wpcf-heading-block");
+   $first_image = get_post_meta($post->ID, "wpcf-first-image");
 $first_product_name = get_post_meta($post->ID, "wpcf-first-product-name");
 $first_product_url = get_post_meta($post->ID, "wpcf-first-product-url");
 $second_image = get_post_meta($post->ID, "wpcf-second-image");
@@ -1112,8 +1113,8 @@ $fourth_image_url = get_post_meta($post->ID, "wpcf-fourth-product-url");
         ?>
         <div class="row">
             <div class="get_the_look">
-                <p><?php echo $name; ?>&rsquo;s wearing:</p>
-
+                <!--<p><?php // echo $name; ?>&rsquo;s wearing:</p>-->
+				<p><?php echo implode("", $heading_block) ?></p>
                 <div class="span6">
                 <a href="<?php echo implode("", $first_product_url) ?>">
                     <img src="<?php echo implode("", $first_image) ?>"/>

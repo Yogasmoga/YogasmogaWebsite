@@ -1,6 +1,6 @@
 <?php
 $post = get_post();
-
+$heading_block = get_post_meta($post->ID, "wpcf-heading-block");
 $first_image = get_post_meta($post->ID, "wpcf-first-image");
 $first_product_name = get_post_meta($post->ID, "wpcf-first-product-name");
 $first_product_url = get_post_meta($post->ID, "wpcf-first-product-url");

@@ -1,6 +1,6 @@
 <?php
 $post = get_post();
-
+$heading_block = get_post_meta($post->ID, "wpcf-heading-block");
 $first_image = get_post_meta($post->ID, "wpcf-first-image");
 $first_product_name = get_post_meta($post->ID, "wpcf-first-product-name");
 $first_product_url = get_post_meta($post->ID, "wpcf-first-product-url");
@@ -15,6 +15,7 @@ $fourth_product_name = get_post_meta($post->ID, "wpcf-fourth-product-name");
 $fourth_image_url = get_post_meta($post->ID, "wpcf-fourth-product-url");
 
 if (
+	isset($heading_block) && count($heading_block) > 0 &&
     isset($first_image) && count($first_image) > 0 &&
     isset($first_product_name) && count($first_product_name) > 0 &&
     isset($first_product_url) && count($first_product_url) > 0 &&
@@ -33,7 +34,7 @@ if (
     <div class="row">
         <div class="span1"></div>
         <div class="span12 get_the_look">
-            <p>GET THIS LOOK</p>
+            <p><?php echo implode("", $heading_block) ?></p>
 
             <div class="span12">
                 <a href="<?php echo implode("", $first_product_url) ?>">
