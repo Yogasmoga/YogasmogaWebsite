@@ -13,7 +13,7 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
 
     ?>
 
-     <div class="wp_page_banner" style="background: url('<?php echo $banner_img_url[0]; ?>') no-repeat; background-size: cover; <?php echo '#'.$author_color; ?>">
+     <div class="wp_page_banner rangoli_press_banner" style="background: url('<?php echo $banner_img_url[0]; ?>') no-repeat; background-size: cover; <?php echo '#'.$author_color; ?>">
         <?php
             if(has_category("read"))
                     echo "<a class='back_to_parent' href='".get_site_url()."/read'>BACK TO READ</a>";
