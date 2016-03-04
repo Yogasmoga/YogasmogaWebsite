@@ -13,7 +13,7 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
 
     ?>
 
-     <div class="author_post_read">
+     <div class="author_post_read rangoli_press_banner">
         <?php echo get_the_post_thumbnail($post->ID, "mobile_posts");
         if (!has_post_thumbnail()) {
             echo '<img src="' . $home . '/wp-content/themes/rangoli_mobile/images/no-background_posts.png" />';
