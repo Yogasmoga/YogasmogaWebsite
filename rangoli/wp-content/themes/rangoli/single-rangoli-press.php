@@ -56,8 +56,11 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
 
 //        echo "<p class='post_title'>" . $title . "</p>";
 //        if (!$category[0]) {
-                        echo "<p class='post_title'>".$post->post_title."</p>";
-                        echo "<p class='post_subtitle'>" . $post->post_excerpt . "<p>";
+                        echo "<p class='post_title'>".$post->post_title."</p>"; ?>
+						<p class="press-name"><a href="<?php echo(types_render_field( "contributing-website-url", array( 'raw' => true) )); ?>">
+				<?php echo "From ".(types_render_field( "contributing-website", array( 'raw' => true) ));?>
+			</a></p>
+                        <?php echo "<p class='post_subtitle'>" . $post->post_excerpt . "<p>";
 //        }
 //        echo "<p class='post_link'><a href='" . get_the_permalink() . "'>" . $link_text[0] . "</a></p>";
                     echo "</div>
