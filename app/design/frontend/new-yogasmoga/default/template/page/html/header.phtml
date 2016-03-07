@@ -150,6 +150,10 @@ if($serverType == 'production')
             var lname = $.trim($("#plastname").val());
             var email_id = $.trim($("#pemail_address").val());
             var pwd = $.trim($("#p_password").val());
+            var plocation_city = $("#plocation_city").val();
+            var plocation_state = $("#plocation_state").val();
+            var plocation_zip = $("#plocation_zip").val();
+
             if(fname == "" || fname == "First Name")
             {
                 event.preventDefault();
@@ -237,7 +241,7 @@ if($serverType == 'production')
                 jQuery.ajax({
                     url : url,
                     type : 'POST',
-                    data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed, 'gender':gender},
+                    data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed, 'gender':gender,  'location_city':plocation_city, 'location_state':plocation_state, 'location_zip':plocation_zip},
                     beforeSend: function() {
                         $("#signup-button").html("Signing up...");
                     },
