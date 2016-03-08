@@ -114,7 +114,7 @@ a.forgot-link:hover
     background-repeat: no-repeat;
     background-position: center;
     width : 125px;
-    height : 25px;
+    height : 30px;
 }
 
 .createaccbtn
@@ -125,6 +125,9 @@ a.forgot-link:hover
     width : 185px;
     height : 29px;
 }
+
+.inputtable .inputholder label{display:block; text-align:left;}
+.btnholder{padding:12px; text-align:right;}
 
 .myheader
 {
