@@ -5,6 +5,38 @@ $style= "";
 if(!is_user_logged_in()) {
     $style = "margin-top:25px;";
 }
+
+if(!isset($ipinfo)){
+
+    $root = get_home_path();
+
+    include_once($root . '/Ipinfo/Host.php');
+    include_once($root . '/Ipinfo/Ipinfo.php');
+
+    $ipInfo = new Ipinfo\Ipinfo();
+
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+
+    $host = $ipInfo->getFullIpDetails($ip);
+
+    if (isset($host)) {
+        $request_city = $host->getCity();
+        $request_state = $host->getRegion();
+        $request_zip = $host->getPostal();
+    }
+    else {
+        $request_city = "N/A";
+        $request_state = "N/A";
+        $request_zip = "N/A";
+    }
+}
+
 ?>
 <!-- ------------------------------------------------- -->
 <div id="popup" class="user-color-shade" style="<?php echo $style; ?>">
@@ -86,6 +118,9 @@ if(!is_user_logged_in()) {
         <div class="close_signin_popup" ></div>
         <div class="form">
             <form id="sign-up-form">
+                <input type="hidden" id="p_location_city" name="location_city" value="<?php echo $request_city;?>"/>
+                <input type="hidden" id="p_location_state" name="location_state" value="<?php echo $request_state;?>"/>
+                <input type="hidden" id="p_location_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
             <input name="" data-watermark="First Name" id="p_fname"/>
             <input data-watermark="Last Name" id="p_lname" />
             <input data-watermark="Email Address" id="p_signup_email" />
@@ -127,6 +162,9 @@ if(!is_user_logged_in()) {
                 <h2 class="align">New to YOGASMOGA</h2>
 
                 <form method="post" action="" id="sign-up-form" class="form-1">
+                    <input type="hidden" id="location_city" name="location_city" value="<?php echo $request_city;?>"/>
+                    <input type="hidden" id="location_state" name="location_state" value="<?php echo $request_state;?>"/>
+                    <input type="hidden" id="location_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
 
                     <table width="100%" cellspacing="0" cellpadding="0">
                         <tbody>
