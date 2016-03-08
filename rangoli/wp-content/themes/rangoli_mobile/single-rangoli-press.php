@@ -227,8 +227,8 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
 
 
         <div class="post_comments" style="display: block;">
-            <p class="comments_heading">Comments</p>
-            <?php echo get_post_comments($post->ID); ?>
+            <!--<p class="comments_heading">Comments</p>-->
+            <?php // echo get_post_comments($post->ID); ?>
 	
         </div>
     </div>
