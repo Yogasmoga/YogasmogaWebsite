@@ -6,9 +6,9 @@ if(!is_user_logged_in()) {
     $style = "margin-top:25px;";
 }
 
-if(!isset($ipinfo)){
+if(!isset($ipInfo)){
 
-    $root = get_home_path();
+    $root = ABSPATH;
 
     include_once($root . '/Ipinfo/Host.php');
     include_once($root . '/Ipinfo/Ipinfo.php');
