@@ -110,14 +110,14 @@ a.forgot-link:hover
 
 .submitbtn
 {
-    background-image : none;
-    background-repeat: no-repeat;
-    background-position: center;
-    width : 100%;
-    text-align: center;
-    height : 32px;
-    background-color:#5ec52f;
+    background: #5EC52F;
     color: #fff;
+    height: 44px;
+    font: 14px ITCAvantGardeStd-Bk !important;
+    display: block;
+    width: 100%;
+    letter-spacing: 1px;
+    text-transform:uppercase;
 }
 
 .createaccbtn
