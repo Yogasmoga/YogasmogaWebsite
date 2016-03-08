@@ -2,6 +2,38 @@
 $home = get_site_url();
 $media = $home . "/wp-content/themes/rangoli_mobile/images/";
 $logged_in = is_user_logged_in();
+
+if(!isset($ipInfo)){
+
+    $root = ABSPATH;
+
+    include_once($root . '/Ipinfo/Host.php');
+    include_once($root . '/Ipinfo/Ipinfo.php');
+
+    $ipInfo = new Ipinfo\Ipinfo();
+
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+
+    $host = $ipInfo->getFullIpDetails($ip);
+
+    if (isset($host)) {
+        $request_city = $host->getCity();
+        $request_state = $host->getRegion();
+        $request_zip = $host->getPostal();
+    }
+    else {
+        $request_city = "N/A";
+        $request_state = "N/A";
+        $request_zip = "N/A";
+    }
+}
+
 ?>
 <?php
 if(!is_user_logged_in()) {
@@ -114,6 +146,10 @@ if(!is_user_logged_in()  && is_home()) {
         <p class="random">& GET $25<br/>SMOGI BUCKS</p>
 
         <div class="singup_form">
+            <input type="hidden" id="location_city" name="location_city" value="<?php echo $request_city;?>"/>
+            <input type="hidden" id="location_state" name="location_state" value="<?php echo $request_state;?>"/>
+            <input type="hidden" id="location_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
+
             <input type="text" data-watermark="First Name" name="fname" />
             <input type="text" data-watermark="Last Name" name="lname" />
             <input type="text" data-watermark="Email" name="email" />
