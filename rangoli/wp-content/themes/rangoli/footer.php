@@ -400,6 +400,9 @@ if(!isset($ipInfo)){
 
                             <div class="form">
                                 <form id="ap_sign-up-form">
+                                    <input type="hidden" id="ap_location_city" name="location_city" value="<?php echo $request_city;?>"/>
+                                    <input type="hidden" id="ap_location_state" name="location_state" value="<?php echo $request_state;?>"/>
+                                    <input type="hidden" id="ap_location_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
                                     <input name="" data-watermark="First Name" id="ap_fname"/>
                                     <input data-watermark="Last Name" id="ap_lname" />
                                     <input data-watermark="Email Address" id="ap_signup_email" />

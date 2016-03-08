@@ -1568,6 +1568,9 @@ function createCustomerAccount_from_animated_popup() {
     var lname = jQuery.trim(jQuery("#ap_lname").val());
     var email_id = jQuery.trim(jQuery("#ap_signup_email").val());
     var pwd = jQuery.trim(jQuery("#ap_s_password").val());
+    var location_city = jQuery.trim(jQuery("#ap_location_city").val());
+    var location_state = jQuery.trim(jQuery("#ap_location_state").val());
+    var location_zip = jQuery.trim(jQuery("#ap_location_zip").val());
 
     if (fname!="First Name" && lname!="Last Name" && email_id!="Email" && fname.length > 0 && lname.length > 0 && email_id.length > 0 && pwd.length>0 && pwd!="Select a password") {
 /*
@@ -1599,7 +1602,10 @@ function createCustomerAccount_from_animated_popup() {
                         'password': pwd,
                         'confirmation': cpassword,
                         'is_subscribed': "on",
-                        'gender' : gender
+                        'gender' : gender,
+                        'location_city':location_city,
+                        'location_state':location_state,
+                        'location_zip':location_zip
                     },
                     beforeSend: function () {
                         jQuery("#ap_sign-up-form .err-msg").html("");
