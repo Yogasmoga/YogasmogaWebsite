@@ -110,11 +110,11 @@ a.forgot-link:hover
 
 .submitbtn
 {
-    background-image : url('../images/customer/submit_reset_password.png');
+    background-image : url('/skin/frontend/default/newrespondf/images/customer/submit_reset_password.png');
     background-repeat: no-repeat;
     background-position: center;
     width : 125px;
-    height : 30px;
+    height : 25px;
 }
 
 .createaccbtn
