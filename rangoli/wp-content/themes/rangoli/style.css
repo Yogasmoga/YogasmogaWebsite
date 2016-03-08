@@ -811,7 +811,7 @@ input.change_username {
 /*--custom post type rangoli press--*/
 .press-title{margin-bottom:10px;}
 .rangoli_press_content blockquote{border-left:1px solid #AE8536; margin:1em 0 1em 1em; padding:10px; font-size:120%; font-style:italic;}
-.press-icon a{ border-radius: 50%; cursor: pointer; display: inline-block; height: 40px; width: 40px; margin-bottom:10px;}
+.press-icon a{ border-radius: 50%; cursor: pointer; display: inline-block; height: auto; max-width: 500px; margin-bottom:10px;}
 .press-icon img{max-width:100%;}
 .overlay-text .press-name a{color:#fff; display:inline-block;font-family: freight-text-book; font-size:20px; line-height:35px;}
 .press-name, .press-name a {font-family: ITCAvantGardeStd-Bk;font-size: 15px;font-style: normal; line-height: 15px; color:#444;}

@@ -56,7 +56,7 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
             }
             ?>
             <div class="author_picture press-icon"
-                 style="background: url('<?php echo(types_render_field( "contributing-website-icon", array( 'raw' => true) )); ?>') no-repeat;
+                 style="background: url('<?php echo(types_render_field( "contributing-website-icon-mobile", array( 'raw' => true) )); ?>') no-repeat;
                      background-position: center center; background-size: cover;
                  "><a href="<?php echo(types_render_field( "contributing-website-url", array( 'raw' => true) )); ?>"><?php echo(types_render_field( "contributing-website", array( 'raw' => true) ));?></a></div>
             
@@ -227,8 +227,8 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
 
 
         <div class="post_comments" style="display: block;">
-            <p class="comments_heading">Comments</p>
-            <?php echo get_post_comments($post->ID); ?>
+            <!--<p class="comments_heading">Comments</p>-->
+            <?php // echo get_post_comments($post->ID); ?>
 	
         </div>
     </div>
