@@ -1,5 +1,5 @@
 <?php
-require 'app/Mage.php';
+require '../app/Mage.php';
 
 Mage::app();
 
@@ -7,7 +7,9 @@ $token = $_GET['token'];
 
 if(isset($token)) {
 
-    if ($token == $_SESSION['token']) {
+    $existingToken = Mage::getSingleton('core/session')->getToken();
+echo "existing token = $existingToken";die;
+    if($token==$existingToken) {
 
         $email = $_GET['email'];
         $used = $_GET['used'];
