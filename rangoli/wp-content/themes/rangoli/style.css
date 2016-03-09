@@ -827,3 +827,5 @@ input.change_username {
 .wp_page_banner.rangoli_press_banner .post_title{font-weight:600;}
 .wp_page_banner.rangoli_press_banner .overlay-text .post_category{ border-bottom: 2px solid #979797;}
 .wp_page_banner.rangoli_press_banner .align-bottom { bottom: 65px;}
+.rangoli_press_content{padding-top:0;}
+.press-icon{text-align:center;}
