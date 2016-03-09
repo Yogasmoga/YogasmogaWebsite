@@ -8,7 +8,7 @@ $token = $_GET['token'];
 if(isset($token)) {
 
     $existingToken = Mage::getSingleton('core/session')->getToken();
-echo "existing token = $existingToken";die;
+
     if($token==$existingToken) {
 
         $email = $_GET['email'];
