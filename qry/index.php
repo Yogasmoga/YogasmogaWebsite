@@ -1,14 +1,46 @@
+<!DOCTYPE HTML>
 <html>
-    <head>Manage Reports</head>
+<head>
+<meta charset="UTF-8">
+<title>Manage Reports</title>
+<link href="style.css" type="text/css" rel="stylesheet"/>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
     <body>
-
-        <ul>
-            <li><a href="customersbyorder.php">Get customers between dates according to order amount</a></li>
-            <li><a href="customersbyproducts.php.php">Get customers who purchased particular products</a></li>
-            <li><a href="customersbyinactivity.php">Get customers who haven't purchased since date</a></li>
-            <li><a href="emailjourneyunsubscribers.php">Customers who unsubscribed from email journey</a></li>
-            <li><a href="inactiveproducts.php">Inactive products</a></li>
+		<header><h1>Manage Reports</h1></header>
+		<div class="content">
+        <ul class="mr-list">
+            <li>
+				<span><a href="customersbyorder.php"><i class="fa fa-link"></i>
+				Get customers between dates according to order amount</a>
+				</span>
+			</li>
+            <li>
+				<span>
+				<a href="customersbyproducts.php.php"><i class="fa fa-link"></i>
+				Get customers who purchased particular products</a>
+				</span>
+			</li>
+            <li>
+				<span>
+				<a href="customersbyinactivity.php"><i class="fa fa-link"></i>
+				Get customers who haven't purchased since date</a>
+				</span>
+			</li>
+            <li>
+				<span>
+				<a href="emailjourneyunsubscribers.php"><i class="fa fa-link"></i>
+				Customers who unsubscribed from email journey</a>
+				</span>
+			</li>
+            <li>
+				<span>
+				<a href="inactiveproducts.php"><i class="fa fa-link"></i>
+				Inactive products</a>
+				</span>
+			</li>
         </ul>
+		</div>
 
     </body>
 </html>
