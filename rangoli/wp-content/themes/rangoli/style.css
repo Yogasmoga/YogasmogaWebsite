@@ -812,7 +812,7 @@ input.change_username {
 .press-title{margin-bottom:10px;}
 .post_content_box.rangoli_press_content{padding-top:0;}
 .rangoli_press_content blockquote{border-left:1px solid #AE8536; margin:1em 0 1em 1em; padding:10px; font-size:120%; font-style:italic;}
-.press-icon{text-align:center; width:100%; display:block; padding-right:10px;}
+.press-icon {display: block;padding: 0 30px 0 15px;text-align: center;width: 100%;}
 .press-icon a{ cursor: pointer; display: block; height: auto;margin-bottom:10px; /*border-radius: 50%;  max-width: 500px;*/ }
 .press-icon img{max-width:100%; height:auto; display:inline-block;}
 .overlay-text .press-name a{color:#fff; display:inline-block;font-family: freight-text-book; font-size:20px; line-height:35px;}
