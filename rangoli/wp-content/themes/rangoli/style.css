@@ -818,7 +818,7 @@ input.change_username {
 .overlay-text .press-name a{color:#fff; display:inline-block;font-family: freight-text-book; font-size:20px; line-height:35px;}
 .press-name, .press-name a {font-family: ITCAvantGardeStd-Bk;font-size: 15px;font-style: normal; line-height: 15px; color:#444;}
 .rangoli_press_content .sharing_icons{margin:15px 0 0 0 ; position:relative; text-align:center;}
-.rangoli_press_content  .get_the_look{}
+.rangoli_press_content  .get_the_look{padding-top:0;}
 .rangoli_press_content  .get_the_look p {font-size:11px; line-height:15px; border-bottom:0 none;font-family: freight-text-book;
 	margin-bottom:26px;}
 .rangoli_press_content  .get_the_look .span12{margin-bottom:10px;}
