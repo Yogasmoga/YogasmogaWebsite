@@ -1,3 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Check Promo Code Usage</title>
+<link href="style.css" type="text/css" rel="stylesheet"/>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+  <body>
+		<header><h1>Check Promo Code Usage</h1></header>
+		<div class="content">
 <?php
 require_once '../app/Mage.php';
 Mage::app();
@@ -7,13 +18,15 @@ $saleRuleModel = Mage::getModel('salesrule/rule');
 $rulesCollection = $saleRuleModel->getCollection();
 ?>
 
-    <table style='border:solid 1px #000; width: 400px;'>
-        <tr>
+    <table class="qry-table-list">
+        <thead>
+		<tr>
             <td>Coupon Code</td>
             <td>Usage Count</td>
             <td>Order Amount</td>
         </tr>
-
+		</thead>
+		<tbody>
 <?php
 foreach($rulesCollection as $rule) {
     $couponCode = $rule->getName();
@@ -41,4 +54,11 @@ foreach($rulesCollection as $rule) {
     }
 }
 ?>
+</tbody>
 </table>
+
+
+</div>
+
+    </body>
+</html>

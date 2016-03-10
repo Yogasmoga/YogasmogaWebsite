@@ -4,15 +4,21 @@ header{background:#56b0ea; padding:15px;color:#fff;}
 header h1{font-size:30px;}
 .content{padding:15px;}
 
+/*--manage reports--*/
 .mr-list{list-style:none; margin:0; padding:0;}
 .mr-list li{margin-bottom:0; font-size:18px; padding:15px; background:#f5f5f5;}
 .mr-list li:nth-child(odd){background:#fff;}
 .mr-list li a{text-decoration:none; color:#555;}
 .mr-list li a:hover{color:#56b0ea;}
 .mr-list li .fa-link{transition:0.2s linear;-webkit-transition:0.2s linear;transform:rotate(0);transform:rotate(0);
-	background:#333; color:#fff; padding:10px; border-radius:50%;
-}
+	background:#333; color:#fff; padding:10px; border-radius:50%;}
 .mr-list li a:hover .fa-link{transition:0.2s linear;-webkit-transition:0.2s linear;transform:rotate(90deg);transform:rotate(90deg);
-	background:#56b0ea;
-
-}
+	background:#56b0ea;}
+	
+/*--check promo code usage--*/
+.qry-table-list{background:#fff;border:1px solid #ccc; border-collapse:collapse; width:100%;}
+.qry-table-list thead{background:#444; color:#fff;}
+.qry-table-list thead td{font-size:16px; font-weight:bold;border-bottom:1px solid #ccc;}
+.qry-table-list td{ padding:10px;}
+.qry-table-list tbody  tr:nth-child(odd) td{background:#f5f5f5;}
+	
