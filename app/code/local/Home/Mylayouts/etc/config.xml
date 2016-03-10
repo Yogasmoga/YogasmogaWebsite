@@ -161,8 +161,46 @@
           <layout_handle>bags</layout_handle>
         </bags>
 		<!-- Bags Category layouts End here -->
-      
+		
+		<!-- Kids Category layouts Start here -->
+		<bags translate="label">
+          <label>Kids</label>
+          <template>page/kids.phtml</template>
+          <layout_handle>kids</layout_handle>
+        </bags>
+		<!-- Bags Category layouts End here -->
+        <mypage translate="label">
+          <label>My Page</label>
+          <template>page/my_page.phtml</template>
+          <layout_handle>My Page</layout_handle>
+        </mypage>
+		<!-- Bags Category layouts End here -->
+		
+		
+		
+		<!-- Test 2 page layouts End here -->
+		
+	    <test2 translate="label">
+          <label>Test 2</label>
+          <template>page/test2.phtml</template>
+          <layout_handle>test2</layout_handle>
+        </test2>
+		<!-- Test 2 page layouts End here -->
+		
+		
+		<!-- Test 1 page layouts End here -->
+		
+	    <test1 translate="label">
+          <label>Test 1</label>
+          <template>page/test1.phtml</template>
+          <layout_handle>test1</layout_handle>
+        </test1>
+		<!-- Test 1 page layouts End here -->
+		
+		
 	  </layouts>
+	  
+	  
     </page>
   </global>
 </config>
