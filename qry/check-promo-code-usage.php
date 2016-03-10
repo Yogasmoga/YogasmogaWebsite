@@ -44,7 +44,7 @@ foreach($rulesCollection as $rule) {
         $orderV = Mage::getSingleton('sales/order')->load($order->getId());
         $orderAmount += $orderV->getGrandTotal();
     }
-	$orderAmount = money_format('%i', $orderAmount);
+	$orderAmount = money_format('$%i', $orderAmount);
 
     if($coupon->getId()) {
         $timesUsed = $coupon->getTimesUsed();
