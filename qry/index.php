@@ -17,7 +17,7 @@
 			</li>
             <li>
 				<span>
-				<a href="customersbyproducts.php.php"><i class="fa fa-link"></i>
+				<a href="customersbyproducts.php"><i class="fa fa-link"></i>
 				Get customers who purchased particular products</a>
 				</span>
 			</li>
