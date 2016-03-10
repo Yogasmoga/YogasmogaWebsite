@@ -28,6 +28,7 @@ $rulesCollection = $saleRuleModel->getCollection();
 		</thead>
 		<tbody>
 <?php
+setlocale(LC_MONETARY, 'en_US');
 foreach($rulesCollection as $rule) {
     $couponCode = $rule->getName();
     $isActive = $rule->getIsActive();
@@ -43,6 +44,7 @@ foreach($rulesCollection as $rule) {
         $orderV = Mage::getSingleton('sales/order')->load($order->getId());
         $orderAmount += $orderV->getGrandTotal();
     }
+	$orderAmount = money_format('%i', $orderAmount);
 
     if($coupon->getId()) {
         $timesUsed = $coupon->getTimesUsed();
