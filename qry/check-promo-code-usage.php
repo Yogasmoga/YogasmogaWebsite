@@ -26,11 +26,9 @@ foreach($rulesCollection as $rule) {
         ->addFieldToFilter('coupon_code',$couponCode);
 
     $orderAmount = 0;
-    $ar = array();
     foreach($orders as $order) {
         $orderV = Mage::getSingleton('sales/order')->load($order->getId());
         $orderAmount += $orderV->getGrandTotal();
-        $ar[] = $order->getIncrementId();
     }
 
     if($coupon->getId()) {
@@ -39,7 +37,6 @@ foreach($rulesCollection as $rule) {
         echo "<td>$couponCode</td>";
         echo "<td>$timesUsed</td>";
         echo "<td>$orderAmount</td>";
-        echo "<td>" . implode(',', $ar) . "</td>";
         echo "</tr>";
     }
 }
