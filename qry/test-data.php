@@ -24,6 +24,6 @@ $sql = "SELECT email,first_name,last_name FROM test_customers WHERE source_box='
 $results=$read->fetchAll($sql);
 
 foreach($results as $result){
-    fputcsv($output, array($result[0], $result[1] . ' ' . $result[1]));
+    fputcsv($output, array($result['email'], $result['first_name'] . ' ' . $result['last_name']));
 }
 ?>
