@@ -23,7 +23,7 @@ $rulesCollection = $saleRuleModel->getCollection();
 		<tr>
             <td>Coupon Code</td>
             <td>Usage Count</td>
-            <td>Order Amount</td>
+            <td>Total Amount</td>
         </tr>
 		</thead>
 		<tbody>
