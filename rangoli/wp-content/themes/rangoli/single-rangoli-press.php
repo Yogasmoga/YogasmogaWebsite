@@ -57,7 +57,11 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
 //        echo "<p class='post_title'>" . $title . "</p>";
 //        if (!$category[0]) {
                         echo "<p class='post_title'>".$post->post_title."</p>"; ?>
-						
+						<p class="press-name">
+							<a href="<?php echo(types_render_field( "contributing-website-url", array( 'raw' => true) )); ?>">
+								<?php echo "From: ".(types_render_field( "contributing-website", array( 'raw' => true) ));?>
+							</a>
+						</p>
                         <?php echo "<p class='post_subtitle'>" . $post->post_excerpt . "<p>";
 //        }
 //        echo "<p class='post_link'><a href='" . get_the_permalink() . "'>" . $link_text[0] . "</a></p>";
@@ -73,16 +77,16 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
         ?>
     </div>
 
-	<p class="press-icon"><a href="<?php echo(types_render_field( "contributing-website-url", array( 'raw' => true) )); ?>">
-				<img src="<?php echo(types_render_field( "contributing-website-icon", array( 'raw' => true) )); ?>" alt="" />
-			</a></p>
+	<!--<p class="press-icon"><a href="<?php // echo(types_render_field( "contributing-website-url", array( 'raw' => true) )); ?>">
+				<img src="<?php // echo(types_render_field( "contributing-website-icon", array( 'raw' => true) )); ?>" alt="" />
+			</a></p>-->
 
     <div class="row ww post_content_box rangoli_press_content">
         <div class="twenty">
             <div class="author_details_post">
-			<!--<p class="press-icon"><a href="<?php // echo(types_render_field( "contributing-website-url", array( 'raw' => true) )); ?>">
-				<img src="<?php // echo(types_render_field( "contributing-website-icon", array( 'raw' => true) )); ?>" alt="" />
-			</a></p>-->
+			<p class="press-icon"><a href="<?php  echo(types_render_field( "contributing-website-url", array( 'raw' => true) )); ?>">
+				<img src="<?php  echo(types_render_field( "contributing-website-icon", array( 'raw' => true) )); ?>" alt="" />
+			</a></p>
 			
 			<!--<p class="press-name"><a href="<?php // echo(types_render_field( "contributing-website-url", array( 'raw' => true) )); ?>">
 				<?php // echo(types_render_field( "contributing-website", array( 'raw' => true) ));?>
