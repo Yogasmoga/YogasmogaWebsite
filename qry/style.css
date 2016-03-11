@@ -8,9 +8,9 @@ h5,.h5{font-size:16px;}
 h6,.h6{font-size:14px;}
 h1, h2 ,h3, h4, h5, h6{margin-bottom:15px;}
 input[type="text"],input[type="password"],input[type="email"],select, textarea{padding:5px 10px; border:1px solid #ccc;}
-input[type="submit"]{background:#56B0EA;color:#fff; border:0 none; padding:5px 15px;cursor:pointer;
+input[type="submit"]{background:#286090;color:#fff; border:0 none; padding:5px 25px;cursor:pointer;
 	transition:0.2s linear;-webkit-transition:0.2s linear;}
-input[type="submit"]:hover{background:#2995db;transition:0.2s linear;-webkit-transition:0.2s linear;}	
+input[type="submit"]:hover{background:#4085c0;transition:0.2s linear;-webkit-transition:0.2s linear;}	
 header{background:#56b0ea; padding:15px;color:#fff;}
 h1{margin-bottom:0;}
 .content{padding:15px;}
@@ -35,6 +35,7 @@ h1{margin-bottom:0;}
 
 /*--qry-coupon-by-date--*/
 .qry-coupon-by-date{margin:15px 0;}
+.qry-coupon-by-date label{font-weight:600; color:#666;}
 #ui-datepicker-div{background:#fff;font-size:12px; border-radius:0;}
 #ui-datepicker-div .ui-datepicker-header{background:#56b0ea; color:#fff; border-radius:0; border:0 none;}
 #ui-datepicker-div .ui-datepicker-header select{padding:2px 5px;}
