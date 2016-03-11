@@ -42,26 +42,46 @@ if(isset($_REQUEST['date'])) {
 }
 else{
 ?>
-
+<!DOCTYPE HTML>
 <html>
-    <body>
+<head>
+<meta charset="UTF-8">
+<title>Download customers</title>
+<link href="style.css" type="text/css" rel="stylesheet"/>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script>
+    $(function() {
+    $( "#qry-datepicker" ).datepicker();
+  });
+  </script>
+</head>
+  <body>
+		<header>
+		<h1>Download customers</h1>
+		<a class="link-home" href="index.php"><i class="fa fa-home"></i></a>
+		</header>
+		<div class="content">
 
-        <br/><a href="index.php">Home</a><br/><br/>
+        <form class="qry-form" method="post" action="emailjourneyunsubscribers.php">
 
-        <form method="post" action="emailjourneyunsubscribers.php">
+            
 
-            <h3>Download customers</h3>
-
-            <table style="width:500px;" border="0">
+            <table border="0">
                 <tr>
-                    <td style="width:150px;">Date</td>
-                    <td><input type="date" name="date"/> Ex. 5/17/2015</td>
+                    <td>Date</td>
+                    <td><input id="qry-datepicker" type="text" name="date"/> (mm/dd/yyyy)</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="submit" value="Get Records"/> </td>
+                    <td class="button-area" colspan="2"><input type="submit" value="Get Records"/> </td>
                 </tr>
             </table>
         </form>
+   </div>
+
     </body>
 </html>
 

@@ -12,7 +12,8 @@ input[type="submit"]{background:#286090;color:#fff; border:1px solid #286090; pa
 	transition:0.2s linear;-webkit-transition:0.2s linear;}
 input[type="submit"]:hover{background:#4085c0; border:1px solid #4085c0;transition:0.2s linear;-webkit-transition:0.2s linear;}	
 header{background:#56b0ea; padding:15px;color:#fff; position:relative;}
-header .link-home{position:absolute; top:50%; right:15px; color:#fff;font-size:30px;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
+header .link-home{position:absolute; top:50%; right:15px; color:#fff;font-size:30px;transform:translateY(-50%);-webkit-transform:translateY(-50%);transition:color 0.2s linear;-webkit-transition:color 0.2s linear; }
+header .link-home:hover{color:#286090;transition:color 0.2s linear;-webkit-transition:color 0.2s linear;}
 h1{margin-bottom:0;}
 .content{padding:15px;}
 
@@ -27,7 +28,7 @@ h1{margin-bottom:0;}
 .mr-list li a:hover .fa-link{transition:0.2s linear;-webkit-transition:0.2s linear;transform:rotate(90deg);transform:rotate(90deg);
 	background:#56b0ea;}
 	
-/*--check promo code usage--*/
+/*====check promo code usage====*/
 .qry-table-list{background:#fff;border:1px solid #ccc; border-collapse:collapse; width:100%;}
 .qry-table-list thead{background:#444; color:#fff;}
 .qry-table-list thead td{font-size:16px; font-weight:bold;border-bottom:1px solid #ccc;}
@@ -41,7 +42,7 @@ h1{margin-bottom:0;}
 #ui-datepicker-div .ui-datepicker-header{background:#56b0ea; color:#fff; border-radius:0; border:0 none;}
 #ui-datepicker-div .ui-datepicker-header select{padding:2px 5px;}
 
-/*--download customers--*/
+/*====download customers====*/
 .qry-form { background: #fff none repeat scroll 0 0; border: 1px solid #ccc; padding: 15px;}
 .qry-form  table{}
 .qry-form  table tr{}
