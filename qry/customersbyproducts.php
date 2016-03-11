@@ -61,20 +61,50 @@ if (isset($_REQUEST['from_date'])) {
 } else {
     ?>
 
-    <html>
-    <head>
-        <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
-        <title>Download customer that purchased products</title>
-    </head>
-    <body>
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Download customer that purchased products</title>
+<link href="style.css" type="text/css" rel="stylesheet"/>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#input-from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#input-to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#input-to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#input-from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+  </script>
+</head>
+  <body>
+		<header>
+		<h1>Download customers who purchased product within specified date</h1>
+		<a class="link-home" href="index.php"><i class="fa fa-home"></i></a>
+		</header>
+		<div class="content">
 
-    <br/><a href="index.php">Home</a><br/><br/>
+    <form class="qry-form" method="post" action="customersbyproducts.php">
 
-    <form method="post" action="customersbyproducts.php">
+        
 
-        <h3>Download customers who purchased product within specified date</h3>
-
-        <table style="width:500px;" border="0">
+        <table  border="0">
             <tr>
                 <?php
                 $products = Mage::getModel('catalog/product')
@@ -93,16 +123,16 @@ if (isset($_REQUEST['from_date'])) {
                 </td>
             </tr>
             <tr>
-                <td style="width:150px;">From</td>
-                <td><input type="date" name="from_date"/></td>
+                <td>From</td>
+                <td><input id="input-from" type="text" name="from_date"/></td>
             </tr>
             <tr>
-                <td style="width:150px;">To</td>
-                <td><input type="date" name="to_date"/></td>
+                <td>To</td>
+                <td><input id="input-to" type="text" name="to_date"/></td>
             </tr>
 
             <tr>
-                <td colspan="2"><input type="submit" value="Get Records"/></td>
+                <td class="button-area" colspan="2"><input type="submit" value="Get Records"/></td>
             </tr>
         </table>
         <input type="hidden" name="product_name"/>
@@ -121,7 +151,9 @@ if (isset($_REQUEST['from_date'])) {
         });
     </script>
 
+    </div>
+
     </body>
-    </html>
+</html>
 
 <?php } ?>
