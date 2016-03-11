@@ -3296,11 +3296,11 @@ label[for="shipping:street1"] {
 
 #billing-new-address-form ul li:nth-child(5) .field:first-child, #co-shipping-form ul li:nth-child(6) {
     float: left !important;
-    width: 48%;
+    width: 100%;
 }
 
 #billing-new-address-form ul li:nth-child(5) .field, #co-shipping-form ul li:nth-child(7) {
-    width: 48%;
+    width: 100%;
     float: right;
 }
 
@@ -7848,5 +7848,4 @@ input#giftcard_use{
 /*--checkout shipping section--*/
 #co-shipping-form #shipping-address-select{margin-top:0px;}
 
-/*--size chart--*/
-.size-chart .chart-table tr th:first-child,.size-chart .chart-table tr td:first-child{}
+
