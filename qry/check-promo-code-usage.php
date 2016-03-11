@@ -1,3 +1,22 @@
+<?php
+    function validateDate($date)
+    {
+        $d = DateTime::createFromFormat('m/d/Y', $date);
+        return $d && $d->format('m/d/Y') == $date;
+    }
+
+    $datesPassed = false;
+    $fromDate = "";
+    $toDate = "";
+
+    if(isset($_REQUEST['from']) && isset($_REQUEST['to'])) {
+        $fromDateV = $_REQUEST['from'];
+        $toDateV = $_REQUEST['to'];
+
+        $datesPassed = validateDate($fromDateV) && validateDate($toDateV);
+    }
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -44,18 +63,26 @@ $rulesCollection = $saleRuleModel->getCollection();
 ?>
 	<div class="qry-coupon-by-date">
 		<h2 class="h4">Check Promo Code By Date</h2>
-		<form action="" name="">
+		<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 			<span class="date-from date-spn">
-				<label>From: </label><input id="input-from" type="text" value=""/>
+				<label>From: </label><input id="input-from" type="text" name="from" value="<?php echo $fromDateV;?>"/>
 			</span>
 			<span class="date-to date-spn">
-				<label>to: </label><input id="input-to" type="text" value=""/>
+				<label>to: </label><input id="input-to" type="text" name="to" value="<?php echo $toDateV;?>"/>
 			</span>
 			<span class="date-submit date-spn">
 				<input type="submit" value="Submit"/>
 			</span>
 		</form>
 	</div>
+
+    <?php
+        if($datesPassed){
+
+            $fromDate = date('Y-m-d', strtotime($fromDateV));
+            $toDate = date('Y-m-d', strtotime($toDateV));
+        ?>
+
     <table class="qry-table-list">
         <thead>
 		<tr>
@@ -75,17 +102,21 @@ foreach($rulesCollection as $rule) {
     $coupon->load($couponCode, 'code');
 
     $orders = Mage::getModel('sales/order')->getCollection()
+        ->addAttributeToFilter('created_at', array('from'=>$fromDate, 'to'=>$toDate))
+        ->addAttributeToFilter('status', array('eq' => Mage_Sales_Model_Order::STATE_COMPLETE))
         ->addFieldToFilter('coupon_code',$couponCode);
 
     $orderAmount = 0;
+    $timesUsed = 0;
     foreach($orders as $order) {
         $orderV = Mage::getSingleton('sales/order')->load($order->getId());
         $orderAmount += $orderV->getGrandTotal();
+        $timesUsed++;
     }
-	$orderAmount = money_format('$%i', $orderAmount);
+	//$orderAmount = money_format('$%i', $orderAmount);
 
     if($coupon->getId()) {
-        $timesUsed = $coupon->getTimesUsed();
+        //$timesUsed = $coupon->getTimesUsed();
         echo "<tr>";
         echo "<td>$couponCode</td>";
         echo "<td>$timesUsed</td>";
@@ -97,6 +128,7 @@ foreach($rulesCollection as $rule) {
 </tbody>
 </table>
 
+    <?php } ?>
 
 </div>
 
