@@ -30,7 +30,9 @@
   </script>
 </head>
   <body>
-		<header><h1>Check Promo Code Usage</h1></header>
+		<header><h1>Check Promo Code Usage</h1>
+		<a class="link-home" href="index.php"><i class="fa fa-home"></i></a>
+		</header>
 		<div class="content">
 <?php
 require_once '../app/Mage.php';
