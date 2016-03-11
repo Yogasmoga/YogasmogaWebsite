@@ -1,7 +1,18 @@
 *{margin:0; padding:0; box-sizing:border-box;}
 body{background:#eee;font-family:arial, sans-serif; font-size:14px; color:#333;}
+h1,.h1{font-size:30px;}
+h2,.h2{font-size:26px;}
+h3,.h3{font-size:22px;}
+h4,.h4{font-size:18px;}
+h5,.h5{font-size:16px;}
+h6,.h6{font-size:14px;}
+h1, h2 ,h3, h4, h5, h6{margin-bottom:15px;}
+input[type="text"],input[type="password"],input[type="email"],select, textarea{padding:5px 10px; border:1px solid #ccc;}
+input[type="submit"]{background:#56B0EA;color:#fff; border:0 none; padding:5px 15px;cursor:pointer;
+	transition:0.2s linear;-webkit-transition:0.2s linear;}
+input[type="submit"]:hover{background:#2995db;transition:0.2s linear;-webkit-transition:0.2s linear;}	
 header{background:#56b0ea; padding:15px;color:#fff;}
-header h1{font-size:30px;}
+h1{margin-bottom:0;}
 .content{padding:15px;}
 
 /*--manage reports--*/
@@ -21,4 +32,11 @@ header h1{font-size:30px;}
 .qry-table-list thead td{font-size:16px; font-weight:bold;border-bottom:1px solid #ccc;}
 .qry-table-list td{ padding:10px;}
 .qry-table-list tbody  tr:nth-child(odd) td{background:#f5f5f5;}
+
+/*--datepicker--*/
+#ui-datepicker-div{background:#fff;font-size:12px; border-radius:0;}
+#ui-datepicker-div .ui-datepicker-header{background:#56b0ea; color:#fff; border-radius:0; border:0 none;}
+#ui-datepicker-div .ui-datepicker-header select{padding:2px 5px;}
+
+/*--download customers--*/
 	

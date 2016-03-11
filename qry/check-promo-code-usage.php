@@ -4,7 +4,30 @@
 <meta charset="UTF-8">
 <title>Check Promo Code Usage</title>
 <link href="style.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#input-from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#input-to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#input-to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#input-from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+  </script>
 </head>
   <body>
 		<header><h1>Check Promo Code Usage</h1></header>
@@ -17,7 +40,20 @@ umask(0);
 $saleRuleModel = Mage::getModel('salesrule/rule');
 $rulesCollection = $saleRuleModel->getCollection();
 ?>
-
+	<div class="qry-coupon-by-date">
+		<h2 class="h4">Check Promo Code By Date</h2>
+		<form action="" name="">
+			<span class="date-from date-spn">
+				<label>From: </label><input id="input-from" type="text" value=""/>
+			</span>
+			<span class="date-to date-spn">
+				<label>to: </label><input id="input-to" type="text" value=""/>
+			</span>
+			<span class="date-submit date-spn">
+				<input type="submit" value="Submit"/>
+			</span>
+		</form>
+	</div>
     <table class="qry-table-list">
         <thead>
 		<tr>
