@@ -1,0 +1,52 @@
+*{margin:0; padding:0; box-sizing:border-box;}
+body{background:#eee;font-family:arial, sans-serif; font-size:14px; color:#333;}
+h1,.h1{font-size:30px;}
+h2,.h2{font-size:26px;}
+h3,.h3{font-size:22px;}
+h4,.h4{font-size:18px;}
+h5,.h5{font-size:16px;}
+h6,.h6{font-size:14px;}
+h1, h2 ,h3, h4, h5, h6{margin-bottom:15px;}
+input[type="text"],input[type="password"],input[type="email"],select, textarea{padding:5px 10px; border:1px solid #ccc;}
+input[type="submit"]{background:#286090;color:#fff; border:1px solid #286090; padding:5px 25px;cursor:pointer;
+	transition:0.2s linear;-webkit-transition:0.2s linear;}
+input[type="submit"]:hover{background:#4085c0; border:1px solid #4085c0;transition:0.2s linear;-webkit-transition:0.2s linear;}	
+header{background:#56b0ea; padding:15px;color:#fff; position:relative;}
+header .link-home{position:absolute; top:50%; right:15px; color:#fff;font-size:30px;transform:translateY(-50%);-webkit-transform:translateY(-50%);transition:color 0.2s linear;-webkit-transition:color 0.2s linear; }
+header .link-home:hover{color:#286090;transition:color 0.2s linear;-webkit-transition:color 0.2s linear;}
+h1{margin-bottom:0;}
+.content{padding:15px;}
+
+/*--manage reports--*/
+.mr-list{list-style:none; margin:0; padding:0;}
+.mr-list li{margin-bottom:0; font-size:18px; padding:15px; background:#f5f5f5;}
+.mr-list li:nth-child(odd){background:#fff;}
+.mr-list li a{text-decoration:none; color:#555;}
+.mr-list li a:hover{color:#56b0ea;}
+.mr-list li .fa-link{transition:0.2s linear;-webkit-transition:0.2s linear;transform:rotate(0);transform:rotate(0);
+	background:#333; color:#fff; padding:10px; border-radius:50%;}
+.mr-list li a:hover .fa-link{transition:0.2s linear;-webkit-transition:0.2s linear;transform:rotate(90deg);transform:rotate(90deg);
+	background:#56b0ea;}
+	
+/*====check promo code usage====*/
+.qry-table-list{background:#fff;border:1px solid #ccc; border-collapse:collapse; width:100%;}
+.qry-table-list thead{background:#444; color:#fff;}
+.qry-table-list thead td{font-size:16px; font-weight:bold;border-bottom:1px solid #ccc;}
+.qry-table-list td{ padding:10px;}
+.qry-table-list tbody  tr:nth-child(odd) td{background:#f5f5f5;}
+
+/*--qry-coupon-by-date--*/
+.qry-coupon-by-date{margin:15px 0;}
+.qry-coupon-by-date label{font-weight:600; color:#666;}
+#ui-datepicker-div{background:#fff;font-size:12px; border-radius:0;}
+#ui-datepicker-div .ui-datepicker-header{background:#56b0ea; color:#fff; border-radius:0; border:0 none;}
+#ui-datepicker-div .ui-datepicker-header select{padding:2px 5px;}
+
+/*====download customers====*/
+.qry-form { background: #fff none repeat scroll 0 0; border: 1px solid #ccc; padding: 15px;}
+.qry-form  table{}
+.qry-form  table tr{}
+.qry-form  table td{padding:5px;}
+.qry-form  table td:first-child{width:150px;}
+.qry-form  table td.button-area{}
+	
