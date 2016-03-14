@@ -5634,7 +5634,7 @@ p.required {
 
 #checkout-review-table .price {
     position: absolute;
-    right: 0;
+    right: 0;line-height:12px;
 }
 
 #checkout-review-table tbody .price {
