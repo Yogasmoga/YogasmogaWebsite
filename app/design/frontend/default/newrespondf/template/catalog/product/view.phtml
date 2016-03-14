@@ -922,7 +922,7 @@ if ($lengthAvailable) {
 
                         <div class="include_option">
                             <?php
-							/*
+							
                             foreach ($arProductAllOptions as $options) {
                                 ?>
                                 <div value="<?php echo $options['default_price']; ?>"
@@ -935,11 +935,12 @@ if ($lengthAvailable) {
                                 </div>
                                 <?php
                             }
-							*/
-                            ?>
 							
+                            ?>
+							<div class="selected" optiontypeid="2" optionid="1" title="N" value="0.0000">N</div>
+                            <div class="" optiontypeid="1" optionid="1" title="Y" value="0.0000">Y</div>
 
-                                <div value="<?php echo $arProductAllOptions[1]['default_price']; ?>"
+                                <!--<div value="<?php echo $arProductAllOptions[1]['default_price']; ?>"
                                      title="<?php echo $arProductAllOptions[1]['default_title']; ?>"
                                      optionid="<?php echo $arProductAllOptions[1]['option_id']; ?>"
                                      optiontypeid="<?php echo $arProductAllOptions[1]['option_type_id']; ?>"
@@ -952,10 +953,9 @@ if ($lengthAvailable) {
                                      optiontypeid="<?php echo $arProductAllOptions[0]['option_type_id']; ?>"
 									 class="selected">
                                      <?php echo $arProductAllOptions[0]['default_title']; ?>
-                                </div>
+                                </div>-->
 							
-                            <!--<div class="selected" optiontypeid="2" optionid="1" title="N" value="0.0000">N</div>
-                            <div class="" optiontypeid="1" optionid="1" title="Y" value="0.0000">Y</div>-->
+                            
                         </div>
 
                     </div>
