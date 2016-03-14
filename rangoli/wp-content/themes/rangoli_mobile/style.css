@@ -1733,7 +1733,8 @@ p.small.err_msg {
 }
 
 /*--rangoli press--*/
+.post_content.rangoli_press_content a{color:#AE8536;}
 .press-icon a{display:block;text-indent:-9999px;width:100%; height:100%;}
 .press-name a{color:#fff; text-decoration:none;}
-.rangoli_press_content blockquote{border-left:1px solid #AE8536; margin:1em 0 1em 1em; padding:10px; font-size:120%; font-style:italic;}
+.rangoli_press_content blockquote{border-left:1px solid #AE8536; margin:1em 0 1em 1em; padding:10px; font-size:140%; font-style:italic;}
 .rangoli_press_banner .post_title br{display:none;}
