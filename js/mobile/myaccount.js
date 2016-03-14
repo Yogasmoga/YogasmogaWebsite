@@ -1,7 +1,7 @@
 var _refercount = 1;
 _usesecureurl = true;
 jQuery(document).ready(function($){
-
+	jQuery('td.errortext div').css("color","#ff5f00");
     if(_enablediscounttype == 'giftcard')
     {
         $("div.smogi-bucks").append("<div class='disableme'></div>");
@@ -375,7 +375,7 @@ function validateGiftCardForm(tbl)
     }
     else if(flag > 0)
     {
-        tbl.find('td.errortext div').html('Invalid Gift of YS Code.').fadeIn('fast');
+        tbl.find('td.errortext div').html('Invalid Gift of YS Code').fadeIn('fast');
     }
     if(flag == 0)
         flag = true;
@@ -416,7 +416,7 @@ function validateGiftCardRedeemForm()
     }
     else if(flag > 0)
     {
-        tbl.find('td.errortext div').html('Invalid Gift of YS Code.').fadeIn('fast');
+        tbl.find('td.errortext div').html('Invalid Gift of YS Code').fadeIn('fast');
     }
     if(flag == 0)
         flag = true;
@@ -692,7 +692,7 @@ function getcardbalance()
             else
             {
                 //alert(result.message);
-                jQuery("table.gfredeem").find('td.errortext div').html('Invalid Gift of YS Code.').fadeIn('fast');
+                jQuery("table.gfredeem").find('td.errortext div').html('Invalid Gift of YS Code').fadeIn('fast');
             }
         }
     });
