@@ -811,6 +811,7 @@ input.change_username {
 /*--custom post type rangoli press--*/
 .press-title{margin-bottom:10px;}
 .post_content_box.rangoli_press_content{padding-top:0;}
+.post_content_box.rangoli_press_content .post_content a{color:#AE8536!important;}
 .rangoli_press_content blockquote{border-left:1px solid #AE8536; margin:1em 0 1em 1em; padding:10px; font-size:120%; font-style:italic;}
 .press-icon {display: block;padding: 0 30px 0 15px;text-align: center;width: 100%;}
 .press-icon a{ cursor: pointer; display: block; height: auto;margin-bottom:10px; /*border-radius: 50%;  max-width: 500px;*/ }
