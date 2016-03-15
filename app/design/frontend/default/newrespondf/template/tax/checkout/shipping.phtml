@@ -61,7 +61,7 @@
     </td>
     <td style="<?php echo $this->getStyle() ?>" class="a-right">
        <?php 
-		$shipPrice = trim('<span class="price">$0</span>');
+		$shipPrice = trim('<span class="price">$0.00</span>');
 		if($this->helper('checkout')->formatPrice($this->getShippingExcludeTax())==$shipPrice):
 		echo $this->__('FREE'); ?>
 		<?php else:?>
