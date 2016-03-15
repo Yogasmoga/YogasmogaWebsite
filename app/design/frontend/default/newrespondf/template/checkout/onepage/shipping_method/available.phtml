@@ -49,10 +49,14 @@
                                         <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
                                         <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
                                         (<?php 
-										$price = trim('<span class="price">$0</span>');
-										if($_excl == $price){echo $this->__('Free');}
-										else{		
-										echo $_excl;} ?>)
+										$free = trim('<span class="price">$0.00</span>');
+										$twenty5 = trim('<span class="price">$25.00</span>');
+										$thirty8 = trim('<span class="price">$38.00</span>');
+										if($_excl == $free){echo $this->__('Free');}
+										else if($_excl == $twenty5){echo $this->__('$25');}
+										else if($_excl == $thirty8){echo $this->__('$38');}
+										else echo $_excl;
+										?>)
                                         <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
                                             (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
                                         <?php endif; ?>
