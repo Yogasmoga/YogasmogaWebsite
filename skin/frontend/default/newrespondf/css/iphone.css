@@ -4466,7 +4466,7 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-box li {
     list-style: disc;
-    font: 14px/20px GraphikRegular;
+    font: 14px/20px GraphikRegular;display:list-item;
 }
 
 .fit.inner-content {
