@@ -6031,7 +6031,7 @@ table#checkout-review-table tfoot td .price {
 
 .shipping-add.add-box span, .billing-add.add-box span {
     float: left;
-    font: 12px/18px GraphikRegular;
+    font: 12px/18px GraphikRegular;letter-spacing:1px;
     width: 100% !important;
 }
 
