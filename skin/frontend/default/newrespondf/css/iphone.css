@@ -4468,7 +4468,7 @@ ul.checkout-cont > li {
     list-style: disc;
     font: 14px/20px GraphikRegular;display:list-item;
 }
-@media screen and (device-aspect-ratio: 2/3) {
+@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
 	.detail-page .description-block .first-list .detail-view .fitDetail .video-box li {padding-left:37px;/*iPhone < 5: aspect ratio*/}
 
 }
