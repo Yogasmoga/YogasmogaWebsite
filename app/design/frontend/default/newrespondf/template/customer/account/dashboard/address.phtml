@@ -27,6 +27,8 @@
 <script type="text/javascript">
 jQuery(function(){
 //       equaliseHeight();
+	
+	formatPhoneNumber();
        jQuery(window).resize(function(){
         // equaliseHeight();
        });
@@ -43,8 +45,14 @@ function equaliseHeight(){
         });
               
         jQuery('.address-info .add-box').css("height", maxheight);
-        console.log(maxheight);        
+        console.log(maxheight);  
+				
 }
+function formatPhoneNumber() {
+					jQuery('span.tel').text(function(i, text) {
+						return text.replace(/(\d\d\d)(\d\d\d)(\d\d\d\d)/, '$1.$2.$3');
+					});
+				}
 </script>
 <div class="dashboard-container">
     <div class="address-info">
