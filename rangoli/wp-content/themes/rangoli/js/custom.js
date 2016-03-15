@@ -42,10 +42,25 @@ $(window).load(function(){
             success: function(response){
                 var  customer = response.customer;
                 var  bullseye = response.bullseye;
-                if(customer == "new"){
+                /*if(customer == "new"){
                     $(".your-color-block").fadeOut();
                     $(".login-box").fadeOut();
                     $("#signin_popup").fadeIn();
+                    $(".signin-block").fadeIn();
+                    is_login_box_open = false
+                }*/
+                if(customer == "new"){
+                    $(".your-color-block").fadeOut();
+                    $(".login-box").fadeOut();
+                    if(true == rangoli_press_type){
+                        $("#signin_popup").delay
+
+                        (7000).fadeIn();
+                        //alert();
+                    }
+                    else{
+                        $("#signin_popup").fadeIn();
+                    }
                     $(".signin-block").fadeIn();
                     is_login_box_open = false
                 }

@@ -109,8 +109,15 @@
     <?php
         $root = get_site_url();
         $root = str_replace("/rangoli","/",$root);
+
+        // for rangoli press
+        $rangoliPressType = 0;
+        if(is_singular('rangoli-press'))
+            $rangoliPressType = 1;
     ?>
+
     <script>
+        var rangoli_press_type = <?php echo $rangoliPressType; ?>;
         var user_color_shade;
         var  homeUrl="<?php echo $root ?>";
         var today_date="<?php echo date("j.m.y", time()) ?>";
