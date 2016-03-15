@@ -4468,7 +4468,10 @@ ul.checkout-cont > li {
     list-style: disc;
     font: 14px/20px GraphikRegular;display:list-item;
 }
+@media screen and (device-aspect-ratio: 2/3) {
+	.detail-page .description-block .first-list .detail-view .fitDetail .video-box li {margin-left:2px;/*iPhone < 5: aspect ratio*/}
 
+}
 .fit.inner-content {
     padding-top: 9px !important;
 }
