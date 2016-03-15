@@ -36,6 +36,7 @@ $(document).ready(function () {
 
 $(window).load(function(){
     if(logged_in==false) {
+	
         $.ajax({
             url: root+'rangoli/checkfornewcustomer.php',
             dataType: 'json',
@@ -45,7 +46,14 @@ $(window).load(function(){
                 if(customer == "new"){
                     $(".your-color-block").fadeOut();
                     $(".login-box").fadeOut();
-                    $("#signin_popup").fadeIn();
+					//alert(redpopup_timing);
+                    if(true == rangoli_press_type){
+					$("#signin_popup").delay(7000).fadeIn();
+					//alert();
+					}
+					else{
+					$("#signin_popup").fadeIn();
+					}					
                     $(".signin-block").fadeIn();
                     is_login_box_open = false
                 }
