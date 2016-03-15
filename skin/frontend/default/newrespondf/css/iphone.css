@@ -4424,7 +4424,7 @@ ul.checkout-cont > li {
     border-bottom: none !important;
 }*/
 .fit.inner-content .lg-size-chart {
-    margin-bottom: 0 !important;overflow:auto;
+    margin-bottom: 0 !important;overflow:scroll;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail td {
