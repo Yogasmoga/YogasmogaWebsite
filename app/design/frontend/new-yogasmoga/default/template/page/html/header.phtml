@@ -39,7 +39,7 @@
         color: #555 !important;
     }
 
-  /*  #pagecontainer{margin-top:25px !important;}*/
+  /* #pagecontainer{margin-top:25px !important;}*/
 
 </style>
 
@@ -371,10 +371,22 @@ if($currentUrl != $checkoutpage){
 <?php //} ?>
 
 <div class="pageoverlay"></div>
- <div style="height:69px !important;" class="header-container">
+  <?php /* ?>  <div style="height:69px !important;" class="header-container"><?php */ ?>
 
- <?php /* ?>    <div class="header-container" style="padding-top:25px; height:69px !important"><?php */ ?>
+  
+	<?php 
+$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+if(!$loggedIn){ ?>
+<div class="header-container" style="padding-top:25px; height:69px !important">
+<div style="cursor:pointer" class="orange-banner" onclick="redsignup_popup()">SIGN UP & GET $25 SMOGI BUCKS</div>
 
+<?php } 
+else { ?>
+	<div style="height:69px !important;" class="header-container">
+<?php } ?>
+
+
+	
      <!--banner strip start-->
     <?php
 	  if(false){
@@ -707,3 +719,9 @@ if($getGOYSFirstUser == 0){
 <?php
 }
 ?>
+<script type="text/javascript">
+
+function redsignup_popup(){
+      jQuery("#signup").dialog( "open" );     
+  } 
+</script>
