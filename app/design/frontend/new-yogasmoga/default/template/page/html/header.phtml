@@ -379,11 +379,14 @@ $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
 if(!$loggedIn){ ?>
 <div class="header-container" style="padding-top:25px; height:69px !important">
 <div style="cursor:pointer" class="orange-banner" onclick="redsignup_popup()">SIGN UP & GET $25 SMOGI BUCKS</div>
-
+<style>
+.scrolltop{top:104px!important;}
+</style>
 <script>
     jQuery( document ).ready(function() {
 jQuery("#pagecontainer").css("margin-top","0"); 
 jQuery("div#bodycompensator").css("height","94px"); 
+
 //jQuery("#div_sizes").css("top","69px");	
 
 
