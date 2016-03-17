@@ -383,33 +383,36 @@ if(!$loggedIn){ ?>
 .scrolltop{top:104px!important;}
 </style>
 <script>
-	jQuery.noConflict();
+	
     jQuery( document ).ready(function() {
 jQuery("#pagecontainer").css("margin-top","0"); 
 jQuery("div#bodycompensator").css("height","94px"); 
 
 //jQuery("#div_sizes").css("top","69px");	
 
-
-        var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
-        positionFilter(filterOffsetTop);
-        jQuery(window).scroll(function(){
-            positionFilter(filterOffsetTop);
-			
-        });
-        function positionFilter(filterOffsetTop){
-			//alert();
-            var winScrollTop = jQuery(window).scrollTop();
-            if( winScrollTop > filterOffsetTop){
+		if(jQuery('#div_sizes').length > 1){
+			alert();
+			var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
+			positionFilter(filterOffsetTop);
+			jQuery(window).scroll(function(){
+				positionFilter(filterOffsetTop);
 				
-                jQuery("#div_sizes").addClass("fixed_top");
-				jQuery("#div_sizes.fixed_top").css("top","94px");
-            }else{
-                jQuery("#div_sizes").removeClass("fixed_top");
-				jQuery("#div_sizes").css("top","auto");
-				
-            }
-        }
+			});
+			function positionFilter(filterOffsetTop){
+				//alert();
+				var winScrollTop = jQuery(window).scrollTop();
+				if( winScrollTop > filterOffsetTop){
+					
+					jQuery("#div_sizes").addClass("fixed_top");
+					jQuery("#div_sizes.fixed_top").css("top","94px");
+				}else{
+					jQuery("#div_sizes").removeClass("fixed_top");
+					jQuery("#div_sizes").css("top","auto");
+					
+				}
+			}
+		}
+        
 
     });
 
