@@ -162,6 +162,9 @@ if(!isset($ipInfo)){
                 <h2 class="align">New to YOGASMOGA</h2>
 
                 <form method="post" action="" id="sign-up-form" class="form-1">
+                    <input type="hidden" id="location_city" name="location_city" value="<?php echo $request_city;?>"/>
+                    <input type="hidden" id="location_state" name="location_state" value="<?php echo $request_state;?>"/>
+                    <input type="hidden" id="location_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
 
                     <table width="100%" cellspacing="0" cellpadding="0">
                         <tbody>
