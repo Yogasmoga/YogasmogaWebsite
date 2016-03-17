@@ -695,7 +695,7 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 			jQuery("div#bodycompensator").css("height","69px"); 
 			jQuery(".ui-widget-overlay").css({top:69});
 			jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
-			jQuery("#div_sizes").css("top","69px");	
+			jQuery("#div_sizes").css("top","auto");	
 			
 			var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
 			positionFilter(filterOffsetTop);
@@ -712,7 +712,7 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 				jQuery("#div_sizes.fixed_top").css("top","69px");
 				}else{
 				jQuery("#div_sizes").removeClass("fixed_top");
-				jQuery("#div_sizes").css("top","69px");	
+				jQuery("#div_sizes").css("top","auto");	
 				}
 			}
 			
