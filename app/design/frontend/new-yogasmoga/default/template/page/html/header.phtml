@@ -39,7 +39,7 @@
         color: #555 !important;
     }
 
-   #pagecontainer{margin-top:25px !important;}
+   
 
 </style>
 
@@ -374,15 +374,53 @@ if($currentUrl != $checkoutpage){
   <?php /* ?>  <div style="height:69px !important;" class="header-container"><?php */ ?>
 
   
-	<?php 
+<?php 
 $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
 if(!$loggedIn){ ?>
 <div class="header-container" style="padding-top:25px; height:69px !important">
 <div style="cursor:pointer" class="orange-banner" onclick="redsignup_popup()">SIGN UP & GET $25 SMOGI BUCKS</div>
 
+<script>
+    jQuery( document ).ready(function() {
+jQuery("#pagecontainer").css("margin-top","0"); 
+jQuery("#div_sizes").css("top","69px");	
+
+
+        var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
+        positionFilter(filterOffsetTop);
+        jQuery(window).scroll(function(){
+            positionFilter(filterOffsetTop);
+			
+        });
+        function positionFilter(filterOffsetTop){
+			//alert();
+            var winScrollTop = jQuery(window).scrollTop();
+            if( winScrollTop > filterOffsetTop){
+				
+                jQuery("#div_sizes").addClass("fixed_top");
+				jQuery("#div_sizes.fixed_top").css("top","94px");
+            }else{
+                jQuery("#div_sizes").removeClass("fixed_top");
+				jQuery("#div_sizes").css("top","69px");	
+            }
+        }
+
+    });
+
+ 
+</script>
 <?php } 
 else { ?>
-	<div style="height:69px !important;" class="header-container">
+ <div style="height:69px !important;" class="header-container">
+<script>
+ jQuery( document ).ready(function() {
+  jQuery("#pagecontainer").css("margin-top","0px"); 
+jQuery("#div_sizes").css("top","69px");
+jQuery("#div_sizes.fixed_top").css("top","69px");
+
+    });
+</script>
+ 
 <?php } ?>
 
 
