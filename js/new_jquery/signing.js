@@ -696,6 +696,26 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 			jQuery(".ui-widget-overlay").css({top:69});
 			jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
 			jQuery("#div_sizes").css("top","69px");	
+			
+			var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
+			positionFilter(filterOffsetTop);
+			jQuery(window).scroll(function(){
+				positionFilter(filterOffsetTop);
+
+			});
+			function positionFilter(filterOffsetTop){
+				//alert();
+				var winScrollTop = jQuery(window).scrollTop();
+				if( winScrollTop > filterOffsetTop){
+
+				jQuery("#div_sizes").addClass("fixed_top");
+				jQuery("#div_sizes.fixed_top").css("top","69px");
+				}else{
+				jQuery("#div_sizes").removeClass("fixed_top");
+				jQuery("#div_sizes").css("top","69px");	
+				}
+			}
+			
         }
 		
     });
