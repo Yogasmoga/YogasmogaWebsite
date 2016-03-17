@@ -382,55 +382,11 @@ if(!$loggedIn){ ?>
 <style>
 .scrolltop{top:104px!important;}
 </style>
-<script>
-	
-    jQuery(window).load(function() {
-jQuery("#pagecontainer").css("margin-top","0"); 
-jQuery("div#bodycompensator").css("height","94px"); 
 
-//jQuery("#div_sizes").css("top","69px");	
-			
-				var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
-				positionFilter(filterOffsetTop);
-				jQuery(window).scroll(function(){
-					positionFilter(filterOffsetTop);
-					
-			});
-			function positionFilter(filterOffsetTop){
-				//alert();
-				var winScrollTop = jQuery(window).scrollTop();
-				if( winScrollTop > filterOffsetTop){
-					
-					jQuery("#div_sizes").addClass("fixed_top");
-					jQuery("#div_sizes.fixed_top").css("top","94px");
-				}else{
-					jQuery("#div_sizes").removeClass("fixed_top");
-					jQuery("#div_sizes").css("top","auto");
-					
-				}
-		
-
-			}
-			
-			
-			
-        
-
-    });
-
- 
-</script>
 <?php } 
 else { ?>
  <div style="height:69px !important;" class="header-container">
-<script>
- jQuery( document ).ready(function() {
-  jQuery("#pagecontainer").css("margin-top","0px"); 
-//jQuery("#div_sizes").css("top","auto");
-jQuery("#div_sizes.fixed_top").css("top","69px");
 
-    });
-</script>
  
 <?php } ?>
 
