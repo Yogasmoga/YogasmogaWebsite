@@ -696,6 +696,7 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 			jQuery(".ui-widget-overlay").css({top:69});
 			jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
 			jQuery("#div_sizes").css("top","auto");	
+			jQuery(".scrollTop").css("top","79px","important"); 
 			
 			var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
 			positionFilter(filterOffsetTop);
