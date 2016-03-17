@@ -362,6 +362,9 @@ function  createCustomerAccount()
     var email_id = jQuery.trim(jQuery("#signup_email").val());
     var pwd = jQuery.trim(jQuery("#s_password").val());
     var gender = jQuery.trim(jQuery(".gender_radio.selected input").val());
+    var location_city = jQuery.trim(jQuery("#location_city").val());
+    var location_state = jQuery.trim(jQuery("#location_state").val());
+    var location_zip = jQuery.trim(jQuery("#location_zip").val());
 
     var cpassword = pwd;
     var is_subscribed = jQuery("#in_touch").val();
@@ -381,7 +384,7 @@ function  createCustomerAccount()
     jQuery.ajax({
         url     :   url,
         type    :   'POST',
-        data    :   {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed, 'gender': gender},
+        data    :   {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed, 'gender': gender, 'location_city':location_city, 'location_state':location_state, 'location_zip':location_zip},
         beforeSend: function() {
             jQuery("#sign-up-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
             jQuery("#sign-up-button").parent().hide();

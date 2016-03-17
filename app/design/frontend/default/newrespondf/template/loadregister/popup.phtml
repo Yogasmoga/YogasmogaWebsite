@@ -11,6 +11,37 @@
     }
     //echo $fldddag;
 
+    if(!isset($ipInfo)){
+
+        $root = Mage::getBaseDir();
+
+        include_once($root . '/Ipinfo/Host.php');
+        include_once($root . '/Ipinfo/Ipinfo.php');
+
+        $ipInfo = new Ipinfo\Ipinfo();
+
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $host = $ipInfo->getFullIpDetails($ip);
+
+        if (isset($host)) {
+            $request_city = $host->getCity();
+            $request_state = $host->getRegion();
+            $request_zip = $host->getPostal();
+        }
+        else {
+            $request_city = "N/A";
+            $request_state = "N/A";
+            $request_zip = "N/A";
+        }
+    }
+
     if ($flag) {
         ?>
 
@@ -95,6 +126,10 @@
                             <div class="sign_signup_form">
                                 <form rel="signupBox" action="" method="post" class="singup_form" id="singup_form"
                                       name="myFrom">
+                                    <input type="hidden" id="location_city" name="location_city" value="<?php echo $request_city;?>"/>
+                                    <input type="hidden" id="location_state" name="location_state" value="<?php echo $request_state;?>"/>
+                                    <input type="hidden" id="location_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
+
                                     <input type="hidden" value="" name="csrf_token">
                                     <span style="color:#990000; font-size:14px;"></span>
 

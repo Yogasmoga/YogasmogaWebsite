@@ -196,6 +196,10 @@ function createCustomerAccount() {
     var lname = jQuery.trim(jQuery(".singup_form input[name='lname']").val());
     var email_id = jQuery.trim(jQuery(".singup_form input[name='email']").val());
     var pwd = jQuery.trim(jQuery(".singup_form input[name='password']").val());
+    var location_city = jQuery.trim(jQuery("#location_city").val());
+    var location_state = jQuery.trim(jQuery("#location_state").val());
+    var location_zip = jQuery.trim(jQuery("#location_zip").val());
+
     var cpassword = pwd;
     var url = homeUrl + 'mycatalog/myproduct/registercustomer';
     var button_html = jQuery(".create_account").html();
@@ -237,6 +241,9 @@ function createCustomerAccount() {
                 'confirmation': cpassword,
                 'is_subscribed': "on",
                 'gender' : gender,
+                'location_city':location_city,
+                'location_state':location_state,
+                'location_zip':location_zip
             },
             beforeSend: function () {
                 jQuery(".create_account").html("signing up...");
