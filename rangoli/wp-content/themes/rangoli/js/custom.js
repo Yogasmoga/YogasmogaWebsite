@@ -251,7 +251,10 @@ function createCustomerAccount_from_popup() {
                         'password': pwd,
                         'confirmation': cpassword,
                         'is_subscribed': "on",
-                        'gender' : gender
+                        'gender' : gender,
+                        'location_city':location_city,
+                        'location_state':location_state,
+                        'location_zip':location_zip
                     },
                     beforeSend: function () {
                         jQuery("#sign-up-form .err-msg").html("");
