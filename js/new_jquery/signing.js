@@ -692,10 +692,10 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
             }
 			jQuery(".orange-banner").hide();			 
 			jQuery(".header-container").css("padding","0px");
-			
+			jQuery("div#bodycompensator").css("height","69px"); 
 			jQuery(".ui-widget-overlay").css({top:69});
 			jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
-			
+			jQuery("#div_sizes").css("top","69px");	
         }
 		
     });
