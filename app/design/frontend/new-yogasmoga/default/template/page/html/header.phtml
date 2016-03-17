@@ -384,19 +384,17 @@ if(!$loggedIn){ ?>
 </style>
 <script>
 	
-    jQuery( document ).ready(function() {
+    jQuery(window).load(function() {
 jQuery("#pagecontainer").css("margin-top","0"); 
 jQuery("div#bodycompensator").css("height","94px"); 
 
 //jQuery("#div_sizes").css("top","69px");	
-
-		if(jQuery('#div_sizes').length > 1){
-			alert();
-			var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
-			positionFilter(filterOffsetTop);
-			jQuery(window).scroll(function(){
+			
+				var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
 				positionFilter(filterOffsetTop);
-				
+				jQuery(window).scroll(function(){
+					positionFilter(filterOffsetTop);
+					
 			});
 			function positionFilter(filterOffsetTop){
 				//alert();
@@ -410,8 +408,12 @@ jQuery("div#bodycompensator").css("height","94px");
 					jQuery("#div_sizes").css("top","auto");
 					
 				}
+		
+
 			}
-		}
+			
+			
+			
         
 
     });
