@@ -35,7 +35,7 @@
     <default>
         <!-- Mage_GoogleAnalytics -->
         <reference name="after_body_start">
-            <block type="googleanalytics/ga" name="google_analytics" as="google_analytics" template="googleanalytics/ga.phtml" />
+            <block  type="googleanalytics/ga" name="google_analytics" as="google_analytics" template="googleanalytics/ga.phtml" />
         </reference>
     </default>
 </layout>
