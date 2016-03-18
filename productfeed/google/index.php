@@ -31,6 +31,7 @@ $output = fopen('php://output', 'w');
 
 fputcsv($output, array(
     'Id',
+    'item_group_id',
     'Title',
     'Description',
     'google product category',
@@ -77,6 +78,7 @@ foreach ($productCollection as $_product) {
 
             $configurableProduct = $product;
 
+            $sku_configurable = $configurableProduct->getSku();
 
             $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $configurableProduct);
             /*
@@ -168,6 +170,7 @@ foreach ($productCollection as $_product) {
 
                 $arr = array(
                     $sku,
+                    $sku_configurable,
                     'YOGASMOGA ' . $total_name . ' YOGA',
                     'YOGASMOGA ' . strip_tags($description),
                     'Apparel & Accessories > Clothing > Activewear',
