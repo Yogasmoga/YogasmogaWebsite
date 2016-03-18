@@ -106,7 +106,7 @@ if($serverType == 'production')
 
                         <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
                                              if($serverType == 'production') {
-                                      ?>_gaq.push(['_trackEvent', 'account open popup', 'Close']);
+                                      ?> _gaq.push(['_trackEvent', 'account open popup', 'Close']);
                         <?php } ?>
                     } );
                 }
