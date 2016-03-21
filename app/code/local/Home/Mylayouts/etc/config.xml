@@ -162,7 +162,11 @@
         </bags>
 		<!-- Bags Category layouts End here -->
 		
-		
+		<kids translate="label">
+          <label>Kids</label>
+          <template>page/kids.phtml</template>
+          <layout_handle>kids</layout_handle>
+        </kids>
 	
 		
 		
