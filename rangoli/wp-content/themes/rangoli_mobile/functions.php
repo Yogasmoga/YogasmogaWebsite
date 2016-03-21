@@ -1395,4 +1395,4 @@ function get_user_post_comment_rating($subject_id,$user_id, $subject_type)
         return 0;
     }
 }
-include_once( 'admin/additional-userfield.php' );
+//include_once( 'admin/additional-userfield.php' );

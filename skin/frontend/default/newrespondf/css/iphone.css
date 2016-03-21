@@ -5488,9 +5488,11 @@ button.place-order {
     top: 0;
 }
 
-.chart_container table tr:first-child td {
-    font: 12px/30px graphik-semibold;
+.chart_container table tr:first-child td {   /*font: 12px/30px graphik-semibold;*/
+ 	font: 12px/14px graphik-semibold;
     letter-spacing: 1px;
+	padding-top:8px;
+	padding-bottom:8px;
 }
 
 .chart_container table tr td {

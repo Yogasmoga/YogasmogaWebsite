@@ -39,7 +39,7 @@
         color: #555 !important;
     }
 
-  /*  #pagecontainer{margin-top:25px !important;}*/
+   
 
 </style>
 
@@ -106,7 +106,7 @@ if($serverType == 'production')
 
                         <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
                                              if($serverType == 'production') {
-                                      ?>_gaq.push(['_trackEvent', 'account open popup', 'Close']);
+                                      ?> _gaq.push(['_trackEvent', 'account open popup', 'Close']);
                         <?php } ?>
                     } );
                 }
@@ -371,10 +371,27 @@ if($currentUrl != $checkoutpage){
 <?php //} ?>
 
 <div class="pageoverlay"></div>
+  <?php /* ?>  <div style="height:69px !important;" class="header-container"><?php */ ?>
+
+  
+<?php 
+$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+if(!$loggedIn){ ?>
+<div class="header-container" style="padding-top:25px; height:69px !important">
+<div style="cursor:pointer" class="orange-banner">SIGN UP & GET $25 SMOGI BUCKS</div>
+<style>
+.scrolltop{top:104px!important;}
+</style>
+
+<?php } 
+else { ?>
  <div style="height:69px !important;" class="header-container">
 
- <?php /* ?>    <div class="header-container" style="padding-top:25px; height:69px !important"><?php */ ?>
+ 
+<?php } ?>
 
+
+	
      <!--banner strip start-->
     <?php
 	  if(false){
