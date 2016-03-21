@@ -162,20 +162,7 @@
         </bags>
 		<!-- Bags Category layouts End here -->
 		
-		<!-- Kids Category layouts Start here -->
-		<bags translate="label">
-          <label>Kids</label>
-          <template>page/kids.phtml</template>
-          <layout_handle>kids</layout_handle>
-        </bags>
-		<!-- Bags Category layouts End here -->
-        <mypage translate="label">
-          <label>My Page</label>
-          <template>page/my_page.phtml</template>
-          <layout_handle>My Page</layout_handle>
-        </mypage>
-		<!-- Bags Category layouts End here -->
-		<!-- Bags Category layouts End here -->
+		
 		
 		
 		
