@@ -185,6 +185,15 @@
         </test1>
 		<!-- Test 1 page layouts End here -->
 		
+		<!-- Collection page layouts End here -->
+		
+	    <collection translate="label">
+          <label>Collection</label>
+          <template>page/collection.phtml</template>
+          <layout_handle>collection</layout_handle>
+        </collection>
+		<!-- Collection page layouts End here -->
+		
 		
 	  </layouts>
 	  
