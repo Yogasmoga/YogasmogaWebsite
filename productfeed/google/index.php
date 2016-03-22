@@ -161,7 +161,7 @@ foreach ($productCollection as $_product) {
 
                 $age_group = "Adult";
 
-                $total_name = $_childProduct->getName();
+                $total_name = html_entity_decode($_childProduct->getName());
 				
 				if(strrpos($total_name, "-")!==false)
 					$total_name = substr($total_name, 0, strrpos($total_name,"-"));
