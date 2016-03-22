@@ -36,6 +36,10 @@ else {
             <input type="hidden" id="plocation_state" name="location_state" value="<?php echo $request_state;?>"/>
             <input type="hidden" id="plocation_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
 
+           <?php  $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+            $categoryName = explode('/', $currentUrl);
+            $urlKey = $categoryName[3];?>
+            <?php if (strtolower($urlKey)!='test1'){?>
             <svg xml:space="preserve" enable-background="new 0 0 308 127.979" viewBox="0 0 308 127.979" height="127.979px" width="280px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" >
                     <g>
                         <text transform="matrix(1 0 0 1 128.9932 30.103)">
@@ -62,7 +66,11 @@ else {
                     c7.058,0,12.026-5.457,12.026-11.777S241.31,41.421,234.316,41.421z M236.145,60.207l-1.844,3.18l-1.854-3.237
                     c-3.047-0.902-4.833-3.873-4.833-7.017v-0.03c0-3.469,2.363-7.209,6.733-7.209c4.539,0,6.703,4.104,6.703,7.309
                     C241.05,55.928,239.443,59.317,236.145,60.207z" fill="#FFFFFF"/>
-                    </svg>
+            </svg>
+            <?php } else{?>
+                <div class="svg-text-head" style="position:relative;top:-12px"><img src="<?php echo $this->getSkinUrl('images/signin-popup.png');?>"></div>
+            <?php }?>
+
             <table width="100%" cellspacing="0" padding="0" align="center" >
                 <tr>
                     <td class="inputholder">
