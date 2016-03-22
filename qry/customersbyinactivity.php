@@ -41,36 +41,67 @@ if (isset($_REQUEST['date'])) {
 } else {
     ?>
 
-    <html>
-    <head>
-        <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
-        <title>Download customer who haven't ordered</title>
-    </head>
-    <body>
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Download customer who haven't ordered</title>
+<link href="style.css" type="text/css" rel="stylesheet"/>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#input-from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#input-to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#input-to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#input-from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+  </script>
+</head>
+  <body>
+		<header>
+		<h1>Download customers who did not order since a date</h1>
+		<a class="link-home" href="index.php"><i class="fa fa-home"></i></a>
+		</header>
+		<div class="content">
 
-    <br/><a href="index.php">Home</a><br/><br/>
+    <form class="qry-form" method="post" action="customersbyinactivity.php">
 
-    <form method="post" action="customersbyinactivity.php">
+        
 
-        <h3>Download customers who did not order since a date</h3>
-
-        <table style="width:500px;" border="0">
+        <table border="0">
             <tr>
-                <td style="width:150px;">Since</td>
-                <td><input type="date" name="date"/></td>
+                <td>Since</td>
+                <td><input id="input-from" type="text" name="date"/></td>
             </tr>
             <tr>
-                <td style="width:150px;">Registered after</td>
-                <td><input type="date" name="register_date"/></td>
+                <td>Registered after</td>
+                <td><input id="input-to" type="text" name="register_date"/></td>
             </tr>
 
             <tr>
-                <td colspan="2"><input type="submit" value="Get Records"/></td>
+                <td class="button-area" colspan="2"><input type="submit" value="Get Records"/></td>
             </tr>
         </table>
         <input type="hidden" name="product_name"/>
     </form>
-    </body>
-    </html>
+   </div>
 
+    </body>
+</html>
 <?php } ?>
