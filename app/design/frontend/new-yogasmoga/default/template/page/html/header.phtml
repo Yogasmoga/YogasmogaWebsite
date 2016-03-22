@@ -367,7 +367,25 @@ if($currentUrl != $checkoutpage){
 <?php //} ?>
 
 <div class="pageoverlay"></div>
-<div class="header-container">
+
+<?php
+$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+if(!$loggedIn){ ?>
+<div class="header-container" style="padding-top:25px; height:69px !important">
+    <div style="cursor:pointer" class="orange-banner">SIGN UP & GET $25 SMOGI BUCKS</div>
+    <style>
+        .scrolltop{top:104px!important;}
+        .ui-widget-overlay{top:94px!important; position:fixed}
+    </style>
+
+    <?php }
+    else { ?>
+    <div style="height:69px !important;" class="header-container">
+
+
+        <?php } ?>
+
+<!--<div class="header-container">-->
 
     <?php if(false){ ?>
         <div class="header-container" style="height:69px !important; padding-top: 25px">

@@ -2849,6 +2849,21 @@ table.smallimagecontiner td.selectedimage{
 }
 
 /***************** top banners ******************/
+.red-banner{
+    background:#f00;
+    color:#fff;
+    width:100%;
+    height:25px;
+    letter-spacing:.75px;
+    display:block;
+    text-align:center;
+    font: 12px/25px AvantGardeGothicITCW01B;
+    position:absolute;
+    top:0;
+    text-transform:uppercase;
+}
+
+
 .orange-banner{
     background:#ff6600;
     color:#fff;
