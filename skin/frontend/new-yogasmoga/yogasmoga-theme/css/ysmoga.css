@@ -2332,7 +2332,7 @@ div.new-arrivals-block{
     margin: auto auto 2.05499%;
     padding-bottom: 8px;
     width: 50%;
-    font-size: 12px;
+    font-size: 13px;
 }
 .contentSlider .large-text{
     font-size: 40px;
@@ -2829,3 +2829,5 @@ a.learn-more {
     display: none;
 }
 /* ************MEN AND WOMEN PAGE CORRECTIONS CSS************ */
+
+.contentSlider .small-text sup{font-size:13px; vertical-align:bottom;}
