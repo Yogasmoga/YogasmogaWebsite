@@ -2831,3 +2831,4 @@ a.learn-more {
 /* ************MEN AND WOMEN PAGE CORRECTIONS CSS************ */
 
 .contentSlider .small-text sup{font-size:13px; vertical-align:bottom;}
+.contentSlider .small-text sup.tm{font-size:15px; vertical-align:inherit;}
