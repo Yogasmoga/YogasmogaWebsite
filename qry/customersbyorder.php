@@ -1,6 +1,6 @@
 <?php
 ini_set('max_execution_time',1800);
-ini_set('memory_limit', 512M);
+ini_set('memory_limit', '512M');
 if(isset($_REQUEST['from_date'])) {
 
     require_once '../app/Mage.php';
