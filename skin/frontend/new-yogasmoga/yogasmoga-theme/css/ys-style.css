@@ -2903,3 +2903,36 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .part-of-gift-set{
     font: 11px GothamBook;
 }
+
+/*--banner new style--*/
+
+@media screen and (max-width: 1200px){
+.banner_avant_grade_demi{ font: 46px/46px AvantGardeGothicITCW01D;}
+.banner-avant-grade-bk-small{ font: 46px/46px ITCAvantGardeProBk;}
+.flexslider .slides img.img_rndinca{max-width:100%; width:auto; margin:7% auto 0 auto!important; display:block;}
+.flexslider .slides img.img_madeinusa{max-width:100%; width:auto; margin:11% auto 0 auto!important; display:block;}
+}
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+.banner_avant_grade_demi{ font: 46px/46px AvantGardeGothicITCW01D;}
+.banner-avant-grade-bk-small{ font: 46px/46px ITCAvantGardeProBk;}
+.flexslider .slides img.img_rndinca{max-width:100%; width:auto; margin:7% auto 0 auto!important; display:block;}
+.flexslider .slides img.img_madeinusa{max-width:100%; width:auto; margin:11% auto 0 auto!important; display:block;}
+}
+@media screen and (min-width: 1401px) and (max-width: 1599px) {
+.banner_avant_grade_demi{ font: 46px/46px AvantGardeGothicITCW01D;}
+.banner-avant-grade-bk-small{ font: 46px/46px ITCAvantGardeProBk;}
+.flexslider .slides img.img_rndinca{max-width:100%; width:auto; margin:7% auto 0 auto!important; display:block;}
+.flexslider .slides img.img_madeinusa{max-width:100%; width:auto; margin:11% auto 0 auto!important; display:block;}
+}
+@media screen and (min-width: 1600px) {
+.banner_avant_grade_demi{ font: 46px/46px AvantGardeGothicITCW01D;}
+.banner-avant-grade-bk-small{ font: 46px/46px ITCAvantGardeProBk;}
+.flexslider .slides img.img_rndinca{max-width:100%; width:auto; margin:7% auto 0 auto!important; display:block;}
+.flexslider .slides img.img_madeinusa{max-width:100%; width:auto; margin:11% auto 0 auto!important; display:block;}
+}
+@media only screen and (max-width : 1024px) {
+.banner_avant_grade_demi{ font: 34px/34px AvantGardeGothicITCW01D;}
+.banner-avant-grade-bk-small{ font: 34px/34px ITCAvantGardeProBk;}
+.flexslider .slides img.img_rndinca{max-width:152px; width:auto; margin:7% auto 0 auto!important; display:block;}
+.flexslider .slides img.img_madeinusa{max-width:179px; width:auto; margin:11% auto 0 auto!important; display:block;}
+}
