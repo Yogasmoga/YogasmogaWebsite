@@ -234,7 +234,4 @@ RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
-
-Redirect 301 /http://ftp.yogasmoga.com/ /http://yogasmoga.com/
-
 </IfModule>
