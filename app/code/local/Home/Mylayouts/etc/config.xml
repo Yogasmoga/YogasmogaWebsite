@@ -162,6 +162,14 @@
         </bags>
         <!-- Bags Category layouts End here -->
 
+        <!-- indextest layouts Start here -->
+        <test1 translate="label">
+          <label>IndexTest</label>
+          <template>page/indextest.phtml</template>
+          <layout_handle>indextest</layout_handle>
+        </test1>
+        <!-- indextest layouts End here -->
+
       </layouts>
     </page>
   </global>

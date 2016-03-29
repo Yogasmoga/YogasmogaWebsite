@@ -1,0 +1,483 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <?php echo $this->getChildHtml('head') ?>
+    <?php
+    if ($this->getRequest()->getParam('video') == 'true') {
+        ?>
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png"/>
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png"/>
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png"/>
+        <meta property="og:title" content="YOGASMOGA | Did You Take a Breath Today?"/>
+        <meta property="og:description"
+              content="YOGASMOGA makes technical performance clothes for women & men for yoga, running, spin, workouts, and more. Free shipping to US and Canada."/>
+        <?php
+    } else {
+        ?>
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg"/>
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg"/>
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg"/>
+        <meta property="og:title" content="YOGASMOGA"/>
+        <meta property="og:description"
+              content="YOGASMOGA makes technical performance apparel for women & men for yoga, running, spin, workouts, and more. Free shipping to US and Canada."/>
+        <?php
+    }
+    ?>
+    <?php
+    //if(Mage::getSingleton('core/session')->getShowVideo())
+    if ($this->getRequest()->getParam('video') == 'true') {
+//Mage::getSingleton('core/session')->setShowVideo(false);
+        ?>
+        <script type="text/javascript">
+            var loc = window.location;
+            history.replaceState("", document.title, loc.pathname + "breathe");
+            jQuery(window).load(function () {
+                setTimeout(function () {
+                    $j("#hmpagevideo").trigger('click')
+                }, 1000);
+            });
+        </script>
+        <?php
+    }
+    ?>
+    <script type="text/javascript">
+        jQuery(window).load(function () {
+
+            jQuery(".slider_li").css('cursor', 'pointer');
+            jQuery(".slider_li").click(function () {
+                if (jQuery(this).attr("moveto") != undefined) {
+                    var redirectWindow = window.open(jQuery(this).attr('rel'), '_blank');
+                    redirectWindow.location;
+                }
+                else
+                    window.location = jQuery(this).attr('rel');
+            });
+
+            jQuery("div.showloading").removeClass('showloading');
+            setTimeout(function () {
+                setfullscreenheight();
+            }, 50);
+//            var bannerImg = document.getElementById("bannerimg").complete;
+//            if(bannerImg){
+//                jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
+//            }
+
+            jQuery('.namaskar-overlay1').fadeOut('slow');
+        });
+        jQuery(document).ready(function () {
+            setTimeout(function () {
+                jQuery("div.page-overlayy").remove();
+                jQuery("body").css('overflow', 'auto');
+            }, 500);
+        });
+    </script>
+    <div class="namaskar-overlay1">&nbsp;</div>
+</head>
+<body class="<?php echo $this->getBodyClass() ? $this->getBodyClass() : '' ?>"
+      style="margin-right:17px;overflow:hidden;">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+    <!-- pageOverlay -->
+    <div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">
+        &nbsp;</div>
+    <!-- pageOverlay -->
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <!-- shopping cart -->
+    <div class="shopping-cart"></div>
+    <!-- shopping cart -->
+    <div class="page">
+        <!-- header -->
+        <?php echo $this->getChildHtml('header') ?>
+        <!-- header -->
+        <!-- pagewrapper -->
+        <div id="pagecontainer">
+            <!-- sliderBanner -->
+
+            <div class="flexslider home-slider" id="bucket1_slider">
+                <ul class="slides">
+
+                    <!--swaping slide added by fahim-->
+                    <li class="slider_li" rel="/women/tops/sweaters/vail-pullover?color=107"
+                        style="background: url('<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/women-page/vail-pullover-bannerv2.jpg'); background-size:cover; ">
+                        <!--<img draggable="false"
+                             data-src="<?php /*echo Mage::getUrl('/', array('_secure' => true)); */?>media/wysiwyg/new-design-images/homepage/move-free-slide.jpg"/>-->
+
+                        <div style="left:0%; top: 10%;" class="over-the-slide ">
+                            <div style="float: left; text-align:CENTER; padding-right:0px !important">
+                                <div style="text-transform: uppercase; color: #fff;" class="avant_grade_demi">
+                                    FLIP IT AND REVERSE IT<br/>
+                                </div>
+                                <div style="line-height:0;color:#fff;padding-top: 7px !important;">
+                                    <span class="avant-grade-bk-small">TWO LOOKS IN ONE FOR  </span>
+                                    <span style="display:block" class="avant-grade-bk-small">YOUR BUSY DAYS AND BRISK NIGHTS  </span>
+
+                                </div>
+
+                                <div class="text-align-middle">
+
+                                    <a href="/women/tops/sweaters/vail-pullover?color=107" class="learn-more shop-mens1" style="color: #fff !important; border: none !important;margin: 28px 0 0!important; background: none !important;">SHOP THE VAIL PULLOVER<span style="color:#ff0000"> &gt;</span></a><br>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <!--swaping slide added by fahim-->
+                    <?php if(false){?>
+                    <li class="slider_li" rel="/women/bottoms/arcadia-short?color=107"
+                        style="background: url('<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/oria-women-homepage-slidev3.jpg'); background-size:cover; ">
+                        <!--<img draggable="false"
+                             data-src="<?php /*echo Mage::getUrl('/', array('_secure' => true)); */?>media/wysiwyg/new-design-images/homepage/move-free-slide.jpg"/>-->
+
+                        <div class="over-the-slide" style="height: auto ! important; top:14%; bottom: 0%;padding:80px 40px !important; ">
+                            <div style=" float: left; text-align: center; ">
+                                <div style="text-transform: uppercase; color: #fff;" class="avant_grade_demi">
+                                    ADD STYLE TO YOUR<br/>ON-THE-GO LIFESTYLE
+                                    <div style="line-height:0;padding-top:7px!important;">
+                                        <span class="avant-grade-bk-small">THE ARCADIA SHORT </span>
+                                        <span style="display:block" class="avant-grade-bk-small">FEATURING ORIA<sup style="vertical-align: top; line-height: 16px;">TM</sup></span>
+                                    </div>
+                                </div>
+                                <div  class="text-align-middle">
+                                    <a class="learn-more" style="border: medium none ! important; background: transparent none repeat scroll 0% 0% ! important; color: #fff!important; margin: 28px 0px 0px ! important;" href="/women/bottoms/arcadia-short?color=107">SHOP NOW<span style="color:#ff0000"> &gt;</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <?php } ?>
+
+                    <li class="slider_li" rel="/men/tops/huron-hoodie?color=297"
+                        style="background: url('<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/oria-men-homepage-slidev3.jpg'); background-size:cover; ">
+                        <!--<img draggable="false"
+                             data-src="<?php /*echo Mage::getUrl('/', array('_secure' => true)); */?>media/wysiwyg/new-design-images/homepage/homepage-mens-progressive.jpg"/>-->
+
+                        <div style="left:0%; top: 67%;padding:0!important;" class="over-the-slide ">
+                            <div style="text-align:CENTER; padding-right:0px !important;">
+                                <div style="text-transform: uppercase; color: #fff;line-height:40px;" class="avant_grade_demi">
+                                    ENGINEERED FOR YOUR ACTIVE LIFE:
+                                    <br/>
+                                    <span class="avant-grade-bk-small">BODY MAPPED, LASER PERFORATED VENTILATION</span>
+                                    <span style="display:block" class="avant-grade-bk-small">THE HURON HOODIE FEATURING ORIA<sup style="vertical-align: top; line-height: 16px;">TM</sup></span>
+
+                                </div>
+
+                                <div class="text-align-middle">
+                                    <a style="color: #fff !important; border: none!important;margin: 28px 0 0!important; background: none !important;" class="learn-more shop-mens1" href="/men/tops/huron-hoodie?color=297">SHOP NOW<span style="color:#ff0000"> &gt;</span></a><br/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="slider_li" rel="/made-in-usa"
+                        style="background: url('<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/ys-made-in-usa-slide.jpg'); background-size:cover; ">
+                        <!--<img draggable="false"
+                             data-src="<?php /*echo Mage::getUrl('/', array('_secure' => true)); */?>media/wysiwyg/new-design-images/homepage/homepage-made-in-usa-progressive.jpg"/>-->
+
+                        <div style=" top: 10%;" class="over-the-slide ">
+                            <div style="">
+                                <div class="avant_demi_bold"
+                                     style="color: #fff; font: 32px/34px AvantGardeGothicITCW01M!important;">QUALITY&#8212;MADE IN USA
+                                </div>
+
+                                <div style="position:absolute;bottom:25%;left:0;right:0;" class="text-align-middle">
+                                    <a style="color:#fff!important; margin-top: 20px !important;border:none!important;"
+                                       class="learn-more shop-mens1" href="/made-in-usa">LEARN MORE <span style="color:#ff0000"> &gt;</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <!--namaskar slide--->
+                    <li class="slider_li" rel="/namaskar"
+                        style="background: url('<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/namaskar-progressive.jpg'); background-size:cover; ">
+                        <!--<img draggable="false"
+                             data-src="<?php /*echo Mage::getUrl('/', array('_secure' => true)); */?>media/wysiwyg/new-design-images/homepage/namaskar-progressive.jpg"/>-->
+
+                        <div class="over-the-slide "
+                             style="bottom: 0px ! important; top: auto; left: 0px;height:auto!important;">
+                            <div style="text-align: center; padding-left: 30px ! important;">
+                                <div style="text-transform: uppercase; color: #fff!important;" class="avant-grade-bk-small">
+                                    We created
+                                    NAMASKÁR
+                                    FOUNDATION
+                                    <div>because we care </div>
+                                </div>
+
+                                <div class="text-align-middle">
+
+                                    <a href="/namaskar" class="learn-more shop-mens1"
+                                       style="color: #fff !important; border-bottom:none!important;margin: 28px 0 0!important; background: none !important;">LEARN
+                                        MORE<span style="color:#ff0000"> &gt;</span> </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- sliderBanner -->
+
+            <!-- signup new -->
+
+            <div class="share-strip">
+                <div class="sign-up-new">
+                    <a href="javascript:void(0)">Sign up</a><span>& WE’LL SURPRISE YOU</span>
+                </div>
+            </div>
+            <!-- signup new -->
+            <div class="clear-fix"></div>
+            <!-- middleContainer -->
+            <div class="cubix">
+                <!-- gridfull -->
+                <div class="gridfull ysfabricpart overridefix">
+                    <!-- grid6 -->
+                    <div class="grid65 f-left" id="grid1-left">
+                        <!-- slider -->
+                        <div class="sliderImg">
+                            <ul class="gridslider11">
+
+
+                                <li>
+                                    <img onload="showGridContainer(this)" class="img-responsive"
+                                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/ys-fabric-tech-melange.jpg' ?>"
+                                         title="Fabric Tech. Zari Mesh"
+                                         alt="Fabric Tech. Zari Mesh"/>
+
+                                    <div class="contentSlider sliderContent" style="top:38.919552%;">
+                                         <div>
+                                            <h3 class="small-text">ys fabric tech</h3>
+
+                                            <!-- <h3 style="color: #fff!important;" class="large-text">AURUM® <br/>
+                                                 SAME GREAT TECH</h3>-->
+                                            <p class="large-text">AURUM<SUP>TM</SUP><br/>MELANGE</p>
+                                            <!--                            <p class="large-text" style="margin-top: -10px;"><span>COLOR INFUSED</span></p>-->
+                                            <a href="/catalogsearch/result/?q=melange" class="shopnow-btn"
+                                               style="margin-top:2.240325865580448065173116089613%; background: none !important;">LEARN MORE<span style="color:#ff0000"> &gt;</span></a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- slider -->
+                    </div>
+                    <!-- grid6 -->
+                    <!-- grid35 -->
+                    <div class="grid35" id="grid1-right">
+                        <!-- partOne -->
+                        <div class="compressBox">
+                            <div
+                                style="top:27.894308943089430894308943089431%;text-transform:uppercase;"
+                                class="ctext">
+                                Consider<br/> the clothes<br/>you wear
+                <span style="margin-top: 7px; border: none !important;"><a href="/ys-fabric-tech" class="learn-more" style="border: none !important">LEARN MORE
+                        <span style="color:#ff0000"> &gt;</span></a></span>
+                            </div>
+
+                        </div>
+                        <!-- partOne -->
+                        <!-- partTwo -->
+                        <a href="<?php echo $this->getBaseUrl() . 'ys-fabric-tech'; ?>">
+                            <div class="iconspartone" id="iconspartone">
+                                <div class="row">
+
+<span>
+<img src="<?php echo $this->getSkinUrl('images/new-elements/moisture.png') ?>" alt="Yogasmoga Moisture Wicking"/>
+<span class="iconstxt">ADVANCED MOISTURE MANAGEMENT</span>
+</span>
+<span>
+<img src="<?php echo $this->getSkinUrl('images/new-elements/four-way-stretch.jpg') ?>" alt="Yogasmoga Anti-Pilling"/>
+<span class="iconstxt">4-WAY STRETCH</span>
+</span>
+
+                                </div>
+                                <div class="row">
+<span>
+<img src="<?php echo $this->getSkinUrl('images/new-elements/pilling.png') ?>" alt="Yogasmoga Anti-Pilling"/>
+<span class="iconstxt">RESISTANCE TO PILLING</span>
+</span>
+<span>
+<img src="<?php echo $this->getSkinUrl('images/new-elements/usa.png') ?>" alt="Yogasmoga USA"/>
+<span class="iconstxt">PROUDLY MADE IN THE USA</span>
+</span>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- partTwo -->
+                    </div>
+                    <!-- grid35 -->
+                </div>
+                <!-- gridfull -->
+                <!-- gridfull -->
+                <div class="gridfull yscolorpart overridefix">
+                    <!-- grid35 -->
+                    <div class="grid35">
+                        <!-- partOne -->
+                        <div class="multicolorcont">&nbsp;
+                            <?php if(false){ ?>
+                            <div class="ctext"
+                                 style="top: 38%;text-transform:uppercase;">
+                                BOSTON IS NOW <br/>OPEN AT THE PRU
+                                <!--  <span style="margin-top: 2.1910569105691056910569105691057%; border: none !important;"><a
+                                          class="learn-more white" href="/women/rangoli-collection"
+                                          style="background: none !important;border:none;">LEARN MORE <span
+                                              style="color:#ff0000"> &gt;</span></a></span>-->
+                            </div>
+                            <?php } ?>
+                        </div>
+                        <!-- partOne -->
+                        <!-- partTwo -->
+                        <a href="/our-stores">
+                            <div class="fall-river"></div>
+                        </a>
+
+
+                        <!-- partTwo -->
+                    </div>
+                    <!-- grid35 -->
+                    <!-- grid6 -->
+                    <div class="grid65 f-right ">
+                        <!-- slider -->
+                        <div class="sliderImg">
+                            <ul class="gridslider22">
+
+                                <li>
+                                    <!--<img class="img-responsive" src="<?php /*echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/right-1.jpg'*/ ?>" alt="Mens Sunday Tee" />-->
+                                    <img onload="showGridContainer(this)" class="img-responsive"
+                                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/newport-beach-fashion-islandv2.jpg' ?>"
+                                         alt="long sleeve tee Rudhira"/>
+
+                                    <div class="contentSlider" style="top:36.659877800407331975560081466395%">
+                                        <div>
+                                            <p class="small-text">YS STORES</p>
+
+                                            <p class="large-text"> NEWPORT BEACH <br/>AT FASHION ISLAND</p>
+                                            <a href="/our-stores" class="shopnow-btn"
+                                               style="margin-top:1.0366598778004073319755600814664%;background: none !important;">SEE OUR STORES <span style="color:#ff0000"> &gt;</span></a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- slider -->
+                    </div>
+                    <!-- grid6 -->
+                </div>
+                <!-- gridfull -->
+                <!-- gridfull -->
+                <div class="gridfull factorypart overridefix">
+                    <!-- grid6 -->
+                    <div class="grid65 f-left">
+                        <!-- slider -->
+                        <div class="sliderImg">
+                            <img onload="showGridContainer(this)" class="img-responsive"
+                                 src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/made-in-usa-responsible-production.jpg' ?>"
+                                 alt="Made in USA and NYC. YOGASMOGA" title="Made in USA and NYC. YOGASMOGA"/>
+
+                            <div class="contentSlider mistext" style="top:38.911201629327902240325865580448%">
+                                <div>
+                                    <p class="small-text">RESPONSIBLE PRODUCTION</p>
+
+                                    <h2 class="large-text" style="margin-bottom: 6px;">MADE IN USA <br/>
+                                    </h2>
+                                    <a style="border:none;" href="/made-in-usa" class="learn-more">LEARN MORE<span style="color:#ff0000"> &gt;</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- slider -->
+                    </div>
+                    <!-- grid6 -->
+                    <!-- grid35 -->
+                    <div class="grid35">
+                        <!-- partOne --><a href="<?php echo $this->getBaseUrl() . 'made-in-usa'; ?>">
+                            <div class="factorythread">
+                                <!--<div class="ctext" style="top:27.994308943089430894308943089431%;">STREAMLINING<br/>HELPING<br/>REDUCING<br/>RAISING
+                                </div>-->
+                            </div>
+                        </a>
+                        <!-- partOne -->
+                        <!-- partTwo -->
+                        <a href="<?php echo $this->getBaseUrl() . 'made-in-usa'; ?>">
+                            <div class="usamap"></div>
+                        </a>
+                        <!-- partTwo -->
+                    </div>
+                    <!-- grid35 -->
+                </div>
+                <!-- gridfull -->
+                <!-- gridfull -->
+                <div class="gridfull namaskarpart overridefix">
+                    <!-- grid35 -->
+                    <div class="grid35">
+                        <!-- partOne -->
+                       <div class="supportnamaskar">
+                            <div class="ctext"><a style="border:none;" href="/women/accessories/namaskar-bracelet" class="learn-more">SUPPORT
+                                    NAMASKÁR<span style="color:#ff0000"> &gt;</span></a>
+                            </div>
+                        </div>
+                        <!-- partOne -->
+                        <!-- partTwo -->
+                        <a href="<?php echo $this->getBaseUrl() . 'namaskar'; ?>">
+                            <div class="raisingfunds">
+                                <!-- <div class="ctext" style="top:34.734693877551020408163265306122%;">RAISING THE FUNDS
+                                     &<br/>MAKING
+                                     CHANGES<br/>IN THE WORLD
+                                 </div>-->
+                            </div>
+                        </a>
+                        <!-- partTwo -->
+                    </div>
+                    <!-- grid35 -->
+                    <!-- grid6 -->
+                    <div class="grid65 f-right">
+                        <!-- slider -->
+                        <div class="sliderImg">
+                            <img onload="showGridContainer(this)" class="img-responsive"
+                                 src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/namaskar-homepage.jpg' ?>"
+                                 alt="Namaskar Bracelet"/>
+
+                            <div class="contentSlider mistext" style="top:38.085539714867617107942973523422%;">
+                                <div>
+                                    <p class="small-text" style="margin-bottom:3.1549898167006109979633401221996%;">
+                                        GIVING IS A CORE
+                                        VALUE</p>
+
+                                    <p class="large-text" style="margin-bottom:4.5329938900203665987780040733198%;">
+                                        NAMASKÁR
+                                        <br/>
+                                        <span style="line-height:25px!important;">WE HAVE CREATED THE NAMASKÁR FOUNDATION <span style="display:block;line-height:20px!important;">BECAUSE WE CARE.</span></span></p>
+                                    <a style="border:none;" href="/namaskar" class="learn-more">LEARN MORE<span style="color:#ff0000"> &gt;</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- slider -->
+                    </div>
+                    <!-- grid6 -->
+                </div>
+                <!-- gridfull -->
+            </div>
+            <div class="text"></div>
+            <!-- middleContainer -->
+        </div>
+        <!-- pagewrapper -->
+        <!-- footer -->
+        <?php echo $this->getChildHtml('footer'); ?>
+        <!-- footer -->
+    </div>
+    <?php echo $this->getChildHtml('before_body_end'); ?>
+</div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

@@ -294,7 +294,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 
 /****First Time Pop Up Home page****/
 /*.firstdialog{z-index: 10003 !important;}*/
-.firstdialog { border: none; position: fixed; padding: 0 !important; background: transparent url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/signup_popup_red.png") 50% top repeat-x ; background-size: cover ; }
+.firstdialog { border: none; position: fixed; padding: 0 !important; /*background: transparent url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/signup_popup_red.png") 50% top repeat-x ;background-size: cover ;*/ background: #f00;overflow:visible;  border-radius:50%; }
 .firstdialog .ui-widget-header { border:none; background: none; font-weight: bold; }
 .firstdialog .ui-dialog-titlebar-close{right: 7.3em ; top: 100% ; width: auto ; height: auto ; z-index: 500;}
 .firstdialog .ui-state-hover{border: none ; background: none ; padding: 1px !important;}
