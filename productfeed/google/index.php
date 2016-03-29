@@ -172,7 +172,7 @@ foreach ($productCollection as $_product) {
                     $sku,
                     $sku_configurable,
                     'YOGASMOGA ' . $total_name . ' YOGA',
-                    'YOGASMOGA ' . strip_tags($description),
+                    'YOGASMOGA ' . html_entity_decode(strip_tags($description)),
                     'Apparel & Accessories > Clothing > Activewear',
                     '',
                     $total_buy_url,
