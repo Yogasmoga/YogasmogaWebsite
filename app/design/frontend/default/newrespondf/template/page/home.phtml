@@ -89,12 +89,12 @@
 
                           $sessionCustomer = Mage::getSingleton('customer/session')->getCustomer();
                           $customerId = $sessionCustomer->getId();
-                         $customer =  Mage::getModel('customer/customer')->load($customerId);
+                         //$customer =  Mage::getModel('customer/customer')->load($customerId);
 
                           $gender = Mage::getResourceSingleton('customer/customer')
                               ->getAttribute('gender')
                               ->getSou??rce()
-                              ->getOptionText($customer->getGender());
+                              ->getOptionText($sessionCustomer->getGender());
 
                              ?>
 
