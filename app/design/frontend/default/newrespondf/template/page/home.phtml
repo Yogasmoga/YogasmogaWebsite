@@ -91,16 +91,13 @@
                           $customerId = $sessionCustomer->getId();
                          $customer =  Mage::getModel('customer/customer')->load($customerId);
 
-                          $gender = $customer->getResource()
+                          $gender = Mage::getResourceSingleton('customer/customer')
                               ->getAttribute('gender')
-                              ->getFrontend()
-                              ->getValue($customer);
+                              ->getSou??rce()
+                              ->getOptionText($customer->getGender());
 
+                             ?>
 
-
-
-                          ?>
-					  <?php /* ?><a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>" rel="<?php echo $gender; ?>"><?php */ ?>
                           <a href="<?php
                           if($gender == "1")
                                 {
