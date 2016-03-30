@@ -88,7 +88,19 @@
                           $gender = $customer->getGender();
                           ?>
 					  <?php /* ?><a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>" rel="<?php echo $gender; ?>"><?php */ ?>
-                          <a href="<?php if($gender==1){echo $this->getUrl('men');}elseif($gender==2){echo $this->getUrl('women');}elseif($gender==''){echo $this->getUrl('women');} ?>" rel="<?php echo $gender; ?>">
+                          <a href="<?php
+                          if($gender==1)
+                                {
+                                echo $this->getUrl('men');
+                                }
+                            elseif($gender==2){
+                                echo $this->getUrl('women');
+                                }
+                          else{
+                                echo $this->getUrl('women');
+                          }
+                          ?>" rel="<?php echo $gender; ?>
+                          ">
                           <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/free-air-shipping.jpg') ?>" alt="invite friend"/>
                       </a>
 					  <?php } else { ?>
