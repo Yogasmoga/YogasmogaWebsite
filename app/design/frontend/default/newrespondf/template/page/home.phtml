@@ -83,11 +83,11 @@
                   </div>
                   <div class="invite-friend">
 
-                      <?php $session = Mage::getSingleton('customer/session');
+                      <?php
 
-                      if($session->isLoggedIn()) {
+                      if(Mage::getModel('customer/session')->isLoggedIn()) {
 
-                          $sessionCustomer = $session->getCustomer();
+                          $sessionCustomer = Mage::getModel('customer/session')->getCustomer();
                           $customerId = $sessionCustomer->getId();
                          $customer =  Mage::getModel('customer/customer')->load($customerId);
 
