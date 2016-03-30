@@ -91,12 +91,10 @@
                           $customerId = $sessionCustomer->getId();
                          $customer =  Mage::getModel('customer/customer')->load($customerId);
 
-                          $gender = $customer->getGender(
-                              Mage::getResourceModel('customer/customer')
-                                  ->getAttribute('gender')
-                                  ->getSource()
-                                  ->getOptionId()
-                          );
+                          $gender = $customer->getResource()
+                              ->getAttribute('gender')
+                              ->getFrontend()
+                              ->getValue($customer);
 
 
 
