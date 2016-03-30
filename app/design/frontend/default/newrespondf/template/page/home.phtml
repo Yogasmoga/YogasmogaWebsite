@@ -82,13 +82,23 @@
                       <!-- </div> -->
                   </div>
                   <div class="invite-friend">
-                      <?php if(Mage::getSingleton('customer/session')->isLoggedIn()) { ?>
-					  <a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>">
-					  <?php } else { ?>
-					  <a onclick="openLogin()" href="javascript:void(0)">
-					  <?php } ?>
-                          <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/invite-bg.jpg') ?>" alt="invite friend"/>
+                      <?php if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+
+                          $customer = Mage::getSingleton('customer/session')->getCustomer();
+                          $gender = $customer->getGender();
+                          ?>
+					  <?php /* ?><a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>" rel="<?php echo $gender; ?>"><?php */ ?>
+                          <a href="<?php if($gender==1){echo $this->getUrl('men');}elseif($gender==2){echo $this->getUrl('women');}elseif($gender==''){echo $this->getUrl('women');} ?>" rel="<?php echo $gender; ?>">
+                          <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/free-air-shipping.jpg') ?>" alt="invite friend"/>
                       </a>
+					  <?php } else { ?>
+					  <!--<a onclick="openLogin()" href="javascript:void(0)">-->
+                          <a onclick="jQuery('#menu_signup').click();AjaxLoginForm.hideLoginContainer();">
+                          <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/sign-up-get.jpg') ?>" alt="invite friend"/>
+                      </a>
+					  <?php } ?>
+
+
 
                   </div>
               </div>
