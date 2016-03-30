@@ -85,13 +85,21 @@
 
                       <?php
 
-                      if(Mage::getModel('customer/session')->isLoggedIn()) {
+                      if(Mage::getSingleton('customer/session')->isLoggedIn()) {
 
-                          $sessionCustomer = Mage::getModel('customer/session')->getCustomer();
+                          $sessionCustomer = Mage::getSingleton('customer/session')->getCustomer();
                           $customerId = $sessionCustomer->getId();
                          $customer =  Mage::getModel('customer/customer')->load($customerId);
 
-                          $gender = $customer->getGender();
+                          $gender = $customer->getGender(
+                              Mage::getResourceModel('customer/customer')
+                                  ->getAttribute('gender')
+                                  ->getSource()
+                                  ->getOptionId()
+                          );
+
+
+
 
                           ?>
 					  <?php /* ?><a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>" rel="<?php echo $gender; ?>"><?php */ ?>
