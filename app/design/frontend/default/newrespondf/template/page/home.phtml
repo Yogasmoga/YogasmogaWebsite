@@ -82,24 +82,31 @@
                       <!-- </div> -->
                   </div>
                   <div class="invite-friend">
-                      <?php if(Mage::getSingleton('customer/session')->isLoggedIn()) {
 
-                          $customer = Mage::getSingleton('customer/session')->getCustomer();
+                      <?php $session = Mage::getSingleton('customer/session');
+
+                      if($session->isLoggedIn()) {
+
+                          $customer = $session->getCustomer();
                           $gender = $customer->getGender();
+                          $genderText = $customer->getResource()
+                              ->getAttribute('gender')
+                              ->getSource()
+                              ->getOptionText($customer->getData('gender'));
                           ?>
 					  <?php /* ?><a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>" rel="<?php echo $gender; ?>"><?php */ ?>
                           <a href="<?php
-                          if($gender==1)
+                          if($genderText==strtolower('male'))
                                 {
                                 echo $this->getUrl('men');
                                 }
-                            elseif($gender==2){
+                            elseif($genderText==strtolower('female')){
                                 echo $this->getUrl('women');
                                 }
                           else{
                                 echo $this->getUrl('women');
                           }
-                          ?>" rel="<?php echo $gender; ?>
+                          ?>" rel="<?php echo $genderText; ?>
                           ">
                           <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/free-air-shipping.jpg') ?>" alt="invite friend"/>
                       </a>
