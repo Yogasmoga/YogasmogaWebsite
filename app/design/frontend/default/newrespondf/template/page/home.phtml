@@ -96,18 +96,17 @@
                           ?>
 					  <?php /* ?><a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>" rel="<?php echo $gender; ?>"><?php */ ?>
                           <a href="<?php
-                          if($genderText==strtolower('male'))
+                          if($genderText==strtolower('Male'))
                                 {
                                 echo $this->getUrl('men');
                                 }
-                            elseif($genderText==strtolower('female')){
+                            elseif($genderText==strtolower('Female')){
                                 echo $this->getUrl('women');
                                 }
                           else{
                                 echo $this->getUrl('women');
                           }
-                          ?>" rel="<?php echo $genderText; ?>
-                          ">
+                          ?>" rel="<?php echo $genderText;?>">
                           <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/free-air-shipping.jpg') ?>" alt="invite friend"/>
                       </a>
 					  <?php } else { ?>
