@@ -87,26 +87,23 @@
 
                       if($session->isLoggedIn()) {
 
-                          $customer = $session->getCustomer();
+                          $sessionCustomer = $session->getCustomer();
+                          $customerId = $sessionCustomer->getId();
+                         $customer =  Mage::getModel('customer/customer')->load($customerId);
+
                           $gender = $customer->getGender();
-                          $genderText = $customer->getResource()
-                              ->getAttribute('gender')
-                              ->getSource()
-                              ->getOptionText($customer->getData('gender'));
+
                           ?>
 					  <?php /* ?><a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>" rel="<?php echo $gender; ?>"><?php */ ?>
                           <a href="<?php
-                          if($genderText == 'Male')
+                          if($gender == 1)
                                 {
                                 echo $this->getUrl('men');
-                                }
-                            elseif($genderText == 'Female'){
-                                echo $this->getUrl('women');
                                 }
                           else{
                                 echo $this->getUrl('women');
                           }
-                          ?>" rel="<?php echo $genderText;?>">
+                          ?>" rel="<?php echo $gender;?>">
                           <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/free-air-shipping.jpg') ?>" alt="invite friend"/>
                       </a>
 					  <?php } else { ?>
