@@ -96,11 +96,11 @@
                           ?>
 					  <?php /* ?><a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>" rel="<?php echo $gender; ?>"><?php */ ?>
                           <a href="<?php
-                          if($genderText==strtolower('Male'))
+                          if($genderText == 'Male')
                                 {
                                 echo $this->getUrl('men');
                                 }
-                            elseif($genderText==strtolower('Female')){
+                            elseif($genderText == 'Female'){
                                 echo $this->getUrl('women');
                                 }
                           else{
