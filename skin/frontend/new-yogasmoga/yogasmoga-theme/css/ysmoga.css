@@ -276,6 +276,7 @@ ul.site-map > li{
 }
 .compressBox{
     background: url("../images/new-elements/brooklyn-jacket.jpg") no-repeat center center #ae8637;
+    background-size: 100% 100%;
 }
 /*
 .multicolorcont{
