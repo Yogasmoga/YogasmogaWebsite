@@ -265,7 +265,7 @@ ul.site-map > li{
 }
 
 .compressBox, .multicolorcont, .factorythread, .usamap, .supportnamaskar, .raisingfunds,.fall-river{
-    background: url("../images/new-elements/brooklyn-jacket.jpg") no-repeat center center #ae8637;
+    background: url("../images/new-elements/goldbg.png") no-repeat center center #ae8637;
     background-size: 100% 100%;
     width: 100%;
     display: table;
@@ -273,6 +273,11 @@ ul.site-map > li{
     height: 50% !important;
     position: absolute;
 }
+
+.compressBox{background: url("../images/new-elements/brooklyn-jacket.jpg") no-repeat center center #e4e4e4;
+	background-size: 100% 100%;
+}
+
 
 .multicolorcont{
    background: url("../images/homepage/huron-hoodie.jpg") no-repeat center center transparent; 
