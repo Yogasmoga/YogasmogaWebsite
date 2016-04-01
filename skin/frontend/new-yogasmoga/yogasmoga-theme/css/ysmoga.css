@@ -2029,7 +2029,7 @@ background: #f7e8eb;
 }
 
 .ysfabricpart .grid35, .factorypart .grid35 {
-    left:66.7%;
+    left:66.6%;
 }
 
 .namaskarpart .grid35, .yscolorpart .grid35{
@@ -2837,3 +2837,4 @@ a.learn-more {
 
 .contentSlider .small-text sup{font-size:13px; vertical-align:bottom;}
 .contentSlider .small-text sup.tm{font-size:15px; vertical-align:inherit;}
+.cms-home .ysfabricpart .grid35, .cms-home .factorypart .grid35 {left:66.7%;}
