@@ -59,8 +59,8 @@
                  <a href="<?php echo $this->getUrl('mens'); ?>"> <span class="bg444444">men</span></a>
               </div>
               <div class="clearfix"></div>
-              <div class="made-in-usa" onclick="window.location='/made-in-usa/'">
-                  <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/madeinusa-home.jpg') ?>" alt="made in usa"/>
+              <div class="made-in-usa" onclick="window.location='/women/'">
+                  <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/made-in-usa-seal.jpg') ?>" alt="made in usa"/>
 <!--                  <a href="#"><span>learn more</span></a>-->
               </div>
               <div class="clearfix"></div>
@@ -82,13 +82,24 @@
                       <!-- </div> -->
                   </div>
                   <div class="invite-friend">
-                      <?php if(Mage::getSingleton('customer/session')->isLoggedIn()) { ?>
-					    <a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>">
-					  <?php } else { ?>
-                          <a onclick="openLogin()" href="javascript:void(0)">
-                          <?php } ?>
-                              <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/invite-back.jpg') ?>" alt="invite friend"/>
+                      <?php if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+                      $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+                      $customer = Mage::getModel('customer/customer')->load($customerId);
+                      $genderText = $customer->getResource()->getAttribute('gender')->getFrontend()->getValue($customer);
+                      if($genderText == "Male"){?>
+
+                      <a href="<?php echo Mage::getUrl('men')?>" rel="<?php echo $customerId; ?>">
+                          <?php } else{?>
+                          <a href="<?php echo Mage::getUrl('women')?>" rel="<?php echo $customerId; ?>">
+
+                              <?php }?>
+                              <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/free-air-shipping.jpg') ?>" alt="invite friend"/>
                           </a>
+                          <?php } else { ?>
+                              <a onclick="jQuery('#menu_signup').click();AjaxLoginForm.hideLoginContainer();">
+                                  <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/sign-up-get.jpg') ?>" alt="invite friend"/>
+                              </a>
+                          <?php } ?>
                   </div>
               </div>
               <div class="clearfix"></div>

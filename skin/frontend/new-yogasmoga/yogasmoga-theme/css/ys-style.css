@@ -2910,3 +2910,60 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu{
 ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     font-family: gothambook !important
 }
+
+/*--banner new style created by Sanjay--*/
+
+.banner_text1{position:relative; top:32%; left:14.5%; float: left; text-align:center; padding-right:0px !important}
+.banner_text2{text-align:center; padding-right:0px !important; position:relative;left:27%; top: 36%;}
+.banner_text3{position:relative; text-align:center; display:inline-block; left:14%; top:20%}
+.banner_text4{float:left;position:relative;top:16%; left:6.8%; text-align:left;}
+.banner_text5{text-align: center; float: right; position:relative; top:32%; right:6%; }
+.banner_text6{position:relative; top:26%;left:16.5%;float:left;}
+.banner_text7{ text-align:center; display:inline-block; float:left; position:relative; top:37%; left:18%; }
+.banner_text8{ position:relative; top:48%;}
+.flexslider .slides img.img_rndinca{max-width:100%; width:auto; margin:10% auto 0 auto!important; display:block;}
+.flexslider .slides img.img_madeinusa{max-width:100%; width:auto; margin:11% auto 0 auto!important; display:block;}
+
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+    .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 38px/38px ITCAvantGardeProBk;}
+    .flexslider .slides img.img_madeinusa{max-width:208px;}
+    .flexslider .slides img.img_rndinca{max-width:175px;}
+    .banner_text5{right:4%;}
+}
+@media screen and (min-width: 1401px) and (max-width: 1599px) {
+    .banner_avant_grade_demi{ font: 42px/42px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 44px/44px ITCAvantGardeProBk;}
+    .banner_text5{right:4%;}
+    .flexslider .slides img.img_madeinusa{max-width:244px;}
+    .flexslider .slides img.img_rndinca{max-width:204px;}
+
+
+}
+@media screen and (min-width: 1600px) {
+    .banner_avant_grade_demi{ font: 46px/46px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 46px/46px ITCAvantGardeProBk;}
+}
+
+@media screen and (max-width: 1200px){
+    .banner_avant_grade_demi{ font: 36px/36px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 36px/36px ITCAvantGardeProBk;}
+    .banner_text5{right:4%;}
+    .flexslider .slides img.img_madeinusa{max-width:178px;}
+    .flexslider .slides img.img_rndinca{max-width:150px;}
+
+}
+@media only screen and (max-width : 1024px) {
+    .banner_avant_grade_demi{ font: 34px/34px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 34px/34px ITCAvantGardeProBk;}
+    .flexslider .slides img.img_rndinca{max-width:150px; }
+    .flexslider .slides img.img_madeinusa{max-width:179px;}
+    .banner_text1{top:32%; left:12%;}
+    .banner_text2{left: 20%;top: 27%;}
+    .banner_text3{top:31%;}
+    .banner_text5{right:4%;top:24%;}
+    .banner_text6{top:22%; left:13.5%;}
+    .banner_text7{top:33%; left:16.5%;}
+
+}
+/*--banner new style created by Sanjay end 1-april2016--*/

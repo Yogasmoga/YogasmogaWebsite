@@ -167,7 +167,8 @@ ul.site-map > li{
 
 .shopnow-btn{
     background: #cc0033;
-    font: 11px/19px gothammedium;
+    /*font: 11px/19px gothammedium;*/
+    font: 11px/19px gothambook;
     color: #fff;
     text-align: center;
     text-transform: uppercase;
@@ -273,6 +274,9 @@ ul.site-map > li{
     height: 50% !important;
     position: absolute;
 }
+.compressBox{
+    background: url("../images/new-elements/brooklyn-jacket.jpg") no-repeat center center #ae8637;
+}
 /*
 .multicolorcont{
    background: url("../images/homepage/color-world.jpg") no-repeat center center transparent;
@@ -281,7 +285,8 @@ ul.site-map > li{
 }*/
 .multicolorcont {
 /*    background: #03310f none repeat scroll 0 0 / 100% 100%; */
-    background: url("../images/homepage/california-yogasmoga-store.jpg") no-repeat center center transparent;
+    /*background: url("../images/homepage/california-yogasmoga-store.jpg") no-repeat center center transparent;*/
+    background: url("../images/homepage/huron-hoodie.jpg") no-repeat center center transparent;
     background-size: 100% 100%;
 }
 
@@ -2314,7 +2319,7 @@ div.new-arrivals-block{
     margin: auto auto 2.05499%;
     padding-bottom: 8px;
     width: 50%;
-    font-size: 12px;
+    font-size: 13px;
 }
 .contentSlider .large-text{
     font-size: 40px;
@@ -2823,3 +2828,8 @@ a.learn-more {
     display: none;
 }
 /* ************MEN AND WOMEN PAGE CORRECTIONS CSS************ */
+
+/*************homepage Bucket****************/
+
+.contentSlider .small-text sup{font-size:13px; vertical-align:bottom;}
+.contentSlider .small-text sup.tm{font-size:15px; vertical-align:inherit;}
