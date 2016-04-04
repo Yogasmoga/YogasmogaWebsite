@@ -88,6 +88,9 @@ foreach ($productCollection as $_product) {
 
         $buy_url = $product->getUrlInStore();
         $keywords = $product->getMetaKeyword();
+        if($keywords==""){
+            $keywords="None";
+        }
 
         $images = Mage::getModel('catalog/product')->load($product->getId())->getMediaGalleryImages();
 
