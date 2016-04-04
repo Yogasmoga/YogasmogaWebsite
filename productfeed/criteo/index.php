@@ -65,13 +65,15 @@ foreach ($productCollection as $_product) {
         $buy_url = '';
         $image_url = '';
         $advertise_category = 'yoga apparel';
-        $merchandiseType = '';
+        $merchandiseType = 'Commissionable Items';
 
         $forHidden = $product->getAttributeText('hidden_product');
         if (isset($forHidden) && strtolower($forHidden) == "yes")
             continue;
 
+
         $categoryIds = $product->getCategoryIds();
+
 
         if (isset($categoryIds) && is_array($categoryIds) && count($categoryIds) > 0) {
             foreach ($categoryIds as $id) {
@@ -80,6 +82,8 @@ foreach ($productCollection as $_product) {
                     $merchandiseType = "Non-commissionable Items";
                     break;
                 }
+
+
             }
         } else
             continue;
