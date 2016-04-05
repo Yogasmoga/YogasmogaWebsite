@@ -16,6 +16,17 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
+function subscribeApp(page_id, page_access_token){
+console.log('Subscribing page to app! '+ page_id);
+	FB.api(
+		'/' + page_id + '/subscribed_apps',
+		'post',
+		{access_token: page_access_token}, 
+		function(response){
+		console.log('Successfully subscribed page',response);
+	});
+}
+
 
 // Only works after `FB.init` is called
 function myFacebookLogin() {
@@ -29,6 +40,9 @@ function myFacebookLogin() {
 			{
 				var page  =  pages[i];
 				var li = document.createElement('li');
+				var a = document.createElement('a');
+				a.href = "#";
+				a.onclick = subscribeApp.bind(this,page.id,page.access_token);
 				li.innerHTML = page.name;
 				ul.appendChild(li);
 			}
