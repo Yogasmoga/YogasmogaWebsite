@@ -88,10 +88,15 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 			echo '<div class="job-title-list"><ul>';
 			foreach($results as $careerdata){
 
-				echo '<li><a href="#job'.$j.'"><span>'.$careerdata['job_title'].'</span>'.
+				if($careerdata['status']==1) {
+					echo '<li><a href="#job' . $j . '"><span>' . $careerdata['job_title'] . '</span>' .
 						$careerdata['location']
-					.'</a></li>';
-
+						. '</a></li>';
+				}
+				else{
+					echo "<p>There are no open positions available at this time, please check back later for new openings.</p>";
+					break;
+				}
 				$j++;
 			}
 		echo '</ul></div>';
@@ -99,25 +104,27 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 
 			$i=1;
 			foreach($results as $careerdata){
-				echo  '<div id="job'.$i.'" class="job-description">
-                                <h2 class="job-title">'.$careerdata['job_title'].'
+				if($careerdata['status']==1) {
+					echo '<div id="job' . $i . '" class="job-description">
+                                <h2 class="job-title">' . $careerdata['job_title'] . '
                                 </h2>
                                     <div class="job-attributes">
                                         <ul>
-                                            <li><span>Available Positions:</span>'.$careerdata['available_position'].'</li>
-                                            <li><span>Location:</span>'.$careerdata['location'].'</li>
-                                            <li><span>Reporting To:</span>'.$careerdata['reporting_to'].'</li>
-                                            <li><span>Working With:</span>'.$careerdata['working_with'].'</li>
-                                            <li><span>Type:</span>'.$careerdata['type'].'</li>
-                                            <li><span>Compensation:</span>'.$careerdata['compensation'].'</li>
+                                            <li><span>Available Positions:</span>' . $careerdata['available_position'] . '</li>
+                                            <li><span>Location:</span>' . $careerdata['location'] . '</li>
+                                            <li><span>Reporting To:</span>' . $careerdata['reporting_to'] . '</li>
+                                            <li><span>Working With:</span>' . $careerdata['working_with'] . '</li>
+                                            <li><span>Type:</span>' . $careerdata['type'] . '</li>
+                                            <li><span>Compensation:</span>' . $careerdata['compensation'] . '</li>
                                         </ul>
-                                    </div>'.$careerdata['introduction'].'<h6>RESPONSIBILITIES</h6>'.$careerdata['responsibilities'].'<h6>Desired Skills, Qualifications And Experience</h6>
-                '.$careerdata['desired_skill'].'
+                                    </div>' . $careerdata['introduction'] . '<h6>RESPONSIBILITIES</h6>' . $careerdata['responsibilities'] . '<h6>Desired Skills, Qualifications And Experience</h6>
+                ' . $careerdata['desired_skill'] . '
                 <h6>How To Apply:</h6>
-                '.$careerdata['how_to_apply'].'
+                ' . $careerdata['how_to_apply'] . '
                 <h6>About YOGASMOGA</h6>
                     <p>YOGASMOGA is a designer, manufacturer and retailer of Yoga inspired athletic apparel and accessories. The company&rsquo;s yoga apparel is both fashionable and sporty in nature and has roots in the rapidly growing Yoga movement. YOGASMOGA develops fiber-to-consumer technological solutions to deliver proprietary high performance fabric and athletic gear. While the company works with the most technically advanced fabric and manufacturing technologies. it also pursues a relentless focus on the traditions of Yoga. YOGASMOGA also helps the development of the NAMASKAR foundation, a bracelet driven charity focused on health, education and micro lending in the compan&rsquo;s supply chain countries.</p>
                 </div>';
+				}
 			$i++;
 			}
 		}
@@ -141,11 +148,6 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 		if($state=='1'){
 			$stateText = "california";
 		}
-		else{
-
-		}
-
-
 		echo '<div class="pg-heading">
 				<h2>Jobs: '.$stateText.'</h2>
 			</div>';
@@ -155,36 +157,47 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 			echo '<div class="job-title-list"><ul>';
 			foreach($results as $careerdata){
 
-				echo '<li><a href="#job'.$j.'"><span>'.$careerdata['job_title'].'</span>'.
-					$careerdata['location']
-					.'</a></li>';
+				if($careerdata['status']==1) {
+					echo '<li><a href="#job' . $j . '"><span>' . $careerdata['job_title'] . '</span>' .
+						$careerdata['location']
+						. '</a></li>';
+				}
+				else{
+					echo "<p>There are no open positions available at this time, please check back later for new openings.</p>";
+					break;
+				}
 
 				$j++;
 			}
-		echo '</ul></div>';
+			echo '</ul></div>';
 
 
 			$i=1;
 			foreach($results as $careerdata){
-				echo  '<div id="job'.$i.'" class="job-description">
-                                <h2 class="job-title">'.$careerdata['job_title'].'
+
+				if($careerdata['status']==1) {
+					echo '<div id="job' . $i . '" class="job-description">
+                                <h2 class="job-title">' . $careerdata['job_title'] . '
                                 </h2>
                                     <div class="job-attributes">
                                         <ul>
-                                            <li><span>Available Positions:</span>'.$careerdata['available_position'].'</li>
-                                            <li><span>Location:</span>'.$careerdata['location'].'</li>
-                                            <li><span>Reporting To:</span>'.$careerdata['reporting_to'].'</li>
-                                            <li><span>Working With:</span>'.$careerdata['working_with'].'</li>
-                                            <li><span>Type:</span>'.$careerdata['type'].'</li>
-                                            <li><span>Compensation:</span>'.$careerdata['compensation'].'</li>
+                                            <li><span>Available Positions:</span>' . $careerdata['available_position'] . '</li>
+                                            <li><span>Location:</span>' . $careerdata['location'] . '</li>
+                                            <li><span>Reporting To:</span>' . $careerdata['reporting_to'] . '</li>
+                                            <li><span>Working With:</span>' . $careerdata['working_with'] . '</li>
+                                            <li><span>Type:</span>' . $careerdata['type'] . '</li>
+                                            <li><span>Compensation:</span>' . $careerdata['compensation'] . '</li>
                                         </ul>
-                                    </div>'.$careerdata['introduction'].'<h6>RESPONSIBILITIES</h6>'.$careerdata['responsibilities'].'<h6>Desired Skills, Qualifications And Experience</h6>
-                '.$careerdata['desired_skill'].'
+                                    </div>' . $careerdata['introduction'] . '<h6>RESPONSIBILITIES</h6>' . $careerdata['responsibilities'] . '<h6>Desired Skills, Qualifications And Experience</h6>
+                ' . $careerdata['desired_skill'] . '
                 <h6>How To Apply:</h6>
-                '.$careerdata['how_to_apply'].'
+                ' . $careerdata['how_to_apply'] . '
                 <h6>About YOGASMOGA</h6>
                     <p>YOGASMOGA is a designer, manufacturer and retailer of Yoga inspired athletic apparel and accessories. The company&rsquo;s yoga apparel is both fashionable and sporty in nature and has roots in the rapidly growing Yoga movement. YOGASMOGA develops fiber-to-consumer technological solutions to deliver proprietary high performance fabric and athletic gear. While the company works with the most technically advanced fabric and manufacturing technologies. it also pursues a relentless focus on the traditions of Yoga. YOGASMOGA also helps the development of the NAMASKAR foundation, a bracelet driven charity focused on health, education and micro lending in the compan&rsquo;s supply chain countries.</p>
                 </div>';
+
+				}
+
 				$i++;
 			}
 		}
