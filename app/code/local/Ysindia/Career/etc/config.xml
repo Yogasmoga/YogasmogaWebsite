@@ -49,7 +49,7 @@
 				<sort_order>71</sort_order>               
 				<children>
 					<items module="career">
-						<title>Manage Items</title>
+						<title>Manage Jobs</title>
 						<sort_order>0</sort_order>
 						<action>career/adminhtml_career</action>
 					</items>
@@ -63,10 +63,10 @@
 				</all>
 				<admin>
 					<children>
-						<Ysindia_Career>
-							<title>Career Module</title>
+						<career>
+							<title>Career</title>
 							<sort_order>10</sort_order>
-						</Ysindia_Career>
+						</career>
 					</children>
 				</admin>
 			</resources>
