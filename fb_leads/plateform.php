@@ -28,7 +28,7 @@ function myFacebookLogin() {
 			for (var i = 0,len = pages.length; i < len; i++)
 			{
 				var page  =  pages[i];
-				var li = createElement('li');
+				var li = document.createElement('li');
 				li.innerHTML = page.name;
 				ul.appendChild(li);
 			}
