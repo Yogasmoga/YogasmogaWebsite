@@ -2923,9 +2923,9 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .flexslider .slides img.img_madeinusa{max-width:208px;}
 .flexslider .slides img.img_rndinca{max-width:175px;}
 .banner_text5{right:4%;}
-.collection-banner{font:42px/43px AvantGardeGothicITCW01D;}
-.collection-banner span{font:30px/31px ITCAvantGardeProBk;}
-.collection-banner img{ padding-bottom: 2%;    width: 6%;}
+.collection-banner{font:18px/25px freight;}
+
+.collection-banner img{width:10%;padding-bottom:5%;}
 }
 @media screen and (min-width: 1401px) and (max-width: 1599px) {
 .banner_avant_grade_demi{ font: 42px/42px AvantGardeGothicITCW01D;}
@@ -2933,16 +2933,16 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .banner_text5{right:4%;}
 .flexslider .slides img.img_madeinusa{max-width:244px;}
 .flexslider .slides img.img_rndinca{max-width:204px;}
-.collection-banner{font:50px/51px AvantGardeGothicITCW01D;}
-.collection-banner span{font:30px/31px ITCAvantGardeProBk;}
-.collection-banner img{ padding-bottom: 3%;    width: 6%;}
+.collection-banner{font:18px/25px freight;}
+
+.collection-banner img{width:auto;padding-bottom:5%;}
 }
 @media screen and (min-width: 1600px) {
 .banner_avant_grade_demi{ font: 46px/46px AvantGardeGothicITCW01D;}
 .banner-avant-grade-bk-small{ font: 46px/46px ITCAvantGardeProBk;}
-.collection-banner{font:55px/54px AvantGardeGothicITCW01D;}
-.collection-banner span{font:32px/40px ITCAvantGardeProBk;}
-.collection-banner img{width:auto;padding-bottom:3%;}
+.collection-banner{font:18px/25px freight;}
+
+.collection-banner img{width:auto;padding-bottom:5%;}
 }
 
 @media screen and (max-width: 1200px){
@@ -2951,9 +2951,9 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .banner_text5{right:4%;}
 .flexslider .slides img.img_madeinusa{max-width:178px;}
 .flexslider .slides img.img_rndinca{max-width:150px;}
-.collection-banner{font:36px/37px AvantGardeGothicITCW01D;}
-.collection-banner span{font:30px/31px ITCAvantGardeProBk;}
-.collection-banner img{ padding-bottom: 2%;    width: 6%;}
+.collection-banner{font:18px/25px freight;}
+
+.collection-banner img{width:9%;padding-bottom:4%;}
 }
 @media only screen and (max-width : 1024px) {
 .banner_avant_grade_demi{ font: 34px/34px AvantGardeGothicITCW01D;}
@@ -2967,8 +2967,8 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .banner_text6{top:22%; left:13.5%;}
 .banner_text7{top:33%; left:16.5%;}
 .banner_text9 .banner_avant_grade_demi{ font: 26px/26px AvantGardeGothicITCW01D;}
-.collection-banner{font:36px/36px AvantGardeGothicITCW01D;}
-.collection-banner span{font:28px/30px ITCAvantGardeProBk;}
-.collection-banner img{ padding-bottom: 2%;    width: 6%;}
+.collection-banner{font:18px/25px freight;}
+
+.collection-banner img{width:8%;padding-bottom:4%;}
 
 }
