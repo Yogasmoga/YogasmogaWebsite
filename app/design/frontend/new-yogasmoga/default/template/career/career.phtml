@@ -32,7 +32,7 @@
 		});
 
 
-		jQuery("#job-state-link ul li a").click(function(e){
+		jQuery("#job-state-link ul.state-link li a").click(function(e){
 				e.preventDefault();
 				var state = jQuery(this).attr('rel');
 					jQuery.ajax({
@@ -63,7 +63,7 @@
     
 	<div class="side-menu-bar f-left l-align" id="job-state-link">
 
-		<ul>
+		<ul class="state-link">
 			<li><a rel="1" href="#">California</a></li>
 			<li><a rel="2" href="#">Connecticut</a></li>
 			<li><a rel="3" href="#">Massachusetts</a></li>
