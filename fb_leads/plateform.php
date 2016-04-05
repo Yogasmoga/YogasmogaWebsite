@@ -43,7 +43,8 @@ function myFacebookLogin() {
 				var a = document.createElement('a');
 				a.href = "#";
 				a.onclick = subscribeApp.bind(this,page.id,page.access_token);
-				li.innerHTML = page.name;
+				a.innerHTML = page.name;
+				li.appendChild(a);
 				ul.appendChild(li);
 			}
 		});
