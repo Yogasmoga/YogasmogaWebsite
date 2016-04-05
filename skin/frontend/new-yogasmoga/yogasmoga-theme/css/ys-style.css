@@ -2923,6 +2923,9 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .flexslider .slides img.img_madeinusa{max-width:208px;}
 .flexslider .slides img.img_rndinca{max-width:175px;}
 .banner_text5{right:4%;}
+.collection-banner{font:18px/25px freight;}
+
+.collection-banner img{width:10%;padding-bottom:5%;}
 }
 @media screen and (min-width: 1401px) and (max-width: 1599px) {
 .banner_avant_grade_demi{ font: 42px/42px AvantGardeGothicITCW01D;}
@@ -2930,12 +2933,16 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .banner_text5{right:4%;}
 .flexslider .slides img.img_madeinusa{max-width:244px;}
 .flexslider .slides img.img_rndinca{max-width:204px;}
+.collection-banner{font:18px/25px freight;}
 
-
+.collection-banner img{width:auto;padding-bottom:5%;}
 }
 @media screen and (min-width: 1600px) {
 .banner_avant_grade_demi{ font: 46px/46px AvantGardeGothicITCW01D;}
 .banner-avant-grade-bk-small{ font: 46px/46px ITCAvantGardeProBk;}
+.collection-banner{font:18px/25px freight;}
+
+.collection-banner img{width:auto;padding-bottom:5%;}
 }
 
 @media screen and (max-width: 1200px){
@@ -2944,7 +2951,9 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .banner_text5{right:4%;}
 .flexslider .slides img.img_madeinusa{max-width:178px;}
 .flexslider .slides img.img_rndinca{max-width:150px;}
+.collection-banner{font:18px/25px freight;}
 
+.collection-banner img{width:9%;padding-bottom:4%;}
 }
 @media only screen and (max-width : 1024px) {
 .banner_avant_grade_demi{ font: 34px/34px AvantGardeGothicITCW01D;}
@@ -2957,5 +2966,49 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .banner_text5{right:4%;top:24%;}
 .banner_text6{top:22%; left:13.5%;}
 .banner_text7{top:33%; left:16.5%;}
+.banner_text9 .banner_avant_grade_demi{ font: 26px/26px AvantGardeGothicITCW01D;}
+.collection-banner{font:18px/25px freight;}
+
+.collection-banner img{width:8%;padding-bottom:4%;}
 
 }
+
+/*=============for career page start=========*/
+#jobtabs{padding:0; margin:0; border:0 none; background:none;}
+#jobtabs .ui-tabs-nav{background:none; border-radius:0;border:0 none;}
+#jobtabs .ui-tabs-nav li{background:none;border:0 none;}
+#jobtabs .ui-state-default a,
+#jobtabs .ui-state-default a:link,
+#jobtabs .ui-state-default a:visited { color: #555; text-decoration: none;}
+#jobtabs .ui-state-active a,
+#jobtabs .ui-state-active a:link,
+#jobtabs .ui-state-active a:visited {color: #cc0033; text-decoration: none;}
+#jobtabs .ui-tabs-panel{background:none; border:0 none;}
+#jobtabs .pg-content{text-align:left;}
+#jobtabs .pg-heading{margin-bottom:60px;}
+#jobtabs .job-title-list{margin-bottom:0;}
+#jobtabs .job-title-list ul{}
+#jobtabs .job-title-list ul li{margin-bottom:8px;}
+#jobtabs .job-title-list ul li a { color: #545454; display: inline-block; font-family: gothambook; font-size: 11px;
+    line-height: 19px;}
+#jobtabs .job-title-list ul li a span{font: 11px/19px gothambold; text-transform:uppercase;
+    border-bottom:1px solid	#c03; margin-right:6px; display:inline-block;}
+#jobtabs .job-description{font-family: gothambook;font-size: 12px; line-height: 17px;color:#555; padding-top:10px;border-top:1px solid #555;margin-top:48px;width:100%; float:left;}
+#jobtabs .job-description a{color:#cc0033;}
+#jobtabs .job-description .job-title {color: #545454;font-family: avantgardegothicitcw01b;font-size: 22px; text-transform: uppercase; margin-bottom:10px;}
+#jobtabs .job-description .job-attributes{}
+#jobtabs .job-description .job-attributes ul{margin:0 0 26px 0;}
+#jobtabs .job-description .job-attributes ul li{color:#545454; font-family: gothambook; font-size: 11px;
+    line-height: 19px; list-style:none; padding:0;}
+#jobtabs .job-description .job-attributes ul li:before{display:none;}
+#jobtabs .job-description .job-attributes ul li span{font: 11px/19px gothambold; text-transform:uppercase;
+    margin-right:6px; display:inline-block;}
+#jobtabs .job-description h6{font: 11px/19px gothambold; text-transform:uppercase; font-weight:normal;color:#545454;}
+#jobtabs .job-description ul{list-style:none; margin:0 0 0 13px;}
+#jobtabs .job-description > ul{margin-bottom:15px;}
+#jobtabs .job-description ul li {list-style: outside none none;padding-left: 20px; position: relative;}
+#jobtabs .job-description ul li::before { background: #555 none repeat scroll 0 0; border-radius: 10px; content: "";
+    display: inline-block; height: 4px; left: 0; position: absolute; top: 7px; vertical-align: middle;  width: 4px;}
+#jobtabs .job-description ul li li:before{ background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #555; height: 2px; width: 2px;}
+/*=============for career page end=========*/
