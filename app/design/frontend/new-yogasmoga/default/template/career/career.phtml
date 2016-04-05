@@ -18,7 +18,7 @@
 			data: {'state': '1'},
 			beforeSend:function (data) {
 				jQuery("#content-loader").show();
-
+				
 			},
 			success: function (data) {
 				jQuery("#content-loader").hide();
@@ -53,11 +53,12 @@
 						data: {'state': state},
 						beforeSend:function (data) {
 							jQuery("#content-loader").show();
-
+							jQuery("#jobdata").hide();
 						},
 						success: function (data) {
 							jQuery("#content-loader").hide();
-							jQuery("#jobdata").html(data);
+							jQuery("#jobdata").show()
+							jQuery("#jobdata").html(data);							
 							jQuery('.job-title-list a[href*="#"]:not([href="#"])').click(function() {
 								//alert();
 								if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
