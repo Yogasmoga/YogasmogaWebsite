@@ -23,6 +23,19 @@
 			success: function (data) {
 				jQuery("#content-loader").hide();
 				jQuery("#jobdata").html(data);
+				jQuery('.job-title-list a[href*="#"]:not([href="#"])').click(function() {
+								//alert();
+								if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+								  var target = $(this.hash);
+								  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+								  if (target.length) {
+									$('html, body').animate({
+									  scrollTop: target.offset().top-104
+									}, 1000);
+									return false;
+								  }
+								}
+							  });
 			},
 			error: function() {
 				alert('Sorry for inconvinious try after some time');
@@ -45,6 +58,19 @@
 						success: function (data) {
 							jQuery("#content-loader").hide();
 							jQuery("#jobdata").html(data);
+							jQuery('.job-title-list a[href*="#"]:not([href="#"])').click(function() {
+								//alert();
+								if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+								  var target = $(this.hash);
+								  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+								  if (target.length) {
+									$('html, body').animate({
+									  scrollTop: target.offset().top-104
+									}, 1000);
+									return false;
+								  }
+								}
+							  });
 						},
 						error: function() {
 							alert('Sorry for inconvinious try after some time');
@@ -52,6 +78,19 @@
 
 					});
 				});
+				
+
+				  
+				$('#jobtabs .state-link a').click(function(){
+						$("html, body").animate({ scrollTop: 0 }, 400);
+				  });
+				$(window).scroll(function() {  
+					 if(jQuery("body").hasClass("career-index-index")){
+						var element = jQuery(".side-menu-bar-jobs");   
+						leftNav_scroll(element);
+					} 
+				  });
+				
 		});
 </script>
   
@@ -76,9 +115,9 @@
 			<div id="jobdata"></div>
 		</div>
 	</div>
- 
+ <div class="new-bot-divider"></div>
 </div><!--jobtabs ends-->
 
-    <div class="new-bot-divider"></div>
+    
 
 <div class="clear-fix"></div>

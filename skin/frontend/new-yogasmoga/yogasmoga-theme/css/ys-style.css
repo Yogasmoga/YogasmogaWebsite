@@ -2984,7 +2984,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 #jobtabs .ui-state-active a:link,
 #jobtabs .ui-state-active a:visited {color: #cc0033; text-decoration: none;}
 #jobtabs .ui-tabs-panel{background:none; border:0 none;}
-#jobtabs .pg-content{text-align:left;}
+#jobtabs .pg-content{text-align:left; position:relative;}
 #jobtabs .pg-heading{margin-bottom:60px;}
 #jobtabs .job-title-list{margin-bottom:0;}
 #jobtabs .job-title-list ul{}
@@ -3010,11 +3010,12 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 #jobtabs .job-description ul li::before { background: #555 none repeat scroll 0 0; border-radius: 10px; content: "";  display: inline-block; height: 4px; left: 0; position: absolute; top: 7px; vertical-align: middle;  width: 4px;}
 #jobtabs .job-description ul li li:before{ background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #555; height: 2px; width: 2px;}
-#jobtabs .side-menu-bar-jobs{width: 270px;
-vertical-align: top;
-min-height: 300px;
-position: fixed;
-border-top: 1px solid #555;}
-#jobtabs .side-menu-bar-jobs ul li a{color:#555;}
+#jobtabs .side-menu-bar-jobs{width: 270px;vertical-align: top;min-height: 300px;position: fixed;border-top: 1px solid #555;}
+#jobtabs .side-menu-bar-jobs ul{box-sizing: border-box; padding: 12px 10px 13px 0;}
+#jobtabs .side-menu-bar-jobs ul li a{color:#555;font: 11px/19px gothambold;text-transform: uppercase;}
+#jobtabs .side-menu-bar-jobs ul li a:hover,#jobtabs .side-menu-bar-jobs ul li a.current{color:#c03;}
+#jobtabs #content-loader > img { position: relative;top: 20%;}
+#jobtabs #content-loader{background: #fff none repeat scroll 0 0;height: 100%;position: absolute;text-align: center;width:		100%;}
+#jobtabs .new-bot-divider{clear:both;}
 
 /*=============for career page end=========*/
