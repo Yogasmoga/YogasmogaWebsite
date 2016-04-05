@@ -213,7 +213,7 @@ if(!is_user_logged_in()){
 								<!--<li><a href="/women/super-sale"> Super Sale</a></li>-->
 								<li><a href="/women/additional-sizes"> ADDITIONAL SIZES</a></li>
                                 <li><a href="/women/vivacity-collection"> VIVACITY COLLECTION</a></li>
-								<li><a href="/women/collection"> COLLECTION</a></li>
+								<li><a href="/women/carbon6">CARBON6&trade; COLLECTION</a></li>
 <!--                                <li><a href="/women/rangoli-collection"> RANGOLI COLLECTION</a></li>-->
                             </ul>
                         </li>
@@ -254,7 +254,7 @@ if(!is_user_logged_in()){
                         <li>
                             <ul>
                                 <li><a href="/men/whats-new"> What's New</a></li>
-								<li><a href="/men/collection"> COLLECTION</a></li>
+								<li><a href="/men/carbon6">CARBON6&trade; COLLECTION</a></li>
 								<!--<li><a href="/men/super-sale"> Super Sale</a></li>-->
 <!--                                <li><a href="/mens/top-sellers"> Top Sellers</a></li>-->
                             </ul>
