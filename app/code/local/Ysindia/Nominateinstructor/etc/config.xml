@@ -44,7 +44,7 @@
 		<menu>
 			<nominateinstructor module="nominateinstructor">
 				<title>Custom</title>
-				<sort_order>71</sort_order>               
+				<sort_order>71</sort_order>
 				<children>
 					<nominate module="nominateinstructor">
 						<title>Nominate Instructor</title>
