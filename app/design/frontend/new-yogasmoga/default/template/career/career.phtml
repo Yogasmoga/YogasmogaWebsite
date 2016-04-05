@@ -2,9 +2,19 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
 	jQuery(function($){
+
+
+		if(window.location.href.indexOf('https://') >= 0)
+			_usesecureurl = true;
+		else
+			_usesecureurl = false;
+		var url = homeUrl;
+		if(_usesecureurl)
+			url = securehomeUrl;
+
 		jQuery.ajax({
 			type: 'POST',
-			url: homeUrl + 'career/index/getcaliforniajobs',
+			url: url + 'career/index/getcaliforniajobs',
 			data: {'state': 1},
 			beforeSend:function (data) {
 				jQuery("#content-loader").show();
@@ -26,7 +36,7 @@
 				var state = jQuery(this).attr('rel');
 					jQuery.ajax({
 						type: 'POST',
-						url: homeUrl + 'career/index/getstatejobs',
+						url: url + 'career/index/getstatejobs',
 						data: {'state': state},
 						beforeSend:function (data) {
 							jQuery("#content-loader").show();
