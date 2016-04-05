@@ -12,10 +12,11 @@
 		if(_usesecureurl)
 			url = securehomeUrl;
 
+
 		jQuery.ajax({
 			type: 'POST',
-			url: url + 'career/index/getcaliforniajobs',
-			data: {'state': 1},
+			url: url+ 'career/index/getcaliforniajobs',
+			data: {'state': '1'},
 			beforeSend:function (data) {
 				jQuery("#content-loader").show();
 
@@ -31,7 +32,7 @@
 		});
 
 
-		jQuery(".side-menu-bar ul li a").click(function(e){
+		jQuery("#job-state-link ul li a").click(function(e){
 				e.preventDefault();
 				var state = jQuery(this).attr('rel');
 					jQuery.ajax({
@@ -60,7 +61,7 @@
 </style>
 <div id="jobtabs" class="2-columns-wrapper" style="padding:29px 40px 0 40px;">
     
-	<div class="side-menu-bar f-left l-align">        
+	<div class="side-menu-bar f-left l-align" id="job-state-link">
 
 		<ul>
 			<li><a rel="1" href="#">California</a></li>
