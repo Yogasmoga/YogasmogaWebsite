@@ -1,0 +1,74 @@
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+	jQuery(function($){
+		jQuery.ajax({
+			type: 'POST',
+			url: homeUrl + 'career/index/getcaliforniajobs',
+			data: {'state': 1},
+			beforeSend:function (data) {
+				jQuery("#content-loader").show();
+
+			},
+			success: function (data) {
+				jQuery("#content-loader").hide();
+				jQuery("#jobdata").html(data);
+			},
+			error: function() {
+				alert('Sorry for inconvinious try after some time');
+			},
+
+		});
+
+
+		jQuery(".side-menu-bar ul li a").click(function(e){
+				e.preventDefault();
+				var state = jQuery(this).attr('rel');
+					jQuery.ajax({
+						type: 'POST',
+						url: homeUrl + 'career/index/getstatejobs',
+						data: {'state': state},
+						beforeSend:function (data) {
+							jQuery("#content-loader").show();
+
+						},
+						success: function (data) {
+							jQuery("#content-loader").hide();
+							jQuery("#jobdata").html(data);
+						},
+						error: function() {
+							alert('Sorry for inconvinious try after some time');
+						},
+
+					});
+				});
+		});
+</script>
+  
+<style>
+
+</style>
+<div id="jobtabs" class="2-columns-wrapper" style="padding:29px 40px 0 40px;">
+    
+	<div class="side-menu-bar f-left l-align">        
+
+		<ul>
+			<li><a rel="1" href="#">California</a></li>
+			<li><a rel="2" href="#">Connecticut</a></li>
+			<li><a rel="3" href="#">Massachusetts</a></li>
+			<li><a rel="4" href="#">New Jersey</a></li>
+			<li><a rel="5" href="#">New York</a></li>
+		</ul>
+	</div>	
+   <div class="pg-content">
+	   <div id="content-loader" style="display: none;"><img src="<?php echo $this->getSkinUrl('images/fancybox_loading.gif')?>"/></div>
+		<div id="tabs-1">
+			<div id="jobdata"></div>
+		</div>
+	</div>
+ 
+</div><!--jobtabs ends-->
+
+    <div class="new-bot-divider"></div>
+
+<div class="clear-fix"></div>

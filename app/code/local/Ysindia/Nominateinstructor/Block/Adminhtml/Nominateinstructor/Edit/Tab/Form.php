@@ -70,13 +70,14 @@ class Ysindia_Nominateinstructor_Block_Adminhtml_Nominateinstructor_Edit_Tab_For
               ),
           ),
       ));
-     
+
       $fieldset->addField('content', 'editor', array(
           'name'      => 'content',
           'label'     => Mage::helper('nominateinstructor')->__('Content'),
           'title'     => Mage::helper('nominateinstructor')->__('Content'),
           'style'     => 'width:700px; height:300px;',
-          'wysiwyg'   => false,
+          'config'    => Mage::getSingleton('cms/wysiwyg_config')->getConfig(),
+          'wysiwyg'   => true,
           'required'  => true,
       ));
      
