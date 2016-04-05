@@ -19,7 +19,22 @@
 
 // Only works after `FB.init` is called
 function myFacebookLogin() {
-  FB.login(function(){}, {scope: 'publish_actions'});
+  FB.login(function(response){
+   console.log('Successfully Logged in',response);
+		FB.api('/me/accounts',function(response){
+			console.log('Successfully pages retrieved',response);
+			var pages = response.data;
+			var ul = document.getElementById('list');
+			for (var i = 0,len = pages.length; i < len; i++)
+			{
+				var page  =  pages[i];
+				var li = createElement('li');
+				li.innerHTML = page.name;
+				ul.appendChild(li);
+			}
+		});
+  }, {scope: 'manage_pages'});
 }
 </script>
 <button onclick="myFacebookLogin()">Login with Facebook</button>
+<ul id="list"></ul>
