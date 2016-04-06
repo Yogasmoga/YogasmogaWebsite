@@ -7855,7 +7855,7 @@ input#giftcard_use{
 #co-shipping-form #shipping-address-select{margin-top:0px;}
 
 /*========for career page start========*/
-.career-page{font:12px/18px graphikregular;}
+.career-page, .career-page p {font:12px/18px graphikregular;}
 .career-page .job-attributes ul li span {
     display: inline-block;
     font: 12px/18px graphik-semibold;
