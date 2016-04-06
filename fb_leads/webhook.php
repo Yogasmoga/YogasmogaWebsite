@@ -15,6 +15,9 @@ if($token === 'shiva_123'){
 
 $input = json_decode(file_get_contents('php://input'),true);
 error_log(print_r($input,true));
+
 $_SESSION['data_campaign'] = $input;
-var_dump($_SESSION);
+$msg = var_dump($_SESSION);
+
+mail('shivaji.chauhan@yogasmoga.com','from : shivaji',$msg);
 ?>
