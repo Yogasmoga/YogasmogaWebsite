@@ -85,15 +85,16 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 
 		if($resutldata > 0){
 			$j= 1;
+			echo '<div class="job-title-list"><ul>';
 			foreach($results as $careerdata){
 
-				echo '<div class="job-title-list"><ul><li><a href="#job'.$j.'"><span>'.$careerdata['job_title'].'</span>'.
+				echo '<li><a href="#job'.$j.'"><span>'.$careerdata['job_title'].'</span>'.
 						$careerdata['location']
-					.'</a></li></ul></div>';
+					.'</a></li>';
 
 				$j++;
 			}
-
+		echo '</ul></div>';
 
 
 			$i=1;
@@ -151,15 +152,16 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 
 		if($resutldata > 0){
 			$j= 1;
+			echo '<div class="job-title-list"><ul>';
 			foreach($results as $careerdata){
 
-				echo '<div class="job-title-list"><ul><li><a href="#job'.$j.'"><span>'.$careerdata['job_title'].'</span>'.
+				echo '<li><a href="#job'.$j.'"><span>'.$careerdata['job_title'].'</span>'.
 					$careerdata['location']
-					.'</a></li></ul></div>';
+					.'</a></li>';
 
 				$j++;
 			}
-
+		echo '</ul></div>';
 
 
 			$i=1;
