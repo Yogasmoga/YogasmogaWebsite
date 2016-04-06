@@ -51,7 +51,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 		//$state = 1;
 		$resource = Mage::getSingleton('core/resource');
 		$readConnection = $resource->getConnection('core_read');
-		$query = 'SELECT * FROM ' . $readConnection->getTableName('career') . ' where job_state="' . $state . '"';
+		$query = 'SELECT * FROM ' . $readConnection->getTableName('career') . ' where job_state="' . $state . '" and status="1"';
 		$results = $readConnection->fetchAll($query);
 		$resutldata = count($results);
 		$stateText = '';
@@ -88,15 +88,12 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 			echo '<div class="job-title-list"><ul>';
 			foreach($results as $careerdata){
 
-				if($careerdata['status']==1) {
+
 					echo '<li><a href="#job' . $j . '"><span>' . $careerdata['job_title'] . '</span>' .
 						$careerdata['location']
 						. '</a></li>';
-				}
-				else{
-					echo "<p>There are no open positions available at this time, please check back later for new openings.</p>";
-					break;
-				}
+
+
 				$j++;
 			}
 		echo '</ul></div>';
@@ -104,7 +101,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 
 			$i=1;
 			foreach($results as $careerdata){
-				if($careerdata['status']==1) {
+
 					echo '<div id="job' . $i . '" class="job-description">
                                 <h2 class="job-title">' . $careerdata['job_title'] . '
                                 </h2>
@@ -124,7 +121,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
                 <h6>About YOGASMOGA</h6>
                     <p>YOGASMOGA is a designer, manufacturer and retailer of Yoga inspired athletic apparel and accessories. The company&rsquo;s yoga apparel is both fashionable and sporty in nature and has roots in the rapidly growing Yoga movement. YOGASMOGA develops fiber-to-consumer technological solutions to deliver proprietary high performance fabric and athletic gear. While the company works with the most technically advanced fabric and manufacturing technologies. it also pursues a relentless focus on the traditions of Yoga. YOGASMOGA also helps the development of the NAMASKAR foundation, a bracelet driven charity focused on health, education and micro lending in the compan&rsquo;s supply chain countries.</p>
                 </div>';
-				}
+
 			$i++;
 			}
 		}
@@ -141,7 +138,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 		//$state = 1;
 		$resource = Mage::getSingleton('core/resource');
 		$readConnection = $resource->getConnection('core_read');
-		$query = 'SELECT * FROM ' . $readConnection->getTableName('career') . ' where job_state="' . $state . '"';
+		$query = 'SELECT * FROM ' . $readConnection->getTableName('career') . ' where job_state="' . $state . '" and status="1"';
 		$results = $readConnection->fetchAll($query);
 		$resutldata = count($results);
 		$stateText = '';
@@ -157,17 +154,13 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 			echo '<div class="job-title-list"><ul>';
 			foreach($results as $careerdata){
 
-				if($careerdata['status']==1) {
+
 					echo '<li><a href="#job' . $j . '"><span>' . $careerdata['job_title'] . '</span>' .
 						$careerdata['location']
 						. '</a></li>';
-				}
-				else{
-					echo "<p>There are no open positions available at this time, please check back later for new openings.</p>";
-					break;
-				}
+					$j++;
 
-				$j++;
+
 			}
 			echo '</ul></div>';
 
@@ -175,7 +168,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 			$i=1;
 			foreach($results as $careerdata){
 
-				if($careerdata['status']==1) {
+
 					echo '<div id="job' . $i . '" class="job-description">
                                 <h2 class="job-title">' . $careerdata['job_title'] . '
                                 </h2>
@@ -196,7 +189,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
                     <p>YOGASMOGA is a designer, manufacturer and retailer of Yoga inspired athletic apparel and accessories. The company&rsquo;s yoga apparel is both fashionable and sporty in nature and has roots in the rapidly growing Yoga movement. YOGASMOGA develops fiber-to-consumer technological solutions to deliver proprietary high performance fabric and athletic gear. While the company works with the most technically advanced fabric and manufacturing technologies. it also pursues a relentless focus on the traditions of Yoga. YOGASMOGA also helps the development of the NAMASKAR foundation, a bracelet driven charity focused on health, education and micro lending in the compan&rsquo;s supply chain countries.</p>
                 </div>';
 
-				}
+
 
 				$i++;
 			}
