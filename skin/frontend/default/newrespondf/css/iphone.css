@@ -7857,15 +7857,15 @@ input#giftcard_use{
 /*========for career page start========*/
 .career-page .job-attributes ul li span {
     display: inline-block;
-    font: 11px/19px gothambold;
+    font: 12px/18px graphik-semibold;
     margin-right: 6px;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .career-page .answer_content h6 {
     color: #555;
-    font: 11px/19px gothambold;
-    text-transform: uppercase;
+    font: 12px/18px graphik-semibold;
+    text-transform: capitalize;
     margin: 0 0 5px;
 }
 
@@ -7879,7 +7879,7 @@ input#giftcard_use{
 .career-page .answer_content ul li {
     list-style: outside none none;
     padding-left: 20px;
-    position: relative;
+    position: relative;font:12px/18px graphikregular;
 }
 
 .career-page .answer_content ul li::before {
@@ -7896,7 +7896,7 @@ input#giftcard_use{
 }
 
 .career-page .answer_content p {
-    font: 14px/20px GraphikRegular;
+    font: 12px/18px GraphikRegular;
     padding: 0 !important;
     margin: 0 0 10px 0 !important;
 }
@@ -7922,6 +7922,7 @@ input#giftcard_use{
     text-align: left;
     padding: 13px 0;
     border-top: 1px solid #999;
+	color:#555;
 }
 
 .career-page .job-state-title {
@@ -7966,7 +7967,7 @@ input#giftcard_use{
 }
 
 .career-page .answer_content > div, .career-page .answer_content > div p {
-    font: 14px/20px GraphikRegular;
+    font: 12px/18px GraphikRegular;
     padding: 12px 0 0;
 }
 
