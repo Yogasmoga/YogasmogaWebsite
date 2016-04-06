@@ -1,6 +1,6 @@
 jQuery.noConflict();
 var type = window.location.hash.substr(1);
-jQuery(".sign-in-box h1").html("CAREER");
+jQuery(".sign-in-box h1").html("JOBS");
 jQuery(document).ready(function ($) {
 
  var questionPos = type.indexOf("?");
