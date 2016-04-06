@@ -6,5 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Facebook\\' => array($vendorDir . '/facebook/php-sdk-v4/src/Facebook'),
+    'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
+    'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
+    'FacebookAds\\' => array($baseDir . '/src/FacebookAds'),
+    'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
+    'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
 );
