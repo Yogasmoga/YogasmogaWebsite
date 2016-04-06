@@ -7924,7 +7924,7 @@ input#giftcard_use{
     border-top: 1px solid #999;
 }
 
-.career-page > p {
+.career-page .job-state-title {
     color: #555;
     font: 19px/75px ITCAvantGardeStd-Bk;
     height: 74px;
