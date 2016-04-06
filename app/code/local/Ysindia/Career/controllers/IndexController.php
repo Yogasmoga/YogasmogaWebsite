@@ -233,7 +233,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 		else{
 
 		}
-		echo '<p class="job-state-title">JOBS: '.$stateText.'</p>';
+		echo '<p class="job-state-title">'.$stateText.'</p>';
 
 		if($resutldata > 0){
 			echo '<ul>';
@@ -263,7 +263,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 						</ul>
 					</div>
 					<div>' .$jobsdata['introduction'].'</div>
-					<h6>RESPONSIBILITIES</h6>' .$jobsdata['responsibilities'].'
+					<h6>Responsibilities</h6>' .$jobsdata['responsibilities'].'
 					<h6>Desired Skills, Qualifications And Experience</h6>'.$jobsdata['desired_skill'].'
 					<h6>How To Apply:</h6>' .$jobsdata['how_to_apply'].'
 					<h6>About YOGASMOGA</h6>
@@ -305,7 +305,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 			$stateText = "California";
 		}
 
-		echo '<p class="job-state-title">JOBS: '.$stateText.'</p>';
+		echo '<p class="job-state-title">'.$stateText.'</p>';
 
 		if($resutldata > 0){
 			echo '<ul>';
@@ -335,7 +335,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 						</ul>
 					</div>
 					<div>' .$jobsdata['introduction'].'</div>
-					<h6>RESPONSIBILITIES</h6>' .$jobsdata['responsibilities'].'
+					<h6>Responsibilities</h6>' .$jobsdata['responsibilities'].'
 					<h6>Desired Skills, Qualifications And Experience</h6>'.$jobsdata['desired_skill'].'
 					<h6>How To Apply:</h6>' .$jobsdata['how_to_apply'].'
 					<h6>About YOGASMOGA</h6>
