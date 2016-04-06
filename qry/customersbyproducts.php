@@ -41,7 +41,7 @@ if (isset($_REQUEST['from_date'])) {
         foreach ($items as $item) {
             if ($item->getProductId() == $product_id) {
 
-                $email = $order->getCustomerEmail();
+               echo  $email = $order->getCustomerEmail(); die;
 
                 if(isset($emails[$email]))
                     ;
@@ -57,7 +57,7 @@ if (isset($_REQUEST['from_date'])) {
 
     //fclose($fp);
 
-    exit;
+    //exit;
 } else {
     ?>
 
