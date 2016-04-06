@@ -9,6 +9,7 @@
             </action>
         </reference>
         <reference name="content">
+            <block type="career/career" name="career-heading" template="career/career_heading.phtml" />
             <block type="career/career" name="career" template="career/career.phtml" />
         </reference>
     </career_index_index>
