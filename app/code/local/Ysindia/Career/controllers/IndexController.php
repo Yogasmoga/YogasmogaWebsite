@@ -127,7 +127,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 		}
 		else{
 
-			echo "<p>There are no open positions available at this time, please check back later for new openings.</p>";
+			echo "<p class='no-jobs-msg'>There are no open positions available at this time, please check back later for new openings.</p>";
 		}
 
 	}
@@ -196,7 +196,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 		}
 		else{
 
-			echo "<p>There are no open positions available at this time, please check back later for new openings.</p>";
+			echo "<p class='no-jobs-msg'>There are no open positions available at this time, please check back later for new openings.</p>";
 		}
 
 	}
@@ -283,7 +283,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 		}
 		else{
 
-			echo "<p>There are no open positions available at this time, please check back later for new openings.</p>";
+			echo "<p class='no-jobs-msg'>There are no open positions available at this time, please check back later for new openings.</p>";
 		}
 
 
@@ -355,7 +355,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 		}
 		else{
 
-			echo "<p>There are no open positions available at this time, please check back later for new openings.</p>";
+			echo "<p class='no-jobs-msg'>There are no open positions available at this time, please check back later for new openings.</p>";
 		}
 
 
