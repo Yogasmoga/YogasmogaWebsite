@@ -20,7 +20,7 @@ if (isset($_REQUEST['from_date'])) {
             'lteq' => $date_to_now
         ));
 
-
+/*
     header('Content-Type: text/csv; charset=utf-8');
     header('Content-Disposition: attachment; filename=customers.csv');
 
@@ -31,7 +31,7 @@ if (isset($_REQUEST['from_date'])) {
     fputcsv($fp, array('Date range: ' . $from_date . ' to ' . $to_date));
 
     fputcsv($fp, array(''));
-
+*/
     $emails = array();
     foreach ($orders as $order) {
 
@@ -49,13 +49,13 @@ if (isset($_REQUEST['from_date'])) {
 
                     $emails[$email] = $email;
 
-                    fputcsv($fp, array('email' => $email));
+                    //fputcsv($fp, array('email' => $email));
                 }
             }
         }
     }
 
-    fclose($fp);
+    //fclose($fp);
 
     exit;
 } else {
