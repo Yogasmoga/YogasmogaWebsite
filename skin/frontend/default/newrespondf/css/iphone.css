@@ -7854,4 +7854,134 @@ input#giftcard_use{
 /*--checkout shipping section--*/
 #co-shipping-form #shipping-address-select{margin-top:0px;}
 
+/*========for career page start========*/
+.career-page .job-attributes ul li span {
+    display: inline-block;
+    font: 11px/19px gothambold;
+    margin-right: 6px;
+    text-transform: uppercase;
+}
 
+.career-page .answer_content h6 {
+    color: #555;
+    font: 11px/19px gothambold;
+    text-transform: uppercase;
+    margin: 0 0 5px;
+}
+
+.career-page .answer_content ul {
+    list-style: outside none none;
+
+    margin-bottom: 15px;
+
+}
+
+.career-page .answer_content ul li {
+    list-style: outside none none;
+    padding-left: 20px;
+    position: relative;
+}
+
+.career-page .answer_content ul li::before {
+    background: #555 none repeat scroll 0 0;
+    border-radius: 10px;
+    content: "";
+    display: inline-block;
+    height: 4px;
+    left: 0;
+    position: absolute;
+    top: 7px;
+    vertical-align: middle;
+    width: 4px;
+}
+
+.career-page .answer_content p {
+    font: 14px/20px GraphikRegular;
+    padding: 0 !important;
+    margin: 0 0 10px 0 !important;
+}
+
+.career-page .answer_content ul li li::before {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #555;
+    height: 4px;
+    width: 4px;
+}
+
+
+/***** css custom **/
+.career-page > ul {
+    padding: 0 14px;
+}
+
+.career-page > ul > li:last-child {
+    border-bottom: 1px solid #999;
+}
+
+.career-page > ul > li {
+    text-align: left;
+    padding: 13px 0;
+    border-top: 1px solid #999;
+}
+
+.career-page .job-state-title {
+    color: #555;
+    font: 19px/75px ITCAvantGardeStd-Bk;
+    height: 74px;
+    letter-spacing: 1px;
+    padding: 0;
+    text-align: center;
+}
+
+.career-page table tr:last-child td {
+    border-bottom: 1px solid #999;
+}
+
+.career-page > ul > li > p {
+    font: 12px/18px AvantGarde-Demi;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.career-page .toggle {
+    position: absolute;
+    right: -11px;
+    top: 0px;
+}
+
+.career-page .toggle.active svg line:nth-child(3) {
+    stroke: none;
+}
+
+.career-page ul li > p > span {
+    display: inline;
+}
+
+.career-page ul li.active > p > span {
+    display: none;
+}
+
+.career-page .answer_content {
+    display: none;
+}
+
+.career-page .answer_content > div, .career-page .answer_content > div p {
+    font: 14px/20px GraphikRegular;
+    padding: 12px 0 0;
+}
+
+.answer_content .size-chart {
+    margin-top: 10px;
+}
+
+.career-page .answer_content > div p:last-child {
+    padding-top: 12px;
+    padding-bottom: 17px !important;
+}
+
+.career-page .answer_content > div p:first-child {
+    padding-top: 10px;
+}
+.career-page  .job-state-title{text-transform:uppercase;}
+
+/*========for career page end========*/
