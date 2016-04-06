@@ -285,10 +285,19 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 </svg>
 	 </a>
 </div>
-<div style="font: 18px/21px freighttextbook; color: rgb(85, 85, 85); padding: 28px 0px;">
-		A black so deep, we trademarked it.<br/>
-		Made in the USA from eco-friendly dyes.
-	</div>
+ <?php
+	  if($urlKey == 'women')
+		  { 
+	  ?>
+	  <div>
+			We make the deepest black for </br>
+			a slimming silhouette.				
+												
+	  </div>
+      <?php } else {?>
+       <div>										   
+		A black so deep, we trademarked it.
+       </div>
 			
 <div class="product-grid">
   <!-- custom list GridProducts -->		
