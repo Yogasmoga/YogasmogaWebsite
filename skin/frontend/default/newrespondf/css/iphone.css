@@ -7987,4 +7987,6 @@ input#giftcard_use{
 }
 .career-page  .job-state-title{text-transform:uppercase;}
 
+.jobs-content #content-loader{text-align:center;}
+.jobs-content #content-loader img{position:relative; display:inline-block; margin-top:35px;}
 /*========for career page end========*/
