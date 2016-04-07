@@ -57,7 +57,16 @@ class Ysindia_Career_Block_Adminhtml_Career_Grid extends Mage_Adminhtml_Block_Wi
           'align'     =>'left',
           'index'     => 'reporting_to',
       ));
-
+      $this->addColumn('working_with', array(
+          'header'    => Mage::helper('career')->__('Working with'),
+          'align'     =>'left',
+          'index'     => 'working_with',
+      ));
+      $this->addColumn('type', array(
+          'header'    => Mage::helper('career')->__('type'),
+          'align'     =>'left',
+          'index'     => 'type',
+      ));
 	  /*
       $this->addColumn('content', array(
 			'header'    => Mage::helper('career')->__('Item Content'),
