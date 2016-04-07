@@ -7978,10 +7978,11 @@ input#giftcard_use{
 }
 
 .career-page .answer_content > div p:last-child {
-    padding-top: 12px;
-    padding-bottom: 17px !important;
+   /* padding-top: 12px;
+    padding-bottom: 17px !important;*/
 }
-
+.career-page .answer_content p,.career-page .answer_content > ul{margin-bottom:25px!important;}
+.career-page .answer_content > ul  ul{margin-bottom:0!important;margin-left:10px;}
 .career-page .answer_content > div p:first-child {
     padding-top: 10px;
 }
