@@ -1,16 +1,21 @@
 <?php  //error_reporting(E_ALL);
-$access_token = 'EAAHpJxZAzidkBAPmDXm3VYLZB3RzJ19DayRuThSdrZCjZBV4XKqpIOVPF5X8lWwY8OYXtwQXPZAL2u2hq074vBOGGrCNNZAZAAzXN1GCuqI9hT5WKSjw4lQ1I3CpzI8vK9ZA5mU6MhkKCYZBfWHc7OFQcrsla1ZBeTlXoZD';
+/*$access_token = 'EAAHpJxZAzidkBAPmDXm3VYLZB3RzJ19DayRuThSdrZCjZBV4XKqpIOVPF5X8lWwY8OYXtwQXPZAL2u2hq074vBOGGrCNNZAZAAzXN1GCuqI9hT5WKSjw4lQ1I3CpzI8vK9ZA5mU6MhkKCYZBfWHc7OFQcrsla1ZBeTlXoZD';
 $app_id = '537829066377689';
 $app_secret = '2a8cd1b41e7c2ba1a27a33e5a6bc5c7c';
 
 $loader = require_once('vendor/autoload.php');
-
+*/
 
 $challenge = $_REQUEST['hub_challenge'];
 $token = $_REQUEST['hub_verify_token'];
 
+if($token === 'shiva_123'){
 
-use FacebookAds\Api;
+	echo $challenge;
+}
+
+
+/*use FacebookAds\Api;
 use FacebookAds\Object\Lead;
 
 // Initialize a new Session and instanciate an Api object
@@ -21,10 +26,6 @@ $api = Api::instance();
 
 
 
-if($token === 'shiva_123'){
-
-	echo $challenge;
-}
 
 
 $input = json_decode(file_get_contents('php://input'),true);
