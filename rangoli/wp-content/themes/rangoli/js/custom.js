@@ -46,7 +46,7 @@ $(window).load(function(){
                     $(".your-color-block").fadeOut();
                     $(".login-box").fadeOut();
                     if(true == rangoli_press_type){
-					$("#signin_popup").delay(7000).fadeIn();
+					$("#signin_popup").delay(6000).fadeIn();
 					//alert();
 					}
 					else{
