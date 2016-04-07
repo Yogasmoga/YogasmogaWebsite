@@ -56,11 +56,12 @@ jQuery(document).ready(function ($) {
     /******* code for accordian ***/
     $(".career-page li .toggle").click(function (e) {
      e.preventDefault();
-     $(this).parent().siblings().find(".toggle").removeClass('active');
-     $(this).toggleClass('active');
-     $(this).parent('li').toggleClass('active');
-     $(this).parent('li').find(".answer_content").slideUp('fast');
-     $(this).parent('li.active').find(".answer_content").slideDown('fast');
+     $(".career-page li .toggle").not(this).parent('li').removeClass('active');
+		$(".career-page li .toggle").not(this).parent('li').find('.toggle').removeClass('active');
+		$(".career-page li .toggle").not(this).parent('li').find(".answer_content").slideUp('fast');
+		$(this).parent('li').toggleClass('active');
+		$(this).parent('li').find('.toggle').toggleClass('active');
+		$(this).parent('li').find(".answer_content").slideToggle('fast');
     });
     /******* code for accordian ***/
     $(".sub-nav li a").click(function (e) {
@@ -93,11 +94,13 @@ jQuery(document).ready(function ($) {
    /******* code for accordian ***/
    $(".career-page li .toggle").click(function (e) {
     e.preventDefault();
-    $(this).parent().siblings().find(".toggle").removeClass('active');
-    $(this).toggleClass('active');
-    $(this).parent('li').toggleClass('active');
-    $(this).parent('li').find(".answer_content").slideUp('fast');
-    $(this).parent('li.active').find(".answer_content").slideDown('fast');
+		$(".career-page li .toggle").not(this).parent('li').removeClass('active');
+		$(".career-page li .toggle").not(this).parent('li').find('.toggle').removeClass('active');
+		$(".career-page li .toggle").not(this).parent('li').find(".answer_content").slideUp('fast');
+		$(this).parent('li').toggleClass('active');
+		$(this).parent('li').find('.toggle').toggleClass('active');
+		$(this).parent('li').find(".answer_content").slideToggle('fast');
+	
    });
    /******* code for accordian ***/
    $(".sub-nav li a").click(function (e) {
