@@ -1,5 +1,5 @@
 <?php  //error_reporting(E_ALL);
-/*$access_token = 'EAAHpJxZAzidkBAEu6EnboXqutmmh6ZBYJSxEZBZCwuEuLa9TZBamgPVrEZALXIpz3gB7qqNn24V4D6juoiHsL0ZAGrNHxgAKuu6hzYqK9RTbi2CKWbBTiu2pRbOzuybAx8QKZBhqCyiZCL4jGBmCvoi0acRxgw9oVT0MZD';
+$access_token = 'EAAHpJxZAzidkBAEu6EnboXqutmmh6ZBYJSxEZBZCwuEuLa9TZBamgPVrEZALXIpz3gB7qqNn24V4D6juoiHsL0ZAGrNHxgAKuu6hzYqK9RTbi2CKWbBTiu2pRbOzuybAx8QKZBhqCyiZCL4jGBmCvoi0acRxgw9oVT0MZD';
 $app_id = '537829066377689';
 $app_secret = '2a8cd1b41e7c2ba1a27a33e5a6bc5c7c';
 
@@ -16,7 +16,7 @@ Api::init($app_id, $app_secret, $access_token);
 
 // The Api object is now available trough singleton
 $api = Api::instance();
-*/
+
 $challenge = $_REQUEST['hub_challenge'];
 $token = $_REQUEST['hub_verify_token'];
 
@@ -26,7 +26,7 @@ if($token === 'shiva_123'){
 	echo $challenge;
 }
 
-/*
+
 $input = json_decode(file_get_contents('php://input'),true);
 
 $leads = array();
