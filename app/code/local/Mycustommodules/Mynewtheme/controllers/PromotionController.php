@@ -134,7 +134,7 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
                     $this->_getSession()->addError(
                         $this->__('cpnerror-msgCoupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
                     );
-                    $response['errors'] = "Promo Codes can not be applied to One 2 Many, Accessories or other promotions.";
+                    $response['errors'] = "Promo code is invalid";
                     echo json_encode($response);
                     return;
                 }
