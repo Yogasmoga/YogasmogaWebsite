@@ -46,10 +46,12 @@ jQuery(document).ready(function ($) {
    url: url+ 'career/index/mobilestatejobs',
    data: {'state': state},
    beforeSend:function (data) {
-    //jQuery("#content-loader").show();
+    jQuery("#content-loader").show();
+	jQuery(".career-page").hide();
    },
    success: function (data) {
-    //jQuery("#content-loader").hide();
+    jQuery("#content-loader").hide();
+	jQuery(".career-page").show();
     jQuery(".career-page").html(data);
     /******* code for accordian ***/
     $(".career-page li .toggle").click(function (e) {
@@ -81,10 +83,12 @@ jQuery(document).ready(function ($) {
   url: url+ 'career/index/mobiledefaultstatejobs',
   data: {'state': 1},
   beforeSend:function (data) {
-   //jQuery("#content-loader").show();
+   jQuery("#content-loader").show();
+   jQuery(".career-page").hide();
   },
   success: function (data) {
-   //jQuery("#content-loader").hide();
+   jQuery("#content-loader").hide();
+   jQuery(".career-page").show();
    jQuery(".career-page").html(data);
    /******* code for accordian ***/
    $(".career-page li .toggle").click(function (e) {
