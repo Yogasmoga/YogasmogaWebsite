@@ -9,7 +9,10 @@ class Ysindia_Career_Adminhtml_CareerController extends Mage_Adminhtml_Controlle
 			->_addBreadcrumb(Mage::helper('adminhtml')->__('Items Manager'), Mage::helper('adminhtml')->__('Item Manager'));
 		
 		return $this;
-	}   
+	}
+	protected function _isAllowed(){
+		return true;
+	}
  
 	public function indexAction() {
 		$this->_initAction()
