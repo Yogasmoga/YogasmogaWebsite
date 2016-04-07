@@ -66,6 +66,13 @@
 						<career>
 							<title>Career</title>
 							<sort_order>10</sort_order>
+                            <children>
+                                <items module="career">
+                                    <title>Manage Jobs</title>
+                                    <sort_order>0</sort_order>
+                                    <action>career/adminhtml_career</action>
+                                </items>
+                            </children>
 						</career>
 					</children>
 				</admin>
