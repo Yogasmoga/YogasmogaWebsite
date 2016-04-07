@@ -88,6 +88,7 @@ if(!empty($lead_id)){
 
             
 			error_log(print_r($result,true));
+			error_log(print_r($result,true), 3, "myerrors.log");
             //die('Mailchimp executed');
 }
 
