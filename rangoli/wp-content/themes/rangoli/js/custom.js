@@ -55,7 +55,7 @@ $(window).load(function(){
                     if(true == rangoli_press_type){
                         $("#signin_popup").delay
 
-                        (7000).fadeIn();
+                        (6000).fadeIn();
                         //alert();
                     }
                     else{
