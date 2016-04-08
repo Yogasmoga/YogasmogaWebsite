@@ -99,7 +99,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
 
     $sku = $rowData[0][1];
     $name = $rowData[0][2];
-    $unit_price = $rowData[0][4];
+    $unit_price = $rowData[0][6];
     $all_stock = $rowData[0][9+$available];
     $fallriver_stock = $rowData[0][12+$available];
     $brentwood_stock = $rowData[0][15+$available];
