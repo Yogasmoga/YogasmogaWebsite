@@ -546,8 +546,9 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
                 {
                     $foundOnlyNoSmogiProduct = $this->_value_in_array($cids,$val);
                     if($foundOnlyNoSmogiProduct == 1)
-                        $flag = 1;
+					{  $flag = 1;
 						break;
+					}
 
                 }
                 if($flag == 1)break;
@@ -555,12 +556,12 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
 //                if($foundOnlyNoSmogiProduct == 0)die('treast');
 //                else die('dddd');
             }
-            if($flag == 1)
+            /*if($flag == 1)
             {// comment the code on client demand
              /*   $response['errors'] = "Promo Codes cannot be used toward Accessories";
                 echo json_encode($response);
                 return;*/
-            }
+            //}
 		}
         // end check do not apply smogi bucks for only accesories in cart
 		//end coded by shivaji chauhan
@@ -584,7 +585,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
 					if($flag === 1){
 						$oCoupon = Mage::getSingleton('salesrule/coupon')->load($couponCode, 'code');
 						if($oCoupon->getRuleId()){
-							Mage::getSingleton("core/session")->addError("Promo Codes can not be applied to One 2 Many, Accessories or other promotions.");
+							Mage::getSingleton("core/session")->addError("Promo Codes can not be applied to One 2 Many, Accessories, Gift Cards or other promotions.");
 						}else{
 							Mage::getSingleton("core/session")->addError("Promo code is invalid");
 						}
