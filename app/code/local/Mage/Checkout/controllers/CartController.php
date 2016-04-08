@@ -547,9 +547,10 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
                     $foundOnlyNoSmogiProduct = $this->_value_in_array($cids,$val);
                     if($foundOnlyNoSmogiProduct == 1)
                         $flag = 1;
+						break;
 
                 }
-                if($flag == 0)break;
+                if($flag == 1)break;
 //                echo $foundOnlyNoSmogiProduct;
 //                if($foundOnlyNoSmogiProduct == 0)die('treast');
 //                else die('dddd');
