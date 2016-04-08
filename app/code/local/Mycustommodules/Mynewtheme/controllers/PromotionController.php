@@ -142,11 +142,11 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
 						if($oCoupon->getRuleId()){
 							$response['errors'] = "Promo Codes can not be applied to One 2 Many, Accessories or other promotions.";
 						}else{
-							$response['errors'] = "Promo code is invalid".$flag;
+							$response['errors'] = "Promo code is invalid";
 						}
 
 					}else{
-						$response['errors'] = "Promo code is invalid".$flag;
+						$response['errors'] = "Promo code is invalid";
 					}
                     echo json_encode($response);
                     return;
