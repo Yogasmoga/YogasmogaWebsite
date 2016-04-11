@@ -297,7 +297,7 @@ if(!isset($ipInfo)){
                 </ul>
 				 <ul style="padding-top:14px;">
                         <li><a style="font-family:gothambold;" >JOIN US</a></li>
-                        <li><a href="/career">CAREERS</a></li>
+                        <li><a href="/careers">CAREERS</a></li>
                     </ul>
             </li>
         </div>
