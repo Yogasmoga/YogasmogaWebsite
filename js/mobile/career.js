@@ -43,7 +43,7 @@ jQuery(document).ready(function ($) {
   var state = $(this).attr('rel');
   jQuery.ajax({
    type: 'POST',
-   url: url+ 'career/index/mobilestatejobs',
+   url: url+ 'careers/index/mobilestatejobs',
    data: {'state': state},
    beforeSend:function (data) {
     jQuery("#content-loader").show();
@@ -81,7 +81,7 @@ jQuery(document).ready(function ($) {
 
  jQuery.ajax({
   type: 'POST',
-  url: url+ 'career/index/mobiledefaultstatejobs',
+  url: url+ 'careers/index/mobiledefaultstatejobs',
   data: {'state': 1},
   beforeSend:function (data) {
    jQuery("#content-loader").show();
