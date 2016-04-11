@@ -295,6 +295,10 @@ if(!isset($ipInfo)){
                     <li><a href="/gift_of_ys">GIFT CARD</a></li>
                     <li><a href="/sales/order/history">TRACK MY ORDER</a></li>
                 </ul>
+				 <ul style="padding-top:14px;">
+                        <li><a style="font-family:gothambold;" >JOIN US</a></li>
+                        <li><a href="/career">CAREERS</a></li>
+                    </ul>
             </li>
         </div>
         <div class="first-list contact-us">

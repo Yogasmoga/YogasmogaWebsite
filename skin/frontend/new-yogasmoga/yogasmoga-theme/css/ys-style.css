@@ -3002,9 +3002,9 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 #jobtabs .job-description .job-attributes ul li{color:#555; font-family: gothambook; font-size: 12px;
     line-height: 20px; list-style:none; padding:0;}
 #jobtabs .job-description .job-attributes ul li:before{display:none;}
-#jobtabs .job-description .job-attributes ul li span{font: 12px/20px gothambold; text-transform:uppercase;
+#jobtabs .job-description .job-attributes ul li span{font: 11px/20px gothambold; text-transform:uppercase;
     margin-right:6px; display:inline-block;}
-#jobtabs .job-description h6{font: 12px/20px gothambold; text-transform:uppercase; font-weight:normal;color:#555;}
+#jobtabs .job-description h6{font: 11px/20px gothambold; text-transform:uppercase; font-weight:normal;color:#555;}
 #jobtabs .job-description ul{list-style:none; margin:0 0 0 13px;}
 #jobtabs .job-description > ul,#jobtabs .job-description > p{margin-bottom:15px;}
 #jobtabs .job-description ul li {list-style: outside none none;padding-left: 20px; position: relative;}
@@ -3018,5 +3018,5 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 #jobtabs #content-loader > img { position: relative;top: 20%;}
 #jobtabs #content-loader{background: #fff none repeat scroll 0 0;height: 100%;position: absolute;text-align: center;width:		100%;}
 #jobtabs .new-bot-divider{clear:both;}
-
+#jobtabs .job-description p a{color:#d90d3d;}
 /*=============for career page end=========*/
