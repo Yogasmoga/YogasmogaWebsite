@@ -9,7 +9,7 @@ class Ysindia_Career_Block_Adminhtml_Career_Edit_Tab_Form extends Mage_Adminhtml
       $fieldset = $form->addFieldset('career_form', array('legend'=>Mage::helper('career')->__('Item information')));
 
       $fieldset->addField('job_state', 'select', array(
-          'label'     => Mage::helper('career')->__('Job Status'),
+          'label'     => Mage::helper('career')->__('Job State'),
           'name'      => 'job_state',
           'values'    => array(
               array(
@@ -27,7 +27,7 @@ class Ysindia_Career_Block_Adminhtml_Career_Edit_Tab_Form extends Mage_Adminhtml
               ),
               array(
                   'value'     => 4,
-                  'label'     => Mage::helper('career')->__('New Jersy'),
+                  'label'     => Mage::helper('career')->__('New Jersey'),
               ),
               array(
                   'value'     => 5,
@@ -82,6 +82,24 @@ class Ysindia_Career_Block_Adminhtml_Career_Edit_Tab_Form extends Mage_Adminhtml
           'name'      => 'compensation',
       ));
 
+      $fieldset->addField('job_posted', 'text', array(
+          'label'     => Mage::helper('career')->__('Date Posted'),
+          //'class'     => 'required-entry',
+          'required'  => false,
+          'name'      => 'job_posted',
+      ));
+      /*
+      $dateFormatIso = Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
+      $fieldset->addField('date_posted', 'date', array(
+          'name'   => 'date_posted',
+          'label'  => Mage::helper('career')->__('Date Posted'),
+          'title'  => Mage::helper('career')->__('Date Posted'),
+          'placeholder'=>Mage::helper('career')->__('Date Posted'),
+          'image'  => $this->getSkinUrl('images/grid-cal.gif'),
+          'input_format' => $dateFormatIso,
+          'format'       => $dateFormatIso,
+          'time' => true
+      ));*/
 
       /*
       $fieldset->addField('filename', 'file', array(

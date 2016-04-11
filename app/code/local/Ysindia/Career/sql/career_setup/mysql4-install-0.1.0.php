@@ -17,6 +17,7 @@ CREATE TABLE {$this->getTable('career')} (
   `working_with` varchar(255) NOT NULL default '',
   `type` varchar(255) NOT NULL default '',
   `compensation` varchar(255) NOT NULL default '',
+  `job_posted` varchar(255) NOT NULL default '',
   `filename` varchar(255) NOT NULL default '',
   `introduction` text NOT NULL default '',
   `responsibilities` text NOT NULL default '',
@@ -24,6 +25,7 @@ CREATE TABLE {$this->getTable('career')} (
   `how_to_apply` text NOT NULL default '',
   `about_ys` text NOT NULL default '',
   `status` smallint(6) NOT NULL default '0',
+  `date_posted` date NULL,
   `created_time` datetime NULL,
   `update_time` datetime NULL,
   PRIMARY KEY (`career_id`)

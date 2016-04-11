@@ -3,45 +3,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function indexAction()
     {
-    	
-    	/*
-    	 * Load an object by id 
-    	 * Request looking like:
-    	 * http://site.com/career?id=15 
-    	 *  or
-    	 * http://site.com/career/id/15 	
-    	 */
-    	/* 
-		$career_id = $this->getRequest()->getParam('id');
-
-  		if($career_id != null && $career_id != '')	{
-			$career = Mage::getModel('career/career')->load($career_id)->getData();
-		} else {
-			$career = null;
-		}	
-		*/
-		
-		 /*
-    	 * If no param we load a the last created item
-    	 */ 
-    	/*
-    	if($career == null) {
-			$resource = Mage::getSingleton('core/resource');
-			$read= $resource->getConnection('core_read');
-			$careerTable = $resource->getTableName('career');
-			
-			$select = $read->select()
-			   ->from($careerTable,array('career_id','title','content','status'))
-			   ->where('status',1)
-			   ->order('created_time DESC') ;
-			   
-			$career = $read->fetchRow($select);
-		}
-		Mage::register('career', $career);
-		*/
-
-			
-		$this->loadLayout();     
+    	$this->loadLayout();
 		$this->renderLayout();
     }
 	public function getstatejobsAction(){
@@ -80,7 +42,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 
 
 		echo '<div class="pg-heading">
-				<h2>Jobs: '.$stateText.'</h2>
+				<h2>Careers: '.$stateText.'</h2>
 			</div>';
 
 		if($resutldata > 0){
@@ -113,6 +75,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
                                             <li><span>Working With:</span>' . $careerdata['working_with'] . '</li>
                                             <li><span>Type:</span>' . $careerdata['type'] . '</li>
                                             <li><span>Compensation:</span>' . $careerdata['compensation'] . '</li>
+                                            <li><span>Date Posted:</span>' . $careerdata['job_posted'] . '</li>
                                         </ul>
                                     </div>' . $careerdata['introduction'] . '<h6>RESPONSIBILITIES</h6>' . $careerdata['responsibilities'] . '<h6>Desired Skills, Qualifications And Experience</h6>
                 ' . $careerdata['desired_skill'] . '
@@ -146,7 +109,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 			$stateText = "california";
 		}
 		echo '<div class="pg-heading">
-				<h2>Jobs: '.$stateText.'</h2>
+				<h2>Careers: '.$stateText.'</h2>
 			</div>';
 
 		if($resutldata > 0){
@@ -180,6 +143,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
                                             <li><span>Working With:</span>' . $careerdata['working_with'] . '</li>
                                             <li><span>Type:</span>' . $careerdata['type'] . '</li>
                                             <li><span>Compensation:</span>' . $careerdata['compensation'] . '</li>
+                                            <li><span>Date Posted:</span>' . $careerdata['job_posted'] . '</li>
                                         </ul>
                                     </div>' . $careerdata['introduction'] . '<h6>RESPONSIBILITIES</h6>' . $careerdata['responsibilities'] . '<h6>Desired Skills, Qualifications And Experience</h6>
                 ' . $careerdata['desired_skill'] . '
@@ -260,6 +224,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 							<li><span>Working With:</span>' .$jobsdata['working_with'].'</li>
 							<li><span>Type:</span>' .$jobsdata['type'].'</li>
 							<li><span>Compensation:</span>' .$jobsdata['compensation'].'</li>
+							<li><span>Date Posted:</span>' . $jobsdata['job_posted'] . '</li>
 						</ul>
 					</div>
 					<div>' .$jobsdata['introduction'].'</div>
@@ -332,6 +297,7 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 							<li><span>Working With:</span>' .$jobsdata['working_with'].'</li>
 							<li><span>Type:</span>' .$jobsdata['type'].'</li>
 							<li><span>Compensation:</span>' .$jobsdata['compensation'].'</li>
+							<li><span>Date Posted:</span>' . $jobsdata['job_posted'] . '</li>
 						</ul>
 					</div>
 					<div>' .$jobsdata['introduction'].'</div>

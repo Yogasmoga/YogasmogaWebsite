@@ -37,7 +37,7 @@ class Ysindia_Career_Block_Adminhtml_Career_Grid extends Mage_Adminhtml_Block_Wi
               1 => 'California',
               2 => 'Connecticut',
               3 => 'Massachusetts',
-              4 => 'New Jersy',
+              4 => 'New Jersey',
               5 => 'New York',
           ),
       ));
@@ -74,7 +74,11 @@ class Ysindia_Career_Block_Adminhtml_Career_Grid extends Mage_Adminhtml_Block_Wi
 			'index'     => 'content',
       ));
 	  */
-
+      $this->addColumn('job_posted', array(
+          'header'    => Mage::helper('career')->__('Date Posted'),
+          'align'     =>'left',
+          'index'     => 'job_posted',
+      ));
       $this->addColumn('status', array(
           'header'    => Mage::helper('career')->__('Status'),
           'align'     => 'left',
