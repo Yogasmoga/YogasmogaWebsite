@@ -19,7 +19,7 @@
                 <use>standard</use>
                 <args>
                     <module>Ysindia_Career</module>
-                    <frontName>career</frontName>
+                    <frontName>careers</frontName>
                 </args>
             </career>
         </routers>
