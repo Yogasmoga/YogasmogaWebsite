@@ -709,6 +709,22 @@ $logged_in = is_user_logged_in();
 	c0-1.6,2.9-2.9,6.4-2.9s6.4,1.3,6.4,2.9L-70.9,26.7z" class="st0" id="XMLID_3_"/>
 </svg>
                             </span>Help</a></li>
+							
+							     
+						
+						<li class="ys_single_link"><a href="/careers">
+                            <span class="contact_icon">
+                             <svg width="44px" height="44px" version="1.1" id="Layer_1" viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+								<style type="text/css">
+								.st0{fill:#BFBFC0;}
+								.st1{fill:none;stroke:#CCCBCB;stroke-miterlimit:10;}
+								</style>
+								<path id="XMLID_4_" class="st0" d="M37.1,117.8"/>
+								<path id="XMLID_1_" class="st0" d="M37.1-152.7"/>
+								<polygon id="XMLID_2_" class="st1" points="23.6,13.8 23.6,19.7 18.1,19.7 18.1,25.1 12.2,25.1 12.2,31.5 30,31.5 30,13.8 "/>
+							</svg>
+
+                            </span>Careers</a></li>
 
 
                         </ul>
