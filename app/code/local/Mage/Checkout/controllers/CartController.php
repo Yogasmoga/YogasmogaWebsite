@@ -526,6 +526,45 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             return;
         }
 
+        //coded by shivaji chauhan
+        //check do not apply smogi bucks for only accesories in cart
+        $miniitems = Mage::getSingleton('core/session')->getCartItems();
+        if(isset($miniitems))
+        {
+            $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
+            $excludecats = explode(",", $excludecats);
+            $foundOnlyNoSmogiProduct = 0;
+            $flag = 0;
+            foreach($miniitems as $mitem)
+            {
+                $mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
+                $cids = $mitemProduct->getCategoryIds();
+
+                $flag = 0;
+                foreach($excludecats as $key=>$val)
+                {
+                    $foundOnlyNoSmogiProduct = $this->_value_in_array($cids,$val);
+                    if($foundOnlyNoSmogiProduct == 1)
+                    {  $flag = 1;
+                        break;
+                    }
+
+                }
+                if($flag == 1)break;
+                //echo $foundOnlyNoSmogiProduct;
+                // if($foundOnlyNoSmogiProduct == 0)die('treast');
+                //else die('dddd');
+            }
+            /*if($flag == 1)
+            {// comment the code on client demand
+             /*   $response['errors'] = "Promo Codes cannot be used toward Accessories";
+                echo json_encode($response);
+                return;*/
+            //}
+        }
+        // end check do not apply smogi bucks for only accesories in cart
+        //end coded by shivaji chauhan
+
         try {
             $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
             $this->_getQuote()->setCouponCode(strlen($couponCode) ? $couponCode : '')
@@ -540,6 +579,19 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
                 }
                 else {
                     Mage::getSingleton("core/session")->addError("Promo code is invalid");
+                    //coded by shivaji chauhan
+                    if($flag === 1){
+                        $oCoupon = Mage::getSingleton('salesrule/coupon')->load($couponCode, 'code');
+                        if($oCoupon->getRuleId()){
+                            Mage::getSingleton("core/session")->addError("Promo Codes can not be applied to One 2 Many, Accessories, Gift Cards or other promotions.");
+                        }else{
+                            Mage::getSingleton("core/session")->addError("Promo code is invalid");
+                        }
+
+                    }else{
+                        Mage::getSingleton("core/session")->addError("Promo code is invalid");
+                    }
+                    //end coded by shivaji chauhan
                 }
             } else {
                 Mage::getSingleton("core/session")->addSuccess($this->__('Promo code has been removed successfully'));
@@ -584,4 +636,19 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
         $this->getResponse()->setRedirect($refererUrl);
         //$this->_goBack();
     }
+    //coded by shivaji chauhan
+    public function _value_in_array($array, $find){
+        $exists = 0;
+        if(!is_array($array)){
+            return;
+        }
+        foreach ($array as $key => $value) {
+
+            if($find == $value){
+                $exists = 1;
+            }
+        }
+        return $exists;
+    }
+    //end coded by shivaji chauhan
 }
