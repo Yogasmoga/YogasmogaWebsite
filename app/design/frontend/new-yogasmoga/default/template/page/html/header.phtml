@@ -710,17 +710,27 @@ foreach ($orders as $order) {
     $total = $order->getGrandTotal();
     $sum+= $total;
 
+	//coded by shivaji chauhan
+	$payment = $order->getPayment();
+	$paymethod  = $payment->getMethodInstance()->getCode();
+	if($paymethod === 'stripe'){
+		break;
+	}
+	//end coded by shivaji chauhan
+
 }
 
 $getGOYSFirstUser = count($orders);
 //echo Mage::getSingleton('customer/session')->getCustomer()->getId();
 //echo $getGOYSFirstUser;die("Testing");
 
-if($getGOYSFirstUser == 0){
+//coded by shivaji chauhan
+if($getGOYSFirstUser == 0 || $paymethod != 'stripe'){
     ?>
     <script type="text/javascript">
         _getGOYSFirstUser = 1;
     </script>
 <?php
 }
+//end coded by shivaji chauhan
 ?>
