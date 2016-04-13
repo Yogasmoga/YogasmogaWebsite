@@ -2993,8 +2993,8 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     line-height: 20px;}
 #jobtabs .job-title-list ul li a span{/*font: 12px/20px gothambold;*/font: 12px/15px gothambold; text-transform:uppercase;
     border-bottom:1px solid	#c03; margin-right:6px; display:inline-block;}
-#jobtabs .job-description{font-family: gothambook;font-size: 12px; line-height: 20px;color:#555; padding-top:10px;border-top:1px solid #555;margin-top:48px;min-width:600px;width:100%;max-width:58%; float:left;}
-}
+#jobtabs .job-description{font-family: gothambook;font-size: 12px; line-height: 20px;color:#555; padding-top:10px;border-top:1px solid #555;margin-top:92px;min-width:600px;width:100%;max-width:58%; float:left;}
+#jobtabs  #job1.job-description{margin-top:48px;}
 #jobtabs .job-description a{color:#cc0033;}
 #jobtabs .job-description .job-title {color: #555;font-family: ITCAvantGardeProMd;font-size: 24px; text-transform: uppercase; margin-bottom:10px;}
 #jobtabs .job-description .job-attributes{}
