@@ -37,7 +37,7 @@
 				<use>admin</use>
 				<args>
 					<module>Ysindia_Career</module>
-					<frontName>careers</frontName>
+					<frontName>yscareers</frontName>
 				</args>
 			</career>
         </routers>
