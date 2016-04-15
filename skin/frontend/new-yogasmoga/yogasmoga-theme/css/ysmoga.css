@@ -188,6 +188,15 @@ ul.site-map > li{
     line-height: 28px;
     font-family: AvantGardeGothicITCW01X;
 }
+.large-text sup.co{
+    font-size: 50px;
+    height: auto;
+    line-height: 0;
+    padding: 0;
+    vertical-align: inherit;
+    line-height: 50px;
+    font-family: AvantGardeGothicITCW01X;
+}
 .learn-more {
     border-bottom: 1px solid #c03;
     color: #fff;
@@ -264,7 +273,7 @@ ul.site-map > li{
     border-bottom: 1px solid #fff;
 }
 
-.compressBox, .multicolorcont, .factorythread, .usamap, .supportnamaskar, .raisingfunds,.fall-river{
+.compressBox, .multicolorcont, .factorythread, .usamap, .supportnamaskar, .raisingfunds,.fall-river,.featured-collection-top,.featured-collection-bottom{
     background: url("../images/new-elements/goldbg.png") no-repeat center center #ae8637;
     background-size: 100% 100%;
     width: 100%;
@@ -290,6 +299,17 @@ ul.site-map > li{
     background-size: 100% 100%;
     /*height:100%;*/
 }
+.featured-collection-top{
+    background: url("../images/new-elements/featured_collection_top.jpg") no-repeat center center transparent;
+    background-size: 100% 100%;    
+}
+.featured-collection-bottom{
+    background:#fff;
+    /*background-size: 100% 100%;    */
+	top:50%;
+}
+.featured-collection-bottom img.co{left: 7%; max-width: 253px; position: absolute;top: 16.5%;}
+.featured-collection-bottom img.seal{left: 48.5%; max-width: 243px; position: absolute;top: 19%;}
 
 .usamap{
     background: url("../images/new-elements/made-in-usa-bottom-section.jpg") no-repeat center center transparent;
@@ -2339,6 +2359,8 @@ div.new-arrivals-block{
     width: 50%;
     font-size: 13px;
 }
+.contentSlider .small-text.feat{margin: auto auto 3.0%; width:43%; padding-bottom:15px;}
+
 .contentSlider .large-text{
     font-size: 40px;
     line-height: 43px;
@@ -2363,6 +2385,7 @@ div.new-arrivals-block{
     font-weight: bold;
     line-height: 40px !important;
 }
+.large-text sup.co{font-size:40px; line-height:40px;}
 .contentSlider.mistext .large-text span{
     font-size: 19px;
     line-height:39px;
@@ -2457,6 +2480,7 @@ div.new-arrivals-block{
         font-size: 50px !important;
         line-height: 53px !important;
     }
+	.large-text sup.co{font-size:50px; line-height:50px;}
     .contentSlider p.large-text span {
         font-size: 50px !important;
         line-height: 53px !important;
@@ -2488,6 +2512,8 @@ div.new-arrivals-block{
         font-size: 45px !important;
         line-height: 48px !important;
     }
+	.large-text sup.co{font-size:45px; line-height:45px;}
+	
     .contentSlider p.large-text span {
         font-size: 45px !important;
         line-height: 48px !important;
