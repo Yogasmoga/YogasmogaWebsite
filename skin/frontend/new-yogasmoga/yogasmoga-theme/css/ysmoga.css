@@ -2362,11 +2362,11 @@ div.new-arrivals-block{
 .contentSlider .small-text.feat{margin: auto auto 3.8%; width:43%;/* padding-bottom:15px;*/}
 
 .contentSlider .large-text{
-    font-size: 40px;
-    line-height: 43px;
+    font-size: 34px;
+    line-height: 34px;
 }
 .contentSlider p.large-text{
-    font-family: AvantGardeGothicMedium;
+    font-family: AvantGardeGothicITCW01D;
     color: #fff;
 }
 .contentSlider p.large-text span{
@@ -2380,12 +2380,12 @@ div.new-arrivals-block{
 .contentSlider.mistext .large-text {
     border-bottom:none;
     color: #fff !important;
-    font-family: AvantGardeGothicMedium;
-    font-size: 40px;
+    font-family: AvantGardeGothicITCW01D;
+    font-size: 34px;
     font-weight: bold;
-    line-height: 40px !important;
+    line-height: 34px !important;
 }
-.large-text sup.co{font-size:40px; line-height:40px;}
+.large-text sup.co{font-size:34px; line-height:34px;font-family: AvantGardeGothicITCW01B;}
 .contentSlider.mistext .large-text span{
     font-size: 19px;
     line-height:39px;
@@ -2477,10 +2477,10 @@ div.new-arrivals-block{
         font-size: 14px !important;
     }
     .contentSlider .large-text{
-        font-size: 50px !important;
-        line-height: 53px !important;
+        font-size: 46px !important;
+        line-height: 50px !important;
     }
-	.large-text sup.co{font-size:50px; line-height:50px;}
+	.large-text sup.co{font-size:46px; line-height:50px;}
     .contentSlider p.large-text span {
         font-size: 50px !important;
         line-height: 53px !important;
