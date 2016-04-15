@@ -35,7 +35,7 @@ body{-webkit-font-smoothing: subpixel-antialiased; /*opacity:0;*/}
 
 /****Header****/
 /*#pagecontainer{min-width: 960px;}*/
-.header-container { background-color: #fff; position: fixed; top: 0px; height : 69px; width : 100%; z-index: 10003; min-width: 1070px;}
+.header-container { background-color: #fff; position: fixed; top: 0px; height : 69px; width : 100%; z-index: 10003; min-width: 1007px;}
 /*.header{ padding:0 60px 0 30px;}*/
 .header{ padding:0 40px 0 13px;}
 .header .logo {margin:0;}
