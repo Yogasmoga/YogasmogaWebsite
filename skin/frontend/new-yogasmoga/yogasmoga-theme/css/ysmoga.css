@@ -2359,7 +2359,7 @@ div.new-arrivals-block{
     width: 50%;
     font-size: 13px;
 }
-.contentSlider .small-text.feat{margin: auto auto 3.0%; width:43%; padding-bottom:15px;}
+.contentSlider .small-text.feat{margin: auto auto 3.8%; width:43%;/* padding-bottom:15px;*/}
 
 .contentSlider .large-text{
     font-size: 40px;
