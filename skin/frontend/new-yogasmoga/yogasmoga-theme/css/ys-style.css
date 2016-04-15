@@ -1,6 +1,6 @@
 /* Layout ================================================================================ */
 .wrapper { min-width:100%;  margin:0 auto;}
-.page {display:block; background: #fff; z-index: 2; position: relative; min-width: 1070px;}
+.page {display:block; background: #fff; z-index: 2; position: relative; min-width: 1007px;}
 .page-print { background:#fff; padding:25px 30px; text-align:left; }
 .page-empty { background:#fff; padding:0px; text-align:left; }
 .page-popup { background:#fff; padding:25px 30px; text-align:left; }
