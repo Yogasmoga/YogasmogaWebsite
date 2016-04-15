@@ -2356,10 +2356,10 @@ div.new-arrivals-block{
     line-height: normal;
     margin: auto auto 2.05499%;
     padding-bottom: 8px;
-    width: 50%;
+    /*width: 50%;*/width: 43%;
     font-size: 13px;
 }
-.contentSlider .small-text.feat{margin: auto auto 3.8%; width:43%;/* padding-bottom:15px;*/}
+.contentSlider .small-text.feat{margin: auto auto 3.8%; /* padding-bottom:15px;*/}
 
 .contentSlider .large-text{
     font-size: 34px;
