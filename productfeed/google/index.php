@@ -171,7 +171,7 @@ foreach ($productCollection as $_product) {
                 $arr = array(
                     $sku,
                     $sku_configurable,
-                    'YOGASMOGA ' . $total_name . ' YOGA',
+                    'YOGASMOGA ' . str_replace('-',' - ',$total_name),
                     'YOGASMOGA ' . html_entity_decode(strip_tags($description)),
                     'Apparel & Accessories > Clothing > Activewear',
                     '',
