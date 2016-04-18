@@ -2354,12 +2354,11 @@ div.new-arrivals-block{
     font-family: gothambold;
     font-weight: normal;
     line-height: normal;
-    margin: auto auto 2.05499%;
-    padding-bottom: 8px;
+    margin: auto auto 3.2%;
+    padding-bottom: 17px;
     /*width: 50%;*/width: 43%;
     font-size: 13px;
 }
-.contentSlider .small-text.feat{margin: auto auto 3.8%; /* padding-bottom:15px;*/}
 
 .contentSlider .large-text{
     font-size: 34px;
@@ -2541,6 +2540,12 @@ div.new-arrivals-block{
         font-family: AvantGardeGothicITCW01M !important;
     }
     /* ******************************************************* **/
+}
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+	.contentSlider .large-text{
+        font-size: 42px !important;
+        line-height: 45px !important;
+    }
 }
 /* ///////////////////////////////////////////////////////////////////////////*/
 /*///////////////////////////////////////////////////////////////////////////*/
@@ -2864,3 +2869,16 @@ a.learn-more {
 .contentSlider .small-text sup{font-size:13px; vertical-align:bottom;}
 .contentSlider .small-text sup.tm{font-size:15px; vertical-align:inherit;}
 .cms-home .ysfabricpart .grid35, .cms-home .factorypart .grid35 {left:66.7%;}
+
+/*------------------------*/
+.bucket1 .contentSlider{top:38.9196%;}
+.bucket2 .contentSlider{top:44%;}
+.bucket3 .contentSlider{top:38.9112%;}
+.bucket4 .contentSlider{top:38.9112%;}
+
+@media only screen and (max-width : 1024px) {
+.bucket1 .contentSlider{top:28%;}
+.bucket2 .contentSlider{top:34%;}
+.bucket3 .contentSlider{top:35%;}
+.bucket4 .contentSlider{top:35%;}
+}
