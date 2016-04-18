@@ -59,17 +59,18 @@
         <p><?php echo $this->__('You currently have') ?></p>
         <div class="smogi-counting">
             <span class="smogi-count"><?php
-                    $store_id = Mage::app()->getStore()->getId();
-                    $customerId = Mage::getModel('customer/session')->getCustomerId();
+                    echo $store_id = Mage::app()->getStore()->getId();
+                    echo $customerId = Mage::getModel('customer/session')->getCustomerId();
                     if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
                         $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
                         echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
                         //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
-                    }        
-                    
+						
+                    } 
+
                     $reward_model = Mage::getModel('rewardpoints/stats');
                     //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
-                    echo $reward_model->getPointsCurrent($customerId, $store_id)+0;                    
+                    echo $reward_model->getPointsCurrent($customerId, $store_id)+0;            
                     //Mage::helper('core')->currency($reward_model->getPointsCurrent($customerId, $store_id)+0);
                  ?>
             </span><br />
