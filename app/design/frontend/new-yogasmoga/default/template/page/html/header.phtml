@@ -773,21 +773,26 @@ if(!$loggedIn){ ?>
 <!-- toCheckFirstCustomerOrderforGOYS -->
 <?php $orders = Mage::getModel('sales/order')->getCollection()
     ->addAttributeToFilter('customer_id', Mage::getSingleton('customer/session')->getCustomer()->getId());
+$sum = 0;
 foreach ($orders as $order) {
     $total = $order->getGrandTotal();
     $sum+= $total;
 
+    $payment = $order->getPayment();
+    $paymethod  = $payment->getMethodInstance()->getCode();
+    if($paymethod === 'stripe'){
+        break;
+    }
 }
 
 $getGOYSFirstUser = count($orders);
 //echo Mage::getSingleton('customer/session')->getCustomer()->getId();
 //echo $getGOYSFirstUser;die("Testing");
 
-if($getGOYSFirstUser == 0){
-    ?>
+if($getGOYSFirstUser == 0 || $paymethod != 'stripe'){ ?>
     <script type="text/javascript">
         _getGOYSFirstUser = 1;
     </script>
-<?php
-}
-?>
+<?php } ?>
+
+
