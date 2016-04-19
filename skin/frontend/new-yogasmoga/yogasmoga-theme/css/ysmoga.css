@@ -2860,8 +2860,8 @@ a.learn-more {
 
 .contentSlider .small-text sup{font-size:13px; vertical-align:bottom;}
 .contentSlider .small-text sup.tm{font-size:15px; vertical-align:inherit;}
-.featured-collection-bottom img.co{left: 7%; max-width: 305px; position: absolute;top: 16.5%;}
-.featured-collection-bottom img.seal{left: 48.5%; max-width: 289px; position: absolute;top: 19%;}
+.featured-collection-bottom img.co{transform:translateY(-50%);-webkit-transform:translateY(-50%);left: 7%;/* max-width: 305px;*/width: 47.46%; position: absolute;top: 50%;}
+.featured-collection-bottom img.seal{transform:translateY(-50%);-webkit-transform:translateY(-50%);left: 48.5%; /*max-width: 289px;*/ width: 45.59%;position: absolute;top: 50%;}
 
 .bucket1 .contentSlider{top:38.9196%;}
 .bucket2 .contentSlider{top:44%;}
