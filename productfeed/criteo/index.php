@@ -16,7 +16,7 @@ fwrite($fileOut, "&PROCESSTYPE=UPDATE\n");
 fwrite($fileOut, "&AID=12186878\n");
 fwrite($fileOut, "&PARAMETERS=NAME|KEYWORDS|DESCRIPTION|SKU|BUYURL|AVAILABLE|IMAGEURL|PRICE|UPC|ADVERTISERCATEGORY|MERCHANDISETYPE\n");
 
-$productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('*')->addAttributeToFilter('status', array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED));
+$productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('*')->addAttributeToFilter('type_id', 'configurable')->addAttributeToFilter('status', array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED));
 $_helper = Mage::helper('catalog/output');
 
 $count = 0;
@@ -45,7 +45,7 @@ foreach ($productCollection as $_product) {
     $merchandiseType = '';
 */
 
-    //if ($product->getTypeId() == 'configurable') {
+    if ($product->getTypeId() == 'configurable') {
 
         $sku = $product->getSku();
         $name = $product->getName();
@@ -115,7 +115,7 @@ foreach ($productCollection as $_product) {
         $data = "$name|$keywords|$description|$sku|$buy_url|$available|$image_url|$price|$upc|$advertise_category|$merchandiseType\n";
 
         fwrite($fileOut, $data);
-    //}
+    }
 }
 
 fclose($fileOut);
