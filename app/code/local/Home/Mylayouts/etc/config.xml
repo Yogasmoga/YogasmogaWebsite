@@ -192,9 +192,9 @@
 		<!-- Collection page layouts End here -->
 		
 	    <collection translate="label">
-          <label>Collection</label>
+          <label>Varint</label>
           <template>page/collection.phtml</template>
-          <layout_handle>collection</layout_handle>
+          <layout_handle>varint</layout_handle>
         </collection>
 		<!-- Collection page layouts End here -->
 		
