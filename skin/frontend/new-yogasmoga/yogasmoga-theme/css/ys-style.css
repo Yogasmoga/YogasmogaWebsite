@@ -2953,7 +2953,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .featured-collection-bottom img.co{max-width:253px!important;}
 .featured-collection-bottom img.seal{max-width:243px!important;}
 }
-@media screen and (min-width: 1601px) {
+@media screen and (min-width: 1900px) {
 .featured-collection-bottom img.co{max-width:305px!important;}
 .featured-collection-bottom img.seal{max-width:289px!important;}
 }
