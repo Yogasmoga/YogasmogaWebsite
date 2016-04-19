@@ -773,3 +773,7 @@ table#referrallink td.share a#twrefer{width: 25px; height: 21px;}
 table#referrallink td.share a#mlrefer{width: 28px; height: 18px;}
 
 .addresses-list .item address span{font-size:12px; line-height:18px;}
+
+/*--for reset password fields--*/
+.inputtable .inputholder label{display:block; text-align:left;}
+.btnholder{padding:12px; text-align:right;}
