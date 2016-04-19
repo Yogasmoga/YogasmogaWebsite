@@ -162,8 +162,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
             "success_message" => ""
         );
         //check do not apply smogi bucks for only accesories in cart
-		   $miniitems = Mage::getSingleton('checkout/session')->getQuote()->getAllVisibleItems();
-		   
+		   $miniitems = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
         if(isset($miniitems))
         {
             $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
@@ -171,23 +170,8 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
             $flag = 0;
             foreach($miniitems as $mitem)
             {
-                /*if(isset($mitem['type'])) {
-                    $productType = $mitem['type'];
-
-                    if (isset($productType) && ($productType == 'gift' || $productType == 'bundled-gift')) {
-                        Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.");
-                        $refererUrl = $this->_getRefererUrl();
-                        $this->getResponse()->setRedirect($refererUrl);
-                        return;
-                    }
-                }*/
-
                 $mitemProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $mitem['sku']);
-				$cids = $mitemProduct->getCategoryIds();
-				
-				$productId = $mitem->getProductId();
-				$giftsetProduct = Mage::getModel('catalog/product')->load($productId);
-                $giftsetcategoryId = $giftsetProduct->getCategoryIds();
+                $cids = $mitemProduct->getCategoryIds();
 				//echo "<pre>";
                 //print_r($excludecats);
                 $flag = 0;
@@ -196,50 +180,51 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
                    if (in_array($val, $cids)) { 
 				   $flag = 1;
 				   }
-				   if (in_array($val, $giftsetcategoryId)) { 
-				   
-				   $flag = 1;
-				   }
 				  
                 }
                 if($flag == 0)break;          
             }
-			
-			// promotion check
-/*
-			if($flag==0){
-		
-				foreach($miniitems as $mitem)
-				{	
-		
-				 	$price = $mitem['price'];
-							
-					if(is_null($mitem['parent_item_id'])){
-	
-						if(intval($price)==0){
 
-							Mage::getSingleton("core/session")->addError("SMOGI Bucks cannot be used on promotions"); 
-							$refererUrl = $this->_getRefererUrl();
-							$this->getResponse()->setRedirect($refererUrl);
-							return;
-						}
-					}
-				}
-			
-			}
+            // promotion check
+/*
+            if($flag==0){
+
+                foreach($miniitems as $mitem)
+                {
+
+                    $price = $mitem['price'];
+
+                    if(is_null($mitem['parent_item_id'])){
+
+                        if(intval($price)==0){
+
+                            Mage::getSingleton("core/session")->addError("SMOGI Bucks cannot be used on Promotions");
+                            $refererUrl = $this->_getRefererUrl();
+                            $this->getResponse()->setRedirect($refererUrl);
+                            return;
+                        }
+                    }
+                }
+
+            }
 */
             if($flag == 1)
             {
               
-			   Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.");
+			   Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.");
+
+			   //$response['error'] = "SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items";
+              //  echo json_encode($response);
                $refererUrl = $this->_getRefererUrl();
             }
 
+            /********** smogi bucks should not be applied when discount is there ***************/
             $data = Mage::getSingleton('checkout/cart')->getQuote()->getAllVisibleItems();
             if(isset($data)) {
                 foreach ($data as $item) {
                     if (isset($item['discount_amount']) && floatval($item['discount_amount'] > 0)) {
-                        Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.");
+                        Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.");
+						
                         $refererUrl = $this->_getRefererUrl();
                         $this->getResponse()->setRedirect($refererUrl);
                         $flag = 1;
@@ -247,6 +232,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
                     }
                 }
             }
+            /********** smogi bucks should not be applied when discount is there ***************/
         }
         
         $session = Mage::getSingleton('core/session');

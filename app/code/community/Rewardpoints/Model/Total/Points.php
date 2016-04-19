@@ -62,8 +62,6 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 			$accessories = 0;
             $itemids = array();
             $count = 0;
-            $tot = 0;
-            $cattotal = 0;
 
             foreach ($items as $item) {
                 array_push($itemids, $item->getProductId());
