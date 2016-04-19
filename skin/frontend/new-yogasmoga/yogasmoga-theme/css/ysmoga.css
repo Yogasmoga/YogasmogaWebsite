@@ -308,8 +308,8 @@ ul.site-map > li{
     /*background-size: 100% 100%;    */
 	top:50%;
 }
-.featured-collection-bottom img.co{left: 7%; max-width: 253px; position: absolute;top: 50%;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
-.featured-collection-bottom img.seal{left: 48.5%; max-width: 243px; position: absolute;top: 50%;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
+.featured-collection-bottom img.co{left: 7%; /*max-width: 253px;*/width:47.46%; position: absolute;top: 50%;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
+.featured-collection-bottom img.seal{left: 48.5%; /*max-width: 243px;*/width:45.59%; position: absolute;top: 50%;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
 
 .usamap{
     background: url("../images/new-elements/made-in-usa-bottom-section.jpg") no-repeat center center transparent;
