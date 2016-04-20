@@ -189,20 +189,16 @@ Add this code to all your webpages, right before the  tag
 Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
 -->
 <!-- New Dynamic Remarketing Tag -->
-<?php $FullActionName= Mage::app()->getFrontController()->getAction()->getFullActionName();
-        if($FullActionName=='catalog_product_view'){
-        if(Mage::registry('current_product')){
-        $product=Mage::registry('current_product');;
-?>
+
 <script type="text/javascript">
 var google_tag_params = {
-ecomm_prodid: '<?php echo $product->getId(); ?>',
+ecomm_prodid: '<?php echo Mage::registry('current_product')->getId(); ?>',
 ecomm_pagetype: 'Product',
-ecomm_totalvalue: '<?php echo number_format($product->getPrice(),2); ?>',
+ecomm_totalvalue: '<?php echo number_format(Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId())->getPrice(),2); ?>',
 };
 </script>
 
-<?php } } ?>
+
 <script type="text/javascript">
 /* <![CDATA[ */
 var google_conversion_id = 956523092;
