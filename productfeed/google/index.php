@@ -129,7 +129,16 @@ foreach ($productCollection as $_product) {
                 $size = $_childProduct->getAttributeText('size');
 
                 $color = $_childProduct->getAttributeText('color');
+
                 $color = substr($color, 0, strpos($color, "|"));
+
+                $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
+                    ->getParentIdsByChild($_childProduct->getId());
+                $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+
+
+
+
                 $colorCode = $allColorsNames[$color];
 
                 $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct);
@@ -161,18 +170,22 @@ foreach ($productCollection as $_product) {
 
                 $age_group = "Adult";
 
-                $total_name = html_entity_decode($_childProduct->getName());
-				
-				if(strrpos($total_name, "-")!==false)
-					$total_name = substr($total_name, 0, strrpos($total_name,"-"));
-				
+                $total_name = html_entity_decode($configurableProduct->getName());
+
+                if(strrpos($total_name, "-")!==false)
+                    $total_name = substr($total_name, 0, strrpos($total_name,"-"));
+
                 $total_buy_url = $buy_url . "?color=" . $colorCode;
+
+
+
+
 
                 $arr = array(
                     $sku,
                     $sku_configurable,
-                    'YOGASMOGA ' . str_replace('-',' - ',$total_name),
-                    'YOGASMOGA ' . html_entity_decode(strip_tags($description)),
+                    $total_name.' - '.ucwords($color),
+                    html_entity_decode(strip_tags($description)),
                     'Apparel & Accessories > Clothing > Activewear',
                     '',
                     $total_buy_url,
@@ -190,7 +203,7 @@ foreach ($productCollection as $_product) {
                     ''
                 );
 
-               fputcsv($output, $arr);
+                fputcsv($output, $arr);
             }
         }
     }
