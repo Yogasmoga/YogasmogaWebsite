@@ -649,7 +649,7 @@ function validateLoginForm()
     }
     return flag;
 }
-
+/*
 function validateForgotPasswordForm()
 {
     unsetAllError(jQuery("#forgot-password-form"));
@@ -668,7 +668,47 @@ function validateForgotPasswordForm()
         }
     }
     return flag;
+}*/
+
+
+function validateForgotPasswordForm()
+{
+
+    unsetAllError(jQuery("#forgot-password-form"));
+    var flag = true;
+    if(jQuery("#email_address").val() == "" || jQuery("#email_address").val() == "Email Address")
+    {
+        setOnError(jQuery("#email_address"), "Email Address is required");
+        jQuery("#forgot-password-form table").find('td.errortext').html('Email Address is required.');
+        flag = false;
+    }
+    else
+    {
+        if(!validateEmail(jQuery("#email_address").val()))
+        {
+            setOnError(jQuery("#email_address"),"Invalid Email Address");
+            jQuery("#forgot-password-form table").find('td.errortext').html('Invalid Email Address.');
+            flag = false;
+        }
+    }
+    return flag;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function getcardbalance()
 {
