@@ -172,8 +172,8 @@ foreach ($productCollection as $_product) {
 
                 $total_name = html_entity_decode($configurableProduct->getName());
 
-                if(strrpos($total_name, "-")!==false)
-                    $total_name = substr($total_name, 0, strrpos($total_name,"-"));
+                /*if(strrpos($total_name, "-")!==false)
+                    $total_name = substr($total_name, 0, strrpos($total_name,"-"));*/
 
                 $total_buy_url = $buy_url . "?color=" . $colorCode;
 
