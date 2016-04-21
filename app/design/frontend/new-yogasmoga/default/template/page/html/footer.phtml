@@ -175,15 +175,7 @@ window.onload = function(){
 </script>
 <!-- Google Code for Remarketing Tag -->
 <!-- New Dynamic Remarketing Tag -->
-    <?php if(Mage::app()->getRequest()->getControllerName()=='product'){ ?>
-        <script type="text/javascript">
-            var google_tag_params = {
-                ecomm_prodid: '<?php echo Mage::registry('current_product')->getId(); ?>',
-                ecomm_pagetype: 'Product',
-                ecomm_totalvalue: '<?php echo number_format(Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId())->getPrice(),2); ?>',
-            };
-        </script>
-    <?php } ?>
+
 <script type="text/javascript">
 /* <![CDATA[ */
 var google_conversion_id = 956523092;
