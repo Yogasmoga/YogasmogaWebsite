@@ -58,4 +58,33 @@
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1669605873326757&ev=PageView&noscript=1"/>
 </noscript>
 <!-- End Facebook Pixel Code -->
+
+<!-- New Dynamic Remarketing Tag -->
+<?php if(Mage::app()->getRequest()->getControllerName()=='product'){ ?>
+    <script type="text/javascript">
+        var google_tag_params = {
+            ecomm_prodid: '<?php echo Mage::registry('current_product')->getId(); ?>',
+            ecomm_pagetype: 'Product',
+            ecomm_totalvalue: '<?php echo number_format(Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId())->getPrice(),2); ?>',
+        };
+    </script>
+<?php } ?>
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 956523092;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+    <div style="display:inline;">
+        <?php if(false){ ?>
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/990162677/?value=0&amp;guid=ON&amp;script=0"/>
+        <?php } ?>
+        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/956523092/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+</noscript>
+<!-- New Dynamic Remarketing Tag -->
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('popup/css/popup.css');?>"/>
