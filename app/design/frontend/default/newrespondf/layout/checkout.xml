@@ -459,6 +459,10 @@ One page checkout order review block
             <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/onepage/review/item.phtml</template></action>
             <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/onepage/review/item.phtml</template></action>
             <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/onepage/review/item.phtml</template></action>
+
+			<!--change for gift cards on review-->
+			<action method="addItemRender"><type>giftcards</type><block>checkout/cart_item_renderer</block><template>webtex/giftcards/review_item.phtml</template></action>
+            <block type="giftcards/coupon" after="coupon" name="checkout.cart.giftcards" as="giftcards" template="webtex/giftcards/coupon.phtml"/>
 			
 			<block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="checkout/onepage/review/totals.phtml"/>
             <block type="core/text_list" name="checkout.onepage.review.info.items.before" as="items_before"/>
