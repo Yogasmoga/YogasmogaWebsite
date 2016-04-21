@@ -200,11 +200,11 @@
 		
 		<!-- Color Varint page layouts End here -->
 		
-	    <collection translate="label">
+	    <varint-color translate="label">
           <label>Varint</label>
           <template>page/varint-color.phtml</template>
           <layout_handle>varint</layout_handle>
-        </collection>
+        </varint-color>
 		<!-- Color Varint page layouts End here -->
 		
 		
