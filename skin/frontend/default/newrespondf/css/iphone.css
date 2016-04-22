@@ -7944,7 +7944,7 @@ input#giftcard_use{
 .jobs-content #content-loader img{position:relative; display:inline-block; margin-top:35px;}
 /*========for career page end========*/
 /**************google_conversion_iframe********************/
-.cms-index-index.cms-home > iframe[name="google_conversion_frame"] {
+iframe[name="google_conversion_frame"] {
     position: absolute;
     top: 0;
     visibility: hidden;
