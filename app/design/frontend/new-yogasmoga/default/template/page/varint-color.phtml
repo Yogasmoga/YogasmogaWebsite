@@ -87,6 +87,13 @@
             jQuery("body").css('overflow','auto');
        }, 500);              
     });
+	
+	/* jQuery(window).scroll(function() {  
+					 if(jQuery("body").hasClass("catalog-category-view")){
+						var element = jQuery(".leftnav");   
+						leftNav_scroll(element);
+					} 
+				  }); */
 </script>   
 <!--<div class="namaskar-overlay1">&nbsp;</div> -->
 </head>
@@ -101,7 +108,7 @@
             <div id="pagecontainer">
                 <div id="Allproducts" class="fullscreen pgsection " desc="Top Sellers" style="min-height: 422px;">
                     <div class="product-grid">
-                        <div class="2-columns-wrapper" style="padding:29px 40px 0 40px;">
+                        <div class="2-columns-wrapper">
                                 <?php
                                     // code for get left nav
                                     $currentUrl = Mage::helper('core/url')->getCurrentUrl();
@@ -130,7 +137,7 @@
                                     
                                     
                                     <!-- leftnav -->
-<div style="margin-top: 0px; min-height: 798px;" class="search-nav f-left l-align">
+<div style="margin-top: 0px;" class="leftnav f-left l-align cntn-scroll">
 <ul>
 <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#size-chart">SIZE CHARTS</a></li>
 <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>gift_of_ys">ys gift card</a></li>
@@ -226,7 +233,7 @@
 
                                 </div>
                                 <!-- middleContainer -->
-                                <div class="grid-bottom"></div>
+                               
                                 <div class="clear-fix"></div>
                         </div>
                     </div>
