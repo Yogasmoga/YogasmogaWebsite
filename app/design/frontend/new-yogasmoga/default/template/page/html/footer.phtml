@@ -150,6 +150,9 @@ jQuery(function(){
                 </ul>
             </div>
         </div>
+        <script>
+            var customerIp = '<?php echo  Mage::helper('core/http')->getRemoteAddr();?>'
+        </script>
         <script src="https://platform.twitter.com/widgets.js"></script>
     <div class="clearfix"></div> 
 <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
