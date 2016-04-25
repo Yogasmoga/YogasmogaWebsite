@@ -6,6 +6,7 @@ include_once($root . '/Ipinfo/Ipinfo.php');
 
 $ipInfo = new Ipinfo\Ipinfo();
 
+/*
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     $ip = $_SERVER['HTTP_CLIENT_IP'];
 } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -13,7 +14,8 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 } else {
     $ip = $_SERVER['REMOTE_ADDR'];
 }
-
+*/
+$ip = Mage::helper('core/http')->getRemoteAddr();
 $host = $ipInfo->getFullIpDetails($ip);
 
 if (isset($host)) {
