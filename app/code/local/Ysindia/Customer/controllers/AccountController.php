@@ -206,7 +206,7 @@ class Ysindia_Customer_AccountController extends Mage_Customer_AccountController
                 ->setBody($processedTemplate)
                 ->setSubject('Your YOGASMOGA password has been updated')
                 ->setFromEmail($senderEmail)
-                ->setFromName($customerName)
+                ->setFromName($senderName)
                 ->setType('html');
 
             $mail->send();
