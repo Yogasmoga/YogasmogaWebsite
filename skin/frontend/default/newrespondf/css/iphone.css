@@ -7278,6 +7278,8 @@ video {
     border-top: 1px solid #999;
 }
 
+
+
 .selected_cart_products .col_right_options .product-name {
     text-align: left;
 }
@@ -7995,3 +7997,5 @@ input#giftcard_use{
 .jobs-content #content-loader{text-align:center;}
 .jobs-content #content-loader img{position:relative; display:inline-block; margin-top:35px;}
 /*========for career page end========*/
+
+#checkout-review-table .selected_cart_products{border-top:0 none;}
