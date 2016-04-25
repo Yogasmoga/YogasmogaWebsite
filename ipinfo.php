@@ -1,8 +1,8 @@
 <?php
 //$root = Mage::getBaseDir();
 
-require_once('Ipinfo/Host.php');
-require_once('Ipinfo/Ipinfo.php');
+require_once('newIpinfo/Host.php');
+require_once('newIpinfo/Ipinfo.php');
 
 
 $ipInfo = new Ipinfo\Ipinfo();
@@ -20,7 +20,7 @@ if (isset($_SERVER['HTTP_CLIENT_IP']) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
 
 
 echo "<pre/>";
-var_dump($host = $ipInfo->getYourOwnIpDetails());
+var_dump($host = $ipInfo->getFullIpDetails($ip));
 
 if (isset($host)) {
     $request_city = $host->getCity();
