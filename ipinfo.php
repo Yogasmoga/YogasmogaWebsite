@@ -20,7 +20,7 @@ if (isset($_SERVER['HTTP_CLIENT_IP']) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
 
 
 echo "<pre/>";
-var_dump($host = $ipInfo->getFullIpDetails($ip));
+var_dump($host = $ipInfo->getYourOwnIpDetails());
 
 if (isset($host)) {
     $request_city = $host->getCity();
