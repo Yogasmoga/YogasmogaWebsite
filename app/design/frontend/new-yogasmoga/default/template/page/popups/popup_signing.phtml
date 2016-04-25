@@ -6,7 +6,6 @@ include_once($root . '/Ipinfo/Ipinfo.php');
 
 $ipInfo = new Ipinfo\Ipinfo();
 
-/*
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     $ip = $_SERVER['HTTP_CLIENT_IP'];
 } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -14,8 +13,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 } else {
     $ip = $_SERVER['REMOTE_ADDR'];
 }
-*/
-$ip = Mage::helper('core/http')->getRemoteAddr();
+
 $host = $ipInfo->getFullIpDetails($ip);
 
 if (isset($host)) {
@@ -30,7 +28,7 @@ else {
 }
 ?>
 
-<div id="signing_popup" style="display: none;" rel="<?php echo $ip;?>">
+<div id="signing_popup" style="display: none;">
     <div class="signing_popup_wrapper">  
         <div class="sign-up-block f-left">
             <p class="c-align form-heading">New to YOGASMOGA</p>
