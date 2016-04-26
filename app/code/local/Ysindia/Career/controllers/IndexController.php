@@ -79,10 +79,10 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
                                         </ul>
                                     </div>' . $careerdata['introduction'] . '<h6>RESPONSIBILITIES</h6>' . $careerdata['responsibilities'] . '<h6>Desired Skills, Qualifications And Experience</h6>
                 ' . $careerdata['desired_skill'] . '
-                <h6>How To Apply:</h6>
+                <h6>How To Apply</h6>
                 ' . $careerdata['how_to_apply'] . '
                 <h6>About YOGASMOGA</h6>
-                    <p>YOGASMOGA is a designer, manufacturer and retailer of Yoga inspired athletic apparel and accessories. The company&rsquo;s yoga apparel is both fashionable and sporty in nature and has roots in the rapidly growing Yoga movement. YOGASMOGA develops fiber-to-consumer technological solutions to deliver proprietary high performance fabric and athletic gear. While the company works with the most technically advanced fabric and manufacturing technologies. it also pursues a relentless focus on the traditions of Yoga. YOGASMOGA also helps the development of the NAMASKAR foundation, a bracelet driven charity focused on health, education and micro lending in the company&rsquo;s supply chain countries.</p>
+                    <p>' . $careerdata['about_ys'] . '</p>
                 </div>';
 
 			$i++;
@@ -147,10 +147,10 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
                                         </ul>
                                     </div>' . $careerdata['introduction'] . '<h6>RESPONSIBILITIES</h6>' . $careerdata['responsibilities'] . '<h6>Desired Skills, Qualifications And Experience</h6>
                 ' . $careerdata['desired_skill'] . '
-                <h6>How To Apply:</h6>
+                <h6>How To Apply</h6>
                 ' . $careerdata['how_to_apply'] . '
                 <h6>About YOGASMOGA</h6>
-                    <p>YOGASMOGA is a designer, manufacturer and retailer of Yoga inspired athletic apparel and accessories. The company&rsquo;s yoga apparel is both fashionable and sporty in nature and has roots in the rapidly growing Yoga movement. YOGASMOGA develops fiber-to-consumer technological solutions to deliver proprietary high performance fabric and athletic gear. While the company works with the most technically advanced fabric and manufacturing technologies. it also pursues a relentless focus on the traditions of Yoga. YOGASMOGA also helps the development of the NAMASKAR foundation, a bracelet driven charity focused on health, education and micro lending in the company&rsquo;s supply chain countries.</p>
+                    <p>' . $careerdata['about_ys'] . '</p>
                 </div>';
 
 
@@ -230,16 +230,9 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 					<div>' .$jobsdata['introduction'].'</div>
 					<h6>Responsibilities</h6>' .$jobsdata['responsibilities'].'
 					<h6>Desired Skills, Qualifications And Experience</h6>'.$jobsdata['desired_skill'].'
-					<h6>How To Apply:</h6>' .$jobsdata['how_to_apply'].'
+					<h6>How To Apply</h6>' .$jobsdata['how_to_apply'].'
 					<h6>About YOGASMOGA</h6>
-					<p>YOGASMOGA is a designer, manufacturer and retailer of Yoga inspired athletic apparel and
-						accessories. The company&rsquo;s yoga apparel is both fashionable and sporty in nature and has roots
-						in the rapidly growing Yoga movement. YOGASMOGA develops fiber-to-consumer technological
-						solutions to deliver proprietary high performance fabric and athletic gear. While the company
-						works with the most technically advanced fabric and manufacturing technologies. it also pursues
-						a relentless focus on the traditions of Yoga. YOGASMOGA also helps the development of the
-						NAMASKAR foundation, a bracelet driven charity focused on health, education and micro lending in
-						the company&rsquo;s supply chain countries.</p>
+					<p>' . $jobsdata['about_ys'] . '</p>
 				</div>
         	</li>';
 				}
@@ -303,16 +296,9 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 					<div>' .$jobsdata['introduction'].'</div>
 					<h6>Responsibilities</h6>' .$jobsdata['responsibilities'].'
 					<h6>Desired Skills, Qualifications And Experience</h6>'.$jobsdata['desired_skill'].'
-					<h6>How To Apply:</h6>' .$jobsdata['how_to_apply'].'
+					<h6>How To Apply</h6>' .$jobsdata['how_to_apply'].'
 					<h6>About YOGASMOGA</h6>
-					<p>YOGASMOGA is a designer, manufacturer and retailer of Yoga inspired athletic apparel and
-						accessories. The company&rsquo;s yoga apparel is both fashionable and sporty in nature and has roots
-						in the rapidly growing Yoga movement. YOGASMOGA develops fiber-to-consumer technological
-						solutions to deliver proprietary high performance fabric and athletic gear. While the company
-						works with the most technically advanced fabric and manufacturing technologies. it also pursues
-						a relentless focus on the traditions of Yoga. YOGASMOGA also helps the development of the
-						NAMASKAR foundation, a bracelet driven charity focused on health, education and micro lending in
-						the company&rsquo;s supply chain countries.</p>
+					<p>' . $jobsdata['about_ys'] . '</p>
 				</div>
         	</li>';
 			}
