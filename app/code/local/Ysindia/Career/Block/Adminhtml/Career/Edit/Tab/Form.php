@@ -162,6 +162,7 @@ class Ysindia_Career_Block_Adminhtml_Career_Edit_Tab_Form extends Mage_Adminhtml
           'wysiwyg'   => true,
           'required'  => true,
       ));
+
       $fieldset->addField('about_ys', 'editor', array(
           'name'      => 'about_ys',
           'label'     => Mage::helper('career')->__('About YOGASMOGA'),
