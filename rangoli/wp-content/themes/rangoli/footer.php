@@ -296,7 +296,7 @@ if(!isset($ipInfo)){
                     <li><a href="/sales/order/history">TRACK MY ORDER</a></li>
                 </ul>
                 <ul style="padding-top:14px;">
-                    <li><a style="font-family:gothambold;" >JOIN US</a></li>
+                    <li><span class="bold-heading" style="font-family:gothambold;" >JOIN US</span></li>
                     <li><a href="/careers">CAREERS</a></li>
                 </ul>
             </li>
