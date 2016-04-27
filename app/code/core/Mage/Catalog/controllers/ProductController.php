@@ -135,13 +135,12 @@ class Mage_Catalog_ProductController extends Mage_Core_Controller_Front_Action
                 if (isset($_GET['store'])  && !$this->getResponse()->isRedirect()) {
                     $this->_redirect('');
                 } elseif (!$this->getResponse()->isRedirect()) {
-                    //$this->_forward('noRoute');
-                    $url = Mage::getModel('catalog/category')->load($categoryId)->getUrl();
-                    $this->_redirectUrl($url);
+                    $this->_forward('noRoute');
                 }
             } else {
                 Mage::logException($e);
                 $this->_forward('noRoute');
+
             }
         }
     }
