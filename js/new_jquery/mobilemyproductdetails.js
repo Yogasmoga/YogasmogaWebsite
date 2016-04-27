@@ -888,7 +888,7 @@ function selectfirstsizeonload() {
 }
 
 function insertBraOption() {
-    _braSelected = 0;
+    _braSelected = 1;
     jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
     jQuery("body").on("touchstart", "#includeoption div", function () {
         var braValue = parseInt(jQuery("#includeoption div:nth-child(2)").attr("value"));
