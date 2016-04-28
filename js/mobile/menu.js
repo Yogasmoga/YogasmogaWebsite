@@ -242,8 +242,9 @@ jQuery(document).ready(function($){
     });
     $("p.apply_promo_label > span").click(function(){
         $("#error_msg_coupon").html("");
-        $(".apply_promo_code_div").show();
+		$(".apply_promo_code_div").show();
         $(".apply_smogi_code_div").hide();
+		$('#coupon_code').focus();
     });
 
     $("p.apply_smogi_label > span").click(function(){
