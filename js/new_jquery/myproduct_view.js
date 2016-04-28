@@ -237,7 +237,7 @@ function getfreshInventory()
 }
 
 function modifyinfo(color, size, value, instock)
-{
+{   
     //console.log(color + size + value);
     for(var i = 0; i < _productcolorinfo.length; i++)
     {
@@ -246,17 +246,26 @@ function modifyinfo(color, size, value, instock)
             for(var j = 0; j < _productcolorinfo[i].sizes.length; j++)
             {
                 arrsize = _productcolorinfo[i].sizes[j].split('|');
+				
                 if(arrsize[0] == size)
                 {
                     arrsize[1] = value;
-                    arrsize[4] = instock;
+					//coded by shivaji chauhan
+					if(parseInt(arrsize[4]) === 0){
+					arrsize[4] = instock;
+					}else if(arrsize[4] == null){
+					arrsize[4] = instock;
+					}
                     _productcolorinfo[i].sizes[j] = arrsize.join('|');
                     //console.log('found');
+					//console.log(JSON.stringify(_productcolorinfo[i].sizes));
+					//coded by shivaji chauhan
                     return;
                 }    
             }
         }
     }
+	
 }
 
 function getZoomPercent(realwidth, realheight, orgwidth, orgheight)
