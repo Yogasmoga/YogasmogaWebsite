@@ -107,25 +107,23 @@ $columns = $this->getColumns();
 					
 					$resource = Mage::getSingleton('core/resource');  
 					$read = $resource->getConnection('catalog_read');  
-					$imageJson = json_decode($_product->getImageLabel());
-					$imageJson = get_object_vars($imageJson);
+					//$imageJson = json_decode($_product->getImageLabel());
+					 foreach($gallery as $product){
+						$imgdata = json_decode(trim($product->getLabel()), true);
+						$colorId = $imgdata['color'];
+					 }
 					
-					
-					if(isset($imageJson['color'])){
-						$colorCode = $imageJson['color'];
-						$result = $read->fetchAll("SELECT value FROM eav_attribute_option_value  where option_id ='" .$colorCode ."' limit 1");
-						$value = "SELECT value FROM eav_attribute_option_value  where option_id ='" .$colorCode ."' limit 1";
+						$result = $read->fetchAll("SELECT value FROM eav_attribute_option_value  where option_id ='" .$colorId ."' limit 1");
 						foreach($result as $color){
 						echo $color['value'];
-						
 						}
 						
-					}
+				
 					?>
 					
 					</span>
                 </div>
-				<span rel="<?php echo $value."testing"; ?>" wel="<?php print_r($result);?>"></span>
+				<span rel="<?php echo $color['value']; ?>"></span>
                 <?php if ($_options): ?>
 
                 <div class="item_option_color">
