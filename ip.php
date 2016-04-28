@@ -4,17 +4,23 @@
 require_once('Ipinfo/Host.php');
 require_once('Ipinfo/Ipinfo.php');
 
+
 $ipInfo = new Ipinfo\Ipinfo();
 
-if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-    echo $ip = $_SERVER['HTTP_CLIENT_IP'];echo " - 1";
-} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-    echo $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];echo " - 2";
+if (isset($_SERVER['HTTP_CLIENT_IP']) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
+   echo $ip = $_SERVER['HTTP_CLIENT_IP'];echo " - 1";
+} elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && !empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+   echo $ips = $_SERVER['HTTP_X_FORWARDED_FOR'];echo " - 2 ,";
+   echo "<pre/>";
+   var_dump($ips_array = explode(',',$ips));
+   echo $ip = $ips_array[0];
 } else {
-    echo $ip = $_SERVER['REMOTE_ADDR'];echo " - 3";
+   echo $ip = $_SERVER['REMOTE_ADDR'];echo " - 3";
 }
 
-$host = $ipInfo->getFullIpDetails($ip);
+
+echo "<pre/>";
+var_dump($host = $ipInfo->getFullIpDetails($ip));
 
 if (isset($host)) {
     $request_city = $host->getCity();
