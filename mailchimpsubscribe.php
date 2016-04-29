@@ -107,7 +107,7 @@ if ($correct) {
             $result = $mailChimp->call('lists/subscribe', array(
                 'id' => $list_id,
                 'email' => array('email' => $email),
-                'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country, 'GENDER' => $gender),
+                'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country, 'GENDER' => $gender, 'MAILSOURCE' => 'Magento'),
                 'double_optin' => false,
                 'update_existing' => true,
                 'replace_interests' => false,
