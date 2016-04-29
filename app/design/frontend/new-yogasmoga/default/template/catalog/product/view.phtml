@@ -250,7 +250,7 @@ foreach ($_childProducts as $_childProduct) {
     $pos = strrpos($nameWithColor, '-');
     $colorName = trim(substr($nameWithColor, $pos + 1));       // get color name =>  Carbon
 
-	if (in_array("100", $categoryIds)) {
+	if($currentCategoryId != 100){ 
 
 		if($forNormal) {
 			$forHidden = $simpleProduct->getAttributeText('hidden_product');
