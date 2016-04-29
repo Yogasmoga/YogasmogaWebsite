@@ -153,6 +153,14 @@
           <layout_handle>supersale</layout_handle>
         </super_sale>
 		<!-- Super Sale Category layouts End here -->
+
+        <!-- Private Sale Category layouts Start here -->
+        <private_sale translate="label">
+          <label>Private Sale</label>
+          <template>page/privatesale.phtml</template>
+          <layout_handle>privatesale</layout_handle>
+        </private_sale>
+        <!-- Private Sale Category layouts End here -->
 		
 		<!-- Bags Category layouts Start here -->
 		<bags translate="label">
