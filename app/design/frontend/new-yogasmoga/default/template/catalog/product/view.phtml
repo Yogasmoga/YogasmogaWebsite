@@ -251,7 +251,7 @@ foreach ($_childProducts as $_childProduct) {
     $colorName = trim(substr($nameWithColor, $pos + 1));       // get color name =>  Carbon
 
     $simpleProduct = Mage::getModel('catalog/product')->load($_childProduct->getId());
-	if(!in_array('100',$categoryIds)){ 
+	
 
 		if($forNormal) {
 			$forHidden = $simpleProduct->getAttributeText('hidden_product');
@@ -259,27 +259,21 @@ foreach ($_childProducts as $_childProduct) {
 				continue;
 		}
 		else{
+			if(!in_array('100',$categoryIds)){ 
+
 			$forHidden = $simpleProduct->getAttributeText('hidden_product');
 			if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
 				continue;
-		}
+			}else{
 
-	}else{ 
-
-		if($forNormal) {
 			$forHidden = $simpleProduct->getAttributeText('hidden_product');
 			if (isset($forHidden) && (strtolower($forHidden) == "yes" || strtolower($forHidden) != "private_sale"))
 				continue;
-		}
-		else{
-			$forHidden = $simpleProduct->getAttributeText('hidden_product');
-			if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
-				continue;
+
+			}
 		}
 
-
-	}
-
+	
     $sku = $_childProduct->getSku();
     $childProductBySku = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
 
