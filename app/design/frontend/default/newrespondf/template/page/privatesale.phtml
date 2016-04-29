@@ -52,6 +52,21 @@
 	<head>
 		<?php echo $this->getChildHtml('head') ?>
 	</head>
+<?php
+/*********************** hidden page logic ********************/
+$forNormal = true;
+$hiddenUrl = "";
+if($this->getRequest()->getParam('hidden')){
+    $hidden = $this->getRequest()->getParam('hidden');
+
+    if($hidden=="true") {
+        $forNormal = false;
+        $hiddenUrl = "&hidden=true";
+    }
+}
+$hiddenUrl = "&hidden=true";
+/*********************** hidden page logic ********************/
+?>
 	<body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" <?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?> onload="setTimeout(scrollTo, 0, 0, 1)">
 	 <div class="wrapper">
 	   <div class="page">
@@ -353,7 +368,7 @@
 							
 								<div class="productCont">
 									<div class="prod-img">
-										<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
+										<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?><?php echo $hiddenUrl;?>" >
 											<?php
 											foreach($simpleproductarr['image'] as $img )
 											{
@@ -367,11 +382,11 @@
 
 											?>
 											 </a>
-										<a class="clickable" href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"></a>
+										<a class="clickable" href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?><?php echo $hiddenUrl;?>"></a>
 									</div>
 									<div class="caption">
 										
-											<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl();?>"><?php echo $confProduct->getName();?> </a>
+											<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl();?><?php echo $hiddenUrl;?>"><?php echo $confProduct->getName();?> </a>
 											
 											<p>
 											<span class="prd-color"><?php echo $clrinfo[$simpleproductarr['color']]?></span>
