@@ -300,12 +300,12 @@ if($this->getRequest()->getParam('hidden')){
                                         $simpleproductarr = array();
                                         foreach($productCollection as $product)
                                         {
-											if($forNormal) {
+											if($forNormal) { echo "1";
 												$forHidden = $simpleProduct->getAttributeText('hidden_product');
 												if (isset($forHidden) && (strtolower($forHidden) == "yes" || strtolower($forHidden) != "private_sale"))
 													continue;
 											}
-											else{
+											else{ echo "2";
 												$forHidden = $simpleProduct->getAttributeText('hidden_product');
 												if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
 													continue;
