@@ -90,6 +90,21 @@
     </script>
     <!--<div class="namaskar-overlay1">&nbsp;</div> -->
 </head>
+
+<?php
+/*********************** hidden page logic ********************/
+$forNormal = true;
+$hiddenUrl = "";
+if($this->getRequest()->getParam('hidden')){
+    $hidden = $this->getRequest()->getParam('hidden');
+
+    if($hidden=="true") {
+        $forNormal = false;
+        $hiddenUrl = "&hidden=true";
+    }
+}
+/*********************** hidden page logic ********************/
+?>
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
@@ -285,6 +300,18 @@
                                         $simpleproductarr = array();
                                         foreach($productCollection as $product)
                                         {
+											if($forNormal) {
+												$forHidden = $simpleProduct->getAttributeText('hidden_product');
+												if (isset($forHidden) && (strtolower($forHidden) == "yes" || strtolower($forHidden) != "private_sale"))
+													continue;
+											}
+											else{
+												$forHidden = $simpleProduct->getAttributeText('hidden_product');
+												if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
+													continue;
+											}
+
+
                                             $simpleproductarr['id'] =  $product->getId();
                                             $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleproductarr['id']);
                                             $simpleproductarr['parentid'] =  $parentIds[0];
