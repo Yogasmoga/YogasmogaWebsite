@@ -250,15 +250,34 @@ foreach ($_childProducts as $_childProduct) {
     $pos = strrpos($nameWithColor, '-');
     $colorName = trim(substr($nameWithColor, $pos + 1));       // get color name =>  Carbon
 
-    if ($forNormal) {
-        $forHidden = $_childProduct->getAttributeText('hidden_product');
-        if (isset($forHidden)  && (strtolower($forHidden) == "yes" || strtolower($forHidden) == "private_sale"))
-            continue;
-    } else {
-        $forHidden = $_childProduct->getAttributeText('hidden_product');
-        if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden)) == 0))
-            continue;
-    }
+	if($currentCategoryId != 100){ 
+
+		if($forNormal) {
+			$forHidden = $simpleProduct->getAttributeText('hidden_product');
+			if (isset($forHidden) && (strtolower($forHidden) == "yes" || strtolower($forHidden) == "private_sale"))
+				continue;
+		}
+		else{
+			$forHidden = $simpleProduct->getAttributeText('hidden_product');
+			if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
+				continue;
+		}
+
+	}else{ 
+
+		if($forNormal) {
+			$forHidden = $simpleProduct->getAttributeText('hidden_product');
+			if (isset($forHidden) && (strtolower($forHidden) == "yes" || strtolower($forHidden) != "private_sale"))
+				continue;
+		}
+		else{
+			$forHidden = $simpleProduct->getAttributeText('hidden_product');
+			if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
+				continue;
+		}
+
+
+	}
 
     $sku = $_childProduct->getSku();
     $childProductBySku = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
