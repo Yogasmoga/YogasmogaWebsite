@@ -252,7 +252,7 @@ foreach ($_childProducts as $_childProduct) {
 
     if ($forNormal) {
         $forHidden = $_childProduct->getAttributeText('hidden_product');
-        if (isset($forHidden) && strtolower($forHidden) == "yes")
+        if (isset($forHidden)  && (strtolower($forHidden) == "yes" || strtolower($forHidden) == "private_sale"))
             continue;
     } else {
         $forHidden = $_childProduct->getAttributeText('hidden_product');
