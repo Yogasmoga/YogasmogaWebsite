@@ -86,11 +86,11 @@ foreach ($category as $products) {
 
     $simpleProduct = Mage::getModel('catalog/product')->load($products->getId());
 
-	if($currentCategoryId != 100){
+	if($currentCategoryId != 100){ 
 
 		if($forNormal) {
 			$forHidden = $simpleProduct->getAttributeText('hidden_product');
-			if (isset($forHidden)  && (strtolower($forHidden) == "yes" || strtolower($forHidden) == "private_sale"))
+			if (isset($forHidden) && (strtolower($forHidden) == "yes" || strtolower($forHidden) == "private_sale"))
 				continue;
 		}
 		else{
@@ -99,11 +99,11 @@ foreach ($category as $products) {
 				continue;
 		}
 
-	}else{
+	}else{ echo "true"; echo $currentCategoryId;
 
 		if($forNormal) {
-			$forHidden = $simpleProduct->getAttributeText('hidden_product');
-			if (isset($forHidden) && (strtolower($forHidden) == "yes" || strtolower($forHidden) != "private_sale"))
+			echo $forHidden = $simpleProduct->getAttributeText('hidden_product');
+			if (isset($forHidden) && strtolower($forHidden) != "private_sale")
 				continue;
 		}
 		else{
@@ -114,6 +114,7 @@ foreach ($category as $products) {
 
 
 	}
+
 
     $insalevalue = $simpleProduct->getAttributeText('insale');
     /*if($insalevalue == 'Yes')
