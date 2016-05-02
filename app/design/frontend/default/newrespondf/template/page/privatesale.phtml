@@ -106,9 +106,9 @@ $hiddenUrl = "&hidden=true";
 		 <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
 		 <?php } ?>
 		  <h1><?php echo Mage::getModel('catalog/layer')->getCurrentCategory()->getName(); ?></h1>
-		 <!-- <div class="toggle_dropdown"> -->
-	<!--		  <img src="--><?php //echo $this->getSkinUrl("images/black-arrw.png") ?><!--" />-->
-			  <!-- <svg width="44px" height="44px">
+		  <div class="toggle_dropdown">
+
+			   <svg width="44px" height="44px">
 				  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
 						y2="109.657"/>
 				  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
@@ -116,7 +116,7 @@ $hiddenUrl = "&hidden=true";
 				  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
 						y1="13.39" x2="22.374" y2="29.39"/>
 			  </svg>
-		  </div> -->
+		  </div>
 	  </div>
 		   <?php
 			$_category = Mage::registry('current_category');
@@ -181,98 +181,17 @@ $hiddenUrl = "&hidden=true";
 			</div>
 			<?php } ?>
 			<div class="dropdown_links">
+				<!-- leftnav -->
 
-				<?php 
-				//get the url like this:    =>http://yogasmoga.com/women/top
-				$currentUrl = Mage::helper('core/url')->getCurrentUrl(); 
-
-				$categoryName = explode('/', $currentUrl);  // break the url
-				$urlKey = $categoryName[3];     // get the top category name
-				$_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
-				//echo 'id= '. $_category->getId().' name= '.$_category->getName();
-				$parentCategoryId  = $_category->getId();
-				//$parentCategoryId = Mage::registry('current_category')->getId();
-				$cat = Mage::getModel('catalog/category')->load($parentCategoryId);
-				$subcats = $cat->getChildren();
-
-				?>
 				<ul>
-					<?php 
-				if(isset($parentCategoryId) && $parentCategoryId =='3') { $whtsmaincatid ='16'; } else { $whtsmaincatid ='19'; }
-					$collectioncatid = Mage::getModel('catalog/category')->load($whtsmaincatid); ?>
-					<li><a title="What's New" class="has_no_childs" href="<?php echo $collectioncatid->getUrl(); ?>"><?php echo $collectioncatid->getName(); ?></a>
-					<ul></ul>
-					</li>
-					 <?php 
-						foreach(explode(',',$subcats) as $subCatid)
-						{
-						  $_category = Mage::getModel('catalog/category')->load($subCatid);
-						  if($_category->getIsActive()) { ?>
-								<li style="<?php if($_category->getId() =='16' || $_category->getId() =='19') { echo 'display:none';} ?>">
-
-							<?php 
-							$sub_cat = Mage::getModel('catalog/category')->load($_category->getId());
-							$sub_subcats = $sub_cat->getChildren();
-							$_subcategories = $sub_cat->getChildrenCategories();
-							if (count($_subcategories) > 0): ?>
-					<a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
-							<span>
-	<!--							<img src="--><?php //echo $this->getSkinUrl("images/arrow-down.png") ?><!--">-->
-								<svg width="44px" height="44px">
-									<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
-										  y2="109.657"/>
-									<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
-										  y1="21.39" x2="30.374" y2="21.39"/>
-									<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
-										  y1="13.39" x2="22.374" y2="29.39"/>
-								</svg>
-							</span>
-
-							<?php else: ?>
-						<a href="<?php echo $_category->getURL() ?>" class="has_no_childs" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
-							<?php endif ?>
-							<?php
-							echo '<ul>';
-							foreach($_subcategories as $_sub_category)
-							{
-								
-								 // $_sub_category = Mage::getModel('catalog/category')->load($sub_subCatid);
-								  if($_sub_category->getIsActive()) {
-				echo '<li class="sub_cat"><a href="'.$_sub_category->getURL().'" title="'.$_sub_category->getName().'">'.$_sub_category->getName().'</a></li>';
-									  $sub_sub_cat = Mage::getModel('catalog/category')->load($sub_subCatid);
-									  $sub_sub_subcats = $sub_sub_cat->getChildren();
-									  $_subsubcategories = $_sub_category->getChildrenCategories();
-									  foreach($_subsubcategories as $_sub_sub_category)
-									  {
-										//$_sub_sub_category = Mage::getModel('catalog/category')->load($sub_sub_subCatid);
-										if($_sub_sub_category->getIsActive()) {
-											echo '<li class="sub_cat"><a href="'.$_sub_sub_category->getURL().'" title="'.$_sub_sub_category->getName().'" category">'.$_sub_sub_category->getName().'</a></li>';
-										}
-									  }
-								   }
-								 
-							 }
-							 echo '</ul>';
-
-							 echo '<span class="border-line"></span></li>';
-						  }
-						}
-
-							$urlString = Mage::helper('core/url')->getCurrentUrl();
-							$path = Mage::getSingleton('core/url')->parseUrl($urlString)->getPath();
-							$urlPath = explode("/", $path);
-							$women = Mage::getModel('catalog/category')->load(3);
-							$men = Mage::getModel('catalog/category')->load(5);
-							if(strtolower($urlPath[1])==strtolower('men')){
-								echo  '<li  class="sub_cat"><a href="'.$women->getUrl().'">'.$women->getName().'</a></li>';
-							}
-							if(strtolower($urlPath[1])==strtolower('women')){
-								echo  '<li  class="sub_cat"><a href="'.$men->getUrl().'">'.$men->getName().'</a></li>';
-							}
-						 
-						?>
-
+					<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#size-chart">SIZE CHARTS</a></li>
+					<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>gift_of_ys">ys gift card</a></li>
+					<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks">smogi bucks</a></li>
+					<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#shipping-returns">Shipping and Returns</a></li>
+					<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>namaskar">Namask&Aacute;r Foundation</a></li>
 				</ul>
+
+				<!-- leftnav -->
 			</div>
 		</div>
 	 <div class="clearfix"></div>
