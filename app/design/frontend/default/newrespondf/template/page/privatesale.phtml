@@ -285,7 +285,7 @@ $hiddenUrl = "&hidden=true";
 	  <img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$cat->load($cat->getId())->getThumbnail() ?>" width="360" height="270" />
 		<!-- <span><?php //echo $cat->getDescription(); ?></span> -->
 		<?php  if(!$_category->getThumbnail()) { ?>
-		<span class="over-text"><?php echo $cat->getName(); ?></span>
+		<!-- <span class="over-text"><?php echo $cat->getName(); ?></span> -->
 		<?php  } ?>
 		</a>
 		 <a class="go_to_parent" href="<?php echo $goBackUrl; ?>" >
