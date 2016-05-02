@@ -6517,7 +6517,8 @@ button.place-order span {
 }
 
 .insale-price {
-    color: #ff5f00 !important;
+    /*color: #ff5f00 !important;*/
+	color: #c03 !important;
 }
 
 p.design-paragraph {
