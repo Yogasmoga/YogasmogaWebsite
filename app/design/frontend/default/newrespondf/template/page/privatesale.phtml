@@ -386,11 +386,11 @@ $hiddenUrl = "&hidden=true";
 									</div>
 									<div class="caption">
 										
-											<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl();?><?php echo $hiddenUrl;?>"><?php echo $confProduct->getName();?> </a>
+											<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?><?php echo $hiddenUrl;?>"><?php echo $confProduct->getName();?> </a>
 											
 											<p>
 											<span class="prd-color"><?php echo $clrinfo[$simpleproductarr['color']]?></span>
-											<span class="prd-price">$<?php  echo  round($simpleproductarr['price'],2);?></span>
+											<span class="prd-price" style="color:#c03;">$<?php  echo  round($simpleproductarr['price'],2);?></span>
 											<span class="prd-price">was $<?php  echo  round($confProduct->getPrice(),2);?></span>
 
 
