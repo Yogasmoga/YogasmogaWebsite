@@ -179,6 +179,14 @@
         </collection>
         <!-- Collection page layouts End here -->
 
+        <!-- Private Sale layouts Start here -->
+      <private_sale translate="label">
+          <label>Private Sale</label>
+          <template>page/privatesale.phtml</template>
+          <layout_handle>privatesale</layout_handle>
+        </private_sale>
+        <!-- Private Sale page layouts End here -->
+
       </layouts>
     </page>
   </global>

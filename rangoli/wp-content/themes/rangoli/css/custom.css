@@ -377,3 +377,4 @@ input[type="button"],input[type="submit"]{-webkit-appearance:none;border-radius:
 .twtr-icon { width: 25px;}
 .pin-icon { width: 21px;}
 .footer .social-icons > li{display:inline-block}
+.span4.insta_post{float:none; display:inline-block; margin-left:-4px; vertical-align:top;}
