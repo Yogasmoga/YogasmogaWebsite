@@ -52,6 +52,21 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 <head>
     <?php echo $this->getChildHtml('head') ?>
 </head>
+<?php
+/*********************** hidden page logic ********************/
+$forNormal = true;
+$hiddenUrl = "";
+if($this->getRequest()->getParam('hidden')){
+	$hidden = $this->getRequest()->getParam('hidden');
+
+	if($hidden=="true") {
+		$forNormal = false;
+		$hiddenUrl = "&hidden=true";
+	}
+}
+$hiddenUrl = "&hidden=true";
+/*********************** hidden page logic ********************/
+?>
 <body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" <?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?> onload="setTimeout(scrollTo, 0, 0, 1)">
  <div class="wrapper">
    <div class="page">
@@ -90,9 +105,9 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 		} else { ?>
      <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
 	 <?php } ?>
-	  <h1><?php echo $this->__('Carbon 6&trade;')		  ?></h1>
+	  <h1><?php echo Mage::getMOdel('catalog/layer')->getCurrentCategory()->getName();?></h1>
 	  <div class="toggle_dropdown">
-<!--		  <img src="--><?php //echo $this->getSkinUrl("images/black-arrw.png") ?><!--" />-->
+
 		  <svg width="44px" height="44px">
 		      <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
 					y2="109.657"/>
@@ -166,101 +181,18 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
         </div>
 		<?php } ?>
         <div class="dropdown_links">
+			<!-- leftnav -->
 
-			<?php 
-			//get the url like this:    =>http://yogasmoga.com/women/top
-			$currentUrl = Mage::helper('core/url')->getCurrentUrl(); 
+				<ul>
+					<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#size-chart">SIZE CHARTS</a></li>
+					<!--<li><a href="<?php //echo Mage::helper('core/url')->getHomeUrl(); ?>gift_of_ys">ys gift card</a></li>-->
+					<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks">smogi bucks</a></li>
+					<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#shipping-returns">Shipping and Returns</a></li>
+					<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>namaskar">Namask&Aacute;r Foundation</a></li>
+				</ul>
 
-			$categoryName = explode('/', $currentUrl);  // break the url
-			$urlKey = $categoryName[3];     // get the top category name
-            $_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
-            //echo 'id= '. $_category->getId().' name= '.$_category->getName();
-			$parentCategoryId  = $_category->getId();
-            //$parentCategoryId = Mage::registry('current_category')->getId();
-			$cat = Mage::getModel('catalog/category')->load($parentCategoryId);
-			$subcats = $cat->getChildren();
+			<!-- leftnav -->
 
-			?>
-			<ul>
-			    <?php
-				if(isset($parentCategoryId) && $parentCategoryId =='3') { $whtsmaincatid ='16'; } else { $whtsmaincatid ='19'; }
-				$printscatid = Mage::getModel('catalog/category')->load($whtsmaincatid); ?>
-                <li><a title="prints" class="has_no_childs" href="<?php echo $printscatid->getUrl(); ?>"><?php echo $printscatid->getName(); ?></a>
-				<ul></ul>
-				</li>
-				 <?php 
-					foreach(explode(',',$subcats) as $subCatid)
-					{
-					  $_category = Mage::getModel('catalog/category')->load($subCatid);
-					  if($_category->getIsActive()) { ?>
-						<li style="<?php if($_category->getId() =='16' || $_category->getId() =='19') { echo 'display:none';} ?>">
-
-						<?php 
-						$sub_cat = Mage::getModel('catalog/category')->load($_category->getId());
-						$sub_subcats = $sub_cat->getChildren();
-						$_subcategories = $sub_cat->getChildrenCategories();
-						if (count($_subcategories) > 0): ?>
-                <a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
-					    <span>
-<!--							<img src="--><?php //echo $this->getSkinUrl("images/arrow-down.png") ?><!--">-->
-							<svg width="44px" height="44px">
-								<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
-									  y2="109.657"/>
-								<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
-									  y1="21.39" x2="30.374" y2="21.39"/>
-								<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
-									  y1="13.39" x2="22.374" y2="29.39"/>
-							</svg>
-						</span>
-
-						<?php else: ?>
-
-							<a href="<?php echo $_category->getURL() ?>" class="has_no_childs" title= "<?php echo  $_category->getName() ; ?>">
-							<?php echo  $_category->getName() ?></a>
-
-						<?php endif ?>
-						<?php
-						echo '<ul>';
-						foreach($_subcategories as $_sub_category)
-						{
-							
-							 // $_sub_category = Mage::getModel('catalog/category')->load($sub_subCatid);
-							  if($_sub_category->getIsActive()) {
-			echo '<li class="sub_cat"><a href="'.$_sub_category->getURL().'" title="'.$_sub_category->getName().'">'.$_sub_category->getName().'</a></li>';
-								  $sub_sub_cat = Mage::getModel('catalog/category')->load($sub_subCatid);
-								  $sub_sub_subcats = $sub_sub_cat->getChildren();
-								  $_subsubcategories = $_sub_category->getChildrenCategories();
-								  foreach($_subsubcategories as $_sub_sub_category)
-								  {
-									//$_sub_sub_category = Mage::getModel('catalog/category')->load($sub_sub_subCatid);
-									if($_sub_sub_category->getIsActive()) {
-										echo '<li class="sub_cat"><a href="'.$_sub_sub_category->getURL().'" title="'.$_sub_sub_category->getName().'" category">'.$_sub_sub_category->getName().'</a></li>';
-									}
-								  }
-							   }
-							 
-						 }
-						 echo '</ul>';
-
-						 echo '<span class="border-line"></span></li>';
-					  }
-					}
-
-						$urlString = Mage::helper('core/url')->getCurrentUrl();
-						$path = Mage::getSingleton('core/url')->parseUrl($urlString)->getPath();
-						$urlPath = explode("/", $path);
-						$women = Mage::getModel('catalog/category')->load(3);
-						$men = Mage::getModel('catalog/category')->load(5);
-						if(strtolower($urlPath[1])==strtolower('men')){
-							echo  '<li  class="sub_cat"><a href="'.$women->getUrl().'">'.$women->getName().'</a></li>';
-						}
-						if(strtolower($urlPath[1])==strtolower('women')){
-							echo  '<li  class="sub_cat"><a href="'.$men->getUrl().'">'.$men->getName().'</a></li>';
-						}
-					 
-					?>
-
-            </ul>
         </div>
     </div>
  <div class="clearfix"></div>
@@ -268,14 +200,13 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
  </div>
 <?php  $cat = Mage::getModel('catalog/layer')->getCurrentCategory();?>
  <div class="product-box">
-	 <?php  if($_category->getThumbnail()) { ?>
-	 <a href="javascript:void(0)">
-  <img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$cat->load($cat->getId())->getThumbnail() ?>" width="360" height="270" />
-	<!-- <span><?php //echo $cat->getDescription(); ?></span> -->
-	<?php  if(!$_category->getThumbnail()) { ?>
-	<span class="over-text"><?php echo $cat->getName(); ?></span>
-	<?php  } ?>
-	</a>
+	 <?php  if($cat->load($cat->getId())->getThumbnail()) { ?>
+		 <a href="javascript:void(0)">
+  			<img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$cat->load($cat->getId())->getThumbnail() ?>" width="360" height="270" />
+				<?php  if(!$cat->load($cat->getId())->getThumbnail()) { ?>
+				<span class="over-text"><?php echo $cat->getName(); ?></span>
+			<?php  } ?>
+		</a>
 	 <?php  } ?>
 	 <a class="go_to_parent" href="<?php echo $goBackUrl; ?>" >
 		 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -289,21 +220,7 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 	 </a>
 </div>
 
-		<?php
-		if($urlKey == 'women')
-		{
-			?>
-			<div style="font: 18px/21px freighttextbook; color: rgb(85, 85, 85); padding: 28px 0px;">
-				We make the deepest black for a </br>
-				slimming silhouette.
 
-			</div>
-		<?php } else {?>
-			<div style="font: 18px/21px freighttextbook; color: rgb(85, 85, 85); padding: 28px 0px;">
-				A black so deep, we trademarked it.
-			</div>
-
-		<?php } ?>
 <div class="product-grid">
   <!-- custom list GridProducts -->		
 		 <div class="gridWrap">
@@ -326,6 +243,17 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 					$simpleproductarr = array();
 					foreach($productCollection as $product)
 					{
+						$simpleProduct = Mage::getModel('catalog/product')->load($product->getId());
+						if($forNormal) {
+							$forHidden = $simpleProduct->getAttributeText('hidden_product');
+							if (isset($forHidden) && (strtolower($forHidden) == "yes" || strtolower($forHidden) != "private_sale"))
+								continue;
+						}
+						else{
+							$forHidden = $simpleProduct->getAttributeText('hidden_product');
+							if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
+								continue;
+						}
 						
 						$simpleproductarr['id'] =  $product->getId();
 						$parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleproductarr['id']);
@@ -360,7 +288,7 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 						
 							<div class="productCont">
 								<div class="prod-img">
-									<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
+									<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color']?><?php echo $hiddenUrl;?>" >
 										<?php
 										foreach($simpleproductarr['image'] as $img )
 										{
@@ -374,15 +302,18 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 
 										?>
 										 </a>
-									<a class="clickable" href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"></a>
+									<a class="clickable" href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?><?php echo $hiddenUrl;?>"></a>
 								</div>
 								<div class="caption">
 									
-										<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl();?>"><?php echo $confProduct->getName();?> </a>
+										<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color']?><?php echo $hiddenUrl;?>">
+											<?php echo $confProduct->getName();?>
+										</a>
 										
 										<p>
 										<span class="prd-color"><?php echo $clrinfo[$simpleproductarr['color']]?></span>
-										<span class="prd-price">$<?php  echo  round($confProduct->getPrice(),2);?></span>
+										<span class="prd-price" style="color:#c03;">$<?php  echo  round($simpleproductarr['price'],2);?></span>
+										<span class="prd-price">was $<?php  echo  round($confProduct->getPrice(),2);?></span>
 										</p>
 								
 								</div>
