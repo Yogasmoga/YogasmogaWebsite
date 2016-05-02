@@ -390,7 +390,10 @@ $hiddenUrl = "&hidden=true";
 											
 											<p>
 											<span class="prd-color"><?php echo $clrinfo[$simpleproductarr['color']]?></span>
-											<span class="prd-price">$<?php  echo  round($confProduct->getPrice(),2);?></span>
+											<span class="prd-price">$<?php  echo  round($simpleproductarr['price'],2);?></span>
+											<span class="prd-price">was $<?php  echo  round($confProduct->getPrice(),2);?></span>
+
+
 											</p>
 									
 									</div>
