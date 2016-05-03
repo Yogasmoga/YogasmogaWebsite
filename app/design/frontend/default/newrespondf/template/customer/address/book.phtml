@@ -86,10 +86,8 @@
             <li class="item">
                 <address>
                     <?php //echo $this->getAddressHtml($_address)
-                    $addresses = $this->getCustomer()->getAdditionalAddresses();
-                    echo '<pre/>';
-                    print_r($addresses);
 
+                    echo $this->getAdditinalAddressForBook()
 
                     ?>
                 </address>
