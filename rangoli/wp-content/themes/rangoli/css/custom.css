@@ -365,3 +365,5 @@ button.next-confirmation-page{display:block;margin:30px auto 0}
 .single_post.span4:nth-child(3n){clear:right}
 .single_post.span4:nth-child(3n+1){clear:left}
 input[type="button"],input[type="submit"]{-webkit-appearance:none;border-radius:0}
+
+.span4.insta_post{float:none; display:inline-block; margin-left:-4px; vertical-align:top;}
