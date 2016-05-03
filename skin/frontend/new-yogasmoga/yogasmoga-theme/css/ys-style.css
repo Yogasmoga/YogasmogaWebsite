@@ -3029,6 +3029,8 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 /*=============for career page end=========*/
 
 /*--ys-color-tech update--03-may-2016*/
+
+.cms-page-view .colorFilterGrid a span{position:relative; top:50%; transform:translateY(-50%);-webkit-transform:translateY(-50%);}
 .ysdiscover-colors.title-block{margin:30px 0 25px 0;}
 .ysdiscover-colors.title-block strong{font-family:gothamBold; font-size:11px; line-height:19px;text-transform:uppercase;}
 .ysdiscover-colors .colorFilterGrid{margin: 0 4% 46px;font:32px/38px ITCAvantGardeProBk;}
