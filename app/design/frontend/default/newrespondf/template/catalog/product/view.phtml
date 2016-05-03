@@ -262,8 +262,10 @@ foreach ($_childProducts as $_childProduct) {
         $hexCodes = explode(",", $hexCodes);
         $colorAttributeValue = substr($colorAttributeValue, 0, strpos($colorAttributeValue, "|"));
 
-        if (!isset($arProductColorInfo[$colorAttributeValue]))
+        if (!isset($arProductColorInfo[$colorAttributeValue])){
             $arProductColorInfo[$colorAttributeValue] = array();
+			$tempsizestore = array();
+		}
 
         $arProductColorInfo[$colorAttributeValue]['hex'] = $hexCodes;
         $arProductColorInfo[$colorAttributeValue]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', $storeId);
@@ -305,12 +307,39 @@ foreach ($_childProducts as $_childProduct) {
 
     // for Length attribute if available
     if ($lengthAvailable) {
-        if (!isset($arProductColorInfo[$colorAttributeValue]["sizes"]))
-            $arProductColorInfo[$colorAttributeValue]["sizes"] = array($_childProduct->getAttributeText('size'));
-        else {
-            if (!in_array($_childProduct->getAttributeText('size'), $arProductColorInfo[$colorAttributeValue]["sizes"]))
-                array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $_childProduct->getAttributeText('size'));
+        
+        //coded by shivaji chauhan
+	if ($isSizeAvailable)
+            $tempsize = $_childProduct->getAttributeText('size') . "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
+        else
+            $tempsize = "2|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
+
+		
+
+		if (isset($arProductColorInfo[$colorAttributeValue]["sizes"])) { 
+
+			if($tempsizestore[$colorAttributeValue][$_childProduct->getAttributeText('size')] == 1){
+				$tempsize .= "|" . '1';
+			}elseif($tempsizestore[$colorAttributeValue][$_childProduct->getAttributeText('size')] == 0){
+				$tempsize .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
+			}
+
+			$tempsizestore[$colorAttributeValue][$_childProduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
+
+		}else {
+
+			$tempsize .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
+			$tempsizestore[$colorAttributeValue][$_childProduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
+		}
+		
+        $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
+        $tempsize .= "|" . $backOrderCheck; //echo '<pre/>'; var_dump($tempsize);var_dump($tempsizestore);
+		if (isset($arProductColorInfo[$colorAttributeValue]["sizes"])) { 
+            array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $tempsize);
+        }else {
+            $arProductColorInfo[$colorAttributeValue]["sizes"] = array($tempsize);
         }
+	//end coded by shivaji chauhan
 
         $temp1 = $_childProduct->getAttributeText('length') . "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
         $temp1 .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
