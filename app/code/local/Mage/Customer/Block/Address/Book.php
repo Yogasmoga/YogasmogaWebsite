@@ -164,4 +164,33 @@ class Mage_Customer_Block_Address_Book extends Mage_Core_Block_Template
 
 
     }
+    public function getAdditionalAddressForBook(){
+
+        $address = $this->getCustomer()->getAdditionalAddresses();
+
+            $regionId = $address->getData('region_id');
+            $resource = Mage::getSingleton('core/resource');
+            $read = $resource->getConnection('core_read');
+            $result = $read->fetchAll("SELECT code FROM directory_country_region  where region_id ='" . $regionId . "' limit 1");
+            foreach ($result as $code) {
+                $regionCode = $code['code'];
+            }
+            $country = Mage::getModel('directory/country')->loadByCode($address->getCountryId());
+
+            echo '<span class="caddress">
+	            <span class="cname">' . $address->getFirstname() . ' ' . $address->getLastname() . '</span>' .
+                $address->getData('street') .
+                '<span>' . $address->getCity() . ', ' .
+                $regionCode . ' ' .
+                $address->getPostcode() .
+                ',
+                </span>
+            </span>
+            <span>' . $country->getName() . '</span><br>
+            <span class="tel">' . $address->getTelephone() . '</span>';
+
+
+    }
+
+
 }
