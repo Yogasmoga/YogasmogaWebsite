@@ -81,18 +81,18 @@
     <div class="col-2 addresses-additional">
         <h2><?php echo $this->__('Additional Address Entries') ?></h2>
         <ol>
-        <?php if(!empty($this->getAdditinalAddressForBook())): ?>
+        <?php if($this->getAdditionalAddressForBook()): ?>
             <?php //foreach($_pAddsses as $_address): ?>
             <li class="item">
                 <address>
                     <?php //echo $this->getAddressHtml($_address)
 
-                    echo $this->getAdditinalAddressForBook();
+                    echo $this->getAdditionalAddressForBook();
 
                     ?>
                 </address>
-                <p><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>" style="margin-bottom: 0; width: auto;"><?php echo $this->__('Edit Address') ?></a> &nbsp;
-                    <a href="#" class="link-remove" onclick="return deleteAddress('<?php echo $_address->getId() ?>');" style="margin-bottom: 0; width: auto;margin-left: 20px;"><?php echo $this->__('Delete Address') ?></a></p>
+               <!-- <p><a href="<?php //echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>" style="margin-bottom: 0; width: auto;"><?php echo $this->__('Edit Address') ?></a> &nbsp;
+                    <a href="#" class="link-remove" onclick="return deleteAddress('<?php //echo $_address->getId() ?>');" style="margin-bottom: 0; width: auto;margin-left: 20px;"><?php echo $this->__('Delete Address') ?></a></p>-->
             </li>
             <?php // endforeach; ?>
         <?php else: ?>
