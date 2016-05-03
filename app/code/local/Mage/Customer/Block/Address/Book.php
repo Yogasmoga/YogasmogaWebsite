@@ -164,9 +164,7 @@ class Mage_Customer_Block_Address_Book extends Mage_Core_Block_Template
 
 
     }
-    public function getAdditionalAddressForBook(){
-
-        $address = $this->getCustomer()->getAdditionalAddresses();
+    public function getAdditionalAddressForBook($address){
 
             $regionId = $address->getData('region_id');
             $resource = Mage::getSingleton('core/resource');
