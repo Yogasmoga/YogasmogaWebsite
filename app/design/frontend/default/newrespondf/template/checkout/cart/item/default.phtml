@@ -182,11 +182,11 @@ foreach ($_options as $_option) {
                 <?php if ($_options): ?>
 
                     <div class="item_option_color">
-
                         <?php if(true || $productType!="gift"){ ?>
 
                         <?php foreach ($_options as $_option) : ?>
                             <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
+
 
                             <?php if (strtolower($_option['label']) == "color"): ?>
                                 <?php
@@ -259,15 +259,10 @@ foreach ($_options as $_option) {
                 <div class="item-options">
                     <?php foreach ($_options as $_option) : ?>
                         <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
-                        <!--  <span><?php //echo $this->htmlEscape($_option['label']) ?>:</span> -->
-                        <?php //if(strtolower($_option['label']) == "color"){
-                        //  $optval = substr($_formatedOptionValue['value'], 0, -8);
-                        //}else{
-                        //  $optval = $_formatedOptionValue['value'];
-                        //} ?>
+
                         <?php if (strtolower($_option['label']) == "size"): ?>
                             <span>Size:
-				<!-- Color change code starts -->
+
                                 <?php
                                 $word = $_formatedOptionValue['value'];
                                 if (strpos($word, "|")) {
@@ -275,32 +270,31 @@ foreach ($_options as $_option) {
                                 } else
                                     echo $word;
                                 ?>
-                                <!-- Color change code ends -->
+                            </span>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+                <?php if ($_options): ?>
+                    <div class="item-options">
+                        <?php foreach ($_options as $_option) : ?>
+                            <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
 
-                                <?php //echo $optval; ?>
-                                <!-- <?php if (isset($_formatedOptionValue['full_view'])): ?>
-                        <div class="truncated_full_value">
-                            <dl class="item-options">
-                                <dt><?php echo $this->htmlEscape($_option['label']) ?>:</dt>
-                                <dd><?php //echo $_formatedOptionValue['full_view'] ?>
-                                Color change code starts
-                                <?php
-                                    $word = $_formatedOptionValue['full_view'];
+                            <?php if (strtolower($_option['label']) == "length"): ?>
+                                <span style="display:block">Length:
+
+                                    <?php
+                                    $word = $_formatedOptionValue['value'];
                                     if (strpos($word, "|")) {
                                         echo " " . substr($word, 0, strpos($word, "|"));
                                     } else
                                         echo $word;
                                     ?>
-                                Color change code ends
-                                
-                                </dd>
-                            </dl>
-                        </div>
-                        <?php endif; ?> -->
-                    </span>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
+                            </span>
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
 				<!--out of stock message start-->
 				
 				<?php if ($messages): ?>
