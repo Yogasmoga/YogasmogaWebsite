@@ -270,6 +270,32 @@ function changeFabric(current_color) {
         }
     }
 }
+function changeDescription(current_color) {
+
+    if (jQuery(".product_description_block") != null) {
+
+//        var current_color = jQuery(".selectedcolortext").html().toLowerCase();
+
+        var found = false;
+        jQuery(".product_description_block").each(function () {
+
+            var fabric_color = jQuery(this).attr('rel').toLowerCase();
+
+            if (current_color.toLowerCase() == fabric_color) {
+                jQuery(".product_description_block").hide();
+                jQuery(this).show();
+                jQuery(".main-description").hide();
+                found = true;
+                return;
+            }
+        });
+
+        if (!found) {
+            jQuery(".product_description_block").hide();
+            jQuery(".main-description").show();
+        }
+    }
+}
 
 function changeBraCupInsert(current_color) {
 
@@ -516,6 +542,7 @@ function changePartOfGiftSet(clr){
 
 function changeColor(clr) {
     changeFabric(clr);
+    changeDescription(clr);
     changeBraCupInsert(clr);
 
     jQuery(".amount").removeClass("insale-price");
