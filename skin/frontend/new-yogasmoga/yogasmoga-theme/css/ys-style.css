@@ -3073,10 +3073,10 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 @media screen and (max-width: 1200px){
 .ysdiscover-colors .colorFilterGrid{font-size:22px; line-height:26px;}
 .ysdiscover-colors .colorFilterGrid a span .text-shop{font-size:12px; line-height:18px; transform:translate(-50% , -160%);-webkit-transform:translate(-50%, -160%);}
-}
-@media only screen and (max-width : 1024px) {
 .yscolor-landing-pg  .gridProdCubix .leftnav{margin:0 0 0 28px;}
 .yscolor-landing-pg .gridProdCubix .gridWrap{margin:0 28px 0 270px;}
+}
+@media only screen and (max-width : 1024px) {
 .yscolor-landing-pg .productCont{margin: 0 7px 30px;}
 .ysdiscover-colors.title-block {margin: 21px 0 25px;}
 .ysdiscover-colors .colorFilterGrid{margin-bottom:20px;}
