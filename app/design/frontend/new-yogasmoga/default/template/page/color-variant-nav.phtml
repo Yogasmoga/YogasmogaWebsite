@@ -13,8 +13,13 @@
                             $arr = explode(',',$colorString);
                             $bg = $arr[0];
                             $textclr = $arr[1];
+                            $borderClass ="";
+                            if($bg =="#fff" || $bg =="#ffffff"){
+                                $borderClass ="white";
+                            }
+
                         ?>
-                     <li rel="<?php echo $name; ?>" class="color_<?php echo $category->getId()?>">
+                     <li rel="<?php echo $name; ?>" class="color_<?php echo $category->getId()?> <?php echo $borderClass; ?>">
                          <a href="<?php echo $url; ?>" style="background:<?php echo $bg; ?>">
                                 <?php echo $name; ?>
                          </a>
