@@ -249,9 +249,16 @@ function modifyinfo(color, size, value, instock)
                 if(arrsize[0] == size)
                 {
                     arrsize[1] = value;
-                    arrsize[4] = instock;
+
+                    if(parseInt(arrsize[4]) === 0){
+                        arrsize[4] = instock;
+                    }else if(arrsize[4] == null){
+                        arrsize[4] = instock;
+                    }
+
                     _productcolorinfo[i].sizes[j] = arrsize.join('|');
                     //console.log('found');
+                    //console.log(JSON.stringify(_productcolorinfo[i].sizes));
                     return;
                 }    
             }
