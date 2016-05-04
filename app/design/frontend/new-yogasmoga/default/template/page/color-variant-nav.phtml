@@ -1,5 +1,5 @@
 <div style="margin-top: 0px;" class="leftnav f-left l-align cntn-scroll">
-<p class="ys-color-current"><span class="label">YS Colors: </span><span class="color-name">Rudhira</span></p>
+<p class="ys-color-current"><span class="label">YS Colors: </span><span class="color-name"><?php echo Mage::registry('current_category')->getName();?></span></p>
 <ul class="yscolor-nav">
     <?php
     $collection = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToSort('position', 'ASC');
