@@ -87,8 +87,12 @@
             jQuery("body").css('overflow','auto');
        }, 500);              
 	   
-	   jQuery('.yscolor-nav a').hover(function(){
+	   jQuery('.yscolor-nav a').mouseover(function(){
 			var colortext = jQuery(this).text();	
+			jQuery('.ys-color-current .color-name').text(colortext);
+		});
+		jQuery('.yscolor-nav a').mouseout(function(){
+			var colortext = jQuery('.yscolor-nav .current a').text();	
 			jQuery('.ys-color-current .color-name').text(colortext);
 		});
     });
