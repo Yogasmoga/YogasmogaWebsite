@@ -121,6 +121,9 @@ if(strpos($url, "checkout/")===false)
 <?php } ?>
 
 <?php echo $this->getCssJsHtml() ?>
+<?php if(Mage::registry('product')): ?>
+<link rel="canonical" href="<?php echo Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId())->getProductUrl(); ?>" />
+<?php endif;?>
 <?php echo $this->getChildHtml() ?>
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>
 <?php echo $this->getIncludes() ?>
