@@ -3,7 +3,7 @@
 <ul class="yscolor-nav">
     <?php
     $collection = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToSort('position', 'ASC');
-        $currentCategoryId = Mage::registry('current_category')->getId();
+    $currentCategoryId = Mage::registry('current_category')->getId();
 
         foreach($collection as $category):
             if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=100):
