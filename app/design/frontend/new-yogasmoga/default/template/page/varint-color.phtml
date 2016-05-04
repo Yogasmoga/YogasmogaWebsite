@@ -137,17 +137,7 @@
                                     
                                     
                                     <!-- leftnav -->
-<div style="margin-top: 0px;" class="leftnav f-left l-align cntn-scroll">
-<ul>
-<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#size-chart">SIZE CHARTS</a></li>
-<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>gift_of_ys">ys gift card</a></li>
-<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks">smogi bucks</a></li>
-<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#shipping-returns">Shipping and Returns</a></li>
-<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>namaskar">Namaskár Foundation</a></li>
-</ul>
-</div>
-<!-- leftnav -->
-											
+                                    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/color-variant-nav.phtml')->toHtml();?>
                                     <!-- leftNav -->
 
                                     <!-- productGridImages -->

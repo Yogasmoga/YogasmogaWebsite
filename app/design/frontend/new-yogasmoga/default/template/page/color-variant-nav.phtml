@@ -1,0 +1,20 @@
+<div style="margin-top: 0px;" class="leftnav f-left l-align cntn-scroll">
+<p class="ys-color-current"><span class="label">YS Colors: </span><span class="color-name">Rudhira</span></p>
+<ul class="yscolor-nav">
+    <?php
+    $collection = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToSort('position', 'ASC');
+
+        foreach($collection as $category):
+            if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9):
+                    if($category->getLevel()==2 && $category->getIsActive()):
+                            $name = $category->getName();
+                            $colorString = trim($category->getColorLabel());
+                            $arr = explode(',',$colorString);
+                            $bg = $arr[0];
+                            $textclr = $arr[1];?>
+                     <li><a href="javascript:void(0)" style="background:<?php echo $bg; ?>">Bumble Bee</a></li>
+                    <?php endif; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+</ul>
+</div>
