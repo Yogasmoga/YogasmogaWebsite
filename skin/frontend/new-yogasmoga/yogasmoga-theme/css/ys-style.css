@@ -3035,7 +3035,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .ysdiscover-colors.title-block strong{font-family:gothamBold; font-size:11px; line-height:19px;text-transform:uppercase;}
 .ysdiscover-colors .colorFilterGrid{margin: 0 4% 46px;font:32px/38px ITCAvantGardeProBk;}
 .ysdiscover-colors .colorFilterGrid a { height: 202px; margin:0 0.95% 0.95% 0 ; width: 15.79%;position:relative; box-shadow:0 0 1px inset #aaa;}
-.ysdiscover-colors .colorFilterGrid a span{z-index:2;}
+.ysdiscover-colors .colorFilterGrid a span{z-index:2; padding:0 15px; box-sizing:border-box;}
 .ysdiscover-colors .colorFilterGrid a span .text-shop{text-transform:uppercase; font:16px/19.2px gothamMedium; 
 	position:absolute; top:0; left:50%;transform:translate(-50% , -180%);-webkit-transform:translate(-50%, -180%); opacity:0;}
 .ysdiscover-colors .colorFilterGrid a:nth-child(6n){margin-right:0;}
