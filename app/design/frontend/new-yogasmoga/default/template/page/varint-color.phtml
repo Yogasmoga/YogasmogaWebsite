@@ -86,6 +86,11 @@
             jQuery("div.page-overlayy").remove();
             jQuery("body").css('overflow','auto');
        }, 500);              
+	   
+	   jQuery('.yscolor-nav a').hover(function(){
+			var colortext = jQuery(this).text();	
+			jQuery('.ys-color-current .color-name').text(colortext);
+		});
     });
 	
 	/* jQuery(window).scroll(function() {  
