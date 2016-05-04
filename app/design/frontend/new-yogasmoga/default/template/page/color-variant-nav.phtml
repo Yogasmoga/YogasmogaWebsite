@@ -8,7 +8,7 @@
             if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9):
                     if($category->getLevel()==2 && $category->getIsActive()):
                             $name = $category->getName();
-                            $colorString = trim($category->getColorLabel());
+                            $colorString = trim($category->getYsColorTech());
                             $arr = explode(',',$colorString);
                             $bg = $arr[0];
                             $textclr = $arr[1];?>
