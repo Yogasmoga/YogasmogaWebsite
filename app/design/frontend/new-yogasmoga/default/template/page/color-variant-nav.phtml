@@ -3,6 +3,7 @@
 <ul class="yscolor-nav">
     <?php
     $collection = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToSort('position', 'ASC');
+        $currentCategoryId = Mage::registry('current_category')->getId();
 
         foreach($collection as $category):
             if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=100):
@@ -17,9 +18,13 @@
                             if(strtolower($bg) =="#fff" || strtolower($bg) =="#ffffff" || strtolower($bg) =="#fefefe"){
                                 $borderClass ="white";
                             }
+                            $currentClass="";
+                            if($category->getId()==$currentCategoryId){
+                                $currentClass="current";
+                            }
 
-                        ?>
-                     <li rel="<?php echo $name; ?>" class="color_<?php echo $category->getId()?> <?php echo $borderClass; ?>">
+                    ?>
+                     <li rel="<?php echo $name; ?>" class="color_<?php echo $category->getId()?> <?php echo $borderClass; ?> <?php echo $currentClass;?>">
                          <a href="<?php echo $url; ?>" style="background:<?php echo $bg; ?>">
                                 <?php echo $name; ?>
                          </a>
