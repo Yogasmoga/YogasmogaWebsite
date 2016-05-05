@@ -7993,6 +7993,17 @@ input#giftcard_use{
   height: 44px;
   width: 100%;
 }
+/*******************  varint page css************/
+.color_grid_box a {
+  display: block;
+  float: left;
+  font: 16px/44px ITCAvantGardeStd-Md;
+  width: 50%;
+}
+.color_grid_box {
+  text-align: center;
+  width: 100%;
+}
 /*******************  color-tech page css end************/
 
 
