@@ -1146,6 +1146,11 @@ input:focus {
     position: absolute;
     top: 50%;
 }
+iframe[name="google_conversion_frame"] {
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+}
 
 .get_the_look .span6 img{margin-bottom:10px;}
 .get_the_look .span6 span{text-align:center; display: block; }
