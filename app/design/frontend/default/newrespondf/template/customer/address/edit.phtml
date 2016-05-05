@@ -161,4 +161,18 @@
     var dataForm = new VarienForm('form-validate', true);
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 //]]>
+
+function isiPhone(){
+    return (
+        (navigator.platform.indexOf("iPhone") != -1) ||
+        (navigator.platform.indexOf("iPod") != -1)
+    );
+}
+$(document).ready(function(){
+if(isiPhone()){
+  // alert('iPhone detected');
+	$('.my-account li.checkboxed').addClass('iphone');
+}
+});
+
 </script>
