@@ -96,27 +96,27 @@
 								$borderClass ="ys-color-white";
 							}
 						?>
-					<a href="<?php echo $url;?>" style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;" class="<?php echo $borderClass;?>">
-						<span>
-							<span  class="text-shop">Shop</span>
-							<?php echo $name; ?>
-						</span>
-						<span class="spn_hover">
-							<img src="<?php echo $this->getSkinUrl('images/colorgrid/').$img; ?>" alt="<?php echo $name; ?>"/>
-						</span>
-					</a>
-					<?php else: ?>
-							<?php if($category->getIsAnchor()): ?>
+						<?php if($category->getIsAnchor()):?>
 							<a href="javascript:void(0);" style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;" class="<?php echo $borderClass;?>">
-						<span>
-							<span  class="text-shop">Shop</span>
-							<?php echo $name; ?>
-						</span>
-						<span class="spn_hover">
-							<img src="<?php echo $this->getSkinUrl('images/colorgrid/').$img; ?>" alt="<?php echo $name; ?>"/>
-						</span>
+								<span>
+									<span  class="text-shop">Shop</span>
+									<?php echo $name; ?>
+								</span>
+								<!--<span class="spn_hover">
+									<img src="<?php //echo $this->getSkinUrl('images/colorgrid/').$img; ?>" alt="<?php //echo $name; ?>"/>
+								</span>-->
 							</a>
-							<?php endif; ?>
+							<?php else: ?>
+							<a href="<?php echo $url;?>" style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;" class="<?php echo $borderClass;?>">
+									<span>
+										<span  class="text-shop">Shop</span>
+										<?php echo $name; ?>
+									</span>
+									<span class="spn_hover">
+										<img src="<?php echo $this->getSkinUrl('images/colorgrid/').$img; ?>" alt="<?php echo $name; ?>"/>
+									</span>
+							</a>
+						<?php endif; ?>
 				<?php endif; ?>
 
 			<?php endif; ?>
