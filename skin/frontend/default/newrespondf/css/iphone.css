@@ -4956,12 +4956,12 @@ button.place-order {
     width: 100%;
 	transform:translateY(-50%);-webkit-transform:translateY(-50%)
 }
-.thanks-page .thanks-block p .span_text{}
+.thanks-page .thanks-block p .span_text{font-family:ITCAvantGardeStd-Md;}
 .thanks-page .thanks-block p .shop-tag a {
     background: #00b900 none repeat scroll 0 0;
     color: hsl(0, 0%, 100%);
     display: block;
-    font: 14px/50px ITCAvantGardeStd-Bk;
+    font: 14px/44px ITCAvantGardeStd-Bk;
     height: 44px;
     letter-spacing: 1px;
     text-decoration: none;
