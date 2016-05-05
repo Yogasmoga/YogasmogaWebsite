@@ -4947,15 +4947,16 @@ button.place-order {
     color: hsl(0, 0%, 100%);
     font-family: ITCAvantGardeStd-Bk;
     font-size: 24px;
-    height: 320px;
+    /*height: 320px;*/
     left: 0;
     line-height: 26px;
-    margin-top: -160px;
+    /*margin-top: -160px;*/
     position: absolute;
     top: 50%;
     width: 100%;
+	transform:translateY(-50%);-webkit-transform:translateY(-50%)
 }
-
+.thanks-page .thanks-block p .span_text{}
 .thanks-page .thanks-block p .shop-tag a {
     background: #00b900 none repeat scroll 0 0;
     color: hsl(0, 0%, 100%);
