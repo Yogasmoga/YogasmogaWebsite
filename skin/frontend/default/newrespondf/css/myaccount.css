@@ -789,3 +789,8 @@ table#referrallink td.share a#mlrefer{width: 28px; height: 18px;}
 #form-validate-resetpassword .inputtable.error{color:#555;font-weight:inherit; font-size:11px;margin-bottom:0;}
 #form-validate-resetpassword .errortext>div{font-size:11px;margin-top:-9px;}
 #form-validate-resetpassword .inputtable.error .errortext{padding:0 12px;color:#ff5f00;}
+
+/*--myaccount address--*/
+.addresses-list .item {width:100%;overflow:hidden;}
+.addresses-list .item .link-edit,.addresses-list .item .link-remove{width:auto;}
+.addresses-list .item .link-remove{margin-left:20px;}

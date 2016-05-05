@@ -91,8 +91,8 @@
 
                     ?>
                 </address>
-                <p><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>" style="margin-bottom: 0; width: auto;"><?php echo $this->__('Edit Address') ?></a> &nbsp;
-                    <a href="#" class="link-remove" onclick="return deleteAddress('<?php echo $_address->getId() ?>');" style="margin-bottom: 0; width: auto;margin-left: 20px;"><?php echo $this->__('Delete Address') ?></a></p>
+                <p><a class="link-edit" href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit Address') ?></a> &nbsp;
+                    <a href="#" class="link-remove" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Delete Address') ?></a></p>
             </li>
             <?php endforeach; ?>
         <?php else: ?>
