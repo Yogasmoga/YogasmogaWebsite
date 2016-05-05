@@ -4956,7 +4956,6 @@ button.place-order {
     width: 100%;
 	transform:translateY(-50%);-webkit-transform:translateY(-50%)
 }
-.thanks-page .thanks-block p .span_text{font-family:ITCAvantGardeStd-Md;}
 .thanks-page .thanks-block p .shop-tag a {
     background: #00b900 none repeat scroll 0 0;
     color: hsl(0, 0%, 100%);
@@ -4975,7 +4974,8 @@ button.place-order {
     margin-top: 15px;
     padding: 0 14px;
 }
-
+.thanks-page .thanks-block p .span_text{font-family:ITCAvantGardeStd-Md;}
+.thanks-block span svg { margin-bottom: 20px; margin-top: -2px;}
 .dashboard-index .error-msg {
     background: #fff;
 }
