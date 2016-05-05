@@ -208,6 +208,25 @@
     <!-- End Facebook Pixel Code -->
 <?php }?>
 
+    <!-- New Dynamic Remarketing Tag -->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 956523092;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <?php if(false){ ?>
+                <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/990162677/?value=0&amp;guid=ON&amp;script=0"/>
+            <?php } ?>
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/956523092/?value=0&amp;guid=ON&amp;script=0"/>
+        </div>
+    </noscript>
+    <!-- New Dynamic Remarketing Tag -->
 
 </head>
 <body>
@@ -223,6 +242,29 @@
 
 </script>
 <!-- end google analytics code -->
+<!-- Google Tag Manager -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-PGF5K4"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PGF5K4');
+</script>
+<!-- End Google Tag Manager -->
+
+
+
+
 <?php
 $style= "";
 if(!is_user_logged_in()){
