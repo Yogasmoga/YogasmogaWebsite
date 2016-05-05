@@ -797,8 +797,8 @@ table#referrallink td.share a#mlrefer{width: 28px; height: 18px;}
 
 .my-account .checkboxed label{line-height:43px!important;}
 @media screen and (device-aspect-ratio: 2/3) { /*iPhone < 5: aspect ratio*/
-	.my-account .checkboxed input{padding: 0 0 0 30px !important;}
+	.my-account .checkboxed {padding: 0 0 0 30px !important;}
 }
 @media only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-    webkit-min-device-pixel-ratio: 2) {/* iPhone 5 Only */
-    .my-account .checkboxed input{padding: 0 0 0 30px !important;}
+    .my-account .checkboxed {padding: 0 0 0 30px !important;}
 }
