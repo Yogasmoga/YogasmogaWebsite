@@ -4947,20 +4947,21 @@ button.place-order {
     color: hsl(0, 0%, 100%);
     font-family: ITCAvantGardeStd-Bk;
     font-size: 24px;
-    height: 320px;
+    /*height: 320px;*/
     left: 0;
-    line-height: 35px;
-    margin-top: -160px;
+    line-height: 26px;
+    /*margin-top: -160px;*/
     position: absolute;
     top: 50%;
     width: 100%;
+	transform:translateY(-50%);-webkit-transform:translateY(-50%)
 }
-
+.thanks-page .thanks-block p .span_text{}
 .thanks-page .thanks-block p .shop-tag a {
     background: #00b900 none repeat scroll 0 0;
     color: hsl(0, 0%, 100%);
     display: block;
-    font: 14px/50px ITCAvantGardeStd-Bk;
+    font: 14px/44px ITCAvantGardeStd-Bk;
     height: 44px;
     letter-spacing: 1px;
     text-decoration: none;
@@ -7984,6 +7985,17 @@ input#giftcard_use{
     margin-top: 10px;
 }
 
+/*******************  color-tech page css************/
+.colors_list li a {
+  display: block;
+  float: left;
+  font: 16px/44px ITCAvantGardeStd-Md;
+  height: 44px;
+  width: 100%;
+}
+/*******************  color-tech page css end************/
+
+
 .career-page .answer_content > div p:last-child {
    /* padding-top: 12px;
     padding-bottom: 17px !important;*/
@@ -8001,27 +8013,7 @@ input#giftcard_use{
 
 #checkout-review-table .selected_cart_products{border-top:0 none;}
 
-/**************** varint page css ************/
-.color_grid_box {
-  float: left;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  width: 100%;
-}
-.color_grid_box li a {
-  display: block;
-  float: left;
-  font: 16px/44px ITCAvantGardeStd-Md;
-  height: 44px;
-  width: 50%;
-}
+#promotion-code #discount-coupon-form .discount-form .buttons-set p{font-family:graphikregular;}
+#promotion-code #discount-coupon-form .discount-form .buttons-set p .quote{font-family:arial;}
 
-/************ color-tech css **********/
-.colors_list li a {
-  display: block;
-  float: left;
-  font: 16px/44px ITCAvantGardeStd-Md;
-  height: 44px;
-  width: 100%;
-}
+

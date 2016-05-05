@@ -3034,8 +3034,8 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .ysdiscover-colors.title-block{margin:30px 0 25px 0;}
 .ysdiscover-colors.title-block strong{font-family:gothamBold; font-size:11px; line-height:19px;text-transform:uppercase;}
 .ysdiscover-colors .colorFilterGrid{margin: 0 4% 46px;font:32px/38px ITCAvantGardeProBk;}
-.ysdiscover-colors .colorFilterGrid a { height: 202px; margin:0 0.95% 0.95% 0 ; width: 15.79%;position:relative; box-shadow:0 0 1px inset #aaa;}
-.ysdiscover-colors .colorFilterGrid a span{z-index:2;}
+.ysdiscover-colors .colorFilterGrid a { height: 202px; margin:0 0.95% 0.95% 0 ; width: 15.79%;position:relative; box-shadow:0 0 1px inset #aaa;box-sizing:border-box;}
+.ysdiscover-colors .colorFilterGrid a span{z-index:2; padding:0 15px; box-sizing:border-box;}
 .ysdiscover-colors .colorFilterGrid a span .text-shop{text-transform:uppercase; font:16px/19.2px gothamMedium; 
 	position:absolute; top:0; left:50%;transform:translate(-50% , -180%);-webkit-transform:translate(-50%, -180%); opacity:0;}
 .ysdiscover-colors .colorFilterGrid a:nth-child(6n){margin-right:0;}
@@ -3046,6 +3046,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .ysdiscover-colors .colorFilterGrid a:hover span .text-shop{opacity:1;}
 .ysdiscover-colors .colorFilterGrid .prevent-link{pointer-events:none;}
 .ysdiscover-colors .colorFilterGrid .prevent-link:hover .spn_hover,.ysdiscover-colors .colorFilterGrid .prevent-link:hover .text-shop{opacity:0;}
+.ysdiscover-colors .colorFilterGrid a.ys-color-white{border:1px solid #E5E5E5;}
 
 /*----------ys-color-landing-page--------*/
 .leftnav .ys-color-current{font: 11px/16px gothambold;margin-top:2px;text-transform: uppercase;color:#4C4C4C;}
@@ -3058,7 +3059,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .yscolor-nav li:nth-child(5n){margin-right:0;}
 .yscolor-nav li:hover,.yscolor-nav li.current{border:1px solid #7D7D7F;}
 .yscolor-nav li a{width:34px; height:24px;display:block;text-indent:-9999px;box-sizing:border-box;}
-.yscolor-nav li.white a{border:1px solid #ccc;}
+.yscolor-nav li.ys-color-white a{border:1px solid #ccc;}
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 .ysdiscover-colors .colorFilterGrid{font-size:24px; line-height:28px;}
@@ -3075,6 +3076,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .ysdiscover-colors .colorFilterGrid a span .text-shop{font-size:12px; line-height:18px; transform:translate(-50% , -160%);-webkit-transform:translate(-50%, -160%);}
 .yscolor-landing-pg  .gridProdCubix .leftnav{margin:0 0 0 28px;}
 .yscolor-landing-pg .gridProdCubix .gridWrap{margin:0 28px 0 270px;}
+.yscolor-landing-pg .productCont{margin: 0 7px 30px}
 }
 @media only screen and (max-width : 1024px) {
 .yscolor-landing-pg .productCont{margin: 0 7px 30px;}
