@@ -8001,3 +8001,27 @@ input#giftcard_use{
 
 #checkout-review-table .selected_cart_products{border-top:0 none;}
 
+/**************** varint page css ************/
+.color_grid_box {
+  float: left;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+.color_grid_box li a {
+  display: block;
+  float: left;
+  font: 16px/44px ITCAvantGardeStd-Md;
+  height: 44px;
+  width: 50%;
+}
+
+/************ color-tech css **********/
+.colors_list li a {
+  display: block;
+  float: left;
+  font: 16px/44px ITCAvantGardeStd-Md;
+  height: 44px;
+  width: 100%;
+}
