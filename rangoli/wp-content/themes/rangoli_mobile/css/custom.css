@@ -1150,6 +1150,7 @@ iframe[name="google_conversion_frame"] {
     position: absolute;
     top: 0;
     visibility: hidden;
+    display:none;
 }
 
 .get_the_look .span6 img{margin-bottom:10px;}
