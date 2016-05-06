@@ -3059,7 +3059,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .yscolor-nav li:nth-child(5n){margin-right:0;}
 .yscolor-nav li:hover,.yscolor-nav li.current{border:1px solid #7D7D7F;}
 .yscolor-nav li a{width:34px; height:24px;display:block;text-indent:-9999px;box-sizing:border-box;}
-.yscolor-nav li a.prevent-link{pointer-events:none;}
+.yscolor-nav li a.prevent-link{cursor:default;}
 .yscolor-nav li.ys-color-white a{border:1px solid #ccc;}
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
