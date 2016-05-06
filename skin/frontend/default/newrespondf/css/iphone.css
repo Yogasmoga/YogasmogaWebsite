@@ -5868,14 +5868,14 @@ table#checkout-review-table tfoot td .price {
 
 #Chkbal .sub-title {
     color: #555555 !important;
-    font: 12px AvantGarde-demi;
+    font: 12px/15px AvantGarde-demi;
     margin-bottom: 10px;
     text-align: left;
     text-transform: uppercase;
 }
 
 #Chkbal > p:nth-child(2) {
-    font: 13px GraphikRegular;
+    font: 13px/18px GraphikRegular;
     text-align: left;
 }
 

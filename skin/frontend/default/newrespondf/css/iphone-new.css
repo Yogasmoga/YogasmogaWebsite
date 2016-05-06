@@ -966,6 +966,7 @@ form#cardbalanceform table.redeem-giftcard {
     color: #555555 !important;
     margin-bottom: 15px;
     text-align: left;
+	font: 12px/15px AvantGarde-demi;
 }
 
 #createcardform > table {
