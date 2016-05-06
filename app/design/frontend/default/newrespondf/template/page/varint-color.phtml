@@ -169,139 +169,41 @@
 			
 			<div class="color_grid_box" style="display: block;">
                        <ul>
-                            <li> <a style="background: #AE8637;color:#fff;" href="#">YS GOLD</a></li>
-                            <li> <a style="background: #FDBB11;color:#fff;" href="#">BUMBLE BEE</a></li>
-    						<li> <a style="background:#ffd100;color:#fff;" href="#">SAFFRON YELLOW</a></li>
-  							<li> <a style="background:#ff7f00;color:#fff;" href="#">CALIFORNIA ORANGE</a></li>
-  							<li> <a style="background:#ee5626;color:#fff;" href="#">WILDFIRE</a></li>
-                            <li> <a style="background:#e13f00;color:#fff;" href="#">VERMELHO</a></li>
-							<li> <a style="background:#a63400;color:#fff;" href="#">INDUS</a></li>
-                            <li> <a style="background:#BA2025;color:#fff;" href="#">RUDHIRA</a></li>
-                            <li> <a style="background:#89181A;color:#fff;" href="#">KLARIT RED</a></li>
-                            <li> <a style="background:#EA2F50;color:#fff;" href="#">CRIMSON ROSE</a></li>
-  							<li> <a style="background:#fc6177;color:#fff;" href="#">CORRALLION</a></li>
-							<li> <a style="background:#ffe4f1;color:#555;" href="#">AMELIA PINK</a></li>
-                            <li> <a style="background:#EE4983;color:#fff;" href="#">PARADEIZA RED</a></li>                            
-                            <li> <a style="background:#D664A5;color:#fff;" href="#">TICKLED PINK</a></li>
-                            <li> <a style="background:#9F529F;color:#fff;" href="#">TYRIAN PURPLE</a></li>
-                            <li> <a style="background:#64256B;color:#fff;" href="#">VIOLA</a></li>
-							<li> <a style="background:#7f3594;color:#fff;" href="#">PURPLE DUSK</a></li>	
-                            <li> <a style="background:#5A3593;color:#fff;" href="#">VIOLET TWILIGHT</a></li>  
-                            <li> <a style="background:#C6B9DB;color:#fff;" href="#">SEATTLE MIST</a></li>
-							<li> <a style="background:#b7c4e0;color:#fff;" href="#">THISTLE</a></li>
-                            <li> <a style="background:#8ED7F5;color:#fff;" href="#">BOY BLUE</a></li>
-							<li> <a style="background:#3dc5ff;color:#fff;" href="#">LIGHT KOEL</a></li>
-                            <li> <a style="background:#7CBCE7;color:#fff;" href="#">SHANGRI-LA</a></li>
-                            <li> <a style="background:#2756A6;color:#fff;" href="#">KOEL BLUE</a></li>
-                            <li> <a style="background:#1C4499;color:#fff;" href="#">INDIA BLUE</a></li>
-                            <li> <a style="background:#253D80;color:#fff;" href="#">MIDNIGHT BLUE</a></li>
-							<li> <a style="background:#131735;color:#fff;" href="#">PRUSSIAN</a></li>
-                            <li> <a style="background:#027EA8;color:#fff;" href="#">JODHPUR BLUE</a></li>
-                            <li> <a style="background:#2FBCB3;color:#fff;" href="#">VERDI</a></li>
-                            <li> <a style="background:#74CBD1;color:#fff;" href="#">ANDAMAN GREEN</a></li>
-                            <li> <a style="background:#B3D34A;color:#fff;" href="#">LIME LITE</a></li>
-                            <li> <a style="background:#728166;color:#fff;" href="#">OLIVINE</a></li>
-                            <li> <a style="background:#FFFFFF;color:#555;" href="#">PURE WHITE</a></li>
-							<li> <a style="background:#f5f2f0;color:#555;" href="#">EVEREST AVALANCHE</a></li>
-							<li> <a style="background:#828081;color:#fff;" href="#">SOLID MOSAIC GREY</a></li>                          
-							<li> <a style="background:#B4B3B7;color:#fff;" href="#">SPANISH GREY</a></li>  
-							<li> <a style="background:#5f6566;color:#fff;" href="#">HERON GREY</a></li>
-                            <li> <a style="background:#6d6b6B;color:#fff;" href="#">GREY CAVIAR</a></li>
-                            <li> <a style="background:#111C22;color:#fff;" href="#">CARBON 6&trade;</a></li>
-                        </ul>
+
+
+						   <?php
+						   $collection = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToSort('position', 'ASC');
+						   $currentCategoryId = Mage::registry('current_category')->getId();
+
+						   foreach($collection as $category):
+							   if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=100):
+								   if($category->getLevel()==2 && $category->getIsActive()):
+									   $url = $category->getUrl();
+									   $name = $category->getName();
+									   $colorString = trim($category->getYsColorTech());
+									   $arr = explode(',',$colorString);
+									   $bg = $arr[0];
+									   $textclr = $arr[1];
+									   $borderClass ="";
+									   if(strtolower($bg) =="#fff" || strtolower($bg) =="#ffffff" || strtolower($bg) =="#fefefe"){
+										   $borderClass ="ys-color-white";
+									   }
+									   $currentClass="";
+									   if($category->getId()==$currentCategoryId){
+										   $currentClass="current";
+									   }
+
+									   ?>
+									   		<?php if($category->getIsAnchor()):?>
+									   			<li> <a style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="javascript:void(0)"><?php echo $name; ?></a></li>
+									 	  	<?php else:?>
+									   			<li> <a style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="<?php echo $url; ?>"><?php echo $name; ?></a></li>
+								        	<?php endif; ?>
+									<?php endif; ?>
+							   <?php endif; ?>
+						   <?php endforeach; ?>
+						</ul>
                     </div>
-
-				<?php if(false){
-				//get the url like this:    =>http://yogasmoga.com/women/top
-				$currentUrl = Mage::helper('core/url')->getCurrentUrl(); 
-
-				$categoryName = explode('/', $currentUrl);  // break the url
-				$urlKey = $categoryName[3];     // get the top category name
-				$_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
-				//echo 'id= '. $_category->getId().' name= '.$_category->getName();
-				$parentCategoryId  = $_category->getId();
-				//$parentCategoryId = Mage::registry('current_category')->getId();
-				$cat = Mage::getModel('catalog/category')->load($parentCategoryId);
-				$subcats = $cat->getChildren();
-
-				?>
-				<ul>
-					<?php 
-				if(isset($parentCategoryId) && $parentCategoryId =='3') { $whtsmaincatid ='16'; } else { $whtsmaincatid ='19'; }
-					$collectioncatid = Mage::getModel('catalog/category')->load($whtsmaincatid); ?>
-					<li><a title="What's New" class="has_no_childs" href="<?php echo $collectioncatid->getUrl(); ?>"><?php echo $collectioncatid->getName(); ?></a>
-					<ul></ul>
-					</li>
-					 <?php 
-						foreach(explode(',',$subcats) as $subCatid)
-						{
-						  $_category = Mage::getModel('catalog/category')->load($subCatid);
-						  if($_category->getIsActive()) { ?>
-								<li style="<?php if($_category->getId() =='16' || $_category->getId() =='19') { echo 'display:none';} ?>">
-
-							<?php 
-							$sub_cat = Mage::getModel('catalog/category')->load($_category->getId());
-							$sub_subcats = $sub_cat->getChildren();
-							$_subcategories = $sub_cat->getChildrenCategories();
-							if (count($_subcategories) > 0): ?>
-					<a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
-							<span>
-	<!--							<img src="--><?php //echo $this->getSkinUrl("images/arrow-down.png") ?><!--">-->
-								<svg width="44px" height="44px">
-									<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
-										  y2="109.657"/>
-									<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
-										  y1="21.39" x2="30.374" y2="21.39"/>
-									<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
-										  y1="13.39" x2="22.374" y2="29.39"/>
-								</svg>
-							</span>
-
-							<?php else: ?>
-						<a href="<?php echo $_category->getURL() ?>" class="has_no_childs" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
-							<?php endif ?>
-							<?php
-							echo '<ul>';
-							foreach($_subcategories as $_sub_category)
-							{
-								
-								 // $_sub_category = Mage::getModel('catalog/category')->load($sub_subCatid);
-								  if($_sub_category->getIsActive()) {
-				echo '<li class="sub_cat"><a href="'.$_sub_category->getURL().'" title="'.$_sub_category->getName().'">'.$_sub_category->getName().'</a></li>';
-									  $sub_sub_cat = Mage::getModel('catalog/category')->load($sub_subCatid);
-									  $sub_sub_subcats = $sub_sub_cat->getChildren();
-									  $_subsubcategories = $_sub_category->getChildrenCategories();
-									  foreach($_subsubcategories as $_sub_sub_category)
-									  {
-										//$_sub_sub_category = Mage::getModel('catalog/category')->load($sub_sub_subCatid);
-										if($_sub_sub_category->getIsActive()) {
-											echo '<li class="sub_cat"><a href="'.$_sub_sub_category->getURL().'" title="'.$_sub_sub_category->getName().'" category">'.$_sub_sub_category->getName().'</a></li>';
-										}
-									  }
-								   }
-								 
-							 }
-							 echo '</ul>';
-
-							 echo '<span class="border-line"></span></li>';
-						  }
-						}
-
-							$urlString = Mage::helper('core/url')->getCurrentUrl();
-							$path = Mage::getSingleton('core/url')->parseUrl($urlString)->getPath();
-							$urlPath = explode("/", $path);
-							$women = Mage::getModel('catalog/category')->load(3);
-							$men = Mage::getModel('catalog/category')->load(5);
-							if(strtolower($urlPath[1])==strtolower('men')){
-								echo  '<li  class="sub_cat"><a href="'.$women->getUrl().'">'.$women->getName().'</a></li>';
-							}
-							if(strtolower($urlPath[1])==strtolower('women')){
-								echo  '<li  class="sub_cat"><a href="'.$men->getUrl().'">'.$men->getName().'</a></li>';
-							}
-						 
-						?>
-
-				</ul><?php } ?>
 			</div>
 		</div>
 	 <div class="clearfix"></div>
