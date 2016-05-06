@@ -111,14 +111,14 @@ $columns = $this->getColumns();
 						$imgdata = json_decode(trim($product->getLabel()), true);
 						$colorId = $imgdata['color'];
 					 }
-					$result = $read->fetchAll("SELECT value FROM eav_attribute_option_value  where option_id ='" .$colorId ."' limit 1");
+					$result = $read->fetchAll("SELECT value FROM eav_attribute_option_value  where option_id ='" .$colorCode ."' limit 1");
 						foreach($result as $color){
 						    echo $color['value'];
 						}
 						
 				
 					?>
-					<span rel="<?php echo $color['value'].'-';?><?php echo $colorId.'--'.$colorCode;?>"></span>
+					<span rel="<?php echo $color['value'].'-';?><?php echo $colorId.'*'.$colorCode;?>"></span>
 					</span>
                 </div>
 				
