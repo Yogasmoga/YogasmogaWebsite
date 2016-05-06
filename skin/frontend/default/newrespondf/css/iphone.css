@@ -5886,7 +5886,7 @@ table#checkout-review-table tfoot td .price {
 #wishlist-table {
     border-bottom: 1px solid #999;
     border-collapse: collapse;
-    width: 100%;
+    width: 100%;display:table;
 }
 
 #wishlist-table thead th {
