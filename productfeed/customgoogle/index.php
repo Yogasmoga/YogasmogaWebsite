@@ -126,13 +126,17 @@ foreach ($productCollection as $_product) {
                 $sku = $_childProduct->getSku();
                 $description = $_helper->productAttribute($configurableProduct, $configurableProduct->getDescription(), 'description');
 
+            //Google Standard attribute.added by fahim.
+                $google_title_prefix = $_helper->productAttribute($_childProduct, $_childProduct->getGoogleTitlePrefix(), 'google_title_prefix');
+                $google_product_type = $_helper->productAttribute($_childProduct, $_childProduct->getGoogleProductType(),'google_product_type');
+                $google_color = $_helper->productAttribute($_childProduct, $_childProduct->getGoogleColor(), 'google_color');
+            //Google Standard attribute.added by fahim.
+            
                 $size = $_childProduct->getAttributeText('size');
 
                 $color = $_childProduct->getAttributeText('color');
 
-                $google_title_prefix = $_childProduct->getAttributeText('google_title_prefix');
-                $google_product_type = $_childProduct->getAttributeText('google_product_type');
-                $google_color = $_childProduct->getAttributeText('google_color');
+
 
 
 
