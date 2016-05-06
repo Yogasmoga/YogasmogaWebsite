@@ -25,7 +25,7 @@ foreach ($allColorOptions as $instance) {
 
 
 header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=google_feed.csv');
+header('Content-Disposition: attachment; filename=custom_google_feed.csv');
 
 $output = fopen('php://output', 'w');
 
