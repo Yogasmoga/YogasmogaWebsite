@@ -162,17 +162,16 @@
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 //]]>
 
-function isiPhone(){
-    return (
-        (navigator.platform.indexOf("iPhone") != -1) ||
-        (navigator.platform.indexOf("iPod") != -1)
-    );
-}
+
 jQuery(document).ready(function(){
-if(isiPhone()){
-   alert('iPhone detected');
+
+if (navigator.appVersion.indexOf("iPhone")!=-1 || navigator.appVersion.indexOf("iPod")!=-1){
 	jQuery('.my-account li.checkboxed').addClass('iphone');
 }
 });
+
+
+
+
 
 </script>
