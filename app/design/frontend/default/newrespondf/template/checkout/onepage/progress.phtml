@@ -139,6 +139,13 @@
                 <a href="#payment" onclick="checkout.gotoSection('payment'); return false;"><?php echo $this->__('Change') ?></a>-->
             </div>
             <div class="complete payment_method">
+                <?php $methodCode = Mage::getSingleton('checkout/session')->getQuote()->getPayment()->getMethod();
+                if($methodCode == 'stripe'):
+                    echo 'Credit/Debit Card';
+                else:
+                    echo ucfirst($methodCode);
+                endif;
+                ?>
                 <?php echo $this->getPaymentHtml() ?>
             </div>
         <?php else: ?>
