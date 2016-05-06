@@ -130,6 +130,12 @@ foreach ($productCollection as $_product) {
 
                 $color = $_childProduct->getAttributeText('color');
 
+                $google_title_prefix = $_childProduct->getAttributeText('google_title_prefix');
+                $google_product_type = $_childProduct->getAttributeText('google_product_type');
+                $google_color = $_childProduct->getAttributeText('google_color');
+
+
+
                 $color = substr($color, 0, strpos($color, "|"));
 
                 $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
@@ -184,10 +190,11 @@ foreach ($productCollection as $_product) {
                 $arr = array(
                     $sku,
                     $sku_configurable,
-                    $total_name.' - '.ucwords($color),
+                    //$total_name.' - '.ucwords($color),
+                    $google_title_prefix .' - '.$total_name.' - '.ucwords($google_color),
                     html_entity_decode(strip_tags($description)),
                     'Apparel & Accessories > Clothing > Activewear',
-                    '',
+                    $google_product_type,
                     $total_buy_url,
                     $image_url,
                     'New',
@@ -196,7 +203,7 @@ foreach ($productCollection as $_product) {
                     '',
                     '',
                     'YOGASMOGA',
-                    $color,
+                    $google_color,
                     $gender,       // to-do
                     $age_group,    // to-do
                     $size,          // to-do
