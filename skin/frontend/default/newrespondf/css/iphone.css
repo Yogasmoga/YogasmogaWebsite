@@ -5821,7 +5821,7 @@ table#checkout-review-table tfoot td .price {
 }
 
 #Redeemcard .sub-title {
-    font: 12px Avantgarde-demi;
+    font: 12px/15px Avantgarde-demi;
     margin-bottom: 15px;
     margin-top: 44px;
     text-align: left;

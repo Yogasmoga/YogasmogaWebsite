@@ -584,7 +584,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 #Redeemcard p {
-    font: 13px GraphikRegular;
+    font: 13px/18px GraphikRegular;
     margin-bottom: 20px;
     padding: 0;
     text-align: left;
