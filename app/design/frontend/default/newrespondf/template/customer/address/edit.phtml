@@ -163,15 +163,9 @@
 //]]>
 
 
-jQuery(document).ready(function(){
-
 if (navigator.appVersion.indexOf("iPhone")!=-1 || navigator.appVersion.indexOf("iPod")!=-1){
-	jQuery('.my-account li.checkboxed').addClass('iphone');
+	jQuery(window).load(function(){
+		jQuery('.my-account .form-list li.checkboxed').addClass('iphone');
+	});	
 }
-});
-
-
-
-
-
 </script>
