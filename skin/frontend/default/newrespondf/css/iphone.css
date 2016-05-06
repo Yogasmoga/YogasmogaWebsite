@@ -7994,6 +7994,7 @@ input#giftcard_use{
   width: 100%;
 }
 /*******************  varint page css************/
+.dropdown_links .color_grid_box a{line-height:44px;}
 .color_grid_box a {
   display: block;
   float: left;
