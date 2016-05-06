@@ -168,10 +168,10 @@ function isiPhone(){
         (navigator.platform.indexOf("iPod") != -1)
     );
 }
-$(document).ready(function(){
+jQuery(document).ready(function(){
 if(isiPhone()){
    alert('iPhone detected');
-	$('.my-account li.checkboxed').addClass('iphone');
+	jQuery('.my-account li.checkboxed').addClass('iphone');
 }
 });
 
