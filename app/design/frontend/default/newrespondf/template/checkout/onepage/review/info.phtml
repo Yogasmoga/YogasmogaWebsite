@@ -81,7 +81,10 @@ function format_bill($html)
 
         <thead class="cost-title">
             <tr>
-                <th><?php echo $this->__('ITEMS') ?><!-- <span class="edit-line"><a href="#"> Edit</a></span> --></th>
+                <th><?php $item = Mage::helper('checkout/cart')->getCart()->getItemsQty();
+		if($item==1){echo $item . $this->__(' ITEM');}
+		else if($item >1){echo $item . $this->__(' ITEMS');}
+		?></th>
                 <th class="a-right">
 				<?php
 				$subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
