@@ -132,7 +132,7 @@
             </li>
             <li<?php if($this->canSetAsDefaultBilling()) echo ' class="control checkboxed"' ?>>
                 <?php if($this->isDefaultBilling()): ?>
-                    <label><?php echo $this->__('This is your default billing Address') ?></label>
+                    <label><?php echo $this->__('This is your Default Billing Address') ?></label>
                 <?php elseif($this->canSetAsDefaultBilling()): ?>
                     <input type="checkbox" id="primary_billing" name="default_billing" value="1" title="<?php echo $this->__('Use as My Default Billing Address') ?>" class="checkbox" /><label for="primary_billing"><?php echo $this->__('Use as my Default Billing address') ?></label>
                 <?php else: ?>
@@ -141,7 +141,7 @@
             </li>
             <li<?php if($this->canSetAsDefaultShipping()) echo ' class="control checkboxed"' ?>>
                 <?php if($this->isDefaultShipping()): ?>
-                    <label><?php echo $this->__('This is your default shipping Address') ?></label>
+                    <label><?php echo $this->__('This is your Default Shipping Address') ?></label>
                 <?php elseif($this->canSetAsDefaultShipping()): ?>
                     <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" title="<?php echo $this->__('Use as My Default Shipping Address') ?>" class="checkbox" /><label for="primary_shipping"><?php echo $this->__('Use as my Default Shipping address') ?></label>
                 <?php else: ?>
