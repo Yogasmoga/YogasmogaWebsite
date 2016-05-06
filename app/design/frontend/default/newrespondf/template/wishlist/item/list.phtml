@@ -115,12 +115,12 @@ $columns = $this->getColumns();
 					
 						$result = $read->fetchAll("SELECT value FROM eav_attribute_option_value  where option_id ='" .$colorId ."' limit 1");
 						foreach($result as $color){
-						echo $color['value'];
+						    echo $color['value'];
 						}
 						
 				
 					?>
-					<span rel="<?php echo $color['value'];?>"></span>
+					<span rel="<?php echo $color['value'].'--'.$colorId;?>"></span>
 					</span>
                 </div>
 				
