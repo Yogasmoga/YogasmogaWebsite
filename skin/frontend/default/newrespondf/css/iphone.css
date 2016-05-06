@@ -5644,7 +5644,7 @@ p.required {
 }
 
 #checkout-review-table tbody .price {
-    top: 16px; line-height:14px;font-family:avantgarde-demi;
+    top: 16px; line-height:14px;font-family:ITCAvantGardeStd-Bk;
 }
 
 table#checkout-review-table tfoot td .price {
