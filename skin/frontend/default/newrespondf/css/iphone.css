@@ -5640,11 +5640,11 @@ p.required {
 
 #checkout-review-table .price {
     position: absolute;
-    right: 0;line-height:12px;
+    right: 0;line-height:14px;
 }
 
 #checkout-review-table tbody .price {
-    top: 16px; line-height:14px;
+    top: 16px; line-height:14px;font-family:avantgarde-demi;
 }
 
 table#checkout-review-table tfoot td .price {

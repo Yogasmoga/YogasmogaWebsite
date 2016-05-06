@@ -33,7 +33,7 @@
 <style>
 #address-update .messages .success-msg{ margin-top:20px;}
 </style>
-<div class="page-title title-buttons" style="padding: 0 12px;">
+<div class="page-title title-buttons" style="padding: 0 14px;">
     <h1><?php echo $this->__('Address Book') ?></h1>
     <button style="cursor: pointer" type="button" title="<?php echo $this->__('Add New Address') ?>" class="button" onclick="window.location='<?php echo $this->getAddAddressUrl() ?>';"><span><span><?php echo $this->__('Add New Address') ?></span></span></button>
 </div>
@@ -91,8 +91,9 @@
 
                     ?>
                 </address>
-                <p><a class="link-edit" href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit Address') ?></a> &nbsp;
-                    <a href="#" class="link-remove" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Delete Address') ?></a></p>
+					<p><a class="link-edit" href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit Address') ?></a> &nbsp;
+                    <a href="#" class="link-remove" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Delete Address') ?></a></p> 
+					
             </li>
             <?php endforeach; ?>
         <?php else: ?>
