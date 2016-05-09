@@ -72,7 +72,7 @@
         <ul class="form-list">
         <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
             <li class="wide">
-                <label for="street_1" class="required"><?php echo $this->__('Address Line1') ?></label>
+                <label for="street_1" class="required"><?php echo $this->__('Address Line 1') ?></label>
                 <div class="input-box">
                     <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text <?php echo $_streetValidationClass ?>" />
                 </div>
@@ -80,7 +80,7 @@
         <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
         <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
             <li class="wide">
-                <label  class="required"><?php echo $this->__('Address Line2') ?></label>
+                <label  class="required"><?php echo $this->__('Address Line 2') ?></label>
                 <div class="input-box">
                     <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i ?>" class="input-text <?php echo $_streetValidationClass ?>" />
                 </div>
@@ -134,7 +134,7 @@
                 <?php if($this->isDefaultBilling()): ?>
                     <label><?php echo $this->__('This is your Default Billing Address') ?></label>
                 <?php elseif($this->canSetAsDefaultBilling()): ?>
-                    <input type="checkbox" id="primary_billing" name="default_billing" value="1" title="<?php echo $this->__('Use as My Default Billing Address') ?>" class="checkbox" /><label for="primary_billing"><?php echo $this->__('Use as my Default Billing address') ?></label>
+                    <input type="checkbox" id="primary_billing" name="default_billing" value="1" title="<?php echo $this->__('Use as My Default Billing Address') ?>" class="checkbox" /><label for="primary_billing"><?php echo $this->__('Use as my Default Billing Address') ?></label>
                 <?php else: ?>
                     <input type="hidden" name="default_billing" value="1" />
                 <?php endif; ?>
@@ -143,7 +143,7 @@
                 <?php if($this->isDefaultShipping()): ?>
                     <label><?php echo $this->__('This is your Default Shipping Address') ?></label>
                 <?php elseif($this->canSetAsDefaultShipping()): ?>
-                    <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" title="<?php echo $this->__('Use as My Default Shipping Address') ?>" class="checkbox" /><label for="primary_shipping"><?php echo $this->__('Use as my Default Shipping address') ?></label>
+                    <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" title="<?php echo $this->__('Use as My Default Shipping Address') ?>" class="checkbox" /><label for="primary_shipping"><?php echo $this->__('Use as my Default Shipping Address') ?></label>
                 <?php else: ?>
                     <input type="hidden" name="default_shipping" value="1" />
                 <?php endif; ?>
