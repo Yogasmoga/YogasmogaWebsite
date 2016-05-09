@@ -103,7 +103,7 @@ $columns = $this->getColumns();
                 <div class="product-name">
                     <a href="<?php echo $_product->getProductUrl().$colorCodeText; ?>"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?></a>
 					
-					<span style="display:block"><?php 
+					<span class="prd-color" style="display:block"><?php 
 					
 					$resource = Mage::getSingleton('core/resource');  
 					$read = $resource->getConnection('catalog_read');  
