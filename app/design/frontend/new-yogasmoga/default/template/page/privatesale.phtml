@@ -200,6 +200,18 @@ $hiddenUrl = "&hidden=true";
                             <?php } ?>
                         </div>
                         <!-- bannerContainer -->
+						<!-- size filters -->
+                        <?php
+                            $currentCategoryId = Mage::registry('current_category')->getId();
+                            //$categoriesWithNoFilter = array(8,12,29,30,31,32,33,38,39,40,46,50);
+                            $categoriesWithNoFilterVariable = Mage::getModel('core/variable')->loadByCode('no_filter_categories')->getValue('plain');
+                            $categoriesWithNoFilter = explode(",", $categoriesWithNoFilterVariable);
+                            $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
+                            if($showSizeFilter){
+                        ?>
+                        <div id="div_sizes">&nbsp;</div>
+                        <?php } ?>
+						<!-- size filters -->
 
                         <!-- middleContainer -->
                         <div class="gridProdCubix" style="min-height: 798px;">
@@ -286,9 +298,63 @@ $hiddenUrl = "&hidden=true";
 
                                             $confProduct = Mage::getModel('catalog/product')->load($simpleproductarr['parentid']);
                                             // show html of the product
-                                            ?>
 
-                                            <div class="productCont">
+											/**************** size filter *****************/
+                                            $allSkuSizes = array();
+                                            $alphabeticSkuSizes = array();
+
+                                            $productColorIndex=0;
+                                            
+
+                                            /**************** size filter *****************/
+                                                ++$productColorIndex;
+
+                                                $confProductForSku = Mage::getModel('catalog/product_type_configurable')->setProduct($confProduct);
+
+                                                $skuSizes = array();
+  $simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFieldToFilter(array(
+    array('attribute'=>'color','eq'=>$simpleproductarr['color'])));
+                                                
+                                                 
+                                                $characterSizeFound = false;
+                                                foreach($simpleCollectionForSku as $simpleProductForSku){
+                                                    //$sku = $simpleProductForSku->getId();
+                                                    $filterColorName = $simpleProductForSku->getAttributeText('color');
+                                                    $filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
+
+                                                    $size = $simpleProductForSku->getAttributeText('size');
+
+                                                    $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
+
+                                                    if(!isset($skuSizes[$filterColorName]))
+                                                        $skuSizes[$filterColorName] = array();
+
+                                                    if(isset($size) && strlen(trim($size))>0) {
+                                                        $allSkuSizes[] = $size;
+                                                        if ($stock > 0)
+                                                            $skuSizes[$filterColorName][] = $size;
+                                                    }
+                                                }
+                                            /**************** size filter *****************/
+                                            
+                                            /****************** size filter **********************************/
+                                                    $productColorName = $clrinfo[$simpleproductarr['color']];
+                                                    $arColorSizes = array();
+
+                                                    foreach($skuSizes as $keyColor => $sizes) {
+
+                                                        if ($keyColor == $productColorName) {
+                                                            $strSizes = implode(",", $sizes);
+                                                            break;
+                                                        }
+                                                    }
+                                                    //echo $strSizes;
+
+                                            /****************** size filter **********************************/
+                                            ?>
+											<!-- size filters -->
+                                            <div class="productCont product-color-<?php echo $productColorIndex;?>" rel="<?php echo $strSizes;?>">
+											<!-- size filters -->
                                                 <div class="prod-img">
                                                     <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?><?php echo $hiddenUrl;?>" >
                                                         <?php
@@ -349,6 +415,51 @@ $hiddenUrl = "&hidden=true";
         <?php echo $this->getChildHtml('before_body_end'); ?>
     </div>
 </div>
+
+<!-- Size Filters -->
+<?php 
+if($showSizeFilter){
+/************** size filter ***********************/
+if(isset($allSkuSizes) && count($allSkuSizes)>0)
+    $allSkuSizes = array_unique($allSkuSizes);
+
+$arProductAllSizes = array();
+$attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+$allOptions = $attribute->getSource()->getAllOptions(true, true);
+foreach ($allOptions as $instance) {
+    if ($instance['label'] != "" && strpos($instance['label'], "T")===false)
+        $arProductAllSizes[] = $instance['label'];
+}
+
+/************** size filter ***********************/
+
+?>
+<!-- ********************************* checkbox filter ********************** -->
+    <script type="text/javascript">
+        var arAllSizes = Array();
+        var arProductSizes = Array();
+        var productColorIndex;
+
+        productColorIndex = "<?php echo $productColorIndex;?>";
+
+        <?php
+            foreach($allSkuSizes as $size){
+        ?>
+                arProductSizes.push("<?php echo $size;?>");
+        <?php
+            }
+            foreach($arProductAllSizes as $size){
+        ?>
+                arAllSizes.push("<?php echo $size;?>");
+        <?php
+            }
+        ?>
+    </script>
+	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter.js"></script>
+<!-- ********************************* checkbox filter ********************** -->
+<?php } ?>
+<!-- Size Filters -->
+
 <?php echo $this->getAbsoluteFooter() ?>
 </body>
 </html>
