@@ -1739,3 +1739,6 @@ p.small.err_msg {
 .press-name a{color:#fff; text-decoration:none;}
 .rangoli_press_content blockquote{border-left:1px solid #AE8536; margin:1em 0 1em 1em; padding:10px; font-size:140%; font-style:italic;}
 .rangoli_press_banner .post_title br{display:none;}
+
+/*--mobile-correction--*/
+#menu-mobile-menu-2 li.store{display:none;}
