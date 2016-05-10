@@ -8066,4 +8066,6 @@ input#giftcard_use{
 .paypal-review-order #shipping-method-container td strong{font-weight:normal;}
 
 .paypal-review-order .paypal-details tfoot td{}
-.paypal-review-order .paypal-details tfoot td:first-child{}
+.paypal-review-order .paypal-details tfoot td:first-child{text-align:left!important;}
+.paypal-review-order .btn-checkout{ background: #00b900 none repeat scroll 0 0;
+  border: 0 none; color: #fff; cursor: pointer; font: 14px/50px itcavantgardestd-bk; width: 100%;}
