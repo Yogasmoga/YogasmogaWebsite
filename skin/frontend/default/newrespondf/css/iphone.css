@@ -8011,6 +8011,7 @@ input#giftcard_use{
   text-align: center;
   width: 100%;
 }
+.prevent-link{cursor:default;}
 /*******************  color-tech page css end************/
 
 
@@ -8027,6 +8028,7 @@ input#giftcard_use{
 
 .jobs-content #content-loader{text-align:center;}
 .jobs-content #content-loader img{position:relative; display:inline-block; margin-top:35px;}
+
 /*========for career page end========*/
 
 #checkout-review-table .selected_cart_products{border-top:0 none;}
