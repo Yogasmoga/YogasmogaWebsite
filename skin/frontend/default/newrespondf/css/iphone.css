@@ -4952,9 +4952,9 @@ button.place-order {
     line-height: 26px;
     /*margin-top: -160px;*/
     position: absolute;
-    top: 50%;
+    /*top: 50%;*/ top:92px;
     width: 100%;
-	transform:translateY(-50%);-webkit-transform:translateY(-50%)
+	/*transform:translateY(-50%);-webkit-transform:translateY(-50%)*/
 }
 .thanks-page .thanks-block p .shop-tag a {
     background: #00b900 none repeat scroll 0 0;
@@ -4971,11 +4971,12 @@ button.place-order {
 
 .thanks-page .thanks-block p .shop-tag {
     display: block;
-    margin-top: 15px;
+    margin-top: 0px;
     padding: 0 14px;
 }
 .thanks-page .thanks-block p .span_text{font-family:ITCAvantGardeStd-Md;}
-.thanks-block span svg { margin-bottom: 33px; margin-top: 11px;}
+.thanks-block span svg { margin-bottom: 32px; margin-top: 32px;}
+.span_txt_blk{margin-bottom:32px;display:inline-block;}
 .dashboard-index .error-msg {
     background: #fff;
 }
