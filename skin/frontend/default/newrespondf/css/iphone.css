@@ -4952,7 +4952,7 @@ button.place-order {
     line-height: 26px;
     /*margin-top: -160px;*/
     position: absolute;
-    /*top: 50%;*/ top:92px;
+    /*top: 50%;*/ top:88px;
     width: 100%;
 	/*transform:translateY(-50%);-webkit-transform:translateY(-50%)*/
 }
@@ -4960,7 +4960,7 @@ button.place-order {
     background: #00b900 none repeat scroll 0 0;
     color: hsl(0, 0%, 100%);
     display: block;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 16px/44px ITCAvantGardeStd-Bk;
     height: 44px;
     letter-spacing: 1px;
     text-decoration: none;
@@ -4974,9 +4974,12 @@ button.place-order {
     margin-top: 0px;
     padding: 0 14px;
 }
-.thanks-page .thanks-block p .span_text{font-family:ITCAvantGardeStd-Md;}
-.thanks-block span svg { margin-bottom: 32px; margin-top: 32px;}
-.span_txt_blk{margin-bottom:32px;display:inline-block;}
+.thanks-page .thanks-block p .span_text{font-family:avantgarde-demi;}
+.thanks-block span svg { margin-bottom: 23px; margin-top: 28px;}
+.span_txt_blk{margin-bottom:24px;display:block; font-size:14px; line-height:18px;}
+.span_txt_blk.smogi_txt{margin-bottom:28px;}
+.span_txt_blk .buckes-earned{font-family:avantgarde-demi;}
+
 .dashboard-index .error-msg {
     background: #fff;
 }
@@ -8030,5 +8033,17 @@ input#giftcard_use{
 
 #promotion-code #discount-coupon-form .discount-form .buttons-set p{font-family:graphikregular;}
 #promotion-code #discount-coupon-form .discount-form .buttons-set p .quote{/*font-family:arial;*/}
+
+/*--paypal review--*/
+.paypal-review-order{}
+.paypal-review-order .address-form{}
+.paypal-review-order .address-form .fields{}
+.paypal-review-order .address-form .inputtable{}
+.paypal-review-order .address-form .fields,
+.paypal-review-order .address-form .inputtable{}
+.paypal-review-order .address-form .fields .input-text,.paypal-review-order .address-form .inputtable .input-text{}
+.paypal-review-order .address-form .inputtable td{}
+.paypal-review-order .address-form .inputtable td.label{}
+.paypal-review-order .address-form .inputtable td.inputholder{}
 
 
