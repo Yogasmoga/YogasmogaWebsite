@@ -8038,12 +8038,16 @@ input#giftcard_use{
 .paypal-review-order{}
 .paypal-review-order .address-form{}
 .paypal-review-order .address-form .fields{}
-.paypal-review-order .address-form .inputtable{}
+.paypal-review-order .address-form .inputtable{width:100%!important;}
 .paypal-review-order .address-form .fields,
 .paypal-review-order .address-form .inputtable{}
 .paypal-review-order .address-form .fields .input-text,.paypal-review-order .address-form .inputtable .input-text{}
 .paypal-review-order .address-form .inputtable td{}
-.paypal-review-order .address-form .inputtable td.label{color:#555;font-family:GraphikRegular;font-size:12px;letter-spacing:1px;line-height:28px;text-transform:capitalize;display:block;}
-.paypal-review-order .address-form .inputtable td.inputholder{padding:0; }
+.paypal-review-order .address-form .inputtable td.label{display:block;}
+.paypal-review-order .address-form .inputtable td.label label{color:#555;font-family:GraphikRegular;font-size:12px;letter-spacing:1px;line-height:28px;text-transform:capitalize;}
+.paypal-review-order .address-form .inputtable td.inputholder{padding:0; display:block;}
+.paypal-review-order .address-form input, .paypal-review-order .address-form textarea, .paypal-review-order .address-form select {
+  border-radius: 0; color: #555 !important; font: 12px graphikregular !important; height: 40px !important;
+  padding: 0 4px;}
 
 
