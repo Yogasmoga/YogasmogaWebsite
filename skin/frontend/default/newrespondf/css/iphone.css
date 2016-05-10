@@ -8059,7 +8059,9 @@ input#giftcard_use{
 .paypal-review-order .info-set1 h2.legend1{font-family: itcavantgardestd-bk;
     font-size: 19px; font-weight: normal;letter-spacing: 1px; text-transform: uppercase;}  
 .paypal-review-order .paypal-shipping-method h3,
-.paypal-review-order .info-set1 h2.legend1{margin-bottom:10px;}
+.paypal-review-order .info-set1 h2.legend1{margin-bottom:10px; position:relative;}
+.paypal-review-order .info-set1 h2.legend1 > a { color: #846721; font-size: 11px;position: absolute;
+  right: 0; top: 0;}
 .paypal-review-order .info-set,	.paypal-review-order .info-set1{margin-bottom:24px;}
 
 .paypal-review-order #shipping-method-container td{font: 12px/44px GraphikRegular;letter-spacing: 1px}
