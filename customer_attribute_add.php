@@ -2,7 +2,17 @@
 include('app/Mage.php');
 Mage::app();
 
+$order_details = Mage::getModel('sales/order')->loadByIncrementId(100012330);
+echo "<pre/>";
+print_r($order_details->getData());
+foreach($order_details as $points){
 
+
+}
+
+
+
+/*
 Mage::app()->setCurrentStore(Mage::getModel('core/store')->load(Mage_Core_Model_App::ADMIN_STORE_ID));
 
 
@@ -24,7 +34,7 @@ Mage::app()->setCurrentStore(Mage::getModel('core/store')->load(Mage_Core_Model_
     $installer->addAttribute('catalog_category', 'ys_color_tech', $attribute);
 
     $installer->endSetup();
-
+*/
 
 /*
 $installer = Mage::getResourceModel('customer/setup', 'customer_setup');
