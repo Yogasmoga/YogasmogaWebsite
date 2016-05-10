@@ -8043,7 +8043,7 @@ input#giftcard_use{
 .paypal-review-order .address-form .inputtable{}
 .paypal-review-order .address-form .fields .input-text,.paypal-review-order .address-form .inputtable .input-text{}
 .paypal-review-order .address-form .inputtable td{}
-.paypal-review-order .address-form .inputtable td.label{}
-.paypal-review-order .address-form .inputtable td.inputholder{}
+.paypal-review-order .address-form .inputtable td.label{color:#555;font-family:GraphikRegular;font-size:12px;letter-spacing:1px;line-height:28px;text-transform:capitalize;display:block;}
+.paypal-review-order .address-form .inputtable td.inputholder{padding:0;}
 
 
