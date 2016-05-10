@@ -67,7 +67,7 @@ $order_details = Mage::getModel('sales/order')->loadByIncrementId(Mage::getSingl
 
 </span>
         <span class="span_txt_blk">&amp; SUPPORTING OUR<br>MADE IN USA PRODUCTS</span>
-		<span class="span_txt_blk">YOU&rsquo;VE <span><?php echo Mage::getSingleton('checkout/session')->getLastRealOrderId()."**********";?></span> EARNED SMOGI BUCKS<br/>
+		<span class="span_txt_blk">YOU&rsquo;VE <?php echo Mage::getSingleton('core/session')->getrewardpointscount(); ?> EARNED SMOGI BUCKS<br/>
 		WITH THIS PURCHASE</span>
         <span class="shop-tag"><a href="<?php echo $this->getUrl() ?>"><?php echo $this->__('Keep Shopping') ?></a></span></p>
 
