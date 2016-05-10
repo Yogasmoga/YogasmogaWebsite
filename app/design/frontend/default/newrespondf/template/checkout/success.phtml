@@ -25,7 +25,10 @@
  */
 
 $order_details = Mage::getModel('sales/order')->loadByIncrementId(Mage::getSingleton('checkout/session')->getLastRealOrderId());
-
+foreach($order_details as $points){
+	echo "<pre/>";
+	print_r($points);
+}
 ?>
 
 <div class="thanks-block">
@@ -67,7 +70,10 @@ $order_details = Mage::getModel('sales/order')->loadByIncrementId(Mage::getSingl
 
 </span>
         <span class="span_txt_blk">&amp; SUPPORTING OUR<br>MADE IN USA PRODUCTS</span>
-		<span class="span_txt_blk">YOU&rsquo;VE EARNED <?php echo $order_details->getRewardpointsQuantity(); ?> SMOGI BUCKS<br/>
+		<span class="span_txt_blk">YOU&rsquo;VE EARNED <?php foreach($order_details as $points){
+				echo "<pre/>";
+				print_r($points);
+			} ?> SMOGI BUCKS<br/>
 		WITH THIS PURCHASE</span>
         <span class="shop-tag"><a href="<?php echo $this->getUrl() ?>"><?php echo $this->__('Keep Shopping') ?></a></span></p>
 
