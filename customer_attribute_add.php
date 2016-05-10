@@ -4,7 +4,7 @@ Mage::app();
 
 $order_details = Mage::getModel('sales/order')->loadByIncrementId(100012330);
 echo "<pre/>";
-print_r($order_details->getData());
+print_r($order_details->getAllVisibleItems());
 foreach($order_details as $points){
 
 
