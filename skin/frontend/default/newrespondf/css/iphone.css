@@ -8035,13 +8035,14 @@ input#giftcard_use{
 #promotion-code #discount-coupon-form .discount-form .buttons-set p .quote{/*font-family:arial;*/}
 
 /*--paypal review--*/
+.paypal-express-review .page-title h1{font-family:avantgarde-demi;}
 .paypal-review-order{}
 .paypal-review-order .address-form{}
 .paypal-review-order .address-form .fields{}
 .paypal-review-order .address-form .inputtable{width:100%!important;}
 .paypal-review-order .address-form .fields,
 .paypal-review-order .address-form .inputtable{padding:0; margin:0 0 10px 0;}
-.paypal-review-order .address-form .fields .field:first-child{margin-bottom:0 0 10px 0;}
+.paypal-review-order .address-form .fields .field:first-child{margin:0 0 10px 0;}
 .paypal-review-order .address-form .fields .input-text,.paypal-review-order .address-form .inputtable .input-text{}
 .paypal-review-order .address-form .inputtable td{}
 .paypal-review-order .address-form .inputtable td.label{display:block;}
@@ -8051,8 +8052,10 @@ input#giftcard_use{
   border-radius: 0; color: #555 !important; font: 12px graphikregular !important; height: 40px !important;
   padding: 0 4px;margin-bottom:0;}
 
-  .paypal-review-order h2.addresses,
+.paypal-review-order h2.addresses,
 .paypal-review-order .paypal-shipping-method h3,
-.paypal-review-order .paypal-shipping-method h2.legend1{}  
+.paypal-review-order .info-set1 h2.legend1{font-family: itcavantgardestd-bk;
+    font-size: 19px; font-weight: normal;letter-spacing: 1px; text-transform: uppercase;}  
 
+.paypal-review-order .info-set,	.paypal-review-order .info-set1{margin-bottom:24px;}
 
