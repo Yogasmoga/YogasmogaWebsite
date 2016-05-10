@@ -8040,7 +8040,7 @@ input#giftcard_use{
 .paypal-review-order .address-form .fields{}
 .paypal-review-order .address-form .inputtable{width:100%!important;}
 .paypal-review-order .address-form .fields,
-.paypal-review-order .address-form .inputtable{}
+.paypal-review-order .address-form .inputtable{padding:0; margin:0 0 10px 0;}
 .paypal-review-order .address-form .fields .input-text,.paypal-review-order .address-form .inputtable .input-text{}
 .paypal-review-order .address-form .inputtable td{}
 .paypal-review-order .address-form .inputtable td.label{display:block;}
