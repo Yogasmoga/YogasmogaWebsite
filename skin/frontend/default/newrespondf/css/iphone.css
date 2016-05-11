@@ -8079,7 +8079,7 @@ input#giftcard_use{
   right: 0; top: 0;}
 .paypal-review-order .info-set,	.paypal-review-order .info-set1{margin-bottom:24px;}
 
-.paypal-review-order #shipping-method-container td{font: 12px/44px GraphikRegular;letter-spacing: 1px}
+.paypal-review-order #shipping-method-container td{font: 12px/44px GraphikRegular;letter-spacing: 1px; text-align:center;}
 .paypal-review-order #shipping-method-container td strong{font-weight:normal;}
 
 .paypal-review-order .paypal-details tfoot td{}
