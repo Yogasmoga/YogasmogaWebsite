@@ -148,6 +148,15 @@
                     <input type="hidden" name="default_shipping" value="1" />
                 <?php endif; ?>
             </li>
+			<?php
+				if($this->isDefaultShipping() || $this->isDefaultBilling()){ 
+				?>
+				<li>
+					<label><a href="/customer/address/new/">Add Different Address</a></label>
+				</li>	
+				<?php
+				}
+			?>
         </ul>
     </div>
     <div class="buttons-set" style="float: left; width: 100%; margin-top: 5px;">
