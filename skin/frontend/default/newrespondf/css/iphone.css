@@ -8019,7 +8019,7 @@ input#giftcard_use{
 	-webkit-column-count: 2;
 	-webkit-column-gap: 0;
 	column-count: 2;
-	column-gap: 2.5em;}
+	column-gap: 0;}
 .color_grid_box {
   text-align: center;
   width: 100%;
