@@ -8051,6 +8051,7 @@ input#giftcard_use{
 
 /*--paypal review--*/
 #country_error,#chooseshippingmethod{display:none;}
+.paypal-express-review .custom-block{padding:0 14px;}
 .paypal-express-review .page-title h1{font-family:avantgarde-demi; margin-bottom:10px;}
 .paypal-review-order{}
 .paypal-review-order .address-form{}
