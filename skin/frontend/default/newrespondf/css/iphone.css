@@ -6787,6 +6787,7 @@ button#send2 {
     font: 16px/50px ITCAvantGardeStd-Md;
     float: left;
     width: 100%;
+	text-transform:uppercase;
     height: 44px;
 }
 
@@ -8001,6 +8002,7 @@ input#giftcard_use{
   font: 16px/50px ITCAvantGardeStd-Md;
   height: 44px;
   width: 100%;
+  text-transform:uppercase;
 }
 /*******************  varint page css************/
 
@@ -8009,6 +8011,7 @@ input#giftcard_use{
   float: left;
   font: 16px/50px ITCAvantGardeStd-Md;
   width: 50%;
+  text-transform:uppercase;
 }
 .color_grid_box {
   text-align: center;
