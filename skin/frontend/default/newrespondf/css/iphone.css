@@ -8008,11 +8008,18 @@ input#giftcard_use{
 
 .color_grid_box a {
   display: block;
-  float: left;
+  /*float: left;*/
   font: 16px/50px ITCAvantGardeStd-Md;
-  width: 50%;
+ /* width: 50%;*/
   text-transform:uppercase;
 }
+.dropdown_links  .color_grid_box ul{width:100%; float:left; box-sizing:border-box;	
+	-moz-column-count: 2;
+	-moz-column-gap: 0;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 0;
+	column-count: 2;
+	column-gap: 2.5em;}
 .color_grid_box {
   text-align: center;
   width: 100%;
