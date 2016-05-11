@@ -35,6 +35,17 @@
 
 <?php echo $this->getCssJsHtml() ?>
 <?php echo $this->getChildHtml() ?>
+
+<script type="application/ld+json">
+    {  "@context" : "http://schema.org",
+       "@type" : "WebSite",
+       "name" : "YOGASMOGA",
+        "url" : "http://yogasmoga.com/"
+    }
+    </script>
+
+
+
 <script type="text/javascript" language="javascript">
     jQuery.noConflict();
     var homeUrl = '<?php echo Mage::helper('core/url')->getHomeUrl() ?>';
