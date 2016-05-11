@@ -73,9 +73,9 @@ Checkout.prototype = {
             }
             var container = $(step+'-buttons-container');
             container.setStyle({opacity:.5});
+			container.addClassName('saving_step');
             this._disableEnableAll(container, true);
             //Element.show(step+'-please-wait');
-			$(step+'-please-wait').setStyle({display:'block'});
         } else {
             if (this.loadWaiting) {
                 var container = $(this.loadWaiting+'-buttons-container');
@@ -84,8 +84,8 @@ Checkout.prototype = {
                     container.setStyle({opacity:1});
                 }
                 this._disableEnableAll(container, isDisabled);
+				container.removeClassName('saving_step');
                 //Element.hide(this.loadWaiting+'-please-wait');
-				$(this.loadWaiting+'-please-wait').setStyle({display:'none'});
             }
         }
         this.loadWaiting = step;
