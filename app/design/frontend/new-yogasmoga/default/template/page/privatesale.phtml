@@ -178,6 +178,7 @@ $hiddenUrl = "&hidden=true";
 
                                             
                                             $simpleproductarr = array();
+                                            $allSkuSizes = array();
                                             foreach($productCollection as $product)
                                             {
                                                 $simpleProduct = Mage::getModel('catalog/product')->load($product->getId());
@@ -224,7 +225,7 @@ $hiddenUrl = "&hidden=true";
                                                 $confProduct = Mage::getModel('catalog/product')->load($simpleproductarr['parentid']);
                                                 // show html of the product
                                                 /**************** size filter *****************/
-                                                $allSkuSizes = array();
+
                                                 $alphabeticSkuSizes = array();
 
                                                 $productColorIndex=0;
@@ -254,7 +255,7 @@ $hiddenUrl = "&hidden=true";
                                                     if(!isset($skuSizes[$filterColorName]))
                                                         $skuSizes[$filterColorName] = array();
 
-                                                    if(isset($size) && strlen(trim($size))>0) {
+                                                    if(isset($size) && strlen(trim($size))>0 && is_numeric($size)) {
                                                         $allSkuSizes[] = $size;
                                                         if ($stock > 0)
                                                             $skuSizes[$filterColorName][] = $size;
