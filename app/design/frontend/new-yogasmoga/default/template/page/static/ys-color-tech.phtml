@@ -97,14 +97,13 @@
 							}
 						?>
 						<?php if($category->getIsAnchor()):?>
-							<a href="javascript:void(0);" class="prevent-link"  style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;" class="<?php echo $borderClass;?>">
+							<a href="javascript:void(0);" class="prevent-link <?php echo $borderClass;?>"  style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;">
 								<span>
 									<span  class="text-shop"></span>
 									<?php echo $name; ?>
 								</span>
-								<!--<span class="spn_hover">
-									<img src="<?php //echo $this->getSkinUrl('images/colorgrid/').$img; ?>" alt="<?php //echo $name; ?>"/>
-								</span>-->
+
+
 							</a>
 							<?php else: ?>
 							<a href="<?php echo $url;?>" style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;" class="<?php echo $borderClass;?>">
