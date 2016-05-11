@@ -1540,7 +1540,7 @@ function validateBillingAddressForm()
     var flag = validatefields(jQuery("#co-billing-form"));
     if(jQuery("#billing\\:postcode").val() != "")
     {
-        if(!validateZip(jQuery("#billing\\:postcode").val()))
+        if(!isValidPostalCode(jQuery("#billing\\:postcode").val(),jQuery("#billing\\:country_id").val()))
         {
             flag = false;
             setOnError(jQuery("#billing\\:postcode"), "Invalid Zip Code");
@@ -1586,7 +1586,7 @@ function validateShippingAddressForm()
     var flag = validatefields(jQuery("#checkout-shipping-form"));
     if(jQuery("#shipping\\:postcode").val() != "")
     {
-        if(!validateZip(jQuery("#shipping\\:postcode").val()))
+        if(!isValidPostalCode(jQuery("#shipping\\:postcode").val(),jQuery("#shipping\\:country_id").val()))
         {
             flag = false;
             setOnError(jQuery("#shipping\\:postcode"), "Invalid Zip Code");

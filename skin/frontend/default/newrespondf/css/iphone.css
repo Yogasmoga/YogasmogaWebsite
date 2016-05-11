@@ -2708,6 +2708,9 @@ label.shipping_method_radio > input[type="radio"] {
     border: 14px solid #fff;
     border-bottom: none;
 }
+#billing-buttons-container.saving_step .button, #shipping-buttons-container.saving_step .form-button, #shipping-method-buttons-container.saving_step .form-button, #payment-buttons-container.saving_step .form-button {
+	background-image:url("../images/saving.png");
+}
 
 #checkout-review-table tr td:first-child {
     text-align: left !important;
@@ -6781,7 +6784,7 @@ button#send2 {
 
 .colors_list li {
     color: #fff;
-    font: 16px/44px ITCAvantGardeStd-Md;
+    font: 16px/50px ITCAvantGardeStd-Md;
     float: left;
     width: 100%;
     height: 44px;
@@ -7995,22 +7998,23 @@ input#giftcard_use{
 .colors_list li a {
   display: block;
   float: left;
-  font: 16px/44px ITCAvantGardeStd-Md;
+  font: 16px/50px ITCAvantGardeStd-Md;
   height: 44px;
   width: 100%;
 }
 /*******************  varint page css************/
-.dropdown_links .color_grid_box a{line-height:44px;}
+
 .color_grid_box a {
   display: block;
   float: left;
-  font: 16px/44px ITCAvantGardeStd-Md;
+  font: 16px/50px ITCAvantGardeStd-Md;
   width: 50%;
 }
 .color_grid_box {
   text-align: center;
   width: 100%;
 }
+.prevent-link{cursor:default;}
 /*******************  color-tech page css end************/
 
 
@@ -8027,6 +8031,7 @@ input#giftcard_use{
 
 .jobs-content #content-loader{text-align:center;}
 .jobs-content #content-loader img{position:relative; display:inline-block; margin-top:35px;}
+
 /*========for career page end========*/
 
 #checkout-review-table .selected_cart_products{border-top:0 none;}
@@ -8035,12 +8040,14 @@ input#giftcard_use{
 #promotion-code #discount-coupon-form .discount-form .buttons-set p .quote{/*font-family:arial;*/}
 
 /*--paypal review--*/
+.paypal-express-review .page-title h1{font-family:avantgarde-demi; margin-bottom:10px;}
 .paypal-review-order{}
 .paypal-review-order .address-form{}
 .paypal-review-order .address-form .fields{}
 .paypal-review-order .address-form .inputtable{width:100%!important;}
 .paypal-review-order .address-form .fields,
 .paypal-review-order .address-form .inputtable{padding:0; margin:0 0 10px 0;}
+.paypal-review-order .address-form .fields .field:first-child{margin:0 0 10px 0;}
 .paypal-review-order .address-form .fields .input-text,.paypal-review-order .address-form .inputtable .input-text{}
 .paypal-review-order .address-form .inputtable td{}
 .paypal-review-order .address-form .inputtable td.label{display:block;}
@@ -8048,6 +8055,22 @@ input#giftcard_use{
 .paypal-review-order .address-form .inputtable td.inputholder{padding:0; display:block;}
 .paypal-review-order .address-form input, .paypal-review-order .address-form textarea, .paypal-review-order .address-form select {
   border-radius: 0; color: #555 !important; font: 12px graphikregular !important; height: 40px !important;
-  padding: 0 4px;}
+  padding: 0 4px;margin-bottom:0;}
 
+.paypal-review-order h2.addresses,
+.paypal-review-order .paypal-shipping-method h3,
+.paypal-review-order .info-set1 h2.legend1{font-family: itcavantgardestd-bk;
+    font-size: 19px; font-weight: normal;letter-spacing: 1px; text-transform: uppercase;}  
+.paypal-review-order .paypal-shipping-method h3,
+.paypal-review-order .info-set1 h2.legend1{margin-bottom:10px; position:relative;}
+.paypal-review-order .info-set1 h2.legend1 > a { color: #846721; font-size: 11px;position: absolute;
+  right: 0; top: 0;}
+.paypal-review-order .info-set,	.paypal-review-order .info-set1{margin-bottom:24px;}
 
+.paypal-review-order #shipping-method-container td{font: 12px/44px GraphikRegular;letter-spacing: 1px}
+.paypal-review-order #shipping-method-container td strong{font-weight:normal;}
+
+.paypal-review-order .paypal-details tfoot td{}
+.paypal-review-order .paypal-details tfoot td:first-child{text-align:left!important;}
+.paypal-review-order .btn-checkout{ background: #00b900 none repeat scroll 0 0;
+  border: 0 none; color: #fff; cursor: pointer; font: 14px/50px itcavantgardestd-bk; width: 100%;}
