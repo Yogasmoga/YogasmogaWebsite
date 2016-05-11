@@ -8086,8 +8086,10 @@ input#giftcard_use{
 .paypal-review-order .btn-checkout{ background: #00b900 none repeat scroll 0 0;
   border: 0 none; color: #fff; cursor: pointer; font: 14px/50px itcavantgardestd-bk; width: 100%;}
 
-.paypal-review-order .paypal-details{width:100%;}  
+.paypal-review-order .paypal-details{width:100%; border-collapse:collapse;}  
 .paypal-review-order .paypal-details tr.pritem{border-bottom:1px solid #999;}  
+.paypal-review-order .paypal-details tr.pritem td{padding:14px 0;}
+.paypal-review-order .paypal-details tfoot td{padding:20px 0 0 0;}
 .paypal-review-order .paypal-details tr td:first-child {
   text-align: left !important; width: 79%;}
 .paypal-review-order .paypal-details tr .col_left_img { float: left; height: 102px; overflow: hidden;
