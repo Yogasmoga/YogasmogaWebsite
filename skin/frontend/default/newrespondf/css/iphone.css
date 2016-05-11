@@ -8050,7 +8050,7 @@ input#giftcard_use{
 #promotion-code #discount-coupon-form .discount-form .buttons-set p .quote{/*font-family:arial;*/}
 
 /*--paypal review--*/
-#country_error{display:none;}
+#country_error,#chooseshippingmethod{display:none;}
 .paypal-express-review .page-title h1{font-family:avantgarde-demi; margin-bottom:10px;}
 .paypal-review-order{}
 .paypal-review-order .address-form{}
