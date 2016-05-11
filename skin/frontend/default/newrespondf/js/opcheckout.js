@@ -72,7 +72,7 @@ Checkout.prototype = {
                 this.setLoadWaiting(false);
             }
             var container = $(step+'-buttons-container');
-            container.setStyle({opacity:.5});
+            //container.setStyle({opacity:.5});
 			container.addClassName('saving_step');
             this._disableEnableAll(container, true);
             //Element.show(step+'-please-wait');
@@ -81,7 +81,7 @@ Checkout.prototype = {
                 var container = $(this.loadWaiting+'-buttons-container');
                 var isDisabled = (keepDisabled ? true : false);
                 if (!isDisabled) {
-                    container.setStyle({opacity:1});
+                    //container.setStyle({opacity:1});
                 }
                 this._disableEnableAll(container, isDisabled);
 				container.removeClassName('saving_step');
