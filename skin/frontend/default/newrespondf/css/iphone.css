@@ -8050,6 +8050,7 @@ input#giftcard_use{
 #promotion-code #discount-coupon-form .discount-form .buttons-set p .quote{/*font-family:arial;*/}
 
 /*--paypal review--*/
+#country_error{display:none;}
 .paypal-express-review .page-title h1{font-family:avantgarde-demi; margin-bottom:10px;}
 .paypal-review-order{}
 .paypal-review-order .address-form{}
@@ -8089,6 +8090,8 @@ input#giftcard_use{
 .paypal-review-order .paypal-details{width:100%; border-collapse:collapse;}  
 .paypal-review-order .paypal-details tr.pritem{border-bottom:1px solid #999;}  
 .paypal-review-order .paypal-details tr.pritem td{padding:14px 0;}
+.paypal-review-order .paypal-details tr td{font: 12px graphikregular;}
+.paypal-review-order .pyapal-details .price{font-family: ITCAvantGardeStd-Bk; line-height: 14px;position:absolute; right:0; top: 17px;}
 .paypal-review-order .paypal-details tfoot td{padding:20px 0 0 0;}
 .paypal-review-order .paypal-details tr td:first-child {
   text-align: left !important; width: 79%;}
