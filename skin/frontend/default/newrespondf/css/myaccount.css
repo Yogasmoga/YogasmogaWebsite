@@ -798,3 +798,6 @@ table#referrallink td.share a#mlrefer{width: 28px; height: 18px;}
 
 .my-account .checkboxed label{line-height:43px!important;}
 .my-account .checkboxed.iphone{padding-left:30px!important;}
+
+.my-account .add-diff-addr label{}
+.my-account .add-diff-addr label a{}
