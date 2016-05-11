@@ -93,11 +93,14 @@
 						$img = $arr[2];
 						$borderClass ="";
 							if(strtolower($bg) =="#fff" || strtolower($bg) =="#ffffff" || strtolower($bg) =="#fefefe"){
-								$borderClass ="ys-color-white";
+								$borderClass ="1px solid #e5e5e5";
+							}
+							else{
+								$borderClass ="1px solid ".$bg;
 							}
 						?>
 						<?php if($category->getIsAnchor()):?>
-							<a href="javascript:void(0);" class="prevent-link <?php echo $borderClass;?>"  style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;">
+							<a href="javascript:void(0);" class="prevent-link "  style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;border:<?php echo $borderClass;?>">
 								<span>
 									<span  class="text-shop"></span>
 									<?php echo $name; ?>
@@ -106,7 +109,7 @@
 
 							</a>
 							<?php else: ?>
-							<a href="<?php echo $url;?>" style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;" class="<?php echo $borderClass;?>">
+							<a href="<?php echo $url;?>" style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;border:<?php echo $borderClass;?>">
 									<span>
 										<span  class="text-shop">Shop</span>
 										<?php echo $name; ?>
