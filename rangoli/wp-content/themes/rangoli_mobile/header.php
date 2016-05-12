@@ -229,7 +229,7 @@ $logged_in = is_user_logged_in();
         </script>
         <!-- End Google Tag Manager -->
 
-        <?php    if( $post->ID == 10414 ) {?>
+        <?php   if( is_singular('rangoli-press')) {?>
             <!-- Facebook Pixel Code -->
             <script>
                 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -243,7 +243,7 @@ $logged_in = is_user_logged_in();
             </script>
             <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1465922433646880&ev=PageView&noscript=1"/></noscript>
             <!-- End Facebook Pixel Code -->
-        <?php }?>
+        <?php  }?>
 
         <!-- New Dynamic Remarketing Tag -->
         <script type="text/javascript">

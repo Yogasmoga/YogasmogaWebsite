@@ -192,7 +192,7 @@
     <script src="<?php bloginfo('template_directory')?>/js/jquery.raty.js" ></script>
 
 
-<?php    if( $post->ID == 10414 ) {?>
+<?php    if(is_singular('rangoli-press')) {?>
     <!-- Facebook Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
