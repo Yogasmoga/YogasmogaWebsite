@@ -741,3 +741,7 @@ div.edit-curr-shipng-add span, div.edit-curr-billing-add span{font-family: gotha
 .billingAdd{margin-top: 18px;}
 .usflag,.cnflag{width:26px; height:16px;}
 .glflag{width:16px; height:16px;}
+
+/*paypal review*/
+
+.paypal-review-order form .inputholder{box-sizing:border-box;}
