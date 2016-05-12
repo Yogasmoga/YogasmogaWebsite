@@ -75,6 +75,7 @@ Checkout.prototype = {
             //container.setStyle({opacity:.5});
 			container.addClassName('saving_step');
             this._disableEnableAll(container, true);
+			jQuery('#'+step+'-buttons-container  button  span').html('Saving...');
             //Element.show(step+'-please-wait');
         } else {
             if (this.loadWaiting) {
@@ -85,6 +86,7 @@ Checkout.prototype = {
                 }
                 this._disableEnableAll(container, isDisabled);
 				container.removeClassName('saving_step');
+				jQuery('#'+step+'-buttons-container  button  span').html('Continue');
                 //Element.hide(this.loadWaiting+'-please-wait');
             }
         }
