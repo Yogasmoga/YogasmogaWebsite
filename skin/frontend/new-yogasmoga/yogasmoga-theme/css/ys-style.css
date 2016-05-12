@@ -3046,7 +3046,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .ysdiscover-colors .colorFilterGrid a:hover span .text-shop{opacity:1;}
 .ysdiscover-colors .colorFilterGrid .prevent-link{pointer-events:none;}
 .ysdiscover-colors .colorFilterGrid .prevent-link:hover .spn_hover,.ysdiscover-colors .colorFilterGrid .prevent-link:hover .text-shop{opacity:0;}
-.ysdiscover-colors .colorFilterGrid a.ys-color-white{box-shadow:0 0 0 1px #999 inset;}
+.ysdiscover-colors .colorFilterGrid a.ys-color-white{box-shadow:0 0 0 1px #d9d9d9 inset;}
 
 /*----------ys-color-landing-page--------*/
 .leftnav .ys-color-current{font: 11px/16px gothambold;margin-top:2px;text-transform: uppercase;color:#4C4C4C;}
