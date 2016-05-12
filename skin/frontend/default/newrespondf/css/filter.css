@@ -28,7 +28,7 @@
 .dropdown_content {
     bottom: 0;
     display: none;
-    overflow-y: scroll;
+   /* overflow-y: scroll;*/
     padding-right: 20%;
     position: fixed;
     top: 88px;
