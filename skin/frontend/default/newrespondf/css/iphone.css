@@ -2709,7 +2709,7 @@ label.shipping_method_radio > input[type="radio"] {
     border-bottom: none;
 }
 #billing-buttons-container.saving_step .button, #shipping-buttons-container.saving_step .form-button, #shipping-method-buttons-container.saving_step .form-button, #payment-buttons-container.saving_step .form-button {
-	background-image:url("../images/saving.png");
+	background-image:none;color:#fff; font:12px graphikregular;
 }
 
 #checkout-review-table tr td:first-child {
