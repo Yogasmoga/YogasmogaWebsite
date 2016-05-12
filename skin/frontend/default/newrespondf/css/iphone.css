@@ -7984,7 +7984,7 @@ iframe[name="google_conversion_frame"] {
     right: 0; top: 0;}
 .paypal-review-order .info-set,	.paypal-review-order .info-set1{margin-bottom:24px;}
 
-.paypal-review-order #shipping-method-container td{font: 12px/44px GraphikRegular;letter-spacing: 1px; text-align:center;}
+.paypal-review-order #shipping-method-container td{font: 12px/44px GraphikRegular;letter-spacing: 1px; text-align:left;}
 .paypal-review-order #shipping-method-container td strong{font-weight:normal;}
 
 .paypal-review-order .paypal-details tfoot td{}
@@ -8003,10 +8003,14 @@ iframe[name="google_conversion_frame"] {
     text-align: left !important; width: 79%;}
 .paypal-review-order .paypal-details tr .col_left_img { float: left; height: 102px; overflow: hidden;
     width: 102px;}
+
+
+
+
 .paypal-review-order .paypal-details tr .col_left_img img {
     float: left; height: auto; margin-right: 15px; width: 100%;}
 .paypal-review-order .paypal-details tr .col_right_options {
-    float: left; padding: 0 14px; text-align: left; width: 60%;}
+    /*float: left; width: 60%;*/ padding: 0px 14px 0px 115px; text-align: left;}
 .paypal-review-order .paypal-details tr .col_right_options .productname {
     color: #555;font: 12px/18px AvantGarde-Demi; text-align: left; text-transform: uppercase;}
 .paypal-review-order .paypal-details tr .col_right_options .productattribute{text-transform:capitalize;}
