@@ -54,6 +54,15 @@ function formatPhoneNumber() {
 					});
 				}
 </script>
+<?php
+if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() === Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()){
+    $type1 = '?type=billing';
+    $type2 = '?type=shipping';
+}else{
+    $type1 = '';
+    $type2 = '';
+}
+?>
 <div class="dashboard-container">
     <div class="address-info">
         
@@ -62,14 +71,14 @@ function formatPhoneNumber() {
             <?php echo '<span class="add-heading">Shipping Address</span>' ?>
             <?php //echo $this->getPrimaryShippingAddressHtml();
                 echo $this->getShippingAddressForAccount();?>
-            <?php echo '<a href="'.$this->getPrimaryShippingAddressEditUrl().'" class="addressLink">Edit</a>' ?>
+            <?php echo '<a href="'.$this->getPrimaryShippingAddressEditUrl().$type2.'" class="addressLink">Edit</a>' ?>
         </div> 
 		<div class="billing-add f-left add-box">
             <?php echo '<span class="add-heading">Billing Address</span>' ?>
            <?php //echo $this->getPrimaryBillingAddressHtml();
             echo $this->getBillingAddressForAccount();
             ?>
-           <?php echo '<a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>'?>
+           <?php echo '<a href="'.$this->getPrimaryBillingAddressEditUrl().$type1.'" class="addressLink">Edit</a>'?>
         </div>
         <div class="clear-fix"></div>      
     </div>
