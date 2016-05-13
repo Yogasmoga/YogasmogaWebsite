@@ -263,7 +263,7 @@
             <?php
             if($this->isDefaultShipping() && $this->isDefaultBilling()){ 
             ?>
-            <strong style="font-family:gothambook;  font-size: 13px;"><a href="/customer/address/new/?type=<?php echo $this->getRequest()->getParam('type');?>">Add a Different <?php echo ucfirst($this->getRequest()->getParam('type'));?> Address</a></strong>	
+            <strong class="add-diff-addr" style="font-family:gothambook;  font-size: 13px;"><a href="/customer/address/new/?type=<?php echo $this->getRequest()->getParam('type');?>">Add a Different <?php echo ucfirst($this->getRequest()->getParam('type'));?> Address</a></strong>	
             <?php } ?>
          <?php /*
          </div>
