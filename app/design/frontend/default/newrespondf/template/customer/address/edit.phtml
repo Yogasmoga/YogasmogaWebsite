@@ -149,7 +149,7 @@
                 <?php endif; ?>
             </li>
 			<?php
-			if($this->isDefaultShipping() || $this->isDefaultBilling()){ 
+			if($this->isDefaultShipping() && $this->isDefaultBilling()){ 
 			?>
 			<li class="add-diff-addr">
 			<label><a href="/customer/address/new/?type=<?php echo $this->getRequest()->getParam('type');?>">Add a Different <?php echo ucfirst($this->getRequest()->getParam('type'));?> Address</a></label>
