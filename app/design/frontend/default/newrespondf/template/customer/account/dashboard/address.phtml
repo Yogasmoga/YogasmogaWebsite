@@ -55,7 +55,7 @@ function formatPhoneNumber() {
 				}
 </script>
 <?php
-if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() === Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()){
+if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() === Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()){
     $type1 = '?type=billing';
     $type2 = '?type=shipping';
 }else{
