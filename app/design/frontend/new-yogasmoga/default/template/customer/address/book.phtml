@@ -49,6 +49,15 @@ function equaliseHeight(){
         jQuery('.dashboard-container .add-box').css("height", maxheight);        
 }
 </script>
+<?php
+if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() === Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()){
+    $type1 = '?type=billing';
+    $type2 = '?type=shipping';
+}else{
+    $type1 = '';
+    $type2 = '';
+}
+?>
 	<div class="pg-heading">
       <h2>Address Book</h2>      
     </div>    
@@ -64,7 +73,7 @@ function equaliseHeight(){
 													
 							<?php echo $this->getAddressHtml($adrs); ?>
 			</div>
-							<a style="position: absolute; right: 30px; bottom: 20px;" href="<?php echo $this->getAddressEditUrl($adrs) ?>" class="addressLink f-right"><?php echo $this->__('edit') ?></a>
+							<a style="position: absolute; right: 30px; bottom: 20px;" href="<?php echo $this->getAddressEditUrl($adrs).$type1; ?>" class="addressLink f-right"><?php echo $this->__('edit') ?></a>
 						
 				<?php else: ?>
 					<?php echo $this->__('You have no default billing address in your address book.') ?>
@@ -79,7 +88,7 @@ function equaliseHeight(){
 													
 							<?php echo $this->getAddressHtml($adrs); ?>
 			</div>			
-						<a style="position: absolute; right: 30px; bottom: 20px;" href="<?php echo $this->getAddressEditUrl($adrs) ?>" class="addressLink f-right"><?php echo $this->__('edit') ?></a>
+						<a style="position: absolute; right: 30px; bottom: 20px;" href="<?php echo $this->getAddressEditUrl($adrs).$type2 ?>" class="addressLink f-right"><?php echo $this->__('edit') ?></a>
 				<?php else: ?>
 					<?php echo $this->__('You have no default Shipping address in your address book.') ?>
 				<?php endif ?>

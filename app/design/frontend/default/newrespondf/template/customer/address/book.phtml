@@ -30,6 +30,15 @@
  * @var $test Mage_Customer_Block_Address_Book
  */
 ?>
+<?php
+if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() === Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()){
+    $type1 = '?type=billing';
+    $type2 = '?type=shipping';
+}else{
+    $type1 = '';
+    $type2 = '';
+}
+?>
 <style>
 #address-update .messages .success-msg{ margin-top:20px;}
 </style>
@@ -51,7 +60,7 @@
                     echo $this->getBillingAddressForBook();
                     ?>
                 </address>
-                <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>?type=billing"><?php echo $this->__('Change Billing Address') ?></a></p>
+                <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)).$type1; ?>"><?php echo $this->__('Change Billing Address') ?></a></p>
            </li>
         <?php else: ?>
             <li class="item">
@@ -68,7 +77,7 @@
                     echo $this->getShippingAddressForBook();
                      ?>
                 </address>
-                <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>?type=shipping"><?php echo $this->__('Change Shipping Address') ?></a></p>
+                <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)).$type2; ?>"><?php echo $this->__('Change Shipping Address') ?></a></p>
             </li>
         <?php else: ?>
             <li class="item empty">
