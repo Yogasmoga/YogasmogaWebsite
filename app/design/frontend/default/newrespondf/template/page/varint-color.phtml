@@ -197,7 +197,13 @@
 									   		<?php if($category->getIsAnchor()):?>
 									   			<li> <a class="prevent-link" style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="javascript:void(0)"><?php echo $name; ?></a></li>
 									 	  	<?php else:?>
-									   			<li> <a style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="<?php echo $url; ?>"><?php echo $name; ?></a></li>
+									   			<li> <a style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="<?php echo $url; ?>">
+														<?php if($category->getId()==123): ?>
+															<?php echo $name;?>&trade;
+														<?php else: ?>
+															<?php echo $name;?>
+														<?php endif; ?>
+													</a></li>
 								        	<?php endif; ?>
 									<?php endif; ?>
 							   <?php endif; ?>
