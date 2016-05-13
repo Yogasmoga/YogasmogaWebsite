@@ -51,7 +51,7 @@
                     echo $this->getBillingAddressForBook();
                     ?>
                 </address>
-                <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>"><?php echo $this->__('Change Billing Address') ?></a></p>
+                <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>?type=billing"><?php echo $this->__('Change Billing Address') ?></a></p>
            </li>
         <?php else: ?>
             <li class="item">
@@ -68,7 +68,7 @@
                     echo $this->getShippingAddressForBook();
                      ?>
                 </address>
-                <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>"><?php echo $this->__('Change Shipping Address') ?></a></p>
+                <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>?type=shipping"><?php echo $this->__('Change Shipping Address') ?></a></p>
             </li>
         <?php else: ?>
             <li class="item empty">
