@@ -20,7 +20,13 @@
 						<?php if($category->getIsAnchor()):?>
 							    <li> <a class="prevent-link" href="javascript:void(0)" style="background: <?php echo $bg; ?>;color:<?php echo $textclr; ?>;"><?php echo $name; ?></a></li>
 							<?php else: ?>
-							<li> <a href="<?php echo $url; ?>" style="background: <?php echo $bg; ?>;color:<?php echo $textclr; ?>;"><?php echo $name; ?></a></li>		
+							<li> <a href="<?php echo $url; ?>" style="background: <?php echo $bg; ?>;color:<?php echo $textclr; ?>;">
+								<?php if($category->getId()==123): ?>
+											<?php echo $name;?><sup>TM</sup>
+										<?php else: ?>
+											<?php echo $name;?>
+										<?php endif; ?>
+							</a></li>
 							</a>
 						<?php endif; ?>
 				<?php endif; ?>

@@ -110,7 +110,11 @@
 							<a class="<?php echo $borderClass;?>" href="<?php echo $url;?>" style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;">
 									<span>
 										<span  class="text-shop">Shop</span>
-										<?php echo $name; ?>
+										<?php if($category->getId()==123): ?>
+											<?php echo $name;?><sup>TM</sup>
+										<?php else: ?>
+											<?php echo $name;?>
+										<?php endif; ?>
 									</span>
 									<span class="spn_hover">
 										<img src="<?php echo $this->getSkinUrl('images/colorgrid/').$img.".png"; ?>" alt="<?php echo $name; ?>"/>
