@@ -120,7 +120,7 @@
                 <div class="field">
                     <label for="zip" class="required"><?php echo $this->__('Zip Code') ?></label>
                     <div class="input-box">
-                        <input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?> " />
+                        <input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?> validate-zip-code-custom" />
                     </div>
                 </div>
                 <div class="field">
@@ -167,6 +167,9 @@
 //<![CDATA[
     var dataForm = new VarienForm('form-validate', true);
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+	Validation.add('validate-zip-code-custom', "Invalid Zip Code", function(v) {
+                return isValidPostalCode(jQuery("#zip").val(),jQuery("#country").val());
+    });
 //]]>
 
 
