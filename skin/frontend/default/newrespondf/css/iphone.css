@@ -8105,3 +8105,6 @@ input#giftcard_use{
 .paypal-review-order .paypal-details tr .col_right_options .productname {
   color: #555;font: 12px/18px AvantGarde-Demi; text-align: left; text-transform: uppercase;}  
 .paypal-review-order .paypal-details tr .col_right_options .productattribute{text-transform:capitalize;}
+
+/*--remove ys-location link--*/
+.rangoli-link .menu-item.ys-loc{display:none;}
