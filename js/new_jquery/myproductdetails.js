@@ -270,6 +270,8 @@ function changeFabric(current_color) {
         }
     }
 }
+
+//changed by fahim khan for product color description start here.
 function changeDescription(current_color) {
 
     if (jQuery(".product_description_block") != null) {
@@ -296,6 +298,7 @@ function changeDescription(current_color) {
         }
     }
 }
+//changed by fahim khan for product color description end here.
 
 function changeBraCupInsert(current_color) {
 

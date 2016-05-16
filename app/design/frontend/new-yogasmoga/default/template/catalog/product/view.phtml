@@ -132,6 +132,8 @@ $isRewardAble = false;
 $howDoesItFitBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'how_does_it_fit', $storeId);
 $sizeChartBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'size_chart', $storeId);
 $fabricStoryBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'fabric_story', $storeId);
+$defaultProductDescription = $resourceModel->getAttributeRawValue($_product->getId(), 'description', $storeId);// added by fahim khan.
+
 $designFeatureVideoName = $_product->getDesignFeatureVideo();
 
 $categoryIds = $_product->getCategoryIds();
@@ -238,6 +240,7 @@ foreach ($configurableAttributeCollection as $attribute) {
 }
 
 $arFabricArray = array();
+$arDescriptionArray = array();//CHANGE DESCRIPTION ACCORDING TO COLOR ADDED BY FK.
 $arBraCupInsertArray = array();
 
 foreach ($_childProducts as $_childProduct) {
@@ -298,6 +301,8 @@ foreach ($_childProducts as $_childProduct) {
         $arProductColorInfo[$colorAttributeValue]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', $storeId);
 
         $tempFabricStoryBlockId = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'fabric_story', $storeId);
+
+
         if (isset($tempFabricStoryBlockId) && strlen($tempFabricStoryBlockId) > 0) {
             $fabric_changed = true;
 
@@ -306,6 +311,23 @@ foreach ($_childProducts as $_childProduct) {
             if (!isset($arFabricArray[$colorNameLowercase]))
                 $arFabricArray[$colorNameLowercase] = $tempFabricStoryBlockId;
         }
+
+        //CHANGE DESCRIPTION ACCORDING TO COLOR ADDED BY FK START.
+        $tempDescriptionBlockId = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'description', $storeId);
+        if (isset($tempDescriptionBlockId)) {
+            $description_changed = true;
+
+            $colorDescription = strtolower($colorName);
+
+            if (!isset($arDescriptionArray[$colorDescription]))
+                $arDescriptionArray[$colorDescription] = $tempDescriptionBlockId;
+        }
+        //CHANGE DESCRIPTION ACCORDING TO COLOR ADDED BY FK END.
+
+
+
+
+
     }
 
     /*********************** check if product is in sale or not **********************/
@@ -1298,26 +1320,58 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     </p>
 
                     <h2 style="margin-bottom:20px;">Product description</h2>
-                    <!-- description -->
-                    <?php if (strlen($_product->getDescription()) < 210) { ?>
-                        <div class="shortdesc"><?php echo $_product->getDescription(); ?> </div>
-                        <?php
-                    } else {
-                        $str = $_product->getDescription();
-                        $firststr = substr($str, 0, 210);
-                        $secondstr = substr($str, 210, strlen($str));
+                <!--Change description by Fahim Khan start code-->
 
-                        ?>
-                        <div class="shortdesc"><span><?php echo $firststr; ?></span><span
-                                class="sec-desc"><?php echo $secondstr; ?></span><span class="dot">...</span>
+                     <?php
+                if ($defaultProductDescription != '') {?>
+                    <div class='main-description' rel='main'>
+                                <?php //echo $defaultProductDescription; ?>
+                        <?php  if (strlen($defaultProductDescription) < 210) { ?>
+                                <div class="shortdesc"><?php echo $defaultProductDescription; ?> </div>
+                            <?php
+                            }
+                            else {
+                            $str = $defaultProductDescription;
+                            $firststr = substr($str, 0, 210);
+                            $secondstr = substr($str, 210, strlen($str));
+                            ?>
+                            <div class="shortdesc">
+                                <span><?php echo $firststr; ?></span>
+                                <span class="sec-desc"><?php echo $secondstr; ?></span>
+                                <span class="dot">...</span>
+                                    <p class="readmore" style="margin: 0; cursor:pointer;">
+                                     <span id="more">Read more</span><span id="less" class="dnone">Read less</span>
+                                    </p>
+                            </div>
+                        <?php } ?>
+                   </div>
 
-                            <p class="readmore" style="margin: 0; cursor:pointer;"><span
-                                    id="more">Read more</span><span id="less"
-                                                                    class="dnone">Read less</span>
-                            </p></div>
-                    <?php } ?>
-                    <!-- description -->
-                </div>
+                    <?php if ($description_changed) {
+
+                        foreach ($arDescriptionArray as $key => $value) {?>
+                            <div class='product_description_block' rel='<?php echo $key ?>'>
+                                <?php  if (strlen($value) < 210) { ?>
+                                    <div class="shortdesc"><?php echo $value; ?> </div>
+                                <?php
+                                }
+                                else {
+                                $str = $value;
+                                $firststr = substr($str, 0, 210);
+                                $secondstr = substr($str, 210, strlen($str));
+                                ?>
+                                <div class="shortdesc">
+                                    <span><?php echo $firststr; ?></span>
+                                    <span class="sec-desc"><?php echo $secondstr; ?></span>
+                                    <span class="dot">...</span>
+                                        <p class="readmore" style="margin: 0; cursor:pointer;">
+                                         <span id="more">Read more</span><span id="less" class="dnone">Read less</span>
+                                        </p>
+                                </div>
+                                <?php } ?>
+                            </div>
+                <?php } } } ?>
+                <!--Change description by Fahim Khan end code-->
+            </div>
                 <!--Description -->
 
                 <!-- completeLook -->
