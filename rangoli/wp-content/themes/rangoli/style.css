@@ -833,3 +833,6 @@ input.change_username {
 .rangoli_press_content .author_details_post{padding-top:65px;}
 .post_content_box.rangoli_press_content .post_content{padding-top:65px;}
 .align-bottom .post_category a{cursor:inherit;}
+
+/*--remove ys-location link--*/
+.menu-box .menu-content ul li.store{display:none;}
