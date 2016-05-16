@@ -452,12 +452,12 @@ function validateAddressForm()
 {
     unsetAllError(jQuery("#address-form"));
     var flag = validatefields(jQuery("#address-form"));
-    if(jQuery("zip").val() != "")
+    if(jQuery("#zip").val() != "")
     {
-        if(!validateZip(jQuery("zip").val()))
+        if(!isValidPostalCode(jQuery("#zip").val(),jQuery("#country").val()) || jQuery("#zip").val() == 'Zip/Postal Code' )
         {
             flag = false;
-            setOnError(jQuery("zip"), "Invalid Zip Code.");
+            setOnError(jQuery("#zip"), "Invalid Zip Code.");
         }
     }
     return flag;
