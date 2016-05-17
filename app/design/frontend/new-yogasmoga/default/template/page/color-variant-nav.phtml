@@ -1,0 +1,49 @@
+<div style="margin-top: 0px;" class="leftnav f-left l-align cntn-scroll">
+<p class="ys-color-current"><span class="label">YS Colors: </span><span class="color-name"><?php echo Mage::registry('current_category')->getName();?></span></p>
+<ul class="yscolor-nav">
+    <?php
+    $collection = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToSort('position', 'ASC');
+    $currentCategoryId = Mage::registry('current_category')->getId();
+
+        foreach($collection as $category):
+            if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=100):
+                    if($category->getLevel()==2 && $category->getIsActive()):
+                            $url = $category->getUrl();
+                            $name = $category->getName();
+                            $colorString = trim($category->getYsColorTech());
+                            $arr = explode(',',$colorString);
+                            $bg = $arr[0];
+                            $textclr = $arr[1];
+                            $borderClass ="";
+                            if(strtolower($bg) =="#fff" || strtolower($bg) =="#ffffff" || strtolower($bg) =="#fefefe"){
+                                $borderClass ="ys-color-white";
+                            }
+                            $currentClass="";
+                            if($category->getId()==$currentCategoryId){
+                                $currentClass="current";
+                            }
+
+                    ?>
+
+                    <?php if($category->getIsAnchor()):?>
+
+                        <li rel="<?php echo $name; ?>" class="color_<?php echo $category->getId()?> <?php echo $borderClass; ?> <?php echo $currentClass;?>">
+                            <a href="javascript:void(0);" class="prevent-link" style="background:<?php echo $bg; ?>">
+                                <?php echo $name; ?>
+                            </a>
+                        </li>
+
+                    <?php else: ?>
+                        <li rel="<?php echo $name; ?>" class="color_<?php echo $category->getId()?> <?php echo $borderClass; ?> <?php echo $currentClass;?>">
+                            <a href="<?php echo $url; ?>" style="background:<?php echo $bg; ?>">
+                                <?php echo $name; ?>
+                            </a>
+                        </li>
+                    <?php  endif; ?>
+
+
+                    <?php endif; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+</ul>
+</div>

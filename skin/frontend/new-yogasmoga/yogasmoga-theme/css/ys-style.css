@@ -3049,3 +3049,62 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 #jobtabs .new-bot-divider{clear:both;}
 #jobtabs .job-description p a{color:#d90d3d;}
 /*=============for career page end=========*/
+
+/*=============ys-color-tech update=============03-may-2016*/
+
+.cms-page-view .colorFilterGrid a span{position:relative; top:50%; transform:translateY(-50%);-webkit-transform:translateY(-50%);}
+.ysdiscover-colors.title-block{margin:30px 0 25px 0;}
+.ysdiscover-colors.title-block strong{font-family:gothamBold; font-size:11px; line-height:19px;text-transform:uppercase;}
+.ysdiscover-colors .colorFilterGrid{margin: 0 4% 46px;font:32px/38px ITCAvantGardeProBk;}
+.ysdiscover-colors .colorFilterGrid a { height: 202px; margin:0 0.95% 0.95% 0 ; width: 15.79%;position:relative; box-shadow:0 0 1px inset #aaa;box-sizing:border-box;}
+.ysdiscover-colors .colorFilterGrid a span{z-index:2; padding:0 15px; box-sizing:border-box;}
+.ysdiscover-colors .colorFilterGrid a span .text-shop{text-transform:uppercase; font:16px/19.2px gothamMedium;
+    position:absolute; top:0; left:50%;transform:translate(-50% , -180%);-webkit-transform:translate(-50%, -180%); opacity:0;}
+.ysdiscover-colors .colorFilterGrid a:nth-child(6n){margin-right:0;}
+.ysdiscover-colors .colorFilterGrid a .spn_hover{position:absolute; top:0; left:0; opacity:0; width:100%; height:100%; z-index:1; transform:translate(0);-webkit-transform:translate(0); transition:0.2s linear; -webkit-transition:0.2s linear;}
+.ysdiscover-colors .colorFilterGrid a .spn_hover img{position:absolute; top:0; left:0;width:100%; height:100%;}
+.ysdiscover-colors .colorFilterGrid a .spn_hover span{text-transform:uppercase; font:16px/19.2px gothamMedium; position:relative; top:18.81%;}
+.ysdiscover-colors .colorFilterGrid a:hover .spn_hover{opacity:1;}
+.ysdiscover-colors .colorFilterGrid a:hover span .text-shop{opacity:1;}
+.ysdiscover-colors .colorFilterGrid .prevent-link{pointer-events:none;}
+.ysdiscover-colors .colorFilterGrid .prevent-link:hover .spn_hover,.ysdiscover-colors .colorFilterGrid .prevent-link:hover .text-shop{opacity:0;}
+.ysdiscover-colors .colorFilterGrid a.ys-color-white{box-shadow:0 0 0 1px #d9d9d9 inset;}
+.cntntheading .r-quote { display: inline-block; font-family: avantgardegothicitcw01b;}
+/*----------ys-color-landing-page--------*/
+.leftnav .ys-color-current{font: 11px/16px gothambold;margin-top:2px;text-transform: uppercase;color:#4C4C4C;}
+.leftnav .ys-color-current .label{}
+.leftnav .ys-color-current .color-name{font-family:gothambook;}
+.yscolor-landing-pg .gridProdCubix .leftnav{width:224px;}
+.yscolor-landing-pg  .gridProdCubix .gridWrap{margin: 0 40px 0 286px;}
+.yscolor-landing-pg .yscolor-nav{padding:12px 0 13px 0;}
+.yscolor-nav li{float:left;padding:1px;border:1px solid #fff;margin:0 8px 8px 0;}
+.yscolor-nav li:nth-child(5n){margin-right:0;}
+.yscolor-nav li:hover,.yscolor-nav li.current{border:1px solid #7D7D7F;}
+.yscolor-nav li a{width:34px; height:24px;display:block;text-indent:-9999px;box-sizing:border-box;}
+.yscolor-nav li a.prevent-link{cursor:default;}
+.yscolor-nav li.ys-color-white a{border:1px solid #ccc;}
+
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+    .ysdiscover-colors .colorFilterGrid{font-size:24px; line-height:28px;}
+    .ysdiscover-colors .colorFilterGrid a span .text-shop{font-size:13px; line-height:19px; transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);}
+}
+
+@media screen and (min-width: 1401px) and (max-width: 1599px) {
+    .ysdiscover-colors .colorFilterGrid{font-size:26px; line-height:32px;}
+    .ysdiscover-colors .colorFilterGrid a span .text-shop{font-size:14px; line-height:19px; transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);}
+}
+
+@media screen and (max-width: 1200px){
+    .ysdiscover-colors .colorFilterGrid{font-size:22px; line-height:26px;}
+    .ysdiscover-colors .colorFilterGrid a span .text-shop{font-size:12px; line-height:18px; transform:translate(-50% , -160%);-webkit-transform:translate(-50%, -160%);}
+    .yscolor-landing-pg  .gridProdCubix .leftnav{margin:0 0 0 28px;}
+    .yscolor-landing-pg .gridProdCubix .gridWrap{margin:0 28px 0 270px;}
+    .yscolor-landing-pg .productCont{margin: 0 7px 30px}
+}
+@media only screen and (max-width : 1024px) {
+    .yscolor-landing-pg .productCont{margin: 0 7px 30px;}
+    .ysdiscover-colors.title-block {margin: 21px 0 25px;}
+    .ysdiscover-colors .colorFilterGrid{margin-bottom:20px;}
+    .ysdiscover-colors .colorFilterGrid{font-size:20px; line-height:24px;}
+    .ysdiscover-colors .colorFilterGrid a span .text-shop{font-size:11px; line-height:17px; transform:translate(-50% , -160%);-webkit-transform:translate(-50%, -160%);}
+}

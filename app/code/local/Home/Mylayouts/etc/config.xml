@@ -187,6 +187,14 @@
         </private_sale>
         <!-- Private Sale page layouts End here -->
 
+        <!-- Color Varint page layouts End here -->
+        <color-variant translate="label">
+          <label>Variant</label>
+          <template>page/color-variant.phtml</template>
+          <layout_handle>variant</layout_handle>
+        </color-variant>
+        <!-- Color Varint page layouts End here -->
+
       </layouts>
     </page>
   </global>

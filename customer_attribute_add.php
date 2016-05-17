@@ -1,7 +1,43 @@
 <?php
 include('app/Mage.php');
 Mage::app();
+umask(0);
 
+Mage::app()->setCurrentStore(Mage::getModel('core/store')->load(Mage_Core_Model_App::ADMIN_STORE_ID));
+
+
+    $installer = new Mage_Sales_Model_Mysql4_Setup;
+
+    // change details below:
+    $attribute  = array(
+        'type' => 'varchar',
+        'label'=> 'YS Color Tech',
+        'input' => 'text',
+        'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
+        'visible' => true,
+        'required' => false,
+        'user_defined' => true,
+        'default' => "",
+        'group' => "General Information"
+    );
+
+    $installer->addAttribute('catalog_category', 'ys_color_tech', $attribute);
+
+    $installer->endSetup();
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 $installer = Mage::getResourceModel('customer/setup', 'customer_setup');
 $installer->startSetup();
 
@@ -27,3 +63,4 @@ Mage::getSingleton('eav/config')
     ))
     ->save();
 $installer->endSetup();
+*/
