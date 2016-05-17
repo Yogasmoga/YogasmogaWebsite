@@ -1072,8 +1072,8 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 
 			/************ ys custom code push customers items (shivaji)***************/
 			$productCustomersRelation = array(
-				self::MODULE1		=> self::ACCOUNTS,
-				self::MODULE1_ID	=> $account_id,
+				'module1'		=> self::CONTACTS,
+				'module1_id'	=> "$account_id",
 				'module2'		=> 'YS_Products',
 				'module2_id'	=> "$productId",
 			);
