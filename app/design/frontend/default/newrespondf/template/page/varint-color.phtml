@@ -165,9 +165,13 @@
 				</div>
 			</div>
 			<?php } ?>
-			<div class="dropdown_links">				
+			<div class="dropdown_links">	
+			
 			<div class="color_grid_box" style="">
-                       <ul><?php
+                       <ul>
+
+
+						   <?php
 						   $collection = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToSort('position', 'ASC');
 						   $currentCategoryId = Mage::registry('current_category')->getId();
 
@@ -192,7 +196,8 @@
 									   ?>
 									   		<?php if($category->getIsAnchor()):?>
 									   			<li> <a class="prevent-link" style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="javascript:void(0)"><?php echo $name; ?></a></li>
-									 	  	<?php else:?><li> <a style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="<?php echo $url; ?>">
+									 	  	<?php else:?>
+									   			<li> <a style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="<?php echo $url; ?>">
 														<?php if($category->getId()==123): ?>
 															<?php echo $name;?>&trade;
 														<?php else: ?>
@@ -205,7 +210,7 @@
 						   <?php endforeach; ?>
 						</ul>
                     </div>
-				</div>
+			</div>
 		</div>
 	 <div class="clearfix"></div>
 	  <?php //echo $this->getProductListHtml() ?>

@@ -8013,23 +8013,13 @@ input#giftcard_use{
  /* width: 50%;*/
   text-transform:uppercase;
 }
-.dropdown_links  .color_grid_box ul{
-	width:100%;
-	float:left;
-	box-sizing:border-box;	
+.dropdown_links  .color_grid_box ul{width:100%; float:left; box-sizing:border-box;	
 	-moz-column-count: 2;
 	-moz-column-gap: 0;
-	-moz-column-break-inside: avoid; 
-	-moz-column-fill:auto;
 	-webkit-column-count: 2;
-	-webkit-column-fill:auto;
-	-webkit-column-gap: 0;	
-	-webkit-column-break-inside: avoid; 
+	-webkit-column-gap: 0;
 	column-count: 2;
-	column-gap: 0;
-	column-fill:auto;
-	column-break-inside: avoid; 
-	}
+	column-gap: 0;}
 .color_grid_box {
   text-align: center;
   width: 100%;
