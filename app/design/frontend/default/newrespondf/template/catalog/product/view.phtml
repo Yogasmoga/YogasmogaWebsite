@@ -90,6 +90,8 @@ $productId = intval($_product->getId());
 $howDoesItFitBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'how_does_it_fit', $storeId);
 $sizeChartBlockId = 'mobile_' . $resourceModel->getAttributeRawValue($_product->getId(), 'size_chart', $storeId);
 $fabricStoryBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'fabric_story', $storeId);
+$defaultProductDescription = $resourceModel->getAttributeRawValue($_product->getId(), 'description', $storeId);// added by fahim khan.
+
 $designFeatureVideoName = $_product->getDesignFeatureVideo();
 
 $categoryIds = $_product->getCategoryIds();
@@ -207,6 +209,7 @@ foreach ($configurableAttributeCollection as $attribute) {
 }
 
 $arFabricArray = array();
+$arDescriptionArray = array();//CHANGE DESCRIPTION ACCORDING TO COLOR ADDED BY FK.
 $arBraCupInsertArray = array();
 
 foreach ($_childProducts as $_childProduct) {
@@ -275,6 +278,19 @@ foreach ($_childProducts as $_childProduct) {
             if (!isset($arFabricArray[$colorNameLowercase]))
                 $arFabricArray[$colorNameLowercase] = $tempFabricStoryBlockId;
         }
+
+        //CHANGE DESCRIPTION ACCORDING TO COLOR ADDED BY FK START.
+        $tempDescriptionBlockId = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'description', $storeId);
+        if (isset($tempDescriptionBlockId)) {
+            $description_changed = true;
+
+            $colorDescription = strtolower($colorName);
+
+            if (!isset($arDescriptionArray[$colorDescription]))
+                $arDescriptionArray[$colorDescription] = $tempDescriptionBlockId;
+        }
+        //CHANGE DESCRIPTION ACCORDING TO COLOR ADDED BY FK END.
+
     }
 
     /*********************** check if product is in sale or not **********************/
@@ -1227,21 +1243,27 @@ if ($lengthAvailable) {
 
                 <div style="display:none;" class="inner-content">
                     <!-- description -->
-                    <?php //if (strlen($_product->getDescription()) < 300) { ?>
-                    <div class="shortdesc"><?php echo $_product->getDescription(); ?> </div>
-                    <?php /**
-                     * } else {
-                     * $str = $_product->getDescription();
-                     * $firststr = substr($str, 0, 300);
-                     * $secondstr = substr($str, 300, strlen($str));
-                     *
-                     * ?>
-                     * <div class="shortdesc"><span><?php echo $firststr; ?></span>
-                     * <span class="sec-desc"><?php echo $secondstr; ?></span><span class="dot">...</span>
-                     * <p class="readmore" style="margin: 0; cursor:pointer;">
-                     * <span id="more">Read more</span><span id="less"class="dnone">Read less</span>
-                     * </p></div>
-                     * <?php } **/ ?>
+
+                    <!--Change Product description according to color By FAHIM KHAN. -->
+                    <div class="shortdesc">
+                          <?php
+                                if ($fabricStoryBlockId != '') {
+                                    echo "<div class='maindescription' rel='main'>";
+                                    echo $defaultProductDescription;
+                                    echo "</div>";
+
+                                    if ($description_changed) {
+
+                                        foreach ($arDescriptionArray as $key => $value) {
+                                            echo "<div class='product_description_block' rel='$key'>";
+                                            echo $value;
+                                            echo "</div>";
+                                        }
+                                    }
+                                }
+                          ?>
+                     </div>
+
                     <!-- description -->
 
                 </div>

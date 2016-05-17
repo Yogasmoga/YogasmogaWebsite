@@ -286,6 +286,38 @@ function changeFabric(current_color) {
     }
 }
 
+
+//Change Product description according to color start here.
+function changeDescription(current_color) {
+
+    if (jQuery(".product_description_block") != null) {
+
+        var found = false;
+        jQuery(".product_description_block").each(function () {
+
+            var fabric_color = jQuery(this).attr('rel').toLowerCase();
+
+            if (current_color.toLowerCase() == fabric_color) {
+                jQuery(".product_description_block").hide();
+                jQuery(this).show();
+                jQuery(".maindescription").hide();
+                found = true;
+                return;
+            }
+        });
+
+        if (!found) {
+            jQuery(".product_description_block").hide();
+            jQuery(".maindescription").show();
+        }
+    }
+}
+//Change Product description according to color end here.
+
+
+
+
+
 function changeBraCupInsert(current_color) {
 
     var hide = false;
@@ -531,6 +563,7 @@ function searchproductcolorinfoarrray(clr) {
 function changeColor(clr) {
     changeFabric(clr);
     changeBraCupInsert(clr);
+    changeDescription(clr);
 
     jQuery(".amount").removeClass("insale-price");
     jQuery(".box-seprtr").find("p.insale").addClass("dnone");

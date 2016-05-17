@@ -173,7 +173,7 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 					$currentCategoryId = Mage::registry('current_category')->getId();
 
 					foreach($collection as $category):
-						if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=100):
+						if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9):
 							if($category->getLevel()==2 && $category->getIsActive()):
 								$url = $category->getUrl();
 								$name = $category->getName();
@@ -195,7 +195,7 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 								<li> <a class="prevent-link" style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="javascript:void(0)"><?php echo $name; ?></a></li>
 							<?php else:?>
 								<li> <a style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="<?php echo $url; ?>">
-										<?php if($category->getId()==123): ?>
+										<?php if($category->getId()==119): ?>
 											<?php echo $name;?>&trade;
 										<?php else: ?>
 											<?php echo $name;?>
