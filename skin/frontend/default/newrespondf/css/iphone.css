@@ -6757,11 +6757,13 @@ button#send2 {
 
 .colors_list li {
     color: #fff;
-    font: 16px/50px ITCAvantGardeStd-Bk;
+    font: 16px/50px ITCAvantGardeStd-Md;
     float: left;
     width: 100%;
+    text-transform:uppercase;
     height: 44px;
 }
+
 
 .inner-aurum .first-li {
     padding: 0;
@@ -8014,5 +8016,40 @@ iframe[name="google_conversion_frame"] {
 .paypal-review-order .paypal-details tr .col_right_options .productname {
     color: #555;font: 12px/18px AvantGarde-Demi; text-align: left; text-transform: uppercase;}
 .paypal-review-order .paypal-details tr .col_right_options .productattribute{text-transform:capitalize;}
+
+/**************Color tech************/
+
+.colors_list li a {
+    display: block;
+    float: left;
+    font: 16px/50px ITCAvantGardeStd-Md;
+    height: 44px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.prevent-link {
+    cursor: default;
+}
+
+.color_grid_box a {
+    display: block;
+    /*float: left;*/
+    font: 16px/50px ITCAvantGardeStd-Md;
+    /* width: 50%;*/
+    text-transform:uppercase;
+}
+.dropdown_links  .color_grid_box ul{width:100%; float:left; box-sizing:border-box;
+    -moz-column-count: 2;
+    -moz-column-gap: 0;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 0;
+    column-count: 2;
+    column-gap: 0;}
+
+.color_grid_box {
+    text-align: center;
+    width: 100%;
+}
 
 

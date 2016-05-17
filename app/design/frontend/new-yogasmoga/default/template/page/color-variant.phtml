@@ -85,7 +85,18 @@
        setTimeout(function(){
             jQuery("div.page-overlayy").remove();
             jQuery("body").css('overflow','auto');
-       }, 500);              
+       }, 500);
+
+        jQuery('.yscolor-nav a').mouseover(function(){
+            var colortext = jQuery(this).text();
+            jQuery('.ys-color-current .color-name').text(colortext);
+        });
+        jQuery('.yscolor-nav a').mouseout(function(){
+            var colortext = jQuery('.yscolor-nav .current a').text();
+            jQuery('.ys-color-current .color-name').text(colortext);
+        });
+
+
     });
 </script>   
 <!--<div class="namaskar-overlay1">&nbsp;</div> -->
@@ -96,7 +107,7 @@
 <div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="shopping-cart"></div>
-    <div class="page">
+    <div class="page yscolor-landing-pg">
         <?php echo $this->getChildHtml('header') ?>
             <div id="pagecontainer">
                 <div id="Allproducts" class="fullscreen pgsection " desc="Top Sellers" style="min-height: 422px;">
