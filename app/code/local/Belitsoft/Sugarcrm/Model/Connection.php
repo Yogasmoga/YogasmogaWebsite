@@ -915,21 +915,6 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 
 			/******** ysindia : custom code to get root category *******/
 
-			/*$arWomenCategory = array(3, 6, 7, 8, 16, 71, 43, 59, 65);
-			$arMenCategory = array(5, 10, 11, 12, 19);
-
-				$categoryIds = $_product->getCategoryIds();
-
-				if (isset($categoryIds) && is_array($categoryIds) && count($categoryIds) > 0) {
-					foreach ($categoryIds as $id) {
-						if (in_array(intval($id), $arWomenCategory))
-							$gender = "Womens";
-						else if (in_array(intval($id), $arMenCategory))
-							$gender = "Mens";
-					}
-				} else
-					$gender = "Accessories/GiftCard";*/
-
 				$parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
 				$conf_product = Mage::getModel('catalog/product')->load($parentIds[0]);
 				$categoryIds = $conf_product->getCategoryIds();
@@ -951,6 +936,11 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 						if($gender == 'Men' || $gender == 'Women')
 							break;
 					}
+				}
+
+				if($gender != 'Men' || $gender != 'Women')
+				{
+					$gender = 'Accessories/GiftCard';
 				}
 
 				unset($categoryIds);
