@@ -1071,15 +1071,18 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 
 
 			/************ ys custom code push customers items (shivaji)***************/
+			if($customer_id) {
+			$contact_id = Mage::getModel('sugarcrm/synchmap')->loadCustomerSynchData($customer_id, self::CONTACTS)->getSid();
 			$productCustomersRelation = array(
 				'module1'		=> self::CONTACTS,
-				'module1_id'	=> "$account_id",
+				'module1_id'	=> "$contact_id",
 				'module2'		=> 'YS_Products',
 				'module2_id'	=> "$productId",
 			);
 
 			$productCustomersRelationResult = $this->_soapclient->set_relationship($this->_session_id, $productCustomersRelation);
 			Mage::log('Relation result = ' . serialize($productCustomersRelationResult), null, 'sugar.log');
+			}
 			/************ ys custom code push customers items (shivaji)***************/
 		}
 		/************ ys custom code push order items ***************/
