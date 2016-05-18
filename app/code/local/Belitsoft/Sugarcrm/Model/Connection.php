@@ -942,10 +942,14 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 					if (count($pathParts) == 3) {
 						//it means the category is already a top level category
 						$gender =  $category->getName();
+						if($gender = 'Men' || $gender = 'Women')
+							break;
 					}
 					elseif (isset($pathParts[2])) {
 						$topCategory = Mage::getModel('catalog/category')->load($pathParts[2]);
 						$gender =  $topCategory->getName();
+						if($gender = 'Men' || $gender = 'Women')
+							break;
 					}
 				}
 
@@ -1096,7 +1100,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 			$productAddResponse = $this->_soapclient->set_entry(
 				$this->_session_id, "YS_Products", $values
 			);
-			Mage::log('values request = ' . serialize($values), null, 'sugar.log');
+			//Mage::log('values request = ' . serialize($values), null, 'sugar.log');
 
 			$opportunityId = $set_entry->id;
 			$productId = $productAddResponse->id;
@@ -1124,7 +1128,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 			);
 
 			$productCustomersRelationResult = $this->_soapclient->set_relationship($this->_session_id, $productCustomersRelation);
-			Mage::log('Relation result = ' . serialize($parentIds), null, 'sugar.log');
+			//Mage::log('Relation result = ' . serialize($parentIds), null, 'sugar.log');
 			}
 			/************ ys custom code push customers items (shivaji)***************/
 		}
