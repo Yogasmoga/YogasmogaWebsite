@@ -912,6 +912,27 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 			else
 				$color = "N/A";
 
+
+			/******** ysindia : custom code to get root category *******/
+
+			$arWomenCategory = array(3, 6, 7, 8, 16, 71, 43, 59, 65);
+			$arMenCategory = array(5, 10, 11, 12, 19);
+
+				$categoryIds = $_product->getCategoryIds();
+
+				if (isset($categoryIds) && is_array($categoryIds) && count($categoryIds) > 0) {
+					foreach ($categoryIds as $id) {
+						if (in_array(intval($id), $arWomenCategory))
+							$gender = "Womens";
+						else if (in_array(intval($id), $arMenCategory))
+							$gender = "Mens";
+					}
+				} else
+					$gender = "Accessories/GiftCard";
+
+				unset($categoryIds);
+			/******** ysindia : custom code to get root category *******/
+
 			$size = $_product->getAttributeText('size');
 			$size = isset($size) ? $size : "N/A";
 			Mage::log("Color = $color, Size = $size", null, "sugar.log");
@@ -921,6 +942,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				'price' => $order_item->getPrice(),
 				'color' => $color,
 				'size' => $size,
+				'root_category' => $gender,
 				'order_id' => $order_id,
 				'customer_id' => $customer_id
 			);
@@ -1048,7 +1070,8 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				array("name" => 'sku', "value" => $orderData['sku']),
 				array("name" => 'price', "value" => $orderData['price']),
 				array("name" => 'color', "value" => $orderData['color']),
-				array("name" => 'size', "value" => $orderData['size'])
+				array("name" => 'size', "value" => $orderData['size']),
+				array("name" => 'category_c', "value" => $orderData['root_category'])
 			);
 
 			$productAddResponse = $this->_soapclient->set_entry(
