@@ -930,7 +930,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				} else
 					$gender = "Accessories/GiftCard";*/
 
-				$parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($item_id);
+				$parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
 				$conf_product = Mage::getModel('catalog/product')->load($parentIds[0]);
 				$categoryIds = $conf_product->getCategoryIds();
 				foreach ($categoryIds as $category_id) {
@@ -1124,7 +1124,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 			);
 
 			$productCustomersRelationResult = $this->_soapclient->set_relationship($this->_session_id, $productCustomersRelation);
-			Mage::log('Relation result = ' . serialize($productCustomersRelationResult), null, 'sugar.log');
+			Mage::log('Relation result = ' . serialize($parentIds), null, 'sugar.log');
 			}
 			/************ ys custom code push customers items (shivaji)***************/
 		}
