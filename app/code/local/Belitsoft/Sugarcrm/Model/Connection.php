@@ -1077,7 +1077,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 			$productAddResponse = $this->_soapclient->set_entry(
 				$this->_session_id, "YS_Products", $values
 			);
-			Mage::log('Relation result = ' . serialize($productAddResponse), null, 'sugar.log');
+			Mage::log('values request = ' . serialize($values), null, 'sugar.log');
 
 			$opportunityId = $set_entry->id;
 			$productId = $productAddResponse->id;
