@@ -930,6 +930,23 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				} else
 					$gender = "Accessories/GiftCard";
 
+
+				foreach ($categoryIds as $category_id) {
+					$category = Mage::getModel('catalog/category')->load($category_id);
+					//each category has a path attribute
+					$path = $category->getPath(); //should look like 1/3/14/23/55.
+					//split the path by slash
+					$pathParts = explode('/', $path);
+					if (count($pathParts) == 3) {
+						//it means the category is already a top level category
+						$gender =  $category->getName();
+					}
+					elseif (isset($pathParts[2])) {
+						$topCategory = Mage::getModel('catalog/category')->load($pathParts[2]);
+						$gender =  $topCategory->getName();
+					}
+				}
+
 				unset($categoryIds);
 			/******** ysindia : custom code to get root category *******/
 
