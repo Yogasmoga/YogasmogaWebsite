@@ -942,13 +942,13 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 					if (count($pathParts) == 3) {
 						//it means the category is already a top level category
 						$gender =  $category->getName();
-						if($gender = 'Men' || $gender = 'Women')
+						if($gender == 'Men' || $gender == 'Women')
 							break;
 					}
 					elseif (isset($pathParts[2])) {
 						$topCategory = Mage::getModel('catalog/category')->load($pathParts[2]);
 						$gender =  $topCategory->getName();
-						if($gender = 'Men' || $gender = 'Women')
+						if($gender == 'Men' || $gender == 'Women')
 							break;
 					}
 				}
