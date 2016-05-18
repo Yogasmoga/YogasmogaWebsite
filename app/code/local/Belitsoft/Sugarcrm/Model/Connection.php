@@ -938,10 +938,10 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 					}
 				}
 
-				/*if($gender != 'Men' || $gender != 'Women')
+				if($gender != 'Men' && $gender != 'Women')
 				{
 					$gender = 'Accessories/GiftCard';
-				}*/
+				}
 
 				unset($categoryIds);
 			/******** ysindia : custom code to get root category *******/
