@@ -3064,17 +3064,17 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 /*.ysdiscover-colors .colorFilterGrid{font-size:24px; line-height:28px;}*/
-.ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:13px; line-height:19px; transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);*/}
+.ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:13px; line-height:19px;*/ transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);}
 }
 
 @media screen and (min-width: 1401px) and (max-width: 1599px) {
 /*.ysdiscover-colors .colorFilterGrid{font-size:26px; line-height:32px;}*/
-.ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:14px; line-height:19px; transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);*/}
+.ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:14px; line-height:19px;*/ transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);}
 }
 
 @media screen and (max-width: 1200px){
 /*.ysdiscover-colors .colorFilterGrid{font-size:22px; line-height:26px;}*/
-.ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:12px; line-height:18px; transform:translate(-50% , -160%);-webkit-transform:translate(-50%, -160%);*/}
+.ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:12px; line-height:18px; */transform:translate(-50% , -160%);-webkit-transform:translate(-50%, -160%);}
 .yscolor-landing-pg  .gridProdCubix .leftnav{margin:0 0 0 28px;}
 .yscolor-landing-pg .gridProdCubix .gridWrap{margin:0 28px 0 270px;}
 .yscolor-landing-pg .productCont{margin: 0 7px 30px}
@@ -3084,5 +3084,5 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .ysdiscover-colors.title-block {margin: 21px 0 25px;}
 .ysdiscover-colors .colorFilterGrid{margin-bottom:20px;}
 /*.ysdiscover-colors .colorFilterGrid{font-size:20px; line-height:24px;}*/
-.ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:11px; line-height:17px; transform:translate(-50% , -160%);-webkit-transform:translate(-50%, -160%);*/}
+.ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:11px; line-height:17px;*/ transform:translate(-50% , -160%);-webkit-transform:translate(-50%, -160%);}
 }
