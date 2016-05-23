@@ -1,0 +1,88 @@
+SquareConnect\Model\ListLocationsResponse Object
+(
+    [errors:protected] => 
+    [locations:protected] => Array
+        (
+            [0] => SquareConnect\Model\Location Object
+                (
+                    [id:protected] => CBASEAgRPMJ6Gk57QeQEINftH7A
+                    [name:protected] => Coffee & Toffee SF
+                    [address:protected] => SquareConnect\Model\Address Object
+                        (
+                            [address_line_1:protected] => 1455 Market Street
+                            [address_line_2:protected] => 
+                            [address_line_3:protected] => 
+                            [locality:protected] => San Francisco
+                            [sublocality:protected] => 
+                            [sublocality_2:protected] => 
+                            [sublocality_3:protected] => 
+                            [administrative_district_level_1:protected] => CA
+                            [administrative_district_level_2:protected] => 
+                            [administrative_district_level_3:protected] => 
+                            [postal_code:protected] => 94103
+                            [country:protected] => US
+                        )
+
+                    [timezone:protected] => America/Los_Angeles
+                    [capabilities:protected] => Array
+                        (
+                            [0] => CREDIT_CARD_PROCESSING
+                        )
+
+                )
+
+            [1] => SquareConnect\Model\Location Object
+                (
+                    [id:protected] => CBASEHN-HHgbBAY3MjU--aIUf-E
+                    [name:protected] => Coffee & Toffee NYC
+                    [address:protected] => SquareConnect\Model\Address Object
+                        (
+                            [address_line_1:protected] => 375 West Broadway
+                            [address_line_2:protected] => 
+                            [address_line_3:protected] => 
+                            [locality:protected] => New York City
+                            [sublocality:protected] => 
+                            [sublocality_2:protected] => 
+                            [sublocality_3:protected] => 
+                            [administrative_district_level_1:protected] => NY
+                            [administrative_district_level_2:protected] => 
+                            [administrative_district_level_3:protected] => 
+                            [postal_code:protected] => 10012
+                            [country:protected] => US
+                        )
+
+                    [timezone:protected] => America/New_York
+                    [capabilities:protected] => Array
+                        (
+                            [0] => CREDIT_CARD_PROCESSING
+                        )
+
+                )
+
+            [2] => SquareConnect\Model\Location Object
+                (
+                    [id:protected] => CBASEHYnEXHeVkf6tqV6vv7dgHM
+                    [name:protected] => Coffee & Toffee STL [CASH ONLY]
+                    [address:protected] => SquareConnect\Model\Address Object
+                        (
+                            [address_line_1:protected] => 4240 Duncan Ave
+                            [address_line_2:protected] => 
+                            [address_line_3:protected] => 
+                            [locality:protected] => St. Louis
+                            [sublocality:protected] => 
+                            [sublocality_2:protected] => 
+                            [sublocality_3:protected] => 
+                            [administrative_district_level_1:protected] => MO
+                            [administrative_district_level_2:protected] => 
+                            [administrative_district_level_3:protected] => 
+                            [postal_code:protected] => 63110
+                            [country:protected] => US
+                        )
+
+                    [timezone:protected] => America/Chicago
+                    [capabilities:protected] => 
+                )
+
+        )
+
+)

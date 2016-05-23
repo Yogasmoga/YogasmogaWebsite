@@ -1,0 +1,103 @@
+[
+    {
+        "name": "square/connect",
+        "version": "2.0.0",
+        "version_normalized": "2.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/square/connect-php-sdk.git",
+            "reference": "6a734775cea63a307ca1aa20a7d3d447a559d21b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/square/connect-php-sdk/zipball/6a734775cea63a307ca1aa20a7d3d447a559d21b",
+            "reference": "6a734775cea63a307ca1aa20a7d3d447a559d21b",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "ext-json": "*",
+            "ext-mbstring": "*",
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0",
+            "satooshi/php-coveralls": "~0.6.1",
+            "squizlabs/php_codesniffer": "~2.0"
+        },
+        "time": "2016-03-29 23:13:36",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "SquareConnect\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache v2"
+        ],
+        "authors": [
+            {
+                "name": "Square, Inc.",
+                "homepage": "https://github.com/Square/connect-php-sdk"
+            }
+        ],
+        "description": "PHP client library for the Square Connect v2 API",
+        "homepage": "http://swagger.io",
+        "keywords": [
+            "api",
+            "php",
+            "sdk",
+            "swagger"
+        ]
+    },
+    {
+        "name": "mashape/unirest-php",
+        "version": "v3.0.2",
+        "version_normalized": "3.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Mashape/unirest-php.git",
+            "reference": "53656bf5197aab3544c04e606196fcd5c5cd02b5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Mashape/unirest-php/zipball/53656bf5197aab3544c04e606196fcd5c5cd02b5",
+            "reference": "53656bf5197aab3544c04e606196fcd5c5cd02b5",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "codeclimate/php-test-reporter": "0.1.*",
+            "phpunit/phpunit": "~4.4"
+        },
+        "suggest": {
+            "ext-json": "Allows using JSON Bodies for sending and parsing requests"
+        },
+        "time": "2016-04-29 23:54:44",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Unirest": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Unirest PHP",
+        "homepage": "https://github.com/Mashape/unirest-php",
+        "keywords": [
+            "client",
+            "curl",
+            "http",
+            "https",
+            "rest"
+        ]
+    }
+]
