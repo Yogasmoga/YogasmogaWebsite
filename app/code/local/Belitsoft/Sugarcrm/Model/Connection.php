@@ -912,6 +912,40 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 			else
 				$color = "N/A";
 
+
+			/******** ysindia : custom code to get root category *******/
+
+				$parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
+				$conf_product = Mage::getModel('catalog/product')->load($parentIds[0]);
+				$categoryIds = $conf_product->getCategoryIds();
+				foreach ($categoryIds as $category_id) {
+					$category = Mage::getModel('catalog/category')->load($category_id);
+					//each category has a path attribute
+					$path = $category->getPath(); //should look like 1/3/14/23/55.
+					//split the path by slash
+					$pathParts = explode('/', $path);
+					if (count($pathParts) == 3) {
+						//it means the category is already a top level category
+						$gender =  $category->getName();
+						if($gender == 'Men' || $gender == 'Women')
+							break;
+					}
+					elseif (isset($pathParts[2])) {
+						$topCategory = Mage::getModel('catalog/category')->load($pathParts[2]);
+						$gender =  $topCategory->getName();
+						if($gender == 'Men' || $gender == 'Women')
+							break;
+					}
+				}
+
+				if($gender != 'Men' && $gender != 'Women')
+				{
+					$gender = 'Accessories/GiftCard';
+				}
+
+				unset($categoryIds);
+			/******** ysindia : custom code to get root category *******/
+
 			$size = $_product->getAttributeText('size');
 			$size = isset($size) ? $size : "N/A";
 			Mage::log("Color = $color, Size = $size", null, "sugar.log");
@@ -921,6 +955,7 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				'price' => $order_item->getPrice(),
 				'color' => $color,
 				'size' => $size,
+				'root_category' => $gender,
 				'order_id' => $order_id,
 				'customer_id' => $customer_id
 			);
@@ -1048,12 +1083,14 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 				array("name" => 'sku', "value" => $orderData['sku']),
 				array("name" => 'price', "value" => $orderData['price']),
 				array("name" => 'color', "value" => $orderData['color']),
-				array("name" => 'size', "value" => $orderData['size'])
+				array("name" => 'size', "value" => $orderData['size']),
+				array("name" => 'category_c', "value" => $orderData['root_category'])
 			);
 
 			$productAddResponse = $this->_soapclient->set_entry(
 				$this->_session_id, "YS_Products", $values
 			);
+			//Mage::log('values request = ' . serialize($values), null, 'sugar.log');
 
 			$opportunityId = $set_entry->id;
 			$productId = $productAddResponse->id;
@@ -1067,7 +1104,23 @@ class Belitsoft_Sugarcrm_Model_Connection extends Varien_Object
 			);
 
 			$productOrderRelationResult = $this->_soapclient->set_relationship($this->_session_id, $productOrderRelation);
-			Mage::log('Relation result = ' . serialize($productOrderRelationResult), null, 'sugar.log');
+			#Mage::log('Relation result = ' . serialize($productOrderRelationResult), null, 'sugar.log');
+
+
+			/************ ys custom code push customers items (shivaji)***************/
+			if($customer_id) {
+			$contact_id = Mage::getModel('sugarcrm/synchmap')->loadCustomerSynchData($customer_id, self::CONTACTS)->getSid();
+			$productCustomersRelation = array(
+				'module1'		=> self::CONTACTS,
+				'module1_id'	=> "$contact_id",
+				'module2'		=> 'YS_Products',
+				'module2_id'	=> "$productId",
+			);
+
+			$productCustomersRelationResult = $this->_soapclient->set_relationship($this->_session_id, $productCustomersRelation);
+			//Mage::log('Relation result = ' . serialize($parentIds), null, 'sugar.log');
+			}
+			/************ ys custom code push customers items (shivaji)***************/
 		}
 		/************ ys custom code push order items ***************/
 
