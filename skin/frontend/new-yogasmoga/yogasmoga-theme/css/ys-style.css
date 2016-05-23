@@ -2302,6 +2302,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 24px !important; line-height: 50px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 36px !important; line-height: 41px !important;}
     .presstxt p{font-size: 24px !important; line-height: 34px !important;}
+    .ysdiscover-colors .colorFilterGrid{font-size: 24px !important; line-height: 1.4 !important;}
 }
 
 .selectedlength div{display: inline-block; border: 1px solid #A9A9A9; text-align: center; cursor: pointer; padding: 2px 8px; margin: 0 7px 0 0; font-size:11px; font-family:gothambook;}
@@ -3055,10 +3056,10 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .cms-page-view .colorFilterGrid a span{position:relative; top:50%; transform:translateY(-50%);-webkit-transform:translateY(-50%);}
 .ysdiscover-colors.title-block{margin:30px 0 25px 0;}
 .ysdiscover-colors.title-block strong{font-family:gothamBold; font-size:11px; line-height:19px;text-transform:uppercase;}
-.ysdiscover-colors .colorFilterGrid{margin: 0 4% 46px;font:32px/38px ITCAvantGardeProBk;}
+.ysdiscover-colors .colorFilterGrid{margin: 0 4% 46px;/*font:32px/38px ITCAvantGardeProBk;*/ font: 17px/1.4 ITCAvantGardeProBk;}
 .ysdiscover-colors .colorFilterGrid a { height: 202px; margin:0 0.95% 0.95% 0 ; width: 15.79%;position:relative; box-shadow:0 0 1px inset #aaa;box-sizing:border-box;}
 .ysdiscover-colors .colorFilterGrid a span{z-index:2; padding:0 15px; box-sizing:border-box;}
-.ysdiscover-colors .colorFilterGrid a span .text-shop{text-transform:uppercase; font:16px/19.2px gothamMedium;
+.ysdiscover-colors .colorFilterGrid a span .text-shop{text-transform:uppercase; font:12px/19.2px gothamMedium;
     position:absolute; top:0; left:50%;transform:translate(-50% , -180%);-webkit-transform:translate(-50%, -180%); opacity:0;}
 .ysdiscover-colors .colorFilterGrid a:nth-child(6n){margin-right:0;}
 .ysdiscover-colors .colorFilterGrid a .spn_hover{position:absolute; top:0; left:0; opacity:0; width:100%; height:100%; z-index:1; transform:translate(0);-webkit-transform:translate(0); transition:0.2s linear; -webkit-transition:0.2s linear;}
@@ -3085,18 +3086,18 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .yscolor-nav li.ys-color-white a{border:1px solid #ccc;}
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
-    .ysdiscover-colors .colorFilterGrid{font-size:24px; line-height:28px;}
-    .ysdiscover-colors .colorFilterGrid a span .text-shop{font-size:13px; line-height:19px; transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);}
+    .ysdiscover-colors .colorFilterGrid{font-size:19px!important; line-height:1.4;}
+    .ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:13px; line-height:19px;*/ transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);}
 }
 
 @media screen and (min-width: 1401px) and (max-width: 1599px) {
-    .ysdiscover-colors .colorFilterGrid{font-size:26px; line-height:32px;}
-    .ysdiscover-colors .colorFilterGrid a span .text-shop{font-size:14px; line-height:19px; transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);}
+    .ysdiscover-colors .colorFilterGrid{font-size:22px!important; line-height:1.4;}
+    .ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:14px; line-height:19px;*/ transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);}
 }
 
 @media screen and (max-width: 1200px){
-    .ysdiscover-colors .colorFilterGrid{font-size:22px; line-height:26px;}
-    .ysdiscover-colors .colorFilterGrid a span .text-shop{font-size:12px; line-height:18px; transform:translate(-50% , -160%);-webkit-transform:translate(-50%, -160%);}
+    .ysdiscover-colors .colorFilterGrid{font-size: 17px !important; line-height: 1.4 !important;}
+    .ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:12px; line-height:18px; */transform:translate(-50% , -160%);-webkit-transform:translate(-50%, -160%);}
     .yscolor-landing-pg  .gridProdCubix .leftnav{margin:0 0 0 28px;}
     .yscolor-landing-pg .gridProdCubix .gridWrap{margin:0 28px 0 270px;}
     .yscolor-landing-pg .productCont{margin: 0 7px 30px}
@@ -3105,6 +3106,6 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     .yscolor-landing-pg .productCont{margin: 0 7px 30px;}
     .ysdiscover-colors.title-block {margin: 21px 0 25px;}
     .ysdiscover-colors .colorFilterGrid{margin-bottom:20px;}
-    .ysdiscover-colors .colorFilterGrid{font-size:20px; line-height:24px;}
-    .ysdiscover-colors .colorFilterGrid a span .text-shop{font-size:11px; line-height:17px; transform:translate(-50% , -160%);-webkit-transform:translate(-50%, -160%);}
+    .ysdiscover-colors .colorFilterGrid{font-size: 17px !important; line-height: 1.4 !important;}
+    .ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:11px; line-height:17px;*/ transform:translate(-50% , -150%);-webkit-transform:translate(-50%, -160%);}
 }
