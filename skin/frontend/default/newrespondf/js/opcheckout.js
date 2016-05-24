@@ -78,9 +78,11 @@ Checkout.prototype = {
             container.addClassName('saving_step');
             this._disableEnableAll(container, true);
 
+
             if(step == 'review'){
                 jQuery('#'+step+'-buttons-container  button  span').addClass('saving-step-review');
             }
+
             jQuery('#'+step+'-buttons-container  button  span').html('Saving...');
         } else {
             if (this.loadWaiting) {
@@ -92,6 +94,9 @@ Checkout.prototype = {
                 this._disableEnableAll(container, isDisabled);
                 container.removeClassName('saving_step');
                 jQuery('#'+step+'-buttons-container  button  span').html('Continue');
+                if(step == 'review'){
+                    jQuery('#'+step+'-buttons-container  button  span').removeClass('saving-step-review');
+                }
                // Element.hide(this.loadWaiting+'-please-wait');
             }
         }
