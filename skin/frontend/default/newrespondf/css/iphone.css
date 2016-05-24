@@ -3081,6 +3081,10 @@ h4.legend {
     width: 100%;
 }
 
+#createcardform .errortext {
+    display: block;
+    margin: 0 0 0 14px;
+}
 /****************************** gift card ends ************************/
 
 .checkout-cart-index #main, .checkout-onepage-index #main {
@@ -5813,7 +5817,7 @@ table#checkout-review-table tfoot td .price {
 }
 
 #Redeemcard .sub-title {
-    font: 12px Avantgarde-demi;
+    font: 12px/15px Avantgarde-demi;
     margin-bottom: 15px;
     margin-top: 44px;
     text-align: left;
@@ -5857,17 +5861,18 @@ table#checkout-review-table tfoot td .price {
 #redeem .inputholder:nth-child(3) {
     padding: 0 0 0 5px;
 }
+#redeem{border-collapse:collapse;}
 
 #Chkbal .sub-title {
     color: #555555 !important;
-    font: 12px AvantGarde-demi;
-    margin-bottom: 10px;
+    font: 12px/15px AvantGarde-demi;
+    margin-bottom: 15px;
     text-align: left;
     text-transform: uppercase;
 }
 
 #Chkbal > p:nth-child(2) {
-    font: 13px GraphikRegular;
+    font: 13px/18px GraphikRegular;
     text-align: left;
 }
 
@@ -8051,5 +8056,9 @@ iframe[name="google_conversion_frame"] {
     text-align: center;
     width: 100%;
 }
+
+/*YS loaction menu item hide start here.*/
+.rangoli-link .menu-item.ys-loc{display:none;}
+/*YS loaction menu item hide end here.*/
 
 

@@ -561,7 +561,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .redeem-giftcard td.inputholder input {
-    width: 100%;
+    width: 100%; font:12px/18px GraphikRegular; height:40px;
 }
 
 .pg-tagline {
@@ -585,7 +585,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 #Redeemcard p {
-    font: 13px GraphikRegular;
+    font: 13px/18px GraphikRegular;
     margin-bottom: 20px;
     padding: 0;
     text-align: left;
@@ -967,6 +967,8 @@ form#cardbalanceform table.redeem-giftcard {
     color: #555555 !important;
     margin-bottom: 15px;
     text-align: left;
+    font: 12px/15px AvantGarde-demi;
+    text-transform:uppercase;
 }
 
 #createcardform > table {
@@ -990,7 +992,7 @@ form#cardbalanceform table.redeem-giftcard {
     width: 100%;
     margin: 8px 0;
     letter-spacing: 1px;
-    color: #555;
+    color: #555; font:12px/18px GraphikRegular;
 }
 
 .goy-form textarea {

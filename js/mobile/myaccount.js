@@ -2,6 +2,8 @@ var _refercount = 1;
 _usesecureurl = true;
 jQuery(document).ready(function($){
 
+    jQuery('td.errortext div').css("color","#ff5f00");
+
     if(_enablediscounttype == 'giftcard')
     {
         $("div.smogi-bucks").append("<div class='disableme'></div>");
