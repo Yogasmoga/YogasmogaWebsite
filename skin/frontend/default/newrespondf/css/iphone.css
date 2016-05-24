@@ -2711,7 +2711,7 @@ label.shipping_method_radio > input[type="radio"] {
 #billing-buttons-container.saving_step .button, #shipping-buttons-container.saving_step .form-button, #shipping-method-buttons-container.saving_step .form-button, #payment-buttons-container.saving_step .form-button {
 	background-image:none;color:#fff;
 }
-span.saving-step-review{font:14px graphikregular!important; text-transform:capitalize;}
+#review-buttons-container span.saving-step-review{font:14px graphikregular!important; text-transform:capitalize!important;}
 
 #checkout-review-table tr td:first-child {
     text-align: left !important;
