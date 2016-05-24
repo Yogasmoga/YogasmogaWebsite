@@ -92,15 +92,11 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $translate = Mage::getSingleton('core/translate');
         $translate->setTranslateInline(false);
         $email = Mage::getModel('core/email_template');
-        $email->setReplyTo('sweety@mobikasa.com');
+        $email->setReplyTo('hello@yogasmoga.com');
         $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','help_form');
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
 
-        $recipient = array(
-            //'email' => 'neha@mobikasa.com',
-            'email' => 'manish@mobikasa.com',
-            'name'  => 'YOGASMOGA'
-        );
+        
         $cusname = $this->cusname1;
         $cusemail = 'hello@yogasmoga.com';
         $sender  = array(
