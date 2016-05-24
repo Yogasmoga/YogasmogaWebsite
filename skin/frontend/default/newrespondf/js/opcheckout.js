@@ -91,6 +91,7 @@ Checkout.prototype = {
                 if (!isDisabled) {
                     //container.setStyle({opacity:1});
                 }
+                
                 this._disableEnableAll(container, isDisabled);
                 container.removeClassName('saving_step');
                 jQuery('#'+step+'-buttons-container  button  span').html('Continue');
