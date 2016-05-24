@@ -12,6 +12,12 @@
 		var colorblockH = 86.324 * colorblockW/100;
 		jQuery('.ysdiscover-colors .colorFilterGrid a').height(colorblockH);
 	});	
+	jQuery(document).ready(function() {
+    if (window.location.hash != null && window.location.hash != '') 
+        jQuery('body').animate({
+            scrollTop: jQuery(window.location.hash).offset().top
+        }, 1500);
+	});
 	jQuery(window).resize(function(){
 		var colorblockW = jQuery('.ysdiscover-colors .colorFilterGrid a').width();
 		var colorblockH = 86.324 * colorblockW/100;
@@ -135,7 +141,7 @@
 		<div class="block30">
 			<!-- contentPart -->
 			<div class="textContainer">
-				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-friendly.jpg" alt="" class="img-responsive" />
+				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-friendly-v2.jpg" alt="" class="img-responsive" />
 				<div class="iconBlock">
 					<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/Icon-Color-EcoDye.png" alt="" />
 				</div>
@@ -154,7 +160,7 @@
 		<div class="block30">
 			<!-- contentPart -->
 			<div class="textContainer">
-				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-colors.jpg" alt="" class="img-responsive" />
+				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-colors-v2.jpg" alt="" class="img-responsive" />
 				<div class="iconBlock">
 					<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/Icon-Color-Accuracy.png" alt="" />
 				</div>
@@ -173,7 +179,7 @@
 		<div class="block30">
 			<!-- contentPart -->
 			<div class="textContainer">
-				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-fade.jpg" alt="" class="img-responsive" />
+				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-fade-v2.jpg" alt="" class="img-responsive" />
 				<div class="iconBlock">
 					<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/Icon-Color-USAdye.png" alt="" />
 				</div>
@@ -196,7 +202,7 @@
 		<div class="block30">
 			<!-- contentPart -->
 			<div class="textContainer">
-				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-accuracy.jpg" alt="" class="img-responsive" />
+				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-accuracy-v2.jpg" alt="" class="img-responsive" />
 				<div class="iconBlock">
 					<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/Color-Accuracy-Icon.png" alt="" />
 				</div>
@@ -236,7 +242,7 @@
 		<div class="block30">
 			<!-- contentPart -->
 			<div class="textContainer">
-				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-dyeing.jpg" alt="" class="img-responsive" />
+				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-dyeing-v2.jpg" alt="" class="img-responsive" />
 				<div class="iconBlock">
 					<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/Icon-Color-USAdye.png" alt="" />
 				</div>
