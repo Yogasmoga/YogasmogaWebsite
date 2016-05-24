@@ -24,7 +24,11 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php if(Mage::getBlockSingleton('page/html_header')->getIsHomePage()) :?>
+<title><?php echo $this->__("YOGASMOGA: Yoga Inspired Athletic Apparel") ?></title>
+<?php else: ?>
 <title><?php echo htmlspecialchars(html_entity_decode($this->getTitle())) ?></title>
+<?php endif; ?>
 <meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
 <meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
 <meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
