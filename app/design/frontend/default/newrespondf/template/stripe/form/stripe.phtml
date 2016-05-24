@@ -64,7 +64,7 @@
 			    <?php endif; ?>
 				</ul>
 			</fieldset>
-			<div class="stripe-error-msg" style="color: #ff6600; font: 12px/18px graphikregular"></div>
+			<div class="stripe-error-msg validation-advice" id="stripe-error-msg" style="color: #ff6600; font: 12px/18px graphikregular;text-align:left;"></div>
 		</li>
 		<?php if ($this->getIsStripeCustomer()) : ?>
 			<li id="stripe-payment-details"<?php if (!$this->getIsStripeCustomer()) : ?> style="display: none;"<?php endif; ?>>
@@ -189,9 +189,11 @@ Object.extend(Payment.prototype, {
 
 function stripeResponseHandler(status, response) {
     if (response.error) {
-        alert(response.error.message);
+        //alert(response.error.message);
+		$('stripe-error-msg').innerHTML = response.error.message;
         checkout.setLoadWaiting(false);
     } else {
+		$('stripe-error-msg').innerHTML = '';
         var token = response['id'];
         $('<?php echo $_code?>_token').value = token;
         var request = new Ajax.Request(
@@ -245,8 +247,10 @@ function stripeResponseHandler(status, response) {
 	
 	function stripeResponseHandler(status,response) {
 		if (response.error) {
-			alert(response.error.message);
+			//alert(response.error.message);
+			$('stripe-error-msg').innerHTML = response.error.message;
 		} else {
+			$('stripe-error-msg').innerHTML = '';
 			if ($F('stripe_stripe_customer_id')=="") {
 				token = response['id'];
 				$('<?php echo $_code ?>_token').value = token;
