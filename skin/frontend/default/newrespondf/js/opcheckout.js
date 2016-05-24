@@ -72,18 +72,27 @@ Checkout.prototype = {
                 this.setLoadWaiting(false);
             }
             var container = $(step+'-buttons-container');
-            container.setStyle({opacity:.5});
+            //container.setStyle({opacity:.5});
+            //this._disableEnableAll(container, true);
+            //Element.show(step+'-please-wait');
+            container.addClassName('saving_step');
             this._disableEnableAll(container, true);
-            Element.show(step+'-please-wait');
+
+            if(step == 'review'){
+                jQuery('#'+step+'-buttons-container  button  span').addClass('saving-step-review');
+            }
+            jQuery('#'+step+'-buttons-container  button  span').html('Saving...');
         } else {
             if (this.loadWaiting) {
                 var container = $(this.loadWaiting+'-buttons-container');
                 var isDisabled = (keepDisabled ? true : false);
                 if (!isDisabled) {
-                    container.setStyle({opacity:1});
+                    //container.setStyle({opacity:1});
                 }
                 this._disableEnableAll(container, isDisabled);
-                Element.hide(this.loadWaiting+'-please-wait');
+                container.removeClassName('saving_step');
+                jQuery('#'+step+'-buttons-container  button  span').html('Continue');
+               // Element.hide(this.loadWaiting+'-please-wait');
             }
         }
         this.loadWaiting = step;

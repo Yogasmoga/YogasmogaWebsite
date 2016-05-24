@@ -748,6 +748,8 @@ function addtocart() {
                 errormsg = "Please select quantity to continue";
             if (jQuery("div.selectedlength div.selected").length == 0)
                 errormsg = "Please select length to continue";
+            if (jQuery("div#sizecontainer div.dvselectedsize").length == 0)
+                errormsg = "Please select size to continue";
         }
         if (errormsg != '') {
             jQuery("div.producterrorcontainer div.errormsg").hide();
@@ -917,6 +919,7 @@ function selectfirstsizeonload() {
             }
         }
         jQuery(".qty").empty().html("Step 4");
+        firstSize.removeClass("dvselectedsize");
     }
 }
 
