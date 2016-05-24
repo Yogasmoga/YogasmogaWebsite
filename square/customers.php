@@ -8,9 +8,9 @@ require '../vendor/autoload.php';
 
 $location_id = 'REPLACE_ME';
 
-//$access_token = 'sq0atp-DTuNrNZytik1cfSU850jIw';//live
+$access_token = 'sq0atp-DTuNrNZytik1cfSU850jIw';//live
 
-$access_token = 'sq0atb-o8YyBc5M42gDiNvRYTDHiQ';//sandbox
+//$access_token = 'sq0atb-o8YyBc5M42gDiNvRYTDHiQ';//sandbox
 
 $object = new \SquareConnect\ObjectSerializer();
 
@@ -49,7 +49,7 @@ $login_result = $client->call('login', $login_parameters);
 
 
 global $data;
-
+$i=0;
 
 try {
 		do{
@@ -135,7 +135,7 @@ try {
 
 
 		}
-
+$i++;
 }
 
 }while(count($data->customers) >= 100 && $data->cursor);
@@ -147,3 +147,6 @@ try {
   echo "<br/><strong>Response headers:</strong><br/>";
   echo "<pre>"; var_dump($e->getResponseHeaders()); echo "</pre>";
 }
+
+
+print_r("<strong>Total Records processed: $i </strong><br/>");
