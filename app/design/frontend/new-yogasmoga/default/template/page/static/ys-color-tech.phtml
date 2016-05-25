@@ -13,10 +13,12 @@
 		jQuery('.ysdiscover-colors .colorFilterGrid a').height(colorblockH);
 	});	
 	jQuery(document).ready(function() {
-    if (window.location.hash != null && window.location.hash != '') 
-        jQuery('body').animate({
-            scrollTop: jQuery(window.location.hash).offset().top
-        }, 1500);
+	  if(window.location.href.indexOf("email_link") > -1) {
+		
+		jQuery('html,body').animate({
+			scrollTop: jQuery('#email_link').offset().top},
+			'slow');
+	   }
 	});
 	jQuery(window).resize(function(){
 		var colorblockW = jQuery('.ysdiscover-colors .colorFilterGrid a').width();
