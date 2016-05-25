@@ -769,3 +769,8 @@ table#referrallink{width: 100%;}
 table#referrallink td.share a#fbrefer{width: 11px; height: 21px;}
 table#referrallink td.share a#twrefer{width: 25px; height: 21px;}
 table#referrallink td.share a#mlrefer{width: 28px; height: 18px;}
+.add-diff-addr a {
+    border-bottom: 1px solid #d90d3d;color: #666; display: inline-block; line-height: 21px;
+    margin-top: 10px;
+}
+.add-diff-addr a:hover{color:#d90d3d;}

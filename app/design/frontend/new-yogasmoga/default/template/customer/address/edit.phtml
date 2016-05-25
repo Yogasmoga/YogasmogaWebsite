@@ -234,7 +234,7 @@
                                     <input type="checkbox" id="primary_billing" name="default_billing" value="1" class="checkbox" /> 
                                 </td> -->
                                 <td style="padding: 0px; position:relative; font-family:gothambook; font-size:12px;">
-                                    <input type="checkbox" id="primary_billing" name="default_billing" value="1" class="checkbox" /><label style="font-size:12px;" for="primary_billing"><?php echo $this->__('Use as my default billing address') ?></label>
+                                    <input type="checkbox" id="primary_billing" name="default_billing" value="1" class="checkbox" <?php if($this->getRequest()->getParam('type') == 'billing'){ echo "checked=checked";} ;?> /><label style="font-size:12px;" for="primary_billing"><?php echo $this->__('Use as my default billing address') ?></label>
                                 </td>
                             </tr>
                         </table>
@@ -251,7 +251,7 @@
                                      <input type="checkbox" id="latest-news" value="" /> <label for="latest-news">Our latest news and products</label> 
                                 </td> -->
                                 <td style="padding: 0px; position:relative; font-family:gothambook; font-size:12px;">
-                                    <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" class="checkbox" /><label style="font-size:12px;" for="primary_shipping"><?php echo $this->__('Use as my default shipping address') ?></label>
+                                    <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" class="checkbox" <?php if($this->getRequest()->getParam('type') == 'shipping'){ echo "checked=checked";} ;?> /><label style="font-size:12px;" for="primary_shipping"><?php echo $this->__('Use as my default shipping address') ?></label>
                                 </td>
                             </tr>
                         </table>
@@ -261,6 +261,11 @@
                 <?php
             }
          ?>
+         <?php
+            if($this->isDefaultShipping() && $this->isDefaultBilling()){
+            ?>
+            <strong class="add-diff-addr" style="font-family:gothambook;  font-size: 13px;"><a href="/customer/address/new/?type=<?php echo $this->getRequest()->getParam('type');?>">Add a Different <?php echo ucfirst($this->getRequest()->getParam('type'));?> Address</a></strong>
+            <?php } ?>
          <?php /*
          </div>
          */ ?>
