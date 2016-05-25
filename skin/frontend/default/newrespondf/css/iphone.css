@@ -8066,4 +8066,13 @@ iframe[name="google_conversion_frame"] {
 .rangoli-link .menu-item.ys-loc{display:none;}
 /*YS loaction menu item hide end here.*/
 
-
+.button.add-new-addr {
+    background: none;
+    border: none;
+    color: #555;
+    float: left;
+    font: 12px/18px AvantGarde-Demi;
+    letter-spacing: 1px;
+    padding: 5px 12px;cursor:pointer; position:relative;z-index:1;
+    text-transform: uppercase;
+}

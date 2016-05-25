@@ -42,7 +42,7 @@ if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() ==
 <style>
 #address-update .messages .success-msg{ margin-top:20px;}
 </style>
-<div class="page-title title-buttons" style="padding: 0 12px;">
+<div class="page-title title-buttons" style="padding: 0 14px;">
     <h1><?php echo $this->__('Address Book') ?></h1>
     <button type="button" style="cursor:pointer" title="<?php echo $this->__('Add New Address') ?>" class="button" onclick="window.location='<?php echo $this->getAddAddressUrl() ?>';"><span><span><?php echo $this->__('Add New Address') ?></span></span></button>
 </div>
@@ -91,7 +91,7 @@ if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() ==
                 <address>
                     <?php echo $this->getAddressHtml($_address) ?>
                 </address>
-                <p><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>" style="margin-bottom: 0; width: auto;"><?php echo $this->__('Edit Address') ?></a> &nbsp;
+                <p><a  class="link-edit" href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit Address') ?></a> &nbsp;
                     <a href="#" class="link-remove" onclick="return deleteAddress('<?php echo $_address->getId() ?>');" style="margin-bottom: 0; width: auto;margin-left: 20px;"><?php echo $this->__('Delete Address') ?></a></p>
             </li>
             <?php endforeach; ?>
