@@ -246,6 +246,12 @@ jQuery(document).ready(function($){
         $(".apply_smogi_code_div").hide();
     });
 
+    $("p.apply_promo_label > span").click(function(){
+        if($(this).hasClass('add-code')){
+            $("#coupon_code").focus();
+        }
+    });
+
     $("p.apply_smogi_label > span").click(function(){
         $("#error_msg_smogi").html("");
         $(".apply_smogi_code_div").show();
@@ -358,6 +364,9 @@ jQuery(window).resize(function(){
 
 
 jQuery(document).ready(function($){
+
+
+
    $(".help_page>ul>li>p,.help_page li>.toggle").click(function(){
        $(".help_page li>.toggle").not($(this).parent().find(".toggle")).removeClass("active");
        $(".help_page>ul>li>p,.help_page li").not($(this).parent()).removeClass("active");

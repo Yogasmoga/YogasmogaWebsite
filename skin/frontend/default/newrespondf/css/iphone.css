@@ -8078,3 +8078,5 @@ iframe[name="google_conversion_frame"] {
     padding: 5px 12px;cursor:pointer; position:relative;z-index:1;
     text-transform: uppercase;
 }
+#promotion-code #discount-coupon-form .discount-form .buttons-set p{font-family:graphikregular;}
+#promotion-code #discount-coupon-form .discount-form .buttons-set p .quote{/*font-family:arial;*/}

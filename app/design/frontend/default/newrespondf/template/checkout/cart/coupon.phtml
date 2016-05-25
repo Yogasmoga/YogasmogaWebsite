@@ -42,16 +42,20 @@
                             ?>
                                 
                <input style="display: none;" class="input-text hidden" id="coupon_code" name="coupon_code" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" placeholder="Enter Code Here" />
-             <div class="buttons-set">
-                <p>"<?php echo $this->getCouponCode(); ?>" promo used </p>
-				<button value="Remove Points" onclick="discountForm.submit(true)" type="button" class="button btn-update"><span><span>Remove</span></span></button>
-            </div>
+                            <div class="buttons-set">
+                                <p><span class="quote">&ldquo;</span><?php echo $this->getCouponCode(); ?><span class="quote">&rdquo;</span> promo used </p>
+                                <button value="Remove Points" onclick="discountForm.submit(true)" type="button" class="button btn-update"><span><span>Remove</span></span></button>
+                            </div>
+
+
+
+
                             <?php  
                         }
                         else
                         {
                             ?>
-                    <p class="apply_promo_label">Add Promo Code / Gift Card Code<span>+</span></p>
+                        <p class="apply_promo_label">Add Promo Code / Gift Card Code<span class="add-code">+</span></p>
                     </div>
 					  <div class="buttons-set">
 
