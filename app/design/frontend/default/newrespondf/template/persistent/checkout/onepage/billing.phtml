@@ -154,7 +154,7 @@
                                     <input type="text" title="<?php echo $this->__('Zip Code') ?>"
                                            name="billing[postcode]" id="billing:postcode"
                                            value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>"
-                                           class="input-text required-entry validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>"/>
+                                           class="input-text required-entry validate-zip-international validate-zip-code-custom2 <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>"/>
                                 </div>
                             </div>
                             <div class="field" style="margin-top:10px;">
@@ -305,6 +305,13 @@
     $('billing-address-select') && billing.newAddress(!$('billing-address-select').value);
 
     var billingRegionUpdater = new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'billing:postcode');
+
+    //zip validation
+    Validation.add('validate-zip-code-custom2', "Invalid Zip Code", function(v) {
+        return isValidPostalCode(jQuery("#billing\\:postcode").val(),jQuery("#billing\\:country_id").val());
+    });
+    //zip validation
+
     if ($('onepage-guest-register-button')) {
         Event.observe($('onepage-guest-register-button'), 'click', function (event) {
             var billingRememberMe = $('co-billing-form').select('#remember-me-box');
