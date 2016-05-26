@@ -3559,7 +3559,7 @@ label[for="shipping:street1"] {
 
 #checkout-shipping-method-load span:nth-child(2) label {
     display: block;
-    height: 44px;
+   /* height: 44px;*/
     padding-left: 48px;
 }
 
@@ -3567,7 +3567,6 @@ label[for="shipping:street1"] {
     background: hsla(0, 0%, 0%, 0) none repeat scroll 0 0;
     border: medium none;
     color: #999999;
-
     float: left;
     padding-top: 27px;
 }
@@ -4433,7 +4432,7 @@ ul.checkout-cont > li {
     border-bottom: none !important;
 }*/
 .fit.inner-content .lg-size-chart {
-    margin-bottom: 0 !important;
+    margin-bottom: 0 !important;overflow:scroll;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail td {
@@ -4476,6 +4475,7 @@ ul.checkout-cont > li {
 .detail-page .description-block .first-list .detail-view .fitDetail .video-box li {
     list-style: disc;
     font: 14px/20px GraphikRegular;
+    display: list-item;
 }
 
 .fit.inner-content {
@@ -5505,8 +5505,11 @@ button.place-order {
 }
 
 .chart_container table tr:first-child td {
-    font: 12px/30px graphik-semibold;
+    /*font: 12px/30px graphik-semibold;*/
+    font: 12px/14px graphik-semibold;
     letter-spacing: 1px;
+    padding-top:8px;
+    padding-bottom:8px;
 }
 
 .chart_container table tr td {
@@ -8099,4 +8102,8 @@ iframe[name="google_conversion_frame"] {
     padding-right: 6px;
     width: 30% !important;
     white-space:nowrap;
+}
+@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+    .detail-page .description-block .first-list .detail-view .fitDetail .video-box ul {padding-left:23px;/*iPhone < 5: aspect ratio*/}
+
 }
