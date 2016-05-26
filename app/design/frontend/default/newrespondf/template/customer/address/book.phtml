@@ -55,7 +55,11 @@ if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() ==
             <li class="item">
                 <h3><?php echo $this->__('Billing Address') ?></h3>
                 <address>
-                    <?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>
+                    <?php //cho $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses));
+                    //Edited By Fahim Khan.
+                    echo $this->getBillingAddressForBook();
+                    ?>
+
                 </address>
                 <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)).$type1; ?>"><?php echo $this->__('Change Billing Address') ?></a></p>
            </li>
@@ -70,7 +74,11 @@ if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() ==
             <li class="item">
                 <h3><?php echo $this->__('Shipping Address') ?></h3>
                 <address>
-                    <?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>
+                    <?php //echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses));
+
+                    //Edited By Fahim Khan.
+                    echo $this->getShippingAddressForBook();
+                    ?>
                 </address>
                 <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)).$type2; ?>"><?php echo $this->__('Change Shipping Address') ?></a></p>
             </li>
@@ -89,7 +97,12 @@ if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() ==
             <?php foreach($_pAddsses as $_address): ?>
             <li class="item">
                 <address>
-                    <?php echo $this->getAddressHtml($_address) ?>
+                    <?php //echo $this->getAddressHtml($_address);
+
+                    //Edited By Fahim Khan.
+                    echo $this->getAdditionalAddressForBook($_address);
+
+                    ?>
                 </address>
                 <p><a  class="link-edit" href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit Address') ?></a> &nbsp;
                     <a href="#" class="link-remove" onclick="return deleteAddress('<?php echo $_address->getId() ?>');" style="margin-bottom: 0; width: auto;margin-left: 20px;"><?php echo $this->__('Delete Address') ?></a></p>
@@ -118,5 +131,11 @@ if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() ==
         }
         return false;
     }
+function formatPhoneNumber() {
+    jQuery('span.tel').text(function(i, text) {
+        return text.replace(/(\d\d\d)(\d\d\d)(\d\d\d\d)/, '$1.$2.$3');
+    });
+}
+
 //]]>
 </script>

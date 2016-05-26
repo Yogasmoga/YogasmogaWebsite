@@ -30,7 +30,28 @@
             <a style="margin: 0 5px;color: #999; display:none;" href="#billing"
                onclick="checkout.accordion.openSection('opc-billing');return false;"><?php echo $this->__('Edit') ?></a>
         </p>
-        <?php echo $this->getBilling()->format('html') ?>
+        <?php //echo $this->getBilling()->format('html')
+        //Billing Address(changed by Fahim Khan).
+        $regionId = $this->getBilling()->getData('region_id');
+        $resource = Mage::getSingleton('core/resource');
+        $read = $resource->getConnection('core_read');
+        $result = $read->fetchAll("SELECT code FROM directory_country_region  where region_id ='" .$regionId ."' limit 1");
+        foreach($result as $code){
+            $regionCode = $code['code'];
+        }
+        $country = Mage::getModel('directory/country')->loadByCode($this->getBilling()->getData('country_id'));?>
+        <span class="caddress">
+	            <span class="cname"><?php echo $this->getBilling()->getData('firstname').' '.$this->getBilling()->getData('lastname') ?></span>
+            <?php echo $this->getBilling()->getData('street')?>
+            <span><?php echo $this->getBilling()->getData('city')?>,
+                <?php if($regionCode){echo $regionCode; }else{echo $this->getBilling()->getData('region');}?>
+                <?php echo $this->getBilling()->getData('postcode')?>,
+                </span>
+        </span>
+        <span><?php echo $country->getName();?></span><br>
+        <span class="tel"><?php echo $this->getBilling()->getData('telephone')?></span>
+
+
     </div>
 
 <?php endif ?>
@@ -41,7 +62,31 @@
             <a style="margin: 0 5px;color: #999;display:none;" href="#payment"
                onclick="checkout.accordion.openSection('opc-shipping');return false;"><?php echo $this->__('Edit') ?></a>
         </p>
-        <?php echo $this->getShipping()->format('html') ?>
+        <?php //echo $this->getShipping()->format('html');
+
+        // Shipping address (Changed by Fahim Khan).
+        $regionId = $this->getShipping()->getData('region_id');
+        $resource = Mage::getSingleton('core/resource');
+        $read = $resource->getConnection('core_read');
+        $result = $read->fetchAll("SELECT code FROM directory_country_region  where region_id ='" .$regionId ."' limit 1");
+        foreach($result as $code){
+            $regionCode = $code['code'];
+        }
+        $country = Mage::getModel('directory/country')->loadByCode($this->getBilling()->getData('country_id'));
+
+        ?>
+        <span class="caddress">
+	            <span class="cname">
+                    <?php echo $this->getShipping()->getData('firstname').' '.$this->getShipping()->getData('lastname') ?>
+                </span>
+            <?php echo $this->getShipping()->getData('street')?>
+            <span>
+                <?php echo $this->getShipping()->getData('city')?>, <?php if($regionCode){echo $regionCode; }else{echo $this->getShipping()->getData('region');}?> <?php echo $this->getShipping()->getData('postcode')?>,
+            </span>
+        </span>
+        <span><?php echo $country->getName();?></span><br>
+        <span class="tel"><?php echo $this->getShipping()->getData('telephone')?></span>
+
     </div>
 <?php endif ?>
 

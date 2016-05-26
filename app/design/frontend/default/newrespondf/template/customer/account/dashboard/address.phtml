@@ -61,12 +61,18 @@ if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() ==
         <div class="shipping-add f-right add-box">
             <!-- <span class="add-heading">Default Shipping Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
             <?php echo '<span class="add-heading">Shipping Address</span>' ?>
-            <?php echo $this->getPrimaryShippingAddressHtml(); ?>
+            <?php //echo $this->getPrimaryShippingAddressHtml();
+            //edited by Fahim Khan.
+            echo $this->getShippingAddressForAccount();
+            ?>
             <?php echo '<a href="'.$this->getPrimaryShippingAddressEditUrl().$type2.'" class="addressLink">Edit</a>' ?>
         </div> 
 		<div class="billing-add f-left add-box">
             <?php echo '<span class="add-heading">Billing Address</span>' ?>
-           <?php echo $this->getPrimaryBillingAddressHtml(); ?>
+           <?php //echo $this->getPrimaryBillingAddressHtml();
+            //edited by Fahim khan.
+            echo $this->getBillingAddressForAccount();
+            ?>
            <?php echo '<a href="'.$this->getPrimaryBillingAddressEditUrl().$type1.'" class="addressLink">Edit</a>'?>
         </div>
         <div class="clear-fix"></div>      
