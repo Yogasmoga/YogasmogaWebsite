@@ -45,6 +45,11 @@ function equaliseHeight(){
         jQuery('.address-info .add-box').css("height", maxheight);
         console.log(maxheight);        
 }
+function formatPhoneNumber() {
+    jQuery('span.tel').text(function(i, text) {
+        return text.replace(/(\d\d\d)(\d\d\d)(\d\d\d\d)/, '$1.$2.$3');
+    });
+}
 </script>
 <?php
 if(Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling() === Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()){

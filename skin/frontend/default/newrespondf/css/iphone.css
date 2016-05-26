@@ -6054,6 +6054,7 @@ table#checkout-review-table tfoot td .price {
     float: left;
     font: 12px/18px GraphikRegular;
     width: 100% !important;
+    letter-spacing:1px;
 }
 
 .shipping-add.add-box .add-heading, .billing-add.add-box .add-heading {
