@@ -82,17 +82,17 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $this->cusemail1 = $email;
         Mage::getSingleton('core/session')->setSenderEmail($email);
         $this->cusname1 = $name;
-        $this->sendemail($html);
+        $this->sendemail($html,$email);
         echo json_encode($data);
 
     }
 
-    public function sendemail($html)
+    public function sendemail($html,$senderEmail)
     {
         $translate = Mage::getSingleton('core/translate');
         $translate->setTranslateInline(false);
         $email = Mage::getModel('core/email_template');
-        $email->setReplyTo('sweety@mobikasa.com');
+        $email->setReplyTo($senderEmail);
         $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','help_form');
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
 
