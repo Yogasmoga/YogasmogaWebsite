@@ -467,7 +467,12 @@ else
                                 }
                             ?>
 
-                            <div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsQty(); echo $this->__(' ITEMS') ?></div>
+                            <div class="no_of_cart_items">
+                                <?php $item = Mage::helper('checkout/cart')->getCart()->getItemsQty();
+                                if($item==1){echo $item . $this->__(' ITEM');}
+                                else if($item >1){echo $item . $this->__(' ITEMS');}
+                                ?>
+                            </div>
 
                             <?php
                                 // disabling gift set

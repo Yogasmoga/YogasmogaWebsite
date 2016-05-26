@@ -1891,6 +1891,9 @@ button[name="update_cart_action_checkout"] {
     font-weight: normal;
 }
 
+.selected_cart_products .cart-price .price {
+    font: 12px/18px itcavantgardestd-bk;
+}
 .apply_promo_login {
     line-height: 30px;
     text-align: left;
