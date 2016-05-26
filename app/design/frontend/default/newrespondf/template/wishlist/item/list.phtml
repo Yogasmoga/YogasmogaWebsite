@@ -110,20 +110,18 @@ $columns = $this->getColumns();
 
                         $resource = Mage::getSingleton('core/resource');
                         $read = $resource->getConnection('catalog_read');
-                        $imageJson = json_decode($_product->getImageLabel());
-                        $imageJson = get_object_vars($imageJson);
-
-
-                        if (isset($imageJson['color'])) {
-                            $colorCode = $imageJson['color'];
-                            $result = $read->fetchAll('SELECT value FROM eav_attribute_option_value  where option_id =' . $colorCode . ' limit 1');
-                            foreach ($result as $color) {
-                                echo $color['value'];
-
-                            }
-
+                        foreach($gallery as $product){
+                            $imgdata = json_decode(trim($product->getLabel()), true);
+                            $colorId = $imgdata['color'];
                         }
+                        $result = $read->fetchAll("SELECT value FROM eav_attribute_option_value  where option_id ='" .$colorCode ."' limit 1");
+                        foreach($result as $color){
+                            echo $color['value'];
+                        }
+
+
                         ?>
+                        <span rel="<?php echo $color['value'].'-';?><?php echo $colorId.'*'.$colorCode;?>"></span>
 					
 					</span>
                 </div>
