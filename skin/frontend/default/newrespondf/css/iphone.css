@@ -4950,20 +4950,21 @@ button.place-order {
     color: hsl(0, 0%, 100%);
     font-family: ITCAvantGardeStd-Bk;
     font-size: 24px;
-    height: 320px;
+    /*height: 320px;*/
     left: 0;
-    line-height: 35px;
-    margin-top: -160px;
+    line-height: 26px;
+    /*margin-top: -160px;*/
     position: absolute;
-    top: 50%;
+    /*top: 50%;*/ top:88px;
     width: 100%;
+    /*transform:translateY(-50%);-webkit-transform:translateY(-50%)*/
 }
 
 .thanks-page .thanks-block p .shop-tag a {
     background: #00b900 none repeat scroll 0 0;
     color: hsl(0, 0%, 100%);
     display: block;
-    font: 14px/50px ITCAvantGardeStd-Bk;
+    font: 16px/44px ITCAvantGardeStd-Bk;
     height: 44px;
     letter-spacing: 1px;
     text-decoration: none;
@@ -4972,11 +4973,19 @@ button.place-order {
     margin: 0 auto;
 }
 
+
+
 .thanks-page .thanks-block p .shop-tag {
     display: block;
-    margin-top: 15px;
+    margin-top: 0px;
     padding: 0 14px;
 }
+
+.thanks-page .thanks-block p .span_text{font-family:avantgarde-demi;}
+.thanks-block span svg { margin-bottom: 28px; margin-top: 24px;}
+.span_txt_blk{margin-bottom:25px;display:block; font-size:14px; line-height:18px;}
+.span_txt_blk.smogi_txt{margin-bottom:28px;}
+.span_txt_blk .buckes-earned{font-family:avantgarde-demi;}
 
 .dashboard-index .error-msg {
     background: #fff;
@@ -8081,4 +8090,9 @@ iframe[name="google_conversion_frame"] {
 }
 #promotion-code #discount-coupon-form .discount-form .buttons-set p{font-family:graphikregular;}
 #promotion-code #discount-coupon-form .discount-form .buttons-set p .quote{/*font-family:arial;*/}
-
+.chart-table tr td {width: 12% !important;}
+.chart-table tr td:first-child {
+    padding-right: 6px;
+    width: 30% !important;
+    white-space:nowrap;
+}
