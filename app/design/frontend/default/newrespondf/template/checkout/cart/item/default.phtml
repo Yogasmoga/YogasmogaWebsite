@@ -307,7 +307,41 @@ foreach ($_options as $_option) {
                     <?php endforeach; ?>
                 </div>
 				<!--out of stock message start-->
-				
+
+
+
+
+				 <?php if ($_options): ?>
+                    <div class="item-options">
+                        <?php foreach ($_options as $_option) : ?>
+                            <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
+
+                            <?php if (strtolower($_option['label']) == "length"): ?>
+                                <span style="display:inline-block">Length:
+
+                                    <?php
+                                    $word = $_formatedOptionValue['value'];
+                                    if (strpos($word, "|")) {
+                                        echo " " . substr($word, 0, strpos($word, "|"));
+                                    } else
+                                        echo $word;
+                                    ?>
+                            </span>
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+
+
+
+
+
+
+
+
+
 				<?php if ($messages): ?>
 					<div class="messages">
 						<p>

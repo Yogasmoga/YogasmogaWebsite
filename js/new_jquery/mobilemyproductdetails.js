@@ -922,9 +922,46 @@ function selectfirstsizeonload() {
         firstSize.removeClass("dvselectedsize");
     }
 }
-
+/*
 function insertBraOption() {
     _braSelected = 0;
+    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    jQuery("body").on("touchstart", "#includeoption div", function () {
+        var braValue = parseInt(jQuery("#includeoption div:nth-child(1)").attr("value"));
+        jQuery(this).children().toggleClass("selected");
+        //jQuery(this).siblings().toggleClass("selected");
+        var textvalue = jQuery.trim(jQuery(this).text());
+        if (textvalue == "Y" || textvalue == "y") {
+            if (_braSelected == 0) {
+                var productCost = jQuery(".productcost").text().split("$");
+                var productCostV = parseInt(productCost[1]) + braValue;
+                console.log(productCost[1]);
+                jQuery(".productcost").text("$" + productCostV);
+                _braSelected = 1;
+                _braOptionTypeID = jQuery(this).attr("optiontypeid");
+                _braOptionID = jQuery(this).attr("optionid");
+            }
+        }
+        if (textvalue == "N" || textvalue == "n") {
+            if (_braSelected == 1) {
+                _braSelected = 0;
+                var productCost = jQuery(".productcost").text().split("$");
+                var productCostV = parseInt(productCost[1]) - braValue;
+                jQuery(".productcost").text("$" + productCostV);
+            }
+        }
+    });
+
+}
+*/
+
+
+
+
+function insertBraOption() {
+    _braSelected = 1;
+    _braOptionTypeID = jQuery('#selectedyes').attr("optiontypeid");
+    _braOptionID = jQuery('#selectedyes').attr("optionid");
     jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
     jQuery("body").on("touchstart", "#includeoption div", function () {
         var braValue = parseInt(jQuery("#includeoption div:nth-child(1)").attr("value"));

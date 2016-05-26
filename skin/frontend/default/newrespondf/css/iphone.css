@@ -4767,11 +4767,11 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .includeoptionmain .include_option > div.selected {
-    background: #c2c3c4;
+    background: #00B900;
 }
 
 .includeoptionmain .include_option > div:first-child.selected {
-    background: #00B900 !important;
+    background: #c2c3c4 !important;
 }
 
 #discountFormPoints2 fieldset {
@@ -5892,6 +5892,7 @@ table#checkout-review-table tfoot td .price {
     border-collapse: collapse;
     width: 100%;
     float: left;
+    display: table;
 }
 
 #wishlist-table thead th {
@@ -8080,3 +8081,4 @@ iframe[name="google_conversion_frame"] {
 }
 #promotion-code #discount-coupon-form .discount-form .buttons-set p{font-family:graphikregular;}
 #promotion-code #discount-coupon-form .discount-form .buttons-set p .quote{/*font-family:arial;*/}
+

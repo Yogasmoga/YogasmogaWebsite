@@ -118,7 +118,7 @@ $columns = $this->getColumns();
                             $colorCode = $imageJson['color'];
                             $result = $read->fetchAll('SELECT value FROM eav_attribute_option_value  where option_id =' . $colorCode . ' limit 1');
                             foreach ($result as $color) {
-                                //echo $color['value'];
+                                echo $color['value'];
 
                             }
 
