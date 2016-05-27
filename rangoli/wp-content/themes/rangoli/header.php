@@ -175,13 +175,18 @@
         <script async src="<?php bloginfo('template_directory')?>/js/min/magento_signin.js" ></script>
         <script async src="<?php bloginfo('template_directory')?>/js/min/jquery.raty.js" ></script>
     <?php } ?>
-
+	<?php 
+	 
+	if( $post->ID == 8987 ) {
+		echo 'text to output goes here';
+	}
+	?>
 </head>
 <body>
 
 <?php
-$style= "";
-if(!is_user_logged_in()){
+//$style= "";
+//if(!is_user_logged_in()){
     $style= "margin-top:25px;";
     echo "<style>
         .pace .pace-progress {
@@ -189,12 +194,12 @@ if(!is_user_logged_in()){
         }
     </style>";
 ?>
-<div class="banner" onclick="open_red_popup()">
-    SIGN UP & GET $25 SMOGI BUCKS
+<div class="banner" style="cursor:default"> <!--onclick="open_red_popup()"-->
+    MEMORIAL DAY SALE. 25% OFF ENTIRE COLLECTION. USE CODE: <strong>YSUSA</strong> AT CHECKOUT
 </div>
 <?php
 
-}
+//}
 ?>
 <div class="header-container" style="<?php echo $style; ?>">
     <div class="header">
