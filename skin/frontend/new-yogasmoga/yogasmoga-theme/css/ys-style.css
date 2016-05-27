@@ -2907,7 +2907,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 }
 
 /*--banner new style--*/
-
+.banner_text_mday{position:absolute; top: 88.66587957497048%;left: 16.9375%;}
 .banner_text1{position:relative; top:32%; left:14.5%; float: left; text-align:center; padding-right:0px !important}
 .banner_text2{text-align:center; padding-right:0px !important; position:relative;left:27%; top: 36%;}
 .banner_text3{position:relative; text-align:center; display:inline-block; left:14%; top:20%}
