@@ -35,5 +35,24 @@
 			</checkout_cart_save_before>
 		</events>
 -->
+		<customer>
+			<address>
+				<formats>
+					<add_mobile translate="title" module="customer">
+						<title>One Line Mobile</title>
+					</add_mobile>
+				</formats>
+			</address>
+		</customer>
+
+
 	</global>
+	<default>
+		<customer>
+			<address_templates>
+				<add_mobile>{{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}, {{var street}}, {{var city}}, {{var region}} {{var postcode}}, {{var country}}</add_mobile>
+			</address_templates>
+		</customer>
+	</default>
+
 </config>
