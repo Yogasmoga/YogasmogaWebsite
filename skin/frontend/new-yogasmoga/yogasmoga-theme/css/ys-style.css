@@ -3072,6 +3072,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 @media screen and (min-width: 1401px) and (max-width: 1599px) {
 .ysdiscover-colors .colorFilterGrid{font-size:22px!important; line-height:1.4;}
 .ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:14px; line-height:19px;*/ transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);}
+.banner_text_mday{left: 15.938%}
 }
 
 @media screen and (max-width: 1200px){
@@ -3080,6 +3081,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .yscolor-landing-pg  .gridProdCubix .leftnav{margin:0 0 0 28px;}
 .yscolor-landing-pg .gridProdCubix .gridWrap{margin:0 28px 0 270px;}
 .yscolor-landing-pg .productCont{margin: 0 7px 30px}
+.banner_text_mday{left: 14.938%}
 }
 @media only screen and (max-width : 1024px) {
 .yscolor-landing-pg .productCont{margin: 0 7px 30px;}
@@ -3087,6 +3089,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .ysdiscover-colors .colorFilterGrid{margin-bottom:20px;}
 .ysdiscover-colors .colorFilterGrid{font-size: 17px !important; line-height: 1.4 !important;}
 .ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:11px; line-height:17px;*/ transform:translate(-50% , -150%);-webkit-transform:translate(-50%, -160%);}
+.banner_text_mday{left: 13.938%}
 }
 
 
