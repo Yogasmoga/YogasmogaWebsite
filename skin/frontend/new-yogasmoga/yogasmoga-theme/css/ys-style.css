@@ -2870,7 +2870,7 @@ table.smallimagecontiner td.selectedimage{
     color:#fff;
     width:100%;
     height:25px;
-    letter-spacing:.75px;
+    letter-spacing:1px;
     display:block;
     text-align:center;
     font: 12px/25px AvantGardeGothicITCW01B;
@@ -2878,7 +2878,7 @@ table.smallimagecontiner td.selectedimage{
     top:0;
     text-transform:uppercase;
 }
-
+.orange-banner strong{ font-family: gothambold;}
 .golden-banner{
     background:#ae8637;
     color:#fff;
