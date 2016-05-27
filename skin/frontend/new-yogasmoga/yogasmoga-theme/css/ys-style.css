@@ -2913,7 +2913,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 }
 
 /*--banner new style created by Sanjay--*/
-.banner_text_mday{position:absolute; top: 88.66587957497048%;left: 15.9375%;}
+.banner_text_mday {float: left; left: 5.4375%; position: absolute; text-align: center; top: 88.6659%; width: 33.6%;}
 .banner_text1{position:relative; top:32%; left:14.5%; float: left; text-align:center; padding-right:0px !important}
 .banner_text2{text-align:center; padding-right:0px !important; position:relative;left:27%; top: 36%;}
 .banner_text3{position:relative; text-align:center; display:inline-block; left:14%; top:20%}
@@ -2974,7 +2974,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     .collection-banner{font: 26px/26px AvantGardeGothicITCW01D;}
     .collection-banner span{font: 17px/22px freight;}
     .collection-banner img{width:5%;padding:2% 0%;}
-    .banner_text_mday{left: 14.938%}
+
     /*.featured-collection-bottom img.co{left:7.5%;top:17%;max-width:189px!important;}
     .featured-collection-bottom img.seal{max-width:180px!important;}*/
 }
@@ -2993,7 +2993,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     .collection-banner{font: 24px/24px AvantGardeGothicITCW01D;}
     .collection-banner span{font: 16px/22px freight;}
     .collection-banner img{width:5%;padding:2% 0%;}
-    .banner_text_mday{left: 13.938%}
+
 
     /*.featured-collection-bottom img.co{left:7.5%;top:17%;max-width:169px!important;}
     .featured-collection-bottom img.seal{max-width:161px!important;}*/
