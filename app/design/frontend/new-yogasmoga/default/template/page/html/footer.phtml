@@ -256,12 +256,12 @@ var google_remarketing_only = true;
 
 <?php 
 $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
-if(!$loggedIn){ ?>
+//if(!$loggedIn){ ?>
 <script>
 	
     jQuery(document).ready(function() {
 	jQuery(".orange-banner").click(function(){			
-			jQuery("#signup").dialog( "open" );
+			//jQuery("#signup").dialog( "open" );
         			
 	});	
 	
@@ -302,7 +302,7 @@ jQuery(".cms-home div#bodycompensator").css("height","69px");
 
  
 </script>
-<?php } 
+<?php /*} 
 else {
 ?>
 <script>
@@ -313,5 +313,5 @@ jQuery("#div_sizes.fixed_top").css("top","69px");
 
     });
 </script>
-<?php }
+<?php }*/
 ?>
