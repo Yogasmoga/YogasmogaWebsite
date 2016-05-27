@@ -2907,7 +2907,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 }
 
 /*--banner new style--*/
-.banner_text_mday{position:absolute; top: 88.66587957497048%;left: 16.9375%;}
+.banner_text_mday{position:absolute; top: 88.66587957497048%;left: 15.9375%;}
 .banner_text1{position:relative; top:32%; left:14.5%; float: left; text-align:center; padding-right:0px !important}
 .banner_text2{text-align:center; padding-right:0px !important; position:relative;left:27%; top: 36%;}
 .banner_text3{position:relative; text-align:center; display:inline-block; left:14%; top:20%}
@@ -2959,7 +2959,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .collection-banner{font: 26px/26px AvantGardeGothicITCW01D;}
 .collection-banner span{font: 17px/22px freight;}
 .collection-banner img{width:5%;padding:2% 0%;}
-
+.banner_text_mday{left: 13.938%}
 
 }
 @media only screen and (max-width : 1024px) {
@@ -2979,7 +2979,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .collection-banner img{width:5%;padding:2% 0%;}
 
 .contentSlider.mistext.feat{top:33.911%!important;}
-
+.banner_text_mday{left: 13.938%}
 }
 
 /*=============for career page start=========*/
@@ -3072,7 +3072,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 @media screen and (min-width: 1401px) and (max-width: 1599px) {
 .ysdiscover-colors .colorFilterGrid{font-size:22px!important; line-height:1.4;}
 .ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:14px; line-height:19px;*/ transform:translate(-50% , -170%);-webkit-transform:translate(-50%, -170%);}
-.banner_text_mday{left: 15.938%}
+
 }
 
 @media screen and (max-width: 1200px){
@@ -3081,7 +3081,6 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .yscolor-landing-pg  .gridProdCubix .leftnav{margin:0 0 0 28px;}
 .yscolor-landing-pg .gridProdCubix .gridWrap{margin:0 28px 0 270px;}
 .yscolor-landing-pg .productCont{margin: 0 7px 30px}
-.banner_text_mday{left: 14.938%}
 }
 @media only screen and (max-width : 1024px) {
 .yscolor-landing-pg .productCont{margin: 0 7px 30px;}
@@ -3089,7 +3088,6 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .ysdiscover-colors .colorFilterGrid{margin-bottom:20px;}
 .ysdiscover-colors .colorFilterGrid{font-size: 17px !important; line-height: 1.4 !important;}
 .ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:11px; line-height:17px;*/ transform:translate(-50% , -150%);-webkit-transform:translate(-50%, -160%);}
-.banner_text_mday{left: 13.938%}
 }
 
 
