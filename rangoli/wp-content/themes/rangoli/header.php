@@ -195,7 +195,8 @@
     </style>";
 ?>
 <div class="banner" style="cursor:default"> <!--onclick="open_red_popup()"-->
-    MEMORIAL DAY SALE. 25% OFF ENTIRE COLLECTION. USE CODE: <strong>YSUSA</strong> AT CHECKOUT
+    MEMORIAL DAY SALE. 25% OFF ENTIRE COLLECTION. USE CODE: <strong style="font-family: itcavantgardestd-md;
+    font-weight: 600;">YSUSA</strong> AT CHECKOUT
 </div>
 <?php
 
