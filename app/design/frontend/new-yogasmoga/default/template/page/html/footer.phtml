@@ -201,12 +201,12 @@ window.onload = function(){
 
         <?php
         $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
-        //if(!$loggedIn){ ?>
+        if(!$loggedIn){ ?>
             <script>
 
                 jQuery(document).ready(function() {
                     jQuery(".orange-banner").click(function(){
-                        //jQuery("#signup").dialog( "open" );
+                        jQuery("#signup").dialog( "open" );
 
                     });
 
@@ -214,7 +214,7 @@ window.onload = function(){
                     jQuery("div#bodycompensator").css("height","94px");
                     jQuery(".cms-home div#bodycompensator").css("height","69px");
 
-//jQuery("#div_sizes").css("top","69px");
+                    //jQuery("#div_sizes").css("top","69px");
                     if(jQuery('#div_sizes').length > 0){
                         function positionFilter(filterOffsetTop){
                             //alert();
@@ -247,7 +247,7 @@ window.onload = function(){
 
 
             </script>
-        <?php /*}
+        <?php }
         else {
         ?>
             <script>
@@ -258,7 +258,7 @@ window.onload = function(){
 
                 });
             </script>
-        <?php }*/
+        <?php }
         ?>
 
 
