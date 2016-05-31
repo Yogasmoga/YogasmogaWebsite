@@ -690,12 +690,12 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 
                 return;
             }
-			/*jQuery(".orange-banner").hide();			 
+			jQuery(".orange-banner").hide();			 
 			jQuery(".header-container").css("padding","0px");
 			jQuery("div#bodycompensator").css("height","69px"); 
 			jQuery(".ui-widget-overlay").css({top:69});
 			jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
-			jQuery("#div_sizes").css("top","auto");	*/
+			jQuery("#div_sizes").css("top","auto");
 			
 			var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
 			positionFilter(filterOffsetTop);

@@ -185,8 +185,8 @@
 <body>
 
 <?php
-//$style= "";
-//if(!is_user_logged_in()){
+$style= "";
+if(!is_user_logged_in()){
     $style= "margin-top:25px;";
     echo "<style>
         .pace .pace-progress {
@@ -194,12 +194,12 @@
         }
     </style>";
 ?>
-<div class="banner" style="cursor:default"> <!--onclick="open_red_popup()"-->
-    MEMORIAL DAY SALE. 25% OFF ENTIRE COLLECTION. USE CODE: <strong style="font-family: gothambold; font-weight:400;">YSUSA</strong> AT CHECKOUT
+<div class="banner" style="cursor:pointer" onclick="open_red_popup()">
+    SIGN UP & GET $25 SMOGI BUCKS
 </div>
 <?php
 
-//}
+}
 ?>
 <div class="header-container" style="<?php echo $style; ?>">
     <div class="header">
