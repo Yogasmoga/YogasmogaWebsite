@@ -8107,3 +8107,14 @@ iframe[name="google_conversion_frame"] {
     .detail-page .description-block .first-list .detail-view .fitDetail .video-box ul {padding-left:23px;/*iPhone < 5: aspect ratio*/}
 
 }
+#billing_save_address {
+    margin: 0 0 4px;
+}
+#co-billing-form li.ship-btn {
+    padding: 2px 0 !important;
+}
+#co-billing-form li#billing_this_address.ship-btn {
+    margin-top: 11px;
+}
+
+#co-billing-form li.ship-btn .custom-rd, .addr-book .custom-rd{top:10px;}
