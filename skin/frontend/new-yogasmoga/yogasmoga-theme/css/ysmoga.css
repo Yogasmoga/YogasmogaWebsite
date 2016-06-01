@@ -1266,7 +1266,7 @@ html[xmlns] body.mac-os .gridFullWidth:after {
 }
 .cntntheading .content-wrapper > span{
 	
-	  display: block;
+	 display: block;
     font-family: AvantGardeGothicITCW01X;
 }
 .contnttxt > span {
@@ -2882,4 +2882,15 @@ a.learn-more {
 .bucket2 .contentSlider{top:34%;}
 .bucket3 .contentSlider{top:35%;}
 .bucket4 .contentSlider{top:35%;}
+}
+
+/*----our store css update--*/
+.cms-our-stores .cntntheading{text-transform:capitalize;font: 25px/30px ITCAvantGardeProMd!important;margin:27px 0 28px;}
+.cms-our-stores .cntntheading .content-wrapper > .subtext{font:12px/17px gothamBook;}
+.cms-our-stores .cntntheading .content-wrapper > .ys-store-email{font:12px/16px gothamBook;text-transform:lowercase;}
+.cms-our-stores .contnttxt p{margin:0 0 29px;}
+.cms-our-stores .contnttxt p:last-child{margin:0;}
+
+@media only screen and (max-width : 1024px) {
+.cms-our-stores .cntntheading{font: 20px/30px ITCAvantGardeProMd!important;}
 }
