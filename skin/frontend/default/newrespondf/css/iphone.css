@@ -8118,3 +8118,6 @@ iframe[name="google_conversion_frame"] {
 }
 
 #co-billing-form li.ship-btn .custom-rd, .addr-book .custom-rd{top:10px;}
+#co-billing-form .form-list li:last-child {
+    padding-bottom: 0 !important;
+}
