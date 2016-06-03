@@ -181,6 +181,8 @@
 		echo 'text to output goes here';
 	}
 	?>
+    <?php $canicalurl="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>
+    <link rel="canonical" href="<?php echo $canicalurl; ?>" />
 </head>
 <body>
 
