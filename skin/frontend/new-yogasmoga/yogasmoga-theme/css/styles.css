@@ -4479,3 +4479,4 @@ body.checkout-onepage-index #payment_form_stripe
 
 body.sales-order-print{padding: 0 15px;text-align:left;}
 body.sales-order-print .data-table.ys.prdetail tfoot td:first-child{text-align:left!important; padding-left:20px;}
+body.sales-order-print .data-table.ys.prdetail tfoot td{padding-right:0;}
