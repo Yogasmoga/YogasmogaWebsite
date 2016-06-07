@@ -258,7 +258,8 @@
         })(window, document, 'script', 'dataLayer', 'GTM-PGF5K4');
     </script>
     <!-- End Google Tag Manager -->
-
+	<?php $canicalurl="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>
+    <link rel="canonical" href="<?php echo $canicalurl; ?>" />
 
 </head>
 <body>
