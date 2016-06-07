@@ -476,7 +476,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 /*.product-grid .side-menu-bar{width: 20%}*/
 .product-grid{display: inline-block; width: 100%;}
 
-.product-grid h4{background: url("../images/divider-sml.png") no-repeat center bottom; background-size: 100% auto;
+.product-grid h4,.product-grid .h4{background: url("../images/divider-sml.png") no-repeat center bottom; background-size: 100% auto;
     color: #555;
     display: inline-block;
     font: 11px gothammedium;
