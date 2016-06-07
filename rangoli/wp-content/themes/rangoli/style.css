@@ -832,7 +832,7 @@ input.change_username {
 .wp_page_banner.rangoli_press_banner .align-bottom { bottom: 65px;}
 .rangoli_press_content .author_details_post{padding-top:65px;}
 .post_content_box.rangoli_press_content .post_content{padding-top:65px;}
-.align-bottom .post_category a{cursor:inherit;}
+.align-bottom .post_category a{cursor:default;}
 
 /*--remove ys-location link--*/
 .menu-box .menu-content ul li.store{display:none;}
