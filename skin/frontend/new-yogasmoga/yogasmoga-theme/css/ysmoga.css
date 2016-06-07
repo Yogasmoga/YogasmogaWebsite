@@ -679,7 +679,7 @@ html[xmlns] .overridefix {
     width: auto;
 }
 
-.product-grid .gridWrap h4{
+.product-grid .gridWrap h4,.product-grid .gridWrap .h4{
     background: none;
     border-top: 1px solid #a6a6a6;
     margin: 0 0 30px;
