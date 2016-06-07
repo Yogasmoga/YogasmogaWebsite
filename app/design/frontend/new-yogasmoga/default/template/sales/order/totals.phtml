@@ -41,24 +41,24 @@
         }else{
             $totalRow = false;
             if(strpos($_total->getLabel(),"Total Amount") !== false){
-                $style="style='border-top:1px solid #666666;border-bottom:1px solid #666666; padding:3px 9px' align='right'";
+                $style="style='border-top:1px solid #666666;border-bottom:1px solid #666666; padding:3px 0 3px 20px; text-align:right' align='right'";
                 $style_payment="style='border-top:1px solid #666666;border-bottom:1px solid #666666; padding:3px 9px;text-align:left' align='left'";
                 $totalRow = true;
             }
             else{
-                $style="style='padding:3px 9px' align='right'";
+                $style="style='padding:3px 0 3px 20px; text-align:right' align='right'";
             }
     ?>
-        <tr class='<?php echo $_code;?>'>
+        <tr class='<?php echo $_code;?>' colspan="4" style="border-top:1px solid #666;border-bottom:1px solid #666;">
 
             <?php if($totalRow && strlen($paymentMethod)>0){ ?>
 
 <!--        <td <?php //echo $this->getLabelProperties()?> colspan="2">-->
             <td <?php echo $style_payment;?>><span style="font-weight:bold;">Payment Method: </span><?php echo $paymentMethod;?> </td>
-            <td <?php echo $style;?>>
+            <td style="padding:3px 0px 3px 20px;text-align:right;border-top:1px solid #666;border-bottom:1px solid #666;" colspan="3">
 
             <?php }else{ ?>
-            <td <?php echo $style;?> colspan="2">
+            <td <?php echo $style;?> colspan="4">
             <?php } ?>
 
             <?php if ($_total->getStrong()):?>

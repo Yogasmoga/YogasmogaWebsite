@@ -774,3 +774,4 @@ table#referrallink td.share a#mlrefer{width: 28px; height: 18px;}
     margin-top: 10px;
 }
 .add-diff-addr a:hover{color:#d90d3d;}
+.data-table.ys.prdetail tfoot td:first-child{text-align:left!important;padding-left:20px;}
