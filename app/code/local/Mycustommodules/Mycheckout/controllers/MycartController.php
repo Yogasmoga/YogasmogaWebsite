@@ -959,6 +959,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     public function getCartSummaryAction()
     {
         $quote = Mage::helper('checkout')->getQuote()->getData();
+		Mage::helper('checkout')->getQuote()->setTotalsCollectedFlag(false)->collectTotals();
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         $grandtotal = $totals["grand_total"]->getValue(); //Grandtotal value
