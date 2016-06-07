@@ -232,3 +232,4 @@ table.inputtable td.label,table.gfredeem td.label,table#redeem td.label,input{co
 .one-three .overlay-text .post_category,.two-three .overlay-text .post_category{font-size:11px;padding:0 0 10px!important;margin-bottom:25px!important}
 .one-three .overlay-text .post_category{width:60%!important}
 .two-three .overlay-text .post_category{width:40%!important}
+.align-bottom .post_category a{cursor:default;}
