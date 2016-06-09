@@ -251,7 +251,11 @@
 
                                     <!-- productGridImages -->
                                     <div class="gridWrap">
-
+                                        <div style="display: none">
+                                        <?php foreach($productConfigurableCollection as $cproduct):?>
+                                             <h2 style="display:none"><?php echo $cproduct->getName()?></h2>
+                                        <?php endforeach;?>
+                                        </div>
                                         <!-- gridHeading -->
                                         <!--<h4>BEST SELLERS</h4>-->
                                         <!-- gridHeading -->
@@ -341,9 +345,7 @@
                                             }
                                           
                                         ?>
-                                        <?php foreach($productConfigurableCollection as $cproduct):?>
-                                           <div style="display: none"> <h2 style="display:none"><?php echo $cproduct->getName()?></h2></div>
-                                        <?php endforeach;?>
+
                                     </div>
                                     <!-- productGridImages -->
 
