@@ -3137,7 +3137,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 }
 
 /*--mens whatsnew fathersday .bannerFluid--*/
-.categorypath-men-whats-new .bannerFluid .bnrtxt{font:55px/54px itcavantgardepromd;}
+.categorypath-men-whats-new .bannerFluid .bnrtxt{font:55px/54px itcavantgardepromd;top:44%;}
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 .categorypath-men-whats-new .bannerFluid .bnrtxt{font:45px/84px itcavantgardepromd;}
