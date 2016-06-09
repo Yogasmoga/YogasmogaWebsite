@@ -143,7 +143,7 @@
                         $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
                         ?>
                         <!-- bannerContainer -->
-
+                        <h1 style="display:none"><?php echo $shopthecolorCategory->getName(); ?></h1>
                         <div class="bannerFluid">
                             <img title="Additional sizes" alt="Additional sizes"
                                  src="<?php echo $shopthecolor_imgUrl; ?>">

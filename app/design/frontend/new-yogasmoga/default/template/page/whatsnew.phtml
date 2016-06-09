@@ -133,10 +133,12 @@
                                     }
 
                                     $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
-                                    $shopthecolor_imgUrl = $shopthecolorCategory -> getImageUrl();
+                                    $shopthecolor_imgUrl = $shopthecolorCategory->getImageUrl();
                                     $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
                                 ?>
                                 <!-- bannerContainer -->
+                                 <h1 style="display:none"><?php echo $shopthecolorCategory->getName(); ?></h1>
+                                <?php if($shopthecolor_imgUrl): ?>
                                 <div class="bannerFluid" style="background: url('<?php echo $shopthecolor_imgUrl; ?>'); background-size: cover;">
                                     <!-- <img src="--><?php //echo $shopthecolor_imgUrl; ?><!--">-->
                                         <?php
@@ -161,6 +163,7 @@
                                             <div class="bnrtxt bnr white">WHAT&prime;S NEW</div>
                                     <?php } ?>
                                 </div>
+                                <?php endif; ?>
                                 <!-- bannerContainer -->
 
                                 <!-- middleContainer -->
