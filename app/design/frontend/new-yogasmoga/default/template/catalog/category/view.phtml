@@ -43,6 +43,9 @@
          $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
 
     }
+    else{
+        $_imgHtml = '<h1 style="display: none">'.$_category->getName().'</h1>';
+    }
 ?>
 
 

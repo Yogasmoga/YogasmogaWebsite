@@ -674,7 +674,7 @@ html[xmlns] .overridefix {
     width: auto;
 }
 
-.product-grid .gridWrap h4{
+.product-grid .gridWrap h4,.product-grid .gridWrap .h4{
     background: none;
     border-top: 1px solid #a6a6a6;
     margin: 0 0 30px;
@@ -682,6 +682,9 @@ html[xmlns] .overridefix {
     font: 11px/20px gothambold;
     text-align: left;
 }
+
+
+
 
 .gridProdCubix .leftnav .ctglink li.sub-head > a, 
 .gridProdCubix .leftnav .ctglink li a.bld{

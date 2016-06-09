@@ -63,7 +63,7 @@
 <div class="page">
 <?php echo $this->getChildHtml('header') ?>
 <div id="pagecontainer" class="accountbg">
-
+    <h1 style="display: none;"><?php echo Mage::registry('current_category')->getName();?></h1>
 <!-- header page intro slide -->
 <div class="flexslider page_header">
     <ul class="slides">

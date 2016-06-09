@@ -114,8 +114,10 @@
                                     $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
                                     $shopthecolor_imgUrl = $shopthecolorCategory ->getImageUrl();
                                     $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
+                                    $productConfigurableCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
                                 ?>
                                 <!-- bannerContainer -->
+                            <h1 style="display: none;"><?php echo $this->__('Workout in Black')?></h1>
                             <?php if($shopthecolor_imgUrl):?>
                             <div class="bannerFluid">
                                     <img src="<?php echo $shopthecolor_imgUrl; ?>">
@@ -228,6 +230,11 @@
 
                                     <!-- productGridImages -->
                                     <div class="gridWrap">
+                                        <div style="display: none">
+                                            <?php foreach($productConfigurableCollection as $cproduct):?>
+                                                <h2 style="display:none"><?php echo $cproduct->getName()?></h2>
+                                            <?php endforeach;?>
+                                        </div>
                                         <!-- gridHeading -->
                                         <!--<h4>BEST SELLERS</h4>-->
                                         <!-- gridHeading -->
