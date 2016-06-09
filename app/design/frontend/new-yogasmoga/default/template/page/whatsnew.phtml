@@ -135,6 +135,8 @@
                                     $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
                                     $shopthecolor_imgUrl = $shopthecolorCategory->getImageUrl();
                                     $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
+                                    $productConfigurableCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
+
                                 ?>
                                 <!-- bannerContainer -->
                                  <h1 style="display:none"><?php echo $shopthecolorCategory->getName(); ?></h1>
@@ -249,6 +251,7 @@
 
                                     <!-- productGridImages -->
                                     <div class="gridWrap">
+
                                         <!-- gridHeading -->
                                         <!--<h4>BEST SELLERS</h4>-->
                                         <!-- gridHeading -->
@@ -338,8 +341,12 @@
                                             }
                                           
                                         ?>
+                                        <?php foreach($productConfigurableCollection as $cproduct):?>
+                                           <div style="display: none"> <h2 style="display:none"><?php echo $cproduct->getName()?></h2></div>
+                                        <?php endforeach;?>
                                     </div>
                                     <!-- productGridImages -->
+
 
                                 </div>
                                 <!-- middleContainer -->
