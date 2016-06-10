@@ -83,6 +83,13 @@
           <template>page/whatsnew.phtml</template>
           <layout_handle>whatsnew</layout_handle>
         </whatsnew>
+
+        <golf_collection translate="label">
+          <label>Golf Collection</label>
+          <template>page/golf-collection.phtml</template>
+          <layout_handle>golf_collection</layout_handle>
+        </golf_collection>
+
         <bundle translate="label">
           <label>Bundle</label>
           <template>page/bundle.phtml</template>
