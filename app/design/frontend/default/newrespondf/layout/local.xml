@@ -129,12 +129,19 @@
   </reference>
 </CATEGORY_59>
 
+
 <CATEGORY_19>
  <reference name="root">
         <action method="setTemplate"><template>page/category.phtml</template></action>
 		<action method="setIsHandle"><applied>1</applied></action>
   </reference>
 </CATEGORY_19>
+    <CATEGORY_124>
+        <reference name="root">
+            <action method="setTemplate"><template>page/category.phtml</template></action>
+            <action method="setIsHandle"><applied>1</applied></action>
+        </reference>
+    </CATEGORY_124>
 <CATEGORY_72>
  <reference name="root">
         <action method="setTemplate"><template>page/category.phtml</template></action>
