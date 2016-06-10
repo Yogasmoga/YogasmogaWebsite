@@ -864,7 +864,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 ?>
                 <?php if ($designFeatureVideoName != '' || count($newdfimages) > 1) {
                     ?>
-                    <h2 style="margin-bottom:30px;">Design features</h2>
+                    <div class="h2" style="margin-bottom:30px;">Design features</div>
                     <!-- heading -->
                     <?php
                     if ($designFeatureVideoName != '') {
@@ -911,7 +911,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     ?>
                     <a name="how-does-it-fit"></a>
                     <!-- heading -->
-                    <h2 style="margin-bottom:20px;">Fit</h2>
+                    <div class="h2" style="margin-bottom:20px;">Fit</div>
                     <!-- heading -->
 
                     <div class="fitDetail font11">
@@ -1319,7 +1319,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                             us</a><span class="online"><span></span>Online now</span>
                     </p>
 
-                    <h2 style="margin-bottom:20px;">Product description</h2>
+                    <div class="h2" style="margin-bottom:20px;">Product description</div>
                 <!--Change description by Fahim Khan start code-->
 
                      <?php
@@ -1360,8 +1360,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                 $secondstr = substr($str, 210, strlen($str));
                                 ?>
                                 <div class="shortdesc">
-                                    <span><?php echo $firststr; ?></span>
-                                    <span class="sec-desc"><?php echo $secondstr; ?></span>
+                                    <span><?php echo $firststr; ?></span><span class="sec-desc"><?php echo $secondstr; ?></span>
                                     <span class="dot">...</span>
                                         <p class="readmore" style="margin: 0; cursor:pointer;">
                                          <span id="more">Read more</span><span id="less" class="dnone">Read less</span>
@@ -1423,8 +1422,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                 }
                                 if ($upsellsimplecount == 1) {
                                     ?>
-                                    <h2 class="newbg" style="margin-top:35px; margin-bottom: 27px;">complete the
-                                        look</h2>
+                                    <div class="newbg h2" style="margin-top:35px; margin-bottom: 27px;">complete the
+                                        look</div>
                                     <ul class="similarProdList clear">
                                 <?php } ?>
                                 <li>
