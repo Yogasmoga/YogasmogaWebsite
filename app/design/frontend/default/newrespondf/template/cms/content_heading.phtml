@@ -130,7 +130,7 @@
 
 
 
-<h1><?php echo $this->getContentHeading(); ?></h1>
+<div class="h1"><?php echo $this->getContentHeading(); ?></div>
 <?php //if($route == 'cms' && $pageidentifier != 'home'):?>
 <?php if(Mage::getSingleton('cms/page')->getIdentifier() != 'home'  && Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms') : ?>
 <div class="arrow-icon">
