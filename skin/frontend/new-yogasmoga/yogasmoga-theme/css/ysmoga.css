@@ -292,7 +292,8 @@ ul.site-map > li{
     font-family: AvantGardeGothicITCW01X;
 }
 .compressBox{
-    background: url("../images/new-elements/brooklyn-jacket.jpg") no-repeat center center #e4e4e4;
+  /*  background: url("../images/new-elements/brooklyn-jacket.jpg") no-repeat center center #e4e4e4;*/
+    background: url("../images/new-elements/fathersday-bucket-box2.jpg") no-repeat center center #e4e4e4;
     background-size: 100% 100%;
 }
 /*
@@ -2866,7 +2867,7 @@ a.learn-more {
 .featured-collection-bottom img.co{transform:translateY(-50%);-webkit-transform:translateY(-50%);left: 7%;/* max-width: 305px;*/width: 47.46%; position: absolute;top: 50%;}
 .featured-collection-bottom img.seal{transform:translateY(-50%);-webkit-transform:translateY(-50%);left: 48.5%; /*max-width: 289px;*/ width: 45.59%;position: absolute;top: 50%;}
 
-.bucket1 .contentSlider{top:38.9196%;}
+.bucket1 .contentSlider{top:41.79%;}
 .bucket2 .contentSlider{top:44%;}
 .bucket3 .contentSlider{top:38.9112%;}
 .bucket4 .contentSlider{top:38.9112%;}

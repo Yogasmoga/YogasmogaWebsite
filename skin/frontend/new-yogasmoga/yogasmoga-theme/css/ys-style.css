@@ -2917,7 +2917,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 /*--banner new style created by Sanjay--*/
 .banner_text_mday {float: left; left: 5.4375%; position: absolute; text-align: center; top: 88.6659%; width: 33.6%;}
 .banner_text1{position:relative; top:32%; left:14.5%; float: left; text-align:center; padding-right:0px !important}
-.banner_text2{text-align:center; padding-right:0px !important; position:relative;left:27%; top: 36%;}
+.banner_text2{text-align:center; padding-right:0px !important; position:relative;left:0%; top: 41.44%;}
 .banner_text3{position:relative; text-align:center; display:inline-block; left:14%; top:20%}
 .banner_text4{float:left;position:relative;top:16%; left:6.8%; text-align:left;}
 .banner_text5{text-align: center; float: right; position:relative; top:32%; right:6%; }
@@ -2987,7 +2987,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     .flexslider .slides img.img_rndinca{max-width:150px; }
     .flexslider .slides img.img_madeinusa{max-width:179px;}
     .banner_text1{top:32%; left:12%;}
-    .banner_text2{left: 20%;top: 27%;}
+    .banner_text2{/*left: 20%;top: 27%;*/}
     .banner_text3{top:31%;}
     .banner_text5{right:4%;top:24%;}
     .banner_text6{top:22%; left:13.5%;}
@@ -3118,3 +3118,59 @@ iframe[name="google_conversion_frame"] {
     .ysdiscover-colors .colorFilterGrid a span .text-shop{/*font-size:11px; line-height:17px;*/ transform:translate(-50% , -150%);-webkit-transform:translate(-50%, -160%);}
 }
 .store-hours{font-family:gothamBold;}
+
+/*--homepage first slide fathersday--*/
+.banner_text2 .banner_avant_grade_demi {
+    font: 55px/54px AvantGardeGothicITCW01D;
+}
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+    .banner_text2 .banner_avant_grade_demi { font: 47px/40px AvantGardeGothicITCW01D;}
+}
+@media screen and (min-width: 1401px) and (max-width: 1599px) {
+    .banner_text2 .banner_avant_grade_demi { font: 50px/45px AvantGardeGothicITCW01D;}
+}
+@media only screen and (max-width : 1200px) {
+    .banner_text2 .banner_avant_grade_demi { font: 41px/38px AvantGardeGothicITCW01D;}
+}
+@media only screen and (max-width : 1024px) {
+    .banner_text2 .banner_avant_grade_demi { font: 34px/34px AvantGardeGothicITCW01D;}
+}
+
+/*---homepage fathersday bucket - bucket1--*/
+.bucket1 .contentSlider .small-text{font-size:12px!important;}
+.bucket1 .contentSlider .large-text { font-size: 46px !important; line-height: 46px !important;}
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+    .bucket1 .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
+    .bucket1 .contentSlider .small-text{padding-bottom:13px;}
+}
+@media screen and (min-width: 1401px) and (max-width: 1599px) {
+    .bucket1 .contentSlider .large-text { font-size: 39px !important; line-height: 39px !important;}
+    .bucket1 .contentSlider .small-text{padding-bottom:15px;}
+}
+@media only screen and (max-width : 1200px) {
+    .bucket1 .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
+    .bucket1 .contentSlider .small-text{padding-bottom:10px;}
+}
+@media only screen and (max-width : 1024px) {
+    .bucket1 .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
+    .bucket1 .contentSlider .small-text{padding-bottom:16px;}
+
+}
+
+/*--mens whatsnew fathersday and golf-collection .bannerFluid--*/
+.categorypath-men-whats-new .bannerFluid .bnrtxt{font:55px/54px itcavantgardepromd;top:44%;}
+.categorypath-men-golf-collection .bannerFluid .bnrtxt{font:55px/54px itcavantgardepromd;top:41%;}
+
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+    .categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-collection .bannerFluid .bnrtxt{font:45px/44px itcavantgardepromd;}
+}
+@media screen and (min-width: 1401px) and (max-width: 1599px) {
+    .categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-collection .bannerFluid .bnrtxt{font:47px/46px itcavantgardepromd;}
+}
+
+@media only screen and (max-width : 1200px) {
+    .categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-collection .bannerFluid .bnrtxt{font:40px/39px itcavantgardepromd;}
+}
+@media only screen and (max-width : 1024px) {
+    .categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-collection .bannerFluid .bnrtxt{font:36px/35px itcavantgardepromd;}
+}
