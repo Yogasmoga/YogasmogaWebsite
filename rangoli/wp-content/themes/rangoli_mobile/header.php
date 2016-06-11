@@ -595,6 +595,7 @@ $logged_in = is_user_logged_in();
                                     </li>
                                     <li><a href="/men/whats-new">WHAT'S NEW</a></li>
                                     <li><a href="/men/carbon6">CARBON 6&trade; COLLECTION</a></li>
+                                    <li><a href="/men/golf-inspired"> Golf Inspired</a></li>
                                 </ul>
                             </li>
 

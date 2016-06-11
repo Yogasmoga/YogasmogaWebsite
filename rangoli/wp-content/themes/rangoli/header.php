@@ -343,7 +343,7 @@ if(!is_user_logged_in()){
                             <ul>
                                 <li><a href="/men/whats-new"> What's New</a></li>
                                 <li><a href="/men/carbon6">CARBON 6&trade; COLLECTION</a></li>
-<!--                                <li><a href="/men/top-sellers"> Top Sellers</a></li>-->
+                                <li><a href="/men/golf-inspired"> Golf Inspired</a></li>
                             </ul>
                         </li>
 
