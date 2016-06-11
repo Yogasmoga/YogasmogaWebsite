@@ -186,7 +186,11 @@
           <layout_handle>privatesale</layout_handle>
         </private_sale>
         <!-- Private Sale page layouts End here -->
-
+        <golf_collection translate="label">
+          <label>Golf Collection</label>
+          <template>page/golf-collection.phtml</template>
+          <layout_handle>golf_collection</layout_handle>
+        </golf_collection>
         <!-- Color Varint page layouts End here -->
         <color-variant translate="label">
           <label>Variant</label>
