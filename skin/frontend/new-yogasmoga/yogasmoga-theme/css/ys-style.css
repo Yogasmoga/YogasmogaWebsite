@@ -3159,22 +3159,22 @@ iframe[name="google_conversion_frame"] {
 /*--mens whatsnew fathersday and golf-collection .bannerFluid--*/
 .categorypath-men-whats-new .bannerFluid .bnrtxt{font:55px/54px itcavantgardepromd;top:44%;}
 .categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:55px/54px itcavantgardepromd;top:41%;}
-.categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-family:times new roman; font-size:32px;text-transform:none;}
+.categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-family:freight,times new roman; font-size:33px;line-height:39px;text-transform:none;}
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     .categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:45px/44px itcavantgardepromd;}
-    .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:26px;}
+    .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:26px;line-height:31px;}
 }
 @media screen and (min-width: 1401px) and (max-width: 1599px) {
     .categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:47px/46px itcavantgardepromd;}
-    .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:27px;}
+    .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:27px; line-height:33px;}
 }
 
 @media only screen and (max-width : 1200px) {
     .categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:40px/39px itcavantgardepromd;}
-    .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:23px;}
+    .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:23px;line-height:28px;}
 }
 @media only screen and (max-width : 1024px) {
     .categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:36px/35px itcavantgardepromd;}
-    .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:20px;}
+    .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:20px;line-height:25px;}
 }
