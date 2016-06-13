@@ -45,14 +45,15 @@ if(isset($_REQUEST['from_date'])) {
 
     fputcsv($fp, array(''));
     fputcsv($fp, array(''));
-    fputcsv($fp, array("Email", "Orders Count"));
+    fputcsv($fp, array("Email", "Orders Count","Amount"));
     fputcsv($fp, array('','','',''));
 
     foreach ($orders as $order) {
         //echo "<pre>";
         $email = $order->getCustomerEmail();
         $count = $order->getData('TotalOrder');
-        fputcsv($fp, array($email,$count));
+        $amount = $order->getGrandTotal();
+        fputcsv($fp, array($email,$count,$amount));
         //echo "</pre>";
     }
 
