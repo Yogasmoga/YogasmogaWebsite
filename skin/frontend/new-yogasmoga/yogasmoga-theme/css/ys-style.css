@@ -504,7 +504,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .block-elm.btm-devider, .block-elm.btm-devider-big, .product-details .block-head, .product-details h2{background: url("../images/big-divider.png") no-repeat center bottom; background-size: 100% auto; margin-top: 15px;}
 .block-elm.btm-devider{padding-bottom: 40px;}
 .product-details .block-head{margin-bottom:30px; text-transform: uppercase; font: 18px gothambold; padding: 8px 0 0; background: none; border-top: 1px solid #555; text-align: left;}
-.product-details h2{font: normal 11px gothambold; color: #666; text-align: left; text-transform: uppercase; padding: 8px 0 0; margin: 0 0 25px; background: none !important; border-top:1px solid #555;}
+.product-details h2,.product-details .h2 {font: normal 11px gothambold; color: #666; text-align: left; text-transform: uppercase; padding: 8px 0 0; margin: 0 0 25px; background: none !important; border-top:1px solid #555;}
 .block-elm{width: 70%; text-align: left; display: inline-block; clear: both; margin: auto auto 40px; color: #555; font: 12px/17px gothambook;}
 .block-elm.btm-devider-big{margin: 0; padding-bottom: 50px; text-align: center; width: 90%;}
 .wdth65{width: 63%; float: left; margin: 0 2% 0 0;}
@@ -570,8 +570,8 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .reviewTxt > span{text-transform: none; font-family: gothambook;}
 .block-elm .block-link a{color: #555; font-size: 11px; padding-bottom: 3px;}
 
-.fabDetail > h2{font: 24px ITCAvantGardeProBk; background: none; margin: -18px 0 30px; border:none;}
-.fabDetail h2 sup{font-size: 18px;}
+.fabDetail > h2,.fabDetail > .h2{font: 24px ITCAvantGardeProBk; background: none; margin: -18px 0 30px; border:none;}
+.fabDetail h2 sup,.fabDetail .h2 sup{font-size: 18px;}
 .fabDetail ul{margin-bottom: 17px;}
 .fabDetail li{font: 9px/12px gothamMedium; text-align: center; text-transform: uppercase; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 20px; vertical-align: top;}
 /*.fabDetail li:first-child{margin: 0 0.5% 0 0;}*/

@@ -261,16 +261,14 @@ function scrollingLink() {
     }
 
 };
-
 function readmore() {
     jQuery(".readmore").live("click", function () {
         jQuery(".dot").toggleClass("dnone");
         jQuery(".sec-desc").toggleClass("dblock");
-        jQuery("#less").toggleClass("dblock");
-        jQuery("#more").toggleClass("dnone");
+        jQuery(this).find("#less").toggleClass("dblock");
+        jQuery(this).find("#more").toggleClass("dnone");
     });
 }
-
 /*
 function wishList() {
     var wishlist = ".wishlist-link";
