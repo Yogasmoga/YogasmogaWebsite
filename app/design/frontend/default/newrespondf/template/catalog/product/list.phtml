@@ -52,6 +52,8 @@ if (isset($page) && $page == '11') {
         if ($_category->getIsActive()) {
             ?>
             <div class="category-box">
+                <h2 style="display:none;"><?php echo $_category->getName();?></h2>
+
                 <a href="<?php echo $_category->getUrl(); ?>">
                     <img class="img-responsive" src="<?php if ($_category->getThumbnail()) {
                         echo Mage::getBaseUrl('media') . 'catalog/category/' . $_category->getThumbnail();

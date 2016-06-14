@@ -161,12 +161,12 @@
 						$_subcategories = $sub_cat->getChildrenCategories();
 						if (count($_subcategories) > 0): ?>
 						<?php $currentCategoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
-						
+
 						$activeFound = false;
 						if($currentCategoryId == $_category->getId()){
 							$activeFound = true;
 						?>
-						
+
 						<a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
 					    <span class="active">
 							<svg height="44px" width="44px">
@@ -177,7 +177,7 @@
 						</span>
 						<?php }
 						else{ ?>
-						
+
 						<a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
 					    <span>
 							<svg height="44px" width="44px">
@@ -186,10 +186,10 @@
 								<line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
 							</svg>
 						</span>
-						
-						
+
+
 						<?php }?>
-						
+
 					<?php else: ?>
 					<a href="<?php echo $_category->getURL() ?>" class="has_no_childs" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
 						<?php endif ?>
