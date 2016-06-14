@@ -3120,21 +3120,27 @@ iframe[name="google_conversion_frame"] {
 .store-hours{font-family:gothamBold;}
 
 /*--homepage first slide fathersday--*/
-.banner_text2 .banner_avant_grade_demi {
-    font: 55px/54px AvantGardeGothicITCW01D;
+.banner_text2 .banner_avant_grade_demi {  /*font: 55px/54px AvantGardeGothicITCW01D;*/
+    font: 46px/46px AvantGardeGothicITCW01D;
 }
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
-    .banner_text2 .banner_avant_grade_demi { font: 47px/40px AvantGardeGothicITCW01D;}
+    .banner_text2 .banner_avant_grade_demi { /*font: 47px/40px AvantGardeGothicITCW01D;*/
+        font: 38px/38px AvantGardeGothicITCW01D;
+    }
 }
 @media screen and (min-width: 1401px) and (max-width: 1599px) {
-    .banner_text2 .banner_avant_grade_demi { font: 50px/45px AvantGardeGothicITCW01D;}
+    .banner_text2 .banner_avant_grade_demi { /*font: 50px/45px AvantGardeGothicITCW01D;*/
+        font: 42px/42px AvantGardeGothicITCW01D;}
 }
 @media only screen and (max-width : 1200px) {
-    .banner_text2 .banner_avant_grade_demi { font: 41px/38px AvantGardeGothicITCW01D;}
+    .banner_text2 .banner_avant_grade_demi { /*font: 41px/38px AvantGardeGothicITCW01D;*/
+        font: 36px/36px AvantGardeGothicITCW01D;
+    }
 }
 @media only screen and (max-width : 1024px) {
     .banner_text2 .banner_avant_grade_demi { font: 34px/34px AvantGardeGothicITCW01D;}
 }
+
 /*---homepage fathersday bucket - bucket1--*/
 .bucket1 .contentSlider .small-text{font-size:12px!important;}
 .bucket1 .contentSlider .large-text { font-size: 46px !important; line-height: 46px !important;}
@@ -3159,7 +3165,7 @@ iframe[name="google_conversion_frame"] {
 /*--mens whatsnew fathersday and golf-collection .bannerFluid--*/
 .categorypath-men-whats-new .bannerFluid .bnrtxt{font:55px/54px itcavantgardepromd;top:44%;}
 .categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:55px/54px itcavantgardepromd;top:41%;}
-.categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-family:freight,times new roman; font-size:33px;line-height:39px;text-transform:none;}
+.categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-family:freight,times new roman; font-size:33px;line-height:39px;text-transform:none;letter-spacing: 0.2px}
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     .categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:45px/44px itcavantgardepromd;}
