@@ -1,0 +1,284 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
+<script type="text/javascript">
+    _disablesidenavigation = false;
+</script>
+</head>
+<body class="<?php echo $this->getBodyClass()? $this->getBodyClass().' ' : ''; ?>gift_of_ys">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="shopping-cart">
+
+    </div>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+		<?php  $currentUrl = Mage::helper('core/url')->getCurrentUrl();?>
+<script type="text/javascript">
+    jQuery(function(){
+        var currenturl = "<?php echo $currentUrl; ?>";
+        var s1 = "<?php echo $currentUrl; ?>";
+        var editBilling = homeUrl + 'customer/address/edit/id/1/';
+        var editShipping = homeUrl + 'customer/address/edit/id/2/';
+        var viewOrder = homeUrl + 'sales/order/view/order_id/';
+        console.log(s1);
+        jQuery("ul.sub-nav li").each(function(){
+            var s2 = jQuery(this).find("a").attr("href");
+            if(s1 == s2)
+            {
+                jQuery(this).addClass("current");
+            }
+            else if(s1 == editBilling || s1 == editShipping || s1 == viewOrder){
+                jQuery(".sub-nav li:nth-child(1)").addClass("current");
+            }
+        });
+    });
+
+</script>
+
+<?php
+if(Mage::getSingleton('customer/session')->isLoggedIn())
+{
+    $customer = Mage::getSingleton('customer/session')->getCustomer();
+    $customer_id = $customer->getId();
+
+    $resource = Mage::getSingleton('core/resource');
+    $readConnection = $resource->getConnection('core_read');
+
+    $query = "select user_id from rangoli_user_profiles where customer_id=$customer_id";
+
+    $row = $readConnection->fetchAll($query);
+
+    if ($row) {
+        $wp_user_id = $row[0];
+        $wp_id=$wp_user_id['user_id'];
+    }
+}
+?>
+
+<div class="my-account-block">
+			<div class="sign-in-box">
+                <?php   
+		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+		$store_id = Mage::app()->getStore()->getId();
+		$customerId = Mage::getModel('customer/session')->getCustomerId();
+		if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+			$reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+			echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+			//Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+		}        
+		
+		$reward_model = Mage::getModel('rewardpoints/stats');
+		//echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+		//echo $reward_model->getPointsCurrent($customerId, $store_id)+0;                    
+		 echo '<a href="javascript:void(0)"><span class="reward_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
+		} else { ?>
+     <a href="javascript:openLogin()"><span class="cuslogin">Sign In</span></a>
+	 <?php } ?>
+  
+                  <!--<h1>MY ACCOUNT</h1>-->
+				  <div class="arrow-tag">
+<!--                      <img class="" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png')?><!--" alt="arrow">-->
+                      <svg height="44px" width="44px">
+                          <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                          <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                          <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                      </svg>
+                  </div>
+              </div>
+			  
+<div style="display:none;" class="account-nav l-align">
+    <ul class="sub-nav">
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/index">Dashboard</a></li>
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>sales/order/history">Track Orders</a></li>
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>wishlist">Wish List</a></li>
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance">Redeem YS Gift Card</a></li>
+<!--        <li><a href="--><?php //echo Mage::getUrl('',array('_secure'=>true)); ?><!--customer/account/edit">Edit Account Info</a></li>-->
+<!--        <li><a href="--><?php //echo Mage::getUrl('',array('_secure'=>true)); ?><!--payment-methods">Payment Methods</a></li>-->
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/address">Address Book</a></li>
+		<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rewardpoints/index/referral/">Share with Friends</a></li>
+		<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>checkout/onepage">Shopping Bag</a></li>
+        
+ </ul>
+    
+</div>
+</div>
+        <div id="pagecontainer" class="main-container">
+            <div id="giftofys" class="fullscreen">
+				<div class="pgsection cms-pg" id="Whatis"  desc="Gift of YS" style="margin:0 auto;">					
+                    <div class="fixwidth">    
+							<div class="gift-box">            
+               <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/ys-gift-card.jpg') ?>" alt="ys gift card"/>
+                  </div>
+				  <div class="gift-card-content">
+				   <p>Help friends to keep calm and get their Mantra on. Give the Gift of YS.</p>
+				  </div>
+                       
+                      
+                        <form id="createcardform" name="createcardform" action="" method="post">
+                            <input type="hidden" id="email-radio" name="card_type" value="email" />
+    						<input type="hidden" id="productid" name="product" value="4" />
+    						<input type="hidden" id="productqty" name="qty" value="1" />
+                            <!-- <h4 class="sub-title">Give YS Gift Card</h4> -->
+                            <table class="twocolumn533">
+                                <tr>
+                                    <td>
+                                        <table class="inputtable">
+                                            <tr>
+                                                <td class="label"><label for="mail-to">To</label></td>
+                                                <td class="inputholder">
+                                                    <input type="text" class="requiredfield watermark" watermark="To" id="mail-to" name="mail_to" defaulterrormsg="Email Address is required."/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="errortext" colspan="2">
+                                                    <div></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>                                    
+                                </tr>                               
+                                <tr>
+                                    <td>
+                                        <table class="inputtable">
+                                            <tr>
+                                                <td class="label"><label for="mail-to-email">Recipient's Email Address</label></td>
+                                                <td class="inputholder">
+                                                    <input class="requiredfield watermark" watermark="Recipient's Email Address*" type="text" id="mail-to-email" name="mail_to_email" defaulterrormsg="Recipient's Email Address is required."/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="errortext" colspan="2">
+                                                    <div></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="inputtable">
+                                            <tr>
+                                                <td class="label"><label for="mail_to_email_conf">Confirm Recipient's Email address</label></td>
+                                                <td class="inputholder">
+                                                    <input class="requiredfield watermark" watermark="Confirm Recipient's Email address*" type="text" id="mail-to-email-conf" name="mail_to_email_conf"  defaulterrormsg="Confirmation Email Address is required."/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="errortext" colspan="2">
+                                                    <div></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td>
+                                        <table class="inputtable">
+                                            <tr>
+                                                <td class="label"><label for="mail-from">From</label></td>
+                                                <td class="inputholder">
+                                                    <input type="text" class="requiredfield watermark" watermark="From" id="mail-from" name="mail_from" defaulterrormsg="Your Name is required."/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="errortext" colspan="2">
+                                                    <div></div>
+                                                </td>
+                                            </tr>
+                                        </table>  
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="inputtable">
+                                            <tr>
+                                                <td class="label"><label for="card-amount">Amount</label></td>
+                                                <td class="inputholder">
+                                                    <?php /*
+                                                    <select class="requiredfield" id="card-amount" name="card_amount" defaulterrormsg="Amount is required." style="width:100%;">
+                                                        <option value="">Select Amount</option>
+                										<option value="50">$50.00</option>
+                										<option value="100">$100.00</option>
+                										<option value="500">$500.00</option>
+                										<option value="1000">$1000.00</option>
+                									</select>
+                                                    */ ?>
+                                                    <input type="text" id="card-amount" name="card_amount" defaulterrormsg="Amount is required." class="requiredfield watermark" watermark="Amount*" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="errortext" colspan="2">
+                                                    <div>State / Province is required</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="goy-form">
+                                <div class="row">
+        							<div class="col full">
+        								<!--<label for="mail_message">Message</label>-->
+        								<textarea id="mail-message" name="mail_message" class="watermark" watermark="Type your personalized mantra here." ></textarea>
+        							</div>
+        						</div>
+                                <div class="button-set">
+    								<button type="reset" class="button btn-reset" name="reset"><span><span>Reset</span></span></button>
+									<button type="submit" name="Add to bag" class="button btn-addtobag"><span><span>Add to Bag</span></span></button>
+                                    <div class="clear-fix"></div>
+    							</div>
+                            </div>
+                        </form>
+
+
+                </div>
+                    
+				</div>		
+                <div class="new-bot-divider"></div>		
+                <?php //echo $this->getChildHtml('content'); ?>  
+            </div>
+            <?php echo $this->getChildHtml('footer'); ?>
+        </div>
+        <?php echo $this->getChildHtml('before_body_end'); ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>
