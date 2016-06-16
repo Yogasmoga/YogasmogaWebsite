@@ -343,6 +343,9 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 					?>
 						
 							<div class="productCont">
+								<div style="display: none">
+									<h2 style="display:none"><?php echo $confProduct->getName()?></h2>
+								</div>
 								<div class="prod-img">
 									<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
 										<?php

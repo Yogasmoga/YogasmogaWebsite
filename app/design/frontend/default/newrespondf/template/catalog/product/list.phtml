@@ -52,6 +52,14 @@ if (isset($page) && $page == '11') {
         if ($_category->getIsActive()) {
             ?>
             <div class="category-box">
+                <h2 style="display:none;">
+                    <?php if($_category->getId()==78 || $_category->getId()==79): ?>
+                        <?php echo $this->__('Workout in Black')?>
+                    <?php else: ?>
+                        <?php echo $_category->getName();?>
+                    <?php endif;?>
+                </h2>
+
                 <a href="<?php echo $_category->getUrl(); ?>">
                     <img class="img-responsive" src="<?php if ($_category->getThumbnail()) {
                         echo Mage::getBaseUrl('media') . 'catalog/category/' . $_category->getThumbnail();
@@ -400,6 +408,9 @@ if (isset($page) && $page == '11') {
                 ?>
 
                 <div class="productCont">
+                    <div style="display: none">
+                        <h2 style="display:none"><?php echo $confProduct->getName()?></h2>
+                    </div>
                     <?php $isNewImage = $confProduct->getResource()->getAttribute('mobile_image')->getFrontend()->getValue($confProduct); ?>
                     <?php if (isset($isNewImage)) { ?>
 

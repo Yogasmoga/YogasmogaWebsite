@@ -227,7 +227,8 @@ ul.site-map > li{
 }
 
 .contentSlider h2,
-.contentSlider h3{
+.contentSlider h3,
+.contentSlider .h3{
     color: #ae8637 !important;
 }
 
@@ -241,23 +242,23 @@ ul.site-map > li{
     line-height: normal !important;
 }
 
-.contentSlider h3 {
+.contentSlider h3,.contentSlider .h3 {
     font-family: AvantGardeGothicMedium;
 }
 
-.contentSlider h3 > span {
+.contentSlider h3 > span,.contentSlider .h3 > span {
     display: block;
     font-family: AvantGardeGothicITCW01B;
     padding-top: 5px;
     font-weight: normal;
 }
 
-.contentSlider h3 > .aurum {
+.contentSlider h3 > .aurum,.contentSlider .h3 > .aurum {
     font-family: AvantGardeGothicITCW01X;
     display: inline;
 }
 
-.contentSlider h2.white, .contentSlider h3.white {
+.contentSlider h2.white, .contentSlider h3.white,.contentSlider .h3.white {
     color: #fff !important;
 }
 

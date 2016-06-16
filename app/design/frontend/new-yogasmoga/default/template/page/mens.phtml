@@ -224,8 +224,9 @@
         $newarrivals = Mage::getModel('catalog/category')->load($categoryId_quickview);
     ?>
     <div class="shop-col-desc l-align">
-        <span class="na-head">NEW ARRIVALS</span>
-        <span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New Collection</a></span>
+        <h2>    <span class="na-head">NEW ARRIVALS</span>
+                <span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New Collection</a></span>
+        </h2>
     </div>
 
     <?php
@@ -389,7 +390,7 @@ $featurecategoryUrl = Mage::getBaseUrl().$featurecategory->getUrlPath();
 
                     <span class="b-heading bottom-b-heading">FEATURED PRODUCT</span>
 
-                    <h3 class="white">SAN FRAN TEE</h3>
+                    <div class="white h3">SAN FRAN TEE</div>
                     <!-- <h4 class="main-img-text">THE DOON LONG SLEEVE TEE<br/>IN<span> KOURA 24</span></h4> -->
                     <a href="<?php echo $this->getBaseUrl() . 'men/tops/tees/san-fran-tee?color=220'; ?>"
                        class="shopnow-btn">SHOP NOW</a>
