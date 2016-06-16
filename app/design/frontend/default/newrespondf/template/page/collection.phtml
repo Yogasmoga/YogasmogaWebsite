@@ -90,7 +90,7 @@
 			} else { ?>
 		 <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
 		 <?php } ?>
-<h1 style="display: none;"><?php echo $this->__('Workout in Black')?></h1>
+		<h1 style="display: none;"><?php echo $this->__('Workout in Black')?></h1>
 		 <div class="h1">Carbon 6&trade;</div>
 
 		 <div class="toggle_dropdown">
@@ -358,6 +358,9 @@
 						?>
 							
 								<div class="productCont">
+								<div style="display: none">
+                                                <h2 style="display:none"><?php echo $confProduct->getName()?></h2>
+                                        </div>
 									<div class="prod-img">
 										<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
 											<?php
