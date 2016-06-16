@@ -63,14 +63,16 @@
 
 <html>
 <head>
-    <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="../../js/new_jquery/jquery-1.8.2.min.js"></script>
     <title>Stitch All Inventory Report</title>
 </head>
 <body style="font-size: 12px; font-family: arial, helvetica, sans-serif"><?php
+$product_names = array();
+$all_products = array();
 
 if(file_exists($inputFileName)){
 
-include 'PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
+    require '../PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
 
 //  Read your Excel workbook
 try {
@@ -87,8 +89,8 @@ $sheet = $objPHPExcel->getSheet(0);
 $highestRow = $sheet->getHighestRow();
 $highestColumn = $sheet->getHighestColumn();
 
-$product_names = array();
-$all_products = array();
+//$product_names = array();
+//$all_products = array();
 
 //  Loop through each row of the worksheet in turn
 // row 1 is for headers
@@ -184,6 +186,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $product_names = array_unique($product_names);
 
 ksort($all_products);
+
 ?>
 <div id="divdata" style="padding-top: 175px;">
 <table style="width:100%; margin:auto; padding: 20px; border-collapse: collapse;font-size: 12px; font-family: arial, helvetica, sans-serif">
@@ -204,7 +207,7 @@ ksort($all_products);
         foreach ($data as $arr) {
             $fabricFilter = $arr['price_magento'];
         }
-        if(empty($fabricFilter)){
+        if(empty($fabricFilter) && $fabricFilter == 0 ){
         echo "<tr><td colspan='10' style='padding-bottom:5px;'><b>$product_name</b></td></tr>";
         echo "<tr>";
 
@@ -463,7 +466,7 @@ ksort($all_products);
     <span id="uploadmessage" style="margin-right: 20px;"></span>
 </div>
 
-<div id="divfilter" style="position: fixed; top:0; left:0; padding: 20px 0; border-bottom: solid 1px #ccc; width: 100%; background: white; text-align: right;<?php echo $filter_display;?>">
+<div id="divfilter" style="position: fixed; top:0; left:0; padding: 20px 0; border-bottom: solid 1px #ccc; width: 100%; background: #eee; text-align: right;<?php echo $filter_display;?>">
     <form action="index.php" method="get" id="frmfilter">
     <select name="store" style="padding: 5px;">
         <option value="all">All</option>
@@ -491,17 +494,29 @@ ksort($all_products);
     </select>
     <select id="products" style="display: inline; padding: 5px;">
         <?php
-            foreach($product_names as $product){
+
+
+           /* foreach($product_names as $product){
                 echo "<option>$product</option>";
+            }*/
+
+        foreach($all_products as $product_name => $data){
+             foreach ($data as $arr) {
+                 $fabricFilter = $arr['price_magento'];
             }
+        if(empty($fabricFilter) && $fabricFilter == 0 ){
+            echo "<option>$product_name</option>";
+        }
+        }
+
         ?>
     </select>
     <input type="button" id="search" value="Go to product" style="padding: 5px; margin-right: 5px;"/>
     <input type="button" style="padding:5px; margin-right: 20px;" id="showupload" value="Upload File"/>
     </form>
     <br/>
-    <a id="exceldownload" href="download.php?available=<?php echo $available;?>&store=<?php echo $store;?>" style="margin-right:20px;">Download Excel</a>
-
+    <a id="exceldownload" href="download.php?available=<?php echo $available;?>&store=<?php echo $store;?>" style="margin-right:20px;padding: 10px 15px;background: #2c62a5;text-decoration: none;color: #fff;">Download Excel</a>
+    <a  href="/stitch" style="margin-right:20px;padding: 10px 15px;background: #2c62a5;text-decoration: none;color: #fff;">Products</a>
     <div style="float:left; padding-left: 20px;">
         <table style="width:600px;">
             <tr>
