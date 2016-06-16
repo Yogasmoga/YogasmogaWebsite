@@ -7209,18 +7209,19 @@ video {
     font: 14px/20px GraphikRegular;
 }
 
-.fabric_detail_mobile h2 {
+.fabric_detail_mobile h2,.fabric_detail_mobile .h2 {
     font: normal 19px/19px ITCAvantGardeStd-Bk;
     color: #AD8536;
 }
 
-.fabric_detail_mobile > h2 sup {
+.fabric_detail_mobile > h2 sup,.fabric_detail_mobile > .h2 sup {
     font-size: 12px;
     position: relative;
     top: 0px;
 }
 
-.fabric-technology.inner-content .fabric_detail_mobile h2 + p > sup {
+.fabric-technology.inner-content .fabric_detail_mobile h2 + p > sup,
+.fabric-technology.inner-content .fabric_detail_mobile .h2 + p > sup {
     position: relative;
     top: 3px;
 }
@@ -7391,7 +7392,7 @@ video {
     padding-top: 0 !important;
 }
 
-.fabric-technology.inner-content .fabric_detail_mobile h2 + p {
+.fabric-technology.inner-content .fabric_detail_mobile h2 + p,.fabric-technology.inner-content .fabric_detail_mobile .h2 + p {
     margin-top: 17px;
 }
 
