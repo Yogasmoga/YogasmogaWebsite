@@ -109,6 +109,8 @@ if (isset($page) && $page == '11') {
     <div class="product-grid">
         <!-- custom list GridProducts -->
         <div class="gridWrap">
+		
+
             <?php
             $_productCollectionForOneToMany = $this->getLoadedProductCollection();
             foreach ($_productCollectionForOneToMany as $_product) {
@@ -402,6 +404,9 @@ if (isset($page) && $page == '11') {
                 ?>
 
                 <div class="productCont">
+				                        <div style="display: none">
+                                                <h2 style="display:none"><?php echo $confProduct->getName()?></h2>
+                                        </div>
                     <?php $isNewImage = $confProduct->getResource()->getAttribute('mobile_image')->getFrontend()->getValue($confProduct); ?>
                     <?php if (isset($isNewImage)) { ?>
 
