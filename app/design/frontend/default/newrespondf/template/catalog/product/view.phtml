@@ -557,7 +557,7 @@ if ($lengthAvailable) {
             <?php } ?>
             <?php $_helper = $this->helper('catalog/output'); ?>
             <?php $_category_detail = Mage::registry('current_category'); ?>
-            <h1><?php if (isset($_category_detail)) {
+            <div class="h1"><?php if (isset($_category_detail)) {
                                if($_category_detail->getId()== '78' || $_category_detail->getId()== '79')
 
                                { echo "<a href='$goBackUrl'>" .$this->__('CARBON 6&trade;'). "</a>";}
@@ -566,7 +566,7 @@ if ($lengthAvailable) {
                                 }
 
 
-                } ?></h1>
+                } ?></div>
         </div>
 
 
@@ -794,6 +794,7 @@ if ($lengthAvailable) {
                 <td>
                     <div class="prd-info">
                         <div class="prd-detail">
+						<h1 style="display:none;"><?php echo html_entity_decode($productName); ?></h1>
                             <a href="javascript:void(0)"><?php echo html_entity_decode($productName); ?></a>
 
                             <div class="blck-head-sml">
