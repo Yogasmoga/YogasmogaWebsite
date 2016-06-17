@@ -57,7 +57,7 @@ if(isset($_REQUEST['from_date'])) {
 
     fputcsv($fp, array(''));
     fputcsv($fp, array(''));
-	fputcsv($fp, array("Order ID", "Region", "Email", "Amount", "Sales Tax", "Shipping", "Discount", "Discount Type", "Date"));
+	fputcsv($fp, array("Order ID", "Region", "City", "Email", "Amount", "Sales Tax", "Shipping", "Discount", "Discount Type", "Date"));
     fputcsv($fp, array('','','',''));
 	
     foreach ($orders as $order) {
@@ -73,8 +73,9 @@ if(isset($_REQUEST['from_date'])) {
 		
 		if($countryS){
 		$region = $order->getBillingAddress()->getRegion();
+		$city = $order->getBillingAddress()->getCity();
 		if(trim($order->getBillingAddress()->getRegion()) == trim($region_id)){
-			fputcsv($fp, array($orderId, $region, $email, $amount, $tax, $shipping, $discount, $discountDescription, date("d-M-Y", strtotime($date))));
+			fputcsv($fp, array($orderId, $region, $city, $email, $amount, $tax, $shipping, $discount, $discountDescription, date("d-M-Y", strtotime($date))));
 		}
 		}
     }
