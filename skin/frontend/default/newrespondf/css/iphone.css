@@ -8110,3 +8110,11 @@ input#giftcard_use{
 
 /*--remove ys-location link--*/
 .rangoli-link .menu-item.ys-loc{display:none;}
+
+
+/***************************  header nav icons *********************/
+#menu_container.nav-container .nav-dropdown .menu-item.story_icon a , 
+#menu_container.nav-container .nav-dropdown .menu-item.tech_icon a ,
+#menu_container.nav-container .nav-dropdown .menu-item.smogi-icon a ,
+#menu_container.nav-container .nav-dropdown .menu-item.gift-icon a,
+#menu_container.nav-container .nav-dropdown .menu-item.contact_icon_li a { line-height: 44px !important;}
