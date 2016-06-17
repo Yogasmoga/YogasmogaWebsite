@@ -816,9 +816,9 @@ table#referrallink td.share a#mlrefer{width: 28px; height: 18px;}
     text-align: center;
 	
 }
-.gift_of_ys .gift-card-content p{font-family: freighttextbook;font-size: 22px; line-height: 28px;padding: 22px 0;color:#555;}
+.gift_of_ys .gift-card-content p{font-family: freighttextbook;font-size: 22px; line-height: 28px;padding: 22px 0 21px;color:#555;}
 
 .gift_of_ys .goy-form{  padding: 0 14px;}
-
+.gift_of_ys .goy-form textarea{border: 1px solid #999}
 .gift_of_ys .twocolumn533 tr:first-child td.inputholder input{margin-top:0!important;}
 .gift_of_ys #createcardform > table .inputtable .inputholder input{font: 12px/22px GraphikRegular;border: 1px solid #999;}
