@@ -33,8 +33,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
 <?php echo $this->getChildHtml('head') ?>
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>mobile/myaccount.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>mobile/myvalidations.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
 <script type="text/javascript">
     _disablesidenavigation = false;
@@ -93,7 +93,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
 ?>
 
 <div class="my-account-block">
-			<div class="sign-in-box">
+	<div class="sign-in-box">
                 <?php   
 		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
 		$store_id = Mage::app()->getStore()->getId();
@@ -112,33 +112,9 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
      <a href="javascript:openLogin()"><span class="cuslogin">Sign In</span></a>
 	 <?php } ?>
   
-                  <!--<h1>MY ACCOUNT</h1>-->
-				  <div class="arrow-tag">
-<!--                      <img class="" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png')?><!--" alt="arrow">-->
-                      <svg height="44px" width="44px">
-                          <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                          <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                          <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                      </svg>
-                  </div>
-              </div>
-			  
-<div style="display:none;" class="account-nav l-align">
-    <ul class="sub-nav">
-        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/index">Dashboard</a></li>
-        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>sales/order/history">Track Orders</a></li>
-        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>wishlist">Wish List</a></li>
-        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance">Redeem YS Gift Card</a></li>
-<!--        <li><a href="--><?php //echo Mage::getUrl('',array('_secure'=>true)); ?><!--customer/account/edit">Edit Account Info</a></li>-->
-<!--        <li><a href="--><?php //echo Mage::getUrl('',array('_secure'=>true)); ?><!--payment-methods">Payment Methods</a></li>-->
-        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/address">Address Book</a></li>
-		<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rewardpoints/index/referral/">Share with Friends</a></li>
-		<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>checkout/onepage">Shopping Bag</a></li>
-        
- </ul>
-    
-</div>
-</div>
+                  
+     </div>
+	</div>
         <div id="pagecontainer" class="main-container">
             <div id="giftofys" class="fullscreen">
 				<div class="pgsection cms-pg" id="Whatis"  desc="Gift of YS" style="margin:0 auto;">					
@@ -271,7 +247,88 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
                 </div>
                     
 				</div>		
-                <div class="new-bot-divider"></div>		
+                <div class="new-bot-divider"></div>	
+				<script type="text/javascript">
+    //                jQuery(window).load(function($){
+    //                    $(".check-for-errors").click(function(){
+    //                        alert();
+    //                        return false;
+    //                    });
+    //                });
+    jQuery(document).ready(function () {
+
+        var form = jQuery("#createcardform");
+
+
+
+        jQuery("#createcardform input, #createcardform textarea").blur(function () {
+            var showError = false;
+            var sameEmail = false;
+            if (jQuery(this).hasClass("requiredfield")) {
+                if (jQuery(this).hasClass("is_email")) {
+                    if (!validateEmail(jQuery(this).val())) {
+                        showError = true;
+                    }
+                }
+                if (jQuery(this).hasClass("is_no")) {
+                    if (isNaN(jQuery(this).val())) {
+                        showError = true;
+                    }
+                }
+                if(jQuery(this).attr("id") =="mail-to-email-conf") {
+                    if (jQuery("#mail-to-email-conf").val() == jQuery("#mail-to-email").val()) {
+                        sameEmail = true;
+                    }
+                    else{
+                        showError =  true;
+                    }
+                }
+                var error = jQuery(this).parent().parent().next().find(".errortext > div");
+                error.html("");
+                if (showError) {
+
+                    if (error) {
+                        error.html(jQuery(this).attr("defaulterrormsg"));
+                        if(!sameEmail){
+                            error.html("Please make sure the Recipient's Email Addresses match.");
+                        }
+
+                        error.show();
+                        jQuery(this).closest(".inputtable").addClass("error");
+
+                        checkforerros();
+                    }
+                }
+                else {
+                    error.hide();
+                    checkforerros();
+                }
+            }
+        });
+        function checkforerros() {
+            var btnStatus = true;
+            var sameEmail = false;
+            jQuery("#createcardform .errortext > div").each(function(){
+                if(jQuery(this).html() && jQuery(this).html()!="" && jQuery(this).html()!=null){
+                    btnStatus = false;
+                }
+            });
+            if(jQuery("#mail-to-email-conf").val()==jQuery("#mail-to-email").val()){
+                sameEmail = true;
+            }
+            if(!sameEmail){
+                jQuery(".goy-form .button.btn-addtobag").removeClass("active");
+            }
+            if(btnStatus && sameEmail){
+                jQuery(".goy-form .button.btn-addtobag").addClass("active");
+            }
+        }
+        function validateEmail(email) {
+            var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            return re.test(email);
+        }
+    });
+</script>
                 <?php //echo $this->getChildHtml('content'); ?>  
             </div>
             <?php echo $this->getChildHtml('footer'); ?>
