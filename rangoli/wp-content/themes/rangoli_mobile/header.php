@@ -684,6 +684,27 @@ $logged_in = is_user_logged_in();
                                             </g>
 </svg>
                                     </span>SMOGI Bucks</a></li>
+									
+									 <li class="ys_single_link"><a href="/gift_of_ys">
+                                    <span class="gift_card_icon">
+
+                                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="9" y="13" width="26.807" height="16.983"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<path clip-path="url(#SVGID_2_)" fill="#CCCCCC" d="M34.888,29.126H9.917V13.858h24.971V29.126z M35.805,13H9v16.983h26.805V13z"/>
+	<polygon clip-path="url(#SVGID_2_)" fill="none" stroke="#CCCCCC" stroke-width="0.707" stroke-miterlimit="10" points="
+		40.326,26.249 38.492,27.965 21.066,11.666 22.9,9.95 	"/>
+	<path clip-path="url(#SVGID_2_)" fill="none" stroke="#CCCCCC" stroke-width="0.707" stroke-miterlimit="10" d="M26.144,33.528
+		l-1.835,1.716L6.882,18.946l1.834-1.716L26.144,33.528z"/>
+</g>
+</svg>
+                                    </span>YS Gift Card</a></li>
                             <li class="ys_single_link"><a href="/contacts">
                                     <span class="contact_icon">
                                         <svg width="44px" height="44px" xml:space="preserve" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
