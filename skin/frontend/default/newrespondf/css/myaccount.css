@@ -797,3 +797,20 @@ table#referrallink td.share a#mlrefer{width: 28px; height: 18px;}
 .addresses-list .item .link-edit,.addresses-list .item .link-remove{width:auto;}
 .addresses-list .item .link-remove{margin-left:20px;}
 .addresses-additional  h2{text-transform:uppercase;margin-bottom:11px;}
+/*******************  gify card css ********************/
+.gift_of_ys .gift-box{ line-height: 0;
+    position: relative;}
+.gift_of_ys .gift-card-content{
+    line-height: 0;
+    padding: 0 12px;
+    clear: both;
+    position: relative;
+    text-align: center;
+
+}
+.gift_of_ys .gift-card-content p{font-family: freighttextbook;font-size: 18px; line-height: 24px;padding: 22px 0 21px;color:#555;}
+
+.gift_of_ys .goy-form{  padding: 0 14px;}
+.gift_of_ys .goy-form textarea{border: 1px solid #999}
+.gift_of_ys .twocolumn533 tr:first-child td.inputholder input{margin-top:0!important;}
+.gift_of_ys #createcardform > table .inputtable .inputholder input{font: 12px/22px GraphikRegular;border: 1px solid #999;}

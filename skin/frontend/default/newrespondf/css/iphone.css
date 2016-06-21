@@ -8121,3 +8121,12 @@ iframe[name="google_conversion_frame"] {
 #co-billing-form .form-list li:last-child {
     padding-bottom: 0 !important;
 }
+
+
+
+/***************************  header nav icons *********************/
+#menu_container.nav-container .nav-dropdown .menu-item.story_icon a ,
+#menu_container.nav-container .nav-dropdown .menu-item.tech_icon a ,
+#menu_container.nav-container .nav-dropdown .menu-item.smogi-icon a ,
+#menu_container.nav-container .nav-dropdown .menu-item.gift-icon a,
+#menu_container.nav-container .nav-dropdown .menu-item.contact_icon_li a { line-height: 44px !important;}
