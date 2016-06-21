@@ -104,31 +104,7 @@
             <div class="flexslider home-slider" id="bucket1_slider">
                 <ul class="slides">			
 					
-					 <li class="slider_li" title="Shop Men" rel="/men"
-                        style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/fathersday-banner.png'); background-size:cover; ">
-                        <!--<img draggable="false"
-                             data-src="<?php /*echo Mage::getUrl('/', array('_secure' => true)); */?>media/wysiwyg/new-design-images/homepage/homepage-mens-progressive.jpg"/>-->
-
-						<div style="left:0; top: 0;padding:0!important;" class="over-the-slide ">
-							<div class="banner_text2" style="">
-								<div style="text-transform: uppercase; color: #fff;" class="banner_avant_grade_demi" style="font-family:AvantGardeGothicITCW01X">
-							   FOR THIS FATHER<span style="font-family: avantgardegothicitcw01b;
-    font-weight: 800;">&#8217;</span>S DAY<span style="font-family: avantgardegothicitcw01b;
-    font-weight: 800; text-indent:-7px">&#8218;</span><br/>INSPIRE DAD WITH<br/>THE GIFT OF YOGASMOGA
-							   <br/>
-							   <!--<span class="avant-grade-bk-small">BODY MAPPED, LASER PERFORATED VENTILATION</span>
-							   <span style="display:block" class="avant-grade-bk-small">THE HURON HOODIE FEATURING ORIA<sup style="vertical-align: top; line-height: 16px;">TM</sup></span>-->
-							  
-								</div>
-
-								<div class="text-align-middle">
-									<a style="color: #fff !important; border: none!important;margin: 28px 0 0!important; background: none !important;" class="learn-more shop-mens1" href="/men">SHOP All MEN<span style="color:#ff0000"> &gt;</span></a><br/>
-								</div>
-							</div>
-						</div>
-                    </li>
-					
-					<li class="slider_li" title="Shop Women" rel="/women"
+					 <li class="slider_li" title="Shop Women" rel="/women"
                         style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/shop-women-homepage-banner-v2.jpg'); background-size:cover; ">
                         <!--<img draggable="false"
                              data-src="<?php /*echo Mage::getUrl('/', array('_secure' => true)); */?>media/wysiwyg/new-design-images/homepage/move-free-slide.jpg"/>-->
@@ -154,6 +130,29 @@
 
                         </div>
                     </li>
+					<li class="slider_li" title="Shop Men" rel="/men"
+                        style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/shop-men-homepage-banner-v3.jpg'); background-size:cover; ">
+                        <!--<img draggable="false"
+                             data-src="<?php /*echo Mage::getUrl('/', array('_secure' => true)); */?>media/wysiwyg/new-design-images/homepage/homepage-mens-progressive.jpg"/>-->
+
+						<div style="left:0; top: 0;padding:0!important;" class="over-the-slide ">
+							<div class="banner_text2" style="">
+								<div style="text-transform: uppercase; color: #fff;" class="banner_avant_grade_demi" style="font-family:AvantGardeGothicITCW01X">
+							   ENGINEERED<br/>FOR YOUR ACTIVE LIFE
+							   <br/>
+							   <!--<span class="avant-grade-bk-small">BODY MAPPED, LASER PERFORATED VENTILATION</span>
+							   <span style="display:block" class="avant-grade-bk-small">THE HURON HOODIE FEATURING ORIA<sup style="vertical-align: top; line-height: 16px;">TM</sup></span>-->
+							  
+								</div>
+
+								<div class="text-align-middle">
+									<a style="color: #fff !important; border: none!important;margin: 28px 0 0!important; background: none !important;" class="learn-more shop-mens1" href="/men">SHOP MEN<span style="color:#ff0000"> &gt;</span></a><br/>
+								</div>
+							</div>
+						</div>
+                    </li>
+					
+					
 					 
 
                     <li class="slider_li" title="Made In USA" rel="/made-in-usa"
@@ -414,48 +413,41 @@
                 </div>
                 <!-- gridfull -->
                 <!-- gridfull -->
-                <div class="gridfull yscolorpart overridefix bucket2">
-                    <!-- grid35 -->
+                <div class="gridfull yscolorpart overridefix bucket1">
+					<!-- grid35 -->
                     <div class="grid35">
                         <!-- partOne -->
-                        <a href="/men/whats-new">
-						<div class="multicolorcont">
-                          <!--   <div class="ctext"
-                                 style="top: 38%;text-transform:uppercase;">
-                                BOSTON IS NOW <br/>OPEN AT THE PRU
-               <span style="margin-top: 2.1910569105691056910569105691057%; border: none !important;"><a
-                        class="learn-more white" href="/women/rangoli-collection"
-                        style="background: none !important;border:none;">LEARN MORE <span
-                            style="color:#ff0000"> &gt;</span></a></span>
-                            </div>-->
+
+                        
+						<div class="multicolorcont" onclick="window.open('<?php echo Mage::getBaseUrl() . 'women/whats-new' ?>', '_self');" style="cursor:pointer">
+							
                         </div>
-						</a>
+						
                         <!-- partOne -->
                         <!-- partTwo -->
-                        <a href="<?php echo $this->getBaseUrl() . 'men/whats-new'; ?>">
+                        <a href="<?php echo $this->getBaseUrl() . 'women/whats-new'; ?>">
                             <div class="iconspartone" id="iconspartone">
                                 <div class="row">
 								
-<span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/moisture.png') ?>" alt="Yogasmoga Moisture Wicking"/>
-<span class="iconstxt">ADVANCED MOISTURE MANAGEMENT</span>
-</span>
-<span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/pilling.png') ?>" alt="Yogasmoga Anti-Pilling"/>
-<span class="iconstxt">RESISTANCE TO PILLING</span>
-</span>
+								<span>
+								<img src="<?php echo $this->getSkinUrl('images/new-elements/moisture.png') ?>" alt="Yogasmoga Moisture Wicking"/>
+								<span class="iconstxt">ADVANCED MOISTURE MANAGEMENT</span>
+								</span>
+								<span>
+								<img src="<?php echo $this->getSkinUrl('images/new-elements/four-way-stretch.jpg') ?>" alt="Yogasmoga Anti-Pilling"/>
+								<span class="iconstxt">4-WAY STRETCH</span>
+								</span>
 
-
-                                </div>
-                                <div class="row">
-<span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/nano-tech.png') ?>" alt="Yogasmoga Anti-Pilling"/>
-<span class="iconstxt">NANO TECHNOLOGY</span>
-</span>
-<span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/cool-smooth.png') ?>" alt="Yogasmoga USA"/>
-<span class="iconstxt">COOL SMOOTH & SUPPLE FEEL</span>
-</span>
+																</div>
+																<div class="row">
+								<span>
+								<img src="<?php echo $this->getSkinUrl('images/new-elements/pilling.png') ?>" alt="Yogasmoga Anti-Pilling"/>
+								<span class="iconstxt">RESISTANCE TO PILLING</span>
+								</span>
+								<span>
+								<img src="<?php echo $this->getSkinUrl('images/new-elements/usa.png') ?>" alt="Yogasmoga USA"/>
+								<span class="iconstxt">PROUDLY MADE IN THE USA</span>
+								</span>
                                 </div>
                             </div>
                         </a>
@@ -463,34 +455,39 @@
                     </div>
                     <!-- grid35 -->
                     <!-- grid6 -->
-                    <div class="grid65 f-right ">
+                    <div class="grid65 f-right">
                         <!-- slider -->
-                        <div class="sliderImg" onclick="window.open('<?php echo Mage::getBaseUrl() . 'men/whats-new' ?>', '_self');" style="cursor:pointer">
-                            <ul class="gridslider22">
+                        <div class="sliderImg" onclick="window.open('<?php echo Mage::getBaseUrl() . 'women/whats-new' ?>', '_self');" style="cursor:pointer">
+                            <ul class="gridslider12">
 
 
                                 <li>
-                                    <!--<img class="img-responsive" src="<?php /*echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/right-1.jpg'*/ ?>" alt="Mens Sunday Tee" />-->
                                     <img onload="showGridContainer(this)" class="img-responsive"
-                                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/huron-hoodie-block.jpg' ?>"
-                                         alt="long sleeve tee Rudhira"/>
+                                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/ys-fabric-tech-melange.jpg' ?>"
+                                         title="Fabric Tech. Zari Mesh"
+                                         alt="Fabric Tech. Zari Mesh"/>
 
-                                    <div class="contentSlider">
+                                    <div class="contentSlider sliderContent">
                                         <div>
-                                            <p class="small-text">FEATURING ORIA<sup class="tm">&trade;</sup></p>
+                                            <p class="small-text">FEATURING AURUM<sup>&reg;</sup> MELANGE</p>
 
-                                            <p class="large-text"> THE HURON HOODIE</p>
-                                            <a href="/men/whats-new" class="shopnow-btn"
+                                            <!-- <h3 style="color: #fff!important;" class="large-text">AURUM® <br/>
+                                                 SAME GREAT TECH</h3>-->
+                                           <p class="large-text">THE BROOKLYN JACKET</p>
+                                            <!--                            <p class="large-text" style="margin-top: -10px;"><span>COLOR INFUSED</span></p>-->
+                                            <a href="/women/whats-new" class="shopnow-btn"
                                                style="margin-top:1.0366598778004073319755600814664%;background: none !important;width:auto;">SHOP WHAT'S NEW<span style="color:#ff0000"> &gt;</span></a>
                                         </div>
                                     </div>
                                 </li>
+
 
                             </ul>
                         </div>
                         <!-- slider -->
                     </div>
                     <!-- grid6 -->
+                    
                 </div>
                 <!-- gridfull -->
                 <!-- gridfull -->
