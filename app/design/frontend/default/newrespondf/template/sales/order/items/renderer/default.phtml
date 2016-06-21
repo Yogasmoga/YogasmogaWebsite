@@ -30,10 +30,10 @@
         <?php if($_options = $this->getItemOptions()): ?>
         <dl class="item-options">
         <?php foreach ($_options as $_option) : ?>
-            <dt><?php echo $this->htmlEscape($_option['label']) ?></dt>
+            <dt class="dt"><?php echo $this->htmlEscape($_option['label']) ?></dt>
             <?php if (!$this->getPrintStatus()): ?>
                 <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
-                <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>>
+                <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php else : ?> class = "dd" <?php endif; ?>>
                     <?php echo $_formatedOptionValue['value'] ?>
                     <?php if (isset($_formatedOptionValue['full_view'])): ?>
                     <div class="truncated_full_value">
@@ -45,8 +45,9 @@
                     <?php endif; ?>
                 </dd>
             <?php else: ?>
-                <dd><?php echo $this->htmlEscape( (isset($_option['print_value']) ? $_option['print_value'] : $_option['value']) ) ?></dd>
+                <dd class="dd"><?php echo $this->htmlEscape( (isset($_option['print_value']) ? $_option['print_value'] : $_option['value']) ) ?></dd>
             <?php endif; ?>
+			<br/>
         <?php endforeach; ?>
         </dl>
         <?php endif; ?>

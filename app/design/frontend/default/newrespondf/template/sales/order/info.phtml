@@ -64,25 +64,27 @@
         </div>
     </div>
 <?php if (!$_order->getIsVirtual()): ?>
-    <div class="col2-set generic-box">
+    <div class="col2-set generic-box addr-box">
         <div class="col-1">
             <h4><?php echo $this->__('Shipping Address') ?></h4>
             <address><?php echo $_order->getShippingAddress()->format('html') ?></address>
         </div>
         <div class="col-2">
+		<h4><?php echo $this->__('Billing Address') ?></h4>
+            <address><?php echo $_order->getBillingAddress()->format('html') ?></address>
+			
+            
+        </div>
+    </div>
+<?php endif; ?>
+    <div class="col2-set generic-box">
+        <div class="col-1">
             <h4><?php echo $this->__('Shipping Method') ?></h4>
             <?php if ($_order->getShippingDescription()): ?>
                 <?php echo $_order->getShippingDescription() ?>
             <?php else: ?>
                 <?php echo $this->helper('sales')->__('No shipping information available'); ?>
             <?php endif; ?>
-        </div>
-    </div>
-<?php endif; ?>
-    <div class="col2-set generic-box">
-        <div class="col-1">
-            <h4><?php echo $this->__('Billing Address') ?></h4>
-            <address><?php echo $_order->getBillingAddress()->format('html') ?></address>
         </div>
         <div class="col-2">
             <h4><?php echo $this->__('Payment Method') ?></h4>

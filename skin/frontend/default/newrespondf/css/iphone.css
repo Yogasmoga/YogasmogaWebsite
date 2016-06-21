@@ -8118,3 +8118,18 @@ input#giftcard_use{
 #menu_container.nav-container .nav-dropdown .menu-item.smogi-icon a ,
 #menu_container.nav-container .nav-dropdown .menu-item.gift-icon a,
 #menu_container.nav-container .nav-dropdown .menu-item.contact_icon_li a { line-height: 44px !important;}
+
+/*---track order--*/
+.sales-order-view #account_content .generic-box{width:100%;}
+.sales-order-view #account_content .generic-box address span{font:12px/18px GraphikRegular;letter-spacing:1px;}
+.sales-order-view #account_content .generic-box .col-1 h4,.sales-order-view #account_content .generic-box .col-2 h4{color: #555;font: 12px Avantgarde-demi;margin-bottom: 0;text-transform: uppercase}
+	
+.sales-order-view .item-order-title{padding: 0 5px;margin-bottom:0;}	
+.sales-order-view .item-order-table{margin: 0px auto; width: 100%;padding:0 5px;color:#666666;font:12px/24px arial}	
+.sales-order-view .item-options{}
+.sales-order-view .item-options .dt{display:inline-block;}
+.sales-order-view .item-options .dt:after{content:":";}
+.sales-order-view .item-options .dd{display:inline-block;}
+.sales-order-view .col2-set .col-1,.sales-order-view .col2-set .col-2{margin-bottom:25px;}
+.sales-order-view #account_content .generic-box.addr-box .col-1,
+.sales-order-view #account_content .generic-box.addr-box .col-2{width:50%;float:left;}
