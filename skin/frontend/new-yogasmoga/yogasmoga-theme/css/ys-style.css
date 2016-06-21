@@ -2923,7 +2923,8 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 /*--banner new style created by Sanjay--*/
 .banner_text_mday {float: left; left: 5.4375%; position: absolute; text-align: center; top: 88.6659%; width: 33.6%;}
 .banner_text1{position:relative; top:32%; left:14.5%; float: left; text-align:center; padding-right:0px !important}
-.banner_text2{text-align:center; padding-right:0px !important; position:relative;left:0%; top: 41.44%;}
+.banner_text2{text-align:center; padding-right:0px !important; position:relative;left:27%; top: 36%;}
+
 .banner_text3{position:relative; text-align:center; display:inline-block; left:14%; top:20%}
 .banner_text4{float:left;position:relative;top:16%; left:6.8%; text-align:left;}
 .banner_text5{text-align: center; float: right; position:relative; top:32%; right:6%; }
@@ -2993,7 +2994,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     .flexslider .slides img.img_rndinca{max-width:150px; }
     .flexslider .slides img.img_madeinusa{max-width:179px;}
     .banner_text1{top:32%; left:12%;}
-    .banner_text2{/*left: 20%;top: 27%;*/}
+    .banner_text2{left: 20%;top: 27%;}
     .banner_text3{top:31%;}
     .banner_text5{right:4%;top:24%;}
     .banner_text6{top:22%; left:13.5%;}
