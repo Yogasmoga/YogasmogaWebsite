@@ -636,7 +636,7 @@ function changeColor(clr) {
     else {
         smallimagehtml = '<tr>';
         for (i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++) {
-            smallimagehtml = smallimagehtml + "<td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i][0] + "' zoomimageurl='" + _productcolorinfo[colorindex].zoomimages[i][0] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i][0] + "' alt='" + _productcolorinfo[colorindex].smallimages[i][1] + "'></td>";
+            smallimagehtml = smallimagehtml + "<td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i][0] + "' zoomimageurl='" + _productcolorinfo[colorindex].zoomimages[i][0] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i][0] + "' alt='" + _productcolorinfo[colorindex].smallimages[i][1] + "' title='" + _productcolorinfo[colorindex].smallimages[i][1] + "'></td>";
         }
         smallimagehtml = smallimagehtml + "</tr>";
         jQuery("table.productimagecontainer").hide();
@@ -653,7 +653,7 @@ function changeColor(clr) {
                 jQuery("table.tdbigimagecontainer img").attr("alt", jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt"));
             }
             else {
-                jQuery("table.tdbigimagecontainer td").html("<img class='shareit' src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "' alt='" + jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt") + "'>");
+                jQuery("table.tdbigimagecontainer td").html("<img class='shareit' src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "' alt='" + jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt") + "' title='" + jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt") + "'>");
             }
             _curshareimgurl = jQuery("table.smallimagecontiner td:first").attr("bigimageurl");
         }
