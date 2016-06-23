@@ -8124,7 +8124,7 @@ input#giftcard_use{
 .sales-order-view #account_content .generic-box{width:100%;}
 .sales-order-view #account_content .generic-box address span{font:12px/18px GraphikRegular;letter-spacing:1px;}
 .sales-order-view #account_content .generic-box .col-1 h4,.sales-order-view #account_content .generic-box .col-2 h4{color: #555;font: 12px Avantgarde-demi;margin-bottom: 0;text-transform: uppercase}
-	
+.sales-order-view .pmethod-title{margin-top:2px;}	
 .sales-order-view .item-order-title{padding: 0 5px 5px 5px;margin-bottom:5px; border-bottom:1px solid #666}	
 .sales-order-view .item-order-table{margin: 0px auto; width: 100%;padding:0 5px;color:#666666;font:12px/24px arial}	
 .sales-order-view .item-order-table tr.border td{padding-bottom:5px;}
