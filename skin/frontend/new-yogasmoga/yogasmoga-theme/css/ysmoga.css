@@ -292,6 +292,7 @@ ul.site-map > li{
     line-height: 50px;
     font-family: AvantGardeGothicITCW01X;
 }
+.large-text sup.co{font-size:34px; line-height:34px;font-family: AvantGardeGothicITCW01B;}
 .compressBox{
   /*  background: url("../images/new-elements/brooklyn-jacket.jpg") no-repeat center center #e4e4e4;*/
     background: url("../images/new-elements/fathersday-bucket-box2.jpg") no-repeat center center #e4e4e4;
@@ -303,10 +304,9 @@ ul.site-map > li{
     background: #f2542f;
     background-size: 100% 100%;
 }*/
-.multicolorcont {
-/*    background: #03310f none repeat scroll 0 0 / 100% 100%; */
-    /*background: url("../images/homepage/california-yogasmoga-store.jpg") no-repeat center center transparent;*/
-    background: url("../images/homepage/huron-hoodie.jpg") no-repeat center center transparent;
+.multicolorcont{
+    background: url("../images/new-elements/brooklyn-jacket.jpg") no-repeat center center transparent;
+    /*  background: #03310f;*/
     background-size: 100% 100%;
 }
 
@@ -934,6 +934,7 @@ ul.tr-menu > li.free-shipping {
 }
 #productdetails .fitDetail .video-box a[name="sizechart"]{display: none;}
 @media only screen and (min-width : 1600px) {
+    .large-text sup.co{font-size:46px; line-height:50px;}
    #productdetails .fitDetail .video-box .tble table {
         display: block;
         margin: 17px 0 0 !important;
@@ -2492,6 +2493,7 @@ div.new-arrivals-block{
 }
 @media screen and (min-width: 1401px) and (max-width: 1599px) {
     /* **********************HOME PAGE ********************* **/
+    .large-text sup.co{font-size:45px; line-height:45px;}
     .large-text sup.carbon-tm{
         font-size:45px; line-height:45px;font-family: AvantGardeGothicITCW01B;
     }
@@ -2874,6 +2876,7 @@ a.learn-more {
 .bucket4 .contentSlider{top:38.9112%;}
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
+    .large-text sup.co{font-size: 42px; line-height: 45px;}
     .contentSlider .large-text{
         font-size: 42px !important;
         line-height: 45px !important;
