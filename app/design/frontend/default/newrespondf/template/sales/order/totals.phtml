@@ -58,7 +58,7 @@
             <td <?php echo $style;?> colspan="2">
 
             <?php }else{ ?>
-            <td <?php echo $style;?> colspan="2">
+            <td <?php echo $style;?> colspan="3">
             <?php } ?>
 
             <?php if ($_total->getStrong()):?>
@@ -115,7 +115,7 @@
             <strong><?php echo $this->formatValue($_total) ?></strong>
 			</td>
 		   <?php else:?>
-		   <td <?php echo $style;?> colspan="2">
+		   <td <?php echo $style;?> colspan="1">
             <?php echo $this->formatValue($_total) ?>
 			</td>
             <?php endif?>
