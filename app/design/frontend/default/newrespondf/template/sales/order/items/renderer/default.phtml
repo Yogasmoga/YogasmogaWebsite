@@ -26,7 +26,7 @@
 ?>
 <?php $_item = $this->getItem() ?>
 <tr class="border" id="order-item-row-<?php echo $_item->getId() ?>">
-    <td><h5 class="title"><?php echo $this->htmlEscape($_item->getName()) ?></h5>
+    <td colspan="2"><h5 class="title"><?php echo $this->htmlEscape($_item->getName()) ?></h5>
         <?php if($_options = $this->getItemOptions()): ?>
         <dl class="item-options">
         <?php foreach ($_options as $_option) : ?>
@@ -57,7 +57,7 @@
         <?php endif; ?>
     </td>
    <!--  <td><?php //echo $this->htmlEscape(Mage::helper('core/string')->splitInjection($this->getSku())) ?></td> -->
-    <td class="nowrap">
+   <!-- <td class="nowrap">
         <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceExclTax()): ?>
             <span class="price-excl-tax">
                 <?php if ($this->helper('tax')->displaySalesBothPrices()): ?>
@@ -172,7 +172,7 @@
                 <?php endif; ?>
             </span>
         <?php endif; ?>
-    </td>
+    </td>-->
     <td class=" nowrap" style="padding: 0; vertical-align:middle; padding: 0 0 12px;">
         <span class="nobr">
                 <?php if ($this->getItem()->getQtyOrdered() > 0): ?>
