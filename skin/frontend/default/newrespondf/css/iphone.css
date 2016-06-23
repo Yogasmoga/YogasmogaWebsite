@@ -8143,3 +8143,7 @@ input#giftcard_use{
 .sales-order-view  .discount td:first-child,
 .sales-order-view  .tax td:first-child{text-align:left!important;text-indent:10px;padding:0!important;}  
 .sales-order-view  .subtotal td{border-top:1px solid #666;}
+
+.sales-order-view .payment-method-detail{list-style:none;}
+.sales-order-view .payment-method-detail li{}
+.sales-order-view .payment-method-detail li span{}

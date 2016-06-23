@@ -32,17 +32,17 @@
 <p><strong><?php echo $this->htmlEscape($this->getMethod()->getTitle()) ?></strong></p>
 
 <?php if ($_specificInfo = $this->getSpecificInformation()):?>
-<table>
-    <tbody>
+<ul class="payment-method-detail">
+    
     <?php foreach ($_specificInfo as $_label => $_value):?>
-        <tr>
-            <th><strong><?php echo $this->escapeHtml($_label)?>:</strong></th>
-			<td><?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?></td>
-        </tr>
+        <li>
+            <span><strong><?php echo $this->escapeHtml($_label)?>:</strong></span>
+			<span><?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?></span>
+        </li>
         
     <?php endforeach; ?>
-    </tbody>
-</table>
+    
+</ul>
 <?php endif;?>
 
 <?php echo $this->getChildHtml()?>
