@@ -16,7 +16,7 @@ app.controller("instagramController", function ($http) {
         this.data = [];
         this.images = [];
         this.loaded = false;
-        scope.jsonUrl = "https://api.instagram.com/v1/tags/" + this.hastag1 + "/media/recent?count=10000&access_token=14781732.42162a7.81253b96a4b7492c9377d9cba876f67d";
+        scope.jsonUrl = "https://api.instagram.com/v1/tags/" + this.hastag1 + "/media/recent?count=10000&access_token=14781732.999f9f9.696ec03572cc4076b76efabe5d1519e6";
         scope.init();
     };
 
