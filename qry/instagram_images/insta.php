@@ -15,8 +15,8 @@
         return $result;
     }
  
-    $tag = '99points';
-    $client_id = "4db1fe9f4eda46f39f5ca8f65cbe99be";
+    $tag = 'yogasmoga';
+    $client_id = "999f9f95809944558d0151f0fe93daed";
     $url = 'https://api.instagram.com/v1/tags/'.$tag.'/media/recent?client_id='.$client_id;
  
     $all_result  = processURL($url);
@@ -27,12 +27,8 @@
     // exit;
  
     //Now parse through the $results array to display your results... 
-	if(is_array($decoded_results['data']) && count($decoded_results['data']) > 0)
-	{
-		foreach($decoded_results['data'] as $item){
-			$image_link = $item['images']['thumbnail']['url'];
-			echo '<img src="'.$image_link.'" />';
-		}
-	}
-	
+    foreach($decoded_results['data'] as $item){
+        $image_link = $item['images']['thumbnail']['url'];
+        echo '<img src="'.$image_link.'" />';
+    }	
 	?>
