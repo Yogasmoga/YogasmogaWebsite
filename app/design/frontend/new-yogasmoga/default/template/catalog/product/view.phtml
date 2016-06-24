@@ -455,7 +455,8 @@ foreach ($_childProducts as $_childProduct) {
                 if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
                     continue;
                 if ($imageLabelData['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', $storeId)) {
-                    $alt = '';
+
+                    /*$alt = '';
                     if (isset($imageLabelData['alt']))
                         $alt = $imageLabelData['alt'];
 
@@ -468,13 +469,24 @@ foreach ($_childProducts as $_childProduct) {
                         }
                     } catch (Exception $e) {
                         Mage::logException($e);
+                    }*/
+                     try {
+
+                            $abcclr = $_childProduct->getAttributeText('color');
+                            if (strpos($abcclr, "|") !== false)
+                                $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                            $alt = $productName . " - " . $abcclr;
+                            $title = $productName . " - " . $abcclr;
+
+                    } catch (Exception $e) {
+                        Mage::logException($e);
                     }
 
                     $imageHelper = $this->helper('catalog/image');
 
-                    $smallImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt;
-                    $imageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90) . "|" . $alt;
-                    $zoomImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->setQuality(90) . "|" . $alt;
+                    $smallImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt. "|" . $title;//FK;
+                    $imageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90) . "|" . $alt. "|" . $title;//FK;
+                    $zoomImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->setQuality(90) . "|" . $alt. "|" . $title;//FK;
 
                     $imagePath = substr($zoomImageUrl, 1);
                     $dirImg = Mage::getBaseDir() . str_replace("/", DS, strstr($imagePath, '/media'));
@@ -685,6 +697,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             _productcolorinfo[<?php echo $currentColorCount; ?>].zoomimages[<?php echo $i; ?>] = new Array();
             _productcolorinfo[<?php echo $currentColorCount; ?>].zoomimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
             _productcolorinfo[<?php echo $currentColorCount; ?>].zoomimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+            _productcolorinfo[<?php echo $currentColorCount; ?>].zoomimages[<?php echo $i; ?>][2] = "<?php echo $abc[2]; ?>";
             <?php
         }
         ?>
@@ -697,6 +710,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             _productcolorinfo[<?php echo $currentColorCount; ?>].smallimages[<?php echo $i; ?>] = new Array();
             _productcolorinfo[<?php echo $currentColorCount; ?>].smallimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
             _productcolorinfo[<?php echo $currentColorCount; ?>].smallimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+            _productcolorinfo[<?php echo $currentColorCount; ?>].smallimages[<?php echo $i; ?>][2] = "<?php echo $abc[2]; ?>";
             <?php
         }
         ?>
@@ -709,6 +723,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             _productcolorinfo[<?php echo $currentColorCount; ?>].bigimages[<?php echo $i; ?>] = new Array();
             _productcolorinfo[<?php echo $currentColorCount; ?>].bigimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
             _productcolorinfo[<?php echo $currentColorCount; ?>].bigimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+            _productcolorinfo[<?php echo $currentColorCount; ?>].bigimages[<?php echo $i; ?>][2] = "<?php echo $abc[2]; ?>";
             <?php
         }
         ?>
