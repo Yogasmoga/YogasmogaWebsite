@@ -33,6 +33,10 @@ class Ysindia_Career_Block_Adminhtml_Career_Edit_Tab_Form extends Mage_Adminhtml
                   'value'     => 5,
                   'label'     => Mage::helper('career')->__('New York'),
               ),
+			  array(
+                  'value'     => 6,
+                  'label'     => Mage::helper('career')->__('Hawaii'),
+              ),
           ),
       ));
 
@@ -88,6 +92,7 @@ class Ysindia_Career_Block_Adminhtml_Career_Edit_Tab_Form extends Mage_Adminhtml
           'required'  => false,
           'name'      => 'job_posted',
       ));
+
       /*
       $dateFormatIso = Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
       $fieldset->addField('date_posted', 'date', array(
@@ -161,6 +166,17 @@ class Ysindia_Career_Block_Adminhtml_Career_Edit_Tab_Form extends Mage_Adminhtml
           'wysiwyg'   => true,
           'required'  => true,
       ));
+
+      $fieldset->addField('about_ys', 'editor', array(
+          'name'      => 'about_ys',
+          'label'     => Mage::helper('career')->__('About YOGASMOGA'),
+          'title'     => Mage::helper('career')->__('About YOGASMOGA'),
+          'style'     => 'width:600px;height:200px;',
+          'config'    => Mage::getSingleton('cms/wysiwyg_config')->getConfig(),
+          'wysiwyg'   => true,
+          'required'  => true,
+      ));
+
       /*$fieldset->addField('how_to_apply', 'editor', array(
           'name'      => 'how_to_apply',
           'label'     => Mage::helper('career')->__('How To Apply'),
