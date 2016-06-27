@@ -38,6 +38,7 @@ jQuery(document).ready(function ($) {
         jQuery("#orderitem").removeClass('bagdisabled');
         jQuery("#orderitem").addClass('spbutton');
         changeColor($(this).attr("color"));
+
         selectfirstsizeonload();
         //changePartOfGiftSet($(this).attr("value"));
     });
@@ -48,6 +49,7 @@ jQuery(document).ready(function ($) {
         $("table.tdbigimagecontainer img").hide();
         $("table.tdbigimagecontainer img").attr("src", $(this).attr("bigimageurl"));
         $("table.tdbigimagecontainer img").attr("alt", $(this).find("img:first").attr('alt'));
+        $("table.tdbigimagecontainer img").attr("title", $(this).find("img:first").attr('title'));//fahim khan
         _curshareimgurl = $(this).attr("bigimageurl");
         $("table.tdbigimagecontainer img").fadeIn('fast');
     });
@@ -58,6 +60,7 @@ jQuery(document).ready(function ($) {
         $("td#tdpopupproductbigimage img").hide();
         $("td#tdpopupproductbigimage img").attr("src", $(this).attr("bigimageurl"));
         $("td#tdpopupproductbigimage img").attr("alt", $(this).find("img:first").attr('alt'));
+        $("td#tdpopupproductbigimage img").attr("title", $(this).find("img:first").attr('title'));
         $("td#tdpopupproductbigimage img").fadeIn('fast');
     });
 
@@ -615,7 +618,7 @@ function changeColor(clr) {
 
     if (_productdisplaymode == 'popup') {
         for (i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++) {
-            smallimagehtml = smallimagehtml + "<tr><td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i][0] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i][0] + "' alt='" + _productcolorinfo[colorindex].smallimages[i][1] + "'></td></tr>";
+            smallimagehtml = smallimagehtml + "<tr><td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i][0] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i][0] + "' alt='" + _productcolorinfo[colorindex].smallimages[i][1] + "' title='" + _productcolorinfo[colorindex].smallimages[i][2] + "'></td></tr>";
         }
         jQuery("td#tdpopupproductbigimage, td#tdpopupproductsmallimages").hide();
         jQuery("td#tdpopupproductsmallimages table tbody").html(smallimagehtml);
@@ -623,9 +626,10 @@ function changeColor(clr) {
             if (jQuery("td#tdpopupproductbigimage img").length > 0) {
                 jQuery("td#tdpopupproductbigimage img").attr("src", jQuery("td#tdpopupproductsmallimages table tbody td:first").attr("bigimageurl"));
                 jQuery("td#tdpopupproductbigimage img").attr("alt", jQuery("td#tdpopupproductsmallimages table tbody td:first").find('img:first').attr("alt"));
+                jQuery("td#tdpopupproductbigimage img").attr("title", jQuery("td#tdpopupproductsmallimages table tbody td:first").find('img:first').attr("title"));
             }
             else
-                jQuery("td#tdpopupproductbigimage").html("<img src='" + jQuery("td#tdpopupproductsmallimages table tbody td:first").attr("bigimageurl") + "' alt='" + jQuery("td#tdpopupproductsmallimages table tbody td:first").find('img:first').attr("alt") + "'>");
+                jQuery("td#tdpopupproductbigimage").html("<img src='" + jQuery("td#tdpopupproductsmallimages table tbody td:first").attr("bigimageurl") + "' alt='" + jQuery("td#tdpopupproductsmallimages table tbody td:first").find('img:first').attr("alt") + "'  title='" + jQuery("td#tdpopupproductsmallimages table tbody td:first").find('img:first').attr("title") + "'>");
             jQuery("td#tdpopupproductsmallimages table tbody td:first").addClass('selectedimage');
         }
         jQuery("td#tdpopupproductbigimage, td#tdpopupproductsmallimages").fadeIn('fast');
@@ -643,7 +647,7 @@ function changeColor(clr) {
     else {
         smallimagehtml = '<tr>';
         for (i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++) {
-            smallimagehtml = smallimagehtml + "<td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i][0] + "' zoomimageurl='" + _productcolorinfo[colorindex].zoomimages[i][0] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i][0] + "' alt='" + _productcolorinfo[colorindex].smallimages[i][1] + "'></td>";
+            smallimagehtml = smallimagehtml + "<td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i][0] + "' zoomimageurl='" + _productcolorinfo[colorindex].zoomimages[i][0] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i][0] + "' alt='" + _productcolorinfo[colorindex].smallimages[i][1] + "'  title='" + _productcolorinfo[colorindex].smallimages[i][2] + "'></td>";
         }
         smallimagehtml = smallimagehtml + "</tr>";
         jQuery("table.productimagecontainer").hide();
@@ -658,9 +662,11 @@ function changeColor(clr) {
                 }, 500);
                 jQuery("table.tdbigimagecontainer img").attr("src", jQuery("table.smallimagecontiner td:first").attr("bigimageurl"));
                 jQuery("table.tdbigimagecontainer img").attr("alt", jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt"));
+                jQuery("table.tdbigimagecontainer img").attr("title", jQuery("table.smallimagecontiner td:first").find('img:first').attr("title"));//fahim khan
             }
             else {
-                jQuery("table.tdbigimagecontainer td").html("<img class='shareit' src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "' alt='" + jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt") + "'>");
+                var titleValue = jQuery("table.smallimagecontiner td:first").find('img:first').attr("title");
+                jQuery("table.tdbigimagecontainer td").html("<img class='shareit' src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "' alt='" + jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt") + "' title='" + jQuery("table.smallimagecontiner td:first").find('img:first').attr("title") + "'>");
             }
             _curshareimgurl = jQuery("table.smallimagecontiner td:first").attr("bigimageurl");
         }

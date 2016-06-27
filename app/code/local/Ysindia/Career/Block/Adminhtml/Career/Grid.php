@@ -39,6 +39,7 @@ class Ysindia_Career_Block_Adminhtml_Career_Grid extends Mage_Adminhtml_Block_Wi
               3 => 'Massachusetts',
               4 => 'New Jersey',
               5 => 'New York',
+              6 => 'Hawaii',
           ),
       ));
 

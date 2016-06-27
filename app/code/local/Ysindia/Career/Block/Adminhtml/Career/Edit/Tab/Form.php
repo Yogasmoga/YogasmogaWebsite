@@ -33,6 +33,10 @@ class Ysindia_Career_Block_Adminhtml_Career_Edit_Tab_Form extends Mage_Adminhtml
                   'value'     => 5,
                   'label'     => Mage::helper('career')->__('New York'),
               ),
+              array(
+                  'value'     => 6,
+                  'label'     => Mage::helper('career')->__('Hawaii'),
+              ),
           ),
       ));
 

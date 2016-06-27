@@ -36,6 +36,10 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 			$stateText = "New York";
 
 		}
+		elseif($state=='6'){
+			$stateText = "Hawaii";
+
+		}
 		else{
 
 		}
@@ -192,6 +196,10 @@ class Ysindia_Career_IndexController extends Mage_Core_Controller_Front_Action
 			}
 			elseif($state=='5'){
 				$stateText = "New York";
+
+			}
+			elseif($state=='6'){
+			$stateText = "Hawaii";
 
 			}
 		else{
