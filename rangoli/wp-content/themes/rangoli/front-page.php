@@ -70,7 +70,7 @@ get_header();
                                 </div>
                                 <?php
                             }
-                            echo "<div class='post_excerpt_slider'><p class='slider_post_title'>$post->post_title</p> $post->post_excerpt
+                            echo "<div class='post_excerpt_slider'><p class='slider_post_title'><span>$post->post_title</span></p> $post->post_excerpt
                         <p class='slider_post_author'>$name</p>
 
                         </div>";
