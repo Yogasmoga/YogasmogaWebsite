@@ -183,10 +183,10 @@ function block50height(){
 
 function headingBlock(){
 	var headingBlock = jQuery(".headingBlock").height();
-	var headingh1 = jQuery(".headingBlock h1").height();
+	var headingh1 = jQuery(".headingBlock h1,.headingBlock .h1").height();
 	var calcheight = headingBlock-headingh1;
 	calcheight = calcheight/2;
-	jQuery(".headingBlock h1").css("top", calcheight);
+	jQuery(".headingBlock h1,.headingBlock .h1").css("top", calcheight);
 };
 
 function block66heightbottom(){	
