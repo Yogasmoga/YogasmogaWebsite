@@ -1923,7 +1923,7 @@ input#smogi:-ms-input-placeholder {
 .cms-container{padding: 29px 40px 0 40px;}
 .cms-pg{width: auto; margin: 0 0 0 301px; vertical-align: top; color: #666; line-height: normal; min-height: 300px; border-top: 1px solid #555; padding-top: 15px;}
 .pg-heading{margin-bottom: 49px;}
-.pg-heading h2, .pg-heading h1{font-family: ITCAvantGardeProMd; font-size: 36px; color: #555555; line-height: 40px; margin-bottom: 8px; text-transform: uppercase;}
+.pg-heading h2,.pg-heading .h2, .pg-heading h1{font-family: ITCAvantGardeProMd; font-size: 36px; color: #555555; line-height: 40px; margin-bottom: 8px; text-transform: uppercase;}
 .sec-head{font-family: gothambold; font-size: 11px; line-height: 17px; display: block; margin-bottom: 10px;}
 .pg-tagline,.cms-pg p, .pg-content section p{font-family: gothambook; font-size: 12px; line-height: 17px; margin-bottom: 10px; text-align: justify;}
 .cms-pg section p:last-child,.pg-content section p:last-child{margin-bottom: 35px;}
