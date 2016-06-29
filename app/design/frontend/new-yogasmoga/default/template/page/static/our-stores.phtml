@@ -3,7 +3,24 @@
     jQuery(window).load(function () {
         jQuery('body').css('overflow', 'auto');
         jQuery('.namaskar-overlay1').fadeOut('slow');
-    })
+		
+			jQuery('a[href*="#"]:not([href="#"])').on('click',function (e) {
+				e.preventDefault();
+
+				var target = this.hash;
+				var $target = jQuery(target);
+
+				jQuery('html, body').stop().animate({
+					'scrollTop': $target.offset().top
+				}, 900, 'swing', function () {
+					window.location.hash = target;
+				});
+			});
+    });
+	
+	
+ 
+
 </script>
 <!-- startCMSPages -->
 <div class="gridCMSPages">
