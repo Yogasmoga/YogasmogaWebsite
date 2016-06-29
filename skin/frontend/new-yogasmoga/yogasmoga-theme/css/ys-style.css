@@ -81,6 +81,12 @@ ul.main-menu > li.over > ul.sub-menu{display: block; z-index: 1}
 #search_input { width: 145px; height: 24px; border: medium none; font-family: gothamlight; font-size: 11px; }
 #search-btn{background: transparent url("../images/search-icon.png") center no-repeat; border: none; width: 16px; height: 14px; font-size: 0; cursor: pointer; }
 
+/*--search bar in low resolution--*/
+@media screen and (max-width: 1200px) {
+.search-bar{width:112px;}
+#search_input{width:82px;}
+}
+
 /**Home Page**/
 .share-strip{padding: 8.5px 3.90625%; margin: 0 auto; /*width: 92%;*/ font-size: 0; display: block; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .share-strip .blk{width: 50%; display: none;}
