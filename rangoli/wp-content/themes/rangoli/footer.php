@@ -285,6 +285,7 @@ if(!isset($ipInfo)){
                 <ul>
                     <li><a href="/our-story">YS STORY</a></li>
                     <li><a href="/ys-fabric-tech">YS TECH</a></li>
+					<li><a href="/our-stores">YS STORES</a></li>
                     <li><a href="/smogi-bucks">SMOGI BUCKS</a></li>
                     <li><a href="/namaskar">NAMASK&Aacute;R FOUNDATION</a></li>
                 </ul>
