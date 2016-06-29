@@ -3171,9 +3171,14 @@ font: 36px/36px AvantGardeGothicITCW01D;
 /*.categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:40px/39px itcavantgardepromd;}*/
 .categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:40px/39px itcavantgardepromd;}
 .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:23px;line-height:28px;}
+
+/*--our stores cmsnavigation css--*/
+.cms-our-stores .cmsNavigation > ul{position:relative; padding-top:0;top:50%; transform:translateY(-50%);-webkit-transform:translateY(-50%);}
 }
 @media only screen and (max-width : 1024px) {
 /*.categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:36px/35px itcavantgardepromd;}*/
 .categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:36px/35px itcavantgardepromd;}
 .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:20px;line-height:25px;}
+
+
 }
