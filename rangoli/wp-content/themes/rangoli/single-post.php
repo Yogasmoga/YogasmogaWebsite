@@ -74,7 +74,7 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
 
 
 
-    <div class="row ww post_content_box">
+    <div class="row ww post_content_box <?php echo "post_".$post->ID; ?>">
         <div class="twenty">
             <div class="author_details_post">
             <?php

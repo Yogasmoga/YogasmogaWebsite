@@ -286,7 +286,7 @@ p.invite{display:block;font-family:GraphikMedium;font-size:14px;line-height:1}
 .twitter-friends .align-center > input[type="button"]:focus,.next-confirmation-page:focus{outline:none}
 .twitter-friends .align-center > input[type="button"]:hover,.next-confirmation-page:hover{background:#555;color:#fff!important;transition-duration:200ms}
 .twitter-friends .align-center > input[type="button"]:focus{outline:none}
-.wp_page_banner .post_title{font:30px/35px ITCAvantGardeStd-Bk}
+.wp_page_banner .post_title{font:30px/35px ITCAvantGardeStd-Bk;margin:0 auto;width:60%; padding:0;}
 button.next-confirmation-page{display:block;margin:30px auto 0}
 .one-three .post_title{font:30px/35px ITCAvantGardeStd-Bk}
 .form-loader.no-padding.c-align{text-align:center}
