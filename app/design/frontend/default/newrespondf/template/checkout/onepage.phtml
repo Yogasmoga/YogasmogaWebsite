@@ -73,7 +73,7 @@ jQuery(document).ready(function(){
         jQuery(document).find("#checkout-step-cart .row.gift_child." + giftIdClass + "_product").toggle();
         jQuery(this).toggleClass("open");
     });
-    if(checkIsUserLogged()){
+    <?php if(Mage::getSingleton('customer/session')->isLoggedIn()):?>
         var e = document.getElementById("billing-address-select");
         var value = e.options[e.selectedIndex].value;
         var text = e.options[e.selectedIndex].text;
@@ -81,9 +81,10 @@ jQuery(document).ready(function(){
             if(this.value == ''){
                 jQuery(".control.addr-book").show();
             }
-            else{jQuery(".control.addr-book").hide();}
+            else{jQuery(".control.addr-book").hide();
+            }
         });
-    }
+    <?php endif; ?>
 
 
 
