@@ -81,6 +81,12 @@ ul.main-menu > li.over > ul.sub-menu{display: block; z-index: 1}
 #search_input { width: 145px; height: 24px; border: medium none; font-family: gothamlight; font-size: 11px; }
 #search-btn{background: transparent url("../images/search-icon.png") center no-repeat; border: none; width: 16px; height: 14px; font-size: 0; cursor: pointer; }
 
+/*--search bar in low resolution--*/
+@media screen and (max-width: 1200px) {
+.search-bar{width:112px;}
+#search_input{width:82px;}
+}
+
 /**Home Page**/
 .share-strip{padding: 8.5px 3.90625%; margin: 0 auto; /*width: 92%;*/ font-size: 0; display: block; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .share-strip .blk{width: 50%; display: none;}
@@ -1923,7 +1929,7 @@ input#smogi:-ms-input-placeholder {
 .cms-container{padding: 29px 40px 0 40px;}
 .cms-pg{width: auto; margin: 0 0 0 301px; vertical-align: top; color: #666; line-height: normal; min-height: 300px; border-top: 1px solid #555; padding-top: 15px;}
 .pg-heading{margin-bottom: 49px;}
-.pg-heading h2, .pg-heading h1{font-family: ITCAvantGardeProMd; font-size: 36px; color: #555555; line-height: 40px; margin-bottom: 8px; text-transform: uppercase;}
+.pg-heading h2,.pg-heading .h2, .pg-heading h1{font-family: ITCAvantGardeProMd; font-size: 36px; color: #555555; line-height: 40px; margin-bottom: 8px; text-transform: uppercase;}
 .sec-head{font-family: gothambold; font-size: 11px; line-height: 17px; display: block; margin-bottom: 10px;}
 .pg-tagline,.cms-pg p, .pg-content section p{font-family: gothambook; font-size: 12px; line-height: 17px; margin-bottom: 10px; text-align: justify;}
 .cms-pg section p:last-child,.pg-content section p:last-child{margin-bottom: 35px;}
@@ -2198,7 +2204,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 	.avant-grade-bk-small{font:32px/32px ITCAvantGardeProBk;}
 
     /* cmsheading */
-    .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 40px !important; line-height: 43px !important;}
+    .gridCMSPages h4, .gridCMSPages h1,.gridCMSPages .h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 40px !important; line-height: 43px !important;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 19px !important; line-height: 39px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 28px !important; line-height: 33px !important;}
     .presstxt p{font-size: 19px !important; line-height: 23px !important;}
@@ -2258,7 +2264,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 	.avant-grade-bk-small{font:32px/32px ITCAvantGardeProBk;}
 
     /* cmsheading */
-    .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 45px !important; line-height: 48px !important;}
+    .gridCMSPages h4, .gridCMSPages h1,.gridCMSPages .h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 45px !important; line-height: 48px !important;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 22px !important; line-height: 45px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 32px !important; line-height: 37px !important;}
     .presstxt p{font-size: 22px !important; line-height: 29px !important;}
@@ -2323,7 +2329,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     }
 
     /* cmsheading */
-    .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 50px !important; line-height: 53px !important;}
+    .gridCMSPages h4, .gridCMSPages h1,.gridCMSPages .h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 50px !important; line-height: 53px !important;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 24px !important; line-height: 50px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 36px !important; line-height: 41px !important;}
     .presstxt p{font-size: 24px !important; line-height: 34px !important;}
@@ -3165,9 +3171,14 @@ font: 36px/36px AvantGardeGothicITCW01D;
 /*.categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:40px/39px itcavantgardepromd;}*/
 .categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:40px/39px itcavantgardepromd;}
 .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:23px;line-height:28px;}
+
+/*--our stores cmsnavigation css--*/
+.cms-our-stores .cmsNavigation > ul{position:relative; padding-top:0;top:50%; transform:translateY(-50%);-webkit-transform:translateY(-50%);}
 }
 @media only screen and (max-width : 1024px) {
 /*.categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:36px/35px itcavantgardepromd;}*/
 .categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:36px/35px itcavantgardepromd;}
 .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:20px;line-height:25px;}
+
+
 }

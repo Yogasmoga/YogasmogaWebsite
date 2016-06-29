@@ -1215,7 +1215,7 @@ html[xmlns] body.mac-os .gridFullWidth:after {
 }
 
 .gridCMSPages h4,
-.gridCMSPages h1{
+.gridCMSPages h1,.gridCMSPages .h1{
     font: 36px/40px ITCAvantGardeProMd;
     text-transform: uppercase;
     position: relative;
@@ -1240,7 +1240,7 @@ html[xmlns] body.mac-os .gridFullWidth:after {
 }
 
 .gridCMSPages h4,
-.gridCMSPages h1,
+.gridCMSPages h1,.gridCMSPages .h1,
 .gridCMSPages .topHead{
     text-transform: uppercase;
     color: #fff;
