@@ -114,3 +114,9 @@ area{cursor:pointer}
 #ap_signin_popup .close{background:url(/skin/frontend/yogasmoga/yogasmoga-theme/images/pop-close.png) no-repeat scroll 0 0 rgba(0,0,0,0);cursor:pointer;float:right;height:42px;margin-right:82px;margin-top:14px;width:41px}
 #ap_signin_popup .err-msg{box-sizing:border-box;clear:both;color:#fff;font-family:ITCAvantGardeStd-Bk;font-size:12px;margin:0 auto;min-height:18px;padding:0 0 0 8px;text-align:center;width:294px;color:#fff!important}
 #ap_signup{background:#ff4d4d!important;border:medium none!important;height:42px!important;display:block;margin:20px auto 0!important;width:184px!important;cursor:pointer}
+
+/*--search bar in low resolution--*/
+@media screen and (max-width: 1200px) {
+.search-bar{width:112px;}
+#search_input{width:82px;}
+}
