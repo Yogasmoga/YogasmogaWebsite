@@ -485,14 +485,14 @@
 		jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(11) a').text('WALNUT CREEK, CA');
 		jQuery(".account-nav .flex-control-nav.flex-control-paging li a").attr("href","#");
 		
-		 jQuery(".l-align li").on("click", "a", function (e) {
-        e.preventDefault();
-		jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
-		jQuery(this).addClass('active_link');
-       
-		 jQuery(".arrow-icon").removeClass("active");
-    });
-		jQuery(".account-nav").on("click", function () {
+		jQuery(".l-align li").on("click", "a", function (e) {
+			e.preventDefault();
+			jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
+			jQuery(this).addClass('active_link');
+			//jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp();
+			jQuery(".arrow-icon").removeClass("active");
+		});
+		jQuery(".account-nav").on("click", ".sub-nav", function (e) {
 			jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp();
 		});
 
