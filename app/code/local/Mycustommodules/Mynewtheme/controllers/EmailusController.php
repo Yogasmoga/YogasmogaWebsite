@@ -66,7 +66,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        $html .='<tr><td '.$style.'>Email:</td><td width="50%" align="left">'.$email.'</td></tr>';
 //        $html .='<tr><td style="width:50%;height:30px;text-align:left;font-weight:bold;">Date/Time:</td><td width="50%" align="left">'.date('Y-m-d H:i:s').'</td></tr>';
 //        $html .='<tr><td '.$style.'>IP:</td><td width="50%" align="left">'.$_SERVER['REMOTE_ADDR'].'</td></tr>';
-//        if(!empty($file['name'])){  
+//        if(!empty($file['name'])){
 //            $fileurl=Mage::helper('core/url')->getHomeUrl().'uploads/'.$file['name'];
 //            $html .='<tr><td '.$style.'>Uploaded File:</td><td width="50%" align="left">'.$fileurl.'</td></tr>';
 //        }
@@ -122,6 +122,30 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             );
         $translate->setTranslateInline(true);
         return $email->getSentSuccess();
+    }
+    public function sendquerymail(){
+        $name= $this->getRequest()->getPost('name');
+        $topic= $this->getRequest()->getPost('topic');
+        $message= $this->getRequest()->getPost('message');
+        if(!isset($message)) $message='';
+        $email= $this->getRequest()->getPost('email');
+
+
+        $templateId = 28;
+        $sendername = Mage::getStoreConfig('trans_email/ident_general/name');
+        $senderemail = Mage::getStoreConfig('trans_email/ident_general/email');
+        $storeId = Mage::app()->getStore()->getId();
+        $sender = Array('name' => $sendername,
+            'email' => $senderemail);
+        //recepient
+        $vars = Array();
+        $vars = Array('name'=>$name,'email'=>$email);
+        $storeId = Mage::app()->getStore()->getId();
+        $translate = Mage::getSingleton('core/translate');
+        Mage::getModel('core/email_template')
+            ->sendTransactional($templateId, $sender, $email, $name, $vars, $storeId);
+        $translate->setTranslateInline(true);
+
     }
 
 }
