@@ -483,15 +483,11 @@
 		jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(10) a').text('SHORT HILLS, NJ');
 		jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(11) a').text('WALNUT CREEK, CA');
 		
-		/*jQuery(".ys_static_page_dropdown li a").click(function(e){
-			e.preventDefault();
-			alert("clicked");
-		 jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp();
-		 jQuery(".arrow-icon").removeClass("active");
-		});*/
 		
 		 jQuery(".ys_static_page_dropdown li").on("click touchstart", "a", function (e) {
         e.preventDefault();
+		jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
+		jQuery(this).addClass('active_link');
        jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp();
 		 jQuery(".arrow-icon").removeClass("active");
     });
@@ -518,4 +514,5 @@
 	text-indent:0!important;
 	position:static!important;
 }
+.account-nav .sub-nav.flex-control-nav li a.active_link{color:#ae8637 !important;}
 </style>
