@@ -482,52 +482,39 @@
 		jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(9) a').text('WESTCHESTER, NY');
 		jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(10) a').text('SHORT HILLS, NJ');
 		jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(11) a').text('WALNUT CREEK, CA');
-		jQuery(".account-nav .flex-control-nav.flex-control-paging li a").attr("href","javascript:void(0)");
+		jQuery(".account-nav .flex-control-nav.flex-control-paging li a").attr("href","#");
 		
-		/* jQuery(".l-align li").on("click", "a", function (e) {
+		/* jQuery(".l-align li").on("click touchstart ", "a", function (e) {
         e.preventDefault();
 		jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
 		jQuery(this).addClass('active_link');
        jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp();
 		 jQuery(".arrow-icon").removeClass("active");
-    });
-*/
+    });*/
 
-jQuery.event.special.tap = {
-    setup: function(data, namespaces) {
-        var $elem = jQuery(this);
-        $elem.bind('touchstart', jQuery.event.special.tap.handler)
-             .bind('touchmove', jQuery.event.special.tap.handler)
-             .bind('touchend', jQuery.event.special.tap.handler);
-    },
+		var scrolling = false;
+var endScrolling;
 
-    teardown: function(namespaces) {
-        var $elem = jQuery(this);
-        $elem.unbind('touchstart', jQuery.event.special.tap.handler)
-             .unbind('touchmove', jQuery.event.special.tap.handler)
-             .unbind('touchend', jQuery.event.special.tap.handler);
-    },
-
-    handler: function(event) {
-        event.preventDefault();
-        var $elem = jQuery(this);
-        $elem.data(event.type, 1);
-        if (event.type === 'touchend' && !$elem.data('touchmove')) {
-            event.type = 'tap';
-            jQuery.event.handle.apply(this, arguments);
-        } else if ($elem.data('touchend')) {
-            $elem.removeData('touchstart touchmove touchend');
-        }
-    }
-};
+jQuery(window).on("scroll", function() {
+    scrolling = true;
+    endScrolling = window.setTimeout(function() {
+        scrolling = false;
+        window.clearTimeout(endScrolling);
+    }, 20);
+});
 
 
-jQuery('.l-align li a').bind('tap click', function() {
-    jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
+jQuery('.l-align li').on('touchstart click', 'a ', function(event){                       
+     event.preventDefault();
+    //BLOCK THE CLASS TOGGLE IF THE PAGE IS SCROLLING
+    if(!scrolling) {
+jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
 		jQuery(this).addClass('active_link');
        jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp();
 		 jQuery(".arrow-icon").removeClass("active");
-});
+    }
+}); 
+		
 		
 	});
 </script>
