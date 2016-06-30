@@ -142,7 +142,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 
         $emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
 
-        $vars = array('name' => $name,'topic'=>$topic, '$message'=> $message, 'email'=> $email);
+        $vars = array('name' => $name,'topic'=>$topic, 'message'=> $message, 'email'=> $email);
 
         $emailTemplate->getProcessedTemplate($vars);
         $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
