@@ -3026,7 +3026,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 #jobtabs .job-description .job-attributes ul li:before{display:none;}
 #jobtabs .job-description .job-attributes ul li span{font: 11px/20px gothambold; text-transform:uppercase;
     margin-right:6px; display:inline-block;}
-#jobtabs .job-description h6{font: 11px/20px gothambold; text-transform:uppercase; font-weight:normal;color:#555;}
+#jobtabs .job-description h6,#jobtabs .job-description .h6{font: 11px/20px gothambold; text-transform:uppercase; font-weight:normal;color:#555;}
 #jobtabs .job-description ul{list-style:none; margin:0 0 0 13px;}
 #jobtabs .job-description > ul,#jobtabs .job-description > p{margin-bottom:15px;}
 #jobtabs .job-description ul li {list-style: outside none none;padding-left: 20px; position: relative;}
