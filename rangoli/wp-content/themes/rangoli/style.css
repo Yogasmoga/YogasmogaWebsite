@@ -839,8 +839,6 @@ input.change_username {
 .homepage_slider .slider_post_title{border-bottom:0
 
 none;width:100%;}
-.homepage_slider .slider_post_title span{display:inline-
-
-block;padding:0 8%;border-bottom:1px solid #fff;}
+.homepage_slider .slider_post_title span{display:inline-block;padding:0 8%;border-bottom:1px solid #fff;}
 .ys-col-half{width:50%;float:left;box-sizing:border-box;}
 .ys-col-content {padding:0 15px;}
