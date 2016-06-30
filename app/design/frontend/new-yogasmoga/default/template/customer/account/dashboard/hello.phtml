@@ -25,13 +25,14 @@
  */
 ?>
 <div class="pg-heading" style="margin-bottom:94px;">
-    <h2>
+	<h1 style="display:none">My Account</h1>
+    <div class="h2">
         <?php
             $customer = Mage::getSingleton('customer/session')->getCustomer();
             $firstname = strtoupper($customer->getFirstname());
         ?>
         <?php echo $this->__('HELLO %s', $firstname); ?>
-    </h2>   
+    </div>   
   </div>
 
 <?php /*
@@ -55,7 +56,8 @@
 
 <div class="dashboard-container">
     <div class="smogi-info-box">
-        <h6>Smogi Bucks</h6>
+        <!--<h6>Smogi Bucks</h6>-->
+		<div class="h6">Smogi Bucks</div>
         <p><?php echo $this->__('You currently have') ?></p>
         <div class="smogi-counting">
             <span class="smogi-count"><?php
