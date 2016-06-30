@@ -496,25 +496,25 @@
 var endScrolling;
 
 jQuery(window).on("scroll", function() {
-    scrolling = true;
+	   scrolling = true;
     endScrolling = window.setTimeout(function() {
         scrolling = false;
         window.clearTimeout(endScrolling);
     }, 20);
 });
 
-
+if(!scrolling) {
 jQuery('.l-align li').on('touchstart click', 'a ', function(event){                       
      event.preventDefault();
     //BLOCK THE CLASS TOGGLE IF THE PAGE IS SCROLLING
-    if(!scrolling) {
+    
 jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
 		jQuery(this).addClass('active_link');
        jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp();
 		 jQuery(".arrow-icon").removeClass("active");
-    }
+   
 }); 
-		
+	 }	
 		
 	});
 </script>
