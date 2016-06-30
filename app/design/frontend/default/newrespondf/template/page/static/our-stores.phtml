@@ -484,7 +484,7 @@
 		jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(11) a').text('WALNUT CREEK, CA');
 		
 		
-		 jQuery(".ys_static_page_dropdown li").on("touchstart click touchend", "a", function (e) {
+		 jQuery(".ys_static_page_dropdown li").bind("touchstart touchend click", "a", function (e) {
         e.preventDefault();
 		jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
 		jQuery(this).addClass('active_link');
@@ -492,7 +492,7 @@
 		 jQuery(".arrow-icon").removeClass("active");
     });
 		
-		
+
 	});
 </script>
 <style>
