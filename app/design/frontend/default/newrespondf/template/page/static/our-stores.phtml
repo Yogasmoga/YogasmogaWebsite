@@ -439,6 +439,7 @@
         margin: 0 !important;
     }
 </style>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
         $(".sign-in-box .h1").html("OUR STORES");
@@ -484,37 +485,15 @@
 		jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(11) a').text('WALNUT CREEK, CA');
 		jQuery(".account-nav .flex-control-nav.flex-control-paging li a").attr("href","#");
 		
-		/* jQuery(".l-align li").on("click touchstart ", "a", function (e) {
+		 jQuery(".l-align li").on("click tap ", "a", function (e) {
         e.preventDefault();
 		jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
 		jQuery(this).addClass('active_link');
        jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp();
 		 jQuery(".arrow-icon").removeClass("active");
-    });*/
+    });
 
-		var scrolling = false;
-var endScrolling;
-
-jQuery(window).on("scroll", function() {
-	   scrolling = true;
-    endScrolling = window.setTimeout(function() {
-        scrolling = false;
-        window.clearTimeout(endScrolling);
-    }, 20);
-});
-
-if(!scrolling) {
-jQuery('.l-align li').on('touchstart click', 'a ', function(event){                       
-     event.preventDefault();
-    //BLOCK THE CLASS TOGGLE IF THE PAGE IS SCROLLING
-    
-jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
-		jQuery(this).addClass('active_link');
-       jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp();
-		 jQuery(".arrow-icon").removeClass("active");
-   
-}); 
-	 }	
+			
 		
 	});
 </script>
