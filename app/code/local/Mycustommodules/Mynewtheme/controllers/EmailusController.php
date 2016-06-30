@@ -123,14 +123,40 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $translate->setTranslateInline(true);
         return $email->getSentSuccess();
     }
-    public function sendquerymail(){
+    public function sendquerymailAction(){
+
+        $response = array(
+            "status" => 'error',
+            "errors" => '',
+            "success_message" => ""
+        );
+
+
         $name= $this->getRequest()->getPost('name');
         $topic= $this->getRequest()->getPost('topic');
         $message= $this->getRequest()->getPost('message');
         if(!isset($message)) $message='';
         $email= $this->getRequest()->getPost('email');
 
+        $templateId = "help_form";
 
+        $emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
+
+        $vars = array('name' => $name);
+
+        $emailTemplate->getProcessedTemplate($vars);
+        $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
+        $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
+
+            if(!empty($email)){
+                $emailTemplate->send($email,$name, $vars);
+                $response['status'] = "Thank Email has been sent";
+                echo json_encode($response);
+                return;
+            }
+
+
+        /*
         $templateId = 28;
         $sendername = Mage::getStoreConfig('trans_email/ident_general/name');
         $senderemail = Mage::getStoreConfig('trans_email/ident_general/email');
@@ -145,7 +171,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         Mage::getModel('core/email_template')
             ->sendTransactional($templateId, $sender, $email, $name, $vars, $storeId);
         $translate->setTranslateInline(true);
-
+        */
     }
 
 }
