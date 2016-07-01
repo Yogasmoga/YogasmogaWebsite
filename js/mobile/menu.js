@@ -12,7 +12,7 @@ $j(function () {
         html.toggleClass('nav-open');
         jQuery(".dropdown_content").slideUp();
         jQuery(".toggle_dropdown").removeClass("active");
-        jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp()
+        jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp();		
         jQuery(".sign-in-box .arrow-icon").removeClass("active");
     });
 
