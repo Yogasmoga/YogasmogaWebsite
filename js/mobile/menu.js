@@ -177,6 +177,7 @@ jQuery(document).ready(function($){
     $(".arrow-icon").click(function(){
         $(this).toggleClass("active");
         $(".account-nav.l-align").slideToggle();
+		$(".account-nav-box").toggleClass('showanb');
     });
     $(".story-box .txt-cnt a").click(function(e){
         e.preventDefault();
