@@ -64,42 +64,15 @@ a:hover {
 }
 
 /* Headings */
-h1, h2, h3,
-h4, h5, h6 {
-    margin: 0 0 5px;
-    line-height: 1.35;
-    color: #0a263c;
-}
 
-h1 {
-    font-size: 20px;
-    font-weight: normal;
-}
-
-h2 {
-    font-size: 18px;
-    font-weight: normal;
-}
-
-h3,.h3 {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-h4,.h4 {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-h5 {
-    font-size: 12px;
-    font-weight: bold;
-}
-
-h6 {
-    font-size: 11px;
-    font-weight: bold;
-}
+h1,h2,h3,
+h4,h5,h6 { margin:0 0 5px; line-height:1.35; color:#0a263c; }
+h1,.h1 { font-size:20px; font-weight:normal; }
+h2,.h2 { font-size:18px; font-weight:normal; }
+h3,.h3 { font-size:16px; font-weight:bold; }
+h4,.h4 { font-size:14px; font-weight:bold; }
+h5,.h5 { font-size:12px; font-weight:bold; }
+h6,.h6 { font-size:11px; font-weight:bold; }
 
 /* Forms */
 form {
