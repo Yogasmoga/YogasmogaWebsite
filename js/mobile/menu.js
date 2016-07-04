@@ -180,7 +180,7 @@ jQuery(document).ready(function($){
 		//$(".account-nav-box").toggleClass('showanb');
 		//check if element has showanb class --> remove showanb class with a delay
 		   if ($(".account-nav-box").hasClass('showanb')) {
-			 var delay = 1000; //ms
+			 var delay = 200; //ms
 			 setTimeout(function(){
 				 $(".account-nav-box").removeClass('showanb');
 			 },delay );
