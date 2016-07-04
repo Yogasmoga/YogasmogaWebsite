@@ -1215,14 +1215,14 @@ html[xmlns] body.mac-os .gridFullWidth:after {
     color: #c03;
 }
 
-.gridCMSPages h4,
+.gridCMSPages h4,.gridCMSPages .h4,
 .gridCMSPages h1,.gridCMSPages .h1{
     font: 36px/40px ITCAvantGardeProMd;
     text-transform: uppercase;
     position: relative;
 }
 
-.gridCMSPages h4 .smallHead{
+.gridCMSPages h4 .smallHead,.gridCMSPages .h4 .smallHead {
     font: 17px/35px ITCAvantGardeProBk;
     margin: 5px 0 0;
 }
@@ -1236,11 +1236,13 @@ html[xmlns] body.mac-os .gridFullWidth:after {
 }
 
 .gridCMSPages h4 .smallHead,
+.gridCMSPages .h4 .smallHead,
 .gridCMSPages .topHead{
     display: block;
 }
 
 .gridCMSPages h4,
+.gridCMSPages .h4,
 .gridCMSPages h1,
 .gridCMSPages .topHead,.gridCMSPages .h1{
     text-transform: uppercase;
@@ -1356,13 +1358,13 @@ html[xmlns] body.mac-os .gridFullWidth:after {
     margin: auto auto 43px;
 }
 
-.gridBlockContent h3{
+.gridBlockContent h3,.gridBlockContent .h3{
     font: 36px/40px ITCAvantGardeProMd;
     color: #555;
     margin: 15px 0 0;
 }
 
-.gridBlockContent h3 span{
+.gridBlockContent h3 span,.gridBlockContent .h3 span{
     font: 17px/35px ITCAvantGardeProBk;
     margin: 4px 0 0;
     display: block;
