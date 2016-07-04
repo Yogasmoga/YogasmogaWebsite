@@ -496,9 +496,12 @@
 			
 			jQuery(".arrow-icon").removeClass("active");
 		});
-		
+		jQuery(".flex-direction-nav	").on("click tap", "a", function () {
+			jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
+			jQuery(".ys_static_page_dropdown li a.flex-active").addClass('active_link');
+		});
 			
-		
+	
 	});
 </script>
 <style>
