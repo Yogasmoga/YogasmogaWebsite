@@ -500,7 +500,9 @@
 			jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
 			jQuery(".ys_static_page_dropdown li a.flex-active").addClass('active_link');
 		});
-		jQuery(".flexslider	").on("swipe", "a", function () {
+		jQuery(".flexslider	").on("swipe",function (e) {
+			//alert();
+			//jQuery( e.target ).addClass( "swipe" );
 			jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
 			jQuery(".ys_static_page_dropdown li a.flex-active").addClass('active_link');
 		});
