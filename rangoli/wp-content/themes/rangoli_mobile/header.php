@@ -700,6 +700,20 @@ $logged_in = is_user_logged_in();
 </svg>
                                 </span>
                             </li>
+                            <!--new ys-stores icon added-->
+                            <li class="ys_single_link"><a href="/our-stores">YS Stores</a>
+                                <span class="tech_icon">
+                                       <svg width="44" height="44" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                            viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+
+<g id="XMLID_2_">
+    <path id="XMLID_7_" fill="#CECECD"  d="M9.9,11.4l11.8,20.5l11.8-20.5H9.9z M11.7,12.4h20.2L21.7,29.9L11.7,12.4z"/>
+    <path id="XMLID_4_" fill="#CECECD"  d="M14.6,14.1l7.1,12.4l7.1-12.4H14.6z M16.3,15.1h4.9v2h-1.7l2.2,3.9l2.3-3.9h-1.8v-2h4.9
+		l-5.4,9.4L16.3,15.1z"/>
+</g>
+</svg>
+                                </span>
+                            </li><!--new ys-stores icon added , end-->
                             <li class="ys_single_link"><a href="/smogi-bucks">
                                     <span class="smogi_bucks_icon">
 

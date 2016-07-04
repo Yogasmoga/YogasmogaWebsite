@@ -177,6 +177,19 @@ jQuery(document).ready(function($){
     $(".arrow-icon").click(function(){
         $(this).toggleClass("active");
         $(".account-nav.l-align").slideToggle();
+        //$(".account-nav-box").toggleClass('showanb');
+        //check if element has showanb class --> remove showanb class with a delay
+        if ($(".account-nav-box").hasClass('showanb')) {
+            var delay = 400; //ms
+            setTimeout(function(){
+                $(".account-nav-box").removeClass('showanb');
+            },delay );
+        }
+        // element doesn't have showanb class --> add it
+        else {
+            $(".account-nav-box").addClass('showanb');
+        }
+
     });
     $(".story-box .txt-cnt a").click(function(e){
         e.preventDefault();

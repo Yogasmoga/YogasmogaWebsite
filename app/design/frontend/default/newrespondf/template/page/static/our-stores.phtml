@@ -1,20 +1,21 @@
-<div class="ys-bottom">
+<div class="ys-bottom account-nav-box">
     <div class="account-nav l-align ys_static_page_dropdown">
-        <ul class="sub-nav">
-            <li><a href="/our-story" data-heading="YS STORY" rel="our_story">Our Story</a></li>
-            <li><a href="/our-core-values" data-heading="YS CORE VALUES" rel="our_core_values">Our Core Values</a></li>
-            <li><a href="/our-ethics" data-heading="YS ETHICS" rel="our_core_ethics">Our Ethics</a></li>
+        <!--  <ul class="sub-nav">
+              <li><a href="javascript:void(0)"  rel="beverly-hills">BEVERLY HILLS, CA</a></li>
+              <li><a href="javascript:void(0)"  rel="brentwood">BRENTWOOD, CA</a></li>
+              <li><a href="javascript:void(0)"  rel="corte-madera">CORTE MADERA, CA</a></li>
 
-            <li><a href="/our-stores" data-heading="YS STORES" rel="our_stores">Our Stores</a></li>
-            <li><a href="/made-in-usa" data-heading="MADE IN USA" rel="made_in_usa">Made in USA</a></li>
-            <li><a href="/principles-of-yoga" data-heading="YOGA PRINCIPLES" rel="principles_of_yoga">Principles of
-                    Yoga</a></li>
-            <li><a href="/namaskar" data-heading="NAMASK&aacute;R" rel="namaskar_foundation">NAMASK&aacute;R
-                    Foundation</a></li>
-            <li><a href="/press" data-heading="PRESS" rel="press">Press</a></li>
+              <li><a href="javascript:void(0)" rel="la-jo-la-ca-holiday">LA JOLLA, CA</a></li>
+              <li><a href="javascript:void(0)" rel="malibu">MALIBU, CA</a></li>
+              <li><a href="javascript:void(0)"  rel="new-port-beach">NEWPORT BEACH, CA</a></li>
+              <li><a href="javascript:void(0)"  rel="san-francisco">SAN FRANCISCO, CA</a></li>
+              <li><a href="javascript:void(0)"  rel="walnut-creek">WALNUT CREEK, CA</a></li>
+              <li><a href="javascript:void(0)"  rel="townhouse">GREENWICH, CT</a></li>
+              <li><a href="javascript:void(0)" rel="short-hills-new-jersy">SHORT HILLS, NJ</a></li>
+              <li><a href="javascript:void(0)"  rel="westchester">WESTCHESTER, NY</a></li>
 
 
-        </ul>
+          </ul>-->
 
     </div>
 
@@ -23,7 +24,7 @@
 
 <div class="page_block" rel="our_stores">
     <div class="block_thumbnail">
-        <img src="<?php echo $this->getSkinUrl('images/our-stores.jpg'); ?>" class="img-responsive"/>
+        <img src="<?php echo $this->getSkinUrl('images/our-storesv3.png'); ?>" class="img-responsive"/>
 
         <div class="overlay-text">
             <!--            <p class="text">Learn More</p>-->
@@ -67,7 +68,7 @@
 
 
                 <li>
-                    <img src="<?php echo Mage::getBaseUrl('media'); ?>wysiwyg/mobile/ourstores/ys-la-jolla-store-mobile.jpg" class="img-responsive"
+                    <img src="<?php echo Mage::getBaseUrl('media'); ?>wysiwyg/mobile/ourstores/la-jolla-ys-store.jpg" class="img-responsive"
                          rel="la-jo-la-ca-holiday"/>
                 </li>
                 <li>
@@ -437,10 +438,36 @@
     .flexslider img {
         margin: 0 !important;
     }
+
+    .account-nav-box{height: 100%;left: 0;overflow: auto;position: fixed;top: 0;width: 100%; z-index: -1;}
+    .account-nav-box.showanb{z-index:9;}
+    .account-nav-box .account-nav{position:absolute;}
+    .account-nav .flex-control-nav{display:block!important; position:static;}
+    .account-nav .flex-control-nav li{display:block;margin:0 0px !important;}
+    .account-nav .flex-control-nav a{background:#fff;border-radius:0;}
+
+    .account-nav .sub-nav.flex-control-nav li a {
+        color: #656565!important;
+        display: block!important;
+        font-family: Avantgarde-demi!important;
+        font-size: 12px!important;
+        height: 44px!important;
+        line-height: 50px!important;
+        padding: 0 14px!important;
+        text-decoration: none!important;
+        text-transform: uppercase!important;
+        width: 100%!important;
+        text-indent:0!important;
+        position:static!important;
+    }
+    .account-nav .sub-nav.flex-control-nav li a.active_link{color:#ae8637 !important;}
+    .ui-loader{display:none!important;}
 </style>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-        $(".sign-in-box h1").html("OUR STORES");
+        $(".sign-in-box .h1").html("YS Stores");
+
         $(".flexslider").flexslider({
             after: function (slider) {
                 slideContent(slider);
@@ -465,5 +492,37 @@
         }
     }
 
+    jQuery(window).load(function(){
 
+        jQuery('.flex-control-nav.flex-control-paging').appendTo('.account-nav');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging').addClass('sub-nav');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(1) a').text('GREENWICH, CT');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(2) a').text('BRENTWOOD, CA');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(3) a').text('Beverly Hills, CA');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(4) a').text('NEWPORT BEACH, CA');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(5) a').text('MALIBU, CA');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(6) a').text('SAN FRANCISCO. CA');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(7) a').text('LA JOLLA, CA');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(8) a').text('CORTE MADERA, CA');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(9) a').text('WESTCHESTER, NY');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(10) a').text('SHORT HILLS, NJ');
+        jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child(11) a').text('WALNUT CREEK, CA');
+        jQuery(".account-nav .flex-control-nav.flex-control-paging li a").attr("href","#");
+
+
+        jQuery(".l-align li").on("click tap", "a", function (e) {
+            e.preventDefault();
+            jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
+            jQuery(this).addClass('active_link');
+            jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp('',function(){
+                jQuery(".account-nav-box").removeClass('showanb');
+            });
+
+            jQuery(".arrow-icon").removeClass("active");
+        });
+
+
+
+    });
 </script>
+
