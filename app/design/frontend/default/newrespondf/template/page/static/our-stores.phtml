@@ -489,7 +489,7 @@
 		jQuery(".l-align li").on("click tap", "a", function (e) {
 			e.preventDefault();
 			jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
-			//jQuery(this).addClass('active_link');
+			jQuery(this).addClass('active_link');
 			jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp('',function(){
 					jQuery(".account-nav-box").removeClass('showanb');
 			});
@@ -528,7 +528,7 @@
 	position:static!important;
 }
 .account-nav .sub-nav.flex-control-nav li a.active_link{color:#ae8637 !important;}
-.account-nav .sub-nav.flex-control-nav li a.flex-active{color:#ae8637 !important;}
+/*.account-nav .sub-nav.flex-control-nav li a.flex-active{color:#ae8637 !important;}*/
 .ui-loader{display:none!important;}
 
 </style>
