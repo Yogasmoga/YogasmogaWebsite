@@ -122,3 +122,8 @@ ul.shipping-menu > li.free-shipping{display:inline-block;font:italic 10px gotham
 .shipping-menu li > span{padding:0 13px 0 10px;display:inline-block;}
 .shipping-menu li > span.open-cart{padding:0}
 .free-shipping > span{padding:2px 0 0}
+/*--search bar in low resolution--*/
+@media screen and (max-width: 1200px) {
+    .search-bar{width:112px;}
+    #search_input{width:82px;}
+}

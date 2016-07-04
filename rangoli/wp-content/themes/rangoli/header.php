@@ -427,7 +427,7 @@ if(!is_user_logged_in()){
                                 <li><a href="/our-story">Our Story</a></li>
                                 <li><a href="/our-core-values">Our core values</a></li>
                                 <li><a href="/our-ethics">Our ethics</a></li>
-                                <li><a href="/our-stores">Our Stores</a></li>
+                                <!--<li><a href="/our-stores">Our Stores</a></li>-->
                                 <li><a href="/made-in-usa">Made in usa</a></li>
                                 <li><a href="/principles-of-yoga">Principles of yoga</a></li>
                                 <li><a href="/namaskar">Namaskár Foundation</a></li>
@@ -442,6 +442,7 @@ if(!is_user_logged_in()){
                                 <li><a href="/design-elements">ys design elements</a></li>
                             </ul>
                         </li>
+                        <li><a href="/our-stores">ys stores</a></li>
                         <li><a class="main-heading" href="/smogi-bucks">Smogi Bucks</a>
                             <ul style="left:-57px;" class="sub-menu mlink l-align">
                                 <li><a href="/smogi-bucks">what is smogi bucks</a></li>

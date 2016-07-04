@@ -80,7 +80,11 @@ ul.main-menu > li.over > ul.sub-menu{display: block;}
 .search-bar{ border: 1px solid #999; width: 172px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 #search_input { width: 145px; height: 24px; border: medium none; font-family: gothamlight; font-size: 11px; }
 #search-btn{background: transparent url("../images/search-icon.png") center no-repeat; border: none; width: 16px; height: 14px; font-size: 0; cursor: pointer; }
-
+/*--search bar in low resolution--*/
+@media screen and (max-width: 1200px) {
+    .search-bar{width:112px;}
+    #search_input{width:82px;}
+}
 /**Home Page**/
 .share-strip{padding: 8.5px 3.90625%; margin: 0 auto; /*width: 92%;*/ font-size: 0; display: block; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .share-strip .blk{width: 50%; display: none;}
@@ -3189,6 +3193,8 @@ iframe[name="google_conversion_frame"] {
     /*.categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:40px/39px itcavantgardepromd;}*/
     .categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:40px/39px itcavantgardepromd;}
     .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:23px;line-height:28px;}
+    /*--our stores cmsnavigation css--*/
+    .cms-our-stores .cmsNavigation > ul{position:relative; padding-top:0;top:50%; transform:translateY(-50%);-webkit-transform:translateY(-50%);}
 }
 @media only screen and (max-width : 1024px) {
     /*.categorypath-men-whats-new .bannerFluid .bnrtxt,.categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:36px/35px itcavantgardepromd;}*/

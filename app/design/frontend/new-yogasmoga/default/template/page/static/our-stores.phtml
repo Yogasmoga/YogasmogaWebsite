@@ -3,7 +3,35 @@
     jQuery(window).load(function () {
         jQuery('body').css('overflow', 'auto');
         jQuery('.namaskar-overlay1').fadeOut('slow');
-    })
+
+        /* jQuery('a[href*="#"]:not([href="#"])').on('click',function (e) {
+         e.preventDefault();
+
+         var target = this.hash;
+         var $target = jQuery(target);
+
+         jQuery('html, body').stop().animate({
+         'scrollTop': $target.offset().top + 200
+         }, 900, 'swing', function () {
+         window.location.hash = target;
+         });
+         }); */
+
+        jQuery('a[href*="#"]:not([href="#"])').click(function(e){
+            e.preventDefault();
+            var bcomh = jQuery('#bodycompensator').height();
+            //alert($("div").scrollTop());
+            var target = this.hash;
+            var $target = jQuery(target);
+
+            jQuery('html, body').animate({scrollTop: $target.offset().top - bcomh }, 900);
+        });
+
+    });
+
+
+
+
 </script>
 <!-- startCMSPages -->
 <div class="gridCMSPages">
@@ -14,15 +42,18 @@
             <!-- leftNavigation -->
             <div class="cmsNavigation">
                 <ul>
-                    <li><a href="/our-story">our story</a></li>
-                    <li><a href="/our-core-values">our core values</a></li>
-                    <li><a href="/our-ethics">our ethics</a></li>
-                    <li><a href="/our-stores" class="current">our
-                                stores</a></li>
-                    <li><a href="/made-in-usa">made in usa</a></li>
-                    <li><a href="/principles-of-yoga">principles of yoga</a></li>
-                    <li><a href="/namaskar">namaskÁr foundation</a></li>
-                    <li><a href="/press">press</a></li>
+                    <li><a href="#greenwich">Greenwich, CT</a></li>
+                    <li><a href="#brentwood">Brentwood, CA</a></li>
+                    <li><a href="#beverly-hills">Beverly Hills, CA</a></li>
+                    <li><a href="#newport-beach">Newport Beach, CA</a></li>
+                    <li><a href="#malibu">Malibu, CA</a></li>
+                    <li><a href="#san-francisco">San Francisco, CA</a></li>
+                    <li><a href="#la-jolla">La Jolla, CA</a></li>
+                    <li><a href="#corte-madera">Corte Madera, CA</a></li>
+                    <li><a href="#westchester">Westchester, NY</a></li>
+                    <li><a href="#short-hills">Short Hills, NJ</a></li>
+                    <li><a href="#walnut-creek">Walnut Creek, CA</a></li>
+
                 </ul>
             </div>
             <!-- leftNavigation -->
@@ -43,10 +74,10 @@
 
             <div class="positionAbs" id="ysbannertxt" style="top:32.4%;">
                 <span class="topHead">YOGASMOGA RETAIL EXPERIENCE</span>
-                <h4>
+                <div class="h4">
                     FROM NYC TO THE WORLD
                     <span class="smallHead">WE GO WHEREVER LIFE TAKES YOU</span>
-                </h4>
+                </div>
                 <!--div class="htext white">
                     Honoring the tenets of Yoga, we aspire to create world-class products.<br />Growing up in the Himalayas, the birthplace & capital of Yoga, our founders instinctively<br />infuse the timeless principles, spirit and practice of Yoga into everything we do. From our<br />cosmopolitan aesthetic, to our product technology, right down to creating our very own way<br />to give back, we’ve meticulously designed every part of the whole, one breath at a time.
                 </div-->
@@ -61,17 +92,17 @@
     <div class="gridFullWidth">
         <div id="ysbannertxt" class="gridCMSPages">
             <span style="color:#555;display:block;border-bottom:1px solid #555;margin:17px auto 15px" class="topHead ">IMAGINE: A STRONG COMMUNITY</span>
-            <h4 style="color:#555;width:100%;font:36px/40px ITCAvantGardeProMd;margin-bottom:0;" class="topHead ">
+            <div class="h4" style="color:#555;width:100%;font:36px/40px ITCAvantGardeProMd;margin-bottom:0;" class="topHead ">
                 REFLECT, CONNECT, LEARN, GROW
                 <span style="color:#555;" class="smallHead cntntheading">ONE BREATH AT A TIME</span>
-            </h4>
+            </div>
         </div>
     </div>
 
     <!-- gridBlockTwo -->
-    <div class="gridFullWidth marginbottom50">
+    <div  class="gridFullWidth marginbottom50">
         <div class="gridFullWidth">
-            <div class="block33">
+            <div id="greenwich" class="block33">
                 <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/YS-Stores-020815_04.jpg"
                      alt="" class="img-responsive"/>
                 <div class="cntntheading">
@@ -95,7 +126,7 @@
                         yoga classes and other wellness events. </p>
                 </div>
             </div>
-            <div class="block33">
+            <div id="brentwood" class="block33">
                 <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/YS-Stores-020815_05.jpg"
                      alt="" class="img-responsive"/>
                 <div class="cntntheading">
@@ -121,7 +152,7 @@
 
                 </div>
             </div>
-            <div class="block33">
+            <div id="beverly-hills" class="block33">
                 <img class="img-responsive"
                      src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/ys-stores-beverly-hills.jpg"
                      alt=""/>
@@ -155,7 +186,7 @@
         <div style="border-bottom:1px solid #fff!important;" class="bottomdivider">&nbsp;</div>
 
         <div class="gridFullWidth">
-            <div class="block33">
+            <div id="newport-beach" class="block33">
 
                 <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/fashion-island.png"
                      alt="" class="img-responsive"/>
@@ -188,7 +219,7 @@
             </div>
 
 
-            <div class="block33">
+            <div id="malibu" class="block33">
 
                 <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/malibu-our-store.jpg"
                      alt="" class="img-responsive"/>
@@ -214,7 +245,7 @@
 
                 </div>
             </div>
-            <div class="block33">
+            <div id="san-francisco" class="block33">
 
                 <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/san-francisco.png"
                      alt="" class="img-responsive"/>
@@ -248,17 +279,16 @@
         <div class="gridFullWidth">
 
 
-            <div class="block33 white-line-seperator">
-                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/ys-la-jolla-store.jpg"
+            <div id="la-jolla" class="block33 white-line-seperator">
+                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/ys-la-jolla-store-v2.jpg"
                      alt="" class="img-responsive"/>
                 <div class="cntntheading">
                     <div class="content-wrapper">
                         YOGASMOGA LA JOLLA <br/>
-						<span class="subtext"> 7863 Girard Ave, Suite No. 101, La Jolla, CA 92037<br/>858 732 YOGA (9642)
+						<span class="subtext"> 7863 Girard Ave, Suite No. 101, La Jolla, CA 92037<br/>858 732 YOGA (9642) 
 								  </span>
                         <span class="ys-store-email">lajolla@yogasmoga.com</span>
                     </div>
-
 
 
                 </div>
@@ -276,7 +306,7 @@
 
             </div>
 
-            <div class="block33">
+            <div id="corte-madera" class="block33">
                 <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/cortemadera.png"
                      alt="" class="img-responsive"/>
                 <div class="cntntheading">
@@ -305,7 +335,7 @@
                 </div>
 
             </div>
-            <div class="block33">
+            <div id="westchester" class="block33">
                 <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/westchester.png"
                      alt="" class="img-responsive"/>
                 <div class="cntntheading">
@@ -337,7 +367,7 @@
         <div class="gridFullWidth">
 
 
-            <div class="block33 white-line-seperator">
+            <div id="short-hills" class="block33 white-line-seperator">
                 <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/short-hills.png"
                      alt="" class="img-responsive"/>
                 <div class="cntntheading">
@@ -363,7 +393,7 @@
                 </div>
 
             </div>
-            <div class="block33">
+            <div id="walnut-creek" class="block33">
                 <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/walnut-creek.png"
                      alt="" class="img-responsive"/>
                 <div class="cntntheading">
