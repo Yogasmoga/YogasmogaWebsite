@@ -4,18 +4,29 @@
         jQuery('body').css('overflow', 'auto');
         jQuery('.namaskar-overlay1').fadeOut('slow');
 		
-			jQuery('a[href*="#"]:not([href="#"])').on('click',function (e) {
+			/* jQuery('a[href*="#"]:not([href="#"])').on('click',function (e) {
 				e.preventDefault();
 
 				var target = this.hash;
 				var $target = jQuery(target);
 
 				jQuery('html, body').stop().animate({
-					'scrollTop': $target.offset().top
+					'scrollTop': $target.offset().top + 200
 				}, 900, 'swing', function () {
 					window.location.hash = target;
 				});
-			});
+			}); */
+			
+			jQuery('a[href*="#"]:not([href="#"])').click(function(e){
+				e.preventDefault();
+				var bcomh = jQuery('#bodycompensator').height();
+				//alert($("div").scrollTop());
+				var target = this.hash;
+				var $target = jQuery(target);
+				jQuery('html, body').scrollTop()
+				jQuery('html, body').animate({scrollTop: $target.offset().top - bcomh }, 900);
+			}); 
+			
     });
 	
 	
