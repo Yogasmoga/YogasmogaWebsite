@@ -189,10 +189,12 @@
     $twitter_thumb  = $twitter_thumbs[0];
       if(!$twitter_thumb) {
       $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
-    } ?>
+    } 
+	$tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
+	?>
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@YOGASMOGA">
-	<!--<meta name="twitter:creator" content="@[author Twitter handle, if available - leave out if not]">-->
+	<meta name="twitter:creator" content="<?php echo $tc_author; ?>">
 	<meta name="twitter:title" content="<?php echo get_the_title(); ?> | Rangoli: The YOGASMOGA Community">
 	<meta name="twitter:description" content="<?php echo $description; ?>">
 	<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
