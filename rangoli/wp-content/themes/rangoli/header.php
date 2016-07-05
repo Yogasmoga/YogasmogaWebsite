@@ -183,6 +183,21 @@
 	?>
     <?php $canicalurl="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>
     <link rel="canonical" href="<?php echo $canicalurl; ?>" />
+	
+	<!--twitter cards meta -->
+	<?php $twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
+    $twitter_thumb  = $twitter_thumbs[0];
+      if(!$twitter_thumb) {
+      $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+    } ?>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@YOGASMOGA">
+	<!--<meta name="twitter:creator" content="@[author Twitter handle, if available - leave out if not]">-->
+	<meta name="twitter:title" content="<?php echo get_the_title(); ?> | Rangoli: The YOGASMOGA Community">
+	<meta name="twitter:description" content="<?php echo $description; ?>">
+	<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
+	<!--twitter cards meta, ends -->
+	
 </head>
 <body>
 
