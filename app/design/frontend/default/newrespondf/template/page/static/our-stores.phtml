@@ -459,7 +459,8 @@
 
     });
     function slideContent(slider) {
-        var current_slide = slider.currentSlide + 1;
+	    var current_slide = slider.currentSlide + 1;
+		
         var rel_value = slider.find(".slides li:nth-child(" + current_slide + ") img").attr("rel");
         slider.next().children("div").hide();
         if(rel_value!= undefined){
@@ -499,6 +500,11 @@
 		jQuery(".flex-direction-nav	").on("click tap", "a", function () {
 			jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
 			jQuery(".ys_static_page_dropdown li a.flex-active").addClass('active_link');
+		});
+		
+		jQuery(".flexslider").on("swipe", "img", function () {
+			 var current_slide = slider.currentSlide + 1;
+		alert(current_slide);
 		});
 		
 			
