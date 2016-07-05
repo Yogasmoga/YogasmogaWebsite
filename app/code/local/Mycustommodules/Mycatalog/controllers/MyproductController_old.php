@@ -923,7 +923,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $write = Mage::getSingleton('core/resource')->getConnection('core_write');
                     $readresult=$write->query("SELECT ce.email AS 'Parent', rr.rewardpoints_referral_email AS 'Child', rr.rewardpoints_referral_name AS 'Name' FROM rewardpoints_referral rr, customer_entity ce WHERE rr.rewardpoints_referral_parent_id = ce.entity_id AND rr.rewardpoints_referral_status=0 AND rr.rewardpoints_referral_email NOT IN (SELECT email FROM myresendlog WHERE status=0 and NOW() > DATE_SUB(NOW(), INTERVAL 24 HOUR))");
                     while ($row = $readresult->fetch() ) {
-                        //if($row['Child'] != "peeyush@mobikasa.com")
+                        //if($row['Child'] != "peeyush@yogasmoga.com")
 //                            continue;
 
                         $customer = Mage::getModel('customer/customer')
@@ -935,13 +935,13 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             $customer = Mage::getModel('customer/customer')
                                 ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
                                 ->loadByEmail($row['Parent']);
-                            //->loadByEmail('vishal@mobikasa.com');
+                            //->loadByEmail('vishal@yogasmoga.com');
                             //sleep(10);
 
-                            //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, 'ankit@mobikasa.com', $row['Name']))
+                            //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, 'ankit@yogasmoga.com', $row['Name']))
 
                             if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
-                                //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, "ankit@mobikasa.com", $row['Name']))
+                                //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, "ankit@yogasmoga.com", $row['Name']))
                                 $output = "sent";
                             if($output == "sent")
                                 $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',1,now())");

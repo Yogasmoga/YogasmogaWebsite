@@ -30,7 +30,7 @@ class Ankitsinghania_Abandonedcartreminder_IndexController extends Mage_Core_Con
     {
         $notifications = Mage::getModel('smogiexpirationnotifier/notify');
         $notifications->setCustomer_id(1);
-        $notifications->setCustomer_email("ankit@mobikasa.com");
+        $notifications->setCustomer_email("ankit@yogasmoga.com");
         $notifications->setBucks_expiring(10);
         $notifications->setBucks_expiration_date('2014-02-02');
         $notifications->setNotify_date('2014-02-02');
@@ -40,7 +40,7 @@ class Ankitsinghania_Abandonedcartreminder_IndexController extends Mage_Core_Con
     
     public function sendemailAction()
     {
-        echo Mage::getModel('smogiexpirationnotifier/notify')->sendemail("Manish Waliyan","ankit@mobikasa.com",100, 45);
+        echo Mage::getModel('smogiexpirationnotifier/notify')->sendemail("Manish Waliyan","ankit@yogasmoga.com",100, 45);
     }
 }
 ?>
