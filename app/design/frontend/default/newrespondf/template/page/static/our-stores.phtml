@@ -463,6 +463,7 @@
 			
 			
 		alert(current_slide);
+		jQuery(".account-nav .flex-control-nav.flex-control-paging li a").removeClass('active_link');
 		jQuery(".account-nav .flex-control-nav.flex-control-paging li:nth-child(" + current_slide + ") a").addClass('active_link');
 		
         var rel_value = slider.find(".slides li:nth-child(" + current_slide + ") img").attr("rel");
