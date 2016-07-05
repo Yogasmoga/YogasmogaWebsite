@@ -466,6 +466,7 @@
             slider.next().children("div[rel=" + rel_value + "]").fadeIn();
             slider.next().css("min-height", slider.next().children("div[rel=" + rel_value + "]").height());
         }
+		
     }
 
 	jQuery(window).load(function(){
@@ -501,6 +502,17 @@
 			jQuery(".ys_static_page_dropdown li a.flex-active").addClass('active_link');
 		});
 		
+		jQuery('.flexslider li img,.account-nav .flex-control-nav.flex-control-paging li a').each(function(e){
+			var fimgrel = jQuery('.flexslider li:nth-child('+ e +') img').attr('rel');
+			jQuery('.account-nav .flex-control-nav.flex-control-paging li:nth-child('+e+') a').attr('rel',fimgrel);
+		});
+		/*jQuery('.account-nav .flex-control-nav.flex-control-paging li a').each(function(e){
+			var cfimgrel = jQuery('.flex-active-slide img').attr('rel');			
+			if(jQuery('.account-nav .flex-control-nav.flex-control-paging li a').attr('rel') == cfimgrel){
+				jQuery(this).addClass('active_link');
+			}
+			
+		});*/
 			
 	
 	});
