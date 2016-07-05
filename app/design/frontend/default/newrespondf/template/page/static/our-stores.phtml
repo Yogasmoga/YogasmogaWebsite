@@ -447,6 +447,8 @@
         $(".flexslider").flexslider({
             after: function (slider) {
                 slideContent(slider);
+				$('.account-nav .flex-control-nav.flex-control-paging li a.flex-active').addClass('active_link');
+				
             }
         });
 
@@ -497,10 +499,10 @@
 			
 			jQuery(".arrow-icon").removeClass("active");
 		});
-		jQuery(".flex-direction-nav	").on("click tap", "a", function () {
+		/*jQuery(".flex-direction-nav	").on("click tap", "a", function () {
 			jQuery(".ys_static_page_dropdown li a").removeClass('active_link');
 			jQuery(".ys_static_page_dropdown li a.flex-active").addClass('active_link');
-		});
+		});*/
 		
 		jQuery('.flexslider li img,.account-nav .flex-control-nav.flex-control-paging li a').each(function(e){
 			var fimgrel = jQuery('.flexslider li:nth-child('+ e +') img').attr('rel');
