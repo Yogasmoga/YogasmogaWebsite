@@ -30,6 +30,22 @@ $logged_in = is_user_logged_in();
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
             <meta property="description"
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
+			<!--twitter cards meta -->
+			<?php 
+			$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
+			$twitter_thumb  = $twitter_thumbs[0];
+			  if(!$twitter_thumb) {
+			  $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+			} 
+			$tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
+			?>
+			<meta name="twitter:card" content="summary_large_image">
+			<meta name="twitter:site" content="@YOGASMOGA">
+			<meta name="twitter:creator" content="<?php echo $tc_author; ?>">
+			<meta name="twitter:title" content="Rangoli: The YOGASMOGA Community">
+			<meta name="twitter:description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community.">
+			<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
+			<!--twitter cards meta, ends -->	  
         <?php
         }
         if (is_page("read")) {
@@ -40,6 +56,22 @@ $logged_in = is_user_logged_in();
                   content="Our READ section features a curated selection of health & wellness related articles, op-eds, editorial, recipes, biographies, interviews and more. Your brain will love you for it. Rangoli: The YOGASMOGA Community."/>
             <meta property="description"
                   content="Our READ section features a curated selection of health & wellness related articles, op-eds, editorial, recipes, biographies, interviews and more. Your brain will love you for it. Rangoli: The YOGASMOGA Community."/>
+			<!--twitter cards meta -->
+			<?php 
+			$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
+			$twitter_thumb  = $twitter_thumbs[0];
+			  if(!$twitter_thumb) {
+			  $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+			} 
+			$tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
+			?>
+			<meta name="twitter:card" content="summary_large_image">
+			<meta name="twitter:site" content="@YOGASMOGA">
+			<meta name="twitter:creator" content="<?php echo $tc_author; ?>">
+			<meta name="twitter:title" content="Read | Rangoli: The YOGASMOGA Community">
+			<meta name="twitter:description" content="Our READ section features a curated selection of health & wellness related articles, op-eds, editorial, recipes, biographies, interviews and more. Your brain will love you for it. Rangoli: The YOGASMOGA Community.">
+			<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
+			<!--twitter cards meta, ends -->
         <?php
         }
         if (is_page("look")) {
@@ -50,6 +82,22 @@ $logged_in = is_user_logged_in();
                   content="Discover our Look section and browse through photography, slideshows, and more awe-inspiring imagery that revolve around health & wellness. Pictures are worth 1000 words and our Look section will give you plenty to talk about. Rangoli: The YOGASMOGA Community."/>
             <meta property="description"
                   content="Discover our Look section and browse through photography, slideshows, and more awe-inspiring imagery that revolve around health & wellness. Pictures are worth 1000 words and our Look section will give you plenty to talk about. Rangoli: The YOGASMOGA Community."/>
+			<!--twitter cards meta -->
+			<?php 
+			$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
+			$twitter_thumb  = $twitter_thumbs[0];
+			  if(!$twitter_thumb) {
+			  $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+			} 
+			$tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
+			?>
+			<meta name="twitter:card" content="summary_large_image">
+			<meta name="twitter:site" content="@YOGASMOGA">
+			<meta name="twitter:creator" content="<?php echo $tc_author; ?>">
+			<meta name="twitter:title" content="Look | Rangoli: The YOGASMOGA Community">
+			<meta name="twitter:description" content="Discover our Look section and browse through photography, slideshows, and more awe-inspiring imagery that revolve around health & wellness. Pictures are worth 1000 words and our Look section will give you plenty to talk about. Rangoli: The YOGASMOGA Community.">
+			<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
+			<!--twitter cards meta, ends -->
         <?php
         }
         if (is_page("learn")) {
@@ -60,6 +108,22 @@ $logged_in = is_user_logged_in();
                   content="Learn how to hit that yoga pose with video tutorials from our beloved SMOGIs. Whether you’re a beginner or a seasoned yogi, our SMOGIs will guide you step-by-step with each pose, adjustment, inhale and exhale. Rangoli: The YOGASMOGA Community."/>
             <meta property="description"
                   content="Learn how to hit that yoga pose with video tutorials from our beloved SMOGIs. Whether you’re a beginner or a seasoned yogi, our SMOGIs will guide you step-by-step with each pose, adjustment, inhale and exhale. Rangoli: The YOGASMOGA Community."/>
+			<!--twitter cards meta -->
+			<?php 
+			$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
+			$twitter_thumb  = $twitter_thumbs[0];
+			  if(!$twitter_thumb) {
+			  $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+			} 
+			$tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
+			?>
+			<meta name="twitter:card" content="summary_large_image">
+			<meta name="twitter:site" content="@YOGASMOGA">
+			<meta name="twitter:creator" content="<?php echo $tc_author; ?>">
+			<meta name="twitter:title" content="Learn | Rangoli: The YOGASMOGA Community">
+			<meta name="twitter:description" content="Learn how to hit that yoga pose with video tutorials from our beloved SMOGIs. Whether you’re a beginner or a seasoned yogi, our SMOGIs will guide you step-by-step with each pose, adjustment, inhale and exhale. Rangoli: The YOGASMOGA Community.">
+			<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
+			<!--twitter cards meta, ends -->
         <?php
         }
         if (is_404()) {
@@ -70,6 +134,23 @@ $logged_in = is_user_logged_in();
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
             <meta property="description"
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
+			
+			<!--twitter cards meta -->
+			<?php 
+			$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
+			$twitter_thumb  = $twitter_thumbs[0];
+			  if(!$twitter_thumb) {
+			  $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+			} 
+			$tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
+			?>
+			<meta name="twitter:card" content="summary_large_image">
+			<meta name="twitter:site" content="@YOGASMOGA">
+			<meta name="twitter:creator" content="<?php echo $tc_author; ?>">
+			<meta name="twitter:title" content="404 | Rangoli: The YOGASMOGA Community">
+			<meta name="twitter:description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community.">
+			<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
+			<!--twitter cards meta, ends -->
         <?php
         }
         if (is_author()) {
@@ -85,6 +166,22 @@ $logged_in = is_user_logged_in();
                       content="Centrally located on the corner of San Vicente Boulevard and Montana Avenue in Brentwood, Los Angeles. We chose this space for its accessibility and neighborhood vibe. Our bright and sunny Brentwood store is wrapped in floor-to-ceiling windows that fill the space with natural light and warm, welcoming energy."/>
                 <meta property="description"
                       content="Centrally located on the corner of San Vicente Boulevard and Montana Avenue in Brentwood, Los Angeles. We chose this space for its accessibility and neighborhood vibe. Our bright and sunny Brentwood store is wrapped in floor-to-ceiling windows that fill the space with natural light and warm, welcoming energy."/>
+				<!--twitter cards meta -->
+				<?php 
+				$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
+				$twitter_thumb  = $twitter_thumbs[0];
+				  if(!$twitter_thumb) {
+				  $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+				} 
+				$tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
+				?>
+				<meta name="twitter:card" content="summary_large_image">
+				<meta name="twitter:site" content="@YOGASMOGA">
+				<meta name="twitter:creator" content="<?php echo $tc_author; ?>">
+				<meta name="twitter:title" content="YOGASMOGA Brentwood | Rangoli: The YOGASMOGA Community">
+				<meta name="twitter:description" content="Centrally located on the corner of San Vicente Boulevard and Montana Avenue in Brentwood, Los Angeles. We chose this space for its accessibility and neighborhood vibe. Our bright and sunny Brentwood store is wrapped in floor-to-ceiling windows that fill the space with natural light and warm, welcoming energy.">
+				<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
+				<!--twitter cards meta, ends -->
             <?php
             }
             if ($author_name == "YOGASMOGA TOWNHOUSE") {
@@ -94,6 +191,22 @@ $logged_in = is_user_logged_in();
                       content="We chose this two-story townhouse on Greenwich Avenue as our first store for its strong feel of community. The exposed brick walls create a cozy atmosphere and neutral palate for our bright collections. We are currently renovating the upstairs space for yoga classes and other wellness events."/>
                 <meta property="description"
                       content="We chose this two-story townhouse on Greenwich Avenue as our first store for its strong feel of community. The exposed brick walls create a cozy atmosphere and neutral palate for our bright collections. We are currently renovating the upstairs space for yoga classes and other wellness events."/>
+				<!--twitter cards meta -->
+				<?php 
+				$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
+				$twitter_thumb  = $twitter_thumbs[0];
+				  if(!$twitter_thumb) {
+				  $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+				} 
+				$tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
+				?>
+				<meta name="twitter:card" content="summary_large_image">
+				<meta name="twitter:site" content="@YOGASMOGA">
+				<meta name="twitter:creator" content="<?php echo $tc_author; ?>">
+				<meta name="twitter:title" content="YOGASMOGA Townhouse | Rangoli: The YOGASMOGA Community">
+				<meta name="twitter:description" content="We chose this two-story townhouse on Greenwich Avenue as our first store for its strong feel of community. The exposed brick walls create a cozy atmosphere and neutral palate for our bright collections. We are currently renovating the upstairs space for yoga classes and other wellness events.">
+				<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
+				<!--twitter cards meta, ends -->
             <?php
             }
             if ($author_name == "YOGASMOGA HQ") {
@@ -103,6 +216,22 @@ $logged_in = is_user_logged_in();
                       content="We are YOGASMOGA. Designed in NYC. Made in USA. We make things for life, one breath at a time."/>
                 <meta property="description"
                       content="We are YOGASMOGA. Designed in NYC. Made in USA. We make things for life, one breath at a time."/>
+				<!--twitter cards meta -->
+				<?php 
+				$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
+				$twitter_thumb  = $twitter_thumbs[0];
+				  if(!$twitter_thumb) {
+				  $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+				} 
+				$tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
+				?>
+				<meta name="twitter:card" content="summary_large_image">
+				<meta name="twitter:site" content="@YOGASMOGA">
+				<meta name="twitter:creator" content="<?php echo $tc_author; ?>">
+				<meta name="twitter:title" content="YOGASMOGA HQ | Rangoli: The YOGASMOGA Community">
+				<meta name="twitter:description" content="We are YOGASMOGA. Designed in NYC. Made in USA. We make things for life, one breath at a time.">
+				<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
+				<!--twitter cards meta, ends -->
             <?php
             }
         }
@@ -113,6 +242,22 @@ $logged_in = is_user_logged_in();
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind."/>
             <meta property="description"
                   content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind."/>
+			<!--twitter cards meta -->
+			<?php 
+			$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
+			$twitter_thumb  = $twitter_thumbs[0];
+			  if(!$twitter_thumb) {
+			  $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+			} 
+			$tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
+			?>
+			<meta name="twitter:card" content="summary_large_image">
+			<meta name="twitter:site" content="@YOGASMOGA">
+			<meta name="twitter:creator" content="<?php echo $tc_author; ?>">
+			<meta name="twitter:title" content="About Rangoli | Rangoli: The YOGASMOGA Community">
+			<meta name="twitter:description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind.">
+			<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
+			<!--twitter cards meta, ends -->
         <?php
         } else {
             $post = get_post();
@@ -130,6 +275,22 @@ $logged_in = is_user_logged_in();
             <meta property="og:image"
                   content="<?php $banner_img_url = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'single-post-thumbnail');
                   echo $banner_img_url[0]; ?>"/>
+				  <!--twitter cards meta -->
+				<?php 
+				$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
+				$twitter_thumb  = $twitter_thumbs[0];
+				  if(!$twitter_thumb) {
+				  $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+				} 
+				$tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
+				?>
+				<meta name="twitter:card" content="summary_large_image">
+				<meta name="twitter:site" content="@YOGASMOGA">
+				<meta name="twitter:creator" content="<?php echo $tc_author; ?>">
+				<meta name="twitter:title" content="<?php echo get_the_title(); ?> | Rangoli: The YOGASMOGA Community">
+				<meta name="twitter:description" content="<?php echo $description; ?>">
+				<meta name="twitter:image" content="<?php echo $twitter_thumb; ?>">
+				<!--twitter cards meta, ends -->
         <?php
         }
         ?>
