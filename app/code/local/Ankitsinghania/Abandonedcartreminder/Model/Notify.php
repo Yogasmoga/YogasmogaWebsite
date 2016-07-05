@@ -25,7 +25,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
 //                if($serverType == 'production')
 //                $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period));
                 /*    else
-                        $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));  */
+                        $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@yogasmoga.com", $customer['bucks_expiring'], $notification_period));  */
 //                $write = Mage::getSingleton('core/resource')->getConnection('core_write');
 //                $readresult=$write->query("SELECT count(*) as total FROM abandonedcart_reminder_log WHERE customer_email='".$customer['customer_email']."' AND cartid=".$customer['cartid']."  AND email_status = 1 limit 1");
 //                $total='';
@@ -34,7 +34,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
 //                }
                 //echo $total;
                 //print_r($customer);
-//                if($customer['customer_email']=='neha@mobikasa.com')
+//                if($customer['customer_email']=='neha@yogasmoga.com')
 //                {
                     /// $customer['customer_email'];
                     $notification_log = Mage::getModel('abandonedcartreminder/notify');
@@ -291,7 +291,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
 
         $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','abandonedcart_notification_email');
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
-        $recipient_email='neha@mobikasa.com';
+        $recipient_email='neha@yogasmoga.com';
         $recipient = array(
             'email' => $recipient_email,
             'name'  => $recipient_fistname
@@ -346,7 +346,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                 if($serverType == 'production')
 				    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period));
             /*    else
-                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));  */
+                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@yogasmoga.com", $customer['bucks_expiring'], $notification_period));  */
                 $notification_log->setNotification_period($notification_period);
                 $notification_log->save();
             }
