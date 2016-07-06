@@ -72,7 +72,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        }
 //        $html .='</table>';
 //        $html .= "</body></html>";
-//        $toemail='neeraj@mobikasa.com';
+//        $toemail='neeraj@yogasmoga.com';
 //        $headers = "From: " . strip_tags($from) . "\r\n";
 //        $headers .= "Reply-To: ". strip_tags($from) . "\r\n";
 //        $headers .= "MIME-Version: 1.0\r\n";
@@ -97,8 +97,8 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
 
         $recipient = array(
-            //'email' => 'neha@mobikasa.com',
-            'email' => 'manish@mobikasa.com',
+            //'email' => 'neha@yogasmoga.com',
+            'email' => 'manish@yogasmoga.com',
             'name'  => 'YOGASMOGA'
         );
         $cusname = $this->cusname1;

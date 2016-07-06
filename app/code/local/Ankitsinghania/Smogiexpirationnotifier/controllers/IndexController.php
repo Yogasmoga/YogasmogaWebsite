@@ -26,7 +26,7 @@ class Ankitsinghania_Smogiexpirationnotifier_IndexController extends Mage_Core_C
     {
         $notifications = Mage::getModel('smogiexpirationnotifier/notify');
         $notifications->setCustomer_id(1);
-        $notifications->setCustomer_email("ankit@mobikasa.com");
+        $notifications->setCustomer_email("fahim.khan@yogasmoga.com");
         $notifications->setBucks_expiring(10);
         $notifications->setBucks_expiration_date('2014-02-02');
         $notifications->setNotify_date('2014-02-02');
@@ -36,7 +36,7 @@ class Ankitsinghania_Smogiexpirationnotifier_IndexController extends Mage_Core_C
     
     public function sendemailAction()
     {
-        echo Mage::getModel('smogiexpirationnotifier/notify')->sendemail("Manish Waliyan","ankit@mobikasa.com",100, 45);
+        echo Mage::getModel('smogiexpirationnotifier/notify')->sendemail("Manish Waliyan","fahim.khan@yogasmoga.com",100, 45);
     }
 }
 ?>

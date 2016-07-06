@@ -512,12 +512,12 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
         $this->_mail = new Zend_Mail('utf-8');
         
         $mail = $this->_mail;
-        $mail->addTo('ankit@mobikasa.com', '=?utf-8?B?' . base64_encode('Ankit Singhania') . '?=');
+        $mail->addTo('fahim.khan@yogasmoga.com', '=?utf-8?B?' . base64_encode('Ankit Singhania') . '?=');
         
         $this->setUseAbsoluteLinks(true);
         $mail->setBodyText('Please arrive at 10 pm');
         $mail->setSubject('=?utf-8?B?' . base64_encode('Notification') . '?=');
-        $mail->setFrom('bijay@mobikasa.com', 'bijay shah');
+        $mail->setFrom('bijay@yogasmoga.com', 'bijay shah');
         $mail->send();
         
         
