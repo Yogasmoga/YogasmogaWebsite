@@ -472,6 +472,9 @@
         $(".flexslider").flexslider({
             after: function (slider) {
                 slideContent(slider);
+                $('.account-nav .flex-control-nav.flex-control-paging li a').removeClass('active_link');
+                $('.account-nav .flex-control-nav.flex-control-paging li a.flex-active').addClass('active_link');
+
             }
         });
 
