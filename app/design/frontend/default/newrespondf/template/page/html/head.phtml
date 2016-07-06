@@ -42,7 +42,8 @@
 <meta name="twitter:title" content="<?php echo $this->getTitle() ?>">
 <meta name="twitter:description" content="<?php echo htmlspecialchars($this->getDescription()) ?>">
 <meta name="twitter:image"
-      content="<?php if(Mage::getBlockSingleton('page/html_header')->getIsHomePage()) {
+      content="<?php if(Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms')
+      {
           echo $this->getSkinUrl('images/ys_twitter_women.jpg');
       }
       if($this->getRequest()->getControllerName()=='category'){
