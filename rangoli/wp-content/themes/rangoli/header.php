@@ -197,7 +197,7 @@
             $twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
             $twitter_thumb  = $twitter_thumbs[0];
             if(!$twitter_thumb) {
-                $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+                $twitter_thumb = get_template_directory_uri().'/images/ys_twitter.jpg';
             }
             $tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
             ?>
@@ -222,7 +222,7 @@
         $twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
         $twitter_thumb  = $twitter_thumbs[0];
         if(!$twitter_thumb) {
-            $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+            $twitter_thumb = get_template_directory_uri().'/images/ys_twitter.jpg';
         }
         $tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
         ?>
@@ -254,7 +254,7 @@
         $twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), full );
         $twitter_thumb  = $twitter_thumbs[0];
         if(!$twitter_thumb) {
-            $twitter_thumb = get_template_directory_uri().'/images/ys_logo.png';
+            $twitter_thumb = get_template_directory_uri().'/images/ys_twitter.jpg';
         }
         $tc_author   = str_replace('@', '', get_the_author_meta('twitter'));
         ?>
