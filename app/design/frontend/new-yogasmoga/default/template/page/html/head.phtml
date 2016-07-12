@@ -127,6 +127,48 @@ if(strpos($url, "checkout/")===false)
 <?php echo $this->getChildHtml() ?>
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>
 <?php echo $this->getIncludes() ?>
+<!--twitter cards meta -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@YOGASMOGA">
+<meta name="twitter:title" content="<?php echo $this->getTitle() ?>">
+<meta name="twitter:description" content="<?php echo htmlspecialchars($this->getDescription()) ?>">
+<meta name="twitter:image"
+      content="<?php if(Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms')
+      {
+          echo $this->getSkinUrl('images/ys_twitter_women.jpg');
+      }
+      if($this->getRequest()->getControllerName()=='category'){
+
+          $categoryId = Mage::registry('current_category')->getId();
+          $category = Mage::getModel('catalog/category')->load($categoryId);
+
+          $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+          $categoryName = explode('/', $currentUrl);
+          $urlKey = $categoryName[3];
+
+
+          if($category->getImageUrl()){
+              echo $category->getImageUrl();
+          }
+          else{
+              if(strtolower($urlKey) == 'women'){
+                  echo $this->getSkinUrl('images/ys_twitter_women.jpg');
+              }
+              else{
+                  echo $this->getSkinUrl('images/ys_twitter_men.jpg');
+              }
+
+          }
+      }
+      if($this->getRequest()->getControllerName()=='product'){
+          $productId = Mage::registry('current_product')->getId();
+          $_product = Mage::getModel('catalog/product')->load($productId);
+          //echo Mage::helper('catalog/image')->init($_product, 'small_image')->resize(135);
+          echo Mage::helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);
+      }
+      ?>">
+
+<!--twitter cards meta, ends -->
 <?php /*
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myscripts.js"></script>
