@@ -55,7 +55,7 @@ if(isset($_REQUEST['from_date'])) {
 
     fputcsv($fp, array(''));
     fputcsv($fp, array(''));
-    fputcsv($fp, array("Order ID", "Name", "Email","City", "Country", "Amount","Date", "Discount", "Discount Type"));
+    fputcsv($fp, array("Order ID", "Name", "Email","City", "Country", "Amount","Date", "Available Smogibucks","Discount", "Discount Type"));
     fputcsv($fp, array('','','',''));
 
     foreach ($orders as $order) {
@@ -68,12 +68,26 @@ if(isset($_REQUEST['from_date'])) {
         $date = $order->getCreatedAt();
         $countryS = $order->getShippingAddress();
 
+        $customer = Mage::getModel("customer/customer");
+        $customer->setWebsiteId(Mage::app()->getWebsite('admin')->getId());
+        $customer->loadByEmail($email);
+        $customerId = $customer->getId();
+
+        $store_id = Mage::app()->getStore()->getId();
+        $reward_model = Mage::getModel('rewardpoints/stats');
+        $points = $reward_model->getPointsCurrent($customerId, $store_id);
+
+
+
+
+
+
         if($countryS){
             $countryS = $order->getShippingAddress()->getCountry();
             $city = $order->getBillingAddress()->getCity();
 
             if($order->getShippingAddress()->getCountry() == $country){
-                fputcsv($fp, array($orderId, $name, $email, $city,  $countryS, $amount, date("d-M-Y", strtotime($date)), $discount, $discountDescription));
+                fputcsv($fp, array($orderId, $name, $email, $city,  $countryS, $amount, date("d-M-Y", strtotime($date)),$points, $discount, $discountDescription));
             }
         }else{
             //fputcsv($fp, array($orderId, $countryS, $email, $amount, $discount, $discountDescription, date("d-M-Y", strtotime($date))));
