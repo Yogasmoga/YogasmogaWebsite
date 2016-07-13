@@ -128,7 +128,7 @@ else{
     </header>
     <div class="content">
 
-        <form class="qry-form" method="post" action="ordersbylocation.php">
+        <form class="qry-form" method="post" action="customer-order-data.php">
 
             <table  border="0">
                 <tr>
