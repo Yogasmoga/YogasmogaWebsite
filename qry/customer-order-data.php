@@ -68,10 +68,8 @@ if(isset($_REQUEST['from_date'])) {
         $date = $order->getCreatedAt();
         $countryS = $order->getShippingAddress();
 
-        $customer = Mage::getModel("customer/customer");
-        $customer->setWebsiteId(Mage::app()->getWebsite('admin')->getId());
-        $customer->loadByEmail($email);
-        $customerId = $customer->getId();
+
+        $customerId = $order->getCustomerId();
 
         $store_id = Mage::app()->getStore()->getId();
         $reward_model = Mage::getModel('rewardpoints/stats');
