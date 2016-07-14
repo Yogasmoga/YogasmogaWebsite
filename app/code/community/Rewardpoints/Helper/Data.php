@@ -475,5 +475,24 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
         }
         return $item->getBaseRowTotal()+$tax;
     }
+
+    //Send email confirmation to earn 50% discount if referal purchase order greater than $200.
+
+    public function getSendEmailWithCouponCode($name,$email, $refName){
+        $templateId = "50percent_discount";
+
+        $emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
+        $coupon = "YSDESIGN2015";
+        $vars = array(
+                    'name' => $name,
+                    'coupon'=>$coupon,
+                    'referal'=>$refName
+                    );
+        $storeId = Mage::app()->getStore()->getId();
+        $emailTemplate->getProcessedTemplate($vars);
+        $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
+        $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
+        $emailTemplate->send($email,$name, $vars);
+    }
     
 }
