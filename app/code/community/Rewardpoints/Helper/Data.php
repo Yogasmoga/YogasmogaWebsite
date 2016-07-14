@@ -482,7 +482,7 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
         $templateId = "50percent_discount";
 
         $emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
-        $coupon = "YSDESIGN2015";
+        $coupon = "YOGASMOGATECHNOLOGY";
         $vars = array(
                     'name' => $name,
                     'coupon'=>$coupon,
