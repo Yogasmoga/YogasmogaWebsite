@@ -706,7 +706,8 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                     $parentName  = $parent->getName();
                     $parentEmail = $parent->getEmail();
                     $refName = $child->getName();
-                    if($order->getBaseGrandTotal() == 1){
+                    $orderTotal = (int)$order->getBaseGrandTotal();
+                    if($orderTotal == 1){
                         Mage::helper('rewardpoints')->getSendEmailWithCouponCode($parentName,$parentEmail,$refName);
                     }
 
