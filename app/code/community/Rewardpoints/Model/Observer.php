@@ -703,13 +703,13 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                     }
                     $referralModel->sendConfirmation($parent, $child, $parent->getEmail());
                     // Add code for specific coupon Email by Fahim Khan.
-                    $parentName  = $parent->getName();
+                    /*$parentName  = $parent->getName();
                     $parentEmail = $parent->getEmail();
                     $refName = $child->getName();
                     $orderTotal = (int)$order->getBaseGrandTotal();
                     if($orderTotal == 1){
                         Mage::helper('rewardpoints')->getSendEmailWithCouponCode($parentName,$parentEmail,$refName);
-                    }
+                    }*/
 
 
                 }
