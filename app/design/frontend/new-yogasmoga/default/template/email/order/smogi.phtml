@@ -11,7 +11,7 @@
         $readresult = $write->query("SELECT * FROM rewardpoints_account WHERE order_id='".$increment_id."' and points_current > 0 order by rewardpoints_account_id limit 1");
         $row = $readresult->fetch();
         if($row['points_current'] > 0)
-            echo "You have earned ".$row['points_current']." SMOGI Bucks with this order. ";
+           // echo "You have earned ".$row['points_current']." SMOGI Bucks with this order. ";
         
         $available_points = 0;
         $store_id = Mage::app()->getStore()->getId();
