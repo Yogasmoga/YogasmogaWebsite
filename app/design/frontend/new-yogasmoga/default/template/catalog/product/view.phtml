@@ -989,7 +989,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                         <div class="productname">
                                             <h1 itemprop="name"><?php echo html_entity_decode($productName); ?></h1></div>
                                         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="productcost amount " itemprop="price"><?php echo $productPrice; ?></span>
-										<meta itemprop="priceCurrency" content="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode();>" />;
+										<meta itemprop="priceCurrency" content="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode();?>" />;
 										</div>
                                             <span class="was-amount no-display"
                                                   style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
