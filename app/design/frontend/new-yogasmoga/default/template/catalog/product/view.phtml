@@ -575,7 +575,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 <?php } ?>
 
 <!-- ProductPage -->
-<div class="product-details">
+<div class="product-details" itemscope itemtype="http://schema.org/Product" itemid="<?php echo $_product->getSku();?>">
 
     <!-- productdetails -->
     <div id="productdetails" desc="<?php echo html_entity_decode($productName); ?>" class="fullscreen pgsection"
@@ -971,10 +971,10 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                     <!-- heading -->
                                     <div class="prdname">
                                         <div class="productname">
-                                            <h1><?php echo html_entity_decode($productName); ?></h1></div>
-                                        <span class="productcost amount "><?php echo $productPrice; ?></span>
+                                            <h1 itemprop="name"><?php echo html_entity_decode($productName); ?></h1></div>
+                                        <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>
                                             <span class="was-amount no-display"
-                                                  style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
+                                                  style="text-transform: lowercase;" itemprop="price"><?php echo 'was ' . $productPrice; ?></span>
 
                                         <div class='part-of-gift-set' style="display: none;"></div>
 
@@ -988,7 +988,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                             <table class="selectedcolor">
                                                 <tr>
                                                     <td><span>color:</span></td>
-                                                    <td class="selectedcolortext"></td>
+                                                    <td class="selectedcolortext" itemprop="color"></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -1327,7 +1327,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                         <div class='main-description' rel='main'>
                             <?php //echo $defaultProductDescription; ?>
                             <?php  if (strlen($defaultProductDescription) < 210) { ?>
-                                <div class="shortdesc"><?php echo $defaultProductDescription; ?> </div>
+                                <div class="shortdesc" itemprop="description"><?php echo $defaultProductDescription; ?> </div>
                                 <?php
                             }
                             else {
@@ -1336,7 +1336,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                 $secondstr = substr($str, 210, strlen($str));
                                 ?>
                                 <div class="shortdesc">
-                                    <span><?php echo $firststr; ?></span><span class="sec-desc"><?php echo $secondstr; ?></span>
+                                    <span  itemprop="description"><?php echo $firststr; ?></span><span class="sec-desc"><?php echo $secondstr; ?></span>
                                     <span class="dot">...</span>
                                     <p class="readmore" style="margin: 0; cursor:pointer;">
                                         <span id="more">Read more</span><span id="less" class="dnone">Read less</span>
@@ -1350,7 +1350,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                             foreach ($arDescriptionArray as $key => $value) {?>
                                 <div class='product_description_block' rel='<?php echo $key ?>'>
                                     <?php  if (strlen($value) < 210) { ?>
-                                        <div class="shortdesc"><?php echo $value; ?> </div>
+                                        <div class="shortdesc" itemprop="description"><?php echo $value; ?> </div>
                                         <?php
                                     }
                                     else {
@@ -1359,7 +1359,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                         $secondstr = substr($str, 210, strlen($str));
                                         ?>
                                         <div class="shortdesc">
-                                            <span><?php echo $firststr; ?></span><span class="sec-desc"><?php echo $secondstr; ?></span>
+                                            <span  itemprop="description"><?php echo $firststr; ?></span><span class="sec-desc"><?php echo $secondstr; ?></span>
                                             <span class="dot">...</span>
                                             <p class="readmore" style="margin: 0; cursor:pointer;">
                                                 <span id="more">Read more</span><span id="less" class="dnone">Read less</span>
