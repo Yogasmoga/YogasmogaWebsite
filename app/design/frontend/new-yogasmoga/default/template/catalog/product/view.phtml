@@ -191,7 +191,8 @@ $price = round($price, 2);
 if (floor($price) == $price)
     $price = floor($price);
 
-$productPrice = "$" . $price;
+//$productPrice = "$" . $price;
+$productPrice = $price;
 
 // get the string:   earn 5 smogi bucks with this purchase.
 $rewardPointsEarned = 0.1;
@@ -988,8 +989,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                     <div class="prdname">
                                         <div class="productname">
                                             <h1 itemprop="name"><?php echo html_entity_decode($productName); ?></h1></div>
-                                        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="productcost amount " itemprop="price"><?php echo $productPrice; ?></span>
-										<meta itemprop="priceCurrency" content="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode();?>" />;
+                                        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+										<span itemprop="priceCurrency" content="USD"></span>
+                                        <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>								
 										</div>
                                             <span class="was-amount no-display"
                                                   style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
@@ -1344,7 +1346,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     <div class='main-description' rel='main'>
                                 <?php //echo $defaultProductDescription; ?>
                         <?php  if (strlen($defaultProductDescription) < 210) { ?>
-                                <div class="shortdesc" itemprop="description"><?php echo $defaultProductDescription; ?> </div>
+                                <div class="shortdesc"><?php echo $defaultProductDescription; ?> </div>
                             <?php
                             }
                             else {
@@ -1377,7 +1379,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                 $secondstr = substr($str, 210, strlen($str));
                                 ?>
                                 <div class="shortdesc">
-                                    <span><?php echo $firststr; ?></span><span class="sec-desc"><?php echo $secondstr; ?></span>
+                                    <span itemprop="description"><?php echo $firststr; ?></span><span class="sec-desc"><?php echo $secondstr; ?></span>
                                     <span class="dot">...</span>
                                         <p class="readmore" style="margin: 0; cursor:pointer;">
                                          <span id="more">Read more</span><span id="less" class="dnone">Read less</span>
