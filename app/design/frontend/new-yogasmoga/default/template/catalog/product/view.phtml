@@ -181,7 +181,7 @@ $price = round($price, 2);
 if (floor($price) == $price)
     $price = floor($price);
 
-$productPrice = "$" . $price;
+$productPrice = $price;
 
 // get the string:   earn 5 smogi bucks with this purchase.
 $rewardPointsEarned = 0.1;
@@ -973,7 +973,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                         <div class="productname">
                                             <h1 itemprop="name"><?php echo html_entity_decode($productName); ?></h1></div>
                                         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                        <span class="productcost amount" itemprop="price"><?php echo Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
+                                            <span itemprop="priceCurrency" content="USD">$</span>
+                                        <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>
                                         </div>
                                         <span class="was-amount no-display"
                                                   style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
@@ -1352,7 +1353,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                             foreach ($arDescriptionArray as $key => $value) {?>
                                 <div class='product_description_block' rel='<?php echo $key ?>'>
                                     <?php  if (strlen($value) < 210) { ?>
-                                        <div class="shortdesc"><?php echo $value; ?> </div>
+                                        <div class="shortdesc" itemprop="description"><?php echo $value; ?> </div>
                                         <?php
                                     }
                                     else {
