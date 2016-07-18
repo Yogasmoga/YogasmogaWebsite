@@ -57,7 +57,7 @@ if(isset($_REQUEST['from_date'])) {
 
     fputcsv($fp, array(''));
     fputcsv($fp, array(''));
-    fputcsv($fp, array("Order ID","Name", "Region", "City", "Email", "Amount", "Smogi Bucks", "Smogi Expiry", "Discount Type", "Date"));
+    fputcsv($fp, array("Order ID","Name", "Region", "City", "Email", "Amount", "Smogi Bucks", "Smogi Expiry", "Discount Type", "Order Date"));
     fputcsv($fp, array('','','',''));
 
     foreach ($orders as $order) {
