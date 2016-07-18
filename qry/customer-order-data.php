@@ -2,6 +2,8 @@
 ini_set("memory_limit", "-1");
 set_time_limit(0);
 
+
+//12-02-2013
 require_once '../app/Mage.php';
 Mage::app();
 umask(0);
@@ -12,7 +14,7 @@ if(isset($_REQUEST['from_date'])) {
 
     $from_date = $_REQUEST['from_date'];
     $to_date = $_REQUEST['to_date'];
-    $country = $_REQUEST['country'];
+    $region_id = $_REQUEST['region_id'];
     $sign = $_REQUEST['sign'];
     $amount = $_REQUEST['amount'];
 
@@ -37,11 +39,11 @@ if(isset($_REQUEST['from_date'])) {
         ->getCollection()
         ->addFieldToFilter('created_at', array('gteq' => $date_to_from,
             'lteq' => $date_to_now
-        ))
-        ->addFieldToFilter('grand_total', array("$sign" => $amount));
+        ));
+        //->addFieldToFilter('grand_total', array("$sign" => $amount));
 
-    header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename=customers.csv');
+   header('Content-Type: text/csv; charset=utf-8');
+   header('Content-Disposition: attachment; filename=customers.csv');
 
     $fp = fopen('php://output', 'w');
 
@@ -49,53 +51,50 @@ if(isset($_REQUEST['from_date'])) {
     fputcsv($fp, array(''));
     fputcsv($fp, array("End Date = " . $to_date));
     fputcsv($fp, array(''));
-    fputcsv($fp, array("Amount $signValue " . $amount));
+    fputcsv($fp, array("Amount $signValue =" . $amount));
     fputcsv($fp, array(''));
-    fputcsv($fp, array("Country " . $country));
+    fputcsv($fp, array("Region = " . $region_id));
 
     fputcsv($fp, array(''));
     fputcsv($fp, array(''));
-    fputcsv($fp, array("Order ID", "Name", "Email","City", "Country", "Amount","Date", "Available Smogibucks","Discount", "Discount Type"));
+    fputcsv($fp, array("Order ID","Name", "Region", "City", "Email", "Amount", "Smogi Bucks", "Smogi Expiry", "Discount Type", "Date"));
     fputcsv($fp, array('','','',''));
 
     foreach ($orders as $order) {
         $orderId = $order->getIncrementId();
-        $email = $order->getCustomerEmail();
         $name = $order->getCustomerName();
+        $email = $order->getCustomerEmail();
+        $customerId = $order->getCustomerId();
         $amount = "$".$order->getBaseGrandTotal();
+        $shipping = "$".$order->getShippingAmount();
+        $tax = "$".$order->getTaxAmount();
         $discount = $order->getBaseDiscountAmount();
         $discountDescription = $order->getDiscountDescription();
         $date = $order->getCreatedAt();
-        $countryS = $order->getShippingAddress();
-
-
-        $customerId = $order->getCustomerId();
+        $countryS = $order->getBillingAddress();
 
         $store_id = Mage::app()->getStore()->getId();
         $reward_model = Mage::getModel('rewardpoints/stats');
-        $points = $reward_model->getPointsCurrent($customerId, $store_id);
+        $smogirecord = $reward_model->getPointsWithExpiry($customerId, $store_id,null,true);
+
+        $smogi = $smogirecord['balance'];
+        $expirydate = $smogirecord['last_expiry'];
 
 
-
-
-
-
-        if($countryS){
-            $countryS = $order->getShippingAddress()->getCountry();
-            $city = $order->getBillingAddress()->getCity();
-
-            if($order->getShippingAddress()->getCountry() == $country){
-                fputcsv($fp, array($orderId, $name, $email, $city,  $countryS, $amount, date("d-M-Y", strtotime($date)),$points, $discount, $discountDescription));
+        //fputcsv($fp, array($orderId, $region, $city, $email, $amount, $tax, $shipping, $discount, $discountDescription, date("d-M-Y", strtotime($date))));
+        if($smogi > 0) {
+            if ($countryS) {
+                $region = $order->getBillingAddress()->getRegion();
+                $city = $order->getBillingAddress()->getCity();
+                if (trim($order->getBillingAddress()->getRegion()) == trim($region_id)) {
+                    fputcsv($fp, array($orderId, $name, $region, $city, $email, $amount, $smogi, date("d-M-Y", strtotime($expirydate)), $discountDescription, date("d-M-Y", strtotime($date))));
+                }
             }
-        }else{
-            //fputcsv($fp, array($orderId, $countryS, $email, $amount, $discount, $discountDescription, date("d-M-Y", strtotime($date))));
         }
 
     }
 
     fclose($fp);
-
-    //readfile('customers.txt');
     exit;
 
 }
@@ -118,6 +117,7 @@ else{
                     defaultDate: "+1w",
                     changeMonth: true,
                     numberOfMonths: 1,
+                   // minDate:0,
                     onClose: function( selectedDate ) {
                         $( "#input-to" ).datepicker( "option", "minDate", selectedDate );
                     }
@@ -151,31 +151,49 @@ else{
                     <td>To</td>
                     <td><input id="input-to" type="text" name="to_date"/> (mm/dd/yyyy)</td>
                 </tr>
-                <tr>
+             <!--   <tr>
                     <td>Amount</td>
                     <td><input type="text" name="amount"/></td>
-                </tr>
-                <tr>
+                </tr>-->
+               <!--  <tr>
                     <td>Country</td>
                     <td>
-                        <select name="country" required>
-
+					<select name="country" required>
+					
+					<?php
+                $options = Mage::getResourceModel('directory/country_collection')->load()->toOptionArray();
+                foreach($options as $options){
+                    ?>
+							<option value="<?php echo $options['value'];?>"><?php echo $options['label'];?></option>
+					<?php } ?>
+					</select>
+					</td>
+                </tr>-->
+               <tr>
+                    <td>State</td>
+                    <td>
+                        <select id="region_id" name="region_id" title="State/Province" class="validate-select">
+                            <option value="">Please select region, state or province</option>
                             <?php
-                            $options = Mage::getResourceModel('directory/country_collection')->load()->toOptionArray();
-                            foreach($options as $options){
+                            $regions = Mage::getModel('directory/country')->load('US')->getRegions();
+                            foreach($regions as $region)
+                            {
                                 ?>
-                                <option value="<?php echo $options['value'];?>"><?php echo $options['label'];?></option>
-                            <?php } ?>
+                                <option value='<?=$region[name]?>'><?=$region['name']?></option>
+                                <?php
+                            }
+                            ?>
+
                         </select>
                     </td>
                 </tr>
-                <tr>
+                <!--<tr>
                     <td>Sign</td>
                     <td>
                         <label><input type="radio" name="sign" value="gteq" checked="checked"/> Amount greater than</label>
                         <label><input type="radio" name="sign" value="lteq"/> Amount less than</label>
                     </td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td class="button-area" colspan="2"><input type="submit" value="Get Records"/> </td>
                 </tr>

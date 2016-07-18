@@ -875,5 +875,126 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
             }
         }
     }
+
+    //Added By Fahim Khan For smogi bugs expiry.
+
+    public function getPointsWithExpiry($customerid, $store_id, $date = null, $arraymode = false, $excludelast = false){
+        if($date == null)
+            $date = date('Y-m-d');
+        $balanceon = strtotime($date);
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $query = "SELECT * FROM (SELECT points_current, points_spent,points_current AS 'balance',date_start,date_end,rewardpoints_account_id, order_id FROM rewardpoints_account WHERE customer_id = ".$customerid." AND order_id IN (-3,-2,-1,-20) UNION SELECT points_current, points_spent,points_current AS 'balance',date_start,date_end,rewardpoints_account_id, order_id FROM rewardpoints_account, sales_flat_order WHERE rewardpoints_account.customer_id = ".$customerid." AND order_id NOT IN (-3,-2,-1,-20) AND sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('new','pending','processing','complete')) AS smogihistory ORDER BY rewardpoints_account_id";
+        $smogihistory = $read->fetchAll($query);
+
+        $unsetarray = array();
+        for($i = 0; $i < count($smogihistory); $i++)
+        {
+            $orderid = $smogihistory[$i]['order_id'];
+            if(($orderid != -3 || $orderid != -2 || $orderid != -1 || $orderid != -20) && $smogihistory[$i]['points_spent'] > 0)
+            {
+                $temp = $smogihistory[$i]['points_spent'];
+                for($j = $i - 1; $j >= 0; $j--)
+                {
+                    if(($smogihistory[$j]['order_id'] == $smogihistory[$i]['order_id']) && $smogihistory[$j]['points_current'] > 0)
+                    {
+                        if($smogihistory[$j]['points_current'] >= $temp)
+                        {
+                            $smogihistory[$j]['points_current'] -= $temp;
+                            $smogihistory[$j]['balance'] -= $temp;
+                            array_push($unsetarray,$i);
+                            $smogihistory[$i]['points_spent'] = 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        $lastindex = count($smogihistory);
+        if($excludelast)
+            $lastindex--;
+        for($i = 0; $i < $lastindex; $i++)
+        {
+            if($smogihistory[$i]['points_spent'] <= 0)
+                continue;
+            $temp = $smogihistory[$i]['points_spent'];
+            $negativebalance = 0;
+
+
+            $temparray = array();
+            for($j = 0; $j < $i; $j++)
+            {
+                array_push($temparray, array(
+                    "index" => $j,
+                    "date_end" => $smogihistory[$j]['date_end'],
+                    "balance" => $smogihistory[$j]['balance']
+                ));
+            }
+            $date_end = array();
+            foreach($temparray as $key => $value)
+            {
+                $date_end[$key] = $value['date_end'];
+            }
+            array_multisort($date_end, SORT_ASC, $temparray);
+            for($j = 0; $j < $i; $j++)
+            {
+                if((strtotime($temparray[$j]['date_end']) > strtotime($smogihistory[$i]['date_start'])) && $temparray[$j]['balance'] > 0)
+                {
+                    if($temparray[$j]['balance'] >= $temp)
+                    {
+                        $smogihistory[$temparray[$j]['index']]['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $temparray[$j]['balance'];
+                        $smogihistory[$temparray[$j]['index']]['balance'] = 0;
+                    }
+                }
+                if($temp <= 0)
+                    break;
+            }
+
+            /*
+            for($j = 0; $j < $i; $j++)
+            {
+                if((strtotime($smogihistory[$j]['date_end']) > strtotime($smogihistory[$i]['date_start'])) && $smogihistory[$j]['balance'] > 0)
+                {
+                    if($smogihistory[$j]['balance'] >= $temp)
+                    {
+                        $smogihistory[$j]['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $smogihistory[$j]['balance'];
+                        $smogihistory[$j]['balance'] = 0;
+                    }
+                }
+                if($temp <= 0)
+                    break;
+            }
+            */
+        }
+        $negativebalance += $temp;
+        $balance = 0;
+        for($i = 0; $i < count($smogihistory); $i++)
+        {
+            //if(strtotime($smogihistory[$i]['date_end']) > strtotime($date))
+            if(strtotime($smogihistory[$i]['date_end']) > $balanceon)
+            {
+                $balance += $smogihistory[$i]['balance'];
+                $date_exp = $smogihistory[$i]['date_end'];
+            }
+        }
+        if(!$arraymode)
+            return $balance;
+        else
+            return array("history" => $smogihistory,"balance" => $balance,"negativebalance" => $negativebalance,"last_expiry" => $date_exp);
+//        echo "<pre>";
+//        print_r($smogihistory);
+//        echo "<pre>";
+        //echo 'Current Balance -> '.$balance;
+    }
+
 }
 
