@@ -86,9 +86,9 @@ if(isset($_REQUEST['from_date'])) {
             if ($countryS) {
                 $region = $order->getBillingAddress()->getRegion();
                 $city = $order->getBillingAddress()->getCity();
-                if (trim($order->getBillingAddress()->getRegion()) == trim($region_id)) {
+                //if (trim($order->getBillingAddress()->getRegion()) == trim($region_id)) {
                     fputcsv($fp, array($orderId, $name, $region, $city, $email, $amount, $smogi, date("d-M-Y", strtotime($expirydate)), $discountDescription, date("d-M-Y", strtotime($date))));
-                }
+                //}
             }
         }
 
@@ -169,7 +169,7 @@ else{
 					</select>
 					</td>
                 </tr>-->
-               <tr>
+              <!-- <tr>
                     <td>State</td>
                     <td>
                         <select id="region_id" name="region_id" title="State/Province" class="validate-select">
@@ -186,7 +186,7 @@ else{
 
                         </select>
                     </td>
-                </tr>
+                </tr>-->
                 <!--<tr>
                     <td>Sign</td>
                     <td>
