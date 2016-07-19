@@ -70,7 +70,7 @@
             $ogtags .= '<meta property="og:image"content="'.Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(200, 200)->setQuality(100).'" />';
         }
         $cache->save($ogtags, "custom_product_og_".Mage::registry('current_product')->getId(), array("custom_product_og"), null);
-        echo $ogtags;
+        //echo $ogtags;
     }
 ?>
 
