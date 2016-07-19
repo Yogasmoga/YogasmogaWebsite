@@ -159,7 +159,7 @@ $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 <?php $product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());?>;
 <meta property="og:title"  content="<?php echo $product->getName()?>"/>
 <meta property="og:type"  content="product"/>
-<meta property="og:image"  content="<?php echo Mage::helper('catalog/image')->init($product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);?>"/>
+<meta property="og:product:image"  content="<?php echo Mage::helper('catalog/image')->init($product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);?>"/>
 <meta property="og:url"  content="<?php echo Mage::helper('core/url')->getCurrentUrl() ?>"/>
 <meta property="og:description"  content="<?php echo $product->getDescription();?>"/>
 <meta property="og:site_name"  content="YOGASMOGA"/>
@@ -167,9 +167,9 @@ $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 <meta property="og:product:gender"  content="<?php echo $gender;?>"/>
 <meta property="og:price:currency" content="USD" />
 <meta property="og:availability" content="instock" />
-
-
-<?php } ?>
+<?php 
+}
+ ?>
 
 <?php /*
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery-1.8.2.min.js"></script>
