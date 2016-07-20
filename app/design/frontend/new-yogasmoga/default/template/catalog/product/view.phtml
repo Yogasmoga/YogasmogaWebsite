@@ -976,11 +976,14 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                             <span itemprop="priceCurrency" content="USD"></span>
                                         <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>
                                         </div>
+
                                         <span class="was-amount no-display"
                                                   style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
 
                                         <div class='part-of-gift-set' style="display: none;"></div>
-
+                                    <span style="display:none">
+                                        <link itemprop="availability" href="http://schema.org/InStock"/>In stock
+                                    </span>
                                     </div>
                                     <!-- heading -->
 
