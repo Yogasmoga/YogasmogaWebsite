@@ -973,6 +973,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                         <div class="productname">
                                             <h1 itemprop="name"><?php echo html_entity_decode($productName); ?></h1></div>
                                         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                             <span style="display:none">
+                                            <link itemprop="availability" href="http://schema.org/InStock"/>In stock
+                                            </span>
                                             <span itemprop="priceCurrency" content="USD"></span>
                                         <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>
                                         </div>
@@ -981,10 +984,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                                   style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
 
                                         <div class='part-of-gift-set' style="display: none;"></div>
-                                    <span style="display:none">
-                                       <meta itemprop="availability" itemtype="https://schema.org/ItemAvailability"
-                                             content="https://schema.org/InStock" />
-                                    </span>
+
                                     </div>
                                     <!-- heading -->
 
