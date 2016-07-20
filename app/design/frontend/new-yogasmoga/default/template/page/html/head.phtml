@@ -164,7 +164,7 @@ $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 <meta property="og:image"  content="<?php echo Mage::helper('catalog/image')->init($product, 'image') ?>"/>
 <meta property="og:site_name"  content="YOGASMOGA"/>
 <meta property="og:price:amount"  content="<?php echo number_format(Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId())->getPrice(),2); ?>"/>
-<meta property="og:product:gender"  content="<?php echo $gender;?>"/>
+<meta property="product:target_gender"  content="<?php echo $gender;?>"/>
 <meta property="og:price:currency" content="USD" />
 <meta property="og:availability" content="instock" />
 <?php 
