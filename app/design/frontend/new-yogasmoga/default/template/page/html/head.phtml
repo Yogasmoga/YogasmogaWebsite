@@ -153,16 +153,17 @@ $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 		   if($urlKey=='men'){
 			$gender = "Male";
 		   }
-
+$product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());
+$parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
+$confProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
 ?>
-<!-- New Dynamic Remarketing Tag -->
-<?php $product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());?>
+<!-- New Dynamic Facebook Open Graph Tag -->
 <meta property="og:url"  content="<?php echo Mage::helper('core/url')->getCurrentUrl() ?>"/>
 <meta property="og:type"  content="product"/>
 <meta property="og:title"  content="<?php echo $product->getName()?>"/>
 <meta property="og:description"  content="<?php echo $product->getDescription();?>"/>
-<!--<meta property="og:image"  content="<?php echo Mage::helper('catalog/image')->init($product, 'image') ?>"/>-->
-<meta property="og:image"  content="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>"/>
+<meta property="og:image"  content="<?php echo Mage::helper('catalog/image')->init($confProduct, 'image') ?>"/>
+<!--<meta property="og:image"  content="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>"/>-->
 
 <meta property="og:site_name"  content="YOGASMOGA"/>
 <meta property="og:price:amount"  content="<?php echo number_format(Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId())->getPrice(),2); ?>"/>
