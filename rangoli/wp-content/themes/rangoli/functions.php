@@ -287,7 +287,8 @@ function filter()
                         $authors = get_users("role=smogi");
                         $stores = get_users("role=store");
                         $contributors = get_users("role=contributor");
-                        $authors = array_merge($authors, $stores,$contributors);
+						$ysauthor = get_users("role=author");
+                        $authors = array_merge($authors, $stores,$contributors,$ysauthor);
 
                         foreach ($authors as $author) {
 
