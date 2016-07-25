@@ -144,6 +144,7 @@ if($serverType == 'production')
 
 <!--twitter cards meta, ends -->
 
+<!-- New Dynamic Facebook Open Graph Tag -->
 <?php 
 $gender = "Female";
 if(Mage::app()->getRequest()->getControllerName()=='product'){ 
@@ -153,18 +154,49 @@ $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 		   if($urlKey=='men'){
 			$gender = "Male";
 		   }
-$product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());
-$parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
-$confProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+$_product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());
+$_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+//var_dump($_gallery);
+$imageArr = array();
+foreach($_gallery as $_image)
+{
+	$imgdata = json_decode(trim($_image->getLabel()), true);
+	$colorId = $imgdata['color'];
+	$color   = $_GET['color'];
+	if($color){
+		if($imgdata['type'] == 'product image' && $imgdata['color'] == $color && $imgdata['default'] == 'yes')
+		{
+
+			if(count($imageArr[$colorId])<=3)
+			{
+
+			array_push($imageArr,Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'catalog/product' .$_image->getFile());
+
+			}
+		}
+	}else{
+
+		if($imgdata['type'] == 'product image' && $imgdata['default'] == 'yes')
+		{
+
+			if(count($imageArr[$colorId])<=3)
+			{
+
+			array_push($imageArr,Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'catalog/product' .$_image->getFile());
+			break;
+
+			}
+		}
+
+	}
+
+}
 ?>
-<!-- New Dynamic Facebook Open Graph Tag -->
 <meta property="og:url"  content="<?php echo Mage::helper('core/url')->getCurrentUrl() ?>"/>
 <meta property="og:type"  content="product"/>
-<meta property="og:title"  content="<?php echo $product->getName()?>"/>
-<meta property="og:description"  content="<?php echo $product->getDescription();?>"/>
-<meta property="og:image"  content="<?php echo Mage::helper('catalog/image')->init($confProduct, 'image') ?>"/>
-<!--<meta property="og:image"  content="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>"/>-->
-
+<meta property="og:title"  content="<?php echo $_product->getName()?>"/>
+<meta property="og:description"  content="<?php echo $_product->getDescription();?>"/>
+<meta property="og:image"  content="<?=$imageArr[0]?>"/>
 <meta property="og:site_name"  content="YOGASMOGA"/>
 <meta property="og:price:amount"  content="<?php echo number_format(Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId())->getPrice(),2); ?>"/>
 <meta property="og:product:target_gender"  content="<?php echo $gender;?>"/>
