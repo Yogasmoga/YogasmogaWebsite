@@ -111,9 +111,23 @@ $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 		   if($urlKey=='men'){
 			$gender = "Male";
 		   }
+$color   = $_GET['color'];
 $_product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());
 $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
-//var_dump($_gallery);
+
+if($color){
+//get color array
+$write = Mage::getSingleton('core/resource')->getConnection('core_read');
+$readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color' AND eao.option_id = 241  ORDER BY eao.sort_order,eaov.value");
+$colorIndexArr = array();
+
+while ($row = $readresult->fetch() ) {
+	$clrinfo[$row['Value']] = $row['Attribute'];
+	}
+$colorname = ' - '.$clrinfo[$color];
+}
+
+
 $imageArr = array();
 foreach($_gallery as $_image)
 {
@@ -151,7 +165,7 @@ foreach($_gallery as $_image)
 ?>
 <meta property="og:url"  content="<?php echo Mage::helper('core/url')->getCurrentUrl() ?>"/>
 <meta property="og:type"  content="product"/>
-<meta property="og:title"  content="<?php echo $_product->getName()?>"/>
+<meta property="og:title"  content="<?php echo $_product->getName()?><?=$colorname?> | YOGASMOGA.COM"/>
 <meta property="og:description"  content="<?php echo $_product->getDescription();?>"/>
 <meta property="og:image"  content="<?=$imageArr[0]?>"/>
 <meta property="og:site_name"  content="YOGASMOGA"/>
