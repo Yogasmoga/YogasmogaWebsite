@@ -141,7 +141,7 @@ foreach($_gallery as $_image)
 			if(count($imageArr[$colorId])<=3)
 			{
 
-			array_push($imageArr,Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'catalog/product' .$_image->getFile());
+			array_push($imageArr,$this->helper('catalog/image')->init($_product, 'image',$_image->getFile()));
 
 			}
 		}
@@ -153,7 +153,7 @@ foreach($_gallery as $_image)
 			if(count($imageArr[$colorId])<=3)
 			{
 
-			array_push($imageArr,Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'catalog/product' .$_image->getFile());
+			array_push($imageArr,$this->helper('catalog/image')->init($_product, 'image',$_image->getFile()));
 			break;
 
 			}
