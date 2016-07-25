@@ -8,6 +8,36 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         echo "Output newtheme_ShoppingbagController";
     }
 
+	/**
+     * Retrieve shopping cart model object
+     *
+     * @return Mage_Checkout_Model_Cart
+     */
+    protected function _getCart()
+    {
+        return Mage::getSingleton('checkout/cart');
+    }
+
+    /**
+     * Get checkout session model instance
+     *
+     * @return Mage_Checkout_Model_Session
+     */
+    protected function _getSession()
+    {
+        return Mage::getSingleton('checkout/session');
+    }
+
+    /**
+     * Get current active quote instance
+     *
+     * @return Mage_Sales_Model_Quote
+     */
+    protected function _getQuote()
+    {
+        return $this->_getCart()->getQuote();
+    }
+
     public function showshoppingbaghtmlAction1()
     {
 
@@ -534,10 +564,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         //echo json_encode(array("html" => $html));
     }
 
-    protected function _getCart()
-    {
-        return Mage::getSingleton('checkout/cart');
-    }
+   
     protected function _initProduct()
     {
         $productId = (int) $this->getRequest()->getParam('product');
@@ -559,7 +586,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $countDiscountType = $this->countDiscountType();
         $discounttypeerror = 'Gift Card, SMOGI Bucks and Promotion Code cannot be combined.Please choose one and continue CheckOut.';
 
-
+		//echo "<pre>";var_dump(Mage::helper('checkout/cart')->getCart()->getQuote()->getData());
         echo json_encode(array("status" => "success","html" => $html,"count" => $this->getcartcount(),"countdiscount" => $countDiscountType,"discounttypeerror" => $discounttypeerror));
     }
 
@@ -1051,10 +1078,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
     }
 
-    protected function _getSession()
-    {
-        return Mage::getSingleton('checkout/session');
-    }
+   
 
     public function addAction()
     {
@@ -1200,7 +1224,37 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 return;
             }
         }
+		/****************** Shivaji code, remove all discount ***************/
+		Mage::getModel('smogiexpirationnotifier/applyremovediscount')->removesmogibucks();
+        if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode() != ''){
+            try{
+                $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                $this->_getQuote()->setCouponCode('')
+                    ->collectTotals()
+                    ->save();
+                // refresh cart total
+                $cart = Mage::getSingleton('checkout/session')->getQuote();
 
+                foreach ($cart->getAllAddresses() as $address)
+                {
+                    $cart->unsetData('cached_items_nonnominal');
+                    $cart->unsetData('cached_items_nominal');
+                }
+
+                $cart->setTotalsCollectedFlag(false);
+                $cart->collectTotals();
+            }catch (Exception $e){
+                die($e->getMessage());
+            }
+
+        }
+
+        Mage::getSingleton('giftcards/session')->setActive('0');
+		/****************** Shivaji code, remove all discount ***************/
+
+
+		$cart = Mage::getSingleton('checkout/session');
+		$cart->getQuote()->setTotalsCollectedFlag(false)->collectTotals();
         // check for whick type of promotion code is apply in the cart (this is because of to fix grand total in cart)
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
@@ -1446,7 +1500,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $minidetails['totalitems'] = $this->getcartcount();
         $minidetails['cartlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/cart";
         $minidetails['subtotal'] = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
-        $minidetails['grandtotal'] = "$".number_format((float)$grandtotal, 2, '.','');
+        $minidetails['grandtotal'] = "$".number_format(abs((float)$grandtotal), 2, '.','');
         $minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
 
         $stritem = 'item';
@@ -1561,6 +1615,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $discount .= '0';
 
             }
+			/*------coded by shivaji --------*/
+			if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+			{
+            $giftofysbalance = Mage::getSingleton('checkout/session')->getQuote()->getData('giftcards_discount');
+			$shippingprice = (int)Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingAmount();
+			$totalwithshipping = $subtotal + $shippingprice;
+			//check cart value already 0 or 100% discount
+			$discount = number_format(($totalwithshipping > $giftofysbalance ? $discount - $giftofysbalance : 0),2);
+			}
+			/*------coded by shivaji --------*/
+
             $oCoupon = Mage::getModel('salesrule/coupon')->load($promotioncode, 'code');
             $oRule = Mage::getModel('salesrule/rule')->load($oCoupon->getRuleId());
             $coupondetails = $oRule->getData();
@@ -1609,11 +1674,15 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
         {
             $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
-            $discount = $totals['discount']->getValue();
-            $discount1 = ($discount * -1.00);
+			/*------coded by shivaji --------*/
+			$discount = Mage::getSingleton('checkout/session')->getQuote()->getData('giftcards_discount');
+            //$discount = $totals['discount']->getValue();
+			/*------coded by shivaji --------*/
+            $discount1 = ($discount * 1.00);
+			/*------coded by shivaji --------*/
             $discount =  number_format((float)$discount1, 2, '.','');  //Discount value if applied
 
-
+			
             $html .='<li class="giftcard">
                             <span class="f-left">$'.$discount1.' Gift Card used  |</span>
                             <span class="removegiftcart"><a>remove</a></span>
@@ -1622,7 +1691,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
                         </li>';
-            $checkgiftapplied = true;
+			/*------coded by shivaji --------*/
+            //$checkgiftapplied = true;
+			$checkgiftapplied = false;
+			/*------coded by shivaji --------*/
         }
         $shippingPrice = '';
         $shippingcode = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingMethod();
@@ -1699,7 +1771,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $applygiftdisable=" disabled='disabled'";
 //                $applypromo="";
 //                $applypromodisable=" disabled='disabled'";
-                $checkboxapplied=" disabled='disabled'";
+				/*------coded by shivaji --------*/
+                $checkboxapplied="";
+				/*------coded by shivaji --------*/
+
             }
             if($checkpromoapplied)
             {
@@ -1712,7 +1787,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 //$applypromodisable=" disabled='disabled'";
                 $applysmogidisable=" disabled='disabled'";
                 $applygiftdisable=" disabled='disabled'";
-                $checkboxapplied=" disabled='disabled'";
+				/*------coded by shivaji --------*/
+                $checkboxapplied="";
+				/*------coded by shivaji --------*/
+
                 $showedpointsvalue="";
                 $codeused='yes';
             }
@@ -1725,7 +1803,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $gryclasspromo = "gry";
                 $applysmogi="";
                 $applysmogidisable=" disabled='disabled'";
+				/*------coded by shivaji --------*/
                 $checkboxapplied="";
+				/*------coded by shivaji --------*/
                 $showedpointsvalue="";
                 $codeused='yes';
                 //$applygiftcard="";
@@ -2458,8 +2538,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
     protected function countDiscountType()
     {
         $allow = 0;
-        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
-            $allow++;
+		/*------coded by shivaji --------*/
+        //if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        //    $allow++;
+		/*------coded by shivaji --------*/
         if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
             $allow++;
         if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())

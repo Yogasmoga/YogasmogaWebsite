@@ -234,20 +234,52 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
 			   Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.");
                $refererUrl = $this->_getRefererUrl();
             }
-
-            $data = Mage::getSingleton('checkout/cart')->getQuote()->getAllVisibleItems();
+            /*------(GIFT CARD WALLET/21/7/2016) coded by shivaji --------*/
+            /*$data = Mage::getSingleton('checkout/cart')->getQuote()->getAllVisibleItems();
             if(isset($data)) {
                 foreach ($data as $item) {
                     if (isset($item['discount_amount']) && floatval($item['discount_amount'] > 0)) {
-                        Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.");
+                        Mage::getSingleton("core/session")->addError("SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.2");
                         $refererUrl = $this->_getRefererUrl();
                         $this->getResponse()->setRedirect($refererUrl);
                         $flag = 1;
                         return;
                     }
                 }
-            }
+            }*/
+			/****************** coded by shivaji *******************/
         }
+
+		/*------(GIFT CARD WALLET/15/7/2016) coded by shivaji --------*/
+		// retrict user to apply Smogi Bucks with Promotion Code
+        if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+        {
+            Mage::getSingleton("core/session")->addError("You cannot apply Smogi Bucks with Promotion Code.");
+            $refererUrl = $this->_getRefererUrl();
+            $this->getResponse()->setRedirect($refererUrl);
+            return;
+        }
+       
+		if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        {
+			$totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+			$subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+			/************Shippping****************/
+			$shippingPrice = 0;
+			$shippingPrice = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingAmount();
+			$subtotal = $subtotal + (int)$shippingPrice;
+			/************Shippping****************/
+			$discount  = (isset($totals['discount']) ? $totals['discount']->getValue() : 0);
+			$grandtotal_check = (int)($subtotal - ($discount * -1.00));
+			//to check 100% discounted already
+			if($grandtotal_check <= 0){
+			Mage::getSingleton("core/session")->addError("Total Order Amount is already zero.");
+            $refererUrl = $this->_getRefererUrl();
+            $this->getResponse()->setRedirect($refererUrl);
+            return;
+			}
+        }
+		/*------(GIFT CARD WALLET/15/7/2016) coded by shivaji --------*/
         
         $session = Mage::getSingleton('core/session');
         $points_value = $this->getRequest()->getPost('points_to_be_used');

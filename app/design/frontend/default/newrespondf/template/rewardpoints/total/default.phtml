@@ -3,11 +3,18 @@
         <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
             <?php //echo $this->escapeHtml($this->getTotal()->getTitle()); ?>
             <?php $str = $this->getTotal()->getTitle();
-			
-				if(strpos($str, "smogi bucks used")!==FALSE)
-					echo "SMOGI Bucks";
-				else
+				//coded by shivaji chauhan
+				if(strpos($str, "smogi bucks used")!==FALSE){
+					if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+					{
+						echo "SMOGI Bucks, Gift Card";
+					}else{
+						echo "SMOGI Bucks";
+					}
+				}else{
 					echo  $str;
+				}
+				//coded by shivaji chauhan
 			?>
 			<?php //echo $this->__('SMOGI Bucks'); ?>
         <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>

@@ -55,16 +55,38 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
             return;
         }
         // retrict user to apply  promotion code with gift of ys
-        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+		/*------coded by shivaji --------*/
+        /*if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
         {
             $response['errors'] = "You cannot apply  Promo Code with Gift Card";
             echo json_encode($response);
             return;
+        }*/
+
+		if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) && !strlen($remove))
+        {
+
+			$totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+			$subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+			/************Shippping****************/
+			$shippingPrice = 0;
+			$shippingPrice = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingAmount();
+			$subtotal = $subtotal + (int)$shippingPrice;
+			/************Shippping****************/
+			$discount  = (isset($totals['discount']) ? $totals['discount']->getValue() : 0);
+			$grandtotal_check = (int)($subtotal - ($discount * -1.00));
+			//to check 100% discounted already
+			if($grandtotal_check <= 0){
+            $response['errors'] = "Total Order Amount is already zero.";
+            echo json_encode($response);
+            return;
+			}
         }
+		/*------coded by shivaji --------*/
         // retrict user to apply Promotion code with smogi bucks
         if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
         {
-            $response['error'] = "You cannot apply  Promo Code with Smogi Bucks";
+            $response['error'] = "You cannot apply Promo Code with Smogi Bucks";
             echo json_encode($response);
             return;
         }

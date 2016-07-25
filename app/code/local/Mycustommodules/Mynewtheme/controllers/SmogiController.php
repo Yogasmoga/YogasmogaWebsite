@@ -160,12 +160,33 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             return;
         }
         // retrict user to apply  smogi bucks with gift of ys
-        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+		/*------coded by shivaji --------*/
+        /*if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
         {
             $response['errors'] = "You cannot apply Smogi Bucks with Gift Card.";
             echo json_encode($response);
             return;
+        }*/
+
+		if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        {
+			$totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+			$subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+			/************Shippping****************/
+			$shippingPrice = 0;
+			$shippingPrice = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingAmount();
+			$subtotal = $subtotal + (int)$shippingPrice;
+			/************Shippping****************/
+			$discount  = (isset($totals['discount']) ? $totals['discount']->getValue() : 0);
+			$grandtotal_check = (int)($subtotal - ($discount * -1.00));
+			//to check 100% discounted already
+			if($grandtotal_check <= 0){
+            $response['error'] = "Total Order Amount is already zero.";
+            echo json_encode($response);
+            return;
+			}
         }
+		/*------coded by shivaji --------*/
 
 
         $point_details = $this->getPointsInfo();
@@ -207,6 +228,16 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             ->setRewardpointsQuantity($points_value)
             ->save();
 
+		// refresh cart total
+        try {
+            Mage::helper('checkout/cart')->getCart()->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+            Mage::helper('checkout/cart')->getCart()->getQuote()->collectTotals()->save();
+        } catch (Exception $e) {
+            Mage::getModel('customer/session')->getSession()->addError($e->getMessage());
+            $response['error'] = "There has been an error to apply Gift Card.";
+        }
+        // end refresh cart total
+		//echo "<pre>";var_dump(Mage::helper('checkout/cart')->getCart()->getQuote()->getData());
         $response['success_message'] = "You are currently using ".$points_value." Bucks of your ".$point_details['customer_points']." Smogi Bucks available. ";
         $response['status'] = "success";
         echo json_encode($response);
@@ -230,6 +261,15 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
                 ->setBaseRewardpoints(NULL)
                 ->setRewardpoints(NULL)
                 ->save();
+			// refresh cart total
+			try {
+				Mage::helper('checkout/cart')->getCart()->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+				Mage::helper('checkout/cart')->getCart()->getQuote()->collectTotals()->save();
+			} catch (Exception $e) {
+				Mage::getModel('customer/session')->getSession()->addError($e->getMessage());
+				$response['error'] = "There has been an error to apply Gift Card.";
+			}
+			// end refresh cart total
             $response['status'] = "success";
             $response['success_message'] = "Smogi bucks are successfully removed";
             echo json_encode($response);

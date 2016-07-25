@@ -514,7 +514,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             $this->_goBack();
             return;
         }
-
+        $remove = $this->getRequest()->getParam('remove');
         $couponCode = (string) $this->getRequest()->getParam('coupon_code');
         if ($this->getRequest()->getParam('remove') == 1) {
             $couponCode = '';
@@ -525,6 +525,27 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             $this->_goBack();
             return;
         }
+		/*------coded by shivaji --------*/
+		if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) && $remove != 1)
+        {
+
+			$totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+			$subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+			/************Shippping****************/
+			$shippingPrice = 0;
+			$shippingPrice = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingAmount();
+			$subtotal = $subtotal + (int)$shippingPrice;
+			/************Shippping****************/
+			$discount  = (isset($totals['discount']) ? $totals['discount']->getValue() : 0);
+			$grandtotal_check = (int)($subtotal - ($discount * -1.00));
+			//to check 100% discounted already
+			if($grandtotal_check <= 0){
+            Mage::getSingleton("core/session")->addError("Total Order Amount is already zero.");
+			$this->_goBack();
+            return;
+			}
+        }
+		/*------coded by shivaji --------*/
 
 
 		//coded by shivaji chauhan
@@ -638,6 +659,75 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
         $this->getResponse()->setRedirect($refererUrl);
         //$this->_goBack();
     }
+
+	public function applyGiftCardAction()
+    {
+        
+        if (!Mage::helper('customer')->isLoggedIn()) {
+            Mage::getSingleton("core/session")->addError("Please login first to apply Gift Card.");
+        }
+
+		/*------coded by shivaji --------*/
+		if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode() || Mage::helper('rewardpoints/event')->getCreditPoints() > 0 || Mage::getSingleton('giftcards/session')->getActive() == "1")
+		{
+			$totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+			$subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+			/************Shippping****************/
+			$shippingPrice = 0;
+			$shippingPrice = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingAmount();
+			$subtotal = $subtotal + (int)$shippingPrice;
+			/************Shippping****************/
+			$discount  = (isset($totals['discount']) ? $totals['discount']->getValue() : 0);
+			$grandtotal_check = (int)($subtotal - ($discount * -1.00));
+			//to check 100% discounted already
+			if($grandtotal_check == 0){
+			Mage::getSingleton("core/session")->addError("Total Order Amount is already zero.");
+			}
+		}
+		/*------coded by shivaji --------*/
+
+        // retrict user to apply gift of ys with promotion code
+        if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+        {
+            Mage::getSingleton("core/session")->addError("Cannot apply Gift of YS with Promo code.");
+        }
+        
+
+        $customerId = Mage::getSingleton('customer/session')->getCustomerId();
+        $giftcardCode = trim((string) $this->getRequest()->getParam('coupon_code'));
+        $card = Mage::getModel('giftcards/giftcards')->load($giftcardCode, 'card_code');
+
+        if ($card->getId() && $card->getCardStatus() == 2) {
+            $card->activateCardForCustomer($customerId);
+
+            //Mage::getSingleton("core/session")->addSuccess("Gift Card ".Mage::helper('core')->escapeHtml($giftcardCode)." was applied");
+
+            Mage::getSingleton('giftcards/session')->setActive('1');
+        } else {
+            Mage::getSingleton("core/session")->addError("Gift Card ".Mage::helper('core')->escapeHtml($giftcardCode)." is not valid");
+
+        }
+        try {
+            $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
+            $this->_getQuote()->collectTotals()->save();
+        } catch (Exception $e) {
+            $this->_getSession()->addError("gferror--msg".$e->getMessage());
+            Mage::getSingleton("core/session")->addError("Gift Card ".Mage::helper('core')->escapeHtml($giftcardCode)." is not valid");
+        }
+
+		$refererUrl = $this->_getRefererUrl();
+		$myValue= Mage::getSingleton('core/session')->getPromotioncodeValue();
+        if($myValue == 'promotion-code')
+        {
+            $refererUrl = $refererUrl.'#promotion-code';
+        }
+        else{
+            $refererUrl = $refererUrl.'#promotions';
+        }
+        $this->getResponse()->setRedirect($refererUrl);
+
+    }
+
 
 	//coded by shivaji chauhan
 	public function _value_in_array($array, $find){

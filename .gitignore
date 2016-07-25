@@ -3,6 +3,7 @@
 #################
 nbproject
 /media
+/includes/src/
 rangoli_profile_images
 rangoli/wp-content/uploads
 *.pydevproject
