@@ -121,7 +121,7 @@ foreach($_gallery as $_image)
 	$colorId = $imgdata['color'];
 	$color   = $_GET['color'];
 	if($color){
-		if($imgdata['type'] == 'product image' && $imgdata['color'] == $color && $imgdata['default'] == 'yes')
+		if($imgdata['type'] == 'product image' && $imgdata['color'] == $color)
 		{
 
 			if(count($imageArr[$colorId])<=3)
@@ -133,7 +133,7 @@ foreach($_gallery as $_image)
 		}
 	}else{
 
-		if($imgdata['type'] == 'product image' && $imgdata['default'] == 'yes')
+		if($imgdata['type'] == 'product image')
 		{
 
 			if(count($imageArr[$colorId])<=3)
