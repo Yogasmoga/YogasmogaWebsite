@@ -118,7 +118,7 @@ $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMedi
 if($color){
 //get color array
 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-$readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color' AND eao.option_id = 241  ORDER BY eao.sort_order,eaov.value");
+$readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color' AND eao.option_id = $color  ORDER BY eao.sort_order,eaov.value");
 $colorIndexArr = array();
 
 while ($row = $readresult->fetch() ) {
