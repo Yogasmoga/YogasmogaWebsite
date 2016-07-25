@@ -76,13 +76,13 @@ class Mage_Adminhtml_Block_Report_Customer_Totals_Grid extends Mage_Adminhtml_Bl
             'renderer'  =>new Mage_Adminhtml_Block_Report_Customer_Renderer_City()
 
         ));
-        $this->addColumn('smogi', array(
+      /*  $this->addColumn('smogi', array(
             'header'    => $this->__('Smogi Bucks'),
             'sortable'  => false,
             'index'     => 'smogi',
             'renderer'  =>new Mage_Adminhtml_Block_Report_Customer_Renderer_Smogi()
 
-        ));
+        ));*/
 
         $this->addColumn('orders_count', array(
             'header'    => $this->__('Number of Orders'),
