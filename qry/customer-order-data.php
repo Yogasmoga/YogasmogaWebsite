@@ -57,7 +57,7 @@ if(isset($_REQUEST['from_date'])) {
 
     fputcsv($fp, array(''));
     fputcsv($fp, array(''));
-    fputcsv($fp, array("Order ID","Name", "Region", "City", "Email", "Amount", "Smogi Bucks", "Smogi Expiry", "Discount Type", "Order Date"));
+    fputcsv($fp, array("Order ID","Name", "Region", "City", "Email", "Amount", /*"Smogi Bucks", "Smogi Expiry",*/ "Discount Type", "Order Date"));
     fputcsv($fp, array('','','',''));
 
     foreach ($orders as $order) {
@@ -77,8 +77,8 @@ if(isset($_REQUEST['from_date'])) {
         $reward_model = Mage::getModel('rewardpoints/stats');
         $smogirecord = $reward_model->getPointsWithExpiry($customerId, $store_id,null,true);
 
-        $smogi = $smogirecord['balance'];
-        $expirydate = $smogirecord['last_expiry'];
+       // $smogi = $smogirecord['balance'];
+       // $expirydate = $smogirecord['last_expiry'];
 
 
         //fputcsv($fp, array($orderId, $region, $city, $email, $amount, $tax, $shipping, $discount, $discountDescription, date("d-M-Y", strtotime($date))));
@@ -87,7 +87,7 @@ if(isset($_REQUEST['from_date'])) {
                 $region = $order->getBillingAddress()->getRegion();
                 $city = $order->getBillingAddress()->getCity();
                 //if (trim($order->getBillingAddress()->getRegion()) == trim($region_id)) {
-                    fputcsv($fp, array($orderId, $name, $region, $city, $email, $amount, $smogi, date("d-M-Y", strtotime($expirydate)), $discountDescription, date("d-M-Y", strtotime($date))));
+                    fputcsv($fp, array($orderId, $name, $region, $city, $email, $amount, /*$smogi, date("d-M-Y", strtotime($expirydate)),*/ $discountDescription, date("d-M-Y", strtotime($date))));
                 //}
             }
         }
