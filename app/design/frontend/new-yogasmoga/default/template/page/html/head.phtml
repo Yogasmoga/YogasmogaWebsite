@@ -141,7 +141,7 @@ foreach($_gallery as $_image)
 			if(count($imageArr[$colorId])<=3)
 			{
 
-			array_push($imageArr,(string)Mage::helper('catalog/image')->init($_product,'image',$_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(500)->setQuality(91));
+			array_push($imageArr,(string)Mage::helper('catalog/image')->init($_product,'image',$_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(400)->setQuality(91));
 
 			}
 		}
@@ -153,7 +153,7 @@ foreach($_gallery as $_image)
 			if(count($imageArr[$colorId])<=3)
 			{
 
-			array_push($imageArr,(string)Mage::helper('catalog/image')->init($_product,'image',$_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(500)->setQuality(91));
+			array_push($imageArr,(string)Mage::helper('catalog/image')->init($_product,'image',$_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(400)->setQuality(91));
 			break;
 
 			}
