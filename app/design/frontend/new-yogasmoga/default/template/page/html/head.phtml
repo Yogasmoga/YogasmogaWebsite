@@ -169,7 +169,7 @@ foreach($_gallery as $_image)
 <meta property="og:description"  content="<?php echo $_product->getDescription();?>"/>
 <meta property="og:image"  content="<?=$imageArr[0]?>"/>
 <meta property="og:image:width" content="700" />
-<meta property="og:image:height" content="368" />
+<meta property="og:image:height" content="368"/>
 <meta property="og:site_name"  content="YOGASMOGA"/>
 <meta property="og:price:amount"  content="<?php echo number_format(Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId())->getPrice(),2); ?>"/>
 <meta property="og:product:target_gender"  content="<?php echo $gender;?>"/>
