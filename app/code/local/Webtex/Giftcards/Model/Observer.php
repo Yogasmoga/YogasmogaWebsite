@@ -71,7 +71,8 @@ class Webtex_Giftcards_Model_Observer extends Mage_Core_Model_Abstract
             }
 
             $GiftcardDiscount  =  (int)$quote->getGiftcardsDiscount();
-            if ($quote->getUseGiftcards() || $GiftcardDiscount > 0) {
+            //if ($quote->getUseGiftcards() || $GiftcardDiscount > 0) {
+			if ($quote->getUseGiftcards()) {
                 $cards = Mage::getModel('giftcards/giftcards')->getCollection()
                     ->addFieldToFilter('customer_id', $quote->getCustomerId())
                     ->addFieldToFilter('card_status', 1);
