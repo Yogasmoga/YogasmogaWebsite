@@ -19,10 +19,10 @@
 define('DB_NAME', 'staging');
 
 /** MySQL database username */
-define('DB_USER', 'ys');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'india');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
