@@ -74,6 +74,8 @@ class Rewardpoints_Block_Adminhtml_Referrals_Grid extends Mage_Adminhtml_Block_W
             'options'   => array('1' => Mage::helper('adminhtml')->__('Has ordered'), '0' => Mage::helper('adminhtml')->__('Waiting for order')),
         ));
 
+      //for exporting grid data (refrals)
+      $this->addExportType('*/*/exportCsv', Mage::helper('rewardpoints')->__('CSV'));
 
 
       return parent::_prepareColumns();

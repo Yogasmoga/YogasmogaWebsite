@@ -133,6 +133,11 @@ class Rewardpoints_Adminhtml_ReferralsController extends Mage_Adminhtml_Controll
         }
         $this->_redirect('*/*/index');
     }
-
-
+    //for exporting grid data (refrals)
+    public function exportCsvAction()
+    {
+        $fileName   = 'referals.csv';
+        $content    = $this->getLayout()->createBlock('rewardpoints/adminhtml_referrals_grid');
+        $this->_prepareDownloadResponse($fileName, $content->getCsvFile());
+    }
 }
