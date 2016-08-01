@@ -41,7 +41,7 @@ $login = "yogasmoga";
 $appkey = "R_487d67928c881cbd14a7d13f6acaafde";
 $link =json_decode(get_bitly_short_url($url,$login, $appkey,$format));
 //echo '<pre/>';print_r($link);
-/*
+
 $bitlyUrl = $link->data->url;
 $urlBitly = '';
 if($bitlyUrl){
@@ -50,7 +50,6 @@ if($bitlyUrl){
 else{
     $urlBitly = $url;
 }
-*/
 ?>
 
 
@@ -73,12 +72,9 @@ else{
                             <div class="referfriend-subheader">YOUR INVITE LINK</div>                                
                         </td>            
                         <td class="link">
-                            <input id="uniquelink" type="text" value="<?php echo $this->getReferringUrl() ?>" readonly="true" />
+                            <input id="uniquelink" type="text" value="<?php echo $urlBitly;//$this->getReferringUrl() ?>" readonly="true" />
                         </td>
-                        <td>
-                            <?php echo '<pre/>';print_r($link);?>
-                            <a href="<?php //echo $urlBitly ?>" target="_blank"><?php //echo $urlBitly ?></a>
-                        </td>
+                        
                         <td class="share no-margin">                
                             <a href="#" id="fbrefer" onclick="sharereferlink('facebook');"></a>
                             <a href="#" onclick="sharereferlink('twitter');" id="twrefer"></a>
