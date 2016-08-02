@@ -539,7 +539,19 @@ else { ?>
                                 $subsubcategories = $subsubcategory->getChildrenCategories();
 
                                 if($subsubcategory->getChildrenCount() == 0){
-                                    $firstcolumn .= "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                                     $style = "margin-top:22px";
+                                    $styleBottom = "margin-bottom:12px";
+
+                                        if($child2->getId()==125){
+                                            $firstcolumn .= "<li style='$style'>"."<a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                                        }
+                                            elseif($child2->getId()==127) {
+                                                $firstcolumn .= "<li style='$styleBottom'>"."<a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                                            }
+                                        else{
+                                            $firstcolumn .= "<li><a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                                        }
+
                                 }
                                 else{
                                     $remainingcolumn .= "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a><ul>";
