@@ -94,6 +94,11 @@ class Webtex_Giftcards_Model_Discount extends Mage_SalesRule_Model_Quote_Discoun
                 $address->getQuote()->setUseGiftcards(true);
                 $address->getQuote()->setGiftcardsDiscount($baseGiftcardsDiscount);
             }
+            /***************** coded by shivaji **************/
+            if($address->getQuote()->getGiftcardsDiscount() > 0){
+              $address->getQuote()->setUseGiftcards(true);
+            }
+            /***************** coded by shivaji **************/
         }
 
         return $this;

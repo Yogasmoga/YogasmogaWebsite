@@ -1438,6 +1438,40 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
             Mage::getModel('rewardpoints/stats')->orderLog($orderincrementid, 'smogi refund', $this->getId(),$e->getMessage(), 'ERROR');
         }
     }
+
+    /**
+     * Process order cancel
+     * Adds discounted amount back to user's balance (whole part!)
+     *
+     */
+     /***************** coded by shivaji (giftcard return)**************/
+    public function refundgiftcardbalance($orderid)
+    {
+        $order = Mage::getModel('sales/order')->load($orderid);
+        if ($order->getDiscountDescription() == "Gift Card") {
+            $cards = Mage::getModel('giftcards/giftcards')->getCollection()
+                ->addFieldToFilter('customer_id', $order->getCustomerId())
+                ->addFieldToFilter('card_status', 1);
+
+            $discount = -$order->getBaseDiscountAmount();
+            
+            foreach ($cards as $card) {
+                if ($discount > 0) {
+                    $value = $discount - ($card->getCardAmount() - $card->getCardBalance());
+                    if ($value >= 0) {
+                        $value = $card->getCardAmount() - $card->getCardBalance();
+                        $discount = $discount - $value;
+                    } else {
+                        $value = $discount;
+                        $discount = 0;
+                    }
+                    $card->setCardBalance($value + $card->getCardBalance());
+                    $card->save();
+                }
+            }
+        }
+    }
+    /***************** coded by shivaji (giftcard return)**************/
      
     protected function _afterSave()
     {
@@ -1455,6 +1489,9 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 		
         //Mage::log("\n\n\n\n\nCredit Memo Id =".$this->getId(), null, 'partial_ankit.log');
         $order = $this->getOrder();
+        /***************** coded by shivaji (giftcard return)**************/
+        $this->refundgiftcardbalance($order->getId());
+        /***************** coded by shivaji (giftcard return)**************/
         //Mage::log("Order Id =".$order->getId(), null, 'partial_ankit.log');
         if($order->getId() > Mage::getModel('core/variable')->loadByCode('partial_nonapplicable')->getValue('plain'))
             $this->refundsmogibucks($this->getId(), $order->getId());

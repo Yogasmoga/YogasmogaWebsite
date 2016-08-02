@@ -128,6 +128,15 @@
                     </webtex_giftcards_observer_sales_order_save_after>
                 </observers>
             </sales_order_save_after>
+             <checkout_onepage_controller_success_action>
+                <observers>
+                    <webtex_giftcards_observer_sales_order_place_after>
+                        <type>singleton</type>
+                        <class>giftcards/observer</class>
+                        <method>salesOrderPlaceAfter</method>
+                    </webtex_giftcards_observer_sales_order_place_after>
+                </observers>
+            </checkout_onepage_controller_success_action>
             <sales_order_payment_pay>
                 <observers>
                 	<webtex_giftcards_observer_checkout_type_onepage_save_order_after>
