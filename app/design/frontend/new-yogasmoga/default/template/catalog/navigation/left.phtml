@@ -75,7 +75,15 @@ if ($_count == 0) {
 
                 if ($subSubCategory->getChildrenCount() == 0) {
 
-                    $hasNoSubCategoryHtml .= '<li><a href=' . $subSubCategory->getUrl() . ' class="bld ';
+                    if($subSubCategory->getId()==125 || $subSubCategory->getId()==128){
+                        $hasNoSubCategoryHtml .= '<li style="margin-top:20px"'.'><a  href=' . $subSubCategory->getUrl() . ' class="bld ';
+                    }
+                    elseif($subSubCategory->getId()==127 || $subSubCategory->getId()==130){
+                        $hasNoSubCategoryHtml .= '<li style="margin-bottom:20px"'.'><a  href=' . $subSubCategory->getUrl() . ' class="bld ';
+                    }
+                    else{
+                        $hasNoSubCategoryHtml .= '<li><a href=' . $subSubCategory->getUrl() . ' class="bld ';
+                    }
 
                     if ($subSubCategory->getUrl() == $currentUrl)
                         $hasNoSubCategoryHtml .= 'current';
