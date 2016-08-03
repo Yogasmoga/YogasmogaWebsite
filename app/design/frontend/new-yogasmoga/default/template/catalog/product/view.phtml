@@ -1007,7 +1007,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
 
                  ?>
+                 <?php if($imageName):?>
                 <div class="style-image"><img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
+                <?php endif; ?>
                 <!-- DetailsinGreyArea -->
                 <div class="gry-box">
                     <div id="absproductoptions">
