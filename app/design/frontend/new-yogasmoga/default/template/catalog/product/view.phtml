@@ -978,6 +978,36 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
             <!-- ProductDetailContainer -->
             <div class="wdth35" style="width:281px;">
+                 <?php $catIds =  $_product->getCategoryIds();
+                        $styleIds = array(125,126,127,128,129,130);
+                        $finalIds = array_intersect($catIds, $styleIds);
+                        $imageName = "";
+                        foreach($finalIds as $finalId){
+                            //for women.
+                            if($finalId == 125){
+                            $imageName = "women-core-style";
+                            }
+                            elseif($finalId == 126){
+                             $imageName = "women-select-style";
+                             }
+                            elseif($finalId == 127){
+                             $imageName = "women-premium-style";
+                             }
+                             //for men.
+                            if($finalId == 128){
+                            $imageName = "men-core-style";
+                            }
+                            elseif($finalId == 129){
+                             $imageName = "men-select-style";
+                             }
+                            elseif($finalId == 130){
+                             $imageName = "men-premium-style";
+                             }
+                        }
+
+
+                 ?>
+                <div class="style-image"><img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
                 <!-- DetailsinGreyArea -->
                 <div class="gry-box">
                     <div id="absproductoptions">
