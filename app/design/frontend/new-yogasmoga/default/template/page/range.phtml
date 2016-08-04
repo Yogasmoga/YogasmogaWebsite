@@ -102,6 +102,9 @@
                 <div id="Allproducts" class="fullscreen pgsection " desc="Top Sellers" style="min-height: 422px;">
                     <div class="product-grid">
                         <div class="2-columns-wrapper">
+										<!-- leftNavGrid -->
+				<?php echo $this->getChildHtml('catalog.leftnav') ?>
+				<!-- leftNavGrid -->
                                 <?php
                                     // code for get left nav
                                     $currentUrl = Mage::helper('core/url')->getCurrentUrl();
