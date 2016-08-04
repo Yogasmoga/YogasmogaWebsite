@@ -2862,7 +2862,15 @@ table.smallimagecontiner td.selectedimage{
 /*************** size filter on category pages ***************/
 
 /*--------filter by core,select,premium--------*/
-#div_cats{position:absolute;right:0;}
+#div_cats{background: #fff none repeat scroll 0 0;
+box-sizing: border-box;
+color: #555;
+height: 50px;
+line-height: 50px;
+margin-top: 0;
+position: absolute;right:0;
+text-align: left;
+width: 100%;}
 
 ul.main-menu > li.over.gift-sets > ul.sub-menu{
      left: auto;
