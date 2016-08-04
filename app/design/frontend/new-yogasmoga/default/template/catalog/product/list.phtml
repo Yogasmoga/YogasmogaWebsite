@@ -236,7 +236,7 @@ $alphabeticSkuSizes = array();
 
 $productColorIndex=0;
 /**************** size filter *****************/
-
+$allcats = array();
 foreach ($configurableProductArr as $key => $val) {
 
     $confProduct = Mage::getModel('catalog/product')->load($key);
