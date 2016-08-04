@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+
 <config>
   <modules>
     <Home_Mylayouts>
@@ -212,15 +213,6 @@
           <layout_handle>collection</layout_handle>
         </collection>
 		<!-- Collection page layouts End here -->
-		
-		<!-- Range Filter layouts End here -->
-		
-	    <range translate="label">
-          <label>Range</label>
-          <template>page/range.phtml</template>
-          <layout_handle>range</layout_handle>
-        </range>
-		<!-- Range Filter  layouts End here ->
 		
 		<!-- Color Varint page layouts End here -->
 		
