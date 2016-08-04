@@ -214,6 +214,15 @@
         </collection>
 		<!-- Collection page layouts End here -->
 		
+		<!-- Range Filter layouts End here -->
+		
+	    <range translate="label">
+          <label>Range</label>
+          <template>page/range.phtml</template>
+          <layout_handle>range</layout_handle>
+        </range>
+		<!-- Range Filter  layouts End here -->
+		
 		<!-- Color Varint page layouts End here -->
 		
 	    <varint-color translate="label">
