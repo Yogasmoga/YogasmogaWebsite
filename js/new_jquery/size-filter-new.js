@@ -1,4 +1,5 @@
 //	var productColorIndex;
+
 jQuery(function(){
 
     filterSizes();
