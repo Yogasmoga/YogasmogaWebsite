@@ -2871,7 +2871,8 @@ margin-top: 0;margin-right:34px;
 position: absolute;right:0;
 text-align: left;
 }
-#div_cats .chk-cats:hover{background:#555; color:#fff;}
+#div_cats .chk-cats{text-transform:uppercase;}
+#div_cats .chk-cats:hover,#div_cats .chk-cats.chk-cats-selected{background:#555; color:#fff;}
 
 ul.main-menu > li.over.gift-sets > ul.sub-menu{
      left: auto;
