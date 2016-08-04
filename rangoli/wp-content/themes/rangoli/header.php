@@ -431,9 +431,9 @@ if(!is_user_logged_in()){
                         <li>
                             <ul>
                                 <li><a href="/men/whats-new"> What's New</a></li>
-								<li style="margin-top:15px"><a href="/women/core"> Core</a></li>
-								<li><a href="/women/select"> Select</a></li>
-								<li style="margin-bottom:15px"><a href="/women/premium"> Premium</a></li>
+								<li style="margin-top:15px"><a href="/men/core"> Core</a></li>
+								<li><a href="/men/select"> Select</a></li>
+								<li style="margin-bottom:15px"><a href="/men/premium"> Premium</a></li>
 								<li><a href="/men/carbon6">Carbon6&trade; COLLECTION</a></li>
 								<li><a href="/men/golf-inspired">Golf Inspired</a></li>
 								<!--<li><a href="/men/super-sale"> Super Sale</a></li>-->
