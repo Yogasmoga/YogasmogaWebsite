@@ -38,7 +38,10 @@ while ($row = $readresult->fetch()) {
     $clrinfo[$row['Value']] = $row['Attribute'];
 }
 $color = $this->getRequest()->getParam('color');
+
+if($color){
 $colorname = ' - '.$clrinfo[$color];
+}else{ $colorname = ''; }
 
 
 $storeId = Mage::app()->getStore()->getStoreId();
