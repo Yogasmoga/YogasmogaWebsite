@@ -32,6 +32,15 @@
  */
 ?>
 <?php
+$write = Mage::getSingleton('core/resource')->getConnection('core_read');
+$readresult = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+while ($row = $readresult->fetch()) {
+    $clrinfo[$row['Value']] = $row['Attribute'];
+}
+$color = $this->getRequest()->getParam('color');
+$colorname = ' - '.$clrinfo[$color];
+
+
 $storeId = Mage::app()->getStore()->getStoreId();
 
 $resourceModel = Mage::getResourceModel('catalog/product');
@@ -971,7 +980,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                     <!-- heading -->
                                     <div class="prdname">
                                         <div class="productname">
-                                            <h1 itemprop="name"><?php echo html_entity_decode($productName); ?></h1></div>
+                                            <h1><?php echo html_entity_decode($productName); ?></h1>
+                                            <h4 style="display:none;" itemprop="name"><?php echo html_entity_decode($productName).$colorname.' | YOGASMOGA.COM'; ?></h4>
+										</div>
                                         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                              <span style="display:none">
                                             <link itemprop="availability" href="http://schema.org/InStock"/>In stock
