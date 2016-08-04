@@ -32,6 +32,15 @@
  */
 ?>
 <?php
+
+$write = Mage::getSingleton('core/resource')->getConnection('core_read');
+$readresult = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+while ($row = $readresult->fetch()) {
+    $clrinfo[$row['Value']] = $row['Attribute'];
+}
+$color = $this->getRequest()->getParam('color');
+$colorname = ' - '.$clrinfo[$color];
+
 $storeId = Mage::app()->getStore()->getStoreId();
 
 $resourceModel = Mage::getResourceModel('catalog/product');
@@ -978,6 +987,38 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
             <!-- ProductDetailContainer -->
             <div class="wdth35" style="width:281px;">
+                 <?php $catIds =  $_product->getCategoryIds();
+                        $styleIds = array(125,126,127,128,129,130);
+                        $finalIds = array_intersect($catIds, $styleIds);
+                        $imageName = "";
+                        foreach($finalIds as $finalId){
+                            //for women.
+                            if($finalId == 125){
+                            $imageName = "women-core-style";
+                            }
+                            elseif($finalId == 126){
+                             $imageName = "women-select-style";
+                             }
+                            elseif($finalId == 127){
+                             $imageName = "women-premium-style";
+                             }
+                             //for men.
+                            if($finalId == 128){
+                            $imageName = "men-core-style";
+                            }
+                            elseif($finalId == 129){
+                             $imageName = "men-select-style";
+                             }
+                            elseif($finalId == 130){
+                             $imageName = "men-premium-style";
+                             }
+                        }
+
+
+                 ?>
+                 <?php if($imageName):?>
+                <div class="style-image"><img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
+                <?php endif; ?>
                 <!-- DetailsinGreyArea -->
                 <div class="gry-box">
                     <div id="absproductoptions">
@@ -988,7 +1029,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                     <!-- heading -->
                                     <div class="prdname">
                                         <div class="productname">
-                                            <h1 itemprop="name"><?php echo html_entity_decode($productName); ?></h1></div>
+                                            <h1><?php echo html_entity_decode($productName); ?></h1>
+                                            <h4 style="display:none" itemprop="name"><?php echo html_entity_decode($productName).$colorname.' | YOGASMOGA.COM'; ?></h4>
+                                            </div>
                                         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 										<span itemprop="priceCurrency" content="USD"></span>
                                         <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>								
@@ -1403,6 +1446,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     while ($row = $readresult->fetch()) {
                         $clrinfo[$row['Value']] = $row['Attribute'];
                     }
+                    $color = $this->getRequest()->getParam('color');
+                    $colorname = ' - '.$clrinfo[$color];
                     ?>
 
                     <?php
