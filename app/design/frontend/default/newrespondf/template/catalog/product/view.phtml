@@ -793,6 +793,47 @@ if ($lengthAvailable) {
 
         </div>
         <!-- DetailsinGreyArea -->
+		 <!-- ProductImageContainer -->
+
+            <!-- ProductDetailContainer -->
+            <div class="wdth35" style="width:281px;">
+                 <?php $catIds =  $_product->getCategoryIds();
+                        $styleIds = array(125,126,127,128,129,130);
+                        $finalIds = array_intersect($catIds, $styleIds);
+                        $imageName = "";
+                        foreach($finalIds as $finalId){
+                            //for women.
+                            if($finalId == 125){
+                            $imageName = "women-core-style";
+                            }
+                            elseif($finalId == 126){
+                             $imageName = "women-select-style";
+                             }
+                            elseif($finalId == 127){
+                             $imageName = "women-premium-style";
+                             }
+                             //for men.
+                            if($finalId == 128){
+                            $imageName = "men-core-style";
+                            }
+                            elseif($finalId == 129){
+                             $imageName = "men-select-style";
+                             }
+                            elseif($finalId == 130){
+                             $imageName = "men-premium-style";
+                             }
+                        }
+
+
+                 ?>
+                 <?php if($imageName):?>
+                <div class="style-image"><img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
+                <?php endif; ?>
+				
+		    </div>
+			
+			<!-- End ProductImageContainer -->
+		
         <table class="productdetailtable normalproductdetail">
             <tr>
                 <td>
@@ -1620,6 +1661,9 @@ if ($lengthAvailable) {
 
                     </div>
                 </li>
+				
+				
+				
             <?php } ?>
             <li class="detail-view" style="display: none;"><a href="#">REVIEW</a>
                 <span class="arrow-tag">
