@@ -536,6 +536,10 @@ $logged_in = is_user_logged_in();
                                 </p>
 
                                 <ul class="ys_sub_menu level3">
+								 <li><a href="/women/whats-new">What&rsquo;s New</a></li>
+								  <li><a href="/women/core">Core</a></li>
+								   <li><a href="/women/select">Select</a></li>
+								    <li><a href="/women/premium">Premium</a></li>
                                     <li><a href="/women/tops">TOPS</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
@@ -602,7 +606,7 @@ $logged_in = is_user_logged_in();
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="/women/whats-new">What&rsquo;s New</a></li>
+                                   
 									<li><a href="/women/prints">PRINTS</a></li>
                                     <!--<li><a href="/women/one-too-many"> One 2 Many</a></li>-->
 									<!--<li><a href="/women/super-sale">Super Sale</a></li>-->
@@ -631,6 +635,10 @@ $logged_in = is_user_logged_in();
                                 </span>
                                 </p>
                                 <ul class="ys_sub_menu level3">
+								<li><a href="/men/whats-new">WHAT'S NEW</a></li>
+								<li><a href="/men/core">CORE</a></li>
+								<li><a href="/men/select">SELECT</a></li>
+								<li><a href="/men/premium">PREMIUM</a></li>
                                     <li><a href="/men/tops">TOPS</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
