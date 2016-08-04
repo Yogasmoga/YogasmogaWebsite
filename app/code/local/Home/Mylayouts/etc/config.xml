@@ -222,7 +222,7 @@
         </range>
 		<!-- Range Filter  layouts End here ->
 		
-		<!-- Color Varint page layouts End here --->
+		<!-- Color Varint page layouts End here -->
 		
 	    <varint-color translate="label">
           <label>Varint</label>
