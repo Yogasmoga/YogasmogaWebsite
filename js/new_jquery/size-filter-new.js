@@ -323,6 +323,8 @@ jQuery(function(){
 });
 
 function filterCats(){
+	console.log(JSON.stringify(arAllCats));
+	console.log(JSON.stringify(arProductCats));
 
     if(arAllCats.length==0){
         jQuery("#div_cats").hide();
