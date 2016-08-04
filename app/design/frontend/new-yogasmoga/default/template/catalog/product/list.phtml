@@ -18,9 +18,9 @@ $categoryName = explode('/', $currentUrl);
 $urlKey = $categoryName[3];
 if($urlKey == 'women')
 {
-	$categoriesfilter = array(97,98,99);
+	$categoriesfilter = array(125,126,127);
 }elseif($urlKey == 'men'){
-	$categoriesfilter = array(100,101,102);
+	$categoriesfilter = array(128,129,130);
 }
 
 $children = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('name')->addAttributeToFilter('entity_id', array('in'=>$categoriesfilter));
