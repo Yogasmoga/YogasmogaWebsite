@@ -789,6 +789,48 @@ if ($lengthAvailable) {
 
         </div>
         <!-- DetailsinGreyArea -->
+
+		<!-- ProductImageContainer -->
+
+            <!-- ProductDetailContainer -->
+            <div class="style-img-box">
+                 <?php $catIds =  $_product->getCategoryIds();
+                        $styleIds = array(125,126,127,128,129,130);
+                        $finalIds = array_intersect($catIds, $styleIds);
+                        $imageName = "";
+                        foreach($finalIds as $finalId){
+                            //for women.
+                            if($finalId == 125){
+                            $imageName = "women-core-style";
+                            }
+                            elseif($finalId == 126){
+                             $imageName = "women-select-style";
+                             }
+                            elseif($finalId == 127){
+                             $imageName = "women-premium-style";
+                             }
+                             //for men.
+                            if($finalId == 128){
+                            $imageName = "men-core-style";
+                            }
+                            elseif($finalId == 129){
+                             $imageName = "men-select-style";
+                             }
+                            elseif($finalId == 130){
+                             $imageName = "men-premium-style";
+                             }
+                        }
+
+
+                 ?>
+                 <?php if($imageName):?>
+                <div class="style-image" style="padding:15px 15px 0 15px;"><img style="width:100%; height:auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/new-design-images/range/mobile/<?php echo $imageName ?>.png"/></div>
+				
+                <?php endif; ?>
+				
+		    </div>
+			
+			<!-- End ProductImageContainer -->
         <table class="productdetailtable normalproductdetail">
             <tr>
                 <td>
