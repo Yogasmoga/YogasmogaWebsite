@@ -162,7 +162,7 @@ function filterSizes(){
 
 (function($){
     $(document).ready(function($){
-        var filterOffsetTop = $("#div_sizes").offset().top - 69;
+        var filterOffsetTop = $("#div_sizes,#div_cats").offset().top - 69;
         positionFilter(filterOffsetTop);
         $(window).scroll(function(){
             positionFilter(filterOffsetTop);
@@ -170,9 +170,9 @@ function filterSizes(){
         function positionFilter(filterOffsetTop){
             var winScrollTop = $(window).scrollTop();
             if( winScrollTop > filterOffsetTop){
-                $("#div_sizes").addClass("fixed_top");
+                $("#div_sizes,#div_cats").addClass("fixed_top");
             }else{
-                $("#div_sizes").removeClass("fixed_top");
+                $("#div_sizes,#div_cats").removeClass("fixed_top");
             }
         }
     });
