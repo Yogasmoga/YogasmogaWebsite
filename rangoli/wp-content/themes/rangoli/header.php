@@ -442,7 +442,7 @@ $style= "";
     </style>";
 ?>
 <!--<div class="banner" style="cursor:default" onclick="open_red_popup()">-->
-<div class="banner" style="cursor:default">
+<div class="banner" style="cursor:default;text-transform:uppercase;">
     30% Off Everything - Limited Time Only. Use Code: Sprint
 </div>
 <?php
