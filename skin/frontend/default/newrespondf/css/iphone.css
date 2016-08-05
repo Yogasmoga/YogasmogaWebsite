@@ -8162,3 +8162,5 @@ input#giftcard_use{
 
 /*----*/
 p.apply_promo_label.promo_used > span{color:#ccc;}
+.finalsale_txt ,.finalsale_txt_review{display: table; text-align: left; width: 100%;color: #ff5f00;
+  font: 12px/18px GraphikRegular;}
