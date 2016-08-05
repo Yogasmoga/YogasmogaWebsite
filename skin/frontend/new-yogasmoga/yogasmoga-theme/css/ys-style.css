@@ -2873,6 +2873,7 @@ text-align: left;
 }
 #div_cats .chk-cats{text-transform:uppercase;}
 #div_cats .chk-cats:hover,#div_cats .chk-cats.chk-cats-selected{background:#555; color:#fff;}
+#div_cats.fixed_top {left:auto!important;}
 
 ul.main-menu > li.over.gift-sets > ul.sub-menu{
      left: auto;
