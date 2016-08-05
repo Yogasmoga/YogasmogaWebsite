@@ -8159,3 +8159,6 @@ input#giftcard_use{
 .sales-order-view .payment-method-detail li{}
 .sales-order-view .payment-method-detail li span{}
 .sales-order-view .payment-method-detail li span strong{font-size:12px;}
+
+/*----*/
+p.apply_promo_label.promo_used > span{color:#ccc;}
