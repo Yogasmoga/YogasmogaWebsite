@@ -157,7 +157,7 @@
                             $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
                             if($showSizeFilter){
                         ?>
-                        <!-- <div id="div_sizes">&nbsp;</div> -->
+                        <div id="div_sizes">&nbsp;</div>
                         <?php } ?>
 						<!-- size filters -->
 
@@ -281,6 +281,7 @@
 
                                             
                                             $simpleproductarr = array();
+											$allSkuSizes = array();
                                             foreach($productCollection as $product)
                                             {
                                                 $simpleproductarr['id'] =  $product->getId();
@@ -317,7 +318,7 @@
 												
                                                 
 												/**************** size filter *****************/
-												$allSkuSizes = array();
+												
 												$alphabeticSkuSizes = array();
 
 												$productColorIndex=0;
