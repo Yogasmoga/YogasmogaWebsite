@@ -363,7 +363,8 @@ $style= "";
         }
     </style>";
 ?>
-<div class="banner" style="cursor:default" <!--onclick="open_red_popup()"-->>
+<!--<div class="banner" style="cursor:default" onclick="open_red_popup()">-->
+<div class="banner" style="cursor:default">
     30% Off Everything - Limited Time Only. Use Code: Sprint
 </div>
 <?php
