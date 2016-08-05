@@ -2935,6 +2935,20 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 }
 
 /*--banner new style--*/
+.banner_gotham_book {
+  font-family: gothambook;
+  font-size: 12px;
+  line-height: 19px;
+  padding-top: 15% !important;
+}
+.banner_text_gold {
+  float: left;
+    left: 66.812%;
+    position: relative;
+    text-align: center;
+    top: 50.6%;
+}
+.banner_text_gold .learn-more{font-family:gothamMedium!important;}
 .banner_text_mday {float: left; left: 5.4375%; position: absolute; text-align: center; top: 88.6659%; width: 33.6%;}
 .banner_text1{position:relative;/* top:32%; left:14.5%;*/ top:21.84%; left:60.56%; float: left; text-align:center; padding-right:0px !important}
 .banner_text2{text-align:center; padding-right:0px !important; position:relative;left:27%; top: 36%;}
