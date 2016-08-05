@@ -2936,10 +2936,15 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
 /*--banner new style--*/
 .banner_gotham_book {
+  background: #fff none repeat scroll 0 0;
+  bottom: 0;
   font-family: gothambook;
-  /*font-size: 11px;*/font-size: 13px;
-  line-height: 17px;
-  padding-top: 22% !important;
+  font-size: 12px;
+  left: 0;
+  line-height: 11px;
+  padding-top: 1.5% !important;
+  position: absolute;
+  right: 0;
 }
 .banner_text_gold {
   float: left;
