@@ -356,7 +356,7 @@
 <?php
 $style= "";
 /*if(!is_user_logged_in()){*/
-    $style= "margin-top:25px;";
+    $style= "margin-top:40px;";
     echo "<style>
         .pace .pace-progress {
             top:95px;
