@@ -712,7 +712,7 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 				//jQuery("#div_sizes.fixed_top,#div_cats.fixed_top").css("top","69px");
 				jQuery("#div_sizes.fixed_top,#div_cats.fixed_top").css("top","94px");
 				}else{
-				jQuery("#div_sizes,,#div_cats").removeClass("fixed_top");
+				jQuery("#div_sizes,#div_cats").removeClass("fixed_top");
 				jQuery("#div_sizes,#div_cats").css("top","auto");	
 				}
 			}
