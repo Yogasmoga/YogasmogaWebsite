@@ -340,7 +340,7 @@ button.next-confirmation-page{display:block;margin:30px auto 0}
 .arrow-prev span{background:url(/rangoli/wp-content/themes/rangoli/images/color_left.png);cursor:pointer;width:30px;height:100px;left:20px;margin-top:-50px;position:absolute;top:50%;width:60px}
 .arrow-next span{background-image:url(/rangoli/wp-content/themes/rangoli/images/color_right.png);position:absolute;right:20px;cursor:pointer;height:100px;margin-top:-50px;position:absolute;top:50%;width:75px}
 .level_hide{display:none!important}
-.banner{z-index:9999991;color:#fff;font-family:ITCAvantGardeStd-bk;font-size:12px;text-align:center;letter-spacing:1px;line-height:25px;background:#f60;position:fixed!important;top:0;left:0;min-width:1024px;width:100%;cursor:pointer}
+.banner{z-index:9999991;color:#fff;font-family:ITCAvantGardeStd-bk;font-size:12px;text-align:center;letter-spacing:1px;line-height:15px; height:40px; padding:5px 0;background:#f60;position:fixed!important;top:0;left:0;min-width:1024px;width:100%;cursor:pointer}
 .back div{display:block!important}
 .user_banner .post_category{border-color:#444;width:317px;padding:0}
 .user_banner .post_title{border-color:#444;color:#444}
