@@ -355,7 +355,7 @@
 
 <?php
 $style= "";
-if(!is_user_logged_in()){
+/*if(!is_user_logged_in()){*/
     $style= "margin-top:25px;";
     echo "<style>
         .pace .pace-progress {
@@ -363,12 +363,12 @@ if(!is_user_logged_in()){
         }
     </style>";
 ?>
-<div class="banner" style="cursor:pointer" onclick="open_red_popup()">
-    SIGN UP & GET $25 SMOGI BUCKS
+<div class="banner" style="cursor:default" <!--onclick="open_red_popup()"-->>
+    30% Off Everything - Limited Time Only. Use Code: Sprint
 </div>
 <?php
 
-}
+/*}*/
 ?>
 <div class="header-container" style="<?php echo $style; ?>">
     <div class="header">
