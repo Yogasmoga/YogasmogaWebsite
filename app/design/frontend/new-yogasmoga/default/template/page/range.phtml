@@ -459,8 +459,13 @@ foreach ($allOptions as $instance) {
         <?php
             }
         ?>
-		console.log(JSON.stringify(arAllSizes));
-		console.log(JSON.stringify(arProductSizes));
+		//console.log(JSON.stringify(arAllSizes));
+		//console.log(JSON.stringify(arProductSizes));
+
+		var leftnaviHeight = jQuery('.leftnav').height();
+		jQuery('.gridWrap').css({
+			'min-height': leftnaviHeight + 20
+		});
     </script>
 	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter.js"></script>
 <!-- ********************************* checkbox filter ********************** -->
