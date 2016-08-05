@@ -443,7 +443,7 @@ $style= "";
 ?>
 <!--<div class="banner" style="cursor:default" onclick="open_red_popup()">-->
 <div class="banner" style="cursor:default;text-transform:uppercase;">
-    30% Off Everything - Limited Time Only. Use Code: Sprint
+    SPRINT FOR GOLD - 30% OFF EVERYTHING - LIMITED TIME ONLY. USE CODE: SPRINT
 </div>
 <?php
 
