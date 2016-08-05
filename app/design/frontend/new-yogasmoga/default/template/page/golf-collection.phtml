@@ -163,10 +163,31 @@
                                                 if($showCategoryInLeftNav->getIncludeInMenu())
                                                 {
                                                     if($subsubcategory->getChildrenCount() == 0){
-                                                        $hasnosubcategoryhtml .= '<li><a href='.$subsubcategory->getUrl().' class="bld ';
+                                                        
+														if($subsubcategory->getId()==125 || $subsubcategory->getId()==128){
+
+														$hasnosubcategoryhtml .= '<li style="margin-top:18px"'.'><a href='.$subsubcategory->getUrl().' class="bld ';
                                                         if($subsubcategory->getUrl() == $currentUrl)
                                                             $hasnosubcategoryhtml .= 'current';
                                                         $hasnosubcategoryhtml .= '">'.$subsubcategory->getName().'</a></li>';
+
+														}
+														elseif($subsubcategory->getId()==127 || $subsubcategory->getId()==130){
+
+
+															$hasnosubcategoryhtml .= '<li style="margin-bottom:19px"'.'><a href='.$subsubcategory->getUrl().' class="bld ';
+															if($subsubcategory->getUrl() == $currentUrl)
+																$hasnosubcategoryhtml .= 'current';
+															$hasnosubcategoryhtml .= '">'.$subsubcategory->getName().'</a></li>';
+														}
+														else{
+
+															$hasnosubcategoryhtml .= '<li><a href='.$subsubcategory->getUrl().' class="bld ';
+																if($subsubcategory->getUrl() == $currentUrl)
+																	$hasnosubcategoryhtml .= 'current';
+																$hasnosubcategoryhtml .= '">'.$subsubcategory->getName().'</a></li>';
+														}
+
                                                     }else{
                                                         $withsubcategoryhtml .= '<li class = "sub-head"><a href='.$subsubcategory->getUrl().' class="bld ';
                                                         if($subsubcategory->getUrl() == $currentUrl)
