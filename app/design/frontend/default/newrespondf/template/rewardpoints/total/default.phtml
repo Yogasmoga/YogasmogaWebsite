@@ -27,3 +27,12 @@
         <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
     </td>
 </tr>
+			<?php
+			if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode()) { ?>
+			<tr class="finalsale_row">
+			<td>
+            <span class='finalsale_txt_review'>These items are final sale.</span>
+			</td>
+			<td>&nbsp;</td>
+			</tr>
+			<?php } ?>

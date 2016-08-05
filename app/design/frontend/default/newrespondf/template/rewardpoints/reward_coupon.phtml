@@ -117,7 +117,8 @@
                        <?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?>
                  </div>
 
-				 <p class="apply_smogi_label">Add SMOGI Bucks<span>+</span></p>
+				 <p class="apply_smogi_label <?php
+			if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode()) { ?> promo_used <?php } ?>">Add SMOGI Bucks<span>+</span></p>
 
 				 <div class="apply_smogi_code_div" style="display: none;">
 
