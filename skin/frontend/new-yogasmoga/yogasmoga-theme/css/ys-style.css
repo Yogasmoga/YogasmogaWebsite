@@ -2893,12 +2893,12 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
    /* background:#ff6600;*/
     color:#fff;
     width:100%;
-    height:30px; padding:5px 0;
+    height:25px;
     /*letter-spacing:.75px;*/
 	letter-spacing:	1px;
     display:block;
     text-align:center;
-    font: 12px/15px AvantGardeGothicITCW01B;
+    font: 12px/25px AvantGardeGothicITCW01B;
     position:absolute;
     top:0;
     text-transform:uppercase;
@@ -2936,15 +2936,10 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
 /*--banner new style--*/
 .banner_gotham_book {
-  background: #fff none repeat scroll 0 0;
-  bottom: 0;
   font-family: gothambook;
-  font-size: 12px;
-  left: 0;
-  line-height: 11px;
-  padding-top: 1.5% !important;
-  position: absolute;
-  right: 0;
+  /*font-size: 11px;*/font-size: 13px;
+  line-height: 17px;
+  padding-top: 22% !important;
 }
 .banner_text_gold {
   float: left;
