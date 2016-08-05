@@ -2817,7 +2817,7 @@ table.smallimagecontiner td.selectedimage{
     color: #555;
 }
 
-#div_sizes.fixed_top {
+#div_sizes.fixed_top,#div_cats.fixed_top {
     left: 235px;
     margin-top: 0;
     position: fixed;
