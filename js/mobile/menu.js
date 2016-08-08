@@ -466,4 +466,33 @@ jQuery(document).ready(function($){
     $("#coupon_code").blur(function(){
         $(this).attr("placeholder",placeholder_coupon);
     });
+	
+	/******** final level nav task ********/
+	var topmenutitle = $('.sign-in-box h1').text().toLowerCase().trim();
+	
+   
+   
+    $(".sub_menu_links .menu-link,.dropdown_links .sub_cat").each(function() {   // note that the .each() handler has two parameters that can be used also
+		var elm = $(this);
+		var currn = elm.text().toLowerCase().trim();
+		
+		if(currn == topmenutitle )
+		{
+			elm.addClass("active");
+			//elm.parentsUntil('level2').find(".arrow-tag").click();
+			elm.closest('.sub_menu_links, ul').show();
+			//elm.closest('ul').prev('span').not($(this)).addClass('active');
+			elm.closest('ul').prev('span').addClass('active');
+			elm.closest('.sub_menu_links').prev('.arrow-tag').addClass('is-active');
+			elm.closest('.level3').show();
+			elm.closest('.level3').prev('.arrow-tag').addClass('is-active');
+			elm.parent('li').addClass("bgclr");
+		}
+		
+		
+    });	
+	
+	/******** final level nav ends********/
+	
+	
 });

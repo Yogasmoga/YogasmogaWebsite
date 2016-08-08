@@ -24,4 +24,59 @@ jQuery(document).ready(function($){
       $(".dropdown_links > ul>li>ul").not($(this).next()).slideUp();
       $(this).next().slideToggle();
    });
+   /******* csp filter task start *************************/
+    //  csp toggleClass
+    $(".toggle_csp").click(function(){
+      $(this).toggleClass("active");
+      $(".csp_dropdown_content").slideToggle();
+	  
+   });
+    $(".bysize > a").click(function(){
+     // $(".bysize > a").not($(this)).removeClass("active");
+      $(this).toggleClass("active");     
+   });
+   
+    $(".byrange > a").click(function(){
+    //  $(".byrange > a").not($(this)).removeClass("active");
+      $(this).toggleClass("active");  
+	
+   
+   });
+   
+		$(".csp_links a").click(function(){
+			if ($('.bysize > a').hasClass('active') || $('.byrange > a').hasClass('active')) {			
+			$('.toggle_csp.active').addClass('on');
+		//	$(".csp_dropdown_content").slideUp();
+			}
+			
+			
+			
+		});
+		$(".clear-txt").click(function(){
+			if ($('.bysize > a').hasClass('active') || $('.byrange > a').hasClass('active')) {
+				$('.toggle_csp.active').addClass('on');
+			}
+			else{
+			$('.toggle_csp.active').removeClass('on');					
+			}
+			
+			 $(this).next().find("a").removeClass("active");
+			});
+			
+			
+			$('.toggle_csp').click(function(){
+				if(!$('.csp_links .sub_cat a').hasClass('active')){
+					$(this).removeClass('on');		
+				}	
+				
+			});
+   /******* csp filter task end *************************/
+   
+   
+   
+   
+   
+   
+   
+   
 });

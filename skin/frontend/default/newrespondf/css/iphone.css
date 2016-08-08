@@ -8167,3 +8167,10 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
   font: 12px/18px GraphikRegular;}
 .finalsale_txt {margin-bottom: 5px;position: relative;top: -10px;}
 #for-discount-check  .finalsale_row {display:none;}
+/********* menu final level ***/
+.menu-item a:focus {
+    background: #f2f2f2;
+}
+.sub_menu_links .menu-item.bgclr, .sub_cat.active{background:#d4d4d4;}
+.dropdown_links > ul li.sub_cat a:hover{background:#f2f2f2;}
+/********* menu final level ends ***/
