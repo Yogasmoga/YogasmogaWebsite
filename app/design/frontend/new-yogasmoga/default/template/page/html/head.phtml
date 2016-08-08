@@ -101,6 +101,120 @@ if($serverType == 'production')
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>
 <?php echo $this->getIncludes() ?>
 
+<!-- New Dynamic Facebook Open Graph Tag -->
+<?php 
+$gender = "Female";
+if(Mage::app()->getRequest()->getControllerName()=='product'){ 
+$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+           $categoryName = explode('/', $currentUrl);
+           $urlKey = $categoryName[3];
+		   if($urlKey=='men'){
+			$gender = "Male";
+		   }
+$color   = $_GET['color'];
+$_product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());
+$_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+
+if($color){
+//get color array
+$write = Mage::getSingleton('core/resource')->getConnection('core_read');
+$readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color' AND eao.option_id = $color  ORDER BY eao.sort_order,eaov.value");
+$colorIndexArr = array();
+
+while ($row = $readresult->fetch() ) {
+	$clrinfo[$row['Value']] = $row['Attribute'];
+	}
+$colorname = ' - '.$clrinfo[$color];
+}
+
+
+$imageArr = array();
+foreach($_gallery as $_image)
+{
+	$imgdata = json_decode(trim($_image->getLabel()), true);
+	$colorId = $imgdata['color'];
+	$color   = $_GET['color'];
+	if($color){
+		if($imgdata['type'] == 'product image' && $imgdata['color'] == $color)
+		{
+
+			if(count($imageArr[$colorId])<=3)
+			{
+
+			array_push($imageArr,(string)Mage::helper('catalog/image')->init($_product,'image',$_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(400)->setQuality(91));
+
+			}
+		}
+	}else{
+
+		if($imgdata['type'] == 'product image')
+		{
+
+			if(count($imageArr[$colorId])<=3)
+			{
+
+			array_push($imageArr,(string)Mage::helper('catalog/image')->init($_product,'image',$_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(400)->setQuality(91));
+			break;
+
+			}
+		}
+
+	}
+
+}
+?>
+<meta property="og:url"  content="<?php echo Mage::helper('core/url')->getCurrentUrl() ?>"/>
+<meta property="og:type"  content="product"/>
+<meta property="og:title"  content="<?php echo $_product->getName()?><?=$colorname?> | YOGASMOGA.COM"/>
+<meta property="og:description"  content="<?php echo $_product->getDescription();?>"/>
+<meta property="og:image"  content="<?=$imageArr[0]?>"/>
+<meta property="og:site_name"  content="YOGASMOGA"/>
+<meta property="og:price:amount"  content="<?php echo number_format(Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId())->getPrice(),2); ?>"/>
+<meta property="og:product:target_gender"  content="<?php echo $gender;?>"/>
+<meta property="og:price:currency" content="USD" />
+<meta property="og:availability" content="instock" />
+<?php 
+} else{ ?>
+<meta property="og:url"  content="<?php echo Mage::helper('core/url')->getCurrentUrl() ?>"/>
+<meta property="og:type"  content="website"/>
+<meta property="og:title"  content="<?php echo $this->getTitle() ?>"/>
+<meta property="og:description"  content="<?php echo htmlspecialchars($this->getDescription()) ?>"/>
+<meta property="og:image"  content="<?php if(Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms')
+            {
+            echo $this->getSkinUrl('images/ys_twitter_women.jpg');
+            }
+       if($this->getRequest()->getControllerName()=='category')
+	   {
+
+           $categoryId = Mage::registry('current_category')->getId();
+           $category = Mage::getModel('catalog/category')->load($categoryId);
+
+           $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+           $categoryName = explode('/', $currentUrl);
+           $urlKey = $categoryName[3];
+
+
+           if($category->getImageUrl()){
+            echo $category->getImageUrl();
+            }
+           else{
+               if(strtolower($urlKey) == 'women'){
+                   echo $this->getSkinUrl('images/ys_twitter_women.jpg');
+               }
+               else{
+                   echo $this->getSkinUrl('images/ys_twitter_men.jpg');
+               }
+
+           }
+       }
+	   if($this->getRequest()->getControllerName()=='product'){
+            echo $imageArr[0];
+        }
+        
+?>"/>
+<meta property="og:site_name"  content="YOGASMOGA"/>
+<?php } ?>
+<!-- New Dynamic Facebook Open Graph Tag -->
 <!--twitter cards meta -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@YOGASMOGA">
@@ -135,83 +249,10 @@ if($serverType == 'production')
            }
        }
         if($this->getRequest()->getControllerName()=='product'){
-            $productId = Mage::registry('current_product')->getId();
-            $_product = Mage::getModel('catalog/product')->load($productId);
-            //echo Mage::helper('catalog/image')->init($_product, 'small_image')->resize(135);
-            echo Mage::helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);
+            echo $imageArr[0];
         }
 ?>">
-
 <!--twitter cards meta, ends -->
-
-<?php 
-$gender = "Female";
-if(Mage::app()->getRequest()->getControllerName()=='product'){ 
-$currentUrl = Mage::helper('core/url')->getCurrentUrl();
-           $categoryName = explode('/', $currentUrl);
-           $urlKey = $categoryName[3];
-		   if($urlKey=='men'){
-			$gender = "Male";
-		   }
-$product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());
-$parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
-$confProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
-?>
-<!-- New Dynamic Facebook Open Graph Tag -->
-<meta property="og:url"  content="<?php echo Mage::helper('core/url')->getCurrentUrl() ?>"/>
-<meta property="og:type"  content="product"/>
-<meta property="og:title"  content="<?php echo $product->getName()?>"/>
-<meta property="og:description"  content="<?php echo $product->getDescription();?>"/>
-<meta property="og:image"  content="<?php echo Mage::helper('catalog/image')->init($confProduct, 'image') ?>"/>
-<!--<meta property="og:image"  content="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>"/>-->
-
-<meta property="og:site_name"  content="YOGASMOGA"/>
-<meta property="og:price:amount"  content="<?php echo number_format(Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId())->getPrice(),2); ?>"/>
-<meta property="og:product:target_gender"  content="<?php echo $gender;?>"/>
-<meta property="og:price:currency" content="USD" />
-<meta property="og:availability" content="instock" />
-<?php 
-} else{ ?>
-<meta property="og:url"  content="<?php echo Mage::helper('core/url')->getCurrentUrl() ?>"/>
-<meta property="og:type"  content="website"/>
-<meta property="og:title"  content="<?php echo $this->getTitle() ?>"/>
-<meta property="og:description"  content="<?php echo htmlspecialchars($this->getDescription()) ?>"/>
-<meta property="og:image"  content="<?php if(Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms')
-            {
-            echo $this->getSkinUrl('images/ys_twitter_women.jpg');
-            }
-       if($this->getRequest()->getControllerName()=='category'){
-
-           $categoryId = Mage::registry('current_category')->getId();
-           $category = Mage::getModel('catalog/category')->load($categoryId);
-
-           $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-           $categoryName = explode('/', $currentUrl);
-           $urlKey = $categoryName[3];
-
-
-           if($category->getImageUrl()){
-            echo $category->getImageUrl();
-            }
-           else{
-               if(strtolower($urlKey) == 'women'){
-                   echo $this->getSkinUrl('images/ys_twitter_women.jpg');
-               }
-               else{
-                   echo $this->getSkinUrl('images/ys_twitter_men.jpg');
-               }
-
-           }
-       }
-        if($this->getRequest()->getControllerName()=='product'){
-            $productId = Mage::registry('current_product')->getId();
-            $_product = Mage::getModel('catalog/product')->load($productId);
-            //echo Mage::helper('catalog/image')->init($_product, 'small_image')->resize(135);
-            echo Mage::helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90);
-        }
-?>"/>
-<meta property="og:site_name"  content="YOGASMOGA"/>
-<?php } ?>
 
 <?php /*
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery-1.8.2.min.js"></script>

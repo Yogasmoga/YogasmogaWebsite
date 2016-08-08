@@ -62,6 +62,28 @@ class Webtex_Giftcards_CartController extends Mage_Checkout_CartController
             Mage::getSingleton('customer/session')->authenticate($this);
             return;
         }
+
+		/*------coded by shivaji --------*/
+		$applygiftcheck = $this->getRequest()->getParam('giftcard_use');
+		if($applygiftcheck == '1' && (Mage::getSingleton('checkout/session')->getQuote()->getCouponCode() || Mage::helper('rewardpoints/event')->getCreditPoints() > 0))
+		{
+			$totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+			$subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+			/************Shippping****************/
+			$shippingPrice = 0;
+			$shippingPrice = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingAmount();
+			$subtotal = $subtotal + (int)$shippingPrice;
+			/************Shippping****************/
+			$discount  = (isset($totals['discount']) ? $totals['discount']->getValue() : 0);
+			$grandtotal_check = (int)($subtotal - ($discount * -1.00));
+			//to check 100% discounted already
+			if($grandtotal_check <= 0){
+			Mage::getSingleton("core/session")->addError("Total Order Amount is already zero.");
+			$this->_goBack();
+			return;
+			}
+		}
+		/*------coded by shivaji --------*/
         if ((string)$this->getRequest()->getParam('giftcard_use') == '1') {
             Mage::getSingleton('giftcards/session')->setActive('1');
         } else {

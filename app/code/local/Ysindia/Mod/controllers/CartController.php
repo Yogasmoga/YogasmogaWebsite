@@ -2,6 +2,38 @@
 include_once("Mage/Checkout/controllers/CartController.php");
 class Ysindia_Mod_CartController extends Mage_Checkout_CartController
 {
+
+	/**
+     * Retrieve shopping cart model object
+     *
+     * @return Mage_Checkout_Model_Cart
+     */
+    protected function _getCart()
+    {
+        return Mage::getSingleton('checkout/cart');
+    }
+
+    /**
+     * Get checkout session model instance
+     *
+     * @return Mage_Checkout_Model_Session
+     */
+    protected function _getSession()
+    {
+        return Mage::getSingleton('checkout/session');
+    }
+
+    /**
+     * Get current active quote instance
+     *
+     * @return Mage_Sales_Model_Quote
+     */
+    protected function _getQuote()
+    {
+        return $this->_getCart()->getQuote();
+    }
+
+
     public function deleteAction()
     {
         /*
@@ -85,6 +117,34 @@ class Ysindia_Mod_CartController extends Mage_Checkout_CartController
                 }
             }
         }
+
+		/****************** Shivaji code, remove all discount ***************/
+		Mage::getModel('smogiexpirationnotifier/applyremovediscount')->removesmogibucks();
+        if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode() != ''){
+            try{
+                $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                $this->_getQuote()->setCouponCode('')
+                    ->collectTotals()
+                    ->save();
+                // refresh cart total
+                $cart = Mage::getSingleton('checkout/session')->getQuote();
+
+                foreach ($cart->getAllAddresses() as $address)
+                {
+                    $cart->unsetData('cached_items_nonnominal');
+                    $cart->unsetData('cached_items_nominal');
+                }
+
+                $cart->setTotalsCollectedFlag(false);
+                $cart->collectTotals();
+            }catch (Exception $e){
+                die($e->getMessage());
+            }
+
+        }
+
+        Mage::getSingleton('giftcards/session')->setActive('0');
+		/****************** Shivaji code, remove all discount ***************/
 
         $this->_redirectReferer(Mage::getUrl('*/*'));
     }

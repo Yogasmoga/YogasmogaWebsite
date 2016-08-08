@@ -18,6 +18,41 @@
  */
  ?>
 
+<?php
+/* returns the shortened url */
+function get_bitly_short_url($url,$login,$appkey,$format='txt') {
+    $connectURL = 'http://api.bit.ly/v3/shorten?login='.$login.'&apiKey='.$appkey.'&uri='.urlencode($url).'&format='.$format;
+    return curl_get_result($connectURL);
+}
+/* returns a result form url */
+
+function curl_get_result($url) {
+    $ch = curl_init();
+    $timeout = 5;
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
+    $data = curl_exec($ch);
+    curl_close($ch);
+    return $data;
+}
+$url = $this->getReferringUrl();
+$login = "yogasmoga";
+$appkey = "R_487d67928c881cbd14a7d13f6acaafde";
+$link =json_decode(get_bitly_short_url($url,$login, $appkey,$format));
+//echo '<pre/>';print_r($link);
+
+$bitlyUrl = $link->data->url;
+$urlBitly = '';
+if($bitlyUrl){
+    $urlBitly = $bitlyUrl;
+}
+else{
+    $urlBitly = $url;
+}
+?>
+
+
 <!-- <link media="all" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" type="text/css" rel="stylesheet" /> -->
 <script type="text/javascript">
     _disablesidenavigation = false;
@@ -37,8 +72,9 @@
                             <div class="referfriend-subheader">YOUR INVITE LINK</div>                                
                         </td>            
                         <td class="link">
-                            <input id="uniquelink" type="text" value="<?php echo $this->getReferringUrl() ?>" readonly="true" />
+                            <input id="uniquelink" type="text" value="<?php echo $urlBitly;//$this->getReferringUrl() ?>" readonly="true" />
                         </td>
+                        
                         <td class="share no-margin">                
                             <a href="#" id="fbrefer" onclick="sharereferlink('facebook');"></a>
                             <a href="#" onclick="sharereferlink('twitter');" id="twrefer"></a>

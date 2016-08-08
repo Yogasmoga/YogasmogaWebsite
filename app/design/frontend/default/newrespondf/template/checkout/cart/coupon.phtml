@@ -102,10 +102,50 @@
 ?>
 </div>
 <div id="error_msg_coupon" class="error_coupon"></div>
+<!-- coded by shivaji -->
 <script>
-    //var promoMessage = jQuery(".flashMessage").html();
-    //jQuery(".toshow").html(promoMessage);
+    jQuery(document).ready(function ($) {
+			$('#discount-coupon-form').on('submit', function(e){
+				//e.preventDefault();
+				count = occurrencescheck($('#coupon_code').val(), '-');
+				if (window.location.href.indexOf('https://') >= 0)
+					_usesecureurl = true;
+				else
+					_usesecureurl = false;
+
+				var promocodeurl = homeUrl + 'checkout/cart/couponPost';
+				var giftcardurl = homeUrl + 'checkout/cart/applyGiftCard';
+				if (_usesecureurl) {
+					promocodeurl = securehomeUrl + 'checkout/cart/couponPost';
+					giftcardurl = securehomeUrl + 'checkout/cart/applyGiftCard';
+				}
+				if (count < 2) {
+					$("#discount-coupon-form").attr("action", promocodeurl);
+				}
+				else {
+					$("#discount-coupon-form").attr("action", giftcardurl);
+				}
+		});
+	});
+
+function occurrencescheck(string, substring) {
+    var n = 0;
+    var pos = 0;
+
+    while (true) {
+        pos = string.indexOf(substring, pos);
+        if (pos != -1) {
+            n++;
+            pos += substring.length;
+        }
+        else {
+            break;
+        }
+    }
+    return (n);
+}
 </script>
+<!-- coded by shivaji -->
 <?php return; ?>
 
 <form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost',array('_secure'=>true)) ?>" method="post">

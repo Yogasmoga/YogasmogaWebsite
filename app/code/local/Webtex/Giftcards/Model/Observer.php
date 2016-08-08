@@ -28,71 +28,71 @@ class Webtex_Giftcards_Model_Observer extends Mage_Core_Model_Abstract
         $quoteId = $order->getQuoteId();
         $quote = Mage::getModel('sales/quote')->setStoreId($order->getStoreId())->load($quoteId);
         if($quote){
-        try {
-            /* Create cards if its present in order */
-            foreach ($quote->getAllVisibleItems() as $item) {
-                if ($item->getProduct()->getTypeId() == 'giftcards'){
-                    $options = $item->getProduct()->getCustomOptions();
-                    $optionsDataMap = array(
-                        'card_type',
-                        'mail_to',
-                        'mail_to_email',
-                        'mail_from',
-                        'mail_message',
-                        'offline_country',
-                        'offline_state',
-                        'offline_city',
-                        'offline_street',
-                        'offline_zip',
-                        'offline_phone',
-                    );
-                    $data = array();
-                    foreach ($optionsDataMap as $field) {
-                        if (isset($options[$field])) {
-                            $data[$field] = $options[$field]->getValue();
+            try {
+                /* Create cards if its present in order */
+                foreach ($quote->getAllVisibleItems() as $item) {
+                    if ($item->getProduct()->getTypeId() == 'giftcards'){
+                        $options = $item->getProduct()->getCustomOptions();
+                        $optionsDataMap = array(
+                            'card_type',
+                            'mail_to',
+                            'mail_to_email',
+                            'mail_from',
+                            'mail_message',
+                            'offline_country',
+                            'offline_state',
+                            'offline_city',
+                            'offline_street',
+                            'offline_zip',
+                            'offline_phone',
+                            );
+                        $data = array();
+                        foreach ($optionsDataMap as $field) {
+                            if (isset($options[$field])) {
+                                $data[$field] = $options[$field]->getValue();
+                            }
                         }
-                    }
-                    $data['card_amount'] = $item->getBasePrice();
-                    $data['product_id']  = $item->getProductId();
-                    $data['card_status'] = 0;
-                    $data['order_id'] = $order->getId();
+                        $data['card_amount'] = $item->getBasePrice();
+                        $data['product_id']  = $item->getProductId();
+                        $data['card_status'] = 0;
+                        $data['order_id'] = $order->getId();
 
-                    for ($i=0; $i<$item->getQty(); $i++) {
-                        $model = Mage::getModel('giftcards/giftcards');
-                        $model->setData($data);
-			if (in_array($order->getState(), array('complete'))) {
-				$model->setCardStatus(2);
-			        $model->send();
-			}
-                        $model->save();
-                    }
+                        for ($i=0; $i<$item->getQty(); $i++) {
+                            $model = Mage::getModel('giftcards/giftcards');
+                            $model->setData($data);
+                            if (in_array($order->getState(), array('complete'))) {
+                                $model->setCardStatus(2);
+                                $model->send();
+                            }
+                            $model->save();
+                        }
 
+                    }
                 }
-            }
 
-            $GiftcardDiscount  =  (int)$quote->getGiftcardsDiscount();
-            if ($quote->getUseGiftcards() || $GiftcardDiscount > 0) {
-                $cards = Mage::getModel('giftcards/giftcards')->getCollection()
+                /*$GiftcardDiscount  =  (int)$quote->getGiftcardsDiscount();
+                if ($quote->getUseGiftcards()) {
+                    $cards = Mage::getModel('giftcards/giftcards')->getCollection()
                     ->addFieldToFilter('customer_id', $quote->getCustomerId())
                     ->addFieldToFilter('card_status', 1);
-                $value = $quote->getGiftcardsDiscount();
-                foreach ($cards as $card) {
-                    $useAmount = min($card->getCardBalance(), $value);
-                    if ($useAmount > 0) {
-                        $value -= $card->getCardBalance();
-                        $card->setCardBalance($card->getCardBalance() - $useAmount);
-                        $card->save();
+                    $value = $quote->getGiftcardsDiscount();
+                    foreach ($cards as $card) {
+                        $useAmount = min($card->getCardBalance(), $value);
+                        if ($useAmount > 0) {
+                            $value -= $card->getCardBalance();
+                            $card->setCardBalance($card->getCardBalance() - $useAmount);
+                            $card->save();
+                        }
                     }
-                }
+                }*/
+            } catch (Exception $e) {
+                Mage::logException($e);
+                Mage::helper('checkout')->sendPaymentFailedEmail($order, $e->getMessage());
+                $result['success']  = false;
+                $result['error']    = true;
+                $result['error_messages'] = $this->__('There was an error processing your order. Please contact us or try again later.');
             }
-        } catch (Exception $e) {
-            Mage::logException($e);
-            Mage::helper('checkout')->sendPaymentFailedEmail($order, $e->getMessage());
-            $result['success']  = false;
-            $result['error']    = true;
-            $result['error_messages'] = $this->__('There was an error processing your order. Please contact us or try again later.');
         }
-      }
     }
 
     /**
@@ -103,30 +103,30 @@ class Webtex_Giftcards_Model_Observer extends Mage_Core_Model_Abstract
      */
     public function salesOrderCancelAfter($observer)
     {
-   		$order = $observer->getEvent()->getOrder();
+       $order = $observer->getEvent()->getOrder();
 
-        if ($order->getDiscountDescription() == "Gift Card") {
-            $cards = Mage::getModel('giftcards/giftcards')->getCollection()
-                ->addFieldToFilter('customer_id', $order->getCustomerId())
-                ->addFieldToFilter('card_status', 1);
+       if ($order->getDiscountDescription() == "Gift Card") {
+        $cards = Mage::getModel('giftcards/giftcards')->getCollection()
+        ->addFieldToFilter('customer_id', $order->getCustomerId())
+        ->addFieldToFilter('card_status', 1);
 
-            $discount = -$order->getBaseDiscountAmount();
-            foreach ($cards as $card) {
-                if ($discount > 0) {
-                    $value = $discount - ($card->getCardAmount() - $card->getCardBalance());
-                    if ($value >= 0) {
-                        $value = $card->getCardAmount() - $card->getCardBalance();
-                        $discount = $discount - $value;
-                    } else {
-                        $value = $discount;
-                        $discount = 0;
-                    }
-                    $card->setCardBalance($value + $card->getCardBalance());
-                    $card->save();
+        $discount = -$order->getBaseDiscountAmount();
+        foreach ($cards as $card) {
+            if ($discount > 0) {
+                $value = $discount - ($card->getCardAmount() - $card->getCardBalance());
+                if ($value >= 0) {
+                    $value = $card->getCardAmount() - $card->getCardBalance();
+                    $discount = $discount - $value;
+                } else {
+                    $value = $discount;
+                    $discount = 0;
                 }
+                $card->setCardBalance($value + $card->getCardBalance());
+                $card->save();
             }
         }
-   	}
+    }
+}
 
     /**
      * Process order saving
@@ -139,10 +139,45 @@ class Webtex_Giftcards_Model_Observer extends Mage_Core_Model_Abstract
         $order = $observer->getEvent()->getOrder();
         if (in_array($order->getState(), array('complete'))) {
             $cards = Mage::getModel('giftcards/giftcards')->getCollection()
-                ->addFieldToFilter('order_id', $order->getId());
+            ->addFieldToFilter('order_id', $order->getId());
             foreach ($cards as $card) {
                 $card->setCardStatus(2)->save();
                 $card->send();
+            }
+        }
+    }
+
+    public function salesOrderPlaceAfter($observer)
+    {
+        
+        $order_id = $observer->getData('order_ids');
+        $order = Mage::getModel('sales/order')->load($order_id);
+
+        $quoteId = $order->getQuoteId();
+        $quote = Mage::getModel('sales/quote')->setStoreId($order->getStoreId())->load($quoteId);
+        if($quote){
+            try {
+                $GiftcardDiscount  =  (int)$quote->getGiftcardsDiscount();
+                if ($quote->getUseGiftcards()) {
+                    $cards = Mage::getModel('giftcards/giftcards')->getCollection()
+                    ->addFieldToFilter('customer_id', $quote->getCustomerId())
+                    ->addFieldToFilter('card_status', 1);
+                    $value = $quote->getGiftcardsDiscount();
+                    foreach ($cards as $card) {
+                        $useAmount = min($card->getCardBalance(), $value);
+                        if ($useAmount > 0) {
+                            $value -= $card->getCardBalance();
+                            $card->setCardBalance($card->getCardBalance() - $useAmount);
+                            $card->save();
+                        }
+                    }
+                }
+            } catch (Exception $e) {
+                Mage::logException($e);
+                Mage::helper('checkout')->sendPaymentFailedEmail($order, $e->getMessage());
+                $result['success']  = false;
+                $result['error']    = true;
+                $result['error_messages'] = $this->__('There was an error processing your order. Please contact us or try again later.');
             }
         }
     }
