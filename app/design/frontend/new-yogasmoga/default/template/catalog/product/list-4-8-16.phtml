@@ -7,33 +7,6 @@
     if($showSizeFilter){
 ?>
 <div id="div_sizes">&nbsp;</div>
-<!-- category filter -->
-<div id="div_cats"><b>FILTER BY CATEGORY: </b></div>
-<?php 
-$catIdsArray = array();
-
-//code for check root category
-$currentUrl = Mage::helper('core/url')->getCurrentUrl();
-$categoryName = explode('/', $currentUrl);
-$urlKey = $categoryName[3];
-if($urlKey == 'women')
-{
-	$categoriesfilter = array(125,126,127);
-}elseif($urlKey == 'men'){
-	$categoriesfilter = array(128,129,130);
-}
-
-$children = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('name')->addAttributeToFilter('entity_id', array('in'=>$categoriesfilter));
-
-foreach ($children as $category)
-{
-	$catIdsArray[$category->getId()] = $category->getName();
-	//echo "<span class='chk-cats' rel='".$category->getId()."'>".$category->getName()."</span>";
-}
-$catIdsArray = array_unique($catIdsArray);
-?>
-
-<!-- category filter -->
 <?php } ?>
 
 <!-- productGridView -->
@@ -236,7 +209,7 @@ $alphabeticSkuSizes = array();
 
 $productColorIndex=0;
 /**************** size filter *****************/
-$allcats = array();
+
 foreach ($configurableProductArr as $key => $val) {
 
     $confProduct = Mage::getModel('catalog/product')->load($key);
@@ -330,7 +303,7 @@ foreach ($configurableProductArr as $key => $val) {
     <?php
     foreach ($configurableProductArr[$key] as $childProduct) {
 
-	/****************** size filter **********************************/
+/****************** size filter **********************************/
         $productColorName = $clrinfo[$childProduct['color']];
         $arColorSizes = array();
 
@@ -342,15 +315,9 @@ foreach ($configurableProductArr as $key => $val) {
             }
         }
 
-	/****************** size filter **********************************/
-
-	/********************** category filter *********************/
-	$cats = $confProduct->getCategoryIds();
-	$allcats = array_unique(array_merge($allcats,$cats));
-	$catsids = implode(",", $cats);
-	/********************** category filter *********************/
+/****************** size filter **********************************/
         ?>
-        <div class="productCont product-color-<?php echo $productColorIndex;?>" rel="<?php echo $strSizes;?>" data="<?php echo $catsids;?>">
+        <div class="productCont product-color-<?php echo $productColorIndex;?>" rel="<?php echo $strSizes;?>">
             <div class="prod-img">
 
                 <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?>">
@@ -419,8 +386,6 @@ foreach ($allOptions as $instance) {
     <script type="text/javascript">
         var arAllSizes = Array();
         var arProductSizes = Array();
-		var arAllCats = Array();
-		var arProductCats = {};//Array();
         var productColorIndex;
 
         productColorIndex = "<?php echo $productColorIndex;?>";
@@ -437,21 +402,8 @@ foreach ($allOptions as $instance) {
         <?php
             }
         ?>
-
-		<?php
-		foreach($catIdsArray as $id => $name){
-		?>
-			arProductCats["<?php echo $id;?>"] = "<?php echo $name;?>";
-		<?php
-		}
-		foreach($allcats as $catid){
-		?>
-			arAllCats.push("<?php echo $catid;?>");
-		<?php
-		}
-		?>
     </script>
-	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter-new.js"></script>
+	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter.js"></script>
 <!-- ********************************* checkbox filter ********************** -->
 <?php } ?>
 

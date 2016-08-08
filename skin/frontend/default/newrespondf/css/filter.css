@@ -289,3 +289,6 @@
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
+.dropdown_links > ul > li > ul li a:hover{background:#eeeeee;}
+.dropdown_links > ul > li > ul li a:focus{background:#d4d4d4;}

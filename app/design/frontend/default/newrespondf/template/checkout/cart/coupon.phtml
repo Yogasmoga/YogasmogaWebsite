@@ -39,19 +39,19 @@
                         <input type="hidden" name="remove" id="remove-coupone" value="0" />
                         <?php if(strlen($this->getCouponCode()))
                         {
-                            ?>
+                        ?>
                                 
                <input style="display: none;" class="input-text hidden" id="coupon_code" name="coupon_code" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" placeholder="Enter Code Here" />
              <div class="buttons-set">
                 <p><span class="quote">&ldquo;</span><?php echo $this->getCouponCode(); ?><span class="quote">&rdquo;</span> promo used </p>
 				<button value="Remove Points" onclick="discountForm.submit(true)" type="button" class="button btn-update"><span><span>Remove</span></span></button>
             </div>
-                            <?php  
+                        <?php  
                         }
                         else
                         {
                             ?>
-                    <p class="apply_promo_label">Add Promo Code / Gift Card Code<span class="add-code">+</span></p>
+                    <p class="apply_promo_label <?php if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0) { ?> promo_used <?php } ?>">Add Promo Code / Gift Card Code<span class="add-code">+</span></p>
                     </div>
 					  <div class="buttons-set">
 
@@ -102,6 +102,9 @@
 ?>
 </div>
 <div id="error_msg_coupon" class="error_coupon"></div>
+<?php if(strlen($this->getCouponCode())){ ?>
+<div class="finalsale_txt">These items are final sale. No exchanges or returns.</div> 
+<?php } ?>
 <!-- coded by shivaji -->
 <script>
     jQuery(document).ready(function ($) {

@@ -690,14 +690,14 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 
                 return;
             }
-			jQuery(".orange-banner").hide();			 
-			jQuery(".header-container").css("padding","0px");
+			//jQuery(".orange-banner").hide();			 
+			jQuery(".header-container").css("padding","40px 0 0 0");
 			jQuery("div#bodycompensator").css("height","69px"); 
 			jQuery(".ui-widget-overlay").css({top:69});
 			jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
-			jQuery("#div_sizes").css("top","auto");
+			jQuery("#div_sizes,#div_cats").css("top","auto");
 			
-			var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
+			var filterOffsetTop = jQuery("#div_sizes,#div_cats").offset().top - 94;
 			positionFilter(filterOffsetTop);
 			jQuery(window).scroll(function(){
 				positionFilter(filterOffsetTop);
@@ -708,11 +708,12 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 				var winScrollTop = jQuery(window).scrollTop();
 				if( winScrollTop > filterOffsetTop){
 
-				jQuery("#div_sizes").addClass("fixed_top");
-				jQuery("#div_sizes.fixed_top").css("top","69px");
+				jQuery("#div_sizes,#div_cats").addClass("fixed_top");
+				//jQuery("#div_sizes.fixed_top,#div_cats.fixed_top").css("top","69px");
+				jQuery("#div_sizes.fixed_top,#div_cats.fixed_top").css("top","94px");
 				}else{
-				jQuery("#div_sizes").removeClass("fixed_top");
-				jQuery("#div_sizes").css("top","auto");	
+				jQuery("#div_sizes,#div_cats").removeClass("fixed_top");
+				jQuery("#div_sizes,#div_cats").css("top","auto");	
 				}
 			}
 			
