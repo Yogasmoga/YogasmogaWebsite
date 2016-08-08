@@ -358,7 +358,7 @@ width: 120%;
   text-transform: capitalize;
 }
 .csp_dropdown_content  {
-    bottom: 0;
+   
     display: none;
    /* overflow-y: scroll;*/
     padding-right: 20%;
@@ -383,7 +383,8 @@ width: 120%;
 .toggle_csp.active {
     transition-duration: 200ms;
 }
-.clear-txt{font:12px/44px ITCAvantGardeStd-Bk;margin-right:0px!important;}
+.clear-txt{font:12px/44px ITCAvantGardeStd-Bk;margin-right:0px!important;opacity:0.3;}
+.clearon.clear-txt{opacity:1;}
 .csp_links .sub_cat a:hover {
   background: #f2f2f2 none repeat scroll 0 0;
 }

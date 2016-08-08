@@ -28,7 +28,7 @@ jQuery(document).ready(function($){
     //  csp toggleClass
     $(".toggle_csp").click(function(){
       $(this).toggleClass("active");
-      $(".csp_dropdown_content").slideToggle();
+    //  $(".csp_dropdown_content").slideToggle();
 	  
    });
     $(".bysize > a").click(function(){
@@ -46,13 +46,16 @@ jQuery(document).ready(function($){
 		$(".csp_links a").click(function(){
 			if ($('.bysize > a').hasClass('active') || $('.byrange > a').hasClass('active')) {			
 			$('.toggle_csp.active').addClass('on');
+			
 		//	$(".csp_dropdown_content").slideUp();
 			}
 			
+			$(this).closest("ul").prev(".clear-txt").addClass("clearon");
 			
 			
 		});
 		$(".clear-txt").click(function(){
+			$(this).removeClass("clearon");
 			if ($('.bysize > a').hasClass('active') || $('.byrange > a').hasClass('active')) {
 				$('.toggle_csp.active').addClass('on');
 			}
