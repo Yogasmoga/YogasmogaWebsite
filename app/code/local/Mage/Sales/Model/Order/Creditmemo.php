@@ -1448,26 +1448,45 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
     public function refundgiftcardbalance($orderid)
     {
         $order = Mage::getModel('sales/order')->load($orderid);
-        if ($order->getDiscountDescription() == "Gift Card") {
-            $cards = Mage::getModel('giftcards/giftcards')->getCollection()
-                ->addFieldToFilter('customer_id', $order->getCustomerId())
-                ->addFieldToFilter('card_status', 1);
+		$quoteId = $order->getQuoteId();
+        $quote = Mage::getModel('sales/quote')->setStoreId($order->getStoreId())->load($quoteId);
 
-            $discount = -$order->getBaseDiscountAmount();
-            
-            foreach ($cards as $card) {
-                if ($discount > 0) {
-                    $value = $discount - ($card->getCardAmount() - $card->getCardBalance());
-                    if ($value >= 0) {
-                        $value = $card->getCardAmount() - $card->getCardBalance();
-                        $discount = $discount - $value;
-                    } else {
-                        $value = $discount;
-                        $discount = 0;
-                    }
-                    $card->setCardBalance($value + $card->getCardBalance());
-                    $card->save();
-                }
+		
+		if($quote){
+            try {
+
+				if (strpos($order->getDiscountDescription(), "Gift Card") !== false) {
+					
+					if ($quote->getUseGiftcards()) {
+					$cards = Mage::getModel('giftcards/giftcards')->getCollection()
+						->addFieldToFilter('customer_id', $order->getCustomerId())
+						->addFieldToFilter('card_status', 1);
+
+					//$discount = -$order->getBaseDiscountAmount();
+					$discount  =  $quote->getGiftcardsDiscount();
+					
+					foreach ($cards as $card) {
+							if ($discount > 0) {
+								$value = $discount - ($card->getCardAmount() - $card->getCardBalance());
+								if ($value >= 0) {
+									$value = $card->getCardAmount() - $card->getCardBalance();
+									$discount = $discount - $value;
+								} else {
+									$value = $discount;
+									$discount = 0;
+								}
+								$card->setCardBalance($value + $card->getCardBalance());
+								$card->save();
+							}
+						}
+					}
+				}
+				} catch (Exception $e) {
+                Mage::logException($e);
+                Mage::helper('checkout')->sendPaymentFailedEmail($order, $e->getMessage());
+                $result['success']  = false;
+                $result['error']    = true;
+                $result['error_messages'] = $this->__('There was an error processing your order. Please contact us or try again later.');
             }
         }
     }
