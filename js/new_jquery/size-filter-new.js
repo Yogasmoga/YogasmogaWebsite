@@ -329,7 +329,7 @@ function filterCats(){
         return;
     }
 
-    var Categories = "<b>FILTER BY CATEGORY: </b> ";
+    var Categories = "<b>FILTER BY RANGE: </b> ";
     //for(var i=0;i<arAllCats.length;i++){
 
 			jQuery.each(arProductCats, function (index, value) {
@@ -345,7 +345,7 @@ function filterCats(){
 
 
     jQuery("#div_cats").html(Categories).show();
-	if(Categories == "<b>FILTER BY CATEGORY: </b> "){
+	if(Categories == "<b>FILTER BY RANGE: </b> "){
 	jQuery(".ct_filter").hide();
 	}
 }
