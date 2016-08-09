@@ -54,6 +54,12 @@ jQuery(document).ready(function($){
 		});
 		$(".clear-txt").click(function(){
 			$(this).removeClass("clearon");
+
+				jQuery(".productRep").each(function () {
+					jQuery(this).removeClass('chk-cat-opened');
+					jQuery(this).removeClass('chk-size-opened');
+				});
+
 			if ($('.bysize > a').hasClass('chk-size-selected') || $('.byrange > a').hasClass('chk-cats-selected')) {
 				$('.toggle_csp.active').addClass('on');
 			}
