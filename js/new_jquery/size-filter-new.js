@@ -323,8 +323,6 @@ jQuery(function(){
 });
 
 function filterCats(){
-	console.log(JSON.stringify(arAllCats));
-	console.log(JSON.stringify(arProductCats));
 
     if(arAllCats.length==0){
         jQuery("#div_cats").hide();
@@ -332,15 +330,15 @@ function filterCats(){
     }
 
     var Categories = "<b>FILTER BY CATEGORY: </b> ";
-    for(var i=0;i<arAllCats.length;i++){
+    //for(var i=0;i<arAllCats.length;i++){
 
 			jQuery.each(arProductCats, function (index, value) {
-				if(arAllCats[i]==index){
+				//if(arAllCats[i]==index){
 					Categories += "<span class='chk-cats' rel='" + index + "'>" + value + "</span>";
-					 return false; 
-				}
+					//return false; 
+				//}
 			});
-    }
+    //}
 
     //Categories += "<div id='no-product-found' style='display:none;'>Category not available</div>";
 
