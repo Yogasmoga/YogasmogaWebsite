@@ -6,13 +6,20 @@ jQuery(function(){
 
 		jQuery(".chk-size").click(function(){
 			
+			
+			
+			
             jQuery("#no-product-found").hide();
 
             if(jQuery(this).hasClass('chk-size-selected'))
-                jQuery(this).removeClass('chk-size-selected')
-            else
-                jQuery(this).addClass('chk-size-selected')
-
+			{
+                jQuery(this).removeClass('chk-size-selected');
+				jQuery('.toggle_csp.active').addClass('on');
+            }
+			else{
+                jQuery(this).addClass('chk-size-selected');
+				jQuery('.toggle_csp.active').removeClass('on');
+			}
             var arSizesToCheck = Array();
             jQuery(".chk-size").each(function(){
 
@@ -176,13 +183,18 @@ jQuery(function(){
     filterCats();
 
 		jQuery(".chk-cats").click(function(){
-
+			alert("clicked");
             jQuery("#no-product-found").hide();
 
             if(jQuery(this).hasClass('chk-cats-selected'))
-                jQuery(this).removeClass('chk-cats-selected')
-            else
-                jQuery(this).addClass('chk-cats-selected')
+			{jQuery('.toggle_csp.active').addClass('on');
+			    jQuery(this).removeClass('chk-cats-selected');
+			}            
+            else{
+				jQuery(this).addClass('chk-cats-selected');
+				jQuery('.toggle_csp.active').removeClass('on');
+			}
+                
 
             var arCatsToCheck = Array();
             jQuery(".chk-cats").each(function(){
@@ -201,7 +213,7 @@ jQuery(function(){
             if(arCatsToCheck.length>0) {                
 				// if any of the checkbox is checked
 				/*** csp ***/
-				jQuery('.toggle_csp.active').addClass('on');
+				
                 var productsDisplayed = false;
 
                 jQuery(".productRep").each(function () {
