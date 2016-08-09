@@ -183,11 +183,12 @@ jQuery(function(){
     filterCats();
 
 		jQuery(".chk-cats").click(function(){
-			alert("clicked");
+			
             jQuery("#no-product-found").hide();
 
             if(jQuery(this).hasClass('chk-cats-selected'))
-			{jQuery('.toggle_csp.active').addClass('on');
+			{
+				jQuery('.toggle_csp.active').addClass('on');
 			    jQuery(this).removeClass('chk-cats-selected');
 			}            
             else{
@@ -213,7 +214,7 @@ jQuery(function(){
             if(arCatsToCheck.length>0) {                
 				// if any of the checkbox is checked
 				/*** csp ***/
-				
+				jQuery('.toggle_csp.active').addClass('on');
                 var productsDisplayed = false;
 
                 jQuery(".productRep").each(function () {
