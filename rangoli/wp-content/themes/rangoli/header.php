@@ -356,7 +356,7 @@
 <?php
 $style= "";
 /*if(!is_user_logged_in()){*/
-    $style= "margin-top:40px;";
+    $style= "margin-top:25px;";
     echo "<style>
         .pace .pace-progress {
             top:95px;
@@ -365,8 +365,7 @@ $style= "";
 ?>
 <!--<div class="banner" style="cursor:default" onclick="open_red_popup()">-->
 <div class="banner" style="cursor:default;text-transform:uppercase;">
-    SPRINT FOR GOLD - 30% OFF EVERYTHING* - LIMITED TIME ONLY. USE CODE: SPRINT
-	<small style="font-family:AvantGardeGothicITCW01B; font-size:10px;letter-spacing:0.42px;display:block; text-transform:none;">All Sales are Final. No Returns of Exchanges. Cannot be combined with other offers.</small>
+    SPRINT FOR GOLD - 30% OFF EVERYTHING* - LIMITED TIME ONLY. USE CODE: SPRINT	
 </div>
 <?php
 

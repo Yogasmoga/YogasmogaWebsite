@@ -691,7 +691,7 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
                 return;
             }
 			//jQuery(".orange-banner").hide();			 
-			jQuery(".header-container").css("padding","40px 0 0 0");
+			jQuery(".header-container").css("padding","25px 0 0 0");
 			jQuery("div#bodycompensator").css("height","69px"); 
 			jQuery(".ui-widget-overlay").css({top:69});
 			jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
