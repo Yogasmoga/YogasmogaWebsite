@@ -55,11 +55,68 @@ jQuery(document).ready(function($){
 		$(".clear-txt").click(function(){
 			$(this).removeClass("clearon");
 
+			var arSizesToCheck = Array();
+            jQuery(".chk-size").each(function(){
+
+                if(jQuery(this).hasClass('chk-size-selected'))
+                    arSizesToCheck.push(jQuery(this).attr('rel'));
+            });
+
+			var arCatsToCheck = Array();
+            jQuery(".chk-cats").each(function(){
+
+                if(jQuery(this).hasClass('chk-cats-selected'))
+                    arCatsToCheck.push(jQuery(this).attr('rel'));
+            });
+
+			if($(this).hasClass("clear_size")){
+
 				jQuery(".productRep").each(function () {
-					jQuery(this).removeClass('chk-cat-opened');
-					jQuery(this).removeClass('chk-size-opened');
-				});
-			jQuery(".productCont").show();
+					 jQuery(this).removeClass('chk-size-opened');
+					 if(arCatsToCheck.length>0) {
+						 if(jQuery(this).hasClass('chk-cat-opened'))
+							jQuery(this).show();
+						 else
+							jQuery(this).hide();
+					 }
+					 else{
+						jQuery(".productRep").show();
+					 }
+				 });
+
+			}else{
+
+				jQuery(".productRep").each(function () {
+					 jQuery(this).removeClass('chk-cat-opened');
+					 if(arSizesToCheck.length>0) {
+						 if(jQuery(this).hasClass('chk-size-opened'))
+							jQuery(this).show();
+						 else
+							jQuery(this).hide();
+					 }
+					 else{
+						jQuery(".productRep").show();
+					 }
+				 });
+
+			}
+
+			//jQuery(".productCont").show();
+			/*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
+            for(var i=1;i<=productColorIndex;i++){
+                var hideHeader = true;
+                jQuery(".product-color-" + i).each(function(){
+                    if(jQuery(this).is(":visible")){
+                        hideHeader = false;
+                    }
+                });
+
+                if(hideHeader)
+                    jQuery(".product-header-" + i).hide();
+                else
+                    jQuery(".product-header-" + i).show();
+            }
+/*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
 
 			if ($('.bysize > a').hasClass('chk-size-selected') || $('.byrange > a').hasClass('chk-cats-selected')) {
 				$('.toggle_csp.active').addClass('on');
