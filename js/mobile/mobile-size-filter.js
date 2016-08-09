@@ -315,6 +315,12 @@ jQuery(function(){
             }
 /*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
         });
+		
+		
+		$('.toggle_csp').click(function(){
+				if(!$('.csp_links .sub_cat a').hasClass('chk-size-selected')){
+					$(this).removeClass('on');		
+				}	
 });
 
 function filterCats(){
@@ -345,4 +351,8 @@ function filterCats(){
 	if(Categories == ""){
 	jQuery(".ct_filter").hide();
 	}
+	
+	
+	
+	
 }
