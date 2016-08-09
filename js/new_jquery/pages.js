@@ -31,8 +31,7 @@ function leftNav_scroll(element){
             } else if(scroll_top <= offset.top) {
                 element.removeClass('scrolltop');
             } else if(scroll_top > (element.parent().height() - element.height())) {                
-                element.addClass('scrolltopend');
-				alert('testing');
+                element.addClass('scrolltopend');				
                 //element.attr('style', origAttr + 'top: '+ '29px !important;');                 
             } else if(scroll_top <= (element.parent().height() + offset.top) - element.height()) {
                 element.removeClass('scrolltopend');
