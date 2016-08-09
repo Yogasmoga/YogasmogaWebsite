@@ -53,7 +53,7 @@ jQuery(document).ready(function($){
 			
 		});
 		$(".clear-txt").click(function(){
-			if ($('.bysize > a').hasClass('active') || $('.byrange > a').hasClass('active')) {
+			if ($('.bysize > a').hasClass('chk-size-selected') || $('.byrange > a').hasClass('chk-cats-selected')) {
 				$('.toggle_csp.active').addClass('on');
 			}
 			else{
@@ -65,7 +65,7 @@ jQuery(document).ready(function($){
 			
 			
 			$('.toggle_csp').click(function(){
-				if(!$('.csp_links .sub_cat a').hasClass('active')){
+				if(!$('.csp_links .sub_cat a').hasClass('chk-size-selected')){
 					$(this).removeClass('on');		
 				}	
 				

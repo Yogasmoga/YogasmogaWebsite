@@ -317,10 +317,7 @@ jQuery(function(){
         });
 		
 		
-		$('.toggle_csp').click(function(){
-				if(!$('.csp_links .sub_cat a').hasClass('chk-size-selected')){
-					$(this).removeClass('on');		
-				}	
+		
 });
 
 function filterCats(){
