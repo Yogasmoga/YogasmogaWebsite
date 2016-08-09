@@ -65,7 +65,7 @@ jQuery(document).ready(function($){
 			
 			
 			$('.toggle_csp').click(function(){
-				if((!$('.csp_links .sub_cat a').hasClass('chk-size-selected')) && (!$('.csp_links .sub_cat a').hasClass('chk-cats-selected')){
+				if(!$('.csp_links .sub_cat a').hasClass('chk-size-selected') && !$('.csp_links .sub_cat a').hasClass('chk-cats-selected')){
 					$(this).removeClass('on');		
 				}	
 				
