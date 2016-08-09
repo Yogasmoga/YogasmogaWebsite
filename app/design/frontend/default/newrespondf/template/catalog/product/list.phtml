@@ -37,6 +37,30 @@ $_category = Mage::registry('current_category');
 $currentCategoryId = $_category->getId();
 $cat = Mage::getModel('catalog/category')->load($currentCategoryId);
 //echo $mode  = $cat->getDisplayMode();
+
+/*************************category and size filter ***************************/
+$catIdsArray = array();
+
+//code for check root category
+$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+$categoryName = explode('/', $currentUrl);
+$urlKey = $categoryName[3];
+if($urlKey == 'women')
+{
+	$categoriesfilter = array(125,126,127);
+}elseif($urlKey == 'men'){
+	$categoriesfilter = array(128,129,130);
+}
+
+	$children = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('name')->addAttributeToFilter('entity_id', array('in'=>$categoriesfilter));
+
+foreach ($children as $category)
+{
+	$catIdsArray[$category->getId()] = $category->getName();
+}
+$catIdsArray = array_unique($catIdsArray);
+/*************************category and size filter ***************************/
+
 $page = $cat->getLandingPage();
 $cms_block = Mage::getModel('cms/block')->load($page);
 $title = $cms_block->getTitle(); // title of cms block
@@ -52,15 +76,6 @@ if (isset($page) && $page == '11') {
         if ($_category->getIsActive()) {
             ?>
             <div class="category-box">
-                <h2 style="display:none;">
-					<?php if($_category->getId()==78 || $_category->getId()==79): ?>
-					<?php echo $this->__('Workout in Black')?>
-					<?php else: ?>
-					<?php echo $_category->getName();?>
-					<?php endif;?>
-					
-				</h2>
-
                 <a href="<?php echo $_category->getUrl(); ?>">
                     <img class="img-responsive" src="<?php if ($_category->getThumbnail()) {
                         echo Mage::getBaseUrl('media') . 'catalog/category/' . $_category->getThumbnail();
@@ -116,8 +131,6 @@ if (isset($page) && $page == '11') {
     <div class="product-grid">
         <!-- custom list GridProducts -->
         <div class="gridWrap">
-		
-
             <?php
             $_productCollectionForOneToMany = $this->getLoadedProductCollection();
             foreach ($_productCollectionForOneToMany as $_product) {
@@ -363,10 +376,47 @@ if (isset($page) && $page == '11') {
 
             $firsth1 = 1;
             $counter = 0;
+			/**************** size filter *****************/
+			$allSkuSizes = array();
+			$alphabeticSkuSizes = array();
+
+			$productColorIndex=0;
+			$allcats = array();
+			/**************** size filter *****************/
             foreach ($configurableProductArr as $key => $val) {
 
                 $divcleard = false;
                 $confProduct = Mage::getModel('catalog/product')->load($key);
+
+				/**************** size filter *****************/
+				++$productColorIndex;
+
+				$confProductForSku = Mage::getModel('catalog/product_type_configurable')->setProduct($confProduct);
+
+				$skuSizes = array();
+				$simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFilterByRequiredOptions();
+
+				$characterSizeFound = false;
+				foreach($simpleCollectionForSku as $simpleProductForSku){
+					//$sku = $simpleProductForSku->getSku();
+					$filterColorName = $simpleProductForSku->getAttributeText('color');
+					$filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
+
+					$size = $simpleProductForSku->getAttributeText('size');
+
+					$stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
+
+					if(!isset($skuSizes[$filterColorName]))
+						$skuSizes[$filterColorName] = array();
+
+					if(isset($size) && strlen(trim($size))>0) {
+						$allSkuSizes[] = $size;
+						if ($stock > 0)
+							$skuSizes[$filterColorName][] = $size;
+					}
+				}
+				/**************** size filter *****************/
+
                 // get all images for the product
                 $_gallery = Mage::getModel('catalog/product')->load($key)->getMediaGalleryImages();
                 $imageArr = array();
@@ -410,10 +460,7 @@ if (isset($page) && $page == '11') {
 //		  $classname = "first-confname2";
                 ?>
 
-                <div class="productCont">
-				                        <div style="display: none">
-                                                <h2 style="display:none"><?php echo $confProduct->getName()?></h2>
-                                        </div>
+                <div class="productCont product-header-<?php echo $productColorIndex;?>">
                     <?php $isNewImage = $confProduct->getResource()->getAttribute('mobile_image')->getFrontend()->getValue($confProduct); ?>
                     <?php if (isset($isNewImage)) { ?>
 
@@ -465,9 +512,29 @@ if (isset($page) && $page == '11') {
                 <?php
 
                 foreach ($configurableProductArr[$key] as $childProduct) {
+					/****************** size filter **********************************/
+					$productColorName = $clrinfo[$childProduct['color']];
+					$arColorSizes = array();
 
-                    ?>
-                    <div class="productCont">
+					foreach($skuSizes as $keyColor => $sizes) {
+
+						if ($keyColor == $productColorName) {
+							$strSizes = implode(",", $sizes);
+							break;
+						}
+					}
+
+					/****************** size filter **********************************/
+
+					/********************** category filter *********************/
+					$cats = $confProduct->getCategoryIds();
+					$allcats = array_unique(array_merge($allcats,$cats));
+					$catsids = implode(",", $cats);
+					/********************** category filter *********************/
+					?>
+
+  
+                    <div class="productCont productRep product-color-<?php echo $productColorIndex;?>" rel="<?php echo $strSizes;?>" data="<?php echo $catsids;?>">
                         <div class="prod-img">
                             <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl; ?>">
                                 <?php
@@ -537,6 +604,7 @@ if (isset($page) && $page == '11') {
 
 
             ?>
+			<div id='no-product-found' class="no_product" style='display:none;'>No Products Available</div>
         </div>
         <!--    <div style="padding: 22px; width: 100%; float: left;"></div>-->
         <!--    <div class="block-nav">-->
@@ -546,4 +614,71 @@ if (isset($page) && $page == '11') {
         <!--    </div>-->
         <!-- custom list -->
     </div>
+
+
+
+<?php
+$_category = Mage::registry('current_category');
+$currentCategoryId= $_category->getId();
+$categoriesWithNoFilterVariable = Mage::getModel('core/variable')->loadByCode('no_filter_categories')->getValue('plain');
+$categoriesWithNoFilter = explode(",", $categoriesWithNoFilterVariable);
+$showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
+
+if($showSizeFilter){
+/************** size filter ***********************/
+if(isset($allSkuSizes) && count($allSkuSizes)>0)
+    $allSkuSizes = array_unique($allSkuSizes);
+
+$arProductAllSizes = array();
+$attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+$allOptions = $attribute->getSource()->getAllOptions(true, true);
+foreach ($allOptions as $instance) {
+    if ($instance['label'] != "" && strpos($instance['label'], "T")===false)
+        $arProductAllSizes[] = $instance['label'];
+}
+
+/************** size filter ***********************/
+
+?>
+<!-- ********************************* checkbox filter ********************** -->
+    <script type="text/javascript">
+		jQuery("#no-product-found").hide();
+        var arAllSizes = Array();
+        var arProductSizes = Array();
+		var arAllCats = Array();
+		var arProductCats = {};//Array();
+        var productColorIndex;
+
+        productColorIndex = "<?php echo $productColorIndex;?>";
+
+        <?php
+            foreach($allSkuSizes as $size){
+        ?>
+                arProductSizes.push("<?php echo $size;?>");
+        <?php
+            }
+            foreach($arProductAllSizes as $size){
+        ?>
+                arAllSizes.push("<?php echo $size;?>");
+        <?php
+            }
+        ?>
+
+		<?php
+		foreach($catIdsArray as $id => $name){
+		?>
+			arProductCats["<?php echo $id;?>"] = "<?php echo $name;?>";
+		<?php
+		}
+		foreach($allcats as $catid){
+		?>
+			arAllCats.push("<?php echo $catid;?>");
+		<?php
+		}
+		?>
+    </script>
+<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>mobile/mobile-size-filter.js"></script>
+<!-- ********************************* checkbox filter ********************** -->
 <?php } ?>
+<?php } ?>
+

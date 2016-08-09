@@ -32,7 +32,7 @@ jQuery(function(){
 
                 var productsDisplayed = false;
 
-                jQuery(".productCont").each(function () {
+                jQuery(".productRep").each(function () {
 
                     var strSizes = jQuery(this).attr('rel');
 
@@ -99,7 +99,7 @@ jQuery(function(){
             }
             else
 			{
-				 jQuery(".productCont").each(function () {
+				 jQuery(".productRep").each(function () {
 					 jQuery(this).removeClass('chk-size-opened');
 					 if(arCatsToCheck.length>0) {
 						 if(jQuery(this).hasClass('chk-cat-opened'))
@@ -108,12 +108,12 @@ jQuery(function(){
 							jQuery(this).hide();
 					 }
 					 else{
-						jQuery(".productCont").show();
+						jQuery(".productRep").show();
 					 }
 				 });
 
 
-                //jQuery(".productCont").show();
+                //jQuery(".productRep").show();
 			}
 
 /*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
@@ -141,44 +141,25 @@ function filterSizes(){
         return;
     }
 
-    var sizes = "<b>FILTER BY SIZE: </b> ";
+    //var sizes = "<b>FILTER BY SIZE: </b> ";
+	var sizes = "";
 
     for(var i=0;i<arAllSizes.length;i++){
 
         for(var j=0;j<arProductSizes.length;j++){
 
             if(arAllSizes[i]==arProductSizes[j]){
-                sizes += "<span class='chk-size' rel='" + arAllSizes[i] + "'>" + arAllSizes[i] + "</span>";
+                //sizes += "<span class='chk-size' rel='" + arAllSizes[i] + "'>" + arAllSizes[i] + "</span>";
+				sizes += "<a href='#' class='chk-size' rel='" + arAllSizes[i] + "'>" + arAllSizes[i] + "</a>";
                 break;
             }
         }
     }
 
-    sizes += "<div id='no-product-found'>No Products Available</div>";
+    //sizes += "<div id='no-product-found' style='display:none;'>No Products Available</div>";
 
     jQuery("#div_sizes").html(sizes).show();
 }
-
-
-(function($){
-    $(document).ready(function($){
-        var filterOffsetTop = $("#div_sizes").offset().top - 69;
-        positionFilter(filterOffsetTop);
-        $(window).scroll(function(){
-            positionFilter(filterOffsetTop);
-        });
-        function positionFilter(filterOffsetTop){
-            var winScrollTop = $(window).scrollTop();
-            if( winScrollTop > filterOffsetTop){
-                $("#div_sizes").addClass("fixed_top");
-            }else{
-                $("#div_sizes").removeClass("fixed_top");
-            }
-        }
-    });
-})(jQuery);
-
-
 
 
 
@@ -221,7 +202,7 @@ jQuery(function(){
 
                 var productsDisplayed = false;
 
-                jQuery(".productCont").each(function () {
+                jQuery(".productRep").each(function () {
 
                     var strSizes = jQuery(this).attr('data');
 
@@ -286,7 +267,7 @@ jQuery(function(){
             }
             else
 			{
-				  jQuery(".productCont").each(function () {
+				  jQuery(".productRep").each(function () {
 					 jQuery(this).removeClass('chk-cat-opened');
 					 //alert(arSizesToCheck.length);
 					 if(arSizesToCheck.length>0) {
@@ -296,12 +277,12 @@ jQuery(function(){
 							jQuery(this).hide();
 					 }
 					 else{
-						jQuery(".productCont").show();
+						jQuery(".productRep").show();
 					 }
 				 });
 
 
-                //jQuery(".productCont").show();
+                //jQuery(".productRep").show();
 			}
 
 /*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
@@ -323,50 +304,31 @@ jQuery(function(){
 });
 
 function filterCats(){
-	console.log(JSON.stringify(arAllCats));
-	console.log(JSON.stringify(arProductCats));
-
     if(arAllCats.length==0){
         jQuery("#div_cats").hide();
         return;
     }
 
-    var Categories = "<b>FILTER BY CATEGORY: </b> ";
+    //var Categories = "<b>FILTER BY CATEGORY: </b> ";
+	var Categories = "";
     for(var i=0;i<arAllCats.length;i++){
 
 			jQuery.each(arProductCats, function (index, value) {
 				if(arAllCats[i]==index){
-					Categories += "<span class='chk-cats' rel='" + index + "'>" + value + "</span>";
+					//Categories += "<span class='chk-cats' rel='" + index + "'>" + value + "</span>";
+					Categories += "<a href='#' class='chk-cats' rel='" + index + "'>" + value + "</a>";
 					 return false; 
 				}
 			});
     }
 
+
     //Categories += "<div id='no-product-found' style='display:none;'>Category not available</div>";
 
-
-
+	
+	
     jQuery("#div_cats").html(Categories).show();
-	if(Categories == "<b>FILTER BY CATEGORY: </b> "){
+	if(Categories == ""){
 	jQuery(".ct_filter").hide();
 	}
 }
-
-
-(function($){
-    $(document).ready(function($){
-        var filterOffsetTop = $("#div_cats").offset().top - 69;
-        positionFilter(filterOffsetTop);
-        $(window).scroll(function(){
-            positionFilter(filterOffsetTop);
-        });
-        function positionFilter(filterOffsetTop){
-            var winScrollTop = $(window).scrollTop();
-            if( winScrollTop > filterOffsetTop){
-                $("#div_cats").addClass("fixed_top");
-            }else{
-                $("#div_cats").removeClass("fixed_top");
-            }
-        }
-    });
-})(jQuery);

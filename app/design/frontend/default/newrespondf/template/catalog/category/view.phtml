@@ -51,21 +51,40 @@
      <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
 	 <?php } ?>
 	  <h1><?php echo $this->htmlEscape($this->getCurrentCategory()->getName()) ?></h1>
+		
+		<?php
+        $_category = Mage::registry('current_category');
+        $currentCategoryId= $_category->getId();
+		$cat = Mage::getModel('catalog/category')->load($currentCategoryId);
+		//echo $mode  = $cat->getDisplayMode();
+		$page  = $cat->getLandingPage();
+		?>
+
+		<!-- category filter -->
+		<?php 
+
+			$categoriesWithNoFilterVariable = Mage::getModel('core/variable')->loadByCode('no_filter_categories')->getValue('plain');
+			$categoriesWithNoFilter = explode(",", $categoriesWithNoFilterVariable);
+			$showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
+			if($showSizeFilter){
+		?>
 		<!--  csp task start --->
-		 <div style="right:15px;display:none;" class="toggle_csp">
-	  <svg  class="gold-arrow" width="14" height="44" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 16.1 44" style="enable-background:new 0 0 16.1 44;" xml:space="preserve">
+		<div style="right:15px;" class="toggle_csp">
+		<svg  class="gold-arrow" width="14" height="44" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 16.1 44" style="enable-background:new 0 0 16.1 44;" xml:space="preserve">
 
-<polygon fill="#AE8536" fill-rule="evenodd" clip-rule="evenodd"  points="0.5,17.3 15.8,17.3 8.1,25.5 "/>
-</svg>
+		<polygon fill="#AE8536" fill-rule="evenodd" clip-rule="evenodd"  points="0.5,17.3 15.8,17.3 8.1,25.5 "/>
+		</svg>
 
-	  <svg class="light-arrow"  width="15" height="44" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 16.8 9.5" style="enable-background:new 0 0 16.8 9.5;" xml:space="preserve">
+			  <svg class="light-arrow"  width="15" height="44" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 16.8 9.5" style="enable-background:new 0 0 16.8 9.5;" xml:space="preserve">
 
-	<polyline id="XMLID_2_" fill="none" stroke="#676767" stroke-miterlimit="10" points="1.5,0.9 8.4,7.9 15.4,0.9 "/>
-</svg>
-	  </div>
+			<polyline id="XMLID_2_" fill="none" stroke="#676767" stroke-miterlimit="10" points="1.5,0.9 8.4,7.9 15.4,0.9 "/>
+		</svg>
+		</div>
 	  <!--  csp task end --->
+	  <?php } ?>
+
 		
 	 <div class="toggle_dropdown">
 		  <svg width="44px" height="44px">
@@ -78,44 +97,38 @@
 		  </svg>
 	  </div>
   </div>
-       <?php
-        $_category = Mage::registry('current_category');
-        $currentCategoryId= $_category->getId();
-		$cat = Mage::getModel('catalog/category')->load($currentCategoryId);
-		//echo $mode  = $cat->getDisplayMode();
-		$page  = $cat->getLandingPage();
-		?>
 		
+		<?php
+		if($showSizeFilter){
+		?>
+        
 		<!-- csp task start  --->
 		<div class="csp_dropdown_content">
-				<div class="csp_links">
-						<ul>
-							<li style="">
+			<div class="csp_links">
+				<ul>
+					<li class="sz_filter"><a title="Tops" href="http://staging.com.local/women/tops">FILTER BY SIZE</a><span class="clear-txt">clear</span>
+					<ul >
+					<li style="font:12px/44px ITCAvantGardeStd-Bk;" class="sub_cat bysize" id="div_sizes">
+					</li></ul>
+					</li>
 
-												
-						<a title="Tops" href="http://staging.com.local/women/tops">FILTER BY SIZE</a>
-					    <span class="clear-txt">
-							clear
-						</span>
-						
-											<ul ><li style="font:12px/44px ITCAvantGardeStd-Bk;" class="sub_cat bysize"><a href="#">2</a><a href="#">4</a><a href="#">6</a></li></ul>						</li>
-											<li style="">
-
-												
-						<a  title="Tops" href="http://staging.com.local/women/tops">FILTER BY RANGE</a>
-					    <span class="clear-txt">
-							clear
-						</span>
-						
-											<ul ><li class="sub_cat byrange"><a href="#" >Core</a>
-											<a href="#" >Select</a>
-											<a href="#" >Premium</a>
-											</li></ul>						</li>
-											
-											</ul>
-				</div>
+					<li class="ct_filter"><a  title="Tops" href="http://staging.com.local/women/tops">FILTER BY RANGE</a><span class="clear-txt">clear</span>
+					<ul>
+					<li class="sub_cat byrange" id="div_cats">
+					</li>
+					
+					</ul>
+					</li>
+				</ul>
+			</div>
 		</div>
+		<div id='no-product-found' style='display:none;'>No Products Available</div>
 		<!-- csp task end -->
+		
+		<?php } ?>
+		<!-- category filter -->
+		
+		
    <div class="dropdown_content">
   <?php  if(empty($page) && $page !='11'){ ?>
         <div class="filter" style="display:none;">
