@@ -6,7 +6,7 @@ jQuery(function(){
 
 		jQuery(".chk-size").click(function(){
 			
-			
+			jQuery(this).closest("ul").prev(".clear-txt").addClass("clearon");
 			
 			
             jQuery("#no-product-found").hide();
@@ -183,7 +183,7 @@ jQuery(function(){
     filterCats();
 
 		jQuery(".chk-cats").click(function(){
-			
+			jQuery(this).closest("ul").prev(".clear-txt").addClass("clearon");
             jQuery("#no-product-found").hide();
 
             if(jQuery(this).hasClass('chk-cats-selected'))

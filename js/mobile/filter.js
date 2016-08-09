@@ -53,6 +53,7 @@ jQuery(document).ready(function($){
 			
 		});
 		$(".clear-txt").click(function(){
+			$(this).removeClass("clearon");
 			if ($('.bysize > a').hasClass('chk-size-selected') || $('.byrange > a').hasClass('chk-cats-selected')) {
 				$('.toggle_csp.active').addClass('on');
 			}
@@ -60,7 +61,8 @@ jQuery(document).ready(function($){
 			$('.toggle_csp.active').removeClass('on');					
 			}
 			
-			 $(this).next().find("a").removeClass("active");
+			 $(this).next().find("a").removeClass("chk-size-selected");
+			 $(this).next().find("a").removeClass("chk-cats-selected");
 			});
 			
 			
