@@ -116,7 +116,8 @@ jQuery(document).ready(function($){
                 else
                     jQuery(".product-header-" + i).show();
             }
-/*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
+			/*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
+			jQuery("#no-product-found").hide();
 
 			if ($('.bysize > a').hasClass('chk-size-selected') || $('.byrange > a').hasClass('chk-cats-selected')) {
 				$('.toggle_csp.active').addClass('on');
