@@ -329,16 +329,15 @@ function filterCats(){
 
     //var Categories = "<b>FILTER BY CATEGORY: </b> ";
 	var Categories = "";
-    for(var i=0;i<arAllCats.length;i++){
+    //for(var i=0;i<arAllCats.length;i++){
 
 			jQuery.each(arProductCats, function (index, value) {
-				if(arAllCats[i]==index){
-					//Categories += "<span class='chk-cats' rel='" + index + "'>" + value + "</span>";
+				//if(arAllCats[i]==index){
 					Categories += "<a href='#' class='chk-cats' rel='" + index + "'>" + value + "</a>";
-					 return false; 
-				}
+					//return false; 
+				//}
 			});
-    }
+    //}
 
 
     //Categories += "<div id='no-product-found' style='display:none;'>Category not available</div>";
