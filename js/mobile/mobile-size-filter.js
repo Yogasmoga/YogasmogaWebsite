@@ -5,7 +5,7 @@ jQuery(function(){
     filterSizes();
 
 		jQuery(".chk-size").click(function(){
-
+			
             jQuery("#no-product-found").hide();
 
             if(jQuery(this).hasClass('chk-size-selected'))
@@ -29,7 +29,8 @@ jQuery(function(){
 
             if(arSizesToCheck.length>0) {              
 				// if any of the checkbox is checked
-
+				/*** csp ***/
+				jQuery('.toggle_csp.active').addClass('on');
                 var productsDisplayed = false;
 
                 jQuery(".productRep").each(function () {
@@ -199,7 +200,8 @@ jQuery(function(){
 
             if(arCatsToCheck.length>0) {                
 				// if any of the checkbox is checked
-
+				/*** csp ***/
+				jQuery('.toggle_csp.active').addClass('on');
                 var productsDisplayed = false;
 
                 jQuery(".productRep").each(function () {
