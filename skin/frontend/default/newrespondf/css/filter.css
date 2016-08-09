@@ -398,7 +398,7 @@ width: 120%;
   -moz-transform: rotate(180deg);}
   
  .sub_cat.bysize{ overflow: hidden;}
- .byrange a.active,.bysize a.active{
+ .byrange a.chk-size-selected,.bysize a.chk-cats-selected{
 	 background:#d4d4d4;
 	 
  }
@@ -409,6 +409,8 @@ width: 120%;
  .toggle_csp.on.active .light-arrow{z-index:10;opacity:1;}
  
  .toggle_csp .gold-arrow{z-index:9;opacity:0;}
+ 
+
  
  /**** csp filter  task end ****/
 
