@@ -402,6 +402,8 @@ width: 120%;
 	 background:#d4d4d4;
 	 
  }
+ .csp_dropdown_content .sub_cat.bysize a.chk-size-selected{ background:#d4d4d4;}
+ .csp_dropdown_content .sub_cat.byrange a.chk-cats-selected{ background:#d4d4d4;}
  .toggle_csp.active.on .gold-arrow{z-index:9;opacity:0;}
  .toggle_csp svg{position:absolute;top:0;left:0;}
  .toggle_csp.on .gold-arrow{z-index:10;opacity:1;}
