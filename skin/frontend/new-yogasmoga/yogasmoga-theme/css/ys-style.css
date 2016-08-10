@@ -3216,5 +3216,11 @@ font: 36px/36px AvantGardeGothicITCW01D;
 /*---------product detail page image.--------*/
 .block-elm .style-image{position: absolute; top:-50px;}
 
+/*-----------------------------------------------*/
+.adddields label{position:relative;}
+.adddields input{width:100%;height:30px; box-sizing:border-box;}
 .adddields span{display:none;}
-.adddields span{background:#5EC52F;font-size:12px;text-transform:uppercase;width:60px;border:0 none;}
+.adddields span {background: #5ec52f none repeat scroll 0 0; border: 0 none;
+  font-size: 12px; position: absolute; right: 0; text-transform: uppercase; top: 0; width: 60px; box-sizing: border-box;
+  height: 30px; line-height: 30px; padding: 0; color: #fff; font-family: gothambold;}
+  
