@@ -3223,4 +3223,4 @@ font: 36px/36px AvantGardeGothicITCW01D;
 .adddields span {background: #5ec52f none repeat scroll 0 0; border: 0 none;
   font-size: 12px; position: absolute; right: 0; text-transform: uppercase; top: 0; width: 60px; box-sizing: border-box;
   height: 30px; line-height: 30px; padding: 0; color: #fff; font-family: gothambold;}
-.adddields span{position:relative; top:50%; transform:translateY(-50%);-webkit-transform:translateY(-50%)}  
+.adddields span img{position:relative; top:50%; transform:translateY(-50%);-webkit-transform:translateY(-50%)}  
