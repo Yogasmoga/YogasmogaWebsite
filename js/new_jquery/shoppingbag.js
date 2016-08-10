@@ -862,6 +862,7 @@ function applysmogibucks() {
                     showerror(data.error);
                     jQuery('#smogi').next('span').addClass("applysmogi").empty().append("Apply");
                     jQuery('.zindexH').hide();
+					jQuery('#smogi').next('span').hide();
                 }
 
 
@@ -869,9 +870,10 @@ function applysmogibucks() {
         });
     }
     else {
-        jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
+        jQuery('#smogi').next('span').addClass("applysmogi").empty().append("Apply");
         showerror('You do not have enough SMOGI Bucks in your Account');
         jQuery('.zindexH').hide();
+		jQuery('#smogi').next('span').hide();
     }
 
 }
