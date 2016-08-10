@@ -325,7 +325,7 @@ if(!isset($ipInfo)){
                         ?>
                     <li><a class="bold-heading" href="javascript:void(0)">FEEL THE SMOGI LOVE</a></li>
 
-                    <li>Sign up for $25 SMOGI Bucks<br/> toward your first order.</li>
+                    <li>Sign up and earn 50% Off on your first order.</li>
                     <?php
                     }
                     else{
