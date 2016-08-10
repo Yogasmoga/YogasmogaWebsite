@@ -1175,29 +1175,16 @@ function initializeCartGiftSet(){
 }
 
 jQuery(window).load(function(){	
-	if(jQuery('.adddields #smogi').val() == ''){
-		jQuery(this).next('span').hide();	
-		
-	}
-	else{
-		jQuery(this).next('span').show();
-	}
 	
-	if(jQuery('.adddields #giftcartcode').val() == ''){
-		jQuery(this).next('span').hide();
-			console.log('empty');
-	}
-	else{
-		jQuery(this).next('span').show();
-		console.log('not empty');
+	 
+	 jQuery('.adddields #smogi').on("keypress", function(){
+			jQuery(this).next('span').show();
+		});
 		
-	}
-	/* jQuery('.adddields #smogi').focus(function(){
-		
-	}); 
-	jQuery('.adddields #giftcartcode').focus(function(){
-		jQuery(this).next('span').show();	
-	});*/
+	jQuery('.adddields #giftcartcode').on("keypress", function(){
+			jQuery(this).next('span').show();
+		});	
+	
 	
 });
 
