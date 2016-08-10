@@ -972,6 +972,7 @@ function applypromocode() {
                 //jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("+");
 				jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("Apply");
                 jQuery('.zindexH').hide();
+				jQuery('#giftcartcode').next('span').hide();		
             }
 
 
@@ -1092,6 +1093,7 @@ function redeemgiftcardcode() {
                 if (jQuery(".giftcardcheckbox").is(":checked")) jQuery(".giftcardcheckbox").removeAttr('checked', 'checked');
                 jQuery(".giftcarloader").empty();
                 jQuery('.zindexH').hide();
+				
             }
 
         }
