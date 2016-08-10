@@ -901,6 +901,7 @@ function removesmogibucks() {
             }
             else {
                 jQuery('.zindexH').hide();
+				jQuery('#smogi').next('span').hide();
                 showerror('There is some error while removing smogi bucks');
 
             }
