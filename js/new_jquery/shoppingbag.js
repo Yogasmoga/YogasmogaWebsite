@@ -1191,5 +1191,6 @@ jQuery(window).load(function(){
 			jQuery(this).next('span').hide();			
 		}	
 	});
+	
 });
 
