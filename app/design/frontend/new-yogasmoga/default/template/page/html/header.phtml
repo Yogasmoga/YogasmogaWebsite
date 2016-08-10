@@ -74,6 +74,9 @@ if($serverType == 'production')
 //echo "ehllo = ".Mage::getSingleton('core/session')->getisfirsttime();
 //Mage::getSingleton('core/session')->setmyVariable('myValue');
 //echo Mage::getSingleton('core/session')->getmyVariable();
+
+//var_dump($_SERVER);
+//var_dump(Mage::app()->getRequest()->getServer('HTTP_REFERER'));
 ?>
 
 <!-- sign-up pop up for first time user  -->
@@ -109,6 +112,16 @@ if($serverType == 'production')
                                       ?> _gaq.push(['_trackEvent', 'account open popup', 'Close']);
                         <?php } ?>
                     } );
+						alert('<?php echo Mage::getSingleton('core/session')->getRedirectuser() ?>');
+					<?php
+						if(Mage::getSingleton('core/session')->getRedirectuser() == '1'){
+						Mage::getSingleton('core/session')->unsRedirectuser();
+						$referalurl = Mage::helper('core/url')->getHomeUrl().'/rewardpoints/index/referral/';
+						?>
+						window.location = '<?php echo $referalurl; ?>';
+						alert('<?php echo $referalurl; ?>');
+						<?php } ?>
+					?>
                 }
 
             }
