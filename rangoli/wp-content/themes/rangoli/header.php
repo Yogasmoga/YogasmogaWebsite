@@ -547,7 +547,8 @@ $style= "";
                                 <li><a href="/smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
                             </ul>
                         </li>
-                        <li class="rangoli"><a id="rangoli-head" class="rangoliBlu" href="/rangoli">Rangoli</a></li>
+                        <!-- <li class="rangoli"><a id="rangoli-head" class="rangoliBlu" href="/rangoli">Rangoli</a></li> -->
+						<li><a href="/rewardpoints/index/referral">invite friend</a></li>
                     </ul>
                 </div>
 
