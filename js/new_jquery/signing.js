@@ -412,11 +412,16 @@ function  createCustomerAccount()
                 jQuery(".thank-you-block").removeClass("no-display");
                 jQuery(".signinDialog").addClass("wdthauto");
                 _islogedinuser = true;
+                // Redirection for invite friend.
+                if(window.location.href.indexOf("refer-a-friend") > -1) {
+                    window.location.assign(homeUrl + 'rewardpoints/index/referral');
+                }
                 jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
 
                 if(name != ''){
                     jQuery("#welcome-name").html("Hi "+name).attr("href",homeUrl+'customer/account/');
                 }
+
                 /*setTimeout(function(){
                  jQuery("#signing_popup").dialog("close");
                  },3000);*/
@@ -576,6 +581,7 @@ function loginCustomer() {
                 doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
                 /************** code update by ys team ******************/
 
+
                 if (_redirectFromSingingPopup != null)
                     window.location.assign(_redirectFromSingingPopup);
 
@@ -586,6 +592,10 @@ function loginCustomer() {
 
                 jQuery(".signin-loader").html("");
                 jQuery("#signing_popup").dialog("close");
+                // Redirection for invite friend.
+                if(window.location.href.indexOf("refer-a-friend") > -1) {
+                    window.location.assign(homeUrl + 'rewardpoints/index/referral');
+                }
                 _islogedinuser = true;
                 if (name != '')
                     jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
