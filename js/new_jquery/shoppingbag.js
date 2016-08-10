@@ -1181,7 +1181,7 @@ function initializeCartGiftSet(){
 
 }
 
-jQuery(window).load(function(){	
+jQuery(document).ready(function(){	
 	jQuery(".adddields #smogi").on('keypress',function(){
 			jQuery(this).next('span').show();
 	});
