@@ -860,7 +860,7 @@ function applysmogibucks() {
                 else {
                     showerror('There is some error while applying smogi bucks');
                     showerror(data.error);
-                    jQuery('#smogi').next('span').addClass("applysmogi").empty().append("Applied");
+                    jQuery('#smogi').next('span').addClass("applysmogi").empty().append("Apply");
                     jQuery('.zindexH').hide();
                 }
 
@@ -970,7 +970,7 @@ function applypromocode() {
 
                 jQuery('#giftcartcode').val('');
                 //jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("+");
-				jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("Applied");
+				jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("Apply");
                 jQuery('.zindexH').hide();
             }
 
@@ -1043,7 +1043,7 @@ function applygiftcardcode() {
                 showerror('' + data.error + '');
                 jQuery('#giftcartcode').val('');
                 //jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("+");
-				jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("Applied");
+				jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("Apply");
                 jQuery('.zindexH').hide();
             }
         }
