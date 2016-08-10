@@ -1174,4 +1174,13 @@ function initializeCartGiftSet(){
 
 }
 
+jQuery(window).load(function(){	
+	jQuery('.adddields #smogi').focus(function(){
+		jQuery(this).next('span').show();	
+	});
+	jQuery('.adddields #giftcartcode').focus(function(){
+		jQuery(this).next('span').show();	
+	});
+	
+});
 

@@ -756,11 +756,3 @@ var spn_h = jQuery(".featureList span.ftrFig").height();
 jQuery(".featureList span.ftrFig img").css("max-height",spn_h);
 
 });
-
-jQuery(window).load(function(){
-	jQuery('.adddields span').hide();
-	jQuery('#giftcartcode').focus(function(){
-		jQuery(this).next('span').show();	
-	});
-	
-});
