@@ -1184,10 +1184,12 @@ jQuery(window).load(function(){
 	}
 	
 	if(jQuery('.adddields #giftcartcode').val() == ''){
-		jQuery(this).next('span').hide();		
+		jQuery(this).next('span').hide();
+			console.log('empty');
 	}
 	else{
 		jQuery(this).next('span').show();
+		console.log('not empty');
 		
 	}
 	/* jQuery('.adddields #smogi').focus(function(){
