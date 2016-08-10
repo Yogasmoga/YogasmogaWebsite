@@ -5,7 +5,9 @@ var root;
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function($){
 
-
+    if(window.location.href.indexOf("refer-a-friend") > -1) {
+        jQuery("#signing_popup").dialog("open");
+    }
     jQuery(".gender_p span").click(function(){
         jQuery(".gender_p span").removeClass("selected");
         jQuery(this).addClass("selected");
