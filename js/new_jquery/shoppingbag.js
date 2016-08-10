@@ -1041,7 +1041,7 @@ function applygiftcardcode() {
             else {
                 showerror('' + data.error + '');
                 jQuery('#giftcartcode').val('');
-                jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("+");
+                jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("Apply");
                 jQuery('.zindexH').hide();
             }
         }
