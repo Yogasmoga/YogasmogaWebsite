@@ -1179,4 +1179,5 @@ jQuery(document).ready(function(){
 	jQuery('#giftcartcode').focus(function(){
 		jQuery(this).next('span').show();	
 	});
+	
 });
