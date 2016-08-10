@@ -1175,7 +1175,7 @@ function initializeCartGiftSet(){
 }
 
 jQuery(window).load(function(){	
-	if($('.adddields #smogi').val() == ''){
+	if(jQuery('.adddields #smogi').val() == ''){
 		jQuery(this).next('span').hide();	
 		
 	}
@@ -1183,7 +1183,7 @@ jQuery(window).load(function(){
 		jQuery(this).next('span').show();
 	}
 	
-	if($('.adddields #giftcartcode').val() == ''){
+	if(jQuery('.adddields #giftcartcode').val() == ''){
 		jQuery(this).next('span').hide();		
 	}
 	else{
