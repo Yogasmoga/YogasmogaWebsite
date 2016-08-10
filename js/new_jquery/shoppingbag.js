@@ -1175,18 +1175,20 @@ function initializeCartGiftSet(){
 }
 
 jQuery(window).load(function(){	
-	if($('.adddields #smogi').val() != ''){
-		jQuery(this).next('span').show();	
+	if($('.adddields #smogi').val() == ''){
+		jQuery(this).next('span').hide();	
+		
 	}
 	else{
-		jQuery(this).next('span').hide();	
+		jQuery(this).next('span').show();
 	}
 	
-	if($('.adddields #giftcartcode').val() != ''){
-		jQuery(this).next('span').show();	
+	if($('.adddields #giftcartcode').val() == ''){
+		jQuery(this).next('span').hide();		
 	}
 	else{
-		jQuery(this).next('span').hide();	
+		jQuery(this).next('span').show();
+		
 	}
 	/* jQuery('.adddields #smogi').focus(function(){
 		
