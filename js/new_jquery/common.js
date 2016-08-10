@@ -308,15 +308,6 @@ sizeChartPop();
             $("#signing_popup").dialog( "open" );
         }
     });
-	/************* shivaji code ***********/
-	$(".main-menu").on("click","#referal_link",function(event){
-        if(!_islogedinuser){
-            event.preventDefault();
-            _redirectFromReferalLink = $(this).attr("href");
-            $("#signing_popup").dialog( "open" );
-        }
-    });
-	/************* shivaji code ***********/
 
 
         

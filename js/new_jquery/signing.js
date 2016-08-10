@@ -583,11 +583,7 @@ function loginCustomer() {
 
 
                 if (_redirectFromSingingPopup != null)
-                    window.location.assign(_redirectFromSingingPopup);\
-
-				//new referal link redirect
-				if (_redirectFromReferalLink != null)
-                    window.location.assign(_redirectFromReferalLink);
+                    window.location.assign(_redirectFromSingingPopup);
 
                 //jQuery("#signin").html("SIGN OUT").attr({
                 //    href: homeUrl + 'customer/account/logout/',
