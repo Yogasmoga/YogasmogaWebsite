@@ -1174,10 +1174,4 @@ function initializeCartGiftSet(){
 
 }
 
-jQuery(document).ready(function(){
-	jQuery('.adddields span').hide();
-	jQuery('#giftcartcode').focus(function(){
-		jQuery(this).next('span').show();	
-	});
-	
-});
+
