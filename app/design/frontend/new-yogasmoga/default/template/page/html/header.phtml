@@ -379,21 +379,20 @@ if($currentUrl != $checkoutpage){
 
   
 <?php 
-/*$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
-if(!$loggedIn){ */?>
+$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+if(!$loggedIn){ ?>
 <div class="header-container" style="padding-top:25px; height:69px !important">
-<div style="cursor:default" class="orange-banner">SPRINT FOR GOLD - 30% OFF EVERYTHING* - LIMITED TIME ONLY. USE CODE: SPRINT
-</div>
+<div style="cursor:default" class="orange-banner">Sign up and earn 50% Off on your first order</div>
 <style>
 .scrolltop{top:104px!important;}
 </style>
 
-<?php /* } 
+<?php  } 
 else { ?>
  <div style="height:69px !important;" class="header-container">
 
  
-<?php } */ ?>
+<?php }  ?>
 
 
 	
