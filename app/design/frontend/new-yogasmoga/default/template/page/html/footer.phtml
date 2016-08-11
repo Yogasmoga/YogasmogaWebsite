@@ -316,3 +316,10 @@ jQuery("#div_sizes.fixed_top").css("top","94px");
 </script>
 <?php }
 ?>
+
+<?php if(!$loggedIn){ ?>
+<style type="text/css">
+	.mc-modal {top: 25% !important;}
+</style>
+<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us3.list-manage.com","uuid":"e75e87f0f28256f1760159458","lid":"ca4e5865d6"}) })</script>
+<?php } ?>
