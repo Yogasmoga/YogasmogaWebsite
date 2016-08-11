@@ -1,6 +1,7 @@
 var firstTime = true;
 
 jQuery(document).ready(function ($) {
+	
 
     $("body").on("click", ".shopping-cart label[for='giftCardShop']", function () {
         if (jQuery(".giftcardcheckbox").attr("disabled") == "disabled") {
@@ -481,9 +482,31 @@ function showShoppingBagHtml() {
                 if (data.countdiscount > 1)
                     showerror(data.discounttypeerror);
                 outofstockDisable();
+				
+					/*---------promocode update for apply button---*/
+					jQuery(".adddields #smogi").on('keypress',function(){
+					
+					jQuery(this).next('span').show();
+					});
+					jQuery(".adddields #smogi").on('keyup',function(){		
+						if(jQuery(this).val().length < 1){
+							jQuery(this).next('span').hide();			
+						}	
+					});
+					jQuery(".adddields #giftcartcode").on('keypress',function(){
+							jQuery(this).next('span').show();
+					});
+					jQuery(".adddields #giftcartcode").on('keyup',function(){		
+						if(jQuery(this).val().length < 1){
+							jQuery(this).next('span').hide();			
+						}	
+					});
+					/*---------promocode update for apply button end---*/
+			
             }
         });
     //}, 500);
+			
 }
 
 function showShoppingBagHtmlOpen() {
@@ -1180,9 +1203,10 @@ function initializeCartGiftSet(){
     });
 
 }
-
+/*
 jQuery(window).load(function(){	
 	jQuery(".adddields #smogi").on('keypress',function(){
+		alert();
 			jQuery(this).next('span').show();
 	});
 	jQuery(".adddields #smogi").on('keyup',function(){		
@@ -1199,4 +1223,4 @@ jQuery(window).load(function(){
 		}	
 	});
 	
-});
+});*/
