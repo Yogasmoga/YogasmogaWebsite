@@ -8,6 +8,10 @@ jQuery(document).ready(function(jQuery){
     forgot_password();
     checkIsUserLogged();
 
+    if(window.location.href.indexOf("refer-a-friend") > -1) {
+        openLogin();
+    }
+
     jQuery(".sign_signup_form input").on("keyup",function(){
         isinputvalid();
     });
@@ -260,7 +264,14 @@ function createCustomerAccount() {
                 jQuery("#sign-up-form .err-msg").html("");
                 if (status == "success") {
                     createRangoliUser(email_id, pwd, first_name, last_name, customer_id);
-                    location.reload(true) ;
+
+                    //For refer a friend link redirection.
+                    if(window.location.href.indexOf("refer-a-friend") > -1) {
+                        window.location.assign(homeUrl + 'rewardpoints/index/referral');
+                    }
+                    else{
+                        location.reload(true) ;
+                    }
                 }
                 else {
                     jQuery("#error_msg").html("Email already exists");
@@ -387,6 +398,10 @@ function loginCustomer() {
                     doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
                     /************** code update by ys team ******************/
 
+                    if(window.location.href.indexOf("refer-a-friend") > -1) {
+                        window.location.assign(homeUrl + 'rewardpoints/index/referral');
+                    }
+
                 }
                 else {
 
@@ -415,7 +430,12 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
             if (result != undefined && result.message != undefined && result.message == "success") {
                 //alert('hi');
                 //console.log("******* cannot login to Rangoli");
-                location.reload(true);
+                //For refer a friend redirection.
+                if(window.location.href.indexOf("refer-a-friend") > -1) {
+                }
+                else{
+                    location.reload(true);
+                }
             }
         }
     });

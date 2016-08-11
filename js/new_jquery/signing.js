@@ -3,6 +3,9 @@ var root;
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function($){
 
+    if(window.location.href.indexOf("refer-a-friend") > -1) {
+        jQuery("#signing_popup").dialog("open");
+    }
     jQuery(".gender_p span").click(function(){
         jQuery(".gender_p span").removeClass("selected");
         jQuery(this).addClass("selected");
@@ -409,11 +412,18 @@ function  createCustomerAccount()
                 jQuery(".thank-you-block").removeClass("no-display");
                 jQuery(".signinDialog").addClass("wdthauto");
                 _islogedinuser = true;
+
                 jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
+
+                // Redirection for invite friend.
+                if(window.location.href.indexOf("refer-a-friend") > -1) {
+                    window.location.assign(homeUrl + 'rewardpoints/index/referral');
+                }
 
                 if(name != ''){
                     jQuery("#welcome-name").html("Hi "+name).attr("href",homeUrl+'customer/account/');
                 }
+
                 /*setTimeout(function(){
                  jQuery("#signing_popup").dialog("close");
                  },3000);*/
@@ -582,6 +592,11 @@ function loginCustomer() {
                 jQuery(".signin-loader").html("");
                 jQuery("#signing_popup").dialog("close");
                 _islogedinuser = true;
+
+                // Redirection for invite friend.
+                if(window.location.href.indexOf("refer-a-friend") > -1) {
+                    window.location.assign(homeUrl + 'rewardpoints/index/referral');
+                }
                 if (name != '')
                     jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
 
