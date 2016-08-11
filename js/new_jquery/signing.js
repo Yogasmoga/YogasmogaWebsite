@@ -418,7 +418,8 @@ function  createCustomerAccount()
 
                 if(window.location.href.indexOf("refer-a-friend") > -1) {
                     //window.location.assign(homeUrl + 'rewardpoints/index/referral/');
-                    window.location.assign(homeUrl+'rewardpoints/index/referral');
+                    //window.location.assign(homeUrl+'rewardpoints/index/referral');
+                    window.location.assign('https://yogasmoga.com/rewardpoints/index/referral/');
                 }
                 jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
 
