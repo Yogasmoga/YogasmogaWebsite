@@ -117,7 +117,10 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
         
         if ($url_redirection = Mage::getStoreConfig('rewardpoints/registration/referral_redirection', Mage::app()->getStore()->getId())){
 
-            Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."?utm_source=refer-a-friend&utm_medium=email&utm_campaign=refer-a-friend");
+            //Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."?utm_source=refer-a-friend&utm_medium=email&utm_campaign=refer-a-friend");
+            Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('',array('_secure'=>true))."?utm_source=refer-a-friend&utm_medium=email&utm_campaign=refer-a-friend");
+
+
               //$this->_redirect($url_redirection,$referUrl);
             //$this->_redirect("/?utm_source=refer-a-friend&utm_medium=email&utm_campaign=refer-a-friend");
         } else {
