@@ -55,7 +55,7 @@
                         else
                         {
                             ?>
-                        <p class="apply_promo_label">Add Promo Code / Gift Card Code<span class="add-code">+</span></p>
+                        <p class="apply_promo_label <?php if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0) { ?> promo_used <?php } ?>">Add Promo Code / Gift Card Code<span class="add-code">+</span></p>
                     </div>
 					  <div class="buttons-set">
 
@@ -106,6 +106,9 @@
 ?>
 </div>
 <div id="error_msg_coupon" class="error_coupon"></div>
+<?php if(strlen($this->getCouponCode())){ ?>
+<div class="finalsale_txt">These items are final sale.</div> 
+<?php } ?>
 <script>
     //var promoMessage = jQuery(".flashMessage").html();
     //jQuery(".toshow").html(promoMessage);

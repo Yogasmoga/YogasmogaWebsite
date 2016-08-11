@@ -1760,7 +1760,8 @@ a.redTxt {
 }
 
 
-div#bodycompensator{height: 69px;}
+/*div#bodycompensator{height: 69px;}*/
+div#bodycompensator{height: 94px;}
 
 
 
@@ -2812,13 +2813,13 @@ table.smallimagecontiner td.selectedimage{
     color: #555;
 }
 
-#div_sizes.fixed_top {
+#div_sizes.fixed_top,#div_cats.fixed_top {
     left: 235px;
     margin-top: 0;
     position: fixed;
     right: 0;
-    top: 69px;
-/*    top: 94px;          /* with banner */
+    /*top: 69px;*/
+    top: 94px; /* with banner */
     z-index: 11;
     padding: 0;
 }
@@ -2925,6 +2926,20 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 }
 
 /*--banner new style created by Sanjay--*/
+.banner_gotham_book {
+  font-family: gothambook;
+  /*font-size: 11px;*/font-size: 13px;
+  line-height: 16px;
+  padding-top: 38px !important;
+}
+.banner_text_gold {
+  float: left;
+    left: 66.812%;
+    position: relative;
+    text-align: center;
+    top: 50.6%;
+}
+.banner_text_gold .learn-more{font-family:gothamMedium!important;}
 .banner_text_mday {float: left; left: 5.4375%; position: absolute; text-align: center; top: 88.6659%; width: 33.6%;}
 .banner_text1{position:relative;/* top:32%; left:14.5%;*/ top:21.84%; left:60.56%; float: left; text-align:center; padding-right:0px !important}
 .banner_text2{text-align:center; padding-right:0px !important; position:relative;left:27%; top: 36%;}
@@ -3011,7 +3026,8 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
     /*.featured-collection-bottom img.co{left:7.5%;top:17%;max-width:169px!important;}
     .featured-collection-bottom img.seal{max-width:161px!important;}*/
-
+	
+	.banner_text_gold{top:55.6%;}
     .contentSlider.mistext.feat{top:33.911%!important;}
 
 }
@@ -3202,3 +3218,5 @@ iframe[name="google_conversion_frame"] {
     .categorypath-men-golf-inspired .bannerFluid .bnrtxt{font:36px/35px itcavantgardepromd;}
     .categorypath-men-golf-inspired .bannerFluid .bnrtxt .smalltext{font-size:20px;line-height:25px;}
 }
+/*---------product detail page image.--------*/
+.block-elm .style-image{position: absolute; top:-50px;}

@@ -102,6 +102,9 @@
                 <div id="Allproducts" class="fullscreen pgsection " desc="Top Sellers" style="min-height: 422px;">
                     <div class="product-grid">
                         <div class="2-columns-wrapper">
+										<!-- leftNavGrid -->
+				<?php echo $this->getChildHtml('catalog.leftnav') ?>
+				<!-- leftNavGrid -->
                                 <?php
                                     // code for get left nav
                                     $currentUrl = Mage::helper('core/url')->getCurrentUrl();
@@ -110,35 +113,12 @@
                                     $_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
                                     $parentCategoryId =  $_category->getId();
                                     // end code for left nav
-
-
-                                    $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('bags_categoryid')->getValue('plain')), true);
-                                $categoryId = '';
-                                $bannerTxt = '';
-                                    if($urlKey == 'women')
-                                    {
-                                        $categoryId = $categoryIds['bags_women'];
-                                        //$categoryId = '46'; //replace with your own
-                                        $category = new Varien_Object(array('id'=>$categoryId));
-                                        $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
-                                        //print_r($positions);die;
-                                        $bannerTxt = 'white';
-                                    }
-
-                                    if($urlKey == 'men')
-                                    {
-                                        $categoryId = $categoryIds['bags_men'];
-                                        $bannerTxt = 'white';
-                                    }
-
-
+                                    $categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
                                     $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
                                     $shopthecolor_imgUrl = $shopthecolorCategory ->getImageUrl();
                                     $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
-                                $productConfigurableCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
                                 ?>
                                 <!-- bannerContainer -->
-                            <h1 style="display:none"><?php echo $shopthecolorCategory->getName(); ?></h1>
                             <?php if($shopthecolor_imgUrl):?>
                             <div class="bannerFluid">
                                     <img src="<?php echo $shopthecolor_imgUrl; ?>">
@@ -146,18 +126,40 @@
                                         if($urlKey == 'women')
                                     {
                                             ?>
-                                        <div class="bnrtxt bnr white">WHAT&prime;S NEW</div>
-
-                                    <div style="position: absolute; width: 700px; left: 8%; top: 22%; float: left; color: #555555; text-align: left;">
-                                      
-
-                                    </div>
+                                     <!--   <div style="color:#fefefe!important;top:18%;text-transform:uppercase;" class="bnrtxt bnr white collection-banner">
+                                            <div style="position:relative;">
+                                                <img style="margin:0 auto;display:block;" src="<?php echo $this->getSkinUrl('images/carbon-6-logo.png')?>">
+                                                We Make the deepest black for <br/>a slimming silhouette
+                                                <span style="display:block;text-transform:none;color:#fefefe;padding-top:5px;">Made in the USA from Eco-Friendly Dyes</span>
+                                                <img style="margin:0 auto;display:block;" src="<?php echo $this->getSkinUrl('images/made-in-usa-collection.png')?>">
+                                            </div>
+                                        </div>-->
                                     <?php } else {?>
-                                            <div class="bnrtxt bnr white">WHAT&prime;S NEW</div>
+                                      <!--  <div style="color:#fefefe!important;top:18%;text-transform:uppercase;" class="bnrtxt bnr white collection-banner">
+                                                <div style="position:relative;">
+                                                    <img style="margin:0 auto;display:block;" src="<?php echo $this->getSkinUrl('images/carbon-6-logo.png')?>">
+                                                    A Black so deep,<br/>We Trademarked It.
+                                                    <span style="display:block;text-transform:none;color:#fefefe;padding-top:5px;">Made in the USA from Eco-Friendly Dyes</span>
+                                                    <img style="margin:0 auto;display:block;" src="<?php echo $this->getSkinUrl('images/made-in-usa-collection.png')?>">
+                                                </div>
+                                            </div> -->
                                         <?php } ?>
                                 </div>
                                 <?php endif;?>
                                 <!-- bannerContainer -->
+
+						<!-- size filters -->
+                        <?php
+                            $currentCategoryId = Mage::registry('current_category')->getId();
+                            //$categoriesWithNoFilter = array(8,12,29,30,31,32,33,38,39,40,46,50);
+                            $categoriesWithNoFilterVariable = Mage::getModel('core/variable')->loadByCode('no_filter_categories')->getValue('plain');
+                            $categoriesWithNoFilter = explode(",", $categoriesWithNoFilterVariable);
+                            $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
+                            if($showSizeFilter){
+                        ?>
+                        <div id="div_sizes">&nbsp;</div>
+                        <?php } ?>
+						<!-- size filters -->
 
                                 <!-- middleContainer -->
                                 <div class="gridProdCubix" style="min-height: 798px;">
@@ -186,7 +188,8 @@
                                                 {
                                                     if($subsubcategory->getChildrenCount() == 0){
 
-                                                        if($subsubcategory->getId()==125 || $subsubcategory->getId()==128){
+
+														if($subsubcategory->getId()==125 || $subsubcategory->getId()==128){
 
 														$hasnosubcategoryhtml .= '<li style="margin-top:18px"'.'><a href='.$subsubcategory->getUrl().' class="bld ';
                                                         if($subsubcategory->getUrl() == $currentUrl)
@@ -263,11 +266,6 @@
 
                                     <!-- productGridImages -->
                                     <div class="gridWrap">
-                                        <div style="display: none">
-                                            <?php foreach($productConfigurableCollection as $cproduct):?>
-                                                <h2 style="display:none"><?php echo $cproduct->getName()?></h2>
-                                            <?php endforeach;?>
-                                        </div>
                                         <!-- gridHeading -->
                                         <!--<h4>BEST SELLERS</h4>-->
                                         <!-- gridHeading -->
@@ -283,6 +281,7 @@
 
                                             
                                             $simpleproductarr = array();
+											$allSkuSizes = array();
                                             foreach($productCollection as $product)
                                             {
                                                 $simpleproductarr['id'] =  $product->getId();
@@ -315,10 +314,67 @@
                                                 $simpleproductarr['image'] =  $imageArr;
 
                                                 $confProduct = Mage::getModel('catalog/product')->load($simpleproductarr['parentid']);
-                                                // show html of the product
-                                            ?>
+                                                //show html of the product
+												
                                                 
-                                                    <div class="productCont">
+												/**************** size filter *****************/
+												
+												$alphabeticSkuSizes = array();
+
+												$productColorIndex=0;
+                                            
+
+												/**************** size filter *****************/
+                                                ++$productColorIndex;
+
+                                                $confProductForSku = Mage::getModel('catalog/product_type_configurable')->setProduct($confProduct);
+
+                                                $skuSizes = array();
+	$simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFieldToFilter(array(
+    array('attribute'=>'color','eq'=>$simpleproductarr['color'])));
+                                                
+                                                 
+                                                $characterSizeFound = false;
+                                                foreach($simpleCollectionForSku as $simpleProductForSku){
+                                                    //$sku = $simpleProductForSku->getId();
+                                                    $filterColorName = $simpleProductForSku->getAttributeText('color');
+                                                    $filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
+
+                                                    $size = $simpleProductForSku->getAttributeText('size');
+
+                                                    //$stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
+													$stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getIsInStock();
+
+                                                    if(!isset($skuSizes[$filterColorName]))
+                                                        $skuSizes[$filterColorName] = array();
+
+                                                    if(isset($size) && strlen(trim($size))>0) {
+                                                        $allSkuSizes[] = $size;
+                                                        if ($stock > 0)
+                                                            $skuSizes[$filterColorName][] = $size;
+                                                    }
+                                                }
+												/**************** size filter *****************/
+                                            
+												/****************** size filter **********************************/
+                                                    $productColorName = $clrinfo[$simpleproductarr['color']];
+                                                    $arColorSizes = array();
+
+                                                    foreach($skuSizes as $keyColor => $sizes) {
+
+                                                        if ($keyColor == $productColorName) {
+                                                            $strSizes = implode(",", $sizes);
+                                                            break;
+                                                        }
+                                                    }
+                                                    //echo $strSizes;
+
+
+                                            /****************** size filter **********************************/
+                                            ?>
+											<!-- size filters -->
+                                            <div class="productCont product-color-<?php echo $productColorIndex;?>" rel="<?php echo $strSizes;?>">
+											<!-- size filters -->
                                                         <div class="prod-img">
                                                             <a href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
                                                                 <?php
@@ -364,6 +420,58 @@
         <?php echo $this->getChildHtml('before_body_end'); ?>
     </div>
 </div>
+
+<!-- Size Filters -->
+<?php 
+if($showSizeFilter){
+/************** size filter ***********************/
+if(isset($allSkuSizes) && count($allSkuSizes)>0)
+    $allSkuSizes = array_unique($allSkuSizes);
+
+$arProductAllSizes = array();
+$attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+$allOptions = $attribute->getSource()->getAllOptions(true, true);
+foreach ($allOptions as $instance) {
+    if ($instance['label'] != "" && strpos($instance['label'], "T")===false)
+        $arProductAllSizes[] = $instance['label'];
+}
+
+/************** size filter ***********************/
+
+?>
+<!-- ********************************* checkbox filter ********************** -->
+    <script type="text/javascript">
+        var arAllSizes = Array();
+        var arProductSizes = Array();
+        var productColorIndex;
+
+        productColorIndex = "<?php echo $productColorIndex;?>";
+
+        <?php
+            foreach($allSkuSizes as $size){
+        ?>
+                arProductSizes.push("<?php echo $size;?>");
+        <?php
+            }
+            foreach($arProductAllSizes as $size){
+        ?>
+                arAllSizes.push("<?php echo $size;?>");
+        <?php
+            }
+        ?>
+		//console.log(JSON.stringify(arAllSizes));
+		//console.log(JSON.stringify(arProductSizes));
+
+		var leftnaviHeight = jQuery('.leftnav').height();
+		jQuery('.gridWrap').css({
+			'min-height': leftnaviHeight + 20
+		});
+    </script>
+	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter.js"></script>
+<!-- ********************************* checkbox filter ********************** -->
+<?php } ?>
+<!-- Size Filters -->
+
 <?php echo $this->getAbsoluteFooter() ?>
 </body>
 </html>

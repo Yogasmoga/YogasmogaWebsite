@@ -186,6 +186,13 @@
           <layout_handle>privatesale</layout_handle>
         </private_sale>
         <!-- Private Sale page layouts End here -->
+		<!-- Range Filter layouts End here -->
+	    <range translate="label">
+          <label>Range</label>
+          <template>page/range.phtml</template>
+          <layout_handle>range</layout_handle>
+        </range>
+		<!-- Range Filter layouts End here -->
         <golf_collection translate="label">
           <label>Golf Collection</label>
           <template>page/golf-collection.phtml</template>

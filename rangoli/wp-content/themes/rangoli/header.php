@@ -433,20 +433,21 @@
 
 <?php
 $style= "";
-if(!is_user_logged_in()){
+/*if(!is_user_logged_in()){*/
     $style= "margin-top:25px;";
     echo "<style>
         .pace .pace-progress {
             top:95px;
-
         }
     </style>";
 ?>
-<div class="banner" style="cursor: pointer" onclick="open_red_popup()">
-    SIGN UP & GET $25 SMOGI BUCKS</div>
+<!--<div class="banner" style="cursor:default" onclick="open_red_popup()">-->
+<div class="banner" style="cursor:default;text-transform:uppercase;">
+    SPRINT FOR GOLD - 30% OFF EVERYTHING* - LIMITED TIME ONLY. USE CODE: SPRINT
+</div>
 <?php
 
-}
+/*}*/
 ?>
 <div class="header-container" style="<?php echo $style; ?>">
     <div class="header">
@@ -460,6 +461,9 @@ if(!is_user_logged_in()){
                         <li>
                             <ul>
                                 <li><a href="/women/whats-new"> What's New</a></li>
+								<li style="margin-top:15px"><a href="/women/core"> Core</a></li>
+								<li><a href="/women/select"> Select</a></li>
+								<li style="margin-bottom:15px"><a href="/women/premium"> Premium</a></li>
                                 <li><a href="/women/prints"> PRINTS</a></li>
                                 <!--<li><a href="/women/one-too-many"> One 2 Many</a></li>-->
 								<!--<li><a href="/women/super-sale">Super Sale</a></li>-->
@@ -506,6 +510,9 @@ if(!is_user_logged_in()){
                         <li>
                             <ul>
                                 <li><a href="/men/whats-new"> What's New</a></li>
+								<li style="margin-top:15px"><a href="/men/core"> Core</a></li>
+								<li><a href="/men/select"> Select</a></li>
+								<li style="margin-bottom:15px"><a href="/men/premium"> Premium</a></li>
                                 <li><a href="/men/carbon6">CARBON 6&trade; COLLECTION</a></li>
                                 <li><a href="/men/golf-inspired"> Golf Inspired</a></li>
                             </ul>

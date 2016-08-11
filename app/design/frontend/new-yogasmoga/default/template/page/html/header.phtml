@@ -370,22 +370,23 @@ if($currentUrl != $checkoutpage){
 <div class="pageoverlay"></div>
 
 <?php
-$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
-if(!$loggedIn){ ?>
+/*$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+if(!$loggedIn){ */?>
 <div class="header-container" style="padding-top:25px; height:69px !important">
     <!--<div class="orange-banner">MEMORIAL DAY SALE. 25% OFF ENTIRE COLLECTION. USE CODE: <strong>YSUSA</strong> AT CHECKOUT</div>-->
-    <div  style="cursor:pointer" class="orange-banner">SIGN UP & GET $25 SMOGI BUCKS</div>
+    <!-- <div  style="cursor:pointer" class="orange-banner">SIGN UP & GET $25 SMOGI BUCKS</div> -->
+	<div style="cursor:default" class="orange-banner">SPRINT FOR GOLD - 30% OFF EVERYTHING* - LIMITED TIME ONLY. USE CODE: SPRINT</div>
     <style>
         .scrolltop{top:104px!important;}
         .ui-widget-overlay{top:94px!important; position:fixed}
     </style>
 
-    <?php  }
+    <?php /* }
     else { ?>
     <div style="height:69px !important;" class="header-container">
 
 
-        <?php } ?>
+        <?php } */ ?>
 
 <!--<div class="header-container">-->
 
@@ -551,7 +552,18 @@ if(!$loggedIn){ ?>
                                 $subsubcategories = $subsubcategory->getChildrenCategories();
 
                                 if($subsubcategory->getChildrenCount() == 0){
-                                    $firstcolumn .= "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                                    $style = "margin-top:15px";
+                                    $styleBottom = "margin-bottom:15px";
+
+                                        if($child2->getId()==125 || $child2->getId()==128){
+                                            $firstcolumn .= "<li style='$style'>"."<a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                                        }
+                                            elseif($child2->getId()==127 || $child2->getId()==130) {
+                                                $firstcolumn .= "<li style='$styleBottom'>"."<a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                                            }
+                                        else{
+                                            $firstcolumn .= "<li><a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                                        }
                                 }
                                 else{
                                     $remainingcolumn .= "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a><ul>";
