@@ -355,7 +355,7 @@
 
 <?php
 $style= "";
-/*if(!is_user_logged_in()){*/
+if(!is_user_logged_in()){
     $style= "margin-top:25px;";
     echo "<style>
         .pace .pace-progress {
@@ -363,13 +363,12 @@ $style= "";
         }
     </style>";
 ?>
-<!--<div class="banner" style="cursor:default" onclick="open_red_popup()">-->
-<div class="banner" style="cursor:default;text-transform:uppercase;">
-    SPRINT FOR GOLD - 30% OFF EVERYTHING* - LIMITED TIME ONLY. USE CODE: SPRINT	
+<div class="banner" style="cursor:pointer" onclick="open_red_popup()">
+    Sign up and earn 50% Off on your first order
 </div>
 <?php
 
-/*}*/
+}
 ?>
 <div class="header-container" style="<?php echo $style; ?>">
     <div class="header">
