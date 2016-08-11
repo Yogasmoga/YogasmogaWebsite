@@ -1,15 +1,23 @@
 jQuery.noConflict();
 
+
 //var root='http://staging.yogasmoga.com/';
 //var root='http://ysstaging.com.local/';
 
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function(jQuery){
+
     forgot_password();
     checkIsUserLogged();
 
+
     if(window.location.href.indexOf("refer-a-friend") > -1) {
-        openLogin();
+            if(!_islogedinuser){
+                openLogin();
+            }
+
+
+
     }
 
     jQuery(".sign_signup_form input").on("keyup",function(){
@@ -264,7 +272,7 @@ function createCustomerAccount() {
                 jQuery("#sign-up-form .err-msg").html("");
                 if (status == "success") {
                     createRangoliUser(email_id, pwd, first_name, last_name, customer_id);
-
+                    _islogedinuser = true;
                     //For refer a friend link redirection.
                     if(window.location.href.indexOf("refer-a-friend") > -1) {
                         window.location.assign(homeUrl + 'rewardpoints/index/referral');
@@ -397,7 +405,7 @@ function loginCustomer() {
                     /************** code update by ys team ******************/
                     doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
                     /************** code update by ys team ******************/
-
+                    _islogedinuser = true;
                     if(window.location.href.indexOf("refer-a-friend") > -1) {
                         window.location.assign(homeUrl + 'rewardpoints/index/referral');
                     }

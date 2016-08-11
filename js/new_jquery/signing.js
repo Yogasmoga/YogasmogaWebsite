@@ -417,7 +417,6 @@ function  createCustomerAccount()
                 _islogedinuser = true;
 
                 if(window.location.href.indexOf("refer-a-friend") > -1) {
-                    //window.location.assign(homeUrl + 'rewardpoints/index/referral/');
                     //window.location.assign(homeUrl+'rewardpoints/index/referral');
                     window.location.assign('https://yogasmoga.com/rewardpoints/index/referral/');
                 }
@@ -601,7 +600,6 @@ function loginCustomer() {
 
                 // Redirection for invite friend.
                 if(window.location.href.indexOf("refer-a-friend") > -1) {
-                    //window.location.assign(homeUrl + 'rewardpoints/index/referral/');
                     //window.location.assign(homeUrl+'rewardpoints/index/referral');
                     window.location.assign('https://yogasmoga.com/rewardpoints/index/referral/');
                 }
