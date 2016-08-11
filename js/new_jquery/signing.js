@@ -595,7 +595,7 @@ function loginCustomer() {
 
                 // Redirection for invite friend.
                 if(window.location.href.indexOf("refer-a-friend") > -1) {
-                    window.location.assign(homeUrl + 'rewardpoints/index/referral');
+                    window.location.assign(_usesecureurl + 'rewardpoints/index/referral');
                 }
                 if (name != '')
                     jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
