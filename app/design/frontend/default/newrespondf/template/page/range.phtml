@@ -94,8 +94,80 @@
 		 <!--<div class="h1">Carbon 6&trade;</div>-->
 		 <h1><?php echo Mage::getModel('catalog/layer')->getCurrentCategory()->getName(); ?></h1>
 
+		 <?php
+        $_category = Mage::registry('current_category');
+        $currentCategoryId= $_category->getId();
+		$cat = Mage::getModel('catalog/category')->load($currentCategoryId);
+		//echo $mode  = $cat->getDisplayMode();
+		$page  = $cat->getLandingPage();
+		?>
+
+		<!-- category filter -->
+		<?php 
+
+			$categoriesWithNoFilterVariable = Mage::getModel('core/variable')->loadByCode('no_filter_categories')->getValue('plain');
+			$categoriesWithNoFilter = explode(",", $categoriesWithNoFilterVariable);
+			$showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
+			if($showSizeFilter){
+		?>
+		<!--  csp task start --->
+		<div style="right:15px;" class="toggle_csp">
+		<svg  class="gold-arrow" width="14" height="44" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 16.1 44" style="enable-background:new 0 0 16.1 44;" xml:space="preserve">
+
+		<polygon fill="#AE8536" fill-rule="evenodd" clip-rule="evenodd"  points="0.5,17.3 15.8,17.3 8.1,25.5 "/>
+		</svg>
+
+			  <svg class="light-arrow"  width="15" height="44" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 16.8 9.5" style="enable-background:new 0 0 16.8 9.5;" xml:space="preserve">
+
+			<polyline id="XMLID_2_" fill="none" stroke="#676767" stroke-miterlimit="10" points="1.5,0.9 8.4,7.9 15.4,0.9 "/>
+		</svg>
+		</div>
+	  <!--  csp task end --->
+	  <?php } ?>
+
+		
+	 <div class="toggle_dropdown">
+		  <svg width="44px" height="44px">
+			  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+					y2="109.657"/>
+			  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+					y1="21.39" x2="30.374" y2="21.39"/>
+			  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+					y1="13.39" x2="22.374" y2="29.39"/>
+		  </svg>
+	  </div>
+	</div>
+		
+		<?php
+		if($showSizeFilter){
+		?>
+        
+		<!-- csp task start  --->
+		<div class="csp_dropdown_content">
+			<div class="csp_links">
+				<ul>
+					<li class="sz_filter"><a title="Tops" href="http://staging.com.local/women/tops">FILTER BY SIZE</a>
+					<span class="clear-txt clear_size2">clear</span>
+					<ul >
+					<li style="font:12px/44px ITCAvantGardeStd-Bk;" class="sub_cat bysize" id="div_sizes">
+					</li></ul>
+					</li>
+
+					</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id='no-product-found' style='display:none;'>No Products Available</div>
+		<!-- csp task end -->
+		
+		<?php } ?>
+		<!-- category filter -->
+
 		 <div class="toggle_dropdown">
-	<!--		  <img src="--><?php //echo $this->getSkinUrl("images/black-arrw.png") ?><!--" />-->
+		<!--	<img src="--><?php //echo $this->getSkinUrl("images/black-arrw.png") ?><!--" />-->
 			  <svg width="44px" height="44px">
 				  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
 						y2="109.657"/>
@@ -106,14 +178,8 @@
 			  </svg>
 		  </div>
 	  </div>
-		   <?php
-			$_category = Mage::registry('current_category');
-			$currentCategoryId= $_category->getId();
-			$cat = Mage::getModel('catalog/category')->load($currentCategoryId);
-			//echo $mode  = $cat->getDisplayMode();
-			$page  = $cat->getLandingPage();
-			?>
-	   <div class="dropdown_content">
+
+	  <div class="dropdown_content">
 	  <?php  if(empty($page) && $page !='11'){ ?>
 			<div class="filter" style="display:none;">
 				<p>Filter <span></span></p>
@@ -205,7 +271,7 @@
 							if (count($_subcategories) > 0): ?>
 					<a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
 							<span>
-	<!--							<img src="--><?php //echo $this->getSkinUrl("images/arrow-down.png") ?><!--">-->
+					<!-- <img src="--><?php //echo $this->getSkinUrl("images/arrow-down.png") ?><!--">-->
 								<svg width="44px" height="44px">
 									<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
 										  y2="109.657"/>
@@ -307,7 +373,7 @@
 	<div class="product-grid">
 	  <!-- custom list GridProducts -->		
 			 <div class="gridWrap">
-					<?php
+				<?php
 											
 				$categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
 				$shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
@@ -324,6 +390,13 @@
 					
 						$i=1;
 						$simpleproductarr = array();
+						/**************** size filter *****************/
+						$allSkuSizes = array();
+						$alphabeticSkuSizes = array();
+
+						$productColorIndex=0;
+						$allcats = array();
+						/**************** size filter *****************/
 						foreach($productCollection as $product)
 						{
 							
@@ -356,12 +429,51 @@
 
 							$confProduct = Mage::getModel('catalog/product')->load($simpleproductarr['parentid']);
 							// show html of the product
+
+							/**************** size filter *****************/
+							++$productColorIndex;
+
+							$confProductForSku = Mage::getModel('catalog/product_type_configurable')->setProduct($confProduct);
+
+							$skuSizes = array();
+							$simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFilterByRequiredOptions();
+
+							$characterSizeFound = false;
+							foreach($simpleCollectionForSku as $simpleProductForSku){
+								//$sku = $simpleProductForSku->getSku();
+								$filterColorName = $simpleProductForSku->getAttributeText('color');
+								$filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
+
+								$size = $simpleProductForSku->getAttributeText('size');
+
+								$stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
+
+								if(!isset($skuSizes[$filterColorName]))
+									$skuSizes[$filterColorName] = array();
+
+								if(isset($size) && strlen(trim($size))>0) {
+									$allSkuSizes[] = $size;
+									if ($stock > 0)
+										$skuSizes[$filterColorName][] = $size;
+								}
+							}
+							/**************** size filter *****************/
+							/****************** size filter **********************************/
+                                  $productColorName = $clrinfo[$simpleproductarr['color']];
+                                  $arColorSizes = array();
+                                      foreach($skuSizes as $keyColor => $sizes) {
+                                             if ($keyColor == $productColorName) {
+                                                    $strSizes = implode(",", $sizes);
+                                                    break;
+                                               }
+										}
+                           /****************** size filter **********************************/
 						?>
 							
-								<div class="productCont">
+								<div class="productCont product-color-<?php echo $productColorIndex;?>" rel="<?php echo $strSizes;?>">
 								<div style="display: none">
-                                                <h2 style="display:none"><?php echo $confProduct->getName()?></h2>
-                                        </div>
+                                 <h2 style="display:none"><?php echo $confProduct->getName()?></h2>
+                                  </div>
 									<div class="prod-img">
 										<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
 											<?php
@@ -426,6 +538,50 @@
 		</div>
 
 	</div>
+
+	<!-- Size Filters -->
+	<?php 
+	if($showSizeFilter){
+	/************** size filter ***********************/
+	if(isset($allSkuSizes) && count($allSkuSizes)>0)
+		$allSkuSizes = array_unique($allSkuSizes);
+
+	$arProductAllSizes = array();
+	$attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+	$allOptions = $attribute->getSource()->getAllOptions(true, true);
+	foreach ($allOptions as $instance) {
+		if ($instance['label'] != "" && strpos($instance['label'], "T")===false)
+			$arProductAllSizes[] = $instance['label'];
+	}
+	/************** size filter ***********************/
+
+	?>
+	<!-- ********************************* checkbox filter ********************** -->
+		<script type="text/javascript">
+			var arAllSizes = Array();
+			var arProductSizes = Array();
+			var productColorIndex;
+
+			productColorIndex = "<?php echo $productColorIndex;?>";
+
+			<?php
+				foreach($allSkuSizes as $size){
+			?>
+					arProductSizes.push("<?php echo $size;?>");
+			<?php
+				}
+				foreach($arProductAllSizes as $size){
+			?>
+					arAllSizes.push("<?php echo $size;?>");
+			<?php
+				}
+			?>
+		</script>
+	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>mobile/size-filter.js"></script>
+	<!-- ********************************* checkbox filter ********************** -->
+	<?php } ?>
+	<!-- Size Filters -->
+
 	<div class="footer-container">
 		<div class="footer">
 			<?php echo $this->getChildHtml('footer') ?>

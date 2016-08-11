@@ -101,6 +101,23 @@ jQuery(document).ready(function($){
 
 			}
 
+			if($(this).hasClass("clear_size2")){
+
+				jQuery(".productCont").each(function () {
+					 jQuery(this).removeClass('chk-size-opened');
+					 if(arCatsToCheck.length>0) {
+						 if(jQuery(this).hasClass('chk-cat-opened'))
+							jQuery(this).show();
+						 else
+							jQuery(this).hide();
+					 }
+					 else{
+						jQuery(".productCont").show();
+					 }
+				 });
+
+			}
+
 			//jQuery(".productCont").show();
 			/*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
             for(var i=1;i<=productColorIndex;i++){
