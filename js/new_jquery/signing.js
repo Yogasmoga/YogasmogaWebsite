@@ -416,12 +416,13 @@ function  createCustomerAccount()
                 jQuery(".signinDialog").addClass("wdthauto");
                 _islogedinuser = true;
 
+                if(window.location.href.indexOf("refer-a-friend") > -1) {
+                    window.location.assign(homeUrl + 'rewardpoints/index/referral/');
+                }
                 jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
 
                 // Redirection for invite friend.
-               if(window.location.href.indexOf("refer-a-friend") > -1) {
-                    window.location.assign(homeUrl + 'rewardpoints/index/referral');
-                }
+
 
                 if(name != ''){
                     jQuery("#welcome-name").html("Hi "+name).attr("href",homeUrl+'customer/account/');
