@@ -4,7 +4,10 @@ var root;
 jQuery(document).ready(function($){
 
     if(window.location.href.indexOf("refer-a-friend") > -1) {
-        jQuery("#signing_popup").dialog("open");
+
+        if(!_islogedinuser){
+            jQuery("#signing_popup").dialog("open");
+        }
     }
     jQuery(".gender_p span").click(function(){
         jQuery(".gender_p span").removeClass("selected");
@@ -416,9 +419,9 @@ function  createCustomerAccount()
                 jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
 
                 // Redirection for invite friend.
-                if(window.location.href.indexOf("refer-a-friend") > -1) {
-                    window.location.assign(homeUrl + 'rewardpoints/index/referral');
-                }
+              //  if(window.location.href.indexOf("refer-a-friend") > -1) {
+               //     window.location.assign(homeUrl + 'rewardpoints/index/referral');
+               // }
 
                 if(name != ''){
                     jQuery("#welcome-name").html("Hi "+name).attr("href",homeUrl+'customer/account/');
