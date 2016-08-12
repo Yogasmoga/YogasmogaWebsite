@@ -140,6 +140,23 @@ jQuery(function(){
                     jQuery(".product-header-" + i).show();
             }
 /*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
+
+					//adjust griding 
+					var loop = 1;
+					jQuery(".productCont").each(function () {
+						if(jQuery(this).css('display') != 'none'){
+
+							if(loop % 2 == 0){ //alert(loop)
+								jQuery(this).css('clear','none');
+							}else{
+								jQuery(this).css('clear','left');
+							}
+							loop++;
+						}else{
+							jQuery(this).css('clear','none');
+						}
+					});
+					//adjust griding
         });
 });
 
@@ -317,6 +334,23 @@ jQuery(function(){
                     jQuery(".product-header-" + i).show();
             }
 /*************** logic to check if all colors are hidden, then we need to hide the header as well ************/
+
+					//adjust griding 
+					var loop = 1;
+					jQuery(".productCont").each(function () {
+						if(jQuery(this).css('display') != 'none'){
+
+							if(loop % 2 == 0){ //alert(loop)
+								jQuery(this).css('clear','none');
+							}else{
+								jQuery(this).css('clear','left');
+							}
+							loop++;
+						}else{
+							jQuery(this).css('clear','none');
+						}
+					});
+					//adjust griding
         });
 		
 		
