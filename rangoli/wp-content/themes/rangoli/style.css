@@ -866,7 +866,4 @@ input.change_username {
 #signup-box.mc-signup .signup-thankyou .signup-title{margin-bottom:35px;}
 #signup-box.mc-signup .form-loader-mail{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%)}
 
-.mc-center-popup{}
-.mc-center-popup .random_popup_container{}
-.mc-center-popup #card {}
-.mc-center-popup #card .back{}
+.mc-center-popup,.bullzai{display:none!important;}
