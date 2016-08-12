@@ -113,7 +113,7 @@ if(!isset($ipInfo)){
     $root = str_replace("/rangoli","/",$root);
     ?>
 
-    <div class="signin-block" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
+    <!--<div class="signin-block" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
 
         <div class="close_signin_popup" ></div>
         <div class="form">
@@ -134,8 +134,34 @@ if(!isset($ipInfo)){
                 Already signed up?<br/><a style="cursor: pointer;" onclick="$('.login_logout_link').click();">Sign in here</a>
             </div>
         </div>
-    </div>
-
+    </div>-->
+	<!------------------------------mailchimp signup form------------------------------>
+	<div id="signup-box" class="mc-signup">
+	<div class="signup-content">
+		<p class="signup-title">
+			<span class="spn_line"><span class="strong">SIGN Up Now</span> To Instantly Get</span>
+			<span class="spn_line"><span class="highlight">50% OFF</span> Your First Order</span>
+		</p>
+		<small>Your Email Address</small>
+		<p><input type="text"/></p>
+		<p><input type="submit" value="Sign Up"/></p>
+		<p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
+	</div><!--signup-content-->
+	<div id="thank_you_box" class="signup-thankyou">
+		<p class="signup-title">
+			<span class="spn_line"><span class="strong">Thank You! Your Special Code is:</span></span>
+			<span class="spn_line"><span class="highlight">SMOGILOVE</span></span>
+		</p>
+		<small>We've also emailed it to you in case you forget:</small>
+		<p class="mc-shoplinks">
+			<a href="/women"><img src="<?php echo get_template_directory('images/mc-shopwomen.jpg') ?>" alt=""/></a>
+			<a href="/men"><img src="<?php echo get_template_directory('images/mc-shopmen.jpg') ?>" alt=""/></a>
+		</p>
+		
+	</div><!--signup-thankyou-->
+</div>
+<!------------------------------mailchimp signup form end------------------------------>
+	
     <div class="your-color-block" style="background: url('<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/random-color.png') no-repeat; background-size:100%; background-position: 4px -2px; ">
         <div class="close_signin_popup" ></div>
         <div class="color-traingle">
