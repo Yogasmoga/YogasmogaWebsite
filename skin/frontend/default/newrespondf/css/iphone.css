@@ -8183,4 +8183,5 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
     position: fixed;
     top: 88px;
     width: 100%;
+	max-width:620px;
     z-index: 999;}
