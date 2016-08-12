@@ -3251,3 +3251,5 @@ font: 36px/36px AvantGardeGothicITCW01D;
 #signup.mc-signup .mc-shoplinks a{display:inline-block;margin:0 5px;}
 #signup.mc-signup .signup-thankyou .signup-title{margin-bottom:35px;}
 /*#signup.mc-signup .requiredfield,#signup.mc-signup #err-msg{color: #f00;}*/
+#signup.mc-signup .button-area{position:relative;}
+#signup.mc-signup .form-loader-mail{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%)}

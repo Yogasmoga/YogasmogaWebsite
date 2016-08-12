@@ -845,7 +845,9 @@ input.change_username {
 
 /*----------------mailchimp signup popup css---------------*/
 
-#signup-box.mc-signup{background:#555555;width:100%; max-width:776px; height:auto!important;color:#fff; text-align:center;font-family:avantgardegothicitcw01d;padding:0!important;}
+#signup-box.mc-signup{background:#555555;width:100%; max-width:776px; height:auto!important;color:#fff; text-align:center;font-family:avantgardegothicitcw01d;padding:0!important;
+	position:absolute;margin-top:-69px; left:50%; top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);
+}
 #signup-box.mc-signup .spn_line{display:block;line-height:1}
 #signup-box.mc-signup .spn_line:first-child{margin-bottom:5px;}
 #signup-box.mc-signup .signup-title{font-size:38px;font-family:avantgardegothicitcw01b; text-transform:uppercase;margin-bottom:20px;}
