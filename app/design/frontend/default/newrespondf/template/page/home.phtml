@@ -45,6 +45,11 @@
     <?php echo $this->getChildHtml('header') ?>
 </div>
 </div>
+<?php 
+$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+if(!$loggedIn){ ?>
+	<div class="mobile-orange-banner">SIGN UP NOW TO INSTANTLY GET 50% OFF YOUR FIRST ORDER</div>
+<?php }  ?>
 <div class="clearfix"></div>
 <div class="main-container">
     <div class="middle col-1-layout">
