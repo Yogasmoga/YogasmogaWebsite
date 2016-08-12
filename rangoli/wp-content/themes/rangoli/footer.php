@@ -413,7 +413,7 @@ if(!isset($ipInfo)){
 <div class="bullseye_popup_container">
     <div class="bullseye_popup" >
     </div>
-    <div class="center_popup">
+    <div class="center_popup mc-center-popup">
         <section class="random_popup_container">
             <div id="card">
                 <div class="front">
