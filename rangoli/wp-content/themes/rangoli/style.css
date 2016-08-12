@@ -845,22 +845,22 @@ input.change_username {
 
 /*----------------mailchimp signup popup css---------------*/
 
-#signup-box.mc-signup{background:#555555;width:100%; max-width:776px; height:auto!important;color:#fff; text-align:center;font-family:avantgardegothicitcw01d;padding:0!important;
+#signup-box.mc-signup{background:#555555;width:100%; max-width:776px; height:auto!important;color:#fff; text-align:center;font-family:ITCAvantGardeStd-Md;padding:0!important;
 	position:absolute;margin-top:-69px; left:50%; top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);
 }
 #signup-box.mc-signup .spn_line{display:block;line-height:1}
 #signup-box.mc-signup .spn_line:first-child{margin-bottom:5px;}
-#signup-box.mc-signup .signup-title{font-size:38px;font-family:avantgardegothicitcw01b; text-transform:uppercase;margin-bottom:20px;}
-#signup-box.mc-signup .signup-title .strong{font-family:avantgardegothicitcw01d;}
-#signup-box.mc-signup .signup-title .highlight{color:#ae8536;font-family:avantgardegothicitcw01d;}
+#signup-box.mc-signup .signup-title{font-size:38px;font-family:itcavantgardestd-bk; text-transform:uppercase;margin-bottom:20px;}
+#signup-box.mc-signup .signup-title .strong{font-family:ITCAvantGardeStd-Md;}
+#signup-box.mc-signup .signup-title .highlight{color:#ae8536;font-family:ITCAvantGardeStd-Md;}
 #signup-box.mc-signup small{font-size:13px; letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px;display:block;}
 #signup-box.mc-signup input{width:242px;height:40px;border:0 none;padding:0 5px;box-sizing:border-box;}	
 #signup-box.mc-signup input[type="text"]{margin-bottom:5px;}
-#signup-box.mc-signup input[type="submit"]{background:#ccc; color:#fff!important;font-family:avantgardegothicitcw01d;cursor:pointer;}
+#signup-box.mc-signup input[type="submit"]{background:#ccc; color:#fff!important;font-family:ITCAvantGardeStd-Md;cursor:pointer;}
 #signup-box.mc-signup .signup-content{padding:58px 0!important;}
 
 #signup-box.mc-signup .signup-thankyou{display:none;padding:58px 0 5px 0!important;}
-#signup-box.mc-signup .signup-thankyou small{font-family:AvantGardeGothicITCW01B; font-size:11px;margin-bottom:20px;text-transform:none;}
+#signup-box.mc-signup .signup-thankyou small{font-family:itcavantgardestd-bk; font-size:11px;margin-bottom:20px;text-transform:none;}
 #signup-box.mc-signup .mc-shoplinks{text-align:center;}
 #signup-box.mc-signup .mc-shoplinks a{display:inline-block;margin:0 5px;}
 #signup-box.mc-signup .signup-thankyou .signup-title{margin-bottom:35px;}

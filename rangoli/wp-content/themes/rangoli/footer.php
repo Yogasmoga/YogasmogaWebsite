@@ -152,7 +152,7 @@ if(!isset($ipInfo)){
 			<span class="spn_line"><span class="strong">Thank You! Your Special Code is:</span></span>
 			<span class="spn_line"><span class="highlight">SMOGILOVE</span></span>
 		</p>
-		<small>We've also emailed it to you in case you forget:</small>
+		<small>We've also emailed it to you in case you forget.</small>
 		<p class="mc-shoplinks">
 			<a href="/women"><img src="<?php echo get_template_directory('images/mc-shopwomen.jpg') ?>" alt=""/></a>
 			<a href="/men"><img src="<?php echo get_template_directory('images/mc-shopmen.jpg') ?>" alt=""/></a>
