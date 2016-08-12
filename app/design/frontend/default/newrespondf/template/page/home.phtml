@@ -37,6 +37,11 @@
 <body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" <?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?> onload="setTimeout(scrollTo, 0, 0, 1)">
 <h1 style="display:none;">YOGASMOGA</h1>
  <div class="wrapper">
+ <?php 
+$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+if(!$loggedIn){ ?>
+	<div class="mobile-orange-banner">SIGN UP NOW TO INSTANTLY GET 50% OFF YOUR FIRST ORDER</div>
+<?php }  ?>
    <div class="page">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <?php //echo $this->getChildHtml('global_notices') ?>
@@ -45,11 +50,7 @@
     <?php echo $this->getChildHtml('header') ?>
 </div>
 </div>
-<?php 
-$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
-if(!$loggedIn){ ?>
-	<div class="mobile-orange-banner">SIGN UP NOW TO INSTANTLY GET 50% OFF YOUR FIRST ORDER</div>
-<?php }  ?>
+
 <div class="clearfix"></div>
 <div class="main-container">
     <div class="middle col-1-layout">
