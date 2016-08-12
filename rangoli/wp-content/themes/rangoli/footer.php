@@ -137,6 +137,7 @@ if(!isset($ipInfo)){
     </div>-->
 	<!------------------------------mailchimp signup form------------------------------>
 	<div id="signup-box" class="mc-signup">
+	<div class="close_signin_popup" ></div>
 	<div class="signup-content">
 		<p class="signup-title">
 			<span class="spn_line"><span class="strong">SIGN Up Now</span> To Instantly Get</span>

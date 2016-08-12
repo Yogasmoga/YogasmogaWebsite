@@ -856,7 +856,7 @@ input.change_username {
 #signup-box.mc-signup small{font-size:13px; letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px;display:block;}
 #signup-box.mc-signup input{width:242px;height:40px;border:0 none;padding:0 5px;box-sizing:border-box;}	
 #signup-box.mc-signup input[type="text"]{margin-bottom:5px;}
-#signup-box.mc-signup input[type="submit"]{background:#ccc; color:#fff!important;font-family:ITCAvantGardeStd-Md;cursor:pointer;}
+#signup-box.mc-signup input[type="submit"]{background:#ccc; color:#fff!important;font-family:ITCAvantGardeStd-Md;cursor:pointer;text-transform:uppercase;}
 #signup-box.mc-signup .signup-content{padding:58px 0!important;}
 
 #signup-box.mc-signup .signup-thankyou{display:none;padding:58px 0 5px 0!important;}
@@ -864,3 +864,4 @@ input.change_username {
 #signup-box.mc-signup .mc-shoplinks{text-align:center;}
 #signup-box.mc-signup .mc-shoplinks a{display:inline-block;margin:0 5px;}
 #signup-box.mc-signup .signup-thankyou .signup-title{margin-bottom:35px;}
+#signup-box.mc-signup .form-loader-mail{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%)}
