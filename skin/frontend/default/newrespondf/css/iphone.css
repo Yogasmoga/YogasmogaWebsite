@@ -8174,3 +8174,13 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
 .sub_menu_links .menu-item.bgclr, .sub_cat.active{background:#d4d4d4;}
 .dropdown_links > ul li.sub_cat a:hover{background:#f2f2f2;}
 /********* menu final level ends ***/
+.mobile-orange-banner{   background: rgb(255, 102, 0) none repeat scroll 0 0;
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+    height: 44px;
+    letter-spacing: 0 !important;
+    line-height: 50px;
+    position: fixed;
+    top: 88px;
+    width: 100%;
+    z-index: 999;}
