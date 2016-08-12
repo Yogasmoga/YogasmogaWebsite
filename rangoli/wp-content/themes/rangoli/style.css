@@ -844,7 +844,7 @@ input.change_username {
 .ys-col-content {padding:0 15px;}
 
 /*----------------mailchimp signup popup css---------------*/
-#signup-box.mc-signup .close_signin_popup{background:rgba(0, 0, 0, 0) url("images/mc-popup-close.jpg") no-repeat scroll 0 0; height:28px;width:28px;right:19px;margin:0;top:48px;}
+#signup-box.mc-signup .close_signin_popup{background:rgba(0, 0, 0, 0) url("images/mc-popup-close.jpg") no-repeat scroll 0 0; height:28px;width:28px;right:19px;margin:0;top:19px;}
 #signup-box.mc-signup{background:#555555;width:100%; max-width:776px; height:auto!important;color:#fff; text-align:center;font-family:ITCAvantGardeStd-Md;padding:0!important;
 	position:absolute;margin-top:-69px; left:50%; top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);
 }
