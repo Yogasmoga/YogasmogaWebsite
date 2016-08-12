@@ -1,4 +1,6 @@
 <?php
+/*
+
 require 'app/Mage.php';
 $app = Mage::app('');
 
@@ -15,7 +17,8 @@ $email  =  $_POST['email'];
 	
 	//MailChimp
 	$apikey = 'e49184c3866b4d458797fdffe11f22d8-us3';
-	$list_id = "ca4e5865d6";
+	$list_id = "ca4e5865d6"; //TEST
+    //$list_id = "51f988d786"; //LIVE
 
             $auth = base64_encode( 'user:'.$apikey );
 
@@ -24,7 +27,8 @@ $email  =  $_POST['email'];
                 'email_address' => $email,
                 'status'        => 'subscribed',
                 'merge_fields'  => array(
-					'ORIGIN' => 'Mailchimp'
+					'ORIGIN' => 'Mailchimp' // for test
+                    //'MAILSOURCE' => 'Mailchimp' //for live
                 )
             );
             $json_data = json_encode($data);
@@ -76,5 +80,5 @@ $email  =  $_POST['email'];
 
 }
 
-
+*/
 ?>
