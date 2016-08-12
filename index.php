@@ -37,7 +37,7 @@ Whoops, it looks like you have an invalid PHP version.</h3></div><p>Magento supp
 /**
  * Error reporting
  */
-error_reporting(E_ALL);
+error_reporting(0);
 
 ini_set ( 'max_execution_time', 1800);
 
@@ -79,7 +79,7 @@ if (isset($_SERVER['MAGE_IS_DEVELOPER_MODE'])) {
     Mage::setIsDeveloperMode(true);
 }
 
-ini_set('display_errors', 1);
+#ini_set('display_errors', 1);
 
 umask(0);
 
