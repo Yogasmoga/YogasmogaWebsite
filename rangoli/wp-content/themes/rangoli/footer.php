@@ -148,7 +148,7 @@ if(!isset($ipInfo)){
 		</p>
 		<small>Your Email Address</small>
 		<p><input type="text" id="Memail_address" class="watermark" placeholder="Email Address" autocomplete="off" value=""/></p>
-		<p><span class="form-loader-mail"></span><input type="submit" value="Sign Up" id="signup-button-mailc"/></p>
+		<p class="button-area"><span class="form-loader-mail"></span><input type="submit" value="Sign Up" id="signup-button-mailc"/></p>
 		<p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
 		</form>
 	</div><!--signup-content-->
