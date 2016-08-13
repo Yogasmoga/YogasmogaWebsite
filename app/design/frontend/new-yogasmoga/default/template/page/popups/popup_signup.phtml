@@ -240,6 +240,10 @@ else {
 						if (status == "success") {
 							jQuery("#popup-mailsignup").parent().hide();
 							$(".signup-thankyou").show();
+							$('.ui-icon-closethick').click(function(){
+								$(".signup-thankyou").hide();
+								$(".signup-content").show();
+							});
 						}
 						else
 						{
