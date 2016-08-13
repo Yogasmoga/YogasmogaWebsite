@@ -542,6 +542,7 @@ $(document).ready(function () {
         $(".signup_popup").fadeOut();
         $(".login_customer").removeClass("active");
         $(".after_signup_popup").fadeOut();
+		$(".MailpopForm").fadeOut();
         $(".popup").fadeOut();
     });
     $(".close_signup_popup").click(function () {
@@ -549,17 +550,20 @@ $(document).ready(function () {
         $(".signin_popup").fadeOut();
         $(".signup_popup").fadeOut();
         $(".after_signup_popup").fadeOut();
+		$(".MailpopForm").fadeOut();
         $(".popup").fadeOut();
     });
     $(".close_after_signup_popup").click(function () {
         $(".signup_popup").fadeOut();
         $(".signin_popup").fadeOut();
         $(".after_signup_popup").fadeOut();
+		$(".MailpopForm").fadeOut();
         $(".popup").fadeOut();
     });
     $(".open_signin").click(function () {
         $(".signup_popup").fadeOut();
         $(".after_signup_popup").fadeOut();
+		$(".MailpopForm").fadeOut();
         $(".signin_popup").fadeIn();
         $(".popup").fadeIn();
         clearForm();
@@ -570,6 +574,7 @@ $(document).ready(function () {
     $(".open_signup").click(function () {
         $(".signin_popup").fadeOut();
         $(".after_signup_popup").fadeOut();
+		$(".MailpopForm").fadeOut();
         $(".signup_popup").fadeIn();
         $(".popup").fadeIn();
         clearForm();
