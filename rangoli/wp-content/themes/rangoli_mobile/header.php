@@ -1096,12 +1096,12 @@ if (!is_user_logged_in() && is_home()) {
     top: 88px;
     width: 100%;
 	font-family:ITCAvantGardeStd-Md;
-    z-index: 999;}
+    z-index: 8;}
 	
 </style>
 
 <?php
-if(!is_user_logged_in()) {
+if(!is_user_logged_in() && is_home()) {
 ?>
   <div  class="mobile-orange-banner">SIGN UP NOW TO INSTANTLY GET 50% OFF YOUR FIRST ORDER</div>
 <?php
