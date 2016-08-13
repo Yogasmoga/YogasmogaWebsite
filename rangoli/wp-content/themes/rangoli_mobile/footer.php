@@ -196,8 +196,7 @@ if(!is_user_logged_in()  && is_home()) {
     </div>
 
 		<!-- MAil chimp poup -->
-			<div id="MailpopForm" style="display:none" >
-			
+			<div id="MailpopForm" class="MailpopForm">
 				<div  class="sign-up-popup">
 					<a  class="cross_icon" onclick="closeSignup()" href="javascript:void(0)">
                         <svg xml:space="preserve" enable-background="new 0 0 55 55" viewBox="0 0 55 55" height="55px" width="55px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
