@@ -187,7 +187,7 @@ if(!isset($ipInfo)){
                 $("#err-msg").text("All fields are required.");
                 return;
         }
-		if(!validateEmail(email_id)){
+		if( !isValidEmailAddress(email_id)){
 				event.preventDefault();
                 $("#err-msg").css("visibility","visible");
                 $("#err-msg").text("Enter a valid email.");
