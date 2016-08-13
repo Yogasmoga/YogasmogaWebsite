@@ -3232,7 +3232,8 @@ font: 36px/36px AvantGardeGothicITCW01D;
 .firstdialog .ui-dialog-titlebar{box-shadow:0 0 0; background:none;border-radius:0;}
 .firstdialog .ui-dialog-titlebar-close{right:19px;margin:0;top:48px;}
 .firstdialog .ui-icon-closethick{background:rgba(0, 0, 0, 0) url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/mc-popup-close.jpg") no-repeat scroll 0 0; height:28px;width:28px;}
-
+#signup.mc-signup{display:none;}
+.firstdialog #signup.mc-signup{display:block;}
 #signup.mc-signup{background:#555555;width:100%; max-width:776px; height:auto!important;color:#fff; text-align:center;font-family:avantgardegothicitcw01d;padding:0!important;}
 #signup.mc-signup .spn_line{display:block;line-height:1}
 #signup.mc-signup .spn_line:first-child{margin-bottom:5px;}

@@ -854,7 +854,7 @@ input.change_username {
 #signup-box.mc-signup .signup-title .strong{font-family:ITCAvantGardeStd-Md;}
 #signup-box.mc-signup .signup-title .highlight{color:#ae8536;font-family:ITCAvantGardeStd-Md;}
 #signup-box.mc-signup small{font-size:13px; letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px;display:block;}
-#signup-box.mc-signup input{width:242px;height:40px;border:0 none;padding:0 5px;box-sizing:border-box;}	
+#signup-box.mc-signup input{width:242px;height:40px;border:0 none;padding:0 5px;box-sizing:border-box; font-size:13px;}	
 #signup-box.mc-signup input[type="text"]{margin-bottom:15px;}
 #signup-box.mc-signup input[type="submit"]{background:#ccc; color:#fff!important;font-family:ITCAvantGardeStd-Md;cursor:pointer;text-transform:uppercase;}
 #signup-box.mc-signup .signup-content{padding:58px 0!important;}
