@@ -215,7 +215,7 @@ if(!isset($ipInfo)){
 						if (status == "success") {
 							jQuery("#popup-mailsignup").parent().hide();
 							$(".signup-thankyou").show();
-							$('.ui-icon-closethick').click(function(){
+							$('.close_signin_popup').click(function(){
 								$(".signup-thankyou").hide();
 								$(".signup-content").show();
 								$("#Memail_address").val('');
