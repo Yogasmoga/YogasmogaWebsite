@@ -8185,3 +8185,12 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
     width: 100%;
 	font-family:ITCAvantGardeStd-Md;
     z-index: 999;}
+	
+#popup-mailsignup .input-text::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #555!important;}
+#popup-mailsignup .input-text::-moz-placeholder { /* Firefox 19+ */
+  color: #555!important;}
+#popup-mailsignup .input-text:-ms-input-placeholder { /* IE 10+ */
+  color: #555!important;}
+#popup-mailsignup .input-text:-moz-placeholder { /* Firefox 18- */
+  color:  #555!important;}
