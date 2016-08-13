@@ -198,7 +198,7 @@ if(!is_user_logged_in()  && is_home()) {
 		<!-- MAil chimp poup -->
 			<div id="MailpopForm" class="MailpopForm" style="display:none;">
 				<div  class="sign-up-popup">
-					<a  class="close_login_popup" onclick="closeSignup()" href="javascript:void(0)">
+					<a  class="close_login_popup" onclick="" href="javascript:void(0)">
                         <svg xml:space="preserve" enable-background="new 0 0 55 55" viewBox="0 0 55 55" height="55px" width="55px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
 						<g>
 							<rect height="66" width="66" fill="none"/>
@@ -282,6 +282,13 @@ if(!is_user_logged_in()  && is_home()) {
 				});
 
 
+				jQuery('.close_login_popup').click(function(){
+								$(".signup-thankyou").hide();
+								$(".signup-content").show();
+								$("#Memail_address").val('');
+							});
+
+
 		$("#popup-mailsignup").submit(function(event){
 		event.preventDefault();
 
@@ -323,11 +330,7 @@ if(!is_user_logged_in()  && is_home()) {
 						if (status == "success") {
 							jQuery(".sign-up-popup").hide();
 							$(".thanks-popup").show();
-							$('.close_login_popup').click(function(){
-								$(".signup-thankyou").hide();
-								$(".signup-content").show();
-								$("#Memail_address").val('');
-							});
+							
 						}
 						else
 						{
