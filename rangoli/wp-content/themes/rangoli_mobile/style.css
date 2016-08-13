@@ -1858,7 +1858,10 @@ width: 100%;
     z-index: 999999;
 
 }
-
+#MailpopForm #Memail_address{background: #fff none repeat scroll 0 0!important;
+    color: #555!important;
+    margin-bottom: 0!important;
+    padding: 0 10px !important;}
 
 .sign-up-popup ,.thanks-popup {float:left;width:100%; padding: 70px 12px;}
 

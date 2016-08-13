@@ -219,10 +219,11 @@ if(!is_user_logged_in()  && is_home()) {
 									<ul style="padding:0;">
 									<li><span>Your Email Address</span></li>
 									<li><div class="input-box">                               
-										<input style="margin-bottom:5px;padding:0 10px!important;" type="text" class="input-text" id="Memail_address" placeholder="Email Address" name="email" value="">
+										<input style="padding:0 10px!important;" type="text" class="input-text" id="Memail_address" placeholder="Email Address" name="email" value="">
 										</div>
 									</li>
-									<li class="button-area"><span class="form-loader-mail"></span><button type="submit" class="signup_button" id="signup-button-mailc">SIGN UP</button></li>
+									<li class="button-area"><span class="form-loader-mail"></span>
+									<button style="margin-top:5px!important;" type="submit" class="signup_button" id="signup-button-mailc">SIGN UP</button></li>
 									</ul>
 									<p style="margin: 0px auto;font-size: 12px;visibility: hidden;min-height: 20px;width: 236px;color:#fff;clear:both;padding-top:5px;" id="err-msg">All fields are required.</p>
 								</form>
