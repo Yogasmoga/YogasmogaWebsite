@@ -58,7 +58,7 @@ $email  =  $_POST['email'];
 
 				$response['status'] = "error";
 				if($res->status == '400'){
-				$response['error'] = "Member already exist.";
+				$response['error'] = "You are already subscribed.";
 				}else{
 				$response['error'] = $res->title;
 				}
