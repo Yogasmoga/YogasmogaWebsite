@@ -323,6 +323,11 @@ if(!is_user_logged_in()  && is_home()) {
 						if (status == "success") {
 							jQuery(".sign-up-popup").hide();
 							$(".thanks-popup").show();
+							$('.close_login_popup').click(function(){
+								$(".signup-thankyou").hide();
+								$(".signup-content").show();
+								$("#Memail_address").val('');
+							});
 						}
 						else
 						{
