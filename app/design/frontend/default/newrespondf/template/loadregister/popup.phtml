@@ -275,6 +275,8 @@
                 jQuery("input[type='radio']").prop("checked", false);
                 jQuery('#popForm').hide();
 				jQuery('#MailpopForm').hide();
+				jQuery(".sign-up-popup").show();
+				jQuery(".thanks-popup").hide();
             }
             jQuery(document).ready(function () {
 			// jQuery(".custom-radio:checked").parent().addClass("current");
@@ -313,7 +315,7 @@
         <script>
             jQuery.noConflict();
             jQuery(document).ready(function () {
-				jQuery("#MailpopForm").show();
+				
                 var url = homeUrl + 'mycatalog/myproduct/checkforsignuppopup';
 
                 jQuery.ajax({
@@ -323,7 +325,8 @@
                     success: function(result){
 
                         if(result!=undefined && result.status!=undefined && result.status=="success"){
-                            jQuery("#popForm").show();
+                            //jQuery("#popForm").show();
+							jQuery("#MailpopForm").show();
                         }
                     }
                 });
@@ -433,11 +436,11 @@
 
 <script type="application/javascript">
     jQuery(document).ready(function($){
-		//$("#signup").dialog( "open" );
+
 		$("#popup-mailsignup").submit(function(event){
 		event.preventDefault();
 
-		$("#err-msg").css("visibility","visible");
+		$("#err-msg").css("visibility","hidden");
 
         var formid = "#popup-mailsignup";
 		var email_id = $.trim($("#Memail_address").val());
