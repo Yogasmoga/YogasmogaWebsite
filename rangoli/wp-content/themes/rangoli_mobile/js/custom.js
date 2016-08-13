@@ -1253,8 +1253,8 @@ $(document).ready(function () {
 
     $(".close_login_popup ,.close_signup_popup,.forgot_y_p, .forgot_y_p.open_signup ,.forgot_y_p.open_signin").click(function () {
         $(".popup button").removeClass("active");
-			jQuery(".signup-thankyou").hide();
-			jQuery(".signup-content").show();
+			jQuery(".thanks-popup").hide();
+			jQuery(".sign-up-popup").show();
 			jQuery("#Memail_address").val('');
         $(".err_msg").html("");
     });
