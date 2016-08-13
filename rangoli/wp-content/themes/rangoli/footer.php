@@ -155,8 +155,8 @@ if(!isset($ipInfo)){
 		</p>
 		<small>We've also emailed it to you in case you forget.</small>
 		<p class="mc-shoplinks">
-			<a href="/women"><img src="<?php echo get_stylesheet_directory().'/images/mc-shopwomen.jpg' ?>" alt=""/></a>
-			<a href="/men"><img src="<?php echo get_stylesheet_directory().'/images/mc-shopmen.jpg' ?>" alt=""/></a>
+			<a href="/women"><img src="<?php echo get_stylesheet_directory_uri().'/images/mc-shopwomen.jpg' ?>" alt=""/></a>
+			<a href="/men"><img src="<?php echo get_stylesheet_directory_uri().'/images/mc-shopmen.jpg' ?>" alt=""/></a>
 		</p>
 		
 	</div><!--signup-thankyou-->
