@@ -8194,3 +8194,6 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
   color: #555!important;}
 #popup-mailsignup .input-text:-moz-placeholder { /* Firefox 18- */
   color:  #555!important;}
+  
+#popup-mailsignup .button-area{position:relative;}
+#popup-mailsignup .button-area .form-loader-mail{position:absolute;top:50%; left:50%;transform:translate(-50%,-50%)}
