@@ -3229,7 +3229,7 @@ font: 36px/36px AvantGardeGothicITCW01D;
 
 /*----------------mailchimp signup popup css---------------*/
 .firstdialog{background:none; width:100%!important; max-width:776px!important; height:auto!important;box-shadow:0 0 0; border-radius:0;}
-.firstdialog .ui-dialog-titlebar{box-shadow:0 0 0; background:none;}
+.firstdialog .ui-dialog-titlebar{box-shadow:0 0 0; background:none;border-radius:0;}
 .firstdialog .ui-dialog-titlebar-close{right:19px;margin:0;top:48px;}
 .firstdialog .ui-icon-closethick{background:rgba(0, 0, 0, 0) url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/mc-popup-close.jpg") no-repeat scroll 0 0; height:28px;width:28px;}
 
