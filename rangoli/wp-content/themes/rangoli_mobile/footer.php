@@ -198,7 +198,7 @@ if(!is_user_logged_in()  && is_home()) {
 		<!-- MAil chimp poup -->
 			<div id="MailpopForm" class="MailpopForm">
 				<div  class="sign-up-popup">
-					<a  class="cross_icon" onclick="closeSignup()" href="javascript:void(0)">
+					<a  class="close_login_popup" onclick="closeSignup()" href="javascript:void(0)">
                         <svg xml:space="preserve" enable-background="new 0 0 55 55" viewBox="0 0 55 55" height="55px" width="55px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
 						<g>
 							<rect height="66" width="66" fill="none"/>
@@ -216,10 +216,10 @@ if(!is_user_logged_in()  && is_home()) {
 							<div class="popup-form">
 
 								<form name="" id="popup-mailsignup" class="popup_form" method="post" action="" rel="">
-									<ul>
+									<ul style="padding:0;">
 									<li><span>Your Email Address</span></li>
 									<li><div class="input-box">                               
-										<input type="text" class="input-text" id="Memail_address" placeholder="Email Address" name="email" value="">
+										<input style="margin-bottom:5px;padding:0 10px!important;" type="text" class="input-text" id="Memail_address" placeholder="Email Address" name="email" value="">
 										</div>
 									</li>
 									<li class="button-area"><span class="form-loader-mail"></span><button type="submit" class="signup_button" id="signup-button-mailc">SIGN UP</button></li>
@@ -234,7 +234,7 @@ if(!is_user_logged_in()  && is_home()) {
 				</div>
 				<!-- thank you popup -->
 				<div style="display:none;" class="thanks-popup">
-					<a  class="cross_icon" onclick="closeSignup()" href="javascript:void(0)">
+					<a  class="close_login_popup" onclick="closeSignup()" href="javascript:void(0)">
                         <svg xml:space="preserve" enable-background="new 0 0 55 55" viewBox="0 0 55 55" height="55px" width="55px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
 						<g>
 							<rect height="66" width="66" fill="none"/>

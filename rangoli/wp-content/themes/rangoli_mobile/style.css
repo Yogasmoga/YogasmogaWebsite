@@ -1862,7 +1862,7 @@ width: 100%;
 
 .sign-up-popup ,.thanks-popup {float:left;width:100%; padding: 70px 12px;}
 
-.sign-up-popup  .cross_icon , .thanks-popup  .cross_icon {
+.sign-up-popup  .close_login_popup , .thanks-popup  .close_login_popup{
   background:transparent;
   height: 44px;
   margin-left: 0;
