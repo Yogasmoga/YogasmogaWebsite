@@ -274,15 +274,18 @@
                 jQuery("#error_msg").html("");
                 jQuery("input[type='radio']").prop("checked", false);
                 jQuery('#popForm').hide();
-
+				jQuery('#MailpopForm').hide();
             }
             jQuery(document).ready(function () {
-// jQuery(".custom-radio:checked").parent().addClass("current");
+			// jQuery(".custom-radio:checked").parent().addClass("current");
                 jQuery(".custom-radio").click(function () {
                     jQuery(".custom-radio").parent().removeClass("current");
                     jQuery(this).parent().addClass("current");
                     isinputvalid();
                 });
+				jQuery(".mobile-orange-banner").click(function () {
+					jQuery('#MailpopForm').show();
+				});
             });
         </script>
 
@@ -310,7 +313,7 @@
         <script>
             jQuery.noConflict();
             jQuery(document).ready(function () {
-
+				jQuery("#MailpopForm").show();
                 var url = homeUrl + 'mycatalog/myproduct/checkforsignuppopup';
 
                 jQuery.ajax({
@@ -351,3 +354,146 @@
         <?php 
     }
 } ?>
+
+			<!-- MAil chimp poup -->
+			<div id="MailpopForm"  style="display:none">
+			<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('popup/css/popup.css'); ?>"/>
+				<div  class="sign-up-popup">
+					<a  class="cross_icon" onclick="closeSignup()" href="javascript:void(0)">
+                        <svg xml:space="preserve" enable-background="new 0 0 55 55" viewBox="0 0 55 55" height="55px" width="55px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+						<g>
+							<rect height="66" width="66" fill="none"/>
+							<line y2="40" x2="40" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+							<line y2="40" x2="14" y1="14" x1="40" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+						</g>
+						</svg>
+                    </a>
+					
+					<div class="signup-info">
+						<div class="scroll">
+							<div class="main-heading">
+								SIGN UP NOW<BR>TO INSTANTLY GET <span>50% OFF</span>YOUR FIRST ORDER
+							</div>
+							<div class="popup-form">
+
+								<form name="" id="popup-mailsignup" class="popup_form" method="post" action="" rel="">
+									<ul>
+									<li><span>Your Email Address</span></li>
+									<li><div class="input-box">                               
+										<input type="text" class="input-text" id="Memail_address" placeholder="Email Address" name="email" value="">
+										</div>
+									</li>
+									<li><span class="form-loader-mail"></span><button type="submit" class="signup_button" id="signup-button-mailc">SIGN UP</button></li>
+									</ul>
+									<p style="margin: 0px auto;font-size: 12px;visibility: hidden;min-height: 20px;width: 236px;color:#fff;" id="err-msg">All fields are required.</p>
+								</form>
+
+							</div>
+						</div>
+					
+					</div>
+				</div>
+				<!-- thank you popup -->
+				<div style="display:none;" class="thanks-popup">
+					<a  class="cross_icon" onclick="closeSignup()" href="javascript:void(0)">
+                        <svg xml:space="preserve" enable-background="new 0 0 55 55" viewBox="0 0 55 55" height="55px" width="55px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+						<g>
+							<rect height="66" width="66" fill="none"/>
+							<line y2="40" x2="40" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+							<line y2="40" x2="14" y1="14" x1="40" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+						</g>
+						</svg>
+                    </a>
+					
+					<div class="signup-info">
+						<div class="scroll">
+							<div class="main-heading">
+								THANK YOU!<BR>YOUR SPECIAL CODE IS<span>SMOGILOVE</SPAN>
+							</div>
+							<div class="popup-form">
+								<form name="" id="" class="popup_form" method="" action="" rel="">
+									<ul>
+									<li><span>We've also emailed it to you<br/>in case you forget</span></li>
+									<li>
+									<a class="shop-link" href="/women">SHOP WOMEN  </a>
+									</li>
+									<li>
+									<a class="shop-link" href="/men">SHOP MEN  </a>
+									</li>
+									</ul>
+								</form>
+							</div>
+						</div>
+					
+					</div>
+				</div>
+				<!-- thank you popup -->
+			</div>
+			<!-- MAil chimp poup -->
+
+<script type="application/javascript">
+    jQuery(document).ready(function($){
+		//$("#signup").dialog( "open" );
+		$("#popup-mailsignup").submit(function(event){
+		event.preventDefault();
+
+		$("#err-msg").css("visibility","visible");
+
+        var formid = "#popup-mailsignup";
+		var email_id = $.trim($("#Memail_address").val());
+		if(email_id == "" || email_id == "Email Address")
+        {
+                event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("All fields are required.");
+                return;
+        }
+		if(!isValidEmailAddress(email_id)){
+				event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("Enter a valid email.");
+				return;
+		}
+
+			if(window.location.href.indexOf('https://') >= 0)
+                _usesecureurl = true;
+            else
+                _usesecureurl = false;
+            var url = homeUrl + 'mailchimp_signup.php';
+            if(_usesecureurl){
+                url = securehomeUrl + 'mailchimp_signup.php';
+            }
+
+
+				jQuery.ajax({
+					url     :   url,
+					type    :   'POST',
+					data    :   {'email':email_id},
+					beforeSend: function() {
+						jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+						//jQuery("#popup-mailsignup").parent().hide();
+						jQuery("#popup-mailsignup .form-loader-mail").show();
+					},
+					success: function (data) {
+						data = eval('(' + data + ')');
+						var status = data.status;
+						jQuery("#popup-mailsignup .form-loader-mail").hide();
+						
+						if (status == "success") {
+							jQuery(".sign-up-popup").hide();
+							$(".thanks-popup").show();
+						}
+						else
+						{
+							$("#signup-button-mailc").val("Sign Up");
+							jQuery("#signup-button-mailc").parent().show();
+							$("#popup-mailsignup #err-msg").html(data.error).css("visibility","visible");
+						}
+					}
+				});
+	});
+});
+</script>
+<!-- Shivaji New Code -->
+		
+		

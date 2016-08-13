@@ -184,17 +184,18 @@ else {
 			<a href="/men"><img src="<?php echo $this->getSkinUrl('images/new-elements/mc-shopmen.jpg') ?>" alt=""/></a>
 		</p>
 		
-	</div><!--signup-thankyou-->
-
+	</div>
+	<!--signup-thankyou-->
 
 </div>
 
 <script type="application/javascript">
-
     jQuery(document).ready(function($){
 		//$("#signup").dialog( "open" );
 		$("#popup-mailsignup").submit(function(event){
 		event.preventDefault();
+
+		$("#err-msg").css("visibility","visible");
 
         var formid = "#popup-mailsignup";
 		var email_id = $.trim($("#Memail_address").val());
