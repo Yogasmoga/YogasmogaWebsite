@@ -139,6 +139,7 @@ if(!isset($ipInfo)){
 
 	<!------------------------------mailchimp signup form------------------------------>
 	<div id="signup-box" class="mc-signup">
+	<div class="signin-block">
 	<div class="close_signin_popup" ></div>
 	<div class="signup-content">
 		<form action="" method="post" id="popup-mailsignup" style="display: block;">
@@ -166,7 +167,7 @@ if(!isset($ipInfo)){
 		</p>
 		
 	</div><!--signup-thankyou-->
-
+	</div>
 
 </div>
 
