@@ -1089,4 +1089,21 @@ if (!is_user_logged_in() && is_home()) {
     .st0{
         stroke : #CCC !important;
     }
+	.mobile-orange-banner{background: rgb(255, 102, 0) none repeat scroll 0 0; color: rgb(255, 255, 255);font-size: 10px; height: 44px;    letter-spacing: 0 !important;
+    line-height: 50px;
+    position: fixed;
+	text-align:center;
+    top: 88px;
+    width: 100%;
+	font-family:ITCAvantGardeStd-Md;
+    z-index: 999;}
+	
 </style>
+
+<?php
+if(!is_user_logged_in()) {
+?>
+  <div  class="mobile-orange-banner">SIGN UP NOW TO INSTANTLY GET 50% OFF YOUR FIRST ORDER</div>
+<?php
+}
+?>
