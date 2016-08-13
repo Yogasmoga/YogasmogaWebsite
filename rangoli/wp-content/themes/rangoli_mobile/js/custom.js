@@ -520,6 +520,7 @@ $(window).load(function () {
                     //$(".open_signup").click();
 
 					//mailchimp popup
+					$(".popup").fadeIn();
 					$(".MailpopForm").fadeIn();
 					//mailchimp popup
 
