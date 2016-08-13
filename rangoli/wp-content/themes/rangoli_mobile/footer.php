@@ -195,7 +195,7 @@ if(!is_user_logged_in()  && is_home()) {
         <p class="small">SMOGI BUCKS <br/><br/>is yours to use at <br/>YOGASMOGA.COM</p>
     </div>
 
-	<!-- MAil chimp poup -->
+		<!-- MAil chimp poup -->
 			<div id="MailpopForm" style="display:none" >
 			
 				<div  class="sign-up-popup">
@@ -288,21 +288,14 @@ if(!is_user_logged_in()  && is_home()) {
                 $("#err-msg").text("All fields are required.");
                 return;
         }
-		if(!isValidEmailAddress(email_id)){
+		if( !isValidEmailAddress(email_id)){
 				event.preventDefault();
                 $("#err-msg").css("visibility","visible");
                 $("#err-msg").text("Enter a valid email.");
 				return;
 		}
 
-			if(window.location.href.indexOf('https://') >= 0)
-                _usesecureurl = true;
-            else
-                _usesecureurl = false;
             var url = homeUrl + 'mailchimp_signup.php';
-            if(_usesecureurl){
-                url = securehomeUrl + 'mailchimp_signup.php';
-            }
 
 
 				jQuery.ajax({

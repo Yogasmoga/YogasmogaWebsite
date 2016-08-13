@@ -515,8 +515,16 @@ $(window).load(function () {
                 var customer = response.customer;
                 var bullseye = response.bullseye;
                 if (customer == "new") {
-                    $(".open_signup").click();
+
+					//remove comment to display default popup
+                    //$(".open_signup").click();
+
+					//mailchimp popup
+					$(".MailpopForm").fadeIn();
+					//mailchimp popup
+
                     is_login_box_open = false
+					
                 }
 
             }
