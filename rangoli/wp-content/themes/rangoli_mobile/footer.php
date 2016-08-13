@@ -143,7 +143,7 @@ if(!is_user_logged_in()  && is_home()) {
 </g>
 </svg>
 
-        <p class="random">& GET $25<br/>SMOGI BUCKS</p>
+        <p class="random">& GET 50% OFF<br/>YOUR FIRST ORDER</p>
 
         <div class="singup_form">
             <input type="hidden" id="location_city" name="location_city" value="<?php echo $request_city;?>"/>
@@ -223,7 +223,7 @@ if(!is_user_logged_in()  && is_home()) {
 										</div>
 									</li>
 									<li class="button-area"><span class="form-loader-mail"></span>
-									<button style="margin-top:5px!important;" type="submit" class="signup_button" id="signup-button-mailc">SIGN UP</button></li>
+									<button style="margin-top:10px!important;" type="submit" class="signup_button" id="signup-button-mailc">SIGN UP</button></li>
 									</ul>
 									<p style="margin: 0px auto;font-size: 12px;visibility: hidden;min-height: 20px;width: 236px;color:#fff;clear:both;padding-top:5px;" id="err-msg">All fields are required.</p>
 								</form>
@@ -252,13 +252,13 @@ if(!is_user_logged_in()  && is_home()) {
 							</div>
 							<div class="popup-form">
 								<form name="" id="" class="popup_form" method="" action="" rel="">
-									<ul>
+									<ul style="padding:0;">
 									<li><span>We've also emailed it to you<br/>in case you forget.</span></li>
 									<li>
-									<a class="shop-link" href="/women">SHOP WOMEN  </a>
+									<a class="shop-link" href="/women" style="text-decoration:none;">SHOP WOMEN  </a>
 									</li>
 									<li>
-									<a class="shop-link" href="/men">SHOP MEN  </a>
+									<a class="shop-link" href="/men" style="text-decoration:none;">SHOP MEN  </a>
 									</li>
 									</ul>
 								</form>
