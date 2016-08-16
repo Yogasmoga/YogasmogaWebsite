@@ -222,7 +222,7 @@ if(!is_user_logged_in()  && is_home()) {
                                     </div>
                                 </li>
                                 <li class="button-area"><span class="form-loader-mail"></span>
-                                    <input style="margin-top:10px!important;" type="submit" class="signup_button" id="signup-button-mailc" value="SIGN UP"/></li>
+                                    <input type="submit" class="signup_button" id="signup-button-mailc" value="SIGN UP"/></li>
                             </ul>
                             <p style="margin: 0px auto;font-size: 12px;visibility: hidden;min-height: 20px;width: 236px;color:#fff;clear:both;padding-top:5px;" id="err-msg">All fields are required.</p>
                         </form>
