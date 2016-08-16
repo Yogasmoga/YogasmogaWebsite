@@ -226,7 +226,7 @@ if(!isset($ipInfo)){
 						}
 						else
 						{
-							$("#signup-button-mailc").val("Sign Up");
+							$("#signup-button-mailc").val("SIGN UP");
 							jQuery("#signup-button-mailc").parent().show();
 							$("#popup-mailsignup #err-msg").html(data.error).css("visibility","visible");
 						}
