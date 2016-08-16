@@ -36,6 +36,11 @@
 </head>
 <body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" <?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?> onload="setTimeout(scrollTo, 0, 0, 1)">
  <div class="wrapper">
+     <?php
+     $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+     if(!$loggedIn){ ?>
+         <div class="mobile-orange-banner">SIGN UP NOW TO INSTANTLY GET 50% OFF YOUR FIRST ORDER</div>
+     <?php }  ?>
    <div class="page">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <?php //echo $this->getChildHtml('global_notices') ?>
@@ -79,7 +84,7 @@
               <div class="clearfix"></div>
               <div class="block-invite">
                   <div class="visit-us" onclick="window.location='/our-stores/'">
-                      <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/visit-stores.jpg') ?>" alt="visit us"/>
+                      <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/visit-store2.jpg') ?>" alt="visit us"/>
   
                       <!--<div>
                           <span class="loc ">LOCATIONS</span>
@@ -90,7 +95,7 @@
                       <!-- </div> -->
                   </div>
                   <div class="invite-friend">
-                      <?php if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+                      <?php /* if(Mage::getSingleton('customer/session')->isLoggedIn()) {
                       $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
                       $customer = Mage::getModel('customer/customer')->load($customerId);
                       $genderText = $customer->getResource()->getAttribute('gender')->getFrontend()->getValue($customer);
@@ -107,7 +112,10 @@
                               <a onclick="jQuery('#menu_signup').click();AjaxLoginForm.hideLoginContainer();">
                                   <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/sign-up-get.jpg') ?>" alt="invite friend"/>
                               </a>
-                          <?php } ?>
+                          <?php } */ ?>
+                      <a href="/namaskar">
+                          <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/namaskarv2.jpg') ?>" alt="invite friend"/>
+                      </a>
                   </div>
               </div>
               <div class="clearfix"></div>

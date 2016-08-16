@@ -113,7 +113,7 @@ if(!isset($ipInfo)){
     $root = str_replace("/rangoli","/",$root);
     ?>
 
-    <div class="signin-block" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
+    <!--<div class="signin-block" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
 
         <div class="close_signin_popup" ></div>
         <div class="form">
@@ -134,7 +134,114 @@ if(!isset($ipInfo)){
                 Already signed up?<br/><a style="cursor: pointer;" onclick="$('.login_logout_link').click();">Sign in here</a>
             </div>
         </div>
+    </div>-->
+
+
+    <!------------------------------mailchimp signup form------------------------------>
+    <div id="signup-box" class="mc-signup">
+        <div class="signin-block">
+            <div class="close_signin_popup" ></div>
+            <div class="signup-content">
+                <form action="" method="post" id="popup-mailsignup" style="display: block;">
+                    <p class="signup-title">
+                        <span class="spn_line"><span class="strong">SIGN Up Now</span> To Instantly Get</span>
+                        <span class="spn_line"><span class="highlight">50% OFF</span> Your First Order</span>
+                    </p>
+                    <!--<small>Your Email Address</small>-->
+                    <p><input type="text" id="Memail_address" class="watermark" placeholder="Your Email Address" autocomplete="off" value=""/></p>
+                    <p class="button-area"><span class="form-loader-mail"></span><input type="submit" value="Sign Up" id="signup-button-mailc"/></p>
+                    <p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
+                </form>
+            </div><!--signup-content-->
+
+
+            <div id="thank_you_box" class="signup-thankyou">
+                <p class="signup-title">
+                    <span class="spn_line"><span class="strong">Thank You!</span> Please Check Your email and Feel the SMOGI LOVE</span>
+                    <!--<span class="spn_line"><span class="highlight">SMOGILOVE</span></span>-->
+                </p>
+                <!--<small>We've also emailed it to you in case you forget.</small>-->
+                <p class="mc-shoplinks">
+                    <a href="/women"><img src="<?php echo get_stylesheet_directory_uri().'/images/mc-shopwomen.jpg' ?>" alt=""/></a>
+                    <a href="/men"><img src="<?php echo get_stylesheet_directory_uri().'/images/mc-shopmen.jpg' ?>" alt=""/></a>
+                </p>
+
+            </div><!--signup-thankyou-->
+        </div>
+
     </div>
+
+    <script type="application/javascript">
+        jQuery(document).ready(function($){
+            //$("#signup-box").dialog( "open" );
+            $("#popup-mailsignup").submit(function(event){
+                event.preventDefault();
+
+                $("#err-msg").css("visibility","hidden");
+
+                var formid = "#popup-mailsignup";
+                var email_id = $.trim($("#Memail_address").val());
+                if(email_id == "" || email_id == "Email Address")
+                {
+                    event.preventDefault();
+                    $("#err-msg").css("visibility","visible");
+                    $("#err-msg").text("Please enter an email address.");
+                    return;
+                }
+                if( !isValidEmailAddress(email_id)){
+                    event.preventDefault();
+                    $("#err-msg").css("visibility","visible");
+                    $("#err-msg").text("Enter a valid email.");
+                    return;
+                }
+
+                var url = homeUrl + 'mailchimp_signup.php';
+
+
+
+                jQuery.ajax({
+                    url     :   url,
+                    type    :   'POST',
+                    data    :   {'email':email_id},
+                    beforeSend: function() {
+                        //jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+                        //jQuery("#popup-mailsignup").parent().hide();
+                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
+                        //jQuery("#popup-mailsignup .form-loader-mail").show();
+                    },
+                    success: function (data) {
+                        data = eval('(' + data + ')');
+                        var status = data.status;
+                        //jQuery("#popup-mailsignup .form-loader-mail").hide();
+
+
+                        if (status == "success") {
+                            jQuery("#popup-mailsignup").parent().hide();
+                            jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGN UP");
+                            $(".signup-thankyou").show();
+                            $('.close_signin_popup').click(function(){
+                                $(".signup-thankyou").hide();
+                                $(".signup-content").show();
+                                $("#Memail_address").val('');
+                            });
+                        }
+                        else
+                        {
+                            $("#signup-button-mailc").val("Sign Up");
+                            jQuery("#signup-button-mailc").parent().show();
+                            $("#popup-mailsignup #err-msg").html(data.error).css("visibility","visible");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- Shivaji New Code -->
+    <!------------------------------mailchimp signup form end------------------------------>
+
+
+
+
 
     <div class="your-color-block" style="background: url('<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/random-color.png') no-repeat; background-size:100%; background-position: 4px -2px; ">
         <div class="close_signin_popup" ></div>
@@ -323,9 +430,10 @@ if(!isset($ipInfo)){
                     <?php
                     if(!is_user_logged_in()){
                         ?>
-                    <li><a class="bold-heading" href="javascript:void(0)">FEEL THE SMOGI LOVE</a></li>
+                    <li><a class="bold-heading" href="javascript:void(0)" onclick="open_red_popup()">FEEL THE SMOGI LOVE</a></li>
 
-                    <li>Sign up for $25 SMOGI Bucks<br/> toward your first order.</li>
+                    <?php /* ?><li>Sign up for $25 SMOGI Bucks<br/> toward your first order.</li><?php */ ?>
+                        <li>Sign up now to instantly get 50% off your first order</li>
                     <?php
                     }
                     else{

@@ -27,7 +27,7 @@ else {
     $request_zip = "N/A";
 }
 ?>
-
+<?php /* ?>
 <div id="signup" style="display: none;">
     <div id="sign_up_box">
 <!--        <img nopin="nopin" style="width:50%; margin-top: 8%;" src="--><?php //echo $this->getSkinUrl('images/red_popup_text.png') ?><!--" alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." />-->
@@ -151,3 +151,111 @@ else {
         </table>
     </div>
 </div>
+<?php */ ?>
+
+
+<div id="signup" class="mc-signup">
+    <div class="signup-content">
+        <form action="" method="post" id="popup-mailsignup" style="display: block;">
+            <p class="signup-title">
+                <span class="spn_line"><span class="strong">SIGN UP Now</span> To Instantly Get</span>
+                <span class="spn_line"><span class="highlight">50% OFF</span> Your First Order</span>
+            </p>
+            <!--<small>Your Email Address</small>-->
+            <p><input type="text" name="email" id="Memail_address" class="watermark" placeholder="Your Email Address" autocomplete="off" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off"/></p>
+            <p class="button-area"><span class="form-loader-mail"></span><input type="submit" value="Sign Up" id="signup-button-mailc"/></p>
+
+            <p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
+        </form>
+    </div>
+
+    <!--signup-content-->
+    <div class="signup-thankyou">
+        <p class="signup-title">
+            <span class="spn_line"><span class="strong">Thank You!</span> Please Check Your email and Feel the SMOGI LOVE</span>
+            <!--<span class="spn_line"><span class="highlight">SMOGILOVE</span></span>-->
+        </p>
+        <!--<small>We've also emailed it to you in case you forget.</small>-->
+        <p class="mc-shoplinks">
+            <a href="/women"><img src="<?php echo $this->getSkinUrl('images/new-elements/mc-shopwomen.jpg') ?>" alt=""/></a>
+            <a href="/men"><img src="<?php echo $this->getSkinUrl('images/new-elements/mc-shopmen.jpg') ?>" alt=""/></a>
+        </p>
+
+    </div>
+    <!--signup-thankyou-->
+
+</div>
+
+<script type="application/javascript">
+    jQuery(document).ready(function($){
+        //$("#signup").dialog( "open" );
+        $("#popup-mailsignup").submit(function(event){
+            event.preventDefault();
+
+            $("#err-msg").css("visibility","hidden");
+
+            var formid = "#popup-mailsignup";
+            var email_id = $.trim($("#Memail_address").val());
+            if(email_id == "" || email_id == "Email Address")
+            {
+                event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("Please enter an email address.");
+                return;
+            }
+            if(!validateEmail(email_id)){
+                event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("Enter a valid email.");
+                return;
+            }
+
+            if(window.location.href.indexOf('https://') >= 0)
+                _usesecureurl = true;
+            else
+                _usesecureurl = false;
+            var url = homeUrl + 'mailchimp_signup.php';
+            if(_usesecureurl){
+                url = securehomeUrl + 'mailchimp_signup.php';
+            }
+
+
+            jQuery.ajax({
+                url     :   url,
+                type    :   'POST',
+                data    :   {'email':email_id},
+                beforeSend: function() {
+                    //jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+                    jQuery("#popup-mailsignup #signup-button-mailc").attr('value',"SIGNING UP...");
+                    //jQuery("#popup-mailsignup").parent().hide();
+                    //jQuery("#popup-mailsignup .form-loader-mail").show();
+                },
+                success: function (data) {
+                    data = eval('(' + data + ')');
+                    var status = data.status;
+                   // jQuery("#popup-mailsignup .form-loader-mail").hide();
+
+
+                    if (status == "success") {
+                        jQuery("#popup-mailsignup").parent().hide();
+                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGN UP");
+                        $(".signup-thankyou").show();
+                        $('.ui-icon-closethick').click(function(){
+                            $(".signup-thankyou").hide();
+                            $(".signup-content").show();
+                            $("#Memail_address").val('');
+                        });
+                    }
+                    else
+                    {
+                        $("#signup-button-mailc").val("Sign Up");
+                        jQuery("#signup-button-mailc").parent().show();
+                        $("#popup-mailsignup #err-msg").html(data.error).css("visibility","visible");
+                    }
+                }
+            });
+        });
+    });
+</script>
+<!-- Shivaji New Code -->
+

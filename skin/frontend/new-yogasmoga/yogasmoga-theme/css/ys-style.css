@@ -1761,7 +1761,7 @@ a.redTxt {
 
 
 /*div#bodycompensator{height: 69px;}*/
-div#bodycompensator{height: 94px;}
+div#bodycompensator{height: 69px;}
 
 
 
@@ -3220,3 +3220,33 @@ iframe[name="google_conversion_frame"] {
 }
 /*---------product detail page image.--------*/
 .block-elm .style-image{position: absolute; top:-50px;}
+
+
+/*----------------mailchimp signup popup css---------------*/
+.firstdialog{background:none; width:100%!important; max-width:776px!important; height:auto!important;box-shadow:0 0 0; border-radius:0;}
+.firstdialog .ui-dialog-titlebar{box-shadow:0 0 0; background:none;border-radius:0;}
+.firstdialog .ui-dialog-titlebar-close{right:19px;margin:0;top:48px;}
+.firstdialog .ui-icon-closethick{background:rgba(0, 0, 0, 0) url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/mc-popup-close.jpg") no-repeat scroll 0 0; height:28px;width:28px;}
+#signup.mc-signup{display:none;}
+.firstdialog #signup.mc-signup{display:block;}
+#signup.mc-signup{background:#555555;width:100%; max-width:776px; height:auto!important;color:#fff; text-align:center;font-family:avantgardegothicitcw01d;padding:0!important;}
+#signup.mc-signup .spn_line{display:block;line-height:1}
+#signup.mc-signup .spn_line:first-child{margin-bottom:5px;}
+#signup.mc-signup .signup-title{font-size:38px;font-family:avantgardegothicitcw01b; text-transform:uppercase;margin-bottom:20px;}
+#signup.mc-signup .signup-title .strong{font-family:avantgardegothicitcw01d;}
+#signup.mc-signup .signup-title .highlight{color:#ae8536;font-family:avantgardegothicitcw01d;}
+#signup.mc-signup small{font-size:13px; letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px;display:block;}
+#signup.mc-signup input{width:242px;height:40px;border:0 none;padding:0 5px;box-sizing:border-box;}
+#signup.mc-signup input[type="text"]{margin-bottom:5px;}
+#signup.mc-signup input[type="submit"]{background:#ccc; color:#fff!important;font-family:avantgardegothicitcw01d;cursor:pointer;text-transform:uppercase;}
+#signup.mc-signup .signup-content{padding:58px 0!important;}
+
+#signup.mc-signup .signup-thankyou{display:none;padding:58px 0 5px 0!important;}
+#signup.mc-signup .signup-thankyou .spn_line {line-height:42px;}
+#signup.mc-signup .signup-thankyou small{font-family:AvantGardeGothicITCW01B; font-size:11px;margin-bottom:20px;text-transform:none;}
+#signup.mc-signup .mc-shoplinks{text-align:center;}
+#signup.mc-signup .mc-shoplinks a{display:inline-block;margin:0 5px;}
+#signup.mc-signup .signup-thankyou .signup-title{margin-bottom:35px;}
+/*#signup.mc-signup .requiredfield,#signup.mc-signup #err-msg{color: #f00;}*/
+#signup.mc-signup .button-area{position:relative;}
+#signup.mc-signup .form-loader-mail{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%)}

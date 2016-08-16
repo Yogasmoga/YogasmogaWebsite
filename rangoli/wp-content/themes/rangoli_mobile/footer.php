@@ -193,6 +193,169 @@ if(!is_user_logged_in()  && is_home()) {
         <p class="small">SMOGI BUCKS <br/><br/>is yours to use at <br/>YOGASMOGA.COM</p>
     </div>
 
+
+    <!-- MAil chimp poup -->
+    <div id="MailpopForm" class="MailpopForm" style="display:none;">
+        <div  class="sign-up-popup">
+            <a  class="close_login_popup" onclick="closepopup();" href="javascript:void(0)">
+                <svg xml:space="preserve" enable-background="new 0 0 55 55" viewBox="0 0 55 55" height="55px" width="55px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+						<g>
+                            <rect height="66" width="66" fill="none"/>
+                            <line y2="40" x2="40" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                            <line y2="40" x2="14" y1="14" x1="40" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                        </g>
+						</svg>
+            </a>
+
+            <div class="signup-info">
+                <div class="scroll">
+                    <div class="main-heading">
+                        SIGN UP NOW<BR>TO INSTANTLY GET <span>50% OFF</span>YOUR FIRST ORDER
+                    </div>
+                    <div class="popup-form">
+
+                        <form name="" id="popup-mailsignup" class="popup_form" method="post" action="" rel="">
+                            <ul style="padding:0;">
+                               <!-- <li><span>Your Email Address</span></li>-->
+                                <li><div class="input-box">
+                                        <input style="padding:0 10px!important;" type="text" class="input-text" id="Memail_address" placeholder="Your Email Address" name="email" value="">
+                                    </div>
+                                </li>
+                                <li class="button-area"><span class="form-loader-mail"></span>
+                                    <input style="margin-top:10px!important;" type="submit" class="signup_button" id="signup-button-mailc" value="SIGN UP"/></li>
+                            </ul>
+                            <p style="margin: 0px auto;font-size: 12px;visibility: hidden;min-height: 20px;width: 236px;color:#fff;clear:both;padding-top:5px;" id="err-msg">All fields are required.</p>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- thank you popup -->
+        <div style="display:none;" class="thanks-popup">
+            <a  class="close_login_popup" onclick="closepopup()" href="javascript:void(0)">
+                <svg xml:space="preserve" enable-background="new 0 0 55 55" viewBox="0 0 55 55" height="55px" width="55px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+						<g>
+                            <rect height="66" width="66" fill="none"/>
+                            <line y2="40" x2="40" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                            <line y2="40" x2="14" y1="14" x1="40" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                        </g>
+						</svg>
+            </a>
+
+            <div class="signup-info">
+                <div class="scroll">
+                    <div class="main-heading">
+                        <span class="strong">THANK YOU!</span> Please Check Your email and Feel the SMOGI LOVE
+
+                    </div>
+                    <div class="popup-form">
+                        <form name="" id="" class="popup_form" method="" action="" rel="">
+                            <ul style="padding:0;">
+                                <!--<li><span>We've also emailed it to you<br/>in case you forget.</span></li>-->
+                                <li>
+                                    <a class="shop-link" href="/women" style="text-decoration:none;">SHOP WOMEN  </a>
+                                </li>
+                                <li>
+                                    <a class="shop-link" href="/men" style="text-decoration:none;">SHOP MEN  </a>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- thank you popup -->
+    </div>
+    <!-- MAil chimp poup -->
+
+    <script type="application/javascript">
+        jQuery(document).ready(function($){
+            jQuery(".mobile-orange-banner").click(function () {
+                jQuery(".popup").fadeIn();
+                jQuery(".MailpopForm").fadeIn();
+                $(".signin_popup").fadeOut();
+                $(".after_signup_popup").fadeOut();
+                $(".signup_popup").fadeOut();
+            });
+
+
+
+            $("#popup-mailsignup").submit(function(event){
+                event.preventDefault();
+
+                $("#err-msg").css("visibility","hidden");
+
+                var formid = "#popup-mailsignup";
+                var email_id = $.trim($("#Memail_address").val());
+                if(email_id == "" || email_id == "Email Address")
+                {
+                    event.preventDefault();
+                    $("#err-msg").css("visibility","visible");
+                    $("#err-msg").text("Please enter an email address.");
+                    return;
+                }
+                if( !isValidEmailAddress(email_id)){
+                    event.preventDefault();
+                    $("#err-msg").css("visibility","visible");
+                    $("#err-msg").text("Enter a valid email.");
+                    return;
+                }
+
+                var url = homeUrl + 'mailchimp_signup.php';
+
+
+                jQuery.ajax({
+                    url     :   url,
+                    type    :   'POST',
+                    data    :   {'email':email_id},
+                    beforeSend: function() {
+                        //jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+                        //jQuery("#popup-mailsignup").parent().hide();
+                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
+                      //  jQuery("#popup-mailsignup .form-loader-mail").show();
+                    },
+                    success: function (data) {
+                        data = eval('(' + data + ')');
+                        var status = data.status;
+                       // jQuery("#popup-mailsignup .form-loader-mail").hide();
+
+
+                        if (status == "success") {
+                            jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGN UP");
+                            jQuery(".sign-up-popup").hide();
+                            $(".thanks-popup").show();
+
+                        }
+                        else
+                        {
+                            $("#signup-button-mailc").val("Sign Up");
+                            jQuery("#signup-button-mailc").parent().show();
+                            $("#popup-mailsignup #err-msg").html(data.error).css("visibility","visible");
+                        }
+                    }
+                });
+            });
+        });
+
+        function closepopup(){
+
+            jQuery(".signup-thankyou").hide();
+            jQuery(".signup-content").show();
+            jQuery("#Memail_address").val('');
+        }
+
+    </script>
+    <!-- Shivaji New Code -->
+
+
+
+
+
+
+
 </div>
 
 <div id="back_to_top" class="<?php if($logged_in){echo 'user-color-shade';} ?>">

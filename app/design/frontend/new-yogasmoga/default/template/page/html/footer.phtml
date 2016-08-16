@@ -101,7 +101,8 @@
                 
                     <ul class="before-login <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()) echo 'sb-show'; ?>">
                         <li><a href="javascript:void(0);" id="" class="smogi-love gothambd">FEEL THE SMOGI LOVE</a></li>
-                        <li class="smogi-love">Sign up for $25 SMOGI Bucks<br/> toward your first order.</li>                        
+                        <?php /* ?><li class="smogi-love">Sign up for $25 SMOGI Bucks<br/> toward your first order.</li><?php */ ?>
+                        <li class="smogi-love">Sign up now to instantly get 50% off your first order</li>
                     </ul>               
                     
                 </li>
@@ -206,10 +207,10 @@ window.onload = function(){
             <script>
 
                 jQuery(document).ready(function() {
-                    /*jQuery(".orange-banner").click(function(){
+                    jQuery(".orange-banner").click(function(){
                         jQuery("#signup").dialog( "open" );
 
-                    });*/
+                    });
 
                     jQuery("#pagecontainer").css("margin-top","0");
                     jQuery("div#bodycompensator").css("height","94px");

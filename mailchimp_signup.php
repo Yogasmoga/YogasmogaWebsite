@@ -1,5 +1,5 @@
 <?php
-/*
+
 
 require 'app/Mage.php';
 $app = Mage::app('');
@@ -17,8 +17,9 @@ $email  =  $_POST['email'];
 	
 	//MailChimp
 	$apikey = 'e49184c3866b4d458797fdffe11f22d8-us3';
-	$list_id = "ca4e5865d6"; //TEST
+	//$list_id = "ca4e5865d6"; //TEST
     //$list_id = "51f988d786"; //LIVE
+    $list_id = "40611aba4e"; //New List
 
             $auth = base64_encode( 'user:'.$apikey );
 
@@ -27,8 +28,8 @@ $email  =  $_POST['email'];
                 'email_address' => $email,
                 'status'        => 'subscribed',
                 'merge_fields'  => array(
-					'ORIGIN' => 'Mailchimp' // for test
-                    //'MAILSOURCE' => 'Mailchimp' //for live
+					//'ORIGIN' => 'Mailchimp' // for test
+                    'MAILSOURCE' => 'Mailchimp' //for live and for new list
                 )
             );
             $json_data = json_encode($data);
@@ -62,7 +63,7 @@ $email  =  $_POST['email'];
 
 				$response['status'] = "error";
 				if($res->status == '400'){
-				$response['error'] = "Member already exist.";
+				$response['error'] = "You are already subscribed.";
 				}else{
 				$response['error'] = $res->title;
 				}
@@ -80,5 +81,5 @@ $email  =  $_POST['email'];
 
 }
 
-*/
+
 ?>

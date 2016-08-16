@@ -515,8 +515,15 @@ $(window).load(function () {
                 var customer = response.customer;
                 var bullseye = response.bullseye;
                 if (customer == "new") {
-                    $(".open_signup").click();
+                    //$(".open_signup").click();
+
+                    //mailchimp popup
+                    $(".popup").fadeIn();
+                    $(".MailpopForm").fadeIn();
+                    //mailchimp popup
+
                     is_login_box_open = false
+
                 }
 
             }
@@ -533,6 +540,7 @@ $(document).ready(function () {
         $(".signup_popup").fadeOut();
         $(".login_customer").removeClass("active");
         $(".after_signup_popup").fadeOut();
+        $(".MailpopForm").fadeOut();// Mailchimp
         $(".popup").fadeOut();
     });
     $(".close_signup_popup").click(function () {
@@ -546,11 +554,13 @@ $(document).ready(function () {
         $(".signup_popup").fadeOut();
         $(".signin_popup").fadeOut();
         $(".after_signup_popup").fadeOut();
+        $(".MailpopForm").fadeOut();// Mailchimp
         $(".popup").fadeOut();
     });
     $(".open_signin").click(function () {
         $(".signup_popup").fadeOut();
         $(".after_signup_popup").fadeOut();
+        $(".MailpopForm").fadeOut();// Mailchimp
         $(".signin_popup").fadeIn();
         $(".popup").fadeIn();
         clearForm();
@@ -561,6 +571,7 @@ $(document).ready(function () {
     $(".open_signup").click(function () {
         $(".signin_popup").fadeOut();
         $(".after_signup_popup").fadeOut();
+        $(".MailpopForm").fadeOut(); // Mailchimp
         $(".signup_popup").fadeIn();
         $(".popup").fadeIn();
         clearForm();
@@ -1239,7 +1250,11 @@ $(document).ready(function () {
 
     $(".close_login_popup ,.close_signup_popup,.forgot_y_p, .forgot_y_p.open_signup ,.forgot_y_p.open_signin").click(function () {
         $(".popup button").removeClass("active");
+        jQuery(".thanks-popup").hide();// Mailchimp
+        jQuery(".sign-up-popup").show();// Mailchimp
+        jQuery("#Memail_address").val('');// Mailchimp
         $(".err_msg").html("");
+
     });
     get_youtube_video_length();
 });
