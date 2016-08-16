@@ -8187,13 +8187,13 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
     z-index: 999;}
 	
 #popup-mailsignup .input-text::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #555!important;}
+  color: #555!important;opacity:0.6;}
 #popup-mailsignup .input-text::-moz-placeholder { /* Firefox 19+ */
-  color: #555!important;}
+  color: #555!important;opacity:0.6;}
 #popup-mailsignup .input-text:-ms-input-placeholder { /* IE 10+ */
-  color: #555!important;}
+  color: #555!important;opacity:0.6;}
 #popup-mailsignup .input-text:-moz-placeholder { /* Firefox 18- */
-  color:  #555!important;}
+  color:  #555!important;opacity:0.6;}
 
 #popup-mailsignup ul li{width:100%; float:left;}  
 #popup-mailsignup .button-area{position:relative; margin-bottom: 10px;}
