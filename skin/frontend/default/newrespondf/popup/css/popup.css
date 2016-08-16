@@ -483,7 +483,7 @@ li.gender-link span {
     font-family: ITCAvantGardeStd-Bk;
     font-size: 24px;
     line-height: 26px;
-    margin: 23px 0 26px;
+    margin: 23px 0 26px;text-transform:uppercase;
 }
 .sign-up-popup  .main-heading span,.thanks-popup  .main-heading span{ color: #ae8637;
     display: block;

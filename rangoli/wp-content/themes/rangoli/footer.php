@@ -157,10 +157,10 @@ if(!isset($ipInfo)){
 
 	<div id="thank_you_box" class="signup-thankyou">
 		<p class="signup-title">
-			<span class="spn_line"><span class="strong">Thank You! Your Special Code is:</span></span>
-			<span class="spn_line"><span class="highlight">SMOGILOVE</span></span>
-		</p>
-		<small>We've also emailed it to you in case you forget.</small>
+			<span class="spn_line"><span class="strong">Thank You!</span> Please Check Your email and Feel the SMOGI LOVE</span>
+   <!--<span class="spn_line"><span class="highlight">SMOGILOVE</span></span>-->
+  </p>
+  <!--<small>We've also emailed it to you in case you forget.</small>-->
 		<p class="mc-shoplinks">
 			<a href="/women"><img src="<?php echo get_stylesheet_directory_uri().'/images/mc-shopwomen.jpg' ?>" alt=""/></a>
 			<a href="/men"><img src="<?php echo get_stylesheet_directory_uri().'/images/mc-shopmen.jpg' ?>" alt=""/></a>
@@ -204,8 +204,8 @@ if(!isset($ipInfo)){
 					type    :   'POST',
 					data    :   {'email':email_id},
 					beforeSend: function() {
-						//jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
-                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING...");
+						/*jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");*/
+                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
 						//jQuery("#popup-mailsignup").parent().hide();
 						jQuery("#popup-mailsignup .form-loader-mail").show();
 					},

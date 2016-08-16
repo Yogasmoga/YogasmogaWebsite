@@ -248,12 +248,12 @@ if(!is_user_logged_in()  && is_home()) {
 					<div class="signup-info">
 						<div class="scroll">
 							<div class="main-heading">
-								THANK YOU!<BR>YOUR SPECIAL CODE IS<span>SMOGILOVE</SPAN>
+								<span class="strong">Thank You!</span> Please Check Your email and Feel the SMOGI LOVE
 							</div>
 							<div class="popup-form">
 								<form name="" id="" class="popup_form" method="" action="" rel="">
 									<ul style="padding:0;">
-									<li><span>We've also emailed it to you<br/>in case you forget.</span></li>
+									<!--<li><span>We've also emailed it to you<br/>in case you forget.</span></li>-->
 									<li>
 									<a class="shop-link" href="/women" style="text-decoration:none;">SHOP WOMEN  </a>
 									</li>
@@ -312,9 +312,10 @@ if(!is_user_logged_in()  && is_home()) {
 					type    :   'POST',
 					data    :   {'email':email_id},
 					beforeSend: function() {
-						jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+						/*jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");*/
+						
 						//jQuery("#popup-mailsignup").parent().hide();
-                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING...");
+                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
 						jQuery("#popup-mailsignup .form-loader-mail").show();
 					},
 					success: function (data) {

@@ -3247,7 +3247,7 @@ font: 36px/36px AvantGardeGothicITCW01D;
 #signup.mc-signup .signup-content{padding:58px 0!important;}
 
 #signup.mc-signup .signup-thankyou{display:none;padding:58px 0 5px 0!important;}
-#signup.mc-signup .signup-thankyou .spn_line{line-height:42px;}
+#signup.mc-signup .signup-thankyou .spn_line {line-height:42px;}
 #signup.mc-signup .signup-thankyou small{font-family:AvantGardeGothicITCW01B; font-size:11px;margin-bottom:20px;text-transform:none;}
 #signup.mc-signup .mc-shoplinks{text-align:center;}
 #signup.mc-signup .mc-shoplinks a{display:inline-block;margin:0 5px;}
