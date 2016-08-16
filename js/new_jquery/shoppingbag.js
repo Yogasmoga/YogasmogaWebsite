@@ -486,21 +486,26 @@ function showShoppingBagHtml() {
 					/*---------promocode update for apply button---*/
 					jQuery(".adddields #smogi").on('keypress focus',function(){
 					
-					jQuery(this).next('span').show();
+						jQuery(this).next('span').show();
+						jQuery(".adddields #giftcartcode").next('span').hide();			
 					});
-					jQuery(".adddields #smogi").on('keyup blur',function(){		
-						if(jQuery(this).val().length < 1){
+					
+					/*jQuery(".adddields #smogi").on('keyup blur',function(){		
+						if(jQuery(this).val().length < 0){
 							jQuery(this).next('span').hide();			
-						}	
-					});
+						}
+						
+					});*/
+					
 					jQuery(".adddields #giftcartcode").on('keypress focus',function(){
 							jQuery(this).next('span').show();
+							jQuery(".adddields #smogi").next('span').hide();			
 					});
-					jQuery(".adddields #giftcartcode").on('keyup blur',function(){		
+					/*jQuery(".adddields #giftcartcode").on('keyup blur',function(){		
 						if(jQuery(this).val().length < 1){
 							jQuery(this).next('span').hide();			
 						}	
-					});
+					});*/
 					/*---------promocode update for apply button end---*/
 			
             }
