@@ -217,9 +217,9 @@ if(!is_user_logged_in()  && is_home()) {
 
 								<form name="" id="popup-mailsignup" class="popup_form" method="post" action="" rel="">
 									<ul style="padding:0;">
-									<li><span>Your Email Address</span></li>
+									<!--<li><span>Your Email Address</span></li>-->
 									<li><div class="input-box">                               
-										<input style="padding:0 10px!important;" type="text" class="input-text" id="Memail_address" placeholder="Email Address" name="email" value="">
+										<input style="padding:0 10px!important;" type="text" class="input-text" id="Memail_address" placeholder="Your Email Address" name="email" value="">
 										</div>
 									</li>
 									<li class="button-area"><span class="form-loader-mail"></span>
