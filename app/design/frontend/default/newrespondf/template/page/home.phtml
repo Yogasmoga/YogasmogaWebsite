@@ -111,16 +111,8 @@ if(!$loggedIn){ ?>
 
                           ?>
 					  <?php /* ?><a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>" rel="<?php echo $gender; ?>"><?php */ ?>
-                          <a href="<?php
-                          if($gender == "1")
-                                {
-                                echo $this->getUrl('men');
-                                }
-                          else{
-                                echo $this->getUrl('women');
-                          }
-                          ?>" rel="<?php echo $gender;?>" id="<?php echo $customerId; ?>">
-                          <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/free-air-shipping.jpg') ?>" alt="invite friend"/>
+                          <a href="/namaskar" rel="<?php echo $gender;?>" id="<?php echo $customerId; ?>">
+                          <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/namaskarv2.jpg') ?>" alt="invite friend"/>
                       </a>
 					  <?php } else { ?>
 					  <!--<a onclick="openLogin()" href="javascript:void(0)">
