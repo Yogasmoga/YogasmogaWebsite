@@ -419,7 +419,6 @@ li.gender-link span {
 }
 /******************* MAIL CHIMP POPUP ***************/
 /****************** signup and thanks popup *****************/
-
 #MailpopForm {
     background: none repeat scroll 0 0 rgba(85, 85, 85, 0.953);
     bottom: 0;
@@ -431,10 +430,7 @@ li.gender-link span {
     z-index: 999999;
 
 }
-
-
 .sign-up-popup ,.thanks-popup {float:left;width:100%; padding: 70px 12px;}
-
 .sign-up-popup  .cross_icon , .thanks-popup  .cross_icon {
     background:transparent;
     height: 44px;
@@ -513,5 +509,4 @@ li.gender-link span {
     padding-bottom: 10px;
     text-align: center;
     width: 100%;
-
 }
