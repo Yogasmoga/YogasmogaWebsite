@@ -326,6 +326,7 @@ if(!is_user_logged_in()  && is_home()) {
 						if (status == "success") {
 							jQuery(".sign-up-popup").hide();
 							$(".thanks-popup").show();
+							jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGN UP");
 							
 						}
 						else
