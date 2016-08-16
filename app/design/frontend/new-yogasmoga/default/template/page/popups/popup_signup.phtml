@@ -203,13 +203,13 @@ else {
         {
                 event.preventDefault();
                 $("#err-msg").css("visibility","visible");
-                $("#err-msg").text("All fields are required.");
+                $("#err-msg").text("Please enter an email address.");
                 return;
         }
 		if(!validateEmail(email_id)){
 				event.preventDefault();
                 $("#err-msg").css("visibility","visible");
-                $("#err-msg").text("Please enter an email address.");
+                $("#err-msg").text("Enter a valid email.");
 				return;
 		}
 

@@ -862,6 +862,7 @@ input.change_username {
 #signup-box.mc-signup .signup-content{padding:58px 0!important;}
 
 #signup-box.mc-signup .signup-thankyou{display:none;padding:58px 0 5px 0!important;}
+#signup.mc-signup .signup-thankyou .spn_line{line-height:42px;}
 #signup-box.mc-signup .signup-thankyou small{font-family:itcavantgardestd-bk; font-size:11px;margin-bottom:20px;text-transform:none;}
 #signup-box.mc-signup .mc-shoplinks{text-align:center;}
 #signup-box.mc-signup .mc-shoplinks a{display:inline-block;margin:0 5px;}
