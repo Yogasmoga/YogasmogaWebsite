@@ -223,7 +223,7 @@ if(!is_user_logged_in()  && is_home()) {
 										</div>
 									</li>
 									<li class="button-area"><span class="form-loader-mail"></span>
-									<button style="margin-top:10px!important;" type="submit" class="signup_button" id="signup-button-mailc">SIGN UP</button></li>
+									<input style="margin-top:10px!important;" type="submit" class="signup_button" id="signup-button-mailc" value="SIGN UP"/></li>
 									</ul>
 									<p style="margin: 0px auto;font-size: 12px;visibility: hidden;min-height: 20px;width: 236px;color:#fff;clear:both;padding-top:5px;" id="err-msg">All fields are required.</p>
 								</form>
@@ -294,7 +294,7 @@ if(!is_user_logged_in()  && is_home()) {
         {
                 event.preventDefault();
                 $("#err-msg").css("visibility","visible");
-                $("#err-msg").text("All fields are required.");
+                $("#err-msg").text("Please enter an email address.");
                 return;
         }
 		if( !isValidEmailAddress(email_id)){
@@ -314,6 +314,7 @@ if(!is_user_logged_in()  && is_home()) {
 					beforeSend: function() {
 						jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
 						//jQuery("#popup-mailsignup").parent().hide();
+                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING...");
 						jQuery("#popup-mailsignup .form-loader-mail").show();
 					},
 					success: function (data) {

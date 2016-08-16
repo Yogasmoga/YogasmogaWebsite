@@ -8196,6 +8196,6 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
   color:  #555!important;}
 
 #popup-mailsignup ul li{width:100%; float:left;}  
-#popup-mailsignup .button-area{position:relative;}
+#popup-mailsignup .button-area{position:relative; margin-bottom: 10px;}
 #popup-mailsignup .button-area .form-loader-mail{position:absolute;top:50%; left:50%;transform:translate(-50%,-50%);margin-top:15px;}
 .mobile-orange-banner{cursor:pointer;}

@@ -185,7 +185,7 @@ if(!isset($ipInfo)){
         {
                 event.preventDefault();
                 $("#err-msg").css("visibility","visible");
-                $("#err-msg").text("All fields are required.");
+                $("#err-msg").text("Please enter an email address.");
                 return;
         }
 		if( !isValidEmailAddress(email_id)){
@@ -204,7 +204,8 @@ if(!isset($ipInfo)){
 					type    :   'POST',
 					data    :   {'email':email_id},
 					beforeSend: function() {
-						jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+						//jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING...");
 						//jQuery("#popup-mailsignup").parent().hide();
 						jQuery("#popup-mailsignup .form-loader-mail").show();
 					},
