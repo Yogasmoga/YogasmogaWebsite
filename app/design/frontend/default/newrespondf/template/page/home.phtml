@@ -123,8 +123,9 @@ if(!$loggedIn){ ?>
                           <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/free-air-shipping.jpg') ?>" alt="invite friend"/>
                       </a>
 					  <?php } else { ?>
-					  <!--<a onclick="openLogin()" href="javascript:void(0)">-->
-                          <a onclick="jQuery('#menu_signup').click();AjaxLoginForm.hideLoginContainer();">
+					  <!--<a onclick="openLogin()" href="javascript:void(0)">
+                          <a onclick="jQuery('#menu_signup').click();AjaxLoginForm.hideLoginContainer();">-->
+						  <a href="/namaskar">
                           <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/namaskarv2.jpg') ?>" alt="invite friend"/>
                       </a>
 					  <?php } ?>
