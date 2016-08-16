@@ -331,7 +331,7 @@ if(!is_user_logged_in()  && is_home()) {
                         }
                         else
                         {
-                            $("#signup-button-mailc").val("Sign Up");
+                            $("#signup-button-mailc").val("SIGN UP");
                             jQuery("#signup-button-mailc").parent().show();
                             $("#popup-mailsignup #err-msg").html(data.error).css("visibility","visible");
                         }
