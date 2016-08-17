@@ -504,7 +504,7 @@ if(!is_user_logged_in()){
                     </ul>
 
                 </li>
-                <li class="menu-heading"><a class="menu-heading " href="/mens">Men</a>
+                <li class="menu-heading"><a class="menu-heading " href="/men">Men</a>
                     <ul class="sub-menu menu-ovr second-list">
                         <li>
                             <ul>
@@ -539,6 +539,7 @@ if(!is_user_logged_in()){
                         </li>
                     </ul>
                 </li>
+                <li class="menu-heading"><a  class="menu-heading" href="/one-too-many"> One 2 Many</a></li>
             </ul>
         </div>
         <div class="f-right header-right">
