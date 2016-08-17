@@ -693,7 +693,7 @@ $logged_in = is_user_logged_in();
                                             </li>
                                         </ul>
                                     </li>
-                                   <li><a href="/men/whats-new">WHAT'S NEW</a></li>
+                                <li><a href="/men/whats-new">WHAT'S NEW</a></li>
 								<li><a href="/men/core">CORE</a></li>
 								<li><a href="/men/select">SELECT</a></li>
 								<li><a href="/men/premium">PREMIUM</a></li>
@@ -702,8 +702,12 @@ $logged_in = is_user_logged_in();
 									<!--<li><a href="/men/super-sale"> Super Sale</a></li>-->
 									
                                 </ul>
+								
                             </li>
-
+								<li>
+								<a style="font:12px ITCAvantGardeStd-Demi;line-height:50px;" href="/one-too-many">ONE 2 MANY</a>
+								</li>
+								
                             <li class="ys_single_link"><a href="/our-story">YS Story</a>
                                 <span class="ys_story">
 
