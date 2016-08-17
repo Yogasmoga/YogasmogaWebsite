@@ -60,9 +60,11 @@ ul.tr-menu {
     font-size: 0px;
 }
 ul.tr-menu > li{display: inline-block; padding: 0; position: relative; font: 11px/19px gothambook; color: #555;}
+/****** header modify ***/
 .tr-menu li > span {
-    padding: 0 13px 0 10px;
+    padding: 0 9px;
 }
+/****** header modify end ***/
 li.free-shipping{font-style: italic; margin-right: 15px;}
 ul.tr-menu > li > ul.sub-menu{position: absolute; text-align: center; width:200px; padding:0; z-index: 9; display: none; text-transform: uppercase; }
 ul.tr-menu > li > ul.sub-menu li{background: #f1f1f2; padding: 0 15px;}
