@@ -2818,8 +2818,8 @@ table.smallimagecontiner td.selectedimage{
     margin-top: 0;
     position: fixed;
     right: 0;
-    /*top: 69px;*/
-    top: 94px; /* with banner */
+    top: 69px;
+    /*top: 94px;*/ /* with banner */
     z-index: 11;
     padding: 0;
 }
