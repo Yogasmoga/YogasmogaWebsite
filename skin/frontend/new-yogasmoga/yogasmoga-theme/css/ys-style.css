@@ -37,8 +37,8 @@ body{-webkit-font-smoothing: subpixel-antialiased; /*opacity:0;*/}
 /*#pagecontainer{min-width: 960px;}*/
 .header-container { background-color: #fff; position: fixed; top: 0px; height : 69px; width : 100%; z-index: 10003; min-width: 1007px;}
 /*.header{ padding:0 60px 0 30px;}*/
-/*.header{ padding:0 40px 0 13px;}     *************** header-modify*/
-.header{ padding:0 13px;}
+.header{ padding:0 40px 0 13px;}  
+
 .header .logo {margin:0;}
 ul.main-menu{margin-left: 0;}
 ul.main-menu > li{display:inline-block; height: 69px; padding:0 12px; text-transform: uppercase; vertical-align: top; cursor:pointer;}
@@ -62,7 +62,7 @@ ul.tr-menu {
 ul.tr-menu > li{display: inline-block; padding: 0; position: relative; font: 11px/19px gothambook; color: #555;}
 /****** header modify ***/
 .tr-menu li > span {
-    padding: 0 9px;
+    padding: 0 13px 0 10px;
 }
 /****** header modify end ***/
 li.free-shipping{font-style: italic; margin-right: 15px;}
@@ -3178,6 +3178,14 @@ font: 36px/36px AvantGardeGothicITCW01D;
 @media only screen and (max-width : 1200px) {
 .bucket1 .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:10px;}
+/****** header modify ***/
+.tr-menu li > span {
+    padding: 0 6px;
+}
+
+ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
+/****** header modify end ***/
+
 }
 @media only screen and (max-width : 1024px) {
 .bucket1 .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
