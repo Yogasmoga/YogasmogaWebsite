@@ -713,13 +713,13 @@ html[xmlns] .overridefix {
     text-align: center;
     width: 80%;
 }
-
+/*************** header modify ***************/
 ul.tr-menu > li.free-shipping {
     display: inline-block;
     font: italic 10px gothambook;
-    margin: 0 35px 0 0;
+    margin: 0 10px 0 0;
 }
-
+/*************** header modify end ***************/
 .free-shipping > span {
     padding: 2px 0 0;
 }
@@ -2876,6 +2876,10 @@ a.learn-more {
 .bucket2 .contentSlider{top:44%;}
 .bucket3 .contentSlider{top:38.9112%;}
 .bucket4 .contentSlider{top:38.9112%;}
+
+
+/**************  header-modify ***************/
+ul.main-menu > li.one-too-many{padding-right:0;}
 
 @media only screen and (max-width : 1024px) {
 .bucket1 .contentSlider{top:28%;}

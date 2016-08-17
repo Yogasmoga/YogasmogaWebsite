@@ -37,7 +37,8 @@ body{-webkit-font-smoothing: subpixel-antialiased; /*opacity:0;*/}
 /*#pagecontainer{min-width: 960px;}*/
 .header-container { background-color: #fff; position: fixed; top: 0px; height : 69px; width : 100%; z-index: 10003; min-width: 1007px;}
 /*.header{ padding:0 60px 0 30px;}*/
-.header{ padding:0 40px 0 13px;}
+/*.header{ padding:0 40px 0 13px;}     *************** header-modify*/
+.header{ padding:0 13px;}
 .header .logo {margin:0;}
 ul.main-menu{margin-left: 0;}
 ul.main-menu > li{display:inline-block; height: 69px; padding:0 12px; text-transform: uppercase; vertical-align: top; cursor:pointer;}
