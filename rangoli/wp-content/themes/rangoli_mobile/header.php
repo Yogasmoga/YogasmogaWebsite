@@ -704,8 +704,8 @@ $logged_in = is_user_logged_in();
                                 </ul>
 								
                             </li>
-								<li>
-								<a style="font:12px ITCAvantGardeStd-Demi;line-height:50px;" href="/one-too-many">ONE 2 MANY</a>
+								 <li class="ys_main_category">
+								<p><a  href="/one-too-many">ONE 2 MANY</a></p>
 								</li>
 								
                             <li class="ys_single_link"><a href="/our-story">YS Story</a>
