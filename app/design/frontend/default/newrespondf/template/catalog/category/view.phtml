@@ -137,8 +137,16 @@
             //echo 'id= '. $_category->getId().' name= '.$_category->getName();
 			$parentCategoryId  = $_category->getId();
             //$parentCategoryId = Mage::registry('current_category')->getId();
-			$cat = Mage::getModel('catalog/category')->load($parentCategoryId);
-			$subcats = $cat->getChildren();
+
+			if(Mage::registry('current_category')->getId()==43){
+				$cat = Mage::getModel('catalog/category')->load(3);
+				$subcats = $cat->getChildren();
+			}
+			else{
+				$cat = Mage::getModel('catalog/category')->load($parentCategoryId);
+				$subcats = $cat->getChildren();
+			}
+
 
 			?>
 			<ul>
@@ -161,7 +169,7 @@
 						$_subcategories = $sub_cat->getChildrenCategories();
 						if (count($_subcategories) > 0): ?>
 						<?php $currentCategoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
-						
+
 						$activeFound = false;
 						if($currentCategoryId == $_category->getId()){
 							$activeFound = true;
