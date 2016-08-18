@@ -23,19 +23,20 @@
                                 $currentClass="current";
                             }
 
+                        $collection = Mage::getModel('catalog/category')->load($category->getId())->getProductCollection();
+                        $productCount = count($collection);
+
                     ?>
 
-                    <?php if($category->getIsAnchor()):?>
-
+                        <?php if($productCount > 0):?>
                         <li rel="<?php echo $name; ?>" class="color_<?php echo $category->getId()?> <?php echo $borderClass; ?> <?php echo $currentClass;?>">
-                            <a href="javascript:void(0);" class="prevent-link" style="background:<?php echo $bg; ?>">
+                            <a href="<?php echo $url; ?>" style="background:<?php echo $bg; ?>">
                                 <?php echo $name; ?>
                             </a>
                         </li>
-
                     <?php else: ?>
                         <li rel="<?php echo $name; ?>" class="color_<?php echo $category->getId()?> <?php echo $borderClass; ?> <?php echo $currentClass;?>">
-                            <a href="<?php echo $url; ?>" style="background:<?php echo $bg; ?>">
+                            <a href="javascript:void(0);" class="prevent-link" style="background:<?php echo $bg; ?>">
                                 <?php echo $name; ?>
                             </a>
                         </li>

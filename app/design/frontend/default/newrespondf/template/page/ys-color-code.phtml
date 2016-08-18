@@ -2,7 +2,7 @@
 <ul>
 <?php $collection = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToSort('position', 'ASC');
 		foreach($collection as $category):
-				if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9):
+				if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=43):
 					if($category->getLevel()==2 && $category->getIsActive()):
 
 						$url = $category->getUrl();
@@ -16,18 +16,21 @@
 							if(strtolower($bg) =="#fff" || strtolower($bg) =="#ffffff" || strtolower($bg) =="#fefefe"){
 								$borderClass ="ys-color-white";
 							}
+						$collection = Mage::getModel('catalog/category')->load($category->getId())->getProductCollection();
+						$productCount = count($collection);
 						?>
-						<?php if($category->getIsAnchor()):?>
-							    <li> <a class="prevent-link" href="javascript:void(0)" style="background: <?php echo $bg; ?>;color:<?php echo $textclr; ?>;"><?php echo $name; ?></a></li>
-							<?php else: ?>
+						<?php if($productCount > 0):?>
+
 							<li> <a href="<?php echo $url; ?>" style="background: <?php echo $bg; ?>;color:<?php echo $textclr; ?>;">
-								<?php if($category->getId()==119): ?>
-															<?php echo $name;?>&trade;
-														<?php else: ?>
-															<?php echo $name;?>
-														<?php endif; ?>
-							</a></li>
-							</a>
+									<?php if($category->getId()==119): ?>
+										<?php echo $name;?>&trade;
+									<?php else: ?>
+										<?php echo $name;?>
+									<?php endif; ?>
+								</a>
+							</li>
+						<?php else: ?>
+							<li> <a class="prevent-link" href="javascript:void(0)" style="background: <?php echo $bg; ?>;color:<?php echo $textclr; ?>;"><?php echo $name; ?></a></li>
 						<?php endif; ?>
 				<?php endif; ?>
 

@@ -169,11 +169,12 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 			<div class="color_grid_box" style="">
 				<ul>
 					<?php
+					//Added code by Fahim Khan For Color Tech page.
 					$collection = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToSort('position', 'ASC');
 					$currentCategoryId = Mage::registry('current_category')->getId();
 
 					foreach($collection as $category):
-						if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9):
+						if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=43 ):
 							if($category->getLevel()==2 && $category->getIsActive()):
 								$url = $category->getUrl();
 								$name = $category->getName();
@@ -190,10 +191,10 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 									$currentClass="current";
 								}
 
+								$collection = Mage::getModel('catalog/category')->load($category->getId())->getProductCollection();
+								$productCount = count($collection);
 								?>
-								<?php if($category->getIsAnchor()):?>
-								<li> <a class="prevent-link" style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="javascript:void(0)"><?php echo $name; ?></a></li>
-							<?php else:?>
+								<?php if($productCount > 0):?>
 								<li> <a style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="<?php echo $url; ?>">
 										<?php if($category->getId()==119): ?>
 											<?php echo $name;?>&trade;
@@ -201,6 +202,8 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 											<?php echo $name;?>
 										<?php endif; ?>
 									</a></li>
+								<?php else:?>
+								<li> <a class="prevent-link" style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="javascript:void(0)"><?php echo $name; ?></a></li>
 							<?php endif; ?>
 							<?php endif; ?>
 						<?php endif; ?>
