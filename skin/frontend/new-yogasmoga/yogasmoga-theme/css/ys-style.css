@@ -3178,14 +3178,6 @@ font: 36px/36px AvantGardeGothicITCW01D;
 @media only screen and (max-width : 1200px) {
 .bucket1 .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:10px;}
-/****** header modify ***/
-.tr-menu li > span {
-    padding: 0 6px;
-}
-
-ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
-/****** header modify end ***/
-
 }
 @media only screen and (max-width : 1024px) {
 .bucket1 .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
@@ -3266,3 +3258,4 @@ ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
 /*#signup.mc-signup .requiredfield,#signup.mc-signup #err-msg{color: #f00;}*/
 #signup.mc-signup .button-area{position:relative;}
 #signup.mc-signup .form-loader-mail{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%)}
+
