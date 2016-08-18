@@ -2878,9 +2878,6 @@ a.learn-more {
 .bucket4 .contentSlider{top:38.9112%;}
 
 
-/**************  header-modify ***************/
-ul.main-menu > li.one-too-many{padding-right:0;}
-
 @media only screen and (max-width : 1024px) {
 .bucket1 .contentSlider{top:28%;}
 .bucket2 .contentSlider{top:34%;}
@@ -2900,6 +2897,8 @@ ul.main-menu > li.one-too-many{padding-right:0;}
 }
 
 /*--- header modify due to extra link one2many ---*/
+ul.main-menu > li.one-too-many{padding-right:0;}
+
 @media only screen and (max-width : 1200px) {
 .tr-menu li > span { padding: 0 6px;}
 ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
