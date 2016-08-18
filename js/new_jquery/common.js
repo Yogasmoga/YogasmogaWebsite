@@ -767,13 +767,13 @@ jQuery(".featureList span.ftrFig img").css("max-height",spn_h);
 });
 
 jQuery(document).ready(function(){
-	var gridWrapHeight = jQuery('.gridWrap').height();
-	var leftNavHeight = jQuery('.leftnav').height();
-	if(gridWrapHeight < leftNavHeight){
-		
+	var gridWrapHeight = jQuery('.gridWrap').outerHeight();	
+	var leftNavHeight = jQuery('.leftnav').outerHeight();
+	//alert('gridwrap height '+ gridWrapHeight);	
+	//alert('leftnav height '+ leftNavHeight);
+	if(gridWrapHeight < leftNavHeight){		
 		jQuery('.gridWrap').css({
-			'min-height': leftNavHeight + 30
-		});
-	
+			'min-height': leftNavHeight + 60
+		});	
 	}
 });
