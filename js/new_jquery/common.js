@@ -772,7 +772,7 @@ jQuery(window).load(function(){
 	if(gridWrapHeight < leftNavHeight){
 		
 		jQuery('.gridWrap').css({
-			'min-height': leftNavHeight;
+			'min-height': leftNavHeight
 		});
 	
 	}
