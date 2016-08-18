@@ -115,6 +115,16 @@ if($serverType == 'production')
 
     jQuery(document).ready(function($){
 
+        //for left navigation height fixed start.
+        var gridWrapHeight = jQuery('.product-grid .gridWrap').outerHeight();
+        var leftNavHeight = jQuery('.product-grid .leftnav').outerHeight();
+        if(gridWrapHeight < leftNavHeight){
+            jQuery('.product-grid .gridWrap').css({
+                'min-height': leftNavHeight + 60
+            });
+        }
+        //for left navigation height fixed end.
+
         $(window).resize(function(event) {
             var pW1 = ($(document).width() - $(".firstdialog").width())/2;
             var pH1 = ($(window).height() - $(".firstdialog").height())/2;
