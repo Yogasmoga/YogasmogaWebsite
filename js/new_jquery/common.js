@@ -766,7 +766,7 @@ jQuery(".featureList span.ftrFig img").css("max-height",spn_h);
 
 });
 
-jQuery(document).ready(function(){
+jQuery(window).load(function(){
 	var gridWrapHeight = jQuery('.gridWrap').height();
 	var leftNavHeight = jQuery('.leftnav').height();
 	if(gridWrapHeight < leftNavHeight){
