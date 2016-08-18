@@ -766,13 +766,13 @@ jQuery(".featureList span.ftrFig img").css("max-height",spn_h);
 
 });
 
-jQuery(window).load(function(){
+jQuery(document).ready(function(){
 	var gridWrapHeight = jQuery('.gridWrap').height();
 	var leftNavHeight = jQuery('.leftnav').height();
 	if(gridWrapHeight < leftNavHeight){
 		
 		jQuery('.gridWrap').css({
-			'min-height': leftNavHeight
+			'min-height': leftNavHeight + 30
 		});
 	
 	}
