@@ -767,12 +767,12 @@ jQuery(".featureList span.ftrFig img").css("max-height",spn_h);
 });
 
 jQuery(document).ready(function(){
-	var gridWrapHeight = jQuery('.gridWrap').outerHeight();	
-	var leftNavHeight = jQuery('.leftnav').outerHeight();
+	var gridWrapHeight = jQuery('.product-grid .gridWrap').outerHeight();	
+	var leftNavHeight = jQuery('.product-grid .leftnav').outerHeight();
 	//alert('gridwrap height '+ gridWrapHeight);	
 	//alert('leftnav height '+ leftNavHeight);
 	if(gridWrapHeight < leftNavHeight){		
-		jQuery('.gridWrap').css({
+		jQuery('.product-grid .gridWrap').css({
 			'min-height': leftNavHeight + 60
 		});	
 	}
