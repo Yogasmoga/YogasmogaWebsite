@@ -765,3 +765,15 @@ var spn_h = jQuery(".featureList span.ftrFig").height();
 jQuery(".featureList span.ftrFig img").css("max-height",spn_h);
 
 });
+
+jQuery(document).ready(function(){
+	var gridWrapHeight = jQuery('.gridWrap').height();
+	var leftNavHeight = jQuery('.leftnav').height();
+	if(gridWrapHeight < leftNavHeight){
+	
+		jQuery('.gridWrap').css({
+			'min-height': leftNavHeight + 20;
+		});
+	
+	}
+});
