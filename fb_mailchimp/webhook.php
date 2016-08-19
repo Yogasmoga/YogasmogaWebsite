@@ -54,7 +54,8 @@ if(!empty($lead_id)){
 	//error_log(print_r($firstname,true));
 	//MailChimp
 	$apikey = 'e49184c3866b4d458797fdffe11f22d8-us3';
-	$list_id = "ca4e5865d6";
+	//$list_id = "ca4e5865d6";
+    $list_id = "40611aba4e"; //provided By Dhruv.
 
             $auth = base64_encode( 'user:'.$apikey );
 

@@ -89,7 +89,7 @@
 		<div class="colorFilterGrid">
 		<?php $collection = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToSort('position', 'ASC');
 		foreach($collection as $category):
-				if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=100):
+				if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=100 && $category->getId()!=43):
 					if($category->getLevel()==2 && $category->getIsActive()):
 
 						$url = $category->getUrl();
@@ -103,19 +103,20 @@
 							if(strtolower($bg) =="#fff" || strtolower($bg) =="#ffffff" || strtolower($bg) =="#fefefe"){
 								$borderClass ="ys-color-white";
 							}
+						$collection = Mage::getModel('catalog/category')
+							->load($category->getId())
+							->getProductCollection()
+							->addAttributeToFilter('type_id', 'simple')
+							->addAttributeToFilter(
+								'status',
+								array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
+							)
+							->addAttributeToSelect('*');
+							$productCount = count($collection);
 
 						?>
-						<?php if($category->getIsAnchor()):?>
-							<a href="javascript:void(0);" class="prevent-link <?php echo $borderClass;?>"  style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;">
-								<span>
-									<span  class="text-shop"></span>
-									<?php echo $name; ?>
-								</span>
-
-
-							</a>
-							<?php else: ?>
-							<a class="<?php echo $borderClass;?>" href="<?php echo $url;?>" style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;">
+						<?php if($productCount > 0): ?>
+						<a count="<?php echo $productCount ?>" class="<?php echo $borderClass;?>" href="<?php echo $url;?>" style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;">
 									<span>
 										<span  class="text-shop">Shop</span>
 										<?php if($category->getId()==123): ?>
@@ -127,7 +128,16 @@
 									<span class="spn_hover">
 										<img src="<?php echo $this->getSkinUrl('images/colorgrid/').$img.".png"; ?>" alt="<?php echo $name; ?>"/>
 									</span>
-							</a>
+						</a>
+						<?php else: ?>
+						<a href="javascript:void(0);" class="prevent-link <?php echo $borderClass;?>"  style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;">
+								<span>
+									<span  class="text-shop"></span>
+									<?php echo $name; ?>
+								</span>
+						</a>
+
+
 						<?php endif; ?>
 				<?php endif; ?>
 
