@@ -833,7 +833,12 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                         <tr></tr>
 
                                     </table>
-                                    <p style="width: 100%;height: auto;"><img src="<?php echo $this->getSkinUrl('images/product-icon.svg')?>"></p>
+                                    <?php
+                                        $skipAccessoriesId = array(8,12,29,30,31,32,33,38,39,40,46,50,75,76);
+                                        if(!array_intersect($skipAccessoriesId,$categoryIds)):?>
+                                            <p style="width: 100%;height: auto;"><img src="<?php echo $this->getSkinUrl('images/product-icon.svg')?>"></p>
+                                        <?php endif;?>
+
                                 </div>
                             </td>
                             <td>

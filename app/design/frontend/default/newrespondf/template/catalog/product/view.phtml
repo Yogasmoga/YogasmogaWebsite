@@ -1295,10 +1295,15 @@ if ($lengthAvailable) {
 
     </div>
     <div class="free-shiping">
+
+            <?php
+            $skipAccessoriesId = array(8,12,29,30,31,32,33,38,39,40,46,50,75,76);
+            if(!array_intersect($skipAccessoriesId,$categoryIds)):?>
             <p  class="earnsmogibuckstext">
-        <span><img src="<?php echo $this->getSkinUrl('images/prd-icon-mobile.svg')?>"/></span>
-        <comment>Made in USA</comment>
-        </p>
+                    <span><img src="<?php echo $this->getSkinUrl('images/prd-icon-mobile.svg')?>"/></span>
+                    <comment>Made in USA</comment>
+            </p>
+            <?php endif; ?>
     </div>
     <div class="clearfix"></div>
     <div class="description-block">
