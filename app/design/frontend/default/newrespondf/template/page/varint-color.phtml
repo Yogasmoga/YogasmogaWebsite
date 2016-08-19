@@ -176,7 +176,7 @@
 						   $currentCategoryId = Mage::registry('current_category')->getId();
 
 						   foreach($collection as $category):
-							   if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=100):
+							   if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=100 && $category->getId()!=43):
 								   if($category->getLevel()==2 && $category->getIsActive()):
 									   $url = $category->getUrl();
 									   $name = $category->getName();
@@ -192,19 +192,32 @@
 									   if($category->getId()==$currentCategoryId){
 										   $currentClass="current";
 									   }
+									   $collection = Mage::getModel('catalog/category')
+										   ->load($category->getId())
+										   ->getProductCollection()
+										   ->addAttributeToFilter('type_id', 'simple')
+										   ->addAttributeToFilter(
+											   'status',
+											   array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
+										   )
+										   ->addAttributeToSelect('*');
+									   $productCount = count($collection);
 
 									   ?>
-									   		<?php if($category->getIsAnchor()):?>
-									   			<li> <a class="prevent-link" style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="javascript:void(0)"><?php echo $name; ?></a></li>
-									 	  	<?php else:?>
-									   			<li> <a style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="<?php echo $url; ?>">
-														<?php if($category->getId()==123): ?>
-															<?php echo $name;?>&trade;
-														<?php else: ?>
-															<?php echo $name;?>
-														<?php endif; ?>
-													</a></li>
-								        	<?php endif; ?>
+									   <?php if($productCount > 0):?>
+
+									   <li> <a count="<?=$productCount?>" style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="<?php echo $url; ?>">
+											   <?php if($category->getId()==123): ?>
+												   <?php echo $name;?>&trade;
+											   <?php else: ?>
+												   <?php echo $name;?>
+											   <?php endif; ?>
+										   </a></li>
+
+									 	  	<?php else: /* ?>
+
+									   <li> <a class="prevent-link" style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="javascript:void(0)"><?php echo $name; ?></a></li>
+								        	<?php */ endif; ?>
 									<?php endif; ?>
 							   <?php endif; ?>
 						   <?php endforeach; ?>
