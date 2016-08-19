@@ -191,20 +191,27 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 									$currentClass="current";
 								}
 
-								$collection = Mage::getModel('catalog/category')->load($category->getId())->getProductCollection();
+								$collection = Mage::getModel('catalog/category')
+									->load($category->getId())
+									->getProductCollection()
+									->addAttributeToFilter('type_id', 'simple')
+									->addAttributeToFilter(
+										'status',
+										array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
+									)
+									->addAttributeToSelect('*');
 								$productCount = count($collection);
 								?>
 								<?php if($productCount > 0):?>
-								<li> <a style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="<?php echo $url; ?>">
+								<li count="<?=$productCount?>"> <a style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="<?php echo $url; ?>">
 										<?php if($category->getId()==119): ?>
 											<?php echo $name;?>&trade;
 										<?php else: ?>
 											<?php echo $name;?>
 										<?php endif; ?>
 									</a></li>
-								<?php else: /* ?>
-								<li> <a class="prevent-link" style="background:<?php echo $bg; ?>;color:<?php echo $textclr;?>;" href="javascript:void(0)"><?php echo $name; ?></a></li>
-							<?php */ endif; ?>
+
+							<?php  endif; ?>
 							<?php endif; ?>
 						<?php endif; ?>
 					<?php endforeach; ?>

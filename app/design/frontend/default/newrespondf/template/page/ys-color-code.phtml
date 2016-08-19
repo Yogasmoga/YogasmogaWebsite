@@ -16,12 +16,20 @@
 							if(strtolower($bg) =="#fff" || strtolower($bg) =="#ffffff" || strtolower($bg) =="#fefefe"){
 								$borderClass ="ys-color-white";
 							}
-						$collection = Mage::getModel('catalog/category')->load($category->getId())->getProductCollection();
+						$collection = Mage::getModel('catalog/category')
+							->load($category->getId())
+							->getProductCollection()
+							->addAttributeToFilter('type_id', 'simple')
+							->addAttributeToFilter(
+								'status',
+								array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
+							)
+							->addAttributeToSelect('*');
 						$productCount = count($collection);
 						?>
 						<?php if($productCount > 0):?>
 
-							<li> <a href="<?php echo $url; ?>" style="background: <?php echo $bg; ?>;color:<?php echo $textclr; ?>;">
+							<li count="<?=$productCount?>"> <a href="<?php echo $url; ?>" style="background: <?php echo $bg; ?>;color:<?php echo $textclr; ?>;">
 									<?php if($category->getId()==119): ?>
 										<?php echo $name;?>&trade;
 									<?php else: ?>

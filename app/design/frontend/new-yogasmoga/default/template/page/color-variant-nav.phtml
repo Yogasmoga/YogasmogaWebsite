@@ -23,26 +23,25 @@
                                 $currentClass="current";
                             }
 
-                        $collection = Mage::getModel('catalog/category')->load($category->getId())->getProductCollection();
+                        $collection = Mage::getModel('catalog/category')
+                            ->load($category->getId())
+                            ->getProductCollection()
+                            ->addAttributeToFilter('type_id', 'simple')
+                            ->addAttributeToFilter(
+                                'status',
+                                array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
+                            )
+                            ->addAttributeToSelect('*');
                         $productCount = count($collection);
 
                     ?>
-
                         <?php if($productCount > 0):?>
-                        <li rel="<?php echo $name; ?>" class="color_<?php echo $category->getId()?> <?php echo $borderClass; ?> <?php echo $currentClass;?>">
+                        <li count="<?=$productCount?>" rel="<?php echo $name; ?>" class="color_<?php echo $category->getId()?> <?php echo $borderClass; ?> <?php echo $currentClass;?>">
                             <a href="<?php echo $url; ?>" style="background:<?php echo $bg; ?>">
                                 <?php echo $name; ?>
                             </a>
                         </li>
-                    <?php else: /* ?>
-                        <li rel="<?php echo $name; ?>" class="color_<?php echo $category->getId()?> <?php echo $borderClass; ?> <?php echo $currentClass;?>">
-                            <a href="javascript:void(0);" class="prevent-link" style="background:<?php echo $bg; ?>">
-                                <?php echo $name; ?>
-                            </a>
-                        </li>
-                    <?php */ endif; ?>
-
-
+                        <?php  endif; ?>
                     <?php endif; ?>
             <?php endif; ?>
         <?php endforeach; ?>

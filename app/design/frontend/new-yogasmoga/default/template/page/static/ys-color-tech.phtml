@@ -105,10 +105,18 @@
 							$borderClass ="ys-color-white";
 						}
 
-						$collection = Mage::getModel('catalog/category')->load($category->getId())->getProductCollection();
+						$collection = Mage::getModel('catalog/category')
+							->load($category->getId())
+							->getProductCollection()
+							->addAttributeToFilter('type_id', 'simple')
+							->addAttributeToFilter(
+								'status',
+								array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
+							)
+							->addAttributeToSelect('*');
 						$productCount = count($collection);
 						?>
-						<?php if($productCount > 0):?>
+						<?php if($productCount > 0): ?>
 						<a count="<?php echo $productCount ?>" class="<?php echo $borderClass;?>" href="<?php echo $url;?>" style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;">
 									<span>
 										<span  class="text-shop">Shop</span>
