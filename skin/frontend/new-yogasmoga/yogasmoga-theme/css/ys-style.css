@@ -3231,31 +3231,56 @@ font: 36px/36px AvantGardeGothicITCW01D;
 /*-------------------------------------------------*/
 
 /*----------------mailchimp signup popup css---------------*/
-.firstdialog{background:none; width:100%!important; max-width:776px!important; height:auto!important;box-shadow:0 0 0; border-radius:0;}
-.firstdialog .ui-dialog-titlebar{box-shadow:0 0 0; background:none;border-radius:0;}
+.firstdialog{background:none; width:100%!important; max-width:inherit!important; height:100%!important;box-shadow:0 0 0; border-radius:0; position:fixed!important; top:0!important; left:0!important;}
+.firstdialog .ui-dialog-titlebar{box-shadow:0 0 0; background:none;border-radius:0;display:none;}
 .firstdialog .ui-dialog-titlebar-close{right:19px;margin:0;top:48px;}
 .firstdialog .ui-icon-closethick{background:rgba(0, 0, 0, 0) url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/mc-popup-close.jpg") no-repeat scroll 0 0; height:28px;width:28px;}
-#signup.mc-signup{display:none;}
+#signup.mc-signup{display:none;background:url(../images/mc-signup-bg.jpg); background-size:cover;
+width:100%!important;height:100%!important;
+}
 .firstdialog #signup.mc-signup{display:block;}
-#signup.mc-signup{background:#555555;width:100%; max-width:776px; height:auto!important;color:#fff; text-align:center;font-family:avantgardegothicitcw01d;padding:0!important;}
+#signup.mc-signup{color:#fff; text-align:center;font-family:avantgardegothicitcw01d;padding:0!important;}
 #signup.mc-signup .spn_line{display:block;line-height:1}
 #signup.mc-signup .spn_line:first-child{margin-bottom:5px;}
-#signup.mc-signup .signup-title{font-size:38px;font-family:avantgardegothicitcw01b; text-transform:uppercase;margin-bottom:20px;}
+#signup.mc-signup .signup-title{font-size:30px;font-family:avantgardegothicitcw01b; text-transform:uppercase;margin-bottom:20px;}
 #signup.mc-signup .signup-title .strong{font-family:avantgardegothicitcw01d;}
-#signup.mc-signup .signup-title .highlight{color:#ae8536;font-family:avantgardegothicitcw01d;}
+#signup.mc-signup .signup-title .highlight{color:#ae8536;font-family:avantgardegothicitcw01d;display:block;max-width:240px;margin:1% auto;}
+#signup.mc-signup .signup-title .highlight img{max-width:100%;}
 #signup.mc-signup small{font-size:13px; letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px;display:block;}
 #signup.mc-signup input{width:242px;height:40px;border:0 none;padding:0 5px;box-sizing:border-box;}	
 #signup.mc-signup input[type="text"]{margin-bottom:5px;}
 #signup.mc-signup input[type="submit"]{background:#ccc; color:#fff!important;font-family:avantgardegothicitcw01d;cursor:pointer;text-transform:uppercase;}
-#signup.mc-signup .signup-content{padding:58px 0!important;}
+#signup.mc-signup .signup-content{padding:0!important;}
 
-#signup.mc-signup .signup-thankyou{display:none;padding:58px 0 5px 0!important;}
+#signup.mc-signup .signup-thankyou{display:none;padding:0!important;}
 #signup.mc-signup .signup-thankyou .spn_line {line-height:42px;}
-#signup.mc-signup .signup-thankyou small{font-family:AvantGardeGothicITCW01B; font-size:11px;margin-bottom:20px;text-transform:none;}
-#signup.mc-signup .mc-shoplinks{text-align:center;}
-#signup.mc-signup .mc-shoplinks a{display:inline-block;margin:0 5px;}
+#signup.mc-signup .signup-thankyou small{font-size:15px;margin-bottom:0;text-transform:uppercase;line-height:normal;}
+#signup.mc-signup .mc-shoplinks{text-align:center;margin-bottom:2.5%;}
+#signup.mc-signup .mc-shoplinks a{display:inline-block;margin:0 3px;}
+#signup.mc-signup .mc-shoplinks a img{}
 #signup.mc-signup .signup-thankyou .signup-title{margin-bottom:35px;}
+#signup.mc-signup .signup-thankyou .signup-title .strong{display:block; margin-bottom:2%;}
 /*#signup.mc-signup .requiredfield,#signup.mc-signup #err-msg{color: #f00;}*/
 #signup.mc-signup .button-area{position:relative;}
 #signup.mc-signup .form-loader-mail{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%)}
-
+#signup.mc-signup .close-text{color:#AE8536; text-decoration:underline;font-size:15px;font-family:AvantGardeGothicITCW01B;cursor:pointer;}
+#signup.mc-signup .limited-time{font-family:avantgardegothicitcw01d;margin-top:2%;margin-bottom:4%;}
+#signup.mc-signup .limited-time span{display: block;
+    font-size: 20px;
+    line-height: normal;
+    text-transform: uppercase;}
+#signup.mc-signup .svg-logo{margin:5.19% 0;}	
+#signup.mc-signup .fields-area{width:100%; max-width:402px;margin:0 auto; position:relative;text-align:left;}
+#signup.mc-signup .fields-area p{display:inline-block;}
+#signup.mc-signup .fields-area p.button-area{position:absolute; top:0; right:0;width:112px;}
+#signup.mc-signup .fields-area p.button-area input[type="submit"]{width:100%;}
+#signup.mc-signup .fields-area p input[type="text"]{width:280px;}
+@media only screen and (max-width : 1400px) {
+	#signup.mc-signup .svg-logo{margin:4.19% 0;}
+	#signup.mc-signup .signup-title .highlight{max-width:198px;}
+	#signup.mc-signup .signup-title{font-size:26px;}
+	#signup.mc-signup .limited-time{margin-top:1%;margin-bottom:2%;}
+	#signup.mc-signup .limited-time span{font-size:18px;}
+	#signup.mc-signup .close-text{font-size:13px; }
+	#signup.mc-signup .mc-shoplinks a img{max-width:246px;}
+}
