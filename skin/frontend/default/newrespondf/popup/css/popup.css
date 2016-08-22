@@ -436,7 +436,9 @@ li.gender-link span {
 /****************** signup and thanks popup *****************/
 
 #MailpopForm {
-    background: none repeat scroll 0 0 rgba(85, 85, 85, 0.953);
+   /* background: none repeat scroll 0 0 rgba(85, 85, 85, 0.953);*/
+   background: url("../images/popup-bg.png") 0 0 no-repeat;
+  	background-size:cover;
     bottom: 0;
     display: block;
     left: 0;
@@ -480,7 +482,7 @@ li.gender-link span {
 }
 .sign-up-popup  .main-heading,.thanks-popup  .main-heading {
   color: #fff;
-    font-family: ITCAvantGardeStd-Bk;
+    font-family:AvantGarde-Demi;
     font-size: 24px;
     line-height: 26px;
     margin: 23px 0 26px;text-transform:uppercase;
@@ -493,12 +495,18 @@ li.gender-link span {
 	 
 	}
 	.sign-up-popup  .input-text{
-		  color: #555;
+		  color: #fff;
     font-size: 13px !important;
     height: 44px;
+	background:none;
+	border:none;
+	border-bottom:1px solid #fff;
+	padding-bottom:0px!important;
+	padding-left:0px!important;
+	font-family: ITCAvantGardeStd-Md!important;
 	}
 	.sign-up-popup  .signup_button, .thanks-popup .shop-link {
-  background: #ae8536;
+  background: #C4C0C0;
   border: medium none;
   color: #fff;
   cursor: pointer;
@@ -530,3 +538,34 @@ text-align: center;
 width: 100%;
 	
 }
+#MailpopForm  .main-heading .lmt-ofr{font-size:16px;line-height:18px;  padding-top: 25px;}
+#MailpopForm .discnt-offr {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 180px;
+    padding: 11px 0;
+    width: 50.222%;
+}
+#MailpopForm .tick-mark {
+  display: block;
+  float: none;
+  height: 44px;
+  margin: 0 auto;
+  width: 44px;
+  position:absolute;
+  left:0;
+  right:0;
+  top:50%;
+   transform: translateY(-33%);
+}
+
+#MailpopForm .no-thanks {
+  color: #ae8536;
+  font: 14px/22px ITCAvantGardeStd-Md;
+  text-align: center;
+  text-decoration: underline;
+}
+.thanks-popup .signup-info span.strong{color:#fff;font-family:AvantGarde-Demi!important;}
+.thanks-popup .lmt-ofr{padding-top:8px!important;}
+.thanks-popup{padding-top:35px!important;}
+.thanks-popup .cross_icon{top:0;right:3;}

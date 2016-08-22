@@ -363,7 +363,7 @@
 			<div id="MailpopForm"  style="display:none">
 			<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('popup/css/popup.css'); ?>"/>
 				<div  class="sign-up-popup">
-					<a  class="cross_icon" onclick="closeSignup()" href="javascript:void(0)">
+					<!--<a  class="cross_icon" onclick="closeSignup()" href="javascript:void(0)">
                         <svg xml:space="preserve" enable-background="new 0 0 55 55" viewBox="0 0 55 55" height="55px" width="55px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
 						<g>
 							<rect height="66" width="66" fill="none"/>
@@ -371,12 +371,15 @@
 							<line y2="40" x2="14" y1="14" x1="40" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
 						</g>
 						</svg>
-                    </a>
+                    </a>-->
 					
 					<div class="signup-info">
 						<div class="scroll">
 							<div class="main-heading">
-								SIGN UP NOW<BR>TO INSTANTLY GET <span>50% OFF</span>YOUR FIRST ORDER
+								SIGN UP NOW<BR>TO RECEIVE
+								<div class="discnt-offr"><img  src="<?php echo $this->getSkinUrl('images/popup-discount.png'); ?>" class="img-responsive"/></div>
+								YOUR FIRST ORDER
+								<div class="lmt-ofr">LIMITED TIME ONLY<BR>NOW THROUGH AUGUST 28</div>
 							</div>
 							<div class="popup-form">
 
@@ -388,8 +391,17 @@
 										</div>
 									</li>
 									<li class="button-area"><span class="form-loader-mail"></span>
-										<input type="submit" class="signup_button" id="signup-button-mailc" value="SIGN UP"/>
+									<span class="tick-mark">
+                                        <svg xml:space="preserve" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+                                            <style type="text/css">
+                                            .st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+                                            </style>
+                                            <polyline points="5.9,25.6 14.6,34.3 39.1,9.8 " class="st0"/>
+                                        </svg>
+									</span>
+										<input type="submit" class="signup_button" id="signup-button-mailc" value=""/>
 									</li>
+									<li><a class="no-thanks" onclick="closeSignup()" >No Thank You, I’m not interested in <br>Made in the USA apparel.</a></li>
 									</ul>
 									<p style="margin: 0px auto;font-size: 12px;visibility: hidden;min-height: 20px;width: 236px;color:#fff;clear:both;padding-top:5px;" id="err-msg">All fields are required.</p>
 								</form>
@@ -414,17 +426,17 @@
 					<div class="signup-info">
 						<div class="scroll">
 							<div class="main-heading">
-								<span class="strong">Thank You!</span> Please Check Your email and Feel the SMOGI LOVE
+								<span class="strong">Thank You</span> <span class="lmt-ofr">Please Check Your email <br>&amp; Feel the SMOGI LOVE</span>
 							</div>
 							<div class="popup-form">
 								<form name="" id="" class="popup_form" method="" action="" rel="">
 									<ul>
 									<!--<li><span>We've also emailed it to you<br/>in case you forget.</span></li>-->
 									<li>
-									<a class="shop-link" href="/women">SHOP WOMEN  </a>
+									<a  href="/women"><img  src="<?php echo $this->getSkinUrl('images/thanks-popup-women.png'); ?>" class="img-responsive"/>  </a>
 									</li>
 									<li>
-									<a class="shop-link" href="/men">SHOP MEN  </a>
+									<a  href="/men"><img  src="<?php echo $this->getSkinUrl('images/thanks-popup-men.png'); ?>" class="img-responsive"/> </a>
 									</li>
 									</ul>
 								</form>
