@@ -49,11 +49,11 @@
     } else {
         ?>
         <meta property="og:image"
-              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/fb/facebook-cache-update-01.jpg"/>
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg"/>
         <meta property="og:image"
-              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/fb/facebook-cache-update-02.jpg"/>
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg"/>
         <meta property="og:image"
-              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/fb/facebook-cache-update-03.jpg"/>
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg"/>
         <meta property="og:title" content="YOGASMOGA"/>
         <meta property="og:description" content="We are YOGASMOGA. We make things for LIFE. One breath at a time."/>
         <?php
@@ -111,8 +111,8 @@
                 <div class="product-grid">
                     <div class="2-columns-wrapper">
                         <div id="div_sizes">&nbsp;</div>
-
                         <?php
+                        /*
                         // code for get left nav
                         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
                         $categoryName = explode('/', $currentUrl);
@@ -135,8 +135,8 @@
                             //print_r($positions);die;
                             $bannerTxt = 'white';
                         }
-
-
+                          */
+                        $categoryId = Mage::registry('current_category')->getId();
                         $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
                         $shopthecolor_imgUrl = $shopthecolorCategory->getImageUrl();
                         $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
@@ -145,28 +145,6 @@
                         <?php if ($shopthecolor_imgUrl): ?>
                             <div class="bannerFluid"
                                  style="background: url('<?php echo $shopthecolor_imgUrl; ?>'); background-size: cover;">
-                                <!-- <img src="--><?php //echo $shopthecolor_imgUrl; ?><!--">-->
-                                <?php
-                                if ($urlKey == 'women') {
-                                    ?>
-                                    <div class="bnrtxt bnr white">WHAT&prime;S NEW</div>
-
-                                    <div
-                                        style="position: absolute; width: 700px; left: 8%; top: 22%; float: left; color: #555555; text-align: left;">
-                                        <!-- <h2 style="font-size: 30px; line-height: 30px; padding-bottom: 0px; color: #555555; margin-bottom: 0px;"><strong>KNIT COLLECTION</strong></h2>
-                                         <span style="font-size: 26px; line-height: 28px; color: #555555;font-weight: 300;">Introducing SONA<sup>TM___</sup> <br/> Our new custom blend of silk, wool <br/>and cashmere.</span>
-                                         <h2 style="font-size: 30px; line-height: 30px; padding-bottom: 0px; color: #555555; margin-bottom: 0px; margin-top: 30px"><strong>MESH COLLECTION</strong></h2>
-                                         <span style="font-size: 26px; line-height: 28px; color: #555555;font-weight: 300;">Discover the sleek and stylish design<br/>of the Vivacity Legging and Vivacity Crop.</span>
-                                         <h2 style="font-size: 30px; line-height: 30px; padding-bottom: 0px; color: #555555; margin-bottom: 0px; margin-top: 30px"><strong>RUDHIRA</strong></h2>
-                                         <span style="font-size: 26px; line-height: 28px; color: #555555; font-weight: 300;">A rich, true red with soft brick tones.<br/>It warms up any outfit a perfect holiday color.</span>
-                                         <h2 style="font-size: 30px; line-height: 30px; padding-bottom: 0px; color: #555555; margin-bottom: 0px; margin-top: 30px"><strong>OLIVINE</strong></h2>
-                                         <span style="font-size: 26px; line-height: 28px; color: #555555; font-weight: 300;">Our new deep green is a versatile neutral<br/>for your winter wardrobe.</span>
-                                         -->
-
-                                    </div>
-                                <?php } else { ?>
-                                    <div class="bnrtxt bnr white">WHAT&prime;S NEW</div>
-                                <?php } ?>
                             </div>
                         <?php endif; ?>
                         <!-- bannerContainer -->
@@ -178,7 +156,8 @@
                             $categoryName = explode('/', $currentUrl);
                             $urlKey = $categoryName[3];
                             $_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
-                            $parentCategoryId = $_category->getId();
+                            //$parentCategoryId = $_category->getId();
+                            $parentCategoryId = 3;
 
                             /**************** size filter *****************/
                             $allSkuSizes = array();
@@ -190,7 +169,7 @@
                             ?>
 
                             <!-- leftNav -->
-<!--                            <div class="scroller_anchor" style="height: 29px;"></div>-->
+                            <!--                            <div class="scroller_anchor" style="height: 29px;"></div>-->
                             <div class="leftnav f-left l-align cntn-scroll">
                                 <ul class="ctglink">
                                     <?php
@@ -204,7 +183,26 @@
                                         $showCategoryInLeftNav = Mage::getModel('catalog/category')->load($subsubcategory->getId());
                                         if ($showCategoryInLeftNav->getIncludeInMenu()) {
                                             if ($subsubcategory->getChildrenCount() == 0) {
-                                                $hasnosubcategoryhtml .= '<li><a href=' . $subsubcategory->getUrl() . ' class="bld ';
+
+
+
+
+                                                if($subsubcategory->getId()==125 || $subsubcategory->getId()==128){
+                                                    $hasnosubcategoryhtml .= '<li style="margin-top:18px"'.'><a  href=' . $subsubcategory->getUrl() . ' class="bld ';
+                                                }
+                                                elseif($subsubcategory->getId()==127 || $subsubcategory->getId()==130){
+                                                    $hasnosubcategoryhtml .= '<li style="margin-bottom:19px"'.'><a  href=' . $subsubcategory->getUrl() . ' class="bld ';
+                                                }
+                                                else{
+                                                    $hasnosubcategoryhtml .= '<li><a href=' . $subsubcategory->getUrl() . ' class="bld ';
+                                                }
+
+
+                                               // $hasnosubcategoryhtml .= '<li><a href=' . $subsubcategory->getUrl() . ' class="bld ';
+
+
+
+
                                                 if ($subsubcategory->getUrl() == $currentUrl)
                                                     $hasnosubcategoryhtml .= 'current';
                                                 $hasnosubcategoryhtml .= '">' . $subsubcategory->getName() . '</a></li>';
@@ -326,22 +324,22 @@
 
                                                 //if($filterColorName==$currentColor) {   // show only for current color
 
-                                                    $size = $simpleProductForSku->getAttributeText('size');
+                                                $size = $simpleProductForSku->getAttributeText('size');
 
-                                                    $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
+                                                $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
 
-                                                    if (!isset($skuSizes[$filterColorName]))
-                                                        $skuSizes[$filterColorName] = array();
+                                                if (!isset($skuSizes[$filterColorName]))
+                                                    $skuSizes[$filterColorName] = array();
 
-                                                    if (isset($size) && strlen(trim($size)) > 0) {
-                                                        if ($stock > 0) {
-                                                            $allSkuSizes[] = $size;
-                                                            $skuSizes[$filterColorName][] = $size;
+                                                if (isset($size) && strlen(trim($size)) > 0) {
+                                                    if ($stock > 0) {
+                                                        $allSkuSizes[] = $size;
+                                                        $skuSizes[$filterColorName][] = $size;
 
-                                                            //echo ">> $filterColorName , $size <br/>";
-                                                        }
+                                                        //echo ">> $filterColorName , $size <br/>";
                                                     }
-                                               // }
+                                                }
+                                                // }
                                             }
 
                                             $productSizes = $skuSizes[$currentColor];
