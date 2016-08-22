@@ -25,7 +25,7 @@ errors/local.xml
 /.htaccess
 # External tool builders
 .externalToolBuilders/
-
+/fb_mailchimp
 # Locally stored "Eclipse launch configurations"
 *.launch
 
