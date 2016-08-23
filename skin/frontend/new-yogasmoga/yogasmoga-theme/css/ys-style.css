@@ -3263,7 +3263,8 @@ width:100%!important;height:100%!important;
 /*#signup.mc-signup .requiredfield,#signup.mc-signup #err-msg{color: #f00;}*/
 #signup.mc-signup .button-area{position:relative;}
 #signup.mc-signup .form-loader-mail{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%)}
-#signup.mc-signup .close-text{color:#AE8536; text-decoration:underline;font-size:15px;font-family:AvantGardeGothicITCW01B;cursor:pointer;}
+#signup.mc-signup .close-text{color:#AE8536; text-decoration:underline;font-size:15px;font-family:AvantGardeGothicITCW01B;cursor:pointer;margin-bottom:0;}
+#signup.mc-signup .close-text .apos{font-family:gothambook;}
 #signup.mc-signup .limited-time{font-family:avantgardegothicitcw01d;margin-top:2%;margin-bottom:4%;}
 #signup.mc-signup .limited-time span{display: block;
     font-size: 20px;
@@ -3273,8 +3274,13 @@ width:100%!important;height:100%!important;
 #signup.mc-signup .fields-area{width:100%; max-width:402px;margin:0 auto; position:relative;text-align:left;}
 #signup.mc-signup .fields-area p{display:inline-block;}
 #signup.mc-signup .fields-area p.button-area{position:absolute; top:0; right:0;width:112px;}
-#signup.mc-signup .fields-area p.button-area input[type="submit"]{width:100%;}
-#signup.mc-signup .fields-area p input[type="text"]{width:280px;}
+#signup.mc-signup .fields-area p.button-area input[type="submit"]{width:100%;font-family:gothamBold;}
+#signup.mc-signup .fields-area p.button-area input[type="submit"].on{background:#AE8536;}
+#signup.mc-signup .fields-area p input[type="text"]{width:280px;font-family:gothamBook;}
+
+#signup.mc-signup .svg-logontext{margin:0 0 64px 0; }
+#signup.mc-signup form{position:absolute; top:50%; left:0; right:0; transform:translateY(-50%);}
+
 @media only screen and (max-width : 1400px) {
 	#signup.mc-signup .svg-logo{margin:4.19% 0;}
 	#signup.mc-signup .signup-title .highlight{max-width:198px;}
@@ -3283,4 +3289,6 @@ width:100%!important;height:100%!important;
 	#signup.mc-signup .limited-time span{font-size:18px;}
 	#signup.mc-signup .close-text{font-size:13px; }
 	#signup.mc-signup .mc-shoplinks a img{max-width:246px;}
+	#signup.mc-signup .svg-logontext{max-width:300px;}
+	#signup.mc-signup .svg-logontext{margin:0 0 56px 0; }
 }

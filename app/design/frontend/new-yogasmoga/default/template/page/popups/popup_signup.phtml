@@ -158,27 +158,25 @@ else {
 <?php */ ?>
 
 <div id="signup" class="mc-signup" style="display:none;">
-		<img class="svg-logo" src="<?php echo $this->getSkinUrl('images/m.svg') ?>" alt=""/>
+		
 	<div class="signup-content">
 		
 		<form action="" method="post" id="popup-mailsignup" style="display: block;">
-		<p class="signup-title">
-			<span class="spn_line"><span class="strong">SIGN UP Now To Receive </span> </span>
-			<span class="spn_line"><span class="highlight"><img src="<?php echo $this->getSkinUrl('images/25-off.png') ?>" alt=""/></span><span class="strong"> Your First Order</span></span>
-		</p>
-		<p class="limited-time"><span>Limited Time Only,</span><span>Now Through August 28.</span></p>		
+		<img class="svg-logontext" src="<?php echo $this->getSkinUrl('images/25-off.svg') ?>" alt=""/>
 		<div class="fields-area">
 		<p><input type="text" name="email" id="Memail_address" class="watermark" placeholder="Your Email Address" autocomplete="off" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off"/></p>
 		<p class="button-area"><span class="form-loader-mail"></span><input type="submit" value="Sign Up" id="signup-button-mailc"/></p>
 		</div>
 
 		<p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
-		<p class="close-text">No Thank You, I'm not interested in Made in the USA apparel.</p>
+		<p class="close-text">No Thank You, I’m not interested in
+Made in the USA apparel.</p>
 		</form>
 	</div>
 	
 	<!--signup-content-->
 	<div class="signup-thankyou">
+	<img class="svg-logo" src="<?php echo $this->getSkinUrl('images/m.svg') ?>" alt=""/>
 		<p class="signup-title">
 			<span class="spn_line"><span class="strong">Thank You!</span> 
 				<span class="strong"><small>Please Check Your email</small><small> &amp; Feel the SMOGI LOVE</small></span></span>
@@ -268,6 +266,16 @@ else {
 	$(".close-text").click(function(){
 		$("#signup").dialog( "close" );
 	});
+	
+	$('#Memail_address').on('focus keypress',function(){		
+			if($(this).val().length > 0){
+				$('#signup-button-mailc').addClass('on');			
+			}
+			else{
+				$('#signup-button-mailc').removeClass('on');			
+			}
+			
+		});
 });
 
 </script>
