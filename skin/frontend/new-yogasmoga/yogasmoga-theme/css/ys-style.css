@@ -3270,7 +3270,7 @@ width:100%!important;height:100%!important;
     font-size: 20px;
     line-height: normal;
     text-transform: uppercase;}
-#signup.mc-signup .svg-logo{margin:5.19% 0;}	
+#signup.mc-signup .svg-logo{margin:0 0 5.19% 0;}	
 #signup.mc-signup .fields-area{width:100%; max-width:402px;margin:0 auto; position:relative;text-align:left;}
 #signup.mc-signup .fields-area p{display:inline-block;}
 #signup.mc-signup .fields-area p.button-area{position:absolute; top:0; right:0;width:112px;}
@@ -3279,10 +3279,10 @@ width:100%!important;height:100%!important;
 #signup.mc-signup .fields-area p input[type="text"]{width:280px;font-family:gothamBook;}
 
 #signup.mc-signup .svg-logontext{margin:0 0 64px 0; }
-#signup.mc-signup form{position:absolute; top:50%; left:0; right:0; transform:translateY(-50%);}
+#signup.mc-signup form,#signup.mc-signup .signup-thankyou-content{position:absolute; top:50%; left:0; right:0; transform:translateY(-50%);}
 
 @media only screen and (max-width : 1400px) {
-	#signup.mc-signup .svg-logo{margin:4.19% 0;}
+	#signup.mc-signup .svg-logo{margin:0 0 4.19% 0;}
 	#signup.mc-signup .signup-title .highlight{max-width:198px;}
 	#signup.mc-signup .signup-title{font-size:26px;}
 	#signup.mc-signup .limited-time{margin-top:1%;margin-bottom:2%;}
