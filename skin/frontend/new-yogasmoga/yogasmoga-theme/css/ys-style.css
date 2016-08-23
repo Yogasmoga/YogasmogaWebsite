@@ -3272,7 +3272,7 @@ width:100%!important;height:100%!important;
 #signup.mc-signup .signup-thankyou small{font-size:15px;margin-bottom:0;text-transform:uppercase;line-height:normal;}
 #signup.mc-signup .mc-shoplinks{text-align:center;margin-bottom:2.5%;}
 #signup.mc-signup .mc-shoplinks a{display:inline-block;margin:0 3px;}
-#signup.mc-signup .mc-shoplinks a img{}
+#signup.mc-signup .mc-shoplinks a img{max-width:384px;}
 #signup.mc-signup .signup-thankyou .signup-title{margin-bottom:35px;}
 #signup.mc-signup .signup-thankyou .signup-title .strong{display:block; margin-bottom:2%;}
 /*#signup.mc-signup .requiredfield,#signup.mc-signup #err-msg{color: #f00;}*/
