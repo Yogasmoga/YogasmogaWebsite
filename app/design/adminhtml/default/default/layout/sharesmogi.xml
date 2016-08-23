@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <sharesmogi_adminhtml_sharesmogi_index>
+        <reference name="content">
+            <block type="sharesmogi/adminhtml_sharesmogi" name="sharesmogi" />
+        </reference>
+    </sharesmogi_adminhtml_sharesmogi_index>
+</layout>

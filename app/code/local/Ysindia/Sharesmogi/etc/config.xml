@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Ysindia
+ * @package    Ysindia_Sharesmogi
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Ysindia_Sharesmogi>
+            <version>0.1.0</version>
+        </Ysindia_Sharesmogi>
+    </modules>
+    <frontend>
+        <routers>
+            <sharesmogi>
+                <use>standard</use>
+                <args>
+                    <module>Ysindia_Sharesmogi</module>
+                    <frontName>sharesmogi</frontName>
+                </args>
+            </sharesmogi>
+        </routers>
+        <layout>
+            <updates>
+                <sharesmogi>
+                    <file>sharesmogi.xml</file>
+                </sharesmogi>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<sharesmogi>
+				<use>admin</use>
+				<args>
+					<module>Ysindia_Sharesmogi</module>
+					<frontName>sharesmogi</frontName>
+				</args>
+			</sharesmogi>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<sharesmogi module="sharesmogi">
+				<title>Sharesmogi</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="sharesmogi">
+						<title>Manage Items</title>
+						<sort_order>0</sort_order>
+						<action>sharesmogi/adminhtml_sharesmogi</action>
+					</items>
+				</children>
+			</sharesmogi>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Ysindia_Sharesmogi>
+							<title>Sharesmogi Module</title>
+							<sort_order>10</sort_order>
+						</Ysindia_Sharesmogi>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<sharesmogi>
+					<file>sharesmogi.xml</file>
+				</sharesmogi>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <sharesmogi>
+                <class>Ysindia_Sharesmogi_Model</class>
+                <resourceModel>sharesmogi_mysql4</resourceModel>
+            </sharesmogi>
+            <sharesmogi_mysql4>
+                <class>Ysindia_Sharesmogi_Model_Mysql4</class>
+                <entities>
+                    <sharesmogi>
+                        <table>sharesmogi</table>
+                    </sharesmogi>
+                </entities>
+            </sharesmogi_mysql4>
+        </models>
+        <events>
+            <customer_register_success>
+                <observers>
+                    <ysindia_sharesmogi_customer_register_success>
+                        <type>singleton</type>
+                        <class>Ysindia_Sharesmogi_Model_Observer</class>
+                        <method>customerRegisterSuccessForSmogi</method>
+                    </ysindia_sharesmogi_customer_register_success>
+                </observers>
+            </customer_register_success>
+        </events>
+        <resources>
+            <sharesmogi_setup>
+                <setup>
+                    <module>Ysindia_Sharesmogi</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </sharesmogi_setup>
+            <sharesmogi_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </sharesmogi_write>
+            <sharesmogi_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </sharesmogi_read>
+        </resources>
+        <blocks>
+            <sharesmogi>
+                <class>Ysindia_Sharesmogi_Block</class>
+            </sharesmogi>
+        </blocks>
+        <helpers>
+            <sharesmogi>
+                <class>Ysindia_Sharesmogi_Helper</class>
+            </sharesmogi>
+        </helpers>
+    </global>
+</config>
