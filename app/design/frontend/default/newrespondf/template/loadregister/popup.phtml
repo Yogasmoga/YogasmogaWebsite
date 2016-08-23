@@ -401,9 +401,10 @@
 									</span>-->
 										<input type="submit" class="signup_button" id="signup-button-mailc" value=""/>
 									</li>
+									<li><p style="margin: 0px auto;font-size: 12px;visibility: hidden;min-height: 20px;width: 236px;color:#fff;clear:both;padding-top:5px;" id="err-msg">All fields are required.</p></li>
 									<li><a class="no-thanks" onclick="closeSignup()" >No Thank You, I’m not interested in <br>Made in the USA apparel.</a></li>
 									</ul>
-									<p style="margin: 0px auto;font-size: 12px;visibility: hidden;min-height: 20px;width: 236px;color:#fff;clear:both;padding-top:5px;" id="err-msg">All fields are required.</p>
+									
 								</form>
 
 							</div>
@@ -448,11 +449,11 @@
 				<!-- thank you popup -->
 			</div>
 			<!-- MAil chimp poup -->
-
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script type="application/javascript">
     jQuery(document).ready(function($){
 		
-	 $('#Memail_address').on('focus keypress',function(){  
+	 $('#Memail_address').on('focus keyup tap',function(){  
    if($(this).val().length > 0){
     $('#signup-button-mailc').addClass('on');   
    }
