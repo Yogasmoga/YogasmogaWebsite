@@ -3219,7 +3219,7 @@ font: 36px/36px AvantGardeGothicITCW01D;
 /*---------product detail page image.--------*/
 .block-elm .style-image{position: absolute; top:-50px;}
 .block-elm .style-image img{width:100%;height:auto;}
-/*------------oromocode apply button css-----------------------------------*/
+/*------------promocode apply button css-----------------------------------*/
 .adddields label{position:relative;}
 .adddields input{width:100%;height:30px; box-sizing:border-box;}
 .adddields span{display:none;}
@@ -3227,6 +3227,21 @@ font: 36px/36px AvantGardeGothicITCW01D;
   font-size: 12px; position: absolute; right: 0; text-transform: uppercase; top: 0; width: 60px; box-sizing: border-box;
   height: 30px; line-height: 30px; padding: 0; color: #fff; font-family: gothammedium;}
 .adddields span img{position:relative; top:50%; transform:translateY(-50%);-webkit-transform:translateY(-50%)}  
+.shopping-cart input#smogi::-webkit-input-placeholder ,.shopping-cart input#giftcartcode::-webkit-input-placeholder {
+    opacity:0.8;
+}
+.shopping-cart input#smogi:-moz-placeholder ,.shopping-cart input#giftcartcode:-moz-placeholder {
+    opacity:0.8;
+}
+.shopping-cart input#smogi::-moz-placeholder ,.shopping-cart input#giftcartcode::-moz-placeholder {
+    opacity:0.8;
+}
+.shopping-cart input#smogi:-ms-input-placeholder ,.shopping-cart input#giftcartcode:-ms-input-placeholder {
+    opacity:0.8;
+}
+
+
+
 
 /*-------------------------------------------------*/
 
