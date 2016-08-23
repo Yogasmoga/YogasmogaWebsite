@@ -373,7 +373,7 @@
 						</svg>
                     </a>-->
 					
-					<div class="signup-info">
+					<div  class="signup-info">
 						<div class="scroll">
 							<div class="main-heading">
 								SIGN UP NOW<BR>TO RECEIVE
@@ -399,7 +399,7 @@
                                             <polyline points="5.9,25.6 14.6,34.3 39.1,9.8 " class="st0"/>
                                         </svg>
 									</span>-->
-										<input type="submit" class="signup_button" id="signup-button-mailc" value="SIGN UP"/>
+										<input type="submit" class="signup_button" id="signup-button-mailc" value=""/>
 									</li>
 									<li><a class="no-thanks" onclick="closeSignup()" >No Thank You, I’m not interested in <br>Made in the USA apparel.</a></li>
 									</ul>
@@ -433,10 +433,10 @@
 									<ul>
 									<!--<li><span>We've also emailed it to you<br/>in case you forget.</span></li>-->
 									<li>
-									<a  href="/women"><img  src="<?php echo $this->getSkinUrl('images/thanks-popup-women.png'); ?>" class="img-responsive"/>  </a>
+									<a  href="/women"><img  src="<?php echo $this->getSkinUrl('images/thanks-popup-womenv2.jpg'); ?>" class="img-responsive"/>  </a>
 									</li>
 									<li>
-									<a  href="/men"><img  src="<?php echo $this->getSkinUrl('images/thanks-popup-men.png'); ?>" class="img-responsive"/> </a>
+									<a  href="/men"><img  src="<?php echo $this->getSkinUrl('images/thanks-popup-menv2.jpg'); ?>" class="img-responsive"/> </a>
 									</li>
 									</ul>
 								</form>
@@ -451,7 +451,17 @@
 
 <script type="application/javascript">
     jQuery(document).ready(function($){
-
+		
+	 $('#Memail_address').on('focus keypress',function(){  
+   if($(this).val().length > 0){
+    $('#signup-button-mailc').addClass('on');   
+   }
+   else{
+    $('#signup-button-mailc').removeClass('on');   
+   }
+   
+  });
+		
 		$("#popup-mailsignup").submit(function(event){
 		event.preventDefault();
 
@@ -490,8 +500,10 @@
 					beforeSend: function() {
 					/*jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");*/
                         jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
+						jQuery("#popup-mailsignup #signup-button-mailc").css("background", "#ad8536");
                         //jQuery("#popup-mailsignup").parent().hide();
 						jQuery("#popup-mailsignup .form-loader-mail").show();
+						jQuery("#popup-mailsignup .tick-mark").hide();
 					},
 					success: function (data) {
 						data = eval('(' + data + ')');
@@ -501,7 +513,8 @@
 						if (status == "success") {
 							jQuery(".sign-up-popup").hide();
 							$(".thanks-popup").show();
-							jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGN UP");
+							jQuery("#popup-mailsignup #signup-button-mailc").attr("value","");
+							jQuery("#popup-mailsignup .tick-mark").show();
 						}
 						else
 						{
