@@ -3218,7 +3218,7 @@ font: 36px/36px AvantGardeGothicITCW01D;
 }
 /*---------product detail page image.--------*/
 .block-elm .style-image{position: absolute; top:-50px;}
-
+.block-elm .style-image img{width:100%;height:auto;}
 /*------------oromocode apply button css-----------------------------------*/
 .adddields label{position:relative;}
 .adddields input{width:100%;height:30px; box-sizing:border-box;}
