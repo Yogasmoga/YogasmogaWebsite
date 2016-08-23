@@ -450,7 +450,7 @@ li.gender-link span {
 }
 
 
-.sign-up-popup ,.thanks-popup {float:left;width:100%; padding: 50px 12px;}
+.sign-up-popup ,.thanks-popup {height:100%;display:table;width:100%; padding: 50px 12px;}
 
 .sign-up-popup  .cross_icon , .thanks-popup  .cross_icon {
   background:transparent;
