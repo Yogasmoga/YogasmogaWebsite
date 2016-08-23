@@ -459,7 +459,7 @@ if (isset($page) && $page == '11') {
 //	  else
 //		  $classname = "first-confname2";
                 ?>
-
+				<?php if(false){ ?>
                 <div class="productCont product-header-<?php echo $productColorIndex;?>">
                     <?php $isNewImage = $confProduct->getResource()->getAttribute('mobile_image')->getFrontend()->getValue($confProduct); ?>
                     <?php if (isset($isNewImage)) { ?>
@@ -485,7 +485,7 @@ if (isset($page) && $page == '11') {
                     <p class="caption">
                         <span class="prd-color title-text"><?php echo $trimstring; ?></span></p>
                 </div>
-
+				<?php } ?>
                 <?php ++$counter;
                 //echo "$counter";
                 if ($counter % 2 == 0) {
