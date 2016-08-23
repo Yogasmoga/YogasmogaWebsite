@@ -110,7 +110,16 @@
             <div id="Allproducts" class="fullscreen pgsection " desc="Top Sellers" style="min-height: 422px;">
                 <div class="product-grid">
                     <div class="2-columns-wrapper">
+                        <!-- size filters -->
+                        <?php
+                            $currentCategoryId = Mage::registry('current_category')->getId();
+                            $categoriesWithNoFilterVariable = Mage::getModel('core/variable')->loadByCode('no_filter_categories')->getValue('plain');
+                            $categoriesWithNoFilter = explode(",", $categoriesWithNoFilterVariable);
+                            $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
+                            if($showSizeFilter){
+                        ?>
                         <div id="div_sizes">&nbsp;</div>
+						<?php } ?>
                         <?php
                         /*
                         // code for get left nav
@@ -390,7 +399,10 @@
                 </div>
             </div>
 
-            <?php
+            <!-- Size Filters -->
+			
+			<?php 
+			if($showSizeFilter){
             /************** size filter ***********************/
             if(isset($allSkuSizes) && count($allSkuSizes)>0)
                 $allSkuSizes = array_unique($allSkuSizes);
@@ -429,6 +441,8 @@
             </script>
             <script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter.js"></script>
             <!-- ********************************* checkbox filter ********************** -->
+			<?php } ?>
+			<!-- Size Filters -->
 
 
             <!-- footer -->
