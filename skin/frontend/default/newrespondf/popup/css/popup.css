@@ -451,7 +451,7 @@ li.gender-link span {
 }
 
 
-.sign-up-popup ,.thanks-popup {height:100%;display:table;width:100%; padding: 25px 12px;}
+.sign-up-popup ,.thanks-popup {height:100%;display:block;width:100%; padding: 25px 12px;}
 #popup-mailsignup > ul {
   overflow: hidden;
   padding-bottom: 15px;
@@ -472,9 +472,9 @@ li.gender-link span {
     height: 100%;
     left: 0;
     margin-top: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     padding: 0 27px;
-    position: fixed;
+    position: static;
     width: 100%;
 	 font-size: 13px;
 	 }
