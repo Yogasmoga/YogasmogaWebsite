@@ -3220,6 +3220,7 @@ iframe[name="google_conversion_frame"] {
 }
 /*---------product detail page image.--------*/
 .block-elm .style-image{position: absolute; top:-50px;}
+.block-elm .style-image img{width:100%;height:auto;}
 
 
 /*----------------mailchimp signup popup css---------------*/
