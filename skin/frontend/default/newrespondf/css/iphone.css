@@ -8176,14 +8176,15 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
 /********* menu final level ends ***/
 .mobile-orange-banner{   background: rgb(255, 102, 0) none repeat scroll 0 0;
     color: rgb(255, 255, 255);
-    font-size: 10px;
+    font-size: 12px;
     height: 44px;
     letter-spacing: 0 !important;
     line-height: 44px;
     position: fixed;
     top: 88px;
     width: 100%;
-	font-family:ITCAvantGardeStd-Md;
+	/*font-family:ITCAvantGardeStd-Md;*/
+	font-family:GraphikRegular;
     z-index: 999;}
 	
 #popup-mailsignup .input-text::-webkit-input-placeholder { /* Chrome/Opera/Safari */
