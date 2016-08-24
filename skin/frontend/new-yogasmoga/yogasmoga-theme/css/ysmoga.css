@@ -2902,3 +2902,11 @@ a.learn-more {
 @media only screen and (max-width : 1024px) {
     .cms-our-stores .cntntheading{font: 20px/30px ITCAvantGardeProMd!important;}
 }
+/*--- header modify due to extra link one2many ---*/
+ul.main-menu > li.one-too-many{padding-right:0;}
+
+@media only screen and (max-width : 1200px) {
+    .tr-menu li > span { padding: 0 6px;}
+    ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
+}
+/*--- header modify end ---*/
