@@ -406,7 +406,7 @@ if (isset($page) && $page == '11') {
 //	  else
 //		  $classname = "first-confname2";
                 ?>
-
+				<?php if(false){ ?>
                 <div class="productCont">
                     <div style="display: none">
                         <h2 style="display:none"><?php echo $confProduct->getName()?></h2>
@@ -435,7 +435,7 @@ if (isset($page) && $page == '11') {
                     <p class="caption">
                         <span class="prd-color title-text"><?php echo $trimstring; ?></span></p>
                 </div>
-
+				<?php } ?>
                 <?php ++$counter;
                 //echo "$counter";
                 if ($counter % 2 == 0) {
