@@ -170,7 +170,7 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 
 
 <!-- Add roll script below -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 adroll_adv_id = "YOFQZUE36BBXTN2MHILUWB";
 adroll_pix_id = "YNMX4PSI6BGYTKAPJJWTMP";
 (function () {
@@ -186,53 +186,8 @@ window.onload = function(){
     document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
    if(oldonload){oldonload()}};
 }());
-</script>
-
-<!-- Google Code for Remarketing Tag -->
-<!--
-Add this code to all your webpages, right before the  tag
-Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
--->
-<!-- New Dynamic Remarketing Tag -->
-<?php if(Mage::app()->getRequest()->getControllerName()=='product'){ ?>
-<script type="text/javascript">
-var google_tag_params = {
-ecomm_prodid: '<?php echo Mage::registry('current_product')->getId(); ?>',
-ecomm_pagetype: 'Product',
-ecomm_totalvalue: '<?php echo number_format(Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId())->getPrice(),2); ?>',
-};
-</script>
+</script> -->
 <?php } ?>
-
-<script type="text/javascript">
-/* <![CDATA[ */
-var google_conversion_id = 956523092;
-var google_custom_params = window.google_tag_params;
-var google_remarketing_only = true;
-/* ]]> */
-</script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-</script>
-<noscript>
-<div style="display:inline;">
-<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/956523092/?value=0&amp;guid=ON&amp;script=0"/>
-</div>
-</noscript>
-<!-- New Dynamic Remarketing Tag -->
-<!-- <script type="text/javascript">
-/* <![CDATA[ */
-var google_conversion_id = 990162677;
-var google_custom_params = window.google_tag_params;
-var google_remarketing_only = true;
-/* ]]> */
-</script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-</script>
-<noscript>
-<div style="display:inline;">
-<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/990162677/?value=0&amp;guid=ON&amp;script=0"/>
-</div>
-</noscript> -->
 <script type="text/javascript">
 
   (function() {
@@ -316,10 +271,3 @@ jQuery("#div_sizes.fixed_top").css("top","94px");
 </script>
 <?php }
 ?>
-
-<?php if(!$loggedIn){ ?>
-<style type="text/css">
-/*	.mc-modal {top: 25% !important;}*/
-</style>
-<!--<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us3.list-manage.com","uuid":"e75e87f0f28256f1760159458","lid":"ca4e5865d6"}) })</script>-->
-<?php } ?>
