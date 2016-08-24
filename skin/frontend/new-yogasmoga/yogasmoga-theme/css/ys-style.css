@@ -3250,7 +3250,7 @@ font: 36px/36px AvantGardeGothicITCW01D;
 .firstdialog .ui-dialog-titlebar{box-shadow:0 0 0; background:none;border-radius:0;display:none;}
 .firstdialog .ui-dialog-titlebar-close{right:19px;margin:0;top:48px;}
 .firstdialog .ui-icon-closethick{background:rgba(0, 0, 0, 0) url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/mc-popup-close.jpg") no-repeat scroll 0 0; height:28px;width:28px;}
-#signup.mc-signup{display:none;background:url(../images/mc-signup-bg.jpg); background-size:cover;
+#signup.mc-signup{display:none;background:url(../images/mc-signup-bg.jpg) #000; background-size:cover;
 width:100%!important;height:100%!important;
 }
 .firstdialog #signup.mc-signup{display:block;}
