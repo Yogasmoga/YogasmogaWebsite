@@ -68,7 +68,8 @@ class Ysindia_Sharesmogi_IndexController extends Mage_Core_Controller_Front_Acti
 		$parentEmail = $customer->getEmail();
 		$childEmail = Mage::app()->getRequest()->getParam('email');
 		$modal =  Mage::getModel('sharesmogi/sharesmogi');
-		$childPoints = 25;
+		$childPoints = Mage::getStoreConfig('tab1/general/smogi', Mage::app()->getStore()->getId());
+		$smogiChildPoints = 0;
 		$smogiExistEmail = false;
 		$sharesmogiCollection = $modal->getCollection();
 		foreach($sharesmogiCollection as $smogi){
@@ -107,7 +108,8 @@ class Ysindia_Sharesmogi_IndexController extends Mage_Core_Controller_Front_Acti
 						$modal->setParentEmail($parentEmail);
 						$modal->setParentSmogi($parentPoints);
 						$modal->setChildEmail($childEmail);
-						$modal->setChildSmogi($childPoints);
+						$modal->setChildSmogi($smogiChildPoints);
+						$modal->setStatus(2);
 						$modal->save();
 
 						// Send email.

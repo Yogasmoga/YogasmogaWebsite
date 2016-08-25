@@ -8,5 +8,6 @@ class Ysindia_Sharesmogi_Block_Adminhtml_Sharesmogi extends Mage_Adminhtml_Block
     $this->_headerText = Mage::helper('sharesmogi')->__('Item Manager');
     $this->_addButtonLabel = Mage::helper('sharesmogi')->__('Add Item');
     parent::__construct();
+    $this->_removeButton('add');
   }
 }

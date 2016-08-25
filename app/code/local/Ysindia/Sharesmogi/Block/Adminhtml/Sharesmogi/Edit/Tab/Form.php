@@ -27,12 +27,12 @@ class Ysindia_Sharesmogi_Block_Adminhtml_Sharesmogi_Edit_Tab_Form extends Mage_A
           'values'    => array(
               array(
                   'value'     => 1,
-                  'label'     => Mage::helper('sharesmogi')->__('Enabled'),
+                  'label'     => Mage::helper('sharesmogi')->__('Registered'),
               ),
 
               array(
                   'value'     => 2,
-                  'label'     => Mage::helper('sharesmogi')->__('Disabled'),
+                  'label'     => Mage::helper('sharesmogi')->__('Not Registered'),
               ),
           ),
       ));

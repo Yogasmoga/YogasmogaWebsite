@@ -59,12 +59,12 @@ class Ysindia_Sharesmogi_Block_Adminhtml_Sharesmogi_Grid extends Mage_Adminhtml_
       $this->addColumn('status', array(
           'header'    => Mage::helper('sharesmogi')->__('Status'),
           'align'     => 'left',
-          'width'     => '80px',
+          'width'     => '120px',
           'index'     => 'status',
           'type'      => 'options',
           'options'   => array(
-              1 => 'Enabled',
-              2 => 'Disabled',
+              1 => 'Registered',
+              2 => 'Not Registered',
           ),
       ));
 	  

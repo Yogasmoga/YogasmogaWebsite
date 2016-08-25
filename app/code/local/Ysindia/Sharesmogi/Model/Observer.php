@@ -16,18 +16,25 @@ class Ysindia_Sharesmogi_Model_Observer{
 
 
         $smogiModal =  Mage::getModel('sharesmogi/sharesmogi');
-        Mage::log("Registration data Email = ".$customerId, null, "register.log");
+        //Mage::log("Registration data Email = ".$customerId, null, "register.log");
         $smogiExistEmail = false;
-        $points =25;
+
+        $points =Mage::getStoreConfig('tab1/general/smogi', Mage::app()->getStore()->getId());;
         $sharesmogiCollection = $smogiModal->getCollection();
+        $id = '';
         foreach($sharesmogiCollection as $smogi){
             if($smogi->getChildEmail() == $email){
                 $smogiExistEmail = true;
-                Mage::log("Registration data Email = ".$smogiExistEmail, null, "rsmogi.log");
+                $id = $smogi->getSharesmogiId();
+                break;
             }
         }
-        if($smogiExistEmail) {
 
+        if($smogiExistEmail) {
+            $smogiModal->load($id);
+            $smogiModal->setChildSmogi($points);
+            $smogiModal->setStatus(1);
+            $smogiModal->save();
             $store_id = Mage::app()->getStore()->getId();
             $reward_model = Mage::getModel('rewardpoints/stats');
             $reward_model->setPointsCurrent($points);
