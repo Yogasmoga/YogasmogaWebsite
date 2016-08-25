@@ -575,5 +575,6 @@ width: 100%;
 .thanks-popup{padding-top:35px!important;}
 .thanks-popup .cross_icon{top:0;right:3;}
 
+#signup-button-mailc.subscribed{background: url("../images/tick-mark.svg") center center no-repeat #C4C0C0!important;}
 #signup-button-mailc.on{background: url("../images/tick-mark.svg") center center no-repeat #ad8536;}
 #signup-button-mailc{background: url("../images/tick-mark.svg") center center no-repeat #C4C0C0;}
