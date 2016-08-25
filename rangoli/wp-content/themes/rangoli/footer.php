@@ -143,13 +143,11 @@ if(!isset($ipInfo)){
 	<div class="close_signin_popup" ></div>
 	<div class="signup-content">
 		<form action="" method="post" id="popup-mailsignup" style="display: block;">
-		<p class="signup-title">
-			<span class="spn_line"><span class="strong">SIGN Up Now</span> To Instantly Get</span>
-			<span class="spn_line"><span class="highlight">50% OFF</span> Your First Order</span>
-		</p>
-		<!--<small>Your Email Address</small>-->
+		<img class="svg-logontext" src="<?php echo get_stylesheet_directory_uri().'/images/25-off.svg' ?>" alt=""/>
+		<div class="fields-area">
 		<p><input type="text" id="Memail_address" class="watermark" placeholder="Your Email Address" autocomplete="off" value=""/></p>
 		<p class="button-area"><span class="form-loader-mail"></span><input type="submit" value="Sign Up" id="signup-button-mailc"/></p>
+		</div>
 		<p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
 		</form>
 	</div><!--signup-content-->
@@ -233,6 +231,15 @@ if(!isset($ipInfo)){
 					}
 				});
 	});
+	$('#Memail_address').on('focus keypress',function(){		
+			if($(this).val().length > 0){
+				$('#signup-button-mailc').addClass('on');			
+			}
+			else{
+				$('#signup-button-mailc').removeClass('on');			
+			}
+			
+		});
 });
 </script>
 <!-- Shivaji New Code -->

@@ -1683,7 +1683,10 @@ function open_red_popup(){
     $(".your-color-block").fadeOut();
     is_login_box_open = false;
     $(".login-box").fadeOut();
-    $("#signin_popup").fadeIn();
+    $("#signin_popup").fadeIn('',function(){
+		
+		$("#signin_popup").addClass('mc_signinpopup');
+	});
     $(".signin-block").fadeIn();
 }
 

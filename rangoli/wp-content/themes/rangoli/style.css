@@ -844,11 +844,12 @@ input.change_username {
 .ys-col-content {padding:0 15px;}
 
 /*----------------mailchimp signup popup css---------------*/
+#signin_popup.mc_signinpopup{top:0!important;z-index:99999999!important;background:url(images/mc-signup-bg.jpg) #555555!important;background-size:cover;}
 #signup-box.mc-signup .signin-block { border-radius: 0; box-shadow: 0 0 0; display: none; height: auto; left: 0;
   margin-left: 0; position: static; top: 0; width: auto;}
 #signup-box.mc-signup .close_signin_popup{background:rgba(0, 0, 0, 0) url("images/mc-popup-close.jpg") no-repeat scroll 0 0; height:28px;width:28px;right:19px;margin:0;top:19px;position:absolute;}
-#signup-box.mc-signup{background:#555555;width:100%; max-width:776px; height:auto!important;color:#fff; text-align:center;font-family:ITCAvantGardeStd-Md;padding:0!important;
-	position:absolute;margin-top:-69px; left:50%; top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);
+#signup-box.mc-signup{width:auto;height:auto!important;color:#fff; text-align:center;font-family:ITCAvantGardeStd-Md;padding:0!important;
+	position:absolute;left:50%; top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);
 }
 #signup-box.mc-signup .spn_line{display:block;line-height:1}
 #signup-box.mc-signup .spn_line:first-child{margin-bottom:5px;}
@@ -869,5 +870,19 @@ input.change_username {
 #signup-box.mc-signup .signup-thankyou .signup-title{margin-bottom:35px;}
 #signup-box.mc-signup .button-area{position:relative; margin-bottom: 10px;}
 #signup-box.mc-signup .form-loader-mail{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%)}
+#signup-box.mc-signup .close-text{color:#AE8536; text-decoration:underline;font-size:15px;font-family:AvantGardeGothicITCW01B;cursor:pointer;margin-bottom:0;}
+#signup-box.mc-signup .close-text .apos{font-family:gothambook;}
+#signup-box.mc-signup .limited-time{font-family:avantgardegothicitcw01d;margin-top:2%;margin-bottom:4%;}
+#signup-box.mc-signup .limited-time span{display: block;
+    font-size: 20px;
+    line-height: normal;
+    text-transform: uppercase;}
+#signup-box.mc-signup .svg-logo{margin:0 0 5.19% 0;}	
+#signup-box.mc-signup .fields-area{width:100%; max-width:402px;margin:0 auto; position:relative;text-align:left;}
+#signup-box.mc-signup .fields-area p{display:inline-block;}
+#signup-box.mc-signup .fields-area p.button-area{position:absolute; top:0; right:0;width:112px;}
+#signup-box.mc-signup .fields-area p.button-area input[type="submit"]{width:100%;font-family:gothamBold;font-size:12px;}
+#signup-box.mc-signup .fields-area p.button-area input[type="submit"].on{background:#AE8536;}
+#signup-box.mc-signup .fields-area p input[type="text"]{width:280px;font-family:gothamBook;font-size:12px;}
 
 .mc-center-popup,.bullzai{display:none!important;}
