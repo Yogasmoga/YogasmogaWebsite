@@ -145,7 +145,7 @@ if(!isset($ipInfo)){
                 <form action="" method="post" id="popup-mailsignup" style="display: block;">
                     <p class="signup-title">
                         <span class="spn_line"><span class="strong">SIGN Up Now</span> To Instantly Get</span>
-                        <span class="spn_line"><span class="highlight">50% OFF</span> Your First Order</span>
+                        <span class="spn_line"><span class="highlight">25% OFF</span> Your First Order</span>
                     </p>
                     <!--<small>Your Email Address</small>-->
                     <p><input type="text" id="Memail_address" class="watermark" placeholder="Your Email Address" autocomplete="off" value=""/></p>
@@ -433,7 +433,7 @@ if(!isset($ipInfo)){
                     <li><a class="bold-heading" href="javascript:void(0)" onclick="open_red_popup()">FEEL THE SMOGI LOVE</a></li>
 
                     <?php /* ?><li>Sign up for $25 SMOGI Bucks<br/> toward your first order.</li><?php */ ?>
-                        <li>Sign up now to instantly get 50% off your first order</li>
+                        <li>Sign up now to instantly get 25% off your first order</li>
                     <?php
                     }
                     else{
@@ -493,7 +493,7 @@ if(!isset($ipInfo)){
 <div class="bullseye_popup_container">
     <div class="bullseye_popup" >
     </div>
-    <div class="center_popup">
+    <div class="center_popup mc-center-popup">
         <section class="random_popup_container">
             <div id="card">
                 <div class="front">

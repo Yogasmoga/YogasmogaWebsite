@@ -141,7 +141,7 @@ if(!is_user_logged_in()  && is_home()) {
 </g>
 </svg>
 
-        <p class="random">& GET $25<br/>SMOGI BUCKS</p>
+        <p class="random" style="color: rgb(255, 140, 255);">& GET 25% OFF<br/>YOUR FIRST ORDER</p>
 
         <div class="singup_form">
             <input type="hidden" id="location_city" name="location_city" value="<?php echo $request_city;?>"/>
@@ -210,7 +210,7 @@ if(!is_user_logged_in()  && is_home()) {
             <div class="signup-info">
                 <div class="scroll">
                     <div class="main-heading">
-                        SIGN UP NOW<BR>TO INSTANTLY GET <span>50% OFF</span>YOUR FIRST ORDER
+                        SIGN UP NOW<BR>TO INSTANTLY GET <span>25% OFF</span>YOUR FIRST ORDER
                     </div>
                     <div class="popup-form">
 

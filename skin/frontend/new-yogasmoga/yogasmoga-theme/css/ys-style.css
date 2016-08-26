@@ -3150,27 +3150,7 @@ iframe[name="google_conversion_frame"] {
 }
 .store-hours{font-family:gothamBold;}
 
-/*--homepage first slide fathersday--*/
-.banner_text2 .banner_avant_grade_demi {  /*font: 55px/54px AvantGardeGothicITCW01D;*/
-    font: 46px/46px AvantGardeGothicITCW01D;
-}
-@media screen and (min-width: 1201px) and (max-width: 1400px) {
-    .banner_text2 .banner_avant_grade_demi { /*font: 47px/40px AvantGardeGothicITCW01D;*/
-        font: 38px/38px AvantGardeGothicITCW01D;
-    }
-}
-@media screen and (min-width: 1401px) and (max-width: 1599px) {
-    .banner_text2 .banner_avant_grade_demi { /*font: 50px/45px AvantGardeGothicITCW01D;*/
-        font: 42px/42px AvantGardeGothicITCW01D;}
-}
-@media only screen and (max-width : 1200px) {
-    .banner_text2 .banner_avant_grade_demi { /*font: 41px/38px AvantGardeGothicITCW01D;*/
-        font: 36px/36px AvantGardeGothicITCW01D;
-    }
-}
-@media only screen and (max-width : 1024px) {
-    .banner_text2 .banner_avant_grade_demi { font: 34px/34px AvantGardeGothicITCW01D;}
-}
+
 
 /*---homepage fathersday bucket - bucket1--*/
 .bucket1 .contentSlider .small-text{font-size:12px!important;}
