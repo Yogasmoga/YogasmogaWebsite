@@ -6,8 +6,14 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 		$accessoriesCategories = array(8,12,75,76);
         // If USD and from NY Region, apply tax rate based on grand total
         if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD") {
-            
-			if($request['region_id'] == "43"){		// new york
+
+            if($request['region_id'] == "14"){		// Connecticut.
+                if($item['price'] < 100) {
+                    $price_minus_discount = $item['price'] - $item['discount_amount'];
+                    $item->getProduct()->setTaxClassId('30');
+                }
+            }
+            if($request['region_id'] == "43"){		// new york
 				if($item['price'] < 110) {
 					$price_minus_discount = $item['price'] - $item['discount_amount'];
 					$item->getProduct()->setTaxClassId('30');
@@ -154,6 +160,15 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 		$request->setProductClassId($item->getProduct()->getTaxClassId());
         $rate   = $this->_calculator->getRate($request);
 
+
+        if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "14") {        // Connecticut.
+
+            if ($item['price'] < 100) {
+                $price_minus_discount = $item['price'] - $item['discount_amount'];
+                $rate = 0;
+            }
+        }
+
         if(Mage::app()->getStore()->getCurrentCurrencyCode() == "USD" && $request['region_id'] == "43") {		// new york
             
 			if($item['price'] < 110) {
@@ -188,8 +203,8 @@ class Ysindia_Mod_Model_Newyork extends Mage_Tax_Model_Sales_Total_Quote_Subtota
 							$rate = 0;
 						}
 					}		
-		}	
-		
+		}
+
 	
         
         $qty    = $item->getTotalQty();
