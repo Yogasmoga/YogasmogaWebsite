@@ -2939,19 +2939,21 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     text-align: center;
     top: 50.6%;
 }
-.banner_text_gold .learn-more{font-family:gothamMedium!important;}
+
 .banner_text_mday {float: left; left: 5.4375%; position: absolute; text-align: center; top: 88.6659%; width: 33.6%;}
+.banner_text_gold{position:relative;top:39.55%; left:50%; float: left; text-align:center; padding-right:0px !important;transform:translateX(-50%);-webkit-transform:translateX(-50%)}
+.banner_text_gold .go-for-gold{max-width:70.25%;height:auto;margin:0 auto!important;}
 .banner_text1{position:relative;/* top:32%; left:14.5%;*/ top:21.84%; left:60.56%; float: left; text-align:center; padding-right:0px !important}
 .banner_text2{text-align:center; padding-right:0px !important; position:relative;left:27%; top: 36%;}
-
-.banner_text3{position:relative; text-align:center; display:inline-block; left:14%; top:20%}
-.banner_text4{float:left;position:relative;top:16%; left:6.8%; text-align:left;}
+.banner_text3{position:relative; text-align:center; display:inline-block; left:50%; top:47%;transform:translateX(-50%);-webkit-transform:translateX(-50%)}
+.banner_text4{float:left;position:relative;top:38.55%; left:6.8%;}
 .banner_text5{text-align: center; float: right; position:relative; top:32%; right:6%; }
 .banner_text6{position:relative; top:26%;left:16.5%;float:left;}
-.banner_text7{ text-align:center; display:inline-block; float:left; position:relative; top:37%; left:18%; }
+.banner_text7{ text-align:center; display:inline-block; float:left; position:relative; top:41.7%; left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%) }
 .banner_text8{ position:relative; top:48%;}
 .flexslider .slides img.img_rndinca{max-width:100%; width:auto; margin:10% auto 0 auto!important; display:block;}
-.flexslider .slides img.img_madeinusa{max-width:100%; width:auto; margin:11% auto 0 auto!important; display:block;}
+/*.flexslider .slides img.img_madeinusa{max-width:100%; width:auto; margin:11% auto 0 auto!important; display:block;}*/
+.flexslider .slide_item_3 img.img_madeinusa {margin: 0 !important; position: absolute; right: 9.6%;top:50%;max-width:220px;transform:translateY(-50%);-webkit-transform:translateY(-50%)}
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
@@ -2980,14 +2982,14 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
 }
 @media screen and (min-width: 1600px) {
-    .banner_avant_grade_demi{ font: 46px/46px AvantGardeGothicITCW01D;}
-    .banner-avant-grade-bk-small{ font: 46px/46px ITCAvantGardeProBk;}
+    .banner_avant_grade_demi{ font: 55px/54px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 55px/54px ITCAvantGardeProBk;}
     .collection-banner{font: 34px/34px AvantGardeGothicITCW01D;}
     .collection-banner span{font: 22px/28px freight;}
     .collection-banner img{width:auto;padding:2% 0%;}
     /*.featured-collection-bottom img.co{max-width:253px!important;}
     .featured-collection-bottom img.seal{max-width:243px!important;}*/
-    .banner_text1 .banner_avant_grade_demi{ font: 55px/48px AvantGardeGothicITCW01D;}
+
 }
 /*
 @media screen and (min-width: 1601px) {
@@ -3012,13 +3014,14 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     .banner_avant_grade_demi{ font: 34px/34px AvantGardeGothicITCW01D;}
     .banner-avant-grade-bk-small{ font: 34px/34px ITCAvantGardeProBk;}
     .flexslider .slides img.img_rndinca{max-width:150px; }
-    .flexslider .slides img.img_madeinusa{max-width:179px;}
+    .flexslider .slide_item_3 img.img_madeinusa {max-width:143px;}
+    /*.flexslider .slides img.img_madeinusa{max-width:179px;}*/
     /*.banner_text1{top:32%; left:12%;}*/
     .banner_text2{left: 20%;top: 27%;}
     .banner_text3{top:31%;}
     .banner_text5{right:4%;top:24%;}
     .banner_text6{top:22%; left:13.5%;}
-    .banner_text7{top:33%; left:16.5%;}
+    /*.banner_text7{top:33%; left:16.5%;}*/
     .collection-banner{font: 24px/24px AvantGardeGothicITCW01D;}
     .collection-banner span{font: 16px/22px freight;}
     .collection-banner img{width:5%;padding:2% 0%;}
@@ -3027,7 +3030,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     /*.featured-collection-bottom img.co{left:7.5%;top:17%;max-width:169px!important;}
     .featured-collection-bottom img.seal{max-width:161px!important;}*/
 	
-	.banner_text_gold{top:55.6%;}
+	/*.banner_text_gold{top:55.6%;}*/
     .contentSlider.mistext.feat{top:33.911%!important;}
 
 }

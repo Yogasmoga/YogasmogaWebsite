@@ -332,6 +332,18 @@ h1.white{text-align: right!important;}
     margin: 0;
 }
 
+.cms-home #bucket1_slider .learn-more {
+    border-bottom: 1px solid #c03;
+    color: #fff;
+    /*font: 30px/30px gothambook;*/
+    font: 30px/30px avantgardegothicitcw01m;
+    margin: 40px 0 0!important;
+    padding: 0 0 3px;
+    display:inline-block;
+    text-align:center;
+
+}
+
 #bucket1_slider .learn-more {
     border-bottom: 1px solid #c03;
     color: #fff;
@@ -340,10 +352,12 @@ h1.white{text-align: right!important;}
     padding: 0 0 3px;
     display:inline-block;
     text-align:center;
-    /*width:15%;*/
+
 }
 #bucket1_slider .shop-men{ text-align:center;}
-
+@media only screen and (max-width : 1024px){
+    .cms-home #bucket1_slider .learn-more{margin: 24px 0 0!important; font-size:21px;line-height:21px;}
+}
 /*================Home Page===============*/
 .home-slider-men .monsoon-tank p.light,.monsoon-tank p.bold{color:#fff!important;}
 .home-slider-men .monsoon-tank .text-align-middle a.learn-more{display: inline-block!important;
