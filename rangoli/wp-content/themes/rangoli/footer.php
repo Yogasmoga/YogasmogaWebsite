@@ -140,8 +140,9 @@ if(!isset($ipInfo)){
 	<!------------------------------mailchimp signup form------------------------------>
 	<div id="signup-box" class="mc-signup">
 	<div class="signin-block">
-	<div class="close_signin_popup" ></div>
+	<!--<div class="close_signin_popup" ></div>-->
 	<div class="signup-content">
+	
 		<form action="" method="post" id="popup-mailsignup" style="display: block;">
 		<img class="svg-logontext" src="<?php echo get_stylesheet_directory_uri().'/images/25-off.svg' ?>" alt=""/>
 		<div class="fields-area">
@@ -149,21 +150,25 @@ if(!isset($ipInfo)){
 		<p class="button-area"><span class="form-loader-mail"></span><input type="submit" value="Sign Up" id="signup-button-mailc"/></p>
 		</div>
 		<p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
+		<p class="close-text">No Thank You, I’m not interested in Made in the USA apparel.</p>
 		</form>
 	</div><!--signup-content-->
 
 
 	<div id="thank_you_box" class="signup-thankyou">
+	<div class="signup-thankyou-content">
+	<img class="svg-logo" src="<?php echo get_stylesheet_directory_uri().'/images/m.svg' ?>" alt=""/>
 		<p class="signup-title">
-			<span class="spn_line"><span class="strong">Thank You!</span> Please Check Your email and Feel the SMOGI LOVE</span>
-   <!--<span class="spn_line"><span class="highlight">SMOGILOVE</span></span>-->
+			<span class="spn_line"><span class="strong">Thank You</span> 
+				<span class="strong"><small>Please Check Your email</small><small> &amp; Feel the SMOGI LOVE</small></span></span>
+   
   </p>
-  <!--<small>We've also emailed it to you in case you forget.</small>-->
+  
 		<p class="mc-shoplinks">
-			<a href="/women"><img src="<?php echo get_stylesheet_directory_uri().'/images/mc-shopwomen.jpg' ?>" alt=""/></a>
-			<a href="/men"><img src="<?php echo get_stylesheet_directory_uri().'/images/mc-shopmen.jpg' ?>" alt=""/></a>
+			<a href="/women"><img src="<?php echo get_stylesheet_directory_uri().'/images/mc-shopwomen3.jpg' ?>" alt=""/></a>
+			<a href="/men"><img src="<?php echo get_stylesheet_directory_uri().'/images/mc-shopmen3.jpg' ?>" alt=""/></a>
 		</p>
-		
+	</div>	
 	</div><!--signup-thankyou-->
 	</div>
 

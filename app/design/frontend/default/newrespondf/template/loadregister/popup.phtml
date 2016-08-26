@@ -78,7 +78,7 @@
                                     <g>
                                         <text transform="matrix(1 0 0 1 33.5581 51.3672)">
                                             <tspan x="0" y="0" fill="#A2853F" font-family="'ITCAvantGardeStd-Bk'"
-                                                   font-size="24"  y="0" x="-20">&amp; GET 50% OFF
+                                                   font-size="24"  y="0" x="-20">&amp; GET 25% OFF
                                             </tspan>
                                             <tspan x="-23.808" y="26" fill="#A2853F" font-family="'ITCAvantGardeStd-Bk'"
                                                    font-size="24" y="26" x="-45">YOUR FIRST ORDER
@@ -503,8 +503,10 @@
 					data    :   {'email':email_id},
 					beforeSend: function() {
 					/*jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");*/
-                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
-						jQuery("#popup-mailsignup #signup-button-mailc").css("background", "#ad8536");
+                        jQuery("#popup-mailsignup #signup-button-mailc").addClass('sending');
+						jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
+						//jQuery("#popup-mailsignup #signup-button-mailc").css("background-color", "#ad8536");
+						
                         //jQuery("#popup-mailsignup").parent().hide();
 						jQuery("#popup-mailsignup .form-loader-mail").show();
 						jQuery("#popup-mailsignup .tick-mark").hide();
@@ -517,13 +519,18 @@
 						if (status == "success") {
 							jQuery(".sign-up-popup").hide();
 							$(".thanks-popup").show();
+							jQuery("#popup-mailsignup #signup-button-mailc").removeClass('sending');
 							jQuery("#popup-mailsignup #signup-button-mailc").attr("value","");
+							//jQuery("#popup-mailsignup #signup-button-mailc").css("background-color", "#ccc");
 							jQuery("#popup-mailsignup .tick-mark").show();
+							$("#popup-mailsignup #err-msg").html(data.error).css("visibility","hidden");
+							$('#signup-button-mailc').removeClass('on');   
 						}
 						else
 						{
-							$("#signup-button-mailc").val("SIGN UP");
+							$("#signup-button-mailc").val("");
 							jQuery("#signup-button-mailc").parent().show();
+							
 							$("#popup-mailsignup #err-msg").html(data.error).css("visibility","visible");
 						}
 					}
