@@ -2311,7 +2311,7 @@ div.new-arrivals-block{
 /*
 #bucket1_slider */
 #bucket1_slider .over-the-slide .learn-more{
-    text-transform: uppercase;
+    text-transform:capitalize;
     padding-bottom: 3px !important;
     color: #555 !important;
 }
