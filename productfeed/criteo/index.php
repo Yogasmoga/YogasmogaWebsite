@@ -150,7 +150,8 @@ foreach ($productCollection as $_product) {
                 $upc = $sku;
 
                 $total_name = html_entity_decode($configurableProduct->getName());
-                $name = $total_name.' - '.ucwords($color);
+                //$name = $total_name.' - '.ucwords($color);
+                $name = $total_name;
                 $total_buy_url = $buy_url . "?color=" . $colorCode;
 
                 $data = "$name|$keywordsValue|$description|$sku|$total_buy_url|$available|$image_url|$price|$upc|$advertise_category|$merchandiseType\n";
