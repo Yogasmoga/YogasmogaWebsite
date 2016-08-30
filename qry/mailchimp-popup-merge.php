@@ -101,13 +101,13 @@ $list_id = "40611aba4e"; //New List
                     else
                         $gender = "FEMALE";
                 }
-        echo $custId;
+
             $result = $mailChimp->call('lists/member-info', array(
                 'id' => $list_id,
                 'emails' => array( 0 => array('email' => $email) )
             ));
 
-            if($custId == 34325){
+            if($custId == 44896){
 
                 /*
                 if(isset($result["data"][0]["status"]) && $result["data"][0]["status"]=="subscribed"){
