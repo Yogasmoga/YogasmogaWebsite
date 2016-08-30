@@ -101,7 +101,7 @@ $list_id = "40611aba4e"; //New List
                     else
                         $gender = "FEMALE";
                 }
-
+        echo $custId;
             $result = $mailChimp->call('lists/member-info', array(
                 'id' => $list_id,
                 'emails' => array( 0 => array('email' => $email) )
