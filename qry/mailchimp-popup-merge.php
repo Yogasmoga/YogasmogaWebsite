@@ -38,7 +38,7 @@ $list_id = "40611aba4e"; //New List
         ->addAttributeToFilter('created_at', array('lteq' => $date_to_look_end . ' 23:59:59'));
     //echo "<pre/>";
     //print_r($collection->getData('email'));
-    echo count($collection).'<br/>';
+    //echo count($collection).'<br/>';
     if($collection && count($collection)==0){
         echo "No records found";
         return;
@@ -107,7 +107,7 @@ $list_id = "40611aba4e"; //New List
                 'emails' => array( 0 => array('email' => $email) )
             ));
 
-            if($custId == 44732){
+            //if($custId == 44732){
 
 
                 if(isset($result["data"][0]["status"]) && $result["data"][0]["status"]=="subscribed"){
@@ -126,10 +126,10 @@ $list_id = "40611aba4e"; //New List
 
                 }
 
-            }
+            //}
 
     }
 
-    //echo "\nMailchimp Synchronize Task Completed at : " . date("Y-m-d h:i:s");
+    echo "\nMailchimp Synchronize Task Completed at : " . date("Y-m-d h:i:s");
 
 ?>
