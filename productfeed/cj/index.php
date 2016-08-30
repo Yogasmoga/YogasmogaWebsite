@@ -164,6 +164,13 @@ foreach ($productCollection as $_product) {
     }
 }
 fclose($fileOut);
-
+/*
+$root = "ysmaster.dev";
+$file_url = "http://$root/var/productfeed/cjresult.txt";
+header('Content-Type: application/octet-stream');
+header("Content-Transfer-Encoding: Binary");
+header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");
+readfile($file_url);
+*/
 echo "<br/><br/>Product feed ready, <a href='download.php'>click here</a> to download";
 ?>
