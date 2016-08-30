@@ -107,7 +107,7 @@ $list_id = "40611aba4e"; //New List
                 'emails' => array( 0 => array('email' => $email) )
             ));
 
-            if($custId == 44896){
+            if($custId == 44732){
 
 
                 if(isset($result["data"][0]["status"]) && $result["data"][0]["status"]=="subscribed"){
