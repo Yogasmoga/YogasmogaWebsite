@@ -109,7 +109,7 @@ $list_id = "40611aba4e"; //New List
 
             if($custId == 44896){
 
-                /*
+
                 if(isset($result["data"][0]["status"]) && $result["data"][0]["status"]=="subscribed"){
 
                         $result = $mailChimp->call('lists/subscribe', array(
@@ -124,8 +124,8 @@ $list_id = "40611aba4e"; //New List
 
                         echo $email . " , $gender \n";
 
-                }*/
-                echo $email . " , $gender \n";
+                }
+
             }
 
     }
