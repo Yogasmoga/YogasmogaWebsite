@@ -46,6 +46,15 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 }
 
 /***************** code to get parent category url *****************/
+
+
+// check for in sale category
+$categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('insale_category')->getValue('plain')), true);
+$showInSaleProduct = true;
+if ($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens']) {
+    $showInSaleProduct = true;
+}
+// end check for in sale category
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -314,6 +323,7 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 						$simpleproductarr['parentname'] =  Mage::getModel('catalog/product')->load($parentIds[0])->getName();
 						$simpleproductarr['color'] =  $product->getColor();
 						$simpleproductarr['price'] =  $product->getPrice();
+						$simpleproductarr['insale'] =  $product->getAttributeText('insale');
 						$_gallery = Mage::getModel('catalog/product')->load($parentIds[0])->getMediaGalleryImages();
 						$imageArr = array();
 						foreach($_gallery as $_image)
@@ -359,12 +369,43 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 								</div>
 								<div class="caption">
 									
-										<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl();?>"><?php echo $confProduct->getName();?> </a>
+										<!-- <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl();?>"><?php echo $confProduct->getName();?> </a>
 										
 										<p>
 										<span class="prd-color"><?php echo $clrinfo[$simpleproductarr['color']]?></span>
 										<span class="prd-price">$<?php  echo  round($confProduct->getPrice(),2);?></span>
-										</p>
+										</p> -->
+
+										<?php
+		                            	if ($showInSaleProduct && $simpleproductarr['insale'] == 'Yes') {
+		                                ?>
+		                                <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl; ?>">
+		                                    <?php echo $confProduct->getName() ?>
+		                                </a>
+
+
+		                                <!--                        <a-->
+		                                <!--                            href="--><?php //echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><!----><?php //echo $hiddenUrl;?><!--"> --><?php //echo $clrinfo[$childProduct['color']] ?><!--</a>-->
+		                                <!--                        <span style="color:#ff5f00;"> $--><?php //echo round($childProduct['price'], 2); ?><!--</span>-->
+		                                <p>
+		                                    <span class="prd-color"><?php echo $clrinfo[$simpleproductarr['color']] ?></span>
+		                                    <span class="prd-price" style="color:#ff5f00;"> $<?php echo round($simpleproductarr['price'], 2); ?></span>
+		                                    <span class="prd-price"
+		                                         style="text-transform: lowercase;">was $<?php echo round($confProduct->getPrice(), 2); ?></span>
+		                                </p>
+
+
+		                                <?php
+		                            } else {
+		                                ?>
+		                                <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl; ?>"><?php echo $confProduct->getName(); ?></a>
+		                                <p>
+		                                    <span class="prd-color"><?php echo $clrinfo[$simpleproductarr['color']]; ?></span>
+		                                    <span class="prd-price">$<?php echo round($confProduct->getPrice(), 2); ?></span>
+		                                </p>
+		                                <?php
+		                            }
+		                            ?>
 								
 								</div>
 							</div>
