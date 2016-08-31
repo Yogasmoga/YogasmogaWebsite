@@ -550,12 +550,15 @@ li.gender-link span {
     transform: translateY(-33%);
 }
 
-#MailpopForm .no-thanks {
+#MailpopForm .no-thanks ,#MailpopForm .already_signed_up{
     color: #ae8536;
     font: 14px/22px ITCAvantGardeStd-Md;
     text-align: center;
     text-decoration: underline;
+    float:none;margin:0;opacity:1;display:inline-block;
 }
+#MailpopForm .no-thanks{margin-bottom:15px;}
+
 .thanks-popup .signup-info span.strong{color:#fff;font-family:AvantGarde-Demi!important;}
 .thanks-popup .lmt-ofr{padding-top:8px!important;}
 .thanks-popup{padding-top:35px!important;}

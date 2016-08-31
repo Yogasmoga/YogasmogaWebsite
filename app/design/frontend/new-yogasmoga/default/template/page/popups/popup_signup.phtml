@@ -168,6 +168,7 @@ else {
             <p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
             <p class="close-text">No Thank You, I&rsquo;m not interested in
                 Made in the USA apparel.</p>
+            <p class="opensignin">I’m already signed up.</p>
         </form>
     </div>
 
@@ -263,6 +264,11 @@ else {
 
         $(".close-text").click(function(){
             $("#signup").dialog( "close" );
+        });
+        // Open login popup.
+        $(".opensignin").click(function(){
+            $("#signup").dialog( "close" );
+            $("#signing_popup").dialog( "open" );
         });
 
         $('#Memail_address').on('focus keypress',function(){
