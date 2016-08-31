@@ -110,6 +110,11 @@
         }
     }
     //echo getImage(51, 'Green');
+
+//insale check
+$_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$_item->getSku());
+$inSaleValue = $_product->getAttributeText('insale');
+//insale check end
 ?>
 <?php if ($_options = $this->getOptionList()):?>
 <?php
@@ -211,6 +216,15 @@
                 <?php endif; ?>
             </span><br>
                     <?php endforeach; ?>
+                <!-- insale text -->
+                <div class="insale">
+
+                    <?php if ($inSaleValue === 'Yes'): ?>
+                            <?php echo "<p style='color:red;'>This Item is Final Sale.</p>"; ?>
+                    <?php endif; ?>
+
+                </div>
+                <!-- insale text end -->
                 </div>
             <?php endif;?>
 

@@ -118,6 +118,11 @@ if (!function_exists('getImage')) {
 }
 
 //echo getImage(51, 'Green');
+
+//insale check
+$_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$_item->getSku());
+$inSaleValue = $_product->getAttributeText('insale');
+//insale check end
 ?>
 
 <?php
@@ -296,6 +301,15 @@ foreach ($_options as $_option) {
                     </div>
                 <?php endif; ?>
 				<!--out of stock message start-->
+                <!-- insale text -->
+                <div class="insale">
+
+                    <?php if ($inSaleValue === 'Yes'): ?>
+                            <?php echo "<p style='color:red;'>This Item is Final Sale.</p>"; ?>
+                    <?php endif; ?>
+
+                </div>
+                <!-- insale text end -->
 				
 				<?php if ($messages): ?>
 					<div class="messages">

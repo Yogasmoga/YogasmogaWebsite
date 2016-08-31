@@ -386,9 +386,9 @@ function changeproductsize(sz) {
             firstSize.trigger("click");
             amount.html("$" + firstSizePrice);
             amount.addClass("insale-price");
-            jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
+            jQuery(".prd-info").find("p.insale").removeClass("dnone");
             jQuery(".was-amount").removeClass("no-display");
-
+		
         } else {
             amount.html("$" + firstSizePrice);
         }
@@ -561,7 +561,7 @@ function changeColor(clr) {
     changeDescription(clr);
 
     jQuery(".amount").removeClass("insale-price");
-    jQuery(".box-seprtr").find("p.insale").addClass("dnone");
+    jQuery(".prd-info").find("p.insale").addClass("dnone");
     jQuery(".was-amount").addClass("no-display");
 
     jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
@@ -714,12 +714,12 @@ function changeColor(clr) {
         firstSize = jQuery("div#sizecontainer td:not(.disabled)").first().find("div");
         firstSizePrice = firstSize.attr("price");
     }
-    console.log(amount + "--" + firstSize.html() + "--" + firstSizePrice);
+    //console.log(jQuery(".prd-info").find("p.insale").text());
     if (_productcolorinfo[colorindex].insale == 'Yes') {
         firstSize.trigger("click");//console.log(firstSizePrice+"mmmmm");
         amount.html("$" + firstSizePrice);
         amount.addClass("insale-price");
-        jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
+        jQuery(".prd-info").find("p.insale").removeClass("dnone");
         jQuery(".was-amount").removeClass("no-display");
 
     } else {
