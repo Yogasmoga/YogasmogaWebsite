@@ -16,4 +16,3 @@ $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/e
 $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
 $emailTemplate->send($email, $vars);
 
-echo "Thank You";

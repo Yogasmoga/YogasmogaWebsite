@@ -1,9 +1,10 @@
 <?php
 //exit;
+//Created By Fahim Khan, for Mailchimp's Email merge field automatically Execute... at 5 o'clock everyday.
 ini_set('max_execution_time',1800);
-require_once '../app/Mage.php';
+require_once 'app/Mage.php';
 
-$app = Mage::app('');
+Mage::app('');
 umask(0);
 /*
     $csvFile = file('mailchimp_export.csv');
@@ -23,7 +24,7 @@ $list_id = "40611aba4e"; //New List
 
 
 
-    $date_to_look_start = date('Y-m-d', strtotime('-15 day', strtotime(date('Y-m-d'))));
+    $date_to_look_start = date('Y-m-d', strtotime('-2 day', strtotime(date('Y-m-d'))));
     $date_to_look_end = date('Y-m-d', strtotime(date('Y-m-d')));
 
     echo $date_to_look_start . " , " . $date_to_look_end . "\n\n";
@@ -77,7 +78,7 @@ $list_id = "40611aba4e"; //New List
             );
     }
 
-    include("../mailchimpapi/Drewm/MailChimp.php");
+    include("mailchimpapi/Drewm/MailChimp.php");
 
     $mailChimp = new Drewm\MailChimp($api_key);
 
