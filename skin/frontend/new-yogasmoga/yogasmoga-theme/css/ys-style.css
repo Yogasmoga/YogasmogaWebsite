@@ -3228,7 +3228,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .shopping-cart input#giftcartcode.qry::-moz-placeholder,.shopping-cart input#smogi.qry::-moz-placeholder,
 .shopping-cart input#giftcartcode.qry:-ms-input-placeholder,.shopping-cart input#smogi.qry:-ms-input-placeholder
 {opacity:0.5;}
-.shopping-cart input#giftcartcode.qry.lightgray,.shopping-cart input#smogi.qry.lightgray{background:none;}
+.shopping-cart .qry.lightgray,.shopping-cart .qry.lightgray{background:none;}
 
 
 
