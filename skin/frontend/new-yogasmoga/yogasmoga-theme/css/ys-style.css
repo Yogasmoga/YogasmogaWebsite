@@ -3223,12 +3223,12 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 }
 
 .shopping-cart input#giftcartcode[disabled="disabled"],.shopping-cart input#smogi[disabled="disabled"]{background:none;}
-.shopping-cart input#giftcartcode[disabled="disabled"]::-webkit-input-placeholder,.shopping-cart input#smogi[disabled="disabled"]::-webkit-input-placeholder,
-.shopping-cart input#giftcartcode[disabled="disabled"]:-moz-placeholder,.shopping-cart input#smogi[disabled="disabled"]:-moz-placeholder,
-.shopping-cart input#giftcartcode[disabled="disabled"]::-moz-placeholder,.shopping-cart input#smogi[disabled="disabled"]::-moz-placeholder,
-.shopping-cart input#giftcartcode[disabled="disabled"]:-ms-input-placeholder,.shopping-cart input#smogi[disabled="disabled"]:-ms-input-placeholder
+.shopping-cart input#giftcartcode.qry::-webkit-input-placeholder,.shopping-cart input#smogi.qry::-webkit-input-placeholder,
+.shopping-cart input#giftcartcode.qry:-moz-placeholder,.shopping-cart input#smogi.qry:-moz-placeholder,
+.shopping-cart input#giftcartcode.qry::-moz-placeholder,.shopping-cart input#smogi.qry::-moz-placeholder,
+.shopping-cart input#giftcartcode.qry:-ms-input-placeholder,.shopping-cart input#smogi.qry:-ms-input-placeholder
 {opacity:0.5;}
-
+.shopping-cart input#giftcartcode.qry.lightgray,.shopping-cart input#smogi.qry.lightgray{background:none;}
 
 
 
