@@ -3224,7 +3224,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
 .shopping-cart .lightgray,.shopping-cart .lightgray{background:none!important;}
 .shopping-cart input#giftcartcode[disabled="disabled"],.shopping-cart input#smogi[disabled="disabled"]{background:none;}
-.shopping-cart input#giftcartcode.gry[disabled="disabled"]::-moz-placeholder,.shopping-cart input#smogi[disabled="disabled"].qry::-moz-placeholder{opacity:0.6}
+.shopping-cart input#giftcartcode.gry[disabled="disabled"]::-moz-placeholder,.shopping-cart input#smogi.qry[disabled="disabled"]::-moz-placeholder{opacity:1;color:lightgray!important;}
 .shopping-cart input#giftcartcode.qry::-webkit-input-placeholder,.shopping-cart input#smogi.qry::-webkit-input-placeholder,
 .shopping-cart input#giftcartcode.qry:-moz-placeholder,.shopping-cart input#smogi.qry:-moz-placeholder,
 .shopping-cart input#giftcartcode.qry::-moz-placeholder,.shopping-cart input#smogi.qry::-moz-placeholder,
