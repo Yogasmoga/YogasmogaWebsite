@@ -1814,13 +1814,15 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 // $applypromodisable=" disabled='disabled'";
             }
             if($showedpoints >= 1) {
-                //$html .=' <label class="smogi_lbl"><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi"  '.$applysmogidisable.'/><span class="'.$applysmogi.'">Apply</span><span class="error-count"></span></label>';
-				$html .=' <label class="smogi_lbl"><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi" /><span class="'.$applysmogi.'">Apply</span><span class="error-count"></span></label>';
+                //$html .=' <label class="smogi_lbl"><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi" /><span class="'.$applysmogi.'">Apply</span><span class="error-count"></span></label>';
+				$html .=' <label class="smogi_lbl"><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi"  '.$applysmogidisable.'/><span class="'.$applysmogi.'">Apply</span><span class="error-count"></span></label>';
+				
             }
             if($showedpoints < 1) {
                 $applysmogidisable=" disabled='disabled'";
-                //$html .=' <label class="smogi_lbl"><input type="text" name="smogi" class="gry lightgray" placeholder="You have no more available SMOGI Bucks" '.$applysmogidisable.'/><span class="">Apply</span><span class="error-count"></span></label>';
-				$html .=' <label class="smogi_lbl"><input type="text" name="smogi" class="gry lightgray" placeholder="You have no more available SMOGI Bucks"/><span class="">Apply</span><span class="error-count"></span></label>';
+                $html .=' <label class="smogi_lbl"><input type="text" name="smogi" class="gry lightgray" placeholder="You have no more available SMOGI Bucks"/><span class="">Apply</span><span class="error-count"></span></label>';
+				$html .=' <label class="smogi_lbl"><input type="text" name="smogi" class="gry lightgray" placeholder="You have no more available SMOGI Bucks" '.$applysmogidisable.'/><span class="">Apply</span><span class="error-count"></span></label>';
+				
             }
             // check if promotion code is used or not
 //            if($promotioncode)
@@ -1838,8 +1840,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $giftofysbalance = number_format((float)$giftofysbalance, 2, '.','');
             if($giftofysbalance > 0 || $promotioncode == '1')
             {
-                //$html .='  <label class="promo_lbl"><input class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.'/><span class="'.$applygiftcard.'">Apply</span><span class="error-count"></span></label>';
-				$html .='  <label class="promo_lbl"><input class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code"/><span class="'.$applygiftcard.'">Apply</span><span class="error-count"></span></label>';
+                //$html .='  <label class="promo_lbl"><input class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code"/><span class="'.$applygiftcard.'">Apply</span><span class="error-count"></span></label>';
+				$html .='  <label class="promo_lbl"><input class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.'/><span class="'.$applygiftcard.'">Apply</span><span class="error-count"></span></label>';
+				
                 if(Mage::getSingleton("giftcards/session")->getActive() == "1")
                 {
                     //  $html .='<div> <input type="checkbox" value="1" checked="checked" class="giftcardcheckbox" '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
@@ -1851,9 +1854,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $html .='<div class="giftcarloader" style="clear: both;text-align:left;position:text-align: left; width: 100%;"></div>';
             }
             else
-            {
-                //$html .=' <label class="promo_lbl"><input  class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.' /><span class="'.$applygiftcard.'">Apply</span><span class="error-count"></span></label>
-				$html .=' <label class="promo_lbl"><input  class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code"/><span class="'.$applygiftcard.'">Apply</span><span class="error-count"></span></label>
+            {	//$html .=' <label class="promo_lbl"><input  class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code"/><span class="'.$applygiftcard.'">Apply</span><span class="error-count"></span></label>
+                $html .=' <label class="promo_lbl"><input  class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.' /><span class="'.$applygiftcard.'">Apply</span><span class="error-count"></span></label>
+				
 
                     ';
             }
