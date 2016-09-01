@@ -3269,6 +3269,7 @@ iframe[name="google_conversion_frame"] {
     #signup.mc-signup .limited-time{margin-top:1%;margin-bottom:2%;}
     #signup.mc-signup .limited-time span{font-size:18px;}
     #signup.mc-signup .close-text{font-size:13px; }
+    #signup.mc-signup .close-text,#signup.mc-signup .opensignin{font-size:13px; }
     #signup.mc-signup .mc-shoplinks a img{max-width:246px;}
     #signup.mc-signup .svg-logontext{max-width:300px;}
     #signup.mc-signup .svg-logontext{margin:0 0 56px 0; }
