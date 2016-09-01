@@ -2908,6 +2908,7 @@ ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
 /*########### new designs ###########*/
 .productCont{ margin: 0 0.3% 0;}
 .gridWrap .productCont {width: 32.8%;}
+.productCont .prod-img{background:#f3f3f3;}
 .gridWrap .productCont:nth-child(3n){margin-right:0;}
 .productCont .caption{font:20px/30px avantgardegothicitcw01m;text-transform:capitalize;margin:0; min-height:60px; padding:46px 0;}
 .productCont .caption span{font:16px/20px avantgardegothicitcw01b;color:#616161;}
