@@ -2904,3 +2904,18 @@ ul.main-menu > li.one-too-many{padding-right:0;}
 ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
 }
 /*--- header modify end ---*/
+
+/*########### new designs ###########*/
+.productCont{ margin: 0 0.3% 0;}
+.gridWrap .productCont {width: 32.8%;}
+.gridWrap .productCont:nth-child(3n){margin-right:0;}
+.productCont .caption{font:20px/30px avantgardegothicitcw01m;text-transform:capitalize;margin:0; min-height:60px; padding:46px 0;}
+.productCont .caption span{font:16px/20px avantgardegothicitcw01b;color:#616161;}
+
+@media only screen and (max-width : 1400px) {
+	.productCont .caption{font-size:17px;line-height:24px; padding:40px 0;min-height:36px;}
+}
+@media only screen and (max-width : 1024px) {
+.productCont .caption{font-size:14px;line-height:20px; padding:31px 0;min-height:36px;}
+.productCont .caption span{font-size:11px;line-height:14px; }
+}

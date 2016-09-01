@@ -895,3 +895,12 @@ function insertBraOption() {
     });
 
 }
+
+jQuery(document).ready(function(){
+	var prodHt = jQuery('.productCont').width();
+	jQuery('.prod-img').height(prodHt);	
+});
+jQuery(window).resize(function(){
+	var prodHt = jQuery('.productCont').width();
+	jQuery('.prod-img').height(prodHt);	
+});
