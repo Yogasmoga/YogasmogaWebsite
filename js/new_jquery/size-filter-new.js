@@ -141,7 +141,7 @@ function filterSizes(){
         return;
     }
 
-    var sizes = "<b>FILTER BY SIZE: </b> ";
+    var sizes = "<b>Filter by Size: </b> ";
 
     for(var i=0;i<arAllSizes.length;i++){
 
@@ -329,7 +329,7 @@ function filterCats(){
         return;
     }
 
-    var Categories = "<b>FILTER BY RANGE: </b> ";
+    var Categories = "<b>Filter by Range: </b> ";
     //for(var i=0;i<arAllCats.length;i++){
 
 			jQuery.each(arProductCats, function (index, value) {
@@ -345,7 +345,7 @@ function filterCats(){
 
 
     jQuery("#div_cats").html(Categories).show();
-	if(Categories == "<b>FILTER BY RANGE: </b> "){
+	if(Categories == "<b>Filter By Range:</b> "){
 	jQuery(".ct_filter").hide();
 	}
 }
