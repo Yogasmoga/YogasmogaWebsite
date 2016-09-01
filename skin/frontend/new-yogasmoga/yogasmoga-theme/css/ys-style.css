@@ -3222,6 +3222,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     opacity:0.8;
 }
 
+#giftcartcode[disabled="disabled"]{background:none;}
 #giftcartcode[disabled="disabled"]::-webkit-input-placeholder,
 #giftcartcode[disabled="disabled"]:-moz-placeholder,
 #giftcartcode[disabled="disabled"]::-moz-placeholder,
