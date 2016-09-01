@@ -3222,6 +3222,12 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     opacity:0.8;
 }
 
+#giftcartcode[disabled="disabled"]::-webkit-input-placeholder,
+#giftcartcode[disabled="disabled"]:-moz-placeholder,
+#giftcartcode[disabled="disabled"]::-moz-placeholder,
+#giftcartcode[disabled="disabled"]:-ms-input-placeholder
+{opacity:0.5;}
+
 
 
 
@@ -3291,3 +3297,6 @@ width:100%!important;height:100%!important;
 	#signup.mc-signup .svg-logontext{max-width:300px;}
 	#signup.mc-signup .svg-logontext{margin:0 0 56px 0; }
 }
+
+/*######### new design ############*/
+ul.main-menu li.active a.menu-heading{color:#ae8436;}
