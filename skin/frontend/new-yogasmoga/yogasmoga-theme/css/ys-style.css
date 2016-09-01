@@ -3222,8 +3222,8 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     opacity:0.8;
 }
 
+.shopping-cart .lightgray,.shopping-cart .lightgray{background:none!important;}
 .shopping-cart input#giftcartcode[disabled="disabled"],.shopping-cart input#smogi[disabled="disabled"]{background:none;}
-.shopping-cart .qry.lightgray,.shopping-cart .qry.lightgray{background:none;}
 .shopping-cart input#giftcartcode.qry::-webkit-input-placeholder,.shopping-cart input#smogi.qry::-webkit-input-placeholder,
 .shopping-cart input#giftcartcode.qry:-moz-placeholder,.shopping-cart input#smogi.qry:-moz-placeholder,
 .shopping-cart input#giftcartcode.qry::-moz-placeholder,.shopping-cart input#smogi.qry::-moz-placeholder,
