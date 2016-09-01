@@ -3318,5 +3318,7 @@ div.side-menu-bar ul li a.current,
 div.side-menu-bar ul li a:hover,
 .menu-bar ul li a.current,
 .menu-bar ul li a:hover{color:#ae8436;}
+.leftnav a.current{color:#ae8436!important;}
 
+.chk-size, .chk-cats{background:#f3f3f3; border:0 none;}
 #div_cats .chk-cats:hover, #div_cats .chk-cats.chk-cats-selected,.chk-size-selected{background:#ae8436;}
