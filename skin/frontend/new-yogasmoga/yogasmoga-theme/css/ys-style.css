@@ -3260,7 +3260,7 @@ width:100%!important;height:100%!important;
 /*#signup.mc-signup .requiredfield,#signup.mc-signup #err-msg{color: #f00;}*/
 #signup.mc-signup .button-area{position:relative;}
 #signup.mc-signup .form-loader-mail{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%)}
-#signup.mc-signup .close-text,#signup.mc-signup .opensignin{color:#AE8536; text-decoration:underline;font-size:15px;font-family:AvantGardeGothicITCW01B;cursor:pointer;margin-bottom:0;}
+#signup.mc-signup .close-text,#signup.mc-signup .opensignin{color:#AE8536; text-decoration:underline;font-size:12px;font-family:AvantGardeGothicITCW01B;cursor:pointer;margin-bottom:0;}
 #signup.mc-signup .close-text{margin-bottom:10px;}
 #signup.mc-signup .signup-thankyou .close-text{margin-bottom:0;}
 #signup.mc-signup .close-text .apos{font-family:gothambook;}
@@ -3286,7 +3286,7 @@ width:100%!important;height:100%!important;
 	#signup.mc-signup .signup-title{font-size:26px;}
 	#signup.mc-signup .limited-time{margin-top:1%;margin-bottom:2%;}
 	#signup.mc-signup .limited-time span{font-size:18px;}
-	#signup.mc-signup .close-text,#signup.mc-signup .opensignin{font-size:13px; }
+	/*#signup.mc-signup .close-text,#signup.mc-signup .opensignin{font-size:12px; }*/
 	#signup.mc-signup .mc-shoplinks a img{max-width:246px;}
 	#signup.mc-signup .svg-logontext{max-width:300px;}
 	#signup.mc-signup .svg-logontext{margin:0 0 56px 0; }
