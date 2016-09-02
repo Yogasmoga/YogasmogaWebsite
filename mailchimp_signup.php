@@ -16,10 +16,13 @@ if($_POST['email']){
 $email  =  $_POST['email'];
 	
 	//MailChimp
-	$apikey = 'e49184c3866b4d458797fdffe11f22d8-us3';
+	//$apikey = 'e49184c3866b4d458797fdffe11f22d8-us3';
 	//$list_id = "ca4e5865d6"; //TEST
     //$list_id = "51f988d786"; //LIVE
-    $list_id = "40611aba4e"; //New List
+    //$list_id = "40611aba4e"; //New List--recent
+
+    $apikey = '57207d2b7f3567e409649541d591ca33-us3';//api key.
+    $list_id = "51f988d786"; //New List.
 
             $auth = base64_encode( 'user:'.$apikey );
 
