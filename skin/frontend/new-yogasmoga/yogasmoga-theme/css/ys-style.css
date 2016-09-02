@@ -3319,8 +3319,22 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a.current,
 .menu-bar ul li a:hover{color:#ae8436;}
 .leftnav a.current{color:#ae8436!important;}
+/************* 2-sep*********/
 .productCont .prod-img img{max-width:100%;max-height:100%;}
-
+.gridProdCubix .leftnav .ctglink li.sub-head > a, .gridProdCubix .leftnav .ctglink li a.bld {
+  color: #555;
+  font-family: ITCAvantGardeProBd!important;
+}
+.ctglink li, .ctglink li a {
+  font: 12px/18px ITCAvantGardeProBd;
+  text-transform: uppercase;
+}
+.gridProdCubix .leftnav .ctglink ul.subnav a {
+  font-family: ITCAvantGardeProMd!important;
+}
+.bannerFluid img{display:none;}
+.bannerFluid .bnrtxt.bnr.white{color:#555!important;}
+/************* 2-sep*********/
 .chk-size, .chk-cats{background:#f3f3f3; border:0 none;}
 #div_cats .chk-cats:hover, #div_cats .chk-cats.chk-cats-selected,.chk-size-selected{background:#ae8436;}
 #div_cats .chk-cats{text-transform:capitalize;}
