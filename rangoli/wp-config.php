@@ -25,7 +25,7 @@ define('DB_USER', 'yogasmoga');
 define('DB_PASSWORD', 'Yoga$moga');
 
 /** MySQL hostname */
-define('DB_HOST', 'yogasmoga2.ctfwon1h9dxc.us-east-1.rds.amazonaws.com');
+define('DB_HOST', '192.168.3.1');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');

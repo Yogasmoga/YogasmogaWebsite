@@ -40,7 +40,7 @@
             </db>
             <default_setup>
                 <connection>
-                    <host><![CDATA[yogasmoga.ctfwon1h9dxc.us-east-1.rds.amazonaws.com]]></host>
+                    <host><![CDATA[192.168.3.1]]></host>
                     - <username><![CDATA[yogasmoga]]></username>
                     - <password><![CDATA[Yoga$moga]]></password>
                     - <dbname><![CDATA[yogasmoga]]></dbname>
@@ -52,7 +52,8 @@
                 </connection>
             </default_setup>
         </resources>
-        <session_save><![CDATA[files]]></session_save>
+        <session_save><![CDATA[memcache]]></session_save>
+        <session_save_path><![CDATA[tcp://192.168.3.2:11211?persistent=1&weight=2&timeout=10&retry_interval=10]]></session_save_path>
     </global>
     <admin>
         <routers>

@@ -1,11 +1,35 @@
 ############################################
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+
+# redirect Subdomain to Domain
+#RewriteCond %{HTTP_HOST} ^ftp\.yogasmoga\.com$
+#RewriteRule ^(.*)$ http://yogasmoga\.com/$1 [L]
+
+
+RewriteCond %{HTTP_HOST} ^ftp.yogasmoga.com$ [NC]
+RewriteRule ^(.*)$ http://yogasmoga.com%{REQUEST_URI} [R=301,NC,L,QSA]
+
+</IfModule>
+
+Redirect 302 http://yogasmoga.com/women/tops/tanks-tops/up-to-the-minute-tee?color=76  http://yogasmoga.com/women/tops/tees/up-to-the-minute-tee?color=76
+
 ## uncomment these lines for CGI mode
 ## make sure to specify the correct cgi php binary file name
 ## it might be /cgi-bin/php-cgi
 
 #    Action php5-cgi /cgi-bin/php5-cgi
 #    AddHandler php5-cgi .php
-
+SetEnvIf X-Forwarded-Proto https HTTPS=on
 ############################################
 ## GoDaddy specific options
 
@@ -35,6 +59,7 @@ FileETag none
 #    php_value memory_limit 64M
     php_value memory_limit 256M
     php_value max_execution_time 18000
+    php_value max_input_vars 10000
 
 ############################################
 ## disable magic quotes for php request vars
@@ -116,6 +141,7 @@ FileETag none
 
     Options +FollowSymLinks
     RewriteEngine on
+	
 
 ############################################
 ## you can put here your magento root folder
@@ -227,11 +253,218 @@ mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
 #RewriteRule . /yogasmoga/index.php [L]
 #</IfModule>
 
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
+<IfModule mod_headers.c>
+	<FilesMatch ".(eot|ttf|otf|woff)">
+		Header set Access-Control-Allow-Origin *
+	</FilesMatch>
 </IfModule>
+
+#Kritika.
+
+Redirect 302 /women/whats-new/sweet-n-shorter-vigor?color=220 /women/bottoms/shorts/sweet-n-shorter-vigor?color=220
+Redirect 302 /catalog/product/view/id/2732/s/rangoli-run-jump-n-play-crop/category/6/?color=275 /
+Redirect 302 /catalog/product/view/id/2724/s/rangoli-tippy-toe-legging/category/16/?color=275 /
+Redirect 302 /catalog/product/view/id/2732/s/rangoli-run-jump-n-play-crop/category/6 /
+Redirect 302 /catalog/product/view/id/2724/s/rangoli-tippy-toe-legging/category/16 /
+Redirect 302 /catalog/product/view/id/2724/s/rangoli-tippy-toe-legging/category /
+Redirect 302 /catalog/product/view/id/2732/s/rangoli-run-jump-n-play-crop/category /
+Redirect 302 /catalog/product/view/id/2732/s/rangoli-run-jump-n-play-crop /
+Redirect 302 /catalog/product/view/id/2724/s/rangoli-tippy-toe-legging /
+Redirect 302 /catalog/product/view/_ignore_category/1/id /
+Redirect 302 /catalog/product/view/_ignore_category/1 /
+Redirect 302 /catalog/product/view/_ignore_category /
+Redirect 302 /catalog/product/view/id/2724 /
+Redirect 302 /catalog/product/view/id/2724/s /
+Redirect 302 /catalog/product/view/id/2732 /
+Redirect 302 /catalog/product/view/id/2732/s /
+Redirect 302 /catalogsearch/result/ja /
+Redirect 302 /catalogsearch/result/java /
+Redirect 302 /classic-slimmie-pant-1586	/classic-slimmie-pant
+Redirect 302 /classic-slimmie-pant-1646	/classic-slimmie-pant
+Redirect 302 /classic-slimmie-pant-3446	/classic-slimmie-pant
+Redirect 302 /classic-slimmie-pant-6086	/classic-slimmie-pant
+Redirect 302 /classic-slimmie-pant-61	/classic-slimmie-pant
+Redirect 302 /classic-slimmie-pant-6116	/classic-slimmie-pant
+Redirect 302 /classic-slimmie-pant-6182	/classic-slimmie-pant
+Redirect 302 /classic-slimmie-pant-regular	/classic-slimmie-pant
+Redirect 302 /classic-slimmie-pants-regular	/classic-slimmie-pant
+Redirect 302 /custome /
+Redirect 302 /dharma-pant-regular /dharma-pant
+Redirect 302 /dharma-pant-tall /dharma-pant
+Redirect 302 /gift-sets/the-burlington-set /
+Redirect 302 /gift-sets/the-chicago-set /
+Redirect 302 /gift-sets/the-malibu-set /
+Redirect 302 /gift-sets/the-memphis-set /
+Redirect 302 /gift-sets/the-new-orleans-set /
+Redirect 302 /gift-sets/the-new-york-set /
+Redirect 302 /gift-sets/the-phoenix-set /
+Redirect 302 /gift-sets/the-seattle-set /
+Redirect 302 /gift-sets /
+Redirect 302 /gift-sets?style=men /
+Redirect 302 /gift-sets?style=women /
+Redirect 302 /h	/
+Redirect 302 /men/gift-sets-for-150/ /
+Redirect 302 /men/new-arrivals /men
+Redirect 302 /men/new-arrivals/doon-long-sleeve-tee?color=220 /men
+Redirect 302 /men/new-arrivals/goa-tee?color=220 /men
+Redirect 302 /men/new-arrivals/monsoon-apex-tank?color=264 /men/monsoon-apex-tank
+Redirect 302 /men/new-arrivals/sherpa-tee?color=241 /men/sherpa-tee
+Redirect 302 /men/new-arrivals/sunday-tee?color=265	/men/sunday-tee
+
+##############ANKUR############
+Redirect 302 /men/what-s-new/doon-long-sleeve-tee /men/whats-new
+Redirect 302 /men/what-s-new/doon-long-sleeve-tee?color=214 /men/whats-new
+Redirect 302 /men/what-s-new/doon-long-sleeve-tee?color=215 /men/whats-new
+Redirect 302 /men/what-s-new/doon-long-sleeve-tee?color=220 /men/whats-new
+Redirect 302 /men/what-s-new/doon-long-sleeve-tee?color=76 /men/whats-new
+Redirect 302 /men/what-s-new/goa-tee /men/whats-new
+Redirect 302 /men/what-s-new/goa-tee?color=215 /men/whats-new
+Redirect 302 /men/what-s-new/goa-tee?color=220 /men/whats-new
+Redirect 302 /men/what-s-new/goa-tee?color=76 /men/whats-new
+Redirect 302 /men/what-s-new/monsoon-apex-tank /men/whats-new
+Redirect 302 /men/what-s-new/monsoon-apex-tank?color=240 /men/whats-new
+Redirect 302 /men/what-s-new/monsoon-apex-tank?color=241 /men/whats-new
+Redirect 302 /men/what-s-new/monsoon-apex-tank?color=250 /men/whats-new
+Redirect 302 /men/what-s-new/monsoon-apex-tank?color=264 /men/whats-new
+Redirect 302 /men/what-s-new/monsoon-tank /men/whats-new
+Redirect 302 /men/what-s-new/monsoon-tank?color=214 /men/whats-new
+Redirect 302 /men/what-s-new/monsoon-tank?color=215 /men/whats-new
+Redirect 302 /men/what-s-new/monsoon-tank?color=76 /men/whats-new
+Redirect 302 /men/what-s-new/sherpa-tee /men/whats-new
+Redirect 302 /men/what-s-new/sherpa-tee?color=241 /men/whats-new
+Redirect 302 /men/what-s-new/sherpa-tee?color=243 /men/whats-new
+Redirect 302 /men/what-s-new/sherpa-tee?color=244 /men/whats-new
+Redirect 302 /men/what-s-new/sherpa-tee?color=264 /men/whats-new
+Redirect 302 /men/what-s-new/sunday-tee /men/whats-new
+Redirect 302 /men/what-s-new/sunday-tee?color=262 /men/whats-new
+Redirect 302 /men/what-s-new/sunday-tee?color=263 /men/whats-new
+Redirect 302 /men/what-s-new/sunday-tee?color=265 /men/whats-new
+Redirect 302 /men/what-s-new/sunday-tee?color=266 /men/whats-new
+Redirect 302 /men/whats-new/california-short?color=209 /men/whats-new
+Redirect 302 /men/whats-new/california-short?color=76 /men/whats-new
+Redirect 302 /men/whats-new/doon-long-sleeve-tee /men/whats-new
+Redirect 302 /men/whats-new/doon-long-sleeve-tee?color=214 /men/whats-new
+Redirect 302 /men/whats-new/doon-long-sleeve-tee?color=215 /men/whats-new
+Redirect 302 /men/whats-new/doon-long-sleeve-tee?color=220 /men/whats-new
+Redirect 302 /men/whats-new/doon-long-sleeve-tee?color=76 /men/whats-new
+Redirect 302 /men/whats-new/goa-tee /men/whats-new
+Redirect 302 /men/whats-new/goa-tee?color=215 /men/whats-new
+Redirect 302 /men/whats-new/goa-tee?color=220 /men/whats-new
+Redirect 302 /men/whats-new/goa-tee?color=76 /men/whats-new
+Redirect 302 /men/whats-new/monsoon-apex-tank /men/whats-new
+Redirect 302 /men/whats-new/monsoon-apex-tank?color=240 /men/whats-new
+Redirect 302 /men/whats-new/monsoon-apex-tank?color=241 /men/whats-new
+Redirect 302 /men/whats-new/monsoon-apex-tank?color=250 /men/whats-new
+Redirect 302 /men/whats-new/monsoon-apex-tank?color=264 /men/whats-new
+Redirect 302 /men/whats-new/monsoon-tank /men/whats-new
+Redirect 302 /men/whats-new/monsoon-tank?color=214 /men/whats-new
+Redirect 302 /men/whats-new/monsoon-tank?color=215 /men/whats-new
+Redirect 302 /men/whats-new/monsoon-tank?color=76 /men/whats-new
+Redirect 302 /men/whats-new/sherpa-tee /men/whats-new
+Redirect 302 /men/whats-new/sherpa-tee?color=241 /men/whats-new
+Redirect 302 /men/whats-new/sherpa-tee?color=243 /men/whats-new
+Redirect 302 /men/whats-new/sherpa-tee?color=244 /men/whats-new
+Redirect 302 /men/whats-new/sherpa-tee?color=264 /men/whats-new
+Redirect 302 /men/whats-new/sunday-tee /men/whats-new
+Redirect 302 /men/whats-new/sunday-tee?color=262 /men/whats-new
+Redirect 302 /men/whats-new/sunday-tee?color=263 /men/whats-new
+Redirect 302 /men/whats-new/sunday-tee?color=265 /men/whats-new
+Redirect 302 /men/whats-new/sunday-tee?color=266 /men/whats-new
+Redirect 302 /mensde3.jpg.pagespeed.ic.jlKvdSqjxi.jpg /
+Redirect 302 /rangoli-my-racer-back /women/tops
+Redirect 302 /rangoli-run-jump-n-play-crop /women/bottoms
+Redirect 302 /rangoli-sneak-n-peek-bra /women/tops
+Redirect 302 /rangoli-sweet-n-short /women/bottoms
+Redirect 302 /rangoli-tippy-toe-legging /women/bottoms
+Redirect 302 /rangoli-twistie-tank /women/tops
+Redirect 302 /men/top-sellers /men
+Redirect 302 /men/top-sellers /men/dharma-jacket
+Redirect 302 /men/top-sellers /men/dharma-jacket
+Redirect 302 /men/top-sellers /men/dharma-pant
+Redirect 302 /men/top-sellers /men/dharma-pant
+Redirect 302 /men/top-sellers /men/tops/sherpa-tee
+Redirect 302 /men/top-sellers /men/tops/sherpa-tee
+Redirect 302 /catalog/product/view/id/1116/s/embrace-band/category/6/ /women/accessories
+Redirect 302 /women/additional-sizes/run-jump-n-play-crop /women/additional-sizes/run-jump-play-crop
+Redirect 302 /women/whats-new/malibu-duffel?color=76 /women/accessories/malibu-duffel?color=76
+Redirect 302 /catalog/product/view/id/1116/s/embrace-band/category/6/ /women/accessories
+Redirect 302 /men/dharma-pant-regular /men/bottoms/pants/dharma-pant
+Redirect 302 /women/whats-new/boulder-crop /women/boulder-crop
+Redirect 302 /women/tops/sweaters-scarves /women/tops/sweaters
+Redirect 302 /women/tops/tanks-tops /women/tops/tanks
+Redirect 302 /women/bottoms/rangoli /women/bottoms
+Redirect 302 /Racerback /my-racer-back
+Redirect 302 /vail-pulloverTippy /vail-pullover
+Redirect 302 /women/rangoli-collection /women
+Redirect 302 /women/top-sellers/free-to-play-crop /women
+Redirect 302 /women/top-sellers/xox-tee /women
+Redirect 302 /peace-band /women/accessories
+Redirect 302 /the-malibu-set-3992 /
+Redirect 302 /the-malibu-set-3993 /
+Redirect 302 /the-malibu-set-3998 /
+Redirect 302 /the-new-york-set-3983 /
+Redirect 302 /the-phoenix-set-3955 /
+Redirect 302 /the-phoenix-set-3971 /
+Redirect 302 /View /
+Redirect 302 /women/gift-sets-for-150/ /
+Redirect 302 /women/gift-sets-for-150/spirit-scarf-set /
+Redirect 302 /catalog/product/view/id/175 /
+Redirect 302 /gift-sets/the-malibu-set /
+Redirect 302 /gift-sets/the-new-york-set /
+Redirect 302 /goa-apex-short-sleeve-tee /
+Redirect 302 /wome /women
+Redirect 302 /smo /
+Redirect 302 /smog /
+Redirect 302 /smogi- /
+Redirect 302 /smogi-buck /smogi-bucks
+Redirect 302 /st.aspx /
+Redirect 302 /sweet-n-s /
+Redirect 302 /terms-of-use-and-conditions/ /terms-and-conditions/
+Redirect 302 /test-women-bottoms?color=76 /women/bottoms
+Redirect 302 /nam /
+Redirect 302 /nama /
+Redirect 302 /namas /
+Redirect 302 /rangol /
+###########################
+#Redirect 302 /women/one-too-many /one-too-many
+Redirect 302 /mens /men
+Redirect 302 /run-jump-n-play-crop-7719 /run-jump-play-crop
+Redirect 302 /run-jump-n-play-crop-7820 /run-jump-play-crop
+Redirect 302 /run-jump-n-play-crop /run-jump-play-crop
+Redirect 302 /international-yoga-day /
+Redirect 302 /rangoliBLACK-TIE/  /rangoli	
+Redirect 302 /rangoliBLUE-MOON/  /rangoli
+Redirect 302 /rangoliBLUE-RIBBON/  /rangoli
+Redirect 302 /rangoliBROWN-BAGGING/  /rangoli
+Redirect 302 /rangoliCARTE-BLANCHE/  /rangoli
+Redirect 302 /rangoliFLYING-COLORS/  /rangoli
+Redirect 302 /rangoliGOLDEN-RULE/  /rangoli
+Redirect 302 /rangoliGREEN-THUMB/  /rangoli
+Redirect 302 /rangoliGREENER-GRASS/  /rangoli
+Redirect 302 /rangoliGREY-MATTER/  /rangoli
+Redirect 302 /rangoliIN-THE-PINK/  /rangoli
+Redirect 302 /rangoliRED-HOT/  /rangoli
+Redirect 302 /rangoliROSE-COLORED-GLASSES/ /rangoli
+Redirect 302 /rangoliSILVER-LINING/ /rangoli
+Redirect 302 /rangoliWHITE-ELEPHANT/ /rangoli
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

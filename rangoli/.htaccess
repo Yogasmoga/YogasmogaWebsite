@@ -1,4 +1,7 @@
 
+#Redirection
+Redirect 302 /author/marjorie-nass http://yogasmoga.com/rangoli/author/marjorie-nass-2/
+
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
@@ -56,3 +59,7 @@ RewriteRule . /rangoli/index.php [L]
 
 php_value upload_max_filesize 1M
 php_value post_max_size 1M
+
+
+
+
