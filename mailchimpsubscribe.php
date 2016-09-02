@@ -102,12 +102,23 @@ if ($correct) {
         }
         else if(isset($result["data"][0]["status"]) && $result["data"][0]["status"]=="subscribed"){
             ;//echo $result["data"][0]["email"] . " is " . $result["data"][0]["status"] . ", not changing values<br/>";
+            $result = $mailChimp->call('lists/subscribe', array(
+                'id' => $list_id,
+                'email' => array('email' => $email),
+                'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'GENDER' => $gender, 'MAILSOURCE' => 'Magento','MMERGE19'=>'Yes'),
+                'double_optin' => false,
+                'update_existing' => true,
+                'replace_interests' => false,
+                'send_welcome' => false,
+            ));
+
+            echo "AS.".$email . " , $gender \n";
         }
         else{
             $result = $mailChimp->call('lists/subscribe', array(
                 'id' => $list_id,
                 'email' => array('email' => $email),
-                'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country, 'GENDER' => $gender, 'MAILSOURCE' => 'Magento'),
+                'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country, 'GENDER' => $gender, 'MAILSOURCE' => 'Magento','MMERGE19'=>'Yes'),
                 'double_optin' => false,
                 'update_existing' => true,
                 'replace_interests' => false,
