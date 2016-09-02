@@ -2912,7 +2912,9 @@ ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
 .gridWrap .productCont:nth-child(3n){margin-right:0;}
 .productCont .caption{font:20px/24px avantgardegothicitcw01m;text-transform:capitalize;margin:0; min-height:60px; padding:46px 0;}
 .productCont .caption span{font:16px/24px avantgardegothicitcw01b;color:#616161;}
-
+.bannerFluid .r-lign{text-align:center!important;} 
+.bannerFluid .l-lign{text-align:center!important;}
+.bannerFluid .bnrtxt{left:0!important;right:0!important;margin:0 auto!important;width:100%!important;text-align:center!important;}
 @media only screen and (max-width : 1400px) {
 	.productCont .caption{font-size:17px;line-height:24px; padding:40px 0;min-height:36px;}
 }
