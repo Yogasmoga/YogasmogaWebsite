@@ -301,6 +301,7 @@
                                             $simpleproductarr['price'] = $product->getPrice();
                                             $_gallery = Mage::getModel('catalog/product')->load($parentIds[0])->getMediaGalleryImages();
                                             $imageArr = array();
+                                            $simpleproductarr['image'] = array();
                                             foreach ($_gallery as $_image) {
 
                                                 $imgdata = json_decode(trim($_image->getLabel()), true);
@@ -316,11 +317,17 @@
                                                     }
                                                 }
 
-                                                if(count($imageArr) >= 2)
-                                                        break;
+                                                 /*if(count($imageArr) >= 2)
+                                                    break;*/
 
                                             }
-                                            $simpleproductarr['image'] = $imageArr;
+                                            if(end($imageArr)){
+                                            $simpleproductarr['image'][] =  end($imageArr);
+                                            }
+                                            if($imageArr[0]){
+                                            $simpleproductarr['image'][] =  $imageArr[0];
+                                            }
+
 
                                             $confProduct = Mage::getModel('catalog/product')->load($simpleproductarr['parentid']);
                                             // show html of the product
