@@ -150,7 +150,7 @@ jQuery(document).ready(function ($) {
                 $(this).delay(500).fadeOut(xyzinterval);
             });*/
 			$imgs.eq(current++).css("visibility", "visible").fadeIn('0',function () {
-                $(this).delay(500).fadeOut(xyzinterval);
+                $(this).delay(500).fadeOut('0',xyzinterval);
             });
         };
         xyzinterval();
