@@ -2918,7 +2918,7 @@ ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
 
 .catalog-category-view #bucket1_slider .over-the-slide {
 	background:#ae8536; padding: 80px 77px !important; position: absolute; top: 0; left:0; width: 33.25%; box-sizing: border-box;height: 100%;}
-.catalog-category-view #bucket1_slider .hero-slide-subtitle{font:13px/13px gothamBold;letter-spacing:0.36px;text-transform:uppercase;color:#fff;padding:0 35px 18px!important; border-bottom:2px solid #d6c19a;margin-bottom:39px!important; display:inline-block;}
+.catalog-category-view #bucket1_slider .hero-slide-subtitle{font:13px/13px gothamBold;letter-spacing:0.36px;text-transform:uppercase;color:#fff;padding:0 0 18px!important; border-bottom:2px solid #d6c19a;margin-bottom:39px!important; display:inline-block;width:100%; max-width:256px;}
 .catalog-category-view #bucket1_slider .hero-slide-title{font:46px/46px avantgardegothicitcw01d;margin-bottom:135px!important;}
 .catalog-category-view #bucket1_slider .hero-slide-bodytext {
   color: #fff; font: 20px/26px avantgardegothicitcw01m; left: 50%; letter-spacing: 0.6px; position: absolute; right: auto; top: 50%;margin:50px 0!important;
@@ -2932,7 +2932,7 @@ ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
 
 @media only screen and (max-width : 1400px) {
 	.productCont .caption{font-size:17px;line-height:24px; padding:40px 0;min-height:36px;}
-	.catalog-category-view #bucket1_slider .hero-slide-subtitle{font-size:11px; line-height:11px;margin-bottom:37px!important;}
+	.catalog-category-view #bucket1_slider .hero-slide-subtitle{font-size:11px; line-height:11px;margin-bottom:37px!important; max-width:224px;}
 	.catalog-category-view #bucket1_slider .hero-slide-title{font-size:38px; line-height:38px;}
 	.catalog-category-view #bucket1_slider .hero-slide-bodytext{font-size:17px; line-height:22px;}
 	.catalog-category-view #bucket1_slider .hero-slide-cta .shop-link{font-size:17px; line-height:22px;}
