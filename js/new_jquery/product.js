@@ -111,7 +111,9 @@ jQuery(document).ready(function ($) {
         failure_limit: 1,
         skip_invisible: false,
         threshold: 500,
+		effect: "",
 		effectTime: 000,
+		
     });
     // }); 
 
