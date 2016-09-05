@@ -110,10 +110,7 @@ jQuery(document).ready(function ($) {
         skip_invisible: false,
         failure_limit: 1,
         skip_invisible: false,
-        threshold: 500,
-		effect: "",
-		effectTime: 000,
-		
+        threshold: 500
     });
     // }); 
 
@@ -149,8 +146,11 @@ jQuery(document).ready(function ($) {
         var xyzinterval = function () {
             if (current >= $imgs.length)
                 current = 0;
-            $imgs.eq(current++).css("visibility", "visible").fadeIn(function () {
+            /*$imgs.eq(current++).css("visibility", "visible").fadeIn(function () {
                 $(this).delay(500).fadeOut(xyzinterval);
+            });*/
+			$imgs.eq(current++).css("visibility", "visible").show(function () {
+                $(this).fadeOut(xyzinterval);
             });
         };
         xyzinterval();
