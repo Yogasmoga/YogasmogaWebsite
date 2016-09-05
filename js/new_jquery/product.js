@@ -106,12 +106,12 @@ jQuery(document).ready(function ($) {
 
     // image lazy loading
     // $(function() {
-    /*$("img.lazy").lazyload({
+    $("img.lazy").lazyload({
         skip_invisible: false,
         failure_limit: 1,
         skip_invisible: false,
         threshold: 500
-    });*/
+    });
     // }); 
 
 
