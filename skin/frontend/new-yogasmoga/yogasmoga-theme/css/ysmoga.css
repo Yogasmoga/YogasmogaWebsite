@@ -2907,11 +2907,11 @@ ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
 
 /*########### new designs ###########*/
 .productCont{ margin: 0 0.3% 0;}
-.gridWrap .productCont {width: 32.8%;}
-.productCont .prod-img{background:#f3f3f3;}
+.gridWrap .productCont {/*width: 32.8%;*/width:508px!important;}
+.productCont .prod-img{background:#f3f3f3; height:508px!important;}
 .gridWrap .productCont:nth-child(3n){margin-right:0;}
 .productCont .caption{font:20px/24px avantgardegothicitcw01m;text-transform:capitalize;margin:0; min-height:60px; padding:46px 0;}
-.productCont .caption span{font:16px/24px avantgardegothicitcw01b;color:#616161;}
+.productCont .caption span{font:16px/24px avantgardegothicitcw01b;color:#555;}
 .bannerFluid .r-lign{text-align:center!important;} 
 .bannerFluid .l-lign{text-align:center!important;}
 .bannerFluid .bnrtxt{left:0!important;right:0!important;margin:0 auto!important;width:100%!important;text-align:center!important;}
