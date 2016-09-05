@@ -2932,7 +2932,7 @@ ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
 
 @media only screen and (max-width : 1400px) {
 	.productCont .caption{font-size:17px;line-height:24px; padding:40px 0;min-height:36px;}
-	.catalog-category-view #bucket1_slider .hero-slide-subtitle{font-size:11px; line-height:11px;}
+	.catalog-category-view #bucket1_slider .hero-slide-subtitle{font-size:11px; line-height:11px;margin-bottom:37px!important;}
 	.catalog-category-view #bucket1_slider .hero-slide-title{font-size:38px; line-height:38px;}
 	.catalog-category-view #bucket1_slider .hero-slide-bodytext{font-size:17px; line-height:22px;}
 	.catalog-category-view #bucket1_slider .hero-slide-cta .shop-link{font-size:17px; line-height:22px;}
@@ -2940,7 +2940,7 @@ ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
 }
 @media only screen and (max-width : 1200px) {
 	
-	.catalog-category-view #bucket1_slider .hero-slide-subtitle{font-size:10px; line-height:10px;}
+	.catalog-category-view #bucket1_slider .hero-slide-subtitle{font-size:10px; line-height:10px;margin-bottom:28px!important;}
 	.catalog-category-view #bucket1_slider .hero-slide-title{font-size:31px; line-height:31px;}
 	.catalog-category-view #bucket1_slider .hero-slide-bodytext{font-size:15px; line-height:20px;}
 	.catalog-category-view #bucket1_slider .hero-slide-cta .shop-link{font-size:15px; line-height:20px;}
