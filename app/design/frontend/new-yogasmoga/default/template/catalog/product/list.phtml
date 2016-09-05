@@ -115,6 +115,9 @@ if($this->getRequest()->getParam('hidden')){
                   }
              }
 
+             if(count($imageArr) >= 2)
+                break;
+
         }
         $simpleproductarr['image'] =  $imageArr;
 
