@@ -298,7 +298,7 @@
                                                                 foreach($simpleproductarr['image'] as $img )
                                                                 {
                                                                     ?>
-                                                                    <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>" />
+                                                                    <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(534, 534)->setQuality(91); ?>" />
                                                                 <?php
                                                                 }
 
@@ -308,17 +308,17 @@
                                                         </div>
                                                         <div class="caption">
                                                             <div class="caption">
-                                                                <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a>
+                                                                <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"><?php echo $confProduct->getName().'<br/>';?></a>
 																
 																<?php 
 																$simpleProductPrice = round($product->getPrice(),2);
 																$configurableProductPrice = round($confProduct->getPrice(),2);
 																
 																if($configurableProductPrice > $simpleProductPrice):?>
-																	<span style="color:#c03;">$<?php  echo $simpleProductPrice;?></span>
+																	<span style="color:#c03;"><?php echo $clrinfo[$simpleproductarr['color']]?> &mdash; $<?php  echo $simpleProductPrice;?></span>
 																	<span>was $<?php  echo  $configurableProductPrice;?></span>
 																<?php else:?>
-																	<span>$<?php  echo $configurableProductPrice;?></span>
+																	<span><?php echo $clrinfo[$simpleproductarr['color']]?> &mdash; $<?php  echo $configurableProductPrice;?></span>
 																<?php endif; ?>
 																
 																
