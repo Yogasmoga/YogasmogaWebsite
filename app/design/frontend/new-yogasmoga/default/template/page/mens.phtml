@@ -198,13 +198,13 @@
             <!-- sliderBanner -->
 
             <!-- signup new -->
-            <div class="share-strip">
+            <!--<div class="share-strip">
                 <div class="sign-up-new">
 
                     <a href="javascript:void(0)">Sign up</a><span>&amp; WE’LL SURPRISE YOU</span>
 
                 </div>
-            </div>
+            </div>-->
             <!-- signup new -->
 
             <div class="clear-fix"></div>
@@ -212,7 +212,7 @@
             <!-- ProductListing Part -->
 
 
-            <div class="new-arrivals-block" style="width:100%; margin:0 auto; position: relative;background:#f4f4f4!important;">
+            <div class="new-arrivals-block" style="width:100%; margin:0 auto; position: relative;background:#fff!important;">
 
                 <div class="white-box"></div>
 
@@ -226,12 +226,13 @@
                 $newcollection = Mage::getModel('catalog/category')->load($categoryId_newcollection);
                 $newarrivals = Mage::getModel('catalog/category')->load($categoryId_quickview);
                 ?>
-                <div class="shop-col-desc l-align">
+                <div class="shop-col-desc">
 					<h2>
-                    <span class="na-head">NEW ARRIVALS</span>
-                    <span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New
-                            Collection</a></span>
+                    <span class="na-head">MID SUMMER NEW ARRIVALS</span>
+                    <!--<span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New
+                            Collection</a></span>-->
 					</h2>		
+					<p class="na-subhead">Activewear for 80f up&mdash;our AURUM&reg; tops for wicking moisture,<br/>so you can stay on track longer.</p>
                 </div>
 
                 <?php
