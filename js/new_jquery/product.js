@@ -149,8 +149,10 @@ jQuery(document).ready(function ($) {
             /*$imgs.eq(current++).css("visibility", "visible").fadeIn(function () {
                 $(this).delay(500).fadeOut(xyzinterval);
             });*/
-			$imgs.eq(current++).css("visibility", "visible").fadeIn('0',function () {
-                $(this).delay(500).fadeOut('0',xyzinterval);
+			$imgs.eq(current++).css({
+				"visibility": "visible",
+				"opacity": "1",				
+			});
             });
         };
         xyzinterval();
