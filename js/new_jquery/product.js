@@ -146,12 +146,12 @@ jQuery(document).ready(function ($) {
         var xyzinterval = function () {
             if (current >= $imgs.length)
                 current = 0;
-            $imgs.eq(current++).css("visibility", "visible").fadeIn(function () {
-                $(this).delay(0).fadeOut(xyzinterval);
-            });
-			/*$imgs.eq(current++).css("visibility", "visible").show(function () {
-                $(this).hide(xyzinterval);
+            /*$imgs.eq(current++).css("visibility", "visible").fadeIn(function () {
+                $(this).delay(500).fadeOut(xyzinterval);
             });*/
+			$imgs.eq(current++).css("visibility", "visible").show(function () {
+                $(this).delay(500).hide(xyzinterval);
+            });
         };
         xyzinterval();
     }, function () {
