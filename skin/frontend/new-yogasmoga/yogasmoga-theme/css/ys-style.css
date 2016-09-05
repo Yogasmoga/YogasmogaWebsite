@@ -3342,5 +3342,7 @@ div.side-menu-bar ul li a:hover,
 .chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:26px; height:26px; line-height:24px; vertical-align:middle; display:inline-block;
 	font-size:13px;}
 #div_cats .chk-cats:hover, #div_cats .chk-cats.chk-cats-selected,.chk-size-selected{background:#ae8536;}
-#div_cats .chk-cats{text-transform:capitalize;font:12px/12px ITCAvantGardeProMd; letter-spacing:0.43px;}
+#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px;}
 #div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.43px;vertical-align:middle; display:inline-block;}
+
+.bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
