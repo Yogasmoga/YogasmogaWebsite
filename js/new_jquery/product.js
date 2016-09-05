@@ -151,7 +151,8 @@ jQuery(document).ready(function ($) {
             });*/
 			$imgs.eq(current++).css({
 				"visibility": "visible",
-				"opacity": "1",				
+				"opacity": "1"
+				
 			});
             });
         };
