@@ -2902,6 +2902,7 @@ ul.main-menu > li.one-too-many{padding-right:0;}
 @media only screen and (max-width : 1200px) {
 .tr-menu li > span { padding: 0 6px;}
 ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
+ul.main-menu > li{padding:0 10px;}
 }
 /*--- header modify end ---*/
 
