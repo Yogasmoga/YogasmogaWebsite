@@ -3247,7 +3247,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .firstdialog .ui-dialog-titlebar-close{right:19px;margin:0;top:48px;}
 .firstdialog .ui-icon-closethick{background:rgba(0, 0, 0, 0) url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/mc-popup-close.jpg") no-repeat scroll 0 0; height:28px;width:28px;}
 #signup.mc-signup{display:none;background:url(../images/mc-signup-bg.jpg) #000; background-size:cover;
-width:100%!important;height:100%!important; position:fixed;
+width:100%!important;height:100%!important; position:fixed;overflow:hidden;
 }
 .firstdialog #signup.mc-signup{display:block;}
 #signup.mc-signup{color:#fff; text-align:center;font-family:avantgardegothicitcw01d;padding:0!important;}
