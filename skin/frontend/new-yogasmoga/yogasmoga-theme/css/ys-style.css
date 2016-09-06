@@ -3351,6 +3351,7 @@ div.side-menu-bar ul li a:hover,
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 
 /*----product details----*/
+.breadcrumb, .breadcrumb a { color: #555; font: 12px/12px ITCAvantGardeProbd;}
 .product-details .block-head{margin-bottom:24px!important;}
 .product-details table.productimagecontainer{position:relative;}
 .product-details table.productimagecontainer table.smallimagecontiner{}
@@ -3369,3 +3370,4 @@ table.productimagecontainer table.tdbigimagecontainer{margin-left:0!important;wi
 
 
 .block-elm .style-image { margin-bottom: 10px; position: static;}
+.prdname h1{font: 26px/30px avantgardegothicitcw01d;}
