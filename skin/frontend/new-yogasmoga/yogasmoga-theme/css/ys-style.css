@@ -3371,17 +3371,25 @@ div.side-menu-bar ul li a:hover,
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 
-/*--product details--*/
+/*----product details----*/
+.breadcrumb, .breadcrumb a { color: #555; font: 12px/12px ITCAvantGardeProbd;}
+.product-details .block-head{margin-bottom:24px!important;}
 .product-details table.productimagecontainer{position:relative;}
 .product-details table.productimagecontainer table.smallimagecontiner{}
 .product-details table.productimagecontainer tr > td.thumb-td { background: transparent; bottom: -35px; display: block; left: 0;
   position: absolute; width: 100%;}
 .product-details table.productimagecontainer table.smallimagecontiner tr{}
 .product-details table.productimagecontainer table.smallimagecontiner td { background: #fff none repeat scroll 0 0;
-  border-radius: 17px; display: inline-block; height: 17px !important; margin: 0 5px!important; padding: 0; width: 17px !important;border:1px solid #555;box-sizing:border-box;}
-.thumb-imgs{position:static; max-width:inherit;width:100%;}
-  .thumb-imgs img{width:17px; height:17px;opacity:0;display:block;}
+  border-radius: 15px; display: inline-block; height: 15px !important; margin: 0 5px!important; padding: 0; width: 15px !important;border:1px solid #555;box-sizing:border-box;}
+.thumb-imgs{position:static; max-width:inherit;width:100%;}  .thumb-imgs img{width:15px; height:15px;opacity:0;display:block;}
+.thumb-imgs img.img_madeinusa {bottom: 55px; height: auto;left: 20px;max-width: 120px;opacity: 1;position: absolute;
+  width: 100%;}
 .product-details table.productimagecontainer table.smallimagecontiner td.selectedimage{background:#ae8536; border:1px solid #ae8536;display:inline-block!important;opacity:1;}
 
 table.productimagecontainer table.tdbigimagecontainer{margin-left:0!important;width:100%;}
 .bigimage-loader{background: lightgrey none repeat scroll 0 0; height: 100%;left: 0;opacity: 0.4;position: absolute;top: 0;width: 100%;}
+
+
+.block-elm .style-image { margin-bottom: 10px; position: static;}
+.prdname h1{font: 26px/30px avantgardegothicitcw01d;}
+.product-details .gry-box{background:none;padding:0;}
