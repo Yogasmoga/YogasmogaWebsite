@@ -3305,7 +3305,10 @@ width:100%!important;height:100%!important;
 	#signup.mc-signup .svg-logontext{max-width:300px;}
 	#signup.mc-signup .svg-logontext{margin:0 0 56px 0; }
 }
-
+@media only screen and (max-width:1024px){
+	
+	#signup.mc-signup .fields-area p.button-area input[type="submit"]{-webkit-appearance: none;}
+}
 /*######### new design 31-aug-2016############*/
 ul.main-menu li.active a.menu-heading{color:#ae8536;}
 div.search-nav ul li a.current,
