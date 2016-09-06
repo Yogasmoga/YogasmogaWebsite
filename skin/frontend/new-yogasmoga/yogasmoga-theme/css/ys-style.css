@@ -3360,6 +3360,6 @@ div.side-menu-bar ul li a:hover,
   border-radius: 17px; display: inline-block; height: 17px !important; margin: 0 5px!important; padding: 0; width: 17px !important;border:1px solid #555;box-sizing:border-box;}
 .thumb-imgs{position:static; max-width:inherit;width:100%;}
   .thumb-imgs img{width:17px; height:17px;opacity:0;display:block;}
-.product-details table.productimagecontainer table.smallimagecontiner td.selectedimage{background:#ae8536; border:1px solid #ae8536;display:block!important;}
+.product-details table.productimagecontainer table.smallimagecontiner td.selectedimage{background:#ae8536; border:1px solid #ae8536;display:inline-block!important;opacity:1;}
 
 table.productimagecontainer table.tdbigimagecontainer{margin-left:0!important;width:100%;}
