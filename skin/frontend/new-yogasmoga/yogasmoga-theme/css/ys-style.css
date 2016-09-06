@@ -3388,7 +3388,7 @@ div.side-menu-bar ul li a:hover,
 
 table.productimagecontainer table.tdbigimagecontainer{margin-left:0!important;width:100%;}
 table.productimagecontainer table.tdbigimagecontainer td{background:#f4f4f4;}
-table.productimagecontainer table.tdbigimagecontainer td{max-width:700px;}
+table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 .bigimage-loader{background: lightgrey none repeat scroll 0 0; height: 100%;left: 0;opacity: 0.4;position: absolute;top: 0;width: 100%;}
 
 
