@@ -3349,3 +3349,9 @@ div.side-menu-bar ul li a:hover,
 #div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.43px;vertical-align:middle; display:inline-block;}
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
+
+/*--product details--*/
+.product-details table.productimagecontainer table.smallimagecontiner{}
+.product-details table.productimagecontainer table.smallimagecontiner tr{}
+.product-details table.productimagecontainer table.smallimagecontiner td{width: 90%;}
+.thumb-imgs img{width:19px; height:19px;opacity:0;display:block;}
