@@ -3322,6 +3322,27 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a.current,
 .menu-bar ul li a:hover{color:#ae8536;}
 .leftnav a.current{color:#ae8536!important;}
+/******************  header new changes start   ***********/
+
+#search_input {
+  background: #f4f4f4 none repeat scroll 0 0;
+  border: medium none;
+  font-family: gothamlight;
+  font-size: 11px;
+  height: 20px;
+  width: 140px;
+}
+.search-bar {
+  background: #f4f4f4 none repeat scroll 0 0;
+  box-sizing: border-box;
+  width: 168px;
+}
+/******************  header new changes end   ***********/
+ ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a {
+  color: #555;
+  font: 12px/23px avantgardegothicitcw01d;
+  letter-spacing:0.5px;
+}
 /************* 2-sep*********/
 .productCont .prod-img img{max-width:100%;max-height:100%;}
 .gridProdCubix .leftnav .ctglink li.sub-head > a, .gridProdCubix .leftnav .ctglink li a.bld {
