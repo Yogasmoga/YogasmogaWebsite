@@ -3274,3 +3274,6 @@ iframe[name="google_conversion_frame"] {
     #signup.mc-signup .svg-logontext{max-width:300px;}
     #signup.mc-signup .svg-logontext{margin:0 0 56px 0; }
 }
+@media only screen and (max-width:1024px){
+    #signup.mc-signup .fields-area p.button-area input[type="submit"]{-webkit-appearance: none;}
+}
