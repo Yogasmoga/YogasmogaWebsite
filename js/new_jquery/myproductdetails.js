@@ -54,7 +54,7 @@ jQuery(document).ready(function ($) {
         $("table.tdbigimagecontainer img").attr("title", $(this).find("img:first").attr('title'));
         _curshareimgurl = $(this).attr("bigimageurl");
         $("table.tdbigimagecontainer img").fadeIn('fast');
-		$("table.tdbigimagecontainer .bigimage-loader").fadeOut();
+		$("table.tdbigimagecontainer .bigimage-loader").fadeOut('slow');
 			
     });
 
