@@ -53,8 +53,10 @@ jQuery(document).ready(function ($) {
         $("table.tdbigimagecontainer img").attr("alt", $(this).find("img:first").attr('alt'));
         $("table.tdbigimagecontainer img").attr("title", $(this).find("img:first").attr('title'));
         _curshareimgurl = $(this).attr("bigimageurl");
-        $("table.tdbigimagecontainer img").fadeIn('fast');
-		$("table.tdbigimagecontainer .bigimage-loader").fadeOut('slow');
+        $("table.tdbigimagecontainer img").fadeIn('fast',function(){
+				$("table.tdbigimagecontainer .bigimage-loader").fadeOut('slow');
+		});
+		
 			
     });
 
