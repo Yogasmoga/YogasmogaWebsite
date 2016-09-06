@@ -44,13 +44,18 @@ jQuery(document).ready(function ($) {
 
     $("table.smallimagecontiner td:not(.selectedimage)").live("click", function () {
         $("table.smallimagecontiner td").removeClass("selectedimage");
+		$("table.tdbigimagecontainer .bigimage-loader").remove();
         $(this).addClass("selectedimage");
+			$("table.tdbigimagecontainer td").append('<span class="bigimage-loader"></span>');
+			$("table.tdbigimagecontainer .bigimage-loader").show('fast');
         $("table.tdbigimagecontainer img").hide();
         $("table.tdbigimagecontainer img").attr("src", $(this).attr("bigimageurl"));
         $("table.tdbigimagecontainer img").attr("alt", $(this).find("img:first").attr('alt'));
         $("table.tdbigimagecontainer img").attr("title", $(this).find("img:first").attr('title'));
         _curshareimgurl = $(this).attr("bigimageurl");
         $("table.tdbigimagecontainer img").fadeIn('fast');
+		$("table.tdbigimagecontainer .bigimage-loader").fadeOut();
+			
     });
 
     $("td#tdpopupproductsmallimages td:not(.selectedimage)").live("click", function () {
