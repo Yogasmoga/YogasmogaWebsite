@@ -3352,6 +3352,7 @@ div.side-menu-bar ul li a:hover,
 
 /*--product details--*/
 .product-details table.productimagecontainer table.smallimagecontiner{}
+.product-details table.productimagecontainer tr td:first-child{}
 .product-details table.productimagecontainer table.smallimagecontiner tr{}
 .product-details table.productimagecontainer table.smallimagecontiner td{width: 90%;}
 .thumb-imgs img{width:19px; height:19px;opacity:0;display:block;}
