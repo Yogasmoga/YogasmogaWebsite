@@ -3351,8 +3351,12 @@ div.side-menu-bar ul li a:hover,
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 
 /*--product details--*/
+.product-details table.productimagecontainer{position:relative;}
 .product-details table.productimagecontainer table.smallimagecontiner{}
-.product-details table.productimagecontainer tr td:first-child{}
+.product-details table.productimagecontainer tr > td.thumb-td { background: red none repeat scroll 0 0; bottom: -35px; display: block; left: 0;
+  position: absolute; width: 100%;}
 .product-details table.productimagecontainer table.smallimagecontiner tr{}
-.product-details table.productimagecontainer table.smallimagecontiner td{width: 90%;}
+.product-details table.productimagecontainer table.smallimagecontiner td { background: #fff none repeat scroll 0 0;
+  border-radius: 17px; display: inline-block; height: 17px !important; margin: 0 5px; padding: 0; width: 17px !important;border:1px solid #555;box-sizing:border-box;}
 .thumb-imgs img{width:19px; height:19px;opacity:0;display:block;}
+.product-details table.productimagecontainer table.smallimagecontiner td.selectedimage{background:#ae8536; border:1px solid #ae8536;}
