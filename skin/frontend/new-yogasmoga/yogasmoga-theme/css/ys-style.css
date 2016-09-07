@@ -3463,7 +3463,7 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
   border-bottom-width: 40px; border-right: 40px solid transparent !important;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(2) {
   border-left: 40px solid transparent !important; border-top-width: 40px; margin: 0 0 0 -42px;}
-.gry-box table.productdetailtable div#colorcontainer > div.selected{border:2px solid #ae8536;padding:4px;}  
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected{border:2px solid #ae8536;padding:4px;}  
 .gry-box table.productdetailtable div.addtobag{height:42px;}
 #productdetails .social-ico,#productdetails .earnbucks{display:none;}
 .wishlist-nw{width:100%;float:left;margin-top:10px;}
