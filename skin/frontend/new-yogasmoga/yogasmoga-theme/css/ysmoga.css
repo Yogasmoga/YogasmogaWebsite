@@ -2941,7 +2941,10 @@ ul.main-menu > li{padding:0 10px;}
 
 .new-arrivals-block span.na-head{font:46px/46px avantgardegothicitcw01d;display:block; margin-bottom:34px;}
 .new-arrivals-block .na-subhead{font:20px/26px avantgardegothicitcw01m;letter-spacing:0.6px;text-transform:capitalize;color:#555;}
-
+.gridWrap .productCont.prodduct_horizontal {
+  width: 66.3%;
+  margin-right: 0;
+}
 @media only screen and (max-width : 1400px) {
 	.productCont .caption{font-size:17px;line-height:24px; padding:40px 0;min-height:36px;}
 	.shopnow-btn{font:17px/24px ITCAvantGardeProMd;}
