@@ -862,7 +862,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 <!-- heading -->
                 <div class="clear-fix"></div>
                 <!--Video Block-->
-
+				<div class="hidden">
                 <!-- featuresList -->
 
                 <?php
@@ -890,7 +890,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 ?>
                 <?php if ($designFeatureVideoName != '' || count($newdfimages) > 1) {
                     ?>
-                    <div class="h2" style="margin-bottom:30px;">Design features</div>
+                    <!--<div class="h2" style="margin-bottom:30px;">Design features</div>-->
                     <!-- heading -->
                     <?php
                     if ($designFeatureVideoName != '') {
@@ -905,7 +905,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     <?php } ?>
 
 
-                    <ul class="featureList">
+                    <ul class="featureList" style="display:none;">
                         <?php
                         $i = 0;
                         foreach ($newdfimages as $ndfimg) {
@@ -979,10 +979,134 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                     </div>
                 <?php } ?>
-
+				</div>
                 <!-- featureDesign -->
 
+				<div class="bottom-container">
+					<div class="col-first">
+						<div rel="carbon 6" class="fabric_story_block" style="display: block!important;"><h2 class="newbg">Featured Fabric</h2>
+							<!-- heading -->
+							<div class="fabDetail">
+								<h2>AURUM<sup>&reg;</sup></h2>
+								<ul>
+								<li><span><img src="http://staging.dev//skin/frontend/new-yogasmoga/yogasmoga-theme/images/aurum-icons/streach-icon.png" alt=""></span>HIGH QUALITY<br>STRETCH</li>
+								<li><span><img src="http://staging.dev//skin/frontend/new-yogasmoga/yogasmoga-theme/images/aurum-icons/moisture-icon.png" alt=""></span>ADVANCED MOISTURE<br>MANAGEMENT</li>
+								<li><span><img src="http://staging.dev//skin/frontend/new-yogasmoga/yogasmoga-theme/images/aurum-icons/accuracy-icon.png" alt=""></span>COLOR<br>ACCURACY</li>
+								<li><span><img src="http://staging.dev//skin/frontend/new-yogasmoga/yogasmoga-theme/images/aurum-icons/eco-friendly-icon.png" alt=""></span>ECO-FRIENDLY<br>DYEING</li>
+								</ul>
+								<p>Exclusively Ours. AURUM<sup>&reg;</sup> is a technical blend of Supplex<sup>&reg;</sup> and Lycra<sup>&reg;</sup>. Our competitors use a form of Nylon that is inferior and falls apart quickly. Supplex<sup>&reg;</sup> fibers are technically far superior, giving you the soft feel and breathability of cotton with the performance benefits of advanced fiber technology. AURUM<sup>&reg;</sup> fabric is manufactured in the USA.</p>
+							</div>
+						</div>
+						<img class="img_rnd" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/rnd-in-ca.png" alt="rnd"/>   
+					</div>
+					<div class="col-second">
+						<div class="h2">Size &amp; Fit</div>
+						<div class="fitDetail font11">
+							<div class="video-box f-left">
+							<ul class="bullets">
+							<li>Low impact support</li>
+							<li>Sexy, strappy racer back</li>
+							</ul>                           
 
+
+							<div class="sm-size-chart">
+							<a class="size-res" name=""></a>
+							<div class="tble">                
+							<table width="100%" cellspacing="0" cellpadding="0" border="0">
+							<tbody style="width: 100%; display: table;"><tr>
+							<td><span class="size">Size Chart</span><br><a href="#" class="how-to-measure com-a-prd-links">How to Measure</a></td>
+							<td>2<br>XXS</td>
+							<td>4<br>XS</td>
+							<td>6<br>S</td>
+							<td>8<br>M</td>
+							<td>10<br>L</td>
+							<td>12<br>XL</td>
+							</tr>
+							<tr>
+							<td>Bust</td>
+							<td>30"</td>
+							<td>32"</td>
+							<td>34"</td>
+							<td>36"</td>
+							<td>38"</td>
+							<td>40"</td>
+							</tr>
+							<tr>
+							<td>Waist</td>
+							<td>22.5"</td>
+							<td>24.5"</td>
+							<td>26.5"</td>
+							<td>28.5"</td>
+							<td>30.5"</td>
+							<td>32.5"</td>
+							</tr>
+							<tr>
+							<td>Hips</td>
+							<td>33"</td>
+							<td>35"</td>
+							<td>37"</td>
+							<td>39"</td>
+							<td>41"</td>
+							<td>43"</td>
+							</tr>
+							</tbody></table>
+							</div>                            </div>
+							</div>
+
+							<div class="clear-fix"></div>
+							<div class="lg-size-chart">
+								<a name="sizechart" class="size-res-org"></a>
+								<div class="tble">                
+									<table width="100%" cellspacing="0" cellpadding="0" border="0">
+									<tbody style="width: 100%; display: table;">
+										<tr>
+											<td><span class="size">Size Chart</span><br><a href="#" class="how-to-measure com-a-prd-links">How to Measure</a></td>
+											<td>2<br>XXS</td>
+											<td>4<br>XS</td>
+											<td>6<br>S</td>
+											<td>8<br>M</td>
+											<td>10<br>L</td>
+											<td>12<br>XL</td>
+										</tr>
+										<tr>
+											<td>Bust</td>
+											<td>30"</td>
+											<td>32"</td>
+											<td>34"</td>
+											<td>36"</td>
+											<td>38"</td>
+											<td>40"</td>
+										</tr>
+										<tr>
+											<td>Waist</td>
+											<td>22.5"</td>
+											<td>24.5"</td>
+											<td>26.5"</td>
+											<td>28.5"</td>
+											<td>30.5"</td>
+											<td>32.5"</td>
+										</tr>
+										<tr>
+											<td>Hips</td>
+											<td>33"</td>
+											<td>35"</td>
+											<td>37"</td>
+											<td>39"</td>
+											<td>41"</td>
+											<td>43"</td>
+										</tr>
+									</tbody>
+									</table>
+								</div>                        
+							</div>
+							<div class="vlink-cont">
+								<p class="block-link"><a class="com-a-prd-links" href="#">
+								Watch how to measure</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div><!--bottom-container-->
             </div>
             <!-- ProductImageContainer -->
 
@@ -1048,11 +1172,11 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                                     <!-- selectColor -->
                                     <div class="box-seprtr">
-                                        <div class="blck-head-sml"><span>Step 1:</span> choose your color</div>
+                                        <!--<div class="blck-head-sml"><span>Step 1:</span> choose your color</div>-->
                                         <div class="blck-head-sml">
                                             <table class="selectedcolor">
                                                 <tr>
-                                                    <td><span>color:</span></td>
+                                                    <td><span>Color:</span></td>
                                                     <td class="selectedcolortext" itemprop="color"></td>
                                                 </tr>
                                             </table>
@@ -1125,11 +1249,11 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                         echo "style='display:none;'";
                                     } ?>>
                                         <div class="box-seprtr">
-                                            <div class="blck-head-sml"><span>Step 2:</span> Select a size
+                                            <div class="blck-head-sml"><span>Size:</span>
                                                 <table class="f-right">
                                                     <tr>
                                                         <?php if ($sizeChartBlockId != "") { ?>
-                                                            <td class="sizechartlink">
+                                                            <td class="sizechartlink" style="display:none;">
                                                                 <div style="position: relative;">
                                                                     <p class="block-link"
                                                                        style="margin: 0px; float: right;"><a
@@ -1206,7 +1330,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                         echo "style='display:none;'";
                                     } ?>>
                                             <span class="blck-head-sml"
-                                                  style="display:block; margin-bottom: 10px;"><span>Step 3:</span> Select a length</span>
+                                                  style="display:block; margin-bottom: 10px;"><span>Length:</span></span>
                                         <?php
                                         foreach ($arProductAllLength as $length) {
                                             ?>
@@ -1221,8 +1345,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                                     <!-- fittable -->
                                     <div class="box-seprtr dnone">
-                                        <div class="blck-head-sml"><span class="qty">Step 3:</span>
-                                            Qty
+                                        <div class="blck-head-sml"><span class="qty">Qty:</span>
+                                            
                                             <?php if ($howDoesItFitBlockId != "") { ?>
                                                 <table class="fittable">
                                                     <tr>
@@ -1261,7 +1385,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                                     <!-- addToBag -->
                                     <div class="box-seprtr last" style="padding-top:10px;">
-                                        <div class="blck-head-sml"><span class="qty">Step 3</span></div>
+                                        <!--<div class="blck-head-sml"><span class="qty">Step 3</span></div>-->
 
                                         <!-- addToBagBtn -->
                                         <div id="orderitem" class="addtobag spbutton"
@@ -1297,7 +1421,31 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                             ?>" /> -->
                                         </div>
                                         <!-- producterrorcontainer -->
+										<div class="wishlist-nw">
+                               
+											<?php
+											$_in_wishlist = false;
+											foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item) {
+												if ($productId == $_wishlist_item->getProduct()->getId()) {
+													$_in_wishlist = true;
+													break;
+												}
+											}
 
+											if (($customerId = Mage::getSingleton('customer/session')->getCustomerId()) && ($_in_wishlist)) {
+												?>
+												<p class="" style="position: absolute; bottom: 0; margin-bottom: 4px; right:0;">
+													<a
+														onlick="javascript:void(0)">Added To Wish List</a></p>
+												<?php
+											} else {
+												?>
+
+												<p class="wishlist-link"><a class="" id="<?php echo $productId; ?>"
+																			href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productId; ?>/">Add
+														To Wish List</a></p>
+											<?php } ?>
+										</div>
                                         <p class="c-align freeshipptext"><em>Free and fast shipping to US and
                                                 Canada</em></p>
 
@@ -1336,13 +1484,11 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                             </div>
                         </td>
                         <td width="50%" class="prd-add-to-wish">
+							<?php if(false){ // hiding wishlist?>
                             <div class="wishlist">
                                 <div class="social-ico">
                                     <a id="twitter" href="javascript:void(0);" class="twtrIcon"
-                                       title="YOGASMOGA - Twitter"></a>
-                                    <!--<a  href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
-                                    <!-- Please call pinit.js only once per page -->
-                                    <!--<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>-->
+                                       title="YOGASMOGA - Twitter"></a>                                   
                                     <a id="pinterest" href="javascript:void(0);" class="pinIcon"
                                        title="YOGASMOGA - Pinterest"></a>
                                     <a id="facebook" href="javascript:void(0);" class="fbIcon"
@@ -1371,17 +1517,18 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                             TO WISH LIST +</a></p>
                                 <?php } ?>
                             </div>
+							<?php } // hiding wishlist end ?>
                         </td>
                     </tr>
                 </table>
                 <!-- SMOGIBUCKS -->
                 <!-- Desicription -->
                 <div class="box-desc-dvdr">
-                    <p style="margin-bottom: 45px;"><span
+                    <!--<p style="margin-bottom: 45px;"><span
                             style="font-family:gothambold; font-size:12px;">Need help?</span> <a
                             class="chatlink" href="javascript:void($zopim.livechat.window.show())">chat with
                             us</a><span class="online"><span></span>Online now</span>
-                    </p>
+                    </p>-->
 
                     <div class="h2" style="margin-bottom:20px;">Product description</div>
                 <!--Change description by Fahim Khan start code-->
@@ -1519,6 +1666,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                 <!-- completeLook -->
                 <!-- prodSimilar -->
+				<div class="hidden">
                 <!-- fabricDetails  fabric story-->
                 <?php
                 if ($fabricStoryBlockId != '') {
@@ -1538,6 +1686,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 ?>
 
                 <!-- fabricDetails -->
+				</div>
             </div>
             <!-- ProductDetailContainer -->
         </div>
@@ -2070,13 +2219,13 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                                         </div>
                                         <div class="box-seprtr last in-bl vert-bottom">
-                                            <div class="blck-head-sml no-display"><span>Step 1:</span> choose your
+                                            <!--<div class="blck-head-sml no-display"><span>Step 1:</span> choose your
                                                 color
-                                            </div>
+                                            </div>-->
                                             <div class="blck-head-sml">
                                                 <table class="selectedcolor">
                                                     <tr>
-                                                        <td>COLOR:</td>
+                                                        <td><span>Color:</span></td>
                                                         <td class="selectedcolortext" itemprop="color"></td>
                                                     </tr>
                                                 </table>
