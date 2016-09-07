@@ -2908,6 +2908,10 @@ ul.main-menu > li{padding:0 10px;}
 /*--- header modify end ---*/
 
 /*########### new designs ###########*/
+.ctglink li.sub-head {
+    border-top: 1px solid #fff;
+  
+}
 .productCont{ margin: 0 0.3% 0;/*margin: 0 4px 0;*/}
 .gridWrap .productCont {width: 32.8%;/*width:508px!important;*/}
 .productCont .prod-img{background:#f3f3f3;/* height:508px!important;*/}

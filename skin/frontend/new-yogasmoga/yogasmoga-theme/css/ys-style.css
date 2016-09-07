@@ -2870,11 +2870,11 @@ box-sizing: border-box;
 color: #555;
 height: 50px;
 line-height: 50px;
-margin-top: 0;/*margin-right:34px;*/margin-right:2.5%;
+margin-top: 0;/*margin-right:34px;*/margin-right:40px;
 position: absolute;right:0;
 text-align: left;
 }
-#div_cats .chk-cats{text-transform:uppercase;}
+#div_cats .chk-cats{text-transform:uppercase;margin-right:0;}
 #div_cats .chk-cats:hover,#div_cats .chk-cats.chk-cats-selected{background:#555; color:#fff;}
 #div_cats.fixed_top {left:auto!important;}
 
@@ -3322,6 +3322,10 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a.current,
 .menu-bar ul li a:hover{color:#ae8536;}
 .leftnav a.current{color:#ae8536!important;}
+.productCont .caption a:hover{color:#ae8536;}
+table.productimagecontainer table.tdbigimagecontainer td img {
+  cursor: default!important;
+}
 /******************  header new changes start   ***********/
 
 #search_input {
