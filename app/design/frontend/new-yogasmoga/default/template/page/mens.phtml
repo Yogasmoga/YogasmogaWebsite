@@ -219,7 +219,7 @@
 
             <!-- ProductListing Part -->
 
-            <div class="new_arrivals gridWrap">
+            <div class="new_arrivals gridWrap new-arrivals-block" style="width:100%; margin:0 auto; position: relative;background:#fff!important;">
 
             <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('men_landing_category_ids')->getValue('plain')), true);
 
@@ -230,6 +230,14 @@
                 $newcollection = Mage::getModel('catalog/category')->load($categoryId_newcollection);
                 $newarrivals = Mage::getModel('catalog/category')->load($categoryId_quickview);
             ?>
+			 <div class="shop-col-desc">
+					<h2>
+                    <span class="na-head">MID SUMMER NEW ARRIVALS</span>
+                    <!--<span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New
+                            Collection</a></span>-->
+					</h2>		
+					<p class="na-subhead">Activewear for 80f up&mdash;our AURUM&reg; tops for wicking moisture,<br/>so you can stay on track longer.</p>
+                </div>
 
             <?php
                 //retrieve color
@@ -294,9 +302,9 @@
                         </a>
                     </div>
                     <div class="caption">
-                        <div class="caption">
+                        
                             <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?> &mdash; $$<?php echo $_product['price']; ?></span>
-                        </div>
+                       
                     </div>
                  </div>
 
@@ -310,9 +318,9 @@
                         </a>
                     </div>
                     <div class="caption">
-                        <div class="caption">
+                      
                             <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?> &mdash; $$<?php echo $_product['price']; ?></span>
-                        </div>
+                     
                     </div>
                  </div>
 

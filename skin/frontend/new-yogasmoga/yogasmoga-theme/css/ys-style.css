@@ -402,7 +402,7 @@ li.new-arrivals-desc{text-align: left; font-family: ITCAvantGardeProMd; margin-t
 li.new-arrivals-desc .block-head{margin-bottom: 5px; font-size: 18px;}
 li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 35px;}
 li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProMd; font-size: 14px;}
-.shop-col-desc{text-transform: uppercase; padding: 0 0 0 3.90625%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.shop-col-desc{text-transform: uppercase; padding: 0 0 0 0%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
 .shop-col-desc span.na-head{font-family: ITCAvantGardeProMd; font-size: 36px; color: #555; margin-right: 20px;}
 .shop-col-desc span.na-link a{font-family: gothambook; font-size: 11px; line-height: 15px; border-bottom: #c03 1px solid; padding-bottom: 3px; vertical-align: super;}
 
@@ -3326,6 +3326,17 @@ div.side-menu-bar ul li a:hover,
 table.productimagecontainer table.tdbigimagecontainer td img {
   cursor: default!important;
 }
+div.new-arrivals-block {
+  float: left;
+  padding: 2.8% 40px 19px;
+  box-sizing: border-box;
+}
+
+.productCont.prodduct_horizontal {
+  width: 66.3%;
+  margin-right: 0;
+}
+	.new-arrivals-block .na-subhead{  padding-bottom: 2.5%;}
 /******************  header new changes start   ***********/
 
 #search_input {
