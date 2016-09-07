@@ -146,8 +146,8 @@ jQuery(document).ready(function ($) {
         var xyzinterval = function () {
             if (current >= $imgs.length)
                 current = 0;
-            $imgs.eq(current++).css("visibility", "visible").fadeIn(function () {
-                $(this).delay(500).fadeOut(xyzinterval);
+            $imgs.eq(current++).css("visibility", "visible").hide(function () {
+                $(this).delay(500).show(xyzinterval);
             });
 			/*$imgs.eq(current++).css("visibility", "visible").show('0',function () {
                 $(this).delay(500).hide();
