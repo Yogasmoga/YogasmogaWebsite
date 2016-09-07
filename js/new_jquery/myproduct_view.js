@@ -35,7 +35,7 @@ jQuery(document).ready(function($){
     });
     clearEmptycaptions();
     
-    $("table.tdbigimagecontainer img").live("click", function(){
+   /* $("table.tdbigimagecontainer img").live("click", function(){
         //console.log($(".zoom-prd-det").height());
         if(!_canzoomimages)
             return;
@@ -50,7 +50,7 @@ jQuery(document).ready(function($){
             jQuery("div.wrapper").addClass('overflowhidden');
             jQuery("div.wrapper, div.ui-widget-overlay").height(_winH + _headerHeight);
         }, 300);
-    });
+    });*/
     setTimeout(function(){ InitializeZoomPopup(); }, 500);
     
     $(window).resize(function(){

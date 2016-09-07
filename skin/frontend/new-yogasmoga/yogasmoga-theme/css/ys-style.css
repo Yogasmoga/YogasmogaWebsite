@@ -37,7 +37,7 @@ body{-webkit-font-smoothing: subpixel-antialiased; /*opacity:0;*/}
 /*#pagecontainer{min-width: 960px;}*/
 .header-container { background-color: #fff; position: fixed; top: 0px; height : 69px; width : 100%; z-index: 10003; min-width: 1007px;}
 /*.header{ padding:0 60px 0 30px;}*/
-.header{ padding:0 40px 0 13px;}  
+.header{ padding:0 40px 0 40px;}  
 
 .header .logo {margin:0;}
 ul.main-menu{margin-left: 0;}
@@ -402,7 +402,7 @@ li.new-arrivals-desc{text-align: left; font-family: ITCAvantGardeProMd; margin-t
 li.new-arrivals-desc .block-head{margin-bottom: 5px; font-size: 18px;}
 li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 35px;}
 li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProMd; font-size: 14px;}
-.shop-col-desc{text-transform: uppercase; padding: 0 0 0 3.90625%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.shop-col-desc{text-transform: uppercase; padding: 0 0 0 0%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
 .shop-col-desc span.na-head{font-family: ITCAvantGardeProMd; font-size: 36px; color: #555; margin-right: 20px;}
 .shop-col-desc span.na-link a{font-family: gothambook; font-size: 11px; line-height: 15px; border-bottom: #c03 1px solid; padding-bottom: 3px; vertical-align: super;}
 
@@ -2298,7 +2298,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .contentSlider h3,
     .contentSlider h3 > .aurum,.contentSlider .h3,
     .contentSlider .h3 > .aurum{font-size: 50px; line-height: 53px;}
-    .header{ padding:0 60px 0 30px;}
+    .header{ padding:0 40px 0 40px;}
 
     .avant_demi_bold{
                 font:50px/53px AvantGardeGothicITCW01D;
@@ -2870,11 +2870,12 @@ box-sizing: border-box;
 color: #555;
 height: 50px;
 line-height: 50px;
-margin-top: 0;/*margin-right:34px;*/margin-right:2.5%;
+margin-top: 0;/*margin-right:34px;*/margin-right:40px;
 position: absolute;right:0;
 text-align: left;
 }
 #div_cats .chk-cats{text-transform:uppercase;}
+#div_cats .chk-cats:last-child{text-transform:uppercase;margin-right:0;}
 #div_cats .chk-cats:hover,#div_cats .chk-cats.chk-cats-selected{background:#555; color:#fff;}
 #div_cats.fixed_top {left:auto!important;}
 
@@ -3322,6 +3323,18 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a.current,
 .menu-bar ul li a:hover{color:#ae8536;}
 .leftnav a.current{color:#ae8536!important;}
+.productCont .caption a:hover{color:#ae8536;}
+table.productimagecontainer table.tdbigimagecontainer td img {
+  cursor: default!important;
+}
+div.new-arrivals-block {
+  float: left;
+  padding: 2.8% 40px 19px;
+  box-sizing: border-box;
+}
+
+
+	.new-arrivals-block .na-subhead{  padding-bottom: 2.5%;}
 /******************  header new changes start   ***********/
 
 #search_input {

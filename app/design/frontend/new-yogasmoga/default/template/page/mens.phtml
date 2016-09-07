@@ -124,8 +124,10 @@
             <div class="flexslider showloading cat-slide" id="bucket1_slider">
                 <ul class="slides">
                    
-                        <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/mens-page/huron-hoodie-bannerv2.jpg' ?>'); background-size: cover;cursor:pointer;">
-                                  
+                        <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php echo $this->getSkinUrl('images/mens-white-background.jpg') ?>'); background-size: cover;cursor:pointer;">
+                        
+
+					
                             <div class="mens-slider">
                              
 
@@ -154,11 +156,14 @@
 								</div>
 
                         </div>
+						<div style="width:66.75%;height:100%;position:absolute;right:0;top:0;bottom:0; background: url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/mens-page/huron-hoodie-bannerv3.jpg' ?>'); background-size: cover;cursor:pointer;">
+						
+						</div>
                                
                             </div>
 
                         </li>
-                        <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/men-engineered.jpg' ?>'); background-size: cover;cursor:pointer;">
+                       <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php echo $this->getSkinUrl('images/mens-white-background.jpg') ?>'); background-size: cover;cursor:pointer;">
                             <div class="mens-slider">
                              
 
@@ -169,11 +174,13 @@
 												City Run<br/>
 										</div>
 										<div class="hero-slide-bodytext">
-											<p>dolorem ipsum quita Neque porro quisquam est qui
-											 dolor sit amet, consectetur, adipisci velit.</p>
+											<p>Neque porro quisquam est qui
+											dolorem ipsum quita dolor sit amet,
+											consectetur, adipisci velit.</p>
 
-											<p>justo metus tempor mi, donec facilisis, orci vel congue
-											gravida, ac	volutpat lacus enim sed justo.</p>
+											<p>donec facilisis, orci vel congue
+											gravida, justo metus tempor mi, ac
+											volutpat lacus enim sed justo.</p>
 
 											<p>Click on the product to shop</p>
 											 
@@ -185,6 +192,9 @@
 									</div>
 
                         </div>
+						<div style="width:66.75%;height:100%;position:absolute;right:0;top:0;bottom:0; background: url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/mens-page/huron-hoodie-bannerv3.jpg' ?>'); background-size: cover;cursor:pointer;">
+						
+						</div>
                                
                             </div>
 
@@ -209,22 +219,18 @@
 
             <!-- ProductListing Part -->
 
+            <div class="new_arrivals gridWrap new-arrivals-block" style="width:100%; margin:0 auto; position: relative;background:#fff!important;">
 
-            <div class="new-arrivals-block" style="width:100%; margin:0 auto; position: relative;background:#fff!important;">
-
-                <div class="white-box"></div>
-
-
-                <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('men_landing_category_ids')->getValue('plain')), true);
+            <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('men_landing_category_ids')->getValue('plain')), true);
 
                 $categoryId_newcollection = $categoryIds['new_collection'];
                 $categoryId_quickview = $categoryIds['quick_view'];
-                ?>
-                <?php
+            ?>
+            <?php
                 $newcollection = Mage::getModel('catalog/category')->load($categoryId_newcollection);
                 $newarrivals = Mage::getModel('catalog/category')->load($categoryId_quickview);
-                ?>
-                <div class="shop-col-desc">
+            ?>
+			 <div class="shop-col-desc">
 					<h2>
                     <span class="na-head">MID SUMMER NEW ARRIVALS</span>
                     <!--<span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New
@@ -233,7 +239,7 @@
 					<p class="na-subhead">Activewear for 80f up&mdash;our AURUM&reg; tops for wicking moisture,<br/>so you can stay on track longer.</p>
                 </div>
 
-                <?php
+            <?php
                 //retrieve color
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
                 $readresult = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
@@ -263,13 +269,15 @@
                         if (strcasecmp($imgdata['type'], "grey background") == 0 && $imgdata['color'] != '' && $imgdata['quick_view_position'] != '') {
                             $grayimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
 
-//                $quickviewproducts[$imgdata['quick_view_position']]['position'] = $imgdata['quick_view_position'];
+//$quickviewproducts[$imgdata['quick_view_position']]['position'] = $imgdata['quick_view_position'];
                             $quickviewproducts[$imgdata['quick_view_position']]['id'] = $_product->getId();
                             $quickviewproducts[$imgdata['quick_view_position']]['name'] = $_product->getName();
                             $quickviewproducts[$imgdata['quick_view_position']]['color'] = $imgdata['color'];
                             $quickviewproducts[$imgdata['quick_view_position']]['price'] = round($_product->getPrice(), 2);
                             $quickviewproducts[$imgdata['quick_view_position']]['imgurl'] = (string)$grayimgage;
-                            if (count($quickviewproducts) == 5) break;
+                            $quickviewproducts[$imgdata['quick_view_position']]['url'] = $_product->getProductUrl();
+
+                            if (count($quickviewproducts) == 8) break;
                         }
 
                     }
@@ -278,234 +286,54 @@
 
                 ksort($quickviewproducts);
 
-
                 ?>
-                <ul id="show5" class="new-arrivals">
-                    <?php
-                    $i = 0;
-                    foreach ($quickviewproducts as $_product) {
+                <?php
+                $i = 1;
+                foreach ($quickviewproducts as $_product) {
+                if($i === 5){
+                ?>
 
+                <!-- size filters -->
+                <div class="productCont prodduct_horizontal">
+                <!-- size filters -->
+                    <div class="prod-img">
+                        <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
+                        <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
+						 <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
+                        </a>
+                    </div>
+                    <div class="caption">
+                        
+                            <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?> &mdash; $$<?php echo $_product['price']; ?></span>
+                       
+                    </div>
+                 </div>
 
-                        ?>
-                        <li>
+                 <?php }else{ ?>
+                <!-- size filters -->
+                <div class="productCont">
+                <!-- size filters -->
+                    <div class="prod-img">
+                        <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
+                        <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
+						 <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
+                        </a>
+                    </div>
+                    <div class="caption">
+                      
+                            <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?> &mdash; $$<?php echo $_product['price']; ?></span>
+                     
+                    </div>
+                 </div>
 
-                            <a id="<?php echo $_product['id'] . '-' . ++$i; ?>"
-                               color="<?php echo $_product['color']; ?>" class="quick-view"
-                               href="javascript:void(0);<?php //echo $_product->getProductUrl()
-                               ?>"><img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
+                <?php } ?>
 
-                                <div class="prd-details">
-                                    <span class="prd-name gothambd"><?php echo $_product['name']; ?></span>
-                                    <span
-                                        class="product-colors gothambk"><?php echo $clrinfo[$_product['color']]; ?></span>
-                                    <span class="prd-price gothambk">$<?php echo $_product['price']; ?></span>
-                                </div>
-                            </a>
-
-
-                            <?php /*   <div class="prd-details">
-                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
-                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
-                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
-                                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
-                                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
-                                    </a>
-                                </div> */ ?>
-                        </li>
-                        <?php
-                    }
-
-                    ?>
-                </ul>
-
-                <ul id="show4" class="new-arrivals">
-                    <?php
-                    $i = 0;
-                    foreach ($quickviewproducts as $_product) {
-
-                        if ($i == 4) break;
-                        $i++;
-                        ?>
-                        <li>
-
-                            <a id="<?php echo $_product['id'] . '-' . $i; ?>" class="quick-view"
-                               href="javascript:void(0);<?php //echo $_product->getProductUrl()
-                               ?>"><img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
-
-                                <div class="prd-details">
-                                    <span class="prd-name gothambd"><?php echo $_product['name']; ?></span>
-                                    <span
-                                        class="product-colors gothambk"><?php echo $clrinfo[$_product['color']]; ?></span>
-                                    <span class="prd-price gothambk">$<?php echo $_product['price']; ?></span>
-                                </div>
-                            </a>
-
-
-                            <?php /*   <div class="prd-details">
-                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
-                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
-                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
-                                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
-                                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
-                                    </a>
-                                </div> */ ?>
-                        </li>
-                        <?php
-                    }
-
-                    ?>
-                </ul>
+                <?php $i++; } ?>
             </div>
-            <div style="display:none;">
-                <div id="productdetailpopup">
-                </div>
-            </div>
+
             <!-- ProductListing Part -->
             <div class="clear-fix"></div>
             <!-- Feature Product -->
-            <?php
-            $featurecategoryId = $categoryIds['feature_product'];
-            $featurecategory = Mage::getSingleton('catalog/category')->load($featurecategoryId);
-            $featurecategoryUrl = Mage::getBaseUrl() . $featurecategory->getUrlPath();
-            ?>
-            <div class="wl-feat-prd men-section">
-                <section class="wl-left-block f-left">
-				 <div class="bottom-left-block mens-left-blockbg">
-                        <!-- <img src="<?php echo $this->getSkinUrl('images/women/left-block-vid-img2.jpg') ?>" alt="" /> -->
-                        <img
-                            src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/san-fran-featured.jpg"
-                            alt=""/>
-                    </div>
-                    <div class="top-left-block">
-                        <div class="block-content">
-                            <div class="cursive-text h4">YOGASMOGA<br/>
-                                wants to bring authenticity<br/>
-                                back to the culture of yoga
-                                <!--The feeling of this shirt is like butter. Super soft and cozy for those cooler days.-->
-                            </div>
-                            <span class="b-heading top-b-heading">BUSINESS INSIDER</span>
-                        </div>
-                    </div>
-                   
-                </section>
-                <section class="wl-right-block f-right">
-                    <!-- <img src="<?php echo $this->getSkinUrl('images/women/feat-prd-main-img2.jpg') ?>" alt="" /> -->
-                    <img
-                        src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/san-fran-tee-featured-product.jpg"
-                        alt=""/>
-
-                    <div class="block-content contentSlider">
-                        <div class="text-content-table">
-                            <div class="text-content">
-
-                                <span class="b-heading bottom-b-heading">FEATURED PRODUCT</span>
-
-                                <div class="white h3">SAN FRAN TEE</div>
-                                <!-- <h4 class="main-img-text">THE DOON LONG SLEEVE TEE<br/>IN<span> KOURA 24</span></h4> -->
-                                <a href="<?php echo $this->getBaseUrl() . 'men/tops/tees/san-fran-tee?color=220'; ?>"
-                                   class="shopnow-btn">SHOP NOW</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <div class="clear-fix"></div>
-            </div>
-            <!-- Feature Product -->
-            <!-- Color Story Product -->
-            <!-- Color Story -->
-            <?php
-            $colorstorycategoryId = $categoryIds['color_story'];
-            $colorstorycategory = Mage::getSingleton('catalog/category')->load($colorstorycategoryId);
-            $colorstorycategoryUrl = Mage::getBaseUrl() . $colorstorycategory->getUrlPath();
-            ?>
-            <div class="wl-color-story-prd  men-section">
-
-                <section class="wl-cs-right-block f-right">
-				 <img
-                            src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/oria-fabric.jpg"
-                            alt=""/>
-                    <!--<div class="top-right-block iconspartone" id="iconspartone" style="background:none">
-                        <div class="row">
-                                <span>
-                                    <!-- <img src="<?php /*echo $this->getSkinUrl('images/new-elements/pilling.png') ?>" alt="" /> 
-                                    <img src="<?php echo $this->getSkinUrl('images/icons/nano-tech.png') ?>" alt=""/>
-                                    <span class="iconstxt">NANOTECHNOLOGY</span>
-                                </span>
-                                <span>
-                                    <!-- <img src="<?php echo $this->getSkinUrl('images/new-elements/moisture.png') ?>" alt="" />
-                                    <img src="<?php echo $this->getSkinUrl('images/icons/moisture.png') ?>" alt=""/>
-                                    <span class="iconstxt">ADVANCED MOISTURE MANAGEMENT</span>
-                                </span>
-                        </div>
-                        <div class="row">
-                                <span>
-                                    <!-- <img src="<?php echo $this->getSkinUrl('images/new-elements/stretch.png') ?>" alt="" /> 
-                                    <img src="<?php echo $this->getSkinUrl('images/icons/breath.png') ?>" alt=""/>
-                                    <span class="iconstxt">HIGH BREATHABILITY</span>
-                                </span>
-                                <span>
-                                   <!-- <img src="<?php echo $this->getSkinUrl('images/new-elements/usa.png') ?>" alt="" /> 
-                                    <img src="<?php echo $this->getSkinUrl('images/icons/light-weight.png') */?>" alt=""/>
-                                    <span class="iconstxt">LIGHT WEIGHT FABRIC</span>
-                                </span>
-                        </div>
-                    </div>-->
-                    <!-- partTwo -->
-                    <div class="bottom-right-block" style="background: #3e3e3e !important">
-                        <div class="block-content">
-                            <div class="text-content">
-
-                                <div class="cursive-text white h4">ORIA<sup style="font-family: icon;">TM</sup><br/>
-									a reversible fabric knit <br/>
-									from 2 fibers with space interlocked <br/>
-									between for advanced moisture <br/>
-									management. We just love it.</div>
-                              <!--  <span class="b-heading top-grey-b-heading white">ROSE APOSTOLAKOS, DESIGNER</span>-->
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="wl-cs-left-block f-left">
-                    <!--                     <img src="-->
-                    <?php //echo $this->getSkinUrl('images/women/cs-main-img2.jpg') ?><!--" alt="" /> -->
-                    <!--        <img src="-->
-                    <?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?><!--wysiwyg/new-design-images/mens-page/mens-feature-fabric-image-2.jpg" alt="" />-->
-                    <img
-                        src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/oria-featured-fabric.jpg"
-                        alt=""/>
-
-                    <div class="block-content">
-                        <div class="text-content-table">
-                            <div class="text-content">
-                                <span class="b-heading bottom-b-heading">FEATURED FABRIC</span>
-                                <div class="main-img-text h4">ORIA<sup style="vertical-align: text-top; font-size: 18px; line-height: 32px;">TM</sup></div>
-                                <a href="<?php echo $this->getBaseUrl() . 'men/tops/huron-hoodie?color=76'; ?>"
-                                   class="shopnow-btn">shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <div class="clear-fix"></div>
-            </div>
-
-            <div class="html-video-popup" id="vid-blck-1">
-                <video style="width:100%;" controls>
-                    <source
-                        src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'design_features_video/BROOKLYN_JACKET_ok.mp4'; ?>"
-                        type="video/mp4">
-                </video>
-            </div>
-            <div class="html-video-popup" id="vid-blck-2">
-                <video style="width:100%;" controls>
-                    <source
-                        src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'design_features_video/BROOKLYN_JACKET_ok.mp4'; ?>"
-                        type="video/mp4">
-                </video>
-            </div>
-            <div class="vid-popup-overlay"></div>
-
-
-            <!-- Color Story -->
 
         </div>
         <?php echo $this->getChildHtml('footer'); ?>
