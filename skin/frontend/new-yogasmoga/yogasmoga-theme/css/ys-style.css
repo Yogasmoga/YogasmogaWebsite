@@ -2874,7 +2874,8 @@ margin-top: 0;/*margin-right:34px;*/margin-right:40px;
 position: absolute;right:0;
 text-align: left;
 }
-#div_cats .chk-cats{text-transform:uppercase;margin-right:0;}
+#div_cats .chk-cats{text-transform:uppercase;}
+#div_cats .chk-cats:last-child{text-transform:uppercase;margin-right:0;}
 #div_cats .chk-cats:hover,#div_cats .chk-cats.chk-cats-selected{background:#555; color:#fff;}
 #div_cats.fixed_top {left:auto!important;}
 
