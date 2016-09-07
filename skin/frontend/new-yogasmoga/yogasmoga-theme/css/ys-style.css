@@ -37,7 +37,7 @@ body{-webkit-font-smoothing: subpixel-antialiased; /*opacity:0;*/}
 /*#pagecontainer{min-width: 960px;}*/
 .header-container { background-color: #fff; position: fixed; top: 0px; height : 69px; width : 100%; z-index: 10003; min-width: 1007px;}
 /*.header{ padding:0 60px 0 30px;}*/
-.header{ padding:0 40px 0 13px;}  
+.header{ padding:0 40px 0 40px;}  
 
 .header .logo {margin:0;}
 ul.main-menu{margin-left: 0;}
@@ -2298,7 +2298,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .contentSlider h3,
     .contentSlider h3 > .aurum,.contentSlider .h3,
     .contentSlider .h3 > .aurum{font-size: 50px; line-height: 53px;}
-    .header{ padding:0 60px 0 30px;}
+    .header{ padding:0 40px 0 40px;}
 
     .avant_demi_bold{
                 font:50px/53px AvantGardeGothicITCW01D;
