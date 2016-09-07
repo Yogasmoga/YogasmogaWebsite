@@ -3333,7 +3333,24 @@ div.new-arrivals-block {
   box-sizing: border-box;
 }
 
-
+ul.site-map > li a {
+  color: #555;
+  font-family: ITCAvantGardeProBk;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+.site-map .gothambd {
+  font: 12px AvantGardeGothicITCW01D !important;
+}
+div.copy-privacy-likes ul li {
+  color: #555;
+  display: inline-block;
+  font-size: 11px;
+  vertical-align: top;
+  font-family: ITCAvantGardeProBk;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
 	.new-arrivals-block .na-subhead{  padding-bottom: 2.5%;}
 /******************  header new changes start   ***********/
 
