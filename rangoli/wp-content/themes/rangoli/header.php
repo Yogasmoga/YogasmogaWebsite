@@ -475,8 +475,10 @@ if(!is_user_logged_in()){
                         <li><a href="/women/tops"> Tops</a>
                             <ul><li><a href="/women/tops/bras">Bras</a></li>
                                 <li><a href="/women/tops/tanks">Tanks</a></li>
-                                <li><a href="/women/tops/tees">TEES</a></li>
-                                <li><a href="/women/tops/sweaters">SWEATERS</a></li>
+                                <!--<li><a href="/women/tops/tees">TEES</a></li>-->
+                                <li><a href="/women/tops/short-sleeve">Short Sleeve</a></li>
+                                <!--<li><a href="/women/tops/sweaters">SWEATERS</a></li>-->
+                                <li><a href="/women/tops/long-sleeve">Long Sleeve</a></li>
                                 <li><a href="/women/tops/jackets">Jackets & Hoodies</a></li>
                                 <!--<li><a href="/women/tops/rangoli">Rangoli</a></li>-->
                             </ul>
@@ -486,7 +488,7 @@ if(!is_user_logged_in()){
                                 <li><a href="/women/bottoms/shorts">Shorts</a></li>
                                 <li><a href="/women/bottoms/crops">Crops</a></li>
                                 <li><a href="/women/bottoms/leggings">Leggings</a></li>
-                                <!--<li><a href="/women/bottoms/pants">Pants</a></li>-->
+                                <li><a href="/women/bottoms/pants">Pants</a></li>
                               <!--  <li><a href="/women/bottoms/rangoli">Rangoli</a></li>-->
                             </ul>
                         </li>
