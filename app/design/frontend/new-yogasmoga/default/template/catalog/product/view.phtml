@@ -1523,14 +1523,15 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 </table>
                 <!-- SMOGIBUCKS -->
                 <!-- Desicription -->
-                <div class="box-desc-dvdr">
-                    <!--<p style="margin-bottom: 45px;"><span
+                <div class="box-desc-dvdr hidden">
+						
+					<p style="margin-bottom: 45px;"><span
                             style="font-family:gothambold; font-size:12px;">Need help?</span> <a
                             class="chatlink" href="javascript:void($zopim.livechat.window.show())">chat with
                             us</a><span class="online"><span></span>Online now</span>
-                    </p>-->
+                    </p>
 
-                    <div class="h2" style="margin-bottom:20px;">Product description</div>
+                    <div class="h2">Product description</div>
                 <!--Change description by Fahim Khan start code-->
 
                      <?php
@@ -1582,6 +1583,33 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 <?php } } } ?>
                 <!--Change description by Fahim Khan end code-->
             </div>
+			<!--accordion box below shopping bag-->
+			<div class="box-desc-dvdr accord">
+				<div class="accord-item active prod-desc-item">
+					<div class="h2">Product description<span>&nbsp;</span></div>
+					<div class="accord-desc">
+						Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content.
+					</div>
+				</div>				
+				<div class="accord-item prod-det-item">
+					<div class="h2">Product Details<span>&nbsp;</span></div>
+					<div class="accord-desc">
+						Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content.
+					</div>
+				</div>
+				<div class="accord-item prod-rel-item">
+					<div class="h2">Related Product<span>&nbsp;</span></div>
+					<div class="accord-desc">
+						<img class="related-img" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/related-placeholder.png'/>
+						<p class="prod-name">Legging Name</p>
+						<p class="prod-col-prc">Legging Color&mdash;$130</p>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="box-desc-dvdr hidden">
                 <!--Description -->
 
                 <!-- completeLook -->
@@ -1635,9 +1663,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                 }
                                 if ($upsellsimplecount == 1) {
                                     ?>
-                                    <div class="newbg h2" style="margin-top:35px; margin-bottom: 27px;">complete the
+                                    <div class="newbg h2 hidden" style="margin-top:35px; margin-bottom: 27px;">complete the
                                         look</div>
-                                    <ul class="similarProdList clear">
+                                    <ul class="similarProdList clear hidden">
                                 <?php } ?>
                                 <li>
                                     <a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"
@@ -1658,6 +1686,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     if ($upsellsimplecount >= 1) {
                         ?>
                         </ul>
+						
                     <?php } ?>
                     <?php
                 }

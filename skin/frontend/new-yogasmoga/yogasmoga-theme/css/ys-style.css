@@ -3451,7 +3451,7 @@ table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 .bottom-container .col-second{padding-left:3%;}
 .bottom-container .fabric_story_block{display:block!important;}
 .product-details h2, .product-details .h2{border-top:0 none;font:16px/16px avantgardegothicitcw01m;padding:0;color:#555;}
-.bottom-container .col-first h2,.bottom-container .col-first .h2{margin-bottom:28px;}
+.bottom-container .col-first h2,.bottom-container .col-first .h2{margin-bottom:28px;text-transform:capitalize;}
 .bottom-container .col-second h2,.bottom-container .col-second .h2{letter-spacing:0.27px; margin-bottom:37px;}
 .bottom-container .img_rnd{max-width:90px;margin-top:28px;}
 .fabDetail { color: #555; font: 14px/18px avantgardegothicitcw01m;}
@@ -3486,3 +3486,20 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .wishlist-nw{width:100%;float:left;margin-top:10px;}
 .wishlist-nw .wishlist-link a{width:100%; height:42px;background:#dddddd;color:#777;font-size:16px; font-family:AvantGardeGothicMedium; text-align:center; line-height:42px;padding:0;
 	display:block;border:0 none;}
+#productdetails .freeshipptext{font:14px/20px avantgardegothicitcw01m;}
+#productdetails .freeshipptext em{font-style:normal;}
+.product_description_block{font:14px/18px avantgardegothicitcw01m;}
+.box-desc-dvdr .h2{margin-bottom:18px;text-transform:capitalize;}
+.accord .accord-item{border-top:2px solid #ccc; padding-top:18px;}
+.accord .accord-item .h2 span{float:right;}
+.accord .accord-item .h2 span:before{content:"+"}
+.accord .accord-item .accord-desc{display:none;padding-bottom:10px;}
+.accord .accord-item.active .accord-desc{display:block;}
+.accord .accord-item.active .h2 span:before{content:"\2013"}
+
+.prod-rel-item .related-img{width:100%; height:auto;margin-bottom:20px;}
+.prod-rel-item p{margin-bottom:0;}
+.prod-rel-item .prod-name{font:16px/22px itcavantgardepromd; color:#555;}
+.prod-rel-item .prod-col-prc{font:14px/22px itcavantgardepromd; color:#555;}
+.btm-divider{clear:both;}
+
