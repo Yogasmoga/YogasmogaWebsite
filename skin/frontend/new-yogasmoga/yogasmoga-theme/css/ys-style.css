@@ -3421,7 +3421,7 @@ ul.main-menu2 li ul.sub-menu li a {
 
 /*----product details----*/
 .breadcrumb, .breadcrumb a { color: #555; font: 12px/12px ITCAvantGardeProbd;}
-div.product-details .wdth65{width:calc(100% - 402px)}
+div.product-details .wdth65{width:calc(100% - 401px)}
 .product-details .block-head{margin-bottom:24px!important;}
 .product-details table.productimagecontainer{position:relative;}
 .product-details table.productimagecontainer table.smallimagecontiner{}
