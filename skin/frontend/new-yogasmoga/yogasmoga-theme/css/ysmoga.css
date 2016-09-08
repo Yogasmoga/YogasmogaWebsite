@@ -2916,7 +2916,7 @@ ul.main-menu > li{padding:0 10px;}
 .gridWrap .productCont {width: 32.8%;/*width:508px!important;*/}
 .productCont .prod-img{background:#f3f3f3;/* height:508px!important;*/}
 .gridWrap .productCont:nth-child(3n){margin-right:0;}
-.productCont .caption{font:20px/24px avantgardegothicitcw01m;text-transform:capitalize;margin:0; min-height:60px; padding:46px 0;}
+.productCont .caption{font:20px/24px avantgardegothicitcw01m;text-transform:capitalize;margin:0; min-height:60px; padding:46px 0;letter-spacing:0.5px;}
 .productCont .caption span{font:16px/24px avantgardegothicitcw01b;color:#555;}
 .bannerFluid .r-lign{text-align:center!important;} 
 .bannerFluid .l-lign{text-align:center!important;}
@@ -2955,6 +2955,24 @@ ul.main-menu > li{padding:0 10px;}
   letter-spacing: 1.1px;
 }
 .gridProdCubix .leftnav{border-top:1px solid #fff;}
+.gridProdCubix .leftnav .ctglink li.sub-head > a, .gridProdCubix .leftnav .ctglink li a.bld {
+  color: #555;
+  font-family: AvantGardeGothicITCW01D;font-size:11px; line-height:18px;letter-spacing:0.5px;
+}
+.ctglink li.sub-head{font-family: AvantGardeGothicITCW01D!important;font-size:11px; line-height:18px;}
+.gridProdCubix .leftnav .ctglink li.sub-head > a, .gridProdCubix .leftnav .ctglink li a.bld{}
+.ctglink li, .ctglink li a {
+  font: 12px/18px ITCAvantGardeProBd;
+  text-transform: uppercase;
+}
+.gridProdCubix .leftnav .ctglink ul.subnav a {
+  font-family: avantgardegothicitcw01b;letter-spacing:0.5px;
+}
+.gridProdCubix .leftnav.gridProdCubix .leftnav .ctglink ul.subnav a {
+  font-family: ITCAvantGardeProMd
+}
+.gridProdCubix .leftnav .ctglink li a.bld:hover{color:#ae8536!important;}
+
 @media only screen and (max-width : 1400px) {
 	.productCont .caption{font-size:17px;line-height:24px; padding:40px 0;min-height:36px;}
 	.shopnow-btn{font:17px/24px ITCAvantGardeProMd;}

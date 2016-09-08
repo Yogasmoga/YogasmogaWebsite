@@ -3393,17 +3393,7 @@ ul.main-menu2 li ul.sub-menu li a {
 }
 /************* 2-sep*********/
 .productCont .prod-img img{max-width:100%;max-height:100%;}
-.gridProdCubix .leftnav .ctglink li.sub-head > a, .gridProdCubix .leftnav .ctglink li a.bld {
-  color: #555;
-  font-family: ITCAvantGardeProBd!important;
-}
-.ctglink li, .ctglink li a {
-  font: 12px/18px ITCAvantGardeProBd!important;
-  text-transform: uppercase;
-}
-.gridProdCubix .leftnav.gridProdCubix .leftnav .ctglink ul.subnav a {
-  font-family: ITCAvantGardeProMd!important;
-}
+
 .bannerFluid img{display:none;}
 .bannerFluid .bnrtxt.bnr.white{color:#555!important;}
 
@@ -3411,11 +3401,11 @@ ul.main-menu2 li ul.sub-menu li a {
 .bannerFluid .l-lign{text-align:center!important;}
 .bannerFluid{background:#fff!important;}
 /************* 2-sep*********/
-.chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:26px; height:26px; line-height:24px; vertical-align:middle; display:inline-block;
-	font-size:13px;}
+.chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:34px; height:26px; line-height:25px; vertical-align:middle; display:inline-block;
+	font-size:12px;}
 #div_cats .chk-cats:hover, #div_cats .chk-cats.chk-cats-selected,.chk-size-selected{background:#ae8536;}
-#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px;}
-#div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.43px;vertical-align:middle; display:inline-block;}
+#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px; padding-left:14px; padding-right:14px;}
+#div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; display:inline-block;}
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 
@@ -3464,7 +3454,7 @@ table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 .fitDetail .bullets{}
 .fitDetail .bullets li{font:14px/20px avantgardegothicitcw01m;color:#555;margin-left:13px;}
 .size.size,.fitDetail tr:first-child td,.fitDetail td{font:16px/16px avantgardegothicitcw01m;color:#555; letter-spacing:0.27px;}
-.fitDetail td:first-child{font:14px/39px avantgardegothicitcw01m;color:#555;letter-spacing:0.27px;text-transform:capitalize;padding:0;}
+.fitDetail td:first-child{font:14px/39px avantgardegothicitcw01m;color:#555;letter-spacing:0.23px;text-transform:capitalize;padding:0;}
 .fitDetail tr:first-child td{border-top:2px solid #cccccc;border-bottom:2px solid #cccccc;padding:26px 0;}
 .fitDetail td{border-bottom:2px solid #cccccc;border-right:0 none;padding:11px 0;}
 .fitDetail .video-box{width:100%;}
@@ -3500,7 +3490,7 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .accord .accord-item{border-top:2px solid #ccc; padding-top:18px;}
 .accord .accord-item .h2 span{float:right;}
 .accord .accord-item .h2 span:before{content:"+"}
-.accord .accord-item .accord-desc{display:none;padding-bottom:10px;}
+.accord .accord-item .accord-desc{display:none;padding-bottom:10px;font:14px/18px avantgardegothicitcw01m;letter-spacing:0.54px;}
 .accord .accord-item.active .accord-desc{display:block;}
 .accord .accord-item.active .h2 span:before{content:"\2013"}
 
