@@ -3476,6 +3476,7 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div{min-height:40px; min-width:40px;background:#f4f4f4;box-sizing:border-box;font:15px/40px gothamBook;
 	border:0 none;}
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.dvselectedsize{background:#ae8536;}
+.gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.dvselectedsize.outofstock{background:#f4f4f4;color:#555;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div { height: 43px;border:2px solid transparent; padding:4px;}
 .gry-box table.productdetailtable div#colorcontainer div table{width:40px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(1) {
@@ -3484,6 +3485,10 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
   border-left: 40px solid transparent !important; border-top-width: 40px; margin: 0 0 0 -42px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected{border:2px solid #ae8536;padding:4px;}  
 .gry-box table.productdetailtable div.addtobag{height:42px;}
+#includeoption > span {display: block;font: 13px/13px avantgardegothicbold;letter-spacing: 0.5px;text-transform: capitalize;margin-bottom:10px;}
+#includeoption div {background: #f4f4f4 none repeat scroll 0 0;border: 0 none;box-sizing: border-box; cursor: pointer;
+  display: inline-block;height: 40px;line-height: 40px;margin: 0 4px 0 0;padding: 0;text-align: center;width: 40px;}
+#includeoption div.selected { background: #ae8536 none repeat scroll 0 0; color: #fff;} 
 #productdetails .social-ico,#productdetails .earnbucks{display:none;}
 .wishlist-nw{width:100%;float:left;margin-top:10px;}
 .wishlist-nw .wishlist-link a{width:100%; height:42px;background:#dddddd;color:#777;font-size:16px; font-family:AvantGardeGothicMedium; text-align:center; line-height:42px;padding:0;
