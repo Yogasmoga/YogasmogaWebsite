@@ -3393,17 +3393,7 @@ ul.main-menu2 li ul.sub-menu li a {
 }
 /************* 2-sep*********/
 .productCont .prod-img img{max-width:100%;max-height:100%;}
-.gridProdCubix .leftnav .ctglink li.sub-head > a, .gridProdCubix .leftnav .ctglink li a.bld {
-  color: #555;
-  font-family: ITCAvantGardeProBd!important;
-}
-.ctglink li, .ctglink li a {
-  font: 12px/18px ITCAvantGardeProBd!important;
-  text-transform: uppercase;
-}
-.gridProdCubix .leftnav.gridProdCubix .leftnav .ctglink ul.subnav a {
-  font-family: ITCAvantGardeProMd!important;
-}
+
 .bannerFluid img{display:none;}
 .bannerFluid .bnrtxt.bnr.white{color:#555!important;}
 
