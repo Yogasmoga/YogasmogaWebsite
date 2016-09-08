@@ -388,3 +388,26 @@ function scrollingContentLink() {
     }
 
 };
+jQuery(document).ready(function ($) {	
+	$('.accord .h2').click(function(){
+		//$('.accord-desc').slideUp();
+		//$('.accord-desc').parent('.accord-item').removeClass('active');
+		
+		
+		if($(this).parent('.accord-item').hasClass('active')){
+			$(this).next('.accord-desc').slideUp(function(){
+				$(this).parent('.accord-item').removeClass('active');
+			});
+			//
+		}
+		else{
+			$('.accord-desc').slideUp();
+			$('.accord-desc').parent('.accord-item').removeClass('active');
+			$(this).next('.accord-desc').slideDown();
+			$(this).parent('.accord-item').addClass('active');	
+		}
+	});
+	
+	
+	
+});
