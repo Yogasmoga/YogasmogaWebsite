@@ -260,6 +260,7 @@
 
                     $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
                     $grayimgage = '';
+                    $frontimgage = '';
                     foreach ($_gallery as $_image) {
                         $imgdata = json_decode(trim($_image->getLabel()), true);
                         if ($imgdata == NULL) {
@@ -276,6 +277,19 @@
                             $quickviewproducts[$imgdata['quick_view_position']]['price'] = round($_product->getPrice(), 2);
                             $quickviewproducts[$imgdata['quick_view_position']]['imgurl'] = (string)$grayimgage;
                             $quickviewproducts[$imgdata['quick_view_position']]['url'] = $_product->getProductUrl();
+
+                                foreach ($_gallery as $_imageFR) {
+                                    $imgdataFR = json_decode(trim($_imageFR->getLabel()), true);
+                                    if ($imgdataFR == NULL) {
+                                        continue;
+                                    }
+
+                                    if($imgdataFR['type'] == 'product image' && $imgdataFR['color'] == $imgdata['color'] && $frontimgage == '')
+                                    {
+                                        $frontimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_imageFR->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
+                                        $quickviewproducts[$imgdata['quick_view_position']]['frontimgurl'] = (string)$frontimgage;
+                                    }
+                                }
 
                             if (count($quickviewproducts) == 8) break;
                         }
@@ -299,7 +313,7 @@
                     <div class="prod-img">
                         <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
                         <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
-						 <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
+						 <img class="prd-image" src="<?php echo $_product['frontimgurl']; ?>"/>
                         </a>
                     </div>
                     <div class="caption">
@@ -316,7 +330,7 @@
                     <div class="prod-img">
                         <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
                         <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
-						 <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
+						 <img class="prd-image" src="<?php echo $_product['frontimgurl']; ?>"/>
                         </a>
                     </div>
                     <div class="caption">

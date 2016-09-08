@@ -2875,7 +2875,7 @@ position: absolute;right:0;
 text-align: left;
 }
 #div_cats .chk-cats{text-transform:uppercase;}
-#div_cats .chk-cats:last-child{text-transform:uppercase;margin-right:0;}
+#div_cats .chk-cats:last-child{margin-right:0;}
 #div_cats .chk-cats:hover,#div_cats .chk-cats.chk-cats-selected{background:#555; color:#fff;}
 #div_cats.fixed_top {left:auto!important;}
 
@@ -3333,7 +3333,7 @@ div.new-arrivals-block {
   box-sizing: border-box;
 }
 
-ul.site-map > li a {
+ul.site-map > li a,.smogi-love ,ul.site-map > li,div.copy-privacy-likes ul li a{
   color: #555;
   font-family: ITCAvantGardeProBk;
   font-size: 12px;
@@ -3401,7 +3401,7 @@ ul.main-menu2 li ul.sub-menu li a {
   font: 12px/18px ITCAvantGardeProBd!important;
   text-transform: uppercase;
 }
-.gridProdCubix .leftnav .ctglink ul.subnav a {
+.gridProdCubix .leftnav.gridProdCubix .leftnav .ctglink ul.subnav a {
   font-family: ITCAvantGardeProMd!important;
 }
 .bannerFluid img{display:none;}
