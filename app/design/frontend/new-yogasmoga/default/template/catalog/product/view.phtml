@@ -1142,11 +1142,14 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
 
                  ?>
+				 <p class="prod-pager"><span class="prev">Previous Product</span><span class="next">Next Product</span></p>
                  <?php if($imageName):?>
-                <div class="style-image"><img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
+                <div class="style-image">				
+				<img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
                 <?php endif; ?>
                 <!-- DetailsinGreyArea -->
                 <div class="gry-box">
+				
                     <div id="absproductoptions">
                         <!--<div class="disableproptions"></div>-->
                         <table class="productdetailtable normalproductdetail">
