@@ -3501,8 +3501,9 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .prod-rel-item p{margin-bottom:0;}
 .prod-rel-item .prod-name{font:16px/22px itcavantgardepromd; color:#555;}
 .prod-rel-item .prod-col-prc{font:14px/22px itcavantgardepromd; color:#555;}
-.prod-pager{}
-.prod-pager span{}
+.prod-pager{position:relative;}
+.prod-pager-links{position:absolute;top:0;left:0;width:100%;}
+.prod-pager span{color:#ae8536;font-family:itcavantgardepromd; letter-spacing:0.27px;text-transform:uppercase;}
 .prod-pager .prev{float:left;}
 .prod-pager .next{float:right;}
 .btm-divider{clear:both;}
