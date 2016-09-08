@@ -3490,7 +3490,7 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .accord .accord-item{border-top:2px solid #ccc; padding-top:18px;}
 .accord .accord-item .h2 span{float:right;}
 .accord .accord-item .h2 span:before{content:"+"}
-.accord .accord-item .accord-desc{display:none;padding-bottom:10px;}
+.accord .accord-item .accord-desc{display:none;padding-bottom:10px;font:14px/18px avantgardegothicitcw01m;letter-spacing:0.54px;}
 .accord .accord-item.active .accord-desc{display:block;}
 .accord .accord-item.active .h2 span:before{content:"\2013"}
 
