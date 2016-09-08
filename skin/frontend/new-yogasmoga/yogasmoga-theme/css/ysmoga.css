@@ -2945,6 +2945,9 @@ ul.main-menu > li{padding:0 10px;}
   width: 66.3%;
   margin-right: 0;
 }
+.flexslider.cat-slide {
+  background: #ae8536 none repeat scroll 0 0;
+}
 .gridProdCubix .leftnav{border-top:1px solid #fff;}
 @media only screen and (max-width : 1400px) {
 	.productCont .caption{font-size:17px;line-height:24px; padding:40px 0;min-height:36px;}
