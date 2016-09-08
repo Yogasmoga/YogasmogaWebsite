@@ -3454,7 +3454,7 @@ table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 .fitDetail .bullets{}
 .fitDetail .bullets li{font:14px/20px avantgardegothicitcw01m;color:#555;margin-left:13px;}
 .size.size,.fitDetail tr:first-child td,.fitDetail td{font:16px/16px avantgardegothicitcw01m;color:#555; letter-spacing:0.27px;}
-.fitDetail td:first-child{font:14px/39px avantgardegothicitcw01m;color:#555;letter-spacing:0.27px;text-transform:capitalize;padding:0;}
+.fitDetail td:first-child{font:14px/39px avantgardegothicitcw01m;color:#555;letter-spacing:0.23px;text-transform:capitalize;padding:0;}
 .fitDetail tr:first-child td{border-top:2px solid #cccccc;border-bottom:2px solid #cccccc;padding:26px 0;}
 .fitDetail td{border-bottom:2px solid #cccccc;border-right:0 none;padding:11px 0;}
 .fitDetail .video-box{width:100%;}
