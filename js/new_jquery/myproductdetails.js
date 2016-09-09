@@ -263,12 +263,12 @@ function changeFabric(current_color) {
 //        var current_color = jQuery(".selectedcolortext").html().toLowerCase();
 
         var found = false;
+        jQuery(".fabric_story_block").hide();
         jQuery(".fabric_story_block").each(function () {
 
             var fabric_color = jQuery(this).attr('rel').toLowerCase();
 
             if (current_color.toLowerCase() == fabric_color) {
-                jQuery(".fabric_story_block").hide();
                 jQuery(this).show();
                 jQuery(".mainfabric").hide();
                 found = true;
