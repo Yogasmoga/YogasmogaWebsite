@@ -2818,6 +2818,7 @@ table.smallimagecontiner td.selectedimage{
     text-align: left;
     width: 100%;
     color: #555;
+	padding-top:6px;
 }
 
 #div_sizes.fixed_top,#div_cats.fixed_top {
@@ -2845,7 +2846,7 @@ table.smallimagecontiner td.selectedimage{
     display: inline-block;
     height: 20px;
     font: 12px/16px GothamBook;
-    margin: 0 7px 0 0;
+    margin: 0 5px 0 0;
     min-width: 20px;
     padding: 1px 4px;
     text-align: center;
@@ -2873,6 +2874,7 @@ line-height: 50px;
 margin-top: 0;/*margin-right:34px;*/margin-right:40px;
 position: absolute;right:0;
 text-align: left;
+padding-top:6px;
 }
 #div_cats .chk-cats{text-transform:uppercase;}
 #div_cats .chk-cats:last-child{margin-right:0;}
