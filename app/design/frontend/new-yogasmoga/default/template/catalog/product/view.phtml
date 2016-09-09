@@ -984,21 +984,26 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
 				<div class="bottom-container">
 					<div class="col-first">
-						<div rel="carbon 6" class="fabric_story_block" style="display: block!important;"><h2 class="newbg">Featured Fabric</h2>
-							<!-- heading -->
-							<div class="fabDetail">
-								<h2>AURUM<sup>&reg;</sup></h2>
-								<ul>
-								<li><span><img src="http://staging.yogasmoga.com//skin/frontend/new-yogasmoga/yogasmoga-theme/images/aurum-icons/streach-icon.png" alt=""></span>HIGH QUALITY<br>STRETCH</li>
-								<li><span><img src="http://staging.yogasmoga.com//skin/frontend/new-yogasmoga/yogasmoga-theme/images/aurum-icons/moisture-icon.png" alt=""></span>ADVANCED MOISTURE<br>MANAGEMENT</li>
-								<li><span><img src="http://staging.yogasmoga.com//skin/frontend/new-yogasmoga/yogasmoga-theme/images/aurum-icons/accuracy-icon.png" alt=""></span>COLOR<br>ACCURACY</li>
-								<li><span><img src="http://staging.yogasmoga.com//skin/frontend/new-yogasmoga/yogasmoga-theme/images/aurum-icons/eco-friendly-icon.png" alt=""></span>ECO-FRIENDLY<br>DYEING</li>
-								</ul>
-								<p>Exclusively Ours. AURUM<sup>&reg;</sup> is a technical blend of Supplex<sup>&reg;</sup> and Lycra<sup>&reg;</sup>. Our competitors use a form of Nylon that is inferior and falls apart quickly. Supplex<sup>&reg;</sup> fibers are technically far superior, giving you the soft feel and breathability of cotton with the performance benefits of advanced fiber technology. AURUM<sup>&reg;</sup> fabric is manufactured in the USA.</p>
-							</div>
-						</div>
+                        <?php
+                        if($fabricStoryBlockId != '') {
+                            echo "<div class='mainfabric' rel='main'>";
+                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricStoryBlockId)->toHtml();
+                            echo "</div>";
+                        
+
+                            if ($fabric_changed) {
+
+                                foreach ($arFabricArray as $key => $value) {
+                                    echo "<div class='fabric_story_block' rel='$key'>";
+                                    echo $this->getLayout()->createBlock('cms/block')->setBlockId($value)->toHtml();
+                                    echo "</div>";
+                                }
+                            }
+                        }
+                        ?>
 						<img class="img_rnd" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/rnd-in-ca.png" alt="rnd"/>   
 					</div>
+
 					<div class="col-second">
 						<div class="h2">Size &amp; Fit</div>
 						<div class="fitDetail font11">
@@ -1007,97 +1012,12 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 							<li>Low impact support</li>
 							<li>Sexy, strappy racer back</li>
 							</ul>                           
-
-
-							<div class="sm-size-chart">
-							<a class="size-res" name=""></a>
-							<div class="tble">                
-							<table width="100%" cellspacing="0" cellpadding="0" border="0">
-							<tbody style="width: 100%; display: table;"><tr>
-							<td><span class="size">Size Chart</span><br><a href="#" class="how-to-measure com-a-prd-links">How to Measure</a></td>
-							<td>2<br>XXS</td>
-							<td>4<br>XS</td>
-							<td>6<br>S</td>
-							<td>8<br>M</td>
-							<td>10<br>L</td>
-							<td>12<br>XL</td>
-							</tr>
-							<tr>
-							<td>Bust</td>
-							<td>30"</td>
-							<td>32"</td>
-							<td>34"</td>
-							<td>36"</td>
-							<td>38"</td>
-							<td>40"</td>
-							</tr>
-							<tr>
-							<td>Waist</td>
-							<td>22.5"</td>
-							<td>24.5"</td>
-							<td>26.5"</td>
-							<td>28.5"</td>
-							<td>30.5"</td>
-							<td>32.5"</td>
-							</tr>
-							<tr>
-							<td>Hips</td>
-							<td>33"</td>
-							<td>35"</td>
-							<td>37"</td>
-							<td>39"</td>
-							<td>41"</td>
-							<td>43"</td>
-							</tr>
-							</tbody></table>
-							</div>                            </div>
 							</div>
 
 							<div class="clear-fix"></div>
 							<div class="lg-size-chart">
 								<a name="sizechart" class="size-res-org"></a>
-								<div class="tble">                
-									<table width="100%" cellspacing="0" cellpadding="0" border="0">
-									<tbody style="width: 100%; display: table;">
-										<tr>
-											<td><span class="size">Size Chart</span><br><a href="#" class="how-to-measure com-a-prd-links">How to Measure</a></td>
-											<td>2<br>XXS</td>
-											<td>4<br>XS</td>
-											<td>6<br>S</td>
-											<td>8<br>M</td>
-											<td>10<br>L</td>
-											<td>12<br>XL</td>
-										</tr>
-										<tr>
-											<td>Bust</td>
-											<td>30"</td>
-											<td>32"</td>
-											<td>34"</td>
-											<td>36"</td>
-											<td>38"</td>
-											<td>40"</td>
-										</tr>
-										<tr>
-											<td>Waist</td>
-											<td>22.5"</td>
-											<td>24.5"</td>
-											<td>26.5"</td>
-											<td>28.5"</td>
-											<td>30.5"</td>
-											<td>32.5"</td>
-										</tr>
-										<tr>
-											<td>Hips</td>
-											<td>33"</td>
-											<td>35"</td>
-											<td>37"</td>
-											<td>39"</td>
-											<td>41"</td>
-											<td>43"</td>
-										</tr>
-									</tbody>
-									</table>
-								</div>                        
+								<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizeChartBlockId)->toHtml(); ?>                        
 							</div>
 							<div class="vlink-cont">
 								<p class="block-link"><a class="com-a-prd-links" href="#">
@@ -1312,7 +1232,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                                             <div id="includeoption" <?php echo $includeoption; ?>
                                                  class="includeoptionmain">
-                                                INCLUDE BRA INSERT:
+                                                <span>INCLUDE BRA INSERT:</span>
                                                 <?php
                                                 foreach ($arProductAllOptions as $options) {
                                                     ?>
@@ -1526,99 +1446,19 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     </tr>
                 </table>
                 <!-- SMOGIBUCKS -->
-                <!-- Desicription -->
-                <div class="box-desc-dvdr hidden">
-						
-					<p style="margin-bottom: 45px;"><span
-                            style="font-family:gothambold; font-size:12px;">Need help?</span> <a
-                            class="chatlink" href="javascript:void($zopim.livechat.window.show())">chat with
-                            us</a><span class="online"><span></span>Online now</span>
-                    </p>
-
-                    <div class="h2">Product description</div>
-                <!--Change description by Fahim Khan start code-->
-
-                     <?php
-                if ($defaultProductDescription != '') {?>
-                    <div class='main-description' rel='main'>
-                                <?php //echo $defaultProductDescription; ?>
-                        <?php  if (strlen($defaultProductDescription) < 210) { ?>
-                                <div class="shortdesc"><?php echo $defaultProductDescription; ?> </div>
-                            <?php
-                            }
-                            else {
-                            $str = $defaultProductDescription;
-                            $firststr = substr($str, 0, 210);
-                            $secondstr = substr($str, 210, strlen($str));
-                            ?>
-                            <div class="shortdesc">
-                                <span><?php echo $firststr; ?></span>
-                                <span class="sec-desc"><?php echo $secondstr; ?></span>
-                                <span class="dot">...</span>
-                                    <p class="readmore" style="margin: 0; cursor:pointer;">
-                                     <span id="more">Read more</span><span id="less" class="dnone">Read less</span>
-                                    </p>
-                            </div>
-                        <?php } ?>
-                   </div>
-
-                    <?php if ($description_changed) {
-
-                        foreach ($arDescriptionArray as $key => $value) {?>
-                            <div class='product_description_block' rel='<?php echo $key ?>'>
-                                <?php  if (strlen($value) < 210) { ?>
-                                    <div class="shortdesc" itemprop="description"><?php echo $value; ?> </div>
-                                <?php
-                                }
-                                else {
-                                $str = $value;
-                                $firststr = substr($str, 0, 210);
-                                $secondstr = substr($str, 210, strlen($str));
-                                ?>
-                                <div class="shortdesc">
-                                    <span itemprop="description"><?php echo $firststr; ?></span><span class="sec-desc"><?php echo $secondstr; ?></span>
-                                    <span class="dot">...</span>
-                                        <p class="readmore" style="margin: 0; cursor:pointer;">
-                                         <span id="more">Read more</span><span id="less" class="dnone">Read less</span>
-                                        </p>
-                                </div>
-                                <?php } ?>
-                            </div>
-                <?php } } } ?>
-                <!--Change description by Fahim Khan end code-->
-            </div>
+                
 			<!--accordion box below shopping bag-->
 			<div class="box-desc-dvdr accord">
+                <?php if ($defaultProductDescription != '') { ?>
 				<div class="accord-item prod-desc-item">
 					<div class="h2">Product description<span>&nbsp;</span></div>
 					<div class="accord-desc">
-						Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content.
+                    <?php echo $defaultProductDescription; ?>
 					</div>
-				</div>				
-				<div class="accord-item prod-det-item">
-					<div class="h2">Product Details<span>&nbsp;</span></div>
-					<div class="accord-desc">
-						Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content. Lorem ipsum dummy content.
-					</div>
-				</div>
-				<div class="accord-item prod-rel-item active">
-					<div class="h2">Related Product<span>&nbsp;</span></div>
-					<div class="accord-desc">
-						<img class="related-img" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/related-placeholder.png'/>
-						<p class="prod-name">Legging Name</p>
-						<p class="prod-col-prc">Legging Color&mdash;$130</p>
-					</div>
-				</div>
-			</div>
-			
-			
-			
-			<div class="box-desc-dvdr hidden">
-                <!--Description -->
-
+				</div>	
+                <?php } ?>
                 <!-- completeLook -->
-                <!-- heading -->
-                <?php //echo $this->getChildHtml('upsell_products');
+                <?php 
                 $upsell_product = $_product->getUpSellProductCollection()->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter();
                 $count = count($upsell_product);
                 if ($count > 1) {
@@ -1635,7 +1475,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     //check if record is empty or not
                     $upsellsimplecount = 0;
                     foreach ($upsell_product as $upsell) {
-                        if ($upsellsimplecount == 2) break;
+                        if ($upsellsimplecount == 1) break;
                         $product = Mage::getModel('catalog/product')->load($upsell->getId());
                         $productType = $product->getTypeID();
                         if ($productType == 'simple') {
@@ -1656,7 +1496,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                     if (strcasecmp($imageLabelData['type'], "product image") == 0 && $imageLabelData['color'] == $product->getColor()) {
                                         $upsellsimplecount++;
                                         // $ftimage = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile());
-                                        $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(121, 181)->setQuality(90);
+                                        $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(251, 351)->setQuality(90);
                                         ?>
 
                                         <?php
@@ -1665,39 +1505,25 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
 
                                 }
-                                if ($upsellsimplecount == 1) {
-                                    ?>
-                                    <div class="newbg h2 hidden" style="margin-top:35px; margin-bottom: 27px;">complete the
-                                        look</div>
-                                    <ul class="similarProdList clear hidden">
-                                <?php } ?>
-                                <li>
-                                    <a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"
-                    <span><img nopin="nopin" alt="<?php echo $parentproduct->getName() ?>" title="<?php echo $parentproduct->getName() ?>"
-                               src="<?php echo $completelookimg; ?>"></span>
-                                <span><strong><?php echo $parentproduct->getName() ?></strong><?php echo $clrinfo[$product->getColor()] ?>
-                                    <br>$<?php echo
-                                    number_format((float)($parentproduct->getPrice()), 2, '.', ''); ?></span> </a>
-                                </li>
+                if ($upsellsimplecount == 1) {
+                ?>		
+				<div class="accord-item prod-rel-item active">
+					<div class="h2">Related Product<span>&nbsp;</span></div>
+					<div class="accord-desc">
+						<a href="<?php Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><img class="related-img" nopin="nopin" alt="<?php echo $parentproduct->getName() ?>" title="<?php echo $parentproduct->getName() ?>"
+                               src="<?php echo $completelookimg; ?>"/></a>
+						<p class="prod-name">
+                        <a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><?php echo $parentproduct->getName() ?></a></p>
+						<p class="prod-col-prc"><?php echo $clrinfo[$product->getColor()] ?>&mdash;$<?php echo
+                                    number_format((float)($parentproduct->getPrice()), 2, '.', ''); ?></p>
+					</div>
+				</div>
+                <?php } } } } } ?>
 
-                                <?php
-                            }
-                            ?>
-
-                            <?php
-                        }
-                    }
-                    if ($upsellsimplecount >= 1) {
-                        ?>
-                        </ul>
-						
-                    <?php } ?>
-                    <?php
-                }
-                ?>
-
-
-                <!-- completeLook -->
+			</div>
+			
+			
+		
                 <!-- prodSimilar -->
 				<div class="hidden">
                 <!-- fabricDetails  fabric story-->
