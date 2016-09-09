@@ -1229,10 +1229,11 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                             <?php if ($optionAvailable === 0) {
                                                 $includeoption = "style='display:none'";
                                             } ?>
-
+											<div class="bra-option">
+												  <span>INCLUDE BRA INSERT:</span>
                                             <div id="includeoption" <?php echo $includeoption; ?>
                                                  class="includeoptionmain">
-                                                <span>INCLUDE BRA INSERT:</span>
+                                              
                                                 <?php
                                                 foreach ($arProductAllOptions as $options) {
                                                     ?>
@@ -1245,6 +1246,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                                 ?>
 
                                             </div>
+											</div>
 
                                         </div>
                                     </div>
