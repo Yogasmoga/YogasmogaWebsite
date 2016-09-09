@@ -3482,7 +3482,7 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 #includeoption div.selected { background: #ae8536 none repeat scroll 0 0; color: #fff;} 
 #productdetails .social-ico,#productdetails .earnbucks{display:none;}
 .wishlist-nw{width:100%;float:left;margin-top:10px;}
-.wishlist-nw .wishlist-link a{width:100%; height:42px;background:#dddddd;color:#777;font-size:16px; font-family:AvantGardeGothicMedium; text-align:center; line-height:42px;padding:0;
+.wishlist-nw .wishlist-link,.wishlist-nw .wishlist-link a{width:100%; height:42px;background:#dddddd;color:#777;font-size:16px; font-family:AvantGardeGothicMedium; text-align:center; line-height:42px;padding:0;
 	display:block;border:0 none;}
 #productdetails .freeshipptext{font:14px/20px avantgardegothicitcw01m;}
 #productdetails .freeshipptext em{font-style:normal;}
