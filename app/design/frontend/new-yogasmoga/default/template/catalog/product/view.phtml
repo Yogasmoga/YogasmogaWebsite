@@ -1495,7 +1495,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                     if (strcasecmp($imageLabelData['type'], "product image") == 0 && $imageLabelData['color'] == $product->getColor()) {
                                         $upsellsimplecount++;
                                         // $ftimage = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile());
-                                        $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(251, 351)->setQuality(90);
+                                        $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(361, 361)->setQuality(90);
                                         ?>
 
                                         <?php
