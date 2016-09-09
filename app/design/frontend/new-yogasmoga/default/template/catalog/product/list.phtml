@@ -198,7 +198,7 @@ if($this->getRequest()->getParam('hidden')){
                     ?>
                     <a
                         href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName(); ?></a>
-                    <span style="color:#c03;"><?php echo $clrinfo[$simpleproductarr['color']]?> &mdash; $<?php echo round($simpleproductarr['price'], 2); ?></span>
+                    <span style="color:#c03;"><?php echo $clrinfo[$simpleproductarr['color']]?>&mdash;$<?php echo round($simpleproductarr['price'], 2); ?></span>
                     <span>was $<?php echo round($confProduct->getPrice(), 2); ?></span>
 
 
@@ -209,7 +209,7 @@ if($this->getRequest()->getParam('hidden')){
                     <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName(); ?></a>
 
 
-                    <span><?php echo $clrinfo[$simpleproductarr['color']]?> &mdash; $<?php echo round($confProduct->getPrice(), 2); ?></span>
+                    <span><?php echo $clrinfo[$simpleproductarr['color']]?>&mdash;$<?php echo round($confProduct->getPrice(), 2); ?></span>
                 <?php
                 }
                 ?>

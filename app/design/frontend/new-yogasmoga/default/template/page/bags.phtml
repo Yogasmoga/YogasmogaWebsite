@@ -394,10 +394,10 @@
 														$configurablePrice = round($confProduct->getPrice(), 2);
 														if($configurablePrice > $simplePrice){
 														?>
-														<span style="color:#c03;"><?php echo $clrinfo[$simpleproductarr['color']] ?> &mdash; $<?php echo round($product->getPrice(), 2); ?></span>
+														<span style="color:#c03;"><?php echo $clrinfo[$simpleproductarr['color']] ?>&mdash;$<?php echo round($product->getPrice(), 2); ?></span>
                                                         <span>was $<?php echo round($confProduct->getPrice(), 2); ?></span>
 														<?php } else{?>
-														<span><?php echo $clrinfo[$simpleproductarr['color']] ?> &mdash; $<?php echo round($confProduct->getPrice(), 2); ?></span>
+														<span><?php echo $clrinfo[$simpleproductarr['color']] ?>&mdash;$<?php echo round($confProduct->getPrice(), 2); ?></span>
 														<?php }?>
 														
                                                     </div>
