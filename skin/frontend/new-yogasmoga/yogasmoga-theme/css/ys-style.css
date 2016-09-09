@@ -3481,6 +3481,9 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 #includeoption div {background: #f4f4f4 none repeat scroll 0 0;border: 0 none;box-sizing: border-box; cursor: pointer;
   display: inline-block;height: 40px;line-height: 40px;margin: 0 4px 0 0;padding: 0;text-align: center;width: 40px;}
 #includeoption div.selected { background: #ae8536 none repeat scroll 0 0; color: #fff;} 
+.gry-box .selectedlength div{font:13px/40px avantgardegothicitcw01m; letter-spacing:1px;background:#f4f4f4; border:0 none; height:40px; padding:0 15px;}
+.gry-box .selectedlength div.selected{background:#ae8536;color:#fff; }
+/*.gry-box .selectedlength div.selected.outofstock{background:#555;color:#fff; }*/
 #productdetails .social-ico,#productdetails .earnbucks{display:none;}
 .wishlist-nw{width:100%;float:left;margin-top:10px;}
 .wishlist-nw .wishlist-link,.wishlist-nw .wishlist-link a{width:100%; height:42px;background:#dddddd;color:#777;font-size:16px; font-family:AvantGardeGothicMedium; text-align:center; line-height:42px;padding:0;
