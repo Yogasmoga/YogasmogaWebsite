@@ -3441,7 +3441,7 @@ table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 .bottom-container .col-first,.bottom-container .col-second{width:50%; float:left; box-sizing:border-box;}
 .bottom-container .col-first{padding-right:3%;}
 .bottom-container .col-second{padding-left:3%;}
-.bottom-container .fabric_story_block{display:block!important;}
+.bottom-container .fabric_story_block{display:block;}
 .product-details h2, .product-details .h2{border-top:0 none;font:16px/16px avantgardegothicitcw01m;padding:0;color:#555;}
 .bottom-container .col-first h2,.bottom-container .col-first .h2{margin-bottom:28px;text-transform:capitalize;}
 .bottom-container .col-second h2,.bottom-container .col-second .h2{letter-spacing:0.27px; margin-bottom:37px;}
@@ -3506,3 +3506,4 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .prod-pager span.disabled{color:#ccc; cursor:default;}
 .btm-divider{clear:both;}
 
+.blk-imp{display:block!important;}
