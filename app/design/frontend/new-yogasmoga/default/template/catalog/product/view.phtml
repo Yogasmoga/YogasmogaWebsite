@@ -1001,7 +1001,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                             }
                         }
                         ?>
-						<img class="img_rnd" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/rnd-in-ca.png" alt="rnd"/>   
+						<img class="img_rnd" src="<?php echo $this->getSkinUrl('images/CA.svg'); ?>" alt="rnd"/>
+						
 					</div>
 
 					<div class="col-second">
@@ -1229,10 +1230,9 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                             <?php if ($optionAvailable === 0) {
                                                 $includeoption = "style='display:none'";
                                             } ?>
-											<div class="bra-option">
-												  <span>INCLUDE BRA INSERT:</span>
-                                            <div id="includeoption" <?php echo $includeoption; ?>
-                                                 class="includeoptionmain">
+											<div class="bra-option"  <?php echo $includeoption; ?>>
+												  <span>Include Bra Insert:</span>
+                                            <div id="includeoption" class="includeoptionmain">
                                               
                                                 <?php
                                                 foreach ($arProductAllOptions as $options) {
