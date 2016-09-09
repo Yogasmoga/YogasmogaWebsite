@@ -124,7 +124,7 @@
             <div class="flexslider showloading cat-slide" id="bucket1_slider">
                 <ul class="slides">
 
-                    <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php echo $this->getSkinUrl('images/mens-white-background.jpg') ?>'); background-size: cover;cursor:pointer;">
+                    <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php/* echo $this->getSkinUrl('images/mens-white-background.png') */?>'); background-size: cover;cursor:pointer;">
 
 
 
@@ -163,7 +163,7 @@
                         </div>
 
                     </li>
-                    <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php echo $this->getSkinUrl('images/mens-white-background.jpg') ?>'); background-size: cover;cursor:pointer;">
+                    <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php/* echo $this->getSkinUrl('images/mens-white-background.png')*/ ?>'); background-size: cover;cursor:pointer;">
                         <div class="mens-slider">
 
 
@@ -178,7 +178,7 @@
                                             dolorem ipsum quita dolor sit amet,
                                             consectetur, adipisci velit.</p>
 
-                                        <p>donec facilisis, orci vel congue
+                                        <p>Donec facilisis, orci vel congue
                                             gravida, justo metus tempor mi, ac
                                             volutpat lacus enim sed justo.</p>
 
@@ -238,113 +238,115 @@
                     </h2>
                     <p class="na-subhead">Activewear for 80f up&mdash;our AURUM&reg; tops for wicking moisture,<br/>so you can stay on track longer.</p>
                 </div>
+                <div class="productContbox">
 
-                <?php
-                //retrieve color
-                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                $readresult = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
-                while ($row = $readresult->fetch()) {
-                    $clrinfo[$row['Value']] = $row['Attribute'];
-                }
-                //                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
-                //
-                //                        $categoryId = $categoryIds['new_arrivals'];
+                    <?php
+                    //retrieve color
+                    $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                    $readresult = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+                    while ($row = $readresult->fetch()) {
+                        $clrinfo[$row['Value']] = $row['Attribute'];
+                    }
+                    //                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
+                    //
+                    //                        $categoryId = $categoryIds['new_arrivals'];
 
-                //$newarrivals = Mage::getModel('catalog/category')->load($categoryId);
+                    //$newarrivals = Mage::getModel('catalog/category')->load($categoryId);
 
 
-                $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
-                $quickviewproducts = array();
+                    $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
+                    $quickviewproducts = array();
 
-                foreach ($productCollection as $_product) {
+                    foreach ($productCollection as $_product) {
 
-                    $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
-                    $grayimgage = '';
-                    $frontimgage = '';
-                    foreach ($_gallery as $_image) {
-                        $imgdata = json_decode(trim($_image->getLabel()), true);
-                        if ($imgdata == NULL) {
-                            continue;
-                        }
-
-                        if (strcasecmp($imgdata['type'], "grey background") == 0 && $imgdata['color'] != '' && $imgdata['quick_view_position'] != '') {
-                            $grayimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
-
-//$quickviewproducts[$imgdata['quick_view_position']]['position'] = $imgdata['quick_view_position'];
-                            $quickviewproducts[$imgdata['quick_view_position']]['id'] = $_product->getId();
-                            $quickviewproducts[$imgdata['quick_view_position']]['name'] = $_product->getName();
-                            $quickviewproducts[$imgdata['quick_view_position']]['color'] = $imgdata['color'];
-                            $quickviewproducts[$imgdata['quick_view_position']]['price'] = round($_product->getPrice(), 2);
-                            $quickviewproducts[$imgdata['quick_view_position']]['imgurl'] = (string)$grayimgage;
-                            $quickviewproducts[$imgdata['quick_view_position']]['url'] = $_product->getProductUrl();
-
-                            foreach ($_gallery as $_imageFR) {
-                                $imgdataFR = json_decode(trim($_imageFR->getLabel()), true);
-                                if ($imgdataFR == NULL) {
-                                    continue;
-                                }
-
-                                if($imgdataFR['type'] == 'product image' && $imgdataFR['color'] == $imgdata['color'] && $frontimgage == '')
-                                {
-                                    $frontimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_imageFR->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
-                                    $quickviewproducts[$imgdata['quick_view_position']]['frontimgurl'] = (string)$frontimgage;
-                                }
+                        $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                        $grayimgage = '';
+                        $frontimgage = '';
+                        foreach ($_gallery as $_image) {
+                            $imgdata = json_decode(trim($_image->getLabel()), true);
+                            if ($imgdata == NULL) {
+                                continue;
                             }
 
-                            if (count($quickviewproducts) == 8) break;
+                            if (strcasecmp($imgdata['type'], "grey background") == 0 && $imgdata['color'] != '' && $imgdata['quick_view_position'] != '') {
+                                $grayimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
+
+//$quickviewproducts[$imgdata['quick_view_position']]['position'] = $imgdata['quick_view_position'];
+                                $quickviewproducts[$imgdata['quick_view_position']]['id'] = $_product->getId();
+                                $quickviewproducts[$imgdata['quick_view_position']]['name'] = $_product->getName();
+                                $quickviewproducts[$imgdata['quick_view_position']]['color'] = $imgdata['color'];
+                                $quickviewproducts[$imgdata['quick_view_position']]['price'] = round($_product->getPrice(), 2);
+                                $quickviewproducts[$imgdata['quick_view_position']]['imgurl'] = (string)$grayimgage;
+                                $quickviewproducts[$imgdata['quick_view_position']]['url'] = $_product->getProductUrl();
+
+                                foreach ($_gallery as $_imageFR) {
+                                    $imgdataFR = json_decode(trim($_imageFR->getLabel()), true);
+                                    if ($imgdataFR == NULL) {
+                                        continue;
+                                    }
+
+                                    if($imgdataFR['type'] == 'product image' && $imgdataFR['color'] == $imgdata['color'] && $frontimgage == '')
+                                    {
+                                        $frontimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_imageFR->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
+                                        $quickviewproducts[$imgdata['quick_view_position']]['frontimgurl'] = (string)$frontimgage;
+                                    }
+                                }
+
+                                if (count($quickviewproducts) == 8) break;
+                            }
+
                         }
-
                     }
-                }
 
 
-                ksort($quickviewproducts);
+                    ksort($quickviewproducts);
 
-                ?>
-                <?php
-                $i = 1;
-                foreach ($quickviewproducts as $_product) {
-                    if($i === 5){
-                        ?>
+                    ?>
+                    <?php
+                    $i = 1;
+                    foreach ($quickviewproducts as $_product) {
+                        if($i === 5){
+                            ?>
 
-                        <!-- size filters -->
-                        <div class="productCont prodduct_horizontal">
                             <!-- size filters -->
-                            <div class="prod-img">
-                                <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
-                                    <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
-                                    <img class="prd-image" src="<?php echo $_product['frontimgurl']; ?>"/>
-                                </a>
+                            <div class="productCont prodduct_horizontal">
+                                <!-- size filters -->
+                                <div class="prod-img">
+                                    <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
+                                        <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
+                                        <img class="prd-image" src="<?php echo $_product['frontimgurl']; ?>"/>
+                                    </a>
+                                </div>
+                                <div class="caption">
+
+                                    <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?>&mdash;$<?php echo $_product['price']; ?></span>
+
+                                </div>
                             </div>
-                            <div class="caption">
 
-                                <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?> &mdash; $$<?php echo $_product['price']; ?></span>
-
-                            </div>
-                        </div>
-
-                    <?php }else{ ?>
-                        <!-- size filters -->
-                        <div class="productCont">
+                        <?php }else{ ?>
                             <!-- size filters -->
-                            <div class="prod-img">
-                                <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
-                                    <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
-                                    <img class="prd-image" src="<?php echo $_product['frontimgurl']; ?>"/>
-                                </a>
+                            <div class="productCont">
+                                <!-- size filters -->
+                                <div class="prod-img">
+                                    <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
+                                        <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
+                                        <img class="prd-image" src="<?php echo $_product['frontimgurl']; ?>"/>
+                                    </a>
+                                </div>
+                                <div class="caption">
+
+                                    <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?>&mdash;$<?php echo $_product['price']; ?></span>
+
+                                </div>
                             </div>
-                            <div class="caption">
 
-                                <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?> &mdash; $$<?php echo $_product['price']; ?></span>
+                        <?php } ?>
 
-                            </div>
-                        </div>
+                        <?php $i++; } ?>
 
-                    <?php } ?>
-
-                    <?php $i++; } ?>
+                </div>
             </div>
-
             <!-- ProductListing Part -->
             <div class="clear-fix"></div>
             <!-- Feature Product -->
