@@ -284,19 +284,19 @@ $_helper = $this->helper('catalog/output');
                                 if($isactive)
                                 {
                                     ?>
-                                    src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" palt="<?php echo $alt; ?>" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" onload="showme(this);" />
+                                    src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" palt="<?php echo $alt; ?>" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(534, 534)->setQuality(91); ?>" onload="showme(this);" />
                                 <?php
                                 }
                                 else if($isdefault)
                                 {
                                     ?>
-                                    src="" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" palt="<?php echo $alt; ?>" onload="showme(this);" />
+                                    src="" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(534, 534)->setQuality(91); ?>" palt="<?php echo $alt; ?>" onload="showme(this);" />
                                 <?php
                                 }
                                 else
                                 {
                                     ?>
-                                    src="" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" palt="<?php echo $alt; ?>"  onload="showme(this);" isloaded="0" />
+                                    src="" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(534, 534)->setQuality(91); ?>" palt="<?php echo $alt; ?>"  onload="showme(this);" isloaded="0" />
                                 <?php
                                 }
                                 ?>

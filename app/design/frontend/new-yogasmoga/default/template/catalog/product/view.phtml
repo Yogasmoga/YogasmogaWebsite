@@ -1001,18 +1001,16 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                             }
                         }
                         ?>
-						<img class="img_rnd" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/rnd-in-ca.png" alt="rnd"/>   
+						<img class="img_rnd" src="<?php echo $this->getSkinUrl('images/CA.svg'); ?>" alt="rnd"/>
+						
 					</div>
 
 					<div class="col-second">
 						<div class="h2">Size &amp; Fit</div>
 						<div class="fitDetail font11">
 							<div class="video-box f-left">
-							<ul class="bullets">
-							<li>Low impact support</li>
-							<li>Sexy, strappy racer back</li>
-							</ul>                           
-							</div>
+                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howDoesItFitBlockId)->toHtml(); ?>                         
+                            </div>
 
 							<div class="clear-fix"></div>
 							<div class="lg-size-chart">
@@ -1227,12 +1225,11 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                             </div>
 
                                             <?php if ($optionAvailable === 0) {
-                                                $includeoption = "style='display:none'";
+                                                $includeoption = "style='display:none;margin-top:5px'";
                                             } ?>
-											<div class="bra-option">
-												  <span>INCLUDE BRA INSERT:</span>
-                                            <div id="includeoption" <?php echo $includeoption; ?>
-                                                 class="includeoptionmain">
+											<div class="bra-option"  <?php echo $includeoption; ?>>
+												  <span>Include Bra Insert:</span>
+                                            <div id="includeoption" class="includeoptionmain">
                                               
                                                 <?php
                                                 foreach ($arProductAllOptions as $options) {
@@ -1360,7 +1357,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
 											if (($customerId = Mage::getSingleton('customer/session')->getCustomerId()) && ($_in_wishlist)) {
 												?>
-												<p class="" style="position: absolute; bottom: 0; margin-bottom: 4px; right:0;">
+												<p class="wishlist-link" style="color:#ae8536;">
 													<a
 														onlick="javascript:void(0)">Added To Wish List</a></p>
 												<?php
@@ -1498,7 +1495,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                     if (strcasecmp($imageLabelData['type'], "product image") == 0 && $imageLabelData['color'] == $product->getColor()) {
                                         $upsellsimplecount++;
                                         // $ftimage = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile());
-                                        $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(251, 351)->setQuality(90);
+                                        $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(361, 361)->setQuality(90);
                                         ?>
 
                                         <?php
@@ -2261,7 +2258,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                 data = eval('(' + data + ')');
                                 var status = data.status;
                                 if (status == "success") {
-                                    jQuery(wishlist).text("ADDED TO WISH LIST").css("color", "#D90D3D");
+                                    jQuery(wishlist).text("ADDED TO WISH LIST").css("color", "#ae8536");
                                 }
                                 else {
                                     jQuery(this).text(data.errors).css("color", "#D90D3D");
