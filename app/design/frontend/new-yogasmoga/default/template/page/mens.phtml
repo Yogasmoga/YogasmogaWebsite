@@ -124,7 +124,7 @@
             <div class="flexslider showloading cat-slide" id="bucket1_slider">
                 <ul class="slides">
                    
-                        <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php echo $this->getSkinUrl('images/mens-white-background.jpg') ?>'); background-size: cover;cursor:pointer;">
+                        <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php/* echo $this->getSkinUrl('images/mens-white-background.png') */?>'); background-size: cover;cursor:pointer;">
                         
 
 					
@@ -163,7 +163,7 @@
                             </div>
 
                         </li>
-                       <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php echo $this->getSkinUrl('images/mens-white-background.jpg') ?>'); background-size: cover;cursor:pointer;">
+                       <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php/* echo $this->getSkinUrl('images/mens-white-background.png')*/ ?>'); background-size: cover;cursor:pointer;">
                             <div class="mens-slider">
                              
 
@@ -178,7 +178,7 @@
 											dolorem ipsum quita dolor sit amet,
 											consectetur, adipisci velit.</p>
 
-											<p>donec facilisis, orci vel congue
+											<p>Donec facilisis, orci vel congue
 											gravida, justo metus tempor mi, ac
 											volutpat lacus enim sed justo.</p>
 
@@ -238,6 +238,7 @@
 					</h2>		
 					<p class="na-subhead">Activewear for 80f up&mdash;our AURUM&reg; tops for wicking moisture,<br/>so you can stay on track longer.</p>
                 </div>
+				<div class="productContbox">
 
             <?php
                 //retrieve color
@@ -318,7 +319,7 @@
                     </div>
                     <div class="caption">
                         
-                            <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?> &mdash; $$<?php echo $_product['price']; ?></span>
+                            <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?>&mdash;$<?php echo $_product['price']; ?></span>
                        
                     </div>
                  </div>
@@ -335,16 +336,17 @@
                     </div>
                     <div class="caption">
                       
-                            <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?> &mdash; $$<?php echo $_product['price']; ?></span>
+                            <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?>&mdash;$<?php echo $_product['price']; ?></span>
                      
                     </div>
                  </div>
-
+			
                 <?php } ?>
 
                 <?php $i++; } ?>
+				
             </div>
-
+			</div>
             <!-- ProductListing Part -->
             <div class="clear-fix"></div>
             <!-- Feature Product -->

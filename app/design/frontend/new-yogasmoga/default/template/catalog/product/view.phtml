@@ -1111,7 +1111,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
             <!-- ProductImageContainer -->
 
             <!-- ProductDetailContainer -->
-            <div class="wdth35" style="width:281px;">
+			<!--<div class="wdth35" style="width:281px;">-->
+            <div class="wdth35" style="width:361px;">
                  <?php $catIds =  $_product->getCategoryIds();
                         $styleIds = array(125,126,127,128,129,130);
                         $finalIds = array_intersect($catIds, $styleIds);
@@ -1142,11 +1143,14 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
 
                  ?>
+				 <div class="prod-pager"><p class="prod-pager-links"><span class="prev">&#60; Previous Product</span><span class="next">Next Product &#62;</span></p></div>
                  <?php if($imageName):?>
-                <div class="style-image"><img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
+                <div class="style-image">				
+				<img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
                 <?php endif; ?>
                 <!-- DetailsinGreyArea -->
                 <div class="gry-box">
+				
                     <div id="absproductoptions">
                         <!--<div class="disableproptions"></div>-->
                         <table class="productdetailtable normalproductdetail">
@@ -1446,7 +1450,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 														To Wish List</a></p>
 											<?php } ?>
 										</div>
-                                        <p class="c-align freeshipptext"><em>Free and fast shipping to US and
+                                        <p class="freeshipptext"><em>Free and fast shipping to US and
                                                 Canada</em></p>
 
                                         <p class="insale dnone" style="color: #c03; margin-left: 4px;">This Item is

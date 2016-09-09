@@ -3378,7 +3378,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child a {
   font: 12px/12px avantgardegothicitcw01d;
 }
 .header .logo {
-    margin: 23px 14px 0 0;
+    margin: 29px 19px 0 0;
 }
 .logoCont {
   float: left;
@@ -3393,17 +3393,7 @@ ul.main-menu2 li ul.sub-menu li a {
 }
 /************* 2-sep*********/
 .productCont .prod-img img{max-width:100%;max-height:100%;}
-.gridProdCubix .leftnav .ctglink li.sub-head > a, .gridProdCubix .leftnav .ctglink li a.bld {
-  color: #555;
-  font-family: ITCAvantGardeProBd!important;
-}
-.ctglink li, .ctglink li a {
-  font: 12px/18px ITCAvantGardeProBd!important;
-  text-transform: uppercase;
-}
-.gridProdCubix .leftnav.gridProdCubix .leftnav .ctglink ul.subnav a {
-  font-family: ITCAvantGardeProMd!important;
-}
+
 .bannerFluid img{display:none;}
 .bannerFluid .bnrtxt.bnr.white{color:#555!important;}
 
@@ -3411,16 +3401,18 @@ ul.main-menu2 li ul.sub-menu li a {
 .bannerFluid .l-lign{text-align:center!important;}
 .bannerFluid{background:#fff!important;}
 /************* 2-sep*********/
-.chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:26px; height:26px; line-height:24px; vertical-align:middle; display:inline-block;
-	font-size:13px;}
+.chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:34px; height:26px; line-height:25px; vertical-align:middle; display:inline-block;
+	font-size:12px;}
 #div_cats .chk-cats:hover, #div_cats .chk-cats.chk-cats-selected,.chk-size-selected{background:#ae8536;}
-#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px;}
-#div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.43px;vertical-align:middle; display:inline-block;}
+#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px; padding-left:14px; padding-right:14px;}
+#div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; display:inline-block;}
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 
 /*----product details----*/
-.breadcrumb, .breadcrumb a { color: #555; font: 12px/12px ITCAvantGardeProbd;}
+.product-details .block-head{border-top:2px solid #ccc;padding:24px 0 0 0;}
+.breadcrumb, .breadcrumb a { color: #555; font: 12px/12px AvantGardeGothicITCW01D;}
+div.product-details .wdth65{width:calc(100% - 401px)}
 .product-details .block-head{margin-bottom:24px!important;}
 .product-details table.productimagecontainer{position:relative;}
 .product-details table.productimagecontainer table.smallimagecontiner{}
@@ -3462,7 +3454,7 @@ table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 .fitDetail .bullets{}
 .fitDetail .bullets li{font:14px/20px avantgardegothicitcw01m;color:#555;margin-left:13px;}
 .size.size,.fitDetail tr:first-child td,.fitDetail td{font:16px/16px avantgardegothicitcw01m;color:#555; letter-spacing:0.27px;}
-.fitDetail td:first-child{font:14px/39px avantgardegothicitcw01m;color:#555;letter-spacing:0.27px;text-transform:capitalize;padding:0;}
+.fitDetail td:first-child{font:14px/39px avantgardegothicitcw01m;color:#555;letter-spacing:0.23px;text-transform:capitalize;padding:0;}
 .fitDetail tr:first-child td{border-top:2px solid #cccccc;border-bottom:2px solid #cccccc;padding:26px 0;}
 .fitDetail td{border-bottom:2px solid #cccccc;border-right:0 none;padding:11px 0;}
 .fitDetail .video-box{width:100%;}
@@ -3470,10 +3462,11 @@ table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 .block-elm .vlink-cont p.block-link a{border:0 none;font-size:14px; line-height:14px;font-family: avantgardegothicitcw01m!important;color:#ae8536;letter-spacing:0.27px;text-transform:none!important;}
 
 table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicBold; letter-spacing:0.5px;text-transform:capitalize;}
-.selectedcolortext{font:13px/13px avantgardegothicitcw01m; letter-spacing:0.5px;}
+.selectedcolortext{font:13px/13px avantgardegothicitcw01m; letter-spacing:0.5px;padding-top:2px;}
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div{min-height:40px; min-width:40px;background:#f4f4f4;box-sizing:border-box;font:15px/40px gothamBook;
 	border:0 none;}
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.dvselectedsize{background:#ae8536;}
+.gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.dvselectedsize.outofstock{background:#f4f4f4;color:#555;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div { height: 43px;border:2px solid transparent; padding:4px;}
 .gry-box table.productdetailtable div#colorcontainer div table{width:40px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(1) {
@@ -3482,6 +3475,10 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
   border-left: 40px solid transparent !important; border-top-width: 40px; margin: 0 0 0 -42px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected{border:2px solid #ae8536;padding:4px;}  
 .gry-box table.productdetailtable div.addtobag{height:42px;}
+#includeoption > span {display: block;font: 13px/13px avantgardegothicbold;letter-spacing: 0.5px;text-transform: capitalize;margin-bottom:10px;}
+#includeoption div {background: #f4f4f4 none repeat scroll 0 0;border: 0 none;box-sizing: border-box; cursor: pointer;
+  display: inline-block;height: 40px;line-height: 40px;margin: 0 4px 0 0;padding: 0;text-align: center;width: 40px;}
+#includeoption div.selected { background: #ae8536 none repeat scroll 0 0; color: #fff;} 
 #productdetails .social-ico,#productdetails .earnbucks{display:none;}
 .wishlist-nw{width:100%;float:left;margin-top:10px;}
 .wishlist-nw .wishlist-link a{width:100%; height:42px;background:#dddddd;color:#777;font-size:16px; font-family:AvantGardeGothicMedium; text-align:center; line-height:42px;padding:0;
@@ -3493,7 +3490,7 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .accord .accord-item{border-top:2px solid #ccc; padding-top:18px;}
 .accord .accord-item .h2 span{float:right;}
 .accord .accord-item .h2 span:before{content:"+"}
-.accord .accord-item .accord-desc{display:none;padding-bottom:10px;}
+.accord .accord-item .accord-desc{display:none;padding-bottom:10px;font:14px/18px avantgardegothicitcw01m;letter-spacing:0.54px;}
 .accord .accord-item.active .accord-desc{display:block;}
 .accord .accord-item.active .h2 span:before{content:"\2013"}
 
@@ -3501,5 +3498,11 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .prod-rel-item p{margin-bottom:0;}
 .prod-rel-item .prod-name{font:16px/22px itcavantgardepromd; color:#555;}
 .prod-rel-item .prod-col-prc{font:14px/22px itcavantgardepromd; color:#555;}
+.prod-pager{position:relative;}
+.prod-pager-links{position:absolute;top:-37px;left:0;width:100%;}
+.prod-pager span{color:#ae8536;font-family:itcavantgardepromd; letter-spacing:0.27px;text-transform:uppercase;cursor:pointer;}
+.prod-pager .prev{float:left;}
+.prod-pager .next{float:right;}
+.prod-pager span.disabled{color:#ccc; cursor:default;}
 .btm-divider{clear:both;}
 
