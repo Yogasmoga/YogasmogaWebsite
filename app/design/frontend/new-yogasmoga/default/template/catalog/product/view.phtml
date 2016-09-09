@@ -1009,11 +1009,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 						<div class="h2">Size &amp; Fit</div>
 						<div class="fitDetail font11">
 							<div class="video-box f-left">
-							<ul class="bullets">
-							<li>Low impact support</li>
-							<li>Sexy, strappy racer back</li>
-							</ul>                           
-							</div>
+                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howDoesItFitBlockId)->toHtml(); ?>                         
+                            </div>
 
 							<div class="clear-fix"></div>
 							<div class="lg-size-chart">
