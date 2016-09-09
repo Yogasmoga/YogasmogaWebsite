@@ -3466,7 +3466,7 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div{min-height:40px; min-width:40px;background:#f4f4f4;box-sizing:border-box;font:15px/40px gothamBook;
 	border:0 none;}
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.dvselectedsize{background:#ae8536;}
-.gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.dvselectedsize.outofstock{background:#f4f4f4;color:#555;}
+.gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.dvselectedsize.outofstock{background:#555;color:#fff;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div { height: 43px;border:2px solid transparent; padding:4px;}
 .gry-box table.productdetailtable div#colorcontainer div table{width:40px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(1) {
@@ -3475,6 +3475,7 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
   border-left: 40px solid transparent !important; border-top-width: 40px; margin: 0 0 0 -42px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected{border:2px solid #ae8536;padding:4px;}  
 .gry-box table.productdetailtable div.addtobag{height:42px;}
+.gry-box table.productdetailtable div.outofstockitem{height:42px;}
 #includeoption > span {display: block;font: 13px/13px avantgardegothicbold;letter-spacing: 0.5px;text-transform: capitalize;margin-bottom:10px;}
 .bra-option >span{display: block;font: 13px/13px avantgardegothicbold;letter-spacing: 0.5px;text-transform: capitalize;margin-bottom:10px;}
 #includeoption div {background: #f4f4f4 none repeat scroll 0 0;border: 0 none;box-sizing: border-box; cursor: pointer;
