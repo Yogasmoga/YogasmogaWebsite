@@ -3448,6 +3448,7 @@ table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 .bottom-container .col-first h2,.bottom-container .col-first .h2{margin-bottom:28px;text-transform:capitalize;}
 .bottom-container .col-second h2,.bottom-container .col-second .h2{letter-spacing:0.27px; margin-bottom:37px;}
 .bottom-container .img_rnd{max-width:90px;margin-top:28px;}
+#productdetails .bottom-container .fitDetail .tble table{display:block;}
 .fabDetail { color: #555; font: 14px/18px avantgardegothicitcw01m;}
 .fabDetail p{letter-spacing:0.54px;}
 .fabDetail > h2, .fabDetail > .h2{font:26px/30px avantgardegothicitcw01d;color:#555;}
@@ -3517,4 +3518,5 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 
 @media only screen and (max-width:1599px){
 	.bottom-container .col-first,.bottom-container .col-second{width:100%; padding:0 0 40px 0;}
+	
 }
