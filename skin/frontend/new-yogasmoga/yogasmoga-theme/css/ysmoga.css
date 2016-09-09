@@ -2916,6 +2916,8 @@ ul.main-menu > li{padding:0 10px;}
 .gridWrap .productCont {width: 32.8%;/*width:508px!important;*/}
 .productCont .prod-img{background:#f3f3f3;/* height:508px!important;*/}
 .gridWrap .productCont:nth-child(3n){margin-right:0;}
+.productContbox  .productCont:nth-child(6n){margin:0 0.3%;}
+.productContbox  .productCont:nth-child(8n){margin-right:0%;}
 .productCont .caption{font:20px/24px avantgardegothicitcw01m;text-transform:capitalize;margin:0; min-height:60px; padding:46px 0;letter-spacing:0.5px;}
 .productCont .caption span{font:16px/24px avantgardegothicitcw01b;color:#555;}
 .bannerFluid .r-lign{text-align:center!important;} 
@@ -2928,7 +2930,7 @@ ul.main-menu > li{padding:0 10px;}
 .catalog-category-view #bucket1_slider .hero-slide-subtitle , .cms-home  .cubix  .over-the-slide .hero-slide-subtitle {font:13px/13px gothamBold;letter-spacing:0.36px;text-transform:uppercase;color:#fff;padding:0 0 18px!important; border-bottom:2px solid #d6c19a;margin-bottom:39px!important; display:inline-block;width:100%; max-width:256px;}
 .catalog-category-view #bucket1_slider .hero-slide-title , .cms-home  .cubix  .over-the-slide .hero-slide-title  {font:46px/46px avantgardegothicitcw01d;margin-bottom:135px!important;}
 .catalog-category-view #bucket1_slider .hero-slide-bodytext ,.cms-home  .cubix  .over-the-slide .hero-slide-bodytext  {
-  color: #fff; font: 20px/26px avantgardegothicitcw01m; left: 50%; letter-spacing: 0.6px; position: absolute; right: auto; top: 50%;margin:50px 0!important;
+  color: #fff; font: 20px/26px avantgardegothicitcw01m; left: 50%; letter-spacing: 0.6px; position: absolute; right: auto; top: 43.5%;margin:50px 0!important;
   width: 69.45%;transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); }
   .cms-home  .cubix  .over-the-slide .hero-slide-bodytext{top: 60%;}
 .catalog-category-view #bucket1_slider .hero-slide-bodytext p , .cms-home  .cubix  .over-the-slide .hero-slide-bodytext p  {margin:0 0 34px 0!important; }
