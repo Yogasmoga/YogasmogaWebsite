@@ -2974,7 +2974,7 @@ ul.main-menu > li{padding:0 10px;}
   text-transform: uppercase;
 }
 .gridProdCubix .leftnav .ctglink ul.subnav a {
-  font-family: avantgardegothicitcw01b;letter-spacing:0.5px;
+  font-family: avantgardegothicitcw01b;letter-spacing:0.5px; font-size:11px; line-height:18px;
 }
 .gridProdCubix .leftnav.gridProdCubix .leftnav .ctglink ul.subnav a {
   font-family: ITCAvantGardeProMd
