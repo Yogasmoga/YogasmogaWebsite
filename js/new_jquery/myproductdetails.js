@@ -909,8 +909,25 @@ function insertBraOption() {
 jQuery(document).ready(function(){
 	var prodHt = jQuery('.productCont').width();
 	jQuery('.prod-img').height(prodHt);	
+	
+	var maxHeight = -1;
+   $('.productCont .caption').each(function() {
+     maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+   });
+   $('.productCont .caption').each(function() {
+     $(this).height(maxHeight);
+   });
+	
 });
 jQuery(window).resize(function(){
 	var prodHt = jQuery('.productCont').width();
 	jQuery('.prod-img').height(prodHt);	
+	
+	var maxHeight = -1;
+   $('.productCont .caption').each(function() {
+     maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+   });
+   $('.productCont .caption').each(function() {
+     $(this).height(maxHeight);
+   });
 });
