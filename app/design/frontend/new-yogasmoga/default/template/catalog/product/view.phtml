@@ -1008,12 +1008,13 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 					<div class="col-second">
 						<div class="h2">Size &amp; Fit</div>
 						<div class="fitDetail font11">
-							<div class="video-box f-left">
+							<div class="video-box f-left bullets">
                             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howDoesItFitBlockId)->toHtml(); ?>                         
                             </div>
 
 							<div class="clear-fix"></div>
-							<div class="lg-size-chart">
+
+							<div class="size-chart-tbl">
 								<a name="sizechart" class="size-res-org"></a>
 								<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizeChartBlockId)->toHtml(); ?>                        
 							</div>
@@ -1061,7 +1062,87 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
 
                  ?>
-				 <div class="prod-pager"><p class="prod-pager-links"><span class="prev">&#60; Previous Product</span><span class="next">Next Product &#62;</span></p></div>
+
+<?php                
+/*********************prev next product page **************************/
+//get origanal category id
+if(count($urlPath) >= 2){
+
+$categoryURL =  $urlPath[count($urlPath) - 2];
+
+$parentURLPath = ($urlPath[0] == 'women' ? '/3/' : '/5/');
+
+
+$OBJ_category = Mage::getModel('catalog/category')
+        ->getCollection()
+        ->addAttributeToFilter('url_key', $categoryURL)
+        ->addAttributeToFilter('path', array('like' => "%$parentURLPath%"))
+        ->getFirstItem();
+
+        $realcategory = $OBJ_category->getId();
+//get origanal category id
+
+$_product = $this->getProduct();
+
+if(!$_product->getCategoryIds() && !$realcategory)
+return; 
+
+$cat = Mage::getModel('catalog/category')->load($realcategory); 
+
+$category_products = $cat->getProductCollection()
+->addAttributeToSort('position', 'DESC')
+->addAttributeToSelect('entity_id')
+->addAttributeToFilter('status',1)
+->addAttributeToFilter('visibility',4);
+
+$cat_prod_ids = array();
+foreach($category_products as $pro){
+$cat_prod_ids[] = $pro->getId();
+}
+
+//var_dump($cat_prod_ids = $category_products->getAllIds());
+$_product_id = $_product->getId();
+
+$_pos = array_search($_product_id, $cat_prod_ids);
+$_next_pos = $_pos+1;
+$_prev_pos = $_pos-1;
+
+// get the next product url
+if( isset($cat_prod_ids[$_next_pos]) ) {
+$_next_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_next_pos] );
+} else {
+//$_next_prod = Mage::getModel('catalog/product')->load( reset($cat_prod_ids) );
+}
+// get the previous product url
+if( isset($cat_prod_ids[$_prev_pos]) ) {
+$_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos] );
+} else {
+//$_prev_prod = Mage::getModel('catalog/product')->load( end($cat_prod_ids) );
+}
+?>
+
+	<div class="prod-pager">
+    <p class="prod-pager-links">
+    <?php if($_prev_prod != NULL): ?>
+    <span class="prev"><a href="<?php print $_prev_prod->getUrlPath(); if($search_parameter):?>?search=1<?php endif;?>">&#60; Previous Product</a></span>
+    <?php else: ?>
+    <span class="prev"><a href="javascript:(void);" class="disabled">&#60; Previous Product</a></span>
+    <?php endif; ?>
+    <?php if($_next_prod != NULL): ?>
+    <span class="next"><a href="<?php print $_next_prod->getUrlPath(); if($search_parameter):?>?search=1<?php endif;?>">Next Product &#62;</a></span>
+    <?php else: ?>
+    <span class="next"><a href="javascript:(void);" class="disabled">Next Product &#62;</a></span>
+    <?php endif; ?>
+    </p>
+    </div>
+
+<?php
+
+}
+
+/*********************prev next product page **************************/
+?>
+
                  <?php if($imageName):?>
                 <div class="style-image">				
 				<img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
