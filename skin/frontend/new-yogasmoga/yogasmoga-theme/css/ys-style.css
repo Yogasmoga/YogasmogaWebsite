@@ -3472,13 +3472,26 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 	border:0 none;}
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.dvselectedsize{background:#ae8536;}
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.dvselectedsize.outofstock{background:#555;color:#fff;}
-.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div { height: 43px;border:2px solid transparent; padding:4px;}
+
+/*.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div { height: 43px;border:2px solid transparent; padding:4px;}
 .gry-box table.productdetailtable div#colorcontainer div table{width:40px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(1) {
   border-bottom-width: 40px; border-right: 40px solid transparent !important;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(2) {
   border-left: 40px solid transparent !important; border-top-width: 40px; margin: 0 0 0 -42px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected{border:2px solid #ae8536;padding:4px;}  
+*/
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block; border:2px solid #ccc; float:left; margin:0 3px; padding:4px; height:auto;}
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected{border:2px solid #ae8536;}
+
+.color-grid{float:left;}
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(1){
+border-bottom-width:40px; border-bottom-style:solid; border-left: 40px solid transparent!important; border-right: 0 solid transparent!important; 
+width:0;height:0; float:left;}
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(2){border-top-width:40px;
+border-top-style:solid; border-right: 40px solid transparent!important; border-left: 0 solid transparent!important;  width:0;height:0;
+float:left; margin-left:-40px; }
+
 .gry-box table.productdetailtable div.addtobag{height:42px;}
 .gry-box table.productdetailtable div.outofstockitem{height:42px;}
 #includeoption > span {display: block;font: 13px/13px avantgardegothicbold;letter-spacing: 0.5px;text-transform: capitalize;margin-bottom:10px;}
