@@ -3313,7 +3313,7 @@ width:100%!important;height:100%!important;
 	#signup.mc-signup .fields-area p.button-area input[type="submit"]{-webkit-appearance: none;}
 }
 /*######### new design 31-aug-2016############*/
-.product-details .block-head{margin-top: 0px;}
+.product-details .block-head{margin-top: 2px;}
 ul.main-menu li.active a.menu-heading{color:#ae8536;}
 div.search-nav ul li a.current,
 div.search-nav ul li a:hover,
@@ -3377,7 +3377,7 @@ div.copy-privacy-likes ul li {
  ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a {
   color: #555;
   font: 11px/23px avantgardegothicitcw01d;
-  letter-spacing:0.5px;
+  letter-spacing:0.55px;
 }
 ul.main-menu li ul.sub-menu > li > ul:first-child a {
   font: 11px/11px avantgardegothicitcw01d;
