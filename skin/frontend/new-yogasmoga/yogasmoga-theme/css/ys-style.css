@@ -3327,6 +3327,7 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a:hover{color:#ae8536;}
 .leftnav a.current{color:#ae8536!important;}
 .productCont .caption a:hover{color:#ae8536;}
+ul.main-menu2 > li{padding:1px 10px 0 10px;}
 ul.main-menu > li.active, ul.main-menu2 > li.active{background: none;}
 table.productimagecontainer table.tdbigimagecontainer td img {
   cursor: default!important;
