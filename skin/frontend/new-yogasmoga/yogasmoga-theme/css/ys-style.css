@@ -3489,7 +3489,7 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 border-bottom-width:40px; border-bottom-style:solid; border-left: 40px solid transparent!important; border-right: 0 solid transparent!important;border-top:0 solid transparent!important;
 width:0;height:0; float:left;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(2){border-top-width:40px;
-border-top-style:solid; border-right: 40px solid transparent!important; border-left: 0 solid transparent!important;border-top:0 solid transparent!important;  width:0;height:0;
+border-top-style:solid; border-right: 40px solid transparent!important; border-left: 0 solid transparent!important;border-bottom:0 solid transparent!important;  width:0;height:0;
 float:left; margin-left:-40px; }
 
 .gry-box table.productdetailtable div.addtobag{height:42px;}
