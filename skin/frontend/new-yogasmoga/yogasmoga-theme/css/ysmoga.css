@@ -2929,14 +2929,14 @@ ul.main-menu > li{padding:0 10px;}
 
 .catalog-category-view #bucket1_slider .over-the-slide  ,.cms-home  .cubix  .over-the-slide{
 	background:#ae8536; padding: 80px 77px !important; position: absolute; top: 0; left:0; width: 33.25%; box-sizing: border-box;height: 100%;}
-.catalog-category-view #bucket1_slider .hero-slide-subtitle , .cms-home  .cubix  .over-the-slide .hero-slide-subtitle {font:13px/13px gothamBold;letter-spacing:0.36px;text-transform:uppercase;color:#fff;padding:0 0 18px!important; border-bottom:2px solid #d6c19a;margin-bottom:27px!important; display:inline-block;width:100%; max-width:256px;}
+.catalog-category-view #bucket1_slider .hero-slide-subtitle , .cms-home  .cubix  .over-the-slide .hero-slide-subtitle {font:13px/13px gothamBold;letter-spacing:0.36px;text-transform:uppercase;color:#fff;padding:0 0 18px!important; border-bottom:1px solid #fff;margin-bottom:27px!important; display:inline-block;width:100%; max-width:256px;}
 .catalog-category-view #bucket1_slider .hero-slide-title , .cms-home  .cubix  .over-the-slide .hero-slide-title  {font:46px/46px avantgardegothicitcw01d;margin-bottom:135px!important;}
 .catalog-category-view #bucket1_slider .hero-slide-bodytext ,.cms-home  .cubix  .over-the-slide .hero-slide-bodytext  {
-  color: #fff; font: 20px/26px avantgardegothicitcw01m; left: 50%; letter-spacing: 0.6px; position: absolute; right: auto; top: 43.5%;margin:50px 0!important;
+  color: #fff; font: 20px/26px avantgardegothicitcw01m; left: 50%; letter-spacing: 0.6px; position: absolute; right: auto; top: 41.7%;margin:50px 0!important;
   width: 69.45%;transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); }
   .cms-home  .cubix  .over-the-slide .hero-slide-bodytext{top: 60%;}
 .catalog-category-view #bucket1_slider .hero-slide-bodytext p , .cms-home  .cubix  .over-the-slide .hero-slide-bodytext p  {margin:0 0 34px 0!important; }
-.catalog-category-view #bucket1_slider .hero-slide-cta{ bottom: 13.45%; left: 0; position: absolute;right: 0;}
+.catalog-category-view #bucket1_slider .hero-slide-cta{ bottom: 27.8%; left: 0; position: absolute;right: 0;}
 .cms-home  .cubix  .over-the-slide  .hero-slide-cta { bottom: 9.45%; left: 0; position: absolute;right: 0;}
 .catalog-category-view #bucket1_slider .hero-slide-cta .shop-link,.cms-home  .cubix  .over-the-slide .hero-slide-cta .shop-link {font:16px/30px ITCAvantGardeProBk;letter-spacing:0.1em;color:#fff;}
 .catalog-category-view #bucket1_slider .flex-control-nav  {display: block !important;left: 0;right: auto;text-align: center;width: 33.25% !important;bottom:4.01%;}
@@ -3005,6 +3005,7 @@ ul.main-menu > li{padding:0 10px;}
 	.new-arrivals-block span.na-head{font-size:31px; line-height:31px;margin-bottom:27px;}
 	.new-arrivals-block .na-subhead{font-size:15px; line-height:20px;}
 	.cms-home  .cubix  .over-the-slide{ padding: 45px 40px !important;}
+	.catalog-category-view #bucket1_slider .over-the-slide  ,.cms-home  .cubix  .over-the-slide{padding:47px!important;}
 }
 @media only screen and (max-width : 1024px) {
 .productCont .caption{font-size:14px;line-height:20px; padding:31px 0;min-height:36px;}
@@ -3018,5 +3019,6 @@ ul.main-menu > li{padding:0 10px;}
 .cms-home  .cubix  .over-the-slide{ padding: 45px 40px !important;}
 .new-arrivals-block span.na-head{font-size:28px; line-height:28px;margin-bottom:25px;}
 .new-arrivals-block .na-subhead{font-size:13px; line-height:17px;}
+.catalog-category-view #bucket1_slider .over-the-slide  ,.cms-home  .cubix  .over-the-slide{padding:40px!important;}
 
 }
