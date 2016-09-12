@@ -2913,10 +2913,11 @@ ul.main-menu > li{padding:0 10px;}
   
 }
 .productCont{ margin: 0 0.3% 0;/*margin: 0 4px 0;*/}
-.gridWrap .productCont {width: 32.8%;/*width:508px!important;*/}
+.gridWrap .productCont {width: 32.93%;/*width:508px!important;*/}
 .productCont .prod-img{background:#f3f3f3;/* height:508px!important;*/}
 .gridWrap .productCont:nth-child(3n-2){margin-left:0;}
 .gridWrap .productCont:nth-child(3n){margin-right:0;}
+.gridWrap .productContbox  .productCont{width:32.8%;}
 .productContbox  .productCont:nth-child(6n){margin:0 0.3%;}
 .productContbox  .productCont:nth-child(8n){margin-right:0%;}
 .productCont .caption{font:20px/24px avantgardegothicitcw01m;text-transform:capitalize;margin:0; min-height:60px; padding:46px 0;letter-spacing:0.5px;}
