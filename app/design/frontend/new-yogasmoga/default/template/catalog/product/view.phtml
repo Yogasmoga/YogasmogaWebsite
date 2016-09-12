@@ -1589,7 +1589,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 				<div class="accord-item prod-rel-item active">
 					<div class="h2">Related Product<span>&nbsp;</span></div>
 					<div class="accord-desc">
-						<a href="<?php Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><img class="related-img" nopin="nopin" alt="<?php echo $parentproduct->getName() ?>" title="<?php echo $parentproduct->getName() ?>"
+						<a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><img class="related-img" nopin="nopin" alt="<?php echo $parentproduct->getName() ?>" title="<?php echo $parentproduct->getName() ?>"
                                src="<?php echo $completelookimg; ?>"/></a>
 						<p class="prod-name">
                         <a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><?php echo $parentproduct->getName() ?></a></p>
