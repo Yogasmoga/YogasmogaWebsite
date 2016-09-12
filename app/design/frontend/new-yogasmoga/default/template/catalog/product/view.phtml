@@ -1511,14 +1511,13 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                     ?>
                                     <p class="" style="position: absolute; bottom: 0; margin-bottom: 4px; right:0;">
                                         <a
-                                            onlick="javascript:void(0)">ADDED TO WISH LIST</a></p>
+                                            onlick="javascript:void(0)">Added To Wish List</a></p>
                                     <?php
                                 } else {
                                     ?>
 
                                     <p class="wishlist-link"><a class="" id="<?php echo $productId; ?>"
-                                                                href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productId; ?>/">ADD
-                                            TO WISH LIST +</a></p>
+                                                                href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productId; ?>/">Add To Wish List</a></p>
                                 <?php } ?>
                             </div>
 							<?php } // hiding wishlist end ?>
@@ -1590,7 +1589,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 				<div class="accord-item prod-rel-item active">
 					<div class="h2">Related Product<span>&nbsp;</span></div>
 					<div class="accord-desc">
-						<a href="<?php Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><img class="related-img" nopin="nopin" alt="<?php echo $parentproduct->getName() ?>" title="<?php echo $parentproduct->getName() ?>"
+						<a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><img class="related-img" nopin="nopin" alt="<?php echo $parentproduct->getName() ?>" title="<?php echo $parentproduct->getName() ?>"
                                src="<?php echo $completelookimg; ?>"/></a>
 						<p class="prod-name">
                         <a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><?php echo $parentproduct->getName() ?></a></p>
@@ -2339,7 +2338,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                 data = eval('(' + data + ')');
                                 var status = data.status;
                                 if (status == "success") {
-                                    jQuery(wishlist).text("ADDED TO WISH LIST").css("color", "#ae8536");
+                                    jQuery(wishlist).text("Added To Wish List").css("color", "#ae8536");
                                 }
                                 else {
                                     jQuery(this).text(data.errors).css("color", "#D90D3D");

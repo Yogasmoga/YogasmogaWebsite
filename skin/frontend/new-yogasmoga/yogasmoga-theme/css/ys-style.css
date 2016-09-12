@@ -3414,7 +3414,7 @@ ul.main-menu2 li ul.sub-menu li a {
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 
 /*----product details----*/
-.product-details .block-head{border-top:2px solid #ccc;padding:24px 0 0 0;}
+.product-details .block-head{border-top:1px solid #9c9c9c;padding:24px 0 0 0;}
 .breadcrumb, .breadcrumb a { color: #555; font: 12px/12px AvantGardeGothicITCW01D;}
 div.product-details .wdth65{width:calc(100% - 401px)}
 .product-details .block-head{margin-bottom:24px!important;}
@@ -3493,7 +3493,7 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .wishlist-nw{width:100%;float:left;margin-top:10px;}
 .wishlist-nw .wishlist-link,.wishlist-nw .wishlist-link a{width:100%; height:42px;background:#dddddd;color:#777;font-size:16px; font-family:AvantGardeGothicMedium; text-align:center; line-height:42px;padding:0;
 	display:block;border:0 none;}
-#productdetails .freeshipptext{font:14px/20px avantgardegothicitcw01m;}
+#productdetails .freeshipptext{font:13px/13px avantgardegothicitcw01m;letter-spacing:0.22px;}
 #productdetails .freeshipptext em{font-style:normal;}
 .product_description_block{font:14px/18px avantgardegothicitcw01m;}
 .box-desc-dvdr .h2{margin-bottom:18px;text-transform:capitalize;}
@@ -3510,10 +3510,11 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .prod-rel-item .prod-col-prc{font:14px/22px itcavantgardepromd; color:#555;}
 .prod-pager{position:relative;}
 .prod-pager-links{position:absolute;top:-37px;left:0;width:100%;}
-.prod-pager span{color:#ae8536;font-family:itcavantgardepromd; letter-spacing:0.27px;text-transform:uppercase;cursor:pointer;}
+.prod-pager span{color:#ae8536;font-size:12px; line-height:12px;font-family:itcavantgardepromd; letter-spacing:0.27px;text-transform:uppercase;cursor:pointer;}
+.prod-pager span a{color:#ae8536;}
 .prod-pager .prev{float:left;}
 .prod-pager .next{float:right;}
-.prod-pager span.disabled{color:#ccc; cursor:default;}
+.prod-pager span.disabled,.prod-pager span a.disabled{color:#ccc; cursor:default;}
 .btm-divider{clear:both;}
 
 .blk-imp{display:block!important;}
