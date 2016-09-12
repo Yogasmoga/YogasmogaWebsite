@@ -2927,7 +2927,7 @@ ul.main-menu > li{padding:0 10px;}
 
 .catalog-category-view #bucket1_slider .over-the-slide  ,.cms-home  .cubix  .over-the-slide{
 	background:#ae8536; padding: 80px 77px !important; position: absolute; top: 0; left:0; width: 33.25%; box-sizing: border-box;height: 100%;}
-.catalog-category-view #bucket1_slider .hero-slide-subtitle , .cms-home  .cubix  .over-the-slide .hero-slide-subtitle {font:13px/13px gothamBold;letter-spacing:0.36px;text-transform:uppercase;color:#fff;padding:0 0 18px!important; border-bottom:2px solid #d6c19a;margin-bottom:39px!important; display:inline-block;width:100%; max-width:256px;}
+.catalog-category-view #bucket1_slider .hero-slide-subtitle , .cms-home  .cubix  .over-the-slide .hero-slide-subtitle {font:13px/13px gothamBold;letter-spacing:0.36px;text-transform:uppercase;color:#fff;padding:0 0 18px!important; border-bottom:2px solid #d6c19a;margin-bottom:27px!important; display:inline-block;width:100%; max-width:256px;}
 .catalog-category-view #bucket1_slider .hero-slide-title , .cms-home  .cubix  .over-the-slide .hero-slide-title  {font:46px/46px avantgardegothicitcw01d;margin-bottom:135px!important;}
 .catalog-category-view #bucket1_slider .hero-slide-bodytext ,.cms-home  .cubix  .over-the-slide .hero-slide-bodytext  {
   color: #fff; font: 20px/26px avantgardegothicitcw01m; left: 50%; letter-spacing: 0.6px; position: absolute; right: auto; top: 43.5%;margin:50px 0!important;
@@ -2990,7 +2990,7 @@ ul.main-menu > li{padding:0 10px;}
 }
 @media only screen and (max-width : 1200px) {
 	.shopnow-btn{font:15px/22px ITCAvantGardeProMd;}
-	.catalog-category-view #bucket1_slider .hero-slide-subtitle ,.cms-home  .cubix  .over-the-slide .hero-slide-subtitle  {font-size:10px; line-height:10px;margin-bottom:28px!important;}
+	.catalog-category-view #bucket1_slider .hero-slide-subtitle ,.cms-home  .cubix  .over-the-slide .hero-slide-subtitle  {font-size:10px; line-height:10px;margin-bottom:25px!important;}
 	.catalog-category-view #bucket1_slider .hero-slide-title , .cms-home  .cubix  .over-the-slide .hero-slide-title  {font-size:31px; line-height:31px;}
 	.catalog-category-view #bucket1_slider .hero-slide-bodytext ,.cms-home  .cubix  .over-the-slide .hero-slide-bodytext  {font-size:15px; line-height:20px;}
 	.catalog-category-view #bucket1_slider .hero-slide-cta .shop-link, .cms-home  .cubix  .over-the-slide .hero-slide-cta .shop-link {font-size:15px; line-height:20px;}
