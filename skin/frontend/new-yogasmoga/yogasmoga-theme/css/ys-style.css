@@ -3416,6 +3416,7 @@ ul.main-menu2 li ul.sub-menu li a {
 .bannerFluid .l-lign{text-align:center!important;}
 .bannerFluid{background:#fff!important;}
 /************* 2-sep*********/
+#div_sizes,#div_cats{padding-top:7px;}
 .chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:34px; height:26px; line-height:25px; vertical-align:middle; display:inline-block;
 	font-size:12px;}
 #div_cats .chk-cats:hover, #div_cats .chk-cats.chk-cats-selected,.chk-size-selected{background:#ae8536;}
