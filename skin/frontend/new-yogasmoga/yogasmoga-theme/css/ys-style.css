@@ -3414,7 +3414,7 @@ ul.main-menu2 li ul.sub-menu li a {
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 
 /*----product details----*/
-.product-details .block-head{border-top:2px solid #ccc;padding:24px 0 0 0;}
+.product-details .block-head{border-top:1px solid #9c9c9c;padding:24px 0 0 0;}
 .breadcrumb, .breadcrumb a { color: #555; font: 12px/12px AvantGardeGothicITCW01D;}
 div.product-details .wdth65{width:calc(100% - 401px)}
 .product-details .block-head{margin-bottom:24px!important;}
