@@ -3327,6 +3327,7 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a:hover{color:#ae8536;}
 .leftnav a.current{color:#ae8536!important;}
 .productCont .caption a:hover{color:#ae8536;}
+.in-bl ul.main-menu2 > li{padding:1px 10px 0 10px;}
 ul.main-menu > li.active, ul.main-menu2 > li.active{background: none;}
 table.productimagecontainer table.tdbigimagecontainer td img {
   cursor: default!important;
@@ -3502,9 +3503,9 @@ float:left; margin-left:-40px; }
 .gry-box table.productdetailtable div.addtobag{height:42px;}
 .gry-box table.productdetailtable div.outofstockitem{height:42px;}
 #includeoption > span {display: block;font: 13px/13px avantgardegothicbold;letter-spacing: 0.5px;text-transform: capitalize;margin-bottom:10px;}
-.bra-option >span{display: block;font: 13px/13px avantgardegothicbold;letter-spacing: 0.5px;text-transform: capitalize;margin-bottom:10px;}
+.bra-option >span{display: block;font: 13px/13px avantgardegothicbold;letter-spacing: 0.5px;text-transform: capitalize;margin-bottom:10px;margin-top:8px;}
 #includeoption div {background: #f4f4f4 none repeat scroll 0 0;border: 0 none;box-sizing: border-box; cursor: pointer;
-  display: inline-block;height: 40px;line-height: 40px;margin: 0 4px 0 0;padding: 0;text-align: center;width: 40px;}
+  display: inline-block;height: 40px;line-height: 40px;margin: 0 4px 0 0;padding: 0;text-align: center;width: 40px; font-size:15px;}
 #includeoption div.selected { background: #ae8536 none repeat scroll 0 0; color: #fff;} 
 .gry-box .selectedlength div{font:13px/40px avantgardegothicitcw01m; letter-spacing:1px;background:#f4f4f4; border:0 none; height:40px; padding:0 15px;margin:0 3px 0 0;}
 .gry-box .selectedlength div.selected{background:#ae8536;color:#fff; }
