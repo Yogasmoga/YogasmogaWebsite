@@ -2973,8 +2973,8 @@ ul.main-menu > li{padding:0 10px;}
   font: 12px/18px ITCAvantGardeProBd;
   text-transform: uppercase;
 }
-.gridProdCubix .leftnav .ctglink ul.subnav a {
-  font-family: avantgardegothicitcw01b;letter-spacing:0.5px; font-size:11px; line-height:18px;
+.gridProdCubix .leftnav .ctglink ul.subnav a,.gridProdCubix .leftnav .ctglink ul.subnav h1 {
+  font-family: avantgardegothicitcw01b;letter-spacing:0.5px; font-size:11px; line-height:18px;margin-bottom:0;
 }
 .gridProdCubix .leftnav.gridProdCubix .leftnav .ctglink ul.subnav a {
   font-family: ITCAvantGardeProMd
