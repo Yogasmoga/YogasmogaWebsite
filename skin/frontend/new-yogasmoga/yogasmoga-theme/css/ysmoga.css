@@ -2920,7 +2920,7 @@ ul.main-menu > li{padding:0 10px;}
 .gridWrap .productContbox  .productCont{width:32.8%;}
 .productContbox  .productCont:nth-child(6n){margin:0 0.3%;}
 .productContbox  .productCont:nth-child(8n){margin-right:0%;}
-.productCont .caption{font:20px/24px avantgardegothicitcw01m;text-transform:capitalize;margin:0; min-height:60px; padding:46px 0;letter-spacing:0.5px;}
+.productCont .caption{font:20px/24px avantgardegothicitcw01m;text-transform:capitalize;margin:0; min-height:60px; padding:36px 0 22px;letter-spacing:0.5px;}
 .productCont .caption span{font:16px/24px avantgardegothicitcw01b;color:#555;}
 .bannerFluid .r-lign{text-align:center!important;} 
 .bannerFluid .l-lign{text-align:center!important;}
