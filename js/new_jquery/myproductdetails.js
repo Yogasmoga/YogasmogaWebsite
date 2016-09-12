@@ -911,11 +911,11 @@ jQuery(document).ready(function(){
 	jQuery('.prod-img').height(prodHt);	
 	
 	var maxHeight = -1;
-   $('.productCont .caption').each(function() {
-     maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+   jQuery('.productCont .caption').each(function() {
+     maxHeight = maxHeight > jQuery(this).height() ? maxHeight : jQuery(this).height();
    });
-   $('.productCont .caption').each(function() {
-     $(this).height(maxHeight);
+   jQuery('.productCont .caption').each(function() {
+     jQuery(this).height(maxHeight);
    });
 	
 });
@@ -924,10 +924,10 @@ jQuery(window).resize(function(){
 	jQuery('.prod-img').height(prodHt);	
 	
 	var maxHeight = -1;
-   $('.productCont .caption').each(function() {
-     maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+   jQuery('.productCont .caption').each(function() {
+     maxHeight = maxHeight > jQuery(this).height() ? maxHeight : jQuery(this).height();
    });
-   $('.productCont .caption').each(function() {
-     $(this).height(maxHeight);
+   jQuery('.productCont .caption').each(function() {
+     jQuery(this).height(maxHeight);
    });
 });
