@@ -3313,6 +3313,7 @@ width:100%!important;height:100%!important;
 	#signup.mc-signup .fields-area p.button-area input[type="submit"]{-webkit-appearance: none;}
 }
 /*######### new design 31-aug-2016############*/
+.product-details .block-head{margin-top: 0px;}
 ul.main-menu li.active a.menu-heading{color:#ae8536;}
 div.search-nav ul li a.current,
 div.search-nav ul li a:hover,
