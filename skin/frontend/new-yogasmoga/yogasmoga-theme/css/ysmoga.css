@@ -2941,6 +2941,9 @@ ul.main-menu > li{padding:0 10px;}
 .catalog-category-view #bucket1_slider .flex-control-paging li a{width:19px; height:19px;border-radius:19px;box-sizing:border-box;border:1px solid #fff; background:none;box-shadow:0 0 0;}
 .catalog-category-view #bucket1_slider .flex-control-paging li a.flex-active{background:#fff;}
 
+
+.new-arrivals-block .productCont .caption,.new-arrivals-block .productCont .caption span{font-family:avantgardegothicitcw01m; letter-spacing:0;}
+
 .new-arrivals-block span.na-head{font:46px/46px avantgardegothicitcw01d;display:block; margin-bottom:34px;}
 .new-arrivals-block .na-subhead{font:20px/26px avantgardegothicitcw01m;letter-spacing:0.6px;text-transform:none;color:#555;}
 .gridWrap .productCont.prodduct_horizontal {
