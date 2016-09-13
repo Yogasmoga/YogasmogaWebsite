@@ -285,7 +285,7 @@
                                         continue;
                                     }
 
-                                    if($imgdataFR['type'] == 'product image' && $imgdataFR['color'] == $imgdata['color'] && $frontimgage == '')
+                                    if($imgdataFR['type'] == 'product image' && $imgdataFR['color'] == $imgdata['color'] && !isset($quickviewproducts[$imgdata['quick_view_position']]['frontimgurl']))
                                     {
                                         $frontimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_imageFR->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
                                         $quickviewproducts[$imgdata['quick_view_position']]['frontimgurl'] = (string)$frontimgage;
