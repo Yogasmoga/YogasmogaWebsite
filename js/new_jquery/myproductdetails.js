@@ -388,6 +388,9 @@ function changeproductsize(sz) {
             amount.html("$" + firstSizePrice);
         }
         //end insale
+		//make regular size default selected
+		jQuery("body").find("div.selectedlength div:nth-child(2)").trigger("click");
+		//make regular size default selected
     } else {
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
@@ -687,6 +690,9 @@ function changeColor(clr) {
     var amount = jQuery(".amount");
     var firstSize = '', firstSizePrice = '';
     if (_islengthavailable) {
+		//make regular size default selected
+		jQuery("body").find("div.selectedlength div:nth-child(2)").trigger("click");
+		//make regular size default selected
         // check for insale
         firstSize = jQuery("div.selectedlength div").first().next();
         firstSizePrice = firstSize.attr("price");
