@@ -3328,7 +3328,11 @@ div.side-menu-bar ul li a:hover,
 .leftnav a.current{color:#ae8536!important;}
 .productCont .caption a:hover{color:#ae8536;}
 .in-bl ul.main-menu2 > li{padding:3px 10px 0 10px;}
+ul.main-menu2 a.main-heading{height:31px;}
 ul.main-menu > li.active, ul.main-menu2 > li.active{background: none;}
+ul.main-menu > li.smenu, ul.main-menu > li.active.over, ul.main-menu > li:hover, ul.main-menu2 > li.active.over {
+  background: rgba(0, 0, 0, 0) url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/menu_arrow.png") no-repeat scroll center bottom / 17px 14px;
+}
 table.productimagecontainer table.tdbigimagecontainer td img {
   cursor: default!important;
 }
