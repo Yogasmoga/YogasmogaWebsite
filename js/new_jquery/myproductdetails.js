@@ -724,7 +724,7 @@ function addtocart() {
             if (jQuery("div.selectedlength div.selected").length == 0)
                 errormsg = "Please select length to continue";
 			if (jQuery("div#sizecontainer div.dvselectedsize").length == 0)
-                errormsg = "Please select size to continue";
+                errormsg = "Please select a size to continue";
         }
         if (errormsg != '') {
             jQuery("div.producterrorcontainer div.errormsg").hide();
