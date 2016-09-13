@@ -3468,6 +3468,7 @@ table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 .fabDetail > h2, .fabDetail > .h2{font:26px/30px avantgardegothicitcw01d;color:#555;}
 #productdetails .fabDetail li:nth-child(2n), #productdetails .fabDetail li:nth-child(2n+1){ width: 24%;}
 #productdetails .fabDetail li{text-align:left;font:13px/20px avantgardegothicitcw01m;letter-spacing:0.5px;text-transform:capitalize;}
+.fabDetail sup{font: 14px/18px avantgardegothicitcw01m;}
 .fitDetail .bullets{}
 .fitDetail .bullets li{font:14px/20px avantgardegothicitcw01m;color:#555;margin-left:13px;}
 .size.size,.fitDetail tr:first-child td,.fitDetail td{font:16px/16px avantgardegothicitcw01m;color:#555; letter-spacing:0.27px;}
