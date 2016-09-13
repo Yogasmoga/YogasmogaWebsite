@@ -2946,7 +2946,7 @@ ul.main-menu > li{padding:0 10px;}
 .catalog-category-view #bucket1_slider .flex-control-nav  {display: block !important;left: 0;right: auto;text-align: center;width: 33.25% !important;bottom:4.01%;}
 .catalog-category-view #bucket1_slider .flex-control-paging li a{width:19px; height:19px;border-radius:19px;box-sizing:border-box;border:1px solid #fff; background:none;box-shadow:0 0 0;}
 .catalog-category-view #bucket1_slider .flex-control-paging li a.flex-active{background:#fff;}
-.catalog-category-view .quick-access{border-bottom:1px solid #9c9c9c;}
+.catalog-category-view .quick-access{border-bottom:1px solid #979797;}
 
 .new-arrivals-block .productCont .caption,.new-arrivals-block .productCont .caption span{ letter-spacing:0;}
 
