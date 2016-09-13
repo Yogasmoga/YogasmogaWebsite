@@ -3327,8 +3327,12 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a:hover{color:#ae8536;}
 .leftnav a.current{color:#ae8536!important;}
 .productCont .caption a:hover{color:#ae8536;}
-.in-bl ul.main-menu2 > li{padding:1px 10px 0 10px;}
+.in-bl ul.main-menu2 > li{padding:3px 10px 0 10px;}
+ul.main-menu2 a.main-heading{height:31px;}
 ul.main-menu > li.active, ul.main-menu2 > li.active{background: none;}
+ul.main-menu > li.smenu, ul.main-menu > li.active.over, ul.main-menu > li:hover, ul.main-menu2 > li.active.over {
+  background: rgba(0, 0, 0, 0) url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/menu_arrow.png") no-repeat scroll center bottom / 17px 14px;
+}
 table.productimagecontainer table.tdbigimagecontainer td img {
   cursor: default!important;
 }
@@ -3378,8 +3382,10 @@ width: 140px;
     height: 20px;
     letter-spacing: 0;
     line-height: 0;
-    width: 168px;
+    width: 168px; vertical-align:bottom; margin-bottom:9px;
 }
+#search-btn{background:transparent url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/search-icon2.png") no-repeat scroll center center / 12px auto;}
+
 /******************  header new changes end   ***********/
  ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a {
   color: #555;
@@ -3407,7 +3413,7 @@ ul.main-menu2 li ul.sub-menu li a {
   font-family: AvantGardeGothicITCW01B;
 }
 /************* 2-sep*********/
-.productCont .prod-img img{max-width:100%;max-height:100%;}
+.productCont .prod-img img{max-width:100%;max-height:100%;margin:0 auto; display:block;}
 
 .bannerFluid img{display:none;}
 .bannerFluid .bnrtxt.bnr.white{color:#555!important;}
@@ -3417,8 +3423,8 @@ ul.main-menu2 li ul.sub-menu li a {
 .bannerFluid{background:#fff!important;}
 /************* 2-sep*********/
 #div_sizes,#div_cats{padding-top:7px;}
-.chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:34px; height:26px; line-height:25px; vertical-align:middle; display:inline-block;
-	font-size:12px;}
+.chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:27px; height:26px; line-height:25px; vertical-align:middle; display:inline-block;
+	font-size:12px; padding:1px 8px;}
 #div_cats .chk-cats:hover, #div_cats .chk-cats.chk-cats-selected,.chk-size-selected{background:#ae8536;}
 #div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px; padding-left:14px; padding-right:14px;}
 #div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; display:inline-block;}
@@ -3468,6 +3474,7 @@ table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 .fabDetail > h2, .fabDetail > .h2{font:26px/30px avantgardegothicitcw01d;color:#555;}
 #productdetails .fabDetail li:nth-child(2n), #productdetails .fabDetail li:nth-child(2n+1){ width: 24%;}
 #productdetails .fabDetail li{text-align:left;font:13px/20px avantgardegothicitcw01m;letter-spacing:0.5px;text-transform:capitalize;}
+.fabDetail sup{font: 14px/18px avantgardegothicitcw01m;}
 .fitDetail .bullets{}
 .fitDetail .bullets li{font:14px/20px avantgardegothicitcw01m;color:#555;margin-left:13px;}
 .size.size,.fitDetail tr:first-child td,.fitDetail td{font:16px/16px avantgardegothicitcw01m;color:#555; letter-spacing:0.27px;}
@@ -3517,9 +3524,9 @@ float:left; margin-left:-40px; }
 /*.gry-box .selectedlength div.selected.outofstock{background:#555;color:#fff; }*/
 #productdetails .social-ico,#productdetails .earnbucks{display:none;}
 .wishlist-nw{width:100%;float:left;margin-top:10px;}
-.wishlist-nw .wishlist-link,.wishlist-nw .wishlist-link a{width:100%; height:42px;background:#dddddd;color:#555;font-size:16px; font-family:AvantGardeGothicMedium; text-align:center; line-height:42px;padding:0;
+.wishlist-nw .wishlist-link,.wishlist-nw .wishlist-link a{width:100%; height:42px;background:#dddddd;color:#777;font-size:16px; font-family:AvantGardeGothicMedium; text-align:center; line-height:42px;padding:0;
 	display:block;border:0 none;}
-#productdetails .freeshipptext{font:13px/13px avantgardegothicitcw01m;letter-spacing:0.22px;}
+#productdetails .freeshipptext{font:13px/13px avantgardegothicitcw01m;letter-spacing:0.22px; clear:both; padding:16px 0 13px;}
 #productdetails .freeshipptext em{font-style:normal;}
 .product_description_block{font:14px/18px avantgardegothicitcw01m;}
 .box-desc-dvdr .h2{margin-bottom:18px;text-transform:capitalize;letter-spacing:0.27px;}
