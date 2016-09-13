@@ -1530,7 +1530,13 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 			<div class="box-desc-dvdr accord">
                 <?php if ($defaultProductDescription != '') { ?>
 				<div class="accord-item prod-desc-item">
-					<div class="h2">Product description<span>&nbsp;</span></div>
+					<div class="h2">Product description<span>
+					<svg height="44px" width="44px">
+                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"></line>
+                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"></line>
+                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"></line>
+                    </svg>
+					</span></div>
 					<div class="accord-desc">
                     <?php echo $defaultProductDescription; ?>
 					</div>
@@ -1587,7 +1593,13 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                 if ($upsellsimplecount == 1) {
                 ?>		
 				<div class="accord-item prod-rel-item active">
-					<div class="h2">Related Product<span>&nbsp;</span></div>
+					<div class="h2">Related Product<span>
+					<svg height="44px" width="44px">
+                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"></line>
+                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"></line>
+                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"></line>
+                    </svg>
+					</span></div>
 					<div class="accord-desc">
 						<a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><img class="related-img" nopin="nopin" alt="<?php echo $parentproduct->getName() ?>" title="<?php echo $parentproduct->getName() ?>"
                                src="<?php echo $completelookimg; ?>"/></a>

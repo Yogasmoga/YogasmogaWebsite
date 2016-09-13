@@ -3530,12 +3530,16 @@ float:left; margin-left:-40px; }
 #productdetails .freeshipptext em{font-style:normal;}
 .product_description_block{font:14px/18px avantgardegothicitcw01m;}
 .box-desc-dvdr .h2{margin-bottom:18px;text-transform:capitalize;letter-spacing:0.27px;}
-.accord .accord-item{border-top:2px solid #ccc; padding-top:18px;}
-.accord .accord-item .h2 span{float:right;}
-.accord .accord-item .h2 span:before{content:"+"}
+.accord .accord-item{border-top:2px solid #ccc; padding-top:18px;position:relative;}
+.accord .accord-item .h2 span{float: right;     position: absolute;    right: 0;    top: 0;}
+.accord .accord-item .h2 span:before{content:""}
 .accord .accord-item .accord-desc{display:none;padding-bottom:10px;font:14px/18px avantgardegothicitcw01m;letter-spacing:0.54px;}
 .accord .accord-item.active .accord-desc{display:block;}
-.accord .accord-item.active .h2 span:before{content:"\2013"}
+.accord .accord-item.active .h2 span:before{content:""}
+
+.accord .accord-item.active .h2 span  svg line:nth-child(3) {
+    stroke: none;
+}
 
 .prod-rel-item .related-img{width:100%; height:auto;margin-bottom:20px;}
 .prod-rel-item p{margin-bottom:0;}
