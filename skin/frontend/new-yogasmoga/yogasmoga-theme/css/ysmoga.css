@@ -2995,7 +2995,7 @@ ul.main-menu > li{padding:0 10px;}
 	.catalog-category-view #bucket1_slider .hero-slide-subtitle ,.cms-home  .cubix  .over-the-slide .hero-slide-subtitle {font-size:11px; line-height:11px;margin-bottom:27px!important; max-width:224px;}
 	
 	.catalog-category-view #bucket1_slider .hero-slide-title,.cms-home  .cubix  .over-the-slide .hero-slide-title {font-size:38px; line-height:38px;margin-bottom:50px!important;}
-	.catalog-category-view #bucket1_slider .hero-slide-bodytext, .cms-home .cubix .over-the-slide .hero-slide-bodytext{font-size:17px; line-height:22px;margin-bottom:16px!important;}
+	.catalog-category-view #bucket1_slider .hero-slide-bodytext ,.cms-home  .cubix  .over-the-slide .hero-slide-bodytext{font-size:17px; line-height:22px; margin-bottom:16px!important;}
 	.catalog-category-view #bucket1_slider .hero-slide-cta .shop-link , .cms-home  .cubix  .over-the-slide .hero-slide-cta .shop-link  {font-size:17px; line-height:22px;}
 	.catalog-category-view #bucket1_slider .flex-control-paging li a{width:16px; height:16px;border-radius:16px;}
 	.cms-home  .cubix  .over-the-slide .hero-slide-bodytext{top: 57%;}
