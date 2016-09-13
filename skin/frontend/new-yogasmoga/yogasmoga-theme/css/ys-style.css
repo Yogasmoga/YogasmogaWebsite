@@ -3382,8 +3382,10 @@ width: 140px;
     height: 20px;
     letter-spacing: 0;
     line-height: 0;
-    width: 168px;
+    width: 168px; vertical-align:bottom; margin-bottom:9px;
 }
+#search-btn{background:transparent url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/search-icon2.png") no-repeat scroll center center / 12px auto;}
+
 /******************  header new changes end   ***********/
  ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a {
   color: #555;
