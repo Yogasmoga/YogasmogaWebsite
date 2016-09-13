@@ -2914,12 +2914,12 @@ ul.main-menu > li{padding:0 10px;}
 }
 .gridWrap{margin: 0 35px 0 231px;}
 .new_arrivals.gridWrap{margin: 0 40px 0 235px;}
-.productCont{ margin: 0 0.3% 0;/*margin: 0 4px 0;*/}
+.productCont{/* margin: 0 0.3% 0;*/margin: 0 4px;}
 .gridWrap .productCont {width: 32.73%;/*width:32.93%!important;*/}
 .productCont .prod-img{background:#f3f3f3;/* height:508px!important;*/}
 /*.gridWrap .productCont:nth-child(3n-2){margin-left:0;}
 .gridWrap .productCont:nth-child(3n){margin-right:0;}*/
-.gridWrap .productContbox  .productCont{width:32.8%;}
+.gridWrap .productContbox  .productCont{width:32.8%;margin:0 0.3% 0;}
 .productContbox  .productCont:nth-child(3n-2){margin-left:0;}
 .productContbox  .productCont:nth-child(3n){margin-right:0;}
 .productContbox  .productCont:nth-child(6n){margin:0 0.3%;}

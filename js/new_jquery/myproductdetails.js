@@ -910,6 +910,9 @@ jQuery(document).ready(function(){
 	var prodHt = jQuery('.productCont').width();
 	jQuery('.prod-img').height(prodHt);	
 	
+	var gridwd = jQuery('.gridWrap').width();	
+	jQuery('.productCont').width((gridwd-24)/3);
+	
 	var maxHeight = -1;
    jQuery('.productCont .caption').each(function() {
      maxHeight = maxHeight > jQuery(this).height() ? maxHeight : jQuery(this).height();
@@ -922,6 +925,9 @@ jQuery(document).ready(function(){
 jQuery(window).resize(function(){
 	var prodHt = jQuery('.productCont').width();
 	jQuery('.prod-img').height(prodHt);	
+	
+	var gridwd = jQuery('.gridWrap').width();	
+	jQuery('.productCont').width((gridwd-24)/3);
 	
 	var maxHeight = -1;
    jQuery('.productCont .caption').each(function() {
