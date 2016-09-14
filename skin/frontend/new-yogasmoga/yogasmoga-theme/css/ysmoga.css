@@ -2908,6 +2908,7 @@ ul.main-menu > li{padding:0 10px;}
 /*--- header modify end ---*/
 
 /*########### new designs ###########*/
+.header-container{min-width:1024px;}
 .ctglink li.sub-head {
     border-top: 1px solid #fff;  
 }
