@@ -595,7 +595,8 @@ function positiondesignfeatureheadimage()
 
 jQuery(document).ready(function($){
 	$('.tdbigimagecontainer img').click(function(){
-		
-		
+		//alert();
+		$("table.smallimagecontiner td.selectedimage").removeClass('selectedimage').next('td').trigger('click');
+			
 	});
 });
