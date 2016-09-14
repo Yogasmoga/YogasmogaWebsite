@@ -595,8 +595,16 @@ function positiondesignfeatureheadimage()
 
 jQuery(document).ready(function($){
 	$('.tdbigimagecontainer img').click(function(){
-		//alert();
-		$("table.smallimagecontiner td.selectedimage").removeClass('selectedimage').next('td').trigger('click');
+		
+		
+		if($('table.smallimagecontiner td:last-child').hasClass('selectedimage')){
+				//alert();
+			$('table.smallimagecontiner td:first-child').trigger('click');
+			
+		}
+		else{
+				$("table.smallimagecontiner td.selectedimage").removeClass('selectedimage').next('td').trigger('click');
+		}
 			
 	});
 });
