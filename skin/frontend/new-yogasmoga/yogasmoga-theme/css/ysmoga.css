@@ -2994,6 +2994,11 @@ ul.main-menu > li{padding:0 10px;}
 }
 .gridProdCubix .leftnav .ctglink li a.bld:hover{color:#ae8536!important;}
 
+/*--category page header--*/
+.catalog-category-view .bannerFluid .bnrtxt.bnr.white{position:static;}
+.catalog-category-view .bannerFluid{min-height:inherit!important; padding:53px 0 1px 0;margin-bottom:0;}
+.catalog-category-view .bannerFluid.ds{padding:53px 0 32px 0;}
+
 @media only screen and (max-width : 1400px) {
 	.productCont .caption{font-size:17px;line-height:24px; padding:40px 0;min-height:36px;}
 	.shopnow-btn{font:17px/24px ITCAvantGardeProMd;}

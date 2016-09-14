@@ -946,3 +946,9 @@ jQuery(window).resize(function(){
      jQuery(this).height(maxHeight);
    });
 });
+
+jQuery(document).ready(function(){
+	if(jQuery('#div_sizes').length){
+		jQuery('.bannerFluid').addClass('ds');		
+	}
+});
