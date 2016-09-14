@@ -91,7 +91,7 @@ function filterSizes(){
         return;
     }
 
-    var sizes = "<b>FILTER BY SIZE: </b> ";
+    var sizes = "<b>Filter by Size: </b> ";
 
     for(var i=0;i<arAllSizes.length;i++){
 
