@@ -3382,7 +3382,7 @@ width: 140px;
     height: 20px;
     letter-spacing: 0;
     line-height: 0;
-    width: 168px; vertical-align:bottom; margin-bottom:8px;
+    width: 168px; vertical-align:bottom; margin-bottom:5px;
 }
 #search-btn{background:transparent url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/search-icon2.png") no-repeat scroll center center / 12px auto;}
 
@@ -3396,7 +3396,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child a {
   font: 11px/11px avantgardegothicitcw01d;
 }
 .header .logo {
-    margin: 29px 19px 0 0;
+    margin: 30px 19px 0 0;
 }
 .logoCont {
   float: left;
