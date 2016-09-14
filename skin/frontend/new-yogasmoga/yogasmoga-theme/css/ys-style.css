@@ -3385,7 +3385,7 @@ width: 140px;
     height: 20px;
     letter-spacing: 0;
     line-height: 0;
-    width: 168px; vertical-align:bottom; margin-bottom:8px;
+    width: 168px; vertical-align:bottom; margin-bottom:9px;
 }
 .mac-os .search-bar{ margin-bottom:5px;}/*--only for mac system--*/
 
@@ -3401,7 +3401,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child a {
   font: 11px/11px avantgardegothicitcw01d;
 }
 .header .logo {
-    margin: 29px 19px 0 0;
+    margin: 28px 19px 0 0;
 }
 .mac-os .header .logo { margin: 30px 19px 0 0;} /*--only for mac system--*/
 
