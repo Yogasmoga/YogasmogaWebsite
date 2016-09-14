@@ -3327,7 +3327,8 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a:hover{color:#ae8536;}
 .leftnav a.current{color:#ae8536!important;}
 .productCont .caption a:hover{color:#ae8536;}
-.in-bl ul.main-menu2 > li{padding:4px 10px 0 10px;}
+.in-bl ul.main-menu2 > li{padding:3px 10px 0 10px;}
+.mac-os .in-bl ul.main-menu2 > li{padding:4px 10px 0 10px;} /*-- for mac system --*/
 ul.main-menu2 a.main-heading{height:31px;}
 ul.main-menu > li.active, ul.main-menu2 > li.active{background: none;}
 ul.main-menu > li.smenu, ul.main-menu > li.active.over, ul.main-menu > li:hover, ul.main-menu2 > li.active.over {
@@ -3382,8 +3383,10 @@ width: 140px;
     height: 20px;
     letter-spacing: 0;
     line-height: 0;
-    width: 168px; vertical-align:bottom; margin-bottom:5px;
+    width: 168px; vertical-align:bottom; margin-bottom:8px;
 }
+.mac-os .search-bar{ margin-bottom:5px;}/*--only for mac system--*/
+
 #search-btn{background:transparent url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/search-icon2.png") no-repeat scroll center center / 12px auto;}
 
 /******************  header new changes end   ***********/
@@ -3396,8 +3399,10 @@ ul.main-menu li ul.sub-menu > li > ul:first-child a {
   font: 11px/11px avantgardegothicitcw01d;
 }
 .header .logo {
-    margin: 30px 19px 0 0;
+    margin: 29px 19px 0 0;
 }
+.mac-os .header .logo { margin: 30px 19px 0 0;} /*--only for mac system--*/
+
 .logoCont {
   float: left;
   margin-top: 2%;
