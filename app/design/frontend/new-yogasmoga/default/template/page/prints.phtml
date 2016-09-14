@@ -138,7 +138,17 @@
                                 $productConfigurableCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
                                 ?>
                                 <!-- bannerContainer -->
-                            <h1 style="display:none"><?php echo $shopthecolorCategory->getName(); ?></h1>
+								<h1 style="display:none"><?php echo $shopthecolorCategory->getName(); ?></h1>
+								
+								<?php if(!$shopthecolor_imgUrl){?>
+								<div class="bannerFluid" style="background: url('<?php echo $shopthecolor_imgUrl; ?>'); background-size: cover;">
+                                    <div class="bnrtxt bnr white">
+									<?php  echo $shopthecolorCategory->getName();?>
+									
+									</div>
+                                </div>
+								<?php } ?>
+								
 								<?php if($shopthecolor_imgUrl):?>
                                 <div class="bannerFluid" style="background: url('<?php echo $shopthecolor_imgUrl; ?>'); background-size: cover;">
                                     <!-- <img src="--><?php //echo $shopthecolor_imgUrl; ?><!--">-->
