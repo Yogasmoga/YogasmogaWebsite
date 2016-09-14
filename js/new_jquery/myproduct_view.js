@@ -592,3 +592,7 @@ function positiondesignfeatureheadimage()
     else
         jQuery("div.designfeaturesheadimage.landscapefeature").css('left', '675px');
 }
+
+jQuery(document).ready(function($){
+	$('.tdbigimagecontainer img').click();
+});
