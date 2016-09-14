@@ -3403,7 +3403,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child a {
 .header .logo {
     margin: 28px 19px 0 0;
 }
-.mac-os .header .logo { margin: 30px 19px 0 0;} /*--only for mac system--*/
+.mac-os .header .logo { position:relative; top:1px;} /*--only for mac system--*/
 
 .logoCont {
   float: left;
