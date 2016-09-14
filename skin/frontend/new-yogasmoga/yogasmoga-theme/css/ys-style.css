@@ -3556,6 +3556,10 @@ float:left; margin-left:-40px; }
 
 .blk-imp{display:block!important;}
 
+.gry-box div.producterrorcontainer div.errormsg {
+  color: #ff5f00; display: none;font-family: itcavantgardepromd; font-size: 13px;letter-spacing: 0.22px;line-height: 13px; padding-bottom: 0; position: absolute;
+  text-align: center;text-transform: none;top: -63px;}
+
 @media only screen and (max-width:1599px){
 	.bottom-container .col-first,.bottom-container .col-second{width:100%; padding:0 0 40px 0;}
 	
