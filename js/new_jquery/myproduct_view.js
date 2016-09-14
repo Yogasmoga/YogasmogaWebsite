@@ -594,5 +594,8 @@ function positiondesignfeatureheadimage()
 }
 
 jQuery(document).ready(function($){
-	$('.tdbigimagecontainer img').click();
+	$('.tdbigimagecontainer img').click(function(){
+		
+		
+	});
 });
