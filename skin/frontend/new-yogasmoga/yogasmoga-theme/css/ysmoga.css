@@ -2996,7 +2996,7 @@ ul.main-menu > li{padding:0 10px;}
 
 /*--category page header--*/
 .catalog-category-view .scroller_anchor{display:none;}
-.catalog-category-view .bannerFluid .bnrtxt.bnr.white{position:static;}
+.catalog-category-view .bannerFluid .bnrtxt.bnr.white,.bannerFluid .bnrtxt{position:static;}
 .catalog-category-view .bannerFluid{min-height:inherit!important; padding:53px 0 1px 0;margin-bottom:0;}
 .catalog-category-view .bannerFluid.ds{padding:53px 0 32px 0;}
 
