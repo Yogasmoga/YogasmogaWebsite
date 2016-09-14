@@ -2746,9 +2746,11 @@ table.smallimagecontiner td.selectedimage{
     font-size: 12px;
     padding: 4px 10px;
 }
-.insale-price{color:#CC0033;}
-
-
+.insale-price {
+  color: #c03;
+  float: left;
+  margin-right: 8px;
+}
 
 
 /***Bundle Gift Sets***/
@@ -3405,6 +3407,11 @@ ul.main-menu li ul.sub-menu > li > ul:first-child a {
 }
 .sub-menu a:hover {
   color: #ae8536 !important;
+}
+.was-amount {
+  color: #555555;
+  font: 18px/30px ITCAvantGardeProBk;
+  text-transform: uppercase !important;
 }
 ul.main-menu li ul.sub-menu > li > ul a, ul.main-menu2 li ul.sub-menu > li > ul:first-child a, ul.tr-menu > li > ul.sub-menu li a {
   font-family: AvantGardeGothicITCW01B;
