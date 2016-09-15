@@ -378,7 +378,7 @@ if($currentUrl != $checkoutpage){
   <?php /* ?>  <div style="height:69px !important;" class="header-container"><?php */ ?>
 
   
-<?php 
+<?php if(false){   /***********  new banner changes ***********/
 $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
 if(!$loggedIn){ ?>
 <div class="header-container" style="padding-top:25px; height:69px !important">
@@ -393,6 +393,7 @@ else { ?>
 
  
 <?php } ?>
+<?php } /***********  new banner changes ***********/?>
 
 
 	
@@ -431,6 +432,80 @@ else { ?>
         }
 	}	
     ?>
+	
+	<div style="height:109px !important;" class="header-container">
+	<div style="height:40px;padding:0 40px;" class="header-banner">
+	<div style="border-bottom:1px solid #ccc;float:left;width:100%;">
+	<?php 
+$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+if(!$loggedIn){ ?>
+	<div class="new-orange-banner orange-banner">	
+	SIGN UP NOW TO INSTANTLY GET 25% OFF YOUR FIRST ORDER
+	</div>
+	<?php  } 
+else { ?>
+ <div class="new-orange-banner orange-banner">	
+	&nbsp;
+	</div>
+
+ 
+<?php } ?>
+
+	
+	
+	<div style="float:left;" class="free-shipping-txt">
+	Free Shipping to US &amp; Canada	
+	</div>
+	<div style="float:right;" class="right-bar-menu">
+	 <div  class="right-top-block r-align">
+	<ul class="tr-menu">
+                   
+                  <!-- <li><?php/* echo $this->getChildHtml('topSearch') */?></li>-->
+                    <li><?php
+
+                        $islogedinuser = false;
+                        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+
+                            $islogedinuser = true;
+                            $customer = Mage::getSingleton('customer/session')->getCustomer();
+                            $firstname = $customer->getFirstname();
+                            ?><script>
+                                _islogedinuser = true;
+                            </script>
+
+                        <?php
+                        }
+                        ?>
+                        <a id="welcome-name" href="<?php if($islogedinuser) echo $this->getBaseUrl()."customer/account/index"; else echo "javascript:void(0);";  ?>"><?php if($islogedinuser)echo "Hi ".$firstname;else echo "SIGN IN";  ?></a>
+                        <ul class="sub-menu l-align my-acnt" style="left: -64px;">
+                            <li class="blank"></li>
+                            <li style="padding-top: 16px;"><a href="<?php echo $this->getBaseUrl()."sales/order/history"; ?>">track order</a></li>
+                            <li><a href="<?php echo $this->getBaseUrl()."customer/account/index"; ?>">account settings</a></li>
+<!--                            <li class="last"><a id="signin" href="--><?php //if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?><!--">--><?php //if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?><!--</a></li>-->
+                            <li class="last login_logout_link"></li>
+                        </ul>
+                        
+                    </li>
+					 <li data-blockid = "help-new">
+                        <a href="<?php echo $this->getBaseUrl();?>help#faq">Help</a>
+                        <ul class="sub-menu l-align cms-header-link" style="left: -87px;">
+                            <li class="blank"></li>
+                            <li style="padding-top: 16px;" data-blockid = "faq"><a href="<?php echo $this->getBaseUrl();?>help#faq">FAQ</a></li>
+                            <li data-blockid = "shipping-returns"><a href="<?php echo $this->getBaseUrl();?>help#shipping-returns">Shipping and Returns</a></li>
+                            <li data-blockid = "size-chart"><a href="<?php echo $this->getBaseUrl();?>help#size-chart">Size Chart</a></li>
+                            <li data-blockid = "product-care"><a href="<?php echo $this->getBaseUrl();?>help#product-care">Product Care</a></li>
+                            <li data-blockid = "email-us" class="last"><a href="<?php echo $this->getBaseUrl();?>help#email-us">Email Us</a></li>
+                        </ul>
+                        
+                    </li>
+                    <li style="margin-right:0px"><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
+                    <li class="checkoutshow" style="display:none;"><span>|</span><a class="checkout-link-top" href="<?php echo $this->getBaseUrl();?>checkout/onepage">Checkout</a></li>
+					
+                </ul>
+				</div>
+	</div>
+	</div>
+	</div>
 
 <div id="globalheader" class="header
     <?php
@@ -457,13 +532,14 @@ else { ?>
         <?php else:?>
             <!-- <div class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></div> -->
         <?php endif?>
-
-        <div class="f-left header-left">
-            <div class="logo posRel">
+		 <div class="logo posRel">
                 <a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
                     <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
                 </a>
             </div>
+
+        <div class="f-left header-left">
+           
             <ul class="f-left main-menu ctag-menu">
                 <li id="stepCheck">3 Step Checkout <span><span class="f-left">Free and fast shipping to US and Canada</span>
                 <span class="f-left" style="margin: 0 0 0 10px">
@@ -601,10 +677,10 @@ else { ?>
 
         </div>
         <div class="clearfix"></div>
-        <div class="f-right header-right">
-            <div class="right-top-block r-align">
-                <ul class="tr-menu">
-                    <li class="free-shipping">
+        <div style="display:block;" class="f-right header-right">
+            <div style="display:none;" class="right-top-block r-align">
+                <ul  class="tr-menu">
+                    <li style="display:none;" class="free-shipping">
                         <span>Free shipping to US and Canada
                             <span>
                                 <img src="<?php echo $this->getSkinUrl('images/USAflag.png') ?>" alt="YogaSmoga - United States" style="height:16px;" />
@@ -678,19 +754,19 @@ else { ?>
                             </ul>
                         </li>
 						<li><a href="<?php echo $this->getBaseUrl();?>our-stores" class="main-heading">YS Stores</a></li>
-                        <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks" class="main-heading">Smogi Bucks</a>
+                     <!--   <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks" class="main-heading">Smogi Bucks</a>
                             <ul class="sub-menu mlink l-align" style="left:-57px;">
                                 <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks">what is smogi bucks</a></li>
                                 <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks#get-smogi-bucks">how can i get them</a></li>
                                 <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
                             </ul>
-                        </li>
+                        </li>-->
 						<!-- header-modify ---------->
-                        <li class="rangoli"><a href="<?php /* echo $this->getBaseUrl();*/?>rangoli" class="rangoliRd" id="rangoli-head1">Rangoli</a></li>
+                       <!-- <li class="rangoli"><a href="<?php /* echo $this->getBaseUrl();*/?>rangoli" class="rangoliRd" id="rangoli-head1">Rangoli</a></li>-->
 						<!--<li><a href="<?php echo $this->getBaseUrl()."rewardpoints/index/referral"; ?>" id="referal_link" class="referalRd">invite friend</a></li>-->
                     </ul>
                 </div>
-                <?php echo $this->getChildHtml('topSearch') ?>
+               <!-- <?php/* echo $this->getChildHtml('topSearch') */?>-->
 
             </div>
 
@@ -705,6 +781,8 @@ else { ?>
         </div>
         <?php echo $this->getChildHtml('topContainer'); ?>
     </div>
+	
+	</div><!-- new header container ------->
     <!-- div id="smallmenu">
         <?php //echo $this->getSkinUrl('images/YS_logo.png') ?>
     </div -->

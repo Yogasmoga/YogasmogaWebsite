@@ -3580,6 +3580,66 @@ float:left; margin-left:-40px; }
   text-transform: uppercase;
 }
 
+/********** new- changes ************/
+.header .logo {
+  left: 0;
+  margin: 19px 19px 0 0;
+  position: absolute;
+  right: 0;
+}
+div#bodycompensator{height: 109px!important;}
+.header-container  .header  {position:relative;}
+.header-banner{height:40px;padding:0 40px;}
+.header-banner .new-orange-banner{font:11px/40px avantgardegothicitcw01d;
+color:#444444;text-transform:uppercase;
+width:50%;
+margin:0 auto;
+position:absolute;left:0;right:0;
+letter-spacing:0.55px;
+cursor:pointer;
+}
+.header-banner  .orange-banner{
+background:none;
+height:auto;
+
+}
+.free-shipping-txt {
+  font: 12px/40px GraphikRegular;
+  float:left;
+  letter-spacing:0.55px;
+}
+.header-container  .f-right {
+    float: right;
+    padding-top: 20px;
+}
+.header-container .f-right{float: right;
+    padding-top: 24px;}
+.header-banner .right-bar-menu{float:right;}
+ul.main-menu li a.menu-heading{ padding: 28px 0 9px;vertical-align:top;}
+.flexslider{z-index:1;}
+ul.main-menu li a.menu-heading {
+  padding: 28px 0 9px;
+  position: relative;
+  vertical-align: top;
+  z-index: 99;
+}
+.header-banner .right-bar-menu .tr-menu > li{margin-right:18px;}
+.header-banner .right-bar-menu .tr-menu > li a{text-transform:uppercase;}
+.header-banner .right-bar-menu #welcome-name {
+  text-transform: uppercase;
+}
+.header-banner .right-bar-menu .tr-menu > li:last-child {
+  margin-right: 0px;
+}
+.f-left.main-menu.ctag-menu .women{padding-left:0;}
+.in-bl ul.main-menu2 > li:last-child{padding-right:0;}
+.tr-menu li > a:first-child{
+font:10px/11px ITCAvantGardeProBk;color:#444;
+letter-spacing:0.55px;
+}
+.header-banner ul.tr-menu{margin:10px 0 6px;}
+ul.main-menu.f-left.ctag-menu > li{height:60px;}
+#globalheader ul.main-menu2{margin-right:0;}
 @media only screen and (max-width:1599px){
 	.bottom-container .col-first,.bottom-container .col-second{width:100%; padding:0 0 40px 0;}
 	
