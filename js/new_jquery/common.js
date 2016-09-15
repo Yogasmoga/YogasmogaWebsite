@@ -340,7 +340,7 @@ sizeChartPop();
                         // jQuery("#popup-register input").val("").focus().blur();
                         $(".ui-widget-overlay").css("z-index","100");
                         $("input#pfirstname").blur();
-                        $(".ui-widget-overlay").css({"top":"94px","position":"fixed"});						
+                        $(".ui-widget-overlay").css({"top":"109px","position":"fixed"});						
                         //$(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
                         $(window).trigger("resize");
                         var pW = ($(document).width() - $(this).parent().width())/2;
@@ -380,7 +380,7 @@ sizeChartPop();
                 //$("#invite-friend-form input").val("").focus().blur();
                 $(".ui-widget-overlay").css("z-index","100");
                 $("input#friendname").blur();                
-                $(".ui-widget-overlay").css({"top":"94px","position":"fixed"});
+                $(".ui-widget-overlay").css({"top":"109px","position":"fixed"});
                 //$(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
@@ -746,8 +746,8 @@ function initializeBanner(source, str) {
     //jQuery(".golden-banner").html(str);
 	jQuery(source).html(str);
 
-    jQuery(".namaskar-overlay1").css("top", "94px");
-    jQuery(".ui-widget-overlay").css({"top": "94px", "position": "fixed"});	
+    jQuery(".namaskar-overlay1").css("top", "109px");
+    jQuery(".ui-widget-overlay").css({"top": "109px", "position": "fixed"});	
     //jQuery(".ui-widget-overlay").css("top", "94px");
     jQuery(".header-container").css("padding-top", "25px");
     jQuery(".header-container").css("top", "0");
