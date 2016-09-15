@@ -578,7 +578,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 <?php } ?>
 
 <!-- ProductPage -->
-<div class="product-details"  itemscope itemtype="http://schema.org/Product" itemid="#product_base">
+<div class="product-details product-modernstyle"  itemscope itemtype="http://schema.org/Product" itemid="#product_base">
 
     <!-- productdetails -->
     <div id="productdetails" desc="<?php echo html_entity_decode($productName); ?>" class="fullscreen pgsection"
@@ -830,10 +830,12 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
         <!-- ProductImageAndDetailContainer -->
         <div class="block-elm">
+		
             <!-- ProductImageContainer -->
             <div class="wdth65" style="position: relative;">
                 <!-- ImageGallery -->
-                <div class="upper-container">
+                <?php /* commented for new design ?>
+				<div class="upper-container">
                     <table class="productimagecontainer f-left">
                         <tr>
                             <td class="thumb-td">
@@ -856,7 +858,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                         </tr>
                     </table>
-                </div>
+			</div> <?php */ ?>
+			
                 <!-- ImageGallery -->
                 <!-- featureDesign -->
                 <!-- heading -->
@@ -1031,7 +1034,16 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
             <!-- ProductDetailContainer -->
 			<!--<div class="wdth35" style="width:281px;">-->
-            <div class="wdth35" style="width:361px;">
+            
+            <!-- ProductDetailContainer -->
+			
+			<div class="product-row product-row1">
+			<div class="prod-col pcol-left">
+				<img alt="main-image" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img1.jpg" class="" draggable="false">
+				<img alt="made-in-ca" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/madeinusa-seal.png" class="img_madeinusa" draggable="false">
+			</div>
+			<div class="prod-col pcol-right">
+				<div class="wdth35" style="width:361px;">
                  <?php $catIds =  $_product->getCategoryIds();
                         $styleIds = array(125,126,127,128,129,130);
                         $finalIds = array_intersect($catIds, $styleIds);
@@ -1142,7 +1154,15 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 
 /*********************prev next product page **************************/
 ?>
-
+				<div class="range-toggle">
+					<a href="#" class="range-link">Core</a>					
+					<div class="range-desc">
+						lorem ipsum dummy content for range. lorem ipsum dummy content for range.
+						lorem ipsum dummy content for range. lorem ipsum dummy content for range.
+						lorem ipsum dummy content for range. lorem ipsum dummy content for range.
+					</div>
+					
+				</div>
                  <?php if($imageName):?>
                 <div class="style-image">				
 				<img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
@@ -1161,7 +1181,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                             <h1><?php echo html_entity_decode($productName); ?></h1>
                                             <h4 style="display:none" itemprop="name"><?php echo html_entity_decode($productName).$colorname.' | YOGASMOGA.COM'; ?></h4>
                                             </div>
-                                        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                        <div  class="product-price-dv" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 										<span itemprop="priceCurrency" content="USD"></span>
                                         <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>	
 										 <span class="was-amount no-display"
@@ -1177,14 +1197,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                     <!-- selectColor -->
                                     <div class="box-seprtr">
                                         <!--<div class="blck-head-sml"><span>Step 1:</span> choose your color</div>-->
-                                        <div class="blck-head-sml">
-                                            <table class="selectedcolor">
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td class="selectedcolortext" itemprop="color"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
+                                        
                                         <div id="colorcontainer">
                                             <?php
                                             $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
@@ -1244,6 +1257,14 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 
                                             ?>
                                         </div>
+										<div class="blck-head-sml">
+                                            <table class="selectedcolor">
+                                                <tr>
+                                                    <!--<td><span>Color:</span></td>-->
+                                                    <td class="selectedcolortext" itemprop="color"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                         <div style="clear:both;"></div>
                                     </div>
                                     <!-- selectColor -->
@@ -1253,7 +1274,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                         echo "style='display:none;'";
                                     } ?>>
                                         <div class="box-seprtr">
-                                            <div class="blck-head-sml"><span>Size:</span>
+                                            <!--<div class="blck-head-sml"><span>Size:</span>-->
                                                 <table class="f-right">
                                                     <tr>
                                                         <?php if ($sizeChartBlockId != "") { ?>
@@ -1395,8 +1416,8 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 
                                         <!-- addToBagBtn -->
                                         <div id="orderitem" class="addtobag spbutton"
-                                             imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"
-                                             downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>">
+                                             imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.svg'); ?>"
+                                             downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.svg'); ?>">
                                         </div>
                                         <div id='addtobagloader' style="display: none"><img
                                                 src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif'/>
@@ -1452,12 +1473,12 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 														To Wish List</a></p>
 											<?php } ?>
 										</div>
-                                        <p class="freeshipptext"><em>Free and fast shipping to US and
-                                                Canada</em></p>
+                                        <p class="freeshipptext"><em>Free air shipping to US and Canada</em></p>
 
                                         <p class="insale dnone" style="color: #c03; margin-left: 4px;">This Item is
                                             Final Sale. Cannot be exchanged or
                                             returned.</p>
+										<p class="needhelp"><a href="#">Need help?</a></p>	
                                     </div>
                                     <!-- addToBag -->
                                 </td>
@@ -1640,7 +1661,57 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                 <!-- fabricDetails -->
 				</div>
             </div>
-            <!-- ProductDetailContainer -->
+			</div>
+			
+		</div><!--product-row product-row1, ends-->
+		<div class="product-row product-row2">
+		<div class="prod-col pcol-left">
+			<img alt="main-image2" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img2.jpg" class="" draggable="false">
+		</div>
+		<div class="prod-col pcol-right">
+			
+			 <?php
+                        if($fabricStoryBlockId != '') {
+                            echo "<div class='mainfabric' rel='main'>";
+                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricStoryBlockId)->toHtml();
+                            echo "</div>";
+                        
+
+                            if ($fabric_changed) {
+
+                                foreach ($arFabricArray as $key => $value) {
+                                    echo "<div class='fabric_story_block' rel='$key'>";
+                                    echo $this->getLayout()->createBlock('cms/block')->setBlockId($value)->toHtml();
+                                    echo "</div>";
+                                }
+                            }
+                        }
+             ?>
+			
+		</div>
+		
+	</div><!--product-row product-row2, ends-->
+	<div class="product-row product-row3">
+		<div class="prod-col pcol-left">
+			<img alt="main-image3" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img3.jpg" class="" draggable="false">
+		</div>
+		<div class="prod-col pcol-right">                      
+						
+						
+					
+		</div>
+		
+	</div><!--product-row product-row3, ends-->
+		<div class="product-row product-row4 product-row-last">
+		<div class="prod-col pcol-left">
+			<img alt="main-image4" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img4.jpg" class="" draggable="false">
+			<img class="img_rnd" src="<?php echo $this->getSkinUrl('images/CA.svg'); ?>" alt="rnd"/>
+		</div>
+		<div class="prod-col pcol-right">
+			<img alt="main-image5" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img5.jpg" class="" draggable="false">
+		</div>
+		
+	</div><!--product-row product-row4, ends-->
         </div>
         <!-- ProductImageAndDetailContainer -->
 
