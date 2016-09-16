@@ -578,7 +578,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 <?php } ?>
 
 <!-- ProductPage -->
-<div class="product-details product-modernstyle"  itemscope itemtype="http://schema.org/Product" itemid="#product_base">
+<div class="product-details"  itemscope itemtype="http://schema.org/Product" itemid="#product_base">
 
     <!-- productdetails -->
     <div id="productdetails" desc="<?php echo html_entity_decode($productName); ?>" class="fullscreen pgsection"
@@ -830,17 +830,14 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
         <!-- ProductImageAndDetailContainer -->
         <div class="block-elm">
-		
             <!-- ProductImageContainer -->
             <div class="wdth65" style="position: relative;">
                 <!-- ImageGallery -->
-                <?php /* commented for new design ?>
-				<div class="upper-container">
+                <div class="upper-container">
                     <table class="productimagecontainer f-left">
                         <tr>
-                            <td class="thumb-td">
+                            <td>
                                 <div class="thumb-imgs">
-									<img alt="made-in-ca" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/madeinusa-seal.png" class="img_madeinusa" draggable="false">
                                     <table class="smallimagecontiner" width="100%">
                                         <tr></tr>
                                     </table>
@@ -858,14 +855,13 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                         </tr>
                     </table>
-			</div> <?php */ ?>
-			
+                </div>
                 <!-- ImageGallery -->
                 <!-- featureDesign -->
                 <!-- heading -->
                 <div class="clear-fix"></div>
                 <!--Video Block-->
-				<div class="hidden">
+
                 <!-- featuresList -->
 
                 <?php
@@ -893,7 +889,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                 ?>
                 <?php if ($designFeatureVideoName != '' || count($newdfimages) > 1) {
                     ?>
-                    <!--<div class="h2" style="margin-bottom:30px;">Design features</div>-->
+                    <div class="h2" style="margin-bottom:30px;">Design features</div>
                     <!-- heading -->
                     <?php
                     if ($designFeatureVideoName != '') {
@@ -908,7 +904,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                     <?php } ?>
 
 
-                    <ul class="featureList" style="display:none;">
+                    <ul class="featureList">
                         <?php
                         $i = 0;
                         foreach ($newdfimages as $ndfimg) {
@@ -982,68 +978,15 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
                     </div>
                 <?php } ?>
-				</div>
+
                 <!-- featureDesign -->
 
-				<div class="bottom-container">
-					<div class="col-first">
-                        <?php
-                        if($fabricStoryBlockId != '') {
-                            echo "<div class='mainfabric' rel='main'>";
-                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricStoryBlockId)->toHtml();
-                            echo "</div>";
-                        
 
-                            if ($fabric_changed) {
-
-                                foreach ($arFabricArray as $key => $value) {
-                                    echo "<div class='fabric_story_block' rel='$key'>";
-                                    echo $this->getLayout()->createBlock('cms/block')->setBlockId($value)->toHtml();
-                                    echo "</div>";
-                                }
-                            }
-                        }
-                        ?>
-						<img class="img_rnd" src="<?php echo $this->getSkinUrl('images/CA.svg'); ?>" alt="rnd"/>
-						
-					</div>
-
-					<div class="col-second">
-						<div class="h2">Size &amp; Fit</div>
-						<div class="fitDetail font11">
-							<div class="video-box f-left bullets">
-                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howDoesItFitBlockId)->toHtml(); ?>                         
-                            </div>
-
-							<div class="clear-fix"></div>
-
-							<div class="size-chart-tbl">
-								<a name="sizechart" class="size-res-org"></a>
-								<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizeChartBlockId)->toHtml(); ?>                        
-							</div>
-							<div class="vlink-cont">
-								<p class="block-link"><a class="com-a-prd-links" href="#">
-								Watch how to measure</a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div><!--bottom-container-->
             </div>
             <!-- ProductImageContainer -->
 
             <!-- ProductDetailContainer -->
-			<!--<div class="wdth35" style="width:281px;">-->
-            
-            <!-- ProductDetailContainer -->
-			
-			<div class="product-row product-row1">
-			<div class="prod-col pcol-left">
-				<img alt="main-image" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img1.jpg" class="" draggable="false">
-				<img alt="made-in-ca" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/madeinusa-seal.png" class="img_madeinusa" draggable="false">
-			</div>
-			<div class="prod-col pcol-right">
-				<div class="wdth35" style="width:361px;">
+            <div class="wdth35" style="width:281px;">
                  <?php $catIds =  $_product->getCategoryIds();
                         $styleIds = array(125,126,127,128,129,130);
                         $finalIds = array_intersect($catIds, $styleIds);
@@ -1074,102 +1017,11 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 
 
                  ?>
-
-<?php                
-/*********************prev next product page **************************/
-//get origanal category id
-if(count($urlPath) > 2){
-
-$categoryURL =  $urlPath[count($urlPath) - 2];
-
-$parentURLPath = ($urlPath[0] == 'women' ? '/3/' : '/5/');
-
-
-$OBJ_category = Mage::getModel('catalog/category')
-        ->getCollection()
-        ->addAttributeToFilter('url_key', $categoryURL)
-        ->addAttributeToFilter('path', array('like' => "%$parentURLPath%"))
-        ->getFirstItem();
-
-        $realcategory = $OBJ_category->getId();
-//get origanal category id
-
-$_product = $this->getProduct();
-
-if(!$_product->getCategoryIds() && !$realcategory)
-return; 
-
-$cat = Mage::getModel('catalog/category')->load($realcategory); 
-
-$category_products = $cat->getProductCollection()
-->addAttributeToSort('position', 'DESC')
-->addAttributeToSelect('entity_id')
-->addAttributeToFilter('status',1)
-->addAttributeToFilter('visibility',4);
-
-$cat_prod_ids = array();
-foreach($category_products as $pro){
-$cat_prod_ids[] = $pro->getId();
-}
-
-//var_dump($cat_prod_ids = $category_products->getAllIds());
-$_product_id = $_product->getId();
-
-$_pos = array_search($_product_id, $cat_prod_ids);
-$_next_pos = $_pos+1;
-$_prev_pos = $_pos-1;
-
-// get the next product url
-if( isset($cat_prod_ids[$_next_pos]) ) {
-$_next_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_next_pos] );
-} else {
-//$_next_prod = Mage::getModel('catalog/product')->load( reset($cat_prod_ids) );
-}
-// get the previous product url
-if( isset($cat_prod_ids[$_prev_pos]) ) {
-$_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos] );
-} else {
-//$_prev_prod = Mage::getModel('catalog/product')->load( end($cat_prod_ids) );
-}
-?>
-
-	<div class="prod-pager">
-    <p class="prod-pager-links">
-    <?php if($_prev_prod != NULL): ?>
-    <span class="prev"><a href="<?php print $_prev_prod->getUrlPath(); if($search_parameter):?>?search=1<?php endif;?>">&#60; Previous Product</a></span>
-    <?php else: ?>
-    <span class="prev"><a href="javascript:(void);" class="disabled">&#60; Previous Product</a></span>
-    <?php endif; ?>
-    <?php if($_next_prod != NULL): ?>
-    <span class="next"><a href="<?php print $_next_prod->getUrlPath(); if($search_parameter):?>?search=1<?php endif;?>">Next Product &#62;</a></span>
-    <?php else: ?>
-    <span class="next"><a href="javascript:(void);" class="disabled">Next Product &#62;</a></span>
-    <?php endif; ?>
-    </p>
-    </div>
-
-<?php
-
-}
-
-/*********************prev next product page **************************/
-?>
-				<div class="range-toggle">
-					<a href="#" class="range-link">Core</a>					
-					<div class="range-desc">
-						lorem ipsum dummy content for range. lorem ipsum dummy content for range.
-						lorem ipsum dummy content for range. lorem ipsum dummy content for range.
-						lorem ipsum dummy content for range. lorem ipsum dummy content for range.
-					</div>
-					
-				</div>
                  <?php if($imageName):?>
-                <div class="style-image">				
-				<img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
+                <div class="style-image"><img src="<?php echo $this->getSkinUrl('images/style/'.$imageName.'.png')?>"/></div>
                 <?php endif; ?>
                 <!-- DetailsinGreyArea -->
                 <div class="gry-box">
-				
                     <div id="absproductoptions">
                         <!--<div class="disableproptions"></div>-->
                         <table class="productdetailtable normalproductdetail">
@@ -1181,13 +1033,12 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                             <h1><?php echo html_entity_decode($productName); ?></h1>
                                             <h4 style="display:none" itemprop="name"><?php echo html_entity_decode($productName).$colorname.' | YOGASMOGA.COM'; ?></h4>
                                             </div>
-                                        <div  class="product-price-dv" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 										<span itemprop="priceCurrency" content="USD"></span>
-                                        <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>	
-										 <span class="was-amount no-display"
-                                                  style="text-transform: uppercase;"><?php echo 'was $' . $productPrice; ?></span>
+                                        <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>								
 										</div>
-                                           
+                                            <span class="was-amount no-display"
+                                                  style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
 
                                         <div class='part-of-gift-set' style="display: none;"></div>
 
@@ -1196,8 +1047,15 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 
                                     <!-- selectColor -->
                                     <div class="box-seprtr">
-                                        <!--<div class="blck-head-sml"><span>Step 1:</span> choose your color</div>-->
-                                        
+                                        <div class="blck-head-sml"><span>Step 1:</span> choose your color</div>
+                                        <div class="blck-head-sml">
+                                            <table class="selectedcolor">
+                                                <tr>
+                                                    <td><span>color:</span></td>
+                                                    <td class="selectedcolortext" itemprop="color"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                         <div id="colorcontainer">
                                             <?php
                                             $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
@@ -1257,14 +1115,6 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 
                                             ?>
                                         </div>
-										<div class="blck-head-sml">
-                                            <table class="selectedcolor">
-                                                <tr>
-                                                    <!--<td><span>Color:</span></td>-->
-                                                    <td class="selectedcolortext" itemprop="color"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
                                         <div style="clear:both;"></div>
                                     </div>
                                     <!-- selectColor -->
@@ -1274,11 +1124,11 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                         echo "style='display:none;'";
                                     } ?>>
                                         <div class="box-seprtr">
-                                            <!--<div class="blck-head-sml"><span>Size:</span>-->
+                                            <div class="blck-head-sml"><span>Step 2:</span> Select a size
                                                 <table class="f-right">
                                                     <tr>
                                                         <?php if ($sizeChartBlockId != "") { ?>
-                                                            <td class="sizechartlink" style="display:none;">
+                                                            <td class="sizechartlink">
                                                                 <div style="position: relative;">
                                                                     <p class="block-link"
                                                                        style="margin: 0px; float: right;"><a
@@ -1328,12 +1178,12 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                             </div>
 
                                             <?php if ($optionAvailable === 0) {
-                                                $includeoption = "style='display:none;margin-top:5px'";
+                                                $includeoption = "style='display:none'";
                                             } ?>
-											<div class="bra-option"  <?php echo $includeoption; ?>>
-												  <span>Include Bra Insert:</span>
-                                            <div id="includeoption" class="includeoptionmain">
-                                              
+
+                                            <div id="includeoption" <?php echo $includeoption; ?>
+                                                 class="includeoptionmain">
+                                                INCLUDE BRA INSERT:
                                                 <?php
                                                 foreach ($arProductAllOptions as $options) {
                                                     ?>
@@ -1346,17 +1196,16 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                                 ?>
 
                                             </div>
-											</div>
 
                                         </div>
                                     </div>
                                     <!-- selectSize -->
                                     <!-- select length -->
-									<div class="length_option"  <?php if (!$lengthAvailable) {echo "style='display:none;'"; } ?>>
-									<span class="blck-head-sml"
-                                                  style="display:block; margin-bottom: 10px;"><span>Length:</span></span>
-                                    <div class="selectedlength">
-                                            
+                                    <div class="selectedlength" <?php if (!$lengthAvailable) {
+                                        echo "style='display:none;'";
+                                    } ?>>
+                                            <span class="blck-head-sml"
+                                                  style="display:block; margin-bottom: 10px;"><span>Step 3:</span> Select a length</span>
                                         <?php
                                         foreach ($arProductAllLength as $length) {
                                             ?>
@@ -1366,14 +1215,13 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                         }
                                         ?>
                                     </div>
-									</div>
                                     <!-- select length -->
 
 
                                     <!-- fittable -->
                                     <div class="box-seprtr dnone">
-                                        <div class="blck-head-sml"><span class="qty">Qty:</span>
-                                            
+                                        <div class="blck-head-sml"><span class="qty">Step 3:</span>
+                                            Qty
                                             <?php if ($howDoesItFitBlockId != "") { ?>
                                                 <table class="fittable">
                                                     <tr>
@@ -1412,12 +1260,12 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 
                                     <!-- addToBag -->
                                     <div class="box-seprtr last" style="padding-top:10px;">
-                                        <!--<div class="blck-head-sml"><span class="qty">Step 3</span></div>-->
+                                        <div class="blck-head-sml"><span class="qty">Step 3</span></div>
 
                                         <!-- addToBagBtn -->
                                         <div id="orderitem" class="addtobag spbutton"
-                                             imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.svg'); ?>"
-                                             downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.svg'); ?>">
+                                             imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"
+                                             downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>">
                                         </div>
                                         <div id='addtobagloader' style="display: none"><img
                                                 src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif'/>
@@ -1448,37 +1296,13 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                             ?>" /> -->
                                         </div>
                                         <!-- producterrorcontainer -->
-										<div class="wishlist-nw">
-                               
-											<?php
-											$_in_wishlist = false;
-											foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item) {
-												if ($productId == $_wishlist_item->getProduct()->getId()) {
-													$_in_wishlist = true;
-													break;
-												}
-											}
 
-											if (($customerId = Mage::getSingleton('customer/session')->getCustomerId()) && ($_in_wishlist)) {
-												?>
-												<p class="wishlist-link" style="color:#ae8536;">
-													<a
-														onlick="javascript:void(0)">Added To Wish List</a></p>
-												<?php
-											} else {
-												?>
-
-												<p class="wishlist-link"><a class="" id="<?php echo $productId; ?>"
-																			href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productId; ?>/">Add
-														To Wish List</a></p>
-											<?php } ?>
-										</div>
-                                        <p class="freeshipptext"><em>Free air shipping to US and Canada</em></p>
+                                        <p class="c-align freeshipptext"><em>Free and fast shipping to US and
+                                                Canada</em></p>
 
                                         <p class="insale dnone" style="color: #c03; margin-left: 4px;">This Item is
                                             Final Sale. Cannot be exchanged or
                                             returned.</p>
-										<p class="needhelp"><a href="#">Need help?</a></p>	
                                     </div>
                                     <!-- addToBag -->
                                 </td>
@@ -1511,11 +1335,13 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                             </div>
                         </td>
                         <td width="50%" class="prd-add-to-wish">
-							<?php if(false){ // hiding wishlist?>
                             <div class="wishlist">
                                 <div class="social-ico">
                                     <a id="twitter" href="javascript:void(0);" class="twtrIcon"
-                                       title="YOGASMOGA - Twitter"></a>                                   
+                                       title="YOGASMOGA - Twitter"></a>
+                                    <!--<a  href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+                                    <!-- Please call pinit.js only once per page -->
+                                    <!--<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>-->
                                     <a id="pinterest" href="javascript:void(0);" class="pinIcon"
                                        title="YOGASMOGA - Pinterest"></a>
                                     <a id="facebook" href="javascript:void(0);" class="fbIcon"
@@ -1534,39 +1360,85 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                     ?>
                                     <p class="" style="position: absolute; bottom: 0; margin-bottom: 4px; right:0;">
                                         <a
-                                            onlick="javascript:void(0)">Added To Wish List</a></p>
+                                            onlick="javascript:void(0)">ADDED TO WISH LIST</a></p>
                                     <?php
                                 } else {
                                     ?>
 
                                     <p class="wishlist-link"><a class="" id="<?php echo $productId; ?>"
-                                                                href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productId; ?>/">Add To Wish List</a></p>
+                                                                href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productId; ?>/">ADD
+                                            TO WISH LIST +</a></p>
                                 <?php } ?>
                             </div>
-							<?php } // hiding wishlist end ?>
                         </td>
                     </tr>
                 </table>
                 <!-- SMOGIBUCKS -->
-                
-			<!--accordion box below shopping bag-->
-			<div class="box-desc-dvdr accord">
-                <?php if ($defaultProductDescription != '') { ?>
-				<div class="accord-item prod-desc-item">
-					<div class="h2">Product description<span>
-					<svg height="44px" width="30px">
-                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#979797" fill="none"></line>
-                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#979797" fill="none"></line>
-                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#979797" fill="none"></line>
-                    </svg>
-					</span></div>
-					<div class="accord-desc">
-                    <?php echo $defaultProductDescription; ?>
-					</div>
-				</div>	
-                <?php } ?>
+                <!-- Desicription -->
+                <div class="box-desc-dvdr">
+                    <p style="margin-bottom: 45px;"><span
+                            style="font-family:gothambold; font-size:12px;">Need help?</span> <a
+                            class="chatlink" href="javascript:void($zopim.livechat.window.show())">chat with
+                            us</a><span class="online"><span></span>Online now</span>
+                    </p>
+
+                    <div class="h2" style="margin-bottom:20px;">Product description</div>
+                <!--Change description by Fahim Khan start code-->
+
+                     <?php
+                if ($defaultProductDescription != '') {?>
+                    <div class='main-description' rel='main'>
+                                <?php //echo $defaultProductDescription; ?>
+                        <?php  if (strlen($defaultProductDescription) < 210) { ?>
+                                <div class="shortdesc"><?php echo $defaultProductDescription; ?> </div>
+                            <?php
+                            }
+                            else {
+                            $str = $defaultProductDescription;
+                            $firststr = substr($str, 0, 210);
+                            $secondstr = substr($str, 210, strlen($str));
+                            ?>
+                            <div class="shortdesc">
+                                <span><?php echo $firststr; ?></span>
+                                <span class="sec-desc"><?php echo $secondstr; ?></span>
+                                <span class="dot">...</span>
+                                    <p class="readmore" style="margin: 0; cursor:pointer;">
+                                     <span id="more">Read more</span><span id="less" class="dnone">Read less</span>
+                                    </p>
+                            </div>
+                        <?php } ?>
+                   </div>
+
+                    <?php if ($description_changed) {
+
+                        foreach ($arDescriptionArray as $key => $value) {?>
+                            <div class='product_description_block' rel='<?php echo $key ?>'>
+                                <?php  if (strlen($value) < 210) { ?>
+                                    <div class="shortdesc" itemprop="description"><?php echo $value; ?> </div>
+                                <?php
+                                }
+                                else {
+                                $str = $value;
+                                $firststr = substr($str, 0, 210);
+                                $secondstr = substr($str, 210, strlen($str));
+                                ?>
+                                <div class="shortdesc">
+                                    <span itemprop="description"><?php echo $firststr; ?></span><span class="sec-desc"><?php echo $secondstr; ?></span>
+                                    <span class="dot">...</span>
+                                        <p class="readmore" style="margin: 0; cursor:pointer;">
+                                         <span id="more">Read more</span><span id="less" class="dnone">Read less</span>
+                                        </p>
+                                </div>
+                                <?php } ?>
+                            </div>
+                <?php } } } ?>
+                <!--Change description by Fahim Khan end code-->
+            </div>
+                <!--Description -->
+
                 <!-- completeLook -->
-                <?php 
+                <!-- heading -->
+                <?php //echo $this->getChildHtml('upsell_products');
                 $upsell_product = $_product->getUpSellProductCollection()->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter();
                 $count = count($upsell_product);
                 if ($count > 1) {
@@ -1583,7 +1455,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                     //check if record is empty or not
                     $upsellsimplecount = 0;
                     foreach ($upsell_product as $upsell) {
-                        if ($upsellsimplecount == 1) break;
+                        if ($upsellsimplecount == 2) break;
                         $product = Mage::getModel('catalog/product')->load($upsell->getId());
                         $productType = $product->getTypeID();
                         if ($productType == 'simple') {
@@ -1604,7 +1476,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                     if (strcasecmp($imageLabelData['type'], "product image") == 0 && $imageLabelData['color'] == $product->getColor()) {
                                         $upsellsimplecount++;
                                         // $ftimage = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile());
-                                        $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(361, 361)->setQuality(90);
+                                        $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(121, 181)->setQuality(90);
                                         ?>
 
                                         <?php
@@ -1613,33 +1485,39 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 
 
                                 }
-                if ($upsellsimplecount == 1) {
-                ?>		
-				<div class="accord-item prod-rel-item active">
-					<div class="h2">Related Product<span>
-					<svg height="44px" width="30px">
-                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#979797" fill="none"></line>
-                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#979797" fill="none"></line>
-                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#979797" fill="none"></line>
-                    </svg>
-					</span></div>
-					<div class="accord-desc">
-						<a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><img class="related-img" nopin="nopin" alt="<?php echo $parentproduct->getName() ?>" title="<?php echo $parentproduct->getName() ?>"
-                               src="<?php echo $completelookimg; ?>"/></a>
-						<p class="prod-name">
-                        <a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><?php echo $parentproduct->getName() ?></a></p>
-						<p class="prod-col-prc"><?php echo $clrinfo[$product->getColor()] ?>&mdash;$<?php echo
-                                    number_format((float)($parentproduct->getPrice()), 2, '.', ''); ?></p>
-					</div>
-				</div>
-                <?php } } } } } ?>
+                                if ($upsellsimplecount == 1) {
+                                    ?>
+                                    <div class="newbg h2" style="margin-top:35px; margin-bottom: 27px;">complete the
+                                        look</div>
+                                    <ul class="similarProdList clear">
+                                <?php } ?>
+                                <li>
+                                    <a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"
+                    <span><img nopin="nopin" alt="<?php echo $parentproduct->getName() ?>" title="<?php echo $parentproduct->getName() ?>"
+                               src="<?php echo $completelookimg; ?>"></span>
+                                <span><strong><?php echo $parentproduct->getName() ?></strong><?php echo $clrinfo[$product->getColor()] ?>
+                                    <br>$<?php echo
+                                    number_format((float)($parentproduct->getPrice()), 2, '.', ''); ?></span> </a>
+                                </li>
 
-			</div>
-			
-			
-		
+                                <?php
+                            }
+                            ?>
+
+                            <?php
+                        }
+                    }
+                    if ($upsellsimplecount >= 1) {
+                        ?>
+                        </ul>
+                    <?php } ?>
+                    <?php
+                }
+                ?>
+
+
+                <!-- completeLook -->
                 <!-- prodSimilar -->
-				<div class="hidden">
                 <!-- fabricDetails  fabric story-->
                 <?php
                 if ($fabricStoryBlockId != '') {
@@ -1659,59 +1537,8 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                 ?>
 
                 <!-- fabricDetails -->
-				</div>
             </div>
-			</div>
-			
-		</div><!--product-row product-row1, ends-->
-		<div class="product-row product-row2">
-		<div class="prod-col pcol-left">
-			<img alt="main-image2" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img2.jpg" class="" draggable="false">
-		</div>
-		<div class="prod-col pcol-right">
-			
-			 <?php
-                        if($fabricStoryBlockId != '') {
-                            echo "<div class='mainfabric' rel='main'>";
-                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricStoryBlockId)->toHtml();
-                            echo "</div>";
-                        
-
-                            if ($fabric_changed) {
-
-                                foreach ($arFabricArray as $key => $value) {
-                                    echo "<div class='fabric_story_block' rel='$key'>";
-                                    echo $this->getLayout()->createBlock('cms/block')->setBlockId($value)->toHtml();
-                                    echo "</div>";
-                                }
-                            }
-                        }
-             ?>
-			
-		</div>
-		
-	</div><!--product-row product-row2, ends-->
-	<div class="product-row product-row3">
-		<div class="prod-col pcol-left">
-			<img alt="main-image3" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img3.jpg" class="" draggable="false">
-		</div>
-		<div class="prod-col pcol-right">                      
-						
-						
-					
-		</div>
-		
-	</div><!--product-row product-row3, ends-->
-		<div class="product-row product-row4 product-row-last">
-		<div class="prod-col pcol-left">
-			<img alt="main-image4" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img4.jpg" class="" draggable="false">
-			<img class="img_rnd" src="<?php echo $this->getSkinUrl('images/CA.svg'); ?>" alt="rnd"/>
-		</div>
-		<div class="prod-col pcol-right">
-			<img alt="main-image5" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img5.jpg" class="" draggable="false">
-		</div>
-		
-	</div><!--product-row product-row4, ends-->
+            <!-- ProductDetailContainer -->
         </div>
         <!-- ProductImageAndDetailContainer -->
 
@@ -2242,13 +2069,13 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 
                                         </div>
                                         <div class="box-seprtr last in-bl vert-bottom">
-                                            <!--<div class="blck-head-sml no-display"><span>Step 1:</span> choose your
+                                            <div class="blck-head-sml no-display"><span>Step 1:</span> choose your
                                                 color
-                                            </div>-->
+                                            </div>
                                             <div class="blck-head-sml">
                                                 <table class="selectedcolor">
                                                     <tr>
-                                                        <td><span>Color:</span></td>
+                                                        <td>COLOR:</td>
                                                         <td class="selectedcolortext" itemprop="color"></td>
                                                     </tr>
                                                 </table>
@@ -2423,7 +2250,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                 data = eval('(' + data + ')');
                                 var status = data.status;
                                 if (status == "success") {
-                                    jQuery(wishlist).text("Added To Wish List").css("color", "#ae8536");
+                                    jQuery(wishlist).text("ADDED TO WISH LIST").css("color", "#D90D3D");
                                 }
                                 else {
                                     jQuery(this).text(data.errors).css("color", "#D90D3D");

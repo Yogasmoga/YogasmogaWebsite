@@ -147,7 +147,7 @@
                         <h1 style="display:none"><?php echo $shopthecolorCategory->getName(); ?></h1>
                         <div class="bannerFluid">
 						 <div class="bnrtxt bnr white collection-banner">
-						 <div><?php echo $shopthecolorCategory->getName(); ?></div>
+						 <div>ADDITIONAL SIZES</div>
                            <!-- <img title="Additional sizes" alt="Additional sizes"
                                  src="<?php/* echo $shopthecolor_imgUrl;*/ ?>">
 
@@ -219,17 +219,7 @@
                                         $showCategoryInLeftNav = Mage::getModel('catalog/category')->load($subsubcategory->getId());
                                         if ($showCategoryInLeftNav->getIncludeInMenu()) {
                                             if ($subsubcategory->getChildrenCount() == 0) {
-                                                
-												 if($subsubcategory->getId()==125 || $subsubcategory->getId()==128){
-														$hasnosubcategoryhtml .= '<li style="margin-top:18px"'.'><a  href=' . $subsubcategory->getUrl() . ' class="bld ';
-													}
-													elseif($subsubcategory->getId()==127 || $subsubcategory->getId()==130){
-														$hasnosubcategoryhtml .= '<li style="margin-bottom:19px"'.'><a  href=' . $subsubcategory->getUrl() . ' class="bld ';
-													}
-													else{
-														$hasnosubcategoryhtml .= '<li><a href='.$subsubcategory->getUrl().' class="bld ';
-													}
-												
+                                                $hasnosubcategoryhtml .= '<li><a href=' . $subsubcategory->getUrl() . ' class="bld ';
                                                 if ($subsubcategory->getUrl() == $currentUrl)
                                                     $hasnosubcategoryhtml .= 'current';
                                                 $hasnosubcategoryhtml .= '">' . $subsubcategory->getName() . '</a></li>';

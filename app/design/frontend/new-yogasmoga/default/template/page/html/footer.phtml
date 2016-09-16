@@ -263,40 +263,10 @@ else {
 <script>
  jQuery( document ).ready(function() {
   jQuery("#pagecontainer").css("margin-top","0px"); 
-jQuery("#div_sizes").css("top","auto");
-//jQuery("#div_sizes.fixed_top").css("top","69px");
-if(jQuery('#div_sizes,#div_cats').length > 0){
-			function positionFilter(filterOffsetTop){
-				//alert();
-				var winScrollTop = jQuery(window).scrollTop();
-				if( winScrollTop > filterOffsetTop){
-					
-					jQuery("#div_sizes,#div_cats").addClass("fixed_top");
-					jQuery("#div_sizes.fixed_top,#div_cats.fixed_top").css("top","69px");
-				}else{
-					jQuery("#div_sizes,#div_cats").removeClass("fixed_top");
-					jQuery("#div_sizes,#div_cats").css("top","auto");
-					
-				}
-		
-
-			}
-			
-				var filterOffsetTop = jQuery("#div_sizes,#div_cats").offset().top - 69;
-				positionFilter(filterOffsetTop);
-				jQuery(window).scroll(function(){
-					positionFilter(filterOffsetTop);
-					
-				});
-			
-			
-			}
+jQuery("#div_sizes").css("top","69px");
+jQuery("#div_sizes.fixed_top").css("top","94px");
 
     });
 </script>
 <?php }
 ?>
-<script>
-if(navigator.userAgent.indexOf('Mac') > 0)
-jQuery('body').addClass('mac-os');
-</script>
