@@ -7,6 +7,7 @@
     <action method="addCss"><stylesheet>css/fonts.css</stylesheet></action>
     <!--<action method="addCss"><stylesheet>css/vivacity-pop-up.css</stylesheet></action>-->
     <action method="addJs"><script>new_jquery/mac-safari.js</script></action>
+	
     <action method="addJs"><script>new_jquery/myscripts.js</script></action>
     <action method="addJs"><script>new_jquery/mywatermark.js</script></action>
     <action method="addJs"><script>new_jquery/globalheader.js</script></action>
@@ -30,6 +31,7 @@
     <action method="addJs"><script>new_jquery/quickview.js</script></action>
     <action method="addJs"><script>new_jquery/jquery.lazyload.js</script></action>
     <action method="addJs"><script>new_jquery/shoppingbag.js</script></action>
+	<action method="addJs"><script>new_jquery/newdesign2016.js</script></action>
     <action method="addJs"><script>new_jquery/emailus.js</script></action>
     <action method="addJs"><script>new_jquery/jquery.appear.js</script></action>
     <action method="addJs"><script>new_jquery/cmsscript.js</script></action>

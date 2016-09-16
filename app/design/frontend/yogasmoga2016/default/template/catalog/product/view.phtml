@@ -1661,8 +1661,17 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                 <!-- fabricDetails -->
 				</div>
             </div>
+				<div class="product-det-tab">
+					<ul class="tabs-nav">
+						<li><input type="radio" name="prodTab" id="prodTab1" checked/><label for="prodTab1">Description</label></li>
+						<li><input type="radio" name="prodTab" id="prodTab2"/><label for="prodTab1">Features</label></li>
+						<li><input type="radio" name="prodTab" id="prodTab3"/><label for="prodTab1">Size &amp; Fit</label></li>
+					</ul>
+					<div id="prodTab">
+					</div>
+				</div>
 			</div>
-			
+				
 		</div><!--product-row product-row1, ends-->
 		<div class="product-row product-row2">
 		<div class="prod-col pcol-left">
