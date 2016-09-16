@@ -1672,9 +1672,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 					<input type="radio" name="prodTab" id="prodTab3"/><label for="prodTab3" class="prodTab">Size &amp; Fit</label>
 					<div id="prod-tab-content1" class="prod-tab-content">
 						<div class="prodtab-desc">
-						Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries.
-						Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries.
-						Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries.
+						<?=$_product->getDescription();?>
 						</div>
 						
 					</div>
