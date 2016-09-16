@@ -3687,7 +3687,7 @@ border:0 none; padding:0;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected{border:0 none;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table{display:block;width:30px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tbody{display:block;}
-.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr{display:block; overflow:hidden; border-radius:40px; position:relative;}
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr{display:block; overflow:hidden; border-radius:40px; position:relative;margin-bottom:5px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr td{display:block;width:30px!important; float:none!important; margin:0!important;}
 
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(1){
@@ -3699,7 +3699,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected tr::before {
   background: #fff none repeat scroll 0 0;border-radius: 10px;content: "";display: inline-block;height: 8px;left: 50%;position: absolute;
   top: 50%;transform: translate(-50%, -50%);width: 8px; z-index: 1;}
-table.productdetailtable div#colorcontainer{margin-bottom:10px!important;}  
+/*table.productdetailtable div#colorcontainer{margin-bottom:10px!important;}  */
 
 /*--size option--*/
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div{background:#fff;min-height:30px; min-width:30px; box-sizing:border-box;
