@@ -3657,8 +3657,8 @@ ul.main-menu.f-left.ctag-menu > li{height:60px;}
 .product-row .pcol-right{width:312px;float:right;position:absolute; top:0; right:29px; height:100%; text-align:left; padding-top:10px;box-sizing:border-box;}
 .product-row .pcol-left img, .product-row .pcol-right img{max-width:100%; height:auto;}
 .product-row.product-row-last{background:#fff;}
-.product-row.product-row-last .pcol-left{background:#f4f4f4;width:calc(100% - 544px);}
-.product-row.product-row-last .pcol-right{background:#f4f4f4;margin-left:10px;width:534px;right:0;text-align:center;}
+.product-row.product-row-last .pcol-left{background:#f4f4f4;width:calc(100% - (33.375% + 10px));}
+.product-row.product-row-last .pcol-right{background:#f4f4f4;margin-left:10px;width:33.375%;right:0;text-align:center;}
 .product-row.product-row-last .pcol-right img{position:relative; top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%);}
 .product-row.product-row-last .pcol-left .img_rnd{position:absolute; top:15px; right:15px;width:170px; height:auto;}
 .product-row .pcol-left .img_madeinusa{position:absolute; bottom:30px; left:30px; width:170px;}
