@@ -3720,3 +3720,41 @@ table.productdetailtable div#colorcontainer{margin-bottom:10px!important;}
 .fabDetail > h2, .fabDetail > .h2{margin-bottom:20px;}
 #productdetails .fabDetail li {height:34px; overflow:hidden;margin-bottom:10px;}
 #productdetails .style-image{display:none;}
+
+/*-----product tab -----*/
+.prod-tab-content{display:none;}
+#prodTab1:checked ~ #prod-tab-content1,
+#prodTab2:checked ~ #prod-tab-content2,
+#prodTab3:checked ~ #prod-tab-content3{
+  display: block;
+}
+
+@keyframes fadeInScale {
+
+  0% { 
+  	transform: scale(0.9);
+  	opacity: 0;
+  }
+
+  100% { 
+  	transform: scale(1);
+  	opacity: 1;
+  }
+  
+}
+@-webkit-keyframes fadeInScale {
+
+  0% { 
+  	transform: scale(0.9);
+  	opacity: 0;
+  }
+
+  100% { 
+  	transform: scale(1);
+  	opacity: 1;
+  }
+  
+}
+.prod-tab-content *{-webkit-animation: fadeInScale 0.7s ease-in-out;
+  -moz-animation: fadeInScale 0.7s ease-in-out;
+  animation: fadeInScale 0.7s ease-in-out;}
