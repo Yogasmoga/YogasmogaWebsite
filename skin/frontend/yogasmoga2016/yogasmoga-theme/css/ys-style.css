@@ -3677,7 +3677,7 @@ ul.main-menu.f-left.ctag-menu > li{height:60px;}
 .product-row .accord{display:none;}
 .product-row .product-price-dv{margin-bottom:28px;}
  
-div.product-details .product-row  .wdth35{width:100%!important;}
+div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34px;}
 
 /*--color option--*/
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block;  float:left; margin:0 3px;bordre-radius:40px;
@@ -3722,7 +3722,13 @@ table.productdetailtable div#colorcontainer{margin-bottom:10px!important;}
 #productdetails .style-image{display:none;}
 
 /*-----product tab -----*/
-.prod-tab-content{display:none;}
+input[name="prodTab"]{display:none;}
+
+.prodTab{color:#555; font:13px/13px avantgardegothicitcw01d; text-transform:uppercase; margin-right:24px;margin-bottom:28px; display:inline-block; cursor:pointer;}
+
+.product-det-tab [id^="prodTab"]:checked + label{color:#ae8536;}
+
+.prod-tab-content{display:none;font:12px/17px graphikregular;}
 #prodTab1:checked ~ #prod-tab-content1,
 #prodTab2:checked ~ #prod-tab-content2,
 #prodTab3:checked ~ #prod-tab-content3{
