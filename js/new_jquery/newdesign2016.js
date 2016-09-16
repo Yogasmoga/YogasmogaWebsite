@@ -44,10 +44,18 @@ jQuery(document).ready(function($){
 jQuery(document).ready(function(){
 	var prodHt = jQuery('.productCont').width();
 	jQuery('.prod-img').height(prodHt);	
-	
 	var gridwd = jQuery('.gridWrap').width();	
-	jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
-	jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
+	if (jQuery(window).width() >= 1100) {
+		
+		jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
+		jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
+	}
+	else {
+		
+		jQuery('.productCont').width((gridwd-16)/2); // 24 is  total of gutter space in a row
+		jQuery('.prodduct_horizontal').width((gridwd-8)/1);
+	}
+	
 	
 	
 	var maxHeight = -1;
@@ -64,8 +72,16 @@ jQuery(window).resize(function(){
 	jQuery('.prod-img').height(prodHt);	
 	
 	var gridwd = jQuery('.gridWrap').width();	
-	jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
-	jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
+	if (jQuery(window).width() >= 1100) {
+		
+		jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
+		jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
+	}
+	else {
+		
+		jQuery('.productCont').width((gridwd-16)/2); // 24 is  total of gutter space in a row
+		jQuery('.prodduct_horizontal').width((gridwd-8)/1);
+	}
 	
 	var maxHeight = -1;
    jQuery('.productCont .caption').each(function() {
