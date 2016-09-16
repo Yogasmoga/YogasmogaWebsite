@@ -1,0 +1,222 @@
+.flexslider{
+    min-height:200px !important;
+    margin-bottom:10px;	
+}
+.flexslider .flex-control-nav{
+    display:none;
+}
+.flexslider.page_header > .flex-direction-nav{
+    display:none;
+}
+.over-the-slide {
+    bottom: 0;
+    left: 0;
+    padding: 0 !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+.over-the-slide > div{
+    top: 50% !important;
+    position: absolute;
+    margin-top: -24px !important;
+    width: 100%;
+}
+.rangoli_bold {
+    color: #fff;
+    font: 50px/53px AvantGardeGothicITCW01D;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.rangoli_light {
+    color: #fff;
+    font: 50px/53px AvantGardeGothicITCW01X;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.rangoli_tagline{
+    font:18px/28px AvantGardeGothicITCW01B;
+    color:#fff;
+}
+.rangoli_tagline span{
+    font:18px/28px FreightText-LightItalic;
+    color:#fff;
+}
+.rangoli_slide_text{
+    font: 48px/53px AvantGardeGothicITCW01D;
+    letter-spacing:1px;
+    color:#fff;
+}
+.rangoli_slide_text span{
+    font: 48px/53px AvantGardeGothicITCW01X;
+    color:#fff;
+    text-transform: uppercase;
+}
+.shop {
+    color: #fff;
+    font: 19px/25px AVANTGARDEGOTHICITCW01D;
+    padding: 0 15px !important;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing:1px;
+    padding: 0 20px;
+    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/shop_arrow.png") no-repeat;
+    background-position: center right;
+    margin-top:20px !important;
+}
+.shop span{
+  color: #fff;
+  font: 20px/25px AVANTGARDEGOTHICITCW01B;
+  text-transform: none;
+}
+
+
+
+@media screen and (max-width:1024px){
+
+    .rangoli_bold {
+        font: 35px/37px AvantGardeGothicITCW01D;
+    }
+    .rangoli_light {
+        font: 35px/37px AvantGardeGothicITCW01D;
+    }
+    .rangoli_tagline{
+        font:15px/23px AvantGardeGothicITCW01B;
+    }
+    .rangoli_tagline span{
+        font:15px/23px FreightText-LightItalic;
+    }
+    .rangoli_slide_text{
+        font: 33px/36px AvantGardeGothicITCW01D;
+    }
+    .rangoli_slide_text span {
+        font: 33px/36px AvantGardeGothicITCW01X;
+    }
+    .shop {
+        font: 12px/19px AVANTGARDEGOTHICITCW01D;
+    }
+    .shop span{
+        font: 12px/19px AVANTGARDEGOTHICITCW01B;
+     }
+}
+
+
+
+@media screen and (min-width:1025px) and (max-width: 1200px){
+
+    .rangoli_bold {
+        font: 38px/40px AvantGardeGothicITCW01D;
+    }
+    .rangoli_light {
+        font: 38px/40px AvantGardeGothicITCW01X;
+    }
+    .rangoli_tagline{
+        font:16px/24px AvantGardeGothicITCW01B;
+    }
+    .rangoli_tagline span{
+        font:16px/24px FreightText-LightItalic;
+    }
+    .rangoli_slide_text{
+        font: 36px/40px AvantGardeGothicITCW01D;
+    }
+    .rangoli_slide_text span {
+        font: 36px/40px AvantGardeGothicITCW01X;
+    }
+    .shop {
+        font: 13px/15px AVANTGARDEGOTHICITCW01D;
+    }
+    .shop span{
+        font: 13px/15px AVANTGARDEGOTHICITCW01B;
+    }
+}
+
+
+@media screen and (min-width:1201px) and (max-width: 1399px){
+
+    .rangoli_bold {
+        font: 40px/42px AvantGardeGothicITCW01D;
+    }
+    .rangoli_light {
+        font: 40px/42px AvantGardeGothicITCW01X;
+    }
+    .rangoli_tagline{
+        font:17px/23px AvantGardeGothicITCW01B;
+    }
+    .rangoli_tagline span{
+        font:17px/23px FreightText-LightItalic;
+    }
+    .rangoli_slide_text{
+        font: 38px/41px AvantGardeGothicITCW01D;
+    }
+    .rangoli_slide_text span {
+        font: 38px/41px AvantGardeGothicITCW01X;
+    }
+    .shop {
+        font: 15px/22px AVANTGARDEGOTHICITCW01D;
+    }
+    .shop span{
+        font: 15px/22px AVANTGARDEGOTHICITCW01B;
+    }
+}
+
+
+
+@media screen and (min-width:1400px) and (max-width: 1599px){
+
+    .rangoli_bold {
+        font: 45px/48px AvantGardeGothicITCW01D;
+    }
+    .rangoli_light {
+        font: 45px/48px AvantGardeGothicITCW01X;
+    }
+    .rangoli_tagline{
+        font:15px/25px AvantGardeGothicITCW01B;
+    }
+    .rangoli_tagline span{
+        font:15px/25px FreightText-LightItalic;
+    }
+    .rangoli_slide_text{
+        font: 42px/48px AvantGardeGothicITCW01D;
+    }
+    .rangoli_slide_text span {
+        font: 42px/48px AvantGardeGothicITCW01X;
+    }
+    .shop {
+        font: 17px/22px AVANTGARDEGOTHICITCW01D;
+    }
+    .shop span{
+        font: 17px/22px AVANTGARDEGOTHICITCW01B;
+    }
+}
+
+
+
+
+@media screen and (min-width:1600px){
+
+    .rangoli_bold {
+        font: 50px/63px AvantGardeGothicITCW01D;
+    }
+    .rangoli_light {
+        font: 50px/53px AvantGardeGothicITCW01X;
+    }
+    .rangoli_tagline{
+        font:18px/28px AvantGardeGothicITCW01B;
+    }
+    .rangoli_tagline span{
+        font:18px/28px FreightText-LightItalic;
+    }
+    .rangoli_slide_text{
+        font: 48px/53px AvantGardeGothicITCW01D;
+    }
+    .rangoli_slide_text span {
+        font: 48px/53px AvantGardeGothicITCW01X;
+    }
+    .shop {
+        font: 19px/25px AVANTGARDEGOTHICITCW01D;
+    }
+    .shop span{
+        font: 19px/25px AVANTGARDEGOTHICITCW01B;
+    }
+}

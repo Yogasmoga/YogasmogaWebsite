@@ -1,0 +1,29 @@
+<div class="thankew-container">
+	<div class="thanks-banner">
+		<img class="img-responsive" src="<?php echo $this->getSkinUrl('images/social/thank.jpg')?>" alt="banner" usemap="#yogasmogamap"/>
+			<div class="over-banner">
+					<ul style="">
+						<li>
+							<a href="http://facebook.com/yogasmoga"><img  border="0" src="<?php echo $this->getSkinUrl('images/social/fb_icon.png')?>" alt="Facebook"/></a>
+						</li>
+						<li>
+							<a href="http://twitter.com/yogasmoga"><img  border="0" src="<?php echo $this->getSkinUrl('images/social/twitter_icon.png')?>" alt="Twitter"/></a>
+						</li>
+						<li>
+							<a href="http://instagram.com/yogasmoga"><img  border="0" src="<?php echo $this->getSkinUrl('images/social/insta_icon.png')?>" alt="Instagram"/></a>
+						</li>
+						<li class="visit">
+							<a href="<?php echo $this->getBaseUrl() ?>"> <img  border="0" src="<?php echo $this->getSkinUrl('images/social/visit_ys.jpg')?>" alt="Instagram"></a>
+						</li>
+					</ul>
+			</div>
+	</div>
+</div>
+<script>
+	jQuery(function(){
+		var url = '<?php echo $this->getUrl('nominateinstructor/manage/thanks',array('_secure'=>true))?>';
+		if(url)
+		{jQuery('body').addClass('thanks');}
+		else{jQuery('body').removeClass('thanks');}
+	})
+</script>

@@ -1,0 +1,58 @@
+td.searchsidenavigation
+{
+    width : 270px;
+    
+    vertical-align: top;
+    color : black;
+}
+td.searchsidenavigation > div
+{
+    text-align : left;
+	position:relative; 
+    top:-130px;    
+    padding: 30px 20px 10px;
+    background-size: contain;
+}
+div.searchresultcount
+{
+    font-family:gothambook;
+    font-size : 15px;
+    letter-spacing : 0.6pt;
+    text-transform: uppercase;
+    margin-top : 24px;
+    margin-bottom : 20px;
+}
+td.searchsidenavigation div.subheader
+{
+   /* font-family:gothambold;
+    font-size : 9px;
+    letter-spacing : 0.6pt;*/
+    margin-bottom : 11px;
+    color: #AD8536;
+    /*margin-top : 40px;*/
+}
+td.searchsidenavigation div.subheader:first-child
+{
+    margin-top : 0px;
+}
+td.searchsidenavigation a{color:#4c4c4c; display:block;}
+td.searchsidenavigation a div:hover{background:#EFEEED;}
+
+td.searchsidenavigation div
+{
+    text-transform: uppercase;
+    font: 11px/19px gothammedium;
+    color: #666;
+}
+td.searchsidenavigation a:hover div{
+    background: none;
+    color: #c03;
+}
+div.searchbutton
+{
+    background-image : url('../images/catalog/product/search_off.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width : 93px;
+    height: 29px;
+}

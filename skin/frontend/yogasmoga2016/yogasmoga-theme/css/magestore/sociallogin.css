@@ -1,0 +1,44 @@
+
+.clear{
+ width:100%;
+ height:0px;
+ clear:both;
+ font-size:0px;
+ line-height:0px;
+}
+
+#sociallogin_button{
+	margin-top:10px;
+}
+
+#sociallogin_button #bt-loginfb{
+    height: 32px;
+    width: 135px;
+    background: url("sociallogin/facebook-login-button.png") no-repeat;
+    display: block;
+    float: left;
+}
+
+#sociallogin_button #bt-logingo{
+    height: 32px;
+    width: 125px;
+    background: url("sociallogin/google-login-button.png") no-repeat;
+    display: block;
+    float: left;
+}
+
+#sociallogin_button #bt-logintw{
+    height: 32px;
+    width: 129px;
+	background: url("sociallogin/twitter-login-button.png") no-repeat;
+    display: block;
+    float: left;
+}
+
+#sociallogin_button #bt-loginya{
+    height: 32px;
+    width: 125px;
+	background: url("sociallogin/yahoo-login-button.png") no-repeat;
+    display: block;
+    float: left;
+}

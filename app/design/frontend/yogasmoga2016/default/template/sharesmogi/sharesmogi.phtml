@@ -1,0 +1,81 @@
+<form action="" method="post" id="share-smogi" style="display: block;">
+    <p class="signup-title" style="margin: 10px 0px">
+        <strong style="text-transform: uppercase">Share Smogi Email</strong>
+    </p>
+
+    <p><input type="text" style="width:225px;padding:8px 10px;"  name="child_email" id="child_email" class="watermark" placeholder="Email Address" autocomplete="off" value="" defaulterrormsg="Email Address is required" autocapitalize="off"/></p>
+    <p class="button-area">
+        <input type="submit"  style="width:175px;padding:8px 15px;background:#5ec52f;border:1px solid #eee;color:#fff" value="SHARE" id="share-button"/>
+    </p>
+    <p style="font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
+</form>
+<script type="text/javascript">
+    //<![CDATA[
+    var contactForm = new VarienForm('share-smogi', true);
+    //]]>
+</script>
+
+<script type="application/javascript">
+
+    jQuery(document).ready(function($){
+
+        $("#share-smogi").submit(function(event){
+            event.preventDefault();
+
+            $("#err-msg").css("visibility","hidden");
+
+            var formid = "#share-smogi";
+            var email_id = $.trim($("#child_email").val());
+
+            if(email_id == "" || email_id == "Email Address")
+            {
+                event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("Please enter an email address.");
+                return;
+            }
+            if(!validateEmail(email_id)){
+                event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("Enter a valid email.");
+                return;
+            }
+
+            if(window.location.href.indexOf('https://') >= 0)
+                _usesecureurl = true;
+            else
+                _usesecureurl = false;
+            var url = homeUrl + 'sharesmogi/index/share';
+            if(_usesecureurl){
+                url = securehomeUrl + 'sharesmogi/index/share';
+            }
+
+
+            jQuery.ajax({
+                url     :   url,
+                type    :   'POST',
+                data    :   {'email':email_id},
+                beforeSend: function() {
+
+                    jQuery("#share-smogi #share-button").attr('value',"SHARING UP...");
+                },
+                success: function (data) {
+                    //alert(data);
+                    data = eval('(' + data + ')');
+                    var status = data.status;
+                    if (status == "success") {
+                       // jQuery("#share-smogi").parent().hide();
+                        jQuery("#share-smogi #share-button").attr("value","SHARED");
+                        jQuery("#share-smogi #err-msg").html(data.success_message).css("visibility","visible");
+                    }
+                    else
+                    {
+                        jQuery("#share-button").val("SHARE");
+                        jQuery("#share-button").show();
+                        jQuery("#share-smogi #err-msg").html(data.error).css("visibility","visible");
+                    }
+                }
+            });
+        });
+    });
+</script>

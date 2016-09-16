@@ -1,0 +1,88 @@
+<script type="text/javascript">
+	jQuery(function(){
+		if(!_islogedinuser){
+			jQuery(".gd-container1").show();
+		}
+	});
+</script>
+<div class="cms-container">
+	<div class="cms-side-nav f-left l-align" style="display:block;">
+	<ul>
+	<li data-caller="what-smogi-bucks" class="selected">WHAT IS SMOGI BUCKS <span class="arr">&gt;</span></li>
+	<li data-caller="get-smogi-bucks">HOW CAN I GET SMOGI BUCKS <span class="arr">&gt;</span></li>
+	<li data-caller="smogi-bucks-balance">WHAT IS MY SMOGI BUCKS BALANCE? <span class="arr">&gt;</span></li>	
+	</ul>
+	</div>
+	<div class="cms-pg smogi-bucks l-align">
+	<section id="what-smogi-bucks">
+		<div class="pg-heading" style="margin-bottom:59px;">
+			<h1 style="display:none">SMOGI BUCKS</h1>
+			<h2 style="display:none">How to Earn SMOGI BUCKS</h2>
+			<h3 style="display:none">Check SMOGI BUCKS Balance</h3>
+			<div class="h2">SMOGI BUCKS</div>
+			<span class="pg-tagline">From us to you</span>
+		</div>		
+	</section>
+		<!--Sections-->
+		<section id="what-smogi-bucks1">	
+			<span class="sec-head">WHAT IS SMOGI BUCKS?</span>
+			<p>SMOGI Bucks is SMOGI Love we give back to you for being part of our family.<br />You get SMOGI bucks every time you shop with us. It’s our way of saying THANK YOU.</p>
+			<p>And in case you’re wondering about the exchange rate, it’s pretty simple:</p>
+			<div class="gd-container gd-valign" style="margin-bottom: 17px;"><img src="<?php echo $this->getSkinUrl('images/smogi-cal.png')?>" /></div>
+			<p>1 SMOGI Buck = 1 Real Buck for future purchases<br />***SMOGI Bucks have a shelf life of 6 months from being earned or expire by December 23 of the current year.</p>
+		</section>
+
+		<section id="get-smogi-bucks">	
+			<span class="sec-head">HOW CAN I GET SMOGI BUCKS?</span>
+			<p>IT'S QUITE EASY - GO SHOPPING! - For every dollar you spend, you earn SMOGI Bucks.</p>
+			<div class="gd-container gd-valign" style="margin-top: 27px;"><img src="<?php echo $this->getSkinUrl('images/get-smogi.png')?>" /></div>
+			<p>When you are ready to checkout, you will be given the option to use your SMOGI Bucks toward the final purchase.</p>
+			<div class="gd-container gd-valign"><img src="<?php echo $this->getSkinUrl('images/get-smogi2.png')?>" /></div>
+			<p>EXCEPTIONS<br />1.  When you use SMOGI Bucks on an order, you will not earn additional SMOGI Bucks.<br />2. SMOGI Bucks cannot be applied toward or acquired with Accessories and One 2 Many items.</p>
+		</section>
+
+		<section id="smogi-bucks-balance" style="margin-bottom:0;">	
+			<span class="sec-head">WHAT IS MY SMOGI BUCKS BALANCE?</span>
+			<p>Once you’re a SMOGI, you get a personal account with us that keeps track of your SMOGI Bucks.<br />Just <a class="smogi-login-link" href="javascript:void(0);" style="border-bottom:1px solid #c03; padding-bottom:3px;">LOG IN</a> to your account to check your balance.</p>
+			<div class="gd-container gd-valign"  style="margin-bottom: 0;">
+				<img src="<?php echo $this->getSkinUrl('images/smogi-balance.png')?>" />				
+			</div>
+			<div class="gd-container1 c-align" style="margin-top: 0; padding-bottom: 20px;">
+				<form id="sb-sign-in-form" class="bl" action="ds" method="post">
+	                <table width="100%" cellpadding="0" cellspacing="0">
+	                    <tr class="f-left">
+	                        <td>                        
+	                            <input type="text" id="sb_email" name="sb_email" class="watermark" watermark="Enter your email" value="" maxlength="30" class="requiredfield">
+	                        </td>                    
+	                    </tr>
+	                    <tr class="fake_password f-right">
+	                        <td class="inputholder no-padding">
+	                            <input type="text" autocomplete="off" maxlength="30" class="watermark f_password requiredfield" watermark="Enter your password" name="password" defaulterrormsg="Password is required">
+	                        </td>
+	                    </tr>                 
+	                    <tr class="orig_password f-right" style="height: 33px;">
+	                        <td class="no-padding" style="height: 33px; line-height: 33px;">                      
+	                            <input type="password" autocomplete="off" maxlength="30" class="requiredfield o_password" name="sb_password" id="sb_password" style="margin-top: -3px;">
+	                        </td>                    
+	                    </tr>                    
+	                    <tr style="float: right; width: auto; margin-top: 30px;">
+	                        <td class="no-padding r-align">
+	                            <input type="submit" id="sb-sign-in-button" value=""  style="background-image: url(<?php echo $this->getSkinUrl('images/smogi-login-btn.png')?>); width:145px; height:38px; background-size:100% 100%; border:none;">
+	                        </td>
+	                        <td align="center" class="form-loader r-align" style="padding:0 !important;"></td>                    
+	                    </tr>                
+	                    <tr>
+	                        <td style="padding: 0px;">
+	                            <p style="min-height:15px; margin: 0 auto; font-size: 12px; visibility:hidden; text-align:right; color:#fff;" class="err-msg">All fields are required.</p>
+	                        </td>               
+	                    </tr>
+	                    <div class="clear-fix"></div>
+	                </table>            
+	            </form>
+			</div>
+			<div style="height:60px;"></div>
+		</section>
+
+	</div>
+<div class="new-bot-divider"></div>
+</div>

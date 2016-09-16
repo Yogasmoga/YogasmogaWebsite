@@ -1,0 +1,486 @@
+#mainimage{position:relative;}
+#mainimage .cart{width:970px; margin:0 auto; font-family:ITCAvantGardeProBk, arial; color:#666;}
+.refer-friend .page-title,
+.cart .page-title { border-bottom:0; margin:0 0 25px; }
+.refer-friend .page-title h1,
+.cart .page-title h1 { margin:10px 0 0; }
+
+.page-title { width:100%; overflow:hidden; margin:0 0 25px; }
+.page-title h1,
+.page-title h2 { margin:0; font-size:20px; color:#dd8a22; text-transform:uppercase; font-weight:normal; text-align:center; background:url(../images/title-line.jpg) 50% 100% no-repeat; padding:0 0 15px; font-family:ITCAvantGardeProMd, Arial;}
+
+/* Shopping Cart Table */
+.cart-table {border:0; text-transform:uppercase; border-bottom:1px dotted #000;}
+.cart-table thead th { padding:5px 10px; background:none; border:0; font-family:gotham; font-weight:normal;}
+.cart-table tr.odd,
+.cart-table tr.even{background:none;}
+.cart-table tbody td { padding:10px; background:none; border:0;}
+.cart-table tfoot tr{background:none !important;}
+/*.cart-table tfoot tr.first td{background:none;padding:20px 10px; border-top:1px dotted #000;} */
+.cart-table tfoot tr.first td{background:none;padding:20px 10px; }
+.cart-table .item-msg { margin:5px 0; font-size:11px; font-weight:bold; color:#df280a; }
+.cart-table tfoot td { padding:5px 10px; }
+.cart-table tr.odd:hover,
+.cart-table tr.even:hover{background:#f5f5f5;}
+.cart-table .btn-continue { float:left; position:absolute; top:80px; left:15px;}
+.cart-table a.edit{color:#e80e40; text-decoration:underline; text-transform:capitalize;}
+.cart-table .btn-empty span{}
+.cart-table .btn-continue span {background:#fff url(../images/conitnue-arw.png) 0 50% no-repeat;text-transform:uppercase; border:0; padding:0 0 0 12px; font-family:gotham; letter-spacing:0; font-size : 10px; font-weight: normal;}
+.cart-table .btn-continue span span{background:none; color:#000; border-bottom:0px solid #000; padding:0;}
+.cart-table .btn-continue:hover span span{color:#d90d3d; border-bottom:0px solid #d90d3d;}
+.cart-table .btn-update span{padding:0; width:113px; text-indent:-999em; height:28px; margin:0; background:url(../images/update-btn.png) 0 0 no-repeat; border:0;}
+.cart-table .btn-update span{
+    padding:0; 
+    width:113px; 
+    text-indent:-999em; 
+    height:29px; 
+    margin:0; 
+    background:url(../images/update_off.png) 0 0 no-repeat; 
+    border:0;
+}
+
+.cart-table .btn-update:active span{
+    background:url(../images/update_on.png) 0 0 no-repeat;
+}
+.cart-table .btn-update-bag span{
+    padding:0; 
+    width:289px; 
+    text-indent:-999em; 
+    height:29px; 
+    margin:0; 
+    background:url(../images/update_shopping_bag_off.png) 0 0 no-repeat; 
+    border:0;
+}
+.cart-table .btn-update-bag:active span{
+    background:url(../images/update_shopping_bag_on.png) 0 0 no-repeat;
+}
+{background:none;}
+.cart-table .btn-empty { float:right; }
+.cart-table .btn-update { margin-left:10px; }
+
+.cart-table tbody td {font-family:gotham-l; font-size:11px;}
+.cart-table .product-name { font-weight:normal; font-family:gotham-m; margin:0 0 3px; color:#000;}
+.cart-table .product-name a{color:#000;}
+.item-options dt { font-weight:normal; font-style:normal; float:left; clear:left; margin-right:7px; color:#666; text-transform:uppercase;}
+.item-options dd { padding-left:10px; margin:0 0 1px; color:#666; text-transform:none;}
+
+.cart .gift-card {text-align:left; font-family:Arial, helvatica; text-transform:none; margin-top:20px;font-size:11px; letter-spacing:0.07em; border-bottom: 1px dotted black; padding-bottom : 20px;padding-left : 15px;position: relative;}
+.cart .gift-card h2{font-size:11px; margin:0; font-style:normal; color : #666;}
+.cart .smogi-bucks .discount-coupon-login h2
+{
+    font-size:11px;
+    margin:0;
+    font-style:normal;
+    text-transform: none;
+    font-family: Arial,helvatica;
+    letter-spacing: 0.07em;
+    color : #666;
+}
+/*
+.discount-coupon-login
+{
+    margin-top : 20px;
+}
+*/
+.discount-coupon-login .login-msg
+{
+    margin-top : 5px;
+}
+.discount-coupon-login button
+{
+    margin-top : 5px;
+}
+.cart .gift-card .gift-box label{float:left; display:block; line-height:15px; padding:9px 0 1px;}
+.cart .gift-card .gift-box input.input-text{float:left; border:0; background:#fff; border-bottom:1px solid #000; padding:9px 0 1px; height:15px; font-size:11px; color:#666; margin:0 15px 0 10px;}
+
+.cart .totals table td{font-family:gothamlight; text-transform:uppercase;}
+
+.cart .smogi-bucks{width:450px; float:left; text-align:left; font-size:11px; font-family:Arial, Helvatica;margin-left : 16px;position: relative;margin-top : 20px;}
+.cart a{color:#333;}
+.cart a:hover{color:#d90d3d;}
+.cart .smogi-bucks h2{font-family:gotham-m; text-transform:uppercase; font-size:11px;}
+.cart .smogi-bucks p{margin-bottom:5px;}
+.cart .smogi-bucks select.input-text{padding:4px 5px; height:26px;}
+.cart .smogi-bucks select.input-text option {padding:3px 5px}
+.cart .totals table tr.reward-point td{font-family:gothamlight;}
+.cart .totals-rewards img{margin:4px}
+
+button.btn-checkout span{padding:0; width:284px; text-indent:-999em; height:43px; margin:0; background:url(../images/checkout-btn.png) 0 0 no-repeat; border:0;}
+button.btn-checkout-disable span{padding:0; width:284px; text-indent:-999em; height:43px; margin:0; background:url(../images/continue_check_out_disabled.png) 0 0 no-repeat; border:0;}
+button.btn-checkout-disable:active span{
+    background:url(../images/continue_check_out_disabled.png) 0 0 no-repeat;    
+}
+
+
+button.btn-checkout span{
+    padding:0; 
+    width:286px; 
+    text-indent:-999em; 
+    height:43px; 
+    margin:0; 
+    background:url(../images/continue_check_out_off.png) 0 0 no-repeat; 
+    border:0;
+}
+button.btn-checkout:active span{
+    background:url(../images/continue_check_out_on.png) 0 0 no-repeat;    
+}
+
+button.btn-login span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-login.png) 0 0 no-repeat; border:0;}
+
+button.btn-login-big span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/log_in_off_big.png) 0 0 no-repeat; border:0;}
+button.btn-login-big:active span{background-image: url('../images/log_in_on_big.png');}
+
+button.btn-loginsmogi span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/login_smogi_off.png) 0 0 no-repeat; border:0;}
+button.btn-loginsmogi:active span{background-image: url('../images/login_smogi_on.png');}
+
+button.btn-logingoys span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/login_goys_off.png) 0 0 no-repeat; border:0;}
+button.btn-logingoys:active span{background-image: url('../images/login_goys_on.png');}
+
+button.btn-logincoupon span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/login_promotion_off.png) 0 0 no-repeat; border:0;}
+button.btn-logincoupon:active span{background-image: url('../images/login_promotion_on.png');}
+
+button.button.btn-apply span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-apply.png) 0 0 no-repeat; border:0;}
+
+button.button.btn-apply span{
+    padding:0; 
+    width:89px; 
+    text-indent:-999em; 
+    height:29px; 
+    margin:0; 
+    background:url(../images/apply_off.png) 0 0 no-repeat; 
+    border:0;
+}
+button.button.btn-apply:active span{
+    background:url(../images/apply_on.png) 0 0 no-repeat;
+}
+
+button.button.btn-removebucks span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-remove.png) 0 0 no-repeat; border:0;}
+button.btn-invite span{padding:0; width:92px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-invite.png) 0 0 no-repeat; border:0;}
+button.btn-reset span{padding:0; width:89px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-reset.png) 0 0 no-repeat; border:0;}
+button.btn-addtobag span{padding:0; width:147px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-addtobag.png) 0 0 no-repeat; border:0;}
+button.btn-copy span{padding:0; width:92px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-copy.png) 0 0 no-repeat; border:0;}
+
+button.btn-login span span,
+button.btn-apply span span,
+button.btn-removebucks span span,
+button.btn-invite span span,
+button.btn-addtobag span span,
+button.btn-reset span span,
+button.btn-update span span,
+button span span,
+button.btn-checkout span span{background:none;}
+button.btn-login:active span,
+button.btn-invite:active span,
+button.btn-apply:active span,
+button.btn-removebucks:active span,
+button.btn-reset:active span,
+button.btn-addtobag:active span,
+button.btn-update:active span,
+button:active span,
+button.btn-checkout:active span{background-position:0 100%;}
+.cart .totals {
+  background: none;
+  border: 0;
+  float: right;
+  width: 500px;
+  margin-top : 8px;
+}
+
+.confirmation-page{display:block; font-size:13px; padding:110px 0; text-align:center;}
+.confirmation-page *{font-family:gotham; color:#000; font-weight:normal; letter-spacing:0.05em;}
+.confirmation-page  .sub-title{font-family:gotham-m; text-transform:uppercase; font-weight:normal; font-size:19px; line-height:1.1; margin:0 0 50px; padding:0;}
+.confirmation-page  p{margin:0 0 10px;}
+.confirmation-page  p.conf-msg{font-size:19px; line-height:30px; margin:0 0 30px;}
+.confirmation-page  a{color:#d90d3d; text-decoration:underline;}
+.confirmation-page  p.conf-msg a{padding-bottom: 2px;}
+.confirmation-page .conf-box{background:url(../images/div-sep.png) 50% 100% no-repeat; margin: 0 0 45px; padding-bottom:36px;}
+.confirmation-page .invite-box .sub-title{text-transform:none; margin:0 0 5px;}
+.invite-action{width:710px; margin:80px auto 0; min-height:35px;}
+.invite-form{display:block; text-align:left; min-height:30px;}
+.invite-form .input_box{display:block; float:left; border-bottom:1px solid #000; margin:5px 15px 0 0;}
+.invite-form label{color:#999; font-size:11px; font-family:Helvatica, Arial; font-style:oblique; display:block; float:left; margin-right:15px; line-height:20px;}
+.invite-form input.input-box{border:0; background:none; font-family:gotham-l; font-size:12px; height:20px; line-height:18px; padding:0; float:left; width:200px;}
+
+.social-btns{float:none; margin:35px auto 0; width:130px; clear:both;}
+.social-btns a{float:left; display:block; width:20px; height:20px; text-indent:-999em;background:url(../images/social-icon.png) 0 0 no-repeat; margin:0 5px;}
+.social-btns a.pinterest{background-position:0 0;}
+.social-btns a.twitter{background-position:-31px 0;}
+.social-btns a.facebook{background-position:-62px 0;}
+.social-btns a.email{background-position:-93px 0;}
+.social-btns a.pinterest:hover{background-position:0 100%;}
+.social-btns a.twitter:hover{background-position:-31px 100%;}
+.social-btns a.facebook:hover{background-position:-62px 100%;}
+.social-btns a.email:hover{background-position:-93px 100%;}
+
+body.gift_of_ys{background:url(../images/goy-bg.png) 50% 0 no-repeat; color:#666; background-size: cover ;}
+ul.sub-nav{text-indent:0; list-style:none; padding:10px; margin:0; font-family:gotham, Arial; font-size:13px; text-transform:uppercase; text-align:center; line-height:24px;}
+ul.sub-nav li {
+  background: url("../images/subsep.png") no-repeat scroll 100% 50% transparent;
+  display: inline;
+  height: 24px;
+  margin: 0;
+  padding: 0 28px 0 10px;
+}
+ul.sub-nav li:last-child,
+ul.sub-nav li.last {background:none; padding-right:10px;}
+ul.sub-nav a{display:inline;}
+h1.big-title{font-size:100px; font-family:gotham-t, Arial; line-height:104px; text-transform:uppercase; font-weight:normal; text-align:center; background:url(../images/title-bg.png) 50% 100% no-repeat; padding:30px 0 30px; margin-bottom:35px;}
+.gift-of-ys{width:770px; margin:0 auto 70px; background:url(../images/title-bg.png) 50% 100% no-repeat; display:block; text-align:left; padding-bottom:70px;}
+.goy-balance{width:770px; margin:0 auto 70px;display:block; text-align:left; font-family:gotham-l; font-size:12px;}
+.gift-of-ys .goy-banner{display:block; text-align:center; padding:30px 0 50px;}
+.goy-form{display:block;position:relative;}
+.goy-form .row{display:block; min-height:25px; margin:0 -10px 10px; clear:both;}
+.goy-form .col{float:left; margin:0 10px; width:375px; border-bottom:1px solid #000;}
+.goy-form .col:nth-child(2){float:right;}
+.goy-form .col label{color:#999; font-style:oblique; font-family:Helvatica, Arial; font-size:11px; margin-right:25px;}
+.goy-form .col input[type=text]{border:0; background:none; font-size:12px; font-family:gotham-l; color:#000;}
+.goy-form .col select{border:0; background:none; text-align:left;	 padding:2px; height:20px; font-family:gotham-l; font-size:12px;}
+.goy-form .col select option{background:none; border:0; padding:3px 5px;}
+.goy-form .full{float:none; width:770px; border:0; margin-top:50px;}
+.goy-form .full label{display:block;}
+.goy-form .full textarea{display:block; padding:5px; width:760px; height:90px; border:1px solid #000; font-family:gotham-l; font-size:12px; background:none; color:#999;}
+.goy-form .button-set{display:block; min-height:30px;}
+.goy-form .button-set button.button{float:right; margin-left:30px;}
+.goy-balance .sub-title{font-size:14px; text-transform:uppercase; font-weight:normal; font-family:ITCAvantGardeProBd, Arial; margin:0 0 10px; color:#666;}
+.balance-form{margin-top:70px; display:block; min-height:30px;}
+.balance-form .input_box{border-bottom:1px solid #000; float:left; margin-right:20px; margin-top:5px;}
+.balance-form .input_box label{margin-right:30px;}
+.balance-form .input_box input{width:250px; border:0; background:none; font-family:gotham; font-size:12px; color:#000;}
+.cart .page-title h1.checkout-namaskar-header {
+    background-image: url("../images/checkout/step_divider.png");
+    font-family: gothambook;
+    font-size: 14pt;
+    letter-spacing: 0.6pt;
+    margin-top: 15px;
+    padding-bottom: 10px;
+}
+.nodisplay{ display: none;}
+
+/* body.rewardpoints-index-referral{background:url(../images/refer-bg.png) 50% 80px no-repeat;background-size:cover;} */
+.refer-friend{max-width:1200px; padding:0 15px; width:auto; margin:0 auto; text-align:left;}
+.refer-friend h2.sub-title{text-transform:uppercase; font-size:18px; font-weight:normal; font-family:gotham, Arial; text-align:center; line-height:1.2; color:#000; letter-spacing:0.03em; padding:0 0 35px; margin:0 0 45px; background:url(../images/title-bg.png) 50% 100% no-repeat;}
+.refer-friend h2.sub-title span{font-size:12px; font-family:gotham-l, Arial; text-transform:none; display:block;}
+.box-invite h3,
+h3.heading-track,
+.refer-box h3{font-family:gotham, arial; font-size:16px; text-transform:uppercase; font-weight:normal;color : black;}
+h3.heading-track.center
+{
+    text-align: center;
+}
+.box-invite h3 span{display:block; font-size:12px; text-transform:none;}
+.refer-box .share-link{border-width:0 0 1px; border-color:#000; border-style:solid; font-family:gotham-l, Arial; height:20px; width:70%; font-size:11px; margin-right:20px; background:none;}
+.refer-box  {width:45%;}
+
+.box-invite{width:50%;}
+.box-invite ul.form-list{margin:30px 0 0;}
+.box-invite ul.form-list .field{width:47%; margin-right:3%; border-bottom: 1px solid #000;}
+.box-invite ul.form-list .field label{ float:left; margin-right:15px;}
+.box-invite ul.form-list li{position:relative;}
+.box-invite ul.form-list .field input{border:0; background:none;}
+.form-list .field.j2t-rewardpoints-email img{position:absolute; right:0;}
+
+table.tblsmogilogin button
+{
+    /*margin-left : 20px;*/
+    margin-top : 5px;
+}
+
+table.tblsmogilogin
+{
+    font-size : 11px;
+    font-style : normal;
+	width	:	100%;
+}
+.cart div.smogibox
+{
+    background : none;
+    border : 0;
+}
+.cart div.smogibox h2
+{
+    background : none;
+    padding : 0;
+    color : #666666;
+}
+div.rewards_point_cart
+{
+    display : none;
+}
+table#shopping-cart-table div.preorderinfo
+{
+    color: #D90D3D;
+    font-style: italic;
+    text-transform: none;
+}
+div.cart p.cart-item
+{
+    margin-top : 10px;
+}
+#giftcard-form div.gift-box
+{
+    margin-top : 10px;
+}
+.cart-table tr.nohover:hover
+{
+    background: transparent;
+}
+#giftcard-form td
+{
+    padding : 0;
+    border-top : none;
+}
+#giftcard-form table.gfredeem td.label
+{
+    padding-right : 20px;
+}
+#giftcard-form table.gfredeem td.dash
+{
+    padding : 0 5px;
+}
+#giftcard-form table.redeem-giftcard
+{
+    margin-top : 20px;
+}
+#shopping-cart-table.data-table tfoot td
+{
+    border-right : none;
+}
+button.btn-redeem span
+{
+    width : 93px;
+    height : 29px;
+    background-image: url('../images/redeem_off.png');
+    padding : 0;
+    border : none;
+    background-color: transparent;
+}
+button.btn-redeem span span
+{
+    display : none;
+}
+button.btn-redeem:active span
+{
+    background-image: url('../images/redeem_on.png');
+}
+button.button.btn-redeem
+{
+    margin-left : 5px;
+    margin-top : -7px;
+}
+div.gift-card p
+{
+    font-style: normal;
+}
+#shopping-cart-totals-table td.a-left
+{
+    text-align: right !important;
+}
+div.disableme
+{
+    position : absolute;
+    top : 0;
+    bottom : 0;
+    width : 100%;
+    height : 100%;
+    background-color: white;
+    opacity : 0.4;
+    filter : alpha(opacity=40);
+}
+input.discounttoggler
+{
+    position: absolute;
+    top : 1px;
+    left : -3px;
+}
+div.smogi-bucks input.discounttoggler
+{
+    left : -17px;
+    top : 13px;
+} 
+table.applybucks
+{
+    
+}
+table.applybucks div.buttons-set, table.removebucks div.buttons-set
+{
+    margin : 0 !important;
+}
+table.removebucks p
+{
+    margin : 0 !important;
+}
+.cart .smogi-bucks .discount
+{
+    background : none;
+    border : none;
+    padding : 0;
+    margin : 10 0 0 0; 
+}
+div.smogi-block
+{
+    text-align: left;
+    padding-left : 16px;
+    border-bottom : 1px dotted black;
+}
+.cart .smogi-block .discount
+{
+    padding : 0;
+}
+.smogi-block .discount-codes.box.discount.smogibox
+{
+    margin-bottom : 0px;
+}
+.cart .smogi-block 
+{
+    font-family: Arial,Helvatica;
+    font-size: 11px;
+    text-align: left;
+    margin-bottom : 2px;
+    padding-bottom : 22px;   
+}
+.cart .smogi-bucks .discount h2, .cart .smogi-block .discount h2
+{
+    background: none;
+    color: #666666;
+    padding: 0;
+    font-family: gotham-m;
+    font-size: 11px;
+    text-transform: uppercase; 
+}
+.cart .smogi-bucks .discount label
+{
+    font-family: Arial,helvatica;
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-align: left;
+    text-transform: none;
+}
+.cart .smogi-bucks .discount input#coupon_code
+{
+    border : none;
+    border-bottom : 1px solid black;
+    font-family: gothamlight;
+    font-size: 11px;
+    letter-spacing: 0.4pt;
+    padding-bottom: 1px;
+    width : 254px;   
+}
+.discount-codes.box.discount.smogibox
+{
+    margin-bottom : 25px;
+}
+h2.discount-title
+{
+    background: none repeat scroll 0 0 transparent;
+    color: #666666;
+    font-family: gotham-m;
+    font-size: 11px;
+    padding: 0;
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: bold;
+}
+div.gift-card h2 a
+{
+    color : #d90d3d;
+}

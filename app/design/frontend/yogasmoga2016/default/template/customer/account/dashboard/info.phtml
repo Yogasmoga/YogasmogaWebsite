@@ -1,0 +1,171 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php /*
+    <div class="gift-card-credit">
+        <p><?php echo $this->__('Gift card credit: ') ?><?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomerId())); ?>. -<a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>gift_of_ys">Redeem a Gift card!</a>
+        </p>
+    </div>
+    <div class="view-past-order">
+        <p><?php echo $this->__('You currently do not have any open orders. -') ?><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>sales/order/history">View your past orders</a>
+        </p>
+    </div> 
+*/?>
+    
+
+    <!-- <tr class="customerinfo">
+        <td>
+            <table>
+                <tr>
+                    <td>
+                        <div class="sectionheader">ACCOUNT INFORMATION</div>            
+                    </td>
+                    <td class="tdsectionheaderlink">
+                        <a href="<?php echo $this->getUrl('customer/account/edit') ?>"><?php echo $this->__('Edit') ?></a>    
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <?php echo $this->htmlEscape($this->getCustomer()->getName()) ?><br />
+                <?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?><br />
+                <?php /*
+                <a href="<?php echo $this->getChangePasswordUrl() ?>"><?php echo $this->__('Change Password') ?></a>
+                */ ?>
+            </p>
+        </td>
+        <?php if( $this->isNewsletterEnabled() ): ?>
+            <td class="column2cell">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="sectionheader">NEWSLETTER</div>            
+                        </td>
+                        <td class="tdsectionheaderlink">
+                            <a href="<?php echo $this->getUrl('newsletter/manage') ?>"><?php echo $this->__('Edit') ?></a>            
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    <?php if( $this->getIsSubscribed() ): ?>
+                        <?php echo $this->__("You are currently subscribed to our SMOGI newsletter.") ?>
+                    <?php else: ?>
+                        <?php echo $this->__('You are currently not subscribed to any newsletter.') ?>
+                    <?php endif; ?>
+                </p>
+            </td>
+        <?php endif; ?>
+        <?php if( !$this->isNewsletterEnabled() ): ?>
+            <td class="column2cell">&nbsp;</td>
+        <?php endif; ?>
+    </tr> -->
+	
+    <!-- <tr class="customerinfo">
+        <td>
+            <table>
+                <tr>
+                    <td>
+                        <div class="sectionheader">GIFT OF YS</div>            
+                    </td>
+                    <td class="tdsectionheaderlink">
+                        <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance"><?php echo $this->__('Manage') ?></a>    
+                    </td>
+                </tr>
+            </table>
+            <p>
+				<?php echo $this->__('CURRENT BALANCE: ') ?><?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomerId())); ?></a>
+            </p>
+        </td>
+		<td class="column2cell">
+			<table>
+				<tr>
+					<td>
+						<div class="sectionheader">SMOGI BUCKS</div>            
+					</td>
+					<td class="tdsectionheaderlink">
+						<a href="<?php echo Mage::getUrl(''); ?>smogi-bucks"><?php echo $this->__('Learn more') ?></a>
+					</td>
+				</tr>
+			</table>
+			<p><?php echo $this->__('CURRENT BALANCE: ') ?>
+            <?php
+                $store_id = Mage::app()->getStore()->getId();
+                $customerId = Mage::getModel('customer/session')->getCustomerId();
+                if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                    $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                    echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+                    //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+                }        
+                
+                $reward_model = Mage::getModel('rewardpoints/stats');
+                //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+                echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
+                echo " Bucks";
+                //Mage::helper('core')->currency($reward_model->getPointsCurrent($customerId, $store_id)+0);
+             ?>
+			</p>
+		</td>
+    </tr> -->
+
+<?php /*
+<div class="col2-set">
+    <div class="col-1">
+        <div class="box">
+            <div class="box-title">
+                <h3><?php echo $this->__('Contact Information') ?></h3>
+                <a href="<?php echo $this->getUrl('customer/account/edit') ?>"><?php echo $this->__('Edit') ?></a>
+            </div>
+            <div class="box-content">
+                <p>
+                    <?php echo $this->htmlEscape($this->getCustomer()->getName()) ?><br />
+                    <?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?><br />
+                    <a href="<?php echo $this->getChangePasswordUrl() ?>"><?php echo $this->__('Change Password') ?></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <?php if( $this->isNewsletterEnabled() ): ?>
+    <div class="col-2">
+        <div class="box">
+            <div class="box-title">
+                <h3><?php echo $this->__('Newsletters') ?></h3>
+                <a href="<?php echo $this->getUrl('newsletter/manage') ?>"><?php echo $this->__('Edit') ?></a>
+            </div>
+            <div class="box-content">
+                <p>
+                    <?php if( $this->getIsSubscribed() ): ?>
+                        <?php echo $this->__("You are currently subscribed to 'General Subscription'.") ?>
+                    <?php else: ?>
+                        <?php echo $this->__('You are currently not subscribed to any newsletter.') ?>
+                    <?php endif; ?>
+                </p>
+            </div>
+        </div>
+        <?php // Extensions placeholder  ?>
+        <?php echo $this->getChildHtml('customer.account.dashboard.info.extra')?>
+    </div>
+    <?php endif; ?>
+</div>
+*/ ?>

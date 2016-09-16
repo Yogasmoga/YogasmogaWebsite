@@ -1,0 +1,24 @@
+<div id="sociallogin_button">
+	<ul class="<?php echo ($this->getDirection() == 'left') ? "left" : "right" ?>">
+	<?php if($this->isShowFaceBookButton()): ?>
+		<li class="facebook-button left"> <?php echo $this->getFacebookButton()?> </li>
+	<?php endif?>
+	<?php if($this->isShowGmailButton()): ?>
+		<li class="gmail-button left"> <?php echo $this->getGmailButton()?> </li>
+	<?php endif?>
+	<?php if($this->isShowTwitterButton()): ?>
+		<li class="twitter-button left"> <?php echo $this->getTwitterButton()?> </li>
+	<?php endif?>
+	<?php if($this->isShowYahooButton()): ?>
+		<li class="yahoo-button left"> <?php echo $this->getYahooButton()?> </li>
+	<?php endif?>	
+	</ul>
+</div>
+<style type="text/css">
+<?php if($this->getDirection() == 'left'):?>
+.bt-login-social{margin:0 10px 0 0;}
+<?php else: ?>
+.bt-login-social{margin:0 0 0 10px;}
+<?php endif;?>
+</style>
+<div class="clear"></div>

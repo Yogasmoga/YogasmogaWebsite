@@ -1,0 +1,83 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+<?php $_menu = $this->getHtml('level-top') ?>
+<?php if($_menu): ?>
+<div class="nav-container">
+    <ul id="nav">
+        <?php echo $_menu ?>
+    </ul>
+</div>
+<div>
+    <?php //echo "<pre>"; print_r(Mage::helper('catalog/category')->getStoreCategories()); echo "</pre>"; ?>
+    <?php
+        $activeCategories = array();
+        foreach (Mage::helper('catalog/category')->getStoreCategories() as $child) {
+            if ($child->getIsActive()) {
+                $activeCategories[] = $child;
+                echo $child->getName();
+                echo Mage::getModel("catalog/category")->load($child->getId())->getUrl();
+            }
+        }
+     ?>
+     <?php
+$cats = Mage::getModel('catalog/category')->load(2)->getChildren();
+$catIds = explode(',',$cats);
+?>
+<ul>
+<?php foreach($catIds as $catId): ?>
+	<li>
+    	<?php
+			$category = Mage::getModel('catalog/category')->load($catId);
+			echo $category->getUrl();
+
+			$subCats = Mage::getModel('catalog/category')->load($category->getId())->getChildren();
+			$subCatIds = explode(',',$subCats);
+		?>
+            <?php if(count($subCatIds) > 1):?>
+                <ul>
+                <?php foreach($subCatIds as $subCat) :?>
+                    <li>
+                    <?php
+                        $subCategory = Mage::getModel('catalog/category')->load($subCat);
+                        echo $subCategory->getName();
+                    ?>
+                    </li>
+                <?php endforeach;?>
+                </ul>
+            <?php endif; ?>
+    </li>
+<?php endforeach; ?>
+</ul>
+</div>
+<?php endif ?>

@@ -1,0 +1,28 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 2874478, 2014-08-30T10:05:03-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Freight Text Pro Book Italic by GarageFonts
+ * URL: http://www.myfonts.com/fonts/garagefonts/freight-text-pro/book-italic/
+ * Copyright: Copyright &#x00A9; 2004-2009, Joshua Darden &amp; Phil's Fonts, Inc. All rights reserved. Published by Garagefonts USA 301-879-9222 www.garagefonts.com
+ * Licensed pageviews: 10,000
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2874478
+ * 
+ * © 2014 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/2bdc6e");
+
+  
+@font-face {font-family: 'FreightTextProBook-Italic';src: url('webfonts/2BDC6E_0_0.eot');src: url('webfonts/2BDC6E_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/2BDC6E_0_0.woff') format('woff'),url('webfonts/2BDC6E_0_0.ttf') format('truetype');}
+ 

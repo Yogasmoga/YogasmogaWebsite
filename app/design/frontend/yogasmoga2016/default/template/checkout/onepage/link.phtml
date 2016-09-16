@@ -1,0 +1,62 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if ($this->isPossibleOnepageCheckout()):?>
+<?php
+    $allow = 0;
+    if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        $allow++;
+    if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+        $allow++;
+    if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+        $allow++;
+    if($allow > 1)
+    //if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) && Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+    {
+        ?>
+        <button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>" class="button btn-proceed-checkout btn-checkout-disable<?php if ($this->isDisabled()):?> no-checkout<?php endif; ?>"<?php if ($this->isDisabled()):?> disabled="disabled"<?php endif; ?>><span><span><?php echo $this->__('Proceed to Checkout') ?></span></span></button>
+        <div class="errortext">Gift of YS code, SMOGI Bucks and Promotion Code cannot be combined.<br />Please use one and continue checkout.
+</div>
+        <?php
+    }
+    else
+    {
+        ?>
+        <button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>" class="button btn-proceed-checkout btn-checkout<?php if ($this->isDisabled()):?> no-checkout<?php endif; ?>"<?php if ($this->isDisabled()):?> disabled="disabled"<?php endif; ?> onclick="window.location='<?php echo $this->getCheckoutUrl() ?>';"><span><span><?php echo $this->__('Proceed to Checkout') ?></span></span></button>
+        <?php
+            if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"cpnerror-msg") == false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") == false)
+            {
+                ?>
+                     <div class="errortext"><?php echo html_entity_decode(strip_tags(Mage::getSingleton('core/session')->getGlobalMessage())); ?></div>
+                <?php
+            }
+        ?>
+        <?php
+    }
+?>
+
+<?php endif?>
+<?php //Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getBaseUrl().'#cart'); ?>
