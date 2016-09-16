@@ -3405,6 +3405,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child a {
 }
 /*.mac-os .header .logo { position:relative; top:1px;}*/ /*--only for mac system--*/
 
+
 .logoCont {
   float: left;
   margin-top: 2%;
@@ -3581,12 +3582,13 @@ float:left; margin-left:-40px; }
 }
 
 /********** new- changes ************/
-.header .logo {
+.header .logo.posRel {
   left: 0;
   margin: 19px 19px 0 0;
   position: absolute;
   right: 0;
 }
+.header .logo a.logo{float:none;}
 div#bodycompensator{height: 109px!important;}
 .header-container  .header  {position:relative;}
 .header-banner{height:40px;padding:0 40px;}
