@@ -40,6 +40,65 @@ jQuery(document).ready(function($){
 	});
 });
 
+jQuery(document).ready(function($){
+	var windW = $(window).width(); 
+	
+	var imgrowh = $('.image-row img').height();
+	$('.prod-col .pcol-right-content').height(imgrowh);
+	$('.image-row-last img').appendTo('.pcol-right-content4 .pcol-right-content-inner');
+	$('.product-row .img_madeinusa').appendTo('.image-row-first');
+	$('.product-row .img_rnd').appendTo('.image-row4');
+	
+	var imgrow4H = $('.image-row4 img').height();
+	$('.prod-col .pcol-right-content4').height(imgrow4H);
+	
+	var imgrow4W = $('.image-row4').css({
+		'width': (66.125 * windW)/100		
+	});
+	var pcolRightContent4W = $('.pcol-right-content4').css({
+		'width': (33.875 * windW)/100 - 10		
+	});
+	
+	// for margin-left
+	var pcolRightContent4Width = $('.pcol-right-content4').outerWidth();	
+	pcolRightW = $('.product-row .pcol-right').outerWidth();
+	
+	var pcolRightContent4ML = pcolRightContent4Width - pcolRightW;
+	
+	$('.pcol-right-content4').css({
+		'margin-left': -(pcolRightContent4Width - pcolRightW)
+	});
+	
+	
+});	
+
+jQuery(window).resize(function(){
+	var windW = jQuery(window).width();
+	
+	var imgrowh = jQuery('.image-row img').height();	
+	jQuery('.prod-col .pcol-right-content').height(imgrowh);
+	
+	var imgrow4H = jQuery('.image-row4 img').height();
+	jQuery('.prod-col .pcol-right-content4').height(imgrow4H);
+	
+	var imgrow4W = jQuery('.image-row4').css({
+		'width': (66.125 * windW)/100		
+	});
+	var pcolRightContent4W = jQuery('.pcol-right-content4').css({
+		'width': (33.875 * windW)/100 - 10		 
+	});
+	
+	// for margin-left
+	var pcolRightContent4Width = jQuery('.pcol-right-content4').outerWidth();	
+	pcolRightW = jQuery('.product-row .pcol-right').outerWidth();
+	
+	var pcolRightContent4ML = pcolRightContent4Width - pcolRightW;
+	
+	jQuery('.pcol-right-content4').css({
+		'margin-left': -(pcolRightContent4Width - pcolRightW)
+	});
+	
+});
 /*----------------product grid related js--------------------*/
 jQuery(document).ready(function(){
 	var prodHt = jQuery('.productCont').width();

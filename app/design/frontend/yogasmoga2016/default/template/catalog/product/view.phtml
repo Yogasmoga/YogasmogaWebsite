@@ -1039,6 +1039,29 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 			<div class="product-row-container">
 			<div class="product-row product-row1">
 			<div class="prod-col pcol-left">
+				<!--<div class="upper-container">
+                    <table class="productimagecontainer f-left">
+                        <tr>
+                            <td>
+                                <div class="thumb-imgs">
+                                    <table class="smallimagecontiner" width="100%">
+                                        <tr></tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="show-prodImg">
+                                    <table class="tdbigimagecontainer">
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>-->
 				
 				<div class="image-row image-row1 image-row-first">
 					<img alt="main-image" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img1.jpg" class="" draggable="false">
@@ -1060,7 +1083,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 				<img class="img_rnd" src="<?php echo $this->getSkinUrl('images/CA.svg'); ?>" alt="rnd"/>
 			</div>
 			<div class="prod-col pcol-right">
-				<div class="wdth35" style="width:361px;">
+				<div class="wdth35 pcol-right-content pcol-right-content1">
+				<div class="pcol-right-content-inner">
                  <?php $catIds =  $_product->getCategoryIds();
                         $styleIds = array(125,126,127,128,129,130);
                         $finalIds = array_intersect($catIds, $styleIds);
@@ -1677,7 +1701,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 
                 <!-- fabricDetails -->
 				</div>
-            </div>
+				
 				<div class="product-det-tab">
 					<!--<ul class="tabs-nav">
 						<li><input type="radio" name="prodTab" id="prodTab1" checked/><label for="prodTab1">Description</label></li>
@@ -1709,6 +1733,40 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 						</div>						
 					</div>
 				</div><!--product-det-tab-->
+				</div>
+            </div><!--right-col1 end-->
+				
+				
+				
+				<div class="pcol-right-content pcol-right-content2">
+					<div class="pcol-right-content-inner">
+					 <?php
+                        if($fabricStoryBlockId != '') {
+                            echo "<div class='mainfabric' rel='main'>";
+                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricStoryBlockId)->toHtml();
+                            echo "</div>";
+                        
+
+                            if ($fabric_changed) {
+
+                                foreach ($arFabricArray as $key => $value) {
+                                    echo "<div class='fabric_story_block' rel='$key'>";
+                                    echo $this->getLayout()->createBlock('cms/block')->setBlockId($value)->toHtml();
+                                    echo "</div>";
+                                }
+                            }
+                        }
+             ?>
+					</div>
+				</div><!--right-col2 end-->
+				<div class="pcol-right-content pcol-right-content3">
+					<div class="pcol-right-content-inner">
+					</div>
+				</div><!--right-col3 end-->
+				<div class="pcol-right-content pcol-right-content4">
+					<div class="pcol-right-content-inner">
+					</div>
+				</div><!--right-col4 end-->
 			</div>
 				
 		</div><!--product-row product-row1, ends-->
