@@ -2955,6 +2955,18 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 /*.flexslider .slides img.img_madeinusa{max-width:100%; width:auto; margin:11% auto 0 auto!important; display:block;}*/
 .flexslider .slide_item_3 img.img_madeinusa {margin: 0 !important; position: absolute; right: 9.6%;top:50%;max-width:220px;transform:translateY(-50%);-webkit-transform:translateY(-50%)}
 
+/*--banner updated 19-sep-2016--*/
+.namaskar_banner .text-top{line-height:0;margin-bottom:30px!important;}
+.namaskar_banner .text-mid{margin-bottom:30px!important;}
+.namaskar_banner .text-bottom{}
+
+.namaskar_banner .text-top .title{font:15px/24px avantgardegothicitcw01d; letter-spacing:0.4px;display:block;}
+.namaskar_banner .text-top .date{font:16px/24px itcavantgardeprobk; text-transform:none; letter-spacing:0.8px;}
+.namaskar_banner .text-mid{font:16px/24px itcavantgardeprobk; text-transform:none; letter-spacing:0.8px;}
+.namaskar_banner .text-mid span{display:block;}
+.namaskar_banner .text-bottom{font:12px/24px itcavantgardeprobk; text-transform:none; letter-spacing:0.6px;}
+
+
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
     .banner-avant-grade-bk-small{ font: 38px/38px ITCAvantGardeProBk;}
@@ -3005,6 +3017,11 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
     .collection-banner{font: 26px/26px AvantGardeGothicITCW01D;}
     .collection-banner span{font: 17px/22px freight;}
     .collection-banner img{width:5%;padding:2% 0%;}
+
+    /*---namaskar banner update(19-sep-2016)--*/
+    .namaskar_banner{margin-top:-3%!important;}
+    .namaskar_banner .text-top{margin-bottom:15px!important;}
+    .namaskar_banner .text-mid{margin-bottom:15px!important;}
 
     /*.featured-collection-bottom img.co{left:7.5%;top:17%;max-width:189px!important;}
     .featured-collection-bottom img.seal{max-width:180px!important;}*/
