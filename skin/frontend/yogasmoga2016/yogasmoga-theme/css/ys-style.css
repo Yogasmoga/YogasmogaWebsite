@@ -3029,7 +3029,8 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
 /*---namaskar banner update(19-sep-2016)--*/
 .namaskar_banner{margin-top:-3%!important;}
-
+.namaskar_banner .text-top{margin-bottom:15px!important;}
+ .namaskar_banner .text-mid{margin-bottom:15px!important;}
 }
 @media only screen and (max-width : 1024px) {
 .banner_avant_grade_demi{ font: 34px/34px AvantGardeGothicITCW01D;}
