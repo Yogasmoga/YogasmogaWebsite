@@ -404,7 +404,8 @@ foreach ($_childProducts as $_childProduct) {
                     }
                     //echo $alt;
                     //echo $imageurl;
-                    $smallImageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt;
+                    //$smallImageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt;
+                    $smallImageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(870, 870)->setQuality(90) . "|" . $alt;
                     $imageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90) . "|" . $alt;
                     $zoomImageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(90) . "|" . $alt;
 
@@ -494,7 +495,10 @@ foreach ($_childProducts as $_childProduct) {
 
                     $imageHelper = $this->helper('catalog/image');
 
-                    $smallImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt. "|" . $title;//FK;
+                    //$smallImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt. "|" . $title;//FK;
+                 // For New Design.
+                    $smallImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(870,870)->setQuality(90) . "|" . $alt. "|" . $title;//FK;
+
                     $imageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90) . "|" . $alt. "|" . $title;//FK;
                     $zoomImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->setQuality(90) . "|" . $alt. "|" . $title;//FK;
 
@@ -1039,7 +1043,8 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 			<div class="product-row-container">
 			<div class="product-row product-row1">
 			<div class="prod-col pcol-left">
-				<!--<div class="upper-container">
+
+
                     <table class="productimagecontainer f-left">
                         <tr>
                             <td>
@@ -1049,20 +1054,10 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                     </table>
                                 </div>
                             </td>
-                            <td>
-                                <div class="show-prodImg">
-                                    <table class="tdbigimagecontainer">
-                                        <tr>
-                                            <td></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </td>
-
                         </tr>
                     </table>
-                </div>-->
-				
+
+			<!--
 				<div class="image-row image-row1 image-row-first">
 					<img alt="main-image" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img1.jpg" class="" draggable="false">
 				</div>
@@ -1078,7 +1073,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 				<div class="image-row image-row5 image-row-last">
 					<img alt="main-image5" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img5.jpg" class="" draggable="false">
 				</div>
-				
+				-->
 				<img alt="made-in-ca" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/madeinusa-seal.png" class="img_madeinusa" draggable="false">
 				<img class="img_rnd" src="<?php echo $this->getSkinUrl('images/CA.svg'); ?>" alt="rnd"/>
 			</div>

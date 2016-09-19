@@ -3464,6 +3464,7 @@ ul.main-menu2 li ul.sub-menu li a {
 .breadcrumb, .breadcrumb a { color: #555; font: 12px/12px AvantGardeGothicITCW01D;}
 div.product-details .wdth65{width:calc(100% - 401px)}
 .product-details .block-head{margin-bottom:24px!important;}
+/*
 .product-details table.productimagecontainer{position:relative;}
 .product-details table.productimagecontainer table.smallimagecontiner{}
 .product-details table.productimagecontainer tr > td.thumb-td { background: transparent; bottom: -35px; display: block; left: 0;
@@ -3475,6 +3476,7 @@ div.product-details .wdth65{width:calc(100% - 401px)}
 .thumb-imgs img.img_madeinusa {bottom: 55px; height: auto;left: 20px;max-width: 120px;opacity: 1;position: absolute;
   width: 100%;z-index:999;}
 .product-details table.productimagecontainer table.smallimagecontiner td.selectedimage{background:#ae8536; border:1px solid #ae8536;display:inline-block!important;opacity:1;}
+*/
 
 table.productimagecontainer table.tdbigimagecontainer{margin-left:0!important;width:100%;}
 table.productimagecontainer table.tdbigimagecontainer td{background:#f4f4f4;}
