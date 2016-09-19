@@ -3710,6 +3710,14 @@ ul.main-menu.f-left.ctag-menu > li{height:60px;}
  
 div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34px;}
 
+.product-row .productimagecontainer,.product-row .productimagecontainer tbody,.product-row .productimagecontainer tr,.product-row .productimagecontainer tr td{display:block!important;}
+.product-row .productimagecontainer .smallimagecontiner,.product-row .productimagecontainer .smallimagecontiner tbody,
+.product-row .productimagecontainer .smallimagecontiner tr,.product-row .productimagecontainer .smallimagecontiner tr td{display:block!important;}
+
+.product-row .thumb-imgs{width:100%; max-width:inherit; position:static;}
+.product-row table.productimagecontainer table.smallimagecontiner td{padding:0; margin:0; background:#f4f4f4;}
+.product-row table.smallimagecontiner td.selectedimage{display:block!important; opacity:1!important;}
+
 /*--color option--*/
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block;  float:left; margin:0 3px;bordre-radius:40px;
 border:0 none; padding:0;}

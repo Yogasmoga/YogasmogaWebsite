@@ -41,9 +41,11 @@ jQuery(document).ready(function($){
 });
 
 jQuery(document).ready(function($){
+	
 	var windW = $(window).width(); 
 	
-	var imgrowh = $('.image-row img').height();
+	var imgrowh = $('.prod-col .thumb-imgs .smallimagecontiner td img').height();
+	
 	$('.prod-col .pcol-right-content').height(imgrowh);
 	$('.image-row-last img').appendTo('.pcol-right-content4 .pcol-right-content-inner');
 	$('.product-row .img_madeinusa').appendTo('.image-row-first');
@@ -68,6 +70,8 @@ jQuery(document).ready(function($){
 	$('.pcol-right-content4').css({
 		'margin-left': -(pcolRightContent4Width - pcolRightW)
 	});
+	
+	
 	
 	
 });	
