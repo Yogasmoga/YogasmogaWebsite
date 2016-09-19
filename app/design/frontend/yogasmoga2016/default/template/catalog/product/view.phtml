@@ -1039,8 +1039,25 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 			<div class="product-row-container">
 			<div class="product-row product-row1">
 			<div class="prod-col pcol-left">
-				<img alt="main-image" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img1.jpg" class="" draggable="false">
+				
+				<div class="image-row image-row1 image-row-first">
+					<img alt="main-image" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img1.jpg" class="" draggable="false">
+				</div>
+				<div class="image-row image-row2">
+					<img alt="main-image2" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img2.jpg" class="" draggable="false">
+				</div>
+				<div class="image-row image-row3">
+					<img alt="main-image3" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img3.jpg" class="" draggable="false">
+				</div>
+				<div class="image-row image-row4">
+					<img alt="main-image4" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img4.jpg" class="" draggable="false">
+				</div>
+				<div class="image-row image-row5 image-row-last">
+					<img alt="main-image5" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img5.jpg" class="" draggable="false">
+				</div>
+				
 				<img alt="made-in-ca" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/madeinusa-seal.png" class="img_madeinusa" draggable="false">
+				<img class="img_rnd" src="<?php echo $this->getSkinUrl('images/CA.svg'); ?>" alt="rnd"/>
 			</div>
 			<div class="prod-col pcol-right">
 				<div class="wdth35" style="width:361px;">
@@ -1695,54 +1712,9 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 			</div>
 				
 		</div><!--product-row product-row1, ends-->
-		<div class="product-row product-row2">
-		<div class="prod-col pcol-left">
-			<img alt="main-image2" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img2.jpg" class="" draggable="false">
-		</div>
-		<div class="prod-col pcol-right">
-			
-			 <?php
-                        if($fabricStoryBlockId != '') {
-                            echo "<div class='mainfabric' rel='main'>";
-                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricStoryBlockId)->toHtml();
-                            echo "</div>";
-                        
-
-                            if ($fabric_changed) {
-
-                                foreach ($arFabricArray as $key => $value) {
-                                    echo "<div class='fabric_story_block' rel='$key'>";
-                                    echo $this->getLayout()->createBlock('cms/block')->setBlockId($value)->toHtml();
-                                    echo "</div>";
-                                }
-                            }
-                        }
-             ?>
-			
-		</div>
 		
-	</div><!--product-row product-row2, ends-->
-	<div class="product-row product-row3">
-		<div class="prod-col pcol-left">
-			<img alt="main-image3" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img3.jpg" class="" draggable="false">
-		</div>
-		<div class="prod-col pcol-right">                      
-						
-						
-					
-		</div>
+	
 		
-	</div><!--product-row product-row3, ends-->
-		<div class="product-row product-row4 product-row-last">
-		<div class="prod-col pcol-left">
-			<img alt="main-image4" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img4.jpg" class="" draggable="false">
-			<img class="img_rnd" src="<?php echo $this->getSkinUrl('images/CA.svg'); ?>" alt="rnd"/>
-		</div>
-		<div class="prod-col pcol-right">
-			<img alt="main-image5" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img5.jpg" class="" draggable="false">
-		</div>
-		
-	</div><!--product-row product-row4, ends-->
         </div><!--product-row-container, ends-->
 		</div>
         <!-- ProductImageAndDetailContainer -->
