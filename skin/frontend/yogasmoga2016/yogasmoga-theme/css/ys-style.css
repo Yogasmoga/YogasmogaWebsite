@@ -3690,7 +3690,8 @@ display:none!important;
 /*.product-row .pcol-left .image-row-first,.product-row .pcol-left .image-row4{position:relative;}*/
 .product-row .pcol-left .img_madeinusa{position:absolute; left:30px; top:0; width:170px;margin-top:-30px; transform:translateY(-100%);-webkit-transform:translateY(-100%);}
 
-.product-row .pcol-left .img_rnd{position:absolute; bottom:0; left:0;width:170px; height:auto;}
+.product-row .pcol-left .img_rnd{position:absolute; bottom:0; left:0;width:170px; height:auto;margin-bottom:60px;
+	transform:translate(-100%,100%);-webkit-transform:translate(-100%,100%);margin-left:-25px;}
 
 .product-row .pcol-left .image-row{background:#f4f4f4; margin-bottom:10px;}  
 .product-row .pcol-right .pcol-right-content{width:341px;background:#f4f4f4;padding-right:29px; margin-bottom:10px!important;clear:both;padding-top:0;box-sizing:border-box;}
@@ -3729,6 +3730,7 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .product-row table.productimagecontainer table.smallimagecontiner td{padding:0; margin:0; background:#f4f4f4;}
 .product-row table.smallimagecontiner td.selectedimage{display:block!important; opacity:1!important;}
 .product-details .product-row table.productimagecontainer table.smallimagecontiner td{margin-bottom:10px;}
+.product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5){display:none!important;}
 
 /*--color option--*/
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block;  float:left; margin:0 3px;bordre-radius:40px;

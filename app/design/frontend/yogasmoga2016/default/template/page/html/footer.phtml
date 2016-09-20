@@ -301,66 +301,64 @@ if(navigator.userAgent.indexOf('Mac') > 0){
 jQuery('body').addClass('mac-osys');
 }
 function prodnewdetail(){
-	var imgrowtr = $('.thumb-imgs table.smallimagecontiner tr td img');
-	if(imgrowtr.length > 0){
-	alert(imgrowtr.length);
-	var windW = $(window).width(); 
+	var jQ = jQuery.noConflict();
+	var windW = jQ(window).width(); 
 	
-	var imgrowh = $('.thumb-imgs table.smallimagecontiner tr td img').height();	
-	var imgroww = $('.thumb-imgs table.smallimagecontiner tr td img').width();	
+	var imgrowh = jQ('.thumb-imgs table.smallimagecontiner tr td img').height();	
 	
-	$('.prod-col .pcol-right-content').height(imgrowh);
-		
 	
-	// for fifth image
-	$('.thumb-imgs table.smallimagecontiner tr td:last-child img').appendTo('.pcol-right-content4 .pcol-right-content-inner');
-	alert('last-child');
+	jQ('.prod-col .pcol-right-content').height(imgrowh);
 	
-	var imgrow4H = $('.thumb-imgs table.smallimagecontiner tr td:nth-child(4) img').height();
-	$('.prod-col .pcol-right-content4').height(imgrow4H);
+	jQ('.thumb-imgs table.smallimagecontiner tr td:last-child img').appendTo('.pcol-right-content4 .pcol-right-content-inner');
 	
-	var imgrow4W = $('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').css({
+	
+	var imgrow4H = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4) img').height();
+	jQ('.prod-col .pcol-right-content4').height(imgrow4H);
+	
+	var imgrow4W = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').css({
 		'width': (66.125 * windW)/100		
 	});
-	var pcolRightContent4W = $('.pcol-right-content4').css({
+	var pcolRightContent4W = jQ('.pcol-right-content4').css({
 		'width': (33.875 * windW)/100 - 10		
 	});
+	var imgrow4w = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').width();	
 	
 	// for margin-left
-	var pcolRightContent4Width = $('.pcol-right-content4').outerWidth();	
-	pcolRightW = $('.product-row .pcol-right').outerWidth();
+	var pcolRightContent4Width = jQ('.pcol-right-content4').outerWidth();	
+	pcolRightW = jQ('.product-row .pcol-right').outerWidth();
 	
 	var pcolRightContent4ML = pcolRightContent4Width - pcolRightW;
 	
-	$('.pcol-right-content4').css({
+	jQ('.pcol-right-content4').css({
 		'margin-left': -(pcolRightContent4Width - pcolRightW)
 	});
 	
-	$('.prod-col .img_madeinusa').css({
+	jQ('.prod-col .img_madeinusa').css({
 		'top':imgrowh
 	});
-	$('.prod-col .img_rnd').css({
-		'left':imgroww,
+	jQ('.prod-col .img_rnd').css({
+		'left':imgrow4w,
 		'bottom':imgrowh
 	});
 	
-	}
-	
-	if($(window).width() < 1200){		
-		$('.fabric-content').appendTo('.pcol-right-content3 .pcol-right-content-inner');
-		$('.product-det-tab').appendTo('.pcol-right-content2 .pcol-right-content-inner');		
+	if(jQ(window).width() < 1200){		
+		jQ('.fabric-content').appendTo('.pcol-right-content3 .pcol-right-content-inner');
+		jQ('.product-det-tab').appendTo('.pcol-right-content2 .pcol-right-content-inner');		
 	}
 	else{
-		$('.fabric-content').appendTo('.pcol-right-content2 .pcol-right-content-inner');
-		$('.product-det-tab').appendTo('.pcol-right-content1 .pcol-right-content-inner');		
+		jQ('.fabric-content').appendTo('.pcol-right-content2 .pcol-right-content-inner');
+		jQ('.product-det-tab').appendTo('.pcol-right-content1 .pcol-right-content-inner');		
 	}
 	
 }
+		
+	
+	
 
 function prodnewdetailresize(){
 	var windW = jQuery(window).width();
 	var imgrowh = jQuery('.thumb-imgs table.smallimagecontiner tr td img').height();	
-	var imgroww = jQuery('.thumb-imgs table.smallimagecontiner tr td img').width(); 	
+	
 	
 	jQuery('.prod-col .pcol-right-content').height(imgrowh);
 	
@@ -373,6 +371,7 @@ function prodnewdetailresize(){
 	var pcolRightContent4W = jQuery('.pcol-right-content4').css({
 		'width': (33.875 * windW)/100 - 10		 
 	});
+	var imgrow4w = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').width(); 	
 	
 	// for margin-left
 	var pcolRightContent4Width = jQuery('.pcol-right-content4').outerWidth();	
@@ -388,7 +387,7 @@ function prodnewdetailresize(){
 		'top':imgrowh
 	});
 	jQuery('.prod-col .img_rnd').css({
-		'left':imgroww,
+		'left':imgrow4w,
 		'bottom':imgrowh
 	});
 	
@@ -403,11 +402,13 @@ function prodnewdetailresize(){
 	
 }
 jQuery(document).ready(function($){
-	prodnewdetail();
+	var imgrowtr = $('.thumb-imgs table.smallimagecontiner tr td img');
+	if(imgrowtr.length > 0){
+		prodnewdetail();
+	}	
 });	
 
 jQuery(window).resize(function(){
-	prodnewdetailresize();
-	
+	prodnewdetailresize();	
 });
 </script>
