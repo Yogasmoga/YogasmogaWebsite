@@ -299,4 +299,84 @@ if(jQuery('#div_sizes,#div_cats').length > 0){
 <script>
 if(navigator.userAgent.indexOf('Mac') > 0)
 jQuery('body').addClass('mac-osys');
+
+jQuery(document).ready(function($){
+	var imgrowtr = $('.thumb-imgs table.smallimagecontiner tr td img');
+	if(imgrowtr.length > 0){
+	
+	var windW = $(window).width(); 
+	
+	var imgrowh = $('.thumb-imgs table.smallimagecontiner tr td img').height();	
+	
+	$('.prod-col .pcol-right-content').height(imgrowh);
+		
+	$('.product-row .img_madeinusa').appendTo('.thumb-imgs table.smallimagecontiner tr td:first-child');
+	$('.product-row .img_rnd').appendTo('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)');
+	
+	// for fifth image
+	$('.thumb-imgs table.smallimagecontiner tr tdtd:nth-child(5) img').appendTo('.pcol-right-content4 .pcol-right-content-inner');
+	
+	var imgrow4H = $('.thumb-imgs table.smallimagecontiner tr td:nth-child(4) img').height();
+	$('.prod-col .pcol-right-content4').height(imgrow4H);
+	
+	var imgrow4W = $('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').css({
+		'width': (66.125 * windW)/100		
+	});
+	var pcolRightContent4W = $('.pcol-right-content4').css({
+		'width': (33.875 * windW)/100 - 10		
+	});
+	
+	// for margin-left
+	var pcolRightContent4Width = $('.pcol-right-content4').outerWidth();	
+	pcolRightW = $('.product-row .pcol-right').outerWidth();
+	
+	var pcolRightContent4ML = pcolRightContent4Width - pcolRightW;
+	
+	$('.pcol-right-content4').css({
+		'margin-left': -(pcolRightContent4Width - pcolRightW)
+	});
+	
+	}
+	
+	if($(window).width() < 1200){
+		
+		//alert('greater than 1200');
+		//alert($('.pcol-right-content2 .pcol-right-content-inner').html());		
+		//var prc2html = $('.pcol-right-content2 .pcol-right-content-inner').html();
+		//$('.pcol-right-content3 .pcol-right-content-inner').html(prc2html);
+		$('.fabric-content').appendTo('.pcol-right-content3 .pcol-right-content-inner');
+		$('.product-det-tab').appendTo('.pcol-right-content2 .pcol-right-content-inner');
+		
+	}
+	
+	
+});	
+
+jQuery(window).resize(function(){
+	var windW = jQuery(window).width();
+	
+	var imgrowh = jQuery('.thumb-imgs table.smallimagecontiner tr td img').height();	
+	jQuery('.prod-col .pcol-right-content').height(imgrowh);
+	
+	var imgrow4H = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4) img').height();
+	jQuery('.prod-col .pcol-right-content4').height(imgrow4H);
+	
+	var imgrow4W = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').css({
+		'width': (66.125 * windW)/100		
+	});
+	var pcolRightContent4W = jQuery('.pcol-right-content4').css({
+		'width': (33.875 * windW)/100 - 10		 
+	});
+	
+	// for margin-left
+	var pcolRightContent4Width = jQuery('.pcol-right-content4').outerWidth();	
+	pcolRightW = jQuery('.product-row .pcol-right').outerWidth();
+	
+	var pcolRightContent4ML = pcolRightContent4Width - pcolRightW;
+	
+	jQuery('.pcol-right-content4').css({
+		'margin-left': -(pcolRightContent4Width - pcolRightW)
+	});
+	
+});
 </script>
