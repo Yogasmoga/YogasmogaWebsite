@@ -3665,6 +3665,16 @@ ul.main-menu.f-left.ctag-menu > li{height:60px;}
 }
 
 /*---new product page design 09/sep/2016---*/
+.gridWrap .productCont .prod-img .prd-image:nth-child(2){
+display:none!important;
+}
+.gridWrap .productCont:hover .prod-img .prd-image:nth-child(2){
+display:block!important;
+}
+.gridWrap .productCont:hover .prod-img .prd-image:nth-child(1){
+display:none!important;
+}
+
 .product-details .block-head {display:none;}
 .product-modernstyle #productdetails{padding:0;}
 
@@ -3679,7 +3689,8 @@ ul.main-menu.f-left.ctag-menu > li{height:60px;}
 .product-row.product-row-last .pcol-right img{position:relative; top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%);}
 .product-row .pcol-left .image-row-first,.product-row .pcol-left .image-row4{position:relative;}
 .product-row .pcol-left .image-row-first .img_madeinusa{position:absolute; bottom:30px; left:30px; width:170px;}
-.product-row .pcol-left .image-row4 .img_rnd{position:absolute; top:15px; right:15px;width:170px; height:auto;}
+.product-row .pcol-left .smallimagecontiner td{position:relative;}
+.product-row .pcol-left .smallimagecontiner td:nth-child(4) .img_rnd{position:absolute; top:15px; right:15px;width:170px; height:auto;}
 
 .product-row .pcol-left .image-row{background:#f4f4f4; margin-bottom:10px;}  
 .product-row .pcol-right .pcol-right-content{width:341px;background:#f4f4f4;padding-right:29px; margin-bottom:10px!important;clear:both;padding-top:0;box-sizing:border-box;}
@@ -3717,6 +3728,7 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .product-row .thumb-imgs{width:100%; max-width:inherit; position:static;}
 .product-row table.productimagecontainer table.smallimagecontiner td{padding:0; margin:0; background:#f4f4f4;}
 .product-row table.smallimagecontiner td.selectedimage{display:block!important; opacity:1!important;}
+.product-details .product-row table.productimagecontainer table.smallimagecontiner td{margin-bottom:10px;}
 
 /*--color option--*/
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block;  float:left; margin:0 3px;bordre-radius:40px;
