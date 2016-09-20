@@ -322,6 +322,7 @@ function prodnewdetail(){
 		'width': (33.875 * windW)/100 - 10		
 	});
 	var imgrow4w = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').width();	
+	var imgrow4h = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').height();	
 	
 	// for margin-left
 	var pcolRightContent4Width = jQ('.pcol-right-content4').outerWidth();	
@@ -338,7 +339,7 @@ function prodnewdetail(){
 	});
 	jQ('.prod-col .img_rnd').css({
 		'left':imgrow4w,
-		'bottom':imgrowh
+		'bottom':imgrow4h
 	});
 	
 	if(jQ(window).width() < 1200){		
@@ -372,6 +373,7 @@ function prodnewdetailresize(){
 		'width': (33.875 * windW)/100 - 10		 
 	});
 	var imgrow4w = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').width(); 	
+	var imgrow4h = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').height(); 	
 	
 	// for margin-left
 	var pcolRightContent4Width = jQuery('.pcol-right-content4').outerWidth();	
@@ -388,7 +390,7 @@ function prodnewdetailresize(){
 	});
 	jQuery('.prod-col .img_rnd').css({
 		'left':imgrow4w,
-		'bottom':imgrowh
+		'bottom':imgrow4h
 	});
 	
 	if(jQuery(window).width() < 1200){		
