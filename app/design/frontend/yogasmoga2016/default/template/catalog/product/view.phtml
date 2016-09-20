@@ -518,7 +518,7 @@ foreach ($_childProducts as $_childProduct) {
                         $arProductColorInfo[$colorAttributeValue]["images"]["zoom"] = array($zoomImageUrl);
                         $arProductColorInfo[$colorAttributeValue]["images"]["big"] = array($imageUrl);
                     } else {
-                        if (count($arProductColorInfo[$colorAttributeValue]["images"]["small"]) < 4) {
+                        if (count($arProductColorInfo[$colorAttributeValue]["images"]["small"]) < 5) {
                             array_push($arProductColorInfo[$colorAttributeValue]["images"]["big"], $imageUrl);
                             array_push($arProductColorInfo[$colorAttributeValue]["images"]["small"], $smallImageUrl);
                             array_push($arProductColorInfo[$colorAttributeValue]["images"]["zoom"], $zoomImageUrl);
@@ -716,6 +716,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
         }
         ?>
             _productcolorinfo[<?php echo $currentColorCount; ?>].smallimages = new Array();
+           
             <?php
                 for($i = 0; $i < count($val['images']['small']); $i++)
                 {
