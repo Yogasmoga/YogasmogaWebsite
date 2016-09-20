@@ -139,7 +139,7 @@ if ($this->getRequest()->getParam('hidden')) {
 $isRewardAble = false;
 
 $howDoesItFitBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'how_does_it_fit', $storeId);
-$sizeChartBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'size_chart', $storeId);
+$sizeChartBlockId = 'mobile_'.$resourceModel->getAttributeRawValue($_product->getId(), 'size_chart', $storeId);
 $fabricStoryBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'fabric_story', $storeId);
 $defaultProductDescription = $resourceModel->getAttributeRawValue($_product->getId(), 'description', $storeId);// added by fahim khan.
 
@@ -518,7 +518,7 @@ foreach ($_childProducts as $_childProduct) {
                         $arProductColorInfo[$colorAttributeValue]["images"]["zoom"] = array($zoomImageUrl);
                         $arProductColorInfo[$colorAttributeValue]["images"]["big"] = array($imageUrl);
                     } else {
-                        if (count($arProductColorInfo[$colorAttributeValue]["images"]["small"]) < 4) {
+                        if (count($arProductColorInfo[$colorAttributeValue]["images"]["small"]) < 5) {
                             array_push($arProductColorInfo[$colorAttributeValue]["images"]["big"], $imageUrl);
                             array_push($arProductColorInfo[$colorAttributeValue]["images"]["small"], $smallImageUrl);
                             array_push($arProductColorInfo[$colorAttributeValue]["images"]["zoom"], $zoomImageUrl);
@@ -716,6 +716,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
         }
         ?>
             _productcolorinfo[<?php echo $currentColorCount; ?>].smallimages = new Array();
+
             <?php
                 for($i = 0; $i < count($val['images']['small']); $i++)
                 {
@@ -1714,17 +1715,35 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 					</div>
 					<div id="prod-tab-content2" class="prod-tab-content">
 						<div class="prodtab-desc">
-						Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries.
-						Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries.
-						Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries.
+                            <ul class="featureList">
+                                <?php
+                                $i = 0;
+                                foreach ($newdfimages as $ndfimg) {
+                                    $i++;
+                                    ?>
+                                    <li class="<?php if ($i == 4 && $designFeatureVideoName != '') {
+                                        echo 'last-df';
+                                    }
+                                    if ($i == 4 && $designFeatureVideoName == '') echo ' df-no-vid'; ?>"><span
+                                            class="ftrFig "><img
+                                                nopin="nopin" class="vid-pl-btn"
+                                                src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>"><img
+                                                nopin="nopin"
+                                                class="df-img" alt=""
+                                                src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span>
+                                    </li>
+                                    <?php
+                                }
+                                ?>
+                            </ul>
 						</div>
 						
 					</div>
 					<div id="prod-tab-content3" class="prod-tab-content">
 						<div class="prodtab-desc">
-						Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries.
-						Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries.
-						Lorem ipsum dummy content for typesetting industries. Lorem ipsum dummy content for typesetting industries.
+                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howDoesItFitBlockId)->toHtml(); ?>
+                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizeChartBlockId)->toHtml(); ?>
+
 						</div>						
 					</div>
 				</div><!--product-det-tab-->
