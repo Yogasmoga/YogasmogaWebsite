@@ -632,6 +632,9 @@ else { ?>
                                         elseif($child2->getId()==16) {
                                             $firstcolumn .= "<li>"."<a  href=\"".Mage::getUrl('women',array('_secure'=> true))."\"> " . $child2->getName()."</a></li>";
                                         }
+                                        elseif($child2->getId()==19) {
+                                            $firstcolumn .= "<li>"."<a  href=\"".Mage::getUrl('men',array('_secure'=> true))."\"> " . $child2->getName()."</a></li>";
+                                        }
 
                                         else{
                                             $firstcolumn .= "<li><a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
