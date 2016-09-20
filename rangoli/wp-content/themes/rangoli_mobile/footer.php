@@ -274,11 +274,11 @@ if(!is_user_logged_in()  && is_home()) {
     <script type="application/javascript">
         jQuery(document).ready(function($){
             jQuery(".mobile-orange-banner").click(function () {
-                jQuery(".popup").fadeIn();
+            /*    jQuery(".popup").fadeIn();
                 jQuery(".MailpopForm").fadeIn();
                 $(".signin_popup").fadeOut();
                 $(".after_signup_popup").fadeOut();
-                $(".signup_popup").fadeOut();
+                $(".signup_popup").fadeOut();*/
             });
 
 

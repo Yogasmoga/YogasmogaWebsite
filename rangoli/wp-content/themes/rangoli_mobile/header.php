@@ -1174,7 +1174,8 @@ if (!is_user_logged_in() && is_home()) {
         z-index: 8; padding:10px;}
 </style>
     <?php
-    if(!is_user_logged_in() && is_home()) {
+    //if(!is_user_logged_in() && is_home()) {
+    if(is_home()) {
         ?>
         <div  class="mobile-orange-banner">RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30</div>
         <?php

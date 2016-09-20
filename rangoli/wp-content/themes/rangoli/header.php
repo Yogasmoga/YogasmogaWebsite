@@ -441,7 +441,7 @@ $style= "";
         }
     </style>";
      ?>
-    <div class="banner" style="cursor:pointer" onclick="open_red_popup()">
+    <div class="banner" style="" <!--onclick="open_red_popup()"--> >
         RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30
     </div>
     <?php //}?>
