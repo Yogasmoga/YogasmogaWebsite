@@ -713,9 +713,11 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
             //jQuery(".header-container").css("padding","0px");
 
 			//jQuery(".header-container").css("padding","25px 0 0 0");
-            jQuery("div#bodycompensator").css("height","69px");
+            //jQuery("div#bodycompensator").css("height","69px"); //without banner.
+            jQuery("div#bodycompensator").css("height","94px");// with banner
             //jQuery(".ui-widget-overlay").css({top:69});
-            jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
+            //jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});//without Banner
+            jQuery(".ui-widget-overlay").css({"top":"94px","position":"fixed"});//with Banner
             jQuery("#div_sizes").css("top","auto");
 
             //var filterOffsetTop = jQuery("#div_sizes").offset().top - 69; //Remove Banner.
