@@ -203,7 +203,7 @@ window.onload = function(){
 
         <?php
         $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
-        if(!$loggedIn){ ?>
+        //if(!$loggedIn){ ?>
             <script>
 
                 jQuery(document).ready(function() {
@@ -224,14 +224,12 @@ window.onload = function(){
                             if( winScrollTop > filterOffsetTop){
 
                                 jQuery("#div_sizes").addClass("fixed_top");
+                                //jQuery("#div_sizes.fixed_top").css("top","69px");
                                 jQuery("#div_sizes.fixed_top").css("top","94px");
                             }else{
                                 jQuery("#div_sizes").removeClass("fixed_top");
                                 jQuery("#div_sizes").css("top","auto");
-
                             }
-
-
                         }
 
                         var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
@@ -249,7 +247,7 @@ window.onload = function(){
 
 
             </script>
-        <?php }
+        <?php  /* }
         else {
         ?>
             <script>
@@ -265,7 +263,7 @@ window.onload = function(){
 
                 });
             </script>
-        <?php }
+        <?php } */
         ?>
 
 
