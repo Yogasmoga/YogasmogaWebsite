@@ -1163,20 +1163,20 @@ if (!is_user_logged_in() && is_home()) {
     .st0{
         stroke : #CCC !important;
     }
-    .mobile-orange-banner{background: rgb(255, 102, 0) none repeat scroll 0 0; color: rgb(255, 255, 255);font-size: 10px; height: 44px;    letter-spacing: 0 !important;
-        line-height: 44px;
+    .mobile-orange-banner{background: rgb(255, 102, 0) none repeat scroll 0 0; color: rgb(255, 255, 255);font-size: 11px; height: 44px;    letter-spacing: 0 !important;
+        line-height: 13px;
         position: fixed;
         cursor: pointer;
         text-align:center;
         top: 88px;
         width: 100%;
         font-family:ITCAvantGardeStd-Md;
-        z-index: 8;}
+        z-index: 8; padding:10px;}
 </style>
     <?php
     if(!is_user_logged_in() && is_home()) {
         ?>
-        <div  class="mobile-orange-banner">SIGN UP NOW TO INSTANTLY GET 25% OFF YOUR FIRST ORDER</div>
+        <div  class="mobile-orange-banner">RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30</div>
         <?php
     }
     ?>

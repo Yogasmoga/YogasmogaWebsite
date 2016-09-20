@@ -207,10 +207,10 @@ window.onload = function(){
             <script>
 
                 jQuery(document).ready(function() {
-                    jQuery(".orange-banner").click(function(){
+                /*    jQuery(".orange-banner").click(function(){
                         jQuery("#signup").dialog( "open" );
 
-                    });
+                    });*/
 
                     jQuery("#pagecontainer").css("margin-top","0");
                     jQuery("div#bodycompensator").css("height","94px");
@@ -256,7 +256,10 @@ window.onload = function(){
                 jQuery( document ).ready(function() {
                     jQuery("#pagecontainer").css("margin-top","0px");
 //jQuery("#div_sizes").css("top","auto");
-                    jQuery("#div_sizes.fixed_top").css("top","69px");
+                    //jQuery("#div_sizes.fixed_top").css("top","69px"); //without banner.
+                    jQuery("#div_sizes.fixed_top").css("top","94px"); //with banner.
+                    jQuery("div#bodycompensator").css("height","94px");
+
 
                 });
             </script>

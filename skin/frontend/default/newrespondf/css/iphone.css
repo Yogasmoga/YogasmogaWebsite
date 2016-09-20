@@ -8140,6 +8140,7 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
 #for-discount-check  .finalsale_row {display:none;}
 
 /********* menu final level ends ***/
+/*
 .mobile-orange-banner{   background: rgb(255, 102, 0) none repeat scroll 0 0;
     color: rgb(255, 255, 255);
     font-size: 12px;
@@ -8149,9 +8150,24 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
     position: fixed;
     top: 88px;
     width: 100%;
-    /*font-family:ITCAvantGardeStd-Md;*/
-    font-family:GraphikRegular;
+   font-family:GraphikRegular;
     z-index: 999;}
+*/
+.mobile-orange-banner {
+    background: rgb(255, 102, 0) none repeat scroll 0 0;
+    color: rgb(255, 255, 255);
+    font-size: 11px;
+    height: 44px;
+    letter-spacing: 0 !important;
+    line-height: 13px;
+    position: fixed;
+    top: 88px;
+    width: 100%;
+    font-family: GraphikRegular;
+    z-index: 999;
+    padding: 10px;}
+
+
 
 #popup-mailsignup .input-text::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #fff!important;opacity:1;}
@@ -8167,7 +8183,7 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
 #popup-mailsignup .button-area input[type="submit"]{line-height:26px!important;-webkit-appearance: none;}
 #popup-mailsignup .button-area input[type="submit"].sending{background:#ad8536;}
 #popup-mailsignup .button-area .form-loader-mail{position:absolute;top:50%; left:50%;transform:translate(-50%,-50%);margin-top:15px;}
-.mobile-orange-banner{cursor:pointer;}
+
 /*-------insale text------------*/
 .insale-yes{font: 12px/18px graphikregular;color:#ff5f00;}
 .insale.insale-yes{margin-top:15px;}

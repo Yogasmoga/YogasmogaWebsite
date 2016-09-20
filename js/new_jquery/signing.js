@@ -709,8 +709,8 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
             }
 
             //added code for top red banner start here.
-            jQuery(".orange-banner").hide();
-            jQuery(".header-container").css("padding","0px");
+            //jQuery(".orange-banner").hide();
+            //jQuery(".header-container").css("padding","0px");
 
 			//jQuery(".header-container").css("padding","25px 0 0 0");
             jQuery("div#bodycompensator").css("height","69px");
@@ -718,8 +718,8 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
             jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
             jQuery("#div_sizes").css("top","auto");
 
-            var filterOffsetTop = jQuery("#div_sizes").offset().top - 69; //Remove Banner.
-			//var filterOffsetTop = jQuery("#div_sizes").offset().top - 94; // With Banner
+            //var filterOffsetTop = jQuery("#div_sizes").offset().top - 69; //Remove Banner.
+			var filterOffsetTop = jQuery("#div_sizes").offset().top - 94; // With Banner
             positionFilter(filterOffsetTop);
             jQuery(window).scroll(function(){
                 positionFilter(filterOffsetTop);
