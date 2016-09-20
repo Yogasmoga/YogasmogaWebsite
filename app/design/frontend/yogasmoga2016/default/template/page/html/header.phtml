@@ -625,9 +625,14 @@ else { ?>
                                         if($child2->getId()==125 || $child2->getId()==128){
                                             $firstcolumn .= "<li style='$style'>"."<a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
                                         }
-                                            elseif($child2->getId()==127 || $child2->getId()==130) {
+                                         elseif($child2->getId()==127 || $child2->getId()==130) {
                                                 $firstcolumn .= "<li style='$styleBottom'>"."<a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
-                                            }
+                                         }
+
+                                        elseif($child2->getId()==16) {
+                                            $firstcolumn .= "<li>"."<a  href=\"".Mage::getUrl('women',array('_secure'=> true))."\"> " . $child2->getName()."</a></li>";
+                                        }
+
                                         else{
                                             $firstcolumn .= "<li><a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
                                         }

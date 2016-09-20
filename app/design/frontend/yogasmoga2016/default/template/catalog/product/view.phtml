@@ -1741,8 +1741,8 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 					</div>
 					<div id="prod-tab-content3" class="prod-tab-content">
 						<div class="prodtab-desc">
-                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howDoesItFitBlockId)->toHtml(); ?>
-                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizeChartBlockId)->toHtml(); ?>
+                            <div class="design-fit"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howDoesItFitBlockId)->toHtml(); ?></div>
+                            <div class="design-size"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizeChartBlockId)->toHtml(); ?></div>
 
 						</div>						
 					</div>
