@@ -3599,6 +3599,53 @@ float:left; margin-left:-40px; }
 }
 
 /********** new- changes ************/
+/************* size chart start*************/
+#prod-tab-content2 .featureList{margin:0;}
+#prod-tab-content2 .featureList > li{
+ box-sizing: border-box;
+    display: inline-block;
+    float: left;
+    margin: 0;
+	 text-align: center;
+    width: 100%;
+	 max-width: 100%;
+    min-width: 106px;
+    padding-right: 2%;
+
+}
+
+#prod-tab-content3 .design-size{margin: 17px 0 0 !important;}
+.design-size tr:first-child td:first-child {
+  padding-left: 0;
+}
+.fitDetail tr:first-child td {
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid #ccc;
+  padding: 12px 0;
+}
+
+.design-size tr:first-child td {
+  border-bottom: 1px solid #999;
+  border-top: 1px solid #999;  
+  font:12px/19px GraphikMedium;
+  padding: 0 6px;
+}
+.design-size td:first-child {
+  font-family: GraphikMedium;
+  font-size: 12px;
+  padding: 4px 0;
+  width: 29.9348%;
+}
+.design-size td {
+  border-bottom: 1px solid #999;
+  border-right: none;
+  font-size: 12px;
+  line-height: 19px;
+  padding: 4px 6px;
+  text-transform: uppercase;
+  width: 11.8012%;
+}
+/************* size chart ends*************/
 .header .logo.posRel {
   left: 0;
   margin: 19px 19px 0 0;
