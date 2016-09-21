@@ -3629,6 +3629,7 @@ float:left; margin-left:-40px; }
   border-top: 1px solid #999;  
   font:12px/19px GraphikMedium;
   padding: 0 6px;
+   text-transform: capitalize;
 }
 .design-size td:first-child {
   font-family: GraphikMedium;
