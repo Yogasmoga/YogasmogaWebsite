@@ -81,6 +81,12 @@ if ($_count == 0) {
                     elseif($subSubCategory->getId()==127 || $subSubCategory->getId()==130){
                         $hasNoSubCategoryHtml .= '<li style="margin-bottom:19px"'.'><a  href=' . $subSubCategory->getUrl() . ' class="bld ';
                     }
+                    elseif($subSubCategory->getId()==16){
+                        $hasNoSubCategoryHtml .= '<li><a  href=' . Mage::getUrl('women',array('_secure'=> true)) . ' class="bld ';
+                    }
+                    elseif($subSubCategory->getId()==19){
+                        $hasNoSubCategoryHtml .= '<li><a  href=' . Mage::getUrl('men',array('_secure'=> true)) . ' class="bld ';
+                    }
                     else{
                         $hasNoSubCategoryHtml .= '<li><a href=' . $subSubCategory->getUrl() . ' class="bld ';
                     }
