@@ -313,7 +313,7 @@ function prodnewdetail(){
 	//var imgrow4H = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4) img ').height();
 	//jQ('.prod-col .pcol-right-content4').height(imgrow4H);
 	
-	var imgrow4W = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').css({
+	var imgrow4W = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').css({
 		//'width': (66.125 * windW)/100		
 		'width': windW/2 - 5
 	});
@@ -331,8 +331,8 @@ function prodnewdetail(){
 	var imgrow4w = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').width();	
 	var imgrow4h = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').height();	
 	
-	jQ('.thumb-imgs table.smallimagecontiner tr td:last-child img').appendTo('.pcol-right-content4 .pcol-right-content-inner');
-	jQ('.prod-col .pcol-right-content4').height(imgrow4h);
+	/*jQ('.thumb-imgs table.smallimagecontiner tr td:last-child img').appendTo('.pcol-right-content4 .pcol-right-content-inner');
+	jQ('.prod-col .pcol-right-content4').height(imgrow4h);*/
 	
 	// for margin-left
 	var pcolRightContent4Width = jQ('.pcol-right-content4').outerWidth();	
@@ -376,7 +376,7 @@ function prodnewdetailresize(){
 	//var imgrow4H = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').height();
 	//jQuery('.prod-col .pcol-right-content4').height(imgrow4H);
 	
-	var imgrow4W = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').css({
+	var imgrow4W = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').css({
 		//'width': (66.125 * windW)/100		
 		'width': windW/2 - 5
 	});
@@ -420,9 +420,10 @@ function prodnewdetailresize(){
 jQuery(document).ready(function($){
 	var imgrowtr = $('.thumb-imgs table.smallimagecontiner tr td img');
 	if(imgrowtr.length > 0){
-		setTimeout(prodnewdetail,6000)
-		//prodnewdetail();
-	}	
+		//setTimeout(prodnewdetail,6000)
+		prodnewdetail();
+	}
+	
 });	
 
 jQuery(window).resize(function(){

@@ -3728,7 +3728,7 @@ display:none!important;
 
 .product-details{}
 .product-details .product-row{background:#fff;margin-bottom:10px;width:100%; float:left; box-sizing:border-box; position:relative;}
-.product-row .pcol-left{width:calc(100% - 341px); float:left; position:relative;box-sizing:border-box;}
+.product-row .pcol-left{/*width:calc(100% - 341px);*/width:100%; float:left; position:relative;box-sizing:border-box;}
 .product-row .pcol-right{width:341px;float:right;position:absolute; top:0; right:0; height:100%; text-align:left; padding-top:0;box-sizing:border-box;}
 .product-row .pcol-left img, .product-row .pcol-right img{max-width:100%; width:auto; height:auto;}
 .product-row.product-row-last{background:#fff;}
@@ -3780,9 +3780,14 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .product-row table.smallimagecontiner td.selectedimage{display:block!important; opacity:1!important;}
 .product-details .product-row table.productimagecontainer table.smallimagecontiner td{margin-bottom:10px;}
 /*.thumb-imgs table.smallimagecontiner tr td:nth-child(4){float:left;}*/
-.product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5){display:none!important;}
-.product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(4),
-.product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5){margin-bottom:0;}
+/*.product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5){display:none!important;}*/
+.product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(1),
+.product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(2),
+.product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(3){width:calc(100% - 341px);}
+.product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(4){margin-bottom:0; float:left;}
+.product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5){margin-bottom:0; float:right;}
+
+.pcol-right-content4{display:none;}
 
 /*--color option--*/
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block;  float:left; margin:0 3px;bordre-radius:40px;
