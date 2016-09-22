@@ -41,7 +41,14 @@ jQuery(document).ready(function ($) {
         selectfirstsizeonload();
         changePartOfGiftSet($(this).attr("value"));
 		/*---new design js--*/
-		prodnewdetail();
+		var mpx = 0;
+		var intervalID = setInterval(function () {
+			// logic here
+			prodnewdetail();
+			if (++mpx === 5) {
+				window.clearInterval(intervalID);			
+			}
+		}, 2000);
 		/*---new design js end--*/
     });
 
