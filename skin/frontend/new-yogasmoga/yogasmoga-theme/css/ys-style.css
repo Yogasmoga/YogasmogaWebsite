@@ -3278,7 +3278,7 @@ iframe[name="google_conversion_frame"] {
 
 #signup.mc-signup .svg-logontext{margin:0 0 64px 0; }
 #signup.mc-signup form,#signup.mc-signup .signup-thankyou-content{position:absolute; top:50%; left:0; right:0; transform:translateY(-50%);}
-
+.mens-slider .over-the-slide .avant-grade-bk-small {line-height:40px;}
 @media only screen and (max-width : 1400px) {
     #signup.mc-signup .svg-logo{margin:0 0 4.19% 0;}
     #signup.mc-signup .signup-title .highlight{max-width:198px;}
@@ -3293,4 +3293,5 @@ iframe[name="google_conversion_frame"] {
 }
 @media only screen and (max-width:1024px){
     #signup.mc-signup .fields-area p.button-area input[type="submit"]{-webkit-appearance: none;}
+    .mens-slider .over-the-slide .avant-grade-bk-small {line-height:32px;}
 }
