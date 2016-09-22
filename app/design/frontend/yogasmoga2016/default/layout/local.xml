@@ -400,7 +400,7 @@
         <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
         
         <action method="addJs"><script>new_jquery/myproduct_view.js</script></action>
-        <action method="addJs"><script>new_jquery/myproductdetails.js</script></action>
+        <!--<action method="addJs"><script>new_jquery/myproductdetails.js</script></action>-->
         <action method="addJs"><script>new_jquery/myproductimageswitcher.js</script></action>
         <action method="addJs"><script>new_jquery/parallaxeffect.js</script></action>
         <action method="addJs"><script>new_jquery/jquery.smoothZoom.min.js</script></action>

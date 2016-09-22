@@ -79,7 +79,7 @@ jQuery(document).ready(function($){
 	
 	
 });	
-*/
+
 
 jQuery(window).resize(function(){
 	var windW = jQuery(window).width();
@@ -107,7 +107,7 @@ jQuery(window).resize(function(){
 		'margin-left': -(pcolRightContent4Width - pcolRightW)
 	});
 	
-});
+});*/
 /*----------------product grid related js--------------------*/
 jQuery(document).ready(function(){
 	var prodHt = jQuery('.productCont').width();

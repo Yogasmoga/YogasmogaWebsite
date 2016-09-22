@@ -8,7 +8,15 @@
 ?>
 <div id="div_sizes" class="sz_filter">&nbsp;</div>
 <!-- category filter -->
-<div id="div_cats" class="ct_filter"><b>Filter by Range: </b></div>
+<div id="div_cats" class="ct_filter"></div>
+ <!--<div style="position:absolute;right:40px;">
+    <select id="change-color">
+        <option value="76">Carbon6</option>
+        <option value="115">Crimson Rose</option>
+        <option value="142">Mosaic Grey</option>
+    </select>
+</div>-->
+
 <?php 
 $catIdsArray = array();
 
@@ -55,7 +63,7 @@ if($this->getRequest()->getParam('hidden')){
 
 <div class="gridProdCubix">
 <!-- leftNavGrid -->
-<?php echo $this->getChildHtml('catalog.leftnav') ?>
+<?php //echo $this->getChildHtml('catalog.leftnav') ?>
 <!-- leftNavGrid -->
 
 <!-- GridProducts -->
@@ -89,13 +97,20 @@ if($this->getRequest()->getParam('hidden')){
     $simpleproductarr = array();
 	$allSkuSizes = array();
 	$allcats = array();
+    $fcolorKey = array();
+    $fcolorValue = array();
     foreach($productCollection as $product)
     {
+        $filterName = $product->getAttributeText('color_filter');
         $simpleproductarr['id'] =  $product->getId();
         $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleproductarr['id']);
         $simpleproductarr['parentid'] =  $parentIds[0];
         $simpleproductarr['parentname'] =  Mage::getModel('catalog/product')->load($parentIds[0])->getName();
         $simpleproductarr['color'] =  $product->getColor();
+        $simpleproductarr['filter_color'] = $product->getColorFilter();
+        $fcolorKey[] = $product->getColorFilter();
+        $fcolorValue[] =$filterName;
+
         $simpleproductarr['price'] =  $product->getPrice();
 		$simpleproductarr['insale'] =  $product->getAttributeText('insale');
         $_gallery = Mage::getModel('catalog/product')->load($parentIds[0])->getMediaGalleryImages();
@@ -142,7 +157,13 @@ if($this->getRequest()->getParam('hidden')){
         $confProductForSku = Mage::getModel('catalog/product_type_configurable')->setProduct($confProduct);
 
         $skuSizes = array();
-		$simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFieldToFilter(array(array('attribute'=>'color','eq'=>$simpleproductarr['color'])));
+
+
+
+
+
+        $simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFieldToFilter(array(array('attribute'=>'color','eq'=>$simpleproductarr['color'])));
+
                                                 
         $characterSizeFound = false;
         foreach($simpleCollectionForSku as $simpleProductForSku){
@@ -155,11 +176,11 @@ if($this->getRequest()->getParam('hidden')){
 		if(!isset($skuSizes[$filterColorName]))
         $skuSizes[$filterColorName] = array();
 
-        if(isset($size) && strlen(trim($size))>0) {
-        $allSkuSizes[] = $size;
-        if ($stock > 0)
-             $skuSizes[$filterColorName][] = $size;
-        }
+            if(isset($size) && strlen(trim($size))>0) {
+            $allSkuSizes[] = $size;
+            if ($stock > 0)
+                 $skuSizes[$filterColorName][] = $size;
+            }
         }
 		/**************** size filter *****************/
                                             
@@ -179,9 +200,17 @@ if($this->getRequest()->getParam('hidden')){
 		$cats = $confProduct->getCategoryIds();
 		$allcats = array_unique(array_merge($allcats,$cats));
 		$catsids = implode(",", $cats);
+
+        /*------------*/
+
+        //$simpleproductarr['filter_color'];
+        //$simpleproductarr['filter_data']
+
+
+
 		/********************** category filter *********************/
         ?>
-        <div class="productCont product-color-<?php echo $productColorIndex;?>" rel="<?php echo $strSizes;?>" data="<?php echo $catsids;?>">
+        <div class="productCont product-color-<?php echo $productColorIndex;?>" color="<?php echo $simpleproductarr['filter_color']; ?>" rel="<?php echo $strSizes;?>" data="<?php echo $catsids;?>">
             <div class="prod-img">
 
                 <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?>">
@@ -220,6 +249,16 @@ if($this->getRequest()->getParam('hidden')){
     }
 //}
 
+
+
+
+
+
+
+
+
+
+
 if($showSizeFilter){
 /************** size filter ***********************/
 if(isset($allSkuSizes) && count($allSkuSizes)>0)
@@ -232,6 +271,17 @@ foreach ($allOptions as $instance) {
     if ($instance['label'] != "" && strpos($instance['label'], "T")===false)
         $arProductAllSizes[] = $instance['label'];
 }
+$myArr1 =  array(76,115,142,);
+$myArr2 = array('Carbon 6','Crimson Rose','Mosaic Grey');
+$finalarr = array_combine($myArr1,$myArr2);
+
+
+    $finalcolorfilter = array_combine($fcolorKey,$fcolorValue);
+
+    //echo "<pre/>";
+    //print_r($finalcolorfilter);
+
+
 
 /************** size filter ***********************/
 
@@ -242,6 +292,7 @@ foreach ($allOptions as $instance) {
         var arProductSizes = Array();
 		var arAllCats = Array();
 		var arProductCats = {};//Array();
+
         var productColorIndex;
 
         productColorIndex = "<?php echo $productColorIndex;?>";
@@ -260,7 +311,7 @@ foreach ($allOptions as $instance) {
         ?>
 
 		<?php
-		foreach($catIdsArray as $id => $name){
+		foreach($finalcolorfilter as $id => $name){
 		?>
 			arProductCats["<?php echo $id;?>"] = "<?php echo $name;?>";
 		<?php
@@ -273,8 +324,10 @@ foreach ($allOptions as $instance) {
 		?>
 			console.log(JSON.stringify(arProductCats));
 		console.log(JSON.stringify(arAllCats));
+
     </script>
 	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter-new.js"></script>
+
 <!-- ********************************* checkbox filter ********************** -->
 <?php } ?>
 

@@ -40,6 +40,16 @@ jQuery(document).ready(function ($) {
         changeColor($(this).attr("color"));
         selectfirstsizeonload();
         changePartOfGiftSet($(this).attr("value"));
+		/*---new design js--*/
+		var mpx = 0;
+		var intervalID = setInterval(function () {
+			// logic here
+			prodnewdetail();
+			if (++mpx === 5) {
+				window.clearInterval(intervalID);			
+			}
+		}, 2000);
+		/*---new design js end--*/
     });
 
     $("table.smallimagecontiner td:not(.selectedimage)").live("click", function () {

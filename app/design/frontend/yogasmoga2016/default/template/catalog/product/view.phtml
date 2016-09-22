@@ -497,7 +497,7 @@ foreach ($_childProducts as $_childProduct) {
 
                     //$smallImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt. "|" . $title;//FK;
                  // For New Design.
-                    $smallImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(870,870)->setQuality(90) . "|" . $alt. "|" . $title;//FK;
+                    $smallImageUrl = "_" . $imageHelper->init($_product, 'image', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(870,870)->setQuality(90) . "|" . $alt. "|" . $title;//FK;
 
                     $imageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90) . "|" . $alt. "|" . $title;//FK;
                     $zoomImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->setQuality(90) . "|" . $alt. "|" . $title;//FK;
@@ -1510,6 +1510,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 														To Wish List</a></p>
 											<?php } ?>
 										</div>
+										<p class="csp-name-list"><span>Core</span><span>Select</span><span class="active">Premium</span></p>
                                         <p class="freeshipptext"><em>Free air shipping to US and Canada</em></p>
 
                                         <p class="insale dnone" style="color: #c03; margin-left: 4px;">This Item is
@@ -1715,38 +1716,26 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 					</div>
 					<div id="prod-tab-content2" class="prod-tab-content">
 						<div class="prodtab-desc">
-                            <ul class="featureList">
-                                <?php
-                                $i = 0;
-                                foreach ($newdfimages as $ndfimg) {
-                                    $i++;
-                                    ?>
-                                    <li class="<?php if ($i == 4 && $designFeatureVideoName != '') {
-                                        echo 'last-df';
-                                    }
-                                    if ($i == 4 && $designFeatureVideoName == '') echo ' df-no-vid'; ?>"><span
-                                            class="ftrFig "><img
-                                                nopin="nopin" class="vid-pl-btn"
-                                                src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>"><img
-                                                nopin="nopin"
-                                                class="df-img" alt=""
-                                                src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span>
-                                    </li>
-                                    <?php
-                                }
-                                ?>
-                            </ul>
-						</div>
+                            <?=$_helper->productAttribute($_product, $_product->getProductFeature(),'product_feature');?>
+                        </div>
 						
 					</div>
 					<div id="prod-tab-content3" class="prod-tab-content">
 						<div class="prodtab-desc">
-                            <div class="design-fit"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howDoesItFitBlockId)->toHtml(); ?></div>
+                            <!--<div class="design-fit"><?php // echo $this->getLayout()->createBlock('cms/block')->setBlockId($howDoesItFitBlockId)->toHtml(); ?></div>-->
                             <div class="design-size"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizeChartBlockId)->toHtml(); ?></div>
 
 						</div>						
 					</div>
+					
+					<div class="product-det-tab-bottom">
+						<p><span class="strong">Tippy Toe 'N Twist Legging is a Part of:</span>
+						<span class="underline">Core Collection</span></p>
+						<p><span class="strong">Also Wearing:</span>
+						<span class="underline">Zelos Legging</span><span> in Purple Dusk / Mosiac Grey</span></p>
+					</div>
 				</div><!--product-det-tab-->
+				
 				</div>
             </div><!--right-col1 end-->
 				
