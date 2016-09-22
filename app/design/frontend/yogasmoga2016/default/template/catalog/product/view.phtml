@@ -1715,28 +1715,8 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 					</div>
 					<div id="prod-tab-content2" class="prod-tab-content">
 						<div class="prodtab-desc">
-                            <ul class="featureList">
-                                <?php
-                                $i = 0;
-                                foreach ($newdfimages as $ndfimg) {
-                                    $i++;
-                                    ?>
-                                    <li class="<?php if ($i == 4 && $designFeatureVideoName != '') {
-                                        echo 'last-df';
-                                    }
-                                    if ($i == 4 && $designFeatureVideoName == '') echo ' df-no-vid'; ?>"><span
-                                            class="ftrFig "><img
-                                                nopin="nopin" class="vid-pl-btn"
-                                                src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>"><img
-                                                nopin="nopin"
-                                                class="df-img" alt=""
-                                                src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span>
-                                    </li>
-                                    <?php
-                                }
-                                ?>
-                            </ul>
-						</div>
+                            <?=$_helper->productAttribute($_product, $_product->getProductFeature(),'product_feature');?>
+                        </div>
 						
 					</div>
 					<div id="prod-tab-content3" class="prod-tab-content">

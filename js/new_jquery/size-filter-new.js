@@ -223,7 +223,7 @@ jQuery(function(){
 
                 jQuery(".productCont").each(function () {
 
-                    var strSizes = jQuery(this).attr('data');
+                    var strSizes = jQuery(this).attr('color');
 
                     if (strSizes != undefined && strSizes.length > 0) {
                         var arColorSizes = strSizes.split(",");
@@ -329,12 +329,14 @@ function filterCats(){
         return;
     }
 
-    var Categories = "<b>Filter by Range: </b> ";
+    var Categories = "<b></b> ";
     //for(var i=0;i<arAllCats.length;i++){
 
 			jQuery.each(arProductCats, function (index, value) {
 				//if(arAllCats[i]==index){
-					Categories += "<span class='chk-cats' rel='" + index + "'>" + value + "</span>";
+                    colorName = value.split('|');
+
+					Categories += "<span title='"+colorName[0]+"' style='background:"+colorName[1]+"' class='chk-cats' rel='" + index + "'>" + colorName[0] + "</span>";
 					//return false; 
 				//}
 			});
