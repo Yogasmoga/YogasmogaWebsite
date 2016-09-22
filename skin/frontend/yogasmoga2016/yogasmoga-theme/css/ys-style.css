@@ -3769,7 +3769,8 @@ display:none!important;
 	transform:translate(-100%,100%);-webkit-transform:translate(-100%,100%);margin-left:-25px; display:none;}
 
 .product-row .pcol-left .image-row{background:#f4f4f4; margin-bottom:10px;}  
-.product-row .pcol-right .pcol-right-content{width:341px;background:#f4f4f4;padding-right:29px; margin-bottom:10px!important;clear:both;padding-top:0;box-sizing:border-box;}
+.product-row .pcol-right .pcol-right-content{width:341px;background:#f4f4f4;padding-right:29px; margin-bottom:10px!important;clear:both;padding-top:0;box-sizing:border-box;
+	overflow:auto;}
 
 
 .product-row .pcol-right .pcol-right-content4{padding-right:0;}
