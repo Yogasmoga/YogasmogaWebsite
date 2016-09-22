@@ -3452,7 +3452,7 @@ ul.main-menu2 li ul.sub-menu li a {
 /************* 2-sep*********/
 #div_sizes,#div_cats{padding-top:7px;}
 .chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:27px; height:26px; line-height:25px; vertical-align:middle; display:inline-block;
-	font-size:12px; padding:1px 8px;}
+	font-size:12px; padding:1px 8px;border-radius:25px;}
 
 #div_cats .chk-cats.chk-cats-selected:before{
     background: #fff none repeat scroll 0 0;
@@ -3482,7 +3482,7 @@ ul.main-menu2 li ul.sub-menu li a {
 
 /*#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px; padding-left:14px; padding-right:14px;}*/
 
-#div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; display:inline-block;}
+#div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; /*display:inline-block;*/display:none;}
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 
