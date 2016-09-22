@@ -3583,7 +3583,7 @@ float:left; margin-left:-40px; }
 .wishlist-nw{width:100%;float:left;margin-top:10px;}
 .wishlist-nw .wishlist-link,.wishlist-nw .wishlist-link a{width:100%; height:42px;background:#dddddd;color:#777;font-size:16px; font-family:AvantGardeGothicMedium; text-align:center; line-height:42px;padding:0;
 	display:block;border:0 none;}
-#productdetails .freeshipptext{font:13px/13px avantgardegothicitcw01m;letter-spacing:0.22px; clear:both; padding:16px 0 13px;}
+#productdetails .freeshipptext{font:13px/13px avantgardegothicitcw01m;letter-spacing:0.22px; clear:both; padding:30px 0 0px;}
 #productdetails .freeshipptext em{font-style:normal;}
 .product_description_block{font:14px/18px avantgardegothicitcw01m;}
 .box-desc-dvdr .h2{margin-bottom:18px;text-transform:capitalize;letter-spacing:0.27px;}
@@ -3786,7 +3786,7 @@ display:none!important;
 .addtobag-section .range-toggle .range-desc{transition:0.2s linear;-webkit-transition:0.2s linear; max-height:0;overflow:hidden;}
 .addtobag-section .range-toggle:hover .range-link ~ .range-desc{transition:0.2s linear;-webkit-transition:0.2s linear;max-height:200px;}
 */
-.product-row .range-toggle{border-bottom:1px solid #9c9c9c;padding-bottom:8px;margin-bottom:27px;}
+.product-row .range-toggle{border-bottom:1px solid #9c9c9c;padding-bottom:8px;margin-bottom:27px; display:none;}
 .product-row .range-toggle .range-link{color:#555;font:13px/13px avantgardegothicitcw01d; letter-spacing:0.5px;}
 .product-row .range-toggle .range-desc{font:13px/18px avantgardegothicitcw01m; transition:0.2s linear;-webkit-transition:0.2s linear; max-height:0;overflow:hidden;}
 .product-row .range-toggle:hover .range-link ~ .range-desc{transition:0.2s linear;-webkit-transition:0.2s linear;max-height:200px;}
@@ -3821,6 +3821,10 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .product-det-tab-bottom p span{font:12px/12px graphikregular;}
 .product-det-tab-bottom p .strong{display:block;font:12px/24px avantgardegothicitcw01d;}
 .product-det-tab-bottom p .underline{text-decoration:underline;}
+.csp-name-list{margin:30px 0 0 0;}
+.csp-name-list span{display:inline-block;font:12px/24px avantgardegothicitcw01d;color:#ccc;border-left:1px solid #ccc; padding:0 14px;min-width:50px;
+	text-transform:uppercase;}
+.csp-name-list span.active{color:#ae8536;border-left:1px solid #ae8536;}
 
 /*--color option--*/
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block;  float:left; margin:0 3px;bordre-radius:40px;
