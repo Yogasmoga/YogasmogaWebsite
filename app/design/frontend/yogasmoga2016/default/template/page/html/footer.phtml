@@ -352,14 +352,7 @@ function prodnewdetail(){
 		'bottom':imgrow4h
 	});
 	
-	if(jQ(window).width() < 1200){		
-		jQ('.fabric-content').appendTo('.pcol-right-content3 .pcol-right-content-inner');
-		jQ('.product-det-tab').appendTo('.pcol-right-content2 .pcol-right-content-inner');		
-	}
-	else{
-		jQ('.fabric-content').appendTo('.pcol-right-content2 .pcol-right-content-inner');
-		jQ('.product-det-tab').appendTo('.pcol-right-content1 .pcol-right-content-inner');		
-	}
+	
 	
 }
 		
@@ -407,14 +400,7 @@ function prodnewdetailresize(){
 		'bottom':imgrow4h
 	});
 	
-	if(jQuery(window).width() < 1200){		
-		jQuery('.fabric-content').appendTo('.pcol-right-content3 .pcol-right-content-inner');
-		jQuery('.product-det-tab').appendTo('.pcol-right-content2 .pcol-right-content-inner');		
-	}
-	else{
-		jQuery('.fabric-content').appendTo('.pcol-right-content2 .pcol-right-content-inner');
-		jQuery('.product-det-tab').appendTo('.pcol-right-content1 .pcol-right-content-inner');		
-	}
+	
 	
 }
 jQuery(document).ready(function($){
@@ -422,16 +408,36 @@ jQuery(document).ready(function($){
 	if(imgrowtr.length > 0){		
 		var px = 0;
 		var intervalID = setInterval(function () {
-		// Your logic here
-		prodnewdetail();
-		if (++px === 5) {
-		window.clearInterval(intervalID);
-		}
+			// logic here
+			prodnewdetail();
+			if (++px === 5) {
+				window.clearInterval(intervalID);			
+			}
 		}, 2000);
+		
+		if($(window).width() < 1200){		
+		$('.fabric-content').appendTo('.pcol-right-content3 .pcol-right-content-inner');
+		$('.product-det-tab').appendTo('.pcol-right-content2 .pcol-right-content-inner');		
+		}
+		else{
+			$('.fabric-content').appendTo('.pcol-right-content2 .pcol-right-content-inner');
+			$('.product-det-tab').appendTo('.pcol-right-content1 .pcol-right-content-inner');		
+		}
+		
 	}
 });	
 
 jQuery(window).resize(function(){
 	prodnewdetailresize();	
+	
+	if(jQuery(window).width() < 1200){		
+		jQuery('.fabric-content').appendTo('.pcol-right-content3 .pcol-right-content-inner');
+		jQuery('.product-det-tab').appendTo('.pcol-right-content2 .pcol-right-content-inner');		
+		}
+		else{
+			jQuery('.fabric-content').appendTo('.pcol-right-content2 .pcol-right-content-inner');
+			jQuery('.product-det-tab').appendTo('.pcol-right-content1 .pcol-right-content-inner');		
+		}
+	
 });
 </script>
