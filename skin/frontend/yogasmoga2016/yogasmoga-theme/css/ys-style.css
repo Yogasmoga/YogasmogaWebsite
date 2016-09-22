@@ -3836,6 +3836,48 @@ input[name="prodTab"]{display:none;}
   display: block;
 }
 
+/*********** home page changes start **************/
+  .gridfull.nophotoshop {opacity:1!important;}
+	.gridfull.nophotoshop .over-the-slide {background:none!important;width:100%;left:0;right:0;
+	 box-sizing: border-box;
+    height: 100%;
+    left: 0;
+    padding: 80px 77px !important;
+    position: absolute;
+    top: 0;
+    width: 100%!important;
+right:0;	
+	}
+	
+.gridfull.nophotoshop .slider_li{
+ cursor: pointer;
+    display: block!important;
+    float: left;
+    height: 827.909px;
+    margin-right: -100%;
+    opacity: 1;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+
+}
+ .gridfull.nophotoshop  .text-align-middle{
+ text-align:center;
+ }
+ .gridfull.nophotoshop .learn-more {
+   border-bottom: 1px solid #c03;
+    color: #fff;
+    display: inline-block;
+    font: 16px/30px ITCAvantGardeProBk;
+    letter-spacing: 0.1em;
+    margin: 40px 0 0 !important;
+    padding: 0 0 3px;
+    text-align: center;
+}
+.factorypart.namaskar-block.bucket3 .contentSlider{top:56%;}
+	/*********** home page changes end **************/
+
+
 @keyframes fadeInScale {
 
   0% { 
@@ -3865,3 +3907,4 @@ input[name="prodTab"]{display:none;}
 .prod-tab-content *{-webkit-animation: fadeInScale 0.7s ease-in-out;
   -moz-animation: fadeInScale 0.7s ease-in-out;
   animation: fadeInScale 0.7s ease-in-out;}
+  

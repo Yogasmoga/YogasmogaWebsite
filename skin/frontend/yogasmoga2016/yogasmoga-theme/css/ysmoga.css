@@ -308,6 +308,17 @@ ul.site-map > li{
     background-size: 100% 100%;    
 	top:50%;
 }
+
+.namaskar-block .featured-collection-top{
+    background: url("../images/new-elements/namaskar-part1.jpg") no-repeat center center transparent;
+    background-size: 100% 100%;    
+}
+.namaskar-block .featured-collection-bottom{
+    background: url("../images/new-elements/namaskar-part2.jpg") no-repeat center center transparent;
+    background-size: 100% 100%;  
+top:50%;	
+}
+
 .featured-collection-bottom img.co{left: 7%; /*max-width: 253px;*/width:47.46%; position: absolute;top: 50%;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
 .featured-collection-bottom img.seal{left: 48.5%; /*max-width: 243px;*/width:45.59%; position: absolute;top: 50%;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
 
