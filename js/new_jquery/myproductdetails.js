@@ -40,6 +40,9 @@ jQuery(document).ready(function ($) {
         changeColor($(this).attr("color"));
         selectfirstsizeonload();
         changePartOfGiftSet($(this).attr("value"));
+		/*---new design js--*/
+		prodnewdetail();
+		/*---new design js end--*/
     });
 
     $("table.smallimagecontiner td:not(.selectedimage)").live("click", function () {

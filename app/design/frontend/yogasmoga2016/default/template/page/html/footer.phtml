@@ -419,11 +419,16 @@ function prodnewdetailresize(){
 }
 jQuery(document).ready(function($){
 	var imgrowtr = $('.thumb-imgs table.smallimagecontiner tr td img');
-	if(imgrowtr.length > 0){
-		//setTimeout(prodnewdetail,6000)
+	if(imgrowtr.length > 0){		
+		var px = 0;
+		var intervalID = setInterval(function () {
+		// Your logic here
 		prodnewdetail();
+		if (++px === 5) {
+		window.clearInterval(intervalID);
+		}
+		}, 2000);
 	}
-	
 });	
 
 jQuery(window).resize(function(){
