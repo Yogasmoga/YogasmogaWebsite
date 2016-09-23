@@ -364,7 +364,7 @@ if(!is_user_logged_in()){
     </style>";
 ?>
 <div class="banner" style="cursor:pointer" onclick="open_red_popup()">
-    SIGN UP NOW TO INSTANTLY GET 25% OFF YOUR FIRST ORDER
+    SIGN UP NOW TO RECEIVE $25 SMOGI BUCKS
 </div>
 <?php
 
