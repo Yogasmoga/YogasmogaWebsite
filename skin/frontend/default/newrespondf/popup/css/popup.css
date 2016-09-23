@@ -583,7 +583,7 @@ width: 100%;
 #signup-button-mailc{background: url("../images/tick-mark.svg") center center no-repeat #C4C0C0;}
 
 /*--new magento signup popup--*/
-#popForm.mage-signup{background:#000;}
+#popForm.mage-signup{background:url(../images/popup-bg2.png) #000; background-size:cover;}
 #popForm.mage-signup input[type="text"], #popForm.mage-signup input[type="password"]{border-bottom:1px solid #717171;}
 #popForm.mage-signup input[type="text"].on, #popForm.mage-signup input[type="password"].on{color:#fff!important;}
 #popForm.mage-signup input[data-watermark],#popForm.mage-signup input.watermark_password,#popForm.mage-signup input.watermark_password.on,#popForm.mage-signup .gender-link span label{color:#717171!important; opacity:1!important}
