@@ -623,14 +623,14 @@ else { ?>
                                 $subsubcategories = $subsubcategory->getChildrenCategories();
 
                                 if($subsubcategory->getChildrenCount() == 0){
-                                     $style = "margin-top:15px";
+                                     $style = "font-size:11px";
                                     $styleBottom = "margin-bottom:15px";
 
-                                        if($child2->getId()==125 || $child2->getId()==128){
+                                        if($child2->getId()==71 || $child2->getId()==78){
                                             $firstcolumn .= "<li style='$style'>"."<a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
                                         }
-                                         elseif($child2->getId()==127 || $child2->getId()==130) {
-                                                $firstcolumn .= "<li style='$styleBottom'>"."<a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                                         elseif($child2->getId()==124 || $child2->getId()==79) {
+                                                $firstcolumn .= "<li style='$style'>"."<a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
                                          }
 
                                         elseif($child2->getId()==16) {
