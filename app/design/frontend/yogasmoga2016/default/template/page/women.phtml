@@ -307,7 +307,7 @@
                     $position = array(Mage::getStoreConfig('tab1/general/smogi', Mage::app()->getStore()->getId()));
                     $finalPos = implode(',',$position);
                     foreach ($quickviewproducts as $_product) {
-                        if($i === (int)$finalPos[0] && $i === (int)$finalPos[1]){
+                        if($i === (int)$finalPos[0] || $i === (int)$finalPos[1]){
                             ?>
 
                             <!-- size filters -->
