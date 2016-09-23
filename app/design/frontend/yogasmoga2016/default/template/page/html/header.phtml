@@ -591,17 +591,21 @@ else { ?>
 		$urlString = Mage::helper('core/url')->getCurrentUrl();
 		$url = Mage::getSingleton('core/url')->parseUrl($urlString);
 		$path = $url->getPath();
-		
-		 
+
+                $identity='';
 				if($path != strtolower('/checkout/onepage')){
                 foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
                     if ($child1->getIsActive()) {
                         //show Main parent categories first level
-                        if($child1->getId() == $currentcategoryid)
+                        if($child1->getId() == $currentcategoryid){
+                            $identity = Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey();
                             echo "<li rel='".Mage::getModel("catalog/category")->load($child1->getId())->getId()."' class='".Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey()."' ><a  class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                       
-                        else
+                        }
+                        else{
+                            $identity = Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey();
                             echo "<li rel='".Mage::getModel("catalog/category")->load($child1->getId())->getId()."' class='".Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey()."'><a  class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                        }
+
                        
                         $firstcolumn = '<ul class="sub-menu menu-ovr"><li><ul>';
                         $remainingcolumn = '';
@@ -669,8 +673,13 @@ else { ?>
                         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
                         $categoryName = explode('/', $currentUrl);
                         $urlKey = $categoryName[3];
-                        
-						echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-women.jpg").'"></div>';
+
+                        if($identity == strtolower('women')){
+                            echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-women.jpg").'"></div>';
+                        }
+                        else{
+                            echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-men.jpg").'"></div>';
+                        }
                         echo "</ul></li>";
                     }
 
