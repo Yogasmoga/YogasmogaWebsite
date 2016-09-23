@@ -304,12 +304,14 @@
                     ?>
                     <?php
                     $i = 1;
+                    $position = array(Mage::getStoreConfig('tab1/general/smogi', Mage::app()->getStore()->getId()));
+                    $finalPos = implode(',',$position);
                     foreach ($quickviewproducts as $_product) {
-                        if($i === 5){
+                        if($i == (int)$finalPos[0]){
                             ?>
 
                             <!-- size filters -->
-                            <div class="productCont prodduct_horizontal">
+                            <div class="productCont prodduct_horizontal" dd=" <?php echo $finalPos[0];?>">
                                 <!-- size filters -->
                                 <div class="prod-img">
                                     <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
@@ -324,7 +326,26 @@
                                 </div>
                             </div>
 
-                        <?php }else{ ?>
+                        <?php }
+                        elseif($i == (int)$finalPos[2]){
+                        ?>
+
+                        <!-- size filters -->
+                        <div class="productCont prodduct_horizontal"  dd=" <?php echo $finalPos[1];?>">
+                            <!-- size filters -->
+                            <div class="prod-img">
+                                <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
+                                    <img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
+                                    <img class="prd-image" src="<?php echo $_product['frontimgurl']; ?>"/>
+                                </a>
+                            </div>
+                            <div class="caption">
+
+                                <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?>&mdash;$<?php echo $_product['price']; ?></span>
+
+                            </div>
+                        </div>
+                    <?php } else{ ?>
                             <!-- size filters -->
                             <div class="productCont">
                                 <!-- size filters -->

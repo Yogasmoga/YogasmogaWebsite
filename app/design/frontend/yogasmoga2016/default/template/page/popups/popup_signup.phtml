@@ -28,11 +28,12 @@ else {
 }
 ?>
 
-<?php /* ?>
-<div id="signup" style="display: none;">
+<?php  ?>
+<div id="signup" class="mage-signup" style="display: none;">
     <div id="sign_up_box">
 <!--        <img nopin="nopin" style="width:50%; margin-top: 8%;" src="--><?php //echo $this->getSkinUrl('images/red_popup_text.png') ?><!--" alt="FEEL THE SMOGI LOVE. Sign up and earn 50% Off on your first order." />-->
         <form action="" method="post" id="popup-register" style="display: block; ">
+			<div class="form-inner">
             <input type="hidden" id="plocation_city" name="location_city" value="<?php echo $request_city;?>"/>
             <input type="hidden" id="plocation_state" name="location_state" value="<?php echo $request_state;?>"/>
             <input type="hidden" id="plocation_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
@@ -41,7 +42,7 @@ else {
             $categoryName = explode('/', $currentUrl);
             $urlKey = $categoryName[3];?>
             <?php if (strtolower($urlKey)!='test1'){?>
-            <svg xml:space="preserve" enable-background="new 0 0 308 127.979" viewBox="0 0 308 127.979" height="127.979px" width="280px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" >
+            <!--<svg xml:space="preserve" enable-background="new 0 0 308 127.979" viewBox="0 0 308 127.979" height="127.979px" width="280px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" >
                     <g>
                         <text transform="matrix(1 0 0 1 128.9932 30.103)">
                             <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="0" x="0">FEEL</tspan>
@@ -67,7 +68,8 @@ else {
                     c7.058,0,12.026-5.457,12.026-11.777S241.31,41.421,234.316,41.421z M236.145,60.207l-1.844,3.18l-1.854-3.237
                     c-3.047-0.902-4.833-3.873-4.833-7.017v-0.03c0-3.469,2.363-7.209,6.733-7.209c4.539,0,6.703,4.104,6.703,7.309
                     C241.05,55.928,239.443,59.317,236.145,60.207z" fill="#FFFFFF"/>
-            </svg>
+            </svg>-->
+			<img class="svg-logontext" src="<?php echo $this->getSkinUrl('images/25bucks.svg') ?>" alt=""/>
             <?php } else{?>
                 <div class="svg-text-head" style="position:relative;top:-12px"><img src="<?php echo $this->getSkinUrl('images/signin-popup.png');?>"></div>
             <?php }?>
@@ -104,7 +106,7 @@ else {
                 </tr>
                 <tr>
                     <td class="gender_tr">
-                        <p class="gender_p">Select Gender <span class="gender_radio"><input type="radio" value="1" name="gender"/>M</span> <span class="gender_radio"><input type="radio" value="2" name="gender"/>F</span></p>
+                        <p class="gender_p">Gender <label><span class="gender_radio"><input type="radio" value="1" name="gender"/>M</span>Male</label> <label><span class="gender_radio"><input type="radio" value="2" name="gender"/>F</span>Female</label></p>
                     </td>
                 </tr>
                 <tr height="5"></tr>
@@ -112,12 +114,14 @@ else {
                 <input style="display: none;" id="is_subscribed" class="checkbox" type="checkbox" checked="checked" value="1" name="is_subscribed"/>
 
             </table>
-
+			<p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
             <button type="submit" id="signup-button">Sign up</button>
-            <p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
-
+            
+			</div>
             <?php if (strtolower($urlKey)!='test1'){?>
-			<p class="link_red_popup" style="color:#ff9f9f">Already Signed up? <br/><a onclick="jQuery('#signin').click()">Sign in here</a> </p>		
+			<!--<p class="link_red_popup" style="color:#ff9f9f">Already Signed up? <br/><a onclick="jQuery('#signin').click()">Sign in here</a> </p>-->
+			<p class="close-text" onclick="jQuery('.ui-icon-closethick').click()">No Thank You, I’m not interested in Made in the USA apparel.</p>
+			<p class="opensignin" onclick="jQuery('#signin').click()">I’m already signed up.</p>
 			<?php } 
 			else{ ?>
 			<p class="link_red_popup" style="color:#fff">Already Signed up? <br/><a style="color:#fff;" onclick="jQuery('#signin').click()">Sign in here</a> </p>
@@ -155,8 +159,8 @@ else {
         </table>
     </div>
 </div>
-<?php */ ?>
-
+<?php /* ?>
+// Mailchimp popup commented. that is connected to mailchimp_signup.php located on root.
 <div id="signup" class="mc-signup" style="display:none;">
 		
 	<div class="signup-content">
@@ -195,32 +199,33 @@ Made in the USA apparel.</p>
 	<!--signup-thankyou-->
 
 </div>
-
+<?php */?>
+<?php /* ?>
 <script type="application/javascript">
     jQuery(document).ready(function($){
-		//$("#signup").dialog( "open" );
-		$("#popup-mailsignup").submit(function(event){
-		event.preventDefault();
+        //$("#signup").dialog( "open" );
+        $("#popup-mailsignup").submit(function(event){
+            event.preventDefault();
 
-		$("#err-msg").css("visibility","hidden");
+            $("#err-msg").css("visibility","hidden");
 
-        var formid = "#popup-mailsignup";
-		var email_id = $.trim($("#Memail_address").val());
-		if(email_id == "" || email_id == "Email Address")
-        {
+            var formid = "#popup-mailsignup";
+            var email_id = $.trim($("#Memail_address").val());
+            if(email_id == "" || email_id == "Email Address")
+            {
                 event.preventDefault();
                 $("#err-msg").css("visibility","visible");
                 $("#err-msg").text("Please enter an email address.");
                 return;
-        }
-		if(!validateEmail(email_id)){
-				event.preventDefault();
+            }
+            if(!validateEmail(email_id)){
+                event.preventDefault();
                 $("#err-msg").css("visibility","visible");
                 $("#err-msg").text("Enter a valid email.");
-				return;
-		}
+                return;
+            }
 
-			if(window.location.href.indexOf('https://') >= 0)
+            if(window.location.href.indexOf('https://') >= 0)
                 _usesecureurl = true;
             else
                 _usesecureurl = false;
@@ -230,59 +235,60 @@ Made in the USA apparel.</p>
             }
 
 
-				jQuery.ajax({
-					url     :   url,
-					type    :   'POST',
-					data    :   {'email':email_id},
-					beforeSend: function() {
-						/*jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");*/
-                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
-						//jQuery("#popup-mailsignup").parent().hide();
-						jQuery("#popup-mailsignup .form-loader-mail").show();
-					},
-					success: function (data) {
-						data = eval('(' + data + ')');
-						var status = data.status;
-						jQuery("#popup-mailsignup .form-loader-mail").hide();
-						
-						if (status == "success") {
-							jQuery("#popup-mailsignup").parent().hide();
-							$(".signup-thankyou").show();
-							jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGN UP");
-							$('.ui-icon-closethick,.close-text').click(function(){
-								$(".signup-thankyou").hide();
-								$(".signup-content").show();
-								$("#Memail_address").val('');
-							});
-						}
-						else
-						{
-							$("#signup-button-mailc").val("SIGN UP");
-							jQuery("#signup-button-mailc").parent().show();
-							$("#popup-mailsignup #err-msg").html(data.error).css("visibility","visible");
-						}
-					}
-				});
-	});
-	
-	$(".close-text").click(function(){
-		$("#signup").dialog( "close" );
-	});
-	$(".opensignin").click(function(){
-		$("#signup").dialog( "close" );
-		$("#signing_popup").dialog( "open" );
-	});
-	
-	$('#Memail_address').on('focus keypress',function(){		
-			if($(this).val().length > 0){
-				$('#signup-button-mailc').addClass('on');			
-			}
-			else{
-				$('#signup-button-mailc').removeClass('on');			
-			}
-			
-		});
-});
+            jQuery.ajax({
+                url     :   url,
+                type    :   'POST',
+                data    :   {'email':email_id},
+                beforeSend: function() {
+                    //jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+                    jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
+                    //jQuery("#popup-mailsignup").parent().hide();
+                    jQuery("#popup-mailsignup .form-loader-mail").show();
+                },
+                success: function (data) {
+                    data = eval('(' + data + ')');
+                    var status = data.status;
+                    jQuery("#popup-mailsignup .form-loader-mail").hide();
+
+                    if (status == "success") {
+                        jQuery("#popup-mailsignup").parent().hide();
+                        $(".signup-thankyou").show();
+                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGN UP");
+                        $('.ui-icon-closethick,.close-text').click(function(){
+                            $(".signup-thankyou").hide();
+                            $(".signup-content").show();
+                            $("#Memail_address").val('');
+                        });
+                    }
+                    else
+                    {
+                        $("#signup-button-mailc").val("SIGN UP");
+                        jQuery("#signup-button-mailc").parent().show();
+                        $("#popup-mailsignup #err-msg").html(data.error).css("visibility","visible");
+                    }
+                }
+            });
+        });
+
+        $(".close-text").click(function(){
+            $("#signup").dialog( "close" );
+        });
+        $(".opensignin").click(function(){
+            $("#signup").dialog( "close" );
+            $("#signing_popup").dialog( "open" );
+        });
+
+        $('#Memail_address').on('focus keypress',function(){
+            if($(this).val().length > 0){
+                $('#signup-button-mailc').addClass('on');
+            }
+            else{
+                $('#signup-button-mailc').removeClass('on');
+            }
+
+        });
+    });
 
 </script>
 <!-- Shivaji New Code -->
+<?php */ ?>

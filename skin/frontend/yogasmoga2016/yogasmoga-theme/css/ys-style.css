@@ -3329,6 +3329,47 @@ width:100%!important;height:100%!important;
 	
 	#signup.mc-signup .fields-area p.button-area input[type="submit"]{-webkit-appearance: none;}
 }
+
+/*######## new magento signup #########*/
+#signup.mage-signup{background:url(../images/mage-signupbg.png) #000; background-size:cover; width:100%!important; height:100%!important;}
+#signup.mage-signup #sign_up_box,#signup.mage-signup #thank_you_box{width:100%; max-width:496px;}
+#signup.mage-signup #sign_up_box #popup-register{width:100%; max-width:496px; left:50%; top:50%; bottom:auto; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);}
+#signup.mage-signup .gender_p label{float:right; padding-right:0;margin-left:39px; font-size:16px!important; font-family:gothamBook;}
+#signup.mage-signup .gender_p label .gender_radio{float:left; width:24px; height:24px; line-height:24px; color:transparent; margin-right:16px;}
+#signup.mage-signup .gender_tr .gender_p span.selected{background:#ae8536;border:1px solid #ae8536;}
+#signup.mage-signup button#signup-button{background:#1eaa18; width:100%;height:42px; line-height:42px; padding:0; font-family:gothamBold; font-size:13px; text-transform:uppercase;}
+#signup.mage-signup .close-text,#signup.mage-signup .opensignin{color: #ae8536; cursor: pointer;font-family: itcavantgardepromd;
+    margin-bottom: 0;text-decoration: underline; font-size:16px; letter-spacing:0.24px;}
+#signup.mage-signup .close-text{margin-bottom:20px;}	
+#signup.mage-signup	.form-inner{padding:0 47px;margin-bottom:50px;}
+#signup.mage-signup #popup-register tr{height:25px;}
+#signup.mage-signup #popup-register td.gender_tr .gender_p{margin-top:20px;font-family:gothamBook;}
+#signup.mage-signup #popup-register td input{font-size:16px; font-family:gothamBook;}
+#signup.mage-signup #err-msg{color:#f56200; font-size:16px!important;width:auto!important; text-align:left;}
+#signup.mage-signup .svg-logontext{margin-bottom:50px;}
+@media only screen and (max-width : 1400px) {
+	#signup.mage-signup .gender_p label{font-size:14px!important;}
+	#signup.mage-signup .close-text,#signup.mage-signup .opensignin{font-size:14px;}	
+	#signup.mage-signup #popup-register td input{font-size:14px;}
+	#signup.mage-signup #err-msg{font-size:14px!important;}
+	#signup.mage-signup #popup-register tr{height:20px;}
+	#signup.mage-signup .svg-logontext{margin-bottom:40px;}
+	#signup.mage-signup .form-inner{margin-bottom:40px;}
+	#signup.mage-signup .close-text{margin-bottom:17px;}
+	#signup.mage-signup .svg-logontext{max-width:360px;}
+	#signup.mage-signup .gender_p label .gender_radio{width:22px; height:22px; line-height:22px;}
+}
+
+@media only screen and (max-width : 1300px) {
+	#signup.mage-signup .gender_p label{font-size:13px!important;}
+	#signup.mage-signup .close-text,#signup.mage-signup .opensignin{font-size:13px;}	
+	#signup.mage-signup #popup-register td input{font-size:13px;}
+	#signup.mage-signup #err-msg{font-size:13px!important;}
+	#signup.mage-signup .close-text{margin-bottom:15px;}
+	#signup.mage-signup .form-inner{margin-bottom:30px;}
+	#signup.mage-signup .svg-logontext{max-width:330px;}
+}
+
 /*######### new design 31-aug-2016############*/
 .product-details .block-head{margin-top: 2px;}
 ul.main-menu li.active a.menu-heading{color:#ae8536;}

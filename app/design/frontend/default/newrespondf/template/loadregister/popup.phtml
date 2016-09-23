@@ -49,11 +49,11 @@
 
         ?>
 
-        <div id="popForm" style="display:none">
+        <div id="popForm" style="display:none" class="mage-signup">
             <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('popup/css/popup.css'); ?>"/>
             <div class="popup_container sign-up-block sign_in_modal" id="transparent_bg">
                 <div style="width:100%;" class="overlay-inner-bg" id="content">
-                    <a href="javascript:void(0)" onclick="closeSignup()" class="cross_popup">
+                    <!--<a href="javascript:void(0)" onclick="closeSignup()" class="cross_popup">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44"
@@ -64,13 +64,13 @@
     <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30" y1="14" x2="14" y2="30"/>
 </g>
 </svg>
-                    </a>
+                    </a>-->
 
 
                     <div class="left_block left_block_new">
                         <div class="scroll">
                             <div class="top-heading">
-                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                <!--<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                      width="234.613px" height="85px" viewBox="0 0 234.613 85"
                                      enable-background="new 0 0 234.613 85" xml:space="preserve">
@@ -124,8 +124,9 @@
 			C99.308,17.177,98.15,19.612,95.781,20.252"/>
                                         </g>
                                     </g>
-</svg>
+</svg>-->
 
+						<img class="svg-logontext" src="<?php echo $this->getSkinUrl('images/25bucks.svg') ?>" alt=""/>
                             </div>
                             <div class="sign_signup_form">
                                 <form rel="signupBox" action="" method="post" class="singup_form" id="singup_form"
@@ -142,6 +143,7 @@
                                         <li>
                                             <div class="form_field_left">
                                                 <input type="text" name="fname" data-watermark="First Name">
+
                                             </div>
 
                                             <div class="clearfix"></div>
@@ -229,7 +231,7 @@
 
                                             <!--				<p style="text-align: left" class="err_msg"></p>-->
                                             <!-- end -->
-                                            <p class="already_signed_up">Already signed up? Sign in here</p>
+                                            <!--<p class="already_signed_up">Already signed up? Sign in here</p>-->
 
                                             <div class="error" id="error_msg"></div>
                                             <button type="submit" name="sign-up" id="create_account"
@@ -249,7 +251,8 @@
 					</svg>
 				</span></button>
 
-
+										<p style="clear:both"><a class="no-thanks" onclick="closeSignup()" >No Thank You, I’m not interested in <br>Made in the USA apparel.</a></p>
+										<p style="clear:both"><a class="already_signed_up">I’m already signed up.</a></p>
                                         </li>
                                     </ul>
                                 </form>
@@ -287,33 +290,64 @@
                     isinputvalid();
                 });
 				jQuery(".mobile-orange-banner").click(function () {
-					jQuery('#MailpopForm').show();
+					//jQuery('#MailpopForm').show();
+					jQuery('#popForm').show();
 				});
+				
+				jQuery("#popForm input[type=text],#popForm input[type=password]").on('focus keypress',function(){		
+						if(jQuery(this).val().length > 0){
+							
+							jQuery(this).addClass('on');			
+						}
+						
+						
+					});
+				jQuery("#popForm input[type=text],#popForm input[type=password]").on('blur keyup',function(){		
+						if(jQuery(this).val().length < 1){
+							
+							jQuery(this).removeClass('on');			
+						}						
+						
+					});
+					
+					jQuery('.gender-link .f-right label').click(function(){
+						
+						if(jQuery(this).hasClass('current')){
+							jQuery('.gender-link span label').addClass('on');						
+							
+						}
+						else{
+							jQuery('.gender-link span label').removeClass('on');						
+						}	
+					});
+					
+				
+					
             });
         </script>
 
         <?php
-//        $name = 'popupcookies';
-//        $value = 'yes';
-//
-//        $cookieValue = Mage::getModel('core/cookie')->get($name);
-//
-//        if (!isset($cookieValue) || $cookieValue!="yes") {
-//
-//            ?>
-<!--            <script>-->
-<!--                jQuery.noConflict();-->
-<!--                jQuery(document).ready(function () {-->
-<!--                    jQuery("#popForm").show();-->
-<!---->
-<!--                });-->
-<!--            </script>-->
-<!--            --><?php
-//        }
-//        Mage::getModel('core/cookie')->set($name, $value);
+        $name = 'popupcookies';
+        $value = 'yes';
+
+        $cookieValue = Mage::getModel('core/cookie')->get($name);
+
+        if (!isset($cookieValue) || $cookieValue!="yes") {
+
+            ?>
+            <script>
+               jQuery.noConflict();
+                jQuery(document).ready(function () {
+                    jQuery("#popForm").show();
+
+               });
+            </script>
+           <?php
+       }
+        Mage::getModel('core/cookie')->set($name, $value);
         ?>
 
-        <script>
+       <!-- <script>
             jQuery.noConflict();
             jQuery(document).ready(function () {
 				
@@ -332,7 +366,7 @@
                     }
                 });
             });
-        </script>
+        </script>-->
 
         <script>
             jQuery.noConflict();
@@ -359,6 +393,7 @@
     }
 } ?>
 
+<?php if(false){ ?>
 <!-- MAil chimp poup -->
 <div id="MailpopForm"  style="display:none">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('popup/css/popup.css'); ?>"/>
@@ -542,6 +577,6 @@
 
 
 <!-- Shivaji New Code -->
-
+<?php } ?>
 		
 		
