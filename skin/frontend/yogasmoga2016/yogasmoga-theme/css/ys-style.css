@@ -3930,10 +3930,13 @@ input[name="prodTab"]{display:none;}
  #globalheader ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
  .color-change ul.tr-menu > li > ul.sub-menu li a{color:#555;}
  .color-change ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
- .color-change ul.main-menu li a.menu-heading{color:#555;}
+ .color-change ul.main-menu li a.menu-heading,.color-change .main-menu2 > li a.main-heading{color:#555;}
  
 ul.main-menu li ul.sub-menu{background:#ad8435;width:100%;padding:20px;box-sizing:border-box;}
 ul.main-menu li ul.sub-menu > li{border-left:none;width:15%;box-sizing:border-box;}
+ul.main-menu2 li{position:static;}
+ul.main-menu2 li .sub-menu{left:0!important;}
+
 ul.main-menu .nav-img{ box-sizing: border-box;
     float: right;
     width: 15%;}
