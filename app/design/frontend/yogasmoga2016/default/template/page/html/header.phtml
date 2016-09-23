@@ -860,11 +860,13 @@ jQuery(document).ready(function(){
 		jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 300, queue: false });
 		jQuery("#ysheader .posRel img").addClass("resizable");
 		jQuery(".bagshow").removeClass("active");
+		jQuery("#globalheader").addClass("color-change");
 	   }
 	   else{jQuery("#ysheader").addClass("scrolled-effect");
 	   jQuery("#ysheader").stop().animate({top:'0'},{ duration: 300, queue: false });
 	   jQuery("#ysheader .posRel img").removeClass("resizable");
 	   jQuery(".bagshow").addClass("active");
+	   jQuery("#globalheader").removeClass("color-change");
 	   }
 	    
     });
