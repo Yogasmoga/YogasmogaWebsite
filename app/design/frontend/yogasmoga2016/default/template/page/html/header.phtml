@@ -389,7 +389,7 @@ if(!$loggedIn){ ?>
 
 <?php  } 
 else { ?>
- <div style="height:69px !important;" class="header-container">
+ <div  style="height:69px !important;" class="header-container">
 
  
 <?php } ?>
@@ -433,7 +433,7 @@ else { ?>
 	}	
     ?>
 	
-	<div style="height:109px !important;" class="header-container">
+	<div id="ysheader" style="height:109px !important;" class="header-container scrolled-effect">
 	<div style="height:40px;padding:0 40px;" class="header-banner">
 	<div style="border-bottom:1px solid #ccc;float:left;width:100%;">
 	<?php 
@@ -670,7 +670,7 @@ else { ?>
                         $categoryName = explode('/', $currentUrl);
                         $urlKey = $categoryName[3];
                         
-
+						echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-women.jpg").'"></div>';
                         echo "</ul></li>";
                     }
 
@@ -734,7 +734,7 @@ else { ?>
                         </ul>
                         <span>|</span>
                     </li>
-                    <li><a href="javascript:void(0);" class="open-cart">Shopping Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
+                    <li><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
                     <li class="checkoutshow" style="display:none;"><span>|</span><a class="checkout-link-top" href="<?php echo $this->getBaseUrl();?>checkout/onepage">Checkout</a></li>
                 </ul>
             </div>
@@ -742,16 +742,25 @@ else { ?>
                 <div class="in-bl">
                     <ul class="main-menu main-menu2">
                         <li><a href="<?php echo $this->getBaseUrl();?>our-story" class="main-heading">ys story</a>
-                            <ul class="sub-menu l-align cms-header-link" style="left:-69px;">
-                                <li><a href="<?php echo $this->getBaseUrl();?>our-story">Our Story</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>our-core-values">Our core values</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>our-ethics">Our ethics</a></li>
-                                <!--<li><a href="<?php echo $this->getBaseUrl();?>our-stores">Our Stores</a></li>-->
-                                <li><a href="<?php echo $this->getBaseUrl();?>made-in-usa">Made in usa</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>principles-of-yoga">Principles of yoga</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>namaskar">Namaskár Foundation</a></li>
-                                <?php /*?><li><a href="<?php echo $this->getBaseUrl();?>international-yoga-day">International Yoga Day</a></li><?php */ ?>
-                                <li><a href="<?php echo $this->getBaseUrl();?>press">Press</a></li>
+                            <ul class="sub-menu l-align ys-content" style="left:-73px;">
+                                <div class="left-side">
+                                        <div class="left-st-image"><img sr="<?php echo $this->getSkinUrl('images/')?>"></div>
+
+                                    <ul>
+                                        <li><a href="<?php echo $this->getBaseUrl();?>ys-fabric-tech">ys fabric tech</a></li>
+                                        <li><a href="<?php echo $this->getBaseUrl();?>ys-color-tech">ys color tech</a></li>
+                                        <li><a href="<?php echo $this->getBaseUrl();?>design-elements">ys design elements</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="<?php echo $this->getBaseUrl();?>ys-fabric-tech">ys fabric tech</a></li>
+                                        <li><a href="<?php echo $this->getBaseUrl();?>ys-color-tech">ys color tech</a></li>
+                                        <li><a href="<?php echo $this->getBaseUrl();?>design-elements">ys design elements</a></li>
+                                    </ul>
+
+                                </div>
+                                <div class="right-side">
+                                    <div class="left-st-image"></div>
+                                </div>
                             </ul>
                         </li>
                         <li><a href="<?php echo $this->getBaseUrl();?>ys-fabric-tech" class="main-heading">ys tech</a>
@@ -762,6 +771,8 @@ else { ?>
                             </ul>
                         </li>
 						<li><a href="<?php echo $this->getBaseUrl();?>our-stores" class="main-heading">YS Stores</a></li>
+						
+						
                      <!--   <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks" class="main-heading">Smogi Bucks</a>
                             <ul class="sub-menu mlink l-align" style="left:-57px;">
                                 <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks">what is smogi bucks</a></li>
@@ -839,3 +850,42 @@ if($getGOYSFirstUser == 0 || $paymethod != 'stripe'){
 }
 //end coded by shivaji chauhan
 ?>
+<script>
+jQuery(document).ready(function(){
+     jQuery(window).scroll(function() {
+        var mainbody = jQuery("body").scrollTop();		
+       if (mainbody > 40) {
+	    jQuery("#ysheader").removeClass("scrolled-effect");
+	    
+		jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 300, queue: false });
+		jQuery("#ysheader .posRel img").addClass("resizable");
+		jQuery(".bagshow").removeClass("active");
+	   }
+	   else{jQuery("#ysheader").addClass("scrolled-effect");
+	   jQuery("#ysheader").stop().animate({top:'0'},{ duration: 300, queue: false });
+	   jQuery("#ysheader .posRel img").removeClass("resizable");
+	   jQuery(".bagshow").addClass("active");
+	   }
+	    
+    });
+	 jQuery("#ysheader").mouseover(function(){       
+        if (!jQuery("#ysheader").hasClass("scrolled-effect")) {
+            jQuery(this).stop().animate({top:'0'});   
+ jQuery("#ysheader .posRel img").removeClass("resizable");			
+ 		
+ 
+        }		
+    });
+	 jQuery("#ysheader").mouseout(function(){
+        
+        //move Nav back up
+        if (!jQuery("#ysheader").hasClass("scrolled-effect")) {
+            jQuery(this).stop().animate({top:'-50'});
+           jQuery("#ysheader .posRel img").addClass("resizable");	
+				   
+        }
+    });
+	
+	
+    });
+</script>

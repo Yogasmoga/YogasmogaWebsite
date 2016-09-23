@@ -3885,6 +3885,35 @@ input[name="prodTab"]{display:none;}
 }
 
 /*********** home page changes start **************/
+#globalheader ul.main-menu li a,#globalheader ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
+
+ul.main-menu li ul.sub-menu{background:#ad8435;width:100%;padding:20px;box-sizing:border-box;}
+ul.main-menu li ul.sub-menu > li{border-left:none;width:15%;box-sizing:border-box;}
+ul.main-menu .nav-img{ box-sizing: border-box;
+    float: right;
+    width: 15%;}
+ul.main-menu .nav-img img{width:100%;height:auto;}
+
+.bagshow {background: #ae8536;
+    width: 25px;
+    height: 25px!important;
+    border-radius: 25px;
+    color: #fff!important;
+    padding: 0!important;
+	display:none;
+	}
+	.bagshow.active{display:block;}
+	.bagshow a span{color:#fff;}
+.bagshow:hover{background: #ae8536!important; padding: 0!important;}
+#ysheader .posRel .resizable{    margin-top: 12px;
+    height: 22px !important;
+    transition: all 0.3s;}
+.scrolled-effect .free-shipping-txt,.scrolled-effect #welcome-name,.scrolled-effect .header-banner .orange-banner,.scrolled-effect ul.main-menu li a.menu-heading,.scrolled-effect ul.main-menu2 a.main-heading,.scrolled-effect .tr-menu>li>a:first-child{color:#fff;}
+#ysheader.header-container{background:#fff; }
+#ysheader.header-container.scrolled-effect{background:transparent!important;}
+
+
+div#bodycompensator{height:0!important;}
   .gridfull.nophotoshop {opacity:1!important;}
 	.gridfull.nophotoshop .over-the-slide {background:none!important;width:100%;left:0;right:0;
 	 box-sizing: border-box;
