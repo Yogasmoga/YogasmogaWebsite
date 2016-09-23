@@ -853,8 +853,9 @@ if($getGOYSFirstUser == 0 || $paymethod != 'stripe'){
 <script>
 jQuery(document).ready(function(){
      jQuery(window).scroll(function() {
-        var mainbody = jQuery("body").scrollTop();		
+        var mainbody = jQuery(window).scrollTop();		
        if (mainbody > 40) {
+		   
 	    jQuery("#ysheader").removeClass("scrolled-effect");
 	    
 		jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 300, queue: false });
