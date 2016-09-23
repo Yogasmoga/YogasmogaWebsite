@@ -28,7 +28,7 @@ else {
 }
 ?>
 
-<?php /* ?>
+<?php  ?>
 <div id="signup" style="display: none;">
     <div id="sign_up_box">
 <!--        <img nopin="nopin" style="width:50%; margin-top: 8%;" src="--><?php //echo $this->getSkinUrl('images/red_popup_text.png') ?><!--" alt="FEEL THE SMOGI LOVE. Sign up and earn 50% Off on your first order." />-->
@@ -155,8 +155,8 @@ else {
         </table>
     </div>
 </div>
-<?php */ ?>
-
+<?php /* ?>
+// Mailchimp popup commented. that is connected to mailchimp_signup.php located on root.
 <div id="signup" class="mc-signup" style="display:none;">
 		
 	<div class="signup-content">
@@ -195,32 +195,33 @@ Made in the USA apparel.</p>
 	<!--signup-thankyou-->
 
 </div>
-
+<?php */?>
+<?php /* ?>
 <script type="application/javascript">
     jQuery(document).ready(function($){
-		//$("#signup").dialog( "open" );
-		$("#popup-mailsignup").submit(function(event){
-		event.preventDefault();
+        //$("#signup").dialog( "open" );
+        $("#popup-mailsignup").submit(function(event){
+            event.preventDefault();
 
-		$("#err-msg").css("visibility","hidden");
+            $("#err-msg").css("visibility","hidden");
 
-        var formid = "#popup-mailsignup";
-		var email_id = $.trim($("#Memail_address").val());
-		if(email_id == "" || email_id == "Email Address")
-        {
+            var formid = "#popup-mailsignup";
+            var email_id = $.trim($("#Memail_address").val());
+            if(email_id == "" || email_id == "Email Address")
+            {
                 event.preventDefault();
                 $("#err-msg").css("visibility","visible");
                 $("#err-msg").text("Please enter an email address.");
                 return;
-        }
-		if(!validateEmail(email_id)){
-				event.preventDefault();
+            }
+            if(!validateEmail(email_id)){
+                event.preventDefault();
                 $("#err-msg").css("visibility","visible");
                 $("#err-msg").text("Enter a valid email.");
-				return;
-		}
+                return;
+            }
 
-			if(window.location.href.indexOf('https://') >= 0)
+            if(window.location.href.indexOf('https://') >= 0)
                 _usesecureurl = true;
             else
                 _usesecureurl = false;
@@ -230,59 +231,60 @@ Made in the USA apparel.</p>
             }
 
 
-				jQuery.ajax({
-					url     :   url,
-					type    :   'POST',
-					data    :   {'email':email_id},
-					beforeSend: function() {
-						/*jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");*/
-                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
-						//jQuery("#popup-mailsignup").parent().hide();
-						jQuery("#popup-mailsignup .form-loader-mail").show();
-					},
-					success: function (data) {
-						data = eval('(' + data + ')');
-						var status = data.status;
-						jQuery("#popup-mailsignup .form-loader-mail").hide();
-						
-						if (status == "success") {
-							jQuery("#popup-mailsignup").parent().hide();
-							$(".signup-thankyou").show();
-							jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGN UP");
-							$('.ui-icon-closethick,.close-text').click(function(){
-								$(".signup-thankyou").hide();
-								$(".signup-content").show();
-								$("#Memail_address").val('');
-							});
-						}
-						else
-						{
-							$("#signup-button-mailc").val("SIGN UP");
-							jQuery("#signup-button-mailc").parent().show();
-							$("#popup-mailsignup #err-msg").html(data.error).css("visibility","visible");
-						}
-					}
-				});
-	});
-	
-	$(".close-text").click(function(){
-		$("#signup").dialog( "close" );
-	});
-	$(".opensignin").click(function(){
-		$("#signup").dialog( "close" );
-		$("#signing_popup").dialog( "open" );
-	});
-	
-	$('#Memail_address').on('focus keypress',function(){		
-			if($(this).val().length > 0){
-				$('#signup-button-mailc').addClass('on');			
-			}
-			else{
-				$('#signup-button-mailc').removeClass('on');			
-			}
-			
-		});
-});
+            jQuery.ajax({
+                url     :   url,
+                type    :   'POST',
+                data    :   {'email':email_id},
+                beforeSend: function() {
+                    //jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+                    jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
+                    //jQuery("#popup-mailsignup").parent().hide();
+                    jQuery("#popup-mailsignup .form-loader-mail").show();
+                },
+                success: function (data) {
+                    data = eval('(' + data + ')');
+                    var status = data.status;
+                    jQuery("#popup-mailsignup .form-loader-mail").hide();
+
+                    if (status == "success") {
+                        jQuery("#popup-mailsignup").parent().hide();
+                        $(".signup-thankyou").show();
+                        jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGN UP");
+                        $('.ui-icon-closethick,.close-text').click(function(){
+                            $(".signup-thankyou").hide();
+                            $(".signup-content").show();
+                            $("#Memail_address").val('');
+                        });
+                    }
+                    else
+                    {
+                        $("#signup-button-mailc").val("SIGN UP");
+                        jQuery("#signup-button-mailc").parent().show();
+                        $("#popup-mailsignup #err-msg").html(data.error).css("visibility","visible");
+                    }
+                }
+            });
+        });
+
+        $(".close-text").click(function(){
+            $("#signup").dialog( "close" );
+        });
+        $(".opensignin").click(function(){
+            $("#signup").dialog( "close" );
+            $("#signing_popup").dialog( "open" );
+        });
+
+        $('#Memail_address').on('focus keypress',function(){
+            if($(this).val().length > 0){
+                $('#signup-button-mailc').addClass('on');
+            }
+            else{
+                $('#signup-button-mailc').removeClass('on');
+            }
+
+        });
+    });
 
 </script>
 <!-- Shivaji New Code -->
+<?php */ ?>
