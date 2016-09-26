@@ -902,7 +902,7 @@ input.change_username {
 #signin_popup.mc_signinpopup .mage.signin-block .close-text { margin-bottom: 20px;}  
 #signin_popup.mc_signinpopup .mage.signin-block .form input.text{font-size:16px!important;line-height:22px!important;font-family:gothamBook; border-bottom:1px solid #fff;letter-spacing:1px;
 	height:25px;margin-bottom:20px;}
-#signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup{font-size:16px; line-height:26px;font-family:gothamBook;margin-bottom:50px; clear:both;}
+#signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup{font-size:16px; line-height:26px;font-family:gothamBook;margin-bottom:32px; clear:both;}
 #signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup label{float:right;margin-left:39px;}
 #signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup label span{float:left;}
 #signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup label span { background: #fff none repeat scroll 0 0; color: transparent;

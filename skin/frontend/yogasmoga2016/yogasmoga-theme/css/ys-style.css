@@ -3348,6 +3348,7 @@ width:100%!important;height:100%!important;
 #signup.mage-signup #err-msg{color:#f56200; font-size:16px!important;width:auto!important; text-align:left;}
 #signup.mage-signup .svg-logontext{margin-bottom:50px;}
 @media only screen and (max-width : 1400px) {
+	#signup.mage-signup #popup-register td.gender_tr .gender_p{font-size:14px;}
 	#signup.mage-signup .gender_p label{font-size:14px!important;}
 	#signup.mage-signup .close-text,#signup.mage-signup .opensignin{font-size:14px;}	
 	#signup.mage-signup #popup-register td input{font-size:14px;}
@@ -3361,6 +3362,7 @@ width:100%!important;height:100%!important;
 }
 
 @media only screen and (max-width : 1300px) {
+	#signup.mage-signup #popup-register td.gender_tr .gender_p{font-size:13px;}
 	#signup.mage-signup .gender_p label{font-size:13px!important;}
 	#signup.mage-signup .close-text,#signup.mage-signup .opensignin{font-size:13px;}	
 	#signup.mage-signup #popup-register td input{font-size:13px;}
