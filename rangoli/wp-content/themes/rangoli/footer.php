@@ -136,7 +136,7 @@ if(!isset($ipInfo)){
         </div>
     </div>-->
 
-
+	<?php if(false){ ?>
 	<!------------------------------mailchimp signup form------------------------------>
 	<div id="signup-box" class="mc-signup">
 	<div class="signin-block">
@@ -249,7 +249,7 @@ if(!isset($ipInfo)){
 </script>
 <!-- Shivaji New Code -->
 <!------------------------------mailchimp signup form end------------------------------>
-
+<?php } ?>
 
 	
     <div class="your-color-block" style="background: url('<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/random-color.png') no-repeat; background-size:100%; background-position: 4px -2px; ">
