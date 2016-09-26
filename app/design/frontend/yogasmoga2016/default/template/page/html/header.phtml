@@ -771,7 +771,7 @@ else { ?>
 
                                 </div>
                                 <div class="right-side">
-                                   <div class="left-st-image"><img src="<?php echo $this->getSkinUrl('images/nav-ysstore2.jpg')?>"></div>
+                                   <div class="left-st-image"><img src="<?php echo $this->getSkinUrl('images/nav-ystech.jpg')?>"></div>
 
                                     <ul>
                                          <li><a href="<?php echo $this->getBaseUrl();?>ys-fabric-tech">ys fabric tech</a></li>
@@ -913,40 +913,41 @@ if($getGOYSFirstUser == 0 || $paymethod != 'stripe'){
 //end coded by shivaji chauhan
 ?>
 <script>
-jQuery(document).ready(function(){
-     jQuery(window).scroll(function() {
-        var mainbody = jQuery(window).scrollTop();		
+var jQ = jQuery.noConflict();
+jQ(document).ready(function(){
+     jQ(window).scroll(function() {
+        var mainbody = jQ(window).scrollTop();		
        if (mainbody > 40) {
 		   
-	    jQuery("#ysheader").removeClass("scrolled-effect");
+	    jQ("#ysheader").removeClass("scrolled-effect");
 	    
-		jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 300, queue: false });
-		jQuery("#ysheader .posRel img").addClass("resizable");
-		jQuery(".bagshow").removeClass("active");
-		jQuery("#globalheader").addClass("color-change");
+		jQ("#ysheader").stop().animate({top:'-50'},{ duration: 300, queue: false });
+		jQ("#ysheader .posRel img").addClass("resizable");
+		jQ(".bagshow").removeClass("active");
+		jQ("#globalheader").addClass("color-change");
 	   }
-	   else{jQuery("#ysheader").addClass("scrolled-effect");
-	   jQuery("#ysheader").stop().animate({top:'0'},{ duration: 300, queue: false });
-	   jQuery("#ysheader .posRel img").removeClass("resizable");
-	   jQuery(".bagshow").addClass("active");
-	   jQuery("#globalheader").removeClass("color-change");
+	   else{jQ("#ysheader").addClass("scrolled-effect");
+	   jQ("#ysheader").stop().animate({top:'0'},{ duration: 300, queue: false });
+	   jQ("#ysheader .posRel img").removeClass("resizable");
+	   jQ(".bagshow").addClass("active");
+	   jQ("#globalheader").removeClass("color-change");
 	   }
 	    
     });
-	 jQuery("#ysheader").mouseover(function(){       
-        if (!jQuery("#ysheader").hasClass("scrolled-effect")) {
-            jQuery(this).stop().animate({top:'0'});   
- jQuery("#ysheader .posRel img").removeClass("resizable");			
+	 jQ("#ysheader").mouseover(function(){       
+        if (!jQ("#ysheader").hasClass("scrolled-effect")) {
+            jQ(this).stop().animate({top:'0'});   
+ jQ("#ysheader .posRel img").removeClass("resizable");			
  		
  
         }		
     });
-	 jQuery("#ysheader").mouseout(function(){
+	 jQ("#ysheader").mouseout(function(){
         
         //move Nav back up
-        if (!jQuery("#ysheader").hasClass("scrolled-effect")) {
-            jQuery(this).stop().animate({top:'-50'});
-           jQuery("#ysheader .posRel img").addClass("resizable");	
+        if (!jQ("#ysheader").hasClass("scrolled-effect")) {
+            jQ(this).stop().animate({top:'-50'});
+           jQ("#ysheader .posRel img").addClass("resizable");	
 				   
         }
     });
