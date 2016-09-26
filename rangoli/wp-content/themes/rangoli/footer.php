@@ -113,7 +113,7 @@ if(!isset($ipInfo)){
     $root = str_replace("/rangoli","/",$root);
     ?>
 
-    <!--<div class="signin-block" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
+    <div class="signin-block mage" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
 
         <div class="close_signin_popup" ></div>
         <div class="form">
@@ -134,9 +134,9 @@ if(!isset($ipInfo)){
                 Already signed up?<br/><a style="cursor: pointer;" onclick="$('.login_logout_link').click();">Sign in here</a>
             </div>
         </div>
-    </div>-->
+    </div>
 
-
+	<?php if(false){ ?>
 	<!------------------------------mailchimp signup form------------------------------>
 	<div id="signup-box" class="mc-signup">
 	<div class="signin-block">
@@ -249,7 +249,7 @@ if(!isset($ipInfo)){
 </script>
 <!-- Shivaji New Code -->
 <!------------------------------mailchimp signup form end------------------------------>
-
+<?php } ?>
 
 	
     <div class="your-color-block" style="background: url('<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/random-color.png') no-repeat; background-size:100%; background-position: 4px -2px; ">
