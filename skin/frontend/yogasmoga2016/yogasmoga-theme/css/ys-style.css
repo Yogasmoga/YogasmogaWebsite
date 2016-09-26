@@ -4049,7 +4049,15 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
  .common-listing .scrolled-effect .free-shipping-txt,.common-listing .scrolled-effect #welcome-name,.common-listing .scrolled-effect .header-banner .orange-banner,.common-listing .scrolled-effect ul.main-menu li a.menu-heading,.common-listing .scrolled-effect ul.main-menu2 a.main-heading,.common-listing .scrolled-effect .tr-menu>li>a:first-child{color:#555;}
 .common-listing .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading {color:#555;}
 .common-listing .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading {color:#555;}
+.common-listing #ysheader{background:#fff!important;}
 
+.cms-page-view  div#bodycompensator { height: 109px !important;} 
+/****** color change start ********/
+.cms-page-view .scrolled-effect .free-shipping-txt,.cms-page-view .scrolled-effect #welcome-name,.cms-page-view .scrolled-effect .header-banner .orange-banner,.cms-page-view .scrolled-effect ul.main-menu li a.menu-heading,.cms-page-view .scrolled-effect ul.main-menu2 a.main-heading,.cms-page-view .scrolled-effect .tr-menu>li>a:first-child{color:#555;}
+.cms-page-view .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading {color:#555;}
+.cms-page-view .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading {color:#555;}
+
+/****** color change end ********/
 /****** color change end ********/
 	/*********** home page changes end **************/
 
