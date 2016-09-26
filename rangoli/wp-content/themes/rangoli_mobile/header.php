@@ -1107,7 +1107,7 @@ if (!is_user_logged_in() && is_home()) {
 <?php
 if(!is_user_logged_in() && is_home()) {
 ?>
-  <div  class="mobile-orange-banner">SIGN UP NOW TO INSTANTLY GET 50% OFF YOUR FIRST ORDER</div>
+  <div  class="mobile-orange-banner">SIGN UP NOW TO RECEIVE $25 SMOGI BUCKS</div>
 <?php
 }
 ?>
