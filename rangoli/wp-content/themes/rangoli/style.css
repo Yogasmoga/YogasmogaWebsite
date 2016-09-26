@@ -913,7 +913,7 @@ input.change_username {
 @media only screen and (max-width : 1400px) {
 	#signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup{font-size:14px}
 	#signin_popup.mc_signinpopup .mage.signin-block .close-text,#signin_popup.mc_signinpopup .mage.signin-block .opensignin{font-size:14px;}	
-	#signin_popup.mc_signinpopup .mage.signin-block .form input.text{font-size:14px!important; height:20px;}
+	#signin_popup.mc_signinpopup .mage.signin-block .form input.text{font-size:14px!important; height:22px;}
 	#signin_popup.mc_signinpopup .mage.signin-block .err-msg{font-size:14px!important;}
 	
 	#signin_popup.mc_signinpopup .mage.signin-block .svg-logontext{margin-bottom:40px; max-width:360px;}
