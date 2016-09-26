@@ -888,4 +888,21 @@ input.change_username {
 .mc-center-popup,.bullzai{display:none!important;}
 
 /*-----magento signup popup--*/
-#signin_popup.mc_signinpopup{background-image:url(images/mage-signupbg.png)}
+#signin_popup.mc_signinpopup{background-image:url(images/mage-signupbg.png)!important; background-color:#000!important;}
+#signin_popup .mage.signin-block{background:none!important; bottom: auto;left: 50%;max-width: 497px;top: 50%; transform: translate(-50%, -50%); width: 100%; height:auto;margin:0;
+	border-radius:0; box-shadow:0 0 0;}
+#signin_popup .mage.signin-block .close_signin_popup{display:none;}
+#signin_popup .mage.signin-block .form{width:100%; margin:0;text-align:center;}
+#sign-up-form{padding:0 47px;display:block;margin-bottom:50px;}
+#signin_popup.mc_signinpopup .mage.signin-block #signup {background: #1eaa18 none repeat scroll 0 0!important;font-family: gothamBold;font-size: 13px;
+  height: 42px;line-height: 42px; padding: 0;text-transform: uppercase;width: 100%!important;margin:0!important;}
+#signin_popup.mc_signinpopup .mage.signin-block .close-text,#signin_popup.mc_signinpopup .mage.signin-block .opensignin {
+  color: #ae8536; cursor: pointer; font-family: ITCAvantGardeStd-Md; font-size: 16px; letter-spacing: 0.24px; margin-bottom: 0; text-decoration: underline;}
+#signin_popup.mc_signinpopup .mage.signin-block .close-text { margin-bottom: 20px;}  
+#signin_popup.mc_signinpopup .mage.signin-block .form input.text{font-size:16px!important;line-height:22px!important;font-family:gothamBook; border-bottom:1px solid #fff;letter-spacing:1px;
+	height:25px;margin-bottom:20px;}
+#signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup{font-size:16px; line-height:26px;font-family:gothamBook;margin-bottom:50px; clear:both;}
+#signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup label{float:right;margin-left:39px;}
+#signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup label span{float:left;}
+#signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup label span { background: #fff none repeat scroll 0 0; color: transparent;
+  float: left; height: 24px; line-height: 24px; margin-right: 16px; width: 24px;top:0;}

@@ -3343,7 +3343,7 @@ width:100%!important;height:100%!important;
 #signup.mage-signup .close-text{margin-bottom:20px;}	
 #signup.mage-signup	.form-inner{padding:0 47px;margin-bottom:50px;}
 #signup.mage-signup #popup-register tr{height:25px;}
-#signup.mage-signup #popup-register td.gender_tr .gender_p{margin-top:20px;font-family:gothamBook;}
+#signup.mage-signup #popup-register td.gender_tr .gender_p{margin-top:20px;font-family:gothamBook;font-size:16px;}
 #signup.mage-signup #popup-register td input{font-size:16px; font-family:gothamBook;}
 #signup.mage-signup #err-msg{color:#f56200; font-size:16px!important;width:auto!important; text-align:left;}
 #signup.mage-signup .svg-logontext{margin-bottom:50px;}
