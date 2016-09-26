@@ -888,7 +888,7 @@ input.change_username {
 .mc-center-popup,.bullzai{display:none!important;}
 
 /*-----magento signup popup--*/
-#signin_popup.mc_signinpopup{background-image:url(images/mage-signupbg.png)!important; background-color:#000!important;}
+#signin_popup.mc_signinpopup{background-image:url(images/mage-signupbg.png)!important; background-color:#000!important; background-size:cover!important;}
 #signin_popup .mage.signin-block{background:none!important; bottom: auto;left: 50%;max-width: 497px;top: 50%; transform: translate(-50%, -50%); width: 100%; height:auto;margin:0;
 	border-radius:0; box-shadow:0 0 0;}
 #signin_popup .mage.signin-block .close_signin_popup{display:none;}
