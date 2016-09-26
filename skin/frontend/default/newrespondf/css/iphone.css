@@ -8217,7 +8217,7 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
 #popForm.mage-signup input[type="text"], #popForm.mage-signup input[type="password"]{border-bottom:1px solid #717171;}
 #popForm.mage-signup input[type="text"].on, #popForm.mage-signup input[type="password"].on{color:#fff!important;}
 #popForm.mage-signup input[data-watermark],#popForm.mage-signup input.watermark_password,#popForm.mage-signup input.watermark_password.on,#popForm.mage-signup .gender-link span label{color:#717171!important; opacity:1!important}
-
+#popForm.mage-signup .svg-logontext{max-width:100%;}
 #popForm.mage-signup .no-thanks, #popForm.mage-signup .already_signed_up {
   color: #ae8536; display: inline-block; float: none; font: 12px/24px ITCAvantGardeStd-Md;
   margin: 0; letter-spacing:0.18; opacity: 1; text-align: center; text-decoration: underline;}
