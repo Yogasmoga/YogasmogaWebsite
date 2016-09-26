@@ -433,7 +433,7 @@
 
 <?php
 $style= "";
-//if(!is_user_logged_in()){
+if(!is_user_logged_in()){
     $style= "margin-top:25px;";
     echo "<style>
         .pace .pace-progress {
@@ -441,10 +441,12 @@ $style= "";
         }
     </style>";
      ?>
-    <div class="banner" style="">  <!--onclick="open_red_popup()"-->
-        RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30
+    <div class="banner" style="text-transform: uppercase"  onclick="open_red_popup()">
+        <?php /* ?>RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30<?php */ ?>
+        Sign up now to instantly get 25% off your first order
+
     </div>
-    <?php //}?>
+    <?php }?>
 <div class="header-container" style="<?php echo $style; ?>">
     <div class="header">
         <div class="header-left">

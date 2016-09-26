@@ -101,8 +101,8 @@
                 
                     <ul class="before-login <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()) echo 'sb-show'; ?>">
                         <li><a href="javascript:void(0);" id="" class="smogi-love gothambd">FEEL THE SMOGI LOVE</a></li>
-                        <?php /* ?><li class="smogi-love">Sign up for $25 SMOGI Bucks<br/> toward your first order.</li><?php */ ?>
                         <li class="smogi-love">Sign up now to instantly get 25% off your first order</li>
+<?php /* ?><li class="smogi-love">Sign up now to instantly get 25% off your first order</li><?php */ ?>
                     </ul>               
                     
                 </li>
@@ -203,14 +203,14 @@ window.onload = function(){
 
         <?php
         $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
-        //if(!$loggedIn){ ?>
+        if(!$loggedIn){ ?>
             <script>
 
                 jQuery(document).ready(function() {
-                /*    jQuery(".orange-banner").click(function(){
+                   jQuery(".orange-banner").click(function(){
                         jQuery("#signup").dialog( "open" );
 
-                    });*/
+                    });
 
                     jQuery("#pagecontainer").css("margin-top","0");
                     jQuery("div#bodycompensator").css("height","94px");
@@ -247,23 +247,23 @@ window.onload = function(){
 
 
             </script>
-        <?php  /* }
+        <?php   }
         else {
         ?>
             <script>
                 jQuery( document ).ready(function() {
                     jQuery("#pagecontainer").css("margin-top","0px");
-//jQuery("#div_sizes").css("top","auto");
-                    //jQuery("#div_sizes").css("top","94px");
-                    //jQuery("#div_sizes.fixed_top").css("top","69px"); //without banner.
+                    //jQuery("#div_sizes").css("top","auto");
+                    jQuery("#div_sizes").css("top","94px");
+                    jQuery("#div_sizes.fixed_top").css("top","69px"); //without banner.
 
-                    jQuery("#div_sizes.fixed_top").css("top","94px"); //with banner.
-                    jQuery("div#bodycompensator").css("height","94px");
+                   // jQuery("#div_sizes.fixed_top").css("top","94px"); //with banner.
+                   // jQuery("div#bodycompensator").css("height","94px");
 
 
                 });
             </script>
-        <?php } */
+        <?php }
         ?>
 
 

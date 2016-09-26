@@ -1171,13 +1171,14 @@ if (!is_user_logged_in() && is_home()) {
         top: 88px;
         width: 100%;
         font-family:ITCAvantGardeStd-Md;
-        z-index: 8; padding:10px;}
+        z-index: 8; padding:10px; text-transform: uppercase;}
 </style>
     <?php
-    //if(!is_user_logged_in() && is_home()) {
-    if(is_home()) {
+    if(!is_user_logged_in() && is_home()) {
+    //if(is_home()) {
         ?>
-        <div  class="mobile-orange-banner">RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30</div>
+        <?php /*?><div  class="mobile-orange-banner">RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30</div><?php */ ?>
+    <div  class="mobile-orange-banner">Sign up now to instantly get 25% off <br/>your first order</div>
         <?php
     }
     ?>

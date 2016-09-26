@@ -8165,7 +8165,9 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
     width: 100%;
     font-family: GraphikRegular;
     z-index: 999;
-    padding: 10px;}
+    padding: 10px;
+    text-transform: uppercase;
+}
 
 
 
