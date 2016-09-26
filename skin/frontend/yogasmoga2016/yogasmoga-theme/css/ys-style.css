@@ -3347,6 +3347,10 @@ width:100%!important;height:100%!important;
 #signup.mage-signup #popup-register td input{font-size:16px; font-family:gothamBook;}
 #signup.mage-signup #err-msg{color:#f56200; font-size:16px!important;width:auto!important; text-align:left;}
 #signup.mage-signup .svg-logontext{margin-bottom:50px;}
+
+#signup.mage-signup #thank_you_box{position:absolute;top:50%; left:50%; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);}
+
+
 @media only screen and (max-width : 1400px) {
 	#signup.mage-signup #popup-register td.gender_tr .gender_p{font-size:14px;}
 	#signup.mage-signup .gender_p label{font-size:14px!important;}
