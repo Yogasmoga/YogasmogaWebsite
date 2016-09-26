@@ -113,7 +113,7 @@ if(!isset($ipInfo)){
     $root = str_replace("/rangoli","/",$root);
     ?>
 
-    <div class="signin-block" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
+    <div class="signin-block mage" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
 
         <div class="close_signin_popup" ></div>
         <div class="form">
