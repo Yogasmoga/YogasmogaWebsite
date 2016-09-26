@@ -734,8 +734,8 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
                 if( winScrollTop > filterOffsetTop){
 
                     jQuery("#div_sizes").addClass("fixed_top");
-                    //jQuery("#div_sizes.fixed_top").css("top","69px");
-					jQuery("#div_sizes.fixed_top").css("top","94px");
+                    jQuery("#div_sizes.fixed_top").css("top","69px");
+					//jQuery("#div_sizes.fixed_top").css("top","94px");
                 }else{
                     jQuery("#div_sizes").removeClass("fixed_top");
                     jQuery("#div_sizes").css("top","auto");
