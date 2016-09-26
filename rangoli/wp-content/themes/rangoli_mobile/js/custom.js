@@ -518,10 +518,10 @@ $(window).load(function () {
 
 					//remove comment to display default popup
                     //$(".open_signup").click();
-
+					jQuery(".mobile-orange-banner").click();
 					//mailchimp popup
-					$(".popup").fadeIn();
-					$(".MailpopForm").fadeIn();
+					//$(".popup").fadeIn();
+					//$(".MailpopForm").fadeIn();
 					//mailchimp popup
 
                     is_login_box_open = false
