@@ -914,8 +914,9 @@ if($getGOYSFirstUser == 0 || $paymethod != 'stripe'){
 ?>
 <script>
 var jQ = jQuery.noConflict();
-jQ(document).ready(function(){
-     jQ(window).scroll(function() {
+jQ(document).ready(function($){
+     jQ = $.noConflict();
+	 jQ(window).scroll(function() {
         var mainbody = jQ(window).scrollTop();		
        if (mainbody > 40) {
 		   
