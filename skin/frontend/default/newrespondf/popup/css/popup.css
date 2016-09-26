@@ -595,7 +595,7 @@ width: 100%;
 #popForm.mage-signup .gender-link{margin-bottom:0;}
 #popForm.mage-signup .gender-link span label.on{color:#fff!important;}
 #popForm.mage-signup .gender-link .f-right div label.f2,#popForm.mage-signup .gender-link .f-right div label.f1{line-height:30px;}
-#popForm.mage-signup .gender-link .f-right div label.f2::before {color: #fff;content: "F";font: 15px/30px itcavantgardestd-md;text-align: center;}
-#popForm.mage-signup .gender-link .f-right div label.f1::before {color: #fff;content: "M";font: 15px/30px itcavantgardestd-md;text-align: center;}
+#popForm.mage-signup .gender-link .f-right div label.f2::before {color: #fff;content: "F";font: 15px/35px itcavantgardestd-md;text-align: center;}
+#popForm.mage-signup .gender-link .f-right div label.f1::before {color: #fff;content: "M";font: 15px/35px itcavantgardestd-md;text-align: center;}
 #popForm.mage-signup .gender-link .f-right div{width:30px; height:30px; line-height:30px;}
 #popForm.mage-signup .error{position:static; text-align:left; font-size:14px; font-family:graphikregular;}
