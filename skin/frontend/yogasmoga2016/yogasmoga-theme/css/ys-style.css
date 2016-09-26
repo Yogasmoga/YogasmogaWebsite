@@ -3717,10 +3717,12 @@ float:left; margin-left:-40px; }
 }
 /************* size chart ends*************/
 .header .logo.posRel {
-  left: 0;
-  margin: 19px 19px 0 0;
-  position: absolute;
-  right: 0;
+     left: 50%;
+    margin: 19px 19px 0 0;
+    position: absolute;
+    right: auto;
+    transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
 }
 .header .logo a.logo{float:none;}
 div#bodycompensator{height: 109px!important;}
@@ -3928,6 +3930,7 @@ input[name="prodTab"]{display:none;}
 /*********** home page changes start **************/
 .scrolled-effect #globalheader ul.main-menu li a{color:#fff;}
  #globalheader ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
+ 
  .color-change ul.tr-menu > li > ul.sub-menu li a{color:#555;}
  .color-change ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
  .color-change ul.main-menu li a.menu-heading,.color-change .main-menu2 > li a.main-heading{color:#555;}
@@ -4000,6 +4003,40 @@ right:0;
     text-align: center;
 }
 .factorypart.namaskar-block.bucket3 .contentSlider{top:56%;}
+
+.sub-menu a:hover {
+  color: #c03 !important;
+}
+.header-banner .right-bar-menu .tr-menu > li ul a{color:#555;}
+
+.main-menu.main-menu2 .sub-menu  {padding:0;}
+.main-menu.main-menu2 .left-side,.main-menu.main-menu2 .right-side{width:50%;float:left;}
+.main-menu.main-menu2 .left-side .left-st-image,.main-menu.main-menu2 .right-side .left-st-image {
+  float: left;
+  width: 40%;
+}
+.left-st-image > img {
+  height: auto;
+  width: 100%;
+}
+.left-side > ul, .right-side > ul {
+  box-sizing: border-box;
+  float: left;
+  padding: 4% 6%;
+  width: 60%;
+}
+.main-menu.main-menu2 .sub-menu.stores-nav .left-side > ul,.main-menu.main-menu2 .sub-menu.stores-nav .right-side > ul {
+    box-sizing: border-box;
+    float: left;
+    width: 25%;}
+
+ ul.main-menu2 li ul.sub-menu.ys-content li a {
+  font-family: avantgardegothicitcw01d;
+}
+ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
+  font-family: avantgardegothicitcw01d;
+}
+
 	/*********** home page changes end **************/
 
 
