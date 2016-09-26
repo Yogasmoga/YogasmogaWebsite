@@ -224,8 +224,8 @@ window.onload = function(){
                             if( winScrollTop > filterOffsetTop){
 
                                 jQuery("#div_sizes").addClass("fixed_top");
-                                jQuery("#div_sizes.fixed_top").css("top","69px");
-                                //jQuery("#div_sizes.fixed_top").css("top","94px");
+                              //  jQuery("#div_sizes.fixed_top").css("top","69px");
+                                jQuery("#div_sizes.fixed_top").css("top","94px");
                             }else{
                                 jQuery("#div_sizes").removeClass("fixed_top");
                                 jQuery("#div_sizes").css("top","auto");
@@ -253,8 +253,9 @@ window.onload = function(){
             <script>
                 jQuery( document ).ready(function() {
                     jQuery("#pagecontainer").css("margin-top","0px");
-                    //jQuery("#div_sizes").css("top","auto");
-                    jQuery("#div_sizes").css("top","94px");
+                    jQuery("#div_sizes").css("top","auto");
+                    //jQuery("#div_sizes").css("top","94px");
+                    //jQuery("#div_sizes").css("top","69px");
                     jQuery("#div_sizes.fixed_top").css("top","69px"); //without banner.
 
                    // jQuery("#div_sizes.fixed_top").css("top","94px"); //with banner.
@@ -262,6 +263,31 @@ window.onload = function(){
 
 
                 });
+
+                if(jQuery('#div_sizes').length > 0){
+                    function positionFilter(filterOffsetTop){
+                        //alert();
+                        var winScrollTop = jQuery(window).scrollTop();
+                        if( winScrollTop > filterOffsetTop){
+
+                            jQuery("#div_sizes").addClass("fixed_top");
+                             jQuery("#div_sizes.fixed_top").css("top","69px");
+                           // jQuery("#div_sizes.fixed_top").css("top","94px");
+                        }else{
+                            jQuery("#div_sizes").removeClass("fixed_top");
+                            jQuery("#div_sizes").css("top","auto");
+                        }
+                    }
+
+                    var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
+                    positionFilter(filterOffsetTop);
+                    jQuery(window).scroll(function(){
+                        positionFilter(filterOffsetTop);
+
+                    });
+
+
+                }
             </script>
         <?php }
         ?>
