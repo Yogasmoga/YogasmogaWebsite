@@ -193,6 +193,7 @@ if ($this->getRequest()->getParam('color')) {
 //    $breadcrumb .= '&nbsp;/&nbsp;<a href="' . Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl() . '#productgrid">ALL PRODUCTS</a>&nbsp;/';
 
 
+
 $price = $_product->getSpecialPrice();
 if ($price == "")
     $price = $_product->getPrice();
@@ -1081,36 +1082,6 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 			<div class="prod-col pcol-right">
 				<div class="wdth35 pcol-right-content pcol-right-content1">
 				<div class="pcol-right-content-inner">
-                 <?php $catIds =  $_product->getCategoryIds();
-                        $styleIds = array(125,126,127,128,129,130);
-                        $finalIds = array_intersect($catIds, $styleIds);
-                        $imageName = "";
-                        foreach($finalIds as $finalId){
-                            //for women.
-                            if($finalId == 125){
-                            $imageName = "women-core-stylev3";
-							
-                            }
-                            elseif($finalId == 126){
-                             $imageName = "women-select-stylev3";
-                             }
-                            elseif($finalId == 127){
-                             $imageName = "women-premium-stylev3";
-                             }
-                             //for men.
-                            if($finalId == 128){
-                            $imageName = "men-core-stylev3";
-                            }
-                            elseif($finalId == 129){
-                             $imageName = "men-select-stylev3";
-                             }
-                            elseif($finalId == 130){
-                             $imageName = "men-premium-stylev3";
-                             }
-                        }
-
-
-                 ?>
 
 <?php                
 /*********************prev next product page **************************/
@@ -1510,7 +1481,33 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 														To Wish List</a></p>
 											<?php } ?>
 										</div>
-										<p class="csp-name-list"><span>Core</span><span>Select</span><span class="active">Premium</span></p>
+										<p class="csp-name-list">
+
+                                            <?php $catIds =  $_product->getCategoryIds();
+                                            $psc = array(125,126,127,128,129,130);
+                                            $finalIds = array_intersect($catIds, $psc);
+                                            $pscClass ="";
+                                            foreach($finalIds as $finalId){
+                                                //for women.
+                                                if($finalId == 125 || $finalId == 128){
+                                                    $pscClass ="active";
+
+                                                }
+                                                elseif($finalId == 126 || $finalId == 129){
+                                                    $pscClass ="active";
+                                                }
+                                                elseif($finalId == 127 || $finalId == 130){
+                                                    $pscClass ="active";
+                                                }
+
+                                            }
+                                            $pscCategory = array("Core","Select","Premium");
+                                            foreach($pscCategory as $csp){
+                                            ?>
+                                            <span class="<?php echo $pscClass; ?>"><?php echo $csp; ?></span>
+
+                                            <?php } ?>
+                                        </p>
                                         <p class="freeshipptext"><em>Free air shipping to US and Canada</em></p>
 
                                         <p class="insale dnone" style="color: #c03; margin-left: 4px;">This Item is
