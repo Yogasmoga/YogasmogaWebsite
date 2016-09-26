@@ -888,3 +888,4 @@ input.change_username {
 .mc-center-popup,.bullzai{display:none!important;}
 
 /*-----magento signup popup--*/
+#signin_popup.mc_signinpopup{background-image:url(images/mage-signupbg.png)}
