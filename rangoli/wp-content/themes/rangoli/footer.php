@@ -117,7 +117,7 @@ if(!isset($ipInfo)){
 
         <div class="close_signin_popup" ></div>
         <div class="form">
-			<img src="<?php echo get_site_url()."/wp-content/themes/rangoli/images/25bucks.svg" ?>" alt=""/>
+			<img class="svg-logontext" src="<?php echo get_site_url()."/wp-content/themes/rangoli/images/25bucks.svg" ?>" alt=""/>
             <form id="sign-up-form">
 				<input type="hidden" id="p_location_city" name="location_city" value="<?php echo $request_city;?>"/>
 				<input type="hidden" id="p_location_state" name="location_state" value="<?php echo $request_state;?>"/>
