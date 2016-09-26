@@ -128,7 +128,7 @@ if(!isset($ipInfo)){
 				<input data-watermark="Select a password" rel="password" id="p_s_password" class="text" />
 				<p class="gender_p gender_popup">Gender <label><span><input type="radio" name="gender" value="1" />M</span>Male</label> <label> <span><input type="radio" name="gender" value="2" />F</span>Female</label> </p>
 				<img class="loader" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px; display:none;' />
-				<div class="err-msg" style="color:#fff !important"></div>
+				<div class="err-msg" style="color:#fff"></div>
 				<input id="signup" type="button" value="Sign up"  />
                 
             </form>

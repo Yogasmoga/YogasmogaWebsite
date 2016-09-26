@@ -908,19 +908,19 @@ input.change_username {
 #signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup label span { background: #fff none repeat scroll 0 0; color: transparent;
   float: left; height: 24px; line-height: 24px; margin-right: 16px; width: 24px;top:0;}
 #signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup label span.selected{background:#ae8536;border:1px solid #ae8536;}  
-#signin_popup.mc_signinpopup .mage.signin-block #err-msg{font-size:16px; text-align:left;color:#f56200;}
+#signin_popup.mc_signinpopup .mage.signin-block .err-msg{font-size:16px; text-align:left!important;color:#f56200!important;}
 
 @media only screen and (max-width : 1400px) {
 	#signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup{font-size:14px}
 	#signin_popup.mc_signinpopup .mage.signin-block .close-text,#signin_popup.mc_signinpopup .mage.signin-block .opensignin{font-size:14px;}	
 	#signin_popup.mc_signinpopup .mage.signin-block .form input.text{font-size:14px!important; height:20px;}
-	#signin_popup.mc_signinpopup .mage.signin-block #err-msg{font-size:14px!important;}
+	#signin_popup.mc_signinpopup .mage.signin-block .err-msg{font-size:14px!important;}
 	
 	#signin_popup.mc_signinpopup .mage.signin-block .svg-logontext{margin-bottom:40px; max-width:360px;}
 	#signin_popup.mc_signinpopup .mage.signin-block #sign-up-form{margin-bottom:40px;}
 	#signin_popup.mc_signinpopup .mage.signin-block .close-text{margin-bottom:17px;}
 	
-	#signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup label span{width:22px; height:22px; line-height:22px;}	
+	#signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup label span{width:22px; height:22px; line-height:22px;transition-duration:0;-webkit-transition-duration:0;}	
 	
 }	
 
@@ -928,7 +928,7 @@ input.change_username {
 	#signin_popup.mc_signinpopup .mage.signin-block	.gender_p.gender_popup{font-size:13px}
 	#signin_popup.mc_signinpopup .mage.signin-block .close-text,#signin_popup.mc_signinpopup .mage.signin-block .opensignin{font-size:13px;}	
 	#signin_popup.mc_signinpopup .mage.signin-block .form input.text{font-size:13px!important;}
-	#signin_popup.mc_signinpopup .mage.signin-block #err-msg{font-size:13px!important;}
+	#signin_popup.mc_signinpopup .mage.signin-block .err-msg{font-size:13px!important;}
 	#signin_popup.mc_signinpopup .mage.signin-block .close-text{margin-bottom:15px;}
 	#signin_popup.mc_signinpopup .mage.signin-block #sign-up-form{margin-bottom:30px;}
 	#signin_popup.mc_signinpopup .mage.signin-block .svg-logontext{margin-bottom:40px; max-width:330px;}
