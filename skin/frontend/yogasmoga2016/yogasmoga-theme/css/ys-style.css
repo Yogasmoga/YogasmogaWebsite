@@ -3335,7 +3335,7 @@ width:100%!important;height:100%!important;
 #signup.mage-signup #sign_up_box,#signup.mage-signup #thank_you_box{width:100%; max-width:496px;}
 #signup.mage-signup #sign_up_box #popup-register{width:100%; max-width:496px; left:50%; top:50%; bottom:auto; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);}
 #signup.mage-signup .gender_p label{float:right; padding-right:0;margin-left:39px; font-size:16px!important; font-family:gothamBook;}
-#signup.mage-signup .gender_p label .gender_radio{float:left; width:24px; height:24px; line-height:24px; color:transparent; margin-right:16px;}
+#signup.mage-signup .gender_p label .gender_radio{background:#fff;float:left; width:24px; height:24px; line-height:24px; color:transparent; margin-right:16px;}
 #signup.mage-signup .gender_tr .gender_p span.selected{background:#ae8536;border:1px solid #ae8536;}
 #signup.mage-signup button#signup-button{background:#1eaa18; width:100%;height:42px; line-height:42px; padding:0; font-family:gothamBold; font-size:13px; text-transform:uppercase;}
 #signup.mage-signup .close-text,#signup.mage-signup .opensignin{color: #ae8536; cursor: pointer;font-family: itcavantgardepromd;
@@ -3343,7 +3343,7 @@ width:100%!important;height:100%!important;
 #signup.mage-signup .close-text{margin-bottom:20px;}	
 #signup.mage-signup	.form-inner{padding:0 47px;margin-bottom:50px;}
 #signup.mage-signup #popup-register tr{height:25px;}
-#signup.mage-signup #popup-register td.gender_tr .gender_p{margin-top:20px;font-family:gothamBook;}
+#signup.mage-signup #popup-register td.gender_tr .gender_p{margin-top:20px;font-family:gothamBook;font-size:16px;}
 #signup.mage-signup #popup-register td input{font-size:16px; font-family:gothamBook;}
 #signup.mage-signup #err-msg{color:#f56200; font-size:16px!important;width:auto!important; text-align:left;}
 #signup.mage-signup .svg-logontext{margin-bottom:50px;}
@@ -3717,10 +3717,12 @@ float:left; margin-left:-40px; }
 }
 /************* size chart ends*************/
 .header .logo.posRel {
-  left: 0;
-  margin: 19px 19px 0 0;
-  position: absolute;
-  right: 0;
+     left: 50%;
+    margin: 19px 19px 0 0;
+    position: absolute;
+    right: auto;
+    transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
 }
 .header .logo a.logo{float:none;}
 div#bodycompensator{height: 109px!important;}
@@ -3928,18 +3930,20 @@ input[name="prodTab"]{display:none;}
 /*********** home page changes start **************/
 .scrolled-effect #globalheader ul.main-menu li a{color:#fff;}
  #globalheader ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
+ 
  .color-change ul.tr-menu > li > ul.sub-menu li a{color:#555;}
  .color-change ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
  .color-change ul.main-menu li a.menu-heading,.color-change .main-menu2 > li a.main-heading{color:#555;}
  
-ul.main-menu li ul.sub-menu{background:#ad8435;width:100%;padding:20px;box-sizing:border-box;}
-ul.main-menu li ul.sub-menu > li{border-left:none;width:15%;box-sizing:border-box;}
+ul.main-menu li ul.sub-menu{background:#ad8435;width:100%;padding: 0 0 0 3%;box-sizing:border-box;}
+ul.main-menu li ul.sub-menu > li{border-left:none;width:16%;box-sizing:border-box; padding-top: 2%;}
 ul.main-menu2 li{position:static;}
 ul.main-menu2 li .sub-menu{left:0!important;}
 
 ul.main-menu .nav-img{ box-sizing: border-box;
     float: right;
-    width: 15%;}
+    width: 20%;}
+	ul.main-menu li ul.sub-menu > li:first-child{ padding-top: 2%;}
 ul.main-menu .nav-img img{width:100%;height:auto;}
 
 .bagshow {background: #ae8536;
@@ -4000,6 +4004,40 @@ right:0;
     text-align: center;
 }
 .factorypart.namaskar-block.bucket3 .contentSlider{top:56%;}
+
+.sub-menu a:hover {
+  color: #c03 !important;
+}
+.header-banner .right-bar-menu .tr-menu > li ul a{color:#555;}
+
+.main-menu.main-menu2 .sub-menu  {padding:0;}
+.main-menu.main-menu2 .left-side,.main-menu.main-menu2 .right-side{width:50%;float:left;}
+.main-menu.main-menu2 .left-side .left-st-image,.main-menu.main-menu2 .right-side .left-st-image {
+  float: left;
+  width: 40%;
+}
+.left-st-image > img {
+  height: auto;
+  width: 100%;
+}
+.left-side > ul, .right-side > ul {
+  box-sizing: border-box;
+  float: left;
+  padding: 4% 6%;
+  width: 60%;
+}
+.main-menu.main-menu2 .sub-menu.stores-nav .left-side > ul,.main-menu.main-menu2 .sub-menu.stores-nav .right-side > ul {
+    box-sizing: border-box;
+    float: left;
+    width: 25%;}
+
+ ul.main-menu2 li ul.sub-menu.ys-content li a {
+  font-family: avantgardegothicitcw01d;
+}
+ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
+  font-family: avantgardegothicitcw01d;
+}
+
 	/*********** home page changes end **************/
 
 
