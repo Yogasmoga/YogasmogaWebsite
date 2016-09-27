@@ -3934,6 +3934,10 @@ input[name="prodTab"]{display:none;}
 }
 
 /*********** home page changes start **************/
+#ysheader.showhide .right-top-block #bag-count {display:none;} 
+#ysheader .right-top-block #bag-count{margin-right:18px;}
+#ysheader .right-bottom-block #shop-bag-count{display:none;background:#ae8536;color:#fff;width:26px;height:26px;border-radius:100%;float:right;}
+#ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
 .scrolled-effect #globalheader ul.main-menu li a{color:#fff;}
  #globalheader ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
  

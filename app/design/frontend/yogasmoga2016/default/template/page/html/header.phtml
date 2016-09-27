@@ -486,7 +486,8 @@ else { ?>
                         </ul>
                         
                     </li>
-					 <li data-blockid = "help-new">
+					<li id="bag-count"><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
+					 <li style="margin-right:0;" data-blockid = "help-new">
                         <a href="<?php echo $this->getBaseUrl();?>help#faq">Help</a>
                         <ul class="sub-menu l-align cms-header-link" style="left: -87px;">
                             <li class="blank"></li>
@@ -498,7 +499,7 @@ else { ?>
                         </ul>
                         
                     </li>
-                    <li id="bag-count" style="margin-right:0px"><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
+                    
                     <li class="checkoutshow" style="display:none;"><span>|</span><a class="checkout-link-top" href="<?php echo $this->getBaseUrl();?>checkout/onepage">Checkout</a></li>
 					
                 </ul>
@@ -925,6 +926,7 @@ jQ(document).ready(function($){
 
            jQ('#shop-bag-count').html(shopbagcount);
 	    jQ("#ysheader").removeClass("scrolled-effect");
+		jQ("#ysheader").addClass("showhide");
 	    
 		jQ("#ysheader").stop().animate({top:'-50'},{ duration: 300, queue: false });
 		jQ("#ysheader .posRel img").addClass("resizable");
@@ -936,6 +938,8 @@ jQ(document).ready(function($){
 	   jQ("#ysheader .posRel img").removeClass("resizable");
 	   jQ(".bagshow").addClass("active");
 	   jQ("#globalheader").removeClass("color-change");
+	   jQ("#ysheader").removeClass("showhide");
+	   
 
        }
 	    
