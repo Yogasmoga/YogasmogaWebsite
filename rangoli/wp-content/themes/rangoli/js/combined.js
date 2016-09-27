@@ -1685,7 +1685,9 @@ function open_red_popup(){
     $(".login-box").fadeOut();
     $("#signin_popup").fadeIn('',function(){
 		
+		//$("#signin_popup").addClass('c');
 		$("#signin_popup").addClass('mc_signinpopup');
+		
 	});
     $(".signin-block").fadeIn();
 }
