@@ -1976,7 +1976,8 @@ width: 100%;
 .popup.signup_pop .signup_popup .close_signup_popup{display:none;}
 .popup.signup_pop .signup_popup input[type="text"]{color:#717171;border-bottom:1px solid #717171;line-height:normal;}
 
-.popup.signup_pop .signup_popup span.gender{width:30px; height:30px; line-height:30px;font-size:15px;}
+.popup.signup_pop .signup_popup span.gender{width:30px; height:30px; line-height:32px;font-size:15px;}
+.popup.signup_pop .signup_popup span.gender input[type="radio"]{height:30px!important;}
 .popup.signup_pop .signup_popup .gender_p{color:#717171;margin-bottom:7px;}
 .popup.signup_pop .signup_popup .no-thanks, .popup.signup_pop .signup_popup .already_signed_up {
   color: #ae8536; display: inline-block; float: none; font: 12px/24px ITCAvantGardeStd-Md!important; margin: 0;
