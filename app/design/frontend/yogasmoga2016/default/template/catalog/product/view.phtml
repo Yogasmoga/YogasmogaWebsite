@@ -1607,74 +1607,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 					</div>
 				</div>	
                 <?php } ?>
-                <!-- completeLook -->
-                <?php 
-                $upsell_product = $_product->getUpSellProductCollection()->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter();
-                $count = count($upsell_product);
-                if ($count > 1) {
-                    $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                    $readresult = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
-                    while ($row = $readresult->fetch()) {
-                        $clrinfo[$row['Value']] = $row['Attribute'];
-                    }
-                    $color = $this->getRequest()->getParam('color');
-                    $colorname = ' - '.$clrinfo[$color];
-                    ?>
 
-                    <?php
-                    //check if record is empty or not
-                    $upsellsimplecount = 0;
-                    foreach ($upsell_product as $upsell) {
-                        if ($upsellsimplecount == 1) break;
-                        $product = Mage::getModel('catalog/product')->load($upsell->getId());
-                        $productType = $product->getTypeID();
-                        if ($productType == 'simple') {
-
-                            $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($upsell->getId());
-                            if (isset($parentIds[0])) {
-                                $parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);
-
-                                $_gallery = Mage::getModel('catalog/product')->load($parentproduct->getId())->getMediaGalleryImages();
-                                foreach ($_gallery as $_image) {
-                                    $imageLabelData = json_decode(trim($_image->getLabel()), true);
-                                    if ($imageLabelData == NULL) {
-                                        //echo $_image->getLabel();
-                                        continue;
-                                    }
-
-
-                                    if (strcasecmp($imageLabelData['type'], "product image") == 0 && $imageLabelData['color'] == $product->getColor()) {
-                                        $upsellsimplecount++;
-                                        // $ftimage = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile());
-                                        $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(361, 361)->setQuality(90);
-                                        ?>
-
-                                        <?php
-                                        break;
-                                    }
-
-
-                                }
-                if ($upsellsimplecount == 1) {
-                ?>		
-				<div class="accord-item prod-rel-item active">
-					<div class="h2">Related Product<span>
-					<svg height="44px" width="30px">
-                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#979797" fill="none"></line>
-                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#979797" fill="none"></line>
-                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#979797" fill="none"></line>
-                    </svg>
-					</span></div>
-					<div class="accord-desc">
-						<a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><img class="related-img" nopin="nopin" alt="<?php echo $parentproduct->getName() ?>" title="<?php echo $parentproduct->getName() ?>"
-                               src="<?php echo $completelookimg; ?>"/></a>
-						<p class="prod-name">
-                        <a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>"><?php echo $parentproduct->getName() ?></a></p>
-						<p class="prod-col-prc"><?php echo $clrinfo[$product->getColor()] ?>&mdash;$<?php echo
-                                    number_format((float)($parentproduct->getPrice()), 2, '.', ''); ?></p>
-					</div>
-				</div>
-                <?php } } } } } ?>
 
 			</div>
 			
@@ -1736,9 +1669,67 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 						<p><span class="strong"><?php echo $_product->getName();?> is a Part of:</span>
                             <?php $pscCat = Mage::getModel('catalog/category')->load($pscCollection);?>
 						<a class="underline" href="<?php echo $pscCat->getUrl();?>"><?php echo $pscCat->getName()." Collection"?></a></p>
-						<p><span class="strong">Also Wearing:</span>
-						<span class="underline">Zelos Legging</span><span> in Purple Dusk / Mosiac Grey</span></p>
-					</div>
+
+
+
+
+                            <!-- completeLook -->
+                            <?php
+                            $upsell_product = $_product->getUpSellProductCollection()->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter();
+                            $count = count($upsell_product);
+                            if ($count > 1) {
+                            $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                            $readresult = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+                            while ($row = $readresult->fetch()) {
+                                $clrinfo[$row['Value']] = $row['Attribute'];
+                            }
+                            $color = $this->getRequest()->getParam('color');
+                            $colorname = ' - '.$clrinfo[$color];
+                            ?>
+
+                            <?php
+                            //check if record is empty or not
+                            $upsellsimplecount = 0;
+                            foreach ($upsell_product as $upsell) {
+                            if ($upsellsimplecount == 1) break;
+                            $product = Mage::getModel('catalog/product')->load($upsell->getId());
+                            $productType = $product->getTypeID();
+                            if ($productType == 'simple') {
+
+                            $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($upsell->getId());
+                            if (isset($parentIds[0])) {
+                            $parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+
+                            $_gallery = Mage::getModel('catalog/product')->load($parentproduct->getId())->getMediaGalleryImages();
+                            foreach ($_gallery as $_image) {
+                                $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                                if ($imageLabelData == NULL) {
+                                    //echo $_image->getLabel();
+                                    continue;
+                                }
+
+
+                                if (strcasecmp($imageLabelData['type'], "product image") == 0 && $imageLabelData['color'] == $product->getColor()) {
+                                    $upsellsimplecount++;
+                                    // $ftimage = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile());
+                                    $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(361, 361)->setQuality(90);
+                                    ?>
+
+                                    <?php
+                                    break;
+                                }
+
+
+                            }
+                            if ($upsellsimplecount == 1) {
+                            ?>
+                                <p><span class="strong">Also Wearing:</span>
+                                    <a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>" class="underline"><?php echo $parentproduct->getName() ?></a>
+                                    <span> in <?php echo $clrinfo[$product->getColor()] ?></span>
+                                </p>
+
+                        <?php } } } } } ?>
+                    </div>
 				</div><!--product-det-tab-->
 				
 				</div>
