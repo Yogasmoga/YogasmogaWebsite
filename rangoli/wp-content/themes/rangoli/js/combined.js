@@ -177,6 +177,7 @@ $(document).ready(function () {
 
     });
     $(".close_signin_popup").click(function () {
+		$('.login-box').fadeOut();
         $("#signin_popup").fadeOut();
         $(".gender_p span").removeClass("selected");
     })
