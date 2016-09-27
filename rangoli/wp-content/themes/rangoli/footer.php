@@ -113,30 +113,33 @@ if(!isset($ipInfo)){
     $root = str_replace("/rangoli","/",$root);
     ?>
 
-    <!--<div class="signin-block" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
+    <div class="signin-block mage" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
 
         <div class="close_signin_popup" ></div>
         <div class="form">
+            <img class="svg-logontext" src="<?php echo get_site_url()."/wp-content/themes/rangoli/images/25bucks.svg" ?>" alt=""/>
             <form id="sign-up-form">
                 <input type="hidden" id="p_location_city" name="location_city" value="<?php echo $request_city;?>"/>
                 <input type="hidden" id="p_location_state" name="location_state" value="<?php echo $request_state;?>"/>
                 <input type="hidden" id="p_location_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
-                <input name="" data-watermark="First Name" id="p_fname"/>
-            <input data-watermark="Last Name" id="p_lname" />
-            <input data-watermark="Email Address" id="p_signup_email" />
-            <input data-watermark="Select a password" rel="password" id="p_s_password" />
-                <p class="gender_p gender_popup">Select Gender <span><input type="radio" name="gender" value="1" />M</span>  <span><input type="radio" name="gender" value="2" />F</span> </p>
+                <input name="" data-watermark="First Name" id="p_fname" class="text"/>
+                <input data-watermark="Last Name" id="p_lname" class="text" />
+                <input data-watermark="Email Address" id="p_signup_email" class="text" />
+                <input data-watermark="Select a password" rel="password" id="p_s_password" class="text" />
+                <p class="gender_p gender_popup">Gender <label><span><input type="radio" name="gender" value="1" />M</span>Male</label> <label> <span><input type="radio" name="gender" value="2" />F</span>Female</label> </p>
                 <img class="loader" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px; display:none;' />
-            <input id="signup" type="button" value="Sign up"  />
-                <div class="err-msg" style="color:#fff !important;"></div>
+                <div class="err-msg" style="color:#fff"></div>
+                <input id="signup" type="button" value="Sign up"  />
+
             </form>
-            <div class="align-center" style=" color:#ff9f9f; font-size: 13px; letter-spacing: 1px; font-family: ITCAvantGardeStd-Bk">
+            <p class="close-text" onclick="jQuery('.close_signin_popup').click()">No Thank You, Iâ€™m not interested in Made in the USA apparel.</p>
+            <p class="opensignin" onclick="$('.login_logout_link').click();">Iâ€™m already signed up.</p>
+            <!--<div class="align-center" style=" color:#ff9f9f; font-size: 13px; letter-spacing: 1px; font-family: ITCAvantGardeStd-Bk">
                 Already signed up?<br/><a style="cursor: pointer;" onclick="$('.login_logout_link').click();">Sign in here</a>
-            </div>
+            </div>-->
         </div>
-    </div>-->
-
-
+    </div>
+<?php /* ?>
     <!------------------------------mailchimp signup form------------------------------>
     <div id="signup-box" class="mc-signup">
         <div class="signin-block">
@@ -238,7 +241,7 @@ if(!isset($ipInfo)){
     </script>
     <!-- Shivaji New Code -->
     <!------------------------------mailchimp signup form end------------------------------>
-
+<?php */ ?>
 
 
 
@@ -433,7 +436,7 @@ if(!isset($ipInfo)){
                     <li><a class="bold-heading" href="javascript:void(0)" onclick="open_red_popup()">FEEL THE SMOGI LOVE</a></li>
 
                     <?php /* ?><li>Sign up for $25 SMOGI Bucks<br/> toward your first order.</li><?php */ ?>
-                        <li>Sign up now to instantly get 25% off your first order</li>
+                        <li>Sign up now to Receive $25 Smogi Bucks</li>
                     <?php
                     }
                     else{
@@ -564,6 +567,18 @@ if(!isset($ipInfo)){
             $(".chat-status").html(img_online + ' ' + "Online now");
         }
     }
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        if($(".signin-block").fadeIn()){
+
+            $('#signin_popup').addClass('mc_signinpopup');
+        }
+
+        $('.login_logout_link').click(function(){
+            $('#signin_popup').removeClass('mc_signinpopup');
+        })
+    });
 </script>
 <script type="text/javascript">
 /* <![CDATA[ */

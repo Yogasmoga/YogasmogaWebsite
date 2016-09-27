@@ -109,7 +109,7 @@ if(!is_user_logged_in()  && is_home()) {
 </svg>
 
         </span>
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <!--<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              width="172.684px" height="25px" viewBox="0 0 172.684 25" enable-background="new 0 0 172.684 25" xml:space="preserve">
 <g>
     <g>
@@ -141,8 +141,8 @@ if(!is_user_logged_in()  && is_home()) {
 </g>
 </svg>
 
-        <p class="random" style="color: rgb(255, 140, 255);">& GET 25% OFF<br/>YOUR FIRST ORDER</p>
-
+        <p class="random">& GET 50% OFF<br/>YOUR FIRST ORDER</p>-->
+        <img class="svg-logontext" src="<?php echo get_stylesheet_directory_uri().'/images/25bucks.png' ?>" alt=""/>
         <div class="singup_form">
             <input type="hidden" id="location_city" name="location_city" value="<?php echo $request_city;?>"/>
             <input type="hidden" id="location_state" name="location_state" value="<?php echo $request_state;?>"/>
@@ -161,9 +161,6 @@ if(!is_user_logged_in()  && is_home()) {
                                               </span>
             </p>
 
-
-
-            <p class="forgot_y_p open_signin"><a href="javascript:void(0);">Already signed up? Sign in here</a></p>
             <p class="small err_msg" style="text-align: left"></p>
             <button class="create_account">
                 <svg xml:space="preserve" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" width="44px" height="44px">
@@ -173,6 +170,11 @@ if(!is_user_logged_in()  && is_home()) {
                     <polyline points="5.9,25.6 14.6,34.3 39.1,9.8 " class="st0"/>
                                         </svg>
             </button>
+            <p style="clear:both"><a class="no-thanks" onclick="jQuery('.close_signup_popup').click()" >No Thank You, I’m not interested in <br>Made in the USA apparel.</a></p>
+            <p style="clear:both"><a class="already_signed_up open_signin">I’m already signed up.</a></p>
+            <!--<p class="forgot_y_p open_signin"><a href="javascript:void(0);">Already signed up? Sign in here</a></p>-->
+
+
 
         </div>
     </div>
@@ -193,6 +195,7 @@ if(!is_user_logged_in()  && is_home()) {
         <p class="small">SMOGI BUCKS <br/><br/>is yours to use at <br/>YOGASMOGA.COM</p>
     </div>
 
+    <?php /* ?>
 
     <!-- MAil chimp poup -->
     <div id="MailpopForm" class="MailpopForm" style="display:none;">
@@ -269,17 +272,61 @@ if(!is_user_logged_in()  && is_home()) {
         </div>
         <!-- thank you popup -->
     </div>
+    <?php */ ?>
     <!-- MAil chimp poup -->
 
     <script type="application/javascript">
+
         jQuery(document).ready(function($){
+
             jQuery(".mobile-orange-banner").click(function () {
                 jQuery(".popup").fadeIn();
-                jQuery(".MailpopForm").fadeIn();
-                $(".signin_popup").fadeOut();
-                $(".after_signup_popup").fadeOut();
-                $(".signup_popup").fadeOut();
+
+                jQuery(".popup").addClass('signup_pop');
+                //jQuery(".MailpopForm").fadeIn();
+                jQuery(".MailpopForm").fadeOut();
+                //jQuery(".signin_popup").fadeOut();
+                jQuery(".after_signup_popup").fadeOut();
+                //$(".signup_popup").fadeOut();
+                jQuery(".signup_popup").fadeIn();
+
+                jQuery(".signup_popup input[type=text],.signup_popup input[type=password]").on('focus keypress',function(){
+                    if(jQuery(this).val().length > 0){
+                        jQuery(this).addClass('on');
+                    }
+
+                });
+                jQuery(".signup_popup input[type=text],.signup_popup input[type=password]").on('blur keyup',function(){
+                    if(jQuery(this).val().length < 1){
+                        jQuery(this).removeClass('on');
+                    }
+                });
+
+                jQuery('.signup_popup .gender_p .gender').click(function(){
+                    if(jQuery(this).hasClass('selected')){
+                        jQuery('.signup_popup .gender_p').addClass('on');
+                    }
+                    else{
+                        jQuery('.signup_popup .gender_p').removeClass('on');
+                    }
+                });
+
             });
+
+            jQuery('.no-thanks,.already_signed_up').click(function(){
+                jQuery('.popup').removeClass('signup_pop');
+            });
+
+            jQuery('.open_signup').click(function(){
+
+                jQuery('.forgot_password_form').hide();
+                jQuery('.popup').addClass('signup_pop');
+            });
+
+
+
+        });
+
 
 
 
@@ -338,7 +385,7 @@ if(!is_user_logged_in()  && is_home()) {
                     }
                 });
             });
-        });
+
 
         function closepopup(){
 

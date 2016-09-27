@@ -443,7 +443,7 @@ if(!is_user_logged_in()){
      ?>
     <div class="banner" style="text-transform: uppercase"  onclick="open_red_popup()">
         <?php /* ?>RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30<?php */ ?>
-        Sign up now to instantly get 25% off your first order
+        Sign up now to Receive $25 Smogi Bucks
 
     </div>
     <?php }?>

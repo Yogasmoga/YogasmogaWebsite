@@ -516,10 +516,10 @@ $(window).load(function () {
                 var bullseye = response.bullseye;
                 if (customer == "new") {
                     //$(".open_signup").click();
-
+                    jQuery(".mobile-orange-banner").click();
                     //mailchimp popup
-                    $(".popup").fadeIn();
-                    $(".MailpopForm").fadeIn();
+                    //$(".popup").fadeIn();
+                    //$(".MailpopForm").fadeIn();
                     //mailchimp popup
 
                     is_login_box_open = false
@@ -673,7 +673,7 @@ function createCustomerAccount() {
                 'location_zip':location_zip
             },
             beforeSend: function () {
-                jQuery(".create_account").html("signing up...");
+                jQuery(".create_account").html("Signing Up...");
                 $(".singup_form .err_msg").html("");
             },
             success: function (data) {

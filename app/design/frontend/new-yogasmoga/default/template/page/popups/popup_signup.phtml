@@ -27,115 +27,119 @@ else {
     $request_zip = "N/A";
 }
 ?>
-<?php /* ?>
-<div id="signup" style="display: none;">
+<?php  ?>
+<div id="signup" class="mage-signup" style="display: none;">
     <div id="sign_up_box">
-<!--        <img nopin="nopin" style="width:50%; margin-top: 8%;" src="--><?php //echo $this->getSkinUrl('images/red_popup_text.png') ?><!--" alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." />-->
+        <!--        <img nopin="nopin" style="width:50%; margin-top: 8%;" src="--><?php //echo $this->getSkinUrl('images/red_popup_text.png') ?><!--" alt="FEEL THE SMOGI LOVE. Sign up and earn 50% Off on your first order." />-->
         <form action="" method="post" id="popup-register" style="display: block; ">
-            <input type="hidden" id="plocation_city" name="location_city" value="<?php echo $request_city;?>"/>
-            <input type="hidden" id="plocation_state" name="location_state" value="<?php echo $request_state;?>"/>
-            <input type="hidden" id="plocation_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
-            <?php  $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-            $categoryName = explode('/', $currentUrl);
-            $urlKey = $categoryName[3];?>
-            <?php if (strtolower($urlKey)!='indextest'){?>
-                <svg xml:space="preserve" enable-background="new 0 0 308 127.979" viewBox="0 0 308 127.979" height="127.979px" width="280px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" >
-                    <g>
-                        <text transform="matrix(1 0 0 1 128.9932 30.103)">
-                            <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="0" x="0">FEEL</tspan>
-                            <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="-90.599">THE</tspan>
-                            <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="-32.923">SM</tspan>
-                            <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="8.477">   </tspan>
-                            <tspan letter-spacing="-1" font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="37.368">GI</tspan><tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="69.983"> </tspan>
-                            <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="79.614">L   </tspan>
-                            <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="117.644">VE</tspan><tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="155.981"/></text>
-                    </g>
-                    <g>
+            <div class="form-inner">
+                <input type="hidden" id="plocation_city" name="location_city" value="<?php echo $request_city;?>"/>
+                <input type="hidden" id="plocation_state" name="location_state" value="<?php echo $request_state;?>"/>
+                <input type="hidden" id="plocation_zip" name="location_zip" value="<?php echo $request_zip;?>"/>
+
+                <?php  $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                $categoryName = explode('/', $currentUrl);
+                $urlKey = $categoryName[3];?>
+                <?php if (strtolower($urlKey)!='test1'){?>
+                    <!--<svg xml:space="preserve" enable-background="new 0 0 308 127.979" viewBox="0 0 308 127.979" height="127.979px" width="280px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" >
+                            <g>
+                                <text transform="matrix(1 0 0 1 128.9932 30.103)">
+                                    <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="0" x="0">FEEL</tspan>
+                                    <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="-90.599">THE</tspan>
+                                    <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="-32.923">SM</tspan>
+                                    <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="8.477">   </tspan>
+                                    <tspan letter-spacing="-1" font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="37.368">GI</tspan><tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="69.983"> </tspan>
+                                    <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="79.614">L   </tspan>
+                                    <tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="117.644">VE</tspan><tspan font-size="30.7692" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="35.23" x="155.981"/></text>
+                            </g>
                         <g>
                             <g>
-                                <text transform="matrix(1 0 0 1 1.5195 97.6025)" y="" x=""><tspan font-size="16.6667" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="0" x="23">Sign up and get $25 SMOGI Bucks </tspan><tspan font-size="16.6667" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="22" x="69.583">toward your first order.</tspan></text>
+                                <g>
+                                    <text transform="matrix(1 0 0 1 1.5195 97.6025)" y="" x=""><tspan font-size="16.6667" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="0" x="23">Sign up and get $25 SMOGI Bucks </tspan><tspan font-size="16.6667" font-family="'ITCAvantGardeProBk'" fill="#FFFFFF" y="22" x="69.583">toward your first order.</tspan></text>
+                                </g>
                             </g>
                         </g>
-                    </g>
-                    <path d="M152.829,41.421c-6.257,0-11.967,4.6-11.967,12.024v0.03c0,5.829,4.787,11.503,11.934,11.503
-                    c7.058,0,12.026-5.457,12.026-11.777S159.822,41.421,152.829,41.421z M154.657,60.207l-1.844,3.18l-1.854-3.237
-                    c-3.047-0.902-4.833-3.873-4.833-7.017v-0.03c0-3.469,2.363-7.209,6.733-7.209c4.539,0,6.703,4.104,6.703,7.309
-                    C159.563,55.928,157.956,59.317,154.657,60.207z" fill="#FFFFFF"/>
-                    <path d="M234.316,41.421c-6.257,0-11.967,4.6-11.967,12.024v0.03c0,5.829,4.787,11.503,11.934,11.503
-                    c7.058,0,12.026-5.457,12.026-11.777S241.31,41.421,234.316,41.421z M236.145,60.207l-1.844,3.18l-1.854-3.237
-                    c-3.047-0.902-4.833-3.873-4.833-7.017v-0.03c0-3.469,2.363-7.209,6.733-7.209c4.539,0,6.703,4.104,6.703,7.309
-                    C241.05,55.928,239.443,59.317,236.145,60.207z" fill="#FFFFFF"/>
-            </svg>
-            <?php } else{?>
-                <div class="svg-text-head" style="position:relative;top:-12px"><img src="<?php echo $this->getSkinUrl('images/signin-popup.png');?>"></div>
-            <?php }?>
-            <table width="100%" cellspacing="0" padding="0" align="center">
-                <tr>
-                    <td class="inputholder">
-                        <input type="text" id="pfirstname" name="pfirstname" class="watermark" watermark="First Name" value="" maxlength="30" class="requiredfield no-bg">
-                    </td>
-                </tr>
-                <tr height="5"></tr>
-                <tr>
+                        <path d="M152.829,41.421c-6.257,0-11.967,4.6-11.967,12.024v0.03c0,5.829,4.787,11.503,11.934,11.503
+                            c7.058,0,12.026-5.457,12.026-11.777S159.822,41.421,152.829,41.421z M154.657,60.207l-1.844,3.18l-1.854-3.237
+                            c-3.047-0.902-4.833-3.873-4.833-7.017v-0.03c0-3.469,2.363-7.209,6.733-7.209c4.539,0,6.703,4.104,6.703,7.309
+                            C159.563,55.928,157.956,59.317,154.657,60.207z" fill="#FFFFFF"/>
+                        <path d="M234.316,41.421c-6.257,0-11.967,4.6-11.967,12.024v0.03c0,5.829,4.787,11.503,11.934,11.503
+                            c7.058,0,12.026-5.457,12.026-11.777S241.31,41.421,234.316,41.421z M236.145,60.207l-1.844,3.18l-1.854-3.237
+                            c-3.047-0.902-4.833-3.873-4.833-7.017v-0.03c0-3.469,2.363-7.209,6.733-7.209c4.539,0,6.703,4.104,6.703,7.309
+                            C241.05,55.928,239.443,59.317,236.145,60.207z" fill="#FFFFFF"/>
+                    </svg>-->
+                    <img class="svg-logontext" src="<?php echo $this->getSkinUrl('images/25bucks.svg') ?>" alt=""/>
+                <?php } else{?>
+                    <div class="svg-text-head" style="position:relative;top:-12px"><img src="<?php echo $this->getSkinUrl('images/signin-popup.png');?>"></div>
+                <?php }?>
 
-                    <td class="inputholder">
-                        <input type="text" id="plastname" name="plastname" class="watermark" watermark="Last Name" value="" maxlength="30" class="requiredfield no-bg">
-                    </td>
-                </tr>
-                <tr height="5"></tr>
-                <tr>
-                    <td class="inputholder">
-                        <input type="text" name="email" id="pemail_address" class="watermark" watermark="Email Address" autocomplete="off" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off">
-                    </td>
-                </tr>
-                <tr height="5"></tr>
-                <tr class="fake_password">
-                    <td class="inputholder">
-                        <input type="text" autocomplete="off" maxlength="30" class="watermark f_password requiredfield" watermark="Select a password" name="password" id="f_password" defaulterrormsg="Password is required">
-                    </td>
-                </tr>
-                <tr class="orig_password">
-                    <td class="inputholder">
-                        <input type="password" autocomplete="off" maxlength="30" class="requiredfield o_password" name="password" id="p_password" defaulterrormsg="Password is required">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="gender_tr">
-                        <p class="gender_p">Select Gender <span class="gender_radio"><input type="radio" value="1" name="gender"/>M</span> <span class="gender_radio"><input type="radio" value="2" name="gender"/>F</span></p>
-                    </td>
-                </tr>
-                <tr height="5"></tr>
-                <input style="display: none;" type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Password is required"/>
-                <input style="display: none;" id="is_subscribed" class="checkbox" type="checkbox" checked="checked" value="1" name="is_subscribed"/>
+                <table width="100%" cellspacing="0" padding="0" align="center" >
+                    <tr>
+                        <td class="inputholder">
+                            <input type="text" id="pfirstname" name="pfirstname" class="watermark" watermark="First Name" value="" maxlength="30" class="requiredfield no-bg">
+                        </td>
+                    </tr>
+                    <tr height="5"></tr>
+                    <tr>
 
-            </table>
+                        <td class="inputholder">
+                            <input type="text" id="plastname" name="plastname" class="watermark" watermark="Last Name" value="" maxlength="30" class="requiredfield no-bg">
+                        </td>
+                    </tr>
+                    <tr height="5"></tr>
+                    <tr>
+                        <td class="inputholder">
+                            <input type="text" name="email" id="pemail_address" class="watermark" watermark="Email Address" autocomplete="off" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off">
+                        </td>
+                    </tr>
+                    <tr height="5"></tr>
+                    <tr class="fake_password">
+                        <td class="inputholder">
+                            <input type="text" autocomplete="off" maxlength="30" class="watermark f_password requiredfield" watermark="Select a password" name="password" id="f_password" defaulterrormsg="Password is required">
+                        </td>
+                    </tr>
+                    <tr class="orig_password">
+                        <td class="inputholder">
+                            <input type="password" autocomplete="off" maxlength="30" class="requiredfield o_password" name="password" id="p_password" defaulterrormsg="Password is required">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gender_tr">
+                            <p class="gender_p">Gender <label><span class="gender_radio"><input type="radio" value="1" name="gender"/>M</span>Male</label> <label><span class="gender_radio"><input type="radio" value="2" name="gender"/>F</span>Female</label></p>
+                        </td>
+                    </tr>
+                    <tr height="5"></tr>
+                    <input style="display: none;" type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Password is required"/>
+                    <input style="display: none;" id="is_subscribed" class="checkbox" type="checkbox" checked="checked" value="1" name="is_subscribed"/>
 
-            <button type="submit" id="signup-button">Sign up</button>
-            <p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
+                </table>
+                <p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
+                <button type="submit" id="signup-button">Sign up</button>
 
-            <?php if (strtolower($urlKey)!='indextest'){?>
-                <p class="link_red_popup" style="color:#ff9f9f">Already Signed up? <br/><a onclick="jQuery('#signin').click()">Sign in here</a> </p>
+            </div>
+            <?php if (strtolower($urlKey)!='test1'){?>
+                <!--<p class="link_red_popup" style="color:#ff9f9f">Already Signed up? <br/><a onclick="jQuery('#signin').click()">Sign in here</a> </p>-->
+                <p class="close-text" onclick="jQuery('.ui-icon-closethick').click()">No Thank You, I’m not interested in Made in the USA apparel.</p>
+                <p class="opensignin" onclick="jQuery('#signin').click()">I’m already signed up.</p>
             <?php }
             else{ ?>
                 <p class="link_red_popup" style="color:#fff">Already Signed up? <br/><a style="color:#fff;" onclick="jQuery('#signin').click()">Sign in here</a> </p>
             <?php }
 
             ?>
-
-
-        </form>
+    </form>
     </div>
     <div id="thank_you_box" style="display:none;">
-        <img nopin="nopin" style="width:46%; padding-top: 12%; margin-top: 6%; padding-left:6%; padding-right: 6%;   background: #f00;" src="<?php echo $this->getSkinUrl('images/thank_you_text.png') ?>" alt="THANK YOU! Your SMOGI Bucks are waiting to be used at Checkout." />
+        <img nopin="nopin" style="width:46%; padding-top: 12%; margin-top: 6%; padding-left:6%; padding-right: 6%; ;" src="<?php echo $this->getSkinUrl('images/thank_you_text.png') ?>" alt="THANK YOU! Your SMOGI Bucks are waiting to be used at Checkout." />
         <table width="78%" cellspacing="0" cellpadding="0" style="margin:12% auto !important;">
             <tr>
                 <td style="text-align:left;padding-right: 15px">
-                    <a style="background:#FF4D4D; color: #fff;  width: 170px;  margin:  0 auto;   text-align: center; height:42px; display:block; line-height:42px; font-family:AVANTGARDEGOTHICITCW01B;" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women">
+                    <a style="background:#1eaa18; color: #fff;  width: 170px;  margin:  0 auto;   text-align: center; height:42px; display:block; line-height:42px; font-family:AVANTGARDEGOTHICITCW01B;" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women">
                         SHOP WOMEN
                     </a>
                 </td>
                 <td  style="text-align:right;padding-left: 15px">
-                    <a style="background:#FF4D4D; color: #fff;  width: 170px;  margin:  0 auto;   text-align: center; height:42px; display:block; line-height:42px; font-family:AVANTGARDEGOTHICITCW01B;" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>mens">
+                    <a style="background:#1eaa18; color: #fff;  width: 170px;  margin:  0 auto;   text-align: center; height:42px; display:block; line-height:42px; font-family:AVANTGARDEGOTHICITCW01B;" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>mens">
                         SHOP MEN
                     </a>
                 </td>
@@ -151,9 +155,9 @@ else {
         </table>
     </div>
 </div>
-<?php */ ?>
+<?php  ?>
 
-
+<?php /*?>
 <div id="signup" class="mc-signup" style="display:none;">
 
     <div class="signup-content">
@@ -232,7 +236,7 @@ else {
                 type    :   'POST',
                 data    :   {'email':email_id},
                 beforeSend: function() {
-                    /*jQuery("#popup-mailsignup .form-loader-mail").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");*/
+
                     jQuery("#popup-mailsignup #signup-button-mailc").attr("value","SIGNING UP...");
                     //jQuery("#popup-mailsignup").parent().hide();
                     jQuery("#popup-mailsignup .form-loader-mail").show();
@@ -284,3 +288,4 @@ else {
 
 </script>
 <!-- Shivaji New Code -->
+ <?php */?>

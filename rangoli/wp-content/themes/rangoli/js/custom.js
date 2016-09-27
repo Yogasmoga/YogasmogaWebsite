@@ -184,6 +184,7 @@ $(document).ready(function () {
 
     });
     $(".close_signin_popup").click(function () {
+        $('.login-box').fadeOut();
         $("#signin_popup").fadeOut();
         $(".gender_p span").removeClass("selected");
     })
@@ -279,6 +280,7 @@ function createCustomerAccount_from_popup() {
 
                                 // console.log(data.status);
                             jQuery(".signin-block").fadeOut();
+                            jQuery("#signin_popup").fadeTo('',0);
   //                          window.location=homeUrl+"rangoli";
 
                             _islogedinuser = true;
@@ -1682,7 +1684,11 @@ function open_red_popup(){
     $(".your-color-block").fadeOut();
     is_login_box_open = false;
     $(".login-box").fadeOut();
-    $("#signin_popup").fadeIn();
+    $("#signin_popup").fadeIn('',function(){
+
+        //$("#signin_popup").addClass('c');
+        $("#signin_popup").addClass('mc_signinpopup');
+    });
     $(".signin-block").fadeIn();
 }
 

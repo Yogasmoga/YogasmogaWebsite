@@ -1965,3 +1965,23 @@ p.small.err_msg {
 #popup-mailsignup .button-area input[type="submit"]{line-height:26px!important; letter-spacing: 0; margin-bottom: 0;-webkit-appearance: none;}
 #popup-mailsignup .button-area .form-loader-mail{position:absolute;top:50%; left:50%;transform:translate(-50%,-50%);margin-top:15px;}
 #popup-mailsignup #err-msg{font-family:graphikregular;}
+
+/*---magento signup popup--*/
+#MailpopForm{display:none;}
+.popup.signup_pop{background:url(images/popup-bg2.png) #000; background-size:cover;padding:0;}
+.popup.signup_pop .signup_popup{padding:44px 27px;width:100%; box-sizing:border-box;}
+.popup.signup_pop .signup_popup .svg-logontext{max-width:239px;}
+.popup.signup_pop .signup_popup .close_signup_popup{display:none;}
+.popup.signup_pop .signup_popup input[type="text"]{color:#717171;border-bottom:1px solid #717171;line-height:normal;}
+
+.popup.signup_pop .signup_popup span.gender{width:30px; height:30px; line-height:32px;font-size:15px; font-family:itcavantgardestd-md;margin-top:3px;}
+.popup.signup_pop .signup_popup span.gender input[type="radio"]{height:30px!important;}
+.popup.signup_pop .signup_popup .gender_p{color:#717171;margin-bottom:7px;}
+.popup.signup_pop .signup_popup .no-thanks, .popup.signup_pop .signup_popup .already_signed_up {
+    color: #ae8536; display: inline-block; float: none; font: 12px/24px ITCAvantGardeStd-Md!important; margin: 0;
+    opacity: 1; text-align: center; text-decoration: underline;}
+.popup.signup_pop .signup_popup .no-thanks {margin-bottom: 10px;}
+.popup.signup_pop .signup_popup .err_msg {
+    font-family: graphikregular; font-size: 14px; position: static; text-align: left;margin:0;}
+.popup.signup_pop  .signup_popup .create_account{margin-bottom:15px;}
+.popup.signup_pop .signup_popup input.on,.popup.signup_pop .signup_popup .gender_p.on{color:#fff;}

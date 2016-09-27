@@ -871,3 +871,50 @@ none;width:100%;}
 #signup-box.mc-signup .form-loader-mail{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%)}
 
 .mc-center-popup,.bullzai{display:none!important;}
+
+/*-----magento signup popup--*/
+#signin_popup.mc_signinpopup{background-image:url(images/mage-signupbg.png)!important; background-color:#000!important; background-size:cover!important;top:0 !important; z-index: 99999999!important;}
+#signin_popup .mage.signin-block{background:none!important; bottom: auto;left: 50%;max-width: 497px;top: 50%; transform: translate(-50%, -50%); width: 100%; height:auto;margin:0;
+    border-radius:0; box-shadow:0 0 0;}
+#signin_popup .mage.signin-block .close_signin_popup{display:none;}
+#signin_popup .mage.signin-block .svg-logontext{margin-bottom:50px;}
+#signin_popup .mage.signin-block .form{width:100%; margin:0;text-align:center;}
+#signin_popup .mage.signin-block #sign-up-form{padding:0 47px;display:block;margin-bottom:50px;}
+#signin_popup .mage.signin-block #signup {background: #1eaa18 none repeat scroll 0 0!important;font-family: gothamBold;font-size: 13px;
+    height: 42px;line-height: 42px; padding: 0;text-transform: uppercase;width: 100%!important;margin:0!important;}
+#signin_popup .mage.signin-block .close-text,#signin_popup .mage.signin-block .opensignin {
+    color: #ae8536; cursor: pointer; font-family: ITCAvantGardeStd-Md; font-size: 16px; letter-spacing: 0.24px; margin-bottom: 0; text-decoration: underline;}
+#signin_popup .mage.signin-block .close-text { margin-bottom: 20px;}
+#signin_popup .mage.signin-block .form input.text{font-size:16px!important;line-height:22px!important;font-family:gothamBook; border-bottom:1px solid #fff;letter-spacing:1px;
+    height:25px;margin-bottom:20px;}
+#signin_popup .mage.signin-block	.gender_p.gender_popup{font-size:16px; line-height:26px;font-family:gothamBook;margin-bottom:32px; clear:both;}
+#signin_popup .mage.signin-block	.gender_p.gender_popup label{float:right;margin-left:39px;}
+#signin_popup .mage.signin-block	.gender_p.gender_popup label span{float:left;}
+#signin_popup .mage.signin-block	.gender_p.gender_popup label span { background: #fff none repeat scroll 0 0; color: transparent;
+    float: left; height: 24px; line-height: 24px; margin-right: 16px; width: 24px;top:1px;}
+#signin_popup .mage.signin-block	.gender_p.gender_popup label span.selected{background:#ae8536;border:1px solid #ae8536;}
+#signin_popup .mage.signin-block .err-msg{font-size:16px; text-align:left!important;color:#f56200!important;}
+
+@media only screen and (max-width : 1400px) {
+    #signin_popup .mage.signin-block	.gender_p.gender_popup{font-size:14px}
+    #signin_popup .mage.signin-block .close-text,#signin_popup .mage.signin-block .opensignin{font-size:14px;}
+    #signin_popup .mage.signin-block .form input.text{font-size:14px!important; height:22px;}
+    #signin_popup .mage.signin-block .err-msg{font-size:14px!important;}
+
+    #signin_popup .mage.signin-block .svg-logontext{margin-bottom:40px; max-width:360px;}
+    #signin_popup .mage.signin-block #sign-up-form{margin-bottom:40px;}
+    #signin_popup .mage.signin-block .close-text{margin-bottom:17px;}
+
+    #signin_popup .mage.signin-block	.gender_p.gender_popup label span{width:22px; height:22px; line-height:22px;transition-duration:0;-webkit-transition-duration:0;}
+
+}
+
+@media only screen and (max-width : 1300px) {
+    #signin_popup .mage.signin-block	.gender_p.gender_popup{font-size:13px}
+    #signin_popup .mage.signin-block .close-text,#signin_popup .mage.signin-block .opensignin{font-size:13px;}
+    #signin_popup .mage.signin-block .form input.text{font-size:13px!important;}
+    #signin_popup .mage.signin-block .err-msg{font-size:13px!important;}
+    #signin_popup .mage.signin-block .close-text{margin-bottom:15px;}
+    #signin_popup .mage.signin-block #sign-up-form{margin-bottom:30px;}
+    #signin_popup .mage.signin-block .svg-logontext{margin-bottom:40px; max-width:330px;}
+}

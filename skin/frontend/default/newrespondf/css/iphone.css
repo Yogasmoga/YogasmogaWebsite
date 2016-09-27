@@ -8194,3 +8194,28 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
 #checkout-review-table.data-table
 .finalsale_row td{padding:5px 0 0;}
 /**********review final text *******/
+
+
+/*--new magento signup popup--*/
+#popForm.mage-signup{background:url(../images/popup-bg2.png) #000; background-size:cover;}
+#popForm.mage-signup input[type="text"], #popForm.mage-signup input[type="password"]{border-bottom:1px solid #717171;}
+#popForm.mage-signup input[type="text"].on, #popForm.mage-signup input[type="password"].on{color:#fff!important;}
+#popForm.mage-signup input[data-watermark],#popForm.mage-signup input.watermark_password,#popForm.mage-signup input.watermark_password.on,#popForm.mage-signup .gender-link span label{color:#717171!important; opacity:1!important}
+#popForm.mage-signup .svg-logontext{max-width:239px;}
+#popForm.mage-signup .no-thanks, #popForm.mage-signup .already_signed_up {
+    color: #ae8536; display: inline-block; float: none; font: 12px/24px ITCAvantGardeStd-Md;
+    margin: 0; letter-spacing:0.18; opacity: 1; text-align: center; text-decoration: underline;}
+#popForm.mage-signup .no-thanks{margin-bottom:10px;}
+#popForm.mage-signup .gender-link{margin-bottom:0;}
+#popForm.mage-signup .gender-link span label.on{color:#fff!important;}
+#popForm.mage-signup .gender-link .f-right div{width:30px; height:30px; line-height:30px;}
+#popForm.mage-signup .gender-link .f-right div label input{width:30px; height:30px;}
+#popForm.mage-signup .gender-link .f-right div label.f2,#popForm.mage-signup .gender-link .f-right div label.f1{line-height:30px;}
+#popForm.mage-signup .gender-link .f-right div label.f2::before {color: #fff;content: "F";font: 15px/15px itcavantgardestd-md;text-align: center;
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);margin-top:2px;
+}
+#popForm.mage-signup .gender-link .f-right div label.f1::before {color: #fff;content: "M";font: 15px/15px itcavantgardestd-md;text-align: center;
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);margin-top:2px;
+}
+
+#popForm.mage-signup .error{position:static; text-align:left; font-size:14px; font-family:graphikregular;}

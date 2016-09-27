@@ -1164,7 +1164,7 @@ if (!is_user_logged_in() && is_home()) {
         stroke : #CCC !important;
     }
     .mobile-orange-banner{background: rgb(255, 102, 0) none repeat scroll 0 0; color: rgb(255, 255, 255);font-size: 11px; height: 44px;    letter-spacing: 0 !important;
-        line-height: 13px;
+        line-height: 26px;
         position: fixed;
         cursor: pointer;
         text-align:center;
@@ -1178,7 +1178,7 @@ if (!is_user_logged_in() && is_home()) {
     //if(is_home()) {
         ?>
         <?php /*?><div  class="mobile-orange-banner">RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30</div><?php */ ?>
-    <div  class="mobile-orange-banner">Sign up now to instantly get 25% off <br/>your first order</div>
+    <div  class="mobile-orange-banner">Sign up now to Receive $25 Smogi Bucks</div>
         <?php
     }
     ?>
