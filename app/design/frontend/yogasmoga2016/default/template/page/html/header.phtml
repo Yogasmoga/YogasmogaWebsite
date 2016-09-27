@@ -833,7 +833,7 @@ else { ?>
                                 </div>
                             </ul>
                         </li>
-                        <li id="shop-bag-count"></li>
+                        <li id="shop-bag-count"><span></span></li>
 						
 						
 						
@@ -917,14 +917,13 @@ if($getGOYSFirstUser == 0 || $paymethod != 'stripe'){
 <script>
 var jQ = jQuery.noConflict();
 jQ(document).ready(function($){
-    var shopbagcount = jQ('#bag-count').html();
-    jQ('#shop-bag-count').html();
+    
      jQ = $.noConflict();
 	 jQ(window).scroll(function() {
         var mainbody = jQ(window).scrollTop();		
        if (mainbody > 40) {
 
-           jQ('#shop-bag-count').html(shopbagcount);
+          
 	    jQ("#ysheader").removeClass("scrolled-effect");
 		jQ("#ysheader").addClass("showhide");
 	    
@@ -961,7 +960,11 @@ jQ(document).ready(function($){
 				   
         }
     });
-	
+	jQ("#shop-bag-count").click(function(){
+		
+		jQ( ".open-cart" ).trigger( "click" );
+		
+	});
 	
     });
 </script>
