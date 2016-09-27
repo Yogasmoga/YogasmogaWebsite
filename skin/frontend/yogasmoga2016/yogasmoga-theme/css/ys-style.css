@@ -4042,6 +4042,8 @@ right:0;
 }
 ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
   font-family: avantgardegothicitcw01d;
+  cursor:default!important;
+  pointer-events:none;
 }
 
 .common-listing div#bodycompensator { height: 109px !important;}
