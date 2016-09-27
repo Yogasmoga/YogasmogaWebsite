@@ -8201,7 +8201,7 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
 #popup-mailsignup .button-area input[type="submit"]{line-height:26px!important;-webkit-appearance: none;}
 #popup-mailsignup .button-area input[type="submit"].sending{background:#ad8536;}
 #popup-mailsignup .button-area .form-loader-mail{position:absolute;top:50%; left:50%;transform:translate(-50%,-50%);margin-top:15px;}
-.mobile-orange-banner{cursor:pointer;}
+.mobile-orange-banner{cursor:pointer;text-transform:uppercase;}
 
 /*-------insale text------------*/
 .insale-yes{font: 12px/18px graphikregular;color:#ff5f00;}
