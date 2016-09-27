@@ -676,7 +676,7 @@ function createCustomerAccount() {
                 'location_zip':location_zip
             },
             beforeSend: function () {
-                jQuery(".create_account").html("signing up...");
+                jQuery(".create_account").html("Signing Up...");
                 $(".singup_form .err_msg").html("");
             },
             success: function (data) {
