@@ -42,20 +42,11 @@ $(window).load(function(){
             success: function(response){
                 var  customer = response.customer;
                 var  bullseye = response.bullseye;
-                /*if(customer == "new"){
-                    $(".your-color-block").fadeOut();
-                    $(".login-box").fadeOut();
-                    $("#signin_popup").fadeIn();
-                    $(".signin-block").fadeIn();
-                    is_login_box_open = false
-                }*/
                 if(customer == "new"){
                     $(".your-color-block").fadeOut();
                     $(".login-box").fadeOut();
                     if(true == rangoli_press_type){
-                        $("#signin_popup").delay
-
-                        (6000).fadeIn();
+                        $("#signin_popup").delay(6000).fadeIn();
                         //alert();
                     }
                     else{
@@ -225,6 +216,9 @@ function createCustomerAccount_from_popup() {
     var email_id = jQuery.trim(jQuery("#p_signup_email").val());
     var pwd = jQuery.trim(jQuery("#p_s_password").val());
     var gender = jQuery.trim(jQuery(".gender_p.gender_popup span.selected input").val());
+    var location_city = jQuery.trim(jQuery("#p_location_city").val());
+    var location_state = jQuery.trim(jQuery("#p_location_state").val());
+    var location_zip = jQuery.trim(jQuery("#p_location_zip").val());
 
     if (fname!="First Name" && lname!="Last Name" && email_id!="Email Address" && fname.length > 0 && lname.length > 0 && email_id.length > 0) {
         function IsEmail(email) {
@@ -281,7 +275,7 @@ function createCustomerAccount_from_popup() {
                                 // console.log(data.status);
                             jQuery(".signin-block").fadeOut();
                             jQuery("#signin_popup").fadeTo('',0);
-  //                          window.location=homeUrl+"rangoli";
+                            //                          window.location=homeUrl+"rangoli";
 
                             _islogedinuser = true;
                             jQuery("#signin").html("SIGN OUT").attr({
@@ -320,12 +314,12 @@ function createCustomerAccount_from_popup() {
 
 function createCustomerAccount() {
     var fname = jQuery.trim(jQuery("#fname").val());
-
     var lname = jQuery.trim(jQuery("#lname").val());
-
     var email_id = jQuery.trim(jQuery("#signup_email").val());
-
     var pwd = jQuery.trim(jQuery("#s_password").val());
+    var location_city = jQuery.trim(jQuery("#location_city").val());
+    var location_state = jQuery.trim(jQuery("#location_state").val());
+    var location_zip = jQuery.trim(jQuery("#location_zip").val());
 
     var cpassword = pwd;
     var gender = $(".gender_p span.selected input").val();
@@ -356,7 +350,10 @@ function createCustomerAccount() {
                     'password': pwd,
                     'confirmation': cpassword,
                     'is_subscribed': "on",
-                    'gender':gender
+                    'gender':gender,
+                    'location_city':location_city,
+                    'location_state':location_state,
+                    'location_zip':location_zip
                 },
                 beforeSend: function () {
                     jQuery("#sign-up-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
@@ -1035,20 +1032,20 @@ function init() {
     });
 
 
-/*
-    $(".wp_page_banner .play-video").click(function () {
-        $(".play_video").fadeIn();
+    /*
+     $(".wp_page_banner .play-video").click(function () {
+     $(".play_video").fadeIn();
 
-        var ht = $(".play_video").height();
-        $(".play_video").find(".featured-video-plus").height(ht);
+     var ht = $(".play_video").height();
+     $(".play_video").find(".featured-video-plus").height(ht);
 
-        console.log("****** " + $(".play_video").height() + " , " + $(".play_video").find(".featured-video-plus").height());
+     console.log("****** " + $(".play_video").height() + " , " + $(".play_video").find(".featured-video-plus").height());
 
-        play();
+     play();
 
-        $(this).remove();
-    });
-*/
+     $(this).remove();
+     });
+     */
 
 
     $(".wp_page_banner .play-video").click(function () {
@@ -1102,7 +1099,7 @@ function init() {
         }
         var color = hexToRgb(user_color_shade);
         //$(".author_post:hover .overlay-text").css({'background-color': 'rgba('+color+',0.5)','transition-duration':"500ms"});
-            $(".author_post:hover .overlay-text").css({'background-color': user_color_shade,'transition-duration':'500ms'});
+        $(".author_post:hover .overlay-text").css({'background-color': user_color_shade,'transition-duration':'500ms'});
     }, function () {
         $(".author_post .overlay-text").css({
             'background':'rgba(0,0,0,0.25)',
@@ -1409,8 +1406,8 @@ function copytoClipboard(){
 
         client.on( "aftercopy", function( event ) {
 
+        } );
     } );
-} );
 
 
 }
@@ -1491,12 +1488,12 @@ $(document).ready(function(){
 
 
 
-/*
-    // read page
-    $(".post_content a img").not(".get_the_look a img").each(function(){
-        $(this).parent().removeAttr("href");
-    });
-*/
+    /*
+     // read page
+     $(".post_content a img").not(".get_the_look a img").each(function(){
+     $(this).parent().removeAttr("href");
+     });
+     */
 
 });
 
