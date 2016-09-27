@@ -578,7 +578,20 @@ if(!isset($ipInfo)){
         else {
             $(".chat-status").html(img_online + ' ' + "Online now");
         }
-    }
+    }	
+
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	if($(".signin-block").fadeIn()){
+		
+		$('#signin_popup').addClass('mc_signinpopup');
+	}
+	
+	$('.login_logout_link').click(function(){
+		$('#signin_popup').removeClass('mc_signinpopup');
+	})
+});	
 </script>
 
 </body>

@@ -197,7 +197,6 @@ $(document).ready(function () {
             if ($(this).children("a").text() == "Sign In") {
                 $(".signin-block").hide();
                 $(".your-color-block").hide();
-				$("#signin_popup").removeClass('mc_signinpopup');
                 $("#signin_popup").fadeIn();
                 $(".login-box").fadeIn();
                 is_login_box_open = true;
@@ -1682,7 +1681,8 @@ function open_red_popup(){
     $(".login-box").fadeOut();
     $("#signin_popup").fadeIn('',function(){
 		
-		$("#signin_popup").addClass('c');
+		//$("#signin_popup").addClass('c');
+		$("#signin_popup").addClass('mc_signinpopup');
 	});
     $(".signin-block").fadeIn();
 }
