@@ -314,6 +314,8 @@ if(!is_user_logged_in()  && is_home()) {
 				});				
 				
 				jQuery('.open_signup').click(function(){
+					
+					jQuery('.forgot_password_form').hide();
 					jQuery('.popup').addClass('signup_pop');
 				});
 				
