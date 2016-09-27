@@ -277,6 +277,7 @@ function createCustomerAccount_from_popup() {
 
                                 // console.log(data.status);
                             jQuery(".signin-block").fadeOut();
+							jQuery("#signin_popup").fadeTo('',0);
                             //                          window.location=homeUrl+"rangoli";
 
                             _islogedinuser = true;
