@@ -498,7 +498,7 @@ else { ?>
                         </ul>
                         
                     </li>
-                    <li style="margin-right:0px"><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
+                    <li id="bag-count" style="margin-right:0px"><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
                     <li class="checkoutshow" style="display:none;"><span>|</span><a class="checkout-link-top" href="<?php echo $this->getBaseUrl();?>checkout/onepage">Checkout</a></li>
 					
                 </ul>
@@ -832,6 +832,7 @@ else { ?>
                                 </div>
                             </ul>
                         </li>
+                        <li id="shop-bag-count"></li>
 						
 						
 						
@@ -915,11 +916,14 @@ if($getGOYSFirstUser == 0 || $paymethod != 'stripe'){
 <script>
 var jQ = jQuery.noConflict();
 jQ(document).ready(function($){
+    var shopbagcount = jQ('#bag-count').html();
+    jQ('#shop-bag-count').html();
      jQ = $.noConflict();
 	 jQ(window).scroll(function() {
         var mainbody = jQ(window).scrollTop();		
        if (mainbody > 40) {
-		   
+
+           jQ('#shop-bag-count').html(shopbagcount);
 	    jQ("#ysheader").removeClass("scrolled-effect");
 	    
 		jQ("#ysheader").stop().animate({top:'-50'},{ duration: 300, queue: false });
@@ -932,7 +936,8 @@ jQ(document).ready(function($){
 	   jQ("#ysheader .posRel img").removeClass("resizable");
 	   jQ(".bagshow").addClass("active");
 	   jQ("#globalheader").removeClass("color-change");
-	   }
+
+       }
 	    
     });
 	 jQ("#ysheader").mouseover(function(){       
