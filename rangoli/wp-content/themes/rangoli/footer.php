@@ -581,6 +581,5 @@ if(!isset($ipInfo)){
     }
 </script>
 
-
 </body>
 </html>
