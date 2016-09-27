@@ -1972,7 +1972,7 @@ width: 100%;
 #MailpopForm{display:none;}
 .popup.signup_pop{background:url(images/popup-bg2.png) #000; background-size:cover;padding:0;}
 .popup.signup_pop .signup_popup{padding:44px 27px;width:100%; box-sizing:border-box;}
-.popup.signup_pop .signup_popup .svg-logontext{max-width:100%;}
+.popup.signup_pop .signup_popup .svg-logontext{max-width:239px;}
 .popup.signup_pop .signup_popup .close_signup_popup{display:none;}
 .popup.signup_pop .signup_popup input[type="text"]{color:#717171;border-bottom:1px solid #717171;line-height:normal;}
 
