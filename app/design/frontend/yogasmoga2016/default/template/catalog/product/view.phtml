@@ -1484,36 +1484,43 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 										<p class="csp-name-list">
 
                                             <?php $catIds =  $_product->getCategoryIds();
-                                            $psc = array(125,126,127,128,129,130);
+                                            //$psc = array(125,126,127,128,129,130);
+                                            $psc = array(79,80,81);
+                                            //print_r($catIds);
                                             $finalIds = array_intersect($catIds, $psc);
-                                            $pscClass ="";
-                                            foreach($finalIds as $finalId){
-                                                //for women.
-                                                if($finalId == 125 || $finalId == 128){
-                                                    $pscClass ="active";
 
-                                                }
-                                                elseif($finalId == 126 || $finalId == 129){
-                                                    $pscClass ="active";
-                                                }
-                                                elseif($finalId == 127 || $finalId == 130){
-                                                    $pscClass ="active";
-                                                }
+                                            $pscClass ="active";
+                                            $pscCollection = "";
+                                            foreach($finalIds as $finalId):
+                                                if($finalId == 125 || $finalId == 128):
+                                                //if($finalId == 79 || $finalId == 128):?>
 
-                                            }
-                                            $pscCategory = array("Core","Select","Premium");
-                                            foreach($pscCategory as $csp){
-                                            ?>
-                                            <span class="<?php echo $pscClass; ?>"><?php echo $csp; ?></span>
+                                                    <span class="<?php echo $pscClass; ?>"><?php echo $this->__('Core') ?></span>
+                                                <?php else: ?>
+                                                <span><?php echo $this->__('Core') ?></span>
+                                                <?php endif; ?>
+                                                <?php if($finalId == 126 || $finalId == 129):?>
+                                                    <span class="<?php echo $pscClass; ?>"><?php echo $this->__('Select') ?></span>
+                                                <?php else: ?>
+                                                <span><?php echo $this->__('Select') ?></span>
+                                                <?php endif ?>
+                                                <?php if($finalId == 127 || $finalId == 130):?>
+                                                    <span class="<?php echo $pscClass; ?>"><?php echo $this->__('Premium') ?></span>
+                                                <?php else: ?>
+                                                <span><?php echo $this->__('Premium') ?></span>
+                                                <?php endif; ?>
+                                            <?php $pscCollection = $finalId; endforeach; ?>
 
-                                            <?php } ?>
+
+
+
                                         </p>
                                         <p class="freeshipptext"><em>Free air shipping to US and Canada</em></p>
 
                                         <p class="insale dnone" style="color: #c03; margin-left: 4px;">This Item is
                                             Final Sale. Cannot be exchanged or
                                             returned.</p>
-										<p class="needhelp"><a href="#">Need help?</a></p>	
+										<p class="needhelp"><a href="javascript:void($zopim.livechat.window.show())">Need help?</a></p>
                                     </div>
                                     <!-- addToBag -->
                                 </td>
@@ -1726,8 +1733,9 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 					</div>
 					
 					<div class="product-det-tab-bottom">
-						<p><span class="strong">Tippy Toe 'N Twist Legging is a Part of:</span>
-						<span class="underline">Core Collection</span></p>
+						<p><span class="strong"><?php echo $_product->getName();?> is a Part of:</span>
+                            <?php $pscCat = Mage::getModel('catalog/category')->load($pscCollection);?>
+						<a class="underline" href="<?php echo $pscCat->getUrl();?>"><?php echo $pscCat->getName()." Collection"?></a></p>
 						<p><span class="strong">Also Wearing:</span>
 						<span class="underline">Zelos Legging</span><span> in Purple Dusk / Mosiac Grey</span></p>
 					</div>
