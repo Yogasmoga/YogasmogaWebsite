@@ -311,10 +311,13 @@ if(!is_user_logged_in()  && is_home()) {
 
 				jQuery('.no-thanks,.already_signed_up').click(function(){
 					jQuery('.popup').removeClass('signup_pop');
-				});
-				if(jQuery('.signup_popup').fadeIn()){
+				});				
+				
+				jQuery('.open_signup').click(function(){
 					jQuery('.popup').addClass('signup_pop');
-				}
+				});
+				
+				
 			
 		$("#popup-mailsignup").submit(function(event){
 		event.preventDefault();
