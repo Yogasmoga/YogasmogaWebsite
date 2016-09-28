@@ -3948,9 +3948,10 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-top:10p
 #ysheader .right-bottom-block #shop-bag-count span{line-height:26px;}
 
 #ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
-body.open-bag #ysheader.showhide{margin-left:-400px;}
-body.open-bag #div_sizes{margin-left:-400px;}
 
+
+.header-container{left:0px!important;}
+.open-bag .header-container{left:-400px!important;}
 .scrolled-effect #globalheader ul.main-menu li a{color:#fff;}
  #globalheader ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
  
