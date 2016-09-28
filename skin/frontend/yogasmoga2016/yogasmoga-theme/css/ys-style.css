@@ -3495,10 +3495,11 @@ ul.main-menu2 li ul.sub-menu li a {
 .bannerFluid .l-lign{text-align:center!important;}
 .bannerFluid{background:#fff!important;}
 /************* 2-sep*********/
+#div_sizes{padding-left:40px;}
 #div_sizes,#div_cats{padding-top:7px;}
 .chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:27px; height:26px; line-height:25px; vertical-align:middle; display:inline-block;
 	font-size:12px; padding:1px 8px;border-radius:25px;}
-
+.chk-size{background:none;}
 #div_cats .chk-cats.chk-cats-selected:before{
     background: #fff none repeat scroll 0 0;
     border-radius: 10px;
@@ -3517,7 +3518,7 @@ ul.main-menu2 li ul.sub-menu li a {
 .chk-cats{position: relative}
 #div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 50%; text-indent: -9999em; letter-spacing:0.43px; width:25px; height:25px;}
 
-
+#div_sizes.fixed_top, #div_cats.fixed_top{left:0; padding-left:40px;}
 
 
 
