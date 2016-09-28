@@ -100,11 +100,13 @@
         <!-- pagewrapper -->
         <div id="pagecontainer">
             <!-- sliderBanner -->
-
-            <div class="flexslider home-slider" id="bucket1_slider">
+			<div class="home-banner">
+				<img src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/homepage-hero-image.jpg" alt="home-banner"/>
+			</div>
+            <div class="flexslider home-slider" id="bucket1_slider" style="display:none">
                 <ul class="slides">	
-				 <li class="slider_li" title="Shop Women" rel="/women"
-                        style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/womens-hero-desktop.jpg'); background-size:cover; ">
+				 <li  class="slider_li" title="Shop Women" rel="/women"
+                        style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/homepage-hero-image.jpg'); background-size:cover; height:auto!important;">
                         <!--<img draggable="false"
                              data-src="<?php /*echo Mage::getUrl('/', array('_secure' => true)); */?>media/wysiwyg/new-design-images/homepage/move-free-slide.jpg"/>-->
 
