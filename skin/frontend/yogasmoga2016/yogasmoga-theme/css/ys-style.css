@@ -3915,7 +3915,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 /*--bra option--*/
 #includeoption div { background: #fff none repeat scroll 0 0; border-radius: 30px; height: 30px; line-height: 30px; width: 30px;}
 
-.gry-box table.productdetailtable div.addtobag{height:40px;}
+.gry-box table.productdetailtable div.addtobag{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on.svg") no-repeat scroll center center; height:40px;}
 
 .needhelp{}
 .needhelp a{color:#555; text-decoration:underline;font:13px/13px avantgardegothicitcw01m; letter-spacing:0.22px;} 
