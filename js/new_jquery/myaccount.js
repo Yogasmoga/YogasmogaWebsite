@@ -753,6 +753,7 @@ function createcard()
                 if(_productdisplaymode == "popup")
                     jQuery( "#productdetailpopup" ).dialog( "close" );
                 jQuery("span.cartitemcount").html(result.count);
+                jQuery("li#shop-bag-count span").html(result.count); //added by FK.
                 jQuery("div#myminicart").html(result.html);
                 jQuery("div#myminicart").slideDown('slow', function(){
                     setTimeout(function(){ jQuery("div#myminicart").slideUp('slow'); }, 4000);
