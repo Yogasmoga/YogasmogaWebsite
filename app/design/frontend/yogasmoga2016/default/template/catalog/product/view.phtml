@@ -1670,10 +1670,15 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                             <?php $printCollection  = array(71,78,59,124,79);
                                   //$catIds =  $_product->getCategoryIds();
                                 $finalIds = array_intersect($catIds, $printCollection);
+                            $countPart = 1;
                             foreach($finalIds as $printId){
-                            $printCat = Mage::getModel('catalog/category')->load($printId);?>
-						    <a class="underline" href="<?php echo $printCat->getUrl();?>"><?php echo $printCat->getName()?></a>
-                             <?php } ?>
+                                if($countPart > 1){
+                                $printCat = Mage::getModel('catalog/category')->load($printId);?>
+						        <a class="underline" href="<?php echo $printCat->getUrl();?>"><?php echo $printCat->getName()?>, </a>
+                                  <?php } else{?>
+                                   <?php  $printCat = Mage::getModel('catalog/category')->load($printId);?>
+                                    <a class="underline" href="<?php echo $printCat->getUrl();?>"><?php echo $printCat->getName()?></a>
+                             <?php } $countPart++; } ?>
                         </p>
 
 
