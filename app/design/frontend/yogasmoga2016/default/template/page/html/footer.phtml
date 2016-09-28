@@ -305,7 +305,8 @@ jQuery('body').addClass('mac-osys');
 }
 function prodnewdetail(){
 	var jQ = jQuery.noConflict();
-	var windW = jQ(window).width(); 
+	//var windW = jQ(window).width(); 
+	var windW = jQ('#productdetails').width();	
 	
 	var imgrowh = jQ('.thumb-imgs table.smallimagecontiner tr td img').height();	
 	
@@ -363,7 +364,8 @@ function prodnewdetail(){
 	
 
 function prodnewdetailresize(){
-	var windW = jQuery(window).width();
+	//var windW = jQuery(window).width(); 
+	var windW = jQuery('#productdetails').width();	
 	var imgrowh = jQuery('.thumb-imgs table.smallimagecontiner tr td img').height();	
 	
 	
