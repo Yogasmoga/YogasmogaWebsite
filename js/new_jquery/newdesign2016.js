@@ -220,6 +220,7 @@ jQuery(document).ready(function(){
 		jQuery( ".open-cart" ).trigger( "click" );		
 	});
 	
+	
    });
 
 }

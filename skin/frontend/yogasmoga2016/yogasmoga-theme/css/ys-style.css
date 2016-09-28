@@ -3950,8 +3950,8 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-top:10p
 #ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
 
 
-.header-container{left:0px!important;}
-.open-bag .header-container{left:-400px!important;}
+/*.header-container{left:0px!important; transition: left 230ms linear;}
+.open-bag .header-container{left:-400px!important;transition: left 230ms linear;}*/
 
 
 .scrolled-effect #globalheader ul.main-menu li a{color:#fff;}
