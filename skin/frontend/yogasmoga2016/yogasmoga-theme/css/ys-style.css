@@ -3959,7 +3959,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-top:10p
 
 #ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
 body.open-bag #ysheader.showhide{left:-400px!important;}
-body  #ysheader{left:0px!important;}
+
 body.open-bag .fixed_top{left:-400px!important;}
 body  .fixed_top{left:0px!important;}
 .scrolled-effect #globalheader ul.main-menu li a{color:#fff;}
