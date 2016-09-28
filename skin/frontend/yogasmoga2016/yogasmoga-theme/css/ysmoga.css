@@ -2974,9 +2974,9 @@ ul.main-menu > li{padding:0 10px;}
   margin-right: 0;
 }*/
 .flexslider.cat-slide {
-  /*background: #ae8536 none repeat scroll 0 0;*/
+  /*background: #ae8536 none repeat scroll 0 0;
   background: -webkit-linear-gradient(to left, white 0%,white 50%,#fff 66.75%,#ae8536 33.25%,#ae8536 100%); 
-  background: linear-gradient(to left, white 0%,white 50%,#fff 66.75%,#ae8536 33.25%,#ae8536 100%); 
+  background: linear-gradient(to left, white 0%,white 50%,#fff 66.75%,#ae8536 33.25%,#ae8536 100%); */
 }
 #bucket1_slider.cat-slide .slides li{background-color:transparent;}
 
