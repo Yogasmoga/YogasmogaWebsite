@@ -3500,24 +3500,14 @@ ul.main-menu2 li ul.sub-menu li a {
 .chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:27px; height:26px; line-height:25px; vertical-align:middle; display:inline-block;
 	font-size:12px; padding:1px 8px;border-radius:25px;}
 .chk-size{background:none;}
-#div_cats .chk-cats.chk-cats-selected:before{
-    background: #fff none repeat scroll 0 0;
-    border-radius: 10px;
-    content: "";
-    display: inline-block;
-    height: 8px;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    z-index: 1;
-
-}
+#div_cats .chk-cats.chk-cats-selected:before{  background: #fff none repeat scroll 0 0; border-radius: 10px; content: ""; display: inline-block;
+    height: 8px; left: 50%;position: absolute; top: 50%; transform: translate(-50%, -50%);  width: 8px;z-index: 1;}
 #div_sizes .chk-size.chk-size-selected{background:#ae8536;}
+#div_sizes .chk-size:hover,#div_sizes .chk-size.chk-size-selected{background:none;}
 .chk-cats{position: relative}
-#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 50%; text-indent: -9999em; letter-spacing:0.43px; width:25px; height:25px;}
-
+#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 25px; text-indent: -9999em; letter-spacing:0.43px; width:25px; height:25px;box-sizing:border-box;}
+#div_cats .chk-cats[title="White"]{border:1px solid #ddd;}
+#div_cats .chk-cats[title="White"].chk-cats-selected:before{background:#555;}
 #div_sizes.fixed_top, #div_cats.fixed_top{left:0; padding-left:40px;}
 #div_sizes.fixed_top{box-shadow:1px 1px 10px #ddd;}
 
@@ -3812,7 +3802,7 @@ display:none!important;opacity:1!important;visibility:visible!important;
 .product-modernstyle #productdetails{padding:0;}
 
 .product-details{}
-.product-details .product-row{background:#fff;margin-bottom:10px;width:100%; float:left; box-sizing:border-box; position:relative;}
+.product-details .product-row{background:#fff;margin-bottom:10px;width:100%; float:left; box-sizing:border-box; position:relative; min-height:600px;}
 .product-row .pcol-left{/*width:calc(100% - 341px);*/width:100%; float:left; position:relative;box-sizing:border-box;}
 .product-row .pcol-right{width:341px;float:right;position:absolute; top:0; right:0; height:100%; text-align:left; padding-top:0;box-sizing:border-box;}
 .product-row .pcol-left img, .product-row .pcol-right img{max-width:100%; width:auto; height:auto;}
@@ -3821,7 +3811,7 @@ display:none!important;opacity:1!important;visibility:visible!important;
 .product-row.product-row-last .pcol-right{background:#f4f4f4;margin-left:10px;width:33.375%;right:0;text-align:center;}
 .product-row.product-row-last .pcol-right img{position:relative; top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%);}
 /*.product-row .pcol-left .image-row-first,.product-row .pcol-left .image-row4{position:relative;}*/
-.product-row .pcol-left .img_madeinusa{position:absolute; left:30px; top:0; width:170px;margin-top:-30px; transform:translateY(-100%);-webkit-transform:translateY(-100%);}
+.product-row .pcol-left .img_madeinusa{opacity:0; position:absolute; left:30px; top:0; width:170px;margin-top:-30px; transform:translateY(-100%);-webkit-transform:translateY(-100%);}
 
 .product-row .pcol-left .img_rnd{position:absolute; bottom:0; left:0;width:170px; height:auto;margin-bottom:60px;
 	transform:translate(-100%,100%);-webkit-transform:translate(-100%,100%);margin-left:-25px; display:none;}
@@ -3915,7 +3905,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 /*--bra option--*/
 #includeoption div { background: #fff none repeat scroll 0 0; border-radius: 30px; height: 30px; line-height: 30px; width: 30px;}
 
-.gry-box table.productdetailtable div.addtobag{height:40px;}
+.gry-box table.productdetailtable div.addtobag{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on.svg") no-repeat scroll center center; height:40px;}
 
 .needhelp{}
 .needhelp a{color:#555; text-decoration:underline;font:13px/13px avantgardegothicitcw01m; letter-spacing:0.22px;} 
