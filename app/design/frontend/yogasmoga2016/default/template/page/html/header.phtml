@@ -914,57 +914,7 @@ if($getGOYSFirstUser == 0 || $paymethod != 'stripe'){
 }
 //end coded by shivaji chauhan
 ?>
-<script>
-var jQ = jQuery.noConflict();
-jQ(document).ready(function($){
-    
-     jQ = $.noConflict();
-	 jQ(window).scroll(function() {
-        var mainbody = jQ(window).scrollTop();		
-       if (mainbody > 40) {
-
-          
-	    jQ("#ysheader").removeClass("scrolled-effect");
-		jQ("#ysheader").addClass("showhide");
-	    
-		jQ("#ysheader").stop().animate({top:'-50'},{ duration: 300, queue: false });
-		jQ("#ysheader .posRel img").addClass("resizable");
-		jQ(".bagshow").removeClass("active");
-		jQ("#globalheader").addClass("color-change");
-	   }
-	   else{jQ("#ysheader").addClass("scrolled-effect");
-	   jQ("#ysheader").stop().animate({top:'0'},{ duration: 300, queue: false });
-	   jQ("#ysheader .posRel img").removeClass("resizable");
-	   jQ(".bagshow").addClass("active");
-	   jQ("#globalheader").removeClass("color-change");
-	   jQ("#ysheader").removeClass("showhide");
-	   
-
-       }
-	    
-    });
-	 jQ("#ysheader").mouseover(function(){       
-        if (!jQ("#ysheader").hasClass("scrolled-effect")) {
-            jQ(this).stop().animate({top:'0'});   
- jQ("#ysheader .posRel img").removeClass("resizable");			
- 		
- 
-        }		
-    });
-	 jQ("#ysheader").mouseout(function(){
-        
-        //move Nav back up
-        if (!jQ("#ysheader").hasClass("scrolled-effect")) {
-            jQ(this).stop().animate({top:'-50'});
-           jQ("#ysheader .posRel img").addClass("resizable");	
-				   
-        }
-    });
-	jQ("#shop-bag-count").click(function(){
-		
-		jQ( ".open-cart" ).trigger( "click" );
-		
-	});
-	
-    });
+<script type="text/javascript">
+// effect on header if window scroll
+header_scroll();
 </script>
