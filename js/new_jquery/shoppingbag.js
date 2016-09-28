@@ -42,7 +42,7 @@ jQuery(document).ready(function ($) {
         $("body, html").removeClass("hdnHgt");
         jQuery(".side-menu-bar,.account-nav").removeClass("scrolltopend");
         $(window).scrollTop("79px");
-		jQuery('#ysheader').removeClass('open-bag');
+		jQuery('body').removeClass('open-bag');
     });
     $("div.adddields span").live("click", function () {
         if (!$(this).attr('class')) {
@@ -371,7 +371,7 @@ function openShoppingCart() {
     jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).animate({left: -shoppingWdth}).show();
     jQuery(".header-container").animate({left: -shoppingWdth});
     jQuery("body, html").addClass("hdnHgt");
-	jQuery("#ysheader").addClass("open-bag");
+	jQuery("body").addClass("open-bag");
 // alert(bodyHght);
     return false;
 }
