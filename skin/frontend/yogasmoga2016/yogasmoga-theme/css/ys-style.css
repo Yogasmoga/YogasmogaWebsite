@@ -3791,13 +3791,13 @@ ul.main-menu.f-left.ctag-menu > li{height:60px;}
 
 /*---new product page design 09/sep/2016---*/
 .gridWrap .productCont .prod-img .prd-image:nth-child(2){
-display:none!important;
+display:none!important;opacity:1!important;
 }
 .gridWrap .productCont:hover .prod-img .prd-image:nth-child(2){
-display:block!important;
+display:block!important;opacity:1!important;
 }
 .gridWrap .productCont:hover .prod-img .prd-image:nth-child(1){
-display:none!important;
+display:none!important;opacity:1!important;
 }
 
 .product-details .block-head {display:none;}
