@@ -819,6 +819,7 @@ function addtocart() {
                 }
 
                 jQuery("span.cartitemcount").html(result.count);
+                jQuery("li#shop-bag-count span").html(result.count); //added by FK.
 
                 jQuery("div#myminicart").html(result.html);
 

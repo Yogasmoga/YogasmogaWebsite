@@ -133,6 +133,7 @@ jQuery(document).ready(function($){
                     if(_oncartpage)
                         location.reload();
                     jQuery("span.cartitemcount").html(result.count);
+                    jQuery("li#shop-bag-count span").html(result.count); //added by FK.
                     $("div#myminicart div#" + _minicartdeleteid).fadeOut('slow', function(){
                         $("div#myminicart div#" + _minicartdeleteid).remove();
                         $("div#myminicart div.subtotal td.totalprice").html(result.grandtotal);

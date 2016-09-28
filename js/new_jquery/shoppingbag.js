@@ -473,7 +473,7 @@ function showShoppingBagHtml() {
                 data = eval('(' + data + ')');
                 jQuery(".shopping-cart").html(data.html);
                 jQuery(".cartitemcount").html(data.count);
-
+                jQuery("li#shop-bag-count span").html(data.count); //added by FK.
                 initializeCartGiftSet();
 /************ added by ys team ************/
                 jQuery("#addtobagloader").hide();
@@ -667,6 +667,7 @@ function fastShowShoppingBagHtml() {
 
 
                     jQuery(".cartitemcount").html(data.count);
+                    jQuery("li#shop-bag-count span").html(data.count); //added by FK.
                     if (data.countdiscount > 1)
                         showerror(data.discounttypeerror);
                     outofstockDisable();
@@ -790,6 +791,7 @@ function addbracelettobag(pid, colorattributeid, sizeattributeid) {
                     _isaddedtobracelet = true;
                     jQuery(".shopping-cart").html(result.html);
                     jQuery(".cartitemcount").html(result.count);
+                    jQuery("li#shop-bag-count span").html(result.count); //added by FK.
 
                     initializeCartGiftSet();
 
@@ -847,6 +849,7 @@ function deleteproduct(deletedproducid, productcartqty) {
                     showShoppingBagHtml();
 
                     jQuery(".cartitemcount").html(result.count);
+                    jQuery("li#shop-bag-count span").html(result.count); //added by FK.
                     if (result.count < 1)  jQuery(".checkoutshow").hide();
 
                 }
