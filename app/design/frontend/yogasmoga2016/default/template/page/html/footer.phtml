@@ -231,19 +231,21 @@ jQuery(".cms-home div#bodycompensator").css("height","69px");
 				var winScrollTop = jQuery(window).scrollTop();
 				if( winScrollTop > filterOffsetTop){
 					
-					jQuery("#div_sizes,#div_cats").addClass("fixed_top");
+					jQuery("#div_sizes,#div_cats").addClass("fixed_top");					
 					//jQuery("#div_sizes.fixed_top,#div_cats.fixed_top").css("top","94px");
 					jQuery("#div_sizes.fixed_top,#div_cats.fixed_top").css("top","58px");
+					jQuery(".product-grid .bnrtxt").addClass("fixed_top");
 				}else{
 					jQuery("#div_sizes,#div_cats").removeClass("fixed_top");
 					jQuery("#div_sizes,#div_cats").css("top","auto");
+					jQuery(".product-grid .bnrtxt").removeClass("fixed_top");
 					
 				}
 		
 
 			}
 			
-				var filterOffsetTop = jQuery("#div_sizes,#div_cats").offset().top - 69;
+				var filterOffsetTop = jQuery("#div_sizes,#div_cats").offset().top - 40;
 				positionFilter(filterOffsetTop);
 				jQuery(window).scroll(function(){
 					positionFilter(filterOffsetTop);

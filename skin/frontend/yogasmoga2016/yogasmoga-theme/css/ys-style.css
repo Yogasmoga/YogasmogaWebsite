@@ -3519,6 +3519,7 @@ ul.main-menu2 li ul.sub-menu li a {
 #div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 50%; text-indent: -9999em; letter-spacing:0.43px; width:25px; height:25px;}
 
 #div_sizes.fixed_top, #div_cats.fixed_top{left:0; padding-left:40px;}
+#div_sizes.fixed_top{box-shadow:1px 1px 10px #ddd;}
 
 
 
@@ -3532,6 +3533,9 @@ ul.main-menu2 li ul.sub-menu li a {
 #div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; /*display:inline-block;*/display:none;}
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
+.product-grid .bnrtxt{width:auto;top:120px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);}
+.product-grid .bnrtxt.fixed_top{top:60px;position:fixed;z-index:99;}
+.product-grid .gridProdCubix{margin:75px auto auto;}
 
 /*----product details----*/
 .product-details .block-head{border-top:1px solid #9c9c9c;padding:24px 0 0 0;}
@@ -3950,6 +3954,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-top:10p
 #ysheader .right-top-block #bag-count{margin-right:18px;}
 #ysheader .right-bottom-block #shop-bag-count{display:none;background:#ae8536;color:#fff;width:26px;height:26px;border-radius:100%;float:right;padding:0;}
 #ysheader .right-bottom-block #shop-bag-count span{line-height:26px;}
+#ysheader.showhide .quick-access{border-bottom:1px solid #ccc;}
 #ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
 .scrolled-effect #globalheader ul.main-menu li a{color:#fff;}
  #globalheader ul.tr-menu > li > ul.sub-menu li a{color:#fff;}

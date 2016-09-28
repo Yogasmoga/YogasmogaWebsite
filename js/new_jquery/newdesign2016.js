@@ -162,8 +162,10 @@ jQuery(window).resize(function(){
 
 jQuery(document).ready(function(){
 	if(jQuery('#div_sizes').length){
-		jQuery('.bannerFluid').addClass('ds');		
+		jQuery('.bannerFluid').addClass('ds');				
 	}
+	
+	
 });
 
 /*--header scroll effect--*/
@@ -175,6 +177,7 @@ jQuery(document).ready(function(){
      
 	 jQuery(window).scroll(function() {
         var mainbody = jQuery(window).scrollTop();		
+		
        if (mainbody > 40) {
           
 		jQuery("#ysheader").removeClass("scrolled-effect");
