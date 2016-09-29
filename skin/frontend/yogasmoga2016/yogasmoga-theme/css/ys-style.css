@@ -3665,10 +3665,10 @@ float:left; margin-left:-40px; }
 .blk-imp{display:block!important;}
 
 .gry-box div.producterrorcontainer div.errormsg {
-  color: #ff5f00; display: none;font-family: itcavantgardepromd; font-size: 13px;letter-spacing: 0.22px;line-height: 13px; padding-bottom: 0; position: absolute;
+  color: #c03; display: none;font-family: itcavantgardepromd; font-size: 13px;letter-spacing: 0.22px;line-height: 13px; padding-bottom: 0; position: absolute;
   text-align: center;text-transform: none;top: -63px;}
   .insale {
-  color: #ff5f00 !important;
+  color: #c03 !important;
   font: 13px/13px itcavantgardepromd;
   letter-spacing: 0.22px;
   margin: 14px 0 8px !important;
