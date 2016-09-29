@@ -218,8 +218,12 @@ jQuery(document).ready(function(){
     });
 	jQuery("#shop-bag-count").click(function(){		
 		jQuery( ".open-cart" ).trigger( "click" );		
+		jQuery(".header-container").animate({left: '-400'});		
+		
 	});
-	
+	jQuery(".pageoverlay,#continuelink").on("click", function () {				
+		jQuery(".header-container").animate({left: "0"});		
+	});
 	
    });
 
