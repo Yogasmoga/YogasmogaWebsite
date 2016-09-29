@@ -520,10 +520,11 @@ function showShoppingBagHtml() {
 						}	
 					});*/
 					/*---------promocode update for apply button end---*/
-			
+				jQuery('#smogi').prop('disabled', true);
             }
         });
     //}, 500);
+		
 			
 }
 
