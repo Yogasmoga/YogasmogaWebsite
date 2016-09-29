@@ -4111,7 +4111,45 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 
 	/*********** home page changes end **************/
 
+/*********** women collection************/
+.women-collection .new-collection-block{  background: #fff none repeat scroll 0 0 !important;
+    margin: 0 auto;
+    opacity: 1;
+    position: relative;
+	padding-top:2%;
+    width: 100%;}
+	
+	.women-collection .new-collection-block .col-box {
+  box-sizing: border-box;
+  padding: 0 0 0 0;
+  text-transform: uppercase;
+}
+.women-collection .new-collection-block .col-box .col-main-head{
+ padding-bottom: 2.5%;
+}
+.women-collection .new-collection-block .col-box .col-main-head span{
+ border-bottom: 1px solid #555;   
+    display: inline-block;
+    font: 16px/24px avantgardegothicitcw01d;
+    letter-spacing: 0.5px;
+	color:#555;
+    padding-bottom: 1%;
+    width: 28%;}
+	
+	.women-collection .new-collection-block .col-box  h2 span{color:#555;}
+.women-collection .new-collection-block .col-box h2 span{display: block;
+    font: 46px/46px avantgardegothicitcw01d;
+    margin-bottom: 34px;}	
 
+.women-collection .new-collection-block .col-subhead {
+  color: #555;
+  font: 20px/26px graphikregular;
+  letter-spacing: 0.6px;
+  text-transform: none;
+  padding-bottom: 2.5%;
+}
+	
+.women-collection .women-collection-banner img{width:100%;height:auto;}
 @keyframes fadeInScale {
 
   0% { 

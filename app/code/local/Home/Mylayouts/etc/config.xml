@@ -233,6 +233,15 @@
 		<!-- Color Varint page layouts End here -->
 		
 		
+		<!-- Color Collection Women page layouts End here -->
+		
+	    <varint-color translate="label">
+          <label>Collection Women</label>
+          <template>page/collection_women.phtml</template>
+          <layout_handle>Collection Women</layout_handle>
+        </varint-color>
+		<!-- Color Collection Women page layouts End here -->
+		
 	  </layouts>
 	  
 	  
