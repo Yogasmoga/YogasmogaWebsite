@@ -3665,15 +3665,18 @@ float:left; margin-left:-40px; }
 .blk-imp{display:block!important;}
 
 .gry-box div.producterrorcontainer div.errormsg {
-  color: #ff5f00; display: none;font-family: itcavantgardepromd; font-size: 13px;letter-spacing: 0.22px;line-height: 13px; padding-bottom: 0; position: absolute;
+  color: #c03; display: none;font-family: itcavantgardepromd; font-size: 13px;letter-spacing: 0.22px;line-height: 13px; padding-bottom: 0; position: absolute;
   text-align: center;text-transform: none;top: -63px;}
   .insale {
-  color: #ff5f00 !important;
+  color: #c03 !important;
   font: 13px/13px itcavantgardepromd;
   letter-spacing: 0.22px;
   margin: 14px 0 8px !important;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
+.gry-box .insale{margin-bottom:-16px!important;}
+.insale-price{color:#555;}
+.was-amount { color: #c03; font: 12px/30px ITCAvantGardeProBk;  text-transform: capitalize !important;}
 
 /********** new- changes ************/
 /************* size chart start*************/
@@ -3925,6 +3928,12 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 #productdetails .fabDetail li {height:34px; overflow:hidden;margin-bottom:10px;}
 #productdetails .style-image{display:none;}
 
+/*--length option--*/
+.gry-box .selectedlength div.selected {
+  background: #ae8536 none repeat scroll 0 0;
+  color: #fff;
+}
+.gry-box .selectedlength div{}
 /*-----product tab -----*/
 input[name="prodTab"]{display:none;}
 
