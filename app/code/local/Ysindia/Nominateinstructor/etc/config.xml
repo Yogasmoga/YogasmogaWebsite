@@ -51,11 +51,11 @@
 						<sort_order>0</sort_order>
 						<action>nominateinstructor/adminhtml_nominateinstructor</action>
 					</nominate>
-                    <items module="bannerslider">
+                    <!--<items module="bannerslider">
                         <title>Manage Banner</title>
                         <sort_order>1</sort_order>
                         <action>bannerslider/adminhtml_bannerslider</action>
-                    </items>
+                    </items>-->
 				</children>
 			</nominateinstructor>
 		</menu>

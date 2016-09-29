@@ -10,7 +10,7 @@
 <config>
     <modules>
         <Ysindia_Bannerslider>
-            <active>true</active>
+            <active>false</active>
             <codePool>local</codePool>
         </Ysindia_Bannerslider>
     </modules>
