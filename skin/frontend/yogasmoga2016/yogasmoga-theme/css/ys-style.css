@@ -3672,8 +3672,10 @@ float:left; margin-left:-40px; }
   font: 13px/13px itcavantgardepromd;
   letter-spacing: 0.22px;
   margin: 14px 0 8px !important;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
+.insale-price{color:#555;}
+.was-amount { color: #c03; font: 12px/30px ITCAvantGardeProBk;  text-transform: capitalize !important;}
 
 /********** new- changes ************/
 /************* size chart start*************/
