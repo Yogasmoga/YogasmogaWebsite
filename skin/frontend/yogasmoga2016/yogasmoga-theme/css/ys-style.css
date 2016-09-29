@@ -3424,6 +3424,14 @@ div.copy-privacy-likes ul li {
   letter-spacing: 0.5px;
 }
 	.new-arrivals-block .na-subhead{  padding-bottom: 2.5%;}
+	.new_arrivals .shop-col-desc .new-arrival-heading{padding-bottom: 2.5%;}
+	.new_arrivals .shop-col-desc .new-arrival-heading span{ border-bottom: 1px solid #555;
+    color: #555;
+    display: inline-block;
+    font: 16px/24px avantgardegothicitcw01d;
+    letter-spacing: 0.5px;
+    padding-bottom: 1%;
+    width: 28%;}
 /******************  header new changes start   ***********/
 
 #search_input {

@@ -72,8 +72,7 @@ jQuery(function(){
                 </li>
                 <li>
                     <ul>
-                        <li><a href="/our-story">YS STORY</a></li>
-                        <li><a href="/ys-fabric-tech">YS TECH</a></li>
+                        <li><a href="/our-story">YS STORY</a></li>                       
 						<li><a href="/our-stores">YS STORES</a></li>
                         <li><a href="/smogi-bucks">SMOGI BUCKS</a></li>
                         <li><a href="/namaskar">NAMASK&Aacute;R FOUNDATION</a></li>
@@ -84,11 +83,12 @@ jQuery(function(){
                         <li><a id="welcome-name" href="<?php echo Mage::getBaseUrl().'customer/account/index' ?>">MY ACCOUNT</a></li>
                         <li><a href="<?php echo Mage::getBaseUrl().'gift_of_ys' ?>">GIFT CARD</a></li>
                         <li><a id="footer-trackorder" href="<?php echo Mage::getBaseUrl().'sales/order/history' ?>">TRACK MY ORDER</a></li>
+						<li><a href="/careers">CAREERS</a></li>
                     </ul>
-					 <ul class="join-us" style="padding-top:14px;">
+					<!-- <ul class="join-us" style="padding-top:14px;">
                         <li><span style="font-family:gothambold;" >JOIN US</span></li>
                         <li><a href="/careers">CAREERS</a></li>
-                    </ul>
+                    </ul>-->
                 </li>                
             </ul>
             <ul class="site-map">
@@ -110,13 +110,13 @@ jQuery(function(){
                 
                     <ul class="before-login <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()) echo 'sb-show'; ?>">
                         <li><a href="javascript:void(0);" id="" class="smogi-love gothambd">FEEL THE SMOGI LOVE</a></li>
-                        <li class="smogi-love">Sign up now to receive $25 smogi bucks</li>
+                        <li class="smogi-love">SIGN UP NOW<br/>TO RECEIVE $25 SMOGI BUCKS</li>
                     </ul>               
                     
                 </li>
                 <li>
                     <ul>
-                        <li class="gothambd">STAY IN TOUCH</li>
+                       <!-- <li class="gothambd">STAY IN TOUCH</li>
                         <li>
                             <ul class="social-icons">
                                 <li><a target="_blank" href="http://www.facebook.com/YOGASMOGA" class="fb-icon"></a></li>
@@ -125,8 +125,8 @@ jQuery(function(){
                                 <li><a target="_blank" href="http://www.Pinterest.com/YOGASMOGA" class="pin-icon"></a></li>
                             </ul>
                         </li>
-                        <li>&nbsp;</li>
-                        <li class="gothambd"><a id="invite-friend" href="javascript:void(0);" class="share-frnds">SHARE WITH YOUR FRIENDS</a></li>
+                        <li>&nbsp;</li>-->
+                        <li class="gothambd"><a id="invite-friend" href="javascript:void(0);" class="share-frnds gothambd ">SHARE WITH YOUR FRIENDS</a></li>
                     </ul>
                 </li>
             </ul>
@@ -141,6 +141,7 @@ jQuery(function(){
                     <li>&nbsp;&nbsp;&nbsp;</li>
                     <!--<li id="facebook-like" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/fb-like-btn.png') ?>" alt="Facebook"></li> -->
                     <!--<li id="twitter-follow" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/follow-twitter-btn.png') ?>" alt="Twitter"></li> -->
+					<?php if (false){?>
                     <li id="facebook-like" class="pointer">
                        <!--<iframe id="fb-like-btn" src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fyogasmoga&amp;width&amp;layout=button&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=80&amp;appId=647531145339855" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:20px; width:49px;" allowTransparency="true"></iframe> -->
                         <iframe id="fb-like-btn" src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fyogasmoga.com&amp;width&amp;layout=button&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=80&amp;appId=647531145339855" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:20px;width:49px;" allowTransparency="true"></iframe>
@@ -148,6 +149,7 @@ jQuery(function(){
                     <li id="twitter-follow" class="pointer"><a href="https://twitter.com/intent/follow?original_referer=<?php echo urlencode($_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"])."&region=follow_link&screen_name=yogasmoga&tw_p=followbutton&variant=2.0"; ?>"><img src="<?php echo $this->getSkinUrl('images/footer/twtr-sml.jpg') ?>" style="height:20px; width:64px;" alt="Twitter"/></a></li>
 
                     <li id="paypal"><img style="height:20px; width:50px;" src="<?php echo $this->getSkinUrl('images/footer/paypal-sml.jpg') ?>" alt="PayPal"></li>
+					<?php }?>
                 </ul>
             </div>
         </div>
