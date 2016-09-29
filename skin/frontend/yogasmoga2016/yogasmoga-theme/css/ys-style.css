@@ -3928,6 +3928,12 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 #productdetails .fabDetail li {height:34px; overflow:hidden;margin-bottom:10px;}
 #productdetails .style-image{display:none;}
 
+/*--length option--*/
+.gry-box .selectedlength div.selected {
+  background: #ae8536 none repeat scroll 0 0;
+  color: #fff;
+}
+.gry-box .selectedlength div{}
 /*-----product tab -----*/
 input[name="prodTab"]{display:none;}
 

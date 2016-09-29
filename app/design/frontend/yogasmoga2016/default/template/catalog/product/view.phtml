@@ -1366,13 +1366,18 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                     <div class="selectedlength">
                                             
                                         <?php
+										$optionLength= "";
                                         foreach ($arProductAllLength as $length) {
                                             ?>
+											<?php if($length['label'] == strtolower('regular')):?>
+											
                                             <div value="<?php echo $length['value']; ?>"
-                                                 lengthtype="<?php echo $length['label']; ?>"><?php echo $length['label']; ?></div>
-                                            <?php
-                                        }
-                                        ?>
+                                                 lengthtype="<?php echo $length['label']; ?>"><?php echo $this->__('R'); ?></div>
+											<?php elseif($length['label'] == strtolower('tall')): ?>	 
+												<div value="<?php echo $length['value']; ?>"
+                                                 lengthtype="<?php echo $length['label']; ?>"><?php echo $this->__('T'); ?></div>
+											<?php endif; ?>	 
+                                            <?php } ?>
                                     </div>
 									</div>
                                     <!-- select length -->
