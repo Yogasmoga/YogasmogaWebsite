@@ -218,7 +218,23 @@ jQuery(document).ready(function(){
     });
 	jQuery("#shop-bag-count").click(function(){		
 		jQuery( ".open-cart" ).trigger( "click" );		
+		jQuery(".header-container").animate({left: '-400'});
+		jQuery(".product-grid .fixed_top").animate({marginLeft: '-400'});
+		
 	});
+	jQuery(".pageoverlay,#continuelink").on("click", function () {		
+		//alert();
+		jQuery(".header-container").animate({left: "0"});
+		if(jQuery(".product-grid .bnrtxt,.product-grid #div_sizes,.product-grid #div_cats").css('margin-left','-400px')){
+			alert('margin-left = -400px');
+				jQuery(".product-grid .bnrtxt,.product-grid #div_sizes,.product-grid #div_cats").css('margin-left','0');
+		}
+		
+	});
+	
+	
+	
+	
 	
    });
 
