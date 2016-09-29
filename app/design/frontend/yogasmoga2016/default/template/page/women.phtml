@@ -206,30 +206,8 @@
 
                 </ul>
             </div>
-            <!-- sliderBanner -->
 
-            <!-- signup new -->
-            <!--<div class="share-strip">
-                <div class="sign-up-new">
 
-                    <a href="javascript:void(0)">Sign up</a><span>&amp; WE’LL SURPRISE YOU</span>
-
-                </div>
-            </div>-->
-            <!-- signup new -->
-
-            <?php
-            $currentCategoryId = Mage::registry('current_category')->getId();
-            //$categoriesWithNoFilterVariable = array(8,12,29,30,31,32,33,38,39,40,46,50);
-            $categoriesWithNoFilterVariable = Mage::getModel('core/variable')->loadByCode('no_filter_categories')->getValue('plain');
-            $categoriesWithNoFilter = explode(",", $categoriesWithNoFilterVariable);
-            $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
-            if($showSizeFilter){
-                ?>
-                <div id="div_sizes" class="sz_filter">&nbsp;</div>
-                <!-- category filter -->
-                <div id="div_cats" class="ct_filter"></div>
-            <?php } ?>
 
             <div class="clear-fix"></div>
 
@@ -267,14 +245,12 @@
                     //retrieve color
                     $write = Mage::getSingleton('core/resource')->getConnection('core_read');
                     $readresult = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
-                    while ($row = $readresult->fetch()) {
-                        $clrinfo[$row['Value']] = $row['Attribute'];
-                    }
-                    //                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
-                    //
-                    //                        $categoryId = $categoryIds['new_arrivals'];
 
-                    //$newarrivals = Mage::getModel('catalog/category')->load($categoryId);
+                    $colorIndexArr = array();
+                    while ($row = $readresult->fetch() ) {
+                        $clrinfo[$row['Value']] = $row['Attribute'];
+                        $colorIndexArr [] = $row['Value'];
+                    }
 
 
                     $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
@@ -283,13 +259,6 @@
                     $fcolorKey = array();//Added By FK
                     $fcolorValue = array();//Added By FK
                     foreach ($productCollection as $_product) {
-
-                        $filterName = $_product->getAttributeText('color_filter');
-                        $simpleproductarr['id'] =  $_product->getId();
-                        $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleproductarr['id']);
-                        $simpleproductarr['filter_color'] = $_product->getColorFilter();//Added By FK
-                        $fcolorKey[] = $_product->getColorFilter();//Added By FK
-                        $fcolorValue[] = $filterName;//Added By FK
 
                         $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
                         $grayimgage = '';
@@ -303,7 +272,7 @@
                             if (strcasecmp($imgdata['type'], "grey background") == 0 && $imgdata['color'] != '' && $imgdata['quick_view_position'] != '') {
                                 $grayimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
 
-//$quickviewproducts[$imgdata['quick_view_position']]['position'] = $imgdata['quick_view_position'];
+                                //$quickviewproducts[$imgdata['quick_view_position']]['position'] = $imgdata['quick_view_position'];
                                 $quickviewproducts[$imgdata['quick_view_position']]['id'] = $_product->getId();
                                 $quickviewproducts[$imgdata['quick_view_position']]['name'] = $_product->getName();
                                 $quickviewproducts[$imgdata['quick_view_position']]['color'] = $imgdata['color'];
@@ -328,93 +297,22 @@
                             }
 
                         }
-                    }
-
-
-                    ksort($quickviewproducts);
-
-
-                    // Size Filter added.
-
-
-
-                    $confProduct = Mage::getModel('catalog/product')->load($simpleproductarr['parentid']);
-                    //show html of the product
-
-
-                    /**************** size filter *****************/
-                    $alphabeticSkuSizes = array();
-                    $productColorIndex=0;
-                    /**************** size filter *****************/
-                    ++$productColorIndex;
-
-                    $confProductForSku = Mage::getModel('catalog/product_type_configurable')->setProduct($confProduct);
-
-                    $skuSizes = array();
-                    $simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFieldToFilter(array(array('attribute'=>'color','eq'=>$simpleproductarr['color'])));
-
-
-                    $characterSizeFound = false;
-                    foreach($simpleCollectionForSku as $simpleProductForSku){
-                        //$sku = $simpleProductForSku->getId();
-                        $filterColorName = $simpleProductForSku->getAttributeText('color');
-                        $filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
-                        $size = $simpleProductForSku->getAttributeText('size');
-                        //$stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
-                        $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getIsInStock();
-                        if(!isset($skuSizes[$filterColorName]))
-                            $skuSizes[$filterColorName] = array();
-
-                        if(isset($size) && strlen(trim($size))>0) {
-                            $allSkuSizes[] = $size;
-                            if ($stock > 0)
-                                $skuSizes[$filterColorName][] = $size;
-                        }
-                    }
-                    /**************** size filter *****************/
-
-                    /****************** size filter **********************************/
-                    $productColorName = $clrinfo[$simpleproductarr['color']];
-                    $arColorSizes = array();
-                    foreach($skuSizes as $keyColor => $sizes) {
-
-                        if ($keyColor == $productColorName) {
-                            $strSizes = implode(",", $sizes);
-                            break;
-                        }
-                    }
-                    //echo $strSizes;
-                    /****************** size filter **********************************/
-                    /********************** category filter *********************/
-                    $cats = $confProduct->getCategoryIds();
-                    $allcats = array_unique(array_merge($allcats,$cats));
-                    $catsids = implode(",", $cats);
-
-                    /*------------*/
-
-                    //$simpleproductarr['filter_color'];
-                    //$simpleproductarr['filter_data']
-
-
-
-                    /********************** category filter *********************/
-
-
-
-                    // Size Filter end.
-
-
-                    ?>
-                    <?php
+                }
+                ksort($quickviewproducts);
+                 ?>
+                    <!--Coded By Fahim Khan-->
+                <?php
                     $i = 1;
                     $position = array(Mage::getStoreConfig('tab1/general/smogi', Mage::app()->getStore()->getId()));
                     $finalPos = implode(',',$position);
+
                     foreach ($quickviewproducts as $_product) {
+
                         if($i == (int)$finalPos[0]){
                             ?>
 
                             <!-- size filters -->
-                            <div class="productCont prodduct_horizontal" color="<?php echo $simpleproductarr['filter_color']; ?>" rel="<?php echo $strSizes;?>" dd=" <?php echo $finalPos[0];?>">
+                            <div class="productCont prodduct_horizontal product-color-<?php echo $productColorIndex;?>"" color="<?php echo $simpleproductarr['filter_color']; ?>" rel="<?php echo $strSizes;?>" dd=" <?php echo $finalPos[0];?>">
                                 <!-- size filters -->
                                 <div class="prod-img">
                                     <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
@@ -423,9 +321,7 @@
                                     </a>
                                 </div>
                                 <div class="caption">
-
                                     <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?>&mdash;$<?php echo $_product['price']; ?></span>
-
                                 </div>
                             </div>
 
@@ -434,7 +330,7 @@
                         ?>
 
                         <!-- size filters -->
-                        <div class="productCont prodduct_horizontal" color="<?php echo $simpleproductarr['filter_color']; ?>" rel="<?php echo $strSizes;?>"  dd=" <?php echo $finalPos[1];?>">
+                        <div class="productCont prodduct_horizontal product-color-<?php echo $productColorIndex;?>"" color="<?php echo $simpleproductarr['filter_color']; ?>" rel="<?php echo $strSizes;?>"  dd=" <?php echo $finalPos[1];?>">
                             <!-- size filters -->
                             <div class="prod-img">
                                 <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
@@ -444,13 +340,15 @@
                             </div>
                             <div class="caption">
 
-                                <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?>&mdash;$<?php echo $_product['price']; ?></span>
+                                <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a>
+                                    <span><?php echo $clrinfo[$_product['color']]; ?></span>
+                                    <span>$<?php echo $_product['price']; ?></span>
 
                             </div>
                         </div>
                     <?php } else{ ?>
                             <!-- size filters -->
-                            <div class="productCont" color="<?php echo $simpleproductarr['filter_color']; ?>" rel="<?php echo $strSizes;?>">
+                            <div class="productCont product-color-<?php echo $productColorIndex;?>"" color="<?php echo $simpleproductarr['filter_color']; ?>" rel="<?php echo $strSizes;?>">
                                 <!-- size filters -->
                                 <div class="prod-img">
                                     <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>">
@@ -460,7 +358,9 @@
                                 </div>
                                 <div class="caption">
 
-                                    <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a><span><?php echo $clrinfo[$_product['color']]; ?>&mdash;$<?php echo $_product['price']; ?></span>
+                                    <a href="<?php echo $_product['url'].'?color='.$_product['color'];?>"><?php echo $_product['name'].'<br/>';?></a>
+                                    <span><?php echo $clrinfo[$_product['color']]; ?></span>
+                                    <span>$<?php echo $_product['price']; ?></span>
 
                                 </div>
                             </div>
@@ -474,76 +374,7 @@
             <!-- ProductListing Part -->
             <div class="clear-fix"></div>
             <!-- Feature Product -->
-<?php
-            if($showSizeFilter){
-            /************** size filter ***********************/
-            if(isset($allSkuSizes) && count($allSkuSizes)>0)
-            $allSkuSizes = array_unique($allSkuSizes);
 
-            $arProductAllSizes = array();
-            $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
-            $allOptions = $attribute->getSource()->getAllOptions(true, true);
-            foreach ($allOptions as $instance) {
-            if ($instance['label'] != "" && strpos($instance['label'], "T")===false)
-            $arProductAllSizes[] = $instance['label'];
-            }
-
-
-
-            $finalcolorfilter = array_combine($fcolorKey,$fcolorValue);
-
-            //echo "<pre/>";
-            //print_r($finalcolorfilter);
-
-
-
-            /************** size filter ***********************/
-
-            ?>
-            <!-- ********************************* checkbox filter ********************** -->
-            <script type="text/javascript">
-                var arAllSizes = Array();
-                var arProductSizes = Array();
-                var arAllCats = Array();
-                var arProductCats = {};//Array();
-
-                var productColorIndex;
-
-                productColorIndex = "<?php echo $productColorIndex;?>";
-
-                <?php
-                    foreach($allSkuSizes as $size){
-                ?>
-                arProductSizes.push("<?php echo $size;?>");
-                <?php
-                    }
-                    foreach($arProductAllSizes as $size){
-                ?>
-                arAllSizes.push("<?php echo $size;?>");
-                <?php
-                    }
-                ?>
-
-                <?php
-                foreach($finalcolorfilter as $id => $name){
-                ?>
-                arProductCats["<?php echo $id;?>"] = "<?php echo $name;?>";
-                <?php
-                }
-                foreach($allcats as $catid){
-                ?>
-                arAllCats.push("<?php echo $catid;?>");
-                <?php
-                }
-                ?>
-                console.log(JSON.stringify(arProductCats));
-                console.log(JSON.stringify(arAllCats));
-
-            </script>
-            <script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter-new.js"></script>
-
-            <!-- ********************************* checkbox filter ********************** -->
-            <?php } ?>
 
         </div>
         <?php echo $this->getChildHtml('footer'); ?>
