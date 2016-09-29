@@ -3674,6 +3674,7 @@ float:left; margin-left:-40px; }
   margin: 14px 0 8px !important;
   text-transform: capitalize;
 }
+.gry-box .insale{margin-bottom:-16px!important;}
 .insale-price{color:#555;}
 .was-amount { color: #c03; font: 12px/30px ITCAvantGardeProBk;  text-transform: capitalize !important;}
 
