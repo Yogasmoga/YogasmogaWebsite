@@ -43,6 +43,10 @@ jQuery(document).ready(function ($) {
         jQuery(".side-menu-bar,.account-nav").removeClass("scrolltopend");
         $(window).scrollTop("79px");
 		jQuery('body').removeClass('open-bag');
+		if(jQuery(".product-grid .bnrtxt,.product-grid #div_sizes,.product-grid #div_cats").css('margin-left','-400px')){
+			//alert('margin-left = -400px');
+				jQuery(".product-grid .bnrtxt,.product-grid #div_sizes,.product-grid #div_cats").css('margin-left','0');
+		}
     });
     $("div.adddields span").live("click", function () {
         if (!$(this).attr('class')) {
@@ -372,6 +376,7 @@ function openShoppingCart() {
     jQuery(".header-container").animate({left: -shoppingWdth});
     jQuery("body, html").addClass("hdnHgt");
 	jQuery("body").addClass("open-bag");
+	jQuery(".product-grid .fixed_top").animate({marginLeft: '-400'});
 // alert(bodyHght);
     return false;
 }
