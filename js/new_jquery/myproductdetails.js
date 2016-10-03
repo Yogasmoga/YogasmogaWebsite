@@ -103,6 +103,10 @@ jQuery(document).ready(function ($) {
         changelengthtype($(this));
         $(this).addClass("selected");
         $(this).siblings().removeClass("selected");
+		
+		// to show selected length name using attribute
+		var lengthVal = $(this).attr('lengthtype');		
+		$('.length-name').html(lengthVal+' Length')
     });
 
     InitializeProductQty();

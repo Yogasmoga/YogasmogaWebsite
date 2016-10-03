@@ -39,6 +39,27 @@ jQuery(document).ready(function($){
 			
 	});
 });
+jQuery(document).ready(function($){
+	$('.selectedlength div[lengthtype="Regular"]').html('R');
+	$('.selectedlength div[lengthtype="Tall"]').html('T');
+	/*if($('div[lengthtype="Regular"]').hasClass('selected')){
+			$('.length-name').html('Regular Length')
+		}
+		if($('div[lengthtype="Tall"]').hasClass('selected')){
+			$('.length-name').html('Tall Length')
+		}*/
+	/*$('.selectedlength div').click(function(){
+		//alert();
+		if($(this).attr("[lengthtype='Tall']")){
+			
+			$('.length-name').html('Tall Length')
+		}
+		else if($(this).attr("[lengthtype='Regular']")) {
+			$('.length-name').html('Regular Length')
+		}	
+	});*/
+	
+});	
 /*
 jQuery(document).ready(function($){
 	var imgrowtr = $('.thumb-imgs table.smallimagecontiner tr td');
