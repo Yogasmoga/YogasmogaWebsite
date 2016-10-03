@@ -4179,7 +4179,7 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 /*.prod-tab-content *{-webkit-animation: fadeInScale 0.7s ease-in-out;-moz-animation: fadeInScale 0.7s ease-in-out;animation: fadeInScale 0.7s ease-in-out;}*/
 
 /*--shopping-bag--*/
-.shopping-cart{box-shadow: -10px 0 5px #eee;}
+.shopping-cart{box-shadow: 0 0 10px #e2e2e2;}
 .adddields .smogi_lbl{position:relative;}
 .adddields #smogi{background:transparent; padding:0;}
 .adddields .applysmogi{display:block!important;color:#ae8536;background:none; width:auto;}
@@ -4189,6 +4189,11 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 .shopping-cart input#smogi:-ms-input-placeholder{opacity:1;color:#555!important; font-family:gothamBook; font-size:12px;} 
 .shopping-cart #sub-totals-discount{margin-bottom:0;}
 .shopping-cart .capstxt{padding:0;}
+.shopping-cart .capstxt.totalAmnt{padding:0 0 15px 0;border-bottom:2px solid #c6c6c6;}
 .shopping-cart .capstxt .continuelink{margin:0;width:50%;box-sizing:border-box;background:#ddd; text-transform:uppercase;}
-.shopping-cart .capstxt #continuecheckout.continuelink{background:#ae8536;}
+.shopping-cart .capstxt .continuelink:nth-child(2){background:#ae8536;}
 .shopping-cart .addedItem,.shopping-cart .cont-full{background:#f4f4f4;}
+.shopping-cart .strip-gry{display:none;}
+.shopping-cart .giftcardcheckbox,.shopping-cart label[for="giftCardShop"]{display:none;}
+.shopping-cart .addedItem .similarProdList > li{border-top:2px solid #c6c6c6;}
+.shopping-cart .similarProdList .size{font-size:11px;line-height:15px;}
