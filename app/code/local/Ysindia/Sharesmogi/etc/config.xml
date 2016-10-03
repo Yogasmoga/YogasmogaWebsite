@@ -94,7 +94,7 @@
                 </entities>
             </sharesmogi_mysql4>
         </models>
-        <events>
+       <!--<events>
             <customer_register_success>
                 <observers>
                     <ysindia_sharesmogi_customer_register_success>
@@ -104,7 +104,7 @@
                     </ysindia_sharesmogi_customer_register_success>
                 </observers>
             </customer_register_success>
-        </events>
+        </events>-->
         <resources>
             <sharesmogi_setup>
                 <setup>

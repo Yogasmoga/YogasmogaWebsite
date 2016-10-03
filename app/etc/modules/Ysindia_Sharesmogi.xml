@@ -10,7 +10,7 @@
 <config>
     <modules>
         <Ysindia_Sharesmogi>
-            <active>false</active>
+            <active>true</active>
             <codePool>local</codePool>
         </Ysindia_Sharesmogi>
     </modules>
