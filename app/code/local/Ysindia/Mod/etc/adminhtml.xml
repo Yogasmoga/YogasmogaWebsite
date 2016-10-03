@@ -8,9 +8,9 @@
                         <children>
                             <config>
                                 <children>
-                                    <tab1>
+                                    <product_grid>
                                         <title>Tab #1</title> <!-- Used in resources tree -->
-                                    </tab1>
+                                    </product_grid>
                                 </children>
                             </config>
                         </children>
