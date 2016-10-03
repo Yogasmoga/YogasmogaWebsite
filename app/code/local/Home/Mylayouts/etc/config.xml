@@ -205,7 +205,13 @@
           <layout_handle>variant</layout_handle>
         </color-variant>
         <!-- Color Varint page layouts End here -->
-
+        <!--for customer account layout-->
+        <share-smogi translate="label">
+          <label>Customer Account</label>
+          <template>page/customer_account.phtml</template>
+          <layout_handle>customer_info</layout_handle>
+        </share-smogi>
+        <!--for customer account layout-->
       </layouts>
     </page>
   </global>

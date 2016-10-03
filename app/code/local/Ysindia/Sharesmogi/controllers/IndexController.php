@@ -55,18 +55,33 @@ class Ysindia_Sharesmogi_IndexController extends Mage_Core_Controller_Front_Acti
 			"success_message" => ''
 		);
 
-		if(!Mage::getSingleton('customer/session')->isLoggedIn()){
+	/*	if(!Mage::getSingleton('customer/session')->isLoggedIn()){
 			//Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account/login',array('_secure'=>true)));
 			$response['status'] = "error";
 			$response['error'] = "Please login first.";
 			echo json_encode($response);
 			return;
+		}*/
+
+		$childEmail = Mage::app()->getRequest()->getParam('email');
+		$customerModel = Mage::getModel('customer/customer');
+
+		$customerModel->setWebsiteId(Mage::app()->getWebsite()->getId());
+		$customerModel->loadByEmail($childEmail);
+
+		if($customerModel->getId())
+		{
+			$response['status'] = "error";
+			$response['error'] = "This email is already registered. Please try another.";
+			echo json_encode($response);
+			return;
 		}
+
 
 		$customer = Mage::getSingleton('customer/session')->getCustomer();
 		$parentId = $customer->getId();
 		$parentEmail = $customer->getEmail();
-		$childEmail = Mage::app()->getRequest()->getParam('email');
+
 		$modal =  Mage::getModel('sharesmogi/sharesmogi');
 		$childPoints = Mage::getStoreConfig('tab1/general/smogi', Mage::app()->getStore()->getId());
 		$smogiChildPoints = 0;
@@ -80,7 +95,7 @@ class Ysindia_Sharesmogi_IndexController extends Mage_Core_Controller_Front_Acti
 		if($childEmail){
 				if($childEmail == $parentEmail  || $smogiExistEmail){
 					$response['status'] = "error";
-					$response['error'] = "Unable to submit your request. Please, add another email.";
+					$response['error'] = "Sorry! You have already invited. Please, try another email.";
 					echo json_encode($response);
 					return;
 				}
