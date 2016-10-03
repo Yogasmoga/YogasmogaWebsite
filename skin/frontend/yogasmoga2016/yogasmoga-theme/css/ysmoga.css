@@ -283,13 +283,13 @@ ul.site-map > li{
     position: absolute;
 }
 
-.compressBox{background: url("../images/new-elements/zelos-crop-bucket-box2.jpg") no-repeat center center #e4e4e4;
+.compressBox{background: url("../images/new-elements/zelos-crop-bucket-box2.png") no-repeat center center #e4e4e4;
 	background-size: 100% 100%;
 }
 
 
 .multicolorcont{
-   background: url("../images/new-elements/montauk-polo-bucket-box2.png") no-repeat center center transparent; 
+   background: url("../images/new-elements/montauk-polo-bucket-box2v2.png") no-repeat center center transparent; 
   /*  background: #03310f;*/
     background-size: 100% 100%;
 }
@@ -310,11 +310,11 @@ ul.site-map > li{
 }
 
 .namaskar-block .featured-collection-top{
-    background: url("../images/new-elements/namaskar-part1.jpg") no-repeat center center transparent;
+    background: url("../images/new-elements/namaskar-part1.png") no-repeat center center transparent;
     background-size: 100% 100%;    
 }
 .namaskar-block .featured-collection-bottom{
-    background: url("../images/new-elements/namaskar-part2.jpg") no-repeat center center transparent;
+    background: url("../images/new-elements/namaskar-part2.png") no-repeat center center transparent;
     background-size: 100% 100%;  
 top:50%;	
 }
