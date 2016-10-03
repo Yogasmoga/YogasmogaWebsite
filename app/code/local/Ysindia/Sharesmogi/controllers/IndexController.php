@@ -55,13 +55,13 @@ class Ysindia_Sharesmogi_IndexController extends Mage_Core_Controller_Front_Acti
 			"success_message" => ''
 		);
 
-	/*	if(!Mage::getSingleton('customer/session')->isLoggedIn()){
+	if(!Mage::getSingleton('customer/session')->isLoggedIn()){
 			//Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account/login',array('_secure'=>true)));
 			$response['status'] = "error";
 			$response['error'] = "Please login first.";
 			echo json_encode($response);
 			return;
-		}*/
+		}
 
 		$childEmail = Mage::app()->getRequest()->getParam('email');
 		$customerModel = Mage::getModel('customer/customer');
