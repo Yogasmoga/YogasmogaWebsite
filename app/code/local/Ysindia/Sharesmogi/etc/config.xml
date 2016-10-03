@@ -43,7 +43,7 @@
         </routers>
     </admin>
     <adminhtml>
-		<menu>
+	<!--	<menu>
 			<sharesmogi module="sharesmogi">
 				<title>Sharesmogi</title>
 				<sort_order>71</sort_order>               
@@ -70,7 +70,7 @@
 					</children>
 				</admin>
 			</resources>
-		</acl>
+		</acl>-->
 		<layout>
 			<updates>
 				<sharesmogi>
