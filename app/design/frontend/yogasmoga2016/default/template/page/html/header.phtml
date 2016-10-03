@@ -494,9 +494,8 @@ else { ?>
                             <li class="last login_logout_link"></li>
                         </ul>
                         
-                    </li>
-					<li id="bag-count"><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
-					 <li style="margin-right:0;" data-blockid = "help-new">
+                    </li>					
+					 <li  data-blockid = "help-new">
                         <a href="<?php echo $this->getBaseUrl();?>help#faq">Help</a>
                         <!--<ul class="sub-menu l-align cms-header-link" style="left: -87px;">
                             <li class="blank"></li>
@@ -508,6 +507,7 @@ else { ?>
                         </ul>-->
                         
                     </li>
+					<li style="margin-right:0;" id="bag-count"><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
                     
                     <li class="checkoutshow" style="display:none;"><span>|</span><a class="checkout-link-top" href="<?php echo $this->getBaseUrl();?>checkout/onepage">Checkout</a></li>
 					
