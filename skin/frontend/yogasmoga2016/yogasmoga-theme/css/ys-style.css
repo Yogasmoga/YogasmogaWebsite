@@ -4065,7 +4065,7 @@ right:0;
 .left-side > ul, .right-side > ul {
   box-sizing: border-box;
   float: left;
-  padding: 4% 6%;
+  padding: 5% 0 1% 6%;
   width: 60%;
 }
 .main-menu.main-menu2 .sub-menu.stores-nav .left-side > ul,.main-menu.main-menu2 .sub-menu.stores-nav .right-side > ul {
