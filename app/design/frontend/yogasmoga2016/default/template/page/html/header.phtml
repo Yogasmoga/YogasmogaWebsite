@@ -461,8 +461,10 @@ else { ?>
 	<ul class="tr-menu">
                    
                   <!-- <li><?php/* echo $this->getChildHtml('topSearch') */?></li>-->
-                    <li><?php
-
+                    <li>
+					
+					<?php
+						
                         $islogedinuser = false;
                         if (Mage::getSingleton('customer/session')->isLoggedIn()) {
 
@@ -476,7 +478,14 @@ else { ?>
                         <?php
                         }
                         ?>
-                        <a id="welcome-name" href="<?php if($islogedinuser) echo $this->getBaseUrl()."customer/account/index"; else echo "javascript:void(0);";  ?>"><?php if($islogedinuser)echo "Hi ".$firstname;else echo "SIGN IN";  ?></a>
+						<?php  if($islogedinuser){ ?>
+							<a id="welcome-name" class="logged-in" href="<?php  echo $this->getBaseUrl()."customer/account/index"; ?>"><?php echo "Hi ".$firstname; ?></a>						
+						<?php }
+						else{ ?>
+							<a id="welcome-name" class="logged-out" href="javascript:void(0);">SIGN IN</a>
+						 <?php }
+						?>
+                        <!--<a id="welcome-name" href="<?php // if($islogedinuser) echo $this->getBaseUrl()."customer/account/index"; else echo "javascript:void(0);";  ?>"><?php // if($islogedinuser)echo "Hi ".$firstname;else echo "SIGN IN";  ?></a>-->
                         <ul class="sub-menu l-align my-acnt" style="left: -64px;">
                             <li class="blank"></li>
                             <li style="padding-top: 16px;"><a href="<?php echo $this->getBaseUrl()."sales/order/history"; ?>">track order</a></li>
@@ -485,20 +494,20 @@ else { ?>
                             <li class="last login_logout_link"></li>
                         </ul>
                         
-                    </li>
-					<li id="bag-count"><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
-					 <li style="margin-right:0;" data-blockid = "help-new">
+                    </li>					
+					 <li  data-blockid = "help-new">
                         <a href="<?php echo $this->getBaseUrl();?>help#faq">Help</a>
-                        <ul class="sub-menu l-align cms-header-link" style="left: -87px;">
+                        <!--<ul class="sub-menu l-align cms-header-link" style="left: -87px;">
                             <li class="blank"></li>
                             <li style="padding-top: 16px;" data-blockid = "faq"><a href="<?php echo $this->getBaseUrl();?>help#faq">FAQ</a></li>
                             <li data-blockid = "shipping-returns"><a href="<?php echo $this->getBaseUrl();?>help#shipping-returns">Shipping and Returns</a></li>
                             <li data-blockid = "size-chart"><a href="<?php echo $this->getBaseUrl();?>help#size-chart">Size Chart</a></li>
                             <li data-blockid = "product-care"><a href="<?php echo $this->getBaseUrl();?>help#product-care">Product Care</a></li>
                             <li data-blockid = "email-us" class="last"><a href="<?php echo $this->getBaseUrl();?>help#email-us">Email Us</a></li>
-                        </ul>
+                        </ul>-->
                         
                     </li>
+					<li style="margin-right:0;" id="bag-count"><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
                     
                     <li class="checkoutshow" style="display:none;"><span>|</span><a class="checkout-link-top" href="<?php echo $this->getBaseUrl();?>checkout/onepage">Checkout</a></li>
 					

@@ -604,7 +604,8 @@ function loginCustomer() {
                 }
                 _islogedinuser = true;
                 if (name != '')
-                    jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
+                    jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');					
+					jQuery("#welcome-name").switchClass( "logged-out", "logged-in");
 
                 jQuery(".before-login").hide();
                 jQuery(".after-login").show();
@@ -795,6 +796,7 @@ function checkIsUserLogged() {
 
                     jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
                     jQuery(".login_logout_link").html("<span style='cursor:pointer; margin-left:0;padding-left:0' onclick='wplogout()'>SIGN OUT</span>");
+					
 
                     //jQuery("#signin").unbind('click');
                     //jQuery("#signin").html("SIGN OUT").attr({href:'javascript:void(0)',id:"sign-out", onclick: 'wplogout()'});
