@@ -3516,7 +3516,7 @@ ul.main-menu2 li ul.sub-menu li a {
 #div_sizes .chk-size.chk-size-selected{background:#ae8536;}
 #div_cats .chk-cats:hover, #div_cats .chk-cats.chk-cats-selected{background:none;}
 .chk-cats{position: relative}
-#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 25px; text-indent: -9999em; letter-spacing:0.43px; width:25px; height:25px;box-sizing:border-box;}
+#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 25px; text-indent: -9999em; letter-spacing:0.43px; width:27px; height:27px;box-sizing:border-box;}
 #div_cats .chk-cats[title="White"]{border:1px solid #ddd;}
 #div_cats .chk-cats[title="White"].chk-cats-selected:before{background:#555;}
 #div_sizes.fixed_top, #div_cats.fixed_top{left:0; padding-left:40px;}
@@ -3532,6 +3532,11 @@ ul.main-menu2 li ul.sub-menu li a {
 /*#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px; padding-left:14px; padding-right:14px;}*/
 
 #div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; /*display:inline-block;*/display:none;}
+/*--landing filter--*/
+.landing-filter{position:relative; height:54px;margin-bottom:15px;width:100%; float:left;}
+.landing-filter #div_sizes{padding-left:0;z-index:1;}
+.landing-filter #div_sizes.fixed_top{padding-left:40px;z-index:1;}
+.landing-filter #div_cats{z-index:1;}
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 .product-grid .bnrtxt{width:auto;top:120px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);}
