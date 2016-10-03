@@ -521,6 +521,8 @@ function showShoppingBagHtml() {
 					});*/
 					/*---------promocode update for apply button end---*/
 				jQuery('#smogi').prop('disabled', true);
+				jQuery('#cmbcolor').wrap("<span class='cmbcolor-block'></span>");
+				
             }
         });
     //}, 500);
