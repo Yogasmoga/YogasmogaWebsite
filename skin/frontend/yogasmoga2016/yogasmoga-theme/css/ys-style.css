@@ -3532,6 +3532,11 @@ ul.main-menu2 li ul.sub-menu li a {
 /*#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px; padding-left:14px; padding-right:14px;}*/
 
 #div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; /*display:inline-block;*/display:none;}
+/*--landing filter--*/
+.landing-filter{position:relative; height:54px;margin-bottom:15px;width:100%; float:left;}
+.landing-filter #div_sizes{padding-left:0;z-index:1;}
+.landing-filter #div_sizes.fixed_top{padding-left:40px;z-index:1;}
+.landing-filter #div_cats{z-index:1;}
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 .product-grid .bnrtxt{width:auto;top:120px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);}
