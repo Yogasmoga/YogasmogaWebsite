@@ -4054,6 +4054,8 @@ right:0;
   color: #c03 !important;
 }
 .header-banner .right-bar-menu .tr-menu > li ul a{color:#555;}
+.header-banner .right-bar-menu .tr-menu > li:hover #welcome-name + .sub-menu{display:none;}
+.header-banner .right-bar-menu .tr-menu > li:hover #welcome-name.logged-in + .sub-menu{display:block;}
 
 .main-menu.main-menu2 .sub-menu  {padding:0;}
 .main-menu.main-menu2 .left-side,.main-menu.main-menu2 .right-side{width:50%;float:left;}

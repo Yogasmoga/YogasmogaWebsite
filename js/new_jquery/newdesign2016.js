@@ -1,3 +1,9 @@
+/*---header menu related --*/
+jQuery(document).ready(function ($) {	
+	$('#welcome-name.logged-out').click(function(){
+		$('#signin').trigger('click');
+	});
+});
 /*------------product details related js-----------*/
 jQuery(document).ready(function ($) {	
 	$('.accord .h2').click(function(){
