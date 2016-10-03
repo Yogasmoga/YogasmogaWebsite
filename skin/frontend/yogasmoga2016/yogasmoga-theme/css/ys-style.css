@@ -3516,7 +3516,7 @@ ul.main-menu2 li ul.sub-menu li a {
 #div_sizes .chk-size.chk-size-selected{background:#ae8536;}
 #div_cats .chk-cats:hover, #div_cats .chk-cats.chk-cats-selected{background:none;}
 .chk-cats{position: relative}
-#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 25px; text-indent: -9999em; letter-spacing:0.43px; width:25px; height:25px;box-sizing:border-box;}
+#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 25px; text-indent: -9999em; letter-spacing:0.43px; width:27px; height:27px;box-sizing:border-box;}
 #div_cats .chk-cats[title="White"]{border:1px solid #ddd;}
 #div_cats .chk-cats[title="White"].chk-cats-selected:before{background:#555;}
 #div_sizes.fixed_top, #div_cats.fixed_top{left:0; padding-left:40px;}
