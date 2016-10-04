@@ -2943,7 +2943,7 @@ ul.main-menu > li{padding:0 10px;}
 .bannerFluid .bnrtxt{left:0!important;right:0!important;margin:0 auto!important;width:100%!important;text-align:center!important;}
 .shopnow-btn{font:20px/24px ITCAvantGardeProMd; text-transform: capitalize;}
 
-.catalog-category-view .flexslider{min-height:526px;}
+/*.catalog-category-view .flexslider{min-height:526px;}*/
 .catalog-category-view #bucket1_slider .over-the-slide  ,.cms-home  .cubix  .over-the-slide{
 	background:#ae8536; padding: 80px 77px !important; position: absolute; top: 0; left:0; width: 33.25%; box-sizing: border-box;height: 100%;}
 .catalog-category-view #bucket1_slider .hero-slide-subtitle , .cms-home  .cubix  .over-the-slide .hero-slide-subtitle {font:13px/13px gothamBold;letter-spacing:0.36px;text-transform:uppercase;color:#fff;padding:0 0 18px!important; border-bottom:1px solid #fff;margin-bottom:27px!important; display:inline-block;width:100%; max-width:256px;}
