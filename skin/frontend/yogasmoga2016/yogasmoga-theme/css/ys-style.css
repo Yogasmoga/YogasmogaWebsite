@@ -4097,7 +4097,7 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 
 .common-listing div#bodycompensator { height: 109px !important;}
 /****** color change start ********/
- .common-listing .scrolled-effect .free-shipping-txt,.common-listing .scrolled-effect #welcome-name,.common-listing .scrolled-effect .header-banner .orange-banner,.common-listing .scrolled-effect ul.main-menu li a.menu-heading,.common-listing .scrolled-effect ul.main-menu2 a.main-heading,.common-listing .scrolled-effect .tr-menu>li>a:first-child{color:#555;}
+ .common-listing .scrolled-effect .free-shipping-txt,.common-listing .scrolled-effect #welcome-name,.common-listing .scrolled-effect .header-banner .orange-banner,.common-listing .scrolled-effect ul.main-menu li a.menu-heading,.common-listing .scrolled-effect ul.main-menu2 a.main-heading,.common-listing .scrolled-effect .tr-menu>li>a:first-child,.common-listing .scrolled-effect .tr-menu>li.signout_link> span{color:#555;}
 .common-listing .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading {color:#555;}
 .common-listing .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading {color:#555;}
 .common-listing #ysheader{background:#fff!important;}
