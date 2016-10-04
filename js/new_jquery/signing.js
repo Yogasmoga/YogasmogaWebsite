@@ -749,6 +749,7 @@ function wplogout() {
         type: 'POST',
         data: 'logout=1',
         dataType: 'json',
+		cache: false,
         success: function (result) {
 
             if (result.message == "loggedout") {
