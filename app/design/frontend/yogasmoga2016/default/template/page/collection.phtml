@@ -93,7 +93,7 @@
 </script>   
 <!--<div class="namaskar-overlay1">&nbsp;</div> -->
 </head>
-<body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>">
+<body class="common-listing <?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
 <div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
@@ -202,7 +202,10 @@
 
                                     <!-- leftNav -->
                                     <div class="scroller_anchor" style="height: 29px;"></div>
-                                    <div class="leftnav f-left l-align cntn-scroll">
+                                    <?php 
+									// remove left nav 
+									if(false){ ?>
+									<div class="leftnav f-left l-align cntn-scroll">
                                         <ul class="ctglink">
                                             <?php
                                             $hasnosubcategoryhtml  = '';
@@ -278,8 +281,11 @@
 											echo $hasnosubcategoryhtml.$withsubcategoryhtml.'</ul></div>';
 
                                             ?>
-                                    <!-- leftNav -->
-
+										<!-- leftNav -->
+										<?php 
+										// remove left nav end
+										}  ?>
+										
                                     <!-- productGridImages -->
 									 <div style="display: none">
                                             <?php foreach($productConfigurableCollection as $cproduct):?>

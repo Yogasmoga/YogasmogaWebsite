@@ -3539,8 +3539,8 @@ ul.main-menu2 li ul.sub-menu li a {
 .landing-filter #div_cats{z-index:1;}
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
-.product-grid .bnrtxt{width:auto;top:120px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);}
-.product-grid .bnrtxt.fixed_top{top:60px;position:fixed;z-index:99;}
+.product-grid .cat-name{width:auto;top:120px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);}
+.product-grid .cat-name.fixed_top{top:60px;position:fixed;z-index:99;}
 .product-grid .gridProdCubix{margin:75px auto auto;}
 /*.catalog-category-view #ysheader.showhide .header-inner{border-bottom:1px solid #ccc; position:relative;}*/
 
@@ -3889,10 +3889,12 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .product-det-tab-bottom p span{font:12px/12px graphikregular;}
 .product-det-tab-bottom p .strong{display:block;font:12px/24px avantgardegothicitcw01d;}
 .product-det-tab-bottom p .underline{text-decoration:underline;}
-.csp-name-list{margin:30px 0 0 0;}
+.csp-name-list{margin:30px 0 0 0; display:none;}
 .csp-name-list span{display:inline-block;font:12px/24px avantgardegothicitcw01d;color:#ccc;border-left:1px solid #ccc; padding:0 14px;min-width:50px;
 	text-transform:uppercase;}
 .csp-name-list span.active{color:#ae8536;border-left:1px solid #ae8536;}
+.csp-name{}
+.csp-name .csp-link{text-transform:uppercase;color:#555;font-family:avantgardegothicitcw01d;}
 
 /*--color option--*/
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block;  float:left; margin:0 3px;bordre-radius:40px;

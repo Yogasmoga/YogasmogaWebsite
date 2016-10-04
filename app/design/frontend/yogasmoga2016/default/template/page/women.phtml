@@ -211,50 +211,6 @@
 
             <div class="clear-fix"></div>
 
-
-
-            <?php
-            //$currentCategoryId = Mage::registry('current_category')->getId();
-            $categoriesWithNoFilter = array(8,12,29,30,31,32,33,38,39,40,46,50);
-            $categoriesWithNoFilterVariable = Mage::getModel('core/variable')->loadByCode('no_filter_categories')->getValue('plain');
-            $categoriesWithNoFilter = explode(",", $categoriesWithNoFilterVariable);
-            $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
-           // echo "<pre/>";
-            //print_r($showSizeFilter);
-            //if($showSizeFilter){
-                ?>
-
-
-                <?php
-                $catIdsArray = array();
-
-//code for check root category
-                $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-                $categoryName = explode('/', $currentUrl);
-                $urlKey = $categoryName[3];
-                if($urlKey == 'women')
-                {
-                    $categoriesfilter = array(125,126,127);//live
-                    //$categoriesfilter = array(77,78,79);//local
-                }elseif($urlKey == 'men'){
-                    $categoriesfilter = array(128,129,130);//live
-                }
-
-                $children = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('name')->addAttributeToFilter('entity_id', array('in'=>$categoriesfilter));
-
-                foreach ($children as $category)
-                {
-                    $catIdsArray[$category->getId()] = $category->getName();
-                    //echo "<span class='chk-cats' rel='".$category->getId()."'>".$category->getName()."</span>";
-                }
-                $catIdsArray = array_unique($catIdsArray);
-                ?>
-
-                <!-- category filter -->
-            <?php //} ?>
-
-
-
             <!-- ProductListing Part -->
             <div class="new_arrivals gridWrap new-arrivals-block" style="width:100%; margin:0 auto; position: relative;background:#fff!important;">
 
@@ -353,12 +309,9 @@
                                  $greyImage  =  $_image->getFile();
 
                             }
-                            /*if(count($imageArr) >= 2)
-                               break;*/
+
 
                         }
-                        //$simpleproductarr['image'][] =  $imageArr;
-
                         if(end($imageArr)){
                             end($imageArr);
                             $simpleproductarr['image'][] = prev($imageArr) ;
@@ -415,21 +368,11 @@
                         $cats = $confProduct->getCategoryIds();
                         $allcats = array_unique(array_merge($allcats,$cats));
                         $catsids = implode(",", $cats);
-
-                        /*------------*/
-
-                        //$simpleproductarr['filter_color'];
-                        //$simpleproductarr['filter_data']
-
-
-
-                        /********************** category filter *********************/
-
                         ?>
 
 
                          <?php
-                        $position = array(Mage::getStoreConfig('product_grid/general/grid', Mage::app()->getStore()->getId()));
+                        $position = array(Mage::getStoreConfig('product_grid/general/women', Mage::app()->getStore()->getId()));
                         $finalPos = implode(',',$position);
 
                         if($i == (int)$finalPos[0] || $i == (int)$finalPos[2]):
@@ -480,19 +423,9 @@
 
                         <?php $i++;
                     }
-                    //}
 
 
 
-
-
-
-
-
-
-
-
-                    //if($showSizeFilter){
                         /************** size filter ***********************/
                         if(isset($allSkuSizes) && count($allSkuSizes)>0)
                             $allSkuSizes = array_unique($allSkuSizes);
@@ -504,19 +437,10 @@
                             if ($instance['label'] != "" && strpos($instance['label'], "T")===false)
                                 $arProductAllSizes[] = $instance['label'];
                         }
-                        //$myArr1 =  array(76,115,142,);
-                        //$myArr2 = array('Carbon 6','Crimson Rose','Mosaic Grey');
-                        //$finalarr = array_combine($myArr1,$myArr2);
 
+                    $finalcolorfilter = array_combine($fcolorKey,$fcolorValue);
 
-                        $finalcolorfilter = array_combine($fcolorKey,$fcolorValue);
-
-                        //echo "<pre/>";
-                        //print_r($finalcolorfilter);
-
-
-
-                        /************** size filter ***********************/
+                    /************** size filter ***********************/
 
                         ?>
                         <!-- ********************************* checkbox filter ********************** -->
@@ -562,9 +486,6 @@
                         <script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter-new.js"></script>
 
                         <!-- ********************************* checkbox filter ********************** -->
-                    <?php // } ?>
-
-
                 </div>
             </div>
             <!-- ProductListing Part -->
