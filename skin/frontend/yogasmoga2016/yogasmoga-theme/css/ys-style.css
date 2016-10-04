@@ -4204,7 +4204,7 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 .shopping-cart .capstxt .continuelink:nth-child(2){background:#ae8536;}
 .shopping-cart .addedItem,.shopping-cart .cont-full{background:#f4f4f4;}
 .shopping-cart .strip-gry{display:none;}
-.shopping-cart .giftcardcheckbox,.shopping-cart label[for="giftCardShop"]{display:none;}
+.shopping-cart .giftcardcheckbox,.shopping-cart label[for="giftCardShop"]{/*display:none;*/}
 .shopping-cart .addedItem .similarProdList > li{border-top:2px solid #c6c6c6;}
 .shopping-cart .addedItem .similarProdList > li span{ text-transform:capitalize;}
 .shopping-cart .addedItem .similarProdList > li span.pname{text-transform:uppercase;}
