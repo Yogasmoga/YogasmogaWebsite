@@ -232,15 +232,26 @@
         </varint-color>
 		<!-- Color Varint page layouts End here -->
 		
+		<!-- Color Collection Men layouts End here -->
+		
+	    <collection-men translate="label">
+          <label>Collection Men</label>
+          <template>page/collection_men.phtml</template>
+          <layout_handle>Collection Men</layout_handle>
+        </collection-men>
+		<!-- Color Collection Men layouts End here -->
+		
 		
 		<!-- Color Collection Women page layouts End here -->
 		
-	    <varint-color translate="label">
+	    <collection-women translate="label">
           <label>Collection Women</label>
           <template>page/collection_women.phtml</template>
           <layout_handle>Collection Women</layout_handle>
-        </varint-color>
+        </collection-women>
 		<!-- Color Collection Women page layouts End here -->
+		
+	
 		
 	  </layouts>
 	  
