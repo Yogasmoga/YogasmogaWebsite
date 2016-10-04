@@ -104,62 +104,68 @@ class Ysindia_Sharesmogi_IndexController extends Mage_Core_Controller_Front_Acti
 
 					$reward_model = Mage::getModel('rewardpoints/stats');
 					$points = $reward_model->getPointsCurrent($parentId, Mage::app()->getStore()->getId());
-					if($points >= $childPoints){
+					if(!empty($childPoints)) {
+						if ($points >= $childPoints) {
 
-						try{
-							$store_id = Mage::app()->getStore()->getId();
-							$reward_model = Mage::getModel('rewardpoints/stats');
-							$reward_model->setPointsSpent($childPoints);
-							$reward_model->setCustomerId($parentId);
-							$reward_model->setStoreId($store_id);
-							$reward_model->setOrderId(Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN);
+							try {
+								$store_id = Mage::app()->getStore()->getId();
+								$reward_model = Mage::getModel('rewardpoints/stats');
+								$reward_model->setPointsSpent($childPoints);
+								$reward_model->setCustomerId($parentId);
+								$reward_model->setStoreId($store_id);
+								$reward_model->setOrderId(Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN);
 
-							$startDate = Mage::getModel('core/date')->gmtDate(null, Mage::getModel('core/date')->timestamp(time()));
-							$endDate = date('Y-m-d', strtotime($startDate . ' + 183 days'));
+								$startDate = Mage::getModel('core/date')->gmtDate(null, Mage::getModel('core/date')->timestamp(time()));
+								$endDate = date('Y-m-d', strtotime($startDate . ' + 183 days'));
 
-							$reward_model->setDateStart($startDate);
-							$reward_model->setDateEnd($endDate);
+								$reward_model->setDateStart($startDate);
+								$reward_model->setDateEnd($endDate);
 
-							$reward_model->save();
+								$reward_model->save();
 
-							$parentPoints = $reward_model->getPointsCurrent($parentId, $store_id);
-							$modal->setParentId($parentId);
-							$modal->setParentEmail($parentEmail);
-							$modal->setParentSmogi($parentPoints);
-							$modal->setChildEmail($childEmail);
-							$modal->setChildSmogi($smogiChildPoints);
-							//$modal->setStatus(2);
-							$modal->save();
+								$parentPoints = $reward_model->getPointsCurrent($parentId, $store_id);
+								$modal->setParentId($parentId);
+								$modal->setParentEmail($parentEmail);
+								$modal->setParentSmogi($parentPoints);
+								$modal->setChildEmail($childEmail);
+								$modal->setChildSmogi($smogiChildPoints);
+								//$modal->setStatus(2);
+								$modal->save();
 
-							// Send email.
-							$templateId = "share_smogi_bucks";
+								// Send email.
+								$templateId = "share_smogi_bucks";
 
-							$emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
+								$emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
 
-							$vars = array( 'email'=> $childEmail);
+								$vars = array('email' => $childEmail);
 
-							$emailTemplate->getProcessedTemplate($vars);
-							$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
-							$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
+								$emailTemplate->getProcessedTemplate($vars);
+								$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
+								$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
 
-							if(!empty($childEmail)){
-								$emailTemplate->send($childEmail, $vars);
-								$response['status'] = "success";
-								$response['success_message'] = "Congratulation! You have Shared your 25 smogi bucks.";
+								if (!empty($childEmail)) {
+									$emailTemplate->send($childEmail, $vars);
+									$response['status'] = "success";
+									$response['success_message'] = "Congratulation! You have Shared your 25 smogi bucks.";
+									echo json_encode($response);
+									return;
+								}
+							} catch (Exception $e) {
+								$response['status'] = "error";
+								$response['error'] = "Unable to submit your request. Please, try later.";
 								echo json_encode($response);
 								return;
 							}
-						}
-						catch (Exception $e) {
+						} else {
 							$response['status'] = "error";
-							$response['error'] = "Unable to submit your request. Please, try later.";
+							$response['error'] = "Sorry! You don't have sufficient SMOGI Bucks.";
 							echo json_encode($response);
 							return;
 						}
 					}
 					else{
 						$response['status'] = "error";
-						$response['error'] = "Sorry! You don't have sufficient SMOGI Bucks.";
+						$response['error'] = "Error! Please contact YOGASMOGA Help.";
 						echo json_encode($response);
 						return;
 					}
