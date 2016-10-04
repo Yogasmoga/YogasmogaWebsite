@@ -19,7 +19,7 @@ jQuery(window).scroll(function() {
 })
 function leftNav_scroll(element){
     // console.log("test");   
-	/*
+	if(element.length){
     var offset = element.parent().offset();
     var scroll_top = jQuery(window).scrollTop();
     var origAttr = "";
@@ -44,7 +44,7 @@ function leftNav_scroll(element){
             }   
             element.show();
 			
-	*/	
+	}
 
 }
         
