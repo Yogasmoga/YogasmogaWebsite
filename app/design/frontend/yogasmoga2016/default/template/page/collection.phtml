@@ -202,7 +202,10 @@
 
                                     <!-- leftNav -->
                                     <div class="scroller_anchor" style="height: 29px;"></div>
-                                    <div class="leftnav f-left l-align cntn-scroll">
+                                    <?php 
+									// remove left nav 
+									if(false){ ?>
+									<div class="leftnav f-left l-align cntn-scroll">
                                         <ul class="ctglink">
                                             <?php
                                             $hasnosubcategoryhtml  = '';
@@ -279,7 +282,10 @@
 
                                             ?>
                                     <!-- leftNav -->
-
+										<?php 
+										// remove left nav end
+										}  ?>
+										
                                     <!-- productGridImages -->
 									 <div style="display: none">
                                             <?php foreach($productConfigurableCollection as $cproduct):?>
