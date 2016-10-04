@@ -51,6 +51,11 @@
 						<sort_order>0</sort_order>
 						<action>nominateinstructor/adminhtml_nominateinstructor</action>
 					</nominate>
+                    <items module="sharesmogi">
+                        <title>Manage Smogi</title>
+                        <sort_order>1</sort_order>
+                        <action>sharesmogi/adminhtml_sharesmogi</action>
+                    </items>
 				</children>
 			</nominateinstructor>
 		</menu>

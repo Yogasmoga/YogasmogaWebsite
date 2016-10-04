@@ -32,29 +32,29 @@ class Ysindia_Sharesmogi_Block_Adminhtml_Sharesmogi_Grid extends Mage_Adminhtml_
           'align'     =>'left',
           'index'     => 'parent_email',
       ));
-      $this->addColumn('parent_smogi', array(
+     /* $this->addColumn('parent_smogi', array(
           'header'    => Mage::helper('sharesmogi')->__('Parent Smogi Bucks'),
           'align'     =>'left',
           'index'     => 'parent_smogi',
-      ));
+      ));*/
       $this->addColumn('child_email', array(
           'header'    => Mage::helper('sharesmogi')->__('Child Email'),
           'align'     =>'left',
           'index'     => 'child_email',
       ));
-      $this->addColumn('child_smogi', array(
+     /* $this->addColumn('child_smogi', array(
           'header'    => Mage::helper('sharesmogi')->__('Child Smogi Bucks'),
           'align'     =>'left',
           'index'     => 'child_smogi',
       ));
 
-	  /*
+
       $this->addColumn('content', array(
 			'header'    => Mage::helper('sharesmogi')->__('Item Content'),
 			'width'     => '150px',
 			'index'     => 'content',
       ));
-	  */
+
 
       $this->addColumn('status', array(
           'header'    => Mage::helper('sharesmogi')->__('Status'),
@@ -67,7 +67,7 @@ class Ysindia_Sharesmogi_Block_Adminhtml_Sharesmogi_Grid extends Mage_Adminhtml_
               2 => 'Not Registered',
           ),
       ));
-	  
+
         $this->addColumn('action',
             array(
                 'header'    =>  Mage::helper('sharesmogi')->__('Action'),
@@ -76,16 +76,16 @@ class Ysindia_Sharesmogi_Block_Adminhtml_Sharesmogi_Grid extends Mage_Adminhtml_
                 'getter'    => 'getId',
                 'actions'   => array(
                     array(
-                        'caption'   => Mage::helper('sharesmogi')->__('Edit'),
-                        'url'       => array('base'=> '*/*/edit'),
-                        'field'     => 'id'
+                        'caption'   => Mage::helper('sharesmogi')->__('Edit'),*/
+                        //'url'       => array('base'=> '*/*/edit'),
+                      /*  'field'     => 'id'
                     )
                 ),
                 'filter'    => false,
                 'sortable'  => false,
                 'index'     => 'stores',
                 'is_system' => true,
-        ));
+        ));*/
 		
 		$this->addExportType('*/*/exportCsv', Mage::helper('sharesmogi')->__('CSV'));
 		$this->addExportType('*/*/exportXml', Mage::helper('sharesmogi')->__('XML'));
@@ -125,7 +125,7 @@ class Ysindia_Sharesmogi_Block_Adminhtml_Sharesmogi_Grid extends Mage_Adminhtml_
 
   public function getRowUrl($row)
   {
-      return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+      //return $this->getUrl('*/*/edit', array('id' => $row->getId()));
   }
 
 }
