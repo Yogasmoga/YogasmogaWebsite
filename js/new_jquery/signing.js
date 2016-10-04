@@ -606,7 +606,7 @@ function loginCustomer() {
                 _islogedinuser = true;
                 if (name != '')
                     jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');					
-					jQuery("#welcome-name").switchClass( "logged-out", "logged-in");
+					//jQuery("#welcome-name").switchClass( "logged-out", "logged-in");
 
                 jQuery(".before-login").hide();
                 jQuery(".after-login").show();
