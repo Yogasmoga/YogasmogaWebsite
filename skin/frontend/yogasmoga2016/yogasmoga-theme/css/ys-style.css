@@ -3790,7 +3790,7 @@ ul.main-menu li a.menu-heading {
 }
 .f-left.main-menu.ctag-menu .women{padding-left:0;}
 .in-bl ul.main-menu2 > li:last-child{padding-right:0;}
-.tr-menu li > a:first-child{
+.tr-menu li > a:first-child,.tr-menu li.signout_link{
 font:10px/11px ITCAvantGardeProBk;color:#444;
 letter-spacing:0.55px;
 }
@@ -3976,6 +3976,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a{font-family:
 #ysheader .right-bottom-block #shop-bag-count span{line-height:26px;}
 
 #ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
+#ysheader .right-bar-menu .signout_link span{padding-right:0;cursor:pointer;}
 
 
 /*.header-container{left:0px!important; transition: left 230ms linear;}
@@ -4013,7 +4014,7 @@ ul.main-menu .nav-img img{width:100%;height:auto;}
 .bagshow:hover{background: #ae8536!important; padding: 0!important;}
 #ysheader .logo img{ height:31px!important; transition:all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.3s;}
 #ysheader .logo img.resizable{height: 22px!important;  margin-top: 12px; transition: all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.3s;}
-.scrolled-effect .free-shipping-txt,.scrolled-effect #welcome-name,.scrolled-effect .header-banner .orange-banner,.scrolled-effect ul.main-menu li a.menu-heading,.scrolled-effect ul.main-menu2 a.main-heading,.scrolled-effect .tr-menu>li>a:first-child{color:#fff;}
+.scrolled-effect .free-shipping-txt,.scrolled-effect #welcome-name,.scrolled-effect .header-banner .orange-banner,.scrolled-effect ul.main-menu li a.menu-heading,.scrolled-effect ul.main-menu2 a.main-heading,.scrolled-effect .tr-menu>li>a:first-child,.scrolled-effect .tr-menu>li.signout_link span{color:#fff;}
 #ysheader.header-container{background:#fff; }
 #ysheader.header-container.scrolled-effect{background:transparent!important;}
 
@@ -4062,7 +4063,7 @@ right:0;
 }
 .header-banner .right-bar-menu .tr-menu > li ul a{color:#555;}
 .header-banner .right-bar-menu .tr-menu > li:hover #welcome-name + .sub-menu{display:none;}
-.header-banner .right-bar-menu .tr-menu > li:hover #welcome-name.logged-in + .sub-menu{display:block;}
+/*.header-banner .right-bar-menu .tr-menu > li:hover #welcome-name.logged-in + .sub-menu{display:block;}*/
 
 .main-menu.main-menu2 .sub-menu  {padding:0;}
 .main-menu.main-menu2 .left-side,.main-menu.main-menu2 .right-side{width:50%;float:left;}
@@ -4096,7 +4097,7 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 
 .common-listing div#bodycompensator { height: 109px !important;}
 /****** color change start ********/
- .common-listing .scrolled-effect .free-shipping-txt,.common-listing .scrolled-effect #welcome-name,.common-listing .scrolled-effect .header-banner .orange-banner,.common-listing .scrolled-effect ul.main-menu li a.menu-heading,.common-listing .scrolled-effect ul.main-menu2 a.main-heading,.common-listing .scrolled-effect .tr-menu>li>a:first-child{color:#555;}
+ .common-listing .scrolled-effect .free-shipping-txt,.common-listing .scrolled-effect #welcome-name,.common-listing .scrolled-effect .header-banner .orange-banner,.common-listing .scrolled-effect ul.main-menu li a.menu-heading,.common-listing .scrolled-effect ul.main-menu2 a.main-heading,.common-listing .scrolled-effect .tr-menu>li>a:first-child,.common-listing .scrolled-effect .tr-menu>li.signout_link> span{color:#555;}
 .common-listing .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading {color:#555;}
 .common-listing .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading {color:#555;}
 .common-listing #ysheader{background:#fff!important;}
@@ -4203,7 +4204,7 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 .shopping-cart .capstxt .continuelink:nth-child(2){background:#ae8536;}
 .shopping-cart .addedItem,.shopping-cart .cont-full{background:#f4f4f4;}
 .shopping-cart .strip-gry{display:none;}
-.shopping-cart .giftcardcheckbox,.shopping-cart label[for="giftCardShop"]{display:none;}
+.shopping-cart .giftcardcheckbox,.shopping-cart label[for="giftCardShop"]{/*display:none;*/}
 .shopping-cart .addedItem .similarProdList > li{border-top:2px solid #c6c6c6;}
 .shopping-cart .addedItem .similarProdList > li span{ text-transform:capitalize;}
 .shopping-cart .addedItem .similarProdList > li span.pname{text-transform:uppercase;}

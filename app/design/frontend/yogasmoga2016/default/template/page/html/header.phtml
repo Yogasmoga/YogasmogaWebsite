@@ -479,13 +479,15 @@ else { ?>
                         }
                         ?>
 						<?php  if($islogedinuser){ ?>
-							<a id="welcome-name" class="logged-in" href="<?php  echo $this->getBaseUrl()."customer/account/index"; ?>"><?php echo "Hi ".$firstname; ?></a>						
+							<a id="welcome-name" class="logged-in" href="<?php  echo $this->getBaseUrl()."customer/account/index"; ?>"><?php echo "Hi ".$firstname; ?></a>
+							<!--<a href="javascript:void(0)" onclick="wplogout()">Logout</a>-->
 						<?php }
 						else{ ?>
 							<a id="welcome-name" class="logged-out" href="javascript:void(0);">SIGN IN</a>
 						 <?php }
 						?>
                         <!--<a id="welcome-name" href="<?php // if($islogedinuser) echo $this->getBaseUrl()."customer/account/index"; else echo "javascript:void(0);";  ?>"><?php // if($islogedinuser)echo "Hi ".$firstname;else echo "SIGN IN";  ?></a>-->
+						<?php if(true){ ?>
                         <ul class="sub-menu l-align my-acnt" style="left: -64px;">
                             <li class="blank"></li>
                             <li style="padding-top: 16px;"><a href="<?php echo $this->getBaseUrl()."sales/order/history"; ?>">track order</a></li>
@@ -493,6 +495,7 @@ else { ?>
 <!--                            <li class="last"><a id="signin" href="--><?php //if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?><!--">--><?php //if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?><!--</a></li>-->
                             <li class="last login_logout_link"></li>
                         </ul>
+						<?php } ?>
                         
                     </li>					
 					 <li  data-blockid = "help-new">
@@ -510,6 +513,7 @@ else { ?>
 					<li style="margin-right:0;" id="bag-count"><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
                     
                     <li class="checkoutshow" style="display:none;"><span>|</span><a class="checkout-link-top" href="<?php echo $this->getBaseUrl();?>checkout/onepage">Checkout</a></li>
+					<li class="last signout_link"><?php if($islogedinuser){ ?><span onclick="wplogout()">SIGN OUT</span><?php } ?></li>
 					
                 </ul>
 				</div>
