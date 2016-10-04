@@ -577,6 +577,7 @@ function loginCustomer() {
                 var customer_id = data.customer_id;
 
                 jQuery(".login_logout_link").html("<span style='cursor:pointer; margin-left:0;padding-left:0' onclick='wplogout()'>SIGN OUT</span>");
+				jQuery(".signout_link").html("<span onclick='wplogout()'>SIGN OUT</span>");
 
                 /************** code update by ys team ******************/
                     //doWordpressLogin(email_id, pwd, name);
@@ -749,7 +750,6 @@ function wplogout() {
         type: 'POST',
         data: 'logout=1',
         dataType: 'json',
-		cache: false,
         success: function (result) {
 
             if (result.message == "loggedout") {
@@ -789,7 +789,8 @@ function checkIsUserLogged() {
             if (result.message != null && result.message != undefined) {
 
                 if (result.message == "notlogged") {
-                    jQuery(".login_logout_link").html("<a id='signin' href='javascript:void(0);'>Sign In</a>");
+                    //for new design
+					jQuery(".login_logout_link").html("<a id='signin' href='javascript:void(0);'>Sign In</a>");
                     wplogoutonly();
                 }
                 else if (result.message == "logged") {
@@ -798,6 +799,7 @@ function checkIsUserLogged() {
 
                     jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
                     jQuery(".login_logout_link").html("<span style='cursor:pointer; margin-left:0;padding-left:0' onclick='wplogout()'>SIGN OUT</span>");
+					jQuery(".signout_link").html("<span onclick='wplogout()'>SIGN OUT</span>");
 					
 
                     //jQuery("#signin").unbind('click');
