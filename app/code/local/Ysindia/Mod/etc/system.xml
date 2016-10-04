@@ -8,7 +8,7 @@
     </tabs>
     <sections>
         <product_grid translate="label" module="adminhtml">
-            <label>Settings</label>
+            <label>Settings landing page</label>
             <tab>myconf</tab>
             <sort_order>10</sort_order>
             <show_in_default>1</show_in_default>
@@ -23,15 +23,26 @@
                     <show_in_store>1</show_in_store>
                     <!--<comment><![CDATA[This is a <strong>Smogi Bucks</strong> to share your friends and relatives.  ]]></comment>-->
                     <fields>
-                        <grid translate="label comment">
-                            <label>Image position</label>
+                        <women translate="label comment">
+                            <label>Women big image position</label>
                             <comment>Text field with store view scope.</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </grid>
+                        </women>
+                    </fields>
+                    <fields>
+                        <men translate="label comment">
+                            <label>Men big image position</label>
+                            <comment>Text field with store view scope.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </men>
                     </fields>
                 </general>
             </groups>
