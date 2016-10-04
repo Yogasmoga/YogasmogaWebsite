@@ -4126,7 +4126,7 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
     margin: 0 auto;
     opacity: 1;
     position: relative;
-	padding-top:2%;
+	padding-top:1.5%;
     width: 100%;}
 	
 	.women-collection .new-collection-block .col-box {
@@ -4135,28 +4135,28 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
   text-transform: uppercase;
 }
 .women-collection .new-collection-block .col-box .col-main-head{
- padding-bottom: 2.5%;
+ padding-bottom: 1%;
 }
 .women-collection .new-collection-block .col-box .col-main-head span{
  border-bottom: 1px solid #555;   
     display: inline-block;
-    font: 16px/24px avantgardegothicitcw01d;
+    font: 11px/14px avantgardegothicitcw01d;
     letter-spacing: 0.5px;
 	color:#555;
     padding-bottom: 1%;
-    width: 28%;}
+    width: 22%;}
 	
 	.women-collection .new-collection-block .col-box  h2 span{color:#555;}
 .women-collection .new-collection-block .col-box h2 span{display: block;
-    font: 46px/46px avantgardegothicitcw01d;
-    margin-bottom: 34px;}	
+    font: 42px/46px avantgardegothicitcw01d;
+    margin-bottom: 18px;}	
 
 .women-collection .new-collection-block .col-subhead {
   color: #555;
-  font: 20px/26px graphikregular;
+  font: 14px/20px graphikregular;
   letter-spacing: 0.6px;
   text-transform: none;
-  padding-bottom: 2.5%;
+  padding-bottom: 1.5%;
 }
 	
 .women-collection .women-collection-banner img{width:100%;height:auto;}
