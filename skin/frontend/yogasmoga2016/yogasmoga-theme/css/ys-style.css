@@ -3542,7 +3542,7 @@ ul.main-menu2 li ul.sub-menu li a {
 .product-grid .bnrtxt{width:auto;top:120px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);}
 .product-grid .bnrtxt.fixed_top{top:60px;position:fixed;z-index:99;}
 .product-grid .gridProdCubix{margin:75px auto auto;}
-.catalog-category-view #ysheader.showhide .header-inner{border-bottom:1px solid #ccc; position:relative;}
+/*.catalog-category-view #ysheader.showhide .header-inner{border-bottom:1px solid #ccc; position:relative;}*/
 
 /*----product details----*/
 .product-details .block-head{border-top:1px solid #9c9c9c;padding:24px 0 0 0;}
