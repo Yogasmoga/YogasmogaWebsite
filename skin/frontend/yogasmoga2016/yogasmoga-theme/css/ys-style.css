@@ -4118,7 +4118,7 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 
 /****** color change start product page ********/
 .catalog-product-view  div#bodycompensator { height: 109px !important;} 
-.catalog-product-view  .scrolled-effect .free-shipping-txt,.catalog-product-view  .scrolled-effect #welcome-name,.catalog-product-view  .scrolled-effect .header-banner .orange-banner,.catalog-product-view  .scrolled-effect ul.main-menu li a.menu-heading,.catalog-product-view  .scrolled-effect ul.main-menu2 a.main-heading,.catalog-product-view  .scrolled-effect .tr-menu>li>a:first-child{color:#555;}
+.catalog-product-view  .scrolled-effect .free-shipping-txt,.catalog-product-view  .scrolled-effect #welcome-name,.catalog-product-view  .scrolled-effect .header-banner .orange-banner,.catalog-product-view  .scrolled-effect ul.main-menu li a.menu-heading,.catalog-product-view  .scrolled-effect ul.main-menu2 a.main-heading,.catalog-product-view  .scrolled-effect .tr-menu>li>a:first-child,.catalog-product-view  .scrolled-effect .tr-menu>li.signout_link>span{color:#555;}
 .catalog-product-view  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading {color:#555;}
 .catalog-product-view  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading {color:#555;}
 .catalog-category-view .quick-access{border-bottom:none!important;}
