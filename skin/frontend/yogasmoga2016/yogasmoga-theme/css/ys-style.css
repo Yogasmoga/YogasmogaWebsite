@@ -4224,3 +4224,6 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 /*---if page max width 1600px --*/
 /*.page{max-width:1600px;margin:0 auto;}
 #ysheader.header-container{max-width:1600px;}*/
+
+/*--checkout page--*/
+.checkout-onepage-index .header-banner{opacity:0; visibility:hidden;}
