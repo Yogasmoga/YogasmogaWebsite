@@ -62,7 +62,15 @@ if($urlKey != strtolower('women') || $urlKey != strtolower('men')){
 }
 
 ?>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().' '.$listingClass.'"':'' ?>>
+<?php $_category = Mage::registry('current_category');
+$rangeCats = array(125,126,127,128,129,130);
+?>
+
+<?php if(in_array($_category->getId(),$rangeCats)): ?>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().' '.$listingClass.' category-range"':'' ?>>
+<?php else: ?>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().' '.$listingClass.' "':'' ?>>
+<?php endif; ?>
 <?php echo $this->getChildHtml('after_body_start') ?>
 <?php /*
 <div class="namaskar-overlay1">&nbsp;</div>

@@ -3,7 +3,6 @@ $rangeCats = array(125,126,127,128,129,130);
 ?>
 
 <?php if(in_array($_category->getId(),$rangeCats)): ?>
-    <script type="text/javascript">jQuery(function(){jQuery('body').addClass('category-range');});</script>
 <div class="bannerFluid">
     <img src="<?=$_category->getImageUrl()?>" alt="<?=$_category->getName()?>" title="<?=$_category->getName()?>" />
     <div class="category-info"><?=$_category->getDescription()?></div>
