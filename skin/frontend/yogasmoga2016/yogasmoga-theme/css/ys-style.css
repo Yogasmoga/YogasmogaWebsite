@@ -4162,6 +4162,9 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 }
 	
 .women-collection .women-collection-banner img{width:100%;height:auto;}
+/*************** footer changes*****************/
+ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
+.smogi-love:hover{color:#ae8536;}
 @keyframes fadeInScale {
 
   0% { 
