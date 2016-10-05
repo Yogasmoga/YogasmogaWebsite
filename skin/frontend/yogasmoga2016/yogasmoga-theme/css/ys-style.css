@@ -4227,3 +4227,6 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 
 /*--checkout page--*/
 .checkout-onepage-index .header-banner{opacity:0; visibility:hidden;}
+
+/*---for range categories--*/
+.category-range.common-listing div#bodycompensator{height:0!important;}
