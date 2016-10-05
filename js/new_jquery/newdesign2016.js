@@ -192,6 +192,13 @@ jQuery(document).ready(function(){
 		jQuery('.bannerFluid').addClass('ds');				
 	}
 	
+	var gProd = jQuery( ".cat-name" );
+	var gOffset = gProd.offset();
+	//p.html( "left: " + offset.left + ", top: " + gOffset.top );
+	//alert(gOffset.top);
+	jQuery('.cat-name').css({
+		top:gOffset.top	
+	});
 	
 });
 
