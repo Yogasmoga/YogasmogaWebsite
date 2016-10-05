@@ -3499,7 +3499,7 @@ ul.main-menu2 li ul.sub-menu li a {
 /************* 2-sep*********/
 .productCont .prod-img img{max-width:100%;max-height:100%;margin:0 auto; display:block;opacity:1!important;}
 
-.bannerFluid img{display:none;}
+.bannerFluid img{/*display:none;*/}
 .bannerFluid .bnrtxt.bnr.white{color:#555!important;}
 
 .bannerFluid .r-lign{text-align:center!important;} 
@@ -4204,8 +4204,8 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 .shopping-cart input#smogi:-ms-input-placeholder{opacity:1;color:#555!important; font-family:gothamBook; font-size:12px;} 
 .shopping-cart #sub-totals-discount{margin-bottom:0;}
 .shopping-cart .capstxt{padding:0;}
-.shopping-cart .capstxt.totalAmnt{padding:0 0 15px 0;border-bottom:2px solid #c6c6c6;}
-.shopping-cart .capstxt .continuelink{margin:0;width:50%;box-sizing:border-box;background:#ddd; text-transform:uppercase;}
+.shopping-cart .capstxt.totalAmnt{border-bottom: 1px solid #979797;font-family: itcavantgardepromd;font-size: 15px;letter-spacing: 0.58px;padding: 0 0 15px;}
+.shopping-cart .capstxt .continuelink{margin:0;width:50%;box-sizing:border-box;background:#ddd; text-transform:uppercase; font-family:itcavantgardepromd; font-size:13px;letter-spacing:0.5px;}
 .shopping-cart .capstxt .continuelink:nth-child(2){background:#ae8536;}
 .shopping-cart .addedItem,.shopping-cart .cont-full{background:#f4f4f4;}
 .shopping-cart .strip-gry{display:none;}
