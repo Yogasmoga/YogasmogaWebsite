@@ -1,3 +1,15 @@
+<?php $_category = Mage::registry('current_category');
+$rangeCats = array(125,126,127,128,129,130);
+?>
+
+<?php if(in_array($_category->getId(),$rangeCats)): ?>
+    <script type="text/javascript">jQuery(function(){jQuery('body').addClass('category-range');});</script>
+<div class="bannerFluid">
+    <img src="<?=$_category->getImageUrl()?>" alt="<?=$_category->getName()?>" title="<?=$_category->getName()?>" />
+    <div class="category-info"><?=$_category->getDescription()?></div>
+</div>
+<?php endif;?>
+<h1 class="bnrtxt cat-name  bnr white"><?=$_category->getName()?></h1>
 <?php
     $currentCategoryId = Mage::registry('current_category')->getId();
     //$categoriesWithNoFilter = array(8,12,29,30,31,32,33,38,39,40,46,50);
@@ -6,6 +18,7 @@
     $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
     if($showSizeFilter){
 ?>
+
 <div id="div_sizes" class="sz_filter">&nbsp;</div>
 <!-- category filter -->
 <div id="div_cats" class="ct_filter"></div>
@@ -273,7 +286,7 @@ $finalarr = array_combine($myArr1,$myArr2);
 
 
     $finalcolorfilter = array_combine($fcolorKey,$fcolorValue);
-
+    ksort($finalcolorfilter);
     //echo "<pre/>";
     //print_r($finalcolorfilter);
 
