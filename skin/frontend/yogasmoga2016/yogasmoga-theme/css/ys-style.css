@@ -3466,7 +3466,7 @@ width: 140px;
  ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a {
   color: #555;
   font: 11px/23px avantgardegothicitcw01d;
-  letter-spacing:0.55px;
+  letter-spacing:0.3px;
 }
 ul.main-menu li ul.sub-menu > li > ul:first-child a {
   font: 11px/11px avantgardegothicitcw01d;
@@ -3755,7 +3755,7 @@ color:#444444;text-transform:uppercase;
 width:auto;
 margin:0 auto;
 position:absolute;left:50%; transform:translateX(-50%); -webkit-transform:translateX(-50%);
-letter-spacing:0.55px;
+letter-spacing:0.3px;
 cursor:pointer;
 }
 .header-banner  .orange-banner{
@@ -3766,7 +3766,7 @@ height:auto;
 .free-shipping-txt {
   font: 12px/40px GraphikRegular;
   float:left;
-  letter-spacing:0.55px;
+  letter-spacing:0.3px;
 }
 .header-container  .f-right {
     float: right;
@@ -3795,7 +3795,7 @@ ul.main-menu li a.menu-heading {
 .in-bl ul.main-menu2 > li:last-child{padding-right:0;}
 .tr-menu li > a:first-child,.tr-menu li.signout_link{
 font:10px/11px ITCAvantGardeProBk;color:#444;
-letter-spacing:0.55px;
+letter-spacing:0.5px;
 }
 .header-banner ul.tr-menu{margin:10px 0 6px;}
 ul.main-menu.f-left.ctag-menu > li{height:60px;}
