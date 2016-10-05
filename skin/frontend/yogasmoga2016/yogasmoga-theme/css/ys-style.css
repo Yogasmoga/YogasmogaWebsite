@@ -3544,6 +3544,9 @@ ul.main-menu2 li ul.sub-menu li a {
 .product-grid .gridProdCubix{margin:75px auto auto;}
 /*.catalog-category-view #ysheader.showhide .header-inner{border-bottom:1px solid #ccc; position:relative;}*/
 
+/*--for removing fixed state on scroll of filters and cat title--*/
+#div_sizes.fixed_top, #div_cats.fixed_top,.product-grid .cat-name,.product-grid .cat-name.fixed_top{position:absolute!important;}
+
 /*----product details----*/
 .product-details .block-head{border-top:1px solid #9c9c9c;padding:24px 0 0 0;}
 .breadcrumb, .breadcrumb a { color: #555; font: 12px/12px AvantGardeGothicITCW01D;}
