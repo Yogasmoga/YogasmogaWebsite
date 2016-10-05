@@ -357,18 +357,20 @@ function filterCats(){
 
 (function($){
     $(document).ready(function($){
-        var filterOffsetTop = $("#div_cats").offset().top - 69;
-        positionFilter(filterOffsetTop);
-        $(window).scroll(function(){
-            positionFilter(filterOffsetTop);
-        });
-        function positionFilter(filterOffsetTop){
-            var winScrollTop = $(window).scrollTop();
-            if( winScrollTop > filterOffsetTop){
-                $("#div_cats").addClass("fixed_top");
-            }else{
-                $("#div_cats").removeClass("fixed_top");
-            }
-        }
+		if($('#div_sizes').length){
+			var filterOffsetTop = $("#div_cats").offset().top - 69;
+			positionFilter(filterOffsetTop);
+			$(window).scroll(function(){
+				positionFilter(filterOffsetTop);
+			});
+			function positionFilter(filterOffsetTop){
+				var winScrollTop = $(window).scrollTop();
+				if( winScrollTop > filterOffsetTop){
+					$("#div_cats").addClass("fixed_top");
+				}else{
+					$("#div_cats").removeClass("fixed_top");
+				}
+			}
+		}
     });
 })(jQuery);
