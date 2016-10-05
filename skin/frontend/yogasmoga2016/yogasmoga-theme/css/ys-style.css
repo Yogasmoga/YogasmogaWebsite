@@ -3432,7 +3432,7 @@ div.copy-privacy-likes ul li {
     color: #555;
     display: inline-block;
     font: 16px/24px avantgardegothicitcw01d;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     padding-bottom: 1%;
     width: 28%;}
 /******************  header new changes start   ***********/
@@ -3466,7 +3466,7 @@ width: 140px;
  ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a {
   color: #555;
   font: 11px/23px avantgardegothicitcw01d;
-  letter-spacing:0.3px;
+  letter-spacing:0.4px;
 }
 ul.main-menu li ul.sub-menu > li > ul:first-child a {
   font: 11px/11px avantgardegothicitcw01d;
