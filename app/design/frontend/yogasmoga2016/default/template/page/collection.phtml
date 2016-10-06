@@ -378,8 +378,8 @@
 																$configurableProductPrice = round($confProduct->getPrice(),2);
 																
 																if($configurableProductPrice > $simpleProductPrice):?>
-																	<span style="color:#c03;"><?php echo $clrinfo[$simpleproductarr['color']]?>&mdash;$<?php  echo $simpleProductPrice;?></span>
-																	<span>was $<?php  echo  $configurableProductPrice;?></span>
+																	<span style="color:#c03;"><?php echo $clrinfo[$simpleproductarr['color']]?></span>
+																	<span>$<?php  echo $simpleProductPrice;?><cite class="was-amount" style="font-style:normal"> was $<?php  echo  $configurableProductPrice;?></cite></span>
 																<?php else:?>
 																	<span><?php echo $clrinfo[$simpleproductarr['color']]?></span>
 																	<span>$<?php  echo $configurableProductPrice;?></span>
