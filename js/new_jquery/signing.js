@@ -708,7 +708,8 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 
                 return;
             }
-			jQuery(".orange-banner").hide();			 
+			//jQuery(".orange-banner").hide();			 
+			jQuery(".orange-banner").remove();			 
 			jQuery(".header-container").css("padding","0px");
 			jQuery("div#bodycompensator").css("height","69px"); 
 			//jQuery(".ui-widget-overlay").css({top:69});
