@@ -1186,7 +1186,8 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                     <!-- heading -->
                                     <?php
                                     $catIds =  $_product->getCategoryIds();
-                                    $psc = array(125,126,127,128,129,130);
+                                    $rangeCategories = Mage::getModel('core/variable')->loadByCode('range_categories')->getValue('plain');
+                                    $psc = explode(",",$rangeCategories);
                                     $finalIds = array_intersect($catIds, $psc);
                                     ?>
 									<div class="csp-name">
@@ -1783,10 +1784,11 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 					<div class="pcol-right-content-inner">
 					</div>
 				</div><!--right-col3 end-->
-				<div class="pcol-right-content pcol-right-content4">
+				<!--<div class="pcol-right-content pcol-right-content4">
 					<div class="pcol-right-content-inner">
 					</div>
-				</div><!--right-col4 end-->
+				</div>-->
+				<!--right-col4 end-->
 			</div>
 				
 		</div><!--product-row product-row1, ends-->

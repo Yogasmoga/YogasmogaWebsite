@@ -1,5 +1,6 @@
 <?php $_category = Mage::registry('current_category');
-$rangeCats = array(125,126,127,128,129,130);
+$rangeCategories = Mage::getModel('core/variable')->loadByCode('range_categories')->getValue('plain');
+$rangeCats = explode(",",$rangeCategories);
 ?>
 
 <?php if(in_array($_category->getId(),$rangeCats)): ?>
