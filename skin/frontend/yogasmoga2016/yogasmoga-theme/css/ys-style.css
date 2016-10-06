@@ -3923,7 +3923,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div{background:#fff;min-height:30px; min-width:30px; box-sizing:border-box;
 	line-height:30px;border-radius:30px;}
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div img{display:none!important;}
-.gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.outofstock{color:#ddd;}
+.gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.outofstock{color:#ddd; pointer-events:none;}
 .wishlist-nw{display:none;}
 
 /*--bra option--*/
