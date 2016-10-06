@@ -1194,7 +1194,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                             $rangeName = Mage::getModel('catalog/category')->load($rangeId);
                                             ?>
                                             <?php if($rangeName):?>
-										    <a class="csp-link" href="<?php echo $rangeName->getUrl();?>">Select <?php echo $rangeName->getName();?></a>
+										    <a class="csp-link" href="#"><?php echo $rangeName->getName();?></a>
                                             <?php endif; ?>
 										<?php endforeach; ?>
 									</div>
@@ -1496,7 +1496,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 														To Wish List</a></p>
 											<?php } ?>
 										</div>
-                                        <?php /*?>
+                                        <?php /* ?>
 										<p class="csp-name-list">
 
                                             <?php $catIds =  $_product->getCategoryIds();
