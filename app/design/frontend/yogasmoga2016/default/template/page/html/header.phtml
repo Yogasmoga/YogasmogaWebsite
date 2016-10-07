@@ -655,7 +655,12 @@ if(!$loggedIn){ ?>
 
                                 }
                                 else{
-                                    $remainingcolumn .= "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a><ul>";
+									if($child2->getId()== 132 || $child2->getId()== 134){
+										$remainingcolumn .= "<li><a class='range-cat'> " . $child2->getName()."</a><ul>";
+									}else{
+										$remainingcolumn .= "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a><ul>";
+									}
+                                    
                                     // show sub categories third level
                                     foreach ($subsubcategories as $child3)
                                     {
