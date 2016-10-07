@@ -162,7 +162,8 @@ if(!isset($ipInfo)){
                 
             </form>
 			<p class="close-text" onclick="jQuery('.close_signin_popup').click()">No Thank You, I’m not interested in Made in the USA apparel.</p>
-			<p class="opensignin" onclick="$('.login_logout_link').click();">I’m already signed up.</p>
+			<!--<p class="opensignin" onclick="$('.login_logout_link').click();">I’m already signed up.</p>-->
+			<p class="opensignin" onclick="$('.close_signin_popup').click();">I’m already signed up.</p>
             <!--<div class="align-center" style=" color:#ff9f9f; font-size: 13px; letter-spacing: 1px; font-family: ITCAvantGardeStd-Bk">
                 Already signed up?<br/><a style="cursor: pointer;" onclick="$('.login_logout_link').click();">Sign in here</a>
             </div>-->

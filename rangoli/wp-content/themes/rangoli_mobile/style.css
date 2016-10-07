@@ -1979,7 +1979,7 @@ width: 100%;
 .popup.signup_pop .signup_popup span.gender{width:30px; height:30px; line-height:32px;font-size:15px; font-family:itcavantgardestd-md;margin-top:3px;}
 .popup.signup_pop .signup_popup span.gender input[type="radio"]{height:30px!important;}
 .popup.signup_pop .signup_popup .gender_p{color:#717171;margin-bottom:7px;}
-.popup.signup_pop .signup_popup .no-thanks, .popup.signup_pop .signup_popup .already_signed_up {
+.popup.signup_pop .signup_popup .no-thanks, .popup.signup_pop .signup_popup .already_signed_up,.popup.signup_pop .signup_popup .already-text {
   color: #ae8536; display: inline-block; float: none; font: 12px/24px ITCAvantGardeStd-Md!important; margin: 0;
   opacity: 1; text-align: center; text-decoration: underline;}
 .popup.signup_pop .signup_popup .no-thanks {margin-bottom: 10px;}

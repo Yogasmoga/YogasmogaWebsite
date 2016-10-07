@@ -251,9 +251,12 @@ jQuery(document).ready(function(){
         }
     });
 	//alert(jQuery(".header-container").css('left'));
+	/*var headContLeftOrigPos = jQuery(".header-container").css('left');
 	jQuery(".header-container").css({
-		'left': jQuery(".header-container").css('left')
-		})
+		'left': headContLeftOrigPos
+		});
+	jQuery(".header-container").animate({left: headContLeftOrigPos});*/
+	
 	jQuery("#shop-bag-count").click(function(){
 		var shoppingWdth = jQuery(".shopping-cart").width();
 		jQuery( ".open-cart" ).trigger( "click" );
