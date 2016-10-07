@@ -2919,6 +2919,10 @@ ul.main-menu > li{padding:0 10px;}
 /*--- header modify end ---*/
 
 /*########### new designs ###########*/
+.contentSlider .small-text { 
+    font-family: avantgardegothicitcw01d; 
+}
+.iconspartone .row > span .iconstxt{font-family: GraphikRegular; }
 .header-container{min-width:1024px;}
 .ctglink li.sub-head {
     border-top: 1px solid #fff;  
@@ -2936,8 +2940,8 @@ ul.main-menu > li{padding:0 10px;}
 .productContbox  .productCont:nth-child(3n){margin-right:0;}
 .productContbox  .productCont:nth-child(6n){margin:0 0.3%;}
 .productContbox  .productCont:nth-child(8n){margin-right:0%;}*/
-.productCont .caption{font:20px/24px avantgardegothicitcw01m;text-transform:capitalize;margin:0; min-height:60px; padding:36px 0 22px;letter-spacing:0.5px;}
-.productCont .caption span{font:16px/24px avantgardegothicitcw01b;color:#555;}
+.productCont .caption{font:20px/24px avantgardegothicitcw01d;text-transform:capitalize;margin:0; min-height:60px; padding:36px 0 22px;letter-spacing:0.5px;}
+.productCont .caption span{font:16px/24px GraphikRegular;color:#555;}
 .bannerFluid .r-lign{text-align:center!important;} 
 .bannerFluid .l-lign{text-align:center!important;}
 .bannerFluid .bnrtxt{left:0!important;right:0!important;margin:0 auto!important;width:100%!important;text-align:center!important;}
@@ -2967,7 +2971,7 @@ ul.main-menu > li{padding:0 10px;}
 .new-arrivals-block .productCont .caption,.new-arrivals-block .productCont .caption span{ letter-spacing:0;}
 
 .new-arrivals-block span.na-head{font:46px/46px avantgardegothicitcw01d;display:block; margin-bottom:34px;}
-.new-arrivals-block .na-subhead{font:20px/26px avantgardegothicitcw01m;letter-spacing:0.6px;text-transform:none;color:#555;}
+.new-arrivals-block .na-subhead{font:20px/26px GraphikRegular;letter-spacing:0.6px;text-transform:none;color:#555;}
 /*.productContbox .productCont:nth-child(3n-2){margin-left:0.3%;}
 .gridWrap .productCont.prodduct_horizontal {
   width: 66.3%;
