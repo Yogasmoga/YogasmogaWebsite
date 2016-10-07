@@ -250,9 +250,14 @@ jQuery(document).ready(function(){
 
         }
     });
+	//alert(jQuery(".header-container").css('left'));
+	jQuery(".header-container").css({
+		'left': jQuery(".header-container").css('left')
+		})
 	jQuery("#shop-bag-count").click(function(){
+		var shoppingWdth = jQuery(".shopping-cart").width();
 		jQuery( ".open-cart" ).trigger( "click" );
-		jQuery(".header-container").animate({left: '-400'});
+		jQuery(".header-container").animate({left: -shoppingWdth});
 
 	});
 	jQuery(".pageoverlay,#continuelink").on("click", function () {
