@@ -4252,8 +4252,6 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .shopping-cart .addedItem .similarProdList > li span{ text-transform:capitalize;}
 .shopping-cart .addedItem .similarProdList > li span.pname{text-transform:uppercase;}
 .shopping-cart .similarProdList .size{font-size:11px;line-height:15px;}
-.shopping-cart .similarProdList .namaskarinfo .cmbcolor-block:after{content: ""; position:absolute; top:12px;right:5px; border-top:7px solid #ae8536;border-bottom:7px solid #transparent;border-right:7px solid transparent; border-left: 7px solid transparent;}
-.shopping-cart .similarProdList .namaskarinfo .cmbcolor-block{background:#fff;position:relative;margin:12px 0 10px; display:block;}
 .shopping-cart .similarProdList .namaskarinfo #cmbcolor{border:0 none;background:url('../images/drop-icon.png') no-repeat right 10px center #fff;appearance:none;-moz-appearance:none;-webkit-appearance:none;margin:15px 0;
 	position:relative;z-index:1;width:100%!important;}
 .shopping-cart .similarProdList .namaskarinfo .addbracelet{}
