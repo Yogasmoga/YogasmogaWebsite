@@ -3704,7 +3704,20 @@ float:left; margin-left:-40px; }
     padding-right: 2%;
 
 }
-
+#prod-tab-content2 .prodtab-desc li::before{  background: #555 none repeat scroll 0 0;
+    border-radius: 8px;
+    content: "";
+    display: block;
+    height: 4px;
+    left: 0;
+    position: absolute;
+    top: 6px;
+    width: 4px;}
+	#prod-tab-content2 .prodtab-desc li {
+  padding-left: 10px;
+  position: relative;
+}
+	
 #prod-tab-content3 .design-size{margin: 0px 0 0 !important;}
 .design-size tr:first-child td:first-child {
   padding-left: 0;
