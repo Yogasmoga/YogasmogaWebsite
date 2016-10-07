@@ -491,7 +491,7 @@ function showShoppingBagHtml() {
 /************ added by ys team ************/
                 jQuery("#addtobagloader").hide();
 /************ added by ys team ************/
-
+				
                 if (data.countdiscount > 1)
                     showerror(data.discounttypeerror);
                 outofstockDisable();
@@ -521,7 +521,7 @@ function showShoppingBagHtml() {
 					});*/
 					/*---------promocode update for apply button end---*/
 				jQuery('#smogi').prop('disabled', true);
-				jQuery('#cmbcolor').wrap("<span class='cmbcolor-block'></span>");
+				
 				
             }
         });
@@ -786,6 +786,7 @@ function addbracelettobag(pid, colorattributeid, sizeattributeid) {
         var braceletorderqty = '';
         _addingtocart = true;
         braceletorderqty = jQuery(".qtyselector").find('option:selected').val();
+		
         var color = jQuery("#cmbcolor").val();
         var size = jQuery("#cmbsize").val();//alert(_productid);
 
