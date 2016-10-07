@@ -491,7 +491,7 @@ function showShoppingBagHtml() {
 /************ added by ys team ************/
                 jQuery("#addtobagloader").hide();
 /************ added by ys team ************/
-				jQuery('#cmbcolor').wrap("<span class='cmbcolor-block'></span>");
+				
                 if (data.countdiscount > 1)
                     showerror(data.discounttypeerror);
                 outofstockDisable();
