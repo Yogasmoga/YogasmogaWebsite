@@ -171,8 +171,9 @@ if(!is_user_logged_in()  && is_home()) {
                                         </svg>
             </button>
             <p style="clear:both"><a class="no-thanks" onclick="jQuery('.close_signup_popup').click()" >No Thank You, I’m not interested in <br>Made in the USA apparel.</a></p>
-            <p style="clear:both"><a class="already_signed_up open_signin">I’m already signed up.</a></p>
+            <?php /* ?><p style="clear:both"><a class="already_signed_up open_signin">I’m already signed up.</a></p><?php */ ?>
             <!--<p class="forgot_y_p open_signin"><a href="javascript:void(0);">Already signed up? Sign in here</a></p>-->
+            <p style="clear:both"><a class="already-text" onclick="jQuery('.close_signup_popup').click()">I’m already signed up.</a></p>
 
 
 
