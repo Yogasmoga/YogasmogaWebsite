@@ -4009,6 +4009,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a{font-family:
  .color-change ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
  .color-change ul.main-menu li a.menu-heading,.color-change .main-menu2 > li a.main-heading{color:#555;}
  
+ ul.main-menu > li {cursor:default;}
   ul.main-menu > li > ul.sub-menu li a.range-cat{pointer-events:none; cursor:default;}
  
 ul.main-menu li ul.sub-menu{background:#ad8435;width:100%;padding: 0 0 0 4%;box-sizing:border-box;}
