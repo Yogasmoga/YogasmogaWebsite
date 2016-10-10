@@ -304,10 +304,13 @@ jQuery(document).ready(function(){
 
 /*---sort color filters on grid page--*/
 jQuery(document).ready(function () {
-    var sortedColors = jQuery("#div_cats").find(".chk-cats").toArray().sort(sorter);
-   jQuery.each(sortedColors, function (index, value) {
-        jQuery("#div_cats").append(value);
-    });
+	if(jQuery("#div_cats").length){
+		var sortedColors = jQuery("#div_cats").find(".chk-cats").toArray().sort(sorter);
+	    jQuery.each(sortedColors, function (index, value) {
+			jQuery("#div_cats").append(value);
+		});
+	}
+    
 });
 
 function sorter(a, b) {
