@@ -4313,7 +4313,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .category-range .bannerFluid .img_madeinusa {bottom: 12.651%;max-width: 101px;position: absolute;right: 2.9375%;width: auto; display:none;}
 
 /*---if page max width 1600px --*/
-.wrapper{max-width:1600px;margin:0 auto;min-width:inherit;}
+.wrapper{max-width:1600px;margin:0 auto;min-width:inherit; overflow:hidden;}
 #ysheader.header-container{max-width:1600px;}
 .ui-dialog,.ui-widget-overlay{max-width:1600px!important;}
-
+.open-bag #ysheader.header-container{clip:rect(0, auto, auto,400px)}
