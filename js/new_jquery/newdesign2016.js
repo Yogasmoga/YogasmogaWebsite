@@ -311,7 +311,7 @@ jQuery(document).ready(function () {
 });
 
 function sorter(a, b) {
-    return a.getAttribute('rel') - b.getAttribute('rel');
+    return b.getAttribute('rel') - a.getAttribute('rel');
 };
 	
 
