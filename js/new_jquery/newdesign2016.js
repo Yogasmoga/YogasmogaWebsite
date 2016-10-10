@@ -305,14 +305,12 @@ jQuery(document).ready(function(){
 /*---sort color filters on grid page--*/
 jQuery(document).ready(function () {
 	if(jQuery("#div_cats").length){
-		var sortedColors = jQuery("#div_cats").find(".chk-cats").toArray().sort(sorter);
-	    jQuery.each(sortedColors, function (index, value) {
-			jQuery("#div_cats").append(value);
-		});
-	
-		function sorter(a, b) {
-			return b.getAttribute('rel') - a.getAttribute('rel');
-		};
+		var colrCats = $('#div_cats');
+
+		colrCats.find('.chk-cats').sort(function (a, b) {
+		return b.getAttribute('rel') - a.getAttribute('rel');
+		})
+		.appendTo( colrCats );
 	}
     
 });
