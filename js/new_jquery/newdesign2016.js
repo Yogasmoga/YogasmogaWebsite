@@ -303,10 +303,10 @@ jQuery(document).ready(function(){
 });*/	
 
 /*---sort color filters on grid page--*/
-$(document).ready(function () {
-    var sortedColors = $("#div_cats").find(".chk-cats").toArray().sort(sorter);
-   $.each(sortedColors, function (index, value) {
-        $("#div_cats").append(value);
+jQuery(document).ready(function () {
+    var sortedColors = jQuery("#div_cats").find(".chk-cats").toArray().sort(sorter);
+   jQuery.each(sortedColors, function (index, value) {
+        jQuery("#div_cats").append(value);
     });
 });
 
