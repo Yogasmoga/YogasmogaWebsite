@@ -301,6 +301,18 @@ jQuery(document).ready(function(){
 	alert(bktimgH);
 	jQuery(".gridfull").css('min-height',bktimgH,'important');
 });*/	
+
+/*---sort color filters on grid page--*/
+$(document).ready(function () {
+    var sortedColors = $("#div_cats").find(".chk-cats").toArray().sort(sorter);
+   $.each(sortedColors, function (index, value) {
+        $("#div_cats").append(value);
+    });
+});
+
+function sorter(a, b) {
+    return a.getAttribute('rel') - b.getAttribute('rel');
+};
 	
 
 		
