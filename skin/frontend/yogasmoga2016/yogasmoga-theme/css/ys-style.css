@@ -4009,7 +4009,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a{font-family:
  .color-change ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
  .color-change ul.main-menu li a.menu-heading,.color-change .main-menu2 > li a.main-heading{color:#555;}
  
-ul.main-menu li ul.sub-menu{background:#ad8435;width:100%;padding: 0 0 0 4%;box-sizing:border-box;}
+ul.main-menu li ul.sub-menu{background:#ad8435;width:100%;padding: 0 0 0 2%;box-sizing:border-box;}
 ul.main-menu li ul.sub-menu > li{border-left:none;width:16%;box-sizing:border-box; padding-top: 2%;}
 ul.main-menu2 li{position:static;}
 ul.main-menu2 li .sub-menu{left:0!important;}
