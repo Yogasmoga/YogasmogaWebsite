@@ -270,3 +270,28 @@ jQuery(document).ready(function(){
    });
 
 }
+
+jQuery(document).ready(function(){
+		var pageOffsetLeft = jQuery('.page').offset().left;
+		var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
+		jQuery('.shopping-cart').css({
+			'right':pageOffsetRight			
+		});
+		jQuery('#ysheader').css({
+			'margin-left':pageOffsetLeft
+		});
+		
+});
+
+jQuery(window).resize(function(){
+		var pageOffsetLeft = jQuery('.page').offset().left;
+		var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
+		jQuery('.shopping-cart').css({
+			'right':pageOffsetRight			
+		});
+		jQuery('#ysheader').css({
+			'margin-left':pageOffsetLeft
+		});
+});
+		
+		
