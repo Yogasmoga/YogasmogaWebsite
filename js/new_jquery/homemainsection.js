@@ -1,13 +1,17 @@
 jQuery(document).ready(function($){
     // sliderHeight();
-    var ww = $(window).width();
-    if(ww < 1007){
+	
+    //var ww = $(window).width();    
+	var ww = $('.wrapper').width();// new design var
+	//alert('wrapper original'+ ww);
+	
+	if(ww < 1007){
         ww = 1007;
     }
     var sliderHeight = ww * 0.523;
     var bannerFliudHeight = ww * 0.3125;
     //var bannerFliudHeight = ww * 0.076;
-	$(".gridfull").css('min-height',ww*0.48);
+	//$(".gridfull").css('min-height',ww*0.48);
 	$(".gridfull.nophotoshop .slider_li").css('min-height',ww*0.48);
 	$(".home-banner").css('min-height',ww*0.70);
 	
@@ -52,9 +56,13 @@ jQuery(document).ready(function($){
     fixmainimage();
     
     $(window).resize(function($) {
-        jQuery(".gridfull").css('min-height',jQuery(window).width()*0.48);
-		jQuery(".gridfull.nophotoshop .slider_li").css('min-height',jQuery(window).width()*0.48);
-		jQuery(".home-banner").css('min-height',jQuery(window).width()*0.70);
+		//var ww = jQuery(window).width();    
+		var ww = jQuery('.wrapper').width();// new design var
+		//alert('wrapper resize'+ ww);
+		
+        jQuery(".gridfull").css('min-height',ww*0.48);
+		jQuery(".gridfull.nophotoshop .slider_li").css('min-height',ww*0.48);
+		jQuery(".home-banner").css('min-height',ww*0.70);
 		
         fixmainimage();
         //alert("resized");
@@ -62,7 +70,7 @@ jQuery(document).ready(function($){
         
         //positionDiscoverSection();
         // sliderHeight();
-        var ww = jQuery(window).width();
+        //var ww = jQuery(window).width();
         if(ww < 1007){
             ww = 1007;
         }

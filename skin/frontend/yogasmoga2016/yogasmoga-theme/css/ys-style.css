@@ -4315,3 +4315,5 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 /*---if page max width 1600px --*/
 .wrapper{max-width:1600px;margin:0 auto;min-width:inherit;}
 #ysheader.header-container{max-width:1600px;}
+.ui-dialog,.ui-widget-overlay{max-width:1600px!important;}
+
