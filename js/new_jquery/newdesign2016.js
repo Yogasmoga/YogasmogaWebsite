@@ -305,7 +305,8 @@ jQuery(document).ready(function(){
 /*---sort color filters on grid page--*/
 jQuery(document).ready(function () {
 	if(jQuery("#div_cats").length){
-		alert('div cats');
+		setTimeout(function(){
+				alert('div cats');
 		var colrCats = jQuery('#div_cats');
 
 		colrCats.find('.chk-cats').sort(function (a, b) {
@@ -313,6 +314,8 @@ jQuery(document).ready(function () {
 		})
 		.appendTo(colrCats);
 		alert('div cats2');
+		},3000);
+		
 	}
     
 });
