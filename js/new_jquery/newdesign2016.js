@@ -309,13 +309,15 @@ jQuery(document).ready(function () {
 	    jQuery.each(sortedColors, function (index, value) {
 			jQuery("#div_cats").append(value);
 		});
+	
+		function sorter(a, b) {
+			return b.getAttribute('rel') - a.getAttribute('rel');
+		};
 	}
     
 });
 
-function sorter(a, b) {
-    return b.getAttribute('rel') - a.getAttribute('rel');
-};
+
 	
 
 		
