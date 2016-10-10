@@ -314,7 +314,7 @@ jQuery(document).ready(function () {
 		})
 		.appendTo(colrCats);
 		//alert('div cats2');
-		},3000);
+		},1000);
 		
 	}
     
