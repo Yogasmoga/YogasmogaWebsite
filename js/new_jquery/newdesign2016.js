@@ -305,7 +305,7 @@ jQuery(document).ready(function(){
 /*---sort color filters on grid page--*/
 jQuery(document).ready(function () {
 	if(jQuery("#div_cats").length){
-		var colrCats = $('#div_cats');
+		var colrCats = jQuery('#div_cats');
 
 		colrCats.find('.chk-cats').sort(function (a, b) {
 		return b.getAttribute('rel') - a.getAttribute('rel');
