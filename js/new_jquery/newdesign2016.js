@@ -312,6 +312,7 @@ jQuery(document).ready(function () {
 		return b.getAttribute('rel') - a.getAttribute('rel');
 		})
 		.appendTo(colrCats);
+		alert('div cats2');
 	}
     
 });
