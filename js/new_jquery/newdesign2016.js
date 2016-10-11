@@ -4,7 +4,9 @@ jQuery(document).ready(function ($) {
 		$('#signin').trigger('click');
 	});
 });
-/*------------product details related js-----------*/
+/*-------------------------------------
+####### product details related #######
+--------------------------------------*/
 jQuery(document).ready(function ($) {
 	$('.accord .h2').click(function(){
 		//$('.accord-desc').slideUp();
@@ -135,7 +137,11 @@ jQuery(window).resize(function(){
 	});
 
 });*/
-/*----------------product grid related js--------------------*/
+
+/*-----------------------------------
+######## product grid related ########
+------------------------------------*/
+
 jQuery(document).ready(function(){
 	var prodHt = jQuery('.productCont').width();
 	jQuery('.prod-img').height(prodHt);
@@ -201,6 +207,28 @@ jQuery(document).ready(function(){
 	});*/
 
 });
+
+/*---sort color filters on grid page--*/
+jQuery(document).ready(function () {
+	if(jQuery("#div_cats").length){
+		setTimeout(function(){
+		//alert('div cats');
+		var colrCats = jQuery('#div_cats');
+
+		colrCats.find('.chk-cats').sort(function (a, b) {
+		return b.getAttribute('rel') - a.getAttribute('rel');
+		})
+		.appendTo(colrCats);
+		//alert('div cats2');
+		},400);
+		
+	}
+    
+});
+
+/*-----------------------------------
+######### header related ##########
+------------------------------------*/
 
 /*--header scroll effect--*/
 
@@ -295,30 +323,8 @@ jQuery(window).resize(function(){
 			'margin-left':pageOffsetLeft
 		});
 });
-/*
-jQuery(document).ready(function(){
-	bktimgH = jQuery(".gridfull .grid65 img").height();
-	alert(bktimgH);
-	jQuery(".gridfull").css('min-height',bktimgH,'important');
-});*/	
 
-/*---sort color filters on grid page--*/
-jQuery(document).ready(function () {
-	if(jQuery("#div_cats").length){
-		setTimeout(function(){
-		//alert('div cats');
-		var colrCats = jQuery('#div_cats');
 
-		colrCats.find('.chk-cats').sort(function (a, b) {
-		return b.getAttribute('rel') - a.getAttribute('rel');
-		})
-		.appendTo(colrCats);
-		//alert('div cats2');
-		},400);
-		
-	}
-    
-});
 
 
 	
