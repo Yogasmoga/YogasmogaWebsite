@@ -3043,7 +3043,7 @@ ul.main-menu > li{padding:0 10px;}
 	.new-arrivals-block span.na-head{font-size:31px; line-height:31px;margin-bottom:27px;}
 	.new-arrivals-block .na-subhead{font-size:15px; line-height:20px;}
 	.cms-home  .cubix  .over-the-slide{ padding: 45px 40px !important;}
-	ul.main-menu .nav-img{width:18%;}
+	
 }
 @media only screen and (max-width : 1024px) {
 .productCont .caption{font-size:14px;line-height:20px; padding:31px 0;min-height:36px;}
@@ -3058,6 +3058,6 @@ ul.main-menu > li{padding:0 10px;}
 .cms-home  .cubix  .over-the-slide{ padding: 45px 40px !important;}
 .new-arrivals-block span.na-head{font-size:28px; line-height:28px;margin-bottom:25px;}
 .new-arrivals-block .na-subhead{font-size:13px; line-height:17px;}
-ul.main-menu .nav-img{width:18%;}
+
 
 }

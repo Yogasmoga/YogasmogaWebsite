@@ -46,7 +46,7 @@ ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{color: #555; font: 11px/23p
 ul.main-menu li a.menu-heading{display: inline-block; padding: 37px 0 9px; vertical-align: middle;}
 ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; margin: 0; line-height: 21px; background: #f1f1f2; /*background: url("../images/nav-bg.png") repeat-x left top;*/ padding: 6px 20px; display: none;}
 ul.main-menu2 li ul.sub-menu{background-position: left top ;}
-ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top; min-width: 160px; border-left: 1px solid #f8f8f8; padding:0 0 0 15px; min-height: 120px;}
+ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top;  border-left: 1px solid #f8f8f8; padding:0 0 0 15px; min-height: 120px;}
 ul.main-menu2 li ul.sub-menu{width: 174px;}
 ul.main-menu2 li ul.sub-menu>li{min-height: 100%; border: none; padding: 0;}
 ul.main-menu li ul.sub-menu > li:first-child{border:none; padding:0;}
@@ -4020,15 +4020,22 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a{font-family:
   ul.main-menu > li > ul.sub-menu li a.range-cat{pointer-events:none; cursor:default;}
  
 ul.main-menu li ul.sub-menu{background:#ad8435;width:100%;padding: 0 0 0 2%;box-sizing:border-box;}
-ul.main-menu li ul.sub-menu > li{border-left:none;width:16%;box-sizing:border-box; padding-top: 2%;}
+ul.main-menu li ul.sub-menu > li{border-left: medium none;
+  box-sizing: border-box;
+  padding-top: 2%;
+  width: calc((100% - 194px) / 5) !important;}
 ul.main-menu2 li{position:static;}
 ul.main-menu2 li .sub-menu{left:0!important;}
 
 ul.main-menu .nav-img{ box-sizing: border-box;
-    float: right;
-    width: 20%;}
+  float: right;
+  min-width: 192px;
+  width: 13%;}
 	ul.main-menu li ul.sub-menu > li:first-child{ padding-top: 2%;}
-ul.main-menu .nav-img img{width:100%;height:auto;}
+ul.main-menu .nav-img img{ float: right;
+  height: auto;
+  max-width: 192px;
+  width: 100%;}
 
 .bagshow {background: #ae8536;
     width: 25px;
@@ -4099,15 +4106,17 @@ right:0;
 .main-menu.main-menu2 .left-side .left-st-image,.main-menu.main-menu2 .right-side .left-st-image {
   float: left;
   width: 40%;
+    max-width: 192px;
 }
 .left-st-image > img {
   height: auto;
   width: 100%;
+   max-width: 192px;
 }
 .left-side > ul, .right-side > ul {
   box-sizing: border-box;
   float: left;
-  padding: 5% 0 1% 6%;
+  padding: 3% 0 1% 5%;
   width: 60%;
 }
 .main-menu.main-menu2 .sub-menu.stores-nav .left-side > ul,.main-menu.main-menu2 .sub-menu.stores-nav .right-side > ul {
