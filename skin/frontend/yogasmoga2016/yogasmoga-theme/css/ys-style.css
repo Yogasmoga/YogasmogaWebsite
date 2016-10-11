@@ -4328,10 +4328,11 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .category-range .bannerFluid{}
 .category-range .bannerFluid .img_madeinusa {bottom: 12.651%;max-width: 101px;position: absolute;right: 2.9375%;width: auto; display:none;}
 
+/*--before and after body load--*/
 #pagecontainer{background:url('../images/processing.gif') no-repeat left 50% top 300px; background-attachment:fixed;}
-#pagecontainer.content-loaded{background:none;}
+.content-loaded #pagecontainer{background:none;}
 #pagecontainer .product-grid{opacity:0;}
-#pagecontainer.content-loaded .product-grid{opacity:1;}
+.content-loaded #pagecontainer .product-grid{opacity:1;}
 
 /*---if page max width 1600px --*/
 .wrapper{max-width:1600px;margin:0 auto;min-width:inherit; overflow:hidden;}

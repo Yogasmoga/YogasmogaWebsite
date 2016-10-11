@@ -331,11 +331,11 @@ jQuery(window).resize(function(){
 
 // 
 jQuery(document).ready(function(){
-	jQuery('#pagecontainer').addClass('content-loading');
+	jQuery('body').addClass('content-loading');
 });
 jQuery(window).load(function(){
-	jQuery('#pagecontainer').removeClass('content-loading');
-	jQuery('#pagecontainer').addClass('content-loaded');
+	jQuery('body').removeClass('content-loading');
+	jQuery('body').addClass('content-loaded');
 });
 
 
