@@ -279,10 +279,11 @@ jQuery(document).ready(function(){
         }
     });
 	//alert(jQuery(".header-container").css('left'));
-	/*var headContLeftOrigPos = jQuery(".header-container").css('left');
-	jQuery(".header-container").css({
-		'left': headContLeftOrigPos
+	/*jQuery(".header-container").css({
+		'left': 0
 		});
+	var headContLeftOrigPos = jQuery(".header-container").css('left');
+	
 	jQuery(".header-container").animate({left: headContLeftOrigPos});*/
 	
 	jQuery("#shop-bag-count").click(function(){
@@ -301,27 +302,30 @@ jQuery(document).ready(function(){
 
 // to fix elements which are going out of 1600px width
 jQuery(document).ready(function(){
-		var pageOffsetLeft = jQuery('.page').offset().left;
-		var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
-		jQuery('.shopping-cart').css({
-			'right':pageOffsetRight			
-		});
-		jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
-			'margin-left':pageOffsetLeft
-		});
-		
+		if(jQuery(window).width() > 1600){
+			var pageOffsetLeft = jQuery('.page').offset().left;
+			var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
+			jQuery('.shopping-cart').css({
+				'right':pageOffsetRight			
+			});
+			jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
+				'margin-left':pageOffsetLeft
+			});
+		}
 });
 
 // to fix elements which are going out of 1600px width on resize
 jQuery(window).resize(function(){
-		var pageOffsetLeft = jQuery('.page').offset().left;
-		var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
-		jQuery('.shopping-cart').css({
-			'right':pageOffsetRight			
-		});
-		jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
-			'margin-left':pageOffsetLeft
-		});
+		if(jQuery(window).width() > 1600){
+			var pageOffsetLeft = jQuery('.page').offset().left;
+			var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
+			jQuery('.shopping-cart').css({
+				'right':pageOffsetRight			
+			});
+			jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
+				'margin-left':pageOffsetLeft
+			});
+		}
 });
 
 
