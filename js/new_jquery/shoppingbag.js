@@ -377,7 +377,8 @@ function openShoppingCart() {
     }).removeClass("hdnovr");
     jQuery(".page").css("position", "relative").animate({left: -shoppingWdth});
     jQuery(".header-container").animate({left: -shoppingWdth});
-	jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).animate({left: -shoppingWdth}).show();    
+	//jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).animate({left: -shoppingWdth}).show();    
+	jQuery(".pageoverlay").css("min-height", bodyHght).animate({left: -shoppingWdth}).show();    
     jQuery("body, html").addClass("hdnHgt");
 	jQuery("body").addClass("open-bag");
 	

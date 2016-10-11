@@ -270,3 +270,38 @@ jQuery(document).ready(function(){
    });
 
 }
+
+// to fix elements which are going out of 1600px width
+jQuery(document).ready(function(){
+		var pageOffsetLeft = jQuery('.page').offset().left;
+		var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
+		jQuery('.shopping-cart').css({
+			'right':pageOffsetRight			
+		});
+		jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
+			'margin-left':pageOffsetLeft
+		});
+		
+});
+
+// to fix elements which are going out of 1600px width on resize
+jQuery(window).resize(function(){
+		var pageOffsetLeft = jQuery('.page').offset().left;
+		var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
+		jQuery('.shopping-cart').css({
+			'right':pageOffsetRight			
+		});
+		jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
+			'margin-left':pageOffsetLeft
+		});
+});
+/*
+jQuery(document).ready(function(){
+	bktimgH = jQuery(".gridfull .grid65 img").height();
+	alert(bktimgH);
+	jQuery(".gridfull").css('min-height',bktimgH,'important');
+});*/	
+	
+
+		
+		

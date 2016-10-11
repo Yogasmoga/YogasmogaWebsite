@@ -3813,6 +3813,8 @@ letter-spacing:0.5px;
 .header-banner ul.tr-menu{margin:10px 0 6px;}
 ul.main-menu.f-left.ctag-menu > li{height:60px;}
 #globalheader ul.main-menu2{margin-right:0;}
+.header-container .header-inner{position:relative;}
+
 @media only screen and (max-width:1599px){
 	.bottom-container .col-first,.bottom-container .col-second{width:100%; padding:0 0 40px 0;}
 	
@@ -3990,7 +3992,8 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(4) a{font-family:
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-bottom:10px;}
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a{font-family:AvantGardeGothicITCW01B;}
 #ysheader.showhide .right-top-block #bag-count {display:none;} 
-#ysheader .right-top-block #bag-count{margin-right:18px;}
+#ysheader .right-top-block li[data-blockid="help-new"]{margin-right:0;}
+#ysheader .right-top-block #bag-count{margin-right:18px;margin-left:18px;}
 #ysheader .right-bottom-block #shop-bag-count{display:none;background:#ae8536;color:#fff;width:26px;height:26px;border-radius:100%;float:right;padding:0;}
 #ysheader .right-bottom-block #shop-bag-count span{line-height:26px;}
 
@@ -4009,7 +4012,14 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a{font-family:
  .color-change ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a{color:#fff;}
  .color-change ul.main-menu li a.menu-heading,.color-change .main-menu2 > li a.main-heading{color:#555;}
  
+<<<<<<< HEAD
 ul.main-menu li ul.sub-menu{background:#ad8435;width:100%;padding: 0 0 0 2%;box-sizing:border-box;}
+=======
+ ul.main-menu > li {cursor:default;}
+  ul.main-menu > li > ul.sub-menu li a.range-cat{pointer-events:none; cursor:default;}
+ 
+ul.main-menu li ul.sub-menu{background:#ad8435;width:100%;padding: 0 0 0 4%;box-sizing:border-box;}
+>>>>>>> eaa9eba7dfbea2815c518066117e2cf817f125b9
 ul.main-menu li ul.sub-menu > li{border-left:none;width:16%;box-sizing:border-box; padding-top: 2%;}
 ul.main-menu2 li{position:static;}
 ul.main-menu2 li .sub-menu{left:0!important;}
@@ -4310,6 +4320,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .category-range .bannerFluid .img_madeinusa {bottom: 12.651%;max-width: 101px;position: absolute;right: 2.9375%;width: auto; display:none;}
 
 /*---if page max width 1600px --*/
-/*.page{max-width:1600px;margin:0 auto;}
-#ysheader.header-container{max-width:1600px;}	*/
-
+.wrapper{max-width:1600px;margin:0 auto;min-width:inherit; overflow:hidden;}
+#ysheader.header-container{max-width:1600px;}
+.ui-dialog,.ui-widget-overlay{max-width:1600px!important;}
+.open-bag #ysheader.header-container{clip:rect(0, auto, auto,400px)}
