@@ -3815,6 +3815,9 @@ ul.main-menu.f-left.ctag-menu > li{height:60px;}
 #globalheader ul.main-menu2{margin-right:0;}
 .header-container .header-inner{position:relative;}
 
+.ctag-menu  li.one-too-many .nav-img{display:none;}
+
+
 @media only screen and (max-width:1599px){
 	.bottom-container .col-first,.bottom-container .col-second{width:100%; padding:0 0 40px 0;}
 	
