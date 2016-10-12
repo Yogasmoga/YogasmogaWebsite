@@ -329,7 +329,7 @@ jQuery(window).resize(function(){
 });
 
 
-// 
+// add remove class on page load
 jQuery(document).ready(function(){
 	jQuery('body').addClass('content-loading');
 });
