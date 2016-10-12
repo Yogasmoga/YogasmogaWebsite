@@ -486,12 +486,12 @@
         <action method="addCss"><stylesheet>css/checkout.css</stylesheet></action>
     </reference>
 </paypal_express_review>
-
+<!--
 <CATEGORY_43>
  <reference name="root">
         <action method="setTemplate"><template>page/onetomany.phtml</template></action>
 		<action method="setIsHandle"><applied>1</applied></action>
   </reference>
 </CATEGORY_43>
-
+-->
 </layout>
