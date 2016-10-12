@@ -124,6 +124,7 @@ if($this->getRequest()->getParam('hidden')){
         $_gallery = Mage::getModel('catalog/product')->load($parentIds[0])->getMediaGalleryImages();
         $imageArr = array();
         $simpleproductarr['image'] = array();
+        $imagecounter = 0;
         foreach($_gallery as $_image)
         {
 
@@ -133,7 +134,8 @@ if($this->getRequest()->getParam('hidden')){
 
              if($imgdata['type'] == 'product image' && $imgdata['color'] == $simpleproductarr['color'] )
              {
-                  if(count($imageArr[$colorId])<=3)
+                 //echo $imagecounter."<br/>";
+                  if(count($imageArr[$colorId])<=6)
                   {
                        array_push($imageArr,$_image->getFile());
                   }
@@ -141,14 +143,16 @@ if($this->getRequest()->getParam('hidden')){
 
              /*if(count($imageArr) >= 2)
                 break;*/
-
+        $imagecounter++;
         }
+        //print_r($imageArr);
         if(end($imageArr)){
-        end($imageArr);
-        $simpleproductarr['image'][] = prev($imageArr) ;
+        //end($imageArr);
+        $simpleproductarr['image'][] = end($imageArr) ;
         }
         if($imageArr[0]){
-        $simpleproductarr['image'][] =  $imageArr[0];
+            end($imageArr);
+        $simpleproductarr['image'][] =  prev($imageArr) ;
         }
 
         
@@ -223,6 +227,7 @@ if($this->getRequest()->getParam('hidden')){
             <div class="prod-img">
 
                 <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?>">
+                    <?php //print_r($simpleproductarr['image']);?>
                     <?php foreach($simpleproductarr['image'] as $img ){ ?>
                     <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(620, 620)->setQuality(91); ?>" />
                     <?php } ?>
