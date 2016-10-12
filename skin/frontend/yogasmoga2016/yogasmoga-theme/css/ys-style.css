@@ -4334,7 +4334,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 
 /*--before and after body load--*/
 .catalog-category-view #pagecontainer{background:url('../images/processing.gif') no-repeat left 50% top 300px; background-attachment:fixed;}
-.content-loaded .catalog-category-view  #pagecontainer{background:none;}
+.content-loaded.catalog-category-view  #pagecontainer{background:none;}
 #pagecontainer .product-grid{opacity:0;}
 .content-loaded #pagecontainer .product-grid{opacity:1;}
 
