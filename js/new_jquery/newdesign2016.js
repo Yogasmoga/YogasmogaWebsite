@@ -339,8 +339,16 @@ jQuery(window).load(function(){
 });
 
 
+// for hover animation
 
+jQuery(document).ready(function(){
+	jQuery('.gridfull .sliderImg img,.gridfull .compressBox,.gridfull .multicolorcont,.gridfull .featured-collection-top,.gridfull .featured-collection-bottom,.gridfull .iconspartone span,.gridfull .slider_li,.gridfull .slider_li .over-the-slide').addClass('ysanimate');
+	jQuery('.gridfull .sliderImg').addClass('hoverscaleimg');	
+	jQuery('.gridfull .compressBox,.gridfull .multicolorcont,.gridfull .featured-collection-top,.gridfull .featured-collection-bottom').addClass('hoverscalebg');	
+	jQuery('.gridfull .iconspartone span').addClass('bubbleimg');
+	jQuery('.gridfull .slides').addClass('slideritem_hover');
 	
+});	
 
 		
 		

@@ -4344,3 +4344,44 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .ui-dialog,.ui-widget-overlay{max-width:1600px!important;}
 .open-bag #ysheader.header-container{clip:rect(0, auto, auto,400px)}
 
+/*--------------------------*/
+#ysheader.header-container{left:0!important;}
+#ysheader.header-container{transform:translateX(0);  transition: all 0.3s cubic-bezier(.02, .01, .47, 1);}
+.open-bag #ysheader.header-container{transform:translateX(-400px); transition: all 0.3s cubic-bezier(.02, .01, .47, 1); }
+
+/*---classes for hover animation--*/
+.ysanimate{ transition:0.2s linear; -webkit-transition:0.2s linear;}
+
+.hoverscaleimg{overflow:hidden;}
+.hoverscaleimg:hover img{animation:hoverscaleimg 0.2s linear;-webkit-animation:hoverscaleimg 0.2s linear; -webkit-animation-fill-mode: forwards;animation-fill-mode:forwards;}
+@keyframes hoverscaleimg{
+	0%{transform:scale(1.0);-webkit-transform:scale(1.0);}	
+	100%{transform:scale(1.1);-webkit-transform:scale(1.1);}
+}
+@-webkit-keyframes hoverscaleimg{
+	0%{transform:scale(1.0);-webkit-transform:scale(1.0);}	
+	100%{transform:scale(1.1);-webkit-transform:scale(1.1);}
+}
+
+.hoverscalebg{overflow:hidden;background-size:100% 100%!important;}
+.hoverscalebg:hover{background-size:110% 110%!important;}
+
+		
+.bubbleimg:hover img{animation:bubbleicon 0.2s linear;-webkit-animation:bubbleicon 0.2s linear;}
+@keyframes bubbleicon{
+	0%{transform:translateY(0);}
+	50%{transform:translateY(5px);}
+	100%{transform:translateY(0);}
+}
+@-webkit-keyframes bubbleicon{
+	0%{-webkit-transform:translateY(0);}
+	50%{-webkit-transform:translateY(5px);}
+	100%{-webkit-transform:translateY(0);}
+}
+
+
+.slideritem_hover{overflow:hidden;}
+.slideritem_hover li{transform:scale(1);-webkit-transform:scale(1); }
+.slideritem_hover li:hover{transform:scale(1.1);-webkit-transform:scale(1.1); }
+.slideritem_hover li > div {transform:scale(1);-webkit-transform:scale(1);}
+.slideritem_hover li:hover > div {transform:scale(0.9);-webkit-transform:scale(0.9);}
