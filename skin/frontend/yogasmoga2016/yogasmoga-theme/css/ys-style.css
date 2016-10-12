@@ -4255,7 +4255,8 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .adddields .smogi_lbl{position:relative;}
 .adddields #smogi{background:transparent; padding:0;}
 .adddields .applysmogi{display:block!important;color:#ae8536;background:none; width:auto;}
-.adddields span{background:none;}
+.adddields .smogi_lbl span{background:none;display:block;}
+.adddields .smogi_lbl span:empty{display:none;}
 .shopping-cart input#smogi::-webkit-input-placeholder{opacity:1;color:#555!important; font-family:gothamBook; font-size:12px;}
 .shopping-cart input#smogi:-moz-placeholder{opacity:1;color:#555!important; font-family:gothamBook; font-size:12px;}
 .shopping-cart input#smogi::-moz-placeholder{opacity:1;color:#555!important; font-family:gothamBook; font-size:12px;}
