@@ -327,7 +327,34 @@ jQuery(window).resize(function(){
 			});
 		}
 });
+jQuery(window).keypress(function(e){
 
+   if((e.which == 61 && e.ctrlKey) || (e.which == 43 && e.ctrlKey) || (e.which == 45 && e.ctrlKey) || (e.which == 48 && e.ctrlKey)){
+       //Ctrl + "+" is pressed, 61 is for =/+ anr 43 is for Numpad + key
+	   //Ctrl + "-" is pressed, 45 is for -/- anr 45 is for Numpad + key
+	   
+	   //alert(e.which);
+	   
+		var px = 0;
+		var intervalID = setInterval(function () {
+			// logic here			
+			var pageOffsetLeft = jQuery('.page').offset().left;
+			var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
+			jQuery('.shopping-cart').css({
+				'right':pageOffsetRight			
+			});
+			jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
+				'margin-left':pageOffsetLeft
+		});
+			if (++px === 1) {
+				window.clearInterval(intervalID);			
+			}
+		}, 400);
+   }
+	
+   
+
+});
 
 // add remove class on page load
 jQuery(document).ready(function(){
@@ -340,7 +367,7 @@ jQuery(window).load(function(){
 
 
 // for hover animation
-
+/*
 jQuery(document).ready(function(){
 	jQuery('.gridfull .sliderImg img,.gridfull .compressBox,.gridfull .multicolorcont,.gridfull .featured-collection-top,.gridfull .featured-collection-bottom,.gridfull .iconspartone span,.gridfull .slider_li,.gridfull .slider_li .over-the-slide').addClass('ysanimate');
 	jQuery('.gridfull .sliderImg').addClass('hoverscaleimg');	
@@ -348,7 +375,7 @@ jQuery(document).ready(function(){
 	jQuery('.gridfull .iconspartone span').addClass('bubbleimg');
 	jQuery('.gridfull .slides').addClass('slideritem_hover');
 	
-});	
+});*/	
 
 		
 		
