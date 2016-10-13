@@ -347,7 +347,7 @@ jQuery(window).keypress(function(e){
 			jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
 				'margin-left':pageOffsetLeft
 		});
-			if (++px === 1) {
+			if (++px === 2) {
 				window.clearInterval(intervalID);			
 			}
 		}, 400);
