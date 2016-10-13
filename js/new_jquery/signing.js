@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
 
     if(window.location.href.indexOf('https://') >= 0)
        root='https://yogasmoga.com/';
-       // root='http://ysmaster.dev/';
+        //root='http://ysmaster.dev/';
     else
         root='http://yogasmoga.com/';
         //root='http://ysmaster.dev/';
@@ -711,18 +711,18 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
             }
 
             //added code for top red banner start here.
-            jQuery(".orange-banner").hide();
-            jQuery(".header-container").css("padding","0px");
+            //jQuery(".orange-banner").hide(); //fixed top banner.
+            //jQuery(".header-container").css("padding","0px");//fixed top banner.
             //jQuery(".header-container").css("padding","25px 0 0 0");
-            jQuery("div#bodycompensator").css("height","69px"); //without banner.
+            //jQuery("div#bodycompensator").css("height","69px"); //without banner.
             //jQuery("div#bodycompensator").css("height","94px");// with banner
             //jQuery(".ui-widget-overlay").css({top:69});
-            jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});//without Banner
+            //jQuery(".ui-widget-overlay").css({"top":"69px","position":"fixed"});//without Banner
             //jQuery(".ui-widget-overlay").css({"top":"94px","position":"fixed"});//with Banner
             jQuery("#div_sizes").css("top","auto");
 
-            //var filterOffsetTop = jQuery("#div_sizes").offset().top - 69; //Remove Banner.
-			var filterOffsetTop = jQuery("#div_sizes").offset().top - 94; // With Banner
+            var filterOffsetTop = jQuery("#div_sizes").offset().top - 69; //Remove Banner.
+			//var filterOffsetTop = jQuery("#div_sizes").offset().top - 94; // With Banner
             positionFilter(filterOffsetTop);
             jQuery(window).scroll(function(){
                 positionFilter(filterOffsetTop);
@@ -734,8 +734,8 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
                 if( winScrollTop > filterOffsetTop){
 
                     jQuery("#div_sizes").addClass("fixed_top");
-                    jQuery("#div_sizes.fixed_top").css("top","69px");
-					//jQuery("#div_sizes.fixed_top").css("top","94px");
+                   // jQuery("#div_sizes.fixed_top").css("top","69px");
+					jQuery("#div_sizes.fixed_top").css("top","94px");
                 }else{
                     jQuery("#div_sizes").removeClass("fixed_top");
                     jQuery("#div_sizes").css("top","auto");

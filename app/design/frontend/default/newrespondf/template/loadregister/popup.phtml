@@ -292,7 +292,8 @@
                 });
                 jQuery(".mobile-orange-banner").click(function () {
                     //jQuery('#MailpopForm').show();
-                    jQuery('#popForm').show();
+                   // jQuery('#popForm').show();
+                    window.location.assign(homeUrl+"one-too-many");
                 });
                 jQuery("#popForm input[type=text],#popForm input[type=password]").on('focus keypress',function(){
                     if(jQuery(this).val().length > 0){

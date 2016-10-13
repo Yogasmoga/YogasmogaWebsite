@@ -203,12 +203,13 @@ window.onload = function(){
 
         <?php
         $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
-        if(!$loggedIn){ ?>
+        //if(!$loggedIn){ ?>
             <script>
 
                 jQuery(document).ready(function() {
                    jQuery(".orange-banner").click(function(){
-                        jQuery("#signup").dialog( "open" );
+                        //jQuery("#signup").dialog( "open" );
+                       window.location.assign(homeUrl+"one-too-many");
 
                     });
 
@@ -247,7 +248,7 @@ window.onload = function(){
 
 
             </script>
-        <?php   }
+        <?php /*   }
         else {
         ?>
             <script>
@@ -289,7 +290,7 @@ window.onload = function(){
 
                 }
             </script>
-        <?php }
+        <?php }*/
         ?>
 
 

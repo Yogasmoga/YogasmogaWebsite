@@ -2910,4 +2910,7 @@ ul.main-menu > li.one-too-many{padding-right:0;}
     ul.tr-menu > li.free-shipping{ margin: 0 10px 0 0;}
     ul.main-menu > li{padding:0 10px;}
 }
+@media only screen and (max-width : 1066px) {
+   ul.main-menu > li{padding:0 5px;}
+}
 /*--- header modify end ---*/

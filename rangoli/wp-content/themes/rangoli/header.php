@@ -441,9 +441,10 @@ if(!is_user_logged_in()){
         }
     </style>";
      ?>
-    <div class="banner" style="text-transform: uppercase"  onclick="open_red_popup()">
+    <!--<div class="banner" style="text-transform: uppercase"  onclick="open_red_popup()">-->
+    <div class="banner" style="text-transform: uppercase"  onclick="window.location.assign(homeUrl+'one-too-many')">
         <?php /* ?>RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30<?php */ ?>
-        Sign up now to Receive $25 Smogi Bucks
+        One 2 Many&mdash;Shop Your Favorite Items Newly Discounted. Shop Now.
 
     </div>
     <?php }?>

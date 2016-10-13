@@ -281,7 +281,9 @@ if(!is_user_logged_in()  && is_home()) {
         jQuery(document).ready(function($){
 
             jQuery(".mobile-orange-banner").click(function () {
-                jQuery(".popup").fadeIn();
+
+                window.location.assign(homeUrl+'one-too-many');
+               /* jQuery(".popup").fadeIn();
 
                 jQuery(".popup").addClass('signup_pop');
                 //jQuery(".MailpopForm").fadeIn();
@@ -311,9 +313,9 @@ if(!is_user_logged_in()  && is_home()) {
                         jQuery('.signup_popup .gender_p').removeClass('on');
                     }
                 });
-
+            */
             });
-
+            /*
             jQuery('.no-thanks,.already_signed_up').click(function(){
                 jQuery('.popup').removeClass('signup_pop');
             });
@@ -324,7 +326,7 @@ if(!is_user_logged_in()  && is_home()) {
                 jQuery('.popup').addClass('signup_pop');
             });
 
-
+            */
 
         });
 
