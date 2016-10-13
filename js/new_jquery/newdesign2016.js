@@ -331,8 +331,8 @@ jQuery(window).keypress(function(e){
 
    if((e.which == 61 && e.ctrlKey) || (e.which == 43 && e.ctrlKey) || (e.which == 45 && e.ctrlKey) || (e.which == 48 && e.ctrlKey)){
        //Ctrl + "+" is pressed, 61 is for =/+ anr 43 is for Numpad + key
-	   //Ctrl + "-" is pressed, 45 is for -/- anr 45 is for Numpad + key
-	   
+	   //Ctrl + "-" is pressed, 45 is for -/- anr 45 is for Numpad - key
+	   //Ctrl + "0" is pressed, 48 is for )/0 anr 48 is for Numpad 0 key
 	   //alert(e.which);
 	   
 		var px = 0;
