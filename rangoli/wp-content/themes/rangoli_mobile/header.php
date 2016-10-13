@@ -1164,7 +1164,7 @@ if (!is_user_logged_in() && is_home()) {
         stroke : #CCC !important;
     }
     .mobile-orange-banner{background: rgb(255, 102, 0) none repeat scroll 0 0; color: rgb(255, 255, 255);font-size: 11px; height: 44px;    letter-spacing: 0 !important;
-        line-height: 26px;
+        line-height: 14px;
         position: fixed;
         cursor: pointer;
         text-align:center;
