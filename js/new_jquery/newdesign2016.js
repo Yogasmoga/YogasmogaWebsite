@@ -327,6 +327,7 @@ jQuery(window).resize(function(){
 			});
 		}
 });
+// to fix elements which are going out of 1600px width on keyboard zoomin zoomout
 jQuery(window).keypress(function(e){
 
    if((e.which == 61 && e.ctrlKey) || (e.which == 43 && e.ctrlKey) || (e.which == 45 && e.ctrlKey) || (e.which == 48 && e.ctrlKey)){
