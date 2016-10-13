@@ -3984,6 +3984,9 @@ input[name="prodTab"]{display:none;}
   display: block;
 }
 
+.block-elm .vlink-cont{margin-top:0;}
+.block-elm .vlink-cont p.block-link a{font-family: GraphikMedium;font-size: 11px;text-decoration:underline; color:#555;}
+
 /*********** home page changes start **************/
 #pagecontainer .home-banner img {width:100%;height:auto;}
 ul.main-menu > li.smenu, ul.main-menu > li.active.over, ul.main-menu > li:hover, ul.main-menu2 > li.active.over {
