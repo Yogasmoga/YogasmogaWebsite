@@ -328,15 +328,16 @@ jQuery(window).resize(function(){
 		}
 });
 // to fix elements which are going out of 1600px width on keyboard zoomin zoomout
-jQuery(window).keypress(function(e){
-
-   if((e.which == 61 && e.ctrlKey) || (e.which == 43 && e.ctrlKey) || (e.which == 45 && e.ctrlKey) || (e.which == 48 && e.ctrlKey)){
+jQuery(window).on('keypress keydown',function(e){
+	//alert();
+   if((e.which == 61 && 17) || (e.which == 43 && 17) || (e.which == 45 && 17) || (e.which == 48 && 17) || (e.which == 96 && 17)){
        //Ctrl + "+" is pressed, 61 is for =/+ anr 43 is for Numpad + key
 	   //Ctrl + "-" is pressed, 45 is for -/- anr 45 is for Numpad - key
 	   //Ctrl + "0" is pressed, 48 is for )/0 anr 48 is for Numpad 0 key
 	   //alert(e.which);
 	   
 		var px = 0;
+		
 		var intervalID = setInterval(function () {
 			// logic here			
 			var pageOffsetLeft = jQuery('.page').offset().left;
@@ -347,7 +348,8 @@ jQuery(window).keypress(function(e){
 			jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
 				'margin-left':pageOffsetLeft
 		});
-			if (++px === 2) {
+			if (++px === 1) {
+				console.info('px=' +px);
 				window.clearInterval(intervalID);			
 			}
 		}, 400);
