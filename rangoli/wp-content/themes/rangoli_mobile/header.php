@@ -767,7 +767,7 @@ $logged_in = is_user_logged_in();
                                     <li><a href="/men/golf-inspired"> Golf Inspired</a></li>
                                 </ul>
                             </li>
-                            <!--<li class="ys_main_category"><p><a href="/one-too-many"> ONE 2 MANY</a></p></li>-->
+                            <li class="ys_main_category"><p><a href="/one-too-many"> ONE 2 MANY</a></p></li>
 
                             <li class="ys_single_link"><a href="/our-story">YS Story</a>
                                 <span class="ys_story">

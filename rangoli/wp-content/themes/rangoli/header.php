@@ -433,7 +433,7 @@
 
 <?php
 $style= "";
-if(!is_user_logged_in()){
+//if(!is_user_logged_in()){
     $style= "margin-top:25px;";
     echo "<style>
         .pace .pace-progress {
@@ -447,7 +447,7 @@ if(!is_user_logged_in()){
         One 2 Many&mdash;Shop Your Favorite Items Newly Discounted. Shop Now.
 
     </div>
-    <?php }?>
+    <?php //}?>
 <div class="header-container" style="<?php echo $style; ?>">
     <div class="header">
         <div class="header-left">
@@ -541,7 +541,7 @@ if(!is_user_logged_in()){
                         </li>
                     </ul>
                 </li>
-                <!--<li class="menu-heading"><a  class="menu-heading" href="/one-too-many"> One 2 Many</a></li>-->
+                <li class="menu-heading"><a  class="menu-heading" href="/one-too-many"> One 2 Many</a></li>
             </ul>
         </div>
         <div class="f-right header-right">
