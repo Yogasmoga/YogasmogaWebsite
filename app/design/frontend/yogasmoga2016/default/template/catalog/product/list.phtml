@@ -1,0 +1,424 @@
+<?php $_category = Mage::registry('current_category');
+$rangeCategories = Mage::getModel('core/variable')->loadByCode('range_categories')->getValue('plain');
+$rangeCats = explode(",",$rangeCategories);
+?>
+
+<?php if(in_array($_category->getId(),$rangeCats)): ?>
+<div class="bannerFluid">
+    <img src="<?=$_category->getImageUrl()?>" alt="<?=$_category->getName()?>" title="<?=$_category->getName()?>" />
+    <div class="category-info csp-block"><?=$_category->getDescription()?></div>
+	<!--<img alt="made-in-ca" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/madeinusa-seal.png" class="img_madeinusa" draggable="false">-->
+</div>
+<?php endif;?>
+<h1 class="bnrtxt cat-name  bnr"><?=$_category->getName()?></h1>
+<?php
+    $currentCategoryId = Mage::registry('current_category')->getId();
+    //$categoriesWithNoFilter = array(8,12,29,30,31,32,33,38,39,40,46,50);
+    $categoriesWithNoFilterVariable = Mage::getModel('core/variable')->loadByCode('no_filter_categories')->getValue('plain');
+    $categoriesWithNoFilter = explode(",", $categoriesWithNoFilterVariable);
+    $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
+    if($showSizeFilter){
+?>
+
+<div id="div_sizes" class="sz_filter">&nbsp;</div>
+<!-- category filter -->
+<div id="div_cats" class="ct_filter"></div>
+
+
+<?php 
+$catIdsArray = array();
+
+//code for check root category
+$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+$categoryName = explode('/', $currentUrl);
+$urlKey = $categoryName[3];
+if($urlKey == 'women')
+{
+	$categoriesfilter = array(125,126,127);//live
+	//$categoriesfilter = array(77,78,79);//local
+}elseif($urlKey == 'men'){
+	$categoriesfilter = array(128,129,130);//live
+}
+
+$children = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('name')->addAttributeToFilter('entity_id', array('in'=>$categoriesfilter));
+
+foreach ($children as $category)
+{
+	$catIdsArray[$category->getId()] = $category->getName();
+	//echo "<span class='chk-cats' rel='".$category->getId()."'>".$category->getName()."</span>";
+}
+$catIdsArray = array_unique($catIdsArray);
+?>
+
+<!-- category filter -->
+<?php } ?>
+
+<!-- productGridView -->
+<?php
+/*********************** hidden page logic ********************/
+$forNormal = true;
+$hiddenUrl = "";
+if($this->getRequest()->getParam('hidden')){
+    $hidden = $this->getRequest()->getParam('hidden');
+
+    if($hidden=="true") {
+        $forNormal = false;
+        $hiddenUrl = "&hidden=true";
+    }
+}
+/*********************** hidden page logic ********************/
+?>
+
+<div class="gridProdCubix">
+<!-- leftNavGrid -->
+<?php //echo $this->getChildHtml('catalog.leftnav') ?>
+<!-- leftNavGrid -->
+
+<!-- GridProducts -->
+<div class="gridWrap">
+
+
+	<?php
+	$categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+    $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
+    $shopthecolor_imgUrl = $shopthecolorCategory ->getImageUrl();
+    $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
+
+	// check for in sale category
+	$categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('insale_category')->getValue('plain')), true);
+	$showInSaleProduct = true;
+	if ($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens']) {
+    $showInSaleProduct = true;
+	}
+	// end check for in sale category
+
+    //get color array
+    $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+    $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color' ORDER BY eao.sort_order,eaov.value");
+    $colorIndexArr = array();
+    while ($row = $readresult->fetch() ) {
+		$clrinfo[$row['Value']] = $row['Attribute'];
+		$colorIndexArr [] = $row['Value'];
+    }
+
+                                            
+    $simpleproductarr = array();
+	$allSkuSizes = array();
+	$allcats = array();
+    $fcolorKey = array();
+    $fcolorValue = array();
+    foreach($productCollection as $product)
+    {
+        $filterName = $product->getAttributeText('color_filter');
+        $simpleproductarr['id'] =  $product->getId();
+        $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleproductarr['id']);
+        $simpleproductarr['parentid'] =  $parentIds[0];
+        $simpleproductarr['parentname'] =  Mage::getModel('catalog/product')->load($parentIds[0])->getName();
+        $simpleproductarr['color'] =  $product->getColor();
+        $simpleproductarr['filter_color'] = $product->getColorFilter();
+        $fcolorKey[] = $product->getColorFilter();
+        $fcolorValue[] =$filterName;
+
+        $simpleproductarr['price'] =  $product->getPrice();
+		$simpleproductarr['insale'] =  $product->getAttributeText('insale');
+        $_gallery = Mage::getModel('catalog/product')->load($parentIds[0])->getMediaGalleryImages();
+        $imageArr = array();
+        $simpleproductarr['image'] = array();
+        $imagecounter = 0;
+        foreach($_gallery as $_image)
+        {
+
+             $imgdata = json_decode(trim($_image->getLabel()), true);
+
+             $colorId = $imgdata['color'];
+
+             if($imgdata['type'] == 'ys-listing' && $imgdata['color'] == $simpleproductarr['color'] )
+             {
+                 //echo $imagecounter."<br/>";
+                  if(count($imageArr[$colorId])<=6)
+                  {
+                       array_push($imageArr,$_image->getFile());
+                  }
+             }
+
+             /*if(count($imageArr) >= 2)
+                break;*/
+        $imagecounter++;
+        }
+        //print_r($imageArr);
+        if(end($imageArr)){
+        //end($imageArr);
+        $simpleproductarr['image'][] = end($imageArr) ;
+        }
+        if($imageArr[0]){
+            end($imageArr);
+        $simpleproductarr['image'][] =  prev($imageArr) ;
+        }
+
+        
+
+        $confProduct = Mage::getModel('catalog/product')->load($simpleproductarr['parentid']);
+        //show html of the product
+												
+                                                
+		/**************** size filter *****************/
+		$alphabeticSkuSizes = array();
+		$productColorIndex=0;
+        /**************** size filter *****************/
+        ++$productColorIndex;
+
+        $confProductForSku = Mage::getModel('catalog/product_type_configurable')->setProduct($confProduct);
+
+        $skuSizes = array();
+
+
+
+
+
+        $simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFieldToFilter(array(array('attribute'=>'color','eq'=>$simpleproductarr['color'])));
+
+                                                
+        $characterSizeFound = false;
+        foreach($simpleCollectionForSku as $simpleProductForSku){
+        //$sku = $simpleProductForSku->getId();
+        $filterColorName = $simpleProductForSku->getAttributeText('color');
+        $filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
+		$size = $simpleProductForSku->getAttributeText('size');
+		//$stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
+		$stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getIsInStock();
+		if(!isset($skuSizes[$filterColorName]))
+        $skuSizes[$filterColorName] = array();
+
+            if(isset($size) && strlen(trim($size))>0) {
+            $allSkuSizes[] = $size;
+            if ($stock > 0)
+                 $skuSizes[$filterColorName][] = $size;
+            }
+        }
+		/**************** size filter *****************/
+                                            
+		/****************** size filter **********************************/
+        $productColorName = $clrinfo[$simpleproductarr['color']];
+        $arColorSizes = array();
+		foreach($skuSizes as $keyColor => $sizes) {
+
+        if ($keyColor == $productColorName) {
+            $strSizes = implode(",", $sizes);
+            break;
+        }
+        }
+        //echo $strSizes;
+		/****************** size filter **********************************/
+		/********************** category filter *********************/
+		$cats = $confProduct->getCategoryIds();
+		$allcats = array_unique(array_merge($allcats,$cats));
+		$catsids = implode(",", $cats);
+
+        /*------------*/
+
+        //$simpleproductarr['filter_color'];
+        //$simpleproductarr['filter_data']
+
+
+
+		/********************** category filter *********************/
+        ?>
+        <div class="productCont product-color-<?php echo $productColorIndex;?>" color="<?php echo $simpleproductarr['filter_color']; ?>" rel="<?php echo $strSizes;?>" data="<?php echo $catsids;?>">
+            <div class="prod-img">
+
+                <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?>">
+                    <?php //print_r($simpleproductarr['image']);?>
+                    <?php foreach($simpleproductarr['image'] as $img ){ ?>
+                    <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(620, 620)->setQuality(91); ?>" />
+                    <?php } ?>
+                </a>
+                <a class="clickable"
+                   href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"></a>
+            </div>
+            <div class="caption">
+                <?php
+                if ($showInSaleProduct && $simpleproductarr['insale'] == 'Yes') {
+                    ?>
+                    <a
+                        href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName(); ?></a>
+                    <span><?php echo $clrinfo[$simpleproductarr['color']]?></span>
+                    <span>$<?php echo round($simpleproductarr['price'], 2); ?><cite class="was-amount" style="font-style:normal;"> was $<?php echo round($confProduct->getPrice(), 2); ?></cite></span>
+
+
+                <?php
+                } else {
+                    ?>
+
+                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName(); ?></a>
+
+
+                    <span><?php echo $clrinfo[$simpleproductarr['color']]?></span>
+                    <span>&dollar;<?php echo round($confProduct->getPrice(), 2); ?></span>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+
+    <?php
+    }
+//}
+
+
+
+
+
+
+
+
+
+
+
+if($showSizeFilter){
+/************** size filter ***********************/
+if(isset($allSkuSizes) && count($allSkuSizes)>0)
+    $allSkuSizes = array_unique($allSkuSizes);
+
+$arProductAllSizes = array();
+$attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+$allOptions = $attribute->getSource()->getAllOptions(true, true);
+foreach ($allOptions as $instance) {
+    if ($instance['label'] != "" && strpos($instance['label'], "T")===false)
+        $arProductAllSizes[] = $instance['label'];
+}
+$myArr1 =  array(76,115,142,);
+$myArr2 = array('Carbon 6','Crimson Rose','Mosaic Grey');
+$finalarr = array_combine($myArr1,$myArr2);
+
+
+    $finalcolorfilter = array_combine($fcolorKey,$fcolorValue);
+    ksort($finalcolorfilter);
+    //echo "<pre/>";
+    //print_r($finalcolorfilter);
+
+
+
+/************** size filter ***********************/
+
+?>
+<!-- ********************************* checkbox filter ********************** -->
+    <script type="text/javascript">
+        var arAllSizes = Array();
+        var arProductSizes = Array();
+		var arAllCats = Array();
+		var arProductCats = {};//Array();
+
+        var productColorIndex;
+
+        productColorIndex = "<?php echo $productColorIndex;?>";
+
+        <?php
+            foreach($allSkuSizes as $size){
+        ?>
+                arProductSizes.push("<?php echo $size;?>");
+        <?php
+            }
+            foreach($arProductAllSizes as $size){
+        ?>
+                arAllSizes.push("<?php echo $size;?>");
+        <?php
+            }
+        ?>
+
+		<?php
+		foreach($finalcolorfilter as $id => $name){
+		?>
+			arProductCats["<?php echo $id;?>"] = "<?php echo $name;?>";
+		<?php
+		}
+		foreach($allcats as $catid){
+		?>
+			arAllCats.push("<?php echo $catid;?>");
+		<?php
+		}
+		?>
+			console.log(JSON.stringify(arProductCats));
+		console.log(JSON.stringify(arAllCats));
+
+    </script>
+	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>ys-new-design/size-filter-new.js"></script>
+
+<!-- ********************************* checkbox filter ********************** -->
+<?php } ?>
+
+<?php
+/*
+    if(Mage::getModel('catalog/product')->load($_product->getId())->getTypeID() == "configurable")
+    {
+        $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+        $selectedColorarr = array();
+        foreach($_childproducts as $_childproduct)
+        {
+            $temp = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+
+            if(strpos($colors,$temp.",") == false)
+                $colors .= $temp.",";
+            if(!in_array($temp,$selectedColorarr))
+            {
+                array_push($selectedColorarr,$temp);
+            }
+        }
+        //print_r($selectedColorarr);
+        //echo $sortOrder = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'sortorder', Mage::app()->getStore()->getStoreId());
+        foreach($selectedColorarr as $color)
+        { ?>
+            <div class="productCont">
+        <div class="prod-img">
+            <a href="<?php echo $_product->getProductUrl();?>" alt="<?php echo $_product->getName();?>">
+            <img class="prd-image" src="<?php    echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /> </a>
+        </div>
+        <div class="caption">
+        <a href="<?php echo $_product->getProductUrl();?>"> <?php echo $clrinfo[$color]?></a><span>$<?php  echo  round($_product->getPrice(),2);?></span>
+        </div>
+    </div>
+    <?php
+        }
+    }
+*/
+
+
+?>
+
+<?php /*
+    <?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid">
+    <?php endif ?>
+    <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+        <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+        <?php if($_product->getRatingSummary()): ?>
+            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+        <?php endif; ?>
+        <?php echo $this->getPriceHtml($_product, true) ?>
+        <div class="actions">
+            <?php if($_product->isSaleable()): ?>
+                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+            <?php else: ?>
+                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+            <?php endif; ?>
+            <ul class="add-to-links">
+                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                    <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                <?php endif; ?>
+                <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                    <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </li>
+    <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+    <?php endif */
+?>
+<div class="clear-fix"></div>
+</div>
+<!-- GridProducts -->
+</div>
+<div class="grid-bottom"><!-- <div class="new-bot-divider"></div> --></div>
+<!-- productGridView -->
+<div class="clear-fix"></div>

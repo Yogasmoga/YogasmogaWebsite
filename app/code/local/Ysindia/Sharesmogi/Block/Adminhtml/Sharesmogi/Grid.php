@@ -1,5 +1,9 @@
 <?php
-
+/*
+ * This is a controller for share smogi module.
+ * Created by Fahim Khan (Sr. Magento Developer).
+ *
+ */
 class Ysindia_Sharesmogi_Block_Adminhtml_Sharesmogi_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
   public function __construct()
@@ -42,41 +46,46 @@ class Ysindia_Sharesmogi_Block_Adminhtml_Sharesmogi_Grid extends Mage_Adminhtml_
           'align'     =>'left',
           'index'     => 'child_email',
       ));
-     /* $this->addColumn('child_smogi', array(
-          'header'    => Mage::helper('sharesmogi')->__('Child Smogi Bucks'),
+      $this->addColumn('child_id', array(
+          'header'    => Mage::helper('sharesmogi')->__('Order Id'),
+          'align'     =>'left',
+          'index'     => 'child_id',
+      ));
+      $this->addColumn('child_smogi', array(
+          'header'    => Mage::helper('sharesmogi')->__('Used Coupon By Child '),
           'align'     =>'left',
           'index'     => 'child_smogi',
       ));
+      /*
+
+            $this->addColumn('content', array(
+                  'header'    => Mage::helper('sharesmogi')->__('Item Content'),
+                  'width'     => '150px',
+                  'index'     => 'content',
+            ));
 
 
-      $this->addColumn('content', array(
-			'header'    => Mage::helper('sharesmogi')->__('Item Content'),
-			'width'     => '150px',
-			'index'     => 'content',
-      ));
+            $this->addColumn('status', array(
+                'header'    => Mage::helper('sharesmogi')->__('Status'),
+                'align'     => 'left',
+                'width'     => '120px',
+                'index'     => 'status',
+                'type'      => 'options',
+                'options'   => array(
+                    1 => 'Registered',
+                    2 => 'Not Registered',
+                ),
+            ));
 
-
-      $this->addColumn('status', array(
-          'header'    => Mage::helper('sharesmogi')->__('Status'),
-          'align'     => 'left',
-          'width'     => '120px',
-          'index'     => 'status',
-          'type'      => 'options',
-          'options'   => array(
-              1 => 'Registered',
-              2 => 'Not Registered',
-          ),
-      ));
-
-        $this->addColumn('action',
-            array(
-                'header'    =>  Mage::helper('sharesmogi')->__('Action'),
-                'width'     => '100',
-                'type'      => 'action',
-                'getter'    => 'getId',
-                'actions'   => array(
-                    array(
-                        'caption'   => Mage::helper('sharesmogi')->__('Edit'),*/
+              $this->addColumn('action',
+                  array(
+                      'header'    =>  Mage::helper('sharesmogi')->__('Action'),
+                      'width'     => '100',
+                      'type'      => 'action',
+                      'getter'    => 'getId',
+                      'actions'   => array(
+                          array(
+                              'caption'   => Mage::helper('sharesmogi')->__('Edit'),*/
                         //'url'       => array('base'=> '*/*/edit'),
                       /*  'field'     => 'id'
                     )

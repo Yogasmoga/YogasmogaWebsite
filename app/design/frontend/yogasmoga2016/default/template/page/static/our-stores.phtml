@@ -1,0 +1,445 @@
+<div class="namaskar-overlay1">&nbsp;</div>
+<script type="text/javascript">
+    jQuery(window).load(function () {
+        jQuery('body').css('overflow', 'auto');
+        jQuery('.namaskar-overlay1').fadeOut('slow');
+
+        /* jQuery('a[href*="#"]:not([href="#"])').on('click',function (e) {
+         e.preventDefault();
+
+         var target = this.hash;
+         var $target = jQuery(target);
+
+         jQuery('html, body').stop().animate({
+         'scrollTop': $target.offset().top + 200
+         }, 900, 'swing', function () {
+         window.location.hash = target;
+         });
+         }); */
+
+        jQuery('a[href*="#"]:not([href="#"])').click(function(e){
+            e.preventDefault();
+            var bcomh = jQuery('#bodycompensator').height();
+            //alert($("div").scrollTop());
+            var target = this.hash;
+            var $target = jQuery(target);
+
+            jQuery('html, body').animate({scrollTop: $target.offset().top - bcomh }, 900);
+        });
+
+    });
+
+
+
+
+</script>
+<!-- startCMSPages -->
+<div class="gridCMSPages">
+    <!-- gridBlockOne -->
+    <div class="gridFullWidth ystopsection">
+        <!-- BlockLeft -->
+        <div class="block33">
+            <!-- leftNavigation -->
+            <div class="cmsNavigation">
+                <ul>
+                    <li><a href="#greenwich">Greenwich, CT</a></li>
+                    <li><a href="#brentwood">Brentwood, CA</a></li>
+                    <li><a href="#beverly-hills">Beverly Hills, CA</a></li>
+                    <li><a href="#newport-beach">Newport Beach, CA</a></li>
+                    <li><a href="#malibu">Malibu, CA</a></li>
+                    <li><a href="#san-francisco">San Francisco, CA</a></li>
+                    <li><a href="#la-jolla">La Jolla, CA</a></li>
+                    <li><a href="#corte-madera">Corte Madera, CA</a></li>
+                    <li><a href="#westchester">Westchester, NY</a></li>
+                    <li><a href="#short-hills">Short Hills, NJ</a></li>
+                    <li><a href="#walnut-creek">Walnut Creek, CA</a></li>
+
+                </ul>
+            </div>
+            <!-- leftNavigation -->
+
+            <!-- CMSheadingBlock -->
+            <div class="headingBlock">
+                <div class="positionAbs h1">YS STORES</div>
+                <h1 style="display:none;">YOGASMOGA Stores</h1>
+            </div>
+            <!-- CMSheadingBlock -->
+        </div>
+        <!-- BlockLeft -->
+
+        <!-- BlockRight -->
+        <div class="block66 posRel">
+            <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/YS-Store-yogasmoga-retail.jpg"
+                 alt="" class="img-responsive"/>
+
+            <div class="positionAbs" id="ysbannertxt" style="top:32.4%;">
+                <span class="topHead">YOGASMOGA RETAIL EXPERIENCE</span>
+                <div class="h4">
+                    FROM NYC TO THE WORLD
+                    <span class="smallHead">WE GO WHEREVER LIFE TAKES YOU</span>
+                </div>
+                <!--div class="htext white">
+                    Honoring the tenets of Yoga, we aspire to create world-class products.<br />Growing up in the Himalayas, the birthplace & capital of Yoga, our founders instinctively<br />infuse the timeless principles, spirit and practice of Yoga into everything we do. From our<br />cosmopolitan aesthetic, to our product technology, right down to creating our very own way<br />to give back, we’ve meticulously designed every part of the whole, one breath at a time.
+                </div-->
+            </div>
+            <!--<div class="htext white" style="position:absolute; width:100%; margin:0; bottom:40px;">
+                                Honoring the tenets of Yoga, we aspire to create world-class products.<br />Growing up in the Himalayas, the birthplace & capital of Yoga, our founders instinctively<br />infuse the timeless principles, spirit and practice of Yoga into everything we do. From our<br />cosmopolitan aesthetic, to our product technology, right down to creating our very own way<br />to give back, we’ve meticulously designed every part of the whole, one breath at a time.
+                            </div>-->
+        </div>
+        <!-- BlockRight -->
+    </div>
+    <!-- gridBlockOne -->
+    <div class="gridFullWidth">
+        <div id="ysbannertxt" class="gridCMSPages">
+            <span style="color:#555;display:block;border-bottom:1px solid #555;margin:17px auto 15px" class="topHead ">IMAGINE: A STRONG COMMUNITY</span>
+            <div class="h4" style="color:#555;width:100%;font:36px/40px ITCAvantGardeProMd;margin-bottom:0;" class="topHead ">
+                REFLECT, CONNECT, LEARN, GROW
+                <span style="color:#555;" class="smallHead cntntheading">ONE BREATH AT A TIME</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- gridBlockTwo -->
+    <div  class="gridFullWidth marginbottom50">
+        <div class="gridFullWidth">
+            <div id="greenwich" class="block33">
+                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/YS-Stores-020815_04.jpg"
+                     alt="" class="img-responsive"/>
+                <div class="cntntheading">
+                    <div class="content-wrapper">
+                        YOGASMOGA TOWNHOUSE
+                        <span class="subtext">68 Greenwich Ave, Greenwich, CT 06830<br/>203 861 YOGA (9642)</span>
+                        <span class="ys-store-email">greenwich@yogasmoga.com</span>
+                    </div>
+
+                </div>
+                <div class="contnttxt">
+
+
+                    <p style="text-align:center">
+                        <span class="store-hours">Store Hours</span><br/>Monday–Saturday 10am–6pm<br/>
+                        Sunday 11am-6pm </p>
+
+                    <p style="font-family:gothambook;">We chose this two-story townhouse on Greenwich Avenue as our
+                        first store for its strong community feel. The exposed brick walls create a cozy atmosphere and
+                        neutral palette for our bright collections. We are currently renovating the upstairs space for
+                        yoga classes and other wellness events. </p>
+                </div>
+            </div>
+            <div id="brentwood" class="block33">
+                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/YS-Stores-020815_05.jpg"
+                     alt="" class="img-responsive"/>
+                <div class="cntntheading">
+                    <div class="content-wrapper">
+                        YOGASMOGA BRENTWOOD
+							<span class="subtext">11911 San Vicente Blvd, Los Angeles, CA 90049<br/>
+											 310 471 YOGA (9642)</span>
+                        <span class="ys-store-email">brentwood@yogasmoga.com</span>
+                    </div>
+                </div>
+                <div class="contnttxt">
+
+
+                    <p style="text-align:center"><span class="store-hours">Store Hours</span><br/>Monday–Friday
+                        10am–8pm<br/>
+                        Saturday–Sunday 10am-7pm </p>
+
+                    <p style="font-family:gothambook;">Centrally located on the corner of San Vicente Boulevard and
+                        Montana Avenue, we chose this space for its accessibility and neighborhood vibe. Our bright and
+                        sunny Brentwood store is wrapped in floor-to-ceiling windows that fill the space with natural
+                        light and warm, welcoming energy. </p>
+                    <!--<p style="font-family:gothambook;">Just around the corner from Rodeo Drive, our Beverly Hills store is a calming retreat from the buzz of the city streets. Exposed beams, bright light and a cozy community space welcomes locals and visitors alike to shop our unique collection, relax and learn more about the YOGASMOGA story.</p>-->
+
+                </div>
+            </div>
+            <div id="beverly-hills" class="block33">
+                <img class="img-responsive"
+                     src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/ys-stores-beverly-hills.jpg"
+                     alt=""/>
+                <div class="cntntheading">
+                    <div class="content-wrapper">
+                        YOGASMOGA BEVERLY HILLS
+                        <span class="subtext">9458 Dayton Way, Beverly Hills, CA 90210<br/>310 273 YOGA (9642)</span>
+                        <span class="ys-store-email">beverlyhills@yogasmoga.com</span>
+                    </div>
+
+
+
+                </div>
+                <div class="contnttxt">
+
+
+                    <p style="text-align:center"><span class="store-hours">Store Hours</span><br/>Monday–Saturday 11am–7pm<br/>
+                        Sunday 11am–6pm </p>
+
+                    <p style="font-family:gothambook;">Just around the corner from Rodeo Drive, our Beverly Hills store
+                        is a calming retreat from the buzz of the city streets. Exposed beams, bright light and a cozy
+                        community space welcomes locals and visitors alike to shop our unique collection, relax and
+                        learn more about the YOGASMOGA story.</p>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div style="border-bottom:1px solid #fff!important;" class="bottomdivider">&nbsp;</div>
+
+        <div class="gridFullWidth">
+            <div id="newport-beach" class="block33">
+
+                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/fashion-island.png"
+                     alt="" class="img-responsive"/>
+                <div class="cntntheading">
+                    <div class="content-wrapper">
+                        YOGASMOGA NEWPORT BEACH <br/><span style="display:inline;">AT</span> FASHION ISLAND 
+						<span class="subtext">1119 Newport Center Drive, Newport Beach, CA 92660<br/>949 721 YOGA (9642)
+								</span>
+                        <span class="ys-store-email">fashionisland@yogasmoga.com</span>
+                    </div>
+
+
+                </div>
+                <div class="contnttxt">
+
+
+                    <p style="text-align:center;">
+                        <span class="store-hours">Store Hours</span><br/>Monday–Friday 10am–9pm<br/>
+                        Saturday 10am–7pm<br/>Sunday 11am-6pm
+                    </p>
+
+                    <p style="font-family:gothambook;">Now open in between Macy's and Nordstrom, our Fashion Island store is an upscale, open-air space perfect for in-store classes. Richly colored wood displays showcase our unique and colorful collection, inviting visitors to shop, relax and learn more about the YOGASMOGA story.
+
+                    </p>
+
+                </div>
+
+
+
+            </div>
+
+
+            <div id="malibu" class="block33">
+
+                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/malibu-our-store.jpg"
+                     alt="" class="img-responsive"/>
+                <div class="cntntheading">
+                    <div class="content-wrapper">
+                        YOGASMOGA MALIBU<br/>
+                       <span class="subtext">3900 Cross Creek Road, Malibu, CA 90265<br/>424 346 5002
+									</span>
+                        <span class="ys-store-email">malibu@yogasmoga.com</span>
+                    </div>
+
+
+                </div>
+                <div class="contnttxt">
+
+
+                    <p style="text-align:center">
+                        <span class="store-hours">Store Hours</span><br/>Monday-Thursday 10am–6pm<br/>
+                        Friday-Saturday 10am–7pm<br/>
+                        Sunday 11am–6pm
+                    </p>
+
+                    <p style="font-family:gothambook;">Now open in the Malibu Country Mart: a large outdoor, lifestyle center or "boutique mall" located at the Civic Center of Malibu. Wearing your YOGASMOGAs while basking in the sun is the best way to experience this sunny beach city.</p>
+
+                </div>
+            </div>
+            <div id="san-francisco" class="block33">
+
+                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/san-francisco.png"
+                     alt="" class="img-responsive"/>
+                <div class="cntntheading">
+                    <div class="content-wrapper">
+                        YOGASMOGA SAN FRANCISCO <br/>
+                        <span class="subtext">66 Kearny Street, San Francisco, CA 94108<br/>415 934 YOGA (9642)   </span>
+                        <span class="ys-store-email">sanfran.unionsquare@yogasmoga.com</span>
+                    </div>
+
+
+                </div>
+                <div class="contnttxt">
+
+
+                    <p style="text-align:center">
+                        <span class="store-hours">Store Hours</span><br/>Monday–Saturday 10am–8pm<br/>
+                        Sunday 11am–7pm
+                    </p>
+
+                    <p style="font-family:gothambook;">Our expansive and luxurious retail space is open in the Financial District of San Francisco, on Kearny St. Our San Francisco fans reached out to us so we answered them with open hearts.</p>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div style="border-bottom:1px solid #fff!important;" class="bottomdivider">&nbsp;</div>
+        <div class="gridFullWidth">
+
+
+            <div id="la-jolla" class="block33 white-line-seperator">
+                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/ys-la-jolla-store-v2.jpg"
+                     alt="" class="img-responsive"/>
+                <div class="cntntheading">
+                    <div class="content-wrapper">
+                        YOGASMOGA LA JOLLA <br/>
+						<span class="subtext"> 7863 Girard Ave, Suite No. 101, La Jolla, CA 92037<br/>858 732 YOGA (9642) 
+								  </span>
+                        <span class="ys-store-email">lajolla@yogasmoga.com</span>
+                    </div>
+
+
+                </div>
+                <div class="contnttxt">
+
+
+                    <p style="text-align:center">
+                        <span class="store-hours">Store Hours</span><br/>Monday–Saturday 10am–7pm<br/>
+                        Sunday 10am–6pm
+                    </p>
+
+                    <p style="font-family:gothambook;">YOGASMOGA is now open in the jewel of Southern California, La Jolla. With vacation sunshine all year-round, you will find yourself immersed in luxurious retail while taking in the rays.</p>
+
+                </div>
+
+            </div>
+
+            <div id="corte-madera" class="block33">
+                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/cortemadera.png"
+                     alt="" class="img-responsive"/>
+                <div class="cntntheading">
+                    <div class="content-wrapper">
+                        YOGASMOGA CORTE MADERA
+						<span class="subtext">1530 Redwood Hwy, Corte Madera, CA 94925<br/>415 548 6110
+								<br/></span>
+                        <span class="ys-store-email">cortemadera@yogasmoga.com</span>
+                    </div>
+
+                </div>
+                <div class="contnttxt">
+
+
+                    <p style="text-align:center">
+                        <span class="store-hours">Store Hours</span><br/>Monday–Friday 10am–8pm<br/>
+                        Saturday 10am–7pm<br/>Sunday 11am-6pm
+                    </p>
+
+                    <p style="font-family:gothambook;">The Village at Corte Madera is an open-air shopping center
+                        located in Corte Madera, CA,
+                        including premium shops, restaurants and many more. Breathe the open air while you walk through
+                        The Village's breezy layout and explore our premium collection of yoga inspired athletic
+                        apparel.</p>
+
+                </div>
+
+            </div>
+            <div id="westchester" class="block33">
+                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/westchester.png"
+                     alt="" class="img-responsive"/>
+                <div class="cntntheading">
+                    <div class="content-wrapper">
+                        YOGASMOGA WESTCHESTER<br/>
+							<span class="subtext">125 Westchester Ave, White Plains, NY 10601<br/>914 367 YOGA (9642) 
+									</span>
+                        <span class="ys-store-email">westchester@yogasmoga.com</span>
+                    </div>
+
+
+                </div>
+                <div class="contnttxt">
+
+
+                    <p style="text-align:center">
+                        <span class="store-hours">Store Hours</span><br/>Monday–Saturday 10am–9pm<br/>
+                        Sunday 11am–6:30pm
+                    </p>
+
+                    <p style="font-family:gothambook;">YOGASMOGA is now open at The Westchester Mall in White Plains, NY. We are bringing vivacity and balance to the ultimate shopping experience in Westchester County, New York. </p>
+
+                </div>
+            </div>
+        </div>
+
+        <div style="border-bottom:1px solid #fff!important;" class="bottomdivider">&nbsp;</div>
+
+        <div class="gridFullWidth">
+
+
+            <div id="short-hills" class="block33 white-line-seperator">
+                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/short-hills.png"
+                     alt="" class="img-responsive"/>
+                <div class="cntntheading">
+                    <div class="content-wrapper">
+                        YOGASMOGA SHORT HILLS<br/>
+								<span  class="subtext">1200 Morris Tpke, 
+										Short Hills, NJ 07078<br/> 973 315 9671</span>
+                        <span class="ys-store-email">shorthills@yogasmoga.com	</span>
+                    </div>
+
+
+                </div>
+                <div class="contnttxt">
+
+
+                    <p style="text-align:center">
+                        <span class="store-hours">Store Hours</span><br/>Monday–Friday 10am–9pm<br/>Saturday 10am–8pm<br/>
+                        Sunday 11am–6pm
+                    </p>
+                    <p style="font-family:gothambook;">YOGASMOGA is now open at The Mall at Short Hills. Experience yoga inspired premium athletic apparel along with New Jersey's most extraordinary collection of quality retail in one beautiful location. </p>
+
+                </div>
+
+            </div>
+            <div id="walnut-creek" class="block33">
+                <img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/new-design-images/ys_stores_address/walnut-creek.png"
+                     alt="" class="img-responsive"/>
+                <div class="cntntheading">
+                    <div class="content-wrapper">
+                        YOGASMOGA WALNUT CREEK
+                        <span  class="subtext">1166 Broadway Plaza, Walnut Creek, CA 94596<br/>323 394 8677</span>
+                        <span class="ys-store-email">walnutcreek@yogasmoga.com</span>
+                    </div>
+
+                </div>
+                <div class="contnttxt">
+
+
+                    <p style="text-align:center">
+                        <span class="store-hours">Store Hours</span><br/>Monday–Friday 10am–9pm<br/>
+                        Saturday 10am–7pm<br/>Sunday 11am-6pm
+                    </p>
+
+                    <p style="font-family:gothambook;">YOGASMOGA is now open at Broadway Plaza located in Walnut Creek,
+                        CA: an open-air shopping center anchored by Neiman Marcus, Nordstrom, and home to more than 35
+                        fine retailers and
+                        restaurants. We hope to join this welcoming fashion space with open minds and open hearts.</p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bottomdivider"></div>
+    <!-- bottomDivider -->
+
+</div>
+<!-- endCMSPages -->
+<style>
+    .gridFullWidth.marginbottom50 .block33 {
+        box-sizing: border-box !important;
+        float: left !important;
+        width: 33.33% !important;
+    }
+
+    .white-line-seperator svg {
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+        position: relative;
+        width: 100%;
+        z-index: 3;
+    }
+</style>	

@@ -1,0 +1,427 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+    function format_bill($html)
+    {
+        //return $html;
+        //echo "$html";
+        $str=$html;
+        $str1 = $html;
+        //$str1=str_replace('Subtotal', 'SHOPPING BAG SUBTOTAL', $html);
+        $str1=str_replace('Grand Total', 'BAG TOTAL', $str1);
+        $str1=str_replace('Shipping &amp; Handling', 'Shipping', $str1);
+        //echo '<hr>'.$str1;
+        
+        while(strpos($str1, '<span class="price">') != false)
+        	{
+        	$p1=strpos($str1, '<span class="price">');
+        	$p2=strpos($str1, '</span>', $p1);
+        	
+        	//echo $p1.'-'.$p2;
+        	//$val = substr($str1, $p1+21, $p2);
+        	$val = substr($str1, $p1, $p2 + strlen("</span>") - $p1);
+        	$val = substr(strip_tags($val), 1);
+            //if(strpos($val,"$") !== false)
+//                $val="<span>$</span>".str_replace("$","-",$val);
+//            else
+        	   $val="<span>$</span>".str_replace("$","-",$val);
+        	$str1 = substr($str1, 0, $p1).$val.substr($str1, $p2 + strlen("</span>"));
+        	}
+        //echo '<hr>'.$str1;
+        
+        $p=strpos($str1, 'Shipping');
+        $p1=strpos($str1, '(', $p);
+        $p2=strpos($str1, ')', $p);
+        $str_chk = substr($str1, $p1+1, $p2-$p1-1);
+        $str_arr = explode('-', $str_chk);
+        $str_arr[0]= trim($str_arr[0]);
+        $str_arr[1]= trim($str_arr[1]);
+        
+        if($str_arr[0]==$str_arr[1])
+        {
+        $str1 = substr($str1, 0, $p1+1).$str_arr[0].substr($str1, $p2);
+        }
+        
+        //echo $str1;
+        $str1 = str_replace("Card,","Card AND", $str1);
+        $str1 = str_replace("Gift Card","GIFT OF YS CARD", $str1);
+        $str1 = str_replace("Discount","", $str1);
+        $str1 = str_replace(")","", $str1);
+        $str1 = str_replace("(","", $str1);
+        
+        $coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
+        if($coupon_code){
+            $str1 = str_replace($coupon_code,$coupon_code." Promotion", $str1);
+        }
+        
+        return $str1;
+        //echo substr($str1, $p1, $p2);
+    
+    }
+    function searchcart($minidetails, $sku)
+    {
+        foreach($minidetails as $item)
+        {
+            if($item['sku'] == $sku)
+                return true;
+        }
+        return false;
+    }
+    
+    function getMiniImage($productid, $color)
+    {
+        $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+        foreach($_gallery as $_image)
+        {
+            $imgdata = json_decode(trim($_image->getLabel()), true);
+            if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
+                continue;
+            if($imgdata['color'] != $color)
+                continue;
+            //if(strpos($_image->getLabel(), $color) === false)
+//            //if(strpos($_image->getLabel(),"*") === false)
+//                continue;
+            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
+        }
+        return "";
+    }
+    function getShippingTitle($code)
+    {
+        //foreach(Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingRatesCollection() as $rate)
+//        {
+//            echo $rate->getCarrier(); // This will provide you with the carrier code
+//            echo "Carrier Title = ".$rate->getCarrierTitle()."<br/>"; // This will give you the carrier title
+//            echo "Code = ".$rate->getCode()."<br/>"; // This will give you **current shipping method** code
+//            echo $rate->getMethod(); // This will provide you with the **shipping method** code
+//            echo $rate->getMethodTitle(); // This will tell you current shipping method title
+//            echo $rate->getMethodDescription();
+//        }
+        foreach(Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingRatesCollection() as $rate)
+        {
+            if($rate->getCode() == $code)
+                return $rate->getCarrierTitle();
+        }
+        return "";
+    }
+    function getShippingCost($code)
+    {
+        //$rates = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->collectShippingRates()->getGroupedAllShippingRates();
+//         foreach ($rates as $carrier) {
+//            foreach ($carrier as $rate) {
+//                print_r($rate->getData());
+//            }
+//        }
+        $rates = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->collectShippingRates()->getGroupedAllShippingRates();
+         foreach ($rates as $carrier) {
+            foreach ($carrier as $rate) {
+                $temp = $rate->getData();
+                if($temp['code'] == $code)
+                    return $temp['price'];
+            }
+        }
+        return "";
+    }
+    
+    
+    function issuperattribute($_product, $superattribute)
+    {
+        $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+        $sizeavaliable = false;
+        foreach($configurableAttributeCollection as $attribute){
+            if($attribute->getProductAttribute()->getAttributeCode() == $superattribute)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+        $output = "";
+        $_helper = Mage::helper('catalog/output');
+        $minidetails = array();
+        $miniitems = array();
+        $mageFilename = 'app/Mage.php';
+        require_once $mageFilename;
+        umask(0);
+        Mage::app();
+        Mage::getSingleton('core/session', array('name'=>'frontend'));
+        $session = Mage::getSingleton('checkout/session');
+        
+        foreach ($session->getQuote()->getAllItems() as $item) 
+        {
+            $temparray = array();
+            if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
+            {
+                if(searchcart($miniitems, $item->getSku()) == false)
+                {
+                    $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
+                    $product = Mage::getModel('catalog/product')->load($item->getProductId());
+                    if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() - $item->getQty()) < 0)
+                        $temparray['preorder'] = true;
+                    else
+                        $temparray['preorder'] = false;
+                    $temparray['sku'] = $item->getSku();
+                    //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
+                    $temparray['name'] = $item->getName();
+                    if(strlen($temparray['name']) > 14)
+                        $temparray['name'] = substr($temparray['name'], 0, 13)."...";
+                    if(issuperattribute($product, "color"))
+                    {
+                        $temparray['color'] = $_product->getAttributeText('color');
+                        if(strpos($temparray['color'], "|") !== false)
+                            $temparray['color'] = substr($temparray['color'], 0, strpos($temparray['color'], "|"));   
+                    }
+                    if(issuperattribute($product, "size"))
+                        $temparray['size'] = $_product->getAttributeText('size');
+                    $temparray['quantity'] = $item->getQty();
+                    $temparray['individualprice'] = $item->getBaseCalculationPrice();
+                    $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 0, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+                    //$temparray['imageurl'] = getMiniImage($item->getProductId(),  $temparray['color']);
+                    $temparray['imageurl'] = getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
+                    $temparray['itemid'] = $item->getItemId();
+                    $temparray['producturl'] = Mage::getModel('catalog/product')->load($item->getProductId())->getProductUrl();
+                    array_push($miniitems, $temparray);
+                }
+            }
+            elseif(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+            {
+                if(searchcart($miniitems, $item->getSku()) == false)
+                {
+                    $_product = Mage::getModel('catalog/product')->load($item->getProductId());
+                    if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() - $item->getQty()) < 0)
+                        $temparray['preorder'] = true;
+                    else
+                        $temparray['preorder'] = false;
+                    $temparray['sku'] = $item->getSku();
+                    //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
+                    $temparray['name'] = $item->getName();
+                    if(strlen($temparray['name']) > 14)
+                        $temparray['name'] = substr($temparray['name'], 0, 13)."...";
+                    $temparray['quantity'] = $item->getQty();
+                    $temparray['individualprice'] = $item->getBaseCalculationPrice();
+                    $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 0, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+                    //$temparray['imageurl'] = getMiniImage($item->getProductId());
+                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
+                    $temparray['producturl'] = $_product->getProductUrl();
+                    $temparray['itemid'] = $item->getItemId();
+                    array_push($miniitems, $temparray);
+                }
+            }
+            else
+            {
+                //if(searchcart($miniitems, $item->getSku()) == false)
+//                {
+                    $_product = Mage::getModel('catalog/product')->load($item->getProductId());
+                    //if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()) < 0)
+//                        $temparray['preorder'] = true;
+//                    else
+//                        $temparray['preorder'] = false;
+                    $temparray['preorder'] = false;
+                    $temparray['sku'] = $item->getSku();
+                    //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
+                    $temparray['name'] = $item->getName();
+                    if(strlen($temparray['name']) > 14)
+                        $temparray['name'] = substr($temparray['name'], 0, 13)."...";
+                    $temparray['quantity'] = $item->getQty();
+                    $temparray['individualprice'] = $item->getBaseCalculationPrice();
+                    $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 0, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+                    //$temparray['imageurl'] = getMiniImage($item->getProductId());
+                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
+                    $temparray['producturl'] = $_product->getProductUrl();
+                    $temparray['itemid'] = $item->getItemId();
+                    array_push($miniitems, $temparray);
+                //}
+            }
+        }
+        
+        $miniitems = array_reverse($miniitems);
+        
+        $minidetails['items'] = $miniitems;
+        $minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
+        $minidetails['cartlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/cart";
+        $minidetails['subtotal'] = "$".number_format((float)(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal()), 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
+        $minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
+        //$quote = Mage::helper('checkout')->getQuote()->getData();
+?>
+
+<table class="co-ov-table">
+    <thead>
+        <tr>
+            <th class="prdtl">
+                SHOPPING CART&nbsp;<a href="<?php echo $minidetails['cartlink']; ?>">Edit</a>
+            </th>
+            <th class="price">
+                PRICE
+            </th>
+            <th class="qty">
+                QTY
+            </th>
+            <th class="total">
+                SUBTOTAL
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+            foreach($minidetails['items'] as $item)
+            {
+                ?>
+                <tr class="pritem">
+                    <td class="prdtl">
+                        <table class="co-ov-prdetail">
+                            <tr>
+                                <td class="co-ov-primg">
+                                    <img src="<?php echo substr($item['imageurl'], 1); ?>" />
+                                </td>
+                                <td class="co-over-prdtl">
+                                     <div class="productname"><?php echo html_entity_decode($item['name']); ?></div>
+                                     <?php
+                                        if(isset($item['color']))
+                                        {
+                                            ?>
+                                                <div class="productdetail"><span class="productattribute">COLOR:</span>&nbsp;&nbsp;<?php echo $item['color']; ?></div>       
+                                            <?php
+                                        }   
+                                     ?>
+                                     <?php
+                                        if(isset($item['size']))
+                                        {
+                                            ?>
+                                                <div class="productdetail"><span class="productattribute">SIZE:</span>&nbsp;&nbsp;<?php echo $item['size']; ?></div>       
+                                            <?php
+                                        }   
+                                     ?>
+                                     <?php
+                                        if($item['preorder'])
+                                        {
+                                            ?>
+                                            <div class="preorderinfo">
+                                                <?php echo Mage::getModel('core/variable')->loadByCode('preorder_message')->getValue('html'); ?>
+                                            </div>
+                                            <?php
+                                        }
+                                    ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="price">
+                        $<?php echo $item['individualprice'] ?>
+                    </td>
+                    <td class="qty">
+                        <?php echo $item['quantity']; ?>
+                    </td>
+                    <td class="total">
+                        <?php echo $item['price'] ?>
+                    </td>
+                </tr>
+                <?php
+            }
+        ?>
+        <tr>
+            <td colspan="4">
+                <div class="divider"></div>
+            </td>
+        </tr>
+    </tbody>
+    <?php echo format_bill($this->getChildHtml('totals')); ?>
+</table>
+<div id="checkout-submit" class="spbutton" imageurl="<?php echo $this->getSkinUrl('images/checkout/submit_off1.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/checkout/submit_on1.png'); ?>"></div>
+<div class="cleaner"></div>
+<div id="submiterrormsg" class="loginerrormsg errormsg"></div>
+
+
+<?php return; ?>
+
+
+
+
+
+
+
+
+
+
+<?php echo $this->getChildHtml('items_before'); ?>
+<div id="checkout-review-table-wrapper">
+    <table class="data-table" id="checkout-review-table">
+        <?php if ($this->helper('tax')->displayCartBothPrices()): $colspan = $rowspan = 2; else: $colspan = $rowspan = 1; endif; ?>
+        <col />
+        <col width="1" />
+        <col width="1" />
+        <col width="1" />
+        <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+        <col width="1" />
+        <col width="1" />
+        <?php endif; ?>
+        <thead>
+            <tr>
+                <th rowspan="<?php echo $rowspan ?>"><?php echo $this->__('Product Name') ?></th>
+                <th colspan="<?php echo $colspan ?>" class="a-center"><?php echo $this->__('Price') ?></th>
+                <th rowspan="<?php echo $rowspan ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
+                <th colspan="<?php echo $colspan ?>" class="a-center"><?php echo $this->__('Subtotal') ?></th>
+            </tr>
+            <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                <tr>
+                    <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                    <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                    <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                    <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                </tr>
+            <?php endif; ?>
+        </thead>
+        <?php echo $this->getChildHtml('totals'); ?>
+        <tbody>
+        <?php foreach($this->getItems() as $_item): ?>
+            <?php echo $this->getItemHtml($_item)?>
+        <?php endforeach ?>
+        </tbody>
+    </table>
+</div>
+<?php echo $this->getChildHtml('items_after'); ?>
+<script type="text/javascript">
+//<![CDATA[
+    decorateTable('checkout-review-table');
+    truncateOptions();
+//]]>
+</script>
+<div id="checkout-review-submit">
+    <?php echo $this->getChildHtml('agreements') ?>
+    <div class="buttons-set" id="review-buttons-container">
+        <p class="f-left"><?php echo $this->__('Forgot an Item?') ?> <a href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo $this->__('Edit Your Cart') ?></a></p>
+        <?php echo $this->getChildHtml('button') ?>
+        <span class="please-wait" id="review-please-wait" style="display:none;">
+            <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Submitting order information...') ?>" title="<?php echo $this->__('Submitting order information...') ?>" class="v-middle" /> <?php echo $this->__('Submitting order information...') ?>
+        </span>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+        review = new Review('<?php echo $this->getUrl('checkout/onepage/saveOrder') ?>', '<?php echo $this->getUrl('checkout/onepage/success') ?>', $('checkout-agreements'));
+    //]]>
+    </script>
+</div>

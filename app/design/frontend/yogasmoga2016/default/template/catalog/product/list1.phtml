@@ -1,0 +1,523 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php /*
+   $mic_time = microtime();
+   $mic_time = explode(" ",$mic_time);
+   $mic_time = $mic_time[1] + $mic_time[0];
+   $start_time = $mic_time;
+   */
+?>
+<?php
+    if (!function_exists('aasort')) {
+        function aasort (&$array, $key) {
+            $sorter=array();
+            $ret=array();
+            reset($array);
+            foreach ($array as $ii => $va) {
+                $sorter[$ii]=$va[$key];
+            }
+            asort($sorter);
+            foreach ($sorter as $ii => $va) {
+                $ret[$ii]=$array[$ii];
+            }
+            $array=$ret;
+        }    
+        }
+    
+?>
+<?php /* speed fix
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/isotope.css'); ?>" media="all" />
+
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myalwaysvisiblecontrols.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductimageswitcher.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycategory.js"></script>
+*/ ?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if(!$_productCollection->count()): ?>
+<?php /*
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+*/ ?>
+<?php else: ?>
+<div id="mycategory_products" class="mycategory-products isotoped">
+    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/new_pr.jpg"  class="shareit nodisplay"/>
+    <?php //echo $this->getToolbarHtml() ?>
+    <?php // List mode ?>
+    <?php if($this->getMode()!='grid'): ?>
+    <?php $_iterator = 0; ?>
+    <ol class="products-list" id="products-list">
+    <?php foreach ($_productCollection as $_product): ?>
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <?php // Product Image ?>
+            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+            <?php // Product description ?>
+            <div class="product-shop">
+                <div class="f-fix">
+                    <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
+                    <?php if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                    <?php endif; ?>
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <?php if($_product->isSaleable()): ?>
+                        <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                    <div class="desc std">
+                        <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+                    </div>
+                    <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wish list') ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ol>
+    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+    <?php else: ?>
+
+    <?php // Grid Mode ?>
+    
+    <?php /*
+    <?php $_collectionSize = $_productCollection->count() ?>
+    <?php $_columnCount = $this->getColumnCount(); ?>
+    <?php $i=0; foreach ($_productCollection as $_product): ?>
+        <?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid">
+        <?php endif ?>
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+                <?php if($_product->getRatingSummary()): ?>
+                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                <?php endif; ?>
+                <?php echo $this->getPriceHtml($_product, true) ?>
+                <div class="actions">
+                    <?php if($_product->isSaleable()): ?>
+                        <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                    <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </li>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+        <?php endif ?>
+        <?php endforeach ?>
+        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+        */ ?>
+        <?php
+            $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+            $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+            while ($row = $readresult->fetch() ) {
+                $clrinfo[$row['Value']] = $row['Attribute'];    
+            }
+            //echo "<pre>";
+//            print_r($clrinfo);
+//            echo "</pre>";
+            //echo $_productCollection->count()."<br/>";
+            foreach ($_productCollection as $_product)
+            {
+                $arr[] = array("pr" => $_product, "sort" => Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'sortorder', Mage::app()->getStore()->getStoreId()));
+            }
+            aasort($arr, "sort");
+            //echo "<pre>";
+//            print_r($arr);
+//            echo "</pre>";
+            
+            for($isfs = 0; $isfs < 1; $isfs++) {
+            foreach ($arr as $a)
+            //foreach($_productCollection as $_product)
+            {
+                $_product = $a['pr'];
+                $colors = ",";
+                $temp = "";
+                
+                if(Mage::getModel('catalog/product')->load($_product->getId())->getTypeID() == "configurable")
+                {
+                    $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+                    foreach($_childproducts as $_childproduct)
+                    {
+                        $temp = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+                        //$temp = $_product->getAttributeText('color');
+    //                    $cproductModel = Mage::getModel('catalog/product');
+    //                    $cattr = $cproductModel->getResource()->getAttribute("color");
+    //                    
+    //                    if ($cattr->usesSource()) {
+    //                    	$temp = $cattr->getSource()->getOptionText($temp);
+    //                    }
+                        //echo $_childproduct->getResource()->getAttribute('color')->getFrontend()->getValue($_childproduct)."<br/>";
+                        
+                        //$temp = $_childproduct->getAttributeText('color');
+                        if(strpos($colors,",".$temp.",") == false)
+                            $colors .= $temp.",";
+                    }
+                    $sortOrder = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'sortorder', Mage::app()->getStore()->getStoreId());
+                }
+                else
+                {
+                    //echo $_product->getId()."<br/>";
+                    continue;
+                }
+                ?>
+                    <div sortorder="<?php echo $sortOrder; ?>" bestfor="<?php echo ",".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bestfor', Mage::app()->getStore()->getStoreId()).","; ?>" cat="<?php echo ",".implode(",", $_product->getCategoryIds()).","; ?>" id="<?php echo $_product->getId(); ?>" class="item" color="<?php echo $colors; ?>">
+                        <a href="<?php echo $_product->getProductUrl(); ?>">
+                        <table>
+                            <tr>
+                                <td class="productimage">
+									<div class="showloader">
+                                    <?php
+                                        $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                                        $index = 1;
+                                        $firstimg = true;
+                                        $defaultcount = 1;
+                                        foreach($_gallery as $_image)
+                                        {
+                                                $isdefault = false;
+                                                $isactive = false;
+											//if($index <= 3){
+												$imgdata = json_decode(trim($_image->getLabel()), true);
+												//var_dump(json_decode(trim($_image->getLabel()), true));
+												//echo $_image->getLabel()."<br/>";
+												if($imgdata == NULL || strcasecmp($imgdata['type'],"product image") != 0)
+													continue;
+												
+                                                $alt = "";
+												if(isset($imgdata['alt']))
+                                                    $alt = $imgdata['alt'];
+                                                
+                                                if($alt == "")
+                                                {
+                                                    $alt = html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name'));
+                                                    if(isset($imgdata['color']))
+                                                        $alt .= " - ".$clrinfo[$imgdata['color']];
+                                                }
+												
+												//if(!($imgdata['type'] == "product image" && $imgdata['default'] == "yes"))
+	//                                                continue;
+												
+												//if(strpos($_image->getLabel(),"*") === false)
+	//                                                continue;
+												//if($index > 3)
+	//                                                break;
+												?>
+												<img class="
+												<?php
+                                                    if(isset($imgdata['default']))
+                                                    {
+                                                        if(strcasecmp($imgdata['default'],"yes") == 0 && $defaultcount < 5)
+    													{
+    														if($firstimg)
+    														{
+    															$firstimg = false;
+    															echo " default active rotable";
+                                                                $isactive = true;
+    														}
+    														else
+    															echo " default rotable loadmefast";
+                                                            $defaultcount++;
+                                                            $isdefault = true;
+    													}
+                                                    }
+													if(isset($imgdata['color']))
+													{
+														echo " color_".strtolower(str_replace(" ","_",$imgdata['color']));
+													}
+													if(isset($imgdata['bestfor']))
+													{
+														echo " bestfor_".strtolower(str_replace(" ","_",$imgdata['bestfor']));
+													}
+												?>
+												"
+                                                <?php
+                                                    if($isactive)
+                                                    {
+                                                        ?>
+                                                        src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" palt="<?php echo $alt; ?>" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" onload="showme(this);" />
+                                                        <?php
+                                                    }
+                                                    else if($isdefault)
+                                                    {
+                                                        ?>
+                                                        src="" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" palt="<?php echo $alt; ?>" onload="showme(this);" />
+                                                        <?php
+                                                    }
+                                                    else
+                                                    {
+                                                        ?>
+                                                        src="" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" palt="<?php echo $alt; ?>"  onload="showme(this);" isloaded="0" />
+                                                        <?php
+                                                    }
+                                                ?>
+												<?php
+												$index++;
+											//}else{
+//												break;
+//											}
+										}
+                                    ?>
+									</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="animateimage">
+                                     <a href="javascript:void(0);" style="display: block;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_01.png') ?>" class="active" usemap="#<?php echo $_product->getId(); ?>" />
+                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_02.png') ?>" usemap="#<?php echo $_product->getId(); ?>" />
+                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_03.png') ?>" usemap="#<?php echo $_product->getId(); ?>" />
+                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_04.png') ?>" usemap="#<?php echo $_product->getId(); ?>" />
+                                     
+                                     <map name="<?php echo $_product->getId(); ?>">
+                                          <!-- <area shape="rect" coords="0,0,2,13" class="line1" href="javascript:void(0);" />
+                                          <area shape="poly" coords="12,0,16,0,10,13,4,13" class="line2" href="javascript:void(0);"/>
+                                          <area shape="poly" coords="27,4,28,7,19,13,14,13" class="line3" href="javascript:void(0);"/> -->
+                                          <area shape="poly" coords="0,13,0,2,4,5,9,10,12,13,12,15,6,15" class="line1" href="javascript:void(0);" />
+                                          <area shape="poly" coords="13,12,9,8,9,7,6,4,6,0,14,0,14,12" class="line2" href="javascript:void(0);" />
+                                          <area shape="poly" coords="16,14,16,0,25,0,23,3,23,4,20,7,20,9,17,12,17,15" class="line3" href="javascript:void(0);" />
+                                          <area shape="poly" coords="18,15,18,13,21,10,21,9,23,7,23,5,28,0,29,0,29,15" class="line4" href="javascript:void(0);" />
+                                        </map>
+                                     
+                                     
+                                     <?php /*
+                                        <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_off.png') ?>" class="inactive" />
+                                     */ ?>
+                                     </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="colorpicker">
+                                    <a href="javascript:void(0);">
+                                    <?php
+                                        $productcolorinfo = array();
+                                        $colors = array();
+                                        $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+                                        foreach($_childproducts as $_childproduct)
+                                        {
+                                            $temp = $_childproduct->getAttributeText('color');
+                                            if(strpos($temp,"|") !== FALSE)
+                                            {
+                                                $hexcodes = substr($temp, strpos($temp,"|") + 1);
+                                                $hexcodes = explode(",", $hexcodes);
+                                                $colorval = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+                                                //if(array_search($colorval, $colors) !== false)
+//                                                    continue;
+                                                array_push($colors, $colorval);
+                                                $temp = substr($temp, 0, strpos($temp,"|"));
+                                                if(!isset($productcolorinfo[$temp]))
+                                                    $productcolorinfo[$temp] = array();
+                                                $productcolorinfo[$temp]['hex'] = $hexcodes;
+                                                $productcolorinfo[$temp]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+                                                /*
+                                                ?>
+                                                <div>
+                                                    <table color="<?php echo $temp; ?>" value="<?php echo $colorval; ?>">
+                                                        <tr>
+                                                            <?php
+                                                                foreach($hexcodes as $hex)
+                                                                {
+                                                                    ?>
+                                                                        <td style="background-color: <?php echo $hex ?>;">
+                                                                        <div>
+                                                                            &nbsp;
+                                                                        </div>
+                                                                        </td>   
+                                                                    <?php
+                                                                } 
+                                                            ?>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="<?php echo count($hexcodes); ?>" <?php //if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+                                                                     
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <?php
+                                                */
+                                            }
+                                        }
+                                        
+                                        $tempproductcolorinfo = array();
+                                        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+                                        $allOptions = $attribute->getSource()->getAllOptions(true, true);
+                                        foreach ($allOptions as $instance) {
+                                            if(array_key_exists($instance['label'], $productcolorinfo))
+                                            {
+                                                $tempproductcolorinfo[$instance['label']] = $productcolorinfo[$instance['label']];
+                                            }
+                                        }
+                                        $productcolorinfo = $tempproductcolorinfo;
+                                        //print_r($productcolorinfo);
+                                        //for($i = 0; $i < 2; $i++)
+//                                        {
+                                        $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
+                                        
+                                        for($incr = 0; $incr < 2; $incr++)
+                                        {
+                                            foreach($productcolorinfo as $key=>$colorinfo)
+                                            {
+                                                //$colorcount++;
+                                                if($incr == 0)
+                                                {
+                                                    if($colorinfo['value'] != $primarycolorcode)
+                                                        continue;
+                                                }
+                                                else
+                                                {
+                                                    if($colorinfo['value'] == $primarycolorcode)
+                                                        continue;
+                                                }
+                                                ?>
+                                                    <div>
+                                                        <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                                            <tr>
+                                                                <?php
+                                                                    foreach($colorinfo['hex'] as $hex)
+                                                                    {
+                                                                        ?>
+                                                                            <td style="background-color: <?php echo $hex ?>;">
+                                                                            <div>
+                                                                                &nbsp;
+                                                                            </div>
+                                                                            </td>   
+                                                                        <?php
+                                                                    } 
+                                                                ?>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php //if($first) { echo "class='tdselectedcolor'"; $first = false; } ?> class="colorselector">
+                                                                         
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                <?php
+                                                //if(($colorcount % 5) == 0)
+    //                                                echo "<br/>";
+                                            }   
+                                        }
+                                        
+                                         
+                                        //}
+                                        //print_r($productcolorinfo);
+                                    ?>
+                                    </a>
+                                    <div style="clear : both;"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="productname">
+                                    <?php echo html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name')); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="productprice">
+                                    <span class="price">
+                                    <?php 
+                                        $model = Mage::getModel('catalog/product');
+                                        $_product = $model->load($_product->getId());
+                                        $price = $_product->getSpecialPrice();
+                                        if($price == "")
+                                            $price = $_product->getPrice();
+                                        $price = round($price,2);
+                                          if (floor($price)==$price)
+                                            echo "$".(string)floor($price);
+                                            else
+                                                echo "$".$price;
+                                            //echo $_product->getSpecialPrice();
+                                    //echo $this->getPriceHtml($_product, true);
+                                        //echo preg_replace('~\.0+$~','',$this->getPriceHtml($_product, true));
+                                        //$decimal = $this->getPriceHtml($_product, true)
+                                        //$decimal = round($decimal,$places);
+                                     ?>
+                                     </span>
+                                    <?php // print_r($_product); ?>
+                                </td>
+                            </tr>
+                        </table>
+                        </a>
+                    </div>
+                <?php
+            } 
+            }
+        ?>
+            
+    <?php endif; ?>
+    <map name="primagemap">
+      <!-- <area shape="rect" coords="0,0,2,13" class="line1" href="javascript:void(0);" />
+      <area shape="poly" coords="12,0,16,0,10,13,4,13" class="line2" href="javascript:void(0);"/>
+      <area shape="poly" coords="27,4,28,7,19,13,14,13" class="line3" href="javascript:void(0);"/> -->
+      <area shape="poly" coords="0,13,0,2,4,5,9,10,12,13,12,15,6,15" class="line1" href="javascript:void(0);" />
+      <area shape="poly" coords="13,12,9,8,9,7,6,4,6,0,14,0,14,12" class="line2" href="javascript:void(0);" />
+      <area shape="poly" coords="16,14,16,0,25,0,23,3,23,4,20,7,20,9,17,12,17,15" class="line3" href="javascript:void(0);" />
+      <area shape="poly" coords="18,15,18,13,21,10,21,9,23,7,23,5,28,0,29,0,29,15" class="line4" href="javascript:void(0);" />
+    </map>
+    <?php /*
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+    */ ?>
+    <div style="clear: both;"></div>
+</div>
+<?php endif; ?>
+<?php
+    /*
+   $mic_time = microtime();
+   $mic_time = explode(" ",$mic_time);
+   $mic_time = $mic_time[1] + $mic_time[0];
+   $endtime = $mic_time;
+   $total_execution_time = ($endtime - $start_time);
+   echo "Total Executaion Time ".$total_execution_time." secondswe";
+   */
+?>

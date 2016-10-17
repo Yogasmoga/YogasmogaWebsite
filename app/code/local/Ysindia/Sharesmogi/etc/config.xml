@@ -3,8 +3,8 @@
 /**
  * @category   Ysindia
  * @package    Ysindia_Sharesmogi
- * @author     ModuleCreator
- * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author     Fahim Khan (Sr. Magento Developer)
+ *
  */
  -->
 <config>
@@ -94,17 +94,17 @@
                 </entities>
             </sharesmogi_mysql4>
         </models>
-       <!--<events>
-            <customer_register_success>
+      <!-- <events>
+            <checkout_onepage_controller_success_action>
                 <observers>
-                    <ysindia_sharesmogi_customer_register_success>
+                    <ysindia_sharesmogi_checkout_onepage_controller_success_action>
                         <type>singleton</type>
                         <class>Ysindia_Sharesmogi_Model_Observer</class>
-                        <method>customerRegisterSuccessForSmogi</method>
-                    </ysindia_sharesmogi_customer_register_success>
+                        <method>customerOrderSuccessForSmogi</method>
+                    </ysindia_sharesmogi_checkout_onepage_controller_success_action>
                 </observers>
-            </customer_register_success>
-        </events>-->
+            </checkout_onepage_controller_success_action>
+       </events>-->
         <resources>
             <sharesmogi_setup>
                 <setup>

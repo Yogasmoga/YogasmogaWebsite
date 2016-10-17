@@ -1,0 +1,289 @@
+<div class="namaskar-overlay1">&nbsp;</div>
+<script type="text/javascript">
+    jQuery(window).load(function(){
+        jQuery('body').css('overflow','auto');
+        jQuery('.namaskar-overlay1').fadeOut('slow');
+    });
+
+
+	jQuery(document).ready(function(){
+		jQuery('.colorFilterGrid a[href="javascript:void(0)"]').addClass('prevent-link');
+
+		var colorblockW = jQuery('.ysdiscover-colors .colorFilterGrid a').width();
+		var colorblockH = 86.324 * colorblockW/100;
+		jQuery('.ysdiscover-colors .colorFilterGrid a').height(colorblockH);
+	});
+	jQuery(window).resize(function(){
+		var colorblockW = jQuery('.ysdiscover-colors .colorFilterGrid a').width();
+		var colorblockH = 86.324 * colorblockW/100;
+		jQuery('.ysdiscover-colors .colorFilterGrid a').height(colorblockH);
+	});
+
+
+
+</script>
+<!-- startCMSPages -->
+<div class="gridCMSPages">
+	
+
+<!-- gridBlockOne -->
+	<div class="gridFullWidth ystopsection">
+		<!-- BlockLeft -->
+		<div class="block33">
+			<!-- leftNavigation -->
+			<div class="cmsNavigation">
+				<ul>
+					<li><a href="/ys-fabric-tech">YS Fabric Tech</a></li>
+					<li><a href="/ys-color-tech" class="current">Ys Color Tech</a></li>
+					<li><a href="/design-elements">YS Design Elements</a></li>
+				</ul>
+			</div>
+			<!-- leftNavigation -->
+
+			<!-- CMSheadingBlock -->
+			<div class="headingBlock">
+				<h1 class="positionAbs">YS Color<br />Tech</h1>
+			</div>
+			<!-- CMSheadingBlock -->
+		</div>
+		<!-- BlockLeft -->
+
+		<!-- BlockRight -->
+		<div class="block66 posRel">
+			<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-banner.jpg" alt="" class="img-responsive" />
+			<div class="positionAbs" id="ysbannertxt" style="top:32.4%">
+				<span class="topHead">Ys Color Tech</span>
+				<h4>
+					True colors
+					<span class="smallHead">FOR TODAY & TOMORROW</span>
+				</h4>
+				<!--a href="javascript:void(0)" class="linkheader white" id="discoverColor">Discover Our Colors</a-->
+			</div>
+			<!--<div style="position:absolute; width:100%; margin:0; bottom:40px;">
+				<a href="javascript:void(0)" class="linkheader white" id="discoverColor">Discover Our Colors</a>
+			</div>-->
+		</div>
+		<!-- BlockRight -->
+	</div>
+	<!-- gridBlockOne -->
+
+
+
+	<!-- gridBlockFour -->
+	<div id="email_link"  class="gridFullWidth ysdiscover-colors title-block">
+		<a name="discoverColor"></a>
+		<!-- BlockOne -->
+		<div class="block100">
+			<!-- contentPart -->
+			<div class="textContainer">
+				<strong>DISCOVER OUR Colors</strong>
+			</div>
+			<!-- contentPart -->
+		</div>
+		<!-- BlockOne -->
+
+	</div>
+	<!-- gridBlockFour -->
+
+	<!-- gridBlockFive -->
+	<div class="gridFullWidth ysdiscover-colors">
+		<div class="colorFilterGrid">
+			<?php $collection = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToSort('position', 'ASC');
+			foreach($collection as $category):
+				if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=43 ):
+					if($category->getLevel()==2 && $category->getIsActive()):
+
+						$url = $category->getUrl();
+						$name = $category->getName();
+						$colorString = trim($category->getYsColorTech());
+						$arr = explode(',',$colorString);
+						$bg = $arr[0];
+						$textclr = $arr[1];
+						$img = $arr[2];
+						$borderClass ="";
+						if(strtolower($bg) =="#fff" || strtolower($bg) =="#ffffff" || strtolower($bg) =="#fefefe"){
+							$borderClass ="ys-color-white";
+						}
+
+						$collection = Mage::getModel('catalog/category')
+							->load($category->getId())
+							->getProductCollection()
+							->addAttributeToFilter('type_id', 'simple')
+							->addAttributeToFilter(
+								'status',
+								array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
+							)
+							->addAttributeToSelect('*');
+						$productCount = count($collection);
+						?>
+						<?php if($productCount > 0): ?>
+						<a count="<?php echo $productCount ?>" class="<?php echo $borderClass;?>" href="<?php echo $url;?>" style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;">
+									<span>
+										<span  class="text-shop">Shop</span>
+										<?php if($category->getId()==119): ?>
+											<?php echo $name;?>&trade;
+										<?php else: ?>
+											<?php echo $name;?>
+										<?php endif; ?>
+									</span>
+									<span class="spn_hover">
+										<img src="<?php echo $this->getSkinUrl('images/colorgrid/').$img.".png"; ?>" alt="<?php echo $name; ?>"/>
+									</span>
+						</a>
+					<?php else: ?>
+						<a href="javascript:void(0);" class="prevent-link <?php echo $borderClass;?>"  style="background-color:<?php echo $bg;?>;color:<?php echo $textclr; ?>;">
+								<span>
+									<span  class="text-shop"></span>
+									<?php echo $name; ?>
+								</span>
+						</a>
+					<?php endif; ?>
+					<?php endif; ?>
+
+				<?php endif; ?>
+			<?php endforeach ?>
+		</div>
+
+	</div>
+	<!-- gridBlockFive -->
+
+
+
+
+
+
+
+
+	<!-- gridBlockTwo -->
+	<div class="gridFullWidth marginbottom50">
+		<!-- BlockOne -->
+		<div class="block30">
+			<!-- contentPart -->
+			<div class="textContainer">
+				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-friendly.jpg" alt="" class="img-responsive" />
+				<div class="iconBlock">
+					<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/Icon-Color-EcoDye.png" alt="" />
+				</div>
+				<div class="cntntheading">
+					ECO-FRIENDLY DYEING
+				</div>
+				<div class="contnttxt">
+					<p>While the best black is the YOGASMOGA Carbon 6 &mdash; a color that never fades, a true Yogi knows the new black must also come from a dye that does not pollute our waterways. We do not use any harmful formaldehyde based dyes that can seep into our groundwater.</p>
+				</div>
+			</div>
+			<!-- contentPart -->
+		</div>
+		<!-- BlockOne -->
+
+		<!-- BlockTwo -->
+		<div class="block30">
+			<!-- contentPart -->
+			<div class="textContainer">
+				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-colors.jpg" alt="" class="img-responsive" />
+				<div class="iconBlock">
+					<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/Icon-Color-Accuracy.png" alt="" />
+				</div>
+				<div class="cntntheading">
+					COLORS THAT WON<span class="r-quote">&rsquo;</span>t Bleed
+				</div>
+				<div class="contnttxt">
+					<p>We put our colors through multiple rounds of rigorous testing for each lot of fabric so we can prevent even minimal color bleed. All you need to worry about is how to style your deep, beautiful and saturated colors.</p>
+				</div>
+			</div>
+			<!-- contentPart -->
+		</div>
+		<!-- BlockTwo -->
+
+		<!-- BlockThree -->
+		<div class="block30">
+			<!-- contentPart -->
+			<div class="textContainer">
+				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-fade.jpg" alt="" class="img-responsive" />
+				<div class="iconBlock">
+					<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/Icon-Color-USAdye.png" alt="" />
+				</div>
+				<div class="cntntheading">
+					COLORS THAT WON<span class="r-quote">&rsquo;</span>T Fade
+				</div>
+				<div class="contnttxt">
+					<p>Color &mdash; it highlights your assets, brightens your mood. And we want that to last. But ever so often, colors fade so quickly &mdash; just ask our competitors. That’s about to change. Our colors go through the toughest tests to make sure they last for the long haul &mdash; warm or cold water. Because we have a true love for color, and for you, that won’t fade away.</p>
+				</div>
+			</div>
+			<!-- contentPart -->
+		</div>
+		<!-- BlockThree -->
+	</div>
+	<!-- gridBlockTwo -->
+
+	<!-- gridBlockThree -->
+	<div class="gridFullWidth iconrh">
+		<!-- BlockOne -->
+		<div class="block30">
+			<!-- contentPart -->
+			<div class="textContainer">
+				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-accuracy.jpg" alt="" class="img-responsive" />
+				<div class="iconBlock">
+					<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/Color-Accuracy-Icon.png" alt="" />
+				</div>
+				<div class="cntntheading">
+					COLOR ACCURACY
+				</div>
+				<div class="contnttxt">
+					<p>We use the most advanced computerized color matching and dyeing apparatus and high performance dye-jets. The dye-jets are custom programmed to use exact amount of pigmentation so that residual water after the dyeing is clear and run off can be released without adding harmful chemicals.</p>
+				</div>
+			</div>
+			<!-- contentPart -->
+		</div>
+		<!-- BlockOne -->
+
+		<!-- BlockTwo -->
+		<div class="block30">
+			<!-- contentPart -->
+			<div class="textContainer">
+				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-carbon.jpg" alt="" class="img-responsive" />
+				<div class="iconBlock">
+					<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/Icon-Color-Carbon6.png" alt="" />
+				</div>
+				<div class="cntntheading">
+					CARBON 6
+				</div>
+				<div class="contnttxt">
+					<p>A black so deep we trademarked it.<br />Introducing&mdash;Carbon 6.</p>
+					<p>Black &mdash; super slimming &amp; always flattering. And the darker it is, the hotter you look. But when we looked around with clear focus, it was obvious, black had been sold short &mdash; there was no true deep black to be found.</p>
+					<p>We spent two years creating our own black &mdash; Carbon 6 &mdash; using the highest quality pigments, Carbon 6 absorbs the highest amount of light, so it’s an intense, pure black. Simply put, when you wear it, you’ll look ravishing.</p>
+				</div>
+			</div>
+			<!-- contentPart -->
+		</div>
+		<!-- BlockTwo -->
+
+		<!-- BlockThree -->
+		<div class="block30">
+			<!-- contentPart -->
+			<div class="textContainer">
+				<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/ct-dyeing.jpg" alt="" class="img-responsive" />
+				<div class="iconBlock">
+					<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/Icon-Color-USAdye.png" alt="" />
+				</div>
+				<div class="cntntheading">
+					DYEING PROUDLY DONE<br />IN THE USA
+				</div>
+				<div class="contnttxt">
+					<p>Unlike many companies who have their dyeing facilities located in China, our dye-lab is located in the USA, in a geographical area with the toughest environmental and pollution standards.</p>
+				</div>
+			</div>
+			<!-- contentPart -->
+		</div>
+		<!-- BlockThree -->
+	</div>
+	<!-- gridBlockThree -->
+
+
+
+
+	<!-- bottomDivider -->
+	<div class="bottomdivider"></div>
+	<!-- bottomDivider -->
+
+</div>
+<!-- endCMSPages -->

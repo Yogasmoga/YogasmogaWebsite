@@ -1,0 +1,64 @@
+.flexslider{
+    margin-bottom:10px;
+    min-height: 200px;
+}
+p{}
+a{}
+.over-the-slide {
+    bottom: 0;
+    left: 0;
+    padding: 16% 0 !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.bold {
+    color: #fff;
+    font: 35px/43px AvantGardeGothicITCW01D;
+}
+.gold, .gold span{
+    color: #ad8536 !important;
+}
+.freight{
+    font:18px/25px freight;
+    color: #fff;
+}
+.freight span{
+    font-style: italic;
+}
+.light {
+    color: #fff;
+    font: 35px/43px AvantGardeGothicITCW01X;
+}
+.bold span {
+    color: #fff;
+    font: 35px/43px AvantGardeGothicITCW01X;
+}
+.see_more {
+    margin-top: 1% !important;
+}
+.see_more a{
+    color: #fff;
+    font: 11px/50px gothambook;
+}
+.bold_small {
+    color: #666;
+    font: 20px/24px AvantGardeGothicITCW01D;
+}
+.light_small {
+    color: #666;
+    font: 20px/24px AvantGardeGothicITCW01B;
+}
+.shop {
+    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/shop_arrow.png") no-repeat scroll right 8px / 9px auto rgba(0, 0, 0, 0);
+    display: inline-block;
+    line-height: 11px;
+    margin: 2% auto !important;
+    padding: 0 11px !important;
+}
+.shop > a {
+    font: 11px/24px AvantGardeGothicITCW01D;
+}
+.flexslider.page_header .flex-direction-nav{
+    display: none;
+}

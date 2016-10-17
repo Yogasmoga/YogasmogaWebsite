@@ -1,0 +1,697 @@
+<?php
+$storeId = Mage::app()->getStore()->getStoreId();
+$catId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+$_helper = Mage::helper('catalog/output');
+
+$productCollection = Mage::getModel('catalog/category')->load($catId)
+    ->getProductCollection()
+    ->addAttributeToSelect('*');
+
+$cities = array();
+$latlongs = array();
+$cityTimes = array();
+
+$resourceModel = Mage::getResourceModel('catalog/product');
+
+/***************** get all colors from database ***********************/
+$allColors = array();
+$allColorsNames = array();
+$allColorAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+$allColorOptions = $allColorAttribute->getSource()->getAllOptions(true, true);
+foreach ($allColorOptions as $instance) {
+    if (!array_key_exists($instance['value'], $allColors)) {
+        $allColors[$instance['value']] = $instance['label'];
+        $allColorsNames[$instance['label']] = $instance['value'];
+    }
+}
+/***************** get all sizes from database ***********************/
+$allSizes = array();
+$allSizeAttribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+$allSizeOptions = $allSizeAttribute->getSource()->getAllOptions(true, true);
+foreach ($allSizeOptions as $instance) {
+    if ($instance['label'] != "") {
+        if (is_numeric($instance['label']) && intval($instance['label']) > 12)
+            continue;
+
+        if (strpos(strtoupper($instance['label']), "T") !== false)
+            continue;
+
+        $allSizes[$instance['label']] = $instance['value'];
+    }
+}
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+      lang="<?php echo $this->getLang() ?>">
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass() ? ' class="' . $this->getBodyClass() . '"' : '' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="shopping-cart"></div>
+    <div class="page">
+
+        <?php echo $this->getChildHtml('header') ?>
+        <div class="gift_sets_landing_page">
+            <div class="ys_in_wanderland">
+                <h1 class="page-title">YS IN WANDERLAND</h1>
+
+                <p class="page-sub-title">2015 HOLIDAY GIFT SETS</p>
+
+                <p class="line"></p>
+            </div>
+            <div class="top_banners">
+                <div class="gift_sets_container">
+                    <?php
+                    $first = true;
+                    $productSetImagesLanding = array();
+                    $productSetImagesQuick = array();
+                    $productSetThumbnail = array();
+
+                    $outOfStockSets = array();      // stores ids of sets who itself or its bundled products are out of stock
+                    foreach ($productCollection as $_product_single) {
+                        $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
+
+                        if ($first) {
+                            $first = false;
+                            $firstProduct = $_product;
+                        }
+
+                        // check if gift set simple product is out of stock
+                        $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
+                        $outOfStock = false;
+                        foreach ($_childProducts as $simple) {
+
+                            $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple);
+                            $childSetPrice = $simple->getPrice();
+
+                            $parentStock = $productStock->getQty();
+                            $inStock = $productStock->getIsInStock();
+
+                            if($parentStock<=0 || !$inStock) {
+                                $outOfStock = true;
+                                $outOfStockSets[] = $_product_single->getId();
+                            }
+
+                            break;
+                        }
+
+                        if($outOfStock)
+                            ;//continue;
+
+                        /******************************  check if any of the gift set bundled products are out of stock *************************/
+                        $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
+
+                        if (isset($bundled_product_ids))
+                            $bundled_product_ids = trim($bundled_product_ids);
+
+                        $ar_bundled_product_ids = explode(",", $bundled_product_ids);
+
+                        $anyBundledOutOfStock = false;
+                        for ($i = 0; $i < count($ar_bundled_product_ids); $i++) {
+
+                            $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);          // id:color_code
+
+                            $bundle_configurable_id = $ar_id_color_code[0];
+                            $bundle_color_id = $ar_id_color_code[1];
+
+                            $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
+
+                            /************** check if all simple products are out of stock or not ********************/
+                            $allOutOfStock = true;
+                            $_bundleChildProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
+                            foreach($_bundleChildProducts as $_bundleChildProduct){
+
+                                /************ get color code of simple product and match it with passed color code **************/
+                                $bundleChildName = $_bundleChildProduct->getName();
+                                $bundleChildColor = $_bundleChildProduct->getAttributeText('color');
+                                $bundleChildColorName = substr($bundleChildColor, 0, strpos($bundleChildColor, "|"));
+                                $bundleChildColorCode = $allColorsNames[$bundleChildColorName];
+
+                                if($bundleChildColorCode==$bundle_color_id) {
+
+                                    $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_bundleChildProduct);
+
+                                    $stock = $productStock->getQty();
+                                    $inStock = $productStock->getIsInStock();
+
+                                    if ($stock > 0 && $inStock) {
+                                        $allOutOfStock = false;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if($allOutOfStock){
+                                $anyBundledOutOfStock = true;
+                                //break;
+                            }
+                        }
+
+                        if($anyBundledOutOfStock) {
+                            $outOfStockSets[] = $_product_single->getId();
+                            $outOfStock = true;
+                            //continue;
+                        }
+
+                        /******************************  check if any of the gift set bundled products are out of stock *************************/
+
+
+                        $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                        $setImage = "";
+                        if (isset($_gallery)) {
+                            foreach ($_gallery as $_image) {
+                                $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                                $dataMap = $imageLabelData['dataMap'];
+                                $person = $imageLabelData['person'];
+                                $image_type = $imageLabelData['image_type'];
+
+                                if($image_type=="landing") {
+                                    $setImageLanding = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
+                                    $thumbnail = $imageLabelData['thumbnail'];
+                                }
+                                else if($image_type=="quick")
+                                    $setImageQuick = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
+                            }
+                        }
+
+                        $productSetImagesLanding[$_product_single->getId()] = $setImageLanding;
+                        $productSetImagesQuick[$_product_single->getId()] = $setImageQuick;
+
+                        $personClass = "person_" . $person;
+
+                        $thumbnailPathFinal = $this->getSkinUrl('images/combo/sets/final/' . $thumbnail);
+                        //$thumbnailPathHover = $this->getSkinUrl('images/combo/sets/hover/' . $thumbnail);
+                        //$thumbnailPathGold = $this->getSkinUrl('images/combo/sets/gold/' . $thumbnail);
+
+                        $productSetThumbnail[$_product_single->getId()] = array("final" => $thumbnailPathFinal, "hover" => $thumbnailPathHover, "gold" => $thumbnailPathGold);
+
+                        ?>
+                        <div rel="<?php echo $_product_single->getId();?>" class="gift_set_link <?php echo $personClass; ?>"
+                             data-map="<?php echo $dataMap; ?>">
+                            <!--top,left-->
+                            <p class="pname"><span><?php echo $_product->getName(); ?></span><br/>SET</p>
+
+                            <?php if($outOfStock){ ?>
+                                <p class="pprice" rel="sold out">Sold Out</p>
+                            <?php }else{ ?>
+                                <p class="pprice" rel="<?php echo round($_product->getPrice(), 0) . ":" . round($childSetPrice, 0); ?>">
+                                    $<?php echo round($childSetPrice, 0); ?>
+                                </p>
+                            <?php } ?>
+
+                            <img src="<?php echo $thumbnailPathFinal;?>"/>
+                        </div>
+                    <?php } ?>
+                </div>
+                <div class="map_data_section">
+                    <div class="map_data_container">
+                        <div class="box coordinate">
+                            <div class="time">
+                                <div></div>
+                            </div>
+                            <p class="latlong"></p>
+                        </div>
+                        <div class="box set_name">
+                            <p class="page-title_fixed">YS IN WANDERLAND</p>
+
+                            <p class="product_name"><?php echo $firstProduct->getName(); ?></p>
+
+                            <p class="product_price">$<?php echo round($firstProduct->getPrice(), 0); ?></p>
+                        </div>
+                        <div class="box map">
+                        <span class="world_map">
+                            <i></i>
+                        </span>
+
+                            <div class="temprature">
+                                <div><span class="temp"></span> 42&deg;F</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="setmargin" style="height: 160px; display: none;"></div>
+            <div id="fullpage" class="slider set_section">
+
+                <?php
+
+                $arBundledProductImages = array();
+
+                foreach ($productCollection as $_product_single) {
+
+                    // if this gift set is out of stock or any of its bundled items are out of stock
+                    $outOfStock = false;
+                    if(in_array($_product_single->getId(), $outOfStockSets))
+                        $outOfStock = true;
+
+                    $_product = Mage::getModel('catalog/product')->load($_product_single->getId());
+                    $setProductUrl = $_product->getProductUrl();
+
+                    $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product_single);
+                    foreach ($_childProducts as $simple) {
+                        $parentStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($simple)->getQty();
+                        $childSetPrice = $simple->getPrice();
+                        break;
+                    }
+
+                    $bundled_product_ids = $resourceModel->getAttributeRawValue($_product->getId(), 'bundle_products', $storeId);
+
+                    if (isset($bundled_product_ids))
+                        $bundled_product_ids = trim($bundled_product_ids);
+
+                    $ar_bundled_product_ids = explode(",", $bundled_product_ids);
+
+                    $ar_bundle_sizes = array();
+
+                    /************ get color code of configurable product **************/
+                    $productAttributeOptions = $_product->getTypeInstance(true)->getConfigurableAttributesAsArray($_product);
+                    foreach ($productAttributeOptions as $productAttribute) {
+                        foreach ($productAttribute['values'] as $attribute) {
+                            if ($productAttribute['label'] == 'Color') {
+                                $gift_simple_color = $attribute['value_index'];
+                                break;
+                            }
+                        }
+                    }
+                    /************ get color code of configurable product **************/
+
+                    $gift_simple_id = $_product_single->getId();
+                    $gift_bundle_count = count($ar_bundled_product_ids);
+
+                    for ($i = 0; $i < count($ar_bundled_product_ids); $i++) {
+
+                        $ar_id_color_code = explode(":", $ar_bundled_product_ids[$i]);          // id:color_code
+
+                        $bundle_configurable_id = $ar_id_color_code[0];
+                        $bundle_color_id = $ar_id_color_code[1];
+
+                        $_bundle_product = Mage::getModel('catalog/product')->load(intval($bundle_configurable_id));
+                        //$bundledProductUrl = $_bundle_product->getProductUrl() . '?color=' . $bundle_color_id;
+						$bundledProductUrl = Mage::getBaseUrl().$_bundle_product->getUrlKey() . '?color=' . $bundle_color_id;
+
+                        $_gallery = Mage::getModel('catalog/product')->load($_bundle_product->getId())->getMediaGalleryImages();
+
+                        $bundle_product_images = array();
+
+                        if (isset($_gallery)) {
+                            foreach ($_gallery as $_image) {
+                                $imageLabelData = json_decode(trim($_image->getLabel()), true);
+
+                                if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                                    continue;
+
+                                if ($imageLabelData['color'] == $ar_id_color_code[1]) {
+                                    $big_image = (string)Mage::helper('adaptiveResize/image')->init($_bundle_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(900);
+                                    //$bundle_product_images[] = $url;
+                                    break;
+                                }
+                            }
+                        }
+
+                        $_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_bundle_product);
+                        $ar_child_sizes = array();
+                        foreach ($_childProducts as $_childProduct) {
+                            $size = $_childProduct->getAttributeText('size');
+
+                            if (is_numeric($size) && intval($size) > 12)
+                                continue;
+
+                            if (strpos(strtoupper($size), "T") !== false)
+                                continue;
+
+                            $productStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct);
+
+                            $childColor = $_childProduct->getAttributeText('color');
+                            $childColorName = substr($childColor, 0, strpos($childColor, "|"));
+                            $childColorCode = $allColorsNames[$childColorName];
+
+                            if($childColorCode!=$bundle_color_id)
+                                continue;
+
+                            $stock = $productStock->getQty();
+                            $inStock = $productStock->getIsInStock();
+
+                            $sizeInStock = "";
+                            if($stock<=0 || !$inStock)
+                                $sizeInStock = "_";
+
+                            $ar_child_sizes[] = $sizeInStock . $size;
+/*
+                            if (is_numeric($size))
+                                $ar_child_sizes[] = intval($size);
+                            else
+                                $ar_child_sizes[] = $size;
+*/
+                        }
+
+                        $ar_child_sizes = array_unique($ar_child_sizes);
+                        ksort($ar_child_sizes);
+
+                        $ar_bundle_sizes[$i] = array(
+                            "product_name" => $_bundle_product->getName(),
+                            "product_id" => $_bundle_product->getId(),
+                            "price" => round($_bundle_product->getPrice(), 2),
+                            "sizes" => $ar_child_sizes,
+                            "big_image" => $big_image,
+                            "color" => $allColors[$bundle_color_id],
+                            "color_code" => $bundle_color_id,
+                            "url" => $bundledProductUrl,
+                            "inventory_status" => $inventoryStatus
+
+                        );
+
+                        $arBundledProductImages[$_bundle_product->getId()] = array("big_image" => $big_image);
+                    }
+
+                    // main set images
+                    $setImage = "";
+                    $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                    if (isset($_gallery)) {
+                        foreach ($_gallery as $_image) {
+                            $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                            $city = $imageLabelData["city"];
+                            $latlong = $imageLabelData["latlong"];
+                            $cityTime = $imageLabelData["cityTime"];
+
+                            $cities[] = $city;
+                            $latlongs[] = $latlong;
+                            $cityTimes[] = $cityTime;
+                            $person = $imageLabelData['person'];
+
+                            //$setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(500);
+                            $setImage = (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile());
+                            break;                    // we want to read first image only
+                        }
+                    }
+                    ?>
+
+                    <div class="section contain_product person_<?php echo $person;?>">
+                        <div class="product_set">
+                            <div class="side2 flipped">
+
+                                <span class="reverse_flip">&plus;</span>
+
+                                <div class="product_container">
+                                    <div class="thumbnails">
+
+                                        <?php
+                                        for ($x = 0; $x < count($ar_bundle_sizes); $x++) {
+
+                                            $bundle = $ar_bundle_sizes[$x];
+                                            ?>
+
+                                            <div class="thumbnail" rel="<?php echo $bundle['product_id']; ?>">
+                                                <img src="<?php echo $bundle['big_image']; ?>"/>
+                                            </div>
+
+                                        <?php } ?>
+
+                                    </div>
+                                    <div class="product_slider">
+                                        <div class="slider">
+                                            <img src="<?php echo $productSetImagesQuick[$_product_single->getId()]; ?>"/>
+                                        </div>
+                                    </div>
+                                    <div class="product_filters">
+                                        <p class="product_name"><?php echo $_product->getName(); ?> SET</p>
+
+                                        <p class="product_price">
+                                            <?php if(!$outOfStock){ ?>
+
+                                                $<?php echo round($childSetPrice, 0); ?> <b>(a $<?php echo round($_product->getPrice(),0);?> value)</b>
+                                                <span style="display: block;"><?php echo round($parentStock, 2); ?> SETS REMAINING</span>
+
+                                            <?php }else{ ?>
+                                                Sold Out
+                                            <?php } ?>
+                                        </p>
+
+                                        <?php
+                                        $sizeDivCount = -1;
+
+                                        foreach ($ar_bundle_sizes as $product => $data) {
+                                            ++$sizeDivCount;
+                                            ?>
+                                            <div class="set_item">
+
+                                                <div class="product_detail product-detail-<?php echo $sizeDivCount; ?>"
+                                                     rel="<?php echo $data["product_id"]; ?>">
+                                                    <p class="pname"><a href="<?php echo $data["url"]; ?>"
+                                                                        target="_blank"><?php echo $data["product_name"]; ?></a>
+                                                        <span class="pcolor product-color-<?php echo $sizeDivCount; ?>"
+                                                              rel="<?php echo $data["color_code"]; ?>"><?php echo $data["color"]; ?></span>
+                                                    </p>
+
+                                                    <p class="psold">$<?php echo $data["price"];?> Sold Individually</p>
+
+                                                    <?php if(!$outOfStock){ ?>
+                                                    <p class="psize">
+                                                        <span class="gap">SIZE:</span>
+                                            <span class="sizes">
+                                                <?php
+                                                foreach ($allSizes as $key => $value) {
+                                                    foreach ($data["sizes"] as $size) {
+
+                                                        if(substr($size,0,1)=="_") {        // underscore means size is out of stock
+
+                                                            $size = substr($size,1);
+
+                                                            if ($size == $key) {
+                                                                ?>
+                                                                <span class="size size-<?php echo $sizeDivCount; ?> outofstock"
+                                                                      rel="<?php echo $value; ?>"><?php echo $key; ?><img src="<?php echo $this->getSkinUrl('/images/out-of-stock.png'); ?>"/></span>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        else{
+
+                                                            if ($size == $key) {
+                                                                ?>
+                                                                <span class="size size-<?php echo $sizeDivCount; ?>"
+                                                                      rel="<?php echo $value; ?>"><?php echo $key; ?></span>
+                                                                <?php
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                ?>
+                                            </span>
+
+                                                    </p>
+
+                                                    <?php } ?>
+
+                                                    <!--<span class="size-chart-bundle">SIZE CHART</span>-->
+
+                                                </div>
+                                            </div>
+
+                                        <?php } ?>
+									<!--
+                                        <div class="add_to_wishlist"
+                                             rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">
+                                            ADD TO WISHLIST +
+                                        </div>
+									-->
+
+
+
+                                <?php if(!$outOfStock){ ?>
+
+                                <?php
+                                $_in_wishlist = false;
+                                foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item) {
+                                    if ($productId == $_wishlist_item->getProduct()->getId()) {
+                                        $_in_wishlist = true;
+                                        break;
+                                    }
+                                }
+
+                                if (($customerId = Mage::getSingleton('customer/session')->getCustomerId()) && ($_in_wishlist)) {
+                                    ?>
+                                    <div class="add_to_wishlist">
+                                        <a
+                                            onlick="javascript:void(0)">ADDED TO WISH LIST</a></div>
+                                    <?php
+                                } else {
+                                    ?>
+									<div class="add_to_wishlist wishlist_<?php echo $_product->getId(); ?>" rel="<?php echo $_product->getId(); ?>">
+									<a style="border:none;color:#fff" id="<?php echo $_product->getId(); ?>"
+                                                                href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $_product->getId(); ?>/">ADD
+                                            TO WISH LIST +</a></div>
+                                <?php } ?>
+
+                                <?php } ?>
+
+                                <?php if(!$outOfStock){ ?>
+
+                                        <div class="add_to_bag"
+                                             rel="<?php echo $gift_simple_id; ?>:<?php echo $gift_simple_color; ?>:<?php echo $gift_bundle_count; ?>">
+                                            ADD TO BAG
+                                        </div>
+                                        <p class="free_shipping">Free and fast shipping to US and Canada</p>
+
+                                <?php } ?>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side1" style="background:#f3f3f3 url('<?php echo $productSetImagesLanding[$_product_single->getId()];?>') no-repeat scroll center center/auto 100%;">
+                                <p class="product_name"><?php echo $_product->getName(); ?> SET</p>
+
+                                <?php if(!$outOfStock){ ?>
+                                    <p class="product_price">$<?php echo round($childSetPrice, 0); ?> <span>(a $<?php echo round($_product->getPrice(), 0); ?> value)</span></p>
+                                <?php }else{ ?>
+                                    <p class="product_price">Sold Out</p>
+                                <?php } ?>
+
+                                <p class="buy_product">
+
+                                    <a class="quick_look" href="">QUICK LOOK <b>&gt;</b></a>
+
+                                    <?php if($outOfStock){ ?>
+
+                                        <a class="buy_gift_set" style="color:#ccc"
+                                           href="<?php echo $setProductUrl; ?>">GET <?php echo $_product->getName(); ?> <b>
+                                                &gt;</b></a>
+
+                                    <?php }else{ ?>
+
+                                    <a class="buy_gift_set"
+                                        href="<?php echo $setProductUrl; ?>">GET <?php echo $_product->getName(); ?> <b>
+                                            &gt;</b></a>
+
+                                <?php } ?>
+
+                                </p>
+
+                                <p class="toggle_description">SEE DETAILS <b>&gt;</b></p>
+                            </div>
+                        </div>
+
+                        <div class="description_box">
+                            <div class="rel_container">
+                                <!--                        <span class="close_desc">&plus;</span>-->
+                                <div class="set_desc">
+
+                                    <b><?php echo $_product->getName(); ?> SET</b><br/>
+
+                                    <p><?php echo $_helper->productAttribute($_product, $_product->getShortDescription(),'short_description');//$_product->getDescription(); ?></p>
+
+                                </div>
+                                <div class="middle_desc">
+                                    <?php
+                                    foreach ($ar_bundle_sizes as $data) {
+                                        ?>
+                                        <div>
+                                            <b><?php echo $data["product_name"]; ?></b><br/>
+                                            <span class="desc_product_color"><?php echo $data["color"]; ?></span><br/>
+                                            $<?php echo $data["price"]; ?><br/>
+                                            <a href="<?php echo $data["url"]; ?>" target="_blank">Sold Individually</a>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+
+                                <div class="right_desc">
+
+                                    <?php if($outOfStock){ ?>
+
+                                        <p><a href="javascript:void(0)"><?php echo $_product->getName(); ?> <span style="color:#c03;">&gt;</span></a></p>
+                                        <b>Sold Out</b>
+
+                                    <?php }else{ ?>
+
+                                    <p><a href="<?php echo $setProductUrl;?>">GET <?php echo $_product->getName(); ?> <span style="color:#c03;">&gt;</span></a></p>
+                                    <b><?php echo round($parentStock, 0); ?> remaining</b>
+
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php }
+
+                ?>
+
+				<script>
+				 jQuery(function ($) {
+					wishList();
+						function wishList() {
+							var wishlist = ".add_to_wishlist";
+							//jQuery(wishlist).live("click", "a", function (event) {
+							jQuery(".add_to_wishlist a").click(function (event) {
+								
+								var currentObject = jQuery(this);
+								
+								event.preventDefault();
+								if (!_islogedinuser) {
+									_isClickAddtowishlist = true;
+									jQuery("#signing_popup").dialog("open");
+								}
+								if (_islogedinuser) {
+									var productid = jQuery(this).attr('id');
+									
+										if (window.location.href.indexOf('https://') >= 0)
+										_usesecureurl = true;
+									else
+										_usesecureurl = false;
+									var url = homeUrl + 'mynewtheme/addtowishlist/applyAddToWishlist';
+									if (_usesecureurl)
+										url = securehomeUrl + 'mynewtheme/addtowishlist/applyAddToWishlist';
+									jQuery.ajax({
+										type: 'POST',
+										url: url,
+										data: {'productid': productid, 'imagetype': 'quick'},
+											success: function (data) {
+											data = eval('(' + data + ')');
+											var status = data.status;
+											if (status == "success") {
+												currentObject.text("ADDED TO WISH LIST").css("color", "#D90D3D");
+											}
+											else {
+												jQuery(this).text(data.errors).css("color", "#D90D3D");
+											}
+
+										}
+
+									});
+
+								}
+							});
+						}
+
+					});
+				</script>
+
+                <script type="text/javascript">
+                    <?php foreach($cities as $city){ ?>
+                    cities.push("<?php echo $city;?>");
+                    temperatures.push('');
+                    <?php } ?>
+
+                    <?php foreach($latlongs as $latlong){ ?>
+                    latlongs.push("<?php echo $latlong;?>");
+                    <?php } ?>
+
+                    <?php foreach($cityTimes as $cityTime){ ?>
+                    cityTimes.push("<?php echo $cityTime;?>");
+                    <?php } ?>
+                </script>
+
+                <div style="font:12px/15px GothamBook; color:#555; padding: 25px 50px 0px; text-align: left">*To order more than 1 of the same set, please place a separate order.</div>
+                <?php echo $this->getChildHtml('footer') ?>
+                <?php echo $this->getChildHtml('before_body_end') ?>
+            </div>
+
+        </div>
+    </div>
+
+    <?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

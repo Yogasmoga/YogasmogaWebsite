@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#AAAAAA;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#FF0000;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FF0000;}
+	.st3{fill:#FFFFFF;}
+	.st4{fill:#AAAAAA;}
+	.st5{fill-rule:evenodd;clip-rule:evenodd;fill:#555555;}
+	.st6{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#555555;stroke-miterlimit:10;}
+	.st7{fill:#17C8FF;}
+	.st8{fill:none;stroke:#17C8FF;stroke-miterlimit:10;}
+	.st9{fill:none;stroke:#AAAAAA;stroke-miterlimit:10;}
+	.st10{fill:#AAAAAA;stroke:#FFFFFF;stroke-miterlimit:14;}
+	.st11{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#555555;stroke-width:1.4586;stroke-miterlimit:10;}
+	.st12{fill:none;stroke:#555555;stroke-width:1.4586;stroke-miterlimit:10;}
+	.st13{fill:none;stroke:#555555;stroke-miterlimit:10;}
+	.st14{fill:none;stroke:#17C8FF;stroke-width:1.274;stroke-miterlimit:10;}
+	.st15{fill:none;stroke:#17C8FF;stroke-width:1.3845;stroke-miterlimit:10;}
+	.st16{fill:none;stroke:#AAAAAA;stroke-width:1.3937;stroke-miterlimit:10;}
+	.st17{fill:none;stroke:#17C8FF;stroke-width:1.3937;stroke-miterlimit:10;}
+	.st18{fill:#555555;}
+	.st19{fill:#FF8D00;}
+	.st20{fill:none;stroke:#FFCF00;stroke-miterlimit:10;}
+	.st21{fill:none;stroke:#FFFFFF;stroke-width:1.3213;stroke-miterlimit:10;}
+	.st22{fill:none;}
+	.st23{clip-path:url(#SVGID_4_);}
+	.st24{fill:none;stroke:#FFFFFF;stroke-width:0.885;stroke-miterlimit:10;}
+	.st25{clip-path:url(#SVGID_6_);}
+	.st26{fill:none;stroke:#555555;}
+	.st27{fill:none;stroke:#17C8FF;}
+	.st28{fill:#FF0000;}
+	.st29{fill:none;stroke:#231F20;stroke-miterlimit:10;}
+	.st30{fill:#FFCF00;stroke:#FFCF00;stroke-miterlimit:10;}
+	.st31{fill:#FFCF00;}
+	.st32{display:none;}
+	.st33{display:inline;}
+	.st34{fill:#FF7950;}
+	.st35{display:inline;fill:#FF00FF;}
+	.st36{fill:#FF00FF;}
+	.st37{display:inline;fill:none;stroke:#FF00FF;stroke-miterlimit:10;}
+	.st38{fill:none;stroke:#FF7950;stroke-miterlimit:10;}
+	.st39{display:inline;fill:none;}
+	.st40{display:inline;fill:#555555;}
+	.st41{font-family:'Graphik-Regular';}
+	.st42{font-size:14px;}
+	.st43{display:inline;fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#FF00FF;stroke-miterlimit:10;}
+	.st44{fill:none;stroke:#FF00FF;stroke-width:0.9554;stroke-miterlimit:10;}
+	.st45{fill:none;stroke:#FF00FF;stroke-width:0.9554;stroke-miterlimit:10;stroke-dasharray:1.9094,1.9094;}
+	.st46{fill:none;stroke:#FF00FF;stroke-width:0.9554;stroke-miterlimit:10;stroke-dasharray:1.848,1.848;}
+	.st47{fill:none;stroke:#FF00FF;stroke-width:0.905;stroke-miterlimit:10;}
+	.st48{fill:none;stroke:#FF00FF;stroke-width:0.905;stroke-miterlimit:10;stroke-dasharray:1.7098,1.7098;}
+	.st49{fill:none;stroke:#FF00FF;stroke-width:0.905;stroke-miterlimit:10;stroke-dasharray:1.6887,1.6887;}
+	.st50{fill:none;stroke:#FF00FF;stroke-width:0.9472;stroke-miterlimit:10;}
+	.st51{fill:none;stroke:#FF00FF;stroke-width:0.9472;stroke-miterlimit:10;stroke-dasharray:1.9322,1.9322;}
+	.st52{fill:none;stroke:#FF00FF;stroke-width:0.9472;stroke-miterlimit:10;stroke-dasharray:1.9477,1.9477;}
+	.st53{fill:none;stroke:#FF00FF;stroke-width:0.9637;stroke-miterlimit:10;}
+	.st54{fill:none;stroke:#FF00FF;stroke-width:0.9637;stroke-miterlimit:10;stroke-dasharray:1.9581,1.9581;}
+	.st55{fill:none;stroke:#FF00FF;stroke-width:0.9637;stroke-miterlimit:10;stroke-dasharray:1.8671,1.8671;}
+	.st56{fill:none;stroke:#FF00FF;stroke-miterlimit:10;}
+	.st57{fill:none;stroke:#FF00FF;stroke-miterlimit:10;stroke-dasharray:2.0018,2.0018;}
+	.st58{fill:none;stroke:#FF00FF;stroke-miterlimit:10;stroke-dasharray:2.0037,2.0037;}
+	.st59{fill:none;stroke:#FF00FF;stroke-miterlimit:10;stroke-dasharray:2.0124,2.0124;}
+	.st60{fill:none;stroke:#FF00FF;stroke-miterlimit:10;stroke-dasharray:2.0615,2.0615;}
+	.st61{fill:none;stroke:#FF00FF;stroke-miterlimit:10;stroke-dasharray:2.0088,2.0088;}
+	.st62{fill:none;stroke:#FF00FF;stroke-miterlimit:10;stroke-dasharray:1.9127,1.9127;}
+	.st63{fill:none;stroke:#FF00FF;stroke-miterlimit:10;stroke-dasharray:1.9674,1.9674;}
+	.st64{fill:none;stroke:#FF00FF;stroke-miterlimit:10;stroke-dasharray:2.0152,2.0152;}
+</style>
+<g id="images">
+</g>
+<g id="graphic">
+	<g id="Sun_1_">
+		<g>
+			<line class="st1" x1="30" y1="14.4" x2="30" y2="45.6"/>
+			<line class="st1" x1="24.7" y1="15.3" x2="35.3" y2="44.7"/>
+			<line class="st1" x1="20" y1="18" x2="40" y2="42"/>
+			<line class="st1" x1="16.5" y1="22.2" x2="43.5" y2="37.8"/>
+			<line class="st1" x1="14.6" y1="27.3" x2="45.4" y2="32.7"/>
+			<line class="st1" x1="14.6" y1="32.7" x2="45.4" y2="27.3"/>
+			<line class="st1" x1="16.5" y1="37.8" x2="43.5" y2="22.2"/>
+			<line class="st1" x1="20" y1="42" x2="40" y2="18"/>
+			<line class="st1" x1="24.7" y1="44.7" x2="35.3" y2="15.3"/>
+		</g>
+		<g>
+			<path class="st2" d="M30,37.5c-4.1,0-7.5-3.4-7.5-7.5s3.4-7.5,7.5-7.5s7.5,3.4,7.5,7.5S34.1,37.5,30,37.5z"/>
+			<path class="st3" d="M30,23.5c3.6,0,6.5,2.9,6.5,6.5c0,3.6-2.9,6.5-6.5,6.5s-6.5-2.9-6.5-6.5C23.5,26.4,26.4,23.5,30,23.5
+				 M30,21.5c-4.7,0-8.5,3.8-8.5,8.5s3.8,8.5,8.5,8.5s8.5-3.8,8.5-8.5S34.7,21.5,30,21.5L30,21.5z"/>
+		</g>
+	</g>
+</g>
+<g id="button">
+</g>
+<g id="text">
+</g>
+<g id="guide">
+</g>
+<g id="SPEC" class="st32">
+	<rect x="-21.8" y="-29.6" class="st39" width="176.2" height="58.4"/>
+	<text transform="matrix(1 0 0 1 16.062 -18.7916)" class="st40 st41 st42">AM/PM (stroke)</text>
+</g>
+<g id="Isolation_Mode">
+</g>
+</svg>

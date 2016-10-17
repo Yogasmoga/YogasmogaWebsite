@@ -1,0 +1,1077 @@
+body{
+    color: #555 !important;
+}
+.gift_sets_landing_page * {
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+a, a:hover {
+    color: #555;
+}
+
+.header-container::after {
+    border-top: 1px solid #555;
+    left: 50px;
+    position: absolute;
+    right: 50px;
+}
+
+/* *******************MAIN CSS ***************************** */
+.header-container {
+    top: 0 !important;
+}
+
+div#bodycompensator {
+    height: 94px !important;
+}
+
+#top_banner {
+    background: #AE8637;
+    color: #fff;	
+}
+
+.section {
+    min-height: 512px;
+    overflow-x: hidden;
+    margin: auto;
+    margin-bottom: 14px;
+    overflow-y: hidden;
+    max-width: 1600px;
+}
+
+.section .product_set .side1 {
+    background: #f3f3f3;
+}
+
+.section .product_set .side2 {
+    background: #e6e6e5;
+}
+
+#fullpage{
+    visibility: hidden;
+}
+
+#fullpage .section {
+    position: relative;
+}
+
+#top_banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 100%;
+    font: 11px/25px ITCAvantGardeProBk;
+    z-index: 10;
+	text-transform: uppercase;
+}
+
+#top_banner p {
+    text-align: center;
+}
+
+.map_data_container * {
+    box-sizing: border-box;
+}
+
+.map_data_section {
+    background: #fff none repeat scroll 0 0;
+    height: 80px;
+    margin-top: 0;
+    transition-duration: 0s;
+    width: 100%;
+}
+
+.map_data_section .box p {
+    font: 11px/20px GothamBook;
+}
+
+.map_data_section .box .square {
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    background: #f3f3f3;
+}
+
+.map_data_section .box {
+    float: left;
+    width: 33.33%;
+    text-align: center;
+    height: 80px;
+    position: relative;
+}
+
+.map_data_section .box img {
+    width: 106px;
+    margin-left: 30px;
+}
+
+.map_data_section .temprature, .map_data_section .time {
+    font: 36px /80px AvantGardeGothicITCW01X;
+    color: #555;
+}
+
+.map_data_section .time {
+    text-align: left;
+    position: absolute;
+    width: 150px;
+    left: 0;
+    top: 0;
+}
+
+.map_data_section .temprature {
+    text-align: right;
+    position: absolute;
+    width: 150px;
+    right: 0;
+    top: 0;
+}
+
+.map_data_section .box.coordinate {
+    padding-left: 150px;
+}
+
+.map_data_section .box.coordinate p {
+    text-align: center;
+}
+
+.map_data_section .box.map {
+    padding-right: 150px;
+}
+
+.description_box {
+    background: #fff;
+    position: fixed;
+    bottom: -130px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    padding: 22px;
+    transition-duration: 500ms;
+    z-index: 11;
+    text-align: left;
+}
+
+.description_box.show {
+    opacity: 1;
+    bottom: 0;
+    color: #555;
+    transition-duration: 200ms;
+}
+
+.description_box.show_fast {
+    opacity: 1;
+    bottom: 0;
+    color: #555;
+    transition-duration: 0ms;
+}
+
+.set_desc, .middle_desc {
+    padding: 0 20px;
+}
+
+.set_desc {
+    float: left;
+    width: 32.2226%;
+}
+
+.middle_desc {
+    width: 38.28%;
+}
+
+.middle_desc .desc_product_color {
+    text-transform: uppercase;
+}
+
+.middle_desc, .middle_desc div, .right_desc {
+    float: left;
+    font: 11px/15px GothamBook;
+}
+
+.right_desc p {
+    text-transform: uppercase;
+}
+
+.set_desc p {
+    font: 11px/15px GothamBook;
+}
+/*
+.middle_desc {
+    width: 35%;
+}
+*/
+.middle_desc div {
+    width: 33.33%;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.right_desc {
+    float: right;
+    padding-right: 20px;
+}
+
+.set_desc b, .middle_desc b, .middle_desc div b {
+    font: normal 11px/15px GothamBold;
+    text-transform: uppercase;
+}
+
+.middle_desc div b {
+    text-transform: uppercase;
+}
+
+.right_desc p {
+    font: 21px/18px AvantGardeGothicITCW01B;
+}
+
+.contain_product .side1 .product_name {
+    margin-top: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #555;
+}
+
+.contain_product .side1 .product_price {
+    text-align: center;
+    font: 16px/20px AvantGardeGothicITCW01B;
+    color: #555;
+    padding-top: 10px;
+}
+.contain_product .side1 .product_price span{
+    text-align: center;
+    color: #999;
+}
+
+.contain_product .product_price {
+    font: 11px/36px GothamBook;
+    color: #555;
+}
+
+.contain_product .product_name {
+    font: 36px/20px AvantGardeGothicITCW01B;
+    text-transform: uppercase;
+}
+
+.contain_product .side2 .product_name {
+    font: 24px/20px AvantGardeGothicITCW01B;
+}
+
+.contain_product .side2 .product_price {
+    /* font: 11px/17px GothamBook; */
+    font: 24px/20px AvantGardeGothicITCW01B;
+    position: relative;
+}
+
+.contain_product .buy_product {
+    font: 11px / 15px GothamBook;
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.contain_product .buy_product a {
+    text-decoration: none;
+    color: #555;
+    text-transform: uppercase;
+}
+
+.contain_product .buy_product a.quick_look {
+    margin-right: 15px;
+}
+
+.contain_product .buy_product a b {
+    color: #CC0033;
+}
+
+.product_set {
+    /*box-shadow: 0 0 10px #000;*/
+    position: relative;
+    height: 100%;
+    /*perspective: 1500px;*/
+    padding-top: 36px;
+}
+
+.flipped {
+    transform: rotate3d(0, 1, 0, 180deg) translateZ(1px);
+    -webkit-transform: rotate3d(0, 1, 0, 180deg) translateZ(1px);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transform-origin: center 50%;
+    -webkit-transform-origin: center 50%;
+    transition: all 2s ease 0s;
+    -webkit-transition: all 2s ease 0s;
+}
+
+.inverse-flipped {
+    transform: rotate3d(0, 1, 0, -180deg) translateZ(1px);
+    -webkit-transform: rotate3d(0, 1, 0, -180deg) translateZ(1px);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transform-origin: center 50%;
+    -webkit-transform-origin: center 50%;
+    transition: all 2s ease 0s;
+    -webkit-transition: all 2s ease 0s;
+}
+
+.product_set .side1 {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    transition: all 2s ease 0s;
+    -webkit-transition: all 2s ease 0s;
+    right: 0;
+    top: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.product_set .side2 {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    bottom: 0;
+    left: 0;
+    transition: all 2s ease 0s;
+    -webkit-transition: all 2s ease 0s;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 0;
+}
+
+.product_set.flipped .side2 {
+    transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+}
+
+.product_set .side2 .product_container {
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1310px;
+    padding-right: 392px;
+    padding-left: 198px;
+    position: relative;
+}
+
+.product_set .side2 .product_container .thumbnails {
+    float: left;
+    left: 0;
+    padding: 0 40px;
+    position: absolute;
+    width: 198px;
+}
+
+.product_set .side2 .product_container .thumbnails .thumbnail {
+    width: 100%;
+    margin: 40px 0;
+    cursor: pointer;
+    background: #fff;
+}
+
+.product_set .side2 .product_container .thumbnails .thumbnail img {
+    width: 100%;
+    height: auto;
+}
+
+.product_set .side2 .product_container .product_slider {
+    float: left;
+    padding: 40px 0;
+    width: 100%;
+}
+
+.product_set .side2 .product_container .product_slider .slider {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.product_set .side2 .product_container .product_slider .slider img {
+    width: 100%;
+    /*max-width: 700px;*/
+    height: auto;
+}
+
+.product_set .side2 .product_container .product_filters {
+    float: right;
+    padding: 40px;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    width: 398px;
+}
+
+.product_set .side2 span.reverse_flip {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #ccc;
+    cursor: pointer;
+    display: block;
+    float: right;
+    font: 27px/22px AvantGardeGothicITCW01X;
+    height: 26px;
+    position: absolute;
+    right: 40px;
+    text-align: center;
+    top: 33px;
+    transform: rotateZ(45deg);
+    -webkit-transform: rotateZ(45deg);
+    transform-origin: center center 0;
+    width: 26px;
+    z-index: 1;
+}
+
+.side2.flipped span.reverse_flip {
+    display: none;
+}
+
+.toggle_description {
+    top: 25px;
+    cursor: pointer;
+    font: 11px Gothambook;
+    left: 40px;
+    position: absolute;
+    text-transform: uppercase;
+}
+
+.toggle_description.close_description::before {
+    color: #CC0033;
+    content: "+";
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.toggle_description b {
+    color: #CC0033;
+}
+
+.rel_container {
+    position: relative;
+}
+
+.close_desc {
+    border: 1px solid #999;
+    border-radius: 50%;
+    color: #999;
+    display: block;
+    font: 20px/21px AvantGardeGothicITCW01B;
+    height: 28px;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 28px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.map_data_section.fixed {
+    margin: 0;
+    position: fixed !important;
+    top: 169px !important;
+}
+
+.product_filters .product_price > span {
+    /*float: right;*/
+    font: 11px/30px Gothambook;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.product_filters .product_price > b {
+    font: 11px/17px GothamBook;
+    color: #555;
+    font-weight: normal;
+}
+
+.product_filters{
+    color: #555;
+}
+
+
+.product_filters .product_price {
+    margin-bottom: 16px;
+    margin-top: 3px;
+}
+
+.set_item {
+    border-top: 1px solid #fff;
+    padding: 20px 0;
+    position: relative;
+}
+
+.set_item:nth-last-child(4) {
+    border-bottom: 1px solid #fff;
+}
+
+.product_image {
+    position: absolute;
+    height: 60px;
+    margin-right: 20px;
+    width: 60px;
+    left: 0;
+    top: 20px;
+}
+
+.pname {
+    font: 11px/15px Gothambold;
+    text-transform: uppercase;
+}
+
+.pcolor{
+    font: 11px/15px Gothambook;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.pprice {
+    font: 11px/15px Gothambook;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.buy_gift_set{
+    text-transform: capitalize;
+}
+
+.psize {
+    display: inline-block;
+    font: 11px/15px Gothambook;
+    margin: -3px 0 0;
+    padding-left: 34px;
+    position: relative;
+    /*width: 240px;*/
+}
+
+span.size-chart-bundle {
+    float: right;
+    border-bottom: 1px solid #CC0033;
+    font: 11px/15px Gothambook;
+    margin-top: 20px;
+}
+
+.psize .sizes {
+    padding: 1px 0 0;
+}
+
+.sizes .size {
+    /*border: 1px solid #999;*/
+    display: inline-block;
+    font: 11px/22px Gothambook;
+    height: 20px;
+    margin: 20px 0 0 5px;
+    text-align: center;
+    min-width: 20px;
+    cursor: pointer;
+    background: #fff;
+}
+
+.add_to_bag, .add_to_wishlist {
+    background: #999 none repeat scroll 0 0;
+    color: #fff;
+    font: 11px/38px GothamMedium;
+    height: 38px;
+    text-align: center;
+    margin: 20px 0;
+    cursor: pointer;
+    width: 145px;
+    float: left;
+}
+
+.add_to_wishlist {
+    margin-right: 22px;
+}
+
+p.free_shipping {
+    font: 12px/15px GothamBookItalic;
+    float: left;
+    width: 100%;
+}
+
+.ys_in_wanderland {
+    background: #fff none repeat scroll 0 0;
+    height: 98px;
+    padding: 20px 50px;
+    text-align: center;
+    position: relative;
+}
+
+.ys_in_wanderland .page-title {
+    color: #ae8637;
+    font: 36px/36px AVANTGARDEGOTHICITCW01B;
+    margin: 16px 0 0;
+}
+
+.ys_in_wanderland .page-sub-title {
+    color: #ae8637;
+    font: 11px/15px GothamMedium;
+    text-align: center;
+}
+
+.ys_in_wanderland .line {
+    border-bottom: 1px solid #555;
+    bottom: 0;
+    left: 50px;
+    right: 50px;
+    position: absolute;
+}
+
+.gift_sets_container {
+    border-bottom: 1px solid #555;
+    float: left;
+    width: 100%;
+}
+
+.gift_sets_container {
+    background: #fff none repeat scroll 0 0;
+    height: 80px;
+    margin: 0;
+    text-align: center;
+}
+
+.gift_set_link {
+    background: #f4f4f4 none repeat scroll 0 0;
+    color: transparent;
+    cursor: pointer;
+    display: inline-block;
+    height: 52px;
+    margin: 14px 14px 14px 0;
+    padding: 5px;
+    text-align: left;
+    transition-duration: 200ms;
+    width: 102px;
+    position: relative;
+}
+
+.gift_set_link img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+}
+
+/*.gift_set_link:hover{
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transition-duration: 200ms;
+}*/
+
+.gift_set_link p{
+    opacity: 0;
+    color:#fff;
+
+}
+.gift_set_link:hover p{
+    opacity: 1;
+}
+
+.gift_set_link:hover img{
+    opacity: 0;
+}
+
+.gift_set_link.active:hover img{
+    opacity: 1;
+}
+
+.gift_set_link.active p{
+    opacity: 0;
+}
+
+.gift_set_link:hover {
+    background-color: #A5A7AA;
+}
+
+.gift_set_link.active {
+    background: #AE8637;
+}
+
+.map_data_section .coordinate p {
+    color: #ae8637;
+    margin-top: 42px;
+}
+
+.box.set_name .product_name {
+    font: 36px/80px AvantGardeGothicITCW01B;
+    color: #555;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.gift_sets_container {
+    height: 80px;
+    background: #fff;
+}
+
+.top_banners {
+    padding: 0 50px;
+    background: #fff;
+    height: 160px;
+    display: none;
+}
+
+.top_banners.fixed {
+    position: fixed;
+    top: 94px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 12;
+}
+
+.box.set_name .product_price {
+    margin-top: -22px;
+    text-align: center;
+    color: #555;
+    font: 16px/20px AvantGardeGothicITCW01B;
+}
+
+.box.set_name .product_price b{
+    color: #999;
+    font-weight: normal;
+}
+
+span.pm {
+    background: rgba(0, 0, 0, 0) url("../../images/combo/pm.svg") no-repeat scroll 0 100%;
+    display: inline-block;
+    height: 18px;
+    margin-left: 5px;
+    margin-top: -20px;
+    vertical-align: middle;
+    width: 15px;
+}
+
+span.am {
+    background: rgba(0, 0, 0, 0) url("../../images/combo/am.svg") no-repeat scroll 0 100%;
+    display: inline-block;
+    height: 32px;
+    margin-left: 5px;
+    margin-top: -12px;
+    vertical-align: middle;
+    width: 32px;
+}
+
+span.world_map {
+    background: rgba(0, 0, 0, 0) url("../../images/combo/map.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 67px;
+    vertical-align: middle;
+    width: 87px;
+    position: relative;
+}
+
+.world_map i {
+    background: #ae8637 none repeat scroll 0 0;
+    border-radius: 50%;
+    height: 8px;
+    left: 55px;
+    position: absolute;
+    top: 34px;
+    width: 8px;
+}
+
+span.temp {
+    /*background: rgba(0, 0, 0, 0) url("../../images/combo/temp.svg") no-repeat scroll 0 0;*/
+    color: #555;
+    display: inline-block;
+    font-size: 60px;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    width: 60px;
+}
+
+.section.active .side1 .product_name, .section.active .side1 .product_price {
+    display: none;
+    text-transform: uppercase;
+}
+
+
+.section .side1 .buy_product, .section .side1 .toggle_description {
+    /*visibility: hidden;*/
+    transition-duration: 200ms;
+}
+
+.section.active .side1 .buy_product, .section.active .side1 .toggle_description {
+    visibility: visible;
+    transition-duration: 200ms;
+    color: #555;
+}
+
+.gap {
+    display: inline-block;
+    margin: 0 !important;
+    border: none;
+    left: 0;
+    position: absolute;
+    top: 23px;
+    width: 34px;
+}
+
+.page-title_fixed {
+    color: #ae8637;
+    font: 11px/15px GothamMedium !important;
+    margin-bottom: -22px;
+    margin-top: 6px;
+    visibility: hidden;
+    text-align: center;
+}
+
+.sizes .size.active-size {
+    background: #999 !important;
+    color: #fff;
+}
+
+.bag-active {
+    background-color: #5EC52F;
+}
+
+.right_desc > b {
+    font: 11px/20px GothamBook;
+}
+
+.ui-widget-overlay {
+    top: 94px !important;
+}
+
+.gift_sets_landing_page, .ys_in_wanderland, .top_banners {
+    min-width: 1080px;
+}
+
+ul.main-menu > li.over.gift-sets > ul.sub-menu {
+    height: 81px;
+    margin-left: -19px;
+    width: 94px;
+}
+
+/* //////////////////////////////////////////////// */
+
+.temp {
+    color: #fff;
+    font-family: weather;
+    font-size: 150px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.0;
+}
+
+/*
+.icon-0:before { content: ":"; }
+.icon-1:before { content: "p"; }
+.icon-2:before { content: "S"; }
+.icon-3:before { content: "Q"; }
+.icon-4:before { content: "S"; }
+.icon-5:before { content: "W"; }
+.icon-6:before { content: "W"; }
+.icon-7:before { content: "W"; }
+.icon-8:before { content: "W"; }
+.icon-9:before { content: "I"; }
+.icon-10:before { content: "W"; }
+.icon-11:before { content: "I"; }
+.icon-12:before { content: "I"; }
+.icon-13:before { content: "I"; }
+.icon-14:before { content: "I"; }
+.icon-15:before { content: "W"; }
+.icon-16:before { content: "I"; }
+.icon-17:before { content: "W"; }
+.icon-18:before { content: "U"; }
+.icon-19:before { content: "Z"; }
+.icon-20:before { content: "Z"; }
+.icon-21:before { content: "Z"; }
+.icon-22:before { content: "Z"; }
+.icon-23:before { content: "Z"; }
+.icon-24:before { content: "E"; }
+.icon-25:before { content: "E"; }
+.icon-26:before { content: "3"; }
+.icon-27:before { content: "a"; }
+.icon-28:before { content: "A"; }
+.icon-29:before { content: "a"; }
+.icon-30:before { content: "A"; }
+.icon-31:before { content: "6"; }
+.icon-32:before { content: "1"; }
+.icon-33:before { content: "6"; }
+.icon-34:before { content: "1"; }
+.icon-35:before { content: "W"; }
+.icon-36:before { content: "1"; }
+.icon-37:before { content: "S"; }
+.icon-38:before { content: "S"; }
+.icon-39:before { content: "S"; }
+.icon-40:before { content: "M"; }
+.icon-41:before { content: "W"; }
+.icon-42:before { content: "I"; }
+.icon-43:before { content: "W"; }
+.icon-44:before { content: "a"; }
+.icon-45:before { content: "S"; }
+.icon-46:before { content: "U"; }
+.icon-47:before { content: "S"; }
+*/
+
+
+
+/****** icons thunderstorms starts *****/
+
+.icon-0:before,.icon-1:before,.icon-2:before,.icon-3:before,.icon-4:before,.icon-37:before,.icon-38:before,.icon-39:before,.icon-45:before,.icon-47:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_thunderstorms.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+
+/****** icons thunderstorms ends *****/
+
+/****** icons rain starts *****/
+
+.icon-5:before,.icon-6:before,.icon-8:before,.icon-9:before,.icon-10:before,.icon-11:before,.icon-12:before,.icon-17:before,.icon-35:before,.icon-40:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_rain.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+
+/****** icons rain ends *****/
+
+
+/***** icons snow start *****/
+
+.icon-7:before,.icon-13:before,.icon-14:before ,.icon-15:before ,.icon-16:before ,.icon-18:before,.icon-42:before ,.icon-43:before ,.icon-46:before  {
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_snow.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+
+}
+/***** icons snow ends *****/
+
+
+
+/****** icons fog start ******/
+
+.icon-19:before,.icon-20:before,.icon-21:before,.icon-22:before
+{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_fog.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+/****** icons fog ends ******/
+
+/******icons  wind start ******/
+
+
+.icon-23:before,.icon-24:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_wind.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+
+/******icons  wind ends ******/
+
+/******icons cold start ******/
+/*.icon-25:before { content: "E"; }*/
+.icon-25:before {
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_cold.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+/****** icons cold ends ******/
+
+/***** icons cloudy start****/
+.icon-26:before,.icon-27:before,.icon-28:before ,.icon-29:before {
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_cloudy.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+/***** icons cloudy ends ****/
+
+
+
+/***** whether partly cloudy start****/
+
+.icon-30:before,.icon-44:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_partly-cloudy.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+/***** whether partly cloudy ends****/
+
+/****** whether stars start ****/
+
+
+.icon-31:before,.icon-33:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_stars.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+
+}
+/****** whether stars ends ****/
+
+
+/****** whether sunny start ****/
+
+.icon-32:before,.icon-34:before{
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_sunny.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+
+}
+
+/****** whether sunny ends ****/
+
+
+
+/****** whether hot start ****/
+
+
+.icon-36:before {
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_hot.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+/****** whether hot ends ****/
+
+
+
+
+/****** whether freezing start ****/
+
+.icon-41:before {
+    content: " ";
+    background: rgba(0, 0, 0, 0) url("../../images/combo/weather_freezing.svg") no-repeat scroll 100% 100%;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+
+}
+
+
+/****** whether freezing ends ****/
+

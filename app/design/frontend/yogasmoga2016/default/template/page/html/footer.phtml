@@ -1,0 +1,451 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('vivacity_popup')->toHtml(); ?>
+    <!-- call invite popup  -->
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_invite.phtml')->toHtml(); ?>
+<!-- <div class="footer-container"> -->
+    <div class="gift-set-sorry-popup">
+        <div class="content-sorry-popup">
+            <p>SORRY!</p>
+            <p class="message">To order more than 1 of the same set, please place a separate order.</p>
+            <button>KEEP SHOPPING</button>
+        </div>
+    </div>
+<script>
+    jQuery(function(){
+        jQuery(".gift-set-sorry-popup .content-sorry-popup > button").click(function(){
+            jQuery(".gift-set-sorry-popup").hide();
+        });
+    });
+</script>
+
+    <div id="sitemap" class="l-align">
+        <div class="logoCont">
+            <a class="logo" href="<?php echo $this->getUrl('') ?>" title="YOGASMOGA logo" style="padding-left:5px">
+                <img src="<?php echo $this->getSkinUrl('images/logo-2015.png') ?>" alt="YOGASMOGA logo" />
+            </a>
+            <div class="clear-fix"></div>
+        </div>
+        <div class="footer-block shiftRight">            
+            <ul class="site-map">
+                <li>
+                    <ul>
+                        <li><a href="/women">SHOP WOMEN</a></li>
+                        <li><a href="/men">SHOP MEN</a></li>
+                        <li>&nbsp;</li>
+                        <li data-blockid="size-chart" class="cms-id"><a href="<?php echo Mage::getBaseUrl().'help#size-chart'?>">SIZE CHARTS</a></li>
+                        <li data-blockid="product-care" class="cms-id"><a href="<?php echo Mage::getBaseUrl().'help#product-care'?>">PRODUCT CARE</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href="/our-story">YS STORY</a></li>
+                        <li><a href="/ys-fabric-tech">YS TECH</a></li>
+                        <li><a href="/our-stores">YS STORES</a></li>
+                        <li><a href="/smogi-bucks">SMOGI BUCKS</a></li>
+                        <li><a href="/namaskar">NAMASKÁR FOUNDATION</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <li><a id="welcome-name" href="<?php echo Mage::getBaseUrl().'customer/account/index' ?>">MY ACCOUNT</a></li>
+                        <li><a href="<?php echo Mage::getBaseUrl().'gift_of_ys' ?>">GIFT CARD</a></li>
+                        <li><a id="footer-trackorder" href="<?php echo Mage::getBaseUrl().'sales/order/history' ?>">TRACK MY ORDER</a></li>
+                    </ul>
+                    <ul style="padding-top:14px;">
+                        <li><span style="font-family:gothambold;" >JOIN US</span></li>
+                        <li><a href="<?php echo Mage::getBaseUrl().'careers' ?>">CAREERS</a></li>
+                    </ul>
+                </li>                
+            </ul>
+            <ul class="site-map">
+                <li>
+                    <ul>
+                        <li><a href="mailto:hello@yogasmoga.com" class="gothambd">CONTACT US</a></li>
+                       <li>888-990-YOGA (9642)</li>
+                       <li><a href="mailto:hello@yogasmoga.com">HELLO@YOGASMOGA.COM</a></li>
+                       <li><a href="javascript:void($zopim.livechat.window.show())">LIVE CHAT</a> <span class="chat-status"><img class="online-status-icon" src="<?php echo $this->getSkinUrl('images/footer/online.png') ?>" alt="Chat Status"> online now</span></li>
+                       <li data-blockid="faq" class="cms-id"><a href="<?php echo Mage::getBaseUrl().'help#faq'?>">FAQ</a></li>
+                    </ul>
+                </li>
+                <li>              
+                               
+                    <ul class="after-login <?php if (Mage::getSingleton('customer/session')->isLoggedIn()) echo 'sb-show'; ?>">
+                        <li><a href="<?php echo Mage::getBaseUrl().'smogi-bucks' ?>" id="" class="smogi-balance gothambd">SMOGI BUCKS</a></li>
+                        <li class="smogi-balance"><a href="<?php echo Mage::getBaseUrl().'smogi-bucks' ?>">You currently have <span></span> SMOGI Bucks<br/> to use toward your order.</a></li>                        
+                    </ul>
+                
+                    <ul class="before-login <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()) echo 'sb-show'; ?>">
+                        <li><a href="javascript:void(0);" id="" class="smogi-love gothambd">FEEL THE SMOGI LOVE</a></li>
+                        <li class="smogi-love">Sign up now to Receive $25 Smogi Bucks</li>
+<?php /* ?><li class="smogi-love">Sign up now to instantly get 25% off your first order</li><?php */ ?>
+                    </ul>               
+                    
+                </li>
+                <li>
+                    <ul>
+                        <li class="gothambd">STAY IN TOUCH</li>
+                        <li>
+                            <ul class="social-icons">
+                                <li><a target="_blank" href="http://www.facebook.com/YOGASMOGA" class="fb-icon"></a></li>
+                                <li><a target="_blank" href="http://www.twitter.com/YOGASMOGA" class="twtr-icon"></a></li>
+                                <li><a target="_blank" href="http://www.Instagram.com/YOGASMOGA" class="insta-icon"></a></li>
+                                <li><a target="_blank" href="http://www.Pinterest.com/YOGASMOGA" class="pin-icon"></a></li>
+                            </ul>
+                        </li>
+                        <li>&nbsp;</li>
+                        <li class="gothambd"><a id="invite-friend" href="javascript:void(0);" class="share-frnds">SHARE WITH YOUR FRIENDS</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="copy-privacy-likes">
+                <ul>
+                    <li class="pt1"><?php echo $this->getCopyright() ?></li>
+                    <li class="pt1"> | </li>
+                    <li class="pt1"><a href="<?php echo $this->getUrl().'privacy-policy/'; ?>">Privacy Policy</a></li>
+                    <li class="pt1"> | </li>
+                    <li class="pt1"><a href="<?php echo $this->getUrl().'terms-and-conditions/'; ?>">Terms & Conditions</a></li>
+                    <li>&nbsp;&nbsp;&nbsp;</li>
+                    <!--<li id="facebook-like" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/fb-like-btn.png') ?>" alt="Facebook"></li> -->
+                    <!--<li id="twitter-follow" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/follow-twitter-btn.png') ?>" alt="Twitter"></li> -->
+                    <li id="facebook-like" class="pointer">
+                       <!--<iframe id="fb-like-btn" src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fyogasmoga&amp;width&amp;layout=button&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=80&amp;appId=647531145339855" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:20px; width:49px;" allowTransparency="true"></iframe> -->
+                        <iframe id="fb-like-btn" src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fyogasmoga.com&amp;width&amp;layout=button&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=80&amp;appId=647531145339855" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:20px;width:49px;" allowTransparency="true"></iframe>
+                    </li>
+                    <li id="twitter-follow" class="pointer"><a href="https://twitter.com/intent/follow?original_referer=<?php echo urlencode($_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"])."&region=follow_link&screen_name=yogasmoga&tw_p=followbutton&variant=2.0"; ?>"><img src="<?php echo $this->getSkinUrl('images/footer/twtr-sml.jpg') ?>" style="height:20px; width:64px;" alt="Twitter"/></a></li>
+
+                    <li id="paypal"><img style="height:20px; width:50px;" src="<?php echo $this->getSkinUrl('images/footer/paypal-sml.jpg') ?>" alt="PayPal"></li>
+                </ul>
+            </div>
+        </div>
+        <script src="https://platform.twitter.com/widgets.js"></script>
+    <div class="clearfix"></div> 
+<?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+    if($serverType == 'production')
+	{
+?>
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0018/1897.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+
+
+<!-- Add roll script below -->
+<script type="text/javascript">
+adroll_adv_id = "YOFQZUE36BBXTN2MHILUWB";
+adroll_pix_id = "YNMX4PSI6BGYTKAPJJWTMP";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+</script>
+<!-- Google Code for Remarketing Tag -->
+
+<script type="text/javascript">
+
+  (function() {
+    window._pa = window._pa || {};
+	if(_isCheckoutSuccessPage){
+     _pa.orderId = _orderNumberCheckout; // OPTIONAL: attach unique conversion identifier to conversions
+     _pa.revenue = _orderRevenueCheckout; // OPTIONAL: attach dynamic purchase values to conversions
+	 
+	 }
+	 if((_productid != '')&&(_isOnProductDetailPage))
+	 {
+		_pa.productId = _productid; // OPTIONAL: Include product ID for use with dynamic ads
+		
+	 }
+    var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+    pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/5310b5f2fcdb878ad0000085.js";
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
+  })();
+</script>
+                
+    <?php } ?>
+
+<?php // added code for top red banner........... ?>
+
+        <?php
+        $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+        if(!$loggedIn){ ?>
+            <script>
+
+                jQuery(document).ready(function() {
+                   jQuery(".orange-banner").click(function(){
+                        jQuery("#signup").dialog( "open" );
+
+                    });
+
+                    jQuery("#pagecontainer").css("margin-top","0");
+                    jQuery("div#bodycompensator").css("height","94px");
+                    jQuery(".cms-home div#bodycompensator").css("height","69px");
+
+                    //jQuery("#div_sizes").css("top","69px");
+                    if(jQuery('#div_sizes').length > 0){
+                        function positionFilter(filterOffsetTop){
+                            //alert();
+                            var winScrollTop = jQuery(window).scrollTop();
+                            if( winScrollTop > filterOffsetTop){
+
+                                jQuery("#div_sizes").addClass("fixed_top");
+                              //  jQuery("#div_sizes.fixed_top").css("top","69px");
+                                jQuery("#div_sizes.fixed_top").css("top","94px");
+                            }else{
+                                jQuery("#div_sizes").removeClass("fixed_top");
+                                jQuery("#div_sizes").css("top","auto");
+                            }
+                        }
+
+                        var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
+                        positionFilter(filterOffsetTop);
+                        jQuery(window).scroll(function(){
+                            positionFilter(filterOffsetTop);
+
+                        });
+
+
+                    }
+
+
+                });
+
+
+            </script>
+        <?php   }
+        else {
+        ?>
+            <script>
+                jQuery( document ).ready(function() {
+                    jQuery("#pagecontainer").css("margin-top","0px");
+                    jQuery("#div_sizes").css("top","auto");
+                    //jQuery("#div_sizes").css("top","94px");
+                    //jQuery("#div_sizes").css("top","69px");
+                    jQuery("#div_sizes.fixed_top").css("top","69px"); //without banner.
+
+                   // jQuery("#div_sizes.fixed_top").css("top","94px"); //with banner.
+                   // jQuery("div#bodycompensator").css("height","94px");
+
+
+                });
+
+                if(jQuery('#div_sizes').length > 0){
+                    function positionFilter(filterOffsetTop){
+                        //alert();
+                        var winScrollTop = jQuery(window).scrollTop();
+                        if( winScrollTop > filterOffsetTop){
+
+                            jQuery("#div_sizes").addClass("fixed_top");
+                             jQuery("#div_sizes.fixed_top").css("top","69px");
+                           // jQuery("#div_sizes.fixed_top").css("top","94px");
+                        }else{
+                            jQuery("#div_sizes").removeClass("fixed_top");
+                            jQuery("#div_sizes").css("top","auto");
+                        }
+                    }
+
+                    var filterOffsetTop = jQuery("#div_sizes").offset().top - 69;
+                    positionFilter(filterOffsetTop);
+                    jQuery(window).scroll(function(){
+                        positionFilter(filterOffsetTop);
+
+                    });
+
+
+                }
+            </script>
+        <?php }
+        ?>
+
+        <script>
+            if(navigator.userAgent.indexOf('Mac') > 0){
+                jQuery('body').addClass('mac-osys');
+            }
+            function prodnewdetail(){
+                var jQ = jQuery.noConflict();
+                //var windW = jQ(window).width();
+                var windW = jQ('#productdetails').width();
+                var imgrowh = jQ('.thumb-imgs table.smallimagecontiner tr td img').height();
+                jQ('.prod-col .pcol-right-content').height(imgrowh);
+
+
+                //var imgrow4H = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4) img ').height();
+                //jQ('.prod-col .pcol-right-content4').height(imgrow4H);
+                if(jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').length){
+                    var imgrow4W = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').css({
+                        //'width': (66.125 * windW)/100
+                        'width': windW/2 - 5
+                    });
+                    var pcolRightContent4W = jQ('.pcol-right-content4').css({
+                        //'width': (33.875 * windW)/100 - 10
+                        'width': windW/2 - 5
+                    });
+                }
+
+                /*setInterval(function(){
+                 var imgrow4W = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').css({
+
+                 'width': windW/2 - 5
+                 });
+
+                 },3000)*/
+
+                var imgrow4w = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').width();
+                var imgrow4h = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').height();
+
+                /*jQ('.thumb-imgs table.smallimagecontiner tr td:last-child img').appendTo('.pcol-right-content4 .pcol-right-content-inner');
+                 jQ('.prod-col .pcol-right-content4').height(imgrow4h);*/
+
+                // for margin-left
+                /*var pcolRightContent4Width = jQ('.pcol-right-content4').outerWidth();
+                 var pcolRightW = jQ('.product-row .pcol-right').outerWidth();
+
+                 var pcolRightContent4ML = pcolRightContent4Width - pcolRightW;
+
+                 jQ('.pcol-right-content4').css({
+                 'margin-left': -(pcolRightContent4Width - pcolRightW)
+                 });*/
+
+                jQ('.prod-col .img_madeinusa').css({
+                    'top':imgrowh,
+                    'opacity':1
+                });
+                jQ('.prod-col .img_rnd').css({
+                    'left':imgrow4w,
+                    'bottom':imgrow4h
+                });
+
+
+
+            }
+
+
+
+
+            function prodnewdetailresize(){
+                //var windW = jQuery(window).width();
+                var windW = jQuery('#productdetails').width();
+                var imgrowh = jQuery('.thumb-imgs table.smallimagecontiner tr td img').height();
+
+
+                jQuery('.prod-col .pcol-right-content').height(imgrowh);
+
+                //var imgrow4H = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').height();
+                //jQuery('.prod-col .pcol-right-content4').height(imgrow4H);
+
+                if(jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').length){
+                    var imgrow4W = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').css({
+                        //'width': (66.125 * windW)/100
+                        'width': windW/2 - 5
+                    });
+                    var pcolRightContent4W = jQuery('.pcol-right-content4').css({
+                        //'width': (33.875 * windW)/100 - 10
+                        'width': windW/2 - 5
+                    });
+                }
+
+
+
+                var imgrow4w = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').width();
+                var imgrow4h = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').height();
+                /*jQuery('.prod-col .pcol-right-content4').height(imgrow4h);*/
+
+                // for margin-left
+                /*var pcolRightContent4Width = jQuery('.pcol-right-content4').outerWidth();
+                 var pcolRightW = jQuery('.product-row .pcol-right').outerWidth();
+
+                 var pcolRightContent4ML = pcolRightContent4Width - pcolRightW;
+
+                 jQuery('.pcol-right-content4').css({
+                 'margin-left': -(pcolRightContent4Width - pcolRightW)
+                 });*/
+
+                jQuery('.prod-col .img_madeinusa').css({
+                    'top':imgrowh,
+                    'opacity':1
+                });
+                jQuery('.prod-col .img_rnd').css({
+                    'left':imgrow4w,
+                    'bottom':imgrow4h
+                });
+
+
+
+            }
+            jQuery(document).ready(function($){
+                var windH = $(window).height();
+                var imgrowtr = $('.thumb-imgs table.smallimagecontiner tr td img');
+                if(imgrowtr.length > 0){
+                    var px = 0;
+                    var intervalID = setInterval(function () {
+                        // logic here
+                        prodnewdetail();
+                        if (++px === 5) {
+                            window.clearInterval(intervalID);
+                        }
+                    }, 2000);
+
+                    if($(window).width() < 1200){
+                        $('.fabric-content').appendTo('.pcol-right-content3 .pcol-right-content-inner');
+                        $('.product-det-tab').appendTo('.pcol-right-content2 .pcol-right-content-inner');
+                    }
+                    else{
+                        $('.fabric-content').appendTo('.pcol-right-content2 .pcol-right-content-inner');
+                        $('.product-det-tab').appendTo('.pcol-right-content1 .pcol-right-content-inner');
+                    }
+
+                }
+            });
+
+            jQuery(window).resize(function(){
+                prodnewdetailresize();
+
+                if(jQuery(window).width() < 1200){
+                    jQuery('.fabric-content').appendTo('.pcol-right-content3 .pcol-right-content-inner');
+                    jQuery('.product-det-tab').appendTo('.pcol-right-content2 .pcol-right-content-inner');
+                }
+                else{
+                    jQuery('.fabric-content').appendTo('.pcol-right-content2 .pcol-right-content-inner');
+                    jQuery('.product-det-tab').appendTo('.pcol-right-content1 .pcol-right-content-inner');
+                }
+
+            });
+        </script>
+
+
+    

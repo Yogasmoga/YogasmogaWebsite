@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <career_index_index>
+        <reference name="head">
+            <action method="addJs"><script>ys-new-design/careers.js</script></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/staticpage.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="career/career" name="career" template="career/career.phtml" />
+        </reference>
+    </career_index_index>
+</layout> 

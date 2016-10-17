@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<layout>
+
+    <!--Add profile pic form to customer account -->
+    <profile_manage_index>
+        <label>Customer Account Edit Form</label>
+        <update handle="customer_account"/>
+        <reference name="root">
+            <action method="setTemplate"><page>page/customer_account.phtml</page></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="customer/form_edit" name="customer_pic" template="customer/form/profilepicture.phtml"/>
+        </reference>
+
+        <reference name="left">
+            <action method="unsetChild"><name>left.permanent.callout</name></action>
+        </reference>
+    </profile_manage_index>
+
+</layout>

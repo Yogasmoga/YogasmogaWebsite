@@ -1,0 +1,82 @@
+<?php
+/**
+ * J2T RewardsPoint2
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@j2t-design.com so we can send you a copy immediately.
+ *
+ * @category   Magento extension
+ * @package    RewardsPoint2
+ * @copyright  Copyright (c) 2009 J2T DESIGN. (http://www.j2t-design.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ ?>
+ <div class="myheader">MY ACCOUNT</div>
+ <div class="myaccountdashboard">
+    <?php echo $this->getChildHtml('hello'); ?>
+    <table style="width: 100%;">
+        <?php echo $this->getChildHtml('info') ?> 
+        <?php echo $this->getChildHtml('address') ?>
+    </table> 
+ </div>
+ 
+ <ul style="margin-top: 50px;">
+    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/address">Address Book</a></li>
+    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>sales/order/history">My Orders</a></li>
+    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>wishlist">My Wish list</a></li>
+    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rewardpoints/index/referral/">Referred Friends (Extension)</a></li>
+    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rewardpoints/index/points">Reward Points (Extension)</a></li>
+    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance">Gift Cards (Extension)</a></li>
+    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/logout/">Log Out</a></li>
+ </ul>
+ 
+ <h2 class="giftcard-balance">Your Gift Card Balance : <?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomerId())); ?></h2>
+ 
+ <?php
+    $store_id = Mage::app()->getStore()->getId();
+    $customerId = Mage::getModel('customer/session')->getCustomerId();
+    if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+        $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+        echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+    }        
+    
+    $reward_model = Mage::getModel('rewardpoints/stats');
+    echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
+ ?>
+ 
+<?php /* 
+<div class="page-head">
+    <h3><?php echo $this->__('My Dashboard') ?></h3>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php echo $this->getChildHtml('hello') ?>
+
+<?php echo $this->getChildHtml('top') ?>
+
+<div class="account-box ad-account-info box">
+        <div class="box-account box-recent">
+            <div class="box-head">
+                <h2><?php echo $this->__('Points') ?></h2>
+            </div>
+            <?php echo $this->getChildHtml('points') ?>
+        </div>
+</div>
+
+<div class="account-box ad-account-info box">
+    <div class="head box-title">
+        <h3><?php echo $this->__('Account Information') ?></h3>
+    </div>
+    <?php echo $this->getChildHtml('info') ?>
+    <?php echo $this->getChildHtml('address') ?>
+</div>
+
+
+<?php echo $this->getChildHtml('info1') ?>
+<?php echo $this->getChildHtml('info2') ?>
+*/ ?>

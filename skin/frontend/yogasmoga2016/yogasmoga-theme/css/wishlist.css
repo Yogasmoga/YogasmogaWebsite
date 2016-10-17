@@ -1,0 +1,158 @@
+.globalmsg
+{
+    font-family : gothambook;
+    font-size : 18px;
+    color : black;
+    letter-spacing: 0.6pt;
+    font-weight: bold;
+}
+.my-wishlist
+{
+    text-align: center;
+    width : 960px;
+}
+p.wishlist-empty
+{
+    font-family : gothamlight;
+    font-size : 13px;
+    letter-spacing: 0.4pt;
+}
+#wishlist-view-form .continueshopppingbtn
+{
+    background-image : url('../images/continue-shopping.png') !important;
+    width : 250px !important;
+    height : 39px !important;
+    margin-top : 30px; 
+    font-size:0;
+}
+table.tblwishlist
+{
+    color : #2F2F2F;
+    font-family : gothambook;
+    margin-left : auto;
+    margin-right: auto;
+    width : 100%;
+}
+
+table.tblwishlist thead th
+{
+    font-family: gothambook;
+    font-size: 11px;
+    font-weight: normal; 
+    letter-spacing: 0.6pt;
+    padding-bottom: 25px;
+}
+table.tblwishlist td.prname
+{
+    font-family: gothamMedium;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    margin-bottom: 10px;
+}
+table.tblwishlist td.prnote
+{
+    width : 200px;
+    min-width : 200px;
+    max-width: 200px;    
+}
+table.tblwishlist td.praddtocart
+{
+    padding-left : 20px;
+}
+table.tblwishlist td.praddtocart a
+{
+    text-decoration: underline;
+}
+table.tblwishlist td.primage{width:50px;}
+table.tblwishlist td.prname, table.tblwishlist td.primage, table.tblwishlist td.prnote
+{
+    text-transform: uppercase;
+}
+table.tblwishlist td.prnote textarea
+{
+    height : 75px;
+    width : 200px;
+    color : #2F2F2F;
+    font-family : gothambook;
+}
+table.tblwishlist td
+{
+    padding: 10px;
+}
+table.tblwishlist td.prnote textarea:focus
+{
+    background-color: white;
+}
+table.tblwishlist tr.last td
+{
+    border-bottom : 1px dotted #000000
+}
+table.tblwishlist td.prprice
+{
+    text-align: right;
+}
+table.tblwishlist td.removeitem
+{
+    width : 0px;
+}
+.addtocartbtn
+{
+    background-image : url('../images/add_to_cart_off.png');
+    width : 137px;
+    height : 29px;
+    margin-left : 30px;
+}
+.sharewishlistbtn
+{
+    background-image : url('../images/share_wishlist_off.png');
+    width : 150px;
+    height : 29px;
+}
+.updatewishlistbtn
+{
+    /*background-image : url('../images/ add-to-bag.jpg');*/
+    background-image : url('../images/update_wishlist_off.png');       
+    width : 150px;
+    height : 29px;
+    margin-left : 20px;
+}
+.addwishlistbtn
+{
+    background-image : url('../images/update-wish.png');          
+    width : 145px;
+    height : 38px;
+    margin-left : 20px;
+}
+.sharewishlistbtn1
+{
+    background-image : url('../images/share_your_wishlist_off.png');
+    width : 286px;
+    height : 43px;
+    margin-top : 80px;
+}
+.resetwishlistbtn{
+    background-image : url('../images/share-wish.png');
+    width : 144px;
+    height : 38px;
+}
+#wishlist-view-form .buttons-set
+{
+    border : none;
+}
+table.tblwishlist tbody tr td.removeitem a
+{
+    visibility:hidden;
+}
+table.tblwishlist tbody tr:hover td.removeitem a
+{
+    display : block;
+}
+#form-share-wishlist table.inputtable
+{
+    width : 575px;
+}
+
+#wishlist-table tr.even:hover,
+#wishlist-table tr.odd:hover{background:#f5f5f5;}
+
+#wishlist-table tr.even:hover{background: transparent;}

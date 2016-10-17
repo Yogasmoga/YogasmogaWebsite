@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout>
+<myreports_reports_index>
+    <reference name="root">
+        <action method="setTemplate"><template>page/1column.phtml</template></action>        
+    </reference>
+    <reference name="content">
+        <block type="myreports/reports" name="myreports_reports"  template="page/excelreports.phtml" />        
+    </reference>
+    <remove name="footer" />
+</myreports_reports_index>
+
+
+</layout>

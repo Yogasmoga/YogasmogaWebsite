@@ -1,0 +1,473 @@
+<?php
+/**
+ *
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+    <?php
+    if($this->getRequest()->getParam('video') == 'true')
+    {
+        ?>
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
+        <meta property="og:title"content="Yoga Clothing Mens - Sweat Wicking Performance | YOGASMOGA" />
+        <meta property="og:description"content="YOGASMOGA makes the best mens performance and workout clothing for yoga, spin, running and more. Featuring Advanced Sweat Wicking & Antimicrobial. Free Shipping to US & Canada" />
+    <?php
+    }
+    else
+    {
+        ?>
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
+        <meta property="og:title"content="Yoga Clothing Mens - Sweat Wicking Performance | YOGASMOGA" />
+        <meta property="og:description"content="YOGASMOGA makes the best mens performance and workout clothing for yoga, spin, running and more. Featuring Advanced Sweat Wicking & Antimicrobial. Free Shipping to US & Canada" />
+    <?php
+    }
+    ?>
+
+    <?php echo $this->getChildHtml('head') ?>
+
+    <?php
+    //if(Mage::getSingleton('core/session')->getShowVideo())
+    if($this->getRequest()->getParam('video') == 'true')
+    {
+        //Mage::getSingleton('core/session')->setShowVideo(false);
+        ?>
+        <script type="text/javascript">
+            var loc = window.location;
+            history.replaceState("", document.title, loc.pathname + "breathe");
+            jQuery(window).load(function(){
+                setTimeout(function(){$j("#hmpagevideo").trigger('click')},1000);
+            });
+        </script>
+    <?php
+    }
+?>
+    <script type="text/javascript">
+        jQuery(window).load(function () {
+            jQuery("div.showloading").removeClass('showloading');
+            setTimeout(function () {
+                setfullscreenheight();
+                jQuery(window).trigger("resize");
+            }, 5);
+            var bannerImg = document.getElementById("bannerimg").complete;
+            if (bannerImg) {
+//            jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
+            }
+            jQuery('body').css('overflow', 'auto');
+//        jQuery('.namaskar-overlay1').fadeOut('slow');
+        });
+        jQuery(document).ready(function () {
+            jQuery('.namaskar-overlay1').fadeOut('slow');
+            jQuery(".share-strip, .new-arrivals-block").animate({opacity: 1}, 100);
+            setTimeout(function () {
+                jQuery("div.page-overlayy").remove();
+                jQuery("body").css('overflow', 'auto');
+            }, 500);
+        });
+    </script>
+<div class="namaskar-overlay1">&nbsp;</div>
+</head>
+<body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+<div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
+<?php echo $this->getChildHtml('global_notices') ?>
+<div class="shopping-cart">
+
+</div>
+<div class="page">
+<?php echo $this->getChildHtml('header') ?>
+<div id="pagecontainer">
+    <h1 style="display: none;"><?php echo Mage::registry('current_category')->getName();?></h1>
+<!-- sliderBanner -->
+<div class="flexslider showloading cat-slide" id="bucket1_slider">
+    <ul class="slides">
+
+       <?php /*?> <li class="slider_li" onClick="window.location='/men/whats-new';"
+            style="background: url('<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/thanks-giving-men-homepage.jpg'); background-size:cover;cursor:pointer; ">
+            <!--<img draggable="false"
+                             data-src="<?php //echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/move-free-slide.jpg"/>-->
+
+            <div class="over-the-slide" style="height: auto ! important; top:2%; bottom: 0%;padding:4% 6% !important;">
+                <div style="width:50%;height:100%;float:left;background: url('<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/tg-men-off.png') no-repeat scroll 0 0 /100%; ">
+
+                </div>
+                <div style="float: right; text-align: left;width:40%;">
+                    <div style="text-transform: uppercase; color: #fff!important;" class="avant_grade_medium-sm">
+                        ALL MENS
+                    </div>
+                    <div style="text-transform: uppercase; color: #790808!important;padding-top:0px!important;" class="avant_grade_medium-sm">
+                        <!--<span style="color:#cd510e;display:block;">Last Day—</span>-->
+                        our best sale <br/>of the year
+                    </div>
+
+                    <div style="text-align:left;"  class="text-align-middle">
+
+                        <a class="learn-more" style="border: medium none ! important; background: transparent none repeat scroll 0% 0% ! important; color: #fff!important; margin: 18px 0px 0px ! important;" href="/men/tops">shop men&rsquo;s TOPS<span style="color:#ff0000"> &gt;</span></a>
+                        <a class="learn-more" style="border: medium none ! important; background: transparent none repeat scroll 0% 0% ! important; color: #fff!important; margin: 18px 0px 0px 20px ! important;" href="/men/bottoms">shop men&rsquo;s bottoms<span style="color:#ff0000"> &gt;</span></a>
+                    </div>
+
+                    <div  class="text-align-middle">
+
+
+                        <span  class="learn-more" style="border: medium none ! important; background: transparent none repeat scroll 0% 0% ! important; color: #fff!important; margin: 30px 0px 0px ! important;display:block;text-align:left;text-transform:none;font-size:12px;line-height:15px;">All sales are final. SMOGI Bucks cannot be applied.<br/>Offer ends 11/30 at 11:59PM PST</span>
+                    </div>
+                </div>
+
+            </div>
+        </li><?php */ ?>
+
+        <li onClick="window.location='/men/tops/montauk-polo?color=306';" style="background: url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/mens-page/polo-shirt-banner.jpg' ?>'); background-size: cover;cursor:pointer;">
+            <!--            <div class="bucket-slide mens-slider">-->
+            <div class="mens-slider">
+
+
+                <div class="over-the-slide " style="left:7%; top: 33%;">
+                    <div style="float: left; text-align:CENTER; padding-right:0px !important; letter-spacing:0.25px ">
+                        <div class="avant_grade_demi" style="text-transform: uppercase; color: #fff;">
+                            STREET SMART<br/>
+                        </div>
+                        <div style="line-height:0;color:#fff; padding-top: 7px !important;">
+                            <span class="avant-grade-bk-small">EXPERIENCE THE MOST ELEGANT &amp;</span>
+                            <span style="display:block" class="avant-grade-bk-small">ADVANCED POLO SHIRT EVER </span>
+
+                        </div>
+
+                        <div class="text-align-middle">
+
+                            <a style="color: #FFF !important; border: none !important;margin: 28px 0 0!important; background: none !important;"
+                               class="learn-more shop-mens1" href="/men/tops/montauk-polo?color=306">SHOP NOW<span
+                                    style="color:#ff0000"> &gt;</span></a><br/>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!--<div id="playBtn">
+                                <div class="sl-desc-handle">
+                                    <img src="<?php /* echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') */
+                ?>"
+                                         alt="Description handle"/>
+                                </div>
+                                <div class="slide-desc" style="">We built this tank for summer runs, sunny days and
+                                    serious workouts. Don’t be fooled by the laidback fit of this tank, this highly
+                                    technical fabric of the Monsoon Tank will keep you dry no matter how intense the
+                                    workout.
+                                </div>
+                            </div>-->
+            </div>
+
+        </li>
+    </ul>
+</div>
+<!-- sliderBanner -->
+
+<!-- signup new -->
+<div class="share-strip">
+    <div class="sign-up-new">
+
+        <a href="javascript:void(0)">Sign up</a><span>&amp; WE’LL SURPRISE YOU</span>
+
+    </div>
+</div>
+<!-- signup new -->
+
+<div class="clear-fix"></div>
+
+<!-- ProductListing Part -->
+
+
+ <div class="new-arrivals-block" style="width:100%; margin:0 auto; position: relative;background:#f4f4f4!important;">
+
+    <div class="white-box"></div>
+
+
+    <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('men_landing_category_ids')->getValue('plain')), true);
+
+    $categoryId_newcollection = $categoryIds['new_collection'];
+    $categoryId_quickview = $categoryIds['quick_view'];
+    ?>
+    <?php
+        $newcollection = Mage::getModel('catalog/category')->load($categoryId_newcollection);
+        $newarrivals = Mage::getModel('catalog/category')->load($categoryId_quickview);
+    ?>
+    <div class="shop-col-desc l-align">
+        <h2>    <span class="na-head">NEW ARRIVALS</span>
+                <span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New Collection</a></span>
+        </h2>
+    </div>
+
+    <?php
+    //retrieve color
+    $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+    $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+    while ($row = $readresult->fetch() ) {
+        $clrinfo[$row['Value']] = $row['Attribute'];
+    }
+    //                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
+    //
+    //                        $categoryId = $categoryIds['new_arrivals'];
+
+    //$newarrivals = Mage::getModel('catalog/category')->load($categoryId);
+
+
+    $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
+    $quickviewproducts = array();
+
+    foreach($productCollection as $_product)
+    {
+
+        $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+        $grayimgage = '';
+        foreach($_gallery as $_image)
+        {
+            $imgdata = json_decode(trim($_image->getLabel()), true);
+            if($imgdata == NULL)
+            {
+                continue;
+            }
+
+            if(strcasecmp($imgdata['type'],"grey background") == 0 && $imgdata['color'] != '' && $imgdata['quick_view_position'] != '' )
+            {
+                $grayimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
+
+//                $quickviewproducts[$imgdata['quick_view_position']]['position'] = $imgdata['quick_view_position'];
+                $quickviewproducts[$imgdata['quick_view_position']]['id'] = $_product->getId();
+                $quickviewproducts[$imgdata['quick_view_position']]['name'] = $_product->getName();
+                $quickviewproducts[$imgdata['quick_view_position']]['color'] = $imgdata['color'];
+                $quickviewproducts[$imgdata['quick_view_position']]['price'] = round($_product->getPrice(),2);
+                $quickviewproducts[$imgdata['quick_view_position']]['imgurl'] = (string)$grayimgage;
+                if(count($quickviewproducts) == 5 )break;
+            }
+
+        }
+    }
+
+
+    ksort($quickviewproducts);
+
+
+    ?>
+    <ul id="show5" class="new-arrivals">
+        <?php
+        $i=0;
+        foreach($quickviewproducts as $_product)
+        {
+
+
+            ?>
+            <li>
+
+                <a id="<?php echo $_product['id'].'-'.++$i; ?>" color="<?php echo $_product['color'];?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $_product['imgurl']; ?>" />
+                    <div class="prd-details">
+                        <span class="prd-name gothambd"><?php echo $_product['name']; ?></span>
+                        <span class="product-colors gothambk"><?php echo $clrinfo[$_product['color']]; ?></span>
+                        <span class="prd-price gothambk">$<?php echo  $_product['price']; ?></span>
+                    </div>
+                </a>
+
+
+                <?php /*   <div class="prd-details">
+                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
+                                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
+                                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
+                                    </a>
+                                </div> */ ?>
+            </li>
+        <?php
+        }
+
+        ?>
+    </ul>
+
+    <ul id="show4" class="new-arrivals">
+        <?php
+        $i=0;
+        foreach($quickviewproducts as $_product)
+        {
+
+            if($i==4)break;$i++;
+            ?>
+            <li>
+
+                <a id="<?php echo $_product['id'].'-'.$i; ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $_product['imgurl']; ?>" />
+                    <div class="prd-details">
+                        <span class="prd-name gothambd"><?php echo $_product['name']; ?></span>
+                        <span class="product-colors gothambk"><?php echo $clrinfo[$_product['color']]; ?></span>
+                        <span class="prd-price gothambk">$<?php echo  $_product['price']; ?></span>
+                    </div>
+                </a>
+
+
+                <?php /*   <div class="prd-details">
+                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
+                                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
+                                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
+                                    </a>
+                                </div> */ ?>
+            </li>
+        <?php
+        }
+
+        ?>
+    </ul>
+</div>
+<div style="display:none;">
+    <div id="productdetailpopup">
+    </div>
+</div>
+<!-- ProductListing Part -->
+<div class="clear-fix"></div>
+<!-- Feature Product -->
+<?php
+$featurecategoryId = $categoryIds['feature_product'];
+$featurecategory = Mage::getSingleton('catalog/category')->load($featurecategoryId);
+$featurecategoryUrl = Mage::getBaseUrl().$featurecategory->getUrlPath();
+?>
+<div class="wl-feat-prd men-section">
+    <section class="wl-left-block f-left">
+        <div class="bottom-left-block mens-left-blockbg">
+
+            <img
+                src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/california-short-bucket2.jpg"
+                alt=""/>
+        </div>
+        <div class="top-left-block">
+            <div class="block-content">
+                <h4 class="cursive-text">YOGASMOGA<br/>
+                    wants to bring authenticity<br/>
+                    back to the culture of yoga
+                    <!--The feeling of this shirt is like butter. Super soft and cozy for those cooler days.-->
+                </h4>
+                <span style="padding:20px 40px 0;" class="b-heading top-b-heading">BUSINESS INSIDER</span>
+            </div>
+        </div>
+    </section>
+    <section class="wl-right-block f-right">
+        <img
+            src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/california-short-bucket1.jpg"
+            alt=""/>
+
+        <div class="block-content contentSlider">
+            <div class="text-content-table">
+                <div class="text-content">
+
+                    <span class="b-heading bottom-b-heading">FEATURED PRODUCT</span>
+
+                    <div class="white h3">CALIFORNIA SHORT</div>
+                    <!-- <h4 class="main-img-text">THE DOON LONG SLEEVE TEE<br/>IN<span> KOURA 24</span></h4> -->
+                    <a href="<?php echo $this->getBaseUrl() . 'men/bottoms/california-short?color=76'; ?>"
+                       class="shopnow-btn">SHOP NOW</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear-fix"></div>
+</div>
+<!-- Feature Product -->
+<!-- Color Story Product -->
+<!-- Color Story -->
+<?php
+$colorstorycategoryId = $categoryIds['color_story'];
+$colorstorycategory = Mage::getSingleton('catalog/category')->load($colorstorycategoryId);
+$colorstorycategoryUrl = Mage::getBaseUrl().$colorstorycategory->getUrlPath();
+?>
+<div class="wl-color-story-prd men-section">
+    <section class="wl-cs-left-block f-left">
+        <img
+            src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/sona-pique-bucket1.jpg"
+            alt=""/>
+
+        <div class="block-content">
+            <div class="text-content-table">
+                <div class="text-content">
+                    <span class="b-heading bottom-b-heading">FEATURED FABRIC</span>
+                    <h4 class="main-img-text">SONA<sup>&reg;</sup></sup> PIQUE</h4>
+                    <a href="<?php echo $this->getBaseUrl() . 'men/tops/montauk-polo?color=297'; ?>"
+                       class="shopnow-btn">shop now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="wl-cs-right-block f-right">
+        <img
+            src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/sona-pique-bucket2.jpg"
+            alt=""/>
+
+        <!-- partTwo -->
+        <div class="bottom-right-block" style="background: #1f2758 !important">
+            <div class="block-content">
+                <div class="text-content">
+
+                    <h4 class="cursive-text white">High performance yarn<br>
+                        technology fused with luxurious<br>
+                        cashmere for all seasons <br>
+                        &amp; climate zones</h4>
+                     <span style="padding: 20px 0 0;" class="b-heading top-grey-b-heading white">SANDY DALAL, HEAD DESIGNER</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear-fix"></div>
+</div>
+
+<div class="html-video-popup" id="vid-blck-1">
+    <video style="width:100%;" controls>
+        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/BROOKLYN_JACKET_ok.mp4'; ?>" type="video/mp4">
+    </video>
+</div>
+<div class="html-video-popup" id="vid-blck-2">
+    <video style="width:100%;" controls>
+        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/BROOKLYN_JACKET_ok.mp4'; ?>" type="video/mp4">
+    </video>
+</div>
+<div class="vid-popup-overlay"></div>
+
+
+<!-- Color Story -->
+
+</div>
+<?php echo $this->getChildHtml('footer'); ?>
+</div>
+<?php echo $this->getChildHtml('before_body_end'); ?>
+</div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>
