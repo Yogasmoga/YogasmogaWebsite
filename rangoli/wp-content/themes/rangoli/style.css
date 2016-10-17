@@ -992,6 +992,7 @@ font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
 .header ul.shipping-menu > li > ul.sub-menu li a{font-family: itcavantgardestd-md;}
 .header ul.main-nav li ul.sub-menu > li > ul:first-child li:nth-child(2) { margin-top: 10px;}
 .header ul.main-nav li ul.sub-menu > li > ul:first-child li:nth-child(5) { margin-bottom: 10px;}
+.header ul.main-nav > li > ul.sub-menu li a.range-cat { cursor: default; pointer-events: none;}
 
 .header ul.main-nav2 li ul.sub-menu{padding:0;}
 .header ul.main-nav2 li{position:static;}
@@ -1004,3 +1005,8 @@ font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
 .header ul.main-nav2 .sub-menu.stores-nav .left-side > ul, 
 .header ul.main-nav2 .sub-menu.stores-nav .right-side > ul { box-sizing: border-box; float: left; width: 25%;}
 .header .sub-menu a:hover {color: #694705 !important;}
+
+.header ul.main-nav > li.smenu, 
+.header ul.main-nav > li.active, 
+.header ul.main-nav > li:hover, 
+.header ul.main-nav2 > li.active { background: none;}
