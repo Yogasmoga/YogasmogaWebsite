@@ -424,26 +424,21 @@ if(!is_user_logged_in()){
                     <ul class="sub-menu menu-ovr ">
                         <li>
                             <ul>
-                                <li><a href="/women/whats-new"> What's New</a></li>
-								<li style="margin-top:15px"><a href="/women/core"> Core</a></li>
-								<li><a href="/women/select"> Select</a></li>
-								<li style="margin-bottom:15px"><a href="/women/premium"> Premium</a></li>
-                                <!--<li><a href="/women/one-too-many"> One 2 Many</a></li>-->
-								<li><a href="/women/prints">PRINTS</a></li>
-								<!--<li><a href="/women/super-sale"> Super Sale</a></li>-->
-								<li><a href="/women/additional-sizes"> ADDITIONAL SIZES</a></li>
-                                <li><a href="/women/vivacity-collection"> VIVACITY COLLECTION</a></li>
-								<li><a href="/women/carbon6">Carbon6&trade; COLLECTION</a></li>
-<!--                                <li><a href="/women/rangoli-collection"> RANGOLI COLLECTION</a></li>-->
+                                <li><a href="/women/"> What’s New</a></li>
+								<li><a href="/women/collections"> Collections</a></li>
+								<li><a style="font-size:11px!important" href="/women/prints"> Prints</a></li>
+								<li><a style="font-size:11px!important" href="/women/carbon6"> Carbon 6™</a></li>
+								<li><a href="/women/vivacity"> Vivacity</a></li>
+								<li><a href="/women/additional-sizes"> Additional Sizes</a></li>
                             </ul>
                         </li>
                         <li><a href="/women/tops"> Tops</a>
-                            <ul><li><a href="/women/tops/bras">Bras</a></li>
-                                <li><a href="/women/tops/tanks">Tanks</a></li>
-                                <li><a href="/women/tops/tees">TEES</a></li>
-                                <li><a href="/women/tops/sweaters">SWEATERS</a></li>
-                                <li><a href="/women/tops/jackets">Jackets</a></li>
-<!--                                <li><a href="/women/tops/rangoli">Rangoli</a></li>-->
+                            <ul>
+								<li><a href="/women/tops/bras">Bras</a></li>
+								<li><a href="/women/tops/tanks">Tanks</a></li>
+								<li><a href="/women/tops/short-sleeve">Short Sleeve</a></li>
+								<li><a href="/women/tops/long-sleeve">Long Sleeve</a></li>
+								<li><a href="/women/tops/jackets-hoodies">Jackets &amp; Hoodies</a></li>
                             </ul>
                         </li>
                         <li><a href="/women/bottoms"> Bottoms</a>
@@ -457,53 +452,60 @@ if(!is_user_logged_in()){
                         </li>
                         <li><a href="/women/accessories"> Accessories </a>
                             <ul>
-                                <li><a href="/women/accessories/scarves">Scarves</a></li>
-                                <!--<li><a href="/women/accessories/head-bands">Head Bands</a></li>-->
-<!--                                <li><a href="/women/accessories/yoga-mats">Yoga Mats</a></li>-->
-<!--                                <li><a href="/women/accessories/yoga-towels">Yoga Towels</a></li>-->
-                                <li><a href="/women/accessories/yoga-flops">Yoga Flops</a></li>
-                                <li><a href="/women/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>
-								<li><a href="/women/accessories/bags">Bags</a></li>
+                               <li><a href="/women/accessories/bags">Bags</a></li>
+							   <li><a href="/women/accessories/scarves">Scarves</a></li>
+							   <li><a href="/women/accessories/yoga-flops">Yoga Flops</a></li>
+							   <li><a href="/women/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>
                             </ul>
                         </li>
+						<li><a class="range-cat"> Ranges</a>
+							<ul>
+								<li><a href="/women/ranges/core">Core</a></li>
+								<li><a href="/women/ranges/select">Select</a></li>
+								<li><a href="/women/ranges/premium">Premium</a></li>
+							</ul>
+						</li>
+						<div class="nav-img"><img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/nav-women.jpg"></div>
                     </ul>
 
                 </li>
                 <li class="menu-heading"><a class="menu-heading " href="/mens">Men</a>
                     <ul class="sub-menu menu-ovr second-list">
                         <li>
-                            <ul>
-                                <li><a href="/men/whats-new"> What's New</a></li>
-								<li style="margin-top:15px"><a href="/men/core"> Core</a></li>
-								<li><a href="/men/select"> Select</a></li>
-								<li style="margin-bottom:15px"><a href="/men/premium"> Premium</a></li>
-								<li><a href="/men/carbon6">Carbon6&trade; COLLECTION</a></li>
-								<li><a href="/men/golf-inspired">Golf Inspired</a></li>
-								<!--<li><a href="/men/super-sale"> Super Sale</a></li>-->
-<!--                                <li><a href="/mens/top-sellers"> Top Sellers</a></li>-->
-                            </ul>
-                        </li>
-
-                        <li><a href="/men/tops"> Tops</a>
-                            <ul>
-                                <li><a href="/men/tops/tees">Tees</a></li>
-                                <li><a href="/men/tops/tanks">TANKS</a></li>
-                                <li><a href="/men/tops/jackets">Jackets</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/mens/bottoms"> Bottoms</a>
-                            <ul>
-                                <li><a href="/men/bottoms/shorts">Shorts</a></li>
-                                <li><a href="/men/bottoms/pants">Pants</a></li></ul>
-                        </li>
-                        <li><a href="/men/accessories"> Accessories</a>
-                            <ul>
-<!--                                <li><a href="/mens/accessories/yoga-mats">Yoga Mats</a></li>-->
-<!--                                <li><a href="/mens/accessories/yoga-towels">Yoga Towels</a></li>-->
-                                <li><a href="/men/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>
-								<li><a href="/men/accessories/bags">Bags</a></li>
-                            </ul>
-                        </li>
+							<ul>
+								<li><a href="http://staging.yogasmoga.com/men/"> What’s New</a></li>
+								<li><a href="http://staging.yogasmoga.com/men/collections"> Collections</a></li>
+								<li><a style="font-size:11px!important" href="http://staging.yogasmoga.com/men/golf-inspired"> Golf Inspired</a></li>
+								<li><a style="font-size:11px!important" href="http://staging.yogasmoga.com/men/carbon6"> Carbon 6™</a></li>
+							</ul>
+						</li>
+						<li><a href="http://staging.yogasmoga.com/men/tops"> Tops</a>
+							<ul>
+								<li><a href="http://staging.yogasmoga.com/men/tops/tees">Tees</a></li>
+								<li><a href="http://staging.yogasmoga.com/men/tops/tanks">Tanks</a></li>
+								<li><a href="http://staging.yogasmoga.com/men/tops/jackets-hoodies">Jackets &amp; Hoodies</a></li>
+							</ul>
+						</li>
+						<li><a href="http://staging.yogasmoga.com/men/bottoms"> Bottoms</a>
+							<ul>
+								<li><a href="http://staging.yogasmoga.com/men/bottoms/shorts">Shorts</a></li>
+								<li><a href="http://staging.yogasmoga.com/men/bottoms/pants">Pants</a></li>
+							</ul>
+						</li>
+						<li><a href="http://staging.yogasmoga.com/men/accessories"> Accessories</a>
+							<ul>
+								<li><a href="http://staging.yogasmoga.com/men/accessories/bags">Bags</a></li>
+								<li><a href="http://staging.yogasmoga.com/men/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>
+							</ul>
+						</li>
+						<li><a class="range-cat"> Ranges</a>
+							<ul>
+								<li><a href="http://staging.yogasmoga.com/men/ranges/core">Core</a></li>
+								<li><a href="http://staging.yogasmoga.com/men/ranges/select">Select</a></li>
+								<li><a href="http://staging.yogasmoga.com/men/ranges/premium">Premium</a></li>
+							</ul>
+						</li>
+						<div class="nav-img"><img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/nav-men.jpg"></div>
                     </ul>
                 </li>
 				<li class="menu-heading"><a class="menu-heading " href="/one-too-many">ONE 2 MANY</a></li>
@@ -565,26 +567,82 @@ if(!is_user_logged_in()){
                 <div class="in-bl">
                     <ul class="main-nav main-nav2">
                         <li><a class="main-heading" href="/our-story">ys story</a>
-                            <ul style="left:-69px;" class="sub-menu l-align cms-header-link">
-                                <li><a href="/our-story">Our Story</a></li>
-                                <li><a href="/our-core-values">Our core values</a></li>
-                                <li><a href="/our-ethics">Our ethics</a></li>
-                                <!--<li><a href="/our-stores">Our Stores</a></li>-->
-                                <li><a href="/made-in-usa">Made in usa</a></li>
-                                <li><a href="/principles-of-yoga">Principles of yoga</a></li>
-                                <li><a href="/namaskar">Namaskár Foundation</a></li>
-                                <li><a href="/press">Press</a></li>
+                            <ul style="left:-69px;" class="sub-menu l-align cms-header-link">                               
+                                <div class="left-side">
+									<div class="left-st-image">
+										<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/nav-ysstory.jpg">										
+									</div>								
+									<ul>
+										<li><a href="/our-story">OUR STORY</a></li>
+										<li><a href="/our-core-values">OUR CORE VALUES</a></li>
+										<li><a href="/our-ethics">OUR ETHICS</a></li>
+										<li><a href="/made-in-usa">MADE IN USA</a></li>
+										<li><a href="/principles-of-yoga">PRINCIPLES OF YOGA</a></li>
+										<li><a href="/namaskar">NAMASKAR FOUNDATION</a></li>
+										<li><a href="/press">PRESS</a></li>
+									</ul>
+                                </div>
+                                <div class="right-side">
+									<div class="left-st-image">
+									<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/nav-ystech.jpg">
+									</div>
+									<ul>
+									<li><a href="/ys-fabric-tech">ys fabric tech</a></li>
+									<li><a href="/ys-color-tech">ys color tech</a></li>
+									<li><a href="/design-elements">ys design elements</a></li>
+									</ul>
+                                </div>                            
                             </ul>
-
                         </li>
-                        <li><a class="main-heading" href="/ys-fabric-tech">ys tech</a>
+                        <?php /* ?><li><a class="main-heading" href="/ys-fabric-tech">ys tech</a>
                             <ul style="left:-73px;" class="sub-menu l-align cms-header-link">
                                 <li><a href="/ys-fabric-tech">ys fabric tech</a></li>
                                 <li><a href="/ys-color-tech">ys color tech</a></li>
                                 <li><a href="/design-elements">ys design elements</a></li>
                             </ul>
-                        </li>
-						<li><a class="main-heading" href="/our-stores">YS Stores</a></li>
+                        </li><?php */ ?>
+						<li>
+							<a class="main-heading" href="/our-stores">YS Stores</a>
+								<ul class="sub-menu l-align  cms-header-link stores-nav" style="left:-73px;">
+									<div class="left-side">
+										<div class="left-st-image">
+											<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/nav-ysstore1.jpg">
+										</div>
+										<ul>
+											<li><a class="boldtxt" href="/our-stores#greenwich">CALIFORNIA</a></li>
+											<li><a href="/our-stores#beverly-hills">BEVERLY HILLS</a></li>
+											<li><a href="/our-stores#brentwood">BRENTWOOD</a></li>
+											<li><a href="/our-stores#corte-madera">CORTE MADERA</a></li>
+											<li><a href="/our-stores#la-jolla">HAWAII</a></li>
+											<li><a href="/our-stores#la-jolla">LA JOLLA</a></li>
+										</ul>
+										<ul>
+											<li><a href="/our-stores#malibu">&nbsp;</a></li>
+											<li><a href="/our-stores#malibu">MALIBU</a></li>
+											<li><a href="/our-stores#newport-beach">NEWPORT BEACH</a></li>
+											<li><a href="/our-stores#san-francisco">SAN FRANCISCO</a></li>
+											<li><a href="/our-stores#walnut-creek">WALNUT CREEK</a></li>
+										</ul>
+									</div>
+									<div class="right-side">
+										<div class="left-st-image">
+											<img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/nav-ysstore2.jpg">
+										</div>
+										<ul>
+											<li><a class="boldtxt" href="/ys-fabric-tech">CONNECTICUT</a></li>
+											<li><a href="/our-stores#greenwich">GREENWICH</a></li>
+											<li><a href="/our-stores#greenwich">&nbsp;</a></li>
+											<li><a class="boldtxt" href="/our-stores#short-hills">NEW JERSEY</a></li>
+											<li><a href="/our-stores#short-hills">	SHORT HILLS</a></li>
+										</ul>
+										<ul>
+											<li><a class="boldtxt" href="/our-stores#westchester">NEW YORK</a></li>
+											<li><a href="/our-stores#westchester">BOND ST</a></li>
+											<li><a href="/our-stores#westchester">WESTCHESTER</a></li>
+										</ul>
+									</div>
+								</ul>
+						</li>
                         <?php /* ?><li><a class="main-heading" href="/smogi-bucks">Smogi Bucks</a>
                             <ul style="left:-57px;" class="sub-menu mlink l-align">
                                 <li><a href="/smogi-bucks">what is smogi bucks</a></li>
@@ -592,7 +650,7 @@ if(!is_user_logged_in()){
                                 <li><a href="/smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
                             </ul>
                         </li><?php */ ?>
-                        <li class="rangoli"><a id="rangoli-head" class="rangoliBlu" href="/rangoli">Rangoli</a></li>
+                        <?php /* ?><li class="rangoli"><a id="rangoli-head" class="rangoliBlu" href="/rangoli">Rangoli</a></li><?php */?>
 						<!--<li><a href="/rewardpoints/index/referral">invite friend</a></li>-->
                     </ul>
                 </div>
