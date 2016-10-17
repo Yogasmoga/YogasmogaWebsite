@@ -1178,7 +1178,7 @@ if (!is_user_logged_in() && is_home()) {
     if(is_home()) {
         ?>
         <?php /*?><div  class="mobile-orange-banner">RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30</div><?php */ ?>
-    <div  class="mobile-orange-banner">SHOP YOUR FAVORITES: ONE 2 MANY - NEW ITEMS ADDED<br/> AT GREAT PRICES : LIMITED TIME</div>
+    <div  class="mobile-orange-banner">SHOP YOUR FAVORITES: ONE 2 MANY - NEW ITEMS <br/>ADDED AT GREAT PRICES : LIMITED TIME</div>
         <?php
     }
     ?>
