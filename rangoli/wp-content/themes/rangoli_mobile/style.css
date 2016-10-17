@@ -1947,7 +1947,7 @@ p.small.err_msg {
 }
 
 
-
+/*
 .mobile-orange-banner{   background: rgb(255, 102, 0) none repeat scroll 0 0;
     color: rgb(255, 255, 255);
     font-size: 10px;
@@ -1957,9 +1957,9 @@ p.small.err_msg {
     position: fixed;
     top: 88px;
     width: 100%;
-    font-family:ITCAvantGardeStd-Md;
+    font-family:GraphikRegular;
     z-index: 999;}
-
+*/
 #popup-mailsignup ul li{width:100%; float:left;}
 #popup-mailsignup .button-area{position:relative;}
 #popup-mailsignup .button-area input[type="submit"]{line-height:26px!important; letter-spacing: 0; margin-bottom: 0;-webkit-appearance: none;}

@@ -444,7 +444,7 @@ $style= "";
     <!--<div class="banner" style="text-transform: uppercase"  onclick="open_red_popup()">-->
     <div class="banner" style="text-transform: uppercase"  onclick="window.location.assign(homeUrl+'one-too-many')">
         <?php /* ?>RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30<?php */ ?>
-        One 2 Many&mdash;Shop Your Favorite Items Newly Discounted. Shop Now.
+        SHOP YOUR FAVORITES: ONE 2 MANY - NEW ITEMS ADDED AT GREAT PRICES : LIMITED TIME
 
     </div>
     <?php //}?>
