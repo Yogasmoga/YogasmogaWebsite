@@ -331,9 +331,10 @@ jQuery(window).resize(function(){
 jQuery(window).on('keypress keydown',function(e){
 	//alert();
    if((e.which == 61 && 17) || (e.which == 43 && 17) || (e.which == 45 && 17) || (e.which == 48 && 17) || (e.which == 96 && 17)){
-       //Ctrl + "+" is pressed, 61 is for =/+ anr 43 is for Numpad + key
+       // 17 is Ctrl Keycode
+	   //Ctrl + "+" is pressed, 61 is for =/+ anr 43 is for Numpad + key
 	   //Ctrl + "-" is pressed, 45 is for -/- anr 45 is for Numpad - key
-	   //Ctrl + "0" is pressed, 48 is for )/0 anr 48 is for Numpad 0 key
+	   //Ctrl + "0" is pressed, 48 is for )/0 anr 96 is for Numpad 0 key
 	   //alert(e.which);
 	   
 		var px = 0;

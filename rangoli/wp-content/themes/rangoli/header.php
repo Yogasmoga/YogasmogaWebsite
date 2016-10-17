@@ -10,6 +10,7 @@
 ?>
 <!DOCTYPE HTML>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon"   href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
     <?php
     if(is_home()){
@@ -351,30 +352,72 @@
 	
 	
 </head>
-<body>
+<body class="common-listing">
 
 <?php
 $style= "";
 if(!is_user_logged_in()){
-    $style= "margin-top:25px;";
+    $style= "margin-top:0px;";
     echo "<style>
         .pace .pace-progress {
             top:95px;
         }
     </style>";
 ?>
-<div class="banner" style="cursor:pointer" onclick="open_red_popup()">
+<div class="banner" style="cursor:pointer; display:none" onclick="open_red_popup()">
     SIGN UP NOW TO RECEIVE $25 SMOGI BUCKS
 </div>
 <?php
 
 }
 ?>
-<div class="header-container" style="<?php echo $style; ?>">
+<div id="ysheader" class="header-container" style="<?php echo $style; ?>">
+	<div class="header-banner" style="height:40px;padding:0 40px;">
+		<div style="border-bottom:1px solid #ccc;float:left;width:100%;">
+			<div style="float:left;" class="free-shipping-txt">
+			Free Shipping to US &amp; Canada	
+			</div>
+			<div class="new-orange-banner orange-banner">	
+			SIGN UP NOW TO RECEIVE $25 SMOGI BUCKS
+			</div>
+			<div class="right-bar-menu" style="float:right">
+				<div class="right-top-block r-align">
+					<ul class="tr-menu">
+					   
+						 <li> <a href="javascript:void(0)" id="welcome-name" onclick="jQuery('.login_logout_link').click();">Sign In</a>
+							<ul style="left: -64px; display:none;" class="sub-menu l-align my-acnt">
+								<li class="blank"></li>
+								<li style="padding-top: 16px;"><a href="/sales/order/history">track order</a></li>
+								<li><a href="/customer/account/index">account settings</a></li>
+								<li class="last login_logout_link"><a href="javascript:void(0);" id="signin">Sign In</a></li>
+							</ul>
+							
+						</li>
+						<li data-blockid="help-new">
+							<a href="/help#faq">Help</a>
+							
+							<ul style="left: -87px;display:none;" class="sub-menu l-align cms-header-link">
+								<li class="blank"></li>
+								<li data-blockid="faq" style="padding-top: 16px;"><a href="/help#faq">FAQ</a></li>
+								<li data-blockid="shipping-returns"><a href="/help#shipping-returns">Shipping and Returns</a></li>
+								<li data-blockid="size-chart"><a href="/help#size-chart">Size Chart</a></li>
+								<li data-blockid="product-care"><a href="/help#product-care">Product Care</a></li>
+								<li class="last" data-blockid="email-us"><a href="/help#email-us">Email Us</a></li>
+							</ul>
+						</li>
+					   
+						<li id="bag-count" onclick="window.location='/'"><span id="cart" class="open-cart" href="/">Bag (<span class="cartitemcount"><?php echo get_cart_count();  ?></span>)</span></li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
     <div class="header">
+		<div class="header-inner">
         <div class="header-left">
-            <div class="header-left logo">
-                <a class="logo menu-heading menu-heading1" href="/"><img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/ys_logo.png"></a>
+            <div class="logo posRel">
+                <a class="logo menu-heading menu-heading1" href="/"><img src="<?php  echo get_site_url(); ?>/wp-content/themes/rangoli/images/logo-2015.png"></a>
             </div>
             <ul class="header-left navigation-bar main-nav">
                 <li class="menu-heading"><a class="menu-heading " href="/women">Women</a>
@@ -477,7 +520,8 @@ if(!is_user_logged_in()){
             </ul>
         </div>
         <div class="f-right header-right">
-            <div class="right-top r-align">
+            <?php /* ?>
+			<div class="right-top r-align">
                 <ul class="shipping-menu tr-menu">
                     <li class="free-shipping">
                         <span>Free shipping to US and Canada
@@ -516,6 +560,7 @@ if(!is_user_logged_in()){
 
                 </ul>
             </div>
+			<?php */ ?>
             <div class="right-bottom-block">
                 <div class="in-bl">
                     <ul class="main-nav main-nav2">
@@ -539,27 +584,29 @@ if(!is_user_logged_in()){
                                 <li><a href="/design-elements">ys design elements</a></li>
                             </ul>
                         </li>
-						<li><a href="/our-stores">YS Stores</a></li>
-                        <li><a class="main-heading" href="/smogi-bucks">Smogi Bucks</a>
+						<li><a class="main-heading" href="/our-stores">YS Stores</a></li>
+                        <?php /* ?><li><a class="main-heading" href="/smogi-bucks">Smogi Bucks</a>
                             <ul style="left:-57px;" class="sub-menu mlink l-align">
                                 <li><a href="/smogi-bucks">what is smogi bucks</a></li>
                                 <li><a href="/smogi-bucks#get-smogi-bucks">how can i get them</a></li>
                                 <li><a href="/smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
                             </ul>
-                        </li>
+                        </li><?php */ ?>
                         <li class="rangoli"><a id="rangoli-head" class="rangoliBlu" href="/rangoli">Rangoli</a></li>
 						<!--<li><a href="/rewardpoints/index/referral">invite friend</a></li>-->
                     </ul>
                 </div>
-
+				<?php /* ?>
                 <div class="search-bar in-bl">
                     <form autocomplete="off" method="get" action="/catalogsearch/result/" id="search_frm">
                         <input type="text" data-watermark="Search" maxlength="200" vlogo menu-heading menu-heading1alue="Search" name="q" id="search_input" class="watermark">
                         <input type="submit" style="" value="Search" class="in-bl" id="search-btn">
                     </form>
                 </div>
+				<?php */ ?>
             </div>
         </div>
+		</div>
     </div>
     <!-- header ends here -->
 

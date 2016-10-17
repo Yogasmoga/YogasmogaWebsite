@@ -935,3 +935,44 @@ input.change_username {
 }
 
 .bullseye_popup{display:none!important;}
+
+/*##############################*/
+/*---new 31 aug design 2016--*/
+/*##############################*/
+
+/*--header--*/
+div.body-compensator { height: 109px;}
+.free-shipping-txt { float: left; font: 12px/40px GraphikRegular; letter-spacing: 0.3px;}
+.header-banner .new-orange-banner{font:11px/40px avantgardegothicitcw01d,ITCAvantGardeStd-Md;color:#444444;text-transform:uppercase;width:auto;
+margin:0 auto;position:absolute;left:50%; transform:translateX(-50%); -webkit-transform:translateX(-50%);letter-spacing:0.3px;cursor:pointer;}
+.header-banner ul.tr-menu { margin: 10px 0 6px;}
+.header-banner .right-bar-menu .tr-menu > li {
+  margin-right: 18px;
+}
+#ysheader{background:#fff; height:109px!important;}
+#ysheader .right-top-block li[data-blockid="help-new"] {
+  margin-right: 0;
+}
+#ysheader .right-top-block #bag-count { margin-left: 18px; margin-right: 0;}
+.header-banner .right-bar-menu .tr-menu > li a,.header-banner .right-bar-menu .tr-menu > li span{text-transform:uppercase;color:#555;cursor:pointer;
+font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
+
+#ysheader .header{padding:0 40px;}
+.header .logo.posRel {left: 50%;margin: 19px 19px 0 0;position: absolute;right: auto;transform: translateX(-50%);-webkit-transform: translateX(-50%);}
+.header .header-right{padding-top:0px;}
+
+.header-left.main-nav > li,
+.header-right .main-nav > li{padding:36px 12px 0; height:auto;cursor:default;}
+.header-left.main-nav > li:first-child{padding-left:0;}
+.header-right .main-nav > li:last-child{padding-right:0;}
+.header-left.main-nav > li > a.menu-heading,
+.header-right .main-nav > li > a.main-heading,.header-right .main-nav > li > a{font:11px/23px gothammedium;letter-spacing:0.4px;padding:0 0 9px; height:auto;}
+
+#ysheader .logo img{ height:31px!important; transition:all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.3s;}
+#ysheader .logo img.resizable{height: 22px!important;  margin-top: 12px; transition: all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.3s;}
+
+.header-container .header-inner {position: relative;}
+.header ul.main-nav li ul.sub-menu { background: #ad8435 none repeat scroll 0 0; box-sizing: border-box; padding: 0 0 0 2%; width: 100%;}
+.header ul.main-nav li ul.sub-menu > li:first-child { padding-top: 2%;}
+.header ul.main-nav li ul.sub-menu > li { border-left: medium none; box-sizing: border-box; padding-top: 2%; width: calc((100% - 194px) / 5) !important;}
+.header ul.main-nav li a{color:#fff;}
