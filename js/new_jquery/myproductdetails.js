@@ -33,6 +33,8 @@ jQuery(document).ready(function ($) {
         }
     });
     $("table.normalproductdetail div#colorcontainer table").live("click", function () {
+		
+		$('.product-row-container').css('opacity','0'); //for new design
         currentColorObject = $(this);
         $('.errormsg').empty().hide();
         jQuery("#orderitem").removeClass('bagdisabled');
@@ -49,7 +51,12 @@ jQuery(document).ready(function ($) {
 				window.clearInterval(intervalID);			
 			}
 		}, 2000);
-		/*---new design js end--*/
+		/*---new design js end--*/		
+		$('.product-row-container img').load(function(){			
+			$('.product-row-container').css('opacity','1');
+		});		
+		
+		
     });
 
     $("table.smallimagecontiner td:not(.selectedimage)").live("click", function () {
