@@ -4382,6 +4382,6 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .slideritem_hover li:hover{transform:scale(1.1);-webkit-transform:scale(1.1); }
 .slideritem_hover li > div {transform:scale(1);-webkit-transform:scale(1);}
 .slideritem_hover li:hover > div {transform:scale(0.9);-webkit-transform:scale(0.9);}
-.product-row-container.row-container-loading{background: url("../images/new-loader.gif") no-repeat center center transparent;width:100%;height:100%;background-attachment:fixed;}
+.product-row-container.row-container-loading{background: url("../images/new-loader.gif") no-repeat center center transparent;background-attachment:fixed;overflow:hidden;}
 
 .product-row-container.row-container-loading .product-row{opacity:0;}
