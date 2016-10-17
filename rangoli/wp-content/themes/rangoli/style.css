@@ -975,4 +975,4 @@ font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
 .header ul.main-nav li ul.sub-menu { background: #ad8435 none repeat scroll 0 0; box-sizing: border-box; padding: 0 0 0 2%; width: 100%;}
 .header ul.main-nav li ul.sub-menu > li:first-child { padding-top: 2%;}
 .header ul.main-nav li ul.sub-menu > li { border-left: medium none; box-sizing: border-box; padding-top: 2%; width: calc((100% - 194px) / 5) !important;}
-.header ul.main-nav li a{color:#fff;}
+.header ul.main-nav li ul.sub-menu a{color:#fff;}
