@@ -415,8 +415,24 @@ if(!isset($ipInfo)){
 ?>
 <div class="footer row">
     <div class="side-logo">
-        <a class="logo" href="/" style="padding-left:5px">
-            <img src="<?php bloginfo('template_directory')  ?>/images/ys_logo.png" alt="logo_footer" />
+        <a class="logo" href="/" >
+            <!--<img src="<?php/* bloginfo('template_directory') */ ?>/images/ys_logo.png" alt="logo_footer" />-->
+			<span>
+			<svg width="131" height="113" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 131 113" style="enable-background:new 0 0 131 113;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#AE8637;}
+</style>
+<g id="Layer_1">
+</g>
+<g id="graphic">
+	<g>
+		<path class="st0" d="M2,0.8l63.9,110.9L129.8,0.8H2z M10.7,5.9H121l-55.1,95.7L10.7,5.9z"/>
+		<polygon class="st0" points="67.1,14 67.1,36.9 75.3,36.9 65.9,53.3 56.4,36.9 64.6,36.9 64.6,14 24.7,14 65.9,85.3 107,14   "/>
+	</g>
+</g>
+</svg>
+			
+			</span>
         </a>
         <div class="clear-fix"></div>
     </div>
@@ -433,8 +449,7 @@ if(!isset($ipInfo)){
             </li>
             <li>
                 <ul>
-                    <li><a href="/our-story">YS STORY</a></li>
-                    <li><a href="/ys-fabric-tech">YS TECH</a></li>
+                    <li><a href="/our-story">YS STORY</a></li>                   
 					<li><a href="/our-stores">YS STORES</a></li>
                     <li><a href="/smogi-bucks">SMOGI BUCKS</a></li>
                     <li><a href="/namaskar">NAMASK&Aacute;R FOUNDATION</a></li>
@@ -445,11 +460,9 @@ if(!isset($ipInfo)){
                     <li><a href="/customer/account/index">MY ACCOUNT</a></li>
                     <li><a href="/gift_of_ys">GIFT CARD</a></li>
                     <li><a href="/sales/order/history">TRACK MY ORDER</a></li>
+					 <li><a href="/careers">CAREERS</a></li>
                 </ul>
-				 <ul style="padding-top:14px;">
-                        <li><span class="bold-heading" style="font-family:gothambold;" >JOIN US</span></li>
-                        <li><a href="/careers">CAREERS</a></li>
-                    </ul>
+				 
             </li>
         </div>
         <div class="first-list contact-us">
@@ -476,7 +489,7 @@ if(!isset($ipInfo)){
                     <li><a class="bold-heading" href="javascript:void(0)" onclick="open_red_popup()">FEEL THE SMOGI LOVE</a></li>
 
                     <!--<li>Sign up and earn 50% Off on your first order.</li>-->
-					<li>Sign up now to receive $25 Smogi Bucks</li>
+					<li class="smogilove-txt">Sign up now<br/> to receive $25 Smogi Bucks</li>
                     <?php
                     }
                     else{
@@ -492,17 +505,7 @@ if(!isset($ipInfo)){
             </li>
             <li>
                 <ul>
-                    <li class="bold-heading">STAY IN TOUCH</li>
-                    <li>
-                        <ul class="social-icons">
-                            <li><a target="_blank" class="fb-icon" href="http://www.facebook.com/YOGASMOGA"></a></li>
-                            <li><a target="_blank"  class="twtr-icon" href="http://www.twitter.com/YOGASMOGA"></a></li>
-                            <li><a target="_blank"  class="insta-icon" href="http://www.instagram.com/YOGASMOGA"></a></li>
-                            <li><a  target="_blank" class="pin-icon" href="http://www.pinterest.com/YOGASMOGA"></a></li>
-
-                        </ul>
-                    </li>
-                    <li>&nbsp;</li>
+                    
                     <li><a class="bold-heading" href="javascript:void(0);">SHARE WITH YOUR FRIENDS</a></li>
                 </ul>
             </li>
@@ -516,16 +519,7 @@ if(!isset($ipInfo)){
                 <li><a href="/terms-and-conditions/">Terms &amp; Conditions</a></li>
                 <li>&nbsp;</li>
                 <li>&nbsp;</li>
-                <li >
-                    <iframe id="fb-like-btn" src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fyogasmoga.com&amp;width&amp;layout=button&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=80&amp;appId=647531145339855" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:20px;width:49px;" allowTransparency="true"></iframe>
-                </li>
-                <li>&nbsp;</li>
-                <li ><a target="_blank" href="https://twitter.com/intent/follow?original_referer=YOGASMOGA.COM%2Fblog%2Fxmlrpc.php&region=follow_link&screen_name=yogasmoga&tw_p=followbutton&variant=2.0">
-                        <img src="http://d1iorz83055o8x.cloudfront.net/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/64x20xtwtr-sml.jpg.pagespeed.ic.bz-wWsqdpc.jpg">
-                    </a>
-                </li>
-                <li>&nbsp;</li>
-                <li ><img src="http://d1iorz83055o8x.cloudfront.net/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/50x20xpaypal-sml.jpg.pagespeed.ic.BUgdB7cQsT.jpg" style="height:20px; width:50px;"></li>
+
 
 
             </ul>
@@ -623,6 +617,35 @@ $(document).ready(function(){
 	})
 });	
 </script>
+<style>
+.footer.row{  display: block;
+    float: none !important;
+    margin: 0 auto 30px !important;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    padding-top: 60px;
+    text-align: center !important;
+    width: 98.5%;}
+.side-logo{ float: left;
+    width: 33%;
+	 margin-top: 0%;
+	 padding:0;
+	}
+	.footer .footer-right{width:67%;}
+	.footer.row .side-logo .logo{float:left;padding-left:30px;}
+	.footer.row .side-logo .logo span{display: block;
+    float: left;
+    width: 94px;}
+.footer.row .side-logo .logo span svg{width:100%;}
+.smogilove-txt{text-transform:uppercase;}
+ .footer-right .first-list ul li a,.footer-right ul li{  color: #555;
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 12px;
+    letter-spacing: 0.5px;}
+	.footer li .bold-heading{font-family:AvantGardeGothicITCW01D!important}
+	.footer li:hover,.footer li:hover a{color: #ae8536;}
+	.footer-right .privacy li, .footer-right .privacy li a{font:12px/1.55 ITCAvantGardeStd-Bk;}
+</style>
 
 </body>
 </html>

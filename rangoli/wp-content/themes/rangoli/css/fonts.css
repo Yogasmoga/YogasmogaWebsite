@@ -115,3 +115,9 @@ src:url(../fonts/Gotham-Light.eot?#iefix) format("embedded-opentype"),url(../fon
 font-weight:400;
 font-style:normal
 }
+
+@font-face{
+font-family:"AvantGardeGothicITCW01D";
+src:url("../fonts/b74e5f86-4477-435a-abdf-32d8215f21bc.eot?#iefix");
+src:url("../fonts/b74e5f86-4477-435a-abdf-32d8215f21bc.eot?#iefix") format("eot"),url("../fonts/c18aee57-7585-4a8b-9a1c-69d226301d73.woff") format("woff"),url("../fonts/44ccbb2b-0fbc-4d95-b1da-0aa73bd26fb0.ttf") format("truetype"),url("../fonts/f2de529c-11d2-43b7-be7c-05c5aaeaf133.svg#f2de529c-11d2-43b7-be7c-05c5aaeaf133") format("svg");
+}
