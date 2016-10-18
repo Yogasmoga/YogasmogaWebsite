@@ -616,6 +616,7 @@ $(document).ready(function(){
 	 margin-top: 2%;
 	 padding:0;
 	}
+	.footer.row .first-list{overflow:hidden;}
 	.side-logo .logo img{ left: 0;
     position: relative;
     width: 94px;}
