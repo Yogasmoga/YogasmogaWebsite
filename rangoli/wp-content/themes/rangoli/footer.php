@@ -618,11 +618,13 @@ $(document).ready(function(){
 });	
 </script>
 <style>
-.footer.row{  display: inline-block;
-    margin: 0 auto 30px;
+.footer.row{  display: block;
+    float: none !important;
+    margin: 0 auto 30px !important;
+    overflow: hidden;
     overflow-wrap: break-word;
     padding-top: 60px;
-	float:none;
+    text-align: center !important;
     width: 98.5%;}
 .side-logo{ float: left;
     width: 33%;
@@ -642,6 +644,7 @@ $(document).ready(function(){
     letter-spacing: 0.5px;}
 	.footer li .bold-heading{font-family:AvantGardeGothicITCW01D!important}
 	.footer li:hover,.footer li:hover a{color: #ae8536;}
+	.footer-right .privacy li, .footer-right .privacy li a{font:12px/1.55 ITCAvantGardeStd-Bk;}
 </style>
 
 </body>
