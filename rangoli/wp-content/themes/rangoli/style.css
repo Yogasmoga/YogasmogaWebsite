@@ -958,11 +958,12 @@ margin:0 auto;position:absolute;left:50%; transform:translateX(-50%); -webkit-tr
 font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
 
 #ysheader .header{padding:0 40px;}
-.header .logo.posRel {left: 50%;margin: 19px 19px 0 0;position: absolute;right: auto;transform: translateX(-50%);-webkit-transform: translateX(-50%);}
+.header .logo{margin:0;}
+.header .logo.posRel {left: 50%;margin: 19px 0 0 0;position: absolute;right: auto;transform: translateX(-50%);-webkit-transform: translateX(-50%);}
 .header .header-right{padding-top:0px;}
 
 .header-left.main-nav > li,
-.header-right .main-nav > li{padding:36px 12px 0; height:auto;cursor:default;}
+.header-right .main-nav > li{padding:28px 12px 0; height:auto;cursor:default;}
 .header-left.main-nav > li:first-child{padding-left:0;}
 .header-right .main-nav > li:last-child{padding-right:0;}
 .header-left.main-nav > li > a.menu-heading,
