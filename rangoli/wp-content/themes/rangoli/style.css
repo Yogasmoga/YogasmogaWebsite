@@ -1020,8 +1020,8 @@ font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
 #ysheader.showhide ul.main-nav2 #shop-bag-count { display: block;cursor:pointer;}
 
 .wp_page .menu-btn,.wp_page .menu-box{z-index:9999991;}
-.wp_page .menu-btn{top:130px;left:0;}
-.wp_page .color-game{top:130px;}
+.wp_page .menu-btn{top:130px;left:0;margin-left:40px;}
+.wp_page .color-game{top:130px;right:0;margin-right:40px;}
 /*.wp_page .menu-box{transform:translateX(400px);-webkit-transform:translateX(400px);}*/
 .wp_page .menu-box{margin-left:0;opacity:0; visibility:hidden;width:0;}
 /*.wp_page .menu-box.box-close{ transiton:0.3s linear;transform:translateX(-321px);}

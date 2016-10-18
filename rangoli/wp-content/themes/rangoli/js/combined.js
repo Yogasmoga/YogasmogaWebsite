@@ -3093,7 +3093,7 @@ jQuery(document).ready(function(){
 
 // to fix elements which are going out of 1600px width
 jQuery(document).ready(function(){
-		if(jQuery(window).width() > 1600){
+		
 			var pageOffsetLeft = jQuery('#page').offset().left;
 			var pageOffsetRight = (jQuery(window).width() - (jQuery('#page').offset().left + jQuery('#page').outerWidth()));		
 			
@@ -3104,14 +3104,14 @@ jQuery(document).ready(function(){
 				'left':pageOffsetLeft
 			});
 			jQuery('.color-game').css({
-				'right':pageOffsetRight
+				'margin-right':pageOffsetRight
 			});
-		}
+		
 });
 
 // to fix elements which are going out of 1600px width on resize
 jQuery(window).resize(function(){
-		if(jQuery(window).width() > 1600){
+		
 			var pageOffsetLeft = jQuery('#page').offset().left;
 			var pageOffsetRight = (jQuery(window).width() - (jQuery('#page').offset().left + jQuery('#page').outerWidth()));		
 			
@@ -3121,7 +3121,10 @@ jQuery(window).resize(function(){
 			jQuery('.menu-box').css({
 				'left':pageOffsetLeft
 			});
-		}
+			jQuery('.color-game').css({
+				'margin-right':pageOffsetRight
+			});
+		
 });
 // to fix elements which are going out of 1600px width on keyboard zoomin zoomout
 jQuery(window).on('keypress keydown',function(e){
@@ -3145,6 +3148,9 @@ jQuery(window).on('keypress keydown',function(e){
 			});
 			jQuery('.menu-box').css({
 				'left':pageOffsetLeft
+			});
+			jQuery('.color-game').css({
+				'margin-right':pageOffsetRight
 			});
 			if (++px === 1) {
 				console.info('px=' +px);
