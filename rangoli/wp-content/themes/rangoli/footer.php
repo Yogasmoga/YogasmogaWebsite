@@ -622,6 +622,7 @@ $(document).ready(function(){
     margin: 0 auto 30px;
     overflow-wrap: break-word;
     padding-top: 60px;
+	float:none;
     width: 98.5%;}
 .side-logo{ float: left;
     width: 33%;
@@ -640,6 +641,7 @@ $(document).ready(function(){
     font-size: 12px;
     letter-spacing: 0.5px;}
 	.footer li .bold-heading{font-family:AvantGardeGothicITCW01D!important}
+	.footer li:hover,.footer li:hover a{color: #ae8536;}
 </style>
 
 </body>
