@@ -353,7 +353,7 @@
 	
 </head>
 <body class="common-listing">
-
+<div class="page-wrapper">
 <?php
 $style= "";
 if(!is_user_logged_in()){
@@ -601,7 +601,7 @@ if(!is_user_logged_in()){
                                 <li><a href="/design-elements">ys design elements</a></li>
                             </ul>
                         </li><?php */ ?>
-						<li>
+						<li class="ys_stores_link">
 							<a class="main-heading" href="/our-stores">YS Stores</a>
 								<ul class="sub-menu l-align  cms-header-link stores-nav" style="left:-73px;">
 									<div class="left-side">
@@ -643,6 +643,7 @@ if(!is_user_logged_in()){
 									</div>
 								</ul>
 						</li>
+						<li style="margin-left:20px;" id="shop-bag-count" onclick="window.location='/'"><span><?php echo get_cart_count();  ?></span></li>
                         <?php /* ?><li><a class="main-heading" href="/smogi-bucks">Smogi Bucks</a>
                             <ul style="left:-57px;" class="sub-menu mlink l-align">
                                 <li><a href="/smogi-bucks">what is smogi bucks</a></li>
