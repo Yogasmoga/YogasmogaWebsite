@@ -416,8 +416,8 @@ if(!isset($ipInfo)){
 <div class="footer row">
     <div class="side-logo">
         <a class="logo" href="/" >
-            <!--<img src="<?php/* bloginfo('template_directory') */ ?>/images/ys_logo.png" alt="logo_footer" />-->
-			<span>
+           <img src="<?php/* bloginfo('template_directory') */ ?>/images/footer-logo1.svg" alt="logo_footer" />
+			<!--<span>
 			<svg width="131" height="113" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 131 113" style="enable-background:new 0 0 131 113;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#AE8637;}
@@ -432,7 +432,7 @@ if(!isset($ipInfo)){
 </g>
 </svg>
 			
-			</span>
+			</span>-->
         </a>
         <div class="clear-fix"></div>
     </div>
