@@ -635,8 +635,8 @@ $(document).ready(function(){
     width: 94px;}
 .footer.row .side-logo .logo span svg{width:100%;}
 .smogilove-txt{text-transform:uppercase;}
- .footer-right ul li a,.footer-right ul li{  color: #555;
-    font-family: ITCAvantGardeProBk;
+ .footer-right .first-list ul li a,.footer-right ul li{  color: #555;
+    font-family: ITCAvantGardeStd-Bk;
     font-size: 12px;
     letter-spacing: 0.5px;}
 </style>
