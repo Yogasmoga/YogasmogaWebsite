@@ -639,6 +639,7 @@ $(document).ready(function(){
     font-family: ITCAvantGardeStd-Bk;
     font-size: 12px;
     letter-spacing: 0.5px;}
+	.footer li .bold-heading{font-family:AvantGardeGothicITCW01D!important}
 </style>
 
 </body>
