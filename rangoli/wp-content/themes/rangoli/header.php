@@ -377,7 +377,7 @@ if(!is_user_logged_in()){
 			<div style="float:left;" class="free-shipping-txt">
 			Free Shipping to US &amp; Canada	
 			</div>
-			<div class="new-orange-banner orange-banner">	
+			<div class="new-orange-banner orange-banner" onclick="open_red_popup()">	
 			SIGN UP NOW TO RECEIVE $25 SMOGI BUCKS
 			</div>
 			<div class="right-bar-menu" style="float:right">

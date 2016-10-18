@@ -958,15 +958,16 @@ margin:0 auto;position:absolute;left:50%; transform:translateX(-50%); -webkit-tr
 font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
 
 #ysheader .header{padding:0 40px;}
-.header .logo.posRel {left: 50%;margin: 19px 19px 0 0;position: absolute;right: auto;transform: translateX(-50%);-webkit-transform: translateX(-50%);}
+.header .logo{margin:0;}
+.header .logo.posRel {left: 50%;margin: 19px 0 0 0;position: absolute;right: auto;transform: translateX(-50%);-webkit-transform: translateX(-50%);}
 .header .header-right{padding-top:0px;}
 
 .header-left.main-nav > li,
-.header-right .main-nav > li{padding:36px 12px 0; height:auto;cursor:default;}
+.header-right .main-nav > li{padding:28px 12px 0; height:auto;cursor:default;}
 .header-left.main-nav > li:first-child{padding-left:0;}
 .header-right .main-nav > li:last-child{padding-right:0;}
 .header-left.main-nav > li > a.menu-heading,
-.header-right .main-nav > li > a.main-heading,.header-right .main-nav > li > a{font:11px/23px gothammedium;letter-spacing:0.4px;padding:0 0 9px; height:auto;}
+.header-right .main-nav > li > a.main-heading,.header-right .main-nav > li > a{font:11px/23px avantgardegothicitcw01d,gothammedium;letter-spacing:0.4px;padding:0 0 9px; height:auto;}
 
 #ysheader .logo img{ height:31px!important; transition:all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.3s;}
 #ysheader .logo img.resizable{height: 22px!important;  margin-top: 12px; transition: all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.3s;}
@@ -979,7 +980,7 @@ font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
 .header ul.main-nav li ul.sub-menu { background: #ad8435 none repeat scroll 0 0; box-sizing: border-box; padding: 0 0 0 2%; width: 100%;}
 .header ul.main-nav li ul.sub-menu > li:first-child { padding-top: 2%;}
 .header ul.main-nav li ul.sub-menu > li { border-left: medium none; box-sizing: border-box; padding-top: 2%; width: calc((100% - 207px) / 5) !important;}
-.header ul.main-nav li ul.sub-menu a{color:#fff;}
+.header ul.main-nav li ul.sub-menu a{color:#fff;letter-spacing:0.4px;}
 .header ul.main-nav li ul.sub-menu > li > ul:first-child li:nth-child(3) a,
 .header ul.main-nav li ul.sub-menu > li > ul:first-child li:nth-child(4) a,
 .header ul.main-nav li ul.sub-menu > li > ul:first-child li:nth-child(5) a 
@@ -989,7 +990,7 @@ font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
 
 .header ul.main-nav li ul.sub-menu > li > ul:first-child a,
 .header ul.main-nav li a,
-.header ul.shipping-menu > li > ul.sub-menu li a{font-family: itcavantgardestd-md;}
+.header ul.shipping-menu > li > ul.sub-menu li a{font-family:avantgardegothicitcw01d, itcavantgardestd-md;}
 .header ul.main-nav li ul.sub-menu > li > ul:first-child li:nth-child(2) { margin-top: 10px;}
 .header ul.main-nav li ul.sub-menu > li > ul:first-child li:nth-child(5) { margin-bottom: 10px;}
 .header ul.main-nav > li > ul.sub-menu li a.range-cat { cursor: default; pointer-events: none;}
@@ -1020,8 +1021,8 @@ font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
 #ysheader.showhide ul.main-nav2 #shop-bag-count { display: block;cursor:pointer;}
 
 .wp_page .menu-btn,.wp_page .menu-box{z-index:9999991;}
-.wp_page .menu-btn{top:130px;left:0;}
-.wp_page .color-game{top:130px;}
+.wp_page .menu-btn{top:130px;left:0;margin-left:40px;}
+.wp_page .color-game{top:130px;right:0;margin-right:40px;}
 /*.wp_page .menu-box{transform:translateX(400px);-webkit-transform:translateX(400px);}*/
 .wp_page .menu-box{margin-left:0;opacity:0; visibility:hidden;width:0;}
 /*.wp_page .menu-box.box-close{ transiton:0.3s linear;transform:translateX(-321px);}
