@@ -631,7 +631,7 @@ $(document).ready(function(){
 	.footer li .bold-heading{font-family:AvantGardeGothicITCW01D!important}
 	.footer li:hover,.footer li:hover a{color: #ae8536;}
 	.footer-right .privacy li, .footer-right .privacy li a{font:12px/1.55 ITCAvantGardeStd-Bk;}
-	.first-list > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
+	.footer.row .first-list > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536!important;}
 </style>
 
 </body>
