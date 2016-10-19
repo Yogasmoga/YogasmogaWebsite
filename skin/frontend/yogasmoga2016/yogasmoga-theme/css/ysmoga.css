@@ -3048,7 +3048,7 @@ ul.main-menu > li{padding:0 10px;}
 }
 @media only screen and (max-width : 1024px) {
 /*.productCont .caption{font-size:14px;line-height:20px; padding:31px 0;min-height:36px;}*/
-.shopnow-btn{font:14px/20px ITCAvantGardeProMd;}
+.shopnow-btn {font: 14px/20px avantgardegothicitcw01b; letter-spacing: 0.1em;}
 /*.productCont .caption span{font-size:11px;line-height:14px; }*/
 .catalog-category-view #bucket1_slider .over-the-slide  ,.cms-home  .cubix  .over-the-slide{padding:40px!important;}
 .catalog-category-view #bucket1_slider .hero-slide-subtitle , .cms-home  .cubix  .over-the-slide .hero-slide-subtitle {font-size:11px; line-height:13px;}
