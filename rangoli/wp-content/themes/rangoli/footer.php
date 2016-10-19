@@ -602,38 +602,5 @@ $(document).ready(function(){
 	})
 });	
 </script>
-<style>
-.footer.row{  display: block;
-    float: none !important;
-    margin: 0 auto 30px !important;
-    overflow: hidden;
-    overflow-wrap: break-word;
-    padding-top: 60px;
-    text-align: center !important;
-    width: 98.5%;}
-.side-logo{ float: left;
-    width: 33%;
-	 margin-top: 2%;
-	 padding:0;
-	}
-	.footer.row .first-list{overflow:hidden;}
-	.side-logo .logo img{ left: 0;
-    position: relative;
-    width: 94px;}
-	.footer .footer-right{width:67%;}
-	.footer.row .side-logo .logo{float:left;padding-left:30px;}
-	
-.footer.row .side-logo .logo span svg{width:100%;}
-.smogilove-txt{text-transform:uppercase;}
- .footer-right .first-list ul li a,.footer-right ul li{  color: #555;
-    font-family: ITCAvantGardeStd-Bk;
-    font-size: 12px;
-    letter-spacing: 0.5px;}
-	.footer li .bold-heading{font-family:AvantGardeGothicITCW01D!important}
-	.footer li:hover,.footer li:hover a{color: #ae8536;}
-	.footer-right .privacy li, .footer-right .privacy li a{font:12px/1.55 ITCAvantGardeStd-Bk;}
-	.footer.row .first-list > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536!important;}
-</style>
-
 </body>
 </html>

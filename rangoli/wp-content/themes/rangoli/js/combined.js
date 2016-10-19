@@ -3106,6 +3106,11 @@ jQuery(document).ready(function(){
 			jQuery('.color-game').css({
 				'margin-right':pageOffsetRight
 			});
+			
+			/*jQuery('.pace-progress').width(jQuery('#page').width());
+			jQuery('.pace-progress').css({
+				'margin-left':pageOffsetLeft
+			});*/
 		
 });
 
