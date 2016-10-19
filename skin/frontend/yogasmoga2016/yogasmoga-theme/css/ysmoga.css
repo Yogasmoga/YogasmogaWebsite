@@ -2923,7 +2923,7 @@ ul.main-menu > li{padding:0 10px;}
     font-family: avantgardegothicitcw01d; 
 	letter-spacing:0.5px;
 }
-.iconspartone .row > span .iconstxt{font-family: GraphikRegular; }
+.iconspartone .row > span .iconstxt{font-family: GraphikRegular;font-size:12px;line-height:15px; text-transform:capitalize; }
 .header-container{min-width:1024px;}
 .ctglink li.sub-head {
     border-top: 1px solid #fff;  
