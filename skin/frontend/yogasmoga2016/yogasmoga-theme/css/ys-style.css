@@ -3509,14 +3509,16 @@ ul.main-menu2 li ul.sub-menu li a {
 #div_sizes{padding-left:40px;}
 #div_sizes,#div_cats{padding-top:7px;}
 .chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:27px; height:26px; line-height:25px; vertical-align:middle; display:inline-block;
-	font-size:12px; padding:1px 8px;border-radius:25px;}
+	font-size:12px; padding:1px 8px;border-radius:100%;}
+.chk-size[rel="XL"],.chk-size[rel="XXL"]{padding:1px;}
 .chk-size{background:none;}
-#div_cats .chk-cats.chk-cats-selected:before{  background: #fff none repeat scroll 0 0; border-radius: 10px; content: ""; display: inline-block;
+#div_cats .chk-cats.chk-cats-selected:before,#div_cats .chk-cats:hover:before{  background: #fff none repeat scroll 0 0; border-radius: 10px; content: ""; display: inline-block;
     height: 8px; left: 50%;position: absolute; top: 50%; transform: translate(-50%, -50%);  width: 8px;z-index: 1;}
-#div_sizes .chk-size.chk-size-selected{background:#ae8536;}
+#div_sizes .chk-size.chk-size-selected,#div_sizes .chk-size:hover{background:#ae8536;color:#fff;}
 #div_cats .chk-cats:hover, #div_cats .chk-cats.chk-cats-selected{background:none;}
+#div_sizes .chk-size{font-size:10px;font-family:graphikregular;}
 .chk-cats{position: relative}
-#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 25px; text-indent: -9999em; letter-spacing:0.43px; width:27px; height:27px;box-sizing:border-box;}
+#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 100%; text-indent: -9999em; letter-spacing:0.43px; min-width:26px;width:26px; height:26px;box-sizing:border-box;}
 #div_cats .chk-cats[title="White"]{border:1px solid #ddd;}
 #div_cats .chk-cats[title="White"].chk-cats-selected:before{background:#555;}
 #div_sizes.fixed_top, #div_cats.fixed_top{left:0; padding-left:40px;}
@@ -3539,7 +3541,7 @@ ul.main-menu2 li ul.sub-menu li a {
 .landing-filter #div_cats{z-index:1;}
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
-.product-grid .cat-name{width:auto;top:120px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);}
+.product-grid .cat-name{width:auto;top:120px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);font:24px/28px avantgardegothicitcw01d;letter-spacing:0.44px;}
 .product-grid .cat-name.fixed_top{top:60px;position:fixed;z-index:99;}
 .product-grid .gridProdCubix{margin:75px auto auto;}
 /*.catalog-category-view #ysheader.showhide .header-inner{border-bottom:1px solid #ccc; position:relative;}*/
