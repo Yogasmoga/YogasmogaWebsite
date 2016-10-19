@@ -3476,6 +3476,9 @@ ul.main-menu li ul.sub-menu > li > ul:first-child a {
 ul.main-menu li ul.sub-menu > li > ul a, ul.main-menu2 li ul.sub-menu > li > ul:first-child a, ul.tr-menu > li > ul.sub-menu li a {
   font-family: AvantGardeGothicITCW01B;
 }
+ul.main-menu li ul.sub-menu > li > ul a:hover, ul.main-menu2 li ul.sub-menu > li > ul:first-child a:hover, ul.tr-menu > li > ul.sub-menu li a:hover{
+		font-family:itcavantgardepromd;
+}
 ul.main-menu2 li ul.sub-menu li a {
   font-family: AvantGardeGothicITCW01B;
 }
