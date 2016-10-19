@@ -3779,7 +3779,7 @@ ul.main-menu li a.menu-heading {
   vertical-align: top;
   z-index: 99;
 }
-.header-banner .right-bar-menu .tr-menu > li{margin-right:18px;}
+.header-banner .right-bar-menu .tr-menu > li{margin-right:25px;}
 .header-banner .right-bar-menu .tr-menu > li a{text-transform:uppercase;}
 .header-banner .right-bar-menu #welcome-name {
   text-transform: uppercase;
@@ -3984,7 +3984,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-bottom:
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a{font-family:AvantGardeGothicITCW01B;}
 #ysheader.showhide .right-top-block #bag-count {display:none;} 
 #ysheader .right-top-block li[data-blockid="help-new"]{margin-right:0;}
-#ysheader .right-top-block #bag-count{margin-right:18px;margin-left:18px;}
+#ysheader .right-top-block #bag-count{margin-right:18px;margin-left:25px;}
 #ysheader .right-bottom-block #shop-bag-count{display:none;background:#ae8536;color:#fff;width:26px;height:26px;border-radius:100%;float:right;padding:0;line-height:26px;cursor: pointer;}
 #ysheader .right-bottom-block #shop-bag-count span{ font: 11px/11px GraphikRegular; vertical-align: middle;}
 
