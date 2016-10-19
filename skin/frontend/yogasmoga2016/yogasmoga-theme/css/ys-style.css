@@ -3810,7 +3810,7 @@ ul.main-menu li a.menu-heading {
 .f-left.main-menu.ctag-menu .women{padding-left:0;}
 .in-bl ul.main-menu2 > li:last-child{padding-right:0;}
 .tr-menu li > a:first-child,.tr-menu li.signout_link{
-font:10px/11px ITCAvantGardeProBk;color:#444;
+font:10px/11px AvantGardeGothicITCW01B;color:#444;
 letter-spacing:0.5px;
 }
 .header-banner ul.tr-menu{margin:10px 0 6px;}
@@ -4025,7 +4025,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a{font-family:
  ul.main-menu > li {cursor:default;}
   ul.main-menu > li > ul.sub-menu li a.range-cat{pointer-events:none; cursor:default;}
  
-ul.main-menu li ul.sub-menu{background:#ad8435;width:100%;padding: 0 0 0 2%;box-sizing:border-box;}
+ul.main-menu li ul.sub-menu{background:#ae8536;width:100%;padding: 0 0 0 2%;box-sizing:border-box;}
 ul.main-menu li ul.sub-menu > li{border-left: medium none;
   box-sizing: border-box;
   padding-top: 2%;
