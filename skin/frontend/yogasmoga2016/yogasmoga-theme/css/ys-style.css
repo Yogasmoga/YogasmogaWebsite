@@ -2966,8 +2966,8 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .banner_text4{float:left;position:relative;top:38.55%; left:6.8%;}
 .banner_text5{text-align: center; float: right; position:relative; top:32%; right:6%; }
 .banner_text6{position:relative; top:26%;left:16.5%;float:left;}
-.banner_text7{ text-align:center; display:inline-block; float:left; position:relative; top:41.7%; left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%) }
-.banner_text8{ position:relative; top:48%;}
+.banner_text7{ text-align:center; display:inline-block; float:left; position:relative; /*top:41.7%;*/top:50%; left:50%;transform:translate(-50%, -50%);-webkit-transform:translate(-50%,-50%) }
+.banner_text8{ position:relative; /*top:48%;*/top:50%; transform:translateY(-50%);-webkit-transform:translateY(-50%);}
 .flexslider .slides img.img_rndinca{max-width:100%; width:auto; margin:10% auto 0 auto!important; display:block;}
 /*.flexslider .slides img.img_madeinusa{max-width:100%; width:auto; margin:11% auto 0 auto!important; display:block;}*/
 .flexslider .slide_item_3 img.img_madeinusa {
@@ -3168,21 +3168,22 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
 /*---homepage fathersday bucket - bucket1--*/
 .bucket1 .contentSlider .small-text{font-size:12px!important;}
-.bucket1 .contentSlider .large-text { font-size: 46px !important; line-height: 46px !important;}
+.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 42px !important; line-height: 46px !important;}
+ 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
-.bucket1 .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
+.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:13px;}
 }
 @media screen and (min-width: 1401px) and (max-width: 1599px) {
-.bucket1 .contentSlider .large-text { font-size: 39px !important; line-height: 39px !important;}
+.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 39px !important; line-height: 39px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:15px;}
 }
 @media only screen and (max-width : 1200px) {
-.bucket1 .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
+.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:10px;}
 }
 @media only screen and (max-width : 1024px) {
-.bucket1 .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
+.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:16px;}
 
 }
