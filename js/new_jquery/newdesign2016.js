@@ -362,8 +362,7 @@ jQuery(window).on('keypress keydown',function(e){
 
 // home banner
 jQuery(document).ready(function(){
-	var hbanH = jQuery(window).height();
-	alert(hbanH);
+	var hbanH = jQuery(window).height();	
 	jQuery('.home-banner').css({'min-height': hbanH});
 });
 jQuery(window).resize(function(){
