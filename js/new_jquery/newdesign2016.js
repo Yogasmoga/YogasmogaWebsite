@@ -360,6 +360,17 @@ jQuery(window).on('keypress keydown',function(e){
 
 });
 
+// home banner
+jQuery(document).ready(function(){
+	var hbanH = jQuery(window).height();
+	alert(hbanH);
+	jQuery('.home-banner').css({'min-height': hbanH});
+});
+jQuery(window).resize(function(){
+	var hbanH = jQuery(window).height();
+	jQuery('.home-banner').css({'min-height': hbanH});
+});
+
 // add remove class on page load
 jQuery(document).ready(function(){
 	jQuery('body').addClass('content-loading');
@@ -368,6 +379,7 @@ jQuery(window).load(function(){
 	jQuery('body').removeClass('content-loading');
 	jQuery('body').addClass('content-loaded');
 });
+
 
 
 // for hover animation
