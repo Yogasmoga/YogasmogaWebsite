@@ -3789,6 +3789,8 @@ ul.main-menu li a.menu-heading {
 .header-banner .right-bar-menu .tr-menu > li a{text-transform:uppercase;}
 .header-banner .right-bar-menu #welcome-name {
   text-transform: uppercase;
+  font: 10px/11px AvantGardeGothicITCW01B;
+    letter-spacing: 0.5px;
 }
 .header-banner .right-bar-menu .tr-menu > li:last-child {
   margin-right: 0px;
