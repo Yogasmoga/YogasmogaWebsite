@@ -4004,7 +4004,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a{font-family:
 #ysheader.showhide .right-top-block #bag-count {display:none;} 
 #ysheader .right-top-block li[data-blockid="help-new"]{margin-right:0;}
 #ysheader .right-top-block #bag-count{margin-right:18px;margin-left:18px;}
-#ysheader .right-bottom-block #shop-bag-count{display:none;background:#ae8536;color:#fff;width:26px;height:26px;border-radius:100%;float:right;padding:0;line-height:26px;}
+#ysheader .right-bottom-block #shop-bag-count{display:none;background:#ae8536;color:#fff;width:26px;height:26px;border-radius:100%;float:right;padding:0;line-height:26px;cursor: pointer;}
 #ysheader .right-bottom-block #shop-bag-count span{ font: 11px/11px GraphikRegular; vertical-align: middle;}
 
 #ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
