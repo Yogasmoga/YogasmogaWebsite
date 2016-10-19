@@ -3449,6 +3449,7 @@ width: 140px;
   font: 11px/23px avantgardegothicitcw01d;
   letter-spacing:0.4px;
 }
+ul.main-menu > li.active.over > a, ul.main-menu > li:hover > a, ul.main-menu2 > li.active.over > a{color:#ae8536!important;}
  
  ul.main-menu2 a.main-heading,ul.main-menu li a.menu-heading{letter-spacing:0.8px;}
 ul.main-menu li ul.sub-menu > li > ul:first-child a {
