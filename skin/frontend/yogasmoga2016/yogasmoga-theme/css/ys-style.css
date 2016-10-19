@@ -4349,7 +4349,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .common-listing .header-banner .header-banner-block{border-bottom:1px solid #777777;}		
 .bubbleimg:hover img{animation:bubbleicon 0.2s linear;-webkit-animation:bubbleicon 0.2s linear;}
  #globalheader.header{ padding:0 30px;}
-
+.header-container.showhide{box-shadow:1px 1px 12px #777;-webkit-box-shadow:1px 1px 12px #777;-moz-box-shadow:1px 1px 12px #777}
 @keyframes bubbleicon{
 	0%{transform:translateY(0);}
 	50%{transform:translateY(5px);}
