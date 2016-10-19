@@ -3166,27 +3166,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
 
 
-/*---homepage fathersday bucket - bucket1--*/
-.bucket1 .contentSlider .small-text{font-size:12px!important;}
-.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 42px !important; line-height: 46px !important;}
- 
-@media screen and (min-width: 1201px) and (max-width: 1400px) {
-.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
-.bucket1 .contentSlider .small-text{padding-bottom:13px;}
-}
-@media screen and (min-width: 1401px) and (max-width: 1599px) {
-.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 39px !important; line-height: 39px !important;}
-.bucket1 .contentSlider .small-text{padding-bottom:15px;}
-}
-@media only screen and (max-width : 1200px) {
-.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
-.bucket1 .contentSlider .small-text{padding-bottom:10px;}
-}
-@media only screen and (max-width : 1024px) {
-.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
-.bucket1 .contentSlider .small-text{padding-bottom:16px;}
 
-}
 
 /*--mens whatsnew fathersday and golf-collection .bannerFluid--*/
 /*.categorypath-men-whats-new .bannerFluid .bnrtxt{font:55px/54px itcavantgardepromd;top:44%;}*/
@@ -4390,3 +4370,26 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .product-row-container.row-container-loading{overflow:hidden;background: url("../images/new-loader.gif") no-repeat center center transparent;background-attachment:fixed;}
 
 .product-row-container.row-container-loading .product-row{opacity:0;}
+
+/*---homepage  bucket - -*/
+.bucket1 .contentSlider .small-text{font-size:12px!important;}
+.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 42px !important; line-height: 46px !important;}
+ 
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
+.bucket1 .contentSlider .small-text{padding-bottom:13px;}
+}
+@media screen and (min-width: 1401px) and (max-width: 1599px) {
+.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 39px !important; line-height: 39px !important;}
+.bucket1 .contentSlider .small-text{padding-bottom:15px;}
+}
+@media only screen and (max-width : 1200px) {
+.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
+.bucket1 .contentSlider .small-text{padding-bottom:10px;}
+}
+@media only screen and (max-width : 1024px) {
+.bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
+.bucket1 .contentSlider .small-text{padding-bottom:16px;}
+.banner-avant-grade-bk-small{ font: 33px/33px ITCAvantGardeProBk;}
+
+}
