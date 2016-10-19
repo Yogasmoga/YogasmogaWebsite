@@ -3454,6 +3454,7 @@ width: 140px;
 ul.main-menu li ul.sub-menu > li > ul:first-child a {
   font: 11px/11px avantgardegothicitcw01d;
 }
+ul.main-menu li ul.sub-menu > li > ul:first-child a:hover{font-family:avantgardegothicitcw01d}
 .header .logo {
     margin: 28px 19px 0 0;
 }
@@ -3481,6 +3482,9 @@ ul.main-menu li ul.sub-menu > li > ul a:hover, ul.main-menu2 li ul.sub-menu > li
 }
 ul.main-menu2 li ul.sub-menu li a {
   font-family: AvantGardeGothicITCW01B;
+}
+ul.main-menu2 li ul.sub-menu li a:hover {
+  font-family:itcavantgardepromd;
 }
 /************* 2-sep*********/
 .productCont .prod-img img{max-width:100%;max-height:100%;margin:0 auto; display:block;opacity:1!important;}
