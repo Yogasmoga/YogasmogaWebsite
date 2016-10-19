@@ -4362,8 +4362,8 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 
 .hoverscalebg{overflow:hidden;background-size:100% 100%!important;}
 .hoverscalebg:hover{background-size:110% 110%!important;}
-
-		
+.header-banner .header-banner-block{border-bottom:1px solid #ffffff;}
+.common-listing .header-banner .header-banner-block{border-bottom:1px solid #777777;}		
 .bubbleimg:hover img{animation:bubbleicon 0.2s linear;-webkit-animation:bubbleicon 0.2s linear;}
 @keyframes bubbleicon{
 	0%{transform:translateY(0);}
