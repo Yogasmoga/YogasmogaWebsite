@@ -13,7 +13,7 @@ jQuery(document).ready(function($){
     //var bannerFliudHeight = ww * 0.076;
 	//$(".gridfull").css('min-height',ww*0.48);
 	$(".gridfull.nophotoshop .slider_li").css('min-height',ww*0.48);
-	$(".home-banner").css('min-height',ww*0.70);
+	//$(".home-banner").css('min-height',ww*0.70);
 	
     $("#bucket1_slider.flexslider .slides li").css({"height": sliderHeight});
     $("#Allproducts .bannerFluid").css({"min-height": bannerFliudHeight});
@@ -62,7 +62,7 @@ jQuery(document).ready(function($){
 		
         jQuery(".gridfull").css('min-height',ww*0.48);
 		jQuery(".gridfull.nophotoshop .slider_li").css('min-height',ww*0.48);
-		jQuery(".home-banner").css('min-height',ww*0.70);
+		//jQuery(".home-banner").css('min-height',ww*0.70);
 		
         fixmainimage();
         //alert("resized");
@@ -79,7 +79,7 @@ jQuery(document).ready(function($){
         //var bannerFliudHeight = ww * 0.076;
 		jQuery(".gridfull").css('min-height',ww*0.48);
 		jQuery(".gridfull.nophotoshop .slider_li").css('min-height',ww*0.48);
-		jQuery(".home-banner").css('min-height',ww*0.70);
+		//jQuery(".home-banner").css('min-height',ww*0.70);
 		
         jQuery("#bucket1_slider.flexslider .slides li").css({"height": sliderHeight});
         jQuery("#Allproducts .bannerFluid").css({"min-height": bannerFliudHeight});
