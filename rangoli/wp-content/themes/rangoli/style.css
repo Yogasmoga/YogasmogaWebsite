@@ -939,6 +939,9 @@ input.change_username {
 /*##############################*/
 /*---new 31 aug design 2016--*/
 /*##############################*/
+.pace{position:relative; margin:0 auto; max-width:1600px;}
+.pace .pace-progress{position:absolute!important;}
+/*.pace .pace-progress{z-index:9999993!important;top:109px!important;right:auto!important;left:-100%!important;}*/
 
 /*--header--*/
 div.body-compensator { height: 109px;}
@@ -1017,7 +1020,7 @@ font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
 
 #ysheader ul.main-nav2 .ys_stores_link{padding-right:0}
 #ysheader ul.main-nav2 #shop-bag-count { background: #ae8536 none repeat scroll 0 0;
-  border-radius: 100%;color: #fff;display: none;float: right;height: 26px;padding: 0;width: 26px;margin-top:36px; line-height:26px;}  
+  border-radius: 100%;color: #fff;display: none;float: right;height: 26px;padding: 0;width: 26px;margin-top:28px; line-height:26px;}  
 #ysheader.showhide ul.main-nav2 #shop-bag-count { display: block;cursor:pointer;}
 
 .wp_page .menu-btn,.wp_page .menu-box{z-index:9999991;}
@@ -1035,3 +1038,18 @@ font: 10px/11px ITCAvantGardeStd-Bk; letter-spacing: 0.5px;}
 .footer.row{position:relative;}
 /*
 .footer.row{max-width:1600px; margin:0 auto;float:none; position:relative;padding-left:40px; padding-right:40px;}*/
+
+.footer.row{  display: block;float: none !important;margin: 0 auto 30px !important;overflow: hidden;overflow-wrap: break-word;
+padding-top: 60px;text-align: center !important;width: 98.5%;}
+.footer.row .side-logo{ float: left;width: 33%;margin-top: 2%;padding:0;}
+.footer.row .side-logo .logo img{ left: 0;position: relative;width: 94px;}
+.footer.row .footer-right{width:67%;}
+.footer.row .side-logo .logo{float:left;padding-left:30px;}
+.footer.row .side-logo .logo span svg{width:100%;}
+.footer.row .smogilove-txt{text-transform:uppercase;}
+.footer.row .footer-right .first-list ul li a,.footer.row .footer-right ul li{  color: #555;font-family: ITCAvantGardeStd-Bk;font-size: 12px;
+letter-spacing: 0.5px;}
+.footer.row li .bold-heading{font-family:AvantGardeGothicITCW01D!important}
+.footer.row li:hover,.footer li:hover a{color: #ae8536;}
+.footer.row .footer-right .privacy li,.footer.row .footer-right .privacy li a{font:12px/1.55 ITCAvantGardeStd-Bk;}
+.footer.row .first-list > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536!important;}

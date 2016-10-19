@@ -61,4 +61,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
         <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rangoli/profile/?user_id=<?php echo $wp_id ?>">&emsp;Profile View</a></li>
         <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rangoli/journey">&emsp;Edit Color</a></li>
     </ul>
+	<ul class="sub-nav">
+        <li><a href="javascript:void(0)" onclick="wplogout()">Signout</a></li>        
+    </ul>
 </div>
