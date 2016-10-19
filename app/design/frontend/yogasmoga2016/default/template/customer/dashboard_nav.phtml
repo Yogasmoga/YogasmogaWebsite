@@ -62,6 +62,6 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
         <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rangoli/journey">&emsp;Edit Color</a></li>
     </ul>
 	<ul class="sub-nav">
-        <li><a href="javascript:void(0)" onclick="wplogout()">Signout</a></li>        
+        <li><a href="<?php echo Mage::getUrl('customer/account/logout',array('_secure'=>true)); ?>">Signout</a></li>        
     </ul>
 </div>
