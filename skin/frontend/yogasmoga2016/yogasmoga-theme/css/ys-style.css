@@ -3733,13 +3733,13 @@ float:left; margin-left:-40px; }
 .design-size tr:first-child td {
   border-bottom: 1px solid #999;
   border-top: 1px solid #999;  
-  font:11px/19px GraphikMedium;
+  font:12px/18px GraphikMedium;letter-spacing:0.18px;
   padding: 0 6px;
    text-transform: capitalize;
 }
 .design-size td:first-child {
   font-family: GraphikMedium;
-  font-size: 11px;
+  font-size: 12px; line-height:18px;
   padding: 2px 0;
   width: 29.9348%;
 }
@@ -3747,7 +3747,7 @@ float:left; margin-left:-40px; }
   border-bottom: 1px solid #999;
   border-right: none;
   font-size: 12px;
-  line-height: 19px;
+  line-height: 18px;letter-spacing:0.18px;
   padding: 2px 6px;
   text-transform: uppercase;
   width: 11.8012%;
@@ -3992,6 +3992,10 @@ input[name="prodTab"]{display:none;}
 
 .block-elm .vlink-cont{margin-top:0;}
 .block-elm .vlink-cont p.block-link a{font-family: GraphikMedium;font-size: 11px;text-decoration:underline; color:#555;}
+
+.product-details .pcol-right-content h2, .product-details .pcol-right-content .h2{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.3px;}
+.pcol-right-content .fabDetail > h2,.pcol-right-content .fabDetail > .h2{font:24px/30px avantgardegothicitcw01d;}
+.fabDetail p{font:12px/19px graphikregular;letter-spacing:0.46px;}
 
 /*********** home page changes start **************/
 #pagecontainer .home-banner{min-height:530px;}
