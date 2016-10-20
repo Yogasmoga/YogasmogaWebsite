@@ -146,7 +146,7 @@ jQuery(document).ready(function(){
 	var prodHt = jQuery('.productCont').width();
 	jQuery('.prod-img').height(prodHt);
 	var gridwd = jQuery('.gridWrap').width();
-	if (jQuery(window).width() >= 1100) {
+	if (jQuery(window).width() >= 767) {
 
 		jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
 		jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
@@ -173,7 +173,7 @@ jQuery(window).resize(function(){
 	jQuery('.prod-img').height(prodHt);
 
 	var gridwd = jQuery('.gridWrap').width();
-	if (jQuery(window).width() >= 1100) {
+	if (jQuery(window).width() >= 767) {
 
 		jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
 		jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
