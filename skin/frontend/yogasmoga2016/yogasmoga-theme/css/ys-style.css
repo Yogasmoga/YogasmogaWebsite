@@ -3511,7 +3511,7 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 .chk-cats{position: relative}
 #div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 100%; text-indent: -9999em; letter-spacing:0.43px; min-width:26px;width:26px; height:26px;box-sizing:border-box;}
 #div_cats .chk-cats[title="White"]{border:1px solid #ddd;}
-#div_cats .chk-cats[title="White"].chk-cats-selected:before{background:#555;}
+#div_cats .chk-cats[title="White"].chk-cats-selected:before,#div_cats .chk-cats[title="White"]:hover:before{background:#555;}
 #div_sizes.fixed_top, #div_cats.fixed_top{left:0; padding-left:40px;}
 #div_sizes.fixed_top{box-shadow:4px 9px 10px -9px #ddd;}
 
