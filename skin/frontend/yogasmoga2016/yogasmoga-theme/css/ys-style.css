@@ -3979,7 +3979,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 /*-----product tab -----*/
 input[name="prodTab"]{display:none;}
 
-.prodTab{color:#555; font:11px/11px avantgardegothicitcw01d; letter-spacing:0.3px; text-transform:uppercase; margin-right:24px;margin-bottom:24px; display:inline-block; cursor:pointer;}
+.prodTab{color:#555; font:11px/11px avantgardegothicitcw01d!important; letter-spacing:0.3px; text-transform:uppercase; margin-right:24px;margin-bottom:24px; display:inline-block; cursor:pointer;}
 
 .product-det-tab [id^="prodTab"]:checked + label{color:#ae8536;}
 
