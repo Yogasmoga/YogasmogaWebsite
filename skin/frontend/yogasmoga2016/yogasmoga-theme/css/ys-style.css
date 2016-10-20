@@ -4419,5 +4419,8 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .bucket1 .contentSlider .small-text{padding-bottom:16px;}
 .banner-avant-grade-bk-small{ font: 33px/33px ITCAvantGardeProBk;}
 .gridfull.bucket1 .contentSlider,.gridfull.bucket2 .contentSlider,.gridfull.bucket3 .contentSlider{top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%);}
+ .gridfull.nophotoshop .learn-more { 
+    font: 14px/30px ITCAvantGardeProBk;    
+}
 
 }
