@@ -3689,7 +3689,7 @@ float:left; margin-left:-40px; }
 }
 .gry-box .insale{margin-bottom:5px!important;}
 .insale-price{color:#555;}
-.was-amount { color: #DB2023; font: 12px/20px graphikregular;  text-transform: capitalize !important;}
+.was-amount { color: #DB2023; font: 12px/20px graphikregular;  text-transform: capitalize !important; letter-spacing:0.3px;}
 
 /********** new- changes ************/
 /************* size chart start*************/
