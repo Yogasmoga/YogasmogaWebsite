@@ -146,7 +146,7 @@ jQuery(document).ready(function(){
 	var prodHt = jQuery('.productCont').width();
 	jQuery('.prod-img').height(prodHt);
 	var gridwd = jQuery('.gridWrap').width();
-	if (jQuery(window).width() >= 1100) {
+	if (jQuery(window).width() >= 767) {
 
 		jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
 		jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
@@ -173,7 +173,7 @@ jQuery(window).resize(function(){
 	jQuery('.prod-img').height(prodHt);
 
 	var gridwd = jQuery('.gridWrap').width();
-	if (jQuery(window).width() >= 1100) {
+	if (jQuery(window).width() >= 767) {
 
 		jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
 		jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
@@ -245,7 +245,7 @@ jQuery(document).ready(function(){
 		jQuery("#ysheader").removeClass("scrolled-effect");
 		jQuery("#ysheader").addClass("showhide");
 
-		jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 300, queue: false });
+		//jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 100, queue: false });
 		jQuery("#ysheader .posRel img").addClass("resizable");
 		jQuery(".bagshow").removeClass("active");
 		jQuery("#globalheader").addClass("color-change");
@@ -254,7 +254,7 @@ jQuery(document).ready(function(){
 
 	   else{
 		jQuery("#ysheader").addClass("scrolled-effect");
-		jQuery("#ysheader").stop().animate({top:'0'},{ duration: 300, queue: false });
+		//jQuery("#ysheader").stop().animate({top:'0'},{ duration: 100, queue: false });
 		jQuery("#ysheader .posRel img").removeClass("resizable");
 		jQuery(".bagshow").addClass("active");
 		jQuery("#globalheader").removeClass("color-change");

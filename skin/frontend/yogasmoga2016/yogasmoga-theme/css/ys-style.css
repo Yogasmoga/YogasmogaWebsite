@@ -3511,7 +3511,7 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 .chk-cats{position: relative}
 #div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; border-radius: 100%; text-indent: -9999em; letter-spacing:0.43px; min-width:26px;width:26px; height:26px;box-sizing:border-box;}
 #div_cats .chk-cats[title="White"]{border:1px solid #ddd;}
-#div_cats .chk-cats[title="White"].chk-cats-selected:before{background:#555;}
+#div_cats .chk-cats[title="White"].chk-cats-selected:before,#div_cats .chk-cats[title="White"]:hover:before{background:#555;}
 #div_sizes.fixed_top, #div_cats.fixed_top{left:0; padding-left:40px;}
 #div_sizes.fixed_top{box-shadow:4px 9px 10px -9px #ddd;}
 
@@ -4007,8 +4007,11 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
 
 #ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
 #ysheader .right-bar-menu .signout_link span{padding-right:0;cursor:pointer;}
+
+.header-container.showhide{top:-50px;}
 .header-container.showhide{transition:top 0.3s linear;-webkit-transition:top 0.3s linear;}
 .header-container.showhide:hover{top:0!important;transition:top 0.3s linear;-webkit-transition:top 0.3s linear;}
+.header-container.scrolled-effect{top:0;}
 
 /*.header-container{left:0px!important; transition: left 230ms linear;}
 .open-bag .header-container{left:-400px!important;transition: left 230ms linear;}*/
@@ -4364,7 +4367,8 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 
 .hoverscalebg{overflow:hidden;background-size:100% 100%!important;}
 .hoverscalebg:hover{background-size:110% 110%!important;}
-.header-banner .header-banner-block{border-bottom:1px solid #ffffff;}
+.header-banner .header-banner-block{border-bottom:1px solid #fff;}
+.showhide .header-banner .header-banner-block{border-bottom:1px solid #777777;}
 .common-listing .header-banner .header-banner-block{border-bottom:1px solid #777777;}		
 .bubbleimg:hover img{animation:bubbleicon 0.2s linear;-webkit-animation:bubbleicon 0.2s linear;}
  #globalheader.header{ padding:0 30px;}
