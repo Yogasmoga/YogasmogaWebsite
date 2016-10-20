@@ -245,7 +245,7 @@ jQuery(document).ready(function(){
 		jQuery("#ysheader").removeClass("scrolled-effect");
 		jQuery("#ysheader").addClass("showhide");
 
-		jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 300, queue: false });
+		//jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 100, queue: false });
 		jQuery("#ysheader .posRel img").addClass("resizable");
 		jQuery(".bagshow").removeClass("active");
 		jQuery("#globalheader").addClass("color-change");
@@ -254,7 +254,7 @@ jQuery(document).ready(function(){
 
 	   else{
 		jQuery("#ysheader").addClass("scrolled-effect");
-		jQuery("#ysheader").stop().animate({top:'0'},{ duration: 300, queue: false });
+		//jQuery("#ysheader").stop().animate({top:'0'},{ duration: 100, queue: false });
 		jQuery("#ysheader .posRel img").removeClass("resizable");
 		jQuery(".bagshow").addClass("active");
 		jQuery("#globalheader").removeClass("color-change");
