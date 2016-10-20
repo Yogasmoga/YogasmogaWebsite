@@ -3713,7 +3713,7 @@ float:left; margin-left:-40px; }
     height: 4px;
     left: 0;
     position: absolute;
-    top: 6px;
+    top: 7px;
     width: 4px;}
 	#prod-tab-content2 .prodtab-desc li {
   padding-left: 10px;
@@ -4123,7 +4123,7 @@ right:0;
    border-bottom: 1px solid #c03;
     color: #fff;
     display: inline-block;
-    font: 16px/30px ITCAvantGardeProMd;
+    font: 14px/30px ITCAvantGardeProMd;
     letter-spacing: 0.1em;
     margin: 40px 0 0 !important;
     padding: 0 0 3px;
