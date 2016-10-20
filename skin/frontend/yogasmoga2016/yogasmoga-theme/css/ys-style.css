@@ -3747,7 +3747,7 @@ float:left; margin-left:-40px; }
 /************* size chart ends*************/
 .header .logo.posRel {
      left: 50%;
-    margin: 19px 19px 0 0;
+    margin: 23px 19px 0 0;
     position: absolute;
     right: auto;
     transform: translateX(-50%);
@@ -4059,7 +4059,7 @@ ul.main-menu .nav-img img{ float: right;
 	.bagshow.active{display:block;}
 	.bagshow a span{color:#fff;}
 .bagshow:hover{background: #ae8536!important; padding: 0!important;}
-#ysheader .logo img{ height:31px!important; transition:all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.3s;}
+#ysheader .logo img{ height:25px!important; transition:all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.3s;max-width: 218px;}
 #ysheader .logo img.resizable{height: 22px!important;  margin-top: 12px; transition: all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.3s;}
 .scrolled-effect .free-shipping-txt,.scrolled-effect #welcome-name,.scrolled-effect .header-banner .orange-banner,.scrolled-effect ul.main-menu li a.menu-heading,.scrolled-effect ul.main-menu2 a.main-heading,.scrolled-effect .tr-menu>li>a:first-child,.scrolled-effect .tr-menu>li.signout_link span{color:#fff;}
 #ysheader.header-container{background:#fff;left:0; }
