@@ -3681,9 +3681,9 @@ float:left; margin-left:-40px; }
   color: #D0021B; display: none;font-family: graphikregular; font-size: 12px;letter-spacing: 0.3px;line-height: 20px; padding-bottom: 0; position: absolute;
   text-align: center;text-transform: none;top: -63px;}
   .insale {
-  color: #c03 !important;
-  font: 13px/13px itcavantgardepromd;
-  letter-spacing: 0.22px;
+  color: #d0021b !important;
+  font: 12px/20px graphikregular;
+  letter-spacing: 0.3px;
   margin: 14px 0 8px !important;
   text-transform: capitalize;
 }
