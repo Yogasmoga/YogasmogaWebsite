@@ -4011,9 +4011,9 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
 #ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
 #ysheader .right-bar-menu .signout_link span{padding-right:0;cursor:pointer;}
 
-.header-container.showhide{top:-50px;}
-.header-container.showhide{transition:top 0.3s linear;-webkit-transition:top 0.3s linear;}
-.header-container.showhide:hover{top:0!important;transition:top 0.3s linear;-webkit-transition:top 0.3s linear;}
+.header-container.showhide{top:-60px;}
+.header-container.showhide{transition:top 0.25s linear;-webkit-transition:top 0.25s linear;}
+.header-container.showhide:hover{top:0!important;transition:top 0.25s linear;-webkit-transition:top 0.25s linear;}
 .header-container.scrolled-effect{top:0;}
 
 /*.header-container{left:0px!important; transition: left 230ms linear;}
@@ -4059,8 +4059,8 @@ ul.main-menu .nav-img img{ float: right;
 	.bagshow.active{display:block;}
 	.bagshow a span{color:#fff;}
 .bagshow:hover{background: #ae8536!important; padding: 0!important;}
-#ysheader .logo img{ height:25px!important; transition:all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.3s;max-width: 218px;}
-#ysheader .logo img.resizable{height: 22px!important;  margin-top: 12px; transition: all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.3s;}
+#ysheader .logo img{ height:25px!important; transition:all 0.25s;-moz-transition:all 0.25s;-webkit-transition:all 0.25s;max-width: 218px;}
+#ysheader .logo img.resizable{height: 22px!important;  margin-top: 10px; transition: all 0.25s;-moz-transition:all 0.25s;-webkit-transition:all 0.25s;}
 .scrolled-effect .free-shipping-txt,.scrolled-effect #welcome-name,.scrolled-effect .header-banner .orange-banner,.scrolled-effect ul.main-menu li a.menu-heading,.scrolled-effect ul.main-menu2 a.main-heading,.scrolled-effect .tr-menu>li>a:first-child,.scrolled-effect .tr-menu>li.signout_link span{color:#fff;}
 #ysheader.header-container{background:#fff;left:0; }
 #ysheader.header-container.scrolled-effect{background:transparent!important;}
