@@ -3991,7 +3991,7 @@ input[name="prodTab"]{display:none;}
 }
 
 .block-elm .vlink-cont{margin-top:0;}
-.block-elm .vlink-cont p.block-link a{font-family: graphikregular;font-size: 12px; line-height:20px;text-decoration:underline; color:#555;}
+.block-elm .vlink-cont p.block-link a{font-family: graphikregular;font-size: 12px; line-height:19px;text-decoration:underline; color:#555;letter-spacing:0.4px;}
 
 .product-details .pcol-right-content h2, .product-details .pcol-right-content .h2{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.3px;}
 .pcol-right-content .fabDetail > h2,.pcol-right-content .fabDetail > .h2{font:24px/30px avantgardegothicitcw01d;}
@@ -4008,6 +4008,7 @@ input[name="prodTab"]{display:none;}
 .design-size tr:first-child td{font:11px/11px GraphikMedium;letter-spacing:0.3px;padding:4px 6px;}
 .design-size td:first-child{font-size:11px;}
 .design-size td{font-size:11px; letter-spacing:0.28px;}
+.block-elm .vlink-cont p.block-link a{font-size: 12px; line-height:20px;text-decoration:underline; color:#555;}
 }	
 
 /*********** home page changes start **************/
