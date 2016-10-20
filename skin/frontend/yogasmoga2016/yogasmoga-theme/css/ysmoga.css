@@ -2913,7 +2913,7 @@ ul.main-menu > li{padding:0 10px;}
 .bannerFluid .r-lign{text-align:center!important;} 
 .bannerFluid .l-lign{text-align:center!important;}
 .bannerFluid .bnrtxt{left:0!important;right:0!important;margin:0 auto!important;width:100%!important;text-align:center!important;}
-.shopnow-btn{font:20px/24px ITCAvantGardeProMd; text-transform: capitalize;letter-spacing:0.4px;}
+.shopnow-btn{font:20px/24px ITCAvantGardeProMd;letter-spacing:0.4px;}
 .shopnow-btn .apos{font-family:"Lucida Grande";margin-left:-2px;}
 .gridfull .shopnow-btn{height:auto;}
 
