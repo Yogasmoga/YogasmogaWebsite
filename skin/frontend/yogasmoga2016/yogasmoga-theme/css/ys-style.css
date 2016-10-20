@@ -3689,7 +3689,7 @@ float:left; margin-left:-40px; }
 }
 .gry-box .insale{margin-bottom:5px!important;}
 .insale-price{color:#555;}
-.was-amount { color: #c03; font: 12px/30px ITCAvantGardeProBk;  text-transform: capitalize !important;}
+.was-amount { color: #DB2023; font: 12px/20px graphikregular;  text-transform: capitalize !important;}
 
 /********** new- changes ************/
 /************* size chart start*************/
@@ -3939,7 +3939,7 @@ border-right:0!important;border-left:0!important;border-top:0!important;	border-
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(2){border-right:0!important;border-left:0!important;border-bottom:0!important;	border-top-width:15px!important;
 border-top-style:solid!important; position:absolute; bottom:0;}	
 
-.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected tr::before {
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected tr::before,.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div:hover tr::before {
   background: #fff none repeat scroll 0 0;border-radius: 10px;content: "";display: inline-block;height: 8px;left: 50%;position: absolute;
   top: 50%;transform: translate(-50%, -50%);width: 8px; z-index: 1;}
 /*table.productdetailtable div#colorcontainer{margin-bottom:10px!important;}  */
@@ -3991,7 +3991,7 @@ input[name="prodTab"]{display:none;}
 }
 
 .block-elm .vlink-cont{margin-top:0;}
-.block-elm .vlink-cont p.block-link a{font-family: GraphikMedium;font-size: 11px;text-decoration:underline; color:#555;}
+.block-elm .vlink-cont p.block-link a{font-family: graphikregular;font-size: 12px; line-height:20px;text-decoration:underline; color:#555;}
 
 .product-details .pcol-right-content h2, .product-details .pcol-right-content .h2{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.3px;}
 .pcol-right-content .fabDetail > h2,.pcol-right-content .fabDetail > .h2{font:24px/30px avantgardegothicitcw01d;}
