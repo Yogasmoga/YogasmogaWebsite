@@ -3997,6 +3997,19 @@ input[name="prodTab"]{display:none;}
 .pcol-right-content .fabDetail > h2,.pcol-right-content .fabDetail > .h2{font:24px/30px avantgardegothicitcw01d;}
 .fabDetail p{font:12px/19px graphikregular;letter-spacing:0.46px;}
 
+@media only screen and (max-width : 1024px) {
+.csp-name .csp-link{letter-spacing:0.3px;}
+.selectedcolortext{font-size:12px; line-height:20px;}
+#productdetails .freeshipptext{font-size:12px; line-height:20px;letter-spacing:0.3px;}	
+.prod-tab-content{font:12px/20px graphikregular;letter-spacing:0.3px;}
+.product-det-tab-bottom p .underline { font: 12px/20px graphikregular;  letter-spacing: 0.3px;}
+.pcol-right-content .fabDetail > h2, .pcol-right-content .fabDetail > .h2{line-height:28px;}
+.fabDetail p{line-height:20px; letter-spacing:0.3px;}
+.design-size tr:first-child td{font:11px/11px GraphikMedium;letter-spacing:0.3px;padding:4px 6px;}
+.design-size td:first-child{font-size:11px;}
+.design-size td{font-size:11px; letter-spacing:0.28px;}
+}	
+
 /*********** home page changes start **************/
 #pagecontainer .home-banner{min-height:530px;}
 #pagecontainer .home-banner img {width:100%;height:auto;}
@@ -4432,14 +4445,9 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .bucket1 .contentSlider .small-text{padding-bottom:16px;}
 .banner-avant-grade-bk-small{ font: 33px/33px ITCAvantGardeProBk;}
 .gridfull.bucket1 .contentSlider,.gridfull.bucket2 .contentSlider,.gridfull.bucket3 .contentSlider{top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%);}
- .gridfull.nophotoshop .learn-more { 
-    font: 14px/30px ITCAvantGardeProBk;    
+ .gridfull.nophotoshop .learn-more {font: 14px/30px ITCAvantGardeProBk;}
 }
-@media screen and (min-width: 1600px) {
+ @media screen and (min-width: 1600px) {
 .banner_avant_grade_demi{ font: 42px/46px AvantGardeGothicITCW01D;}
 .banner-avant-grade-bk-small{ font: 42px/46px ITCAvantGardeProBk;}
-
-
-
-}
 }
