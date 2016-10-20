@@ -72,7 +72,7 @@ ul.tr-menu > li > ul.sub-menu li.last{padding-bottom: 6px;}
 ul.tr-menu > li > ul.sub-menu li.blank{height: 26px; background: url("../images/menu_arrow.png") no-repeat bottom center #f1f1f2; background-size: 17px 14px;}
 ul.tr-menu > li:hover > ul.sub-menu{display: block;}
 ul.main-menu2{margin-left: 0; margin-right: 5px;}
-ul.main-menu2 > li{position: relative; padding: 0 10px; height: 33px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin-top:1px;}
+ul.main-menu2 > li{position: relative; padding: 0 10px; height: 69px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin-top:1px;}
 ul.main-menu2 a.main-heading{display: block; height: 32px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
 ul.main-menu2 > li:hover > ul.sub-menu /*ul.main-menu > li:hover > ul.sub-menu*/{display: block;}
@@ -3806,7 +3806,7 @@ font:10px/11px AvantGardeGothicITCW01B;color:#444;
 letter-spacing:0.5px;
 }
 .header-banner ul.tr-menu{margin:10px 0 6px;}
-ul.main-menu.f-left.ctag-menu > li{height:60px;}
+ul.main-menu.f-left.ctag-menu > li{height:69px;}
 #globalheader ul.main-menu2{margin-right:0;}
 .header-container .header-inner{position:relative;}
 
@@ -4027,7 +4027,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
  ul.main-menu > li {cursor:default;}
   ul.main-menu > li > ul.sub-menu li a.range-cat{pointer-events:none; cursor:default;}
  
-ul.main-menu li ul.sub-menu{background:#ae8536;width:100%;padding: 0 0 0 30px;box-sizing:border-box; line-height:18px;margin-top:0PX;}
+ul.main-menu li ul.sub-menu{background:#ae8536;width:100%;padding: 0 0 0 30px;box-sizing:border-box; line-height:18px;margin-top:13PX;}
 ul.main-menu li ul.sub-menu > li{border-left: medium none;
   box-sizing: border-box;
   /*padding-top: 2%;*/padding-top: 24px;
