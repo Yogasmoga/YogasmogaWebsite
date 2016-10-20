@@ -3575,8 +3575,8 @@ table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 
 
 .block-elm .style-image { margin-bottom: 10px; position: static;}
-.prdname{font: 26px/30px ITCAvantGardeProBk;}
-.prdname h1{font: 26px/30px avantgardegothicitcw01d;}
+.prdname{font: 24px/28px ITCAvantGardeProBk;letter-spacing:0.2px;}
+.prdname h1{font: 24px/28px avantgardegothicitcw01d;}
 .product-details .gry-box{background:none;padding:0;}
 
 .bottom-container{width:100%; float:left;}
@@ -3606,8 +3606,8 @@ table.productimagecontainer table.tdbigimagecontainer td img{max-width:700px;}
 .block-elm .vlink-cont p.block-link a{border:0 none;font-size:14px; line-height:14px;font-family: avantgardegothicitcw01m!important;color:#ae8536;letter-spacing:0.27px;text-transform:none!important;}
 
 table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicBold; letter-spacing:0.5px;text-transform:capitalize;}
-.selectedcolortext{font:13px/13px GraphikRegular; letter-spacing:0.5px;padding-top:2px;}
-.gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div{min-height:40px; min-width:40px;background:#f4f4f4;box-sizing:border-box;font:15px/40px gothamBook;
+.selectedcolortext{font:13px/13px GraphikRegular; letter-spacing:0.3px;padding-top:2px;}
+.gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div{min-height:40px; min-width:40px;background:#f4f4f4;box-sizing:border-box;font:14px/40px gothamBook;
 	border:0 none;}
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.dvselectedsize{background:#ae8536;}
 .gry-box #absproductoptions table.productdetailtable div#sizecontainer table td div.dvselectedsize.outofstock{background:#555;color:#fff;}
@@ -3646,7 +3646,7 @@ float:left; margin-left:-40px; }
 .wishlist-nw{width:100%;float:left;margin-top:10px;}
 .wishlist-nw .wishlist-link,.wishlist-nw .wishlist-link a{width:100%; height:42px;background:#dddddd;color:#777;font-size:16px; font-family:AvantGardeGothicMedium; text-align:center; line-height:42px;padding:0;
 	display:block;border:0 none;}
-#productdetails .freeshipptext{font:13px/13px GraphikRegular;letter-spacing:0.22px; clear:both; padding:15px 0 0px;}
+#productdetails .freeshipptext{font:13px/19px GraphikRegular;letter-spacing:0.22px; clear:both; padding:15px 0 0px;}
 #productdetails .freeshipptext em{font-style:normal;}
 .product_description_block{font:14px/18px avantgardegothicitcw01m;}
 .box-desc-dvdr .h2{margin-bottom:18px;text-transform:capitalize;letter-spacing:0.27px;}
@@ -3678,7 +3678,7 @@ float:left; margin-left:-40px; }
 .blk-imp{display:block!important;}
 
 .gry-box div.producterrorcontainer div.errormsg {
-  color: #c03; display: none;font-family: itcavantgardepromd; font-size: 13px;letter-spacing: 0.22px;line-height: 13px; padding-bottom: 0; position: absolute;
+  color: #D0021B; display: none;font-family: graphikregular; font-size: 12px;letter-spacing: 0.3px;line-height: 20px; padding-bottom: 0; position: absolute;
   text-align: center;text-transform: none;top: -63px;}
   .insale {
   color: #c03 !important;
@@ -3891,7 +3891,7 @@ display:none!important;opacity:1!important;visibility:visible!important;
 .product-row .box-seprtr{border:0 none;}
 .product-row .accord{display:none;}
 .product-row .product-price-dv{margin-bottom:28px;}
- 
+.product-row .product-price-dv .productcost{letter-spacing:0.2px;} 
 div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34px;}
 
 .product-row .productimagecontainer,.product-row .productimagecontainer tbody,.product-row .productimagecontainer tr,.product-row .productimagecontainer tr td{display:block!important;}
@@ -3915,14 +3915,14 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .product-det-tab-bottom{margin-top:30px;display:none;}
 .product-det-tab-bottom p{margin-bottom:30px;}
 .product-det-tab-bottom p span{font:12px/12px graphikregular;}
-.product-det-tab-bottom p .strong{display:block;font:12px/24px avantgardegothicitcw01d;}
-.product-det-tab-bottom p .underline{text-decoration:underline;}
+.product-det-tab-bottom p .strong{display:block;font:11px/16px avantgardegothicitcw01d;letter-spacing:0.3px;}
+.product-det-tab-bottom p .underline {font: 12px/19px graphikregular;letter-spacing: 0.46px;text-decoration: underline;}
 .csp-name-list{margin:30px 0 0 0; display:none;}
 .csp-name-list span{display:inline-block;font:12px/24px avantgardegothicitcw01d;color:#ccc;border-left:1px solid #ccc; padding:0 14px;min-width:50px;
 	text-transform:uppercase;}
 .csp-name-list span.active{color:#ae8536;border-left:1px solid #ae8536;}
 .csp-name{}
-.csp-name .csp-link{text-transform:uppercase;color:#ae8536;font-family:avantgardegothicitcw01d;pointer-events:none;}
+.csp-name .csp-link{text-transform:uppercase;color:#ae8536;font-family:avantgardegothicitcw01d;pointer-events:none;font-size:11px; letter-spacing:0.5px;}
 
 /*--color option--*/
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block;  float:left; margin:0 3px;bordre-radius:40px;
@@ -3979,11 +3979,11 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 /*-----product tab -----*/
 input[name="prodTab"]{display:none;}
 
-.prodTab{color:#555; font:13px/13px avantgardegothicitcw01d; text-transform:uppercase; margin-right:24px;margin-bottom:24px; display:inline-block; cursor:pointer;}
+.prodTab{color:#555; font:11px/11px avantgardegothicitcw01d; letter-spacing:0.3px; text-transform:uppercase; margin-right:24px;margin-bottom:24px; display:inline-block; cursor:pointer;}
 
 .product-det-tab [id^="prodTab"]:checked + label{color:#ae8536;}
 
-.prod-tab-content{display:none;font:12px/17px graphikregular;}
+.prod-tab-content{display:none;font:12px/19px graphikregular;letter-spacing:0.46px;}
 #prodTab1:checked ~ #prod-tab-content1,
 #prodTab2:checked ~ #prod-tab-content2,
 #prodTab3:checked ~ #prod-tab-content3{
