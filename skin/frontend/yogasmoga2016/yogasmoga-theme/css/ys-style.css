@@ -3505,12 +3505,13 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 .bannerFluid .l-lign{text-align:center!important;}
 .bannerFluid{background:#fff!important;}
 /************* 2-sep*********/
-#div_sizes{padding-left:40px;}
+#div_sizes{padding-left:30px;}
 #div_sizes,#div_cats{padding-top:7px;}
 .chk-size, .chk-cats{background:#f4f4f4; border:0 none;box-sizing:border-box; min-width:27px; height:26px; line-height:25px; vertical-align:middle; display:inline-block;
 	font-size:12px; padding:1px 8px;border-radius:100%;}
 .chk-size[rel="XL"],.chk-size[rel="XXL"]{padding:1px;}
 .chk-size{background:none;}
+#div_cats{margin-right:30px;}
 #div_cats .chk-cats.chk-cats-selected:before,#div_cats .chk-cats:hover:before{  background: #fff none repeat scroll 0 0; border-radius: 10px; content: ""; display: inline-block;
     height: 8px; left: 50%;position: absolute; top: 50%; transform: translate(-50%, -50%);  width: 8px;z-index: 1;}
 #div_sizes .chk-size.chk-size-selected,#div_sizes .chk-size:hover{background:#ae8536;color:#fff;}
