@@ -3747,7 +3747,7 @@ float:left; margin-left:-40px; }
 /************* size chart ends*************/
 .header .logo.posRel {
      left: 50%;
-    margin: 23px 19px 0 0;
+    margin: 24px 19px 0 0;
     position: absolute;
     right: auto;
     transform: translateX(-50%);
