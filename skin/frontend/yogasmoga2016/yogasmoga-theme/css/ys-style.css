@@ -3009,8 +3009,8 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
 }
 @media screen and (min-width: 1600px) {
-.banner_avant_grade_demi{ font: 55px/54px AvantGardeGothicITCW01D;}
-.banner-avant-grade-bk-small{ font: 55px/54px ITCAvantGardeProBk;}
+.banner_avant_grade_demi{ font: 42px/46px AvantGardeGothicITCW01D;}
+.banner-avant-grade-bk-small{ font: 42px/46px ITCAvantGardeProBk;}
 .collection-banner{font: 34px/34px AvantGardeGothicITCW01D;}
 .collection-banner span{font: 22px/28px freight;}
 .collection-banner img{width:auto;padding:2% 0%;}
@@ -4097,10 +4097,11 @@ right:0;
    border-bottom: 1px solid #c03;
     color: #fff;
     display: inline-block;
-    font: 16px/30px ITCAvantGardeProBk;
+    font: 16px/30px ITCAvantGardeProMd;
     letter-spacing: 0.1em;
     margin: 40px 0 0 !important;
     padding: 0 0 3px;
+	 letter-spacing: 0.4px;
     text-align: center;
 }
 .factorypart.namaskar-block.bucket3 .contentSlider{top:56%;}
@@ -4422,5 +4423,11 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
  .gridfull.nophotoshop .learn-more { 
     font: 14px/30px ITCAvantGardeProBk;    
 }
+@media screen and (min-width: 1600px) {
+.banner_avant_grade_demi{ font: 42px/46px AvantGardeGothicITCW01D;}
+.banner-avant-grade-bk-small{ font: 42px/46px ITCAvantGardeProBk;}
 
+
+
+}
 }
