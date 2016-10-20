@@ -3418,8 +3418,8 @@ div.copy-privacy-likes ul li {
     padding-bottom: 1%;
     width: 28%;}
 
-.new_arrivals{overflow:hidden;background: url("../images/new-loader.gif") no-repeat center center #fff;background-attachment:fixed;}
-.new_arrivals .shop-col-desc,.new_arrivals .productContbox{opacity:0;}	
+div.new_arrivals{overflow:hidden;background: url("../images/new-loader.gif") no-repeat center center #fff;background-attachment:fixed;}
+div.new_arrivals .shop-col-desc,.new_arrivals .productContbox{opacity:0;}	
 .content-loaded .new_arrivals{background:none;}
 .content-loaded .new_arrivals .shop-col-desc,.content-loaded .new_arrivals .productContbox{opacity:1;}	
 
