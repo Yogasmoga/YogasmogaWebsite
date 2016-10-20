@@ -283,41 +283,7 @@ ul.site-map > li{
     position: absolute;
 }
 
-.compressBox{background: url("../images/new-elements/zelos-crop-bucket-box2.png") no-repeat center center #e4e4e4;
-	background-size: 100% 100%;
-}
 
-
-.multicolorcont{
-   background: url("../images/new-elements/montauk-polo-bucket-box2v2.png") no-repeat center center transparent; 
-  /*  background: #03310f;*/
-    background-size: 100% 100%;
-}
-
-.factorythread{
-    background: url("../images/new-elements/made-in-usa-top-section.jpg") no-repeat center center transparent;
-    background-size: 100% 100%;
-    /*height:100%;*/
-}
-.featured-collection-top{
-    background: url("../images/new-elements/made-in-usa-bucket-box2.png") no-repeat center center transparent;
-    background-size: 100% 100%;    
-}
-.featured-collection-bottom{
-     background: url("../images/new-elements/made-in-usa-bucket-box3.png") no-repeat center center transparent;
-    background-size: 100% 100%;    
-	top:50%;
-}
-
-.namaskar-block .featured-collection-top{
-    background: url("../images/new-elements/namaskar-part1.png") no-repeat center center transparent;
-    background-size: 100% 100%;    
-}
-.namaskar-block .featured-collection-bottom{
-    background: url("../images/new-elements/namaskar-part2.png") no-repeat center center transparent;
-    background-size: 100% 100%;  
-top:50%;	
-}
 
 .featured-collection-bottom img.co{left: 7%; /*max-width: 253px;*/width:47.46%; position: absolute;top: 50%;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
 .featured-collection-bottom img.seal{left: 48.5%; /*max-width: 243px;*/width:45.59%; position: absolute;top: 50%;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
@@ -3019,6 +2985,42 @@ ul.main-menu > li{padding:0 10px;}
 .catalog-category-view .bannerFluid{min-height:inherit!important; padding:53px 0 1px 0;margin-bottom:0;}
 .catalog-category-view .bannerFluid.ds{padding:53px 0 32px 0;}
 
+
+.multicolorcont{
+   background: url("../images/new-elements/montauk-polo-bucket-box2v2.png") no-repeat center center transparent; 
+  /*  background: #03310f;*/
+    background-size: 100% 100%;
+}
+
+.factorythread{
+    background: url("../images/new-elements/made-in-usa-top-section.jpg") no-repeat center center transparent;
+    background-size: 100% 100%;
+    /*height:100%;*/
+}
+.featured-collection-top{
+    background: url("../images/new-elements/made-in-usa-bucket-box2.png") no-repeat center center transparent;
+    background-size: 100% 100%;    
+}
+.featured-collection-bottom{
+     background: url("../images/new-elements/made-in-usa-bucket-box3.png") no-repeat center center transparent;
+    background-size: 100% 100%;    
+	top:50%;
+}
+
+.namaskar-block .featured-collection-top{
+    background: url("../images/new-elements/namaskar-part1.png") no-repeat center center transparent;
+    background-size: 100% 100%;    
+}
+.namaskar-block .featured-collection-bottom{
+    background: url("../images/new-elements/namaskar-part2.png") no-repeat center center transparent;
+    background-size: 100% 100%;  
+top:50%;	
+}
+
+
+.compressBox{background: url("../images/new-elements/zelos-crop-bucket-box2.png") no-repeat center center #e4e4e4;
+	background-size: 100% 100%;
+}
 @media only screen and (max-width : 1400px) {
 	/*.productCont .caption{font-size:17px;line-height:24px; padding:40px 0;min-height:36px;}*/
 	.shopnow-btn{font:17px/24px ITCAvantGardeProMd;}
