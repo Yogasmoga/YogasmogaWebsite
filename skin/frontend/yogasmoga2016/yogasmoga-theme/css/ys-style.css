@@ -4011,7 +4011,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
 #ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
 #ysheader .right-bar-menu .signout_link span{padding-right:0;cursor:pointer;}
 
-.header-container.showhide{top:-50px;}
+.header-container.showhide{top:-60px;}
 .header-container.showhide{transition:top 0.3s linear;-webkit-transition:top 0.3s linear;}
 .header-container.showhide:hover{top:0!important;transition:top 0.3s linear;-webkit-transition:top 0.3s linear;}
 .header-container.scrolled-effect{top:0;}
