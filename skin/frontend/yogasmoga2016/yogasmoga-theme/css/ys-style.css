@@ -4001,7 +4001,7 @@ input[name="prodTab"]{display:none;}
 .selectedsize .box-seprtr{display:none;}
 table.selectedcolor{margin-bottom:5px!important;}
 table.productdetailtable div#sizecontainer{margin-top:8px!important;}
-.product-row .prdname .box-seprtr{margin:0 0 2px;}
+.product-row .prdname + .box-seprtr{margin:0 0 2px;}
 
 @media only screen and (max-width : 1024px) {
 .csp-name .csp-link{letter-spacing:0.3px;}
