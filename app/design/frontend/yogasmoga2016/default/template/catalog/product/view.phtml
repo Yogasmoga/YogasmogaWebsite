@@ -1676,7 +1676,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                 <?php
                                 $howToMeasureVidio = $_product->getHowToMeasureVideo();
                                 $howToMeasureVidio = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_to_measure_video', Mage::app()->getStore()->getStoreId());
-                                if ($sizeChartBlockId != '' || $howToMeasureVidio != '') { ?>
+                                if ($howToMeasureVidio != '') { ?>
 								<div class="vlink-cont">
                                 <p class="block-link"><a href="#" class="com-a-prd-links">Watch
                                         how to
