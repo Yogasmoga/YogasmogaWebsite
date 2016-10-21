@@ -294,11 +294,11 @@ jQuery(document).ready(function(){
 	jQuery("#shop-bag-count").click(function(){
 		var shoppingWdth = jQuery(".shopping-cart").width();
 		jQuery( ".open-cart" ).trigger( "click" );
-		jQuery(".header-container").animate({left: -shoppingWdth});
+		//jQuery(".header-container").animate({left: -shoppingWdth});
 
 	});
 	jQuery(".pageoverlay,#continuelink").on("click", function () {
-		jQuery(".header-container").animate({left: "0"});
+		//jQuery(".header-container").animate({left: "0"});
 	});
 
    });
@@ -307,9 +307,10 @@ jQuery(document).ready(function(){
 
 // to fix elements which are going out of 1600px width
 jQuery(document).ready(function(){
+	
 		if(jQuery(window).width() > 1600){
-			var pageOffsetLeft = jQuery('.page').offset().left;
-			var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
+			var pageOffsetLeft = jQuery('.wrapper').offset().left;
+			var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.wrapper').outerWidth()));		
 			jQuery('.shopping-cart').css({
 				'right':pageOffsetRight			
 			});
@@ -322,8 +323,8 @@ jQuery(document).ready(function(){
 // to fix elements which are going out of 1600px width on resize
 jQuery(window).resize(function(){
 		if(jQuery(window).width() > 1600){
-			var pageOffsetLeft = jQuery('.page').offset().left;
-			var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
+			var pageOffsetLeft = jQuery('.wrapper').offset().left;
+			var pageOffsetRight = (jQuery(window).width() - (jQuery('.wrapper').offset().left + jQuery('.wrapper').outerWidth()));		
 			jQuery('.shopping-cart').css({
 				'right':pageOffsetRight			
 			});
@@ -346,8 +347,8 @@ jQuery(window).on('keypress keydown',function(e){
 		
 		var intervalID = setInterval(function () {
 			// logic here			
-			var pageOffsetLeft = jQuery('.page').offset().left;
-			var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));		
+			var pageOffsetLeft = jQuery('.wrapper').offset().left;
+			var pageOffsetRight = (jQuery(window).width() - (jQuery('.wrapper').offset().left + jQuery('.wrapper').outerWidth()));		
 			jQuery('.shopping-cart').css({
 				'right':pageOffsetRight			
 			});
