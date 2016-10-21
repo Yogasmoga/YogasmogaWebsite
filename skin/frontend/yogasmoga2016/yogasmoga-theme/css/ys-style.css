@@ -4004,6 +4004,9 @@ table.productdetailtable div#sizecontainer{margin-top:8px!important;}
 .product-row .prdname + .box-seprtr{margin:0 0 0px;padding-bottom:1px}
 
 .pcol-right-content2 .product-det-tab{padding-top:20px;}
+@media only screen and (max-width : 1200px) {
+	.product-row .pcol-left .img_madeinusa{width:100px;}
+}
 
 @media only screen and (max-width : 1024px) {
 .csp-name .csp-link{letter-spacing:0.3px;}
