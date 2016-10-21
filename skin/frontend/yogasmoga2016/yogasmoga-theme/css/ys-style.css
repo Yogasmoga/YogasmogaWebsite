@@ -4019,6 +4019,7 @@ table.productdetailtable div#sizecontainer{margin-top:8px!important;}
 .design-size td:first-child{font-size:11px;}
 .design-size td{font-size:11px; letter-spacing:0.28px;}
 .block-elm .vlink-cont p.block-link a{font-size: 12px; line-height:20px;text-decoration:underline; color:#555;}
+.product-row .pcol-left .img_madeinusa{width:100px;}
 }	
 
 /*********** home page changes start **************/
