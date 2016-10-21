@@ -3927,6 +3927,7 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 /*--color option--*/
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block;  float:left; margin:0 3px;bordre-radius:40px;
 border:0 none; padding:0;}
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div:first-child{margin-left:0;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected{border:0 none;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table{display:block;width:30px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tbody{display:block;}
