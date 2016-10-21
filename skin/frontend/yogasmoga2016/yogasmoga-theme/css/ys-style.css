@@ -3998,6 +3998,9 @@ input[name="prodTab"]{display:none;}
 .product-details .pcol-right-content h2, .product-details .pcol-right-content .h2{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.3px;}
 .pcol-right-content .fabDetail > h2,.pcol-right-content .fabDetail > .h2{font:24px/30px avantgardegothicitcw01d;}
 .fabDetail p{font:12px/19px graphikregular;letter-spacing:0.46px;}
+.selectedsize .box-seprtr{display:none;}
+table.selectedcolor{margin-bottom:5px;}
+table.productdetailtable div#sizecontainer{margin-top:8px;}
 
 @media only screen and (max-width : 1024px) {
 .csp-name .csp-link{letter-spacing:0.3px;}
