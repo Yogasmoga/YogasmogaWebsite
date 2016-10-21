@@ -4012,7 +4012,7 @@ input[name="prodTab"]{display:none;}
 .fabDetail p{font:12px/19px graphikregular;letter-spacing:0.46px;}
 .selectedsize .box-seprtr{display:none;}
 table.selectedcolor{margin-bottom:5px!important;}
-table.productdetailtable div#sizecontainer{margin-top:8px!important;}
+table.productdetailtable div#sizecontainer{margin-top:20px!important;}
 .product-row .prdname + .box-seprtr{margin:0 0 0px;padding-bottom:1px}
 
 .pcol-right-content2 .product-det-tab{padding-top:20px;}
