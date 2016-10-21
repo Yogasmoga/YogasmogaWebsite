@@ -4034,7 +4034,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
 #ysheader .right-bottom-block #shop-bag-count{display:none;background:#ae8536;color:#fff;width:26px;height:26px;border-radius:100%;float:right;padding:0;line-height:26px;cursor: pointer;}
 #ysheader .right-bottom-block #shop-bag-count span{ font: 11px/11px GraphikRegular; vertical-align: middle;}
 
-#ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
+#ysheader.showhide .right-bottom-block #shop-bag-count{display:block;margin-top:0;}
 #ysheader .right-bar-menu .signout_link span{padding-right:0;cursor:pointer;}
 
 .header-container.showhide{top:-60px;}
