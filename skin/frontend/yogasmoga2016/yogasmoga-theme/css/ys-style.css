@@ -3547,6 +3547,10 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 .category-women  .scrolled-effect ul.main-menu2 a.main-heading,
 .category-women  .scrolled-effect .tr-menu>li>a:first-child,
 .category-women  .scrolled-effect .tr-menu>li.signout_link>span{color:#555;}
+.category-women .header-banner .header-banner-block{border-bottom:1px solid #777;}
+.category-women .scrolled-effect #globalheader ul.main-menu > li > a.menu-heading{color:#555;}
+.category-women .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading{color:#555;}
+
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 .product-grid .cat-name{width:auto;top:120px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);font:24px/28px avantgardegothicitcw01d;letter-spacing:0.44px;}
