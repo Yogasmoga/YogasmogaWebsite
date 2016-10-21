@@ -4215,12 +4215,16 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
 	/*********** home page changes end **************/
 
 /*********** women collection************/
-.women-collection .new-collection-block{  background: #fff none repeat scroll 0 0 !important;
-    margin: 0 auto;
-    opacity: 1;
-    position: relative;
-	padding-top:1.5%;
-    width: 100%;}
+.women-collection .new-collection-block{ 
+    left: 0;
+margin: 0 auto;
+opacity: 1;
+position: absolute;
+right: 0;
+top: 50%;
+transform: translateY(-50%);
+	}
+	
 	
 	.women-collection .new-collection-block .col-box {
   box-sizing: border-box;
@@ -4231,21 +4235,32 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
  padding-bottom: 1%;
 }
 .women-collection .new-collection-block .col-box .col-main-head span{
- border-bottom: 1px solid #555;   
+ border-bottom: 1px solid #fff;   
     display: inline-block;
     font: 11px/14px avantgardegothicitcw01d;
     letter-spacing: 0.5px;
 	color:#555;
     padding-bottom: 1%;
     width: 22%;}
-	
-	.women-collection .new-collection-block .col-box  h2 span{color:#555;}
+	.women-collection-banner {
+    margin-top: 10px;
+    position: relative;
+}
+.women-collection .women-collection-banner.firstbanner {
+    margin-top: 0px;
+    
+}	
+	.women-collection .new-collection-block .col-box  h2 span{color:#fff;}
 .women-collection .new-collection-block .col-box h2 span{display: block;
     font: 42px/46px avantgardegothicitcw01d;
     margin-bottom: 18px;}	
 
+	.women-collection .new-collection-block .col-box > img {
+  margin-bottom: 25px;
+  
+}
 .women-collection .new-collection-block .col-subhead {
-  color: #555;
+  color: #fff;
   font: 14px/20px graphikregular;
   letter-spacing: 0.6px;
   text-transform: none;
@@ -4260,8 +4275,10 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
     top: 0;
     width: 100%;}
 	
-	.csp-block .csp-inner-block{  position: relative;
-    top: 50%;}
+	.csp-block .csp-inner-block{   bottom: 13%;
+    left: 0;
+    position: absolute;
+    right: 0;}
 	.csp-block .csp-inner-block > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;}
 	.csp-block .csp-inner-block .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;margin:1% 0 3%;}
 	.csp-block .csp-inner-block .csp-info{font: 14px/21px graphikregular;letter-spacing:0.2px;}
