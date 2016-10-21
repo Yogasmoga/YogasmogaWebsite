@@ -4328,33 +4328,54 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 
 /*--shopping-bag--*/
 .shopping-cart{box-shadow: 0 0 10px #e2e2e2;font:12px graphikregular;letter-spacing:0.3px}
+.adddields input{font:12px/20px graphikregular; letter-spacing:0.3px;}
 .adddields .smogi_lbl{position:relative;}
 .adddields #smogi{background:transparent; padding:0;}
-.adddields .applysmogi{display:block!important;color:#ae8536;background:none; width:auto;}
+.adddields .applysmogi{display:block!important;color:#ae8536;background:none; width:auto; font-family:avantgardegothicitcw01d;font-size:11px;line-height:11px; letter-spacing:0.3px;}
 .adddields .smogi_lbl span{background:none;display:block;}
 .adddields .smogi_lbl span:empty{display:none;}
 .adddields .smogi_lbl input[disabled="disabled"] + span{display:none;}
 
-.shopping-cart input#smogi::-webkit-input-placeholder{opacity:1;color:#555!important; font-family:gothamBook; font-size:12px;}
-.shopping-cart input#smogi:-moz-placeholder{opacity:1;color:#555!important; font-family:gothamBook; font-size:12px;}
-.shopping-cart input#smogi::-moz-placeholder{opacity:1;color:#555!important; font-family:gothamBook; font-size:12px;}
-.shopping-cart input#smogi:-ms-input-placeholder{opacity:1;color:#555!important; font-family:gothamBook; font-size:12px;} 
+.shopping-cart input#smogi::-webkit-input-placeholder{opacity:1;color:#555!important; font-family:graphikregular; font-size:12px;}
+.shopping-cart input#smogi:-moz-placeholder{opacity:1;color:#555!important; font-family:graphikregular; font-size:12px;}
+.shopping-cart input#smogi::-moz-placeholder{opacity:1;color:#555!important; font-family:graphikregular; font-size:12px;}
+.shopping-cart input#smogi:-ms-input-placeholder{opacity:1;color:#555!important; font-family:graphikregular; font-size:12px;} 
+
+.shopping-cart input#giftcartcode::-webkit-input-placeholder{opacity:1;color:#bbb!important; font-family:graphikregular; font-size:12px;}
+.shopping-cart input#giftcartcode:-moz-placeholder{opacity:1;color:#bbb!important; font-family:graphikregular; font-size:12px;}
+.shopping-cart input#giftcartcode::-moz-placeholder{opacity:1;color:#bbb!important; font-family:graphikregular; font-size:12px;}
+.shopping-cart input#giftcartcode:-ms-input-placeholder{opacity:1;color:#bbb!important; font-family:graphikregular; font-size:12px;} 
+
+.shopping-cart input#giftcartcode{padding:15px; height:40px;}
+.adddields span{height:40px; line-height:40px;font-family: avantgardegothicitcw01d;font-size: 12px;letter-spacing: 0.3px;}
+
+.adddields .promo_lbl{margin-bottom:15px;}
+
 .shopping-cart #sub-totals-discount{margin-bottom:0;}
 .shopping-cart .capstxt{padding:0;}
+.shopping-cart .cart-totalitems{text-transform:none;}
 .shopping-cart .capstxt.totalAmnt{border-bottom: 1px solid #979797;font-family: itcavantgardepromd;font-size: 15px;letter-spacing: 0.58px;padding: 0 0 15px;}
-.shopping-cart .capstxt .continuelink{margin:0;width:50%;box-sizing:border-box;background:#ddd; text-transform:uppercase; font-family:itcavantgardepromd; font-size:13px;letter-spacing:0.5px;}
+.shopping-cart .capstxt .continuelink{margin:0;width:50%;box-sizing:border-box;background:#ddd; text-transform:uppercase; font-family:itcavantgardepromd; font-size:13px; line-height:13px;letter-spacing:0.5px;
+	padding:13px 5px;}
 .shopping-cart .capstxt .continuelink:nth-child(2){background:#ae8536;}
 .shopping-cart .addedItem,.shopping-cart .cont-full{background:#f4f4f4;}
 .shopping-cart .strip-gry{display:none;}
 .shopping-cart .giftcardcheckbox,.shopping-cart label[for="giftCardShop"]{/*display:none;*/}
-.shopping-cart .addedItem .similarProdList > li{border-top:2px solid #c6c6c6;}
+.shopping-cart .addedItem .similarProdList > li{border-top:1px solid #979797;}
 .shopping-cart .addedItem .similarProdList > li span{ text-transform:capitalize;}
 .shopping-cart .addedItem .similarProdList > li span.pname{text-transform:uppercase;}
 .shopping-cart .similarProdList .size{font-size:11px;line-height:15px;}
 .shopping-cart .similarProdList .namaskarinfo #cmbcolor{border:0 none;background:url('../images/drop-icon.png') no-repeat right 10px center #fff;appearance:none;-moz-appearance:none;-webkit-appearance:none;margin:15px 0;
 	position:relative;z-index:1;width:100%!important;}
-.shopping-cart .similarProdList .namaskarinfo .addbracelet{}
-.shopping-cart .similarProdList .namaskarinfo .addbracelet span{text-transform:uppercase; color:#ae8536;border:0 none;padding:0;}
+.shopping-cart .similarProdList .namaskarinfo .addbracelet span{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.3px; text-transform:uppercase; color:#ae8536;border:0 none;padding:0;}
+.shopping-cart .similarProdList{color:#555;}
+.shopping-cart .similarProdList span{font-size:12px; line-height:18px;}
+.addedItem .similarProdList span span.size{font-size:12px;line-height:17px; font-family:graphikregular;}
+.shopping-cart #sub-totals-discount li{font:12px/30px graphikregular; letter-spacing:0.3px;padding:0;}
+.shopping-cart .giftcardcheckbox, .shopping-cart label[for="giftCardShop"]{font: 12px/14px graphikregular; letter-spacing: 0.3px;}
+.shopping-cart .addedItem .similarProdList > li span.pname{font:11px/18px avantgardegothicitcw01d;}
+.similarProdList span strong{font:12px/18px avantgardegothicitcw01d;}
+.shopping-cart .namaskarinfo strong + span{font:12px/20px graphikregular;letter-spacing:0.3px;}
 
 /*--checkout page--*/
 .checkout-onepage-index .header-banner{opacity:0; visibility:hidden;}
