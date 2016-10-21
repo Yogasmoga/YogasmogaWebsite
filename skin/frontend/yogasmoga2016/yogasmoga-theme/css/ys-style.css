@@ -3921,7 +3921,7 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .csp-name-list span{display:inline-block;font:12px/24px avantgardegothicitcw01d;color:#ccc;border-left:1px solid #ccc; padding:0 14px;min-width:50px;
 	text-transform:uppercase;}
 .csp-name-list span.active{color:#ae8536;border-left:1px solid #ae8536;}
-.csp-name{}
+.csp-name{padding-top:35px;}
 .csp-name .csp-link{text-transform:uppercase;color:#ae8536;font-family:avantgardegothicitcw01d;pointer-events:none;font-size:11px; letter-spacing:0.5px;}
 
 /*--color option--*/
@@ -3961,7 +3961,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 .needhelp{}
 .needhelp a{color:#555; text-decoration:underline;font:13px/13px GraphikRegular; letter-spacing:0.22px;} 
 
-.product-row .mainfabric{padding-top:35px;}
+.product-row .mainfabric{padding-top:23px;}
 .bottom-container{display:none;}
 .fabDetail{font:12px/17px graphikregular;}
 .fabDetail > h2, .fabDetail > .h2{margin-bottom:20px;}
@@ -4002,6 +4002,8 @@ input[name="prodTab"]{display:none;}
 table.selectedcolor{margin-bottom:5px!important;}
 table.productdetailtable div#sizecontainer{margin-top:8px!important;}
 .product-row .prdname + .box-seprtr{margin:0 0 0px;padding-bottom:1px}
+
+.pcol-right-content2 .product-det-tab{padding-top:20px;}
 
 @media only screen and (max-width : 1024px) {
 .csp-name .csp-link{letter-spacing:0.3px;}
