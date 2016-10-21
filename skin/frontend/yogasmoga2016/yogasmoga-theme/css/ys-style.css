@@ -4053,6 +4053,11 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
 .header-container.showhide{transition:top 0.25s linear;-webkit-transition:top 0.25s linear;}
 .header-container.showhide:hover{top:0!important;transition:top 0.25s linear;-webkit-transition:top 0.25s linear;}
 .header-container.scrolled-effect{top:0;}
+.header-container ul.main-menu li a.menu-heading,.header-container ul.main-menu2 li a.main-heading,
+.header-container .right-bottom-block #shop-bag-count{
+		top:0px;transition:top 0.25s linear;-webkit-transition:top 0.25s linear;position:relative;}
+.header-container.shrunk ul.main-menu li a.menu-heading,.header-container.shrunk ul.main-menu2 li a.main-heading,.header-container.shrunk .right-bottom-block #shop-bag-count{	
+		top:2px;transition:top 0.25s linear;-webkit-transition:top 0.25s linear;}
 
 /*.header-container{left:0px!important; transition: left 230ms linear;}
 .open-bag .header-container{left:-400px!important;transition: left 230ms linear;}*/
