@@ -4019,6 +4019,7 @@ ul.main-menu > li.smenu, ul.main-menu > li.active.over, ul.main-menu > li:hover,
  background:none;
 }
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){margin-top:18px;}
+.mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){margin-top:19px;} /*--for macsystem--*/
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(3) a{font-family:AvantGardeGothicITCW01B;}
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(4) a{font-family:AvantGardeGothicITCW01B;}
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-bottom:18px;}
@@ -4058,7 +4059,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
  
 ul.main-menu li ul.sub-menu{background:#ae8536;width:100%;padding: 0 0 0 30px;box-sizing:border-box; line-height:18px;margin-top:8px;}
 ul.main-menu li ul.sub-menu > li{border-left: medium none; box-sizing: border-box;padding-top: 24px; width: calc((100% - 197px) / 5) !important;}
-.mac-osys ul.main-menu li ul.sub-menu > li{padding-top: 26px;}
+.mac-osys ul.main-menu li ul.sub-menu > li{padding-top: 26px;}/*--for macsystem--*/
 ul.main-menu2 li{position:static;}
 ul.main-menu2 li .sub-menu{left:0!important;}
 
