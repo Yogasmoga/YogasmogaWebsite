@@ -3993,7 +3993,7 @@ input[name="prodTab"]{display:none;}
 }
 
 .block-elm .vlink-cont{margin-top:0;}
-.block-elm .vlink-cont p.block-link a{font-family: graphikregular;font-size: 12px; line-height:19px;text-decoration:underline; color:#555;letter-spacing:0.4px;}
+.block-elm .vlink-cont p.block-link a{font-family: graphikregular!important;font-size: 12px; line-height:19px;text-decoration:underline; color:#555;letter-spacing:0.4px;}
 
 .product-details .pcol-right-content h2, .product-details .pcol-right-content .h2{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.3px;}
 .pcol-right-content .fabDetail > h2,.pcol-right-content .fabDetail > .h2{font:24px/30px avantgardegothicitcw01d;}
