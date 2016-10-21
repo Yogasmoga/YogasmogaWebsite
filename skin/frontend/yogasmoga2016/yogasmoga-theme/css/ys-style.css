@@ -4258,7 +4258,7 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
     top: 0;
     width: 100%;}
 	
-	.csp-block .csp-inner-block{  bottom: 16%;
+	.csp-block .csp-inner-block{  bottom: 13%;
     left: 0;
     position: absolute;
     right: 0;}
@@ -4340,7 +4340,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 
 /*---for range categories--*/
 .category-range.common-listing div#bodycompensator{height:0!important;}
-.category-range.catalog-category-view .bannerFluid.ds{padding-top:0;}
+.category-range.catalog-category-view .bannerFluid.ds{padding-top:0;padding-bottom:0;}
 
 .categorypath-men-ranges-select  .scrolled-effect .free-shipping-txt,
 .categorypath-men-ranges-select  .scrolled-effect #welcome-name,
