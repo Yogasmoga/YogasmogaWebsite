@@ -3925,19 +3925,19 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .csp-name .csp-link{text-transform:uppercase;color:#ae8536;font-family:avantgardegothicitcw01d;pointer-events:none;font-size:11px; letter-spacing:0.5px;}
 
 /*--color option--*/
-.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block;  float:left; margin:0 3px;bordre-radius:40px;
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div{display:inline-block;  float:left; margin:0 3px;border-radius:26px;
 border:0 none; padding:0;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div:first-child{margin-left:0;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected{border:0 none;}
-.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table{display:block;width:30px;}
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table{display:block;width:26px;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tbody{display:block;}
-.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr{display:block; overflow:hidden; border-radius:40px; position:relative;margin-bottom:5px;}
-.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr td{display:block;width:30px!important; float:none!important; margin:0!important;}
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr{display:block; overflow:hidden; border-radius:26px; position:relative;margin-bottom:5px;}
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr td{display:block;width:26px!important; float:none!important; margin:0!important;}
 
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(1){
-border-right:0!important;border-left:0!important;border-top:0!important;	border-bottom-width:30px!important; border-bottom-style:solid!important;}
+border-right:0!important;border-left:0!important;border-top:0!important;	border-bottom-width:26px!important; border-bottom-style:solid!important;}
 
-.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(2){border-right:0!important;border-left:0!important;border-bottom:0!important;	border-top-width:15px!important;
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(2){border-right:0!important;border-left:0!important;border-bottom:0!important;	border-top-width:13px!important;
 border-top-style:solid!important; position:absolute; bottom:0;}	
 
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected tr::before,.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div:hover tr::before {
