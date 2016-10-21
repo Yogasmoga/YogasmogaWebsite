@@ -3540,6 +3540,14 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 .landing-filter #div_sizes.fixed_top{padding-left:40px;z-index:1;}
 .landing-filter #div_cats{z-index:1;}
 
+.category-women  .scrolled-effect .free-shipping-txt,
+.category-women  .scrolled-effect #welcome-name,
+.category-women  .scrolled-effect .header-banner .orange-banner,
+.category-women  .scrolled-effect ul.main-menu li a.menu-heading,
+.category-women  .scrolled-effect ul.main-menu2 a.main-heading,
+.category-women  .scrolled-effect .tr-menu>li>a:first-child,
+.category-women  .scrolled-effect .tr-menu>li.signout_link>span{color:#555;}
+
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
 .product-grid .cat-name{width:auto;top:120px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);font:24px/28px avantgardegothicitcw01d;letter-spacing:0.44px;}
 .product-grid .cat-name.fixed_top{top:60px;position:fixed;z-index:99;}
