@@ -3975,7 +3975,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
   background: #ae8536 none repeat scroll 0 0;
   color: #fff;
 }
-.gry-box .selectedlength div {border-radius: 30px;height: 30px; line-height: 30px; padding: 0;width: 30px;}
+.gry-box .selectedlength div {border-radius: 26px;height: 26px; line-height: 26px; padding: 0;width: 26px;font-size:12px; font-family:graphikregular;background:#fff;}
 .gry-box .length-name { font: 13px/13px graphikregular; letter-spacing: 0.3px;}
 
 /*-----product tab -----*/

@@ -1379,7 +1379,8 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 									<div class="length_option"  <?php if (!$lengthAvailable) {echo "style='display:none;'"; } ?>>
 									<span class="blck-head-sml"
                                                   style="display:block; margin-bottom: 10px;"><span>Length:</span></span>
-                                    <div class="selectedlength">
+                                    <span class="length-name"></span>
+									<div class="selectedlength">
                                             
                                         <?php
                                         foreach ($arProductAllLength as $length) {
@@ -1390,7 +1391,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                         }
                                         ?>
                                     </div>
-									<span class="length-name"></span>
+									
 									</div>
                                     <!-- select length -->
 
