@@ -124,7 +124,7 @@
             <div class="flexslider showloading cat-slide" id="bucket1_slider">
                 <ul class="slides">
 
-                    <li  style="background: url('<?php echo $this->getSkinUrl('images/ys-contest_02.jpg') ?>'); background-size: cover;cursor:pointer;">
+                    <li  style="background: url('<?php echo $this->getSkinUrl('images/women-banner-laguna-bra.jpg') ?>'); background-size: cover;cursor:pointer;">
 
 						<?php if(false){?>
 
@@ -227,11 +227,11 @@
                 <div class="shop-col-desc">
                     <div class="new-arrival-heading"><span>NEW ARRIVALS</span></div>
                             <h2>
-                                <span class="na-head">FRESH FLOW</span>
+                                <span class="na-head">TAKE #ONEBREATH IN STYLE</span>
                                 <!--<span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New
                                     Collection</a></span>-->
                             </h2>
-                            <p class="na-subhead">Our newest styles, prints, patterns, and colors—<br/>
+                            <p class="na-subhead">Our newest styles, prints, patterns, and colors&mdash;<br/>
 for wherever life takes you.</p>
                 </div>
 				<?php 
@@ -390,7 +390,7 @@ for wherever life takes you.</p>
                                 <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?>">
                                     <?php
                                     foreach($simpleproductarr['image'] as $img ){?>
-                                        <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy"  data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$greyImage)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(1006)->setQuality(91); ?>" />
+                                        <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy"  data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$greyImage)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(1006,503)->setQuality(91); ?>" />
                                     <?php } ?>
                                 </a>
                                 <a class="clickable"
