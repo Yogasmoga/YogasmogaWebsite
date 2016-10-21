@@ -4262,9 +4262,9 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
     left: 0;
     position: absolute;
     right: 0;}
-	.csp-block .csp-inner-block > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;}
-	.csp-block .csp-inner-block .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;margin:1% 0 1%;}
-	.csp-block .csp-inner-block .csp-info{font: 14px/21px graphikregular;letter-spacing:0.2px;}
+	.csp-block .csp-inner-block > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;color:#555;}
+	.csp-block .csp-inner-block .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;margin:1% 0 1%;color:#555;}
+	.csp-block .csp-inner-block .csp-info{font: 14px/21px graphikregular;letter-spacing:0.2px;color:#555;}
 	/**** white text *****/
 	.csp-block .csp-inner-block.whitetxt > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;}
 	.csp-block .csp-inner-block.whitetxt .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;margin:1% 0 1%;}
