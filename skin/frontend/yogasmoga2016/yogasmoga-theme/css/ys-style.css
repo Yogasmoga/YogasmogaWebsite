@@ -3961,7 +3961,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 .needhelp{}
 .needhelp a{color:#555; text-decoration:underline;font:13px/13px GraphikRegular; letter-spacing:0.22px;} 
 
-.product-row .mainfabric{padding-top:23px;}
+.product-row .fabric-content{padding-top:23px;}
 .bottom-container{display:none;}
 .fabDetail{font:12px/17px graphikregular;}
 .fabDetail > h2, .fabDetail > .h2{margin-bottom:20px;}
