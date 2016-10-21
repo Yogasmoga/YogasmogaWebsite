@@ -4068,7 +4068,7 @@ ul.main-menu .nav-img{ box-sizing: border-box;
   float: right;
   min-width: 192px;
   width: 13%;}
-ul.main-menu li ul.sub-menu > li:first-child{ /*padding-top: 2%;*/padding-top:24px;}
+ul.main-menu li ul.sub-menu > li:first-child{/*padding-top:24px;*/padding-top:27px;}
 ul.main-menu .nav-img img{ float: right;
   height: auto;
   max-width: 192px;
