@@ -3704,6 +3704,7 @@ float:left; margin-left:-40px; }
 	 max-width: 100%;
     min-width: 106px;
     padding-right: 2%;
+
 }
 #prod-tab-content2 .prodtab-desc li::before{  background: #555 none repeat scroll 0 0;
     border-radius: 8px;
@@ -3737,8 +3738,8 @@ float:left; margin-left:-40px; }
    text-transform: capitalize;
 }
 .design-size td:first-child {
-  font-family: GraphikMedium;
-  font-size: 12px; line-height:18px;
+  /*font-family: GraphikMedium;
+  font-size: 12px; line-height:18px;*/
   padding: 2px 0;
   width: 29.9348%;
 }
@@ -4258,16 +4259,14 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
     top: 0;
     width: 100%;}
 	
-	.csp-block .csp-inner-block{  bottom: 13%;
-    left: 0;
-    position: absolute;
-    right: 0;}
-	.csp-block .csp-inner-block > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;color:#555;}
-	.csp-block .csp-inner-block .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;margin:1% 0 1%;color:#555;}
-	.csp-block .csp-inner-block .csp-info{font: 14px/21px graphikregular;letter-spacing:0.2px;color:#555;}
+	.csp-block .csp-inner-block{  position: relative;
+    top: 50%;}
+	.csp-block .csp-inner-block > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;}
+	.csp-block .csp-inner-block .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;margin:1% 0 3%;}
+	.csp-block .csp-inner-block .csp-info{font: 14px/21px graphikregular;letter-spacing:0.2px;}
 	/**** white text *****/
 	.csp-block .csp-inner-block.whitetxt > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;}
-	.csp-block .csp-inner-block.whitetxt .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;margin:1% 0 1%;}
+	.csp-block .csp-inner-block.whitetxt .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;margin:1% 0 5%;}
 	.csp-block .csp-inner-block.whitetxt .csp-info{font: 14px/21px graphikregular;letter-spacing:0.2px;color:#fff;}
 	
 /**************** csp css ends **************************/
@@ -4340,7 +4339,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 
 /*---for range categories--*/
 .category-range.common-listing div#bodycompensator{height:0!important;}
-.category-range.catalog-category-view .bannerFluid.ds{padding-top:0;padding-bottom:0;}
+.category-range.catalog-category-view .bannerFluid.ds{padding-top:0;}
 
 .categorypath-men-ranges-select  .scrolled-effect .free-shipping-txt,
 .categorypath-men-ranges-select  .scrolled-effect #welcome-name,
@@ -4457,8 +4456,6 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 @media only screen and (max-width : 1200px) {
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:10px;}
-.csp-block .csp-inner-block .cspbldtxt{font: 36px/34px avantgardegothicitcw01d;letter-spacing:0.5px;margin:1% 0 1%;color:#555;}
- .csp-block .csp-inner-block.whitetxt .cspbldtxt{font: 36px/34px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;margin:1% 0 1%;}
 }
 @media only screen and (max-width : 1024px) {
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
@@ -4466,8 +4463,6 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .banner-avant-grade-bk-small{ font: 33px/33px ITCAvantGardeProBk;}
 .gridfull.bucket1 .contentSlider,.gridfull.bucket2 .contentSlider,.gridfull.bucket3 .contentSlider{top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%);}
  .gridfull.nophotoshop .learn-more {font: 14px/30px ITCAvantGardeProBk;}
- .csp-block .csp-inner-block .cspbldtxt{font: 34px/34px avantgardegothicitcw01d;letter-spacing:0.5px;margin:1% 0 1%;color:#555;}
- .csp-block .csp-inner-block.whitetxt .cspbldtxt{font: 34px/34px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;margin:1% 0 1%;}
 }
  @media screen and (min-width: 1600px) {
 .banner_avant_grade_demi{ font: 42px/46px AvantGardeGothicITCW01D;}
