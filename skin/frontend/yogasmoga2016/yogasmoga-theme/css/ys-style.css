@@ -4018,6 +4018,18 @@ ul.main-menu > li.smenu, ul.main-menu > li.active.over, ul.main-menu > li:hover,
  background:none;
 }
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){margin-top:18px;}
+
+ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(3),
+ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-top:1px;}
+
+.mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){margin-top:20px;} /*--for macsystem--*/
+
+.mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(3),
+.mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(4),
+.mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-top:1px;} /*--for macsystem--*/
+
+
+
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(3) a{font-family:AvantGardeGothicITCW01B;}
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(4) a{font-family:AvantGardeGothicITCW01B;}
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-bottom:18px;}
@@ -4033,13 +4045,18 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
 #ysheader .right-bottom-block #shop-bag-count{display:none;background:#ae8536;color:#fff;width:26px;height:26px;border-radius:100%;float:right;padding:0;line-height:26px;cursor: pointer;}
 #ysheader .right-bottom-block #shop-bag-count span{ font: 11px/11px GraphikRegular; vertical-align: middle;}
 
-#ysheader.showhide .right-bottom-block #shop-bag-count{display:block;}
+#ysheader.showhide .right-bottom-block #shop-bag-count{display:block;margin-top:0;}
 #ysheader .right-bar-menu .signout_link span{padding-right:0;cursor:pointer;}
 
 .header-container.showhide{top:-60px;}
 .header-container.showhide{transition:top 0.25s linear;-webkit-transition:top 0.25s linear;}
 .header-container.showhide:hover{top:0!important;transition:top 0.25s linear;-webkit-transition:top 0.25s linear;}
 .header-container.scrolled-effect{top:0;}
+.header-container ul.main-menu li a.menu-heading,.header-container ul.main-menu2 li a.main-heading,
+.header-container .right-bottom-block #shop-bag-count{
+		top:0px;transition:top 0.25s linear;-webkit-transition:top 0.25s linear;position:relative;}
+.header-container.shrunk ul.main-menu li a.menu-heading,.header-container.shrunk ul.main-menu2 li a.main-heading,.header-container.shrunk .right-bottom-block #shop-bag-count{	
+		top:2px;transition:top 0.25s linear;-webkit-transition:top 0.25s linear;}
 
 /*.header-container{left:0px!important; transition: left 230ms linear;}
 .open-bag .header-container{left:-400px!important;transition: left 230ms linear;}*/
@@ -4056,10 +4073,8 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
   ul.main-menu > li > ul.sub-menu li a.range-cat{pointer-events:none; cursor:default;}
  
 ul.main-menu li ul.sub-menu{background:#ae8536;width:100%;padding: 0 0 0 30px;box-sizing:border-box; line-height:18px;margin-top:8px;}
-ul.main-menu li ul.sub-menu > li{border-left: medium none;
-  box-sizing: border-box;
-  /*padding-top: 2%;*/padding-top: 24px;
-  width: calc((100% - 197px) / 5) !important;}
+ul.main-menu li ul.sub-menu > li{border-left: medium none; box-sizing: border-box;padding-top: 24px; width: calc((100% - 197px) / 5) !important;}
+.mac-osys ul.main-menu li ul.sub-menu > li{padding-top: 26px;}/*--for macsystem--*/
 ul.main-menu2 li{position:static;}
 ul.main-menu2 li .sub-menu{left:0!important;}
 
@@ -4067,7 +4082,8 @@ ul.main-menu .nav-img{ box-sizing: border-box;
   float: right;
   min-width: 192px;
   width: 13%;}
-ul.main-menu li ul.sub-menu > li:first-child{ /*padding-top: 2%;*/padding-top:24px;}
+ul.main-menu li ul.sub-menu > li:first-child{padding-top:24px;}
+.mac-osys ul.main-menu li ul.sub-menu > li:first-child{padding-top:27px;} /*--for macsystem--*/
 ul.main-menu .nav-img img{ float: right;
   height: auto;
   max-width: 192px;
@@ -4122,7 +4138,7 @@ right:0;
    border-bottom: 1px solid #c03;
     color: #fff;
     display: inline-block;
-    font: 16px/30px ITCAvantGardeProMd;
+    font: 14px/30px ITCAvantGardeProMd;
     letter-spacing: 0.1em;
     margin: 40px 0 0 !important;
     padding: 0 0 3px;

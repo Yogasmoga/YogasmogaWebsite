@@ -51,33 +51,10 @@
 
 </script>
 
-<!-- Paste this code right after the <body> tag on every page of your site. -->
-<!-- Qualaroo for yogasmoga.com  -->
-<?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
-if($serverType == 'production')
-{
-    ?>
-    <!-- <script type="text/javascript">
-        var _kiq = _kiq || [];
-        (function(){
-            setTimeout(function(){
-                var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
-                s.async = true; s.src = '//s3.amazonaws.com/ki.js/17463/aYr.js'; f.parentNode.insertBefore(s, f);
-            }, 1);
-        })();
+
+<?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');?>
 
 
-    </script> -->
-<?php   }  ?>
-<!--  END Qualaroo for yogasmoga.com  -->
-<?php
-//echo "ehllo = ".Mage::getSingleton('core/session')->getisfirsttime();
-//Mage::getSingleton('core/session')->setmyVariable('myValue');
-//echo Mage::getSingleton('core/session')->getmyVariable();
-
-//var_dump($_SERVER);
-//var_dump(Mage::app()->getRequest()->getServer('HTTP_REFERER'));
-?>
 
 <!-- sign-up pop up for first time user  -->
 <script type="text/javascript">
@@ -231,10 +208,7 @@ if($serverType == 'production')
                 imgurl = securehomeUrl;
             }
 
-            // var pfirstname = $("#pfirstname").val();
-            // var plastname = $("#plastname").val();
-            // var pemail_address = $("#pemail_address").val();
-            // var password = $("#p_password").val();
+
             var gender = jQuery.trim(jQuery(".gender_radio.selected input").val());
             var cpassword = pwd;
             var is_subscribed = $("#is_subscribed").val();
@@ -375,63 +349,10 @@ if($currentUrl != $checkoutpage){
 <?php //} ?>
 
 <div class="pageoverlay"></div>
-  <?php /* ?>  <div style="height:69px !important;" class="header-container"><?php */ ?>
-
-  
-<?php if(false){   /***********  new banner changes ***********/
-$loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
-if(!$loggedIn){ ?>
-<div class="header-container" style="padding-top:25px; height:69px !important">
-<div style="cursor:pointer" class="orange-banner">SIGN UP NOW TO INSTANTLY GET 25% OFF YOUR FIRST ORDER</div>
-<style>
-.scrolltop{top:104px!important;}
-</style>
-
-<?php  } 
-else { ?>
- <div  style="height:69px !important;" class="header-container">
-
- 
-<?php } ?>
-<?php } /***********  new banner changes ***********/?>
 
 
 	
-     <!--banner strip start-->
-    <?php
-	  if(false){
-        $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-        $categoryName = explode('/', $currentUrl);
-        $urlKey = "";
-        if(isset($categoryName[3]))
-            $urlKey = $categoryName[3];
-		
-        if(strtolower($urlKey)=="gift-sets"){
-            echo "<div class='golden-banner'>YOGASMOGA 2015 Holiday Giftsets: Available Until 12.30.2015</div>";
-        }
-        else{
-			?>
-            <div  onclick="window.location.replace('/women/super-sale')" class='orange-banner'>ENJOY 60% OFF SELECT SUPER SALE ITEMS. ENDS DECEMBER 31, 2015 AT 11:59PM PST.</div>
-			<?php
-            if(false){          // not showing banner on normal pages
 
-                if(strtolower($urlKey)=="men"){
-    ?>
-
-                    <div class="orange-banner" onclick="window.location.replace('/men/whats-new')">25% OFF ON ALL MEN’S APPAREL—All sales are final. Ends 11/30 at 11:59PM PST.</div>
-
-    <?php
-                } else {
-    ?>
-
-                    <div class="orange-banner" onclick="window.location.replace('/women/whats-new')">$75 OFF ON ANY FULL PRICE WOMEN’s TOP & BOTTOM COMBO—All sales are final. Ends 11/30 at 11:59PM PST.</div>
-
-    <?php
-                }
-            }
-        }
-	}	
-    ?>
 	
 	<div id="ysheader" style="height:109px !important;" class="header-container scrolled-effect">
 	<div style="height:40px;padding:0 30px;" class="header-banner">
@@ -454,7 +375,7 @@ if(!$loggedIn){ ?>
 	 <div  class="right-top-block r-align">
 	<ul class="tr-menu">
                    
-                  <!-- <li><?php/* echo $this->getChildHtml('topSearch') */?></li>-->
+
                     <li>
 					
 					<?php
@@ -474,19 +395,17 @@ if(!$loggedIn){ ?>
                         ?>
 						<?php  if($islogedinuser){ ?>
 							<a id="welcome-name" class="logged-in" href="<?php  echo $this->getBaseUrl()."customer/account/index"; ?>"><?php echo "Hi ".$firstname; ?></a>
-							<!--<a href="javascript:void(0)" onclick="wplogout()">Logout</a>-->
+
 						<?php }
 						else{ ?>
 							<a id="welcome-name" class="logged-out" href="javascript:void(0);">SIGN IN</a>
 						 <?php }
 						?>
-                        <!--<a id="welcome-name" href="<?php // if($islogedinuser) echo $this->getBaseUrl()."customer/account/index"; else echo "javascript:void(0);";  ?>"><?php // if($islogedinuser)echo "Hi ".$firstname;else echo "SIGN IN";  ?></a>-->
-						<?php if(true){ ?>
+                        <?php if(true){ ?>
                         <ul class="sub-menu l-align my-acnt" style="left: -64px;">
                             <li class="blank"></li>
                             <li style="padding-top: 16px;"><a href="<?php echo $this->getBaseUrl()."sales/order/history"; ?>">track order</a></li>
                             <li><a href="<?php echo $this->getBaseUrl()."customer/account/index"; ?>">account settings</a></li>
-<!--                            <li class="last"><a id="signin" href="--><?php //if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?><!--">--><?php //if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?><!--</a></li>-->
                             <li class="last login_logout_link"></li>
                         </ul>
 						<?php } ?>
@@ -494,21 +413,10 @@ if(!$loggedIn){ ?>
                     </li>					
 					 <li  data-blockid = "help-new">
                         <a href="<?php echo $this->getBaseUrl();?>help#faq">Help</a>
-                        <!--<ul class="sub-menu l-align cms-header-link" style="left: -87px;">
-                            <li class="blank"></li>
-                            <li style="padding-top: 16px;" data-blockid = "faq"><a href="<?php echo $this->getBaseUrl();?>help#faq">FAQ</a></li>
-                            <li data-blockid = "shipping-returns"><a href="<?php echo $this->getBaseUrl();?>help#shipping-returns">Shipping and Returns</a></li>
-                            <li data-blockid = "size-chart"><a href="<?php echo $this->getBaseUrl();?>help#size-chart">Size Chart</a></li>
-                            <li data-blockid = "product-care"><a href="<?php echo $this->getBaseUrl();?>help#product-care">Product Care</a></li>
-                            <li data-blockid = "email-us" class="last"><a href="<?php echo $this->getBaseUrl();?>help#email-us">Email Us</a></li>
-                        </ul>-->
+
                         
                     </li>
 					<li style="margin-right:0;" id="bag-count"><a href="javascript:void(0);" class="open-cart">Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
-                    
-                    <!--<li class="checkoutshow" style="display:none;"><span>|</span><a class="checkout-link-top" href="<?php // echo $this->getBaseUrl();?>checkout/onepage">Checkout</a></li>-->
-					<!--<li class="last signout_link"><?php if($islogedinuser){ ?><span onclick="wplogout()">SIGN OUT</span><?php } ?></li>-->
-					
                 </ul>
 				</div>
 	</div>
@@ -521,7 +429,6 @@ if(!$loggedIn){ ?>
     {
         Mage::getSingleton('core/session')->setisfirsttime('No');
         $isfirsttime = Mage::getSingleton('core/session')->getisfirsttime();
-        //echo $isfirsttime."  sdfsd";
         if(strlen($isfirsttime) > 0)
         {
             echo " top0";
@@ -535,18 +442,11 @@ if(!$loggedIn){ ?>
         echo " top0";
     ?>">
 	<div class="header-inner">
-        <?php //if ($this->getIsHomePage()):?>
-        <?php if (true):?>
-            <!-- <div class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img class="logo" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></div> -->
-        <?php else:?>
-            <!-- <div class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></div> -->
-        <?php endif?>
-		 <div class="logo posRel">
+        <div class="logo posRel">
                 <a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
                     <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
                 </a>
-            </div>
-
+        </div>
         <div class="f-left header-left">
            
             <ul class="f-left main-menu ctag-menu">
@@ -558,152 +458,9 @@ if(!$loggedIn){ ?>
                 </span>
                 <div class="clear-fix"></div>
             </span></li>
-                <?php
-                $base_url = Mage::helper('core/url')->getHomeUrl();
-                $currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
-                $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
-
-/*********** original code before gift set ********************/
-/*
-                if(isset($cart['items_qty'])){
-                    $itemcount = (int)$cart['items_qty'];
-                } else {
-                    $itemcount = 0;
-                }
-*/
-/*********** original code before gift set ********************/
-
-                /*********** cart count after gift set ***************/
-                $session = Mage::getSingleton('checkout/session');
-                $itemcount = 0;
-                foreach ($session->getQuote()->getAllItems() as $item)
-                {
-                    if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
-                    {
-                        $buyRequest = $item->getBuyRequest();
-                        $product_type = $buyRequest['type'];
-
-                        if(isset($product_type) && $product_type=="gift-bundled")
-                            continue;
-
-                        $itemcount = $itemcount + $item->getQty();
-                    }
-                    else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
-                        ;
-                    else
-                        ++$itemcount;
-                }
-                /*********** cart count after gift set ***************/
-
-                $i = 1;
-					 
-		$urlString = Mage::helper('core/url')->getCurrentUrl();
-		$url = Mage::getSingleton('core/url')->parseUrl($urlString);
-		$path = $url->getPath();
-
-                $identity='';
-				if($path != strtolower('/checkout/onepage')){
-                foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
-                    if ($child1->getIsActive()) {
-                        //show Main parent categories first level
-                        if($child1->getId() == $currentcategoryid){
-                            $identity = Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey();
-                            echo "<li rel='".Mage::getModel("catalog/category")->load($child1->getId())->getId()."' class='".Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey()."' ><a  class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        }
-                        else{
-                            $identity = Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey();
-                            echo "<li rel='".Mage::getModel("catalog/category")->load($child1->getId())->getId()."' class='".Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey()."'><a  class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        }
-
-                       
-                        $firstcolumn = '<ul class="sub-menu menu-ovr"><li><ul>';
-                        $remainingcolumn = '';
-                        $subcategory = Mage::getModel('catalog/category')->load($child1->getId());
-                        $subcategories = $subcategory->getChildrenCategories();
-
-                        $subCategeroiesFound = false;
-                        foreach ($subcategories as $child2)
-                        {
-                            $subCategeroiesFound = true;
-                            $subsubcategory = Mage::getModel('catalog/category')->load($child2->getId());
-
-                            if($child2->getIsActive() && $subsubcategory->getIncludeInMenu()) {
-
-                                $subsubcategories = $subsubcategory->getChildrenCategories();
-
-                                if($subsubcategory->getChildrenCount() == 0){
-                                     $style = "font-size:11px!important";
-                                    $styleBottom = "margin-bottom:15px";
-
-                                        if($child2->getId()==71 || $child2->getId()==78){
-                                            $firstcolumn .= "<li>"."<a style='$style'  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
-                                        }
-                                         elseif($child2->getId()==124 || $child2->getId()==79) {
-                                                $firstcolumn .= "<li>"."<a style='$style' href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
-                                         }
-
-                                        elseif($child2->getId()==16) {
-                                            $firstcolumn .= "<li>"."<a  href=\"".Mage::getUrl('women',array('_secure'=> true))."\"> " . $child2->getName()."</a></li>";
-                                        }
-                                        elseif($child2->getId()==19) {
-                                            $firstcolumn .= "<li>"."<a  href=\"".Mage::getUrl('men',array('_secure'=> true))."\"> " . $child2->getName()."</a></li>";
-                                        }
-
-                                        else{
-                                            $firstcolumn .= "<li><a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
-                                        }
-
-                                }
-                                else{
-									if($child2->getId()== 132 || $child2->getId()== 134){
-										$remainingcolumn .= "<li><a class='range-cat'> " . $child2->getName()."</a><ul>";
-									}else{
-										$remainingcolumn .= "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a><ul>";
-									}
-                                    
-                                    // show sub categories third level
-                                    foreach ($subsubcategories as $child3)
-                                    {
-                                        $subsubsubcategories = Mage::getModel('catalog/category')->load($child3->getId());
-
-                                        if($child3->getIsActive() && $subsubsubcategories->getIncludeInMenu()) {
-                                            $remainingcolumn .= "<li><a href=\"".$child3->getUrl()."\">" . $child3->getName();
-                                            $remainingcolumn .= "</a></li>";
-                                        }
-                                    }
-
-                                    $remainingcolumn .= "</ul></li>";
-                                }
-
-                            }
-                        }
-                        if($subCategeroiesFound) {
-                            $firstcolumn .= "</ul>";
-                            echo $firstcolumn . $remainingcolumn;
-                        }else{
-                            $giftSetLinks = $firstcolumn . "<li class='gift'><a href='/gift-sets?style=women'>Women</a></li><li class='gift'><a href='/gift-sets?style=men'>Men</a></li>";
-                            //echo $giftSetLinks;
-                        }
-                        $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-                        $categoryName = explode('/', $currentUrl);
-                        $urlKey = $categoryName[3];
-
-                        if($identity == strtolower('women')){
-                            echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-women.jpg").'"></div>';
-                        }
-                        else{
-                            echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-men.jpg").'"></div>';
-                        }
-                        echo "</ul></li>";
-                    }
-
-                }
-			}	
-               
-                echo "</ul>";
-                ?>
 
 
+                <?php echo $this->getChildHtml('topMenu') ?>
 
 
         </div>
@@ -752,7 +509,6 @@ if(!$loggedIn){ ?>
                             <li class="blank"></li>
                             <li style="padding-top: 16px;"><a href="<?php echo $this->getBaseUrl()."sales/order/history"; ?>">track order</a></li>
                             <li><a href="<?php echo $this->getBaseUrl()."customer/account/index"; ?>">account settings</a></li>
-<!--                            <li class="last"><a id="signin" href="--><?php //if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?><!--">--><?php //if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?><!--</a></li>-->
                             <li class="last login_logout_link"></li>
                         </ul>
                         <span>|</span>
@@ -847,41 +603,20 @@ if(!$loggedIn){ ?>
                             </ul>
                         </li>
                         <li style="margin-left:20px;" id="shop-bag-count"><span>0</span></li>
-						
-						
-						
-                     <!--   <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks" class="main-heading">Smogi Bucks</a>
-                            <ul class="sub-menu mlink l-align" style="left:-57px;">
-                                <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks">what is smogi bucks</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks#get-smogi-bucks">how can i get them</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
-                            </ul>
-                        </li>-->
-						<!-- header-modify ---------->
-                       <!-- <li class="rangoli"><a href="<?php /* echo $this->getBaseUrl();*/?>rangoli" class="rangoliRd" id="rangoli-head1">Rangoli</a></li>-->
-						<!--<li><a href="<?php echo $this->getBaseUrl()."rewardpoints/index/referral"; ?>" id="referal_link" class="referalRd">invite friend</a></li>-->
-                    </ul>
+					</ul>
                 </div>
-               <!-- <?php/* echo $this->getChildHtml('topSearch') */?>-->
-
             </div>
 
         </div>
 
 
         <div class="quick-access">
-            <?php //echo $this->getChildHtml('topSearch') ?>
-            <!-- <p class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></p> -->
-            <?php //echo $this->getChildHtml('topLinks') ?>
-            <?php //echo $this->getChildHtml('store_language') ?>
         </div>
         <?php echo $this->getChildHtml('topContainer'); ?>
     </div>
 	
 	<!-- new header container ------->
-    <!-- div id="smallmenu">
-        <?php //echo $this->getSkinUrl('images/YS_logo.png') ?>
-    </div> -->
+
 	</div>
 </div>
 <div id="bodycompensator"
@@ -893,7 +628,7 @@ if(!$loggedIn){ ?>
     }
     ?>
     ></div>
-<?php //echo $this->getChildHtml('topMenu') ?>
+
 
 
 <!-- toCheckFirstCustomerOrderforGOYS -->
@@ -910,15 +645,12 @@ foreach ($orders as $order) {
 	if($paymethod === 'stripe'){
 		break;
 	}
-	//end coded by shivaji chauhan
+
 
 }
 
 $getGOYSFirstUser = count($orders);
-//echo Mage::getSingleton('customer/session')->getCustomer()->getId();
-//echo $getGOYSFirstUser;die("Testing");
 
-//coded by shivaji chauhan
 if($getGOYSFirstUser == 0 || $paymethod != 'stripe'){
     ?>
     <script type="text/javascript">
@@ -926,7 +658,7 @@ if($getGOYSFirstUser == 0 || $paymethod != 'stripe'){
     </script>
 <?php
 }
-//end coded by shivaji chauhan
+
 ?>
 <script type="text/javascript">
 // effect on header if window scroll

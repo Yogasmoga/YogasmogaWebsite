@@ -2913,7 +2913,7 @@ ul.main-menu > li{padding:0 10px;}
 .bannerFluid .r-lign{text-align:center!important;} 
 .bannerFluid .l-lign{text-align:center!important;}
 .bannerFluid .bnrtxt{left:0!important;right:0!important;margin:0 auto!important;width:100%!important;text-align:center!important;}
-.shopnow-btn{font:20px/24px ITCAvantGardeProMd; text-transform: none;letter-spacing:0.4px;}
+.shopnow-btn{font:14px/24px ITCAvantGardeProMd; text-transform: none;letter-spacing:0.8px;}
 .shopnow-btn .apos{font-family:"Lucida Grande";margin-left:-2px;}
 .gridfull .shopnow-btn{height:auto;}
 
@@ -3023,7 +3023,7 @@ top:50%;
 }
 @media only screen and (max-width : 1400px) {
 	/*.productCont .caption{font-size:17px;line-height:24px; padding:40px 0;min-height:36px;}*/
-	.shopnow-btn{font:17px/24px ITCAvantGardeProMd;}
+	
 	.catalog-category-view #bucket1_slider .over-the-slide, .cms-home .cubix .over-the-slide{padding:50px!important}
 	.catalog-category-view #bucket1_slider .hero-slide-subtitle ,.cms-home  .cubix  .over-the-slide .hero-slide-subtitle {font-size:11px; line-height:11px;margin-bottom:27px!important; max-width:224px;}
 	
@@ -3037,7 +3037,7 @@ top:50%;
 	.cms-home  .cubix  .over-the-slide{ padding: 45px 40px !important;}
 }
 @media only screen and (max-width : 1200px) {
-	.shopnow-btn{font:15px/22px ITCAvantGardeProMd;}
+	
 	.catalog-category-view #bucket1_slider .over-the-slide  ,.cms-home  .cubix  .over-the-slide{padding:47px!important;}
 	.catalog-category-view #bucket1_slider .hero-slide-subtitle ,.cms-home  .cubix  .over-the-slide .hero-slide-subtitle  {font-size:11px; line-height:11px;margin-bottom:25px!important;}
 	.catalog-category-view #bucket1_slider .hero-slide-title , .cms-home  .cubix  .over-the-slide .hero-slide-title  {font-size:31px; line-height:31px;margin-bottom:47px!important;}
@@ -3052,7 +3052,7 @@ top:50%;
 }
 @media only screen and (max-width : 1024px) {
 /*.productCont .caption{font-size:14px;line-height:20px; padding:31px 0;min-height:36px;}*/
-.shopnow-btn {font: 14px/20px avantgardegothicitcw01b; letter-spacing: 0.1em;}
+.shopnow-btn {font: 14px/20px avantgardegothicitcw01b;}
 /*.productCont .caption span{font-size:11px;line-height:14px; }*/
 .catalog-category-view #bucket1_slider .over-the-slide  ,.cms-home  .cubix  .over-the-slide{padding:40px!important;}
 .catalog-category-view #bucket1_slider .hero-slide-subtitle , .cms-home  .cubix  .over-the-slide .hero-slide-subtitle {font-size:11px; line-height:13px;}

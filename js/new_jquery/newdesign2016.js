@@ -244,7 +244,7 @@ jQuery(document).ready(function(){
 
 		jQuery("#ysheader").removeClass("scrolled-effect");
 		jQuery("#ysheader").addClass("showhide");
-
+		jQuery("#ysheader").addClass("shrunk");
 		//jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 100, queue: false });
 		jQuery("#ysheader .posRel img").addClass("resizable");
 		jQuery(".bagshow").removeClass("active");
@@ -259,6 +259,7 @@ jQuery(document).ready(function(){
 		jQuery(".bagshow").addClass("active");
 		jQuery("#globalheader").removeClass("color-change");
 		jQuery("#ysheader").removeClass("showhide");
+		jQuery("#ysheader").removeClass("shrunk");
 
        }
 
@@ -267,7 +268,7 @@ jQuery(document).ready(function(){
 	 jQuery("#ysheader").mouseover(function(){
         if (!jQuery("#ysheader").hasClass("scrolled-effect")) {
           //  jQuery(this).stop().animate({top:'0'});
-			
+			jQuery("#ysheader").removeClass("shrunk");			
 			jQuery("#ysheader .posRel img").removeClass("resizable");
 		}
     });
@@ -275,8 +276,9 @@ jQuery(document).ready(function(){
 
         //move Nav back up
         if (!jQuery("#ysheader").hasClass("scrolled-effect")) {
-            //jQuery(this).stop().animate({top:'-50'});			
-           jQuery("#ysheader .posRel img").addClass("resizable");
+            //jQuery(this).stop().animate({top:'-50'});
+			jQuery("#ysheader").addClass("shrunk");			
+			jQuery("#ysheader .posRel img").addClass("resizable");
 
         }
     });

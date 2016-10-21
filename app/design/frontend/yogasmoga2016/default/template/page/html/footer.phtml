@@ -305,8 +305,9 @@ if(jQuery('#div_sizes,#div_cats').length > 0){
 ?>
 <script>
 if(navigator.userAgent.indexOf('Mac') > 0){
-jQuery('body').addClass('mac-osys');
-}
+	jQuery('body').addClass('mac-osys');
+}	
+
 function prodnewdetail(){
 	var jQ = jQuery.noConflict();
 	//var windW = jQ(window).width(); 
@@ -380,6 +381,7 @@ function prodnewdetailresize(){
 	//jQuery('.prod-col .pcol-right-content4').height(imgrow4H);
 	
 	if(jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').length){
+		
 		var imgrow4W = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').css({
 			//'width': (66.125 * windW)/100		
 			'width': windW/2 - 5
