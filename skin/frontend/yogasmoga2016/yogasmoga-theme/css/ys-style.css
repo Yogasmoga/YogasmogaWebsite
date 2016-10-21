@@ -3634,7 +3634,7 @@ float:left; margin-left:-40px; }
 .gry-box table.productdetailtable div.addtobag{height:42px;}
 .gry-box table.productdetailtable div.outofstockitem{height:42px;}
 #includeoption > span {display: block;font: 13px/13px avantgardegothicbold;letter-spacing: 0.5px;text-transform: capitalize;margin-bottom:10px;}
-.bra-option >span{display: block;font: 13px/13px avantgardegothicbold;letter-spacing: 0.5px;text-transform: capitalize;margin-bottom:10px;margin-top:8px;}
+.bra-option >span{display: block;font: 13px/13px graphikregular;letter-spacing: 0.3px;text-transform: capitalize;margin-bottom:10px;margin-top:8px;}
 #includeoption div {background: #f4f4f4 none repeat scroll 0 0;border: 0 none;box-sizing: border-box; cursor: pointer;
   display: inline-block;height: 40px;line-height: 40px;margin: 0 4px 0 0;padding: 0;text-align: center;width: 40px; font-size:15px;}
 #includeoption div.selected { background: #ae8536 none repeat scroll 0 0; color: #fff;} 
@@ -3954,7 +3954,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 
 /*--bra option--*/
 #includeoption div { background: #fff none repeat scroll 0 0; border-radius: 30px; height: 30px; line-height: 30px; width: 30px;font-size:14px; font-family:graphikregular;}
-
+.bra-option >span{font:13px/13px GraphikRegular;}
 .gry-box table.productdetailtable div.addtobag{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on.svg") no-repeat scroll center center; height:40px;}
 .gry-box table.productdetailtable div.addtobag.bagdisabled{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on.svg") no-repeat scroll center center!important; }
 .gry-box table.productdetailtable div.preorderitem{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on.svg") no-repeat scroll center center!important; }
@@ -4003,6 +4003,7 @@ input[name="prodTab"]{display:none;}
 .csp-name .csp-link{letter-spacing:0.3px;}
 .selectedcolortext{font-size:12px; line-height:20px;}
 .gry-box .length-name {font-size:12px; line-height:20px; }
+.bra-option >span{font-size:12px; line-height:20px; }
 #productdetails .freeshipptext{font-size:12px; line-height:20px;letter-spacing:0.3px;}	
 .prod-tab-content{font:12px/20px graphikregular;letter-spacing:0.3px;}
 .product-det-tab-bottom p .underline { font: 12px/20px graphikregular;  letter-spacing: 0.3px;}
