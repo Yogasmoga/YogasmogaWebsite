@@ -4332,7 +4332,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .adddields .smogi_lbl{position:relative;}
 .adddields #smogi{background:transparent; padding:0;}
 .adddields .applysmogi{display:block!important;color:#ae8536;background:none; width:auto; font-family:avantgardegothicitcw01d;font-size:11px;line-height:11px; letter-spacing:0.3px;}
-.adddields .smogi_lbl span{background:none;display:block;}
+.adddields .smogi_lbl span{background:none;display:block; line-height:30px;}
 .adddields .smogi_lbl span:empty{display:none;}
 .adddields .smogi_lbl input[disabled="disabled"] + span{display:none;}
 
