@@ -4263,10 +4263,11 @@ transform: translateY(-50%);
 }
 .women-collection .new-collection-block .col-subhead {
   color: #fff;
-  font: 14px/20px graphikregular;
-  letter-spacing: 0.6px;
+  font: 14px/21px graphikregular;
+  letter-spacing: 0.2px;
   text-transform: none;
-  padding-bottom: 1.5%;
+  padding-bottom: 0%;
+  margin-bottom:0;
 }
 	
 /**************** csp css starts **************************/
