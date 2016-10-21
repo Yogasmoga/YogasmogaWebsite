@@ -4327,7 +4327,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 /*.prod-tab-content *{-webkit-animation: fadeInScale 0.7s ease-in-out;-moz-animation: fadeInScale 0.7s ease-in-out;animation: fadeInScale 0.7s ease-in-out;}*/
 
 /*--shopping-bag--*/
-.shopping-cart{box-shadow: 0 0 10px #e2e2e2;}
+.shopping-cart{box-shadow: 0 0 10px #e2e2e2;font:12px graphikregular;letter-spacing:0.3px}
 .adddields .smogi_lbl{position:relative;}
 .adddields #smogi{background:transparent; padding:0;}
 .adddields .applysmogi{display:block!important;color:#ae8536;background:none; width:auto;}
