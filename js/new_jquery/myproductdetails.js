@@ -411,7 +411,7 @@ function changeproductsize(sz) {
         }
         //end insale
 		//make regular size default selected
-		jQuery("body").find("div.selectedlength div:nth-child(2)").trigger("click");
+		jQuery("body").find("div.selectedlength div:nth-child(1)").trigger("click");
 		//make regular size default selected
     } else {
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");

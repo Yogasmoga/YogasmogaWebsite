@@ -3976,6 +3976,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
   color: #fff;
 }
 .gry-box .selectedlength div {border-radius: 30px;height: 30px; line-height: 30px; padding: 0;width: 30px;}
+.selectedlength .length-name { font: 13px/13px graphikregular; letter-spacing: 0.3px;}
 
 /*-----product tab -----*/
 input[name="prodTab"]{display:none;}
@@ -4001,6 +4002,7 @@ input[name="prodTab"]{display:none;}
 @media only screen and (max-width : 1024px) {
 .csp-name .csp-link{letter-spacing:0.3px;}
 .selectedcolortext{font-size:12px; line-height:20px;}
+.selectedlength .length-name {font-size:12px; line-height:20px;}
 #productdetails .freeshipptext{font-size:12px; line-height:20px;letter-spacing:0.3px;}	
 .prod-tab-content{font:12px/20px graphikregular;letter-spacing:0.3px;}
 .product-det-tab-bottom p .underline { font: 12px/20px graphikregular;  letter-spacing: 0.3px;}
