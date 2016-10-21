@@ -3952,7 +3952,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 .wishlist-nw{display:none;}
 
 /*--bra option--*/
-#includeoption div { background: #fff none repeat scroll 0 0; border-radius: 30px; height: 30px; line-height: 30px; width: 30px;}
+#includeoption div { background: #fff none repeat scroll 0 0; border-radius: 30px; height: 30px; line-height: 30px; width: 30px;font-size:14px; font-family:graphikregular;}
 
 .gry-box table.productdetailtable div.addtobag{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on.svg") no-repeat scroll center center; height:40px;}
 .gry-box table.productdetailtable div.addtobag.bagdisabled{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on.svg") no-repeat scroll center center!important; }
