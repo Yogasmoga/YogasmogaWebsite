@@ -483,8 +483,7 @@ function changeOrderqty(qty) {
             jQuery("div.smogibuckcount td").html(_rewardpoints);
         //jQuery("div.smogibuckcount td").html(_rewardpoints * qty);
         var stockqty = jQuery("div.selectedlength div.selected").attr("qty") * 1;
-        if (jQuery("div.
-		div.selected").hasClass("outofstock")) {
+        if (jQuery("div.selectedlength div.selected").hasClass("outofstock")) {
             jQuery("#orderitem").hide();
             jQuery("#preorderitem").hide();
             jQuery("#preorderhelp").hide();
