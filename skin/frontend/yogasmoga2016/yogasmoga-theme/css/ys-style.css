@@ -4020,8 +4020,8 @@ ul.main-menu > li.smenu, ul.main-menu > li.active.over, ul.main-menu > li:hover,
 }
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){margin-top:18px;}
 
-ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(3){margin-top:1px;}
-ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-top:2px;}
+ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(3),
+ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-top:1px;}
 
 .mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){margin-top:20px;} /*--for macsystem--*/
 
