@@ -1195,7 +1195,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                             $rangeName = Mage::getModel('catalog/category')->load($rangeId);
                                             ?>
                                             <?php if($rangeName):?>
-										    <a class="csp-link" href="#"><?php echo $rangeName->getName();?></a>
+										    <a class="csp-link <?php echo strtolower($rangeName->getName());?>" href="#"><?php echo $rangeName->getName();?></a>
                                             <?php endif; ?>
 										<?php endforeach; ?>
 									</div>
