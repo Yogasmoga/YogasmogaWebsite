@@ -4416,46 +4416,46 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .category-range.common-listing div#bodycompensator{height:0!important;}
 .category-range.catalog-category-view .bannerFluid.ds{padding-top:0;padding-bottom:0;}
 
-.categorypath-men-ranges-select  .scrolled-effect .free-shipping-txt,
-.categorypath-men-ranges-select  .scrolled-effect #welcome-name,
-.categorypath-men-ranges-select  .scrolled-effect .header-banner .orange-banner,
-.categorypath-men-ranges-select  .scrolled-effect ul.main-menu li a.menu-heading,
-.categorypath-men-ranges-select  .scrolled-effect ul.main-menu2 a.main-heading,
-.categorypath-men-ranges-select  .scrolled-effect .tr-menu>li>a:first-child,
-.categorypath-men-ranges-select  .scrolled-effect .tr-menu>li.signout_link>span,
-.categorypath-men-ranges-premium  .scrolled-effect .free-shipping-txt,
-.categorypath-men-ranges-premium  .scrolled-effect #welcome-name,
-.categorypath-men-ranges-premium  .scrolled-effect .header-banner .orange-banner,
-.categorypath-men-ranges-premium  .scrolled-effect ul.main-menu li a.menu-heading,
-.categorypath-men-ranges-premium  .scrolled-effect ul.main-menu2 a.main-heading,
-.categorypath-men-ranges-premium  .scrolled-effect .tr-menu>li>a:first-child,
-.categorypath-men-ranges-premium  .scrolled-effect .tr-menu>li.signout_link>span,
-.categorypath-women-ranges-select  .scrolled-effect .free-shipping-txt,
-.categorypath-women-ranges-select  .scrolled-effect #welcome-name,
-.categorypath-women-ranges-select  .scrolled-effect .header-banner .orange-banner,
-.categorypath-women-ranges-select  .scrolled-effect ul.main-menu li a.menu-heading,
-.categorypath-women-ranges-select  .scrolled-effect ul.main-menu2 a.main-heading,
-.categorypath-women-ranges-select  .scrolled-effect .tr-menu>li>a:first-child,
-.categorypath-women-ranges-select  .scrolled-effect .tr-menu>li.signout_link>span,
-.categorypath-women-ranges-premium  .scrolled-effect .free-shipping-txt,
-.categorypath-women-ranges-premium  .scrolled-effect #welcome-name,
-.categorypath-women-ranges-premium  .scrolled-effect .header-banner .orange-banner,
-.categorypath-women-ranges-premium  .scrolled-effect ul.main-menu li a.menu-heading,
-.categorypath-women-ranges-premium  .scrolled-effect ul.main-menu2 a.main-heading,
-.categorypath-women-ranges-premium  .scrolled-effect .tr-menu>li>a:first-child,
-.categorypath-women-ranges-premium  .scrolled-effect .tr-menu>li.signout_link>span
+.catalog-category-view.categorypath-men-ranges-select  .scrolled-effect .free-shipping-txt,
+.catalog-category-view.categorypath-men-ranges-select  .scrolled-effect #welcome-name,
+.catalog-category-view.categorypath-men-ranges-select  .scrolled-effect .header-banner .orange-banner,
+.catalog-category-view.categorypath-men-ranges-select  .scrolled-effect ul.main-menu li a.menu-heading,
+.catalog-category-view.categorypath-men-ranges-select  .scrolled-effect ul.main-menu2 a.main-heading,
+.catalog-category-view.categorypath-men-ranges-select  .scrolled-effect .tr-menu>li>a:first-child,
+.catalog-category-view.categorypath-men-ranges-select  .scrolled-effect .tr-menu>li.signout_link>span,
+.catalog-category-view.categorypath-men-ranges-premium  .scrolled-effect .free-shipping-txt,
+.catalog-category-view.categorypath-men-ranges-premium  .scrolled-effect #welcome-name,
+.catalog-category-view.categorypath-men-ranges-premium  .scrolled-effect .header-banner .orange-banner,
+.catalog-category-view.categorypath-men-ranges-premium  .scrolled-effect ul.main-menu li a.menu-heading,
+.catalog-category-view.categorypath-men-ranges-premium  .scrolled-effect ul.main-menu2 a.main-heading,
+.catalog-category-view.categorypath-men-ranges-premium  .scrolled-effect .tr-menu>li>a:first-child,
+.catalog-category-view.categorypath-men-ranges-premium  .scrolled-effect .tr-menu>li.signout_link>span,
+.catalog-category-view.categorypath-women-ranges-select  .scrolled-effect .free-shipping-txt,
+.catalog-category-view.categorypath-women-ranges-select  .scrolled-effect #welcome-name,
+.catalog-category-view.categorypath-women-ranges-select  .scrolled-effect .header-banner .orange-banner,
+.catalog-category-view.categorypath-women-ranges-select  .scrolled-effect ul.main-menu li a.menu-heading,
+.catalog-category-view.categorypath-women-ranges-select  .scrolled-effect ul.main-menu2 a.main-heading,
+.catalog-category-view.categorypath-women-ranges-select  .scrolled-effect .tr-menu>li>a:first-child,
+.catalog-category-view.categorypath-women-ranges-select  .scrolled-effect .tr-menu>li.signout_link>span,
+.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect .free-shipping-txt,
+.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect #welcome-name,
+.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect .header-banner .orange-banner,
+.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect ul.main-menu li a.menu-heading,
+.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect ul.main-menu2 a.main-heading,
+.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect .tr-menu>li>a:first-child,
+.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect .tr-menu>li.signout_link>span
 {
 		color:#fff;
 }
-.categorypath-men-ranges-select  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading,
-.categorypath-men-ranges-premium  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading,
-.categorypath-women-ranges-select  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading,
-.categorypath-women-ranges-premium  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading
+.catalog-category-view.categorypath-men-ranges-select  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading,
+.catalog-category-view.categorypath-men-ranges-premium  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading,
+.catalog-category-view.categorypath-women-ranges-select  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading,
+.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading
  {color:#fff;}
-.categorypath-men-ranges-select  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading,
-.categorypath-men-ranges-premium  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading,
-.categorypath-women-ranges-select  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading, 
-.categorypath-women-ranges-premium  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading
+.catalog-category-view.categorypath-men-ranges-select  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading,
+.catalog-category-view.categorypath-men-ranges-premium  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading,
+.catalog-category-view.categorypath-women-ranges-select  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading, 
+.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading
 {color:#fff;}
 
 .category-range .bannerFluid{}
