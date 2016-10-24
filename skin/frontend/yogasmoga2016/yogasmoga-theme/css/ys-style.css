@@ -717,7 +717,7 @@ a.continuelink:hover{
 .addedItem .similarProdList span span:nth-child(2), .addedItem .similarProdList span span {display: block; text-align: left; width: 100%;}
 .addedItem .similarProdList span span.pname{font-family: gothambold;}
 .addedItem .similarProdList span span.size{font-family: gothambook;}
-.addedItem .similarProdList span span.amnt{margin-bottom: 12px !important;}
+.addedItem .similarProdList span span.amnt{margin-bottom: 18px !important;}
 .addedItem .similarProdList span strong:hover{color: #555;}
 .addedItem .close{background: url("../images/shopping-cart/close.gif"); width: 12px; height: 13px; position: absolute; top: 15px; right: 0;}
 
@@ -4524,7 +4524,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .shopping-cart .addedItem .similarProdList span.wdth100{text-align: left;}
  .addedItem  .similarProdList  li.namaskarinfo span.c-align{text-align:left!important;}
  
- .addedItem .close{top:23px;}
+ .addedItem .close{top:21px;}
  
  /****** css for 5th image start **************/
  /**** women  ***/
