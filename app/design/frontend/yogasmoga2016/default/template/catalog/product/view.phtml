@@ -1291,24 +1291,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                         <div style="clear:both;"></div>
                                     </div>
                                     <!-- selectColor -->
-									<!-- select length -->
-									<div class="length_option"  <?php if (!$lengthAvailable) {echo "style='display:none;'"; } ?>>
-									<span class="blck-head-sml"
-                                                  style="display:block; margin-bottom: 10px;"><span>Length:</span></span>
-                                    <div class="selectedlength">
-                                            
-                                        <?php
-                                        foreach ($arProductAllLength as $length) {
-                                            ?>
-                                            <div value="<?php echo $length['value']; ?>"
-                                                 lengthtype="<?php echo $length['label']; ?>"><?php echo $length['label']; ?></div>
-                                            <?php
-                                        }
-                                        ?>
-                                    </div>
-									<span class="length-name"></span>
-									</div>
-                                    <!-- select length -->
+									
                                     <!-- selectSize -->
                                     <div class="selectedsize" <?php if (!$isSizeAvailable) {
                                         echo "style='display:none;'";
@@ -1392,7 +1375,25 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                     </div>
                                     <!-- selectSize -->
                                     
-
+									<!-- select length -->
+									<div class="length_option"  <?php if (!$lengthAvailable) {echo "style='display:none;'"; } ?>>
+									<span class="blck-head-sml"
+                                                  style="display:block; margin-bottom: 10px;"><span>Length:</span></span>
+                                    <span class="length-name"></span> 
+									<div class="selectedlength">
+                                            
+                                        <?php
+                                        foreach ($arProductAllLength as $length) {
+                                            ?>
+                                            <div value="<?php echo $length['value']; ?>"
+                                                 lengthtype="<?php echo $length['label']; ?>"><?php echo $length['label']; ?></div>
+                                            <?php
+                                        }
+                                        ?>
+                                    </div>
+									
+									</div>
+                                    <!-- select length -->
 
                                     <!-- fittable -->
                                     <div class="box-seprtr dnone">
