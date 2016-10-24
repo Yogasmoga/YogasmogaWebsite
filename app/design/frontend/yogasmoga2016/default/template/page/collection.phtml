@@ -370,18 +370,18 @@
                                                             <a class="clickable" href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"></a>
                                                         </div>
                                                         <div class="caption">                                                            
-                                                                <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"><?php echo $confProduct->getName().'<br/>';?></a>
+                                                                <a class="caption-title" href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"><?php echo $confProduct->getName().'<br/>';?></a>
 																
 																<?php 
 																$simpleProductPrice = round($product->getPrice(),2);
 																$configurableProductPrice = round($confProduct->getPrice(),2);
 																
 																if($configurableProductPrice > $simpleProductPrice):?>
-																	<span><?php echo $clrinfo[$simpleproductarr['color']]?></span>
-																	<span>$<?php  echo $simpleProductPrice;?><cite class="was-amount" style="font-style:normal"> was $<?php  echo  $configurableProductPrice;?></cite></span>
+																	<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"><span><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+																	<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"><span>$<?php  echo $simpleProductPrice;?><cite class="was-amount" style="font-style:normal"> was $<?php  echo  $configurableProductPrice;?></cite></span></a>
 																<?php else:?>
-																	<span><?php echo $clrinfo[$simpleproductarr['color']]?></span>
-																	<span>$<?php  echo $configurableProductPrice;?></span>
+																	<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"><span><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+																	<a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"><span>$<?php  echo $configurableProductPrice;?></span></a>
 																<?php endif; ?>
                                                             
                                                         </div>
