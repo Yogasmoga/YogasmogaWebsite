@@ -3313,6 +3313,7 @@ width:100%!important;height:100%!important;
 }
 
 /*######## new magento signup #########*/
+body{font:12px/19px graphikregular,gothamBook,arial;letter-spacing:0.4px;}
 #signup.mage-signup{background:url(../images/mage-signupbg.png) #000; background-size:cover; width:100%!important; height:100%!important;}
 #signup.mage-signup #sign_up_box,#signup.mage-signup #thank_you_box{width:100%; max-width:496px;}
 #signup.mage-signup #sign_up_box #popup-register{width:100%; max-width:496px; left:50%; top:50%; bottom:auto; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);}
@@ -3372,7 +3373,7 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a.current,
 .menu-bar ul li a:hover{color:#ae8536;}
 .leftnav a.current{color:#ae8536!important;}
-.productCont .caption a:hover{color:#ae8536;}
+.productCont .caption a:hover{color:#555;}
 .in-bl ul.main-menu2 > li{padding:3px 10px 0 10px;}
 /*.mac-os .in-bl ul.main-menu2 > li{padding:4px 10px 0 10px;}*/ /*-- for mac system --*/
 ul.main-menu2 a.main-heading{height:31px;}
@@ -3534,6 +3535,9 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 /*#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px; padding-left:14px; padding-right:14px;}*/
 
 #div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; /*display:inline-block;*/display:none;}
+#div_sizes,#div_cats{opacity:1;transition:opacity 0.2s linear;-webkit-transition:opacity 0.2s linear;}
+#div_sizes.fixed_top,#div_cats.fixed_top{opacity:0;transition:opacity 0.2s linear;-webkit-transition:opacity 0.2s linear;}
+
 /*--landing filter--*/
 .landing-filter{position:relative; height:54px;margin-bottom:15px;width:100%; float:left;}
 .landing-filter #div_sizes{padding-left:0;z-index:1;}
@@ -3553,7 +3557,7 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
-.product-grid .cat-name{width:auto;top:120px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);font:24px/28px avantgardegothicitcw01d;letter-spacing:0.44px;}
+.product-grid .cat-name{width:auto;top:132px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);font:24px/28px avantgardegothicitcw01d;letter-spacing:0.44px;}
 .product-grid .cat-name.fixed_top{top:60px;position:fixed;z-index:99;}
 .product-grid .gridProdCubix{margin:75px auto auto;}
 /*.catalog-category-view #ysheader.showhide .header-inner{border-bottom:1px solid #ccc; position:relative;}*/
@@ -3701,7 +3705,7 @@ float:left; margin-left:-40px; }
 }
 .gry-box .insale{margin-bottom:5px!important;}
 .insale-price{color:#555;}
-.was-amount { color: #DB2023; font: 12px/20px graphikregular;  text-transform: capitalize !important; letter-spacing:0.3px;}
+.was-amount { color: #DB2023; font: 12px/20px graphikregular;  text-transform: lowercase !important; letter-spacing:0.3px;}
 
 /********** new- changes ************/
 /************* size chart start*************/
@@ -4099,7 +4103,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
  ul.main-menu > li {cursor:default;}
   ul.main-menu > li > ul.sub-menu li a.range-cat{pointer-events:none; cursor:default;}
  
-ul.main-menu li ul.sub-menu{background:#ae8536;width:100%;padding: 0 0 0 30px;box-sizing:border-box; line-height:18px;margin-top:8px;}
+ul.main-menu li ul.sub-menu{background:#ae8536;width:100%;padding: 0 0 0 30px;box-sizing:border-box; line-height:18px;margin-top:8px;min-height:200px;}
 ul.main-menu li ul.sub-menu > li{border-left: medium none; box-sizing: border-box;padding-top: 24px; width: calc((100% - 197px) / 5) !important;}
 .mac-osys ul.main-menu li ul.sub-menu > li{padding-top: 26px;}/*--for macsystem--*/
 ul.main-menu2 li{position:static;}
@@ -4107,13 +4111,13 @@ ul.main-menu2 li .sub-menu{left:0!important;}
 
 ul.main-menu .nav-img{ box-sizing: border-box;
   float: right;
-  min-width: 192px;
+  min-width: 200px;
   width: 13%;}
 ul.main-menu li ul.sub-menu > li:first-child{padding-top:24px;}
 .mac-osys ul.main-menu li ul.sub-menu > li:first-child{padding-top:27px;} /*--for macsystem--*/
 ul.main-menu .nav-img img{ float: right;
   height: auto;
-  max-width: 192px;
+  max-width: 200px;
   width: 100%;}
 
 .bagshow {background: #ae8536;
@@ -4186,12 +4190,12 @@ right:0;
 .main-menu.main-menu2 .left-side .left-st-image,.main-menu.main-menu2 .right-side .left-st-image {
   float: left;
   width: 40%;
-    max-width: 192px;
+    max-width: 200px;
 }
 .left-st-image > img {
   height: auto;
   width: 100%;
-   max-width: 192px;
+   max-width: 200px;
 }
 .left-side > ul, .right-side > ul {
   box-sizing: border-box;
