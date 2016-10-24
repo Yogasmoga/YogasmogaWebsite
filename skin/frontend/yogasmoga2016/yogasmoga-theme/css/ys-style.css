@@ -4406,7 +4406,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .similarProdList span strong{font:12px/18px avantgardegothicitcw01d;}
 .shopping-cart .namaskarinfo strong + span{font:12px/20px graphikregular;letter-spacing:0.3px;}
 .shopping-cart .cont-full2{padding:30px 30px 0;}
-.shopping-cart .addedItem{padding:0 30px;width:100%;box-sizing:border-box;}
+.shopping-cart .addedItem{padding:0 20px;width:100%;box-sizing:border-box;}
 .shopping-cart .similarProdList{width:100%;}
 
 /*--checkout page--*/
@@ -4525,6 +4525,27 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
  .addedItem  .similarProdList  li.namaskarinfo span.c-align{text-align:left!important;}
  
  .addedItem .close{top:23px;}
+ 
+ /****** css for 5th image start **************/
+ /**** women  ***/
+ .categorypath-women-tops-bras .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.65);}
+.categorypath-women-tops-tanks .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img {transform: scale(0.75);}
+ .categorypath-women-bottoms-shorts .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.55);}
+ .categorypath-women-bottoms-crops .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.8);}
+ .categorypath-women-bottoms-leggings  .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.92);} 
+ .categorypath-women-bottoms-pants  .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.9);}
+ .categorypath-women-tops-jackets-hoodies .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.86);} 
+ .categorypath-women-tops-short-sleeve .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.75);} 
+ .categorypath-women-tops-long-sleeve .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.8);} 
+ /*** men ***/
+ .categorypath-men-tops-tees .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.75);} 
+ .categorypath-men-tops-tanks .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.8);} 
+ .categorypath-men-bottoms-shorts  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.58);} 
+ .categorypath-men-bottoms-pants  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.89);} 
+ .categorypath-men-tops-jackets-hoodies  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.9);} 
+ 
+ /****** css for 5th image end **************/
+ 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:13px;}
