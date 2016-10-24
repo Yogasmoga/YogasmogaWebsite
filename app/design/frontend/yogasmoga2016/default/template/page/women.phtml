@@ -391,7 +391,7 @@ for wherever life takes you.</p>
                                 <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?>">
                                     <?php
                                     foreach($simpleproductarr['image'] as $img ){?>
-                                        <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy"  data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$greyImage)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(1006,503)->setQuality(91); ?>" />
+                                        <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy"  data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$greyImage)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(1025,508)->setQuality(91); ?>" />
                                     <?php } ?>
                                 </a>
                                 <a class="clickable"
