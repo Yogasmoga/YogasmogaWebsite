@@ -4545,6 +4545,9 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
  .categorypath-men-tops-jackets-hoodies  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.9);} 
  
  /****** css for 5th image end **************/
+ /***** close icon svg***/
+ .addedItem .close{background: url("../images/shopping-cart/bag-close.svg"); }
+ 
  
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
