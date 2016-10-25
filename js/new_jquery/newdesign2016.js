@@ -144,12 +144,12 @@ jQuery(window).load(function(){
 	if( (element.offsetHeight < element.scrollHeight) || (element.offsetWidth < element.scrollWidth)){
 		// your element have overflow
 		//element.style.background = "yellow";
-		jQuery('.product-det-tab-bottom').addClass('hide-related');
+		jQuery('.product-det-tab-bottom').removeClass('show-related');
 	}
 	else{
 		//your element don't have overflow
 		//element.style.background = "red";
-		jQuery('.product-det-tab-bottom').removeClass('hide-related');
+		jQuery('.product-det-tab-bottom').addClass('show-related');
 	}
 });
 
