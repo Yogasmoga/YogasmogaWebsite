@@ -314,8 +314,8 @@
 
                         }
                         if(end($imageArr)){
-                            end($imageArr);
-                            $simpleproductarr['image'][] = prev($imageArr) ;
+                            
+                            $simpleproductarr['image'][] = end($imageArr) ;
                         }
                         if($imageArr[0]){
                             $simpleproductarr['image'][] =  $imageArr[0];
