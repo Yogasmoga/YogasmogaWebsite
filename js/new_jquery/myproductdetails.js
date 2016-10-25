@@ -909,7 +909,7 @@ function selectfirstsizeonload() {
 
 function insertBraOption() {
     _braSelected = 0;
-    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    jQuery("body").find("#includeoption div:nth-child(1)").trigger("click");
     jQuery("body").on("click", "#includeoption div", function () {
         var braValue = parseInt(jQuery("#includeoption div:nth-child(1)").attr("value"));
         jQuery(this).addClass("selected").siblings().removeClass("selected");
