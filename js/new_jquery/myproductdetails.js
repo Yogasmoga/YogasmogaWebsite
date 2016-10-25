@@ -359,7 +359,7 @@ function changeproductsize(sz) {
     var salePrice = sz.attr("price");
     jQuery(".amount").html("$" + salePrice);
     //update price ends
-    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    jQuery("body").find("#includeoption div:nth-child(1)").trigger("click");
     if (_islengthavailable) {
         jQuery("div.selectedlength div").removeClass("selected");
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
@@ -589,7 +589,7 @@ function changeColor(clr) {
     jQuery(".box-seprtr").find("p.insale").addClass("dnone");
     jQuery(".was-amount").addClass("no-display");
 
-    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    jQuery("body").find("#includeoption div:nth-child(1)").trigger("click");
     var colorindex = searchproductcolorinfoarrray(clr);
     if (colorindex == -1)
         return;
