@@ -11,8 +11,11 @@ var bra_cup_insert_count = 0;
 
 jQuery(window).load(function ($) {
     selectfirstsizeonload();
-    insertBraOption();
+   //insertBraOption();
 });
+jQuery(document).ready(function ($) {
+	 insertBraOption();
+});	
 jQuery(document).ready(function ($) {
 
     if (_sizesuperattribute == false)
@@ -359,7 +362,7 @@ function changeproductsize(sz) {
     var salePrice = sz.attr("price");
     jQuery(".amount").html("$" + salePrice);
     //update price ends
-    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    jQuery("body").find("#includeoption div:nth-child(1)").trigger("click");
     if (_islengthavailable) {
         jQuery("div.selectedlength div").removeClass("selected");
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
@@ -589,7 +592,7 @@ function changeColor(clr) {
     jQuery(".box-seprtr").find("p.insale").addClass("dnone");
     jQuery(".was-amount").addClass("no-display");
 
-    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    jQuery("body").find("#includeoption div:nth-child(1)").trigger("click");
     var colorindex = searchproductcolorinfoarrray(clr);
     if (colorindex == -1)
         return;
@@ -909,7 +912,7 @@ function selectfirstsizeonload() {
 
 function insertBraOption() {
     _braSelected = 0;
-    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    jQuery("body").find("#includeoption div:nth-child(1)").trigger("click");
     jQuery("body").on("click", "#includeoption div", function () {
         var braValue = parseInt(jQuery("#includeoption div:nth-child(1)").attr("value"));
         jQuery(this).addClass("selected").siblings().removeClass("selected");
