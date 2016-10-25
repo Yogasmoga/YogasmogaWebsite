@@ -309,7 +309,7 @@ jQuery(document).ready(function(){
 // to fix elements which are going out of 1600px width
 jQuery(document).ready(function(){
 	
-		if(jQuery(window).width() > 1600){
+		if(jQuery(window).width() > 767){
 			var pageOffsetLeft = jQuery('.wrapper').offset().left;
 			var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.wrapper').outerWidth()));		
 			jQuery('.shopping-cart').css({
@@ -318,12 +318,27 @@ jQuery(document).ready(function(){
 			jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
 				'margin-left':pageOffsetLeft
 			});
+			
+			jQuery(window).scroll(function(){
+				if(jQuery('#div_cats').hasClass('fixed_top')){
+					jQuery('#div_cats').css({
+						'right':pageOffsetRight
+					});		
+				}
+				else{
+					jQuery('#div_cats').css({
+						'right':0
+					});		
+				}
+			});	
+		
 		}
+		
 });
 
 // to fix elements which are going out of 1600px width on resize
 jQuery(window).resize(function(){
-		if(jQuery(window).width() > 1600){
+		if(jQuery(window).width() > 767){
 			var pageOffsetLeft = jQuery('.wrapper').offset().left;
 			var pageOffsetRight = (jQuery(window).width() - (jQuery('.wrapper').offset().left + jQuery('.wrapper').outerWidth()));		
 			jQuery('.shopping-cart').css({
@@ -332,6 +347,19 @@ jQuery(window).resize(function(){
 			jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
 				'margin-left':pageOffsetLeft
 			});
+			
+			jQuery(window).scroll(function(){
+				if(jQuery('#div_cats').hasClass('fixed_top')){
+					jQuery('#div_cats').css({
+						'right':pageOffsetRight
+					});		
+				}
+				else{
+					jQuery('#div_cats').css({
+						'right':0
+					});		
+				}
+			});	
 		}
 });
 // to fix elements which are going out of 1600px width on keyboard zoomin zoomout
@@ -355,7 +383,21 @@ jQuery(window).on('keypress keydown',function(e){
 			});
 			jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
 				'margin-left':pageOffsetLeft
-		});
+			});
+			
+			jQuery(window).scroll(function(){
+				if(jQuery('#div_cats').hasClass('fixed_top')){
+					jQuery('#div_cats').css({
+						'right':pageOffsetRight
+					});		
+				}
+				else{
+					jQuery('#div_cats').css({
+						'right':0
+					});		
+				}
+			});	
+			
 			if (++px === 1) {
 				console.info('px=' +px);
 				window.clearInterval(intervalID);			
