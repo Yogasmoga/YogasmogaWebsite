@@ -3933,8 +3933,8 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5){margin-bottom:0; float:right;}
 
 .pcol-right-content4{display:none;}
-.product-det-tab-bottom{margin-top:30px;display:block;}
-.product-det-tab-bottom.hide-related{display:none;}
+.product-det-tab-bottom{margin-top:30px;display:block;opacity:0; visibility:hidden; padding-bottom:10px;}
+.product-det-tab-bottom.show-related{opacity:1; visibility:visible;}
 .product-det-tab-bottom p{margin-bottom:30px;}
 .product-det-tab-bottom p span{font:12px/12px graphikregular;}
 .product-det-tab-bottom p .strong{display:block;font:11px/16px avantgardegothicitcw01d;letter-spacing:0.3px;}
