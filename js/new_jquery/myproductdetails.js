@@ -11,8 +11,11 @@ var bra_cup_insert_count = 0;
 
 jQuery(window).load(function ($) {
     selectfirstsizeonload();
-    insertBraOption();
+   //insertBraOption();
 });
+jQuery(document).ready(function ($) {
+	 insertBraOption();
+});	
 jQuery(document).ready(function ($) {
 
     if (_sizesuperattribute == false)
