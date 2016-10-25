@@ -308,7 +308,7 @@ jQuery(document).ready(function(){
 
 // to fix elements which are going out of 1600px width
 jQuery(document).ready(function(){
-	
+			
 		if(jQuery(window).width() > 767){
 			var pageOffsetLeft = jQuery('.wrapper').offset().left;
 			var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.wrapper').outerWidth()));		
@@ -318,6 +318,7 @@ jQuery(document).ready(function(){
 			jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
 				'margin-left':pageOffsetLeft
 			});
+					
 			
 			jQuery(window).scroll(function(){
 				if(jQuery('#div_cats').hasClass('fixed_top')){
@@ -333,7 +334,10 @@ jQuery(document).ready(function(){
 			});	
 		
 		}
-		
+		// show header after calculation of margin-left
+			jQuery('#ysheader').css({
+				'opacity':1
+		});
 });
 
 // to fix elements which are going out of 1600px width on resize
