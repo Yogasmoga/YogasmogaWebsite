@@ -3979,9 +3979,9 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 /*--bra option--*/
 #includeoption div { background: #fff none repeat scroll 0 0; border-radius: 26px; height: 26px; line-height: 26px; width: 26px;font-size:12px; font-family:graphikregular;}
 .bra-option >span{font:13px/13px GraphikRegular;}
-.gry-box table.productdetailtable div.addtobag{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on.svg") no-repeat scroll center center; height:40px;}
-.gry-box table.productdetailtable div.addtobag.bagdisabled{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on.svg") no-repeat scroll center center!important; }
-.gry-box table.productdetailtable div.preorderitem{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on.svg") no-repeat scroll center center!important; }
+.gry-box table.productdetailtable div.addtobag{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2.png") no-repeat scroll center center; height:40px;background-size:100% auto;}
+.gry-box table.productdetailtable div.addtobag.bagdisabled{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2.png") no-repeat scroll center center!important;background-size:100% auto; }
+.gry-box table.productdetailtable div.preorderitem{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2.png") no-repeat scroll center center!important;background-size:100% auto;}
 .needhelp{}
 .needhelp a{color:#555; text-decoration:underline;font:13px/13px GraphikRegular; letter-spacing:0.22px;} 
 
