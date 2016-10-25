@@ -4460,9 +4460,9 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .open-bag #ysheader.header-container,.open-bag #div_sizes{clip:rect(0, auto, auto,400px)}
 
 /*--------------------------*/
-#ysheader.header-container{left:0!important;opacity:0;}
-#ysheader.header-container{transform:translateX(0);-webkit-transform:translateX(0);  transition: all 0.3s cubic-bezier(.02, .01, .47, 1);-webkit-transition: all 0.3s cubic-bezier(.02, .01, .47, 1);}
-.open-bag #ysheader.header-container{transform:translateX(-400px);-webkit-transform:translateX(-400px); transition: all 0.3s cubic-bezier(.02, .01, .47, 1); -webkit-transition: all 0.3s cubic-bezier(.02, .01, .47, 1); }
+#ysheader.header-container{left:0!important;opacity:1;}
+#ysheader.header-container{transform:translateX(0);-webkit-transform:translateX(0);  transition: transform 0.3s cubic-bezier(.02, .01, .47, 1);-webkit-transition: transform 0.3s cubic-bezier(.02, .01, .47, 1);}
+.open-bag #ysheader.header-container{transform:translateX(-400px);-webkit-transform:translateX(-400px); transition: transform 0.3s cubic-bezier(.02, .01, .47, 1); -webkit-transition: transform 0.3s cubic-bezier(.02, .01, .47, 1); }
 
 /*---classes for hover animation--*/
 .ysanimate{ transition:0.2s linear; -webkit-transition:0.2s linear;}

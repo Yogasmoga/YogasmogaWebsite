@@ -336,11 +336,11 @@ jQuery(document).ready(function(){
 		}
 		
 		// show header after calculation of margin-left and css transition completion
-		setTimeout(function(){
+		/*setTimeout(function(){
 			jQuery('#ysheader').css({
 				'opacity':1
 			});
-			},400);
+			},400);*/
 			
 });
 
