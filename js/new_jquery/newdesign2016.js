@@ -138,6 +138,20 @@ jQuery(window).resize(function(){
 
 });*/
 
+jQuery(window).load(function(){
+	// detect if content overlows its parent element
+	var element = document.querySelector('.pcol-right-content1');
+	if( (element.offsetHeight < element.scrollHeight) || (element.offsetWidth < element.scrollWidth)){
+		// your element have overflow
+		//element.style.background = "yellow";
+		jQuery('.product-det-tab-bottom').addClass('hide-related');
+	}
+	else{
+		//your element don't have overflow
+		//element.style.background = "red";
+		jQuery('.product-det-tab-bottom').removeClass('hide-related');
+	}
+});
 
 /*-----------------------------------
 ######## product grid related ########
