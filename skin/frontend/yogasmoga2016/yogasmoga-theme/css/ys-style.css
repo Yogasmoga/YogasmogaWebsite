@@ -717,7 +717,7 @@ a.continuelink:hover{
 .addedItem .similarProdList span span:nth-child(2), .addedItem .similarProdList span span {display: block; text-align: left; width: 100%;}
 .addedItem .similarProdList span span.pname{font-family: gothambold;}
 .addedItem .similarProdList span span.size{font-family: gothambook;}
-.addedItem .similarProdList span span.amnt{margin-bottom: 12px !important;}
+.addedItem .similarProdList span span.amnt{margin-bottom: 18px !important;}
 .addedItem .similarProdList span strong:hover{color: #555;}
 .addedItem .close{background: url("../images/shopping-cart/close.gif"); width: 12px; height: 13px; position: absolute; top: 15px; right: 0;}
 
@@ -4501,7 +4501,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 
 .product-row-container.row-container-loading .product-row{opacity:0;}
 
-.namaskarinfo #cmbcolor { font-family: graphikregular;padding-left:6px;}
+.namaskarinfo #cmbcolor { font-family: graphikregular;padding-left:6px;color:#bbbbbb;}
 .namaskarinfo select option{font-family: graphikregular;padding-left:6px;}
 /*---homepage  bucket - -*/
 .bucket1 .contentSlider .small-text{font-size:12px!important;}
@@ -4509,25 +4509,25 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .shopping-cart .addedItem .similarProdList span.wdth100{text-align: left;}
  .addedItem  .similarProdList  li.namaskarinfo span.c-align{text-align:left!important;}
  
- .addedItem .close{top:23px;}
+ .addedItem .close{top:21px;}
  
  /****** css for 5th image start **************/
  /**** women  ***/
- .categorypath-women-tops-bras .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.65);}
-.categorypath-women-tops-tanks .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img {transform: scale(0.75);}
- .categorypath-women-bottoms-shorts .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.55);}
- .categorypath-women-bottoms-crops .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.8);}
- .categorypath-women-bottoms-leggings  .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.92);} 
- .categorypath-women-bottoms-pants  .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.9);}
- .categorypath-women-tops-jackets-hoodies .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.86);} 
- .categorypath-women-tops-short-sleeve .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.75);} 
- .categorypath-women-tops-long-sleeve .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.8);} 
+ .categorypath-women-tops-bras .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.65);-webkit-transform: scale(0.65);}
+.categorypath-women-tops-tanks .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img {transform: scale(0.75);-webkit-transform: scale(0.75);}
+ .categorypath-women-bottoms-shorts .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.55);-webkit-transform: scale(0.55);}
+ .categorypath-women-bottoms-crops .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.8);-webkit-transform: scale(0.8);}
+ .categorypath-women-bottoms-leggings  .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.92);-webkit-transform: scale(0.92);} 
+ .categorypath-women-bottoms-pants  .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.9);-webkit-transform: scale(0.9);}
+ .categorypath-women-tops-jackets-hoodies .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.86);-webkit-transform: scale(0.86);} 
+ .categorypath-women-tops-short-sleeve .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.75);-webkit-transform: scale(0.75);} 
+ .categorypath-women-tops-long-sleeve .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.8);-webkit-transform: scale(0.8);} 
  /*** men ***/
- .categorypath-men-tops-tees .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.75);} 
- .categorypath-men-tops-tanks .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.8);} 
- .categorypath-men-bottoms-shorts  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.58);} 
- .categorypath-men-bottoms-pants  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.89);} 
- .categorypath-men-tops-jackets-hoodies  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.9);} 
+ .categorypath-men-tops-tees .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.75);-webkit-transform: scale(0.75);} 
+ .categorypath-men-tops-tanks .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.8);-webkit-transform: scale(0.8);} 
+ .categorypath-men-bottoms-shorts  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.58);-webkit-transform: scale(0.58);} 
+ .categorypath-men-bottoms-pants  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.89);-webkit-transform: scale(0.89);} 
+ .categorypath-men-tops-jackets-hoodies  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.9);-webkit-transform: scale(0.9);} 
  
  /****** css for 5th image end **************/
  /***** close icon svg***/
