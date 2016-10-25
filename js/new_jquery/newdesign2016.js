@@ -334,10 +334,14 @@ jQuery(document).ready(function(){
 			});	
 		
 		}
-		// show header after calculation of margin-left
+		
+		// show header after calculation of margin-left and css transition completion
+		setTimeout(function(){
 			jQuery('#ysheader').css({
 				'opacity':1
-		});
+			});
+			},400);
+			
 });
 
 // to fix elements which are going out of 1600px width on resize
