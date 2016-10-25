@@ -1293,7 +1293,8 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                     <!-- selectColor -->
 									
                                     <!-- selectSize -->
-                                    <div class="selectedsize" <?php if (!$isSizeAvailable) {
+                                    <?php $ids = $_product->getCategoryIds();?>
+                                    <div class="selectedsize <?php if(in_array(5,$ids)){echo "men-size";}?>" <?php if (!$isSizeAvailable) {
                                         echo "style='display:none;'";
                                     } ?>>
                                         <div class="box-seprtr">
