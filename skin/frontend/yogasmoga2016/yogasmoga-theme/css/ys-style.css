@@ -4478,7 +4478,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 
 .common-listing .header-banner .header-banner-block,.catalog-product-view .header-banner .header-banner-block{border-bottom:1px solid #777777;}		
 .catalog-category-view.common-listing  .header-banner .header-banner-block{border-bottom:1px solid #fff;}		
-.catalog-category-view.common-listing  .showhide  .header-banner .header-banner-block{border-bottom:1px solid #fff;}		
+.catalog-category-view.common-listing  .showhide  .header-banner .header-banner-block{border-bottom:1px solid #777;}		
 	
 .bubbleimg:hover img{animation:bubbleicon 0.2s linear;-webkit-animation:bubbleicon 0.2s linear;}
  #globalheader.header{ padding:0 30px;}
