@@ -424,13 +424,14 @@ jQuery(document).ready(function($){
 	var imgrowtr = $('.thumb-imgs table.smallimagecontiner tr td img');
 	if(imgrowtr.length > 0){		
 		var px = 0;
+		$('.product-details .product-row').removeClass('interval-ends');
 		var intervalID = setInterval(function () {
 			// logic here
-			$('.product-details .product-row').css({'opacity': 0});
+			
 			prodnewdetail();
 			if (++px === 5) {
 				window.clearInterval(intervalID);
-				$('.product-details .product-row').css({'opacity': 1});		
+				$('.product-details .product-row').addClass('interval-ends');
 			}
 		}, 2000);
 		

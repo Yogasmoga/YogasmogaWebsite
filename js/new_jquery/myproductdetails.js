@@ -47,11 +47,13 @@ jQuery(document).ready(function ($) {
         changePartOfGiftSet($(this).attr("value"));
 		/*---new design js--*/
 		var mpx = 0;
+		$('.product-details .product-row').removeClass('interval-ends');
 		var intervalID = setInterval(function () {
 			// logic here
 			prodnewdetail();
 			if (++mpx === 5) {
 				window.clearInterval(intervalID);			
+				$('.product-details .product-row').addClass('interval-ends');
 			}
 		}, 2000);
 		/*---new design js end--*/		
