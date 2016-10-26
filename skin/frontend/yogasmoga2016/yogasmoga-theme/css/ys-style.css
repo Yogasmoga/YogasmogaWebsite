@@ -4054,15 +4054,19 @@ ul.main-menu > li.smenu, ul.main-menu > li.active.over, ul.main-menu > li:hover,
  background:none;
 }
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){margin-top:18px;}
+/* saf3+, chrome1+ */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){top:1px;position:relative;}
+}
 
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(3),
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-top:1px;}
 
-.mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){margin-top:20px;} /*--for macsystem--*/
+.mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){margin-top:19px;} /*--for macsystem--*/
 
 .mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(3),
 .mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(4),
-.mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-top:1px;} /*--for macsystem--*/
+.mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5){margin-top:0px;} /*--for macsystem--*/
 
 
 
