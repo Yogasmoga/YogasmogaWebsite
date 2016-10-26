@@ -1756,7 +1756,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                 $howToMeasureVidio = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_to_measure_video', Mage::app()->getStore()->getStoreId());
                                 if ($howToMeasureVidio != '') { ?>
 								<div class="vlink-cont">
-                                <p class="block-link"><a href="#" class="com-a-prd-links">Watch
+                                <p class="block-link"><a href="javascript:void(0)" class="com-a-prd-links">Watch
                                         how to
                                         measure</a></p>
 								</div>

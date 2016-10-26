@@ -2849,7 +2849,8 @@ a.learn-more {
 .cms-home .ysfabricpart .grid35, .cms-home .factorypart .grid35 {left:66.7%;}
 
 /*------------------------*/
-.bucket1 .contentSlider{top:41.79%;}
+.bucket1 .contentSlider{ top: 50%;
+    transform: translateY(-50%);}
 .bucket2 .contentSlider{top:44%;}
 .bucket3 .contentSlider{top:38.9112%;}
 .bucket4 .contentSlider{top:38.9112%;}
@@ -2888,6 +2889,8 @@ ul.main-menu > li{padding:0 10px;}
 .contentSlider .small-text { 
     font-family: avantgardegothicitcw01d; 
 	letter-spacing:0.5px;
+	 margin: auto auto 3%;
+    padding-bottom: 10px;
 }
 .iconspartone .row > span .iconstxt{font-family: GraphikRegular;font-size:12px;line-height:15px; text-transform:capitalize; }
 .header-container{min-width:1024px;}
