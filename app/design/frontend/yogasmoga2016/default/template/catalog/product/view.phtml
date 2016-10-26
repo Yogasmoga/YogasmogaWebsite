@@ -1728,14 +1728,14 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 
 
 								}
-								if ($upsellsimplecount == 1) {
+								/*if ($upsellsimplecount > 0) {
 								?>
 									<p><span class="strong">Also Wearing:</span>
 										<a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>" class="underline"><?php echo $parentproduct->getName() ?></a>
 										<span> in <?php echo $clrinfo[$product->getColor()] ?></span>
 									</p>
 
-							<?php } } } } } ?>
+							<?php }*/ } } } } ?>
 							</div>
 						</div>
 						
