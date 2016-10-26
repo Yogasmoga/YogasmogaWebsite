@@ -3980,6 +3980,13 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 #includeoption div { background: #fff none repeat scroll 0 0; border-radius: 26px; height: 26px; line-height: 26px; width: 26px;font-size:12px; font-family:graphikregular;}
 .bra-option >span{font:13px/13px GraphikRegular;}
 .gry-box table.productdetailtable div.addtobag{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2.png") no-repeat scroll center center; height:40px;background-size:100% auto;}
+
+.gry-box table.productdetailtable div.addtobag:hover{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2-hover.jpg") no-repeat scroll center center!important; height:40px;background-size:100% auto;}
+
+.gry-box table.productdetailtable div.addtobag:focus{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2-btn-down.jpg") no-repeat scroll center center!important; height:40px;background-size:100% auto;}
+
+
+
 .gry-box table.productdetailtable div.addtobag.bagdisabled{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2.png") no-repeat scroll center center!important;background-size:100% auto; }
 .gry-box table.productdetailtable div.preorderitem{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2.png") no-repeat scroll center center!important;background-size:100% auto;}
 .needhelp{}
@@ -4521,7 +4528,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .namaskarinfo #cmbcolor { font-family: graphikregular;padding-left:6px;color:#bbbbbb;}
 .namaskarinfo select option{font-family: graphikregular;padding-left:6px;}
 /*---homepage  bucket - -*/
-.bucket1 .contentSlider .small-text{font-size:12px!important;}
+.bucket1 .contentSlider .small-text.contentSlider .small-text{font-size:12px!important;}
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 42px !important; line-height: 46px !important;}
 .shopping-cart .addedItem .similarProdList span.wdth100{text-align: left;}
  .addedItem  .similarProdList  li.namaskarinfo span.c-align{text-align:left!important;}
