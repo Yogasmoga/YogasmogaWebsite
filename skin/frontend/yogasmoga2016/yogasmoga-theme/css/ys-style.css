@@ -4494,7 +4494,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 	
 .bubbleimg:hover img{animation:bubbleicon 0.2s linear;-webkit-animation:bubbleicon 0.2s linear;}
  #globalheader.header{ padding:0 30px;}
-.header-container.showhide{box-shadow:0 13px 28px -13px rgba(150, 150, 150, 0.25);-webkit-box-shadow:0 13px 28px -13px rgba(150, 150, 150, 0.25);-moz-box-shadow:0 13px 28px -13px rgba(150, 150, 150, 0.25);}
+.header-container.showhide{box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-webkit-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-moz-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);}
 .main-menu.main-menu2 .sub-menu{margin-top:4px;}
 @keyframes bubbleicon{
 	0%{transform:translateY(0);}
