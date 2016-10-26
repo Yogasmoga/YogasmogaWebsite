@@ -4054,9 +4054,11 @@ ul.main-menu > li.smenu, ul.main-menu > li.active.over, ul.main-menu > li:hover,
  background:none;
 }
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){margin-top:18px;}
+
 /* saf3+, chrome1+ */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 	ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){top:1px;position:relative;}
+	.mac-osys ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(2){top:0;position:relative;}
 }
 
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(3),
