@@ -53,14 +53,13 @@ jQuery(document).ready(function ($) {
 			prodnewdetail();
 			if (++mpx === 5) {
 				window.clearInterval(intervalID);			
-				$('.product-details .product-row').addClass('interval-ends');
+				//$('.product-row-container img').load(function(){	
+					$('.product-row-container').removeClass("row-container-loading"); //for new design					
+				//});		
 			}
 		}, 2000);
 		/*---new design js end--*/		
-		$('.product-row-container img').load(function(){	
-			$('.product-row-container').removeClass("row-container-loading"); //for new design
-			//$('.product-row-container').css('opacity','1');
-		});		
+		
 		
 		
     });
