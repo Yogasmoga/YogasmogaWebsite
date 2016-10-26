@@ -3985,10 +3985,8 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 
 .gry-box table.productdetailtable div.addtobag:focus{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2-btn-down.jpg") no-repeat scroll center center!important; background-size:100% auto!important;}
 
-
-
-.gry-box table.productdetailtable div.addtobag.bagdisabled{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2.png") no-repeat scroll center center!important;background-size:100% auto; }
-.gry-box table.productdetailtable div.preorderitem{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2.png") no-repeat scroll center center!important;background-size:100% auto;}
+.gry-box table.productdetailtable div.addtobag.bagdisabled{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2.png") no-repeat scroll center center!important;background-size:100% auto!important; }
+.gry-box table.productdetailtable div.preorderitem{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2.png") no-repeat scroll center center!important;background-size:100% auto!important;}
 .needhelp{}
 .needhelp a{color:#555; text-decoration:underline;font:13px/13px GraphikRegular; letter-spacing:0.22px;} 
 
