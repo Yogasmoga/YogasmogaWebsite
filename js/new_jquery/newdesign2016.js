@@ -287,8 +287,8 @@ jQuery(document).ready(function(){
 	 jQuery("#ysheader").mouseover(function(){
         if (!jQuery("#ysheader").hasClass("scrolled-effect")) {
           //  jQuery(this).stop().animate({top:'0'});
-			jQuery("#ysheader").removeClass("shrunk");			
-			jQuery("#ysheader .posRel img").removeClass("resizable");
+			//jQuery("#ysheader").removeClass("shrunk");			
+			//jQuery("#ysheader .posRel img").removeClass("resizable");
 		}
     });
 	 jQuery("#ysheader").mouseout(function(){
@@ -296,8 +296,8 @@ jQuery(document).ready(function(){
         //move Nav back up
         if (!jQuery("#ysheader").hasClass("scrolled-effect")) {
             //jQuery(this).stop().animate({top:'-50'});
-			jQuery("#ysheader").addClass("shrunk");			
-			jQuery("#ysheader .posRel img").addClass("resizable");
+			//jQuery("#ysheader").addClass("shrunk");			
+			//jQuery("#ysheader .posRel img").addClass("resizable");
 
         }
     });

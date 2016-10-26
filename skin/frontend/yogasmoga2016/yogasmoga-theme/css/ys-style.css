@@ -3535,8 +3535,8 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 /*#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px; padding-left:14px; padding-right:14px;}*/
 
 #div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; /*display:inline-block;*/display:none;}
-#div_sizes,#div_cats{opacity:1;visibility:visible;transition:opacity 0.2s linear,visibility 0.2s linear;-webkit-transition:opacity 0.2s linear,visibility 0.2s linear;}
-#div_sizes.fixed_top,#div_cats.fixed_top{opacity:0;visibility:hidden;transition:opacity 0.2s linear,visibility 0.2s linear;-webkit-transition:opacity 0.2s linear,visibility 0.2s linear;}
+#div_sizes,#div_cats{opacity:1;visibility:visible;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
+#div_sizes.fixed_top,#div_cats.fixed_top{opacity:0;visibility:hidden;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
 #div_sizes{max-width:1600px;left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%)}
 #div_sizes.fixed_top{left:50%;}
 
@@ -4474,8 +4474,8 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 
 /*--------------------------*/
 #ysheader.header-container{left:0!important;opacity:0;}
-#ysheader.header-container{transform:translateX(0);-webkit-transform:translateX(0);  transition: transform 0.3s cubic-bezier(.02, .01, .47, 1);-webkit-transition: transform 0.3s cubic-bezier(.02, .01, .47, 1);}
-.open-bag #ysheader.header-container{transform:translateX(-400px);-webkit-transform:translateX(-400px); transition: transform 0.3s cubic-bezier(.02, .01, .47, 1); -webkit-transition: transform 0.3s cubic-bezier(.02, .01, .47, 1); }
+#ysheader.header-container{transform:translateX(0);-webkit-transform:translateX(0);  transition: transform 0.3s cubic-bezier(.02, .01, .47, 1),top 0.3s cubic-bezier(.02, .01, .47, 1);-webkit-transition: transform 0.3s cubic-bezier(.02, .01, .47, 1),top 0.3s cubic-bezier(.02, .01, .47, 1);}
+.open-bag #ysheader.header-container{transform:translateX(-400px);-webkit-transform:translateX(-400px); transition: transform 0.3s cubic-bezier(.02, .01, .47, 1),top 0.3s cubic-bezier(.02, .01, .47, 1); -webkit-transition: transform 0.3s cubic-bezier(.02, .01, .47, 1),top 0.3s cubic-bezier(.02, .01, .47, 1); }
 
 /*---classes for hover animation--*/
 .ysanimate{ transition:0.2s linear; -webkit-transition:0.2s linear;}
