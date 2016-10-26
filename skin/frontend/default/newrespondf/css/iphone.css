@@ -8235,3 +8235,11 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
 	}
 
 #popForm.mage-signup .error{position:static; text-align:left; font-size:14px; font-family:graphikregular;}
+
+/*---hide collection and range link for temporary base--*/
+.menu-item a[rel="cat_131"]{display:none;}
+.menu-item a[rel="cat_132"]{pointer-events:none;}
+a[href="http://staging.yogasmoga.com/men/collections"],
+a[href="http://staging.yogasmoga.com/men/ranges"],
+a[href="http://staging.yogasmoga.com/women/collections"],
+a[href="http://staging.yogasmoga.com/women/ranges"]{display:none;}
