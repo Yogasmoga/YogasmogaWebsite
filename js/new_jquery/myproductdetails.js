@@ -47,18 +47,19 @@ jQuery(document).ready(function ($) {
         changePartOfGiftSet($(this).attr("value"));
 		/*---new design js--*/
 		var mpx = 0;
+		$('.product-details .product-row').removeClass('interval-ends');
 		var intervalID = setInterval(function () {
 			// logic here
 			prodnewdetail();
 			if (++mpx === 5) {
 				window.clearInterval(intervalID);			
+				//$('.product-row-container img').load(function(){	
+					$('.product-row-container').removeClass("row-container-loading"); //for new design					
+				//});		
 			}
 		}, 2000);
 		/*---new design js end--*/		
-		$('.product-row-container img').load(function(){	
-			$('.product-row-container').removeClass("row-container-loading"); //for new design
-			//$('.product-row-container').css('opacity','1');
-		});		
+		
 		
 		
     });

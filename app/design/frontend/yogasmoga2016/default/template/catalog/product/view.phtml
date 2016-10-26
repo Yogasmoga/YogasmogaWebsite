@@ -1649,7 +1649,16 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                 <!-- fabricDetails -->
 				</div>
 				
-				<div class="product-det-tab">
+				
+				
+				</div>
+            </div><!--right-col1 end-->
+				
+				
+				
+				<div class="pcol-right-content pcol-right-content2">
+					<div class="pcol-right-content-inner">
+					<div class="product-det-tab">
 					<!--<ul class="tabs-nav">
 						<li><input type="radio" name="prodTab" id="prodTab1" checked/><label for="prodTab1">Description</label></li>
 						<li><input type="radio" name="prodTab" id="prodTab2"/><label for="prodTab2">Features</label></li>
@@ -1728,14 +1737,14 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 
 
 								}
-								if ($upsellsimplecount == 1) {
+								/*if ($upsellsimplecount > 0) {
 								?>
 									<p><span class="strong">Also Wearing:</span>
 										<a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>" class="underline"><?php echo $parentproduct->getName() ?></a>
 										<span> in <?php echo $clrinfo[$product->getColor()] ?></span>
 									</p>
 
-							<?php } } } } } ?>
+							<?php }*/ } } } } ?>
 							</div>
 						</div>
 						
@@ -1768,37 +1777,30 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 					
 					
 				</div><!--product-det-tab-->
-				
-				</div>
-            </div><!--right-col1 end-->
-				
-				
-				
-				<div class="pcol-right-content pcol-right-content2">
-					<div class="pcol-right-content-inner">
-					<div class="fabric-content">
-					 <?php
-                        if($fabricStoryBlockId != '') {
-                            echo "<div class='mainfabric' rel='main'>";
-                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricStoryBlockId)->toHtml();
-                            echo "</div>";
-                        
-
-                            if ($fabric_changed) {
-
-                                foreach ($arFabricArray as $key => $value) {
-                                    echo "<div class='fabric_story_block' rel='$key'>";
-                                    echo $this->getLayout()->createBlock('cms/block')->setBlockId($value)->toHtml();
-                                    echo "</div>";
-                                }
-                            }
-                        }
-             ?>
-					</div>
+					
 					</div>
 				</div><!--right-col2 end-->
 				<div class="pcol-right-content pcol-right-content3">
 					<div class="pcol-right-content-inner">
+						<div class="fabric-content">
+						 <?php
+							if($fabricStoryBlockId != '') {
+								echo "<div class='mainfabric' rel='main'>";
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricStoryBlockId)->toHtml();
+								echo "</div>";
+							
+
+								if ($fabric_changed) {
+
+									foreach ($arFabricArray as $key => $value) {
+										echo "<div class='fabric_story_block' rel='$key'>";
+										echo $this->getLayout()->createBlock('cms/block')->setBlockId($value)->toHtml();
+										echo "</div>";
+									}
+								}
+							}
+				 ?>
+						</div>
 					</div>
 				</div><!--right-col3 end-->
 				<!--<div class="pcol-right-content pcol-right-content4">
