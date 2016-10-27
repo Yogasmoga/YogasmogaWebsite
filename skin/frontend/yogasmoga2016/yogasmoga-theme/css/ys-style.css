@@ -4348,7 +4348,7 @@ transform: translateY(-50%);
 .women-collection .women-collection-banner img{width:100%;height:auto;}
 .women-collection-banner .inside-link {width:100%;height:100%;display:block;}
 /*************** footer changes*****************/
-.grid-bottom,.btm-divider{border-bottom:0 none;}
+.grid-bottom,.btm-divider,.bottomdivider,.new-bot-divider{border-bottom:0 none!important;}
 ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .smogi-love:hover{color:#ae8536;}
 @keyframes fadeInScale {
