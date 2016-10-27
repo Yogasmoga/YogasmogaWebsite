@@ -162,17 +162,26 @@ jQuery(window).load(function(){
 ------------------------------------*/
 
 jQuery(document).ready(function(){
-	var prodHt = jQuery('.productCont').width();
-	jQuery('.prod-img').height(prodHt);
+	
+	
 	var gridwd = jQuery('.gridWrap').width();
+	//alert(gridwd);
 	if (jQuery(window).width() >= 767) {
 
 		jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
+		
+		var prodHt = jQuery('.productCont').width();
+		//alert(prodHt);
+		jQuery('.prod-img').height(prodHt);	
+		
 		jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
+		
 	}
-	else {
+	else { // for two column
 
 		jQuery('.productCont').width((gridwd-16)/2); // 24 is  total of gutter space in a row
+		var prodHt = jQuery('.productCont').width();
+		jQuery('.prod-img').height(prodHt);
 		jQuery('.prodduct_horizontal').width((gridwd-8)/1);
 	}
 
@@ -188,18 +197,24 @@ jQuery(document).ready(function(){
 
 });
 jQuery(window).resize(function(){
-	var prodHt = jQuery('.productCont').width();
-	jQuery('.prod-img').height(prodHt);
+	
 
 	var gridwd = jQuery('.gridWrap').width();
 	if (jQuery(window).width() >= 767) {
 
 		jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
+		
+		var prodHt = jQuery('.productCont').width();
+		//alert(prodHt);
+		jQuery('.prod-img').height(prodHt);	
+		
 		jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
 	}
-	else {
+	else { // for two column
 
 		jQuery('.productCont').width((gridwd-16)/2); // 24 is  total of gutter space in a row
+		var prodHt = jQuery('.productCont').width();
+		jQuery('.prod-img').height(prodHt);
 		jQuery('.prodduct_horizontal').width((gridwd-8)/1);
 	}
 
