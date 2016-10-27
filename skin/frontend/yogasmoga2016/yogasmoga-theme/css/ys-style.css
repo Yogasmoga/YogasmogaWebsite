@@ -3536,8 +3536,8 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 
 #div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; /*display:inline-block;*/display:none;}
 #div_sizes,#div_cats{opacity:1;visibility:visible;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
-#div_sizes.fixed_top,#div_cats.fixed_top{opacity:0;visibility:hidden;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
-#div_sizes{max-width:1600px;left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%)}
+.shrunk #div_sizes.fixed_top,.shrunk #div_cats.fixed_top{opacity:0;visibility:hidden;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
+#div_sizes{max-width:1600px;left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%);margin-top:1px;}
 #div_sizes.fixed_top{left:50%;}
 
 /*--landing filter--*/
@@ -3559,7 +3559,7 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
-.product-grid .cat-name{width:auto;top:132px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);font:24px/28px avantgardegothicitcw01d;letter-spacing:0.44px;}
+.product-grid .cat-name{width:auto;top:127px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);font:24px/28px avantgardegothicitcw01d;letter-spacing:0.44px;}
 .product-grid .cat-name.fixed_top{top:60px;position:fixed;z-index:99;}
 .product-grid .gridProdCubix{margin:75px auto auto;}
 /*.catalog-category-view #ysheader.showhide .header-inner{border-bottom:1px solid #ccc; position:relative;}*/
