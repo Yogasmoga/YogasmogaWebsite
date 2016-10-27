@@ -589,7 +589,7 @@ if(!is_user_logged_in()){
 									<ul>
 									<li><a href="/ys-fabric-tech">ys fabric tech</a></li>
 									<li><a href="/ys-color-tech">ys color tech</a></li>
-									<li><a href="/design-elements">ys design elements</a></li>
+									
 									</ul>
                                 </div>                            
                             </ul>
