@@ -2984,7 +2984,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
  .namaskar_banner .text-mid{font:16px/24px itcavantgardeprobk; text-transform:none; letter-spacing:0.8px;}
  .namaskar_banner .text-mid span{display:block;}
  .namaskar_banner .text-bottom{font:12px/24px itcavantgardeprobk; text-transform:none; letter-spacing:0.6px;}
- 
+ .combo-sale div.preorderitem {height:40px;}
  
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
