@@ -3999,7 +3999,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 .gry-box table.productdetailtable div.preorderitem:active{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2-btn-down.jpg") no-repeat scroll center center!important;background-size:100% auto!important;}
 .needhelp{}
 .needhelp a{color:#555; text-decoration:underline;font:13px/13px GraphikRegular; letter-spacing:0.22px;} 
-
+.gry-box table.productdetailtable div.outofstockitem{height:40px;}
 .product-row .fabric-content{padding-top:23px;}
 .bottom-container{display:none;}
 .fabDetail{font:12px/17px graphikregular;}
@@ -4518,6 +4518,12 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .header-container.showhide{box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-webkit-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-moz-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);}
 .main-menu.main-menu2 .sub-menu{margin-top:4px;}
 .mac-osys .main-menu.main-menu2 .sub-menu{margin-top:3px;/*--for macsystem--*/}
+
+table.productdetailtable div.outofstockitem{
+    background: url("../images/catalog/product/out-of-stock-dis-v2.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+	height:40px!important;
+	background-size:100% auto!important;
+	}
 @keyframes bubbleicon{
 	0%{transform:translateY(0);}
 	50%{transform:translateY(5px);}
