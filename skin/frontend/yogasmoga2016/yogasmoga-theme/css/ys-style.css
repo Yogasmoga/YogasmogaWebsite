@@ -3535,10 +3535,16 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 /*#div_cats .chk-cats{text-transform:capitalize;font:12px/24px ITCAvantGardeProMd; letter-spacing:0.43px; padding-left:14px; padding-right:14px;}*/
 
 #div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; /*display:inline-block;*/display:none;}
-#div_sizes,#div_cats{opacity:1;visibility:visible;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
-#div_sizes.fixed_top,#div_cats.fixed_top{opacity:0;visibility:hidden;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
-#div_sizes{max-width:1600px;left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%)}
+#div_sizes{max-width:1600px;left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%);margin-top:1px;}
 #div_sizes.fixed_top{left:50%;}
+/*---filter fadeout on scroll--*/
+#div_sizes .chk-size,#div_cats .chk-cats{opacity:1;visibility:visible;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
+#div_sizes.fixed_top .chk-size,#div_cats.fixed_top .chk-cats{opacity:0;visibility:hidden;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
+/*--for removing fixed state on scroll of filters and cat title--*/
+#div_sizes.fixed_top, #div_cats.fixed_top,.product-grid .cat-name,.product-grid .cat-name.fixed_top{position:absolute!important;}
+/*.product-grid .cat-name.fixed_top{position:absolute!important;}*/
+#div_sizes.fixed_top,#div_cats.fixed_top{top:auto!important;}
+
 
 /*--landing filter--*/
 .landing-filter{position:relative; height:54px;margin-bottom:15px;width:100%; float:left;}
@@ -3559,14 +3565,11 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 
 
 .bannerFluid .bnrtxt h1, .bnr{font:46px/46px avantgardegothicitcw01d;}
-.product-grid .cat-name{width:auto;top:132px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);font:24px/28px avantgardegothicitcw01d;letter-spacing:0.44px;}
+.product-grid .cat-name{width:auto;top:127px;z-index:1;left:50%; transform:translateX(-50%);-webkit-transform:translateX(-50%);font:24px/28px avantgardegothicitcw01d;letter-spacing:0.44px;}
 .product-grid .cat-name.fixed_top{top:60px;position:fixed;z-index:99;}
 .product-grid .gridProdCubix{margin:75px auto auto;}
 /*.catalog-category-view #ysheader.showhide .header-inner{border-bottom:1px solid #ccc; position:relative;}*/
 
-/*--for removing fixed state on scroll of filters and cat title--*/
-/*#div_sizes.fixed_top, #div_cats.fixed_top,.product-grid .cat-name,.product-grid .cat-name.fixed_top{position:absolute!important;}*/
-.product-grid .cat-name.fixed_top{position:absolute!important;}
 
 /*----product details----*/
 .product-details .block-head{border-top:1px solid #9c9c9c;padding:24px 0 0 0;}
@@ -3874,7 +3877,7 @@ display:none!important;opacity:1!important;visibility:visible!important;
 .product-details .product-row{background:#fff;margin-bottom:10px;width:100%; float:left; box-sizing:border-box; position:relative; min-height:600px;}
 .product-row .pcol-left{/*width:calc(100% - 341px);*/width:100%; float:left; position:relative;box-sizing:border-box;}
 .product-row .pcol-right{width:341px;float:right;position:absolute; top:0; right:0; /*height:100%;*/ text-align:left; padding-top:0;box-sizing:border-box;}
-.product-row .pcol-left img, .product-row .pcol-right img{max-width:100%; width:auto; height:auto;}
+.product-row .pcol-left img, .product-row .pcol-right img{max-width:100%; width:auto; height:auto;/*max-height:670px;*/}
 .product-row.product-row-last{background:#fff;}
 .product-row.product-row-last .pcol-left{background:#f4f4f4;width:calc(100% - (33.375% + 10px));}
 .product-row.product-row-last .pcol-right{background:#f4f4f4;margin-left:10px;width:33.375%;right:0;text-align:center;}
@@ -4055,6 +4058,7 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
 .design-size td:first-child{font-size:11px;}
 .design-size td{font-size:11px; letter-spacing:0.28px;}
 .block-elm .vlink-cont p.block-link a{font-size: 12px; line-height:20px;text-decoration:underline; color:#555;}
+.product-row .pcol-left img, .product-row .pcol-right img{max-height:560px;}
 /*.product-row .pcol-left .img_madeinusa{width:100px;}*/
 }	
 
@@ -4127,7 +4131,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
   ul.main-menu > li > ul.sub-menu li a.range-cat{pointer-events:none; cursor:default;}
  
 ul.main-menu li ul.sub-menu{background:#ae8536;width:100%;padding: 0 0 0 30px;box-sizing:border-box; line-height:18px;margin-top:7px;min-height:200px;}
-.mac-osys ul.main-menu li ul.sub-menu{margin-top:6px;}/*--for macsystem--*/
+/*.mac-osys ul.main-menu li ul.sub-menu{margin-top:6px;}*//*--for macsystem--*/
 ul.main-menu li ul.sub-menu > li{border-left: medium none; box-sizing: border-box;padding-top: 24px; width: calc((100% - 200px) / 5) !important;}
 .mac-osys ul.main-menu li ul.sub-menu > li{padding-top: 26px;}/*--for macsystem--*/
 ul.main-menu2 li{position:static;}
@@ -4352,7 +4356,7 @@ transform: translateY(-50%);
 .women-collection .women-collection-banner img{width:100%;height:auto;}
 .women-collection-banner .inside-link {width:100%;height:100%;display:block;}
 /*************** footer changes*****************/
-.grid-bottom,.btm-divider{border-bottom:0 none;}
+.grid-bottom,.btm-divider,.bottomdivider,.new-bot-divider{border-bottom:0 none!important;}
 ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .smogi-love:hover{color:#ae8536;}
 @keyframes fadeInScale {
@@ -4513,7 +4517,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
  #globalheader.header{ padding:0 30px;}
 .header-container.showhide{box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-webkit-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-moz-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);}
 .main-menu.main-menu2 .sub-menu{margin-top:4px;}
-.mac-osys .main-menu.main-menu2 .sub-menu{margin-top:2px;/*--for macsystem--*/}
+.mac-osys .main-menu.main-menu2 .sub-menu{margin-top:3px;/*--for macsystem--*/}
 @keyframes bubbleicon{
 	0%{transform:translateY(0);}
 	50%{transform:translateY(5px);}
