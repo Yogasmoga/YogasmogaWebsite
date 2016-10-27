@@ -338,7 +338,7 @@ jQuery(document).ready(function(){
 			});
 					
 			
-			jQuery(window).scroll(function(){
+			/*jQuery(window).scroll(function(){
 				if(jQuery('#div_cats').hasClass('fixed_top')){
 					jQuery('#div_cats').css({
 						'right':pageOffsetRight
@@ -349,7 +349,7 @@ jQuery(document).ready(function(){
 						'right':0
 					});		
 				}
-			});	
+			});*/	
 		
 		}
 		
@@ -374,7 +374,7 @@ jQuery(window).resize(function(){
 				'margin-left':pageOffsetLeft
 			});
 			
-			jQuery(window).scroll(function(){
+			/*jQuery(window).scroll(function(){
 				if(jQuery('#div_cats').hasClass('fixed_top')){
 					jQuery('#div_cats').css({
 						'right':pageOffsetRight
@@ -385,7 +385,7 @@ jQuery(window).resize(function(){
 						'right':0
 					});		
 				}
-			});	
+			});	*/
 		}
 });
 // to fix elements which are going out of 1600px width on keyboard zoomin zoomout
