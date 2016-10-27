@@ -4320,7 +4320,10 @@ transform: translateY(-50%);
   padding-bottom: 0%;
   margin-bottom:0;
 }
-.women-collection .new-collection-block span sup{font-size:24px;}	
+.women-collection .new-collection-block span sup{ display: inline-block;
+    font-size: 18px;
+    line-height: 26px;
+    vertical-align: top;}	
 	
 /**************** csp css starts **************************/
 	.csp-block{  height: 100%;
@@ -4343,6 +4346,8 @@ transform: translateY(-50%);
 	.csp-block .csp-inner-block.whitetxt .csp-info{font: 14px/21px graphikregular;letter-spacing:0.2px;color:#fff;}
 	
 /**************** csp css ends **************************/
+
+.women-collection-banner.firstbanner  .new-collection-block{margin-top:46px;}
 	
 .women-collection .women-collection-banner img{width:100%;height:auto;}
 .women-collection-banner .inside-link {width:100%;height:100%;display:block;}
