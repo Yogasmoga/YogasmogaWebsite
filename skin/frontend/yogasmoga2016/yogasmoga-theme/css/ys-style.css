@@ -3539,7 +3539,7 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 #div_sizes.fixed_top{left:50%;}
 /*---filter fadeout on scroll--*/
 #div_sizes .chk-size,#div_cats .chk-cats{opacity:1;visibility:visible;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
-#div_sizes.fixed_top .chk-size,#div_cats.fixed_top .chk-cats{opacity:0;visibility:hidden;transition:opacity 0.2s linear,visibility 0.2s linear;-webkit-transition:opacity 0.2s linear,visibility 0.2s linear;}
+#div_sizes.fixed_top .chk-size,#div_cats.fixed_top .chk-cats{opacity:0;visibility:hidden;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
 /*--for removing fixed state on scroll of filters and cat title--*/
 #div_sizes.fixed_top, #div_cats.fixed_top,.product-grid .cat-name,.product-grid .cat-name.fixed_top{position:absolute!important;}
 /*.product-grid .cat-name.fixed_top{position:absolute!important;}*/
