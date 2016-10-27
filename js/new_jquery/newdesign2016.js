@@ -264,6 +264,7 @@ jQuery(document).ready(function(){
 		jQuery("#ysheader").removeClass("scrolled-effect");
 		jQuery("#ysheader").addClass("showhide");
 		jQuery("#ysheader").addClass("shrunk");
+		jQuery("#ysheader").addClass("header-shrunk");
 		//jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 100, queue: false });
 		jQuery("#ysheader .posRel img").addClass("resizable");
 		jQuery(".bagshow").removeClass("active");
@@ -279,6 +280,7 @@ jQuery(document).ready(function(){
 		jQuery("#globalheader").removeClass("color-change");
 		jQuery("#ysheader").removeClass("showhide");
 		jQuery("#ysheader").removeClass("shrunk");
+		jQuery("#ysheader").removeClass("header-shrunk");
 
        }
 

@@ -3536,7 +3536,7 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 
 #div_sizes b, #div_cats b{font:12px/12px ITCAvantGardeProMd; letter-spacing:0.7px;vertical-align:middle; /*display:inline-block;*/display:none;}
 #div_sizes,#div_cats{opacity:1;visibility:visible;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
-.shrunk #div_sizes,.shrunk #div_cats{opacity:0;visibility:hidden;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
+.header-shrunk #div_sizes,.header-shrunk #div_cats{opacity:0;visibility:hidden;transition:opacity 0.3s linear,visibility 0.3s linear;-webkit-transition:opacity 0.3s linear,visibility 0.3s linear;}
 #div_sizes{max-width:1600px;left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%);margin-top:1px;}
 #div_sizes.fixed_top{left:50%;}
 
