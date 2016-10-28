@@ -2984,7 +2984,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
  .namaskar_banner .text-mid{font:16px/24px itcavantgardeprobk; text-transform:none; letter-spacing:0.8px;}
  .namaskar_banner .text-mid span{display:block;}
  .namaskar_banner .text-bottom{font:12px/24px itcavantgardeprobk; text-transform:none; letter-spacing:0.6px;}
- 
+ .combo-sale div.preorderitem {height:40px;}
  
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
@@ -3982,24 +3982,24 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 /*--bra option--*/
 #includeoption div { background: #fff none repeat scroll 0 0; border-radius: 26px; height: 26px; line-height: 26px; width: 26px;font-size:12px; font-family:graphikregular;}
 .bra-option >span{font:13px/13px GraphikRegular;}
-.gry-box table.productdetailtable div.addtobag{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2.png") no-repeat scroll center center; height:40px;background-size:100% auto;}
+.gry-box table.productdetailtable div.addtobag{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2.png") no-repeat scroll center center; height:40px!important;background-size:100% auto;}
 
 .gry-box table.productdetailtable div.addtobag:hover{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2-hover.jpg") no-repeat scroll center center!important;background-size:100% auto!important;}
 
 .gry-box table.productdetailtable div.addtobag:active{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2-btn-down.jpg") no-repeat scroll center center!important; background-size:100% auto!important;}
 
-.gry-box table.productdetailtable div.addtobag.bagdisabled{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2.png") no-repeat scroll center center!important;background-size:100% auto!important; }
+.gry-box table.productdetailtable div.addtobag.bagdisabled{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2.png") no-repeat scroll center center!important;background-size:100% auto!important;height:40px!important; }
 
 .gry-box table.productdetailtable div.addtobag.bagdisabled:hover{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2-hover.jpg") no-repeat scroll center center!important;background-size:100% auto!important; }
 
 .gry-box table.productdetailtable div.addtobag.bagdisabled:active{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2-btn-down.jpg") no-repeat scroll center center!important;background-size:100% auto!important; }
 
-.gry-box table.productdetailtable div.preorderitem{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2.png") no-repeat scroll center center!important;background-size:100% auto!important;}
+.gry-box table.productdetailtable div.preorderitem{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2.png") no-repeat scroll center center!important;background-size:100% auto!important;height:40px!important;}
 .gry-box table.productdetailtable div.preorderitem:hover{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2-hover.jpg") no-repeat scroll center center!important;background-size:100% auto!important;}
 .gry-box table.productdetailtable div.preorderitem:active{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2-btn-down.jpg") no-repeat scroll center center!important;background-size:100% auto!important;}
 .needhelp{}
 .needhelp a{color:#555; text-decoration:underline;font:13px/13px GraphikRegular; letter-spacing:0.22px;} 
-
+.gry-box table.productdetailtable div.outofstockitem{height:40px;}
 .product-row .fabric-content{padding-top:23px;}
 .bottom-container{display:none;}
 .fabDetail{font:12px/17px graphikregular;}
@@ -4416,7 +4416,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .shopping-cart .similarProdList .namaskarinfo .addbracelet span{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.3px; text-transform:uppercase; color:#ae8536;border:0 none;padding:0;}
 .shopping-cart .similarProdList{color:#555;}
 .shopping-cart .similarProdList span{font-size:12px; line-height:18px;}
-.addedItem .similarProdList span span.size{font-size:12px;line-height:17px; font-family:graphikregular;}
+.addedItem .similarProdList span span.size{font-size:12px;line-height:18px; font-family:graphikregular;}
 .shopping-cart #sub-totals-discount li{font:12px/30px graphikregular; letter-spacing:0.3px;padding:0;}
 .shopping-cart .giftcardcheckbox, .shopping-cart label[for="giftCardShop"]{font: 12px/14px graphikregular; letter-spacing: 0.3px;}
 .shopping-cart .addedItem .similarProdList > li span.pname{font:11px/18px avantgardegothicitcw01d;}
@@ -4520,6 +4520,13 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .header-container.showhide{box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-webkit-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-moz-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);}
 .main-menu.main-menu2 .sub-menu{margin-top:4px;}
 .mac-osys .main-menu.main-menu2 .sub-menu{margin-top:3px;/*--for macsystem--*/}
+
+table.productdetailtable div.outofstockitem{
+    background: url("../images/catalog/product/out-of-stock-dis-v2.png") no-repeat scroll center center rgba(0, 0, 0, 0)!important;
+	height:40px!important;
+	background-size:100% auto!important;
+	}
+	
 @keyframes bubbleicon{
 	0%{transform:translateY(0);}
 	50%{transform:translateY(5px);}
