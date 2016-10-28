@@ -4331,10 +4331,7 @@ transform: translateY(-50%);
     line-height: 26px;
     vertical-align: top;}	
 	
-.women-collection .new-collection-block  .nyc-women{max-width:77px;}
-.women-collection .new-collection-block .carbon6-women{max-width:60px;}
-.women-collection .new-collection-block .carbon6-men{max-width:60px;}
-.women-collection .new-collection-block .golf-men{max-width:70px;}
+
 	
 /**************** csp css starts **************************/
 	.csp-block{  height: 100%;
@@ -4585,7 +4582,11 @@ table.productdetailtable div.outofstockitem{
  /***** close icon svg***/
  .addedItem .close{background: url("../images/shopping-cart/bag-close.svg"); }
  
- 
+ .women-collection .new-collection-block  .nyc-women{max-width:4.81%;}
+.women-collection .new-collection-block .carbon6-women{max-width:3.75%;}
+.women-collection .new-collection-block .carbon6-men{max-width:3.75%;}
+.women-collection .new-collection-block .golf-men{max-width:4.375%;}
+
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:13px;}
@@ -4603,20 +4604,23 @@ table.productdetailtable div.outofstockitem{
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:10px;}
 .women-collection .new-collection-block .col-box h2 span{
-    font: 38px/34px avantgardegothicitcw01d;
-   }
+font: 38px/34px avantgardegothicitcw01d;}
 .women-collection .new-collection-block span sup{line-height:19px;}    
 }
 @media only screen and (max-width : 1024px) {
 .women-collection .new-collection-block .col-box h2 span{
-    font: 34px/34px avantgardegothicitcw01d;
-   }
-.women-collection .new-collection-block span sup{line-height:21px;}   
+    font: 34px/34px avantgardegothicitcw01d;}	
+   
+.women-collection .new-collection-block span sup{line-height:21px;}     
+
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 34px !important; line-height: 34px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:16px;}
 .banner-avant-grade-bk-small{ font: 33px/33px ITCAvantGardeProBk;}
 .gridfull.bucket1 .contentSlider,.gridfull.bucket2 .contentSlider,.gridfull.bucket3 .contentSlider{top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%);}
  .gridfull.nophotoshop .learn-more {font: 14px/30px ITCAvantGardeProBk;}
+ 
+ 
+ 
 }
  @media screen and (min-width: 1600px) {
 .banner_avant_grade_demi{ font: 42px/46px AvantGardeGothicITCW01D;}
