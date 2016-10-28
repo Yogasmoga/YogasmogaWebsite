@@ -4331,6 +4331,11 @@ transform: translateY(-50%);
     line-height: 26px;
     vertical-align: top;}	
 	
+.women-collection .new-collection-block  .nyc-women{max-width:77px;}
+.women-collection .new-collection-block .carbon6-women{max-width:60px;}
+.women-collection .new-collection-block .carbon6-men{max-width:60px;}
+.women-collection .new-collection-block .golf-men{max-width:70px;}
+	
 /**************** csp css starts **************************/
 	.csp-block{  height: 100%;
     left: 0;
@@ -4344,7 +4349,7 @@ transform: translateY(-50%);
     position: absolute;
     right: 0;}
 	.csp-block .csp-inner-block > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;color:#555;}
-	.csp-block .csp-inner-block .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;margin:1% 0 1%;color:#555;}
+	.csp-block .csp-inner-block .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;margin:1.5% 0 1.5%;color:#555;}
 	.csp-block .csp-inner-block .csp-info{font: 14px/21px graphikregular;letter-spacing:0.2px;color:#555;}
 	/**** white text *****/
 	.csp-block .csp-inner-block.whitetxt > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;}
