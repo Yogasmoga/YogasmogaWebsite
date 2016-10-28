@@ -63,9 +63,10 @@ class Ysindia_Sharesmogi_IndexController extends Mage_Core_Controller_Front_Acti
 	if(!Mage::getSingleton('customer/session')->isLoggedIn()){
 			//Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account/login',array('_secure'=>true)));
 			$response['status'] = "error";
-			$response['error'] = "Please login first.";
+			$response['error'] = "login";
 			echo json_encode($response);
 			return;
+
 		}
 
 		$childEmail = Mage::app()->getRequest()->getParam('email');
@@ -106,7 +107,7 @@ class Ysindia_Sharesmogi_IndexController extends Mage_Core_Controller_Front_Acti
 				}
 				else{
 					$reward_model = Mage::getModel('rewardpoints/stats');
-					$points = $reward_model->getPointsCurrent($parentId, Mage::app()->getStore()->getId());
+					//$points = $reward_model->getPointsCurrent($parentId, Mage::app()->getStore()->getId());
 
 						try {
 
@@ -114,6 +115,24 @@ class Ysindia_Sharesmogi_IndexController extends Mage_Core_Controller_Front_Acti
 							$modal->setParentEmail($parentEmail);
 							$modal->setChildEmail($childEmail);
 							$modal->save();
+                            // Substract smogi bucks.
+
+                            $store_id = Mage::app()->getStore()->getId();
+                            $reward_model->setPointsSpent($childPoints);
+                            $reward_model->setCustomerId($parentId);
+                            $reward_model->setStoreId($store_id);
+                            $reward_model->setOrderId(Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN);
+
+                            $startDate = Mage::getModel('core/date')->gmtDate(null, Mage::getModel('core/date')->timestamp(time()));
+                            $endDate = date('Y-m-d', strtotime($startDate . ' + 183 days'));
+
+                            $reward_model->setDateStart($startDate);
+                            $reward_model->setDateEnd($endDate);
+
+                            $reward_model->save();
+
+
+
 
 							// Send email.
 							$templateId = "share_smogi_bucks";
@@ -121,8 +140,8 @@ class Ysindia_Sharesmogi_IndexController extends Mage_Core_Controller_Front_Acti
 							$vars = array('email' => $childEmail);
 
 							$emailTemplate->getProcessedTemplate($vars);
-							$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
-							$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
+							$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', Mage::app()->getStore()->getId()));
+							$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', Mage::app()->getStore()->getId()));
 
 								if (!empty($childEmail)) {
 									$emailTemplate->send($childEmail, $vars);

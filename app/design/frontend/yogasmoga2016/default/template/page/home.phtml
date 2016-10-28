@@ -31,9 +31,7 @@
     }
     ?>
     <?php
-    //if(Mage::getSingleton('core/session')->getShowVideo())
     if ($this->getRequest()->getParam('video') == 'true') {
-//Mage::getSingleton('core/session')->setShowVideo(false);
         ?>
         <script type="text/javascript">
             var loc = window.location;
@@ -49,7 +47,6 @@
     ?>
     <script type="text/javascript">
         jQuery(window).load(function () {
-
             jQuery(".slider_li").css('cursor', 'pointer');
             jQuery(".slider_li").click(function () {
                 if (jQuery(this).attr("moveto") != undefined) {
@@ -64,11 +61,6 @@
             setTimeout(function () {
                 setfullscreenheight();
             }, 50);
-//            var bannerImg = document.getElementById("bannerimg").complete;
-//            if(bannerImg){
-//                jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
-//            }
-
             jQuery('.namaskar-overlay1').fadeOut('slow');
         });
         jQuery(document).ready(function () {
@@ -102,14 +94,10 @@
             <h1 style="display:none"><?php echo $this->__('YOGASMOGA: Yoga Clothes, Running, Spin and Athletic Workout Apparel')?></h1>
             <!-- sliderBanner -->
 
-            <div class="flexslider home-slider" id="bucket1_slider">
-                <ul class="slides">
-                    <li class="slider_li" title="Shop Women" rel="/women"
-                        style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/homepage-hero-imagev2.jpg'); background-size:cover; ">
-                    </li>
-                </ul>
+            <div    class="home-banner" style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/homepage-hero-imagev3.jpg') bottom center; background-size:cover;opacity:1;cursor:pointer"  onclick="window.open('<?php echo Mage::getBaseUrl() . 'women' ?>', '_self');"   >
+
             </div>
-           <div class="clear-fix"></div>
+            <div class="clear-fix"></div>
             <!-- middleContainer -->
             <div class="cubix">
                 <!-- gridfull -->
@@ -117,23 +105,26 @@
                     <!-- grid6 -->
                     <div class="grid65 f-left" id="grid1-left">
                         <!-- slider -->
-                        <div class="sliderImg" onclick="window.open('<?php echo Mage::getBaseUrl() . 'men/golf-inspired' ?>', '_self');" style="cursor:pointer">
+                        <div class="sliderImg" onclick="window.open('<?php echo Mage::getBaseUrl() . 'women/bottoms/crops/vivacity-crop?color=297 ' ?>', '_self');" style="cursor:pointer">
                             <ul class="gridslider12">
 
 
                                 <li>
                                     <img onload="showGridContainer(this)" class="img-responsive"
-                                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/fathers-day-bucket1.jpg' ?>"
-                                         title="Inspired By Golf Made For Performance"
-                                         alt="Inspired By Golf Made For Performance"/>
+                                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/vivacity-crop-bucket-box1v3.jpg' ?>"
+                                         title="Shop Women"
+                                         alt="Shop Women"/>
 
                                     <div class="contentSlider sliderContent">
                                         <div>
-                                            <p class="small-text">FEATURING SONA<sup class="tm">&trade;</sup> PIQUE</p>
-
-                                            <p class="large-text">INSPIRED BY GOLF<br/>MADE FOR PERFORMANCE</p>
-                                            <a href="/men/golf-inspired" class="shopnow-btn"
-                                               style="margin-top:1.0366598778004073319755600814664%;background: none !important;width:auto;">SHOP MEN<span style="color:#ff0000"> &gt;</span></a>
+                                            <!--<p class="small-text">FEATURING AURUM<sup>&reg;</sup> MELANGE</p>-->
+                                            <p class="small-text">FEATURING AURUM&reg; </p>
+                                            <!-- <h3 style="color: #fff!important;" class="large-text">AURUM® <br/>
+                                                 SAME GREAT TECH</h3>-->
+                                            <p class="large-text">VIVACITY CROP</p>
+                                            <!--                            <p class="large-text" style="margin-top: -10px;"><span>COLOR INFUSED</span></p>-->
+                                            <a href="/women/" class="shopnow-btn"
+                                               style="margin-top:1.0366598778004073319755600814664%;background: none !important;width:auto;">Shop Women<!--<span style="color:#ff0000"> &gt;</span>-->	</a>
                                         </div>
                                     </div>
                                 </li>
@@ -149,37 +140,36 @@
                         <!-- partOne -->
 
 
-                        <div class="compressBox" onclick="window.open('<?php echo Mage::getBaseUrl() . 'men/tops/montauk-polo?color=76' ?>', '_self');" style="cursor:pointer">
+                        <div class="compressBox" onclick="window.open('<?php echo Mage::getBaseUrl() . 'women/bottoms/crops/vivacity-crop?color=297' ?>', '_self');" style="cursor:pointer">
 
                         </div>
 
                         <!-- partOne -->
                         <!-- partTwo -->
-                        <a href="<?php echo $this->getBaseUrl() . 'men'; ?>">
+                        <a href="<?php echo $this->getBaseUrl() . 'ys-fabric-tech'; ?>">
                             <div class="iconspartone" id="iconspartone">
+
                                 <div class="row">
 
-<span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/four-way-stretch.jpg') ?>" alt="Four Way Stretch"/>
-<span class="iconstxt">4-WAY STRETCH</span>
-</span>
 								<span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/smooth-n-luxurious.jpg') ?>" alt="Smooth & Luxurious"/>
-<span class="iconstxt">SMOOTH &AMP; LUXURIOUS</span>
-</span>
-
+								<img src="<?php echo $this->getSkinUrl('images/new-elements/advanced-moisture-v3.svg') ?>" alt="Yogasmoga Moisture Wicking"/>
+								<span class="iconstxt">Advanced moisture management</span>
+								</span>
+								<span>
+								<img src="<?php echo $this->getSkinUrl('images/new-elements/high-quality-v3.svg') ?>" alt="Yogasmoga Anti-Pilling"/>
+								<span class="iconstxt">Hight Quality Strech</span>
+								</span>
 
                                 </div>
                                 <div class="row">
-
-<span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/colors-wont-fade.jpg') ?>" alt="Color That Wont't Fade"/>
-<span class="iconstxt">COLORS THAT WON'T FADE</span>
-</span>
-<span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/pilling.png') ?>" alt="Yogasmoga Anti-Pilling"/>
-<span class="iconstxt">PILLING RESISTANCE</span>
-</span>
+								<span>
+								<img src="<?php echo $this->getSkinUrl('images/new-elements/color-accuracy-v3.svg') ?>" alt="Yogasmoga Anti-Pilling"/>
+								<span class="iconstxt">Color Accuracy</span>
+								</span>
+								<span>
+								<img src="<?php echo $this->getSkinUrl('images/new-elements/made-in-usa-v3.svg') ?>" alt="Yogasmoga USA"/>
+								<span class="iconstxt">Proudly made in the USA</span>
+								</span>
                                 </div>
                             </div>
                         </a>
@@ -195,34 +185,34 @@
                         <!-- partOne -->
 
 
-                        <div class="multicolorcont" onclick="window.open('<?php echo Mage::getBaseUrl() . 'women/whats-new' ?>', '_self');" style="cursor:pointer">
+                        <div class="multicolorcont" onclick="window.open('<?php echo Mage::getBaseUrl() . 'men/tops/tanks/monsoon-apex-tank?color=184' ?>', '_self');" style="cursor:pointer">
 
                         </div>
 
                         <!-- partOne -->
                         <!-- partTwo -->
-                        <a href="<?php echo $this->getBaseUrl() . 'women/whats-new'; ?>">
+                        <a href="<?php echo $this->getBaseUrl() . 'ys-fabric-tech'; ?>">
                             <div class="iconspartone" id="iconspartone">
                                 <div class="row">
 
 								<span>
-								<img src="<?php echo $this->getSkinUrl('images/new-elements/moisture.png') ?>" alt="Yogasmoga Moisture Wicking"/>
-								<span class="iconstxt">ADVANCED MOISTURE MANAGEMENT</span>
+									<img src="<?php echo $this->getSkinUrl('images/new-elements/nanotechnology-v3.svg') ?>" alt="Four Way Stretch"/>
+								<span class="iconstxt">Nanotechnology</span>
 								</span>
 								<span>
-								<img src="<?php echo $this->getSkinUrl('images/new-elements/four-way-stretch.jpg') ?>" alt="Yogasmoga Anti-Pilling"/>
-								<span class="iconstxt">4-WAY STRETCH</span>
+								<img src="<?php echo $this->getSkinUrl('images/new-elements/pilling-resistance-v3.svg') ?>" alt="Smooth & Luxurious"/>
+								<span class="iconstxt">Pilling resistance</span>
 								</span>
-
                                 </div>
                                 <div class="row">
+
 								<span>
-								<img src="<?php echo $this->getSkinUrl('images/new-elements/pilling.png') ?>" alt="Yogasmoga Anti-Pilling"/>
-								<span class="iconstxt">RESISTANCE TO PILLING</span>
+								<img src="<?php echo $this->getSkinUrl('images/new-elements/light-weight-fabric-v3.svg') ?>" alt="Color That Wont't Fade"/>
+								<span class="iconstxt">Light Weight Fabric</span>
 								</span>
 								<span>
-								<img src="<?php echo $this->getSkinUrl('images/new-elements/usa.png') ?>" alt="Yogasmoga USA"/>
-								<span class="iconstxt">PROUDLY MADE IN THE USA</span>
+								<img src="<?php echo $this->getSkinUrl('images/new-elements/color-that-wont-fade-v3.svg') ?>" alt="Yogasmoga Anti-Pilling"/>
+								<span class="iconstxt">Colors that won't fade</span>
 								</span>
                                 </div>
                             </div>
@@ -233,27 +223,26 @@
                     <!-- grid6 -->
                     <div class="grid65 f-right">
                         <!-- slider -->
-                        <div class="sliderImg" onclick="window.open('<?php echo Mage::getBaseUrl() . 'women/whats-new' ?>', '_self');" style="cursor:pointer">
+                        <div class="sliderImg" onclick="window.open('<?php echo Mage::getBaseUrl() . 'men/tops/tanks/monsoon-apex-tank?color=184' ?>', '_self');" style="cursor:pointer">
                             <ul class="gridslider12">
 
 
                                 <li>
                                     <img onload="showGridContainer(this)" class="img-responsive"
-                                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/ys-fabric-tech-melange.jpg' ?>"
-                                         title="Fabric Tech. Zari Mesh"
-                                         alt="Fabric Tech. Zari Mesh"/>
+                                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/monsoon-tank-bucket-box1v3.jpg' ?>"
+                                         title="Shop Men"
+                                         alt="Shop Men"/>
 
                                     <div class="contentSlider sliderContent">
-                                        <div>
-                                            <p class="small-text">FEATURING AURUM<sup>&reg;</sup> MELANGE</p>
 
-                                            <!-- <h3 style="color: #fff!important;" class="large-text">AURUM® <br/>
-                                                 SAME GREAT TECH</h3>-->
-                                            <p class="large-text">THE BROOKLYN JACKET</p>
-                                            <!--                            <p class="large-text" style="margin-top: -10px;"><span>COLOR INFUSED</span></p>-->
-                                            <a href="/women/whats-new" class="shopnow-btn"
-                                               style="margin-top:1.0366598778004073319755600814664%;background: none !important;width:auto;">SHOP WHAT'S NEW<span style="color:#ff0000"> &gt;</span></a>
+                                        <div>
+                                            <!--<p class="small-text">FEATURING SONA<sup class="tm">&trade;</sup> PIQUE</p>-->
+                                            <p class="small-text">FEATURING AURUM&reg; 1064</p>
+                                            <p class="large-text">MONSOON TANK</p>
+                                            <a href="/men" class="shopnow-btn"
+                                               style="margin-top:1.0366598778004073319755600814664%;background: none !important;width:auto;">Shop Men</a>
                                         </div>
+
                                     </div>
                                 </li>
 
@@ -266,22 +255,144 @@
 
                 </div>
                 <!-- gridfull -->
-                <!-- gridfull -->
-                <div class="gridfull factorypart overridefix bucket3">
+
+
+                <div class="gridfull factorypart overridefix bucket1">
                     <!-- grid6 -->
                     <div class="grid65 f-left">
                         <!-- slider -->
-                        <div class="sliderImg" onclick="window.open('<?php echo Mage::getBaseUrl() . 'women/carbon6' ?>', '_self');" style="cursor:pointer">
+                        <div class="sliderImg" onclick="window.open('<?php echo Mage::getBaseUrl() . 'made-in-usa' ?>', '_self');" style="cursor:pointer">
                             <img onload="showGridContainer(this)" class="img-responsive"
-                                 src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/featured_collection_main.jpg' ?>"
+                                 src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/made-in-usa-box1v3.jpg' ?>"
+                                 alt="Made In USA" title="Made In USA"/>
+
+                            <div class="contentSlider feat">
+                                <div>
+                                    <p class="small-text feat">RESPONSIBLE PRODUCTION</p>
+
+                                    <p class="large-text feat">MADE IN USA</p>
+                                    <a style="margin-top:1.0366598778004073319755600814664%;background: none !important;width:auto;" href="/women" class="shopnow-btn">Shop What&prime;s New</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- slider -->
+                    </div>
+
+                    <!-- grid35 -->
+                    <div class="grid35">
+                        <!-- partOne --><a href="<?php echo $this->getBaseUrl() . 'made-in-usa'; ?>">
+                            <div class="featured-collection-top">
+                            </div>
+                        </a>
+
+                        <a href="<?php echo $this->getBaseUrl() . 'made-in-usa'; ?>">
+
+                            <div class="featured-collection-bottom"></div>
+                        </a>
+                        <!-- partTwo -->
+                    </div>
+                    <!-- grid35 -->
+                </div>
+
+
+
+                <div class="gridfull nophotoshop overridefix">
+                    <div>
+                        <ul class="slides">
+
+                            <li class="slider_li" title="YS Fabric Tech" rel="/ys-fabric-tech"
+                                style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/proprietary-fabricsv3.jpg'); background-size:cover; ">
+
+
+                                <div style="top: 0; padding:0!important" class="over-the-slide ">
+                                    <div class="banner_text8" style="text-align:center;">
+                                        <div style="text-transform: uppercase; color: #fff;"
+                                             class="banner_avant_grade_demi sweat-detail-bold">30 PROPRIETARY FABRICS<span class="banner-avant-grade-bk-small" style="display:block;">ALL MADE IN USA</span>
+                                        </div>
+
+                                        <div style="text-align:center;" class="text-align-middle">
+
+                                            <a style="color:#fff! important;  margin: 32px 0px 0px ! important; border:none ! important;"
+                                               class="learn-more shop-mens1" href="/ys-fabric-tech">Learn More</a>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="gridfull nophotoshop overridefix">
+                    <div>
+                        <ul class="slides">
+
+                            <li class="slider_li" title="Our Ethics" rel="/our-ethics"
+                                style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/no-photoshop-homepagev3.jpg'); background-size:cover; ">
+                                <!--<img draggable="false"
+                             data-src="<?php /*echo Mage::getUrl('/', array('_secure' => true)); */?>media/wysiwyg/new-design-images/homepage/no-photoshop-progressive.jpg"/>-->
+
+                                <div style="top:0; padding:0!important" class="over-the-slide ">
+                                    <div class="banner_text8" style="text-align:center;">
+                                        <div style="text-transform: uppercase; color: rgb(255, 255, 255);"
+                                             class="banner_avant_grade_demi">#YS<span style="font-family:AvantGardeGothicITCW01X!important;">NO</span>photoshop<!--<span
+                                        class="avant_extra_light">here</span>-->
+                                        </div>
+
+                                        <div style="text-align:center;" class="text-align-middle">
+
+                                            <a style="color:#fff! important;  margin: 32px 0px 0px ! important; border:none ! important;"
+                                               class="learn-more shop-mens1" href="/our-ethics">Learn More</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gridfull nophotoshop overridefix">
+                    <div>
+                        <ul class="slides">
+
+                            <li class="slider_li" title="Our Stores" rel="/our-stores"
+                                style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/ten-stores-ysv3.jpg'); background-size:cover; ">
+
+
+                                <div style="top:0; padding:0!important" class="over-the-slide ">
+                                    <div class="banner_text7">
+                                        <div style="text-transform: uppercase; color: #fff;"
+                                             class="banner_avant_grade_demi sweat-detail-bold"><span style="display:block">TEN STORES</span><span  style="display:block">AND COUNTING</span>
+                                        </div>
+
+                                        <div style="text-align:center;" class="text-align-middle">
+
+                                            <a style="color:#fff! important;  margin: 32px 0px 0px ! important; border:none ! important;"
+                                               class="learn-more shop-mens1" href="/our-stores">See Our Stores</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="gridfull factorypart namaskar-block overridefix bucket3">
+                    <!-- grid6 -->
+                    <div class="grid65 f-left">
+                        <!-- slider -->
+                        <div class="sliderImg" onclick="window.open('<?php echo Mage::getBaseUrl() . 'namaskar' ?>', '_self');" style="cursor:pointer">
+                            <img onload="showGridContainer(this)" class="img-responsive"
+                                 src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/namaskar-newv2.jpg' ?>"
                                  alt="Carbon6" title="Carbon6"/>
 
                             <div class="contentSlider feat">
                                 <div>
-                                    <p class="small-text feat">FEATURED COLLECTION</p>
 
-                                    <p class="large-text feat">CARBON 6<sup class="co">&trade;</sup></p>
-                                    <a style="margin-top:1.0366598778004073319755600814664%;background: none !important;width:auto;" href="/women/carbon6" class="shopnow-btn">SHOP THE COLLECTION<span style="color:#ff0000"> &gt;</span></a>
+                                    <a style="margin-top:1.0366598778004073319755600814664%;background: none !important;width:auto;" href="/namaskar" class="shopnow-btn">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -290,118 +401,24 @@
                     <!-- grid6 -->
                     <!-- grid35 -->
                     <div class="grid35">
-                        <!-- partOne --><a href="<?php echo $this->getBaseUrl() . 'men/carbon6'; ?>">
+                        <!-- partOne --><a href="<?php echo $this->getBaseUrl() . 'namaskar'; ?>">
                             <div class="featured-collection-top">
                             </div>
                         </a>
                         <!-- partOne -->
                         <!-- partTwo -->
-                        <a href="<?php echo $this->getBaseUrl() . 'women/carbon6'; ?>">
-                            <div class="featured-collection-bottom">
-                                <img class="co" src="<?php echo $this->getSkinUrl('images/new-elements/collection_C6-logo.svg') ?>" alt=""/>
-                                <img class="seal" src="<?php echo $this->getSkinUrl('images/new-elements/collection_CA-seal.svg') ?>" alt=""/>
-                            </div>
+                        <a href="<?php echo $this->getBaseUrl() . 'namaskar'; ?>">
+                            <!--<div class="featured-collection-bottom">
+								<img class="co" src="<?php echo $this->getSkinUrl('images/new-elements/collection_C6-logo.svg') ?>" alt=""/>
+								<img class="seal" src="<?php echo $this->getSkinUrl('images/new-elements/collection_CA-seal.svg') ?>" alt=""/>
+							</div>-->
+                            <div class="featured-collection-bottom"></div>
                         </a>
                         <!-- partTwo -->
                     </div>
                     <!-- grid35 -->
                 </div>
-                <!-- gridfull -->
-                <!-- gridfull -->
-                <div class="gridfull yscolorpart overridefix bucket4">
-                    <!-- grid35 -->
-                    <div class="grid35">
-                        <!-- partOne -->
-                        <a href="<?php echo $this->getBaseUrl() . 'made-in-usa'; ?>">
-                            <div class="factorythread">
-                                <!--<div class="ctext" style="top:27.994308943089430894308943089431%;">STREAMLINING<br/>HELPING<br/>REDUCING<br/>RAISING
-                                </div>-->
-                            </div>
-                        </a>
-                        <!-- partOne -->
-                        <!-- partTwo -->
-                        <a href="<?php echo $this->getBaseUrl() . 'made-in-usa'; ?>">
-                            <div class="usamap"></div>
-                        </a>
-                        <!-- partTwo -->
-                    </div>
-                    <!-- grid35 -->
-                    <!-- grid6 -->
-                    <div class="grid65 f-right">
-                        <!-- slider -->
-                        <div class="sliderImg" onclick="window.open('<?php echo Mage::getBaseUrl() . 'made-in-usa' ?>', '_self');" style="cursor:pointer">
-                            <img onload="showGridContainer(this)" class="img-responsive"
-                                 src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/made-in-usa-responsible-production-v2.jpg' ?>"
-                                 alt="Made in USA and NYC. YOGASMOGA" title="Made in USA and NYC. YOGASMOGA"/>
 
-                            <div class="contentSlider">
-                                <div>
-                                    <p class="small-text">RESPONSIBLE PRODUCTION</p>
-
-                                    <p class="large-text" style="margin-bottom: 6px;">MADE IN USA <br/>
-                                    </p>
-                                    <a style="margin-top:1.0366598778004073319755600814664%;background: none !important;width:auto;" href="/women/whats-new" class="shopnow-btn">SHOP WHAT'S NEW<span style="color:#ff0000"> &gt;</span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- slider -->
-                    </div>
-                    <!-- grid6 -->
-
-                </div>
-                <!-- gridfull -->
-                <?php if(false) { ?>
-                    <!-- gridfull -->
-                    <div class="gridfull namaskarpart overridefix">
-                        <!-- grid35 -->
-                        <div class="grid35">
-                            <!-- partOne -->
-                            <div class="supportnamaskar" onclick="window.open('<?php echo Mage::getBaseUrl() . 'namaskar' ?>', '_self');" style="cursor:pointer">
-                                <div class="ctext"><a style="border:none;" href="/women/accessories/namaskar-bracelet" class="learn-more">SUPPORT
-                                        NAMASKÁR<span style="color:#ff0000"> &gt;</span></a>
-                                </div>
-                            </div>
-                            <!-- partOne -->
-                            <!-- partTwo -->
-                            <a href="<?php echo $this->getBaseUrl() . 'namaskar'; ?>">
-                                <div class="raisingfunds">
-                                    <!-- <div class="ctext" style="top:34.734693877551020408163265306122%;">RAISING THE FUNDS
-                                         &<br/>MAKING
-                                         CHANGES<br/>IN THE WORLD
-                                     </div>-->
-                                </div>
-                            </a>
-                            <!-- partTwo -->
-                        </div>
-                        <!-- grid35 -->
-                        <!-- grid6 -->
-                        <div class="grid65 f-right">
-                            <!-- slider -->
-                            <div class="sliderImg" onclick="window.open('<?php echo Mage::getBaseUrl() . 'namaskar' ?>', '_self');" style="cursor:pointer">
-                                <img onload="showGridContainer(this)" class="img-responsive"
-                                     src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/namaskar-homepage.jpg' ?>"
-                                     alt="Namaskar Bracelet"/>
-
-                                <div class="contentSlider mistext" style="top:38.085539714867617107942973523422%;">
-                                    <div>
-                                        <p class="small-text" style="margin-bottom:3.1549898167006109979633401221996%;">
-                                            GIVING IS A CORE
-                                            VALUE</p>
-
-                                        <p class="large-text" style="margin-bottom:4.5329938900203665987780040733198%;">
-                                            NAMASKÁR
-                                            <br/>
-                                        </p>
-                                        <a style="border:none;" href="/namaskar" class="learn-more">LEARN MORE ABOUT NAMASKÁR FOUNDATION<span style="color:#ff0000"> &gt;</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- slider -->
-                        </div>
-                        <!-- grid6 -->
-                    </div>
-                    <!-- gridfull -->
-                <?php } ?>
             </div>
             <div class="text"></div>
             <!-- middleContainer -->

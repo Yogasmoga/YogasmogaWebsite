@@ -11,8 +11,10 @@
  */
 class Ysindia_Sharesmogi_Model_Observer{
 
-    public  function customerOrderSuccessForSmogi(Varien_Event_Observer $observer){
+    //public  function customerOrderSuccessForSmogi(Varien_Event_Observer $observer){
+    public  function customerRegisterSuccessForSmogi(Varien_Event_Observer $observer){
 
+        /*
         $orderId =  Mage::getSingleton('checkout/session')->getLastRealOrderId();
         $orderDetails = Mage::getModel('sales/order')->loadByIncrementId($orderId);
 
@@ -73,7 +75,9 @@ class Ysindia_Sharesmogi_Model_Observer{
 
             }
         }
-        /*
+        */
+        $event = $observer->getEvent();
+        $customer = $event->getCustomer();
         $email = $customer->getEmail();
         $customerId = $customer->getId();
 
@@ -94,10 +98,10 @@ class Ysindia_Sharesmogi_Model_Observer{
         }
 
         if($smogiExistEmail) {
-            $smogiModal->load($id);
-            $smogiModal->setChildSmogi($points);
-            $smogiModal->setStatus(1);
-            $smogiModal->save();
+            //$smogiModal->load($id);
+            //$smogiModal->setChildSmogi($points);
+           // $smogiModal->setStatus(1);
+            //$smogiModal->save();
             $store_id = Mage::app()->getStore()->getId();
             $reward_model = Mage::getModel('rewardpoints/stats');
             $reward_model->setPointsCurrent($points);
@@ -115,6 +119,6 @@ class Ysindia_Sharesmogi_Model_Observer{
 
 
 
-        }*/
+        }
     }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <myconf translate="label">
+            <label>Product Image</label>
+            <sort_order>10</sort_order>
+        </myconf>
+    </tabs>
+    <sections>
+        <product_grid translate="label" module="adminhtml">
+            <label>Settings landing page</label>
+            <tab>myconf</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label comment">
+                    <label>General</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <!--<comment><![CDATA[This is a <strong>Smogi Bucks</strong> to share your friends and relatives.  ]]></comment>-->
+                    <fields>
+                        <women translate="label comment">
+                            <label>Women big image position</label>
+                            <comment>Text field with store view scope.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </women>
+                    </fields>
+                    <fields>
+                        <men translate="label comment">
+                            <label>Men big image position</label>
+                            <comment>Text field with store view scope.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </men>
+                    </fields>
+                </general>
+            </groups>
+        </product_grid>
+    </sections>
+</config>

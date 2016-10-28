@@ -54,7 +54,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
     _disablesidenavigation = true;
 </script>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().' checkout-continue"':'class="checkout-continue"' ?>>
+<body<?php echo $this->getBodyClass()?' class="common-listing '.$this->getBodyClass().' checkout-continue"':'class="checkout-continue"' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
     <?php echo $this->getChildHtml('global_notices') ?>

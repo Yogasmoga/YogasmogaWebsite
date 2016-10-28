@@ -1,12 +1,13 @@
 jQuery(document).ready(function($){
 //    var sliderHeight = $(window).width() * 0.523;
-    var ww = $(window).width();
+    //var ww = $(window).width();
+    var ww = $('.wrapper').width();
     if(ww < 1007){
         ww = 1007;
     }
     var sliderHeight = ww * 0.523;
 //    var bannerFliudHeight = ww * 0.3125;
-    $(".gridfull").css('min-height',$(window).width()*0.48);
+    $(".gridfull").css('min-height',ww*0.48);
     $("#bucket1_slider.flexslider .slides li").css({"height": sliderHeight});
 
     //$(flexslider)
@@ -56,17 +57,21 @@ jQuery(document).ready(function($){
     fixmainimage();
     
     $(window).resize(function($) {
-        jQuery(".gridfull").css('min-height',jQuery(window).width()*0.48);
+        var ww = jQuery('.wrapper').width();// new design var
+        jQuery(".gridfull").css('min-height',ww*0.48);
         fixmainimage();
 
-        var ww = jQuery(window).width();
+        //var ww = jQuery(window).width();
+
         if(ww < 1007){
             ww = 1007;
         }
         var sliderHeight = ww * 0.523;
         var bannerFliudHeight = ww * 0.3125;
-        jQuery(".gridfull").css('min-height',jQuery(window).width()*0.48);
-        jQuery("#bucket1_slider.flexslider .slides li").css({"height": sliderHeight});
+        jQuery(".gridfull").css('min-height',ww*0.48);
+        //jQuery(".gridfull").css('min-height',jQuery(window).width()*0.48);
+        //jQuery("#bucket1_slider.flexslider .slides li").css({"height": sliderHeight});
+        jQuery(".gridfull.nophotoshop .slider_li").css('min-height',ww*0.48);
         //alert("resized");
         // positionfloatingimages();
         

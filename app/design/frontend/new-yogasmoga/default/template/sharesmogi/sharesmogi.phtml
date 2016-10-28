@@ -67,12 +67,23 @@
                        // jQuery("#share-smogi").parent().hide();
                         jQuery("#share-smogi #share-button").attr("value","SHARED");
                         jQuery("#share-smogi #err-msg").html(data.success_message).css("visibility","visible");
+
                     }
                     else
                     {
-                        jQuery("#share-button").val("SHARE");
-                        jQuery("#share-button").show();
-                        jQuery("#share-smogi #err-msg").html(data.error).css("visibility","visible");
+                        if(data.error=='login'){
+                            jQuery("#signing_popup").dialog("open");
+                            jQuery("#share-button").val("NOW SHARE");
+                            jQuery("#share-button").show();
+
+                        }
+                        else{
+                            jQuery("#share-button").val("SHARE");
+                            jQuery("#share-button").show();
+                            jQuery("#share-smogi #err-msg").html(data.error).css("visibility","visible");
+                        }
+
+
                     }
                 }
             });

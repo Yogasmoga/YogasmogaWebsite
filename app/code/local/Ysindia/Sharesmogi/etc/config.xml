@@ -105,6 +105,18 @@
                 </observers>
             </checkout_onepage_controller_success_action>
        </events>-->
+        <events>
+          <customer_register_success>
+              <observers>
+                  <ysindia_sharesmogi_customer_register_success>
+                      <type>singleton</type>
+                      <class>Ysindia_Sharesmogi_Model_Observer</class>
+                      <method>customerRegisterSuccessForSmogi</method>
+                  </ysindia_sharesmogi_customer_register_success>
+              </observers>
+          </customer_register_success>
+        </events>
+
         <resources>
             <sharesmogi_setup>
                 <setup>

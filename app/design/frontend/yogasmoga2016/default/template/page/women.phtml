@@ -134,79 +134,15 @@
             <!-- sliderBanner -->
             <div class="flexslider showloading cat-slide" id="bucket1_slider">
                 <ul class="slides">
-
-                    <!--swaping slide on women added by fahim-->
-                    <li onClick="window.location='/women/whats-new';" style="background: url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/oria-women-homepage-slidev3.jpg' ?>'); background-size: cover;cursor:pointer;">
-                        <!--<img id="bannerimg"
-                             src="<?php /*echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/women-page/laguna-bra-built-to-move-banner.jpg' */?>"
-                             alt=""/>-->
-
-
-                        <div class="over-the-slide" style="height: auto ! important; top:14%; bottom: 0%;padding:80px 40px !important; ">
-                            <div style=" float: left; text-align: center; ">
-                                <div style="text-transform: uppercase; color: #fff;" class="avant_grade_demi">
-                                    ADD STYLE TO YOUR<br/>ON-THE-GO LIFESTYLE
-                                    <div style="line-height:0;padding-top:7px!important;">
-                                        <span class="avant-grade-bk-small">THE ARCADIA SHORT </span>
-                                        <span style="display:block" class="avant-grade-bk-small">FEATURING ORIA<sup style="vertical-align: top; line-height: 16px;">TM</sup></span>
-                                    </div>
-                                </div>
-                                <div  class="text-align-middle">
-                                    <a class="learn-more" style="border: medium none ! important; background: transparent none repeat scroll 0% 0% ! important; color: #fff!important; margin: 28px 0px 0px ! important;" href="/women/whats-new">SHOP NOW<span style="color:#ff0000"> &gt;</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <!--swaping slide on women added by fahim-->
-
-                    <?php if(false){ ?>
-                    <li onClick="window.location='/women/tops/sweaters/vail-pullover?color=107';" style="background: url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/women-page/vail-pullover-bannerv2.jpg' ?>'); background-size: cover;cursor:pointer;">
-
-                        <div style="left:0%; top: 10%;" class="over-the-slide ">
-                            <div style="float: left; text-align:CENTER; padding-right:0px !important">
-                                <div style="text-transform: uppercase; color: #fff;" class="avant_grade_demi">
-                                    FLIP IT AND REVERSE IT<br/>
-                                </div>
-                                <div style="line-height:0;color:#fff;padding-top: 7px !important;">
-                                    <span class="avant-grade-bk-small">TWO LOOKS IN ONE FOR  </span>
-                                    <span style="display:block" class="avant-grade-bk-small">YOUR BUSY DAYS AND BRISK NIGHTS  </span>
-
-                                </div>
-
-                                <div class="text-align-middle">
-
-                                    <a href="/women/tops/sweaters/vail-pullover?color=107" class="learn-more shop-mens1" style="color: #fff !important; border: none !important;margin: 28px 0 0!important; background: none !important;">SHOP THE VAIL PULLOVER<span style="color:#ff0000"> &gt;</span></a><br>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </li>
-                    <?php }?>
-
+                    <li  style="background: url('<?php echo Mage::registry('current_category')->getImageUrl() ?>'); background-size: cover;cursor:pointer;"></li>
                 </ul>
             </div>
             <!-- sliderBanner -->
 
-            <!-- signup new -->
-            <div class="share-strip">
-                <div class="sign-up-new">
-
-                    <a href="javascript:void(0)">Sign up</a><span>&amp; WE’LL SURPRISE YOU</span>
-
-                </div>
-            </div>
-            <!-- signup new -->
-
             <div class="clear-fix"></div>
 
             <!-- ProductListing Part -->
-
-
-            <div class="new-arrivals-block" style="width:100%; margin:0 auto;position: relative; background: #f4f4f4">
-
-
-                <div class="white-box"></div>
+            <div class="new_arrivals gridWrap new-arrivals-block" style="width:100%; margin:0 auto; position: relative;">
 
                 <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
 
@@ -215,234 +151,280 @@
                 ?>
                 <?php
                 $newcollection = Mage::getModel('catalog/category')->load($categoryId_newcollection);
-                $newarrivals = Mage::getModel('catalog/category')->load($categoryId_quickview); ?>
-                <div class="shop-col-desc l-align">
-                    <h2><span class="na-head">NEW ARRIVALS</span>
-                        <span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New Collection</a></span>
-                    </h2>
-                </div>
-
-                <?php
-                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                $readresult = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
-                while ($row = $readresult->fetch()) {
-                    $clrinfo[$row['Value']] = $row['Attribute'];
-                }
-
-
-                $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
-                $quickviewproducts = array();
-
-                foreach ($productCollection as $_product) {
-
-                    $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
-                    $grayimgage = '';
-                    foreach ($_gallery as $_image) {
-                        $imgdata = json_decode(trim($_image->getLabel()), true);
-                        if ($imgdata == NULL) {
-                            continue;
-                        }
-
-                        if (strcasecmp($imgdata['type'], "grey background") == 0 && $imgdata['color'] != '' && $imgdata['quick_view_position'] != '') {
-                            $grayimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
-
-//                $quickviewproducts[$imgdata['quick_view_position']]['position'] = $imgdata['quick_view_position'];
-                            $quickviewproducts[$imgdata['quick_view_position']]['id'] = $_product->getId();
-                            $quickviewproducts[$imgdata['quick_view_position']]['name'] = $_product->getName();
-                            $quickviewproducts[$imgdata['quick_view_position']]['color'] = $imgdata['color'];
-                            $quickviewproducts[$imgdata['quick_view_position']]['price'] = round($_product->getPrice(), 2);
-                            $quickviewproducts[$imgdata['quick_view_position']]['imgurl'] = (string)$grayimgage;
-                            if (count($quickviewproducts) == 5) break;
-                        }
-
-                    }
-                }
-
-
-                ksort($quickviewproducts);
-
-
+                $newarrivals = Mage::getModel('catalog/category')->load($categoryId_quickview);
                 ?>
-                <ul id="show5" class="new-arrivals">
+
+                <div class="shop-col-desc">
+                    <div class="new-arrival-heading"><span>NEW ARRIVALS</span></div>
+                    <h2>
+                        <span class="na-head">TAKE #ONEBREATH IN STYLE</span>
+                        <!--<span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New
+                                    Collection</a></span>-->
+                    </h2>
+                    <p class="na-subhead">Our newest styles, prints, patterns, and colors&mdash;<br/>
+                        for wherever life takes you.</p>
+                </div>
+                <?php
+                // hide landing page filter
+                if(false){ ?>
+                    <div class="landing-filter">
+                        <!-- Size filter -->
+                        <div id="div_sizes" class="sz_filter">&nbsp;</div>
+                        <!-- color filter -->
+                        <div id="div_cats" class="ct_filter"></div>
+                    </div>
+                <?php } ?>
+
+                <div class="productContbox">
+
                     <?php
-                    $i = 0;
-                    foreach ($quickviewproducts as $_product) {
+                    //$categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+                    $categoryId = $categoryId_quickview;
+                    $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
+                    $shopthecolor_imgUrl = $shopthecolorCategory ->getImageUrl();
+                    $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
+
+                    // check for in sale category
+                    /* $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('insale_category')->getValue('plain')), true);
+                     $showInSaleProduct = true;
+                     if ($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens']) {
+                         $showInSaleProduct = true;
+                     }*/
+                    // end check for in sale category
+
+                    //get color array
+                    $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                    $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color' ORDER BY eao.sort_order,eaov.value");
+                    $colorIndexArr = array();
+                    while ($row = $readresult->fetch() ) {
+                        $clrinfo[$row['Value']] = $row['Attribute'];
+                        $colorIndexArr [] = $row['Value'];
+                    }
+                    $simpleproductarr = array();
+                    $allSkuSizes = array();
+                    $allcats = array();
+                    $fcolorKey = array();
+                    $fcolorValue = array();
+                    $i=1;
+                    foreach($productCollection as $product)
+                    {
+                        $filterName = $product->getAttributeText('color_filter');
+                        $simpleproductarr['id'] =  $product->getId();
+                        $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleproductarr['id']);
+                        $simpleproductarr['parentid'] =  $parentIds[0];
+                        $simpleproductarr['parentname'] =  Mage::getModel('catalog/product')->load($parentIds[0])->getName();
+                        $simpleproductarr['color'] =  $product->getColor();
+                        $simpleproductarr['filter_color'] = $product->getColorFilter();
+                        $fcolorKey[] = $product->getColorFilter();
+                        $fcolorValue[] =$filterName;
+
+                        $simpleproductarr['price'] =  $product->getPrice();
+                        $simpleproductarr['insale'] =  $product->getAttributeText('insale');
+                        $_gallery = Mage::getModel('catalog/product')->load($parentIds[0])->getMediaGalleryImages();
+                        $imageArr = array();
+                        $simpleproductarr['image'] = array();
+                        foreach($_gallery as $_image)
+                        {
+
+                            $imgdata = json_decode(trim($_image->getLabel()), true);
+
+                            $colorId = $imgdata['color'];
+
+                            if($imgdata['type'] == 'ys-listing' && $imgdata['color'] == $simpleproductarr['color'] )
+                            {
+                                if(count($imageArr[$colorId])<=3)
+                                {
+                                    array_push($imageArr,$_image->getFile());
+                                }
+                            }
+                            // Grey Background Image.
+                            if($imgdata['type'] == 'grey background' && $imgdata['color'] == $simpleproductarr['color'] )
+                            {
+                                $greyImage  =  $_image->getFile();
+
+                            }
 
 
+                        }
+                        if(end($imageArr)){
+                            //end($imageArr);
+                            $simpleproductarr['image'][] = end($imageArr) ;
+                        }
+                        if($imageArr[0]){
+                            $simpleproductarr['image'][] =  $imageArr[0];
+                        }
+                        $confProduct = Mage::getModel('catalog/product')->load($simpleproductarr['parentid']);
+                        //show html of the product
+                        /**************** size filter *****************/
+                        $alphabeticSkuSizes = array();
+                        $productColorIndex=0;
+                        /**************** size filter *****************/
+                        ++$productColorIndex;
+
+                        $confProductForSku = Mage::getModel('catalog/product_type_configurable')->setProduct($confProduct);
+
+                        $skuSizes = array();
+                        $simpleCollectionForSku = $confProductForSku->getUsedProductCollection()->addAttributeToSelect('*')->addFieldToFilter(array(array('attribute'=>'color','eq'=>$simpleproductarr['color'])));
+
+
+                        $characterSizeFound = false;
+                        foreach($simpleCollectionForSku as $simpleProductForSku){
+                            //$sku = $simpleProductForSku->getId();
+                            $filterColorName = $simpleProductForSku->getAttributeText('color');
+                            $filterColorName = substr($filterColorName, 0, strpos($filterColorName, "|"));
+                            $size = $simpleProductForSku->getAttributeText('size');
+                            //$stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getQty();
+                            $stock = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleProductForSku)->getIsInStock();
+                            if(!isset($skuSizes[$filterColorName]))
+                                $skuSizes[$filterColorName] = array();
+
+                            if(isset($size) && strlen(trim($size))>0) {
+                                $allSkuSizes[] = $size;
+                                if ($stock > 0)
+                                    $skuSizes[$filterColorName][] = $size;
+                            }
+                        }
+                        /**************** size filter *****************/
+
+                        /****************** size filter **********************************/
+                        $productColorName = $clrinfo[$simpleproductarr['color']];
+                        $arColorSizes = array();
+                        foreach($skuSizes as $keyColor => $sizes) {
+
+                            if ($keyColor == $productColorName) {
+                                $strSizes = implode(",", $sizes);
+                                break;
+                            }
+                        }
+                        //echo $strSizes;
+                        /****************** size filter **********************************/
+                        /********************** category filter *********************/
+                        $cats = $confProduct->getCategoryIds();
+                        $allcats = array_unique(array_merge($allcats,$cats));
+                        $catsids = implode(",", $cats);
                         ?>
-                        <li>
-
-                            <a id="<?php echo $_product['id'] . '-' . ++$i; ?>"
-                               color="<?php echo $_product['color']; ?>" class="quick-view"
-                               href="javascript:void(0);<?php //echo $_product->getProductUrl()
-                               ?>"><img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
-
-                                <div class="prd-details">
-                                    <span class="prd-name gothambd"><?php echo $_product['name']; ?></span>
-                                    <span
-                                        class="product-colors gothambk"><?php echo $clrinfo[$_product['color']]; ?></span>
-                                    <span class="prd-price gothambk">$<?php echo $_product['price']; ?></span>
-                                </div>
-                            </a>
 
 
-                            <?php /*   <div class="prd-details">
-                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
-                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
-                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
-                                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
-                                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
-                                    </a>
-                                </div> */ ?>
-                        </li>
                         <?php
+                        $position = array(Mage::getStoreConfig('product_grid/general/women', Mage::app()->getStore()->getId()));
+                        $finalPos = implode(',',$position);
+
+                        if($i == (int)$finalPos[0] || $i == (int)$finalPos[2]):
+
+
+
+                            ?>
+                            <div class="productCont prodduct_horizontal product-color-<?php echo $productColorIndex;?>" color="<?php echo $simpleproductarr['filter_color']; ?>" rel="<?php echo $strSizes;?>" data="<?php echo $catsids;?>">
+                                <div class="prod-img">
+
+                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?>">
+                                        <?php
+                                        foreach($simpleproductarr['image'] as $img ){?>
+                                            <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy"  data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$greyImage)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(1025,508)->setQuality(91); ?>" />
+                                        <?php } ?>
+                                    </a>
+                                    <a class="clickable"
+                                       href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"></a>
+                                </div>
+                                <div class="caption">
+                                    <a class="caption-title" href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName()."<br/>"; ?></a>
+                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span>$<?php echo round($confProduct->getPrice(), 2); ?></span></a>
+
+                                </div>
+                            </div>
+                        <?php else:?>
+                            <div class="productCont product-color-<?php echo $productColorIndex;?>" color="<?php echo $simpleproductarr['filter_color']; ?>" rel="<?php echo $strSizes;?>" data="<?php echo $catsids;?>">
+                                <div class="prod-img">
+
+                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?>">
+                                        <?php
+                                        foreach($simpleproductarr['image'] as $img ){?>
+                                            <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(620, 620)->setQuality(91); ?>" />
+                                        <?php } ?>
+                                    </a>
+                                    <a class="clickable"
+                                       href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"></a>
+                                </div>
+                                <div class="caption">
+                                    <a class="caption-title" href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName()."<br/>"; ?></a>
+                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span>$<?php echo round($confProduct->getPrice(), 2); ?></span></a>
+
+                                </div>
+                            </div>
+                        <?php endif;?>
+
+                        <?php $i++;
                     }
 
-                    ?>
-                </ul>
-
-                <ul id="show4" class="new-arrivals">
-                    <?php
-                    $i = 0;
-                    foreach ($quickviewproducts as $_product) {
-
-                        if ($i == 4) break;
-                        $i++;
-                        ?>
-                        <li>
-
-                            <a id="<?php echo $_product['id'] . '-' . $i; ?>" class="quick-view"
-                               href="javascript:void(0);<?php //echo $_product->getProductUrl()
-                               ?>"><img class="prd-image" src="<?php echo $_product['imgurl']; ?>"/>
-
-                                <div class="prd-details">
-                                    <span class="prd-name gothambd"><?php echo $_product['name']; ?></span>
-                                    <span
-                                        class="product-colors gothambk"><?php echo $clrinfo[$_product['color']]; ?></span>
-                                    <span class="prd-price gothambk">$<?php echo $_product['price']; ?></span>
-                                </div>
-                            </a>
 
 
-                            <?php /*   <div class="prd-details">
-                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
-                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
-                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
-                                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
-                                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
-                                    </a>
-                                </div> */ ?>
-                        </li>
-                        <?php
+                    /************** size filter ***********************/
+                    if(isset($allSkuSizes) && count($allSkuSizes)>0)
+                        $allSkuSizes = array_unique($allSkuSizes);
+
+                    $arProductAllSizes = array();
+                    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+                    $allOptions = $attribute->getSource()->getAllOptions(true, true);
+                    foreach ($allOptions as $instance) {
+                        if ($instance['label'] != "" && strpos($instance['label'], "T")===false)
+                            $arProductAllSizes[] = $instance['label'];
                     }
 
+                    $finalcolorfilter = array_combine($fcolorKey,$fcolorValue);
+
+                    /************** size filter ***********************/
+
                     ?>
-                </ul>
-            </div>
-            <div style="display:none;">
-                <div id="productdetailpopup">
+                    <!-- ********************************* checkbox filter ********************** -->
+                    <script type="text/javascript">
+                        var arAllSizes = Array();
+                        var arProductSizes = Array();
+                        var arAllCats = Array();
+                        var arProductCats = {};//Array();
+
+                        var productColorIndex;
+
+                        productColorIndex = "<?php echo $productColorIndex;?>";
+
+                        <?php
+                            foreach($allSkuSizes as $size){
+                        ?>
+                        arProductSizes.push("<?php echo $size;?>");
+                        <?php
+                            }
+                            foreach($arProductAllSizes as $size){
+                        ?>
+                        arAllSizes.push("<?php echo $size;?>");
+                        <?php
+                            }
+                        ?>
+
+                        <?php
+                        foreach($finalcolorfilter as $id => $name){
+                        ?>
+                        arProductCats["<?php echo $id;?>"] = "<?php echo $name;?>";
+                        <?php
+                        }
+                        foreach($allcats as $catid){
+                        ?>
+                        arAllCats.push("<?php echo $catid;?>");
+                        <?php
+                        }
+                        ?>
+                        console.log(JSON.stringify(arProductCats));
+                        console.log(JSON.stringify(arAllCats));
+
+                    </script>
+                    <script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter-new.js"></script>
+
+                    <!-- ********************************* checkbox filter ********************** -->
                 </div>
             </div>
             <!-- ProductListing Part -->
             <div class="clear-fix"></div>
             <!-- Feature Product -->
-            <?php
-            $featurecategoryId = $categoryIds['feature_product'];
-            $featurecategory = Mage::getSingleton('catalog/category')->load($featurecategoryId);
-            $featurecategoryUrl = Mage::getBaseUrl() . $featurecategory->getUrlPath();
-            ?>
-            <div class="wl-feat-prd women-section">
-                <section class="wl-left-block f-left">
-                    <div class="top-left-block dark-red">
-                        <div class="block-content">
-                            <div class="cursive-text h4">YOGASMOGA </br>
-                                wants to bring authenticity </br>back to the culture of yoga
-                            </div>
-                            <span class="b-heading top-b-heading">BUSINESS INSIDER</span>
-                        </div>
-                    </div>
-                    <div class="bottom-left-block" data-vid-handle="vid-blck-1">
-                        <!-- <img src="<?php echo $this->getSkinUrl('images/women/ballerina-crop-vid-img.jpg') ?>" alt="" /> -->
-                    </div>
-                </section>
-                <section class="wl-right-block f-right">
-                    <img
-                        src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/women-page/honolulu-tank-featured-product.jpg' ?>"
-                        alt=""/>
-
-                    <div class="block-content">
-                        <div class="text-content-table">
-                            <div class="text-content">
-                                <span class="b-heading bottom-b-heading">Featured Product</span>
-                                <div class="main-img-text h4" style="margin-top:28px; ">HONOLULU<br/>TANK</div>
-                                <a href="<?php echo $this->getBaseUrl() . 'women/whats-new/honolulu-tank?color=76'; ?>"
-                                   class="shopnow-btn">shop now </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <div class="clear-fix"></div>
-            </div>
-
-            <!-- Feature Product -->
-            <!-- Color Story Product -->
-            <!-- Color Story -->
-            <?php
-            $colorstorycategoryId = $categoryIds['color_story'];
-            $colorstorycategory = Mage::getSingleton('catalog/category')->load($colorstorycategoryId);
-            $colorstorycategoryUrl = Mage::getBaseUrl() . $colorstorycategory->getUrlPath();
-            ?>
-            <div class="wl-color-story-prd women-section">
-                <section class="wl-cs-left-block f-left">
-                    <img
-                        src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/women-page/prussian-featured-colorv2.jpg' ?>"
-                        alt=""/>
-
-                    <div class="block-content">
-                        <div class="text-content-table">
-                            <div class="text-content">
-                                <span class="b-heading bottom-b-heading">FEATURED COLOR</span>
-                                <div class="main-img-text h4" style="margin-top: 28px;">PRUSSIAN</div>
-                                <a href="<?php echo $this->getBaseUrl(); ?>women/whats-new/vail-pullover?color=297"
-                                   class="shopnow-btn">shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="wl-cs-right-block f-right">
-                    <div class="top-right-block" data-vid-handle="vid-blck-2">
-                        <!-- <img src="<?php echo $this->getSkinUrl('images/women/cs-vid-img.jpg') ?>" alt="" /> -->
-                    </div>
-                    <div class="bottom-right-block purple">
-                        <div class="block-content">
-                            <div class="text-content-table">
-                                <div class="text-content">
-                                    <div class="cursive-text h4">PRUSSIAN<br/>is a deep shade of blue that<br/> is one of the greatest accidents<br/> in the history of paint.
-                                    </div>
-                                    <!--<span class="b-heading top-grey-b-heading">ROSE APOSTOLAKOS, DESIGNER</span>-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <div class="clear-fix"></div>
-            </div>
-
-            <!--
-                <div class="html-video-popup" id="vid-blck-1">
-                    <video id="vid-1" style="width:100%;" controls>
-                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'design_features_video/HGRY.BBB.mp4'; ?>" type="video/mp4">
-                    </video>
-                </div>
-                <div class="html-video-popup" id="vid-blck-2">
-                    <video id="vid-2" style="width:100%;" controls>
-                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'design_features_video/MOMENTUM_LEGGING.mp4'; ?>" type="video/mp4">
-                    </video>
-                </div> 
-                <div class="vid-popup-overlay"></div>  
-               -->
-
-            <!-- Color Story -->
 
         </div>
         <?php echo $this->getChildHtml('footer'); ?>

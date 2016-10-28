@@ -1,83 +1,133 @@
 <?php
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
- *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-?>
-<?php
-/**
- * Top menu for store
- *
- * @see Mage_Page_Block_Html_Topmenu
- */
-?>
-<?php $_menu = $this->getHtml('level-top') ?>
-<?php if($_menu): ?>
-<div class="nav-container">
-    <ul id="nav">
-        <?php echo $_menu ?>
-    </ul>
-</div>
-<div>
-    <?php //echo "<pre>"; print_r(Mage::helper('catalog/category')->getStoreCategories()); echo "</pre>"; ?>
-    <?php
-        $activeCategories = array();
-        foreach (Mage::helper('catalog/category')->getStoreCategories() as $child) {
-            if ($child->getIsActive()) {
-                $activeCategories[] = $child;
-                echo $child->getName();
-                echo Mage::getModel("catalog/category")->load($child->getId())->getUrl();
-            }
-        }
-     ?>
-     <?php
-$cats = Mage::getModel('catalog/category')->load(2)->getChildren();
-$catIds = explode(',',$cats);
-?>
-<ul>
-<?php foreach($catIds as $catId): ?>
-	<li>
-    	<?php
-			$category = Mage::getModel('catalog/category')->load($catId);
-			echo $category->getUrl();
+$base_url = Mage::helper('core/url')->getHomeUrl();
+$currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+$cart = Mage::getModel('checkout/cart')->getQuote()->getData();
 
-			$subCats = Mage::getModel('catalog/category')->load($category->getId())->getChildren();
-			$subCatIds = explode(',',$subCats);
-		?>
-            <?php if(count($subCatIds) > 1):?>
-                <ul>
-                <?php foreach($subCatIds as $subCat) :?>
-                    <li>
-                    <?php
-                        $subCategory = Mage::getModel('catalog/category')->load($subCat);
-                        echo $subCategory->getName();
-                    ?>
-                    </li>
-                <?php endforeach;?>
-                </ul>
-            <?php endif; ?>
-    </li>
-<?php endforeach; ?>
-</ul>
-</div>
-<?php endif ?>
+$session = Mage::getSingleton('checkout/session');
+$itemcount = 0;
+foreach ($session->getQuote()->getAllItems() as $item)
+{
+    if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
+    {
+        $buyRequest = $item->getBuyRequest();
+        $product_type = $buyRequest['type'];
+
+        if(isset($product_type) && $product_type=="gift-bundled")
+            continue;
+
+        $itemcount = $itemcount + $item->getQty();
+    }
+    else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+        ;
+    else
+        ++$itemcount;
+}
+/*********** cart count after gift set ***************/
+
+$i = 1;
+
+$urlString = Mage::helper('core/url')->getCurrentUrl();
+$url = Mage::getSingleton('core/url')->parseUrl($urlString);
+$path = $url->getPath();
+
+$identity='';
+if($path != strtolower('/checkout/onepage')){
+    foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
+        if ($child1->getIsActive()) {
+            //show Main parent categories first level
+            if($child1->getId() == $currentcategoryid){
+                $identity = Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey();
+                echo "<li rel='".Mage::getModel("catalog/category")->load($child1->getId())->getId()."' class='".Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey()."' ><a  class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+            }
+            else{
+                $identity = Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey();
+                echo "<li rel='".Mage::getModel("catalog/category")->load($child1->getId())->getId()."' class='".Mage::getModel("catalog/category")->load($child1->getId())->getUrlKey()."'><a  class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+            }
+
+
+            $firstcolumn = '<ul class="sub-menu menu-ovr"><li><ul>';
+            $remainingcolumn = '';
+            $subcategory = Mage::getModel('catalog/category')->load($child1->getId());
+            $subcategories = $subcategory->getChildrenCategories();
+
+            $subCategeroiesFound = false;
+            foreach ($subcategories as $child2)
+            {
+                $subCategeroiesFound = true;
+                $subsubcategory = Mage::getModel('catalog/category')->load($child2->getId());
+
+                if($child2->getIsActive() && $subsubcategory->getIncludeInMenu()) {
+
+                    $subsubcategories = $subsubcategory->getChildrenCategories();
+
+                    if($subsubcategory->getChildrenCount() == 0){
+                        $style = "font-size:11px!important";
+                        $styleBottom = "margin-bottom:15px";
+
+                        if($child2->getId()==71 || $child2->getId()==78){
+                            $firstcolumn .= "<li>"."<a style='$style'  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                        }
+                        elseif($child2->getId()==124 || $child2->getId()==79) {
+                            $firstcolumn .= "<li>"."<a style='$style' href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                        }
+
+                        elseif($child2->getId()==16) {
+                            $firstcolumn .= "<li>"."<a  href=\"".Mage::getUrl('women',array('_secure'=> true))."\"> " . $child2->getName()."</a></li>";
+                        }
+                        elseif($child2->getId()==19) {
+                            $firstcolumn .= "<li>"."<a  href=\"".Mage::getUrl('men',array('_secure'=> true))."\"> " . $child2->getName()."</a></li>";
+                        }
+
+                        else{
+                            $firstcolumn .= "<li><a  href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
+                        }
+
+                    }
+                    else{
+                        if($child2->getId()== 132 || $child2->getId()== 134){
+                            $remainingcolumn .= "<li><a class='range-cat'> " . $child2->getName()."</a><ul>";
+                        }else{
+                            $remainingcolumn .= "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a><ul>";
+                        }
+
+                        // show sub categories third level
+                        foreach ($subsubcategories as $child3)
+                        {
+                            $subsubsubcategories = Mage::getModel('catalog/category')->load($child3->getId());
+
+                            if($child3->getIsActive() && $subsubsubcategories->getIncludeInMenu()) {
+                                $remainingcolumn .= "<li><a href=\"".$child3->getUrl()."\">" . $child3->getName();
+                                $remainingcolumn .= "</a></li>";
+                            }
+                        }
+
+                        $remainingcolumn .= "</ul></li>";
+                    }
+
+                }
+            }
+            if($subCategeroiesFound) {
+                $firstcolumn .= "</ul>";
+                echo $firstcolumn . $remainingcolumn;
+            }else{
+                $giftSetLinks = $firstcolumn . "<li class='gift'><a href='/gift-sets?style=women'>Women</a></li><li class='gift'><a href='/gift-sets?style=men'>Men</a></li>";
+                //echo $giftSetLinks;
+            }
+            $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+            $categoryName = explode('/', $currentUrl);
+            $urlKey = $categoryName[3];
+
+            if($identity == strtolower('women')){
+                echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-women.jpg").'"></div>';
+            }
+            else{
+                echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-men.jpg").'"></div>';
+            }
+            echo "</ul></li>";
+        }
+
+    }
+}
+
+echo "</ul>";
+?>

@@ -331,7 +331,8 @@ sizeChartPop();
                         $(".ui-widget-overlay").css("z-index","100");
                         $("input#pfirstname").blur();
                         //$(".ui-widget-overlay").css({"top":"94px","position":"fixed"});       // with banner
-                        $(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
+                        //$(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
+                        $(".ui-widget-overlay").css({top:0});
                         $(window).trigger("resize");
                         var pW = ($(document).width() - $(this).parent().width())/2;
                         var pH = ($(window).height() - $(this).parent().height())/2;                        
@@ -371,7 +372,8 @@ sizeChartPop();
                 $(".ui-widget-overlay").css("z-index","100");
                 $("input#friendname").blur();                
                 //$(".ui-widget-overlay").css({"top":"94px","position":"fixed"});       // with banner
-                $(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
+                //$(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
+                $(".ui-widget-overlay").css({top:0});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
                 var pH = ($(window).height() - $(this).parent().height())/2;
@@ -420,7 +422,8 @@ sizeChartPop();
                 $("#sign-up-form #s_password,#sign-in-form #si_password").blur();
 
                 //$(".ui-widget-overlay").css({top:94});        // with banner
-                $(".ui-widget-overlay").css({top:69});
+                //$(".ui-widget-overlay").css({top:69});
+                $(".ui-widget-overlay").css({top:0});
 
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;

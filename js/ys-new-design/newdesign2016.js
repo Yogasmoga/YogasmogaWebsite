@@ -138,22 +138,50 @@ jQuery(document).ready(function($){
 
  });*/
 
+jQuery(window).load(function(){
+	// detect if content overlows its parent element
+	if(jQuery('.pcol-right-content1').length){
+		var element = document.querySelector('.pcol-right-content1');
+		//var element = jQuery('.pcol-right-content1');
+		if( (element.offsetHeight < element.scrollHeight) || (element.offsetWidth < element.scrollWidth)){
+			// your element have overflow
+			//element.style.background = "yellow";
+			jQuery('.product-det-tab-bottom').removeClass('show-related');
+		}
+		else{
+			//your element don't have overflow
+			//element.style.background = "red";
+			jQuery('.product-det-tab-bottom').addClass('show-related');
+		}
+	}
+
+});
+
 /*-----------------------------------
  ######## product grid related ########
  ------------------------------------*/
 
 jQuery(document).ready(function(){
-	var prodHt = jQuery('.productCont').width();
-	jQuery('.prod-img').height(prodHt);
+
+
 	var gridwd = jQuery('.gridWrap').width();
-	if (jQuery(window).width() >= 1100) {
+	//alert(gridwd);
+	if (jQuery(window).width() >= 767) {
 
 		jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
+
+		var prodHt = jQuery('.productCont').width();
+		//alert(prodHt);
+		jQuery('.prod-img').height(prodHt);
+
 		jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
+
 	}
-	else {
+	else { // for two column
 
 		jQuery('.productCont').width((gridwd-16)/2); // 24 is  total of gutter space in a row
+		var prodHt = jQuery('.productCont').width();
+		jQuery('.prod-img').height(prodHt);
 		jQuery('.prodduct_horizontal').width((gridwd-8)/1);
 	}
 
@@ -169,18 +197,24 @@ jQuery(document).ready(function(){
 
 });
 jQuery(window).resize(function(){
-	var prodHt = jQuery('.productCont').width();
-	jQuery('.prod-img').height(prodHt);
+
 
 	var gridwd = jQuery('.gridWrap').width();
-	if (jQuery(window).width() >= 1100) {
+	if (jQuery(window).width() >= 767) {
 
 		jQuery('.productCont').width((gridwd-24)/3); // 24 is  total of gutter space in a row
+
+		var prodHt = jQuery('.productCont').width();
+		//alert(prodHt);
+		jQuery('.prod-img').height(prodHt);
+
 		jQuery('.prodduct_horizontal').width((gridwd-12)/1.5);
 	}
-	else {
+	else { // for two column
 
 		jQuery('.productCont').width((gridwd-16)/2); // 24 is  total of gutter space in a row
+		var prodHt = jQuery('.productCont').width();
+		jQuery('.prod-img').height(prodHt);
 		jQuery('.prodduct_horizontal').width((gridwd-8)/1);
 	}
 
@@ -244,8 +278,8 @@ function header_scroll(){
 
 				jQuery("#ysheader").removeClass("scrolled-effect");
 				jQuery("#ysheader").addClass("showhide");
-
-				jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 300, queue: false });
+				jQuery("#ysheader").addClass("shrunk");
+				//jQuery("#ysheader").stop().animate({top:'-50'},{ duration: 100, queue: false });
 				jQuery("#ysheader .posRel img").addClass("resizable");
 				jQuery(".bagshow").removeClass("active");
 				jQuery("#globalheader").addClass("color-change");
@@ -254,30 +288,35 @@ function header_scroll(){
 
 			else{
 				jQuery("#ysheader").addClass("scrolled-effect");
-				jQuery("#ysheader").stop().animate({top:'0'},{ duration: 300, queue: false });
+				//jQuery("#ysheader").stop().animate({top:'0'},{ duration: 100, queue: false });
 				jQuery("#ysheader .posRel img").removeClass("resizable");
 				jQuery(".bagshow").addClass("active");
 				jQuery("#globalheader").removeClass("color-change");
 				jQuery("#ysheader").removeClass("showhide");
+				jQuery("#ysheader").removeClass("shrunk");
 
 			}
 
 		});
+
 		jQuery("#ysheader").mouseover(function(){
 			if (!jQuery("#ysheader").hasClass("scrolled-effect")) {
-				jQuery(this).stop().animate({top:'0'});
-				jQuery("#ysheader .posRel img").removeClass("resizable");
+				//  jQuery(this).stop().animate({top:'0'});
+				//jQuery("#ysheader").removeClass("shrunk");
+				//jQuery("#ysheader .posRel img").removeClass("resizable");
 			}
 		});
 		jQuery("#ysheader").mouseout(function(){
 
 			//move Nav back up
 			if (!jQuery("#ysheader").hasClass("scrolled-effect")) {
-				jQuery(this).stop().animate({top:'-50'});
-				jQuery("#ysheader .posRel img").addClass("resizable");
+				//jQuery(this).stop().animate({top:'-50'});
+				//jQuery("#ysheader").addClass("shrunk");
+				//jQuery("#ysheader .posRel img").addClass("resizable");
 
 			}
 		});
+
 		//alert(jQuery(".header-container").css('left'));
 		/*jQuery(".header-container").css({
 		 'left': 0
@@ -289,11 +328,11 @@ function header_scroll(){
 		jQuery("#shop-bag-count").click(function(){
 			var shoppingWdth = jQuery(".shopping-cart").width();
 			jQuery( ".open-cart" ).trigger( "click" );
-			jQuery(".header-container").animate({left: -shoppingWdth});
+			//jQuery(".header-container").animate({left: -shoppingWdth});
 
 		});
 		jQuery(".pageoverlay,#continuelink").on("click", function () {
-			jQuery(".header-container").animate({left: "0"});
+			//jQuery(".header-container").animate({left: "0"});
 		});
 
 	});
@@ -302,61 +341,123 @@ function header_scroll(){
 
 // to fix elements which are going out of 1600px width
 jQuery(document).ready(function(){
-	if(jQuery(window).width() > 1600){
-		var pageOffsetLeft = jQuery('.page').offset().left;
-		var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));
+
+	if(jQuery(window).width() > 767){
+		var pageOffsetLeft = jQuery('.wrapper').offset().left;
+		var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.wrapper').outerWidth()));
 		jQuery('.shopping-cart').css({
 			'right':pageOffsetRight
 		});
 		jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
 			'margin-left':pageOffsetLeft
 		});
+
+
+		/*jQuery(window).scroll(function(){
+		 if(jQuery('#div_cats').hasClass('fixed_top')){
+		 jQuery('#div_cats').css({
+		 'right':pageOffsetRight
+		 });
+		 }
+		 else{
+		 jQuery('#div_cats').css({
+		 'right':0
+		 });
+		 }
+		 });*/
+
 	}
+
+	// show header after calculation of margin-left and css transition completion
+	setTimeout(function(){
+		jQuery('#ysheader').css({
+			'opacity':1
+		});
+	},400);
+
 });
 
 // to fix elements which are going out of 1600px width on resize
 jQuery(window).resize(function(){
-	if(jQuery(window).width() > 1600){
-		var pageOffsetLeft = jQuery('.page').offset().left;
-		var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));
+	if(jQuery(window).width() > 767){
+		var pageOffsetLeft = jQuery('.wrapper').offset().left;
+		var pageOffsetRight = (jQuery(window).width() - (jQuery('.wrapper').offset().left + jQuery('.wrapper').outerWidth()));
 		jQuery('.shopping-cart').css({
 			'right':pageOffsetRight
 		});
 		jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
 			'margin-left':pageOffsetLeft
 		});
+
+		/*jQuery(window).scroll(function(){
+		 if(jQuery('#div_cats').hasClass('fixed_top')){
+		 jQuery('#div_cats').css({
+		 'right':pageOffsetRight
+		 });
+		 }
+		 else{
+		 jQuery('#div_cats').css({
+		 'right':0
+		 });
+		 }
+		 });	*/
 	}
 });
 // to fix elements which are going out of 1600px width on keyboard zoomin zoomout
 jQuery(window).on('keypress keydown',function(e){
 	//alert();
 	if((e.which == 61 && 17) || (e.which == 43 && 17) || (e.which == 45 && 17) || (e.which == 48 && 17) || (e.which == 96 && 17)){
+		// 17 is Ctrl Keycode
 		//Ctrl + "+" is pressed, 61 is for =/+ anr 43 is for Numpad + key
 		//Ctrl + "-" is pressed, 45 is for -/- anr 45 is for Numpad - key
-		//Ctrl + "0" is pressed, 48 is for )/0 anr 48 is for Numpad 0 key
+		//Ctrl + "0" is pressed, 48 is for )/0 anr 96 is for Numpad 0 key
 		//alert(e.which);
 
 		var px = 0;
 
 		var intervalID = setInterval(function () {
 			// logic here			
-			var pageOffsetLeft = jQuery('.page').offset().left;
-			var pageOffsetRight = (jQuery(window).width() - (jQuery('.page').offset().left + jQuery('.page').outerWidth()));
+			var pageOffsetLeft = jQuery('.wrapper').offset().left;
+			var pageOffsetRight = (jQuery(window).width() - (jQuery('.wrapper').offset().left + jQuery('.wrapper').outerWidth()));
 			jQuery('.shopping-cart').css({
 				'right':pageOffsetRight
 			});
 			jQuery('#ysheader,.firstdialog,.ui-widget-overlay').css({
 				'margin-left':pageOffsetLeft
 			});
+
+			jQuery(window).scroll(function(){
+				if(jQuery('#div_cats').hasClass('fixed_top')){
+					jQuery('#div_cats').css({
+						'right':pageOffsetRight
+					});
+				}
+				else{
+					jQuery('#div_cats').css({
+						'right':0
+					});
+				}
+			});
+
 			if (++px === 1) {
 				console.info('px=' +px);
 				window.clearInterval(intervalID);
 			}
-		}, 800);
+		}, 400);
 	}
 
 
 
+});
+
+// home banner
+jQuery(document).ready(function(){
+	var hbanH = jQuery(window).height();
+	jQuery('.home-banner').css({'min-height': hbanH});
+});
+jQuery(window).resize(function(){
+	var hbanH = jQuery(window).height();
+	jQuery('.home-banner').css({'min-height': hbanH});
 });
 
 // add remove class on page load
@@ -367,6 +468,7 @@ jQuery(window).load(function(){
 	jQuery('body').removeClass('content-loading');
 	jQuery('body').addClass('content-loaded');
 });
+
 
 
 // for hover animation
