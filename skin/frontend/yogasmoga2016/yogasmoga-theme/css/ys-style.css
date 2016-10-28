@@ -4043,7 +4043,9 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
 .product-row .prdname + .box-seprtr{margin:0 0 0px;padding-bottom:1px}
 
 .pcol-right-content2 .product-det-tab{padding-top:20px;}
-
+@media only screen and (max-width : 1599px) {
+.product-row .pcol-left img, .product-row .pcol-right .pcol-right-content{max-height:560px;}	
+}	
 @media only screen and (max-width : 1024px) {
 .csp-name .csp-link{letter-spacing:0.3px;}
 .selectedcolortext{font-size:12px; line-height:20px;}
@@ -4058,7 +4060,7 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
 .design-size td:first-child{font-size:11px;}
 .design-size td{font-size:11px; letter-spacing:0.28px;}
 .block-elm .vlink-cont p.block-link a{font-size: 12px; line-height:20px;text-decoration:underline; color:#555;}
-.product-row .pcol-left img, .product-row .pcol-right .pcol-right-content{max-height:560px;}
+
 /*.product-row .pcol-left .img_madeinusa{width:100px;}*/
 }	
 
