@@ -111,100 +111,91 @@
 <?php echo $this->getChildHtml('header') ?>
 <div id="pagecontainer">
     <h1 style="display: none;"><?php echo Mage::registry('current_category')->getName();?></h1>
-<!-- sliderBanner -->
-<div class="flexslider showloading cat-slide" id="bucket1_slider">
-    <ul class="slides">
+    <!-- sliderBanner -->
+    <div class="flexslider showloading cat-slide" id="bucket1_slider">
+        <ul class="slides">
 
-       <?php /*?> <li class="slider_li" onClick="window.location='/men/whats-new';"
-            style="background: url('<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/thanks-giving-men-homepage.jpg'); background-size:cover;cursor:pointer; ">
-            <!--<img draggable="false"
-                             data-src="<?php //echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/move-free-slide.jpg"/>-->
+            <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php echo $this->getSkinUrl('images/ys_twitter_men.jpg') ?>'); background-size: cover;cursor:pointer;">
 
-            <div class="over-the-slide" style="height: auto ! important; top:2%; bottom: 0%;padding:4% 6% !important;">
-                <div style="width:50%;height:100%;float:left;background: url('<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/tg-men-off.png') no-repeat scroll 0 0 /100%; ">
+                <?php if(false){?>
 
-                </div>
-                <div style="float: right; text-align: left;width:40%;">
-                    <div style="text-transform: uppercase; color: #fff!important;" class="avant_grade_medium-sm">
-                        ALL MENS
-                    </div>
-                    <div style="text-transform: uppercase; color: #790808!important;padding-top:0px!important;" class="avant_grade_medium-sm">
-                        <!--<span style="color:#cd510e;display:block;">Last Day—</span>-->
-                        our best sale <br/>of the year
-                    </div>
-
-                    <div style="text-align:left;"  class="text-align-middle">
-
-                        <a class="learn-more" style="border: medium none ! important; background: transparent none repeat scroll 0% 0% ! important; color: #fff!important; margin: 18px 0px 0px ! important;" href="/men/tops">shop men&rsquo;s TOPS<span style="color:#ff0000"> &gt;</span></a>
-                        <a class="learn-more" style="border: medium none ! important; background: transparent none repeat scroll 0% 0% ! important; color: #fff!important; margin: 18px 0px 0px 20px ! important;" href="/men/bottoms">shop men&rsquo;s bottoms<span style="color:#ff0000"> &gt;</span></a>
-                    </div>
-
-                    <div  class="text-align-middle">
+                    <div class="mens-slider">
 
 
-                        <span  class="learn-more" style="border: medium none ! important; background: transparent none repeat scroll 0% 0% ! important; color: #fff!important; margin: 30px 0px 0px ! important;display:block;text-align:left;text-transform:none;font-size:12px;line-height:15px;">All sales are final. SMOGI Bucks cannot be applied.<br/>Offer ends 11/30 at 11:59PM PST</span>
-                    </div>
-                </div>
-
-            </div>
-        </li><?php */ ?>
-
-        <li onClick="window.location='/men/tops/montauk-polo?color=306';" style="background: url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/mens-page/polo-shirt-banner.jpg' ?>'); background-size: cover;cursor:pointer;">
-            <!--            <div class="bucket-slide mens-slider">-->
-            <div class="mens-slider">
-
-
-                <div class="over-the-slide " style="left:7%; top: 33%;">
-                    <div style="float: left; text-align:CENTER; padding-right:0px !important; letter-spacing:0.25px ">
-                        <div class="avant_grade_demi" style="text-transform: uppercase; color: #fff;">
-                            STREET SMART<br/>
-                        </div>
-                        <div style="line-height:0;color:#fff; padding-top: 7px !important;">
-                            <span class="avant-grade-bk-small">EXPERIENCE THE MOST ELEGANT &amp;</span>
-                            <span style="display:block" class="avant-grade-bk-small">ADVANCED POLO SHIRT EVER </span>
-
-                        </div>
-
-                        <div class="text-align-middle">
-
-                            <a style="color: #FFF !important; border: none !important;margin: 28px 0 0!important; background: none !important;"
-                               class="learn-more shop-mens1" href="/men/tops/montauk-polo?color=306">SHOP NOW<span
-                                    style="color:#ff0000"> &gt;</span></a><br/>
-
-                        </div>
-                    </div>
-
-                </div>
-                <!--<div id="playBtn">
-                                <div class="sl-desc-handle">
-                                    <img src="<?php /* echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') */
-                ?>"
-                                         alt="Description handle"/>
+                        <div class="over-the-slide">
+                            <div style="text-align:center">
+                                <span class="hero-slide-subtitle">Featuring collection</span>
+                                <div class="hero-slide-title" style="text-transform: uppercase; color: #fff;">
+                                    City Run<br/>
                                 </div>
-                                <div class="slide-desc" style="">We built this tank for summer runs, sunny days and
-                                    serious workouts. Don’t be fooled by the laidback fit of this tank, this highly
-                                    technical fabric of the Monsoon Tank will keep you dry no matter how intense the
-                                    workout.
+                                <div class="hero-slide-bodytext">
+                                    <p>Neque porro quisquam est qui
+                                        dolorem ipsum quita dolor sit amet,
+                                        consectetur, adipisci velit.</p>
+
+                                    <p>donec facilisis, orci vel congue
+                                        gravida, justo metus tempor mi, ac
+                                        volutpat lacus enim sed justo.</p>
+
+                                    <p>Click on the product to shop</p>
+
                                 </div>
-                            </div>-->
-            </div>
 
-        </li>
-    </ul>
-</div>
-<!-- sliderBanner -->
+                                <div class="hero-slide-cta">
+                                    <a class="shop-link" href="/men/tops/huron-hoodie?color=297">Shop the Look</a>
+                                </div>
+                            </div>
 
-<!-- signup new -->
-<div class="share-strip">
-    <div class="sign-up-new">
+                        </div>
+                        <div style="width:66.75%;height:100%;position:absolute;right:0;top:0;bottom:0; background: url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/mens-page/mens-landing-slide.png' ?>'); background-size: cover;cursor:pointer; background-color:#fff;">
 
-        <a href="javascript:void(0)">Sign up</a><span>&amp; WE’LL SURPRISE YOU</span>
+                        </div>
 
+                    </div>
+                <?php }?>
+            </li>
+            <?php if(false){?>
+                <li onClick="window.location='/men/tops/huron-hoodie?color=297';" style="background: url('<?php/* echo $this->getSkinUrl('images/mens-white-background.png')*/ ?>'); background-size: cover;cursor:pointer;">
+                    <div class="mens-slider">
+
+
+                        <div class="over-the-slide">
+                            <div style="text-align:center">
+                                <span class="hero-slide-subtitle">Featuring collection</span>
+                                <div class="hero-slide-title" style="text-transform: uppercase; color: #fff;">
+                                    City Run<br/>
+                                </div>
+                                <div class="hero-slide-bodytext">
+                                    <p>Neque porro quisquam est qui
+                                        dolorem ipsum quita dolor sit amet,
+                                        consectetur, adipisci velit.</p>
+
+                                    <p>Donec facilisis, orci vel congue
+                                        gravida, justo metus tempor mi, ac
+                                        volutpat lacus enim sed justo.</p>
+
+                                    <p>Click on the product to shop</p>
+
+                                </div>
+
+                                <div class="hero-slide-cta">
+                                    <a class="shop-link" href="/men/tops/huron-hoodie?color=297">Shop the Look</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="width:66.75%;height:100%;position:absolute;right:0;top:0;bottom:0; background: url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/mens-page/huron-hoodie-bannerv3.jpg' ?>'); background-size: cover;cursor:pointer; background-color:#fff;">
+
+                        </div>
+
+                    </div>
+
+                </li>
+            <?php }?>
+
+        </ul>
     </div>
-</div>
-<!-- signup new -->
-
-<div class="clear-fix"></div>
+    <div class="clear-fix"></div>
 
     <!-- ProductListing Part -->
     <div class="new_arrivals gridWrap new-arrivals-block" style="width:100%; margin:0 auto; position: relative;">
@@ -395,8 +386,8 @@
                         </div>
                         <div class="caption">
                             <a class="caption-title" href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName()."<br/>"; ?></a>
-                            <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
-                            <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span>$<?php echo round($confProduct->getPrice(), 2); ?></span></a>
+                            <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+                            <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="price-spn">$<?php echo round($confProduct->getPrice(), 2); ?></span></a>
 
                         </div>
                     </div>
@@ -415,8 +406,8 @@
                         </div>
                         <div class="caption">
                             <a class="caption-title" href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName()."<br/>"; ?></a>
-                            <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
-                            <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span>$<?php echo round($confProduct->getPrice(), 2); ?></span></a>
+                            <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+                            <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="price-spn">$<?php echo round($confProduct->getPrice(), 2); ?></span></a>
 
                         </div>
                     </div>
@@ -491,6 +482,7 @@
     </div>
     <!-- ProductListing Part -->
     <div class="clear-fix"></div>
+    <!-- Feature Product -->
 </div>
 <?php echo $this->getChildHtml('footer'); ?>
 </div>

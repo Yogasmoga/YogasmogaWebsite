@@ -2938,8 +2938,9 @@ ul.main-menu > li.one-too-many{padding-right:0;}
 .productContbox  .productCont:nth-child(6n){margin:0 0.3%;}
 .productContbox  .productCont:nth-child(8n){margin-right:0%;}*/
 .productCont .caption{/*font:20px/24px avantgardegothicitcw01d;*/font:11px/18px avantgardegothicitcw01d;text-transform:uppercase;margin:0; min-height:60px; height:60px!important;/*padding:24px 0 22px;*/ padding:24px 0;letter-spacing:0.5px;}
-.productCont .caption a{font:11px/18px avantgardegothicitcw01d;letter-spacing:0.3px;}
-.productCont .caption span{/*font:16px/24px GraphikRegular;*/font:12px/18px GraphikRegular;letter-spacing:0.3px;color:#555;text-transform:capitalize;}
+.productCont .caption a{font:11px/18px avantgardegothicitcw01d;letter-spacing:0.5px;}
+.productCont .caption span{/*font:16px/24px GraphikRegular;*/font:12px/20px GraphikRegular;letter-spacing:0.3px;color:#555;text-transform:capitalize;}
+.productCont .caption .price-spn{line-height:18px;}
 .bannerFluid .r-lign{text-align:center!important;}
 .bannerFluid .l-lign{text-align:center!important;}
 .bannerFluid .bnrtxt{left:0!important;right:0!important;margin:0 auto!important;width:100%!important;text-align:center!important;}
