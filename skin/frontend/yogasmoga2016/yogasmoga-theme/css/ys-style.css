@@ -3891,7 +3891,7 @@ display:none!important;opacity:1!important;visibility:visible!important;
 
 .product-row .pcol-left .image-row{background:#f4f4f4; margin-bottom:10px;}  
 .product-row .pcol-right .pcol-right-content{/*width:341px;*/background:#f4f4f4;/*padding-right:29px;*/padding-right:66px; margin-bottom:10px!important;clear:both;padding-top:0;box-sizing:border-box;
-	overflow:hidden;}
+	overflow:hidden; position:static;}
 
 
 .product-row .pcol-right .pcol-right-content4{padding-right:0;}
