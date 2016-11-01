@@ -3769,7 +3769,7 @@ float:left; margin-left:-40px; }
   border-bottom: 1px solid #999;
   border-right: none;
   font-size: 12px;
-  line-height: 18px;letter-spacing:0.18px;
+  line-height: 26px;letter-spacing:0.18px;
   padding: 2px 6px;
   text-transform: uppercase;
   width: 11.8012%;
@@ -4060,7 +4060,7 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
 .fabDetail p{line-height:20px; letter-spacing:0.3px;}
 .design-size tr:first-child td{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.3px;padding:4px 6px;}
 .design-size td:first-child{font-size:11px;}
-.design-size td{font-size:11px; letter-spacing:0.28px;}
+.design-size td{font-size:11px; letter-spacing:0.4px;}
 .block-elm .vlink-cont p.block-link a{font-size: 12px; line-height:20px;text-decoration:underline; color:#555;}
 
 /*.product-row .pcol-left .img_madeinusa{width:100px;}*/
