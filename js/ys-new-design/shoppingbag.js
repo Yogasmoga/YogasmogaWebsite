@@ -370,9 +370,9 @@ function openShoppingCart() {
         "z-index": 10
     }).removeClass("hdnovr");
     jQuery(".page").css("position", "relative").animate({left: -shoppingWdth});
+    jQuery(".header-container").animate({left: -shoppingWdth});
     //jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).animate({left: -shoppingWdth}).show();
     jQuery(".pageoverlay").css("min-height", bodyHght).animate({left: -shoppingWdth}).show();
-    jQuery(".header-container").animate({left: -shoppingWdth});
     jQuery("body, html").addClass("hdnHgt");
 
     jQuery("body").addClass("open-bag");
@@ -496,8 +496,32 @@ function showShoppingBagHtml() {
                 if (data.countdiscount > 1)
                     showerror(data.discounttypeerror);
                 outofstockDisable();
+                   //New design promo code related.
+                /*---------promocode update for apply button---*/
+                jQuery(".adddields #smogi").on('keypress focus',function(){
 
+                    jQuery(this).next('span').show();
+                    jQuery(".adddields #giftcartcode").next('span').hide();
+                });
+
+                /*jQuery(".adddields #smogi").on('keyup blur',function(){
+                 if(jQuery(this).val().length < 0){
+                 jQuery(this).next('span').hide();
+                 }
+
+                 });*/
+
+                jQuery(".adddields #giftcartcode").on('keypress focus',function(){
+                    jQuery(this).next('span').show();
+                    jQuery(".adddields #smogi").next('span').hide();
+                });
+                /*jQuery(".adddields #giftcartcode").on('keyup blur',function(){
+                 if(jQuery(this).val().length < 1){
+                 jQuery(this).next('span').hide();
+                 }
+                 });*/
                 /*---------promocode update for apply button end---*/
+
                 jQuery('#smogi').prop('disabled', true);
 
             }

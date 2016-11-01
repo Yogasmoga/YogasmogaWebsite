@@ -11,6 +11,9 @@ var bra_cup_insert_count = 0;
 
 jQuery(window).load(function ($) {
     selectfirstsizeonload();
+   // insertBraOption();
+});
+jQuery(document).ready(function ($) {
     insertBraOption();
 });
 jQuery(document).ready(function ($) {
@@ -33,6 +36,7 @@ jQuery(document).ready(function ($) {
         }
     });
     $("table.normalproductdetail div#colorcontainer table").live("click", function () {
+        $('.product-row-container').addClass("row-container-loading"); //New design
         currentColorObject = $(this);
         $('.errormsg').empty().hide();
         jQuery("#orderitem").removeClass('bagdisabled');
@@ -41,6 +45,20 @@ jQuery(document).ready(function ($) {
 
         selectfirstsizeonload();
         //changePartOfGiftSet($(this).attr("value"));
+        /*---New design js--*/
+        var mpx = 0;
+        $('.product-details .product-row').removeClass('interval-ends');
+        var intervalID = setInterval(function () {
+            // logic here
+            prodnewdetail();
+            if (++mpx === 5) {
+                window.clearInterval(intervalID);
+                //$('.product-row-container img').load(function(){
+                $('.product-row-container').removeClass("row-container-loading"); //for new design
+                //});
+            }
+        }, 2000);
+        /*---New design js end--*/
     });
 
     $("table.smallimagecontiner td:not(.selectedimage)").live("click", function () {
@@ -350,7 +368,8 @@ function changeproductsize(sz) {
     var salePrice = sz.attr("price");
     jQuery(".amount").html("$" + salePrice);
     //update price ends
-    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+   // jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    jQuery("body").find("#includeoption div:nth-child(1)").trigger("click");// (New design) change for Bra option.
     if (_islengthavailable) {
         jQuery("div.selectedlength div").removeClass("selected");
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
@@ -400,7 +419,14 @@ function changeproductsize(sz) {
         } else {
             amount.html("$" + firstSizePrice);
         }
+
+        // New design addded.
+        //make regular size default selected.
+        jQuery("body").find("div.selectedlength div:nth-child(1)").trigger("click");
+        //make regular size default selected.
+
         //end insale
+
     } else {
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
@@ -577,7 +603,8 @@ function changeColor(clr) {
     jQuery(".box-seprtr").find("p.insale").addClass("dnone");
     jQuery(".was-amount").addClass("no-display");
 
-    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    //jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    jQuery("body").find("#includeoption div:nth-child(1)").trigger("click");//New Design.
     var colorindex = searchproductcolorinfoarrray(clr);
     if (colorindex == -1)
         return;
@@ -701,6 +728,10 @@ function changeColor(clr) {
     var amount = jQuery(".amount");
     var firstSize = '', firstSizePrice = '';
     if (_islengthavailable) {
+         // New design addded.
+        //make regular size default selected.
+        jQuery("body").find("div.selectedlength div:nth-child(1)").trigger("click");
+        //make regular size default selected.
         // check for insale
         firstSize = jQuery("div.selectedlength div").first().next();
         firstSizePrice = firstSize.attr("price");
@@ -893,7 +924,8 @@ function selectfirstsizeonload() {
 
 function insertBraOption() {
     _braSelected = 0;
-    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    //jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
+    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click"); // New Design.
     jQuery("body").on("click", "#includeoption div", function () {
         var braValue = parseInt(jQuery("#includeoption div:nth-child(1)").attr("value"));
         jQuery(this).addClass("selected").siblings().removeClass("selected");

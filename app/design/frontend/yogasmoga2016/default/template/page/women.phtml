@@ -179,7 +179,7 @@
 
                     <?php
                     //$categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
-                    $categoryId = $categoryId_quickview;
+                    $categoryId = 42;
                     $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
                     $shopthecolor_imgUrl = $shopthecolorCategory ->getImageUrl();
                     $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
