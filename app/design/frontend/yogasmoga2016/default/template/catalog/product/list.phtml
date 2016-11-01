@@ -19,11 +19,11 @@ $rangeCats = explode(",",$rangeCategories);
     $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
     if($showSizeFilter){
 ?>
-
+<?php if($_category->getId() != 43){?>
 <div id="div_sizes" class="sz_filter">&nbsp;</div>
 <!-- category filter -->
 <div id="div_cats" class="ct_filter"></div>
-
+<?php } ?>
 
 <?php 
 $catIdsArray = array();
@@ -273,7 +273,7 @@ if($this->getRequest()->getParam('hidden')){
 
 
 
-
+if($_category->getId() != 43){
 if($showSizeFilter){
 /************** size filter ***********************/
 if(isset($allSkuSizes) && count($allSkuSizes)>0)
@@ -344,7 +344,7 @@ $finalarr = array_combine($myArr1,$myArr2);
 	<script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>new_jquery/size-filter-new.js"></script>
 
 <!-- ********************************* checkbox filter ********************** -->
-<?php } ?>
+<?php } } ?>
 
 <?php
 /*
