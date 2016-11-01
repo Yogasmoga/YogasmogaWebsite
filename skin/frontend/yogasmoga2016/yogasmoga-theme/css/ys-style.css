@@ -3225,7 +3225,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 }
 
 .shopping-cart .lightgray,.shopping-cart .lightgray{background:none!important;}
-.shopping-cart input#giftcartcode[disabled="disabled"],.shopping-cart input#smogi[disabled="disabled"]{background:none;}
+.shopping-cart input#giftcartcode[disabled="disabled"],.shopping-cart input#smogi[disabled="disabled"]{background:none;padding-left:0;}
 
 .shopping-cart input#smogi.gry[disabled="disabled"]::-moz-placeholder,.shopping-cart input#giftcartcode.gry[disabled="disabled"]::-moz-placeholder{opacity:1;color:lightgray!important;}
 .shopping-cart input#smogi.gry[disabled="disabled"]:-moz-placeholder,.shopping-cart input#giftcartcode.gry[disabled="disabled"]:-moz-placeholder{opacity:1;color:lightgray!important;}
@@ -3821,7 +3821,8 @@ ul.main-menu li a.menu-heading {
   z-index: 99;
 }
 .header-banner .right-bar-menu .tr-menu > li{margin-right:25px;}
-.header-banner .right-bar-menu .tr-menu > li a{text-transform:uppercase;}
+.header-banner .right-bar-menu .tr-menu > li a,.header-banner .right-bar-menu .tr-menu > li a:first-child{text-transform:uppercase;font-family:AvantGardeGothicITCW01M!important;}
+
 .header-banner .right-bar-menu #welcome-name {
   text-transform: uppercase;
   font: 10px/11px AvantGardeGothicITCW01B;
@@ -3883,7 +3884,7 @@ display:none!important;opacity:1!important;visibility:visible!important;
 .product-row.product-row-last .pcol-right{background:#f4f4f4;margin-left:10px;width:33.375%;right:0;text-align:center;}
 .product-row.product-row-last .pcol-right img{position:relative; top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%);}
 /*.product-row .pcol-left .image-row-first,.product-row .pcol-left .image-row4{position:relative;}*/
-.product-row .pcol-left .img_madeinusa{opacity:0; position:absolute; left:30px; top:0; /*width:170px;*/width:10.625%;margin-top:-30px; transform:translateY(-100%);-webkit-transform:translateY(-100%);}
+.product-row .pcol-left .img_madeinusa{opacity:0; position:absolute; left:30px; top:0;width:200px;/*width:10.625%;*/margin-top:-30px; transform:translateY(-100%);-webkit-transform:translateY(-100%);}
 
 .product-row .pcol-left .img_rnd{position:absolute; bottom:0; left:0;width:170px; height:auto;margin-bottom:60px;
 	transform:translate(-100%,100%);-webkit-transform:translate(-100%,100%);margin-left:-25px; display:none;}
@@ -4045,6 +4046,7 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
 .pcol-right-content2 .product-det-tab{padding-top:20px;}
 @media only screen and (max-width : 1599px) {
 .product-row .pcol-left img, .product-row .pcol-right .pcol-right-content{max-height:560px;}	
+.product-row .pcol-left .img_madeinusa{width:170px;}
 }	
 @media only screen and (max-width : 1024px) {
 .csp-name .csp-link{letter-spacing:0.3px;}
