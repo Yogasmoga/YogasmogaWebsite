@@ -4113,9 +4113,9 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(5) a:hover{font-f
 #ysheader .right-bar-menu .signout_link span{padding-right:0;cursor:pointer;}
 
 .header-container.showhide{top:-60px;}
-.header-container.showhide{transition:top 0.25s linear;-webkit-transition:top 0.25s linear;}
+.header-container.showhide{transition:top 0.25s linear;-webkit-transition:top 0.25s linear;-webkit-transform-style: preserve-3d;-webkit-backface-visibility: hidden;}
 /*.header-container.showhide:hover{top:0!important;transition:top 0.25s linear;-webkit-transition:top 0.25s linear;}*/
-.header-container.scrolled-effect{top:0;transition:top 0.25s linear;-webkit-transition:top 0.25s linear;}
+.header-container.scrolled-effect{top:0;transition:top 0.25s linear;-webkit-transition:top 0.25s linear;-webkit-transform-style: preserve-3d;-webkit-backface-visibility: hidden;}
 .header-container ul.main-menu li a.menu-heading,.header-container ul.main-menu2 li a.main-heading,
 .header-container .right-bottom-block #shop-bag-count{
 		top:0px;transition:top 0.25s linear;-webkit-transition:top 0.25s linear;position:relative;}
