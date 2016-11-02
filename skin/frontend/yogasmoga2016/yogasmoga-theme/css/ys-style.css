@@ -3909,7 +3909,7 @@ ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a{font-size:11px; line-heigh
 .product-details{}
 .product-details .product-row{background:#fff;margin-bottom:10px;width:100%; float:left; box-sizing:border-box; position:relative; min-height:600px;}
 .product-row .pcol-left{/*width:calc(100% - 341px);*/width:100%; float:left; position:relative;box-sizing:border-box;}
-.product-row .pcol-right{/*width:341px;*/width:386px;float:right;position:absolute; top:0; right:0; /*height:100%;*/ text-align:left; padding-top:0;box-sizing:border-box;}
+.product-row .pcol-right{/*width:341px;*/width:387px;float:right;position:absolute; top:0; right:0; /*height:100%;*/ text-align:left; padding-top:0;box-sizing:border-box;}
 .product-row .pcol-left img, .product-row .pcol-right img{max-width:100%; width:auto; height:auto;/*max-height:670px;*/}
 .product-row.product-row-last{background:#fff;}
 .product-row.product-row-last .pcol-left{background:#f4f4f4;width:calc(100% - (33.375% + 10px));}
