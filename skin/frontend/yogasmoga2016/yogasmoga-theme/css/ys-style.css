@@ -3877,7 +3877,7 @@ display:none!important;opacity:1!important;visibility:visible!important;
 .product-details{}
 .product-details .product-row{background:#fff;margin-bottom:10px;width:100%; float:left; box-sizing:border-box; position:relative; min-height:600px;}
 .product-row .pcol-left{/*width:calc(100% - 341px);*/width:100%; float:left; position:relative;box-sizing:border-box;}
-.product-row .pcol-right{/*width:341px;*/width:386px;float:right;position:absolute; top:0; right:0; /*height:100%;*/ text-align:left; padding-top:0;box-sizing:border-box;}
+.product-row .pcol-right{/*width:341px;*/width:387px;float:right;position:absolute; top:0; right:0; /*height:100%;*/ text-align:left; padding-top:0;box-sizing:border-box;}
 .product-row .pcol-left img, .product-row .pcol-right img{max-width:100%; width:auto; height:auto;/*max-height:670px;*/}
 .product-row.product-row-last{background:#fff;}
 .product-row.product-row-last .pcol-left{background:#f4f4f4;width:calc(100% - (33.375% + 10px));}
@@ -4382,6 +4382,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .adddields input{font:12px/20px graphikregular; letter-spacing:0.3px;}
 .adddields .smogi_lbl{position:relative;margin-bottom:22px;}
 .adddields .smogi_lbl.smogi-off{position:relative;margin-bottom:0px;}
+.adddields .smogi_lbl.smogi-off input[name='smogi']{padding-left:0;}
 .adddields #smogi{background:transparent; padding:0;}
 .adddields .applysmogi{display:block!important;color:#ae8536;background:none; width:auto; font-family:avantgardegothicitcw01d;font-size:11px;line-height:11px; letter-spacing:0.3px;}
 .adddields .smogi_lbl span{background:none;display:block; line-height:30px;}
@@ -4516,8 +4517,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 
 .common-listing .header-banner .header-banner-block,.catalog-product-view .header-banner .header-banner-block{border-bottom:1px solid #777777;}		
 .catalog-category-view.common-listing  .header-banner .header-banner-block{border-bottom:1px solid #fff;}		
-.catalog-category-view.common-listing  .showhide  .header-banner .header-banner-block{border-bottom:1px solid #777;}		
-
+.catalog-category-view.common-listing  .showhide  .header-banner .header-banner-block{border-bottom:1px solid #777;}
 .categorypath-women-ranges-core.catalog-category-view.common-listing  .header-banner .header-banner-block,.categorypath-men-ranges-core.catalog-category-view.common-listing  .header-banner .header-banner-block{border-bottom:1px solid #777777;}	 
 
 	
