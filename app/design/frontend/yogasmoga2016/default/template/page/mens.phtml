@@ -237,7 +237,7 @@
 
             <?php
             //$categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
-            $categoryId = 41;
+            $categoryId = $categoryId_quickview;
             $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
             $shopthecolor_imgUrl = $shopthecolorCategory ->getImageUrl();
             $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');

@@ -179,7 +179,7 @@
 
                     <?php
                     //$categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
-                    $categoryId = 42;
+                    $categoryId = $categoryId_quickview;
                     $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
                     $shopthecolor_imgUrl = $shopthecolorCategory ->getImageUrl();
                     $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
@@ -328,8 +328,8 @@
                                 </div>
                                 <div class="caption">
                                     <a class="caption-title" href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName()."<br/>"; ?></a>
-                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
-                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span>$<?php echo round($confProduct->getPrice(), 2); ?></span></a>
+                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="price-spn">$<?php echo round($confProduct->getPrice(), 2); ?></span></a>
 
                                 </div>
                             </div>
@@ -348,8 +348,8 @@
                                 </div>
                                 <div class="caption">
                                     <a class="caption-title" href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName()."<br/>"; ?></a>
-                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
-                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span>$<?php echo round($confProduct->getPrice(), 2); ?></span></a>
+                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+                                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="price-spn">$<?php echo round($confProduct->getPrice(), 2); ?></span></a>
 
                                 </div>
                             </div>
