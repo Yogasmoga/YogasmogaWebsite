@@ -1,3 +1,7 @@
+if(navigator.userAgent.indexOf('Mac') > 0){
+	jQuery('body').addClass('mac-osys');
+}
+
 /*---header menu related --*/
 jQuery(document).ready(function ($) {
 	$('#welcome-name.logged-out').click(function(){

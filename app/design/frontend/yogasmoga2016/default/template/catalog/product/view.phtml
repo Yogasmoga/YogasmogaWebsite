@@ -1667,6 +1667,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 					<input type="radio" name="prodTab" id="prodTab1" checked/><label for="prodTab1" class="prodTab selected">Description</label>
 					<input type="radio" name="prodTab" id="prodTab2"/><label for="prodTab2" class="prodTab">Features</label>
 					<input type="radio" name="prodTab" id="prodTab3"/><label for="prodTab3" class="prodTab">Size &amp; Fit</label>
+					<input type="radio" name="prodTab" id="prodTab4"/><label for="prodTab4" class="prodTab">Care</label>
 					<div id="prod-tab-content1" class="prod-tab-content">
 						<div class="prodtab-desc">
 						<?=$_product->getDescription();?>
@@ -1773,6 +1774,12 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 							</div>
 
 						</div>						
+					</div>
+					<div id="prod-tab-content4" class="prod-tab-content">
+						<div class="prodtab-desc">
+                            <?=$_helper->productAttribute($_product, $_product->getProductCare(),'product_care');?>
+                        </div>
+						
 					</div>
 					
 					
