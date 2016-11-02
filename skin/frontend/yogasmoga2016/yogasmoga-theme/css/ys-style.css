@@ -4381,8 +4381,9 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .shopping-cart{box-shadow: 0 0 10px #e2e2e2;font:12px graphikregular;letter-spacing:0.3px;background:#f4f4f4;}
 .adddields input{font:12px/20px graphikregular; letter-spacing:0.3px;}
 .adddields .smogi_lbl{position:relative;margin-bottom:22px;}
-.adddields .smogi_lbl.smogi-off{position:relative;margin-bottom:0px;}
+.adddields .smogi_lbl.smogi-off,.adddields .smogi_lbl.smogi-off-block{position:relative;margin-bottom:0px;}
 .adddields .smogi_lbl.smogi-off input[name='smogi']{padding-left:0;}
+.adddields .smogi_lbl.smogi-off-block .apply-off{opacity:0; visibility:hidden;}
 .adddields #smogi{background:transparent; padding:0;}
 .adddields .applysmogi{display:block!important;color:#ae8536;background:none; width:auto; font-family:avantgardegothicitcw01d;font-size:11px;line-height:11px; letter-spacing:0.3px;}
 .adddields .smogi_lbl span{background:none;display:block; line-height:30px;}
