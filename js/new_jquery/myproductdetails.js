@@ -89,25 +89,6 @@ function prodnewdetailresize(){
 	
 	
 }
-jQuery(document).ready(function($){
-	var windH = $(window).height();	
-	var imgrowtr = $('.thumb-imgs table.smallimagecontiner tr td img');
-	if(imgrowtr.length > 0){		
-		var px = 0;
-		$('.product-row-container').addClass("row-container-loading"); //for new design
-		var intervalID = setInterval(function () {
-			// logic here			
-			prodnewdetail();
-			if (++px === 2) {
-				window.clearInterval(intervalID);				
-					$('.product-row-container').removeClass("row-container-loading"); //for new design
-			}
-		}, 100);
-	}
-});	
-jQuery(window).resize(function(){
-	prodnewdetailresize();		
-});
 
 jQuery(document).ready(function ($) {
 
@@ -1032,3 +1013,24 @@ function insertBraOption() {
     });
 
 }
+
+/*--new design--*/
+jQuery(window).resize(function(){
+	prodnewdetailresize();		
+});
+jQuery(document).ready(function($){
+	var windH = $(window).height();	
+	var imgrowtr = $('.thumb-imgs table.smallimagecontiner tr td img');
+	if(imgrowtr.length > 0){		
+		var px = 0;
+		$('.product-row-container').addClass("row-container-loading"); //for new design
+		var intervalID = setInterval(function () {
+			// logic here			
+			prodnewdetail();
+			if (++px === 2) {
+				window.clearInterval(intervalID);				
+					$('.product-row-container').removeClass("row-container-loading"); //for new design
+			}
+		}, 200);
+	}
+});	
