@@ -3313,7 +3313,6 @@ width:100%!important;height:100%!important;
 }
 
 /*######## new magento signup #########*/
-body{font:12px/19px graphikregular,gothamBook,arial;letter-spacing:0.4px;}
 #signup.mage-signup{background:url(../images/mage-signupbg.png) #000; background-size:cover; width:100%!important; height:100%!important;}
 #signup.mage-signup #sign_up_box,#signup.mage-signup #thank_you_box{width:100%; max-width:496px;}
 #signup.mage-signup #sign_up_box #popup-register{width:100%; max-width:496px; left:50%; top:50%; bottom:auto; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);}
@@ -3360,6 +3359,7 @@ body{font:12px/19px graphikregular,gothamBook,arial;letter-spacing:0.4px;}
 }
 
 /*######### new design 31-aug-2016############*/
+body{font:12px/19px graphikregular,gothamBook,arial;letter-spacing:0.4px;}
 .product-details .block-head{margin-top: 2px;}
 ul.main-menu li.active a.menu-heading{color:#ae8536;}
 div.search-nav ul li a.current,
