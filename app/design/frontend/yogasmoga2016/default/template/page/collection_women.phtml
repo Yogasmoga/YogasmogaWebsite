@@ -36,25 +36,7 @@
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
-<script type="text/javascript">
 
-    jQuery(document).ready(function() {
-
-        jQuery('.flexslider').flexslider({
-            slideshow: false
-        });
-
-//        jQuery('.flexslider:eq(1)').find('li a').css('background-color', '#ccc');
-
-        jQuery('.see_more a').click(function (e) {
-            e.preventDefault();
-            var obj = jQuery(this).closest('.flexslider');
-            obj.find('.flex-next').click();
-            return false;
-        });
-
-    });
-</script>
 <div class="wrapper">
 <?php echo $this->getChildHtml('global_notices') ?>
 <div class="shopping-cart">
