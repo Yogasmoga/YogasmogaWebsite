@@ -1027,10 +1027,10 @@ jQuery(document).ready(function($){
 		var intervalID = setInterval(function () {
 			// logic here			
 			prodnewdetail();
-			if (++px === 3) {
+			if (px++ === 5) {
 				window.clearInterval(intervalID);				
 					$('.product-row-container').removeClass("row-container-loading"); //for new design
 			}
-		}, 1000);
+		}, 2000);
 	}
 });	
