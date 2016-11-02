@@ -319,6 +319,7 @@ function prodnewdetail(){
 	//var imgrow4H = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4) img ').height();
 	//jQ('.prod-col .pcol-right-content4').height(imgrow4H);
 	if(jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').length){
+		jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
 		var imgrow4W = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').css({
 			//'width': (66.125 * windW)/100		
 			'width': windW/2 - 5
@@ -380,7 +381,7 @@ function prodnewdetailresize(){
 	//jQuery('.prod-col .pcol-right-content4').height(imgrow4H);
 	
 	if(jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').length){
-		
+		jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
 		var imgrow4W = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').css({
 			//'width': (66.125 * windW)/100		
 			'width': windW/2 - 5
