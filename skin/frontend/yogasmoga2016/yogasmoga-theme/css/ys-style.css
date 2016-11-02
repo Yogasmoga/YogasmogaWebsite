@@ -3384,9 +3384,9 @@ iframe[name="google_conversion_frame"] {
     position: absolute;right:0;
     text-align: left;
     padding-top:6px;
-    margin-right: 5px;
+
 }
-#div_cats .chk-cats{text-transform:uppercase;}
+#div_cats .chk-cats{text-transform:uppercase;margin-right: 5px;}
 #div_cats .chk-cats:last-child{margin-right:0;}
 #div_cats .chk-cats:hover,#div_cats .chk-cats.chk-cats-selected{background:#555; color:#fff;}
 #div_cats.fixed_top {left:auto!important;}
