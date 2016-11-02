@@ -51,7 +51,7 @@ jQuery(document).ready(function ($) {
 		var intervalID = setInterval(function () {
 			// logic here
 			prodnewdetail();
-			if (++mpx === 3) {
+			if (++mpx === 2) {
 				window.clearInterval(intervalID);			
 				//$('.product-row-container img').load(function(){	
 					$('.product-row-container').removeClass("row-container-loading"); //for new design					
