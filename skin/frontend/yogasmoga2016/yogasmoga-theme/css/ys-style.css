@@ -3374,7 +3374,7 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a:hover{color:#ae8536;}
 .leftnav a.current{color:#ae8536!important;}
 .productCont .caption a:hover{color:#555;}
-.in-bl ul.main-menu2 > li{padding:3px 10px 0 10px;}
+.in-bl ul.main-menu2 > li{padding:3px 10px 0 10px;height:38px;}
 /*.mac-os .in-bl ul.main-menu2 > li{padding:4px 10px 0 10px;}*/ /*-- for mac system --*/
 ul.main-menu2 a.main-heading{height:31px;}
 ul.main-menu > li.active, ul.main-menu2 > li.active{background: none;}
