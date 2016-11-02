@@ -1,0 +1,145 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+
+        jQuery('.flexslider').flexslider({
+            slideshow: false
+        });
+
+//        jQuery('.flexslider:eq(1)').find('li a').css('background-color', '#ccc');
+
+        jQuery('.see_more a').click(function (e) {
+            e.preventDefault();
+            var obj = jQuery(this).closest('.flexslider');
+            obj.find('.flex-next').click();
+            return false;
+        });
+
+    });
+</script>
+<div class="wrapper">
+<?php echo $this->getChildHtml('global_notices') ?>
+<div class="shopping-cart">
+
+</div>
+<div class="page">
+<?php echo $this->getChildHtml('header') ?>
+<div id="pagecontainer" class="accountbg women-collection">
+<h1 style="display: none;"><?php echo Mage::registry('current_category')->getName();?></h1>
+<!-- header page intro slide -->
+ 
+<div class="women-collection-banner firstbanner">
+   <a class="inside-link" href="/women/vivacity">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/vivacity-women-collection.jpg' ?>" />       
+<div class="new-collection-block">
+<div class="col-box">
+<img class="nyc-women"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/nyc-women-icon.svg' ?>" />
+			
+                    <h2>
+                        <span class="bld-txt">VIVACITY</span>
+                      
+                    </h2>
+                    <p class="col-subhead">Performance Chic <br/>Style born from the energy of our city</p>
+                </div>
+
+</div>	
+				
+     </a>   
+
+ 
+</div>
+
+<div class="women-collection-banner"   >
+   <a class="inside-link" href="/women/carbon6">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/carbon6-women-collection.jpg' ?>" />
+				
+				<div  class="new-collection-block">
+<div class="col-box">
+	<img class="carbon6-women"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/carbon6-women-icon.svg' ?>" />
+				
+                    <h2>
+                        <span class="bld-txt">CARBON 6<sup>&trade;</sup></span>
+                      
+                    </h2>
+                    <p class="col-subhead">A black so deep&mdash;it's trademarked.<br/>Ethically dyed in California </p>
+                </div>
+
+</div>  	
+
+    </a>   
+
+
+  
+          
+</div>
+
+
+<div class="women-collection-banner"  >
+    <a class="inside-link" href="/women/prints">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/prints-women-collection.jpg' ?>" />
+				<div  class="new-collection-block">
+<div class="col-box">
+				
+				
+                    <h2>
+                        <span style="color:#555;" class="bld-txt">PRINTS</span>
+                      
+                    </h2>
+                    <p style="color:#555;" class="col-subhead">A little whimsy goes a long way.<br/>Take flight with our exclusive prints.</p>
+                </div>
+
+</div>	
+          
+
+    </a>     
+
+</div>
+
+
+
+
+<?php echo $this->getChildHtml('footer') ?>
+<?php echo $this->getChildHtml('before_body_end') ?>
+</div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

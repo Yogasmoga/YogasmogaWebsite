@@ -212,6 +212,22 @@
           <layout_handle>customer_info</layout_handle>
         </share-smogi>
         <!--for customer account layout-->
+
+        <!--Collection Men layouts start here -->
+        <collection-men translate="label">
+          <label>Collection Men</label>
+          <template>page/collection_men.phtml</template>
+          <layout_handle>Collection Men</layout_handle>
+        </collection-men>
+        <!-- Collection Men layouts End here -->
+
+        <!-- Collection Women page layouts Start here -->
+        <collection-women translate="label">
+          <label>Collection Women</label>
+          <template>page/collection_women.phtml</template>
+          <layout_handle>Collection Women</layout_handle>
+        </collection-women>
+        <!-- Collection Women page layouts End here -->
       </layouts>
     </page>
   </global>

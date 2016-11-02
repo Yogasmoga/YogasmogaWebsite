@@ -3342,6 +3342,36 @@ iframe[name="google_conversion_frame"] {
     #signup.mage-signup .svg-logontext{max-width:330px;}
 }
 
+
+/*------------promocode apply button css-----------------------------------*/
+.adddields label{position:relative;}
+.adddields input{width:100%;height:30px; box-sizing:border-box;}
+.adddields span{display:none;}
+.adddields span {background: #5ec52f none repeat scroll 0 0; border: 0 none;
+    font-size: 12px; position: absolute; right: 0; text-transform: uppercase; top: 0; width: 60px; box-sizing: border-box;
+    height: 30px; line-height: 30px; padding: 0; color: #fff; font-family: gothammedium;}
+.adddields span img{position:relative; top:50%; transform:translateY(-50%);-webkit-transform:translateY(-50%)}
+.shopping-cart input#smogi::-webkit-input-placeholder ,.shopping-cart input#giftcartcode::-webkit-input-placeholder {
+    opacity:0.8;
+}
+.shopping-cart input#smogi:-moz-placeholder ,.shopping-cart input#giftcartcode:-moz-placeholder {
+    opacity:0.8;
+}
+.shopping-cart input#smogi::-moz-placeholder ,.shopping-cart input#giftcartcode::-moz-placeholder {
+    opacity:0.8;
+}
+.shopping-cart input#smogi:-ms-input-placeholder ,.shopping-cart input#giftcartcode:-ms-input-placeholder {
+    opacity:0.8;
+}
+
+.shopping-cart .lightgray,.shopping-cart .lightgray{background:none!important;}
+.shopping-cart input#giftcartcode[disabled="disabled"],.shopping-cart input#smogi[disabled="disabled"]{background:none;padding-left:0;}
+
+.shopping-cart input#smogi.gry[disabled="disabled"]::-moz-placeholder,.shopping-cart input#giftcartcode.gry[disabled="disabled"]::-moz-placeholder{opacity:1;color:lightgray!important;}
+.shopping-cart input#smogi.gry[disabled="disabled"]:-moz-placeholder,.shopping-cart input#giftcartcode.gry[disabled="disabled"]:-moz-placeholder{opacity:1;color:lightgray!important;}
+.shopping-cart input#smogi.gry[disabled="disabled"]::-webkit-input-placeholder,.shopping-cart input#giftcartcode.gry[disabled="disabled"]::-webkit-input-placeholder{opacity:1;color:lightgray!important;}
+.shopping-cart input#smogi.gry[disabled="disabled"]:-ms-input-placeholder,.shopping-cart input#giftcartcode.gry[disabled="disabled"]:-ms-input-placeholder{opacity:1;color:lightgray!important;}
+
 /*######### new design 31-aug-2016############*/
 .product-details .block-head{margin-top: 2px;}
 ul.main-menu li.active a.menu-heading{color:#ae8536;}
