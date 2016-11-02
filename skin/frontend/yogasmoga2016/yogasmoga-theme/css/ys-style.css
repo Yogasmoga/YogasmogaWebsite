@@ -4051,7 +4051,7 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
 .product-details .product-row table.productimagecontainer table.smallimagecontiner td.two-col img{max-height:inherit;}	
 }	
 @media only screen and (max-width : 1024px) {
-.csp-name .csp-link{letter-spacing:0.3px;}
+/*.csp-name .csp-link{letter-spacing:0.3px;}*/
 .selectedcolortext{font-size:12px; line-height:20px;}
 .gry-box .length-name {font-size:12px; line-height:20px; }
 .bra-option >span{font-size:12px; line-height:20px; }
