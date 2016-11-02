@@ -4060,7 +4060,7 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
 .product-det-tab-bottom p .underline { font: 12px/20px graphikregular; /*letter-spacing: 0.3px;*/}
 .pcol-right-content .fabDetail > h2, .pcol-right-content .fabDetail > .h2{line-height:28px;}
 .fabDetail p{line-height:20px; /*letter-spacing:0.3px;*/}
-.design-size tr:first-child td{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.3px;padding:4px 6px;}
+.design-size tr:first-child td{font:11px/26px avantgardegothicitcw01d;/*letter-spacing:0.3px;*/padding:4px 6px;}
 .design-size td:first-child{font-size:11px;}
 .design-size td{font-size:11px; letter-spacing:0.4px;}
 .block-elm .vlink-cont p.block-link a{font-size: 12px; line-height:20px;text-decoration:underline; color:#555;}
