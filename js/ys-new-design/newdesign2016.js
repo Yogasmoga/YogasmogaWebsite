@@ -3,7 +3,11 @@ jQuery(document).ready(function ($) {
 	$('#welcome-name.logged-out').click(function(){
 		$('#signin').trigger('click');
 	});
+	if(navigator.userAgent.indexOf('Mac') > 0){
+		jQuery('body').addClass('mac-osys');
+	}
 });
+
 /*-------------------------------------
  ####### product details related #######
  --------------------------------------*/

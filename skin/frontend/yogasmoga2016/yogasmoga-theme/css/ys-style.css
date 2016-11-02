@@ -2581,11 +2581,12 @@ table.referfriendforms td.success img{cursor:default !important;}
 }
 
 /*for mac os**/
+/*
 body.mac-os ul.main-menu2 a.main-heading{height:30px !important;}
 body.mac-os ul.main-menu li a.menu-heading{padding-top:39px; padding-bottom:7px;}
 body.mac-os ul.main-menu2 > li{margin-top: 2px;} 
 body.mac-os ul.tr-menu>li.free-shipping{line-height: 15px;}
-
+*/
 form#popup-register tr.orig_password{height: 21px; background:none;}
 form#popup-register tr.orig_password td{height: auto; line-height: normal;}
 p.err-msg-reset{font-family: gothambook; color: #c03;}
@@ -3388,7 +3389,7 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a:hover{color:#ae8536;}
 .leftnav a.current{color:#ae8536!important;}
 .productCont .caption a:hover{color:#555;}
-.in-bl ul.main-menu2 > li{padding:3px 10px 0 10px;}
+.in-bl ul.main-menu2 > li{padding:3px 10px 0 10px;height:38px;}
 /*.mac-os .in-bl ul.main-menu2 > li{padding:4px 10px 0 10px;}*/ /*-- for mac system --*/
 ul.main-menu2 a.main-heading{height:31px;}
 ul.main-menu > li.active, ul.main-menu2 > li.active{background: none;}
@@ -3782,8 +3783,8 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 .design-size td {
     border-bottom: 1px solid #999;
     border-right: none;
-    font-size: 12px;
-    line-height: 26px;letter-spacing:0.18px;
+    font-size: 11px;
+    line-height: 26px;letter-spacing:0.4px;
     padding: 2px 6px;
     text-transform: uppercase;
     width: 11.8012%;
@@ -3891,7 +3892,7 @@ ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a{font-size:11px; line-heigh
 .product-details{}
 .product-details .product-row{background:#fff;margin-bottom:10px;width:100%; float:left; box-sizing:border-box; position:relative; min-height:600px;}
 .product-row .pcol-left{/*width:calc(100% - 341px);*/width:100%; float:left; position:relative;box-sizing:border-box;}
-.product-row .pcol-right{/*width:341px;*/width:380px;float:right;position:absolute; top:0; right:0; /*height:100%;*/ text-align:left; padding-top:0;box-sizing:border-box;}
+.product-row .pcol-right{/*width:341px;*/width:386px;float:right;position:absolute; top:0; right:0; /*height:100%;*/ text-align:left; padding-top:0;box-sizing:border-box;}
 .product-row .pcol-left img, .product-row .pcol-right img{max-width:100%; width:auto; height:auto;/*max-height:670px;*/}
 .product-row.product-row-last{background:#fff;}
 .product-row.product-row-last .pcol-left{background:#f4f4f4;width:calc(100% - (33.375% + 10px));}
@@ -4043,7 +4044,8 @@ input[name="prodTab"]{display:none;}
 .prod-tab-content{display:none;font:12px/19px graphikregular;}
 #prodTab1:checked ~ #prod-tab-content1,
 #prodTab2:checked ~ #prod-tab-content2,
-#prodTab3:checked ~ #prod-tab-content3{
+#prodTab3:checked ~ #prod-tab-content3,
+#prodTab4:checked ~ #prod-tab-content4{
     display: block;
 }
 
@@ -4065,7 +4067,7 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
     .product-details .product-row table.productimagecontainer table.smallimagecontiner td.two-col img{max-height:inherit;}
 }
 @media only screen and (max-width : 1024px) {
-    .csp-name .csp-link{letter-spacing:0.3px;}
+    /*.csp-name .csp-link{letter-spacing:0.3px;}*/
     .selectedcolortext{font-size:12px; line-height:20px;}
     .gry-box .length-name {font-size:12px; line-height:20px; }
     .bra-option >span{font-size:12px; line-height:20px; }
@@ -4074,7 +4076,7 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
     .product-det-tab-bottom p .underline { font: 12px/20px graphikregular; /*letter-spacing: 0.3px;*/}
     .pcol-right-content .fabDetail > h2, .pcol-right-content .fabDetail > .h2{line-height:28px;}
     .fabDetail p{line-height:20px; /*letter-spacing:0.3px;*/}
-    .design-size tr:first-child td{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.3px;padding:4px 6px;}
+    .design-size tr:first-child td{font:11px/26px avantgardegothicitcw01d;/*letter-spacing:0.3px;*/padding:4px 6px;}
     .design-size td:first-child{font-size:11px;}
     .design-size td{font-size:11px; letter-spacing:0.4px;}
     .block-elm .vlink-cont p.block-link a{font-size: 12px; line-height:20px;text-decoration:underline; color:#555;}
@@ -4643,3 +4645,4 @@ table.productdetailtable div.outofstockitem{
     .banner_avant_grade_demi{ font: 42px/46px AvantGardeGothicITCW01D;}
     .banner-avant-grade-bk-small{ font: 42px/46px ITCAvantGardeProBk;}
 }
+
