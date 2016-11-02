@@ -3768,8 +3768,8 @@ float:left; margin-left:-40px; }
 .design-size td {
   border-bottom: 1px solid #999;
   border-right: none;
-  font-size: 12px;
-  line-height: 26px;letter-spacing:0.18px;
+  font-size: 11px;
+  line-height: 26px;letter-spacing:0.4px;
   padding: 2px 6px;
   text-transform: uppercase;
   width: 11.8012%;
