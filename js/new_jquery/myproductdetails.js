@@ -16,6 +16,80 @@ jQuery(window).load(function ($) {
 jQuery(document).ready(function ($) {
 	 insertBraOption();
 });	
+
+/*---for new design--*/
+function prodnewdetail(){
+	var jQ = jQuery.noConflict();	
+	var windW = jQ('#productdetails').width();	
+	var imgrowh = jQ('.thumb-imgs table.smallimagecontiner tr td img').height();	
+	jQ('.prod-col .pcol-right-content').height(imgrowh);
+		
+	
+	
+	if(jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').length){
+		jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
+		var imgrow4W = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').css({			
+			'width': windW/2 - 5
+		});
+		var pcolRightContent4W = jQ('.pcol-right-content4').css({
+			
+			'width': windW/2 - 5
+		});
+	}
+	
+	
+	var imgrow4w = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').width();	
+	var imgrow4h = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').height();	
+	
+	
+	jQ('.prod-col .img_madeinusa').css({
+		'top':imgrowh,
+		'opacity':1
+	});
+	jQ('.prod-col .img_rnd').css({
+		'left':imgrow4w,
+		'bottom':imgrow4h
+	});
+	
+	
+}
+		
+	
+	
+
+function prodnewdetailresize(){	
+	var windW = jQuery('#productdetails').width();	
+	var imgrowh = jQuery('.thumb-imgs table.smallimagecontiner tr td img').height();		
+	
+	jQuery('.prod-col .pcol-right-content').height(imgrowh);
+	if(jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').length){
+		jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
+		var imgrow4W = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').css({			
+			'width': windW/2 - 5
+		});
+		var pcolRightContent4W = jQuery('.pcol-right-content4').css({			
+			'width': windW/2 - 5
+		});
+	}
+	
+	
+	
+	var imgrow4w = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').width(); 	
+	var imgrow4h = jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').height(); 	
+	
+	jQuery('.prod-col .img_madeinusa').css({
+		'top':imgrowh,
+		'opacity':1
+	});
+	jQuery('.prod-col .img_rnd').css({
+		'left':imgrow4w,
+		'bottom':imgrow4h
+	});
+	
+	
+	
+}
+
 jQuery(document).ready(function ($) {
 
     if (_sizesuperattribute == false)
@@ -51,13 +125,13 @@ jQuery(document).ready(function ($) {
 		var intervalID = setInterval(function () {
 			// logic here
 			prodnewdetail();
-			if (++mpx === 5) {
+			if (++mpx === 1) {
 				window.clearInterval(intervalID);			
 				//$('.product-row-container img').load(function(){	
 					$('.product-row-container').removeClass("row-container-loading"); //for new design					
 				//});		
 			}
-		}, 2000);
+		}, 100);
 		/*---new design js end--*/		
 		
 		
@@ -939,3 +1013,24 @@ function insertBraOption() {
     });
 
 }
+
+/*--new design--*/
+jQuery(window).resize(function(){
+	prodnewdetailresize();		
+});
+jQuery(document).ready(function($){
+	var windH = $(window).height();	
+	var imgrowtr = $('.thumb-imgs table.smallimagecontiner tr td img');
+	if(imgrowtr.length > 0){		
+		var px = 0;
+		$('.product-row-container').addClass("row-container-loading"); //for new design
+		var intervalID = setInterval(function () {
+			// logic here			
+			prodnewdetail();
+			if (++px === 2) {
+				window.clearInterval(intervalID);				
+					$('.product-row-container').removeClass("row-container-loading"); //for new design
+			}
+		}, 500);
+	}
+});	

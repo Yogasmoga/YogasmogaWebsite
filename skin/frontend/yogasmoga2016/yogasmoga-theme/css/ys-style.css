@@ -3313,7 +3313,6 @@ width:100%!important;height:100%!important;
 }
 
 /*######## new magento signup #########*/
-body{font:12px/19px graphikregular,gothamBook,arial;letter-spacing:0.4px;}
 #signup.mage-signup{background:url(../images/mage-signupbg.png) #000; background-size:cover; width:100%!important; height:100%!important;}
 #signup.mage-signup #sign_up_box,#signup.mage-signup #thank_you_box{width:100%; max-width:496px;}
 #signup.mage-signup #sign_up_box #popup-register{width:100%; max-width:496px; left:50%; top:50%; bottom:auto; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);}
@@ -3360,6 +3359,7 @@ body{font:12px/19px graphikregular,gothamBook,arial;letter-spacing:0.4px;}
 }
 
 /*######### new design 31-aug-2016############*/
+body{font:12px/19px graphikregular,gothamBook,arial;letter-spacing:0.4px;}
 .product-details .block-head{margin-top: 2px;}
 ul.main-menu li.active a.menu-heading{color:#ae8536;}
 div.search-nav ul li a.current,
@@ -3768,8 +3768,8 @@ float:left; margin-left:-40px; }
 .design-size td {
   border-bottom: 1px solid #999;
   border-right: none;
-  font-size: 12px;
-  line-height: 26px;letter-spacing:0.18px;
+  font-size: 11px;
+  line-height: 26px;letter-spacing:0.4px;
   padding: 2px 6px;
   text-transform: uppercase;
   width: 11.8012%;
@@ -4026,7 +4026,7 @@ input[name="prodTab"]{display:none;}
 
 .product-det-tab [id^="prodTab"]:checked + label{color:#ae8536;}
 
-.prod-tab-content{display:none;font:12px/19px graphikregular;letter-spacing:0.46px;}
+.prod-tab-content{display:none;font:12px/19px graphikregular;}
 #prodTab1:checked ~ #prod-tab-content1,
 #prodTab2:checked ~ #prod-tab-content2,
 #prodTab3:checked ~ #prod-tab-content3{
@@ -4038,7 +4038,7 @@ input[name="prodTab"]{display:none;}
 
 .product-details .pcol-right-content h2, .product-details .pcol-right-content .h2{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.6px;}
 .pcol-right-content .fabDetail > h2,.pcol-right-content .fabDetail > .h2{font:24px/30px avantgardegothicitcw01d;}
-.fabDetail p{font:12px/19px graphikregular;letter-spacing:0.46px;}
+.fabDetail p{font:12px/19px graphikregular;letter-spacing:0.4px;}
 .selectedsize .box-seprtr{display:none;}
 table.selectedcolor{margin-bottom:5px!important;}
 table.productdetailtable div#sizecontainer{margin-top:20px!important;}
@@ -4047,24 +4047,23 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
 .pcol-right-content2 .product-det-tab{padding-top:20px;}
 @media only screen and (max-width : 1599px) {
 .product-row .pcol-left img, .product-row .pcol-right .pcol-right-content{max-height:560px;}	
-.product-row .pcol-left .img_madeinusa{width:170px;}
+.product-row .pcol-left .img_madeinusa{width:100px;}
 .product-details .product-row table.productimagecontainer table.smallimagecontiner td.two-col img{max-height:inherit;}	
 }	
 @media only screen and (max-width : 1024px) {
-.csp-name .csp-link{letter-spacing:0.3px;}
+/*.csp-name .csp-link{letter-spacing:0.3px;}*/
 .selectedcolortext{font-size:12px; line-height:20px;}
 .gry-box .length-name {font-size:12px; line-height:20px; }
 .bra-option >span{font-size:12px; line-height:20px; }
 #productdetails .freeshipptext{font-size:12px; line-height:20px;letter-spacing:0.3px;}	
 .prod-tab-content{font:12px/20px graphikregular;letter-spacing:0.3px;}
-.product-det-tab-bottom p .underline { font: 12px/20px graphikregular;  letter-spacing: 0.3px;}
+.product-det-tab-bottom p .underline { font: 12px/20px graphikregular; /*letter-spacing: 0.3px;*/}
 .pcol-right-content .fabDetail > h2, .pcol-right-content .fabDetail > .h2{line-height:28px;}
-.fabDetail p{line-height:20px; letter-spacing:0.3px;}
-.design-size tr:first-child td{font:11px/11px avantgardegothicitcw01d;letter-spacing:0.3px;padding:4px 6px;}
+.fabDetail p{line-height:20px; /*letter-spacing:0.3px;*/}
+.design-size tr:first-child td{font:11px/26px avantgardegothicitcw01d;/*letter-spacing:0.3px;*/padding:4px 6px;}
 .design-size td:first-child{font-size:11px;}
 .design-size td{font-size:11px; letter-spacing:0.4px;}
 .block-elm .vlink-cont p.block-link a{font-size: 12px; line-height:20px;text-decoration:underline; color:#555;}
-
 /*.product-row .pcol-left .img_madeinusa{width:100px;}*/
 }	
 
