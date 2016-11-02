@@ -1031,6 +1031,6 @@ jQuery(document).ready(function($){
 				window.clearInterval(intervalID);				
 					$('.product-row-container').removeClass("row-container-loading"); //for new design
 			}
-		}, 200);
+		}, 500);
 	}
 });	
