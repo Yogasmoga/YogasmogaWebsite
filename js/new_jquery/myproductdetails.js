@@ -98,7 +98,7 @@ jQuery(document).ready(function($){
 		var intervalID = setInterval(function () {
 			// logic here			
 			prodnewdetail();
-			if (++px === 1) {
+			if (++px === 2) {
 				window.clearInterval(intervalID);				
 					$('.product-row-container').removeClass("row-container-loading"); //for new design
 			}
