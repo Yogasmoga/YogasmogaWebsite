@@ -3373,6 +3373,22 @@ iframe[name="google_conversion_frame"] {
 .shopping-cart input#smogi.gry[disabled="disabled"]::-webkit-input-placeholder,.shopping-cart input#giftcartcode.gry[disabled="disabled"]::-webkit-input-placeholder{opacity:1;color:lightgray!important;}
 .shopping-cart input#smogi.gry[disabled="disabled"]:-ms-input-placeholder,.shopping-cart input#giftcartcode.gry[disabled="disabled"]:-ms-input-placeholder{opacity:1;color:lightgray!important;}
 
+/*filter*/
+/*--------filter by core,select,premium--------*/
+#div_cats{background: #fff none repeat scroll 0 0;
+    box-sizing: border-box;
+    color: #555;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 0;/*margin-right:34px;*/margin-right:40px;
+    position: absolute;right:0;
+    text-align: left;
+    padding-top:6px;
+}
+#div_cats .chk-cats{text-transform:uppercase;}
+#div_cats .chk-cats:last-child{margin-right:0;}
+#div_cats .chk-cats:hover,#div_cats .chk-cats.chk-cats-selected{background:#555; color:#fff;}
+#div_cats.fixed_top {left:auto!important;}
 /*######### new design 31-aug-2016############*/
 body{font:12px/19px graphikregular,gothamBook,arial;letter-spacing:0.4px;}
 .product-details .block-head{margin-top: 2px;}
