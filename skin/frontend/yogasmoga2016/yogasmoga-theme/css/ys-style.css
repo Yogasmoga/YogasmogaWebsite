@@ -3962,7 +3962,7 @@ border:0 none; padding:0;}
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr td{display:block;width:26px!important; float:none!important; margin:0!important;}
 
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(1){
-border-right:0!important;border-left:0!important;border-top:0!important;	border-bottom-width:26px!important; border-bottom-style:solid!important;}
+border-right:0!important;border-left:0!important;border-top:0!important;	border-bottom-width:26px!important; border-bottom-style:solid!important;border-radius:26px;-webkit-border-radius:26px;-moz-border-radius:26px;}
 
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(2){border-right:0!important;border-left:0!important;border-bottom:0!important;	border-top-width:13px!important;
 border-top-style:solid!important; position:absolute; bottom:0;}	
