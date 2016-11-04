@@ -59,8 +59,8 @@ if($row['cnt'] == 1)
 ?>
 <!-- google analyst code  --->
 <?php
-$oId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
-Mage::helper('sharesmogi')->getChildCouponCode($oId);
+//$oId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+//Mage::helper('sharesmogi')->getChildCouponCode($oId);
 $order_details = Mage::getModel('sales/order')->loadByIncrementId(Mage::getSingleton('checkout/session')->getLastRealOrderId());
 $adwords_saleamt = $order_details->subtotal;
 ?>

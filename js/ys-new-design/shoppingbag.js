@@ -498,28 +498,16 @@ function showShoppingBagHtml() {
                 outofstockDisable();
                    //New design promo code related.
                 /*---------promocode update for apply button---*/
-                jQuery(".adddields #smogi").on('keypress focus',function(){
+                /*jQuery(".adddields #smogi").on('keypress focus',function(){
 
                     jQuery(this).next('span').show();
                     jQuery(".adddields #giftcartcode").next('span').hide();
                 });
 
-                /*jQuery(".adddields #smogi").on('keyup blur',function(){
-                 if(jQuery(this).val().length < 0){
-                 jQuery(this).next('span').hide();
-                 }
-
-                 });*/
-
                 jQuery(".adddields #giftcartcode").on('keypress focus',function(){
                     jQuery(this).next('span').show();
                     jQuery(".adddields #smogi").next('span').hide();
-                });
-                /*jQuery(".adddields #giftcartcode").on('keyup blur',function(){
-                 if(jQuery(this).val().length < 1){
-                 jQuery(this).next('span').hide();
-                 }
-                 });*/
+                });*/
                 /*---------promocode update for apply button end---*/
 
                 jQuery('#smogi').prop('disabled', true);
@@ -590,30 +578,19 @@ function showShoppingBagHtmlOpen() {
 
             //New design promo code related.
             /*---------promocode update for apply button---*/
-            jQuery(".adddields #smogi").on('keypress focus',function(){
+            /*jQuery(".adddields #smogi").on('keypress focus',function(){
 
                 jQuery(this).next('span').show();
                 jQuery(".adddields #giftcartcode").next('span').hide();
             });
 
-            /*jQuery(".adddields #smogi").on('keyup blur',function(){
-             if(jQuery(this).val().length < 0){
-             jQuery(this).next('span').hide();
-             }
-
-             });*/
-
             jQuery(".adddields #giftcartcode").on('keypress focus',function(){
                 jQuery(this).next('span').show();
                 jQuery(".adddields #smogi").next('span').hide();
-            });
-            /*jQuery(".adddields #giftcartcode").on('keyup blur',function(){
-             if(jQuery(this).val().length < 1){
-             jQuery(this).next('span').hide();
-             }
-             });*/
-            /*---------promocode update for apply button end---*/
+            });*/
 
+            /*---------promocode update for apply button end---*/
+            jQuery('#smogi').prop('disabled', true);
         }
     });
 }
@@ -685,9 +662,12 @@ function fastShowShoppingBagHtml() {
 
                     jQuery(".cartitemcount").html(data.count);
                     jQuery("li#shop-bag-count span").html(data.count);
+                    jQuery('#smogi').prop('disabled', true);
                     if (data.countdiscount > 1)
                         showerror(data.discounttypeerror);
                     outofstockDisable();
+
+
                 }
             });
         }, 500);

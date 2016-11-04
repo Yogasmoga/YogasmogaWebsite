@@ -126,12 +126,13 @@ if (!$bundledProduct) {
 
         jQuery('document').ready(function(){
             jQuery('#productdetails').before('<div class="block-loader"><img src="<?php echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>"/></div>');
+            var intervalID = setTimeout(function () {
             jQuery('#productdetails').imagesLoaded( function() {
-                // images have loaded
+             jQuery('.block-loader').remove();
                 jQuery('#productdetails').addClass("loaded");
-                jQuery('.block-loader').remove();
-                //alert('product images loaded');
             });
+            }, 1000);
+
         });
     </script>
     <!--<img style="display:none;" src="<?php// echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>"/>-->
@@ -814,6 +815,7 @@ if (!$bundledProduct) {
                     .block-loader > img {
                         position: relative;
                         top: 50%;
+                        z-index: 999999999999;
                         transform: translateY(-50%);
                         -webkit-transform: translateY(-50%);
                     }
@@ -1055,6 +1057,12 @@ if (!$bundledProduct) {
                                             <table class="smallimagecontiner" width="100%">
                                                 <tr></tr>
                                             </table>
+                                            <?php
+                                                $seal = $_product->getAttributeText('product_seal');
+                                                if($seal =='Yes'){
+                                            ?>
+                                            <img alt="made-in-ca" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/madeinusa-seal.png" class="img_madeinusa" draggable="false"/>
+                                            <?php } ?>
                                         </div>
                                     </td>
                                 </tr>
@@ -1077,7 +1085,7 @@ if (!$bundledProduct) {
 					<img alt="main-image5" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img5.jpg" class="" draggable="false">
 				</div>
 				-->
-                            <img alt="made-in-ca" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/madeinusa-seal.png" class="img_madeinusa" draggable="false">
+
                             <!--<img class="img_rnd" src="<?php echo $this->getSkinUrl('images/CA.svg'); ?>" alt="rnd"/>-->
                         </div>
                         <div class="prod-col pcol-right">

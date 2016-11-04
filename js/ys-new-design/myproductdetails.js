@@ -15,21 +15,22 @@ jQuery(window).load(function ($) {
 });
 jQuery(document).ready(function ($) {
     insertBraOption();
+
     /*---New design js--*/
-    var mpx = 0;
+   /* var mpx = 0;
     $('.product-details .product-row').removeClass('interval-ends');
     var intervalID = setInterval(function () {
         // logic here
         prodnewdetail();
         if (++mpx === 1) {
             window.clearInterval(intervalID);
-            $('.product-row-container').removeClass("row-container-loading"); //for new design
+         $('.product-row-container').removeClass("row-container-loading"); //for new design
         }
-    }, 500);
+    }, 2000);*/
     /*---New design js end--*/
 });
 jQuery(window).resize(function(){
-    prodnewdetailresize();
+   prodnewdetailresize();
 });
 
 
@@ -41,29 +42,26 @@ function prodnewdetail(){
     var imgrowh = jQ('.thumb-imgs table.smallimagecontiner tr td img').height();
     jQ('.prod-col .pcol-right-content').height(imgrowh);
 
-    if(jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').length){
-        jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
-        var imgrow4W = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').css({
-            'width': (windW/2) - 5
+    var intervalID = setTimeout(function () {
+        if(jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').length){
+            jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
+            var imgrow4W = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').css({
+                'width': (windW/2) - 5
+            });
+            var pcolRightContent4W = jQ('.pcol-right-content4').css({
+                'width': (windW/2) - 5
+            });
+        }
+        jQ('.prod-col .img_madeinusa').css({
+            'bottom':imgrowh,
+            'opacity':1
         });
-        var pcolRightContent4W = jQ('.pcol-right-content4').css({
-            'width': (windW/2) - 5
-        });
-    }
-
-    var imgrow4w = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').width();
-    var imgrow4h = jQ('.thumb-imgs table.smallimagecontiner tr td:nth-child(4)').height();
+    }, 500);
+    /*
     jQ('.prod-col .img_madeinusa').css({
         'top':imgrowh,
         'opacity':1
-    });
-
-    /*jQ('.prod-col .img_rnd').css({
-        'left':imgrow4w,
-        'bottom':imgrow4h
     });*/
-
-
 }
 function prodnewdetailresize(){
 
@@ -89,16 +87,15 @@ function prodnewdetailresize(){
         'top':imgrowh,
         'opacity':1
     });
-    /*jQuery('.prod-col .img_rnd').css({
-        'left':imgrow4w,
-        'bottom':imgrow4h
-    });*/
+
 }
 
 //Image ..........
 
 
 jQuery(document).ready(function ($) {
+
+
 
     if (_sizesuperattribute == false)
         jQuery(".qty").empty().html("Step 2");
@@ -108,15 +105,18 @@ jQuery(document).ready(function ($) {
             if ($(".selected").prev('div').length) {
                 $(".selected").removeClass('selected').prev('div').addClass('selected');
                 changeColor($(".selected > table").attr("color"));
+
             }
         }
         else if (key == 39) {  ///right key
             if ($(".selected").next('div').length) {
                 $(".selected").removeClass('selected').next('div').addClass('selected');
                 changeColor($(".selected > table").attr("color"));
+
             }
         }
     });
+
     $("table.normalproductdetail div#colorcontainer table").live("click", function () {
         $('.product-row-container').addClass("row-container-loading"); //New design
         currentColorObject = $(this);
@@ -126,6 +126,7 @@ jQuery(document).ready(function ($) {
         changeColor($(this).attr("color"));
 
         selectfirstsizeonload();
+
         //changePartOfGiftSet($(this).attr("value"));
         /*---New design js--*/
         var mpx = 0;
@@ -213,15 +214,18 @@ jQuery(document).ready(function ($) {
         //changePartOfGiftSet(_defaultprcolor);
         if ($("div#colorcontainer table[value='" + _defaultprcolor + "']").length > 0)
             changeColor($("div#colorcontainer table[value='" + _defaultprcolor + "']").attr("color"));
+
         else {
             if ($("div#colorcontainer table:first").length > 0)
                 changeColor($("div#colorcontainer table:first").attr("color"));
+
         }
         //_defaultprcolor = '';
     }
     else {
         if ($("div#colorcontainer table:first").length > 0) {
             changeColor($("div#colorcontainer table:first").attr("color"));
+
             //changePartOfGiftSet(changeColor($("div#colorcontainer table:first").attr("value")));
         }
     }
@@ -770,13 +774,42 @@ function changeColor(clr) {
     }
     else {
         smallimagehtml = '<tr>';
+
         for (i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++) {
             smallimagehtml = smallimagehtml + "<td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i][0] + "' zoomimageurl='" + _productcolorinfo[colorindex].zoomimages[i][0] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i][0] + "' alt='" + _productcolorinfo[colorindex].smallimages[i][1] + "'  title='" + _productcolorinfo[colorindex].smallimages[i][2] + "'></td>";
         }
         smallimagehtml = smallimagehtml + "</tr>";
         jQuery("table.productimagecontainer").hide();
+        //alert(_productcolorinfo[colorindex].smallimages.length);
         jQuery("table.smallimagecontiner tbody").html(smallimagehtml);
+
         if (jQuery("table.smallimagecontiner td").length > 0) {
+
+            // Image resize start.
+            var jQ = jQuery.noConflict();
+            var windW = jQ('#productdetails').width();
+            var imgrowh = jQ('.thumb-imgs table.smallimagecontiner tr td img').height();
+            jQ('.prod-col .pcol-right-content').height(imgrowh);
+
+            var intervalID = setTimeout(function () {
+                if(jQ('table.smallimagecontiner tr td:nth-child(5)').length){
+                    jQ('table.smallimagecontiner tr td:nth-child(4),table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
+                    var imgrow4W = jQ('table.smallimagecontiner tr td:nth-child(4),table.smallimagecontiner tr td:nth-child(5)').css({
+                        'width': (windW/2) - 5
+                    });
+                    var pcolRightContent4W = jQ('.pcol-right-content4').css({
+                        'width': (windW/2) - 5
+                    });
+                }
+
+            }, 200);
+            setTimeout(function () {
+                jQuery('.prod-col .img_madeinusa').css({
+                    'bottom': imgrowh,
+                    'opacity': 1
+                });
+            },1000);
+            // Image resize end.
             if (jQuery("table.tdbigimagecontainer img").length > 0) {
                 setTimeout(function () {
                     // setImageContheightPDP();
@@ -794,9 +827,22 @@ function changeColor(clr) {
             }
             _curshareimgurl = jQuery("table.smallimagecontiner td:first").attr("bigimageurl");
         }
+
+
+
+
+
+
+
+
+
+
+
         jQuery("table.smallimagecontiner td:first").addClass("selectedimage");
         jQuery("table.productimagecontainer").fadeIn('fast');
+
     }
+
     //if(jQuery("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize)").length == 1)
 //    {
 //        changeproductsize(jQuery("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize):first"));
