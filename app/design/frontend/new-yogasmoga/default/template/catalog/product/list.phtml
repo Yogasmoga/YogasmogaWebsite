@@ -383,7 +383,7 @@ if ($this->getRequest()->getParam('hidden')) {
                 }
 
                 // if(in_array($colorId,$configurableProductArr[$key]))
-                if ($check && $imgdata['type'] == 'product image') {
+                if ($check && $imgdata['type'] == 'ys-listing') {
 
                     if (count($imageArr[$colorId]) <= 3) {
                         if (!array_key_exists($colorId, $imageArr)) {
@@ -391,10 +391,12 @@ if ($this->getRequest()->getParam('hidden')) {
                             array_push($imageArr[$colorId], $_image->getFile());
 
                         } else {
+
                             array_push($imageArr[$colorId], $_image->getFile());
                         }
                     }
                 }
+
 
 
             }
@@ -434,6 +436,7 @@ if ($this->getRequest()->getParam('hidden')) {
                     <div class="prod-img">
                         <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl; ?>">
                             <?php
+                            krsort($imageArr[$childProduct['color']]);
                             foreach ($imageArr[$childProduct['color']] as $img) {
                                 ?>
                                 <img alt="<?php echo $confProduct->getName(); ?>" class="prd-image lazy"

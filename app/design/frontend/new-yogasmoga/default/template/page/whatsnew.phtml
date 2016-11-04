@@ -295,7 +295,7 @@
 
                                                     $colorId = $imgdata['color'];
 
-                                                    if($imgdata['type'] == 'product image' && $imgdata['color'] == $simpleproductarr['color'] )
+                                                    if($imgdata['type'] == 'ys-listing' && $imgdata['color'] == $simpleproductarr['color'] )
                                                     {
 
                                                         if(count($imageArr[$colorId])<=3)
@@ -317,6 +317,7 @@
                                                         <div class="prod-img">
                                                             <a href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
                                                                 <?php
+                                                                krsort($simpleproductarr['image']);
                                                                 foreach($simpleproductarr['image'] as $img )
                                                                 {
                                                                     ?>
