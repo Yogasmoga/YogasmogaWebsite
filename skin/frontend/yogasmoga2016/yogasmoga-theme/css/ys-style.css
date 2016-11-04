@@ -3863,10 +3863,10 @@ display:block!important;opacity:1!important;visibility:visible!important;
 .gridWrap .productCont .prod-img .prd-image:nth-child(2){
 display:none!important;opacity:1!important;visibility:visible!important;
 }
-.gridWrap .productCont:hover .prod-img .prd-image:nth-child(2){
+.gridWrap .productCont .prod-img:hover .prd-image:nth-child(2){
 display:block!important;opacity:1!important;visibility:visible!important;
 }
-.gridWrap .productCont:hover .prod-img .prd-image:nth-child(1){
+.gridWrap .productCont .prod-img:hover .prd-image:nth-child(1){
 display:none!important;opacity:1!important;visibility:visible!important;
 }
 
