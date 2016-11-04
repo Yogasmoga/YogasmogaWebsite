@@ -3376,7 +3376,7 @@ div.side-menu-bar ul li a:hover,
 .productCont .caption a:hover{color:#555;}
 .in-bl ul.main-menu2 > li{padding:3px 12px 0 12px;height:38px;float:left;}
 /*.mac-os .in-bl ul.main-menu2 > li{padding:4px 10px 0 10px;}*/ /*-- for mac system --*/
-ul.main-menu2 a.main-heading{height:31px;}
+ul.main-menu2 a.main-heading{height:35px;}
 ul.main-menu > li.active, ul.main-menu2 > li.active{background: none;}
 ul.main-menu li a.menu-heading:hover,ul.main-menu li.active a.menu-heading,
 ul.main-menu2 li a.menu-heading:hover,ul.main-menu2 li.active a.menu-heading
@@ -4525,7 +4525,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .bubbleimg:hover img{animation:bubbleicon 0.2s linear;-webkit-animation:bubbleicon 0.2s linear;}
  #globalheader.header{ padding:0 30px;}
 .header-container.showhide{box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-webkit-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-moz-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);}
-.main-menu.main-menu2 .sub-menu{margin-top:4px;}
+.main-menu.main-menu2 .sub-menu{margin-top:0px;}
 .mac-osys .main-menu.main-menu2 .sub-menu{margin-top:3px;/*--for macsystem--*/}
 
 table.productdetailtable div.outofstockitem{
