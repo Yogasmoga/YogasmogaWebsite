@@ -2830,7 +2830,7 @@ table.smallimagecontiner td.selectedimage{
     margin-right: 13px;
 }
 
-.chk-size {
+.chk-size,.chk-cats {
     background: #fff none repeat scroll 0 0;
     border: 1px solid #a9a9a9;
     box-sizing: border-box;
@@ -2839,7 +2839,7 @@ table.smallimagecontiner td.selectedimage{
     display: inline-block;
     height: 20px;
     font: 12px/16px GothamBook;
-    margin: 0 7px 0 0;
+    margin: 0 5px 0 0;
     min-width: 20px;
     padding: 1px 4px;
     text-align: center;
