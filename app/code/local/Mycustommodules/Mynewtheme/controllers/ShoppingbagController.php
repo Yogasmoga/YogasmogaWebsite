@@ -849,8 +849,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             {
             
 			//  $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
-				$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
-			
+			//	$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+                $smogiplaceholder = "SMOGI Bucks can not be applied with other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
                 $applysmogi="";
@@ -866,7 +866,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             {
                 //$gryclassgift = "gry";
                // $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
-			   $smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+			   //$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+                $smogiplaceholder="SMOGI Bucks can not be applied with other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";
@@ -1705,7 +1706,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if($checkpromoapplied)
             {
             //$smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
-			$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+			//$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+                $smogiplaceholder = "SMOGI Bucks can not be applied with other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
                 $applysmogi="";
@@ -1721,7 +1723,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             {
                 //$gryclassgift = "gry";
             //  $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
-				$smogiplaceholder = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+				//$smogiplaceholder = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+                $smogiplaceholder = "SMOGI Bucks can not be applied with other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";

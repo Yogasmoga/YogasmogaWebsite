@@ -800,7 +800,7 @@ function changeColor(clr) {
                 });
             }
 
-        }, 100);
+        }, 1000);
         setTimeout(function () {
             jQuery('.prod-col .img_madeinusa').css({
                 'bottom': imgrowh,
