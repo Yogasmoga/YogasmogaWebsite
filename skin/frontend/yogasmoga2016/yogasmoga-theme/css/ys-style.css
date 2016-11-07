@@ -4562,7 +4562,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 #globalheader.header{ padding:0 30px;}
 .header-container.showhide{box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-webkit-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-moz-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);}
 .main-menu.main-menu2 .sub-menu{margin-top:0px;}
-.mac-osys .main-menu.main-menu2 .sub-menu{margin-top:3px;/*--for macsystem--*/}
+.mac-osys .main-menu.main-menu2 .sub-menu{margin-top:0px;/*--for macsystem--*/}
 
 table.productdetailtable div.outofstockitem{
     background: url("../images/catalog/product/out-of-stock-dis-v2.png") no-repeat scroll center center rgba(0, 0, 0, 0)!important;
