@@ -253,9 +253,12 @@
                                         <?php foreach ($_subcategories as $_subcategory): ?>
                                             <li class="menu-item">
                                                 <i></i>
-                                                <a class="menu-link sub_cat" rel="cat_<?php echo $_subcategory->getId();?>" data="cat_<?php echo $_category->getId(); ?>"
-                                                   href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
-                                                    <?php echo $_subcategory->getName() ?></a>
+                                                <?php if($_subcategory->getId() == 131 || $_subcategory->getId() == 132 || $_subcategory->getId() == 133 || $_subcategory->getId() == 134): ?>
+                                                <?php else: ?>
+                                                    <a class="menu-link sub_cat" rel="cat_<?php echo $_subcategory->getId();?>" data="cat_<?php echo $_category->getId(); ?>"
+                                                       href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
+                                                        <?php echo $_subcategory->getName() ?></a>
+                                                <?php endif; ?>
 
 
                                                 <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
