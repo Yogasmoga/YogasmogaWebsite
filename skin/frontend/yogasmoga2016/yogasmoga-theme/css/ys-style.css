@@ -2582,7 +2582,7 @@ table.referfriendforms td.success img{cursor:default !important;}
 
 /*for mac os**/
 /*
-body.mac-os ul.main-menu2 a.main-heading{height:30px !important;}
+body.mac-os ul.main-menu2 a.main-heading{height:35px !important;}
 body.mac-os ul.main-menu li a.menu-heading{padding-top:39px; padding-bottom:7px;}
 body.mac-os ul.main-menu2 > li{margin-top: 2px;} 
 body.mac-os ul.tr-menu>li.free-shipping{line-height: 15px;}
@@ -3409,9 +3409,9 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a:hover{color:#ae8536;}
 .leftnav a.current{color:#ae8536!important;}
 .productCont .caption a:hover{color:#555;}
-.in-bl ul.main-menu2 > li{padding:3px 10px 0 10px;height:38px;}
+.in-bl ul.main-menu2 > li{padding:3px 12px 0 12px;height:38px;float:left;}
 /*.mac-os .in-bl ul.main-menu2 > li{padding:4px 10px 0 10px;}*/ /*-- for mac system --*/
-ul.main-menu2 a.main-heading{height:31px;}
+ul.main-menu2 a.main-heading{height:35px;}
 ul.main-menu > li.active, ul.main-menu2 > li.active{background: none;}
 ul.main-menu li a.menu-heading:hover,ul.main-menu li.active a.menu-heading,
 ul.main-menu2 li a.menu-heading:hover,ul.main-menu2 li.active a.menu-heading
@@ -3791,7 +3791,7 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
     border-bottom: 1px solid #999;
     border-top: 1px solid #999;
     font:11px/26px avantgardegothicitcw01d;letter-spacing:0.6px;
-    padding: 0 6px;
+    padding: 2px 6px;
     text-transform:uppercase;
 }
 .design-size td:first-child {
@@ -3898,10 +3898,10 @@ ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a{font-size:11px; line-heigh
 .gridWrap .productCont .prod-img .prd-image:nth-child(2){
     display:none!important;opacity:1!important;visibility:visible!important;
 }
-.gridWrap .productCont:hover .prod-img .prd-image:nth-child(2){
+.gridWrap .productCont .prod-img:hover .prd-image:nth-child(2){
     display:block!important;opacity:1!important;visibility:visible!important;
 }
-.gridWrap .productCont:hover .prod-img .prd-image:nth-child(1){
+.gridWrap .productCont .prod-img:hover .prd-image:nth-child(1){
     display:none!important;opacity:1!important;visibility:visible!important;
 }
 
@@ -3919,7 +3919,7 @@ ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a{font-size:11px; line-heigh
 .product-row.product-row-last .pcol-right{background:#f4f4f4;margin-left:10px;width:33.375%;right:0;text-align:center;}
 .product-row.product-row-last .pcol-right img{position:relative; top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%);}
 /*.product-row .pcol-left .image-row-first,.product-row .pcol-left .image-row4{position:relative;}*/
-.product-row .pcol-left .img_madeinusa{opacity:0; position:absolute;top:560px; margin-top: -30px; left:30px;width:200px;/*width:10.625%;*/ transform:translateY(-100%);-webkit-transform:translateY(-100%);}
+.product-row .pcol-left .img_madeinusa{opacity:0; position:absolute;top:560px; margin-top: -30px; left:30px;width:100px;/*width:10.625%;*/ transform:translateY(-100%);-webkit-transform:translateY(-100%);}
 
 .product-row .pcol-left .img_rnd{position:absolute; bottom:0; left:0;width:170px; height:auto;margin-bottom:60px;
     transform:translate(-100%,100%);-webkit-transform:translate(-100%,100%);margin-left:-25px; display:none;}
@@ -3978,6 +3978,7 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .product-det-tab-bottom p span{font:12px/12px graphikregular;}
 .product-det-tab-bottom p .strong{display:block;font:11px/16px avantgardegothicitcw01d;letter-spacing:0.3px;text-transform:uppercase;}
 .product-det-tab-bottom p .underline {font: 12px/19px graphikregular;letter-spacing: 0.46px;text-decoration: underline;}
+.product-det-tab-bottom p .underline:hover{color:#ae8536}
 .csp-name-list{margin:30px 0 0 0; display:none;}
 .csp-name-list span{display:inline-block;font:12px/24px avantgardegothicitcw01d;color:#ccc;border-left:1px solid #ccc; padding:0 14px;min-width:50px;
     text-transform:uppercase;}
@@ -3997,7 +3998,7 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div table tr td{display:block;width:26px!important; float:none!important; margin:0!important;}
 
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(1){
-    border-right:0!important;border-left:0!important;border-top:0!important;	border-bottom-width:26px!important; border-bottom-style:solid!important;}
+    border-right:0!important;border-left:0!important;border-top:0!important;	border-bottom-width:26px!important; border-bottom-style:solid!important;border-radius:26px;-webkit-border-radius:26px;-moz-border-radius:26px;}
 
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(2){border-right:0!important;border-left:0!important;border-bottom:0!important;	border-top-width:13px!important;
     border-top-style:solid!important; position:absolute; bottom:0;}
@@ -4096,7 +4097,7 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
     .product-det-tab-bottom p .underline { font: 12px/20px graphikregular; /*letter-spacing: 0.3px;*/}
     .pcol-right-content .fabDetail > h2, .pcol-right-content .fabDetail > .h2{line-height:28px;}
     .fabDetail p{line-height:20px; /*letter-spacing:0.3px;*/}
-    .design-size tr:first-child td{font:11px/26px avantgardegothicitcw01d;/*letter-spacing:0.3px;*/padding:4px 6px;}
+    .design-size tr:first-child td{font:11px/26px avantgardegothicitcw01d;/*letter-spacing:0.3px;*/padding:2px 6px;}
     .design-size td:first-child{font-size:11px;}
     .design-size td{font-size:11px; letter-spacing:0.4px;}
     .block-elm .vlink-cont p.block-link a{font-size: 12px; line-height:20px;text-decoration:underline; color:#555;}
@@ -4560,7 +4561,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .bubbleimg:hover img{animation:bubbleicon 0.2s linear;-webkit-animation:bubbleicon 0.2s linear;}
 #globalheader.header{ padding:0 30px;}
 .header-container.showhide{box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-webkit-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);-moz-box-shadow:0 16px 28px -20px rgba(150, 150, 150, 0.25);}
-.main-menu.main-menu2 .sub-menu{margin-top:4px;}
+.main-menu.main-menu2 .sub-menu{margin-top:0px;}
 .mac-osys .main-menu.main-menu2 .sub-menu{margin-top:3px;/*--for macsystem--*/}
 
 table.productdetailtable div.outofstockitem{

@@ -781,35 +781,41 @@ function changeColor(clr) {
         smallimagehtml = smallimagehtml + "</tr>";
         jQuery("table.productimagecontainer").hide();
         //alert(_productcolorinfo[colorindex].smallimages.length);
+
+
+        // Image resize start.
+        var jQ = jQuery.noConflict();
+        var windW = jQ('#productdetails').width();
+        var imgrowh = jQ('.thumb-imgs table.smallimagecontiner tr td img').height();
+        jQ('.prod-col .pcol-right-content').height(imgrowh);
+
+        var intervalID = setTimeout(function () {
+            if(jQ('table.smallimagecontiner tr td:nth-child(5)').length){
+                jQ('table.smallimagecontiner tr td:nth-child(4),table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
+                var imgrow4W = jQ('table.smallimagecontiner tr td:nth-child(4),table.smallimagecontiner tr td:nth-child(5)').css({
+                    'width': (windW/2) - 5
+                });
+                var pcolRightContent4W = jQ('.pcol-right-content4').css({
+                    'width': (windW/2) - 5
+                });
+            }
+
+        }, 100);
+        setTimeout(function () {
+            jQuery('.prod-col .img_madeinusa').css({
+                'bottom': imgrowh,
+                'opacity': 1
+            });
+        },1000);
+        // Image resize end.
+
+
         jQuery("table.smallimagecontiner tbody").html(smallimagehtml);
+
 
         if (jQuery("table.smallimagecontiner td").length > 0) {
 
-            // Image resize start.
-            var jQ = jQuery.noConflict();
-            var windW = jQ('#productdetails').width();
-            var imgrowh = jQ('.thumb-imgs table.smallimagecontiner tr td img').height();
-            jQ('.prod-col .pcol-right-content').height(imgrowh);
 
-            var intervalID = setTimeout(function () {
-                if(jQ('table.smallimagecontiner tr td:nth-child(5)').length){
-                    jQ('table.smallimagecontiner tr td:nth-child(4),table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
-                    var imgrow4W = jQ('table.smallimagecontiner tr td:nth-child(4),table.smallimagecontiner tr td:nth-child(5)').css({
-                        'width': (windW/2) - 5
-                    });
-                    var pcolRightContent4W = jQ('.pcol-right-content4').css({
-                        'width': (windW/2) - 5
-                    });
-                }
-
-            }, 200);
-            setTimeout(function () {
-                jQuery('.prod-col .img_madeinusa').css({
-                    'bottom': imgrowh,
-                    'opacity': 1
-                });
-            },1000);
-            // Image resize end.
             if (jQuery("table.tdbigimagecontainer img").length > 0) {
                 setTimeout(function () {
                     // setImageContheightPDP();
