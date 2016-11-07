@@ -140,7 +140,7 @@ jQuery(document).ready(function ($) {
                 $('.product-row-container').removeClass("row-container-loading"); //for new design
                 //});
             }
-        }, 100);
+        }, 1000);
         /*---New design js end--*/
     });
 
@@ -783,31 +783,7 @@ function changeColor(clr) {
         //alert(_productcolorinfo[colorindex].smallimages.length);
 
 
-        // Image resize start.
-        var jQ = jQuery.noConflict();
-        var windW = jQ('#productdetails').width();
-        var imgrowh = jQ('.thumb-imgs table.smallimagecontiner tr td img').height();
-        jQ('.prod-col .pcol-right-content').height(imgrowh);
 
-        var intervalID = setTimeout(function () {
-            if(jQ('table.smallimagecontiner tr td:nth-child(5)').length){
-                jQ('table.smallimagecontiner tr td:nth-child(4),table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
-                var imgrow4W = jQ('table.smallimagecontiner tr td:nth-child(4),table.smallimagecontiner tr td:nth-child(5)').css({
-                    'width': (windW/2) - 5
-                });
-                var pcolRightContent4W = jQ('.pcol-right-content4').css({
-                    'width': (windW/2) - 5
-                });
-            }
-
-        }, 1000);
-        setTimeout(function () {
-            jQuery('.prod-col .img_madeinusa').css({
-                'bottom': imgrowh,
-                'opacity': 1
-            });
-        },1000);
-        // Image resize end.
 
 
         jQuery("table.smallimagecontiner tbody").html(smallimagehtml);
@@ -815,6 +791,32 @@ function changeColor(clr) {
 
         if (jQuery("table.smallimagecontiner td").length > 0) {
 
+            // Image resize start.
+            jQuery.noConflict();
+            var windW = jQuery('#productdetails').width();
+            var imgrowh = jQuery('.thumb-imgs table.smallimagecontiner tr td img').height();
+
+
+            var intervalID = setTimeout(function () {
+                if(jQuery('table.smallimagecontiner tr td:nth-child(5)').length){
+                    jQuery('table.smallimagecontiner tr td:nth-child(4),table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
+                    var imgrow4W = jQuery('table.smallimagecontiner tr td:nth-child(4),table.smallimagecontiner tr td:nth-child(5)').css({
+                        'width': (windW/2) - 5
+                    });
+                    var pcolRightContent4W = jQuery('.pcol-right-content4').css({
+                        'width': (windW/2) - 5
+                    });
+                }
+                jQuery('.prod-col .pcol-right-content').height(imgrowh);
+
+            }, 200);
+            setTimeout(function () {
+                jQuery('.prod-col .img_madeinusa').css({
+                    'bottom': imgrowh,
+                    'opacity': 1
+                });
+            },500);
+            // Image resize end.
 
             if (jQuery("table.tdbigimagecontainer img").length > 0) {
                 setTimeout(function () {
