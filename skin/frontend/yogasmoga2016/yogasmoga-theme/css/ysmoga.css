@@ -1000,7 +1000,7 @@ ul.main-menu > li.rangoli:hover,ul.main-menu > li.no-arrow:hover {
 
 /** CheckOutThankyouPage **/
 .confirmation-page {
-    border-top: 1px solid #999;
+    /*border-top: 1px solid #999;*/
     margin: 29px 40px 0;
     padding: 62px 0 0 !important;
 }

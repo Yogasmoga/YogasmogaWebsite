@@ -140,7 +140,7 @@ jQuery(document).ready(function ($) {
                 $('.product-row-container').removeClass("row-container-loading"); //for new design
                 //});
             }
-        }, 500);
+        }, 1000);
         /*---New design js end--*/
     });
 
