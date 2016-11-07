@@ -68,7 +68,11 @@ if (isset($page) && $page == '11') {
                     } ?>" alt=""/>
                     <span><?php echo $_category->getMobileDescription(); ?></span>
                     <?php if (!$_category->getThumbnail()) { ?>
-                        <span class="over-text"><?php echo $_category->getName(); ?></span>
+                        <?php if($_category->getId() == 131 || $_category->getId() == 132 || $_category->getId() == 133 || $_category->getId() == 134): ?>
+                            
+                            <?php else:?>
+                            <span class="over-text"><?php echo $_category->getName(); ?></span>
+                            <?php endif;?>
                     <?php } ?>
                 </a>
             </div>
