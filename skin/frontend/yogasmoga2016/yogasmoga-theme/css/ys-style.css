@@ -4666,6 +4666,10 @@ table.productdetailtable div.outofstockitem{
 @media screen and (min-width: 1600px) {
     .banner_avant_grade_demi{ font: 42px/46px AvantGardeGothicITCW01D;}
     .banner-avant-grade-bk-small{ font: 42px/46px ITCAvantGardeProBk;}
+    /*-------Made in USA Seal on product page.*/
+    .product-row .pcol-left .img_madeinusa{ top: 877px;}
+
+
 }
 
 .adddields input {
