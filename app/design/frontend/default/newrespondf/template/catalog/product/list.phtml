@@ -51,7 +51,9 @@ if (isset($page) && $page == '11') {
         $_category = Mage::getModel('catalog/category')->load($subCatid);
         if ($_category->getIsActive()) {
             ?>
-            <div class="category-box">
+            <?php if($_category->getId() == 131 || $_category->getId() == 132 || $_category->getId() == 133 || $_category->getId() == 134): ?>
+            <?php else:?>
+                <div class="category-box">
                 <h2 style="display:none;">
                     <?php if($_category->getId()==78 || $_category->getId()==79): ?>
                         <?php echo $this->__('Workout in Black')?>
@@ -68,15 +70,11 @@ if (isset($page) && $page == '11') {
                     } ?>" alt=""/>
                     <span><?php echo $_category->getMobileDescription(); ?></span>
                     <?php if (!$_category->getThumbnail()) { ?>
-                        <?php if($_category->getId() == 131 || $_category->getId() == 132 || $_category->getId() == 133 || $_category->getId() == 134): ?>
-                            
-                            <?php else:?>
                             <span class="over-text"><?php echo $_category->getName(); ?></span>
-                            <?php endif;?>
                     <?php } ?>
                 </a>
             </div>
-            <!--            <div class="clearfix"></div>-->
+            <?php endif;?>
 
             <?php
         }
