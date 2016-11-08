@@ -74,9 +74,15 @@
     }
 ?>
 
-
+<?php $_product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());
+      $headerBg = $_product->getAttributeText('header_color');
+        $greyHeader="";
+        if($headerBg == 'Yes'){
+            $greyHeader="grey-header-bg";
+        }
+?>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().' '.$greyHeader.'"':'' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
     <?php echo $this->getChildHtml('global_notices') ?>

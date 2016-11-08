@@ -4698,3 +4698,6 @@ table.productdetailtable div.outofstockitem{
 .shopping-cart .adddields input#smogi::-moz-placeholder{pointer-events:none;opacity:1;color:#555!important; font-family:graphikregular; font-size:12px;}
 .shopping-cart .adddields input#smogi:-ms-input-placeholder{pointer-events:none;opacity:1;color:#555!important; font-family:graphikregular; font-size:12px;}
 
+.grey-header-bg #ysheader.header-container.scrolled-effect{background: #f4f4f4!important;}
+.grey-header-bg #ysheader.header-container{background: #f4f4f4!important;}
+
