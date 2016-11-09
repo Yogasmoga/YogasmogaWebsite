@@ -4006,6 +4006,9 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected tr::before,.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div:hover  tr::before {
     background: #fff none repeat scroll 0 0;border-radius: 10px;content: "";display: inline-block;height: 8px;left: 50%;position: absolute;
     top: 50%;transform: translate(-50%, -50%);width: 8px; z-index: 1;}
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected tr.light-color::before,.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div:hover  tr.light-color::before {
+    background: #555 none repeat scroll 0 0;border-radius: 10px;content: "";display: inline-block;height: 8px;left: 50%;position: absolute;
+    top: 50%;transform: translate(-50%, -50%);width: 8px; z-index: 1;}
 
 /*table.productdetailtable div#colorcontainer{margin-bottom:10px!important;}  */
 
@@ -4553,7 +4556,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .showhide .header-banner .header-banner-block{border-bottom:1px solid #777777;}
 
 .common-listing .header-banner .header-banner-block,.catalog-product-view .header-banner .header-banner-block{border-bottom:1px solid #777777;}
-.catalog-category-view.common-listing  .header-banner .header-banner-block{border-bottom:1px solid #fff;}
+/*.catalog-category-view.common-listing  .header-banner .header-banner-block{border-bottom:1px solid #fff;}*/
 .catalog-category-view.common-listing  .showhide  .header-banner .header-banner-block{border-bottom:1px solid #777;}
 
 .categorypath-women-ranges-core.catalog-category-view.common-listing  .header-banner .header-banner-block,.categorypath-men-ranges-core.catalog-category-view.common-listing  .header-banner .header-banner-block{border-bottom:1px solid #777777;}

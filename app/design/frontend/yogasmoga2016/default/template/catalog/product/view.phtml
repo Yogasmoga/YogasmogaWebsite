@@ -1250,7 +1250,7 @@ if (!$bundledProduct) {
                                                                         <div>
                                                                             <table color="<?php echo $key; ?>"
                                                                                    value="<?php echo $colorInfo['value']; ?>">
-                                                                                <tr>
+                                                                                <tr <?php if($colorInfo['value'] == 106 || $colorInfo['value'] == 306 || $colorInfo['value'] == 300):?>class="light-color"<?php endif?>>
                                                                                     <?php
 
                                                                                     foreach ($colorInfo['hex'] as $hex) {
