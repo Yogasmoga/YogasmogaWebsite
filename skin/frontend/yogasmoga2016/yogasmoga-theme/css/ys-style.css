@@ -4003,8 +4003,12 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .gry-box #absproductoptions table.productdetailtable div#colorcontainer > div tr:nth-child(1) td:nth-child(2){border-right:0!important;border-left:0!important;border-bottom:0!important;	border-top-width:13px!important;
     border-top-style:solid!important; position:absolute; bottom:0;}
 
-.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected tr::before,.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div:hover tr::before {
-    background: #fff none repeat scroll 0 0;border-radius: 10px;content: "";display: inline-block;height: 8px;left: 50%;position: absolute;
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected tr::before,.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div:hover  tr::before {
+    background: #555 none repeat scroll 0 0;border-radius: 10px;content: "";display: inline-block;height: 8px;left: 50%;position: absolute;
+    top: 50%;transform: translate(-50%, -50%);width: 8px; z-index: 1;}
+
+.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div.selected table[value~='106'] tr::before,.gry-box #absproductoptions table.productdetailtable div#colorcontainer > div:hover table[value~='106'] tr::before {
+    background: #555 none repeat scroll 0 0;border-radius: 10px;content: "";display: inline-block;height: 8px;left: 50%;position: absolute;
     top: 50%;transform: translate(-50%, -50%);width: 8px; z-index: 1;}
 /*table.productdetailtable div#colorcontainer{margin-bottom:10px!important;}  */
 
@@ -4387,11 +4391,11 @@ ul.main-menu2 li ul.sub-menu.stores-nav li a.boldtxt{
     right: 0;}
 .csp-block .csp-inner-block > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;color:#555;}
 .csp-block .csp-inner-block .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;margin:1.5% 0 1.5%;color:#555;}
-.csp-block .csp-inner-block .csp-info{font: 14px/21px graphikregular;letter-spacing:0.2px;color:#555;}
+.csp-block .csp-inner-block .csp-info{font: 14px/24px graphikregular;letter-spacing:0.8px;color:#555;}
 /**** white text *****/
 .csp-block .csp-inner-block.whitetxt > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;}
 .csp-block .csp-inner-block.whitetxt .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;margin:1% 0 1%;}
-.csp-block .csp-inner-block.whitetxt .csp-info{font: 14px/21px graphikregular;letter-spacing:0.2px;color:#fff;}
+.csp-block .csp-inner-block.whitetxt .csp-info{font: 14px/24px graphikregular;letter-spacing:0.8px;color:#fff;}
 
 /**************** csp css ends **************************/
 
@@ -4700,4 +4704,6 @@ table.productdetailtable div.outofstockitem{
 
 .grey-header-bg #ysheader.header-container.scrolled-effect{background: #f4f4f4!important;}
 .grey-header-bg #ysheader.header-container{background: #f4f4f4!important;}
-
+/******--------grey background edited by fahim-------****/
+.grey-header-bg .page{ background: #f4f4f4}
+.grey-header-bg .product-details{ background: #fff!important;}

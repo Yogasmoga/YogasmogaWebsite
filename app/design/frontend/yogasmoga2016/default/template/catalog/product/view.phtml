@@ -1205,7 +1205,7 @@ if (!$bundledProduct) {
                                                                 ?>
                                                                 <?php if($rangeName):?>
                                                                 <a class="csp-link <?php echo strtolower($rangeName->getName());?>" href="#"><?php echo $rangeName->getName();?></a>
-                                                            <?php endif; ?>
+                                                            <?php  break; endif; ?>
                                                             <?php endforeach; ?>
                                                         </div>
                                                         <div class="prdname">
