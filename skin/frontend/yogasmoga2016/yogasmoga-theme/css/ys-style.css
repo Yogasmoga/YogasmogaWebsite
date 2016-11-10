@@ -3394,6 +3394,7 @@ iframe[name="google_conversion_frame"] {
 #div_cats .chk-cats:hover,#div_cats .chk-cats.chk-cats-selected{background:#555; color:#fff;}
 #div_cats.fixed_top {left:auto!important;}
 /*######### new design 31-aug-2016############*/
+.productCont .caption{display: inline-block; font: 11px/16px gothambold; margin: 19px auto auto; width:auto; text-transform: uppercase; min-height: 80px;}
 body{font:12px/19px graphikregular,gothamBook,arial;letter-spacing:0.4px;}
 .product-details .block-head{margin-top: 2px;}
 ul.main-menu li.active a.menu-heading{color:#ae8536;}
