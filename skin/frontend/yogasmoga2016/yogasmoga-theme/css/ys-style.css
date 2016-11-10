@@ -4358,7 +4358,10 @@ transform: translateY(-50%);
 	.csp-block .csp-inner-block.whitetxt > span{ font: 11px/11px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;}
 	.csp-block .csp-inner-block.whitetxt .cspbldtxt{font: 42px/34px avantgardegothicitcw01d;letter-spacing:0.5px;color:#fff;margin:1% 0 1%;}
 	.csp-block .csp-inner-block.whitetxt .csp-info{font: 14px/21px graphikregular;letter-spacing:0.2px;color:#fff;}
-	
+	.csp-block .range-seal{ bottom: 11%;
+    position: absolute;
+    right: 3%;
+    width: 100px;}
 /**************** csp css ends **************************/
 
 .women-collection-banner.firstbanner  .new-collection-block{margin-top:46px;}
