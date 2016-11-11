@@ -485,19 +485,25 @@ jQuery(document).ready(function(){
 	});
 
 	/*--for hover effect--*/
-	jQuery(".sign-in-block").mouseover(function(){
-		jQuery(".signinDialog").addClass("sign-in-hover");		
-	});
-	jQuery(".sign-in-block").mouseout(function(){
-		jQuery(".signinDialog").removeClass("sign-in-hover");		
-	});
+	if(!jQuery(".signinDialog").hasClass('mouseleft')){
+			jQuery(".sign-in-block").mouseover(function(){
+				jQuery(".signinDialog").addClass("sign-in-hover");		
+			});
+			jQuery(".sign-in-block").mouseout(function(){
+				jQuery(".signinDialog").removeClass("sign-in-hover");		
+			});
+	}
 	
-	jQuery(".sign-up-block").mouseover(function(){
-		jQuery(".signinDialog").addClass("sign-up-hover");		
-	});
-	jQuery(".sign-up-block").mouseout(function(){
-		jQuery(".signinDialog").removeClass("sign-up-hover");		
-	});
+	if(jQuery(".signinDialog").hasClass('mouseleft')){
+			jQuery(".sign-up-block").mouseover(function(){
+				jQuery(".signinDialog").addClass("sign-up-hover");		
+			});
+			jQuery(".sign-up-block").mouseout(function(){
+				jQuery(".signinDialog").removeClass("sign-up-hover");		
+			});
+	}	
+	
+	
 	
 	jQuery('.logged-out').click(function(){
 		var signInHT = jQuery(".sign-in-block").height();
