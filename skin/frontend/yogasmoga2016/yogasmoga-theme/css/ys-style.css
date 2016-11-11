@@ -4597,6 +4597,9 @@ table.productdetailtable div.outofstockitem{
 .women-collection .new-collection-block .carbon6-men{max-width:3.75%;}
 .women-collection .new-collection-block .golf-men{max-width:4.375%;}
 
+/*--for ys stores--*/
+.namaskar-overlay1{top:49px;}
+
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:13px;}
