@@ -482,8 +482,43 @@ jQuery(document).ready(function(){
 	}); 
 	jQuery(".sign-up-block").click(function(){
     jQuery(".signinDialog").removeClass("moveleft");
-	}); 
+	});
+
+	/*--for hover effect--*/
+	jQuery(".sign-in-block").mouseover(function(){
+		jQuery(".signinDialog").addClass("sign-in-hover");		
+	});
+	jQuery(".sign-in-block").mouseout(function(){
+		jQuery(".signinDialog").removeClass("sign-in-hover");		
+	});
 	
+	jQuery(".sign-up-block").mouseover(function(){
+		jQuery(".signinDialog").addClass("sign-up-hover");		
+	});
+	jQuery(".sign-up-block").mouseout(function(){
+		jQuery(".signinDialog").removeClass("sign-up-hover");		
+	});
+	
+	jQuery('.logged-out').click(function(){
+		var signInHT = jQuery(".sign-in-block").height();
+		var signUpHT = jQuery(".sign-up-block").height();
+		//alert(signInHT);
+		//alert(signUpHT);		
+		if(signUpHT > signInHT ){
+			jQuery(".sign-in-block").css({
+				'min-height': signUpHT
+			});			
+		}
+		else{
+			jQuery(".sign-up-block").css({
+				'min-height': signInHT
+			});
+		}	
+	});
+	
+	
+	
+	/*---to make button gold if all fields are filled--*/
 	jQuery('#sign-in-form #si_email,#sign-in-form #si_password').on('focus keyup',function(){
 			if(jQuery('#si_email').val().length > 1 && jQuery('#si_password').val().length > 1){					
 				jQuery('#sign-in-button').addClass('button-on');		
