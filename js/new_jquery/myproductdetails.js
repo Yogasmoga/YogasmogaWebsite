@@ -125,13 +125,13 @@ jQuery(document).ready(function ($) {
 		var intervalID = setInterval(function () {
 			// logic here
 			prodnewdetail();
-			if (++mpx === 1) {
+			if (++mpx === 3) {
 				window.clearInterval(intervalID);			
 				//$('.product-row-container img').load(function(){	
 					$('.product-row-container').removeClass("row-container-loading"); //for new design					
 				//});		
 			}
-		}, 100);
+		}, 1000);
 		/*---new design js end--*/		
 		
 		
@@ -1027,10 +1027,10 @@ jQuery(document).ready(function($){
 		var intervalID = setInterval(function () {
 			// logic here			
 			prodnewdetail();
-			if (++px === 3) {
+			if (px++ === 5) {
 				window.clearInterval(intervalID);				
 					$('.product-row-container').removeClass("row-container-loading"); //for new design
 			}
-		}, 500);
+		}, 2000);
 	}
 });	

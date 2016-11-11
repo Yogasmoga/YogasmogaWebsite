@@ -1054,6 +1054,12 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
                                     <table class="smallimagecontiner" width="100%">
                                         <tr></tr>
                                     </table>
+                                    <?php
+                                    $seal = $_product->getAttributeText('product_seal');
+                                    if($seal =='Yes'){
+                                    ?>
+                                    <img alt="made-in-ca" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/madeinusa-seal.png" class="img_madeinusa" draggable="false"/>
+                                    <?php } ?>
                                 </div>
                             </td>
                         </tr>
@@ -1076,7 +1082,7 @@ if ($productId === 1808 || $productId === 1810 || $productId === 1822 || $produc
 					<img alt="main-image5" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/women-page/new-desgin-img5.jpg" class="" draggable="false">
 				</div>
 				-->
-				<img alt="made-in-ca" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/madeinusa-seal.png" class="img_madeinusa" draggable="false">
+
 				<img class="img_rnd" src="<?php echo $this->getSkinUrl('images/CA.svg'); ?>" alt="rnd"/>
 			</div>
 			<div class="prod-col pcol-right">
@@ -1678,15 +1684,18 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
 									$finalIds = array_intersect($catIds, $printCollection);?>
 								<?php if(!empty($finalIds)){?>
                                 <p><span class="strong"><?php echo $_product->getName();?> is a Part of:</span>
-                               <?php $countPart = 1;
-								foreach($finalIds as $printId){
-									if($countPart > 0){
-									$printCat = Mage::getModel('catalog/category')->load($printId);?>
-									<a class="underline" href="<?php echo $printCat->getUrl();?>"><?php echo $printCat->getName()?></a>,
-									  <?php } else{?>
-									   <?php  $printCat = Mage::getModel('catalog/category')->load($printId);?>
-										<a class="underline" href="<?php echo $printCat->getUrl();?>"><?php echo $printCat->getName()?></a>
-								 <?php } $countPart++; } ?>
+                                    <?php $j = 1;
+                                    foreach($finalIds as $printId){
+                                        $printCat = Mage::getModel('catalog/category')->load($printId);
+                                        if($j == 1){
+                                            ?>
+                                            <a class="underline" href="<?php echo $printCat->getUrl();?>"><?php echo $printCat->getName()?></a>
+                                        <?php }
+                                        elseif($j > 1){?>
+                                            , <a class="underline" href="<?php echo $printCat->getUrl();?>"><?php echo $printCat->getName()?></a>
+                                        <?php }
+
+                                        $j++; } ?>
 							    </p>
                                 <?php }?>
 

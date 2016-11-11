@@ -1815,7 +1815,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if($showedpoints >= 1) {
                 //$html .=' <label class="smogi_lbl"><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi" /><span class="'.$applysmogi.'">Apply</span><span class="error-count"></span></label>';
-				$html .=' <label class="smogi_lbl"><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi"  '.$applysmogidisable.'/><span class="'.$applysmogi.'">Apply</span><span class="error-count"></span></label>';
+				$html .=' <label class="smogi_lbl smogi-off-block"><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi"  '.$applysmogidisable.'/><span class="'.$applysmogi.' apply-off">Apply</span><span class="error-count"></span></label>';
 				
             }
             if($showedpoints < 1) {
