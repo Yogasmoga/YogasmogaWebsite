@@ -3021,6 +3021,10 @@ ul.main-menu > li{padding:0 10px;}
 top:50%;	
 }
 
+.signinDialog .form-heading{font-family:AvantGardeGothicITCW01D;font-size:11px;}
+.signinDialog #sign-up-form table input, .signinDialog #sign-in-form table input{font-family:GraphikRegular;}
+.signinDialog #sign-in-form a.forgot-link {border-bottom:1px solid #AE8536;font-size:12px;font-family:GraphikRegular;color:#AE8536;}
+.signinDialog .err-msg{font-size:12px;font-family:GraphikRegular;color:#FF6600;}
 
 .compressBox{background: url("../images/new-elements/vivacity-crop-bucket-box2v3.jpg") no-repeat center center #e4e4e4;
 	background-size: 100% 100%;
