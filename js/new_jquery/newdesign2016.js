@@ -474,6 +474,18 @@ jQuery(window).load(function(){
 });
 
 
+jQuery(document).ready(function(){
+	jQuery( ".ui-dialog-titlebar" ).before( "<div class='hoverbg'></div>" );
+	
+	jQuery(".sign-in-block").click(function(){
+    jQuery(".signinDialog").addClass("moveleft");
+	}); 
+	jQuery(".sign-up-block").click(function(){
+    jQuery(".signinDialog").removeClass("moveleft");
+	}); 
+	
+	
+	});
 
 // for hover animation
 /*

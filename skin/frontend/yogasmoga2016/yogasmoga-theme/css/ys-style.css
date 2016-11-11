@@ -4597,6 +4597,14 @@ table.productdetailtable div.outofstockitem{
 .women-collection .new-collection-block .carbon6-men{max-width:3.75%;}
 .women-collection .new-collection-block .golf-men{max-width:4.375%;}
 
+/**** new popup design***/
+.signinDialog { background: rgba(244, 244, 244, 0.7) none repeat scroll 0 0;}
+.ui-dialog  .hoverbg{background: #fff; width: 50%; position: absolute; top: 0px; height: 100%;left:0;}
+
+.signinDialog.moveleft .hoverbg{right:0;left:auto;}
+.signing_popup_wrapper  .sign-in-block{opacity:.5;}
+.signinDialog.moveleft .signing_popup_wrapper  .sign-in-block{opacity:1;}
+.signinDialog.moveleft .sign-up-block{opacity:.5;}
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:13px;}
