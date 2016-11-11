@@ -4605,12 +4605,17 @@ table.productdetailtable div.outofstockitem{
 .signing_popup_wrapper  .sign-in-block{opacity:.5;}
 .signinDialog.moveleft .signing_popup_wrapper  .sign-in-block{opacity:1;}
 .signinDialog.moveleft .sign-up-block{opacity:.5;}
+.signinDialog.ui-dialog .ui-dialog-titlebar-close{right:10px; top:14px; padding:0; margin:0;}
+.signinDialog span.ui-icon-closethick{background: rgba(0, 0, 0, 0) url("/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/close-sharepopup.svg") no-repeat scroll center bottom / contain ;
+	max-width:14px; max-height:14px;right:0; top:0; padding:0; margin:0;}
 
+.signinDialog #sign-in-button.button-on{background-image:url("http://staging.dev/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/signIn_btn_gold.jpg")!important;}
+.signinDialog #sign-up-button.button-on{background-image:url("http://staging.dev/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/signUp_btn_gold.jpg")!important;}
 
 /*--for ys stores--*/
 .namaskar-overlay1{top:49px;}
 
->>>>>>> 9ebe8c719a47d770a7d2eadfb55e5f0316ba01f3
+
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:13px;}

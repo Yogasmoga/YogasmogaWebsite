@@ -484,6 +484,30 @@ jQuery(document).ready(function(){
     jQuery(".signinDialog").removeClass("moveleft");
 	}); 
 	
+	jQuery('#sign-in-form #si_email,#sign-in-form #si_password').on('focus keyup',function(){
+			if(jQuery('#si_email').val().length > 1 && jQuery('#si_password').val().length > 1){					
+				jQuery('#sign-in-button').addClass('button-on');		
+			}
+			else{
+				jQuery('#sign-in-button').removeClass('button-on');		
+			}
+	});
+	jQuery('#sign-up-form #fname,#sign-up-form #lname,#sign-up-form #signup_email,#sign-up-form #s_password').on('focus blur',function(){
+			if(jQuery('#sign-up-form #fname').val().length > 1 && jQuery('#sign-up-form #lname').val().length > 1 && jQuery('#sign-up-form #signup_email').val().length > 1 && jQuery('#sign-up-form #s_password').val().length > 1 && jQuery('#sign-up-form .gender_radio').hasClass('selected') ){					
+				jQuery('#sign-up-button').addClass('button-on');		
+			}
+			else{
+				jQuery('#sign-up-button').removeClass('button-on');		
+			}
+	});
+	jQuery('#sign-up-form .gender_radio').on('click',function(){
+			if(jQuery('#sign-up-form #fname').val().length > 1 && jQuery('#sign-up-form #lname').val().length > 1 && jQuery('#sign-up-form #signup_email').val().length > 1 && jQuery('#sign-up-form #s_password').val().length > 1 && jQuery('#sign-up-form .gender_radio').hasClass('selected') ){					
+				jQuery('#sign-up-button').addClass('button-on');		
+			}
+			else{
+				jQuery('#sign-up-button').removeClass('button-on');		
+			}
+	});
 	
 	});
 
