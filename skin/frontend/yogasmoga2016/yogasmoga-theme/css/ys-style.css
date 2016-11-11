@@ -4605,6 +4605,12 @@ table.productdetailtable div.outofstockitem{
 .signing_popup_wrapper  .sign-in-block{opacity:.5;}
 .signinDialog.moveleft .signing_popup_wrapper  .sign-in-block{opacity:1;}
 .signinDialog.moveleft .sign-up-block{opacity:.5;}
+
+
+/*--for ys stores--*/
+.namaskar-overlay1{top:49px;}
+
+>>>>>>> 9ebe8c719a47d770a7d2eadfb55e5f0316ba01f3
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
 .bucket1 .contentSlider .large-text,.gridfull .contentSlider .large-text { font-size: 38px !important; line-height: 38px !important;}
 .bucket1 .contentSlider .small-text{padding-bottom:13px;}
