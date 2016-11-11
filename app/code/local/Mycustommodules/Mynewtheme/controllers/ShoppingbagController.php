@@ -1782,7 +1782,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 			$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
-                $applysmogi="";
+                $applysmogi="apply-off";
                 $applygiftcard="";
                 //$applypromodisable=" disabled='disabled'";
                 $applysmogidisable=" disabled='disabled'";
@@ -1793,6 +1793,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                 $showedpointsvalue="";
                 $codeused='yes';
+				
+				/*------smogi label class--------*/
+				$smogilabelclass = "smogi-off-block";
+				/*----------------------*/
+				
             }
             if($checkgiftapplied)
             {
@@ -1815,7 +1820,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if($showedpoints >= 1) {
                 //$html .=' <label class="smogi_lbl"><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi" /><span class="'.$applysmogi.'">Apply</span><span class="error-count"></span></label>';
-				$html .=' <label class="smogi_lbl smogi-off-block"><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi"  '.$applysmogidisable.'/><span class="'.$applysmogi.' apply-off">Apply</span><span class="error-count"></span></label>';
+				$html .=' <label class="smogi_lbl '.$smogilabelclass.'"><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi"  '.$applysmogidisable.'/><span class="'.$applysmogi.'">Apply</span><span class="error-count"></span></label>';
 				
             }
             if($showedpoints < 1) {
