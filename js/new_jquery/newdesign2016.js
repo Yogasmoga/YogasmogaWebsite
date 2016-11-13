@@ -482,16 +482,31 @@ jQuery(document).ready(function(){
 	}); 
 	jQuery(".sign-up-block").click(function(){
     jQuery(".signinDialog").removeClass("moveleft");
+	
+	
 	});
-
+	jQuery(".signinDialog #fake-pswd1").focusin(function(){		
+		jQuery(".signinDialog").addClass("moveleft");	
+	});
+	
+	jQuery(".signinDialog #fake-pswd2").focusin(function(){		
+		jQuery(".signinDialog").removeClass("moveleft");	
+	});
+	
+	
+	
 	/*--for hover effect--*/
 	if(!jQuery(".signinDialog").hasClass('mouseleft')){
 			jQuery(".sign-in-block").mouseover(function(){
 				jQuery(".signinDialog").addClass("sign-in-hover");		
 			});
+			jQuery(".ui-dialog-titlebar-close").mouseover(function(){
+				jQuery(".signinDialog").addClass("sign-in-hover");		
+			});
 			jQuery(".sign-in-block").mouseout(function(){
 				jQuery(".signinDialog").removeClass("sign-in-hover");		
 			});
+
 	}
 	
 	if(jQuery(".signinDialog").hasClass('mouseleft')){

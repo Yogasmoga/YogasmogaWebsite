@@ -4604,9 +4604,11 @@ table.productdetailtable div.outofstockitem{
 
 .signinDialog.moveleft .hoverbg{right:0;left:auto;}
 .signinDialog.ui-dialog .sign-up-block, .signinDialog.ui-dialog .sign-in-block{padding-top:35px;padding-bottom:30px;}
-.signing_popup_wrapper  .sign-in-block{opacity:.5;}
+.signing_popup_wrapper  .sign-in-block{opacity:.4;}
+.sign-in-hover .signing_popup_wrapper  .sign-in-block{opacity:.6;}
 .signinDialog.moveleft .signing_popup_wrapper  .sign-in-block{opacity:1;}
-.signinDialog.moveleft .sign-up-block{opacity:.5;}
+.signinDialog.moveleft .sign-up-block{opacity:.4;}
+.signinDialog.moveleft .sign-up-block:hover{opacity:.6;}
 .signinDialog .ui-dialog-titlebar.ui-widget-header{position:absolute; right:0;}
 .signinDialog.ui-dialog .ui-dialog-titlebar-close{right:10px; top:14px; padding:0; margin:0;}
 .signinDialog span.ui-icon-closethick{background: rgba(0, 0, 0, 0) url("/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/close-sharepopup.svg") no-repeat scroll center bottom / contain ;

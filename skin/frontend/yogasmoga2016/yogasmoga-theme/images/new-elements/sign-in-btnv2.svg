@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="315px" height="39px" viewBox="0 0 335 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Sign In Button</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Sign-In" transform="translate(-547.000000, -366.000000)">
+            <g id="Pop-Up" transform="translate(111.000000, 166.000000)">
+                <g id="Existing-User-Form" transform="translate(400.000000, 0.000000)">
+                    <g id="Form" transform="translate(36.000000, 40.000000)">
+                        <g id="Sign-In-Button" transform="translate(0.000000, 160.000000)">
+                            <rect id="Rectangle" fill="#CCCCCC" x="0" y="0" width="334.170013" height="40"></rect>
+                            <text id="SIGN-IN" font-family="ITCAvantGardeStd-Md, ITC Avant Garde Gothic Std" font-size="12" font-weight="400" line-spacing="16" letter-spacing="1.20000005" fill="#FFFFFF">
+                                <tspan x="140.738174" y="24">SIGN IN</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
