@@ -495,6 +495,7 @@ jQuery(document).ready(function(){
 	
 	
 	
+	
 	/*--for hover effect--*/
 	if(!jQuery(".signinDialog").hasClass('mouseleft')){
 			jQuery(".sign-in-block").mouseover(function(){
@@ -505,6 +506,13 @@ jQuery(document).ready(function(){
 			});
 			jQuery(".sign-in-block").mouseout(function(){
 				jQuery(".signinDialog").removeClass("sign-in-hover");		
+			});
+			
+			jQuery(".sign-up-block").mouseover(function(){
+				jQuery(".signinDialog").addClass("sign-up-hover");		
+			});
+			jQuery(".sign-up-block").mouseout(function(){
+				jQuery(".signinDialog").removeClass("sign-up-hover");		
 			});
 
 	}
