@@ -12,7 +12,7 @@
 	$output = fopen('php://output', 'w');
 
 
-	fputcsv($output, array('parent_product_name', 'simple_sku', 'simple_product_name','qty','price','category_ids','hidden'));
+	fputcsv($output, array('parent_product_name', 'simple_sku','product_id', 'simple_product_name'/*,'qty','price','category_ids','hidden'*/));
 	foreach($productsCollection as $product){
 	 
 		$configurableProducts = Mage::getModel('catalog/product_type_configurable')->setProduct($product);
@@ -27,11 +27,12 @@
 			$rows = array(
 					'parent_product_name' => $product->getName(),
 					'simple_sku' => $simple_product->getSku(),
+					'id'=>$simple_product->getId(),
 					'simple_product_name' => $simple_product->getName(),
-					'qty' =>floor($stock->getQty()),
-					'price' => Mage::helper('core')->currency($simple_product->getPrice(),true,false),
-					'category_ids' => $categoryIds,
-					'hidden' => $hidden
+					//'qty' =>floor($stock->getQty()),
+					//'price' => Mage::helper('core')->currency($simple_product->getPrice(),true,false),
+					//'category_ids' => $categoryIds,
+					//'hidden' => $hidden
 				);
 		fputcsv($output, $rows);			
 		}
