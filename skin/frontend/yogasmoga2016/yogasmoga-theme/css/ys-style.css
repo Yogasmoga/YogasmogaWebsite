@@ -4611,7 +4611,7 @@ table.productdetailtable div.outofstockitem{
 .signinDialog.moveleft .sign-up-block:hover{opacity:.6;}
 .signinDialog .ui-dialog-titlebar.ui-widget-header{position:absolute; right:0;}
 .signinDialog.ui-dialog .ui-dialog-titlebar-close{right:10px; top:14px; padding:0; margin:0;}
-.signinDialog span.ui-icon-closethick{background: rgba(0, 0, 0, 0) url("/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/close-sharepopup.svg") no-repeat scroll center bottom / contain ;
+.signinDialog span.ui-icon-closethick{background: rgba(0, 0, 0, 0) url("../images/new-elements/close-sharepopup.svg") no-repeat scroll center bottom / contain ;
 	max-width:14px; max-height:14px;right:0; top:0; padding:0; margin:0;}
 
 .signinDialog #sign-in-button.button-on{background-image:url("../images/new-elements/signIn_btn_gold.jpg")!important;}
