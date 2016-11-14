@@ -3045,7 +3045,7 @@ top:50%;
 }
 
 .gender_p {
-    font: 12px GraphikRegular;
+    font: 12px/20px GraphikRegular;
     position: relative;
 }
 .signinDialog .sign-up-block{border-right:none;}

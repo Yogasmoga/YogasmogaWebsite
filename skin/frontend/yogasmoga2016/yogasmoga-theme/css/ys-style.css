@@ -4614,12 +4614,12 @@ table.productdetailtable div.outofstockitem{
 .signinDialog span.ui-icon-closethick{background: rgba(0, 0, 0, 0) url("/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/close-sharepopup.svg") no-repeat scroll center bottom / contain ;
 	max-width:14px; max-height:14px;right:0; top:0; padding:0; margin:0;}
 
-.signinDialog #sign-in-button.button-on{background-image:url("http://staging.dev/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/signIn_btn_gold.jpg")!important;}
-.signinDialog #sign-up-button.button-on{background-image:url("http://staging.dev/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/signUp_btn_gold.jpg")!important;}
+.signinDialog #sign-in-button.button-on{background-image:url("/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/signIn_btn_gold.jpg")!important;}
+.signinDialog #sign-up-button.button-on{background-image:url("/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/signUp_btn_gold.jpg")!important;}
 .signinDialog.sign-in-hover:hover{background: rgba(244, 244, 244, 0.8) none repeat scroll 0 0;}
 .signinDialog.moveleft.sign-up-hover:hover{background: rgba(244, 244, 244, 0.8) none repeat scroll 0 0;}
 .signinDialog.moveleft.sign-in-hover:hover{background: rgba(244, 244, 244, 0.7) none repeat scroll 0 0;}
-
+.gender_p span.gender_radio.selected{background:#ae8536;  border-color: #ae8536;}
 /*--for ys stores--*/
 .namaskar-overlay1{top:49px;}
 
