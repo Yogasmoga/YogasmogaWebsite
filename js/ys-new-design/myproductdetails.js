@@ -16,6 +16,7 @@ jQuery(window).load(function ($) {
 jQuery(document).ready(function ($) {
     insertBraOption();
 
+
     /*---New design js--*/
    /* var mpx = 0;
     $('.product-details .product-row').removeClass('interval-ends');
@@ -90,7 +91,36 @@ function prodnewdetailresize(){
 
 }
 
-//Image ..........
+//Upsell product ..........
+function getUpsellProduct(id,colorCode){
+
+    jQuery.ajax({
+        type: 'POST',
+        url: homeUrl+"ys/upsellproduct/index",
+        data: {'id':_productid,'code':colorCode},
+        dataType: 'json',
+        success: function (result) {
+                    if(result.message=='found'){
+                       var upsellHtml;
+                       upsellHtml = "<h2 class='pg-strong'>Also Wearing:</h2><ul>";
+                       var i;
+                       for(i=0;i < result.data.length; i++){
+                        upsellHtml = upsellHtml + "<li><a href='" + result.data[i]['path'] + "'>" + result.data[i]['name'] + "</a><span> in "+result.data[i]['color']+"</span></li>";
+                       }
+                       upsellHtml = upsellHtml + "</ul>";
+
+                     //jQuery("div#upsell-p").html(upsellHtml);
+                    }
+                else{
+                     //  jQuery("div#upsell-p").html("");
+                   }
+
+        },
+        error:function(result){
+
+        }
+    });
+}
 
 
 jQuery(document).ready(function ($) {
@@ -118,6 +148,7 @@ jQuery(document).ready(function ($) {
     });
 
     $("table.normalproductdetail div#colorcontainer table").live("click", function () {
+
         $('.product-row-container').addClass("row-container-loading"); //New design
         currentColorObject = $(this);
         $('.errormsg').empty().hide();
@@ -126,6 +157,10 @@ jQuery(document).ready(function ($) {
         changeColor($(this).attr("color"));
 
         selectfirstsizeonload();
+
+        /*------------Change Upsell product Edited By Fahim (code start)------------*/
+        getUpsellProduct(_productid,$(this).attr("value"));
+        /*------------Change Upsell product Edited By Fahim (code end)------------*/
 
         //changePartOfGiftSet($(this).attr("value"));
         /*---New design js--*/
@@ -142,6 +177,7 @@ jQuery(document).ready(function ($) {
             }
         }, 1000);
         /*---New design js end--*/
+
     });
 
     $("table.smallimagecontiner td:not(.selectedimage)").live("click", function () {
@@ -684,6 +720,7 @@ function changeColor(clr) {
     changeFabric(clr);
     changeBraCupInsert(clr);
     changeDescription(clr);
+    getUpsellProduct(_productid,jQuery("div.selected > table").attr("value"));
 
     jQuery(".amount").removeClass("insale-price");
     jQuery(".box-seprtr").find("p.insale").addClass("dnone");

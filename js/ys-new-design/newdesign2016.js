@@ -473,7 +473,107 @@ jQuery(window).load(function(){
 	jQuery('body').addClass('content-loaded');
 });
 
+/**********Sign up popup********/
+jQuery(document).ready(function(){
+	jQuery( ".ui-dialog-titlebar" ).before( "<div class='hoverbg'></div>" );
 
+	jQuery(".sign-in-block").click(function(){
+		jQuery(".signinDialog").addClass("moveleft");
+	});
+	jQuery(".sign-up-block").click(function(){
+		jQuery(".signinDialog").removeClass("moveleft");
+
+
+	});
+	jQuery(".signinDialog #fake-pswd1").focusin(function(){
+		jQuery(".signinDialog").addClass("moveleft");
+	});
+
+	jQuery(".signinDialog #fake-pswd2").focusin(function(){
+		jQuery(".signinDialog").removeClass("moveleft");
+	});
+
+
+
+
+	/*--for hover effect--*/
+	if(!jQuery(".signinDialog").hasClass('mouseleft')){
+		jQuery(".sign-in-block").mouseover(function(){
+			jQuery(".signinDialog").addClass("sign-in-hover");
+		});
+		jQuery(".ui-dialog-titlebar-close").mouseover(function(){
+			jQuery(".signinDialog").addClass("sign-in-hover");
+		});
+		jQuery(".sign-in-block").mouseout(function(){
+			jQuery(".signinDialog").removeClass("sign-in-hover");
+		});
+
+		jQuery(".sign-up-block").mouseover(function(){
+			jQuery(".signinDialog").addClass("sign-up-hover");
+		});
+		jQuery(".sign-up-block").mouseout(function(){
+			jQuery(".signinDialog").removeClass("sign-up-hover");
+		});
+
+	}
+
+	if(jQuery(".signinDialog").hasClass('mouseleft')){
+		jQuery(".sign-up-block").mouseover(function(){
+			jQuery(".signinDialog").addClass("sign-up-hover");
+		});
+		jQuery(".sign-up-block").mouseout(function(){
+			jQuery(".signinDialog").removeClass("sign-up-hover");
+		});
+	}
+
+
+
+	jQuery('.logged-out').click(function(){
+		var signInHT = jQuery(".sign-in-block").height();
+		var signUpHT = jQuery(".sign-up-block").height();
+		//alert(signInHT);
+		//alert(signUpHT);
+		if(signUpHT > signInHT ){
+			jQuery(".sign-in-block").css({
+				'min-height': signUpHT
+			});
+		}
+		else{
+			jQuery(".sign-up-block").css({
+				'min-height': signInHT
+			});
+		}
+	});
+
+
+
+	/*---to make button gold if all fields are filled--*/
+	jQuery('#sign-in-form #si_email,#sign-in-form #si_password').on('focus keyup',function(){
+		if(jQuery('#si_email').val().length > 1 && jQuery('#si_password').val().length > 1){
+			jQuery('#sign-in-button').addClass('button-on');
+		}
+		else{
+			jQuery('#sign-in-button').removeClass('button-on');
+		}
+	});
+	jQuery('#sign-up-form #fname,#sign-up-form #lname,#sign-up-form #signup_email,#sign-up-form #s_password').on('focus blur',function(){
+		if(jQuery('#sign-up-form #fname').val().length > 1 && jQuery('#sign-up-form #lname').val().length > 1 && jQuery('#sign-up-form #signup_email').val().length > 1 && jQuery('#sign-up-form #s_password').val().length > 1 && jQuery('#sign-up-form .gender_radio').hasClass('selected') ){
+			jQuery('#sign-up-button').addClass('button-on');
+		}
+		else{
+			jQuery('#sign-up-button').removeClass('button-on');
+		}
+	});
+	jQuery('#sign-up-form .gender_radio').on('click',function(){
+		if(jQuery('#sign-up-form #fname').val().length > 1 && jQuery('#sign-up-form #lname').val().length > 1 && jQuery('#sign-up-form #signup_email').val().length > 1 && jQuery('#sign-up-form #s_password').val().length > 1 && jQuery('#sign-up-form .gender_radio').hasClass('selected') ){
+			jQuery('#sign-up-button').addClass('button-on');
+		}
+		else{
+			jQuery('#sign-up-button').removeClass('button-on');
+		}
+	});
+
+});
 
 // for hover animation
 /*

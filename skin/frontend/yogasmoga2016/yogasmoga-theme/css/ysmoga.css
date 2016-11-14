@@ -3049,6 +3049,42 @@ ul.main-menu > li.one-too-many{padding-right:0;}
 }
 
 
+/** new signin popup start **/
+
+.signinDialog .form-heading{font-family:AvantGardeGothicITCW01D;font-size:11px;}
+.signinDialog #sign-up-form table input, .signinDialog #sign-in-form table input{font-family:GraphikRegular!important;}
+.signinDialog #sign-in-form a.forgot-link {border-bottom:1px solid #AE8536;font-size:12px;font-family:GraphikRegular;color:#AE8536;}
+.signinDialog .err-msg{font-size:12px;font-family:GraphikRegular;color:#FF6600;}
+
+.gender_p span {
+  background: #ccc none repeat scroll 0 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: #fff;
+  float: right;
+  font-family: graphikregular;
+  font-size: 11px;
+  height: 26px;
+  line-height: 30px;
+  margin-left: 10px;
+  margin-top: -4px;
+  position: relative;
+  text-align: center;
+  transition-duration: 200ms;
+  width: 26px;
+}
+
+.gender_p {
+    font: 12px/20px GraphikRegular;
+    position: relative;
+}
+.signinDialog .sign-up-block{border-right:none;}
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0px!important; }
+/** new signin popup end **/
+
+
+
+
 .compressBox{background: url("../images/new-elements/vivacity-crop-bucket-box2v3.jpg") no-repeat center center #e4e4e4;
     background-size: 100% 100%;
 }

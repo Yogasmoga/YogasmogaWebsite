@@ -54,7 +54,7 @@ else {
                     </tr>
                     <tr class="fake_password">
                         <td class="inputholder">
-                            <input type="text" autocomplete="off" maxlength="30" class="watermark f_password" watermark="Select a password" class="requiredfield" name="password" defaulterrormsg="Password is required">
+                            <input id="fake-pswd2" type="text" autocomplete="off" maxlength="30" class="watermark f_password" watermark="Select a password" class="requiredfield" name="password" defaulterrormsg="Password is required">
                         </td>
                     </tr> 
                     <tr class="orig_password">
@@ -78,7 +78,7 @@ else {
 <!--                    </tr>-->
                     <tr>
                         <td class="no-padding">
-                            <input type="submit" id="sign-up-button" value="" style="background-image: url(<?php echo Mage::getUrl('/', array('_secure'=>true));?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/signUp_btn.png); width:315px; height:39px; background-size:100% 100%; border:none;">
+                            <input type="submit" id="sign-up-button" value="" style="background-image: url('<?php echo $this->getSkinUrl('images/new-elements/signup-btnv4.png',array('_secure'=>true))?>'); width:315px; height:39px; background-size:100% 100%; border:none;">
                         </td>
                         <td align="center" class="form-loader no-padding c-align"></td>
                     </tr>
@@ -90,7 +90,7 @@ else {
                 </table>            
             </form>
         </div>
-        <div class="sign-in-block f-right">
+		<div class="sign-in-block f-right">
             <p class="c-align form-heading">Already a SMOGI</p>
             <form id="sign-in-form" class="bl" action="ds" method="post">
                 <table width="100%" cellpadding="0" cellspacing="0">
@@ -101,7 +101,7 @@ else {
                     </tr>
                     <tr class="fake_password">
                         <td class="inputholder no-padding">
-                            <input type="text" autocomplete="off" maxlength="30" class="watermark f_password requiredfield" watermark="Password" name="password" defaulterrormsg="Password is required">
+                            <input id="fake-pswd1" type="text" autocomplete="off" maxlength="30" class="watermark f_password requiredfield" watermark="Password" name="password" defaulterrormsg="Password is required">
                         </td>
                     </tr>                 
                     <tr class="orig_password">
@@ -116,13 +116,13 @@ else {
                     </tr>
                     <tr>
                         <td class="no-padding">
-                            <input type="submit" id="sign-in-button" value=""  style="background-image: url(<?php echo Mage::getUrl('/', array('_secure'=>true));?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/signIn_btn.png); width:315px; height:39px; background-size:100% 100%; border:none;">
+                            <input type="submit" id="sign-in-button" value=""  style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/sign-in-btnv4.png); width:315px; height:39px; background-size:100% 100%; border:none;">
                         </td>
                         <td align="center" class="form-loader no-padding c-align"></td>                    
                     </tr>                
                     <tr>
                         <td style="padding: 0px;">
-                            <p style="min-height: 15px; margin: 0px auto;  visibility: hidden;font: 12px ITCAvantGardeProBk !important;line-height: 40px !important;" class="err-msg">All fields are required.</p>
+                            <p style="min-height: 15px; margin: 0px auto;  visibility: hidden;font: 12px GraphikRegular !important;line-height: 40px !important;" class="err-msg">All fields are required.</p>
                         </td>               
                     </tr>
                     <tr>
