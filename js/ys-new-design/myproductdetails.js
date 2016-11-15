@@ -109,10 +109,10 @@ function getUpsellProduct(id,colorCode){
                        }
                        upsellHtml = upsellHtml + "</ul>";
 
-                     //jQuery("div#upsell-p").html(upsellHtml);
+                  //   jQuery("div#upsell-products").html(upsellHtml);
                     }
                 else{
-                     //  jQuery("div#upsell-p").html("");
+                    //   jQuery("div#upsell-products").html("");
                    }
 
         },

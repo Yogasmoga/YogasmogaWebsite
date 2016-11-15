@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="34px" height="34px" viewBox="0 0 34 34" enable-background="new 0 0 34 34" xml:space="preserve">
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="-16" y="-9.25" width="65.25" height="53.65"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<path clip-path="url(#SVGID_2_)" fill="#AE8637" d="M11.108,20.243c0,3.05,2.468,5.518,5.519,5.518
+		c3.047,0,5.515-2.468,5.515-5.518c0-3.047-5.515-10.855-5.515-10.855S11.108,17.196,11.108,20.243"/>
+	<polygon clip-path="url(#SVGID_2_)" fill="#AE8637" points="4.51,26.177 2.336,26.177 2.336,33.986 10.144,33.986 10.144,31.811 
+		4.51,31.811 	"/>
+	<polygon clip-path="url(#SVGID_2_)" fill="#AE8637" points="23.105,1.164 23.105,3.339 28.739,3.339 28.739,8.974 30.914,8.974 
+		30.914,1.164 	"/>
+</g>
+</svg>
