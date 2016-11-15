@@ -3066,9 +3066,11 @@ ul.main-menu > li.one-too-many{padding-right:0;}
   font-size: 11px;
   height: 26px;
   line-height: 30px;
-  margin-left: 9px;
-  margin-top: -5px;
+  margin-left: 10px;
+  margin-top: -4px;
   position: relative;
+  line-height: 28px!important;
+  letter-spacing: -1px;
   text-align: center;
   transition-duration: 200ms;
   width: 26px;
