@@ -1,4 +1,4 @@
-var root;
+    var root;
 
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function($){
