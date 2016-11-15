@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
 
     if(window.location.href.indexOf('https://') >= 0)
        root='https://yogasmoga.com/';
-       // root='http://ysmaster.dev/';
+      //  root='http://ysmaster.dev/';
     else
         root='http://yogasmoga.com/';
         //root='http://ysmaster.dev/';
@@ -394,7 +394,7 @@ function  createCustomerAccount()
         type    :   'POST',
         data    :   {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed, 'gender': gender, 'location_city':location_city, 'location_state':location_state, 'location_zip':location_zip},
         beforeSend: function() {
-            jQuery("#sign-up-form .signup-button-bg-gold").html("<img src='/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/sign-up-gold-active.png' style='width:315px; height:39px; background-size:100% 100%; border:none;' />");
+            //jQuery("#sign-up-form .signup-button-bg-gold").html("<img src='/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/sign-up-gold-active.png' style='width:315px; height:39px; background-size:100% 100%; border:none;' />");
             //jQuery("#sign-up-button").css("background-image","url('../skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/signUp_btn_gold-loader.jpg')");
             jQuery("#sign-up-button.button-on").css({backgroundPosition: '8px 39px'});
             //jQuery("#sign-up-button").parent().hide();
@@ -515,6 +515,7 @@ function  createCustomerAccount()
             {
                 // console.log(data.errors);
                 console.log("error");
+                jQuery("#sign-up-button.button-on").css({backgroundPosition: '0px 0px'});
                 jQuery("#sign-up-button").parent().show();
                 jQuery("#sign-up-form .form-loader").hide();
                 jQuery("#sign-up-form .err-msg").html(data.errors).css("visibility","visible");
@@ -687,6 +688,7 @@ function loginCustomer() {
                     jQuery("#sb-sign-in-form .form-loader").hide();
                 } else {
                     jQuery("#sign-in-form .err-msg").html(data.errors).css("visibility", "visible");
+                    jQuery("#sign-in-button").css({backgroundPosition: '0px 0px'});
                     jQuery(".signin-loader").html("");
                     jQuery("#sign-in-button").parent().show();
                     jQuery("#sign-in-form .form-loader").hide();
