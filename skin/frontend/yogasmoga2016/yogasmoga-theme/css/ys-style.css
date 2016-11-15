@@ -4621,7 +4621,7 @@ table.productdetailtable div.outofstockitem{
     right: -4px;
     top: -35px;
     width: 55px !important;}
-.signinDialog #sign-in-button.button-on{background-image:url("../images/new-elements/signIn_btn_gold.jpg")!important;}
+.signinDialog #sign-in-button.button-on{background-image:url("../images/new-elements/signIn_btn_gold.jpg")!important;background-position:0px 0px;background-size:cover!important;}
 .signinDialog #sign-up-button.button-on{background-image:url("../images/new-elements/signUp_btn_gold.jpg")!important;}
 .signinDialog.sign-in-hover:hover{background: rgba(244, 244, 244, 0.8) none repeat scroll 0 0;}
 .wdthauto.signinDialog.sign-in-hover:hover{background: none;}

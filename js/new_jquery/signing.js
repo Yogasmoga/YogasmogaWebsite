@@ -560,9 +560,11 @@ function loginCustomer() {
                 jQuery("#sb-sign-in-form .form-loader").show();
             } else {
                // jQuery("#sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
-					jQuery("#sign-in-form .signin-button-bg-gold").html("<img src='/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/sign-in-gold-active.png' style='width:315px; height:39px; background-size:100% 100%; border:none;' />");
-			   jQuery("#sign-in-button").parent().hide();
-                jQuery("#sign-in-form .form-loader").show();
+				//	jQuery("#sign-in-form .signin-button-bg-gold").html("<img src='/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/sign-in-gold-active.png' style='width:315px; height:39px; background-size:100% 100%; border:none;' />");
+			  // jQuery("#sign-in-button").parent().hide();
+			  
+			  jQuery("#sign-in-button").css({backgroundPosition: '8px 39px'});
+               // jQuery("#sign-in-form .form-loader").show();
             }
         },
         success: function (data) {
