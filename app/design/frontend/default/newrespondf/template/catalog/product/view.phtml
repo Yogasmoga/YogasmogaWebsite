@@ -1326,7 +1326,10 @@ if ($lengthAvailable) {
 
                     <!--Change Product description according to color By FAHIM KHAN. -->
                     <div class="shortdesc">
-                          <?php
+                        <?php echo "<div class='maindescription' rel='main'>";
+                                    echo $defaultProductDescription;
+                                    echo "</div>";?>
+                          <?php /*
                                 if ($fabricStoryBlockId != '') {
                                     echo "<div class='maindescription' rel='main'>";
                                     echo $defaultProductDescription;
@@ -1341,7 +1344,7 @@ if ($lengthAvailable) {
                                         }
                                     }
                                 }
-                          ?>
+                         */ ?>
                      </div>
 
                     <!-- description -->
