@@ -121,7 +121,7 @@ function getUpsellProduct(id,colorCode){
         }
     });
 }
-
+//Upsell product End..........
 
 jQuery(document).ready(function ($) {
 
