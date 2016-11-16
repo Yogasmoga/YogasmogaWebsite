@@ -395,7 +395,7 @@ function  createCustomerAccount()
            // jQuery("#sign-up-form .signup-button-bg-gold").html("<img src='/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/sign-up-gold-active.png' style='width:315px; height:39px; background-size:100% 100%; border:none;' />");
 			//jQuery("#sign-up-button").parent().hide();
             jQuery("#sign-up-form .form-loader").show();
-			  jQuery("#sign-up-button").css({backgroundPosition: '8px 39px'});
+			  jQuery("#sign-up-button").css({backgroundPosition: '8px 38px'});
         },
         success: function (data) {
 
