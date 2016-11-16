@@ -1,4 +1,4 @@
-    var root;
+ var root;
 
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function($){
@@ -396,7 +396,7 @@ function  createCustomerAccount()
         beforeSend: function() {
             //jQuery("#sign-up-form .signup-button-bg-gold").html("<img src='/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/sign-up-gold-active.png' style='width:315px; height:39px; background-size:100% 100%; border:none;' />");
             //jQuery("#sign-up-button").css("background-image","url('../skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/signUp_btn_gold-loader.jpg')");
-            jQuery("#sign-up-button.button-on").css({backgroundPosition: '8px 39px'});
+            jQuery("#sign-up-button.button-on").css({backgroundPosition: '8px 38px'});
             //jQuery("#sign-up-button").parent().hide();
             jQuery("#sign-up-form .form-loader").show();
         },
@@ -569,7 +569,7 @@ function loginCustomer() {
             } else {
                 //jQuery("#sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
                 //jQuery("#sign-in-form .signin-button-bg-gold").html("<img src='/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/sign-in-gold-active.png' style='width:315px; height:39px; background-size:100% 100%; border:none;' />");
-                jQuery("#sign-in-button").css({backgroundPosition: '8px 39px'});
+                jQuery("#sign-in-button").css({backgroundPosition: '8px 38px'});
                 //jQuery("#sign-in-button").parent().hide();
                 jQuery("#sign-in-form .form-loader").show();
             }

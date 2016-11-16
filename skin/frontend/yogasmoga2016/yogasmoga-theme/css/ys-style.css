@@ -4181,7 +4181,7 @@ ul.main-menu > li > ul.sub-menu li a.range-cat{pointer-events:none; cursor:defau
 
 ul.main-menu li ul.sub-menu{background:#ae8536;width:100%;padding: 0 0 0 30px;box-sizing:border-box; line-height:18px;margin-top:7px;min-height:200px;}
 /*.mac-osys ul.main-menu li ul.sub-menu{margin-top:6px;}*//*--for macsystem--*/
-ul.main-menu li ul.sub-menu > li{border-left: medium none; box-sizing: border-box;padding-top: 24px; width: calc((100% - 200px) / 5) !important;}
+ul.main-menu li ul.sub-menu > li{border-left: medium none; box-sizing: border-box;padding-top: 24px; width: calc((100% - 200px) / 5) !important;min-width: inherit;}
 .mac-osys ul.main-menu li ul.sub-menu > li{padding-top: 26px;}/*--for macsystem--*/
 ul.main-menu2 li{position:static;}
 ul.main-menu2 li .sub-menu{left:0!important;}

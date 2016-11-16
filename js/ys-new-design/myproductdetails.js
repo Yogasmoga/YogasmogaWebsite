@@ -102,17 +102,17 @@ function getUpsellProduct(id,colorCode){
         success: function (result) {
                     if(result.message=='found'){
                        var upsellHtml;
-                       upsellHtml = "<h2 class='pg-strong'>Also Wearing:</h2><ul>";
+                       upsellHtml = "<span class='strong'>Also Wearing:</span><ul>";
                        var i;
                        for(i=0;i < result.data.length; i++){
                         upsellHtml = upsellHtml + "<li><a href='" + result.data[i]['path'] + "'>" + result.data[i]['name'] + "</a><span> in "+result.data[i]['color']+"</span></li>";
                        }
                        upsellHtml = upsellHtml + "</ul>";
 
-                  //   jQuery("div#upsell-products").html(upsellHtml);
+                     //jQuery("#upsell-products").html(upsellHtml);
                     }
                 else{
-                    //   jQuery("div#upsell-products").html("");
+                       //jQuery("#upsell-products").html("");
                    }
 
         },
