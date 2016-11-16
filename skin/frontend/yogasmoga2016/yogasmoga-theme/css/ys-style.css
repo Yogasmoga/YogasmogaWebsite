@@ -44,7 +44,7 @@ ul.main-menu{margin-left: 0;}
 ul.main-menu > li{display:inline-block; height: 69px; padding:0 12px; text-transform: uppercase; vertical-align: top; cursor:pointer;}
 ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{color: #555; font: 11px/23px gothambold;}
 ul.main-menu li a.menu-heading{display: inline-block; padding: 37px 0 9px; vertical-align: middle;}
-ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; margin: 0; line-height: 21px; background: #f1f1f2; /*background: url("../images/nav-bg.png") repeat-x left top;*/ padding: 6px 20px; display: none;}
+ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; margin: 0; line-height: 21px; background: #f1f1f2; /*background: url("../images/nav-bg.png") repeat-x left top;*/ padding: 6px 20px; display: block;}
 ul.main-menu2 li ul.sub-menu{background-position: left top ;}
 ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top;  border-left: 1px solid #f8f8f8; padding:0 0 0 15px; min-height: 120px;}
 ul.main-menu2 li ul.sub-menu{width: 174px;}
@@ -64,6 +64,11 @@ ul.tr-menu > li{display: inline-block; padding: 0; position: relative; font: 11p
 .tr-menu li > span {
     padding: 0 13px 0 10px;
 }
+
+/*-----dropdown menu hover animation--*/
+.header-inner ul.main-menu li ul.sub-menu{opacity:0; visibility:hidden;max-height:0;min-height:0; overflow:hidden; transition:0.27s linear;-webkit-transition:0.27s linear;}
+.header-inner ul.main-menu li:hover ul.sub-menu{opacity:1; visibility:visible;max-height:200px; transition:0.27s linear;-webkit-transition:0.27s linear;}
+
 /****** header modify end ***/
 li.free-shipping{font-style: italic; margin-right: 15px;}
 ul.tr-menu > li > ul.sub-menu{position: absolute; text-align: center; width:200px; padding:0; z-index: 9; display: none; text-transform: uppercase; }
