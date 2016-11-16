@@ -15,7 +15,39 @@ jQuery(window).load(function ($) {
 });
 jQuery(document).ready(function ($) {
 	 insertBraOption();
-});	
+});
+
+//Upsell product ..........
+function getUpsellProduct(id,colorCode){
+
+    jQuery.ajax({
+        type: 'POST',
+        url: homeUrl+"ys/upsellproduct/index",
+        data: {'id':_productid,'code':colorCode},
+        dataType: 'json',
+        success: function (result) {
+            if(result.message=='found'){
+                var upsellHtml;
+                upsellHtml = "<h2 class='pg-strong'>Also Wearing:</h2><ul>";
+                var i;
+                for(i=0;i < result.data.length; i++){
+                    upsellHtml = upsellHtml + "<li><a href='" + result.data[i]['path'] + "'>" + result.data[i]['name'] + "</a><span> in "+result.data[i]['color']+"</span></li>";
+                }
+                upsellHtml = upsellHtml + "</ul>";
+
+                //   jQuery("div#upsell-products").html(upsellHtml);
+            }
+            else{
+                //   jQuery("div#upsell-products").html("");
+            }
+
+        },
+        error:function(result){
+
+        }
+    });
+}
+//Upsell product End..........
 
 /*---for new design--*/
 function prodnewdetail(){
@@ -118,6 +150,12 @@ jQuery(document).ready(function ($) {
         jQuery("#orderitem").addClass('spbutton');
         changeColor($(this).attr("color"));
         selectfirstsizeonload();
+
+        /*------------Change Upsell product Edited By Fahim (code start)------------*/
+        getUpsellProduct(_productid,$(this).attr("value"));
+        /*------------Change Upsell product Edited By Fahim (code end)------------*/
+
+
         changePartOfGiftSet($(this).attr("value"));
 		/*---new design js--*/
 		var mpx = 0;
@@ -662,6 +700,7 @@ function changeColor(clr) {
     changeFabric(clr);
     changeDescription(clr);
     changeBraCupInsert(clr);
+    getUpsellProduct(_productid,jQuery("div.selected > table").attr("value"));
 
     jQuery(".amount").removeClass("insale-price");
     jQuery(".box-seprtr").find("p.insale").addClass("dnone");
