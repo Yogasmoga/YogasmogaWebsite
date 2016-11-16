@@ -564,7 +564,7 @@ function loginCustomer() {
 				//	jQuery("#sign-in-form .signin-button-bg-gold").html("<img src='/skin/frontend/yogasmoga2016/yogasmoga-theme/images/new-elements/sign-in-gold-active.png' style='width:315px; height:39px; background-size:100% 100%; border:none;' />");
 			  // jQuery("#sign-in-button").parent().hide();
 			  
-			  jQuery("#sign-in-button").css({backgroundPosition: '8px 39px'});
+			  jQuery("#sign-in-button").css({backgroundPosition: '8px 38px'});
                // jQuery("#sign-in-form .form-loader").show();
             }
         },
