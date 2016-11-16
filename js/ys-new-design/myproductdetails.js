@@ -105,7 +105,7 @@ function getUpsellProduct(id,colorCode){
                        upsellHtml = "<span class='strong'>Also Wearing:</span><ul>";
                        var i;
                        for(i=0;i < result.data.length; i++){
-                        upsellHtml = upsellHtml + "<li><a href='" + result.data[i]['path'] + "'>" + result.data[i]['name'] + "</a><span> in "+result.data[i]['color']+"</span></li>";
+                        upsellHtml = upsellHtml + "<li><a class='underline' href='" + result.data[i]['path'] + "'>"+  result.data[i]['name'] +" in "+result.data[i]['color'] + "</a></li>";
                        }
                        upsellHtml = upsellHtml + "</ul>";
 
