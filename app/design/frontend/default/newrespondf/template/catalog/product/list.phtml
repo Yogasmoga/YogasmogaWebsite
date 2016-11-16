@@ -102,7 +102,8 @@ if (isset($page) && $page == '11') {
     $currentCategoryId = $_category->getId();
     $cat = Mage::getModel('catalog/category')->load($currentCategoryId);
     if ($cat->load($cat->getId())->getThumbnail()) {
-        ?>
+       /* for new design
+	   ?>
         <div class="product-box">
             <a href="javascript:void(0)">
                 <img class="img-responsive"
@@ -115,7 +116,7 @@ if (isset($page) && $page == '11') {
             </a>
 
         </div>
-    <?php } ?>
+    <?php */ } ?>
     <a class="go_to_parent" href="<?php echo $goBackUrl; ?>">
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              x="0px" y="0px"

@@ -8243,3 +8243,6 @@ a[href="http://staging.yogasmoga.com/men/collections"],
 a[href="http://staging.yogasmoga.com/men/ranges"],
 a[href="http://staging.yogasmoga.com/women/collections"],
 a[href="http://staging.yogasmoga.com/women/ranges"]{display:none!important;}
+
+/*--------------------------*/
+.range-name{ color: hsl(0, 0%, 27%);display: block;font-family: ITCAvantGardeStd-Bk;font-size: 12px;line-height: 15px;text-transform: capitalize;}
