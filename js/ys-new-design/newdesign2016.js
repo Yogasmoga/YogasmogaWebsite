@@ -549,7 +549,7 @@ jQuery(document).ready(function(){
 
 	/*---to make button gold if all fields are filled--*/
 	jQuery('#sign-in-form #si_email,#sign-in-form #si_password').on('focus keyup',function(){
-		if(jQuery('#si_email').val().length > 1 && jQuery('#si_password').val().length > 1){
+		if((jQuery('#si_email').val().length > 1 && jQuery('#si_email').val() !== jQuery('#si_email').attr("watermark"))  && (jQuery('#si_password').val().length > 1 && jQuery('#si_password').val() !== jQuery('#si_password').attr("watermark"))){
 			jQuery('#sign-in-button').addClass('button-on');
 		}
 		else{
