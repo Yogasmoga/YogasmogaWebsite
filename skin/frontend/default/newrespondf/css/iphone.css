@@ -8237,14 +8237,14 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
 #popForm.mage-signup .error{position:static; text-align:left; font-size:14px; font-family:graphikregular;}
 
 /*---hide collection and range link for temporary base--*/
-#menu_container.nav-container .menu-item a[rel="cat_131"],#menu_container.nav-container .menu-item a[rel="cat_133"]{display:none!important;}
+/*#menu_container.nav-container .menu-item a[rel="cat_131"],#menu_container.nav-container .menu-item a[rel="cat_133"]{display:none!important;}
 .menu-item a[rel="cat_132"],.menu-item a[rel="cat_134"]{pointer-events:none;}
 a[href="http://staging.yogasmoga.com/men/collections"],
 a[href="http://staging.yogasmoga.com/men/ranges"],
 a[href="http://staging.yogasmoga.com/women/collections"],
-a[href="http://staging.yogasmoga.com/women/ranges"]{display:none!important;}
+a[href="http://staging.yogasmoga.com/women/ranges"]{display:none!important;}*/
 
-/*----------new design----------------*/
+/*==============new design 16-nov-2016==============*/
 .range-name{color:#555;display: block;font-family: Avantgarde-demi;font-size: 12px;line-height: 15px;text-transform: uppercase; text-align:left;}
 .cms-home .flexslider{display:none;}
 .banner-bucket{}
@@ -8254,3 +8254,14 @@ a[href="http://staging.yogasmoga.com/women/ranges"]{display:none!important;}
 .banner-bucket .bucket a{}
 .banner-bucket .bucket img{width:100%; height:auto;}
 
+/*--navigation--*/
+#menu_container.nav-container a{letter-spacing:0.8px; color:#777;}
+.nav-dropdown.level3{margin-left:29px;}
+
+.menu-item.has-dropdown.main-heading.yogasmoga_li{padding-top:20px;}
+.menu-item.has-dropdown.main-heading.yogasmoga_li > .level2{padding-bottom:23px;}
+.menu-item.additional_links { padding: 15px 0 85px;}
+
+/*
+a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
+.nav-dropdown.menu > .menu-item > a{font-family:AvantGarde-Demi;}*/
