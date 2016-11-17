@@ -8246,3 +8246,11 @@ a[href="http://staging.yogasmoga.com/women/ranges"]{display:none!important;}
 
 /*----------new design----------------*/
 .range-name{color:#555;display: block;font-family: Avantgarde-demi;font-size: 12px;line-height: 15px;text-transform: uppercase; text-align:left;}
+.cms-home .flexslider{display:none;}
+.banner-bucket{}
+.banner-bucket .bucket{}
+.banner-bucket .bcol-full{width:100%;float:left;}
+.banner-bucket .bcol-half{width:50%;float:left;}
+.banner-bucket .bucket a{}
+.banner-bucket .bucket img{width:100%; height:auto;}
+
