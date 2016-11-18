@@ -8271,7 +8271,7 @@ a[href="http://staging.yogasmoga.com/women/ranges"]{display:none!important;}*/
 a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
 .nav-dropdown.menu > .menu-item > a{font-family:AvantGarde-Demi;}*/
 
-/*---for fabric item on product page--*/
+/*---for fabric item on product page hidden--*/
 .fabric_detail_mobile ul li p{pointer-events:none;}
 .fabric_detail_mobile ul li p svg{display:opacity:0; visibility:hidden;}
 .fabric_detail_mobile ul li p .fab-icon svg{display:opacity:1; visibility:visible;}
