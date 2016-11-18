@@ -4395,6 +4395,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .adddields .smogi_lbl.smogi-off,.adddields .smogi_lbl.smogi-off-block{position:relative;margin-bottom:0px;}
 .adddields .smogi_lbl.smogi-off input[name='smogi']{padding-left:0;}
 .adddields .smogi_lbl.smogi-off-block .apply-off{opacity:0; visibility:hidden;}
+
 .adddields #smogi{background:transparent; padding:0;}
 .adddields .applysmogi{display:block!important;color:#ae8536;background:none; width:auto; font-family:avantgardegothicitcw01d;font-size:11px;line-height:11px; letter-spacing:0.3px;}
 .adddields .smogi_lbl span{background:none;display:block; line-height:30px;}
@@ -4410,6 +4411,11 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .shopping-cart input#giftcartcode:-moz-placeholder{opacity:1;color:#bbb!important; font-family:graphikregular; font-size:12px;}
 .shopping-cart input#giftcartcode::-moz-placeholder{opacity:1;color:#bbb!important; font-family:graphikregular; font-size:12px;}
 .shopping-cart input#giftcartcode:-ms-input-placeholder{opacity:1;color:#bbb!important; font-family:graphikregular; font-size:12px;} 
+
+.shopping-cart .smogi-off-block input#smogi::-webkit-input-placeholder{color: lightgray !important;}
+.shopping-cart .smogi-off-block input#smogi:-moz-placeholder{color: lightgray !important;}
+.shopping-cart .smogi-off-block input#smogi::-moz-placeholder{color: lightgray !important;}
+.shopping-cart .smogi-off-block input#smogi:-ms-input-placeholder{color: lightgray !important;}
 
 .shopping-cart input#giftcartcode{padding:15px; height:40px;}
 .adddields span{height:40px; line-height:40px;font-family: avantgardegothicitcw01d;font-size: 12px;letter-spacing: 0.3px;}
