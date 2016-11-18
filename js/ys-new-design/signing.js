@@ -439,8 +439,9 @@ function  createCustomerAccount()
                 if(_isClickShareWithFriends)
                 {
                     setTimeout(function(){
+                        jQuery("#signing_popup").dialog( "close" );
                         jQuery("#invite_friends").dialog( "open" );
-                    },4000);
+                    },2000);
                 }
 
                 //check for _isClickAddtowishlist and trigger wishlist link automatically
