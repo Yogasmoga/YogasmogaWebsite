@@ -4417,6 +4417,8 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .shopping-cart .smogi-off-block input#smogi::-moz-placeholder{color: lightgray !important;}
 .shopping-cart .smogi-off-block input#smogi:-ms-input-placeholder{color: lightgray !important;}
 
+.removesmogi img{margin-top:8px;}
+
 .shopping-cart input#giftcartcode{padding:15px; height:40px;}
 .adddields span{height:40px; line-height:40px;font-family: avantgardegothicitcw01d;font-size: 12px;letter-spacing: 0.3px;}
 
@@ -4450,6 +4452,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .shopping-cart .cont-full2{padding:30px 30px 0;}
 .shopping-cart .addedItem{padding:0 20px;width:100%;box-sizing:border-box;}
 .shopping-cart .similarProdList{width:100%;}
+
 
 /*--checkout page--*/
 .checkout-onepage-index .header-banner{opacity:0; visibility:hidden;}
