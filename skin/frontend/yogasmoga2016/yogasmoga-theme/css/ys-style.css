@@ -67,7 +67,8 @@ ul.tr-menu > li{display: inline-block; padding: 0; position: relative; font: 11p
 
 /*-----dropdown menu hover animation--*/
 .header-inner ul.main-menu li ul.sub-menu{opacity:0; visibility:hidden;max-height:0;min-height:0; overflow:hidden; transition:0.27s linear;-webkit-transition:0.27s linear;}
-.header-inner ul.main-menu li:hover ul.sub-menu{opacity:1; visibility:visible;max-height:200px; transition:0.27s linear;-webkit-transition:0.27s linear;}
+.header-inner ul.main-menu:hover li ul.sub-menu{max-height:200px; transition:0.27s linear;-webkit-transition:0.27s linear;}
+.header-inner ul.main-menu:hover li:hover ul.sub-menu{opacity:1; visibility:visible;}
 
 /****** header modify end ***/
 li.free-shipping{font-style: italic; margin-right: 15px;}
