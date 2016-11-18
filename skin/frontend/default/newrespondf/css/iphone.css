@@ -8267,6 +8267,52 @@ a[href="http://staging.yogasmoga.com/women/ranges"]{display:none!important;}*/
 .nav svg .st0{stroke:#777!important;}
 .smogi-icon span{left:2px;}
 .menu-item.tech_icon > span, .menu-item.story_icon > span, .menu-item.usa_icon > span{left:2px;}
+/**** NEW COLLECTION PAGE CSS***/
+ .collection-block{background: #fff none repeat scroll 0 0;
+  font-size: 0;
+    position: relative;
+	
+   }
+	
+	
+	.collection-block .collection-box::after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.collection-block .collection-box img {
+    display: block;
+    width: 100%;
+}
+	
+.collection-block .collection-box span {
+  bottom: 15px;
+  color: #fff;
+  font-family: freighttextbook;
+  font-size: 16px;
+  left: 0;
+  letter-spacing: 1px;
+  line-height: 16px;
+  position: absolute;
+  right: 0;
+  text-transform: capitalize;
+}
+
+.collection-block .collection-box span::after {
+    color: #ff6c00;
+    content: " >";
+}
+
+.collection-block .collection-box > a {
+    display: block;
+}
+.collection-page{ margin: 0;
+    overflow: hidden;
+    padding: 0;}
 /*
 a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
 .nav-dropdown.menu > .menu-item > a{font-family:AvantGarde-Demi;}*/
