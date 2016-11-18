@@ -432,6 +432,7 @@ function  createCustomerAccount()
                 if(_isClickShareWithFriends)
                 {
                     setTimeout(function(){
+						jQuery("#signing_popup").dialog( "close" );
                         jQuery("#invite_friends").dialog( "open" );
                     },4000);
                 }

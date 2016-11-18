@@ -4612,7 +4612,7 @@ table.productdetailtable div.outofstockitem{
 /**** new popup design***/
 .signinDialog.ui-dialog #signing_popup{padding:0;}
 .signinDialog { background: rgba(244, 244, 244, 0.7) none repeat scroll 0 0;}
-.ui-dialog  .hoverbg{background: #fff; width: 50%; position: absolute; top: 0px; height: 100%;left:0;}
+.signinDialog.ui-dialog  .hoverbg{background: #fff; width: 50%; position: absolute; top: 0px; height: 100%;left:0;}
 .wdthauto.ui-dialog  .hoverbg{display:none!important;}
 .signinDialog.moveleft .hoverbg{right:0;left:auto;}
 .signinDialog.ui-dialog .sign-up-block, .signinDialog.ui-dialog .sign-in-block{padding-top:35px;padding-bottom:30px;}
