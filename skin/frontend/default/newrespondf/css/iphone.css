@@ -8273,4 +8273,5 @@ a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
 
 /*---for fabric item on product page--*/
 .fabric_detail_mobile ul li p{pointer-events:none;}
-.fabric_detail_mobile ul li p svg{display:none;}
+.fabric_detail_mobile ul li p svg{display:opacity:0; visibility:hidden;}
+.fabric_detail_mobile ul li p .fab-icon svg{display:opacity:1; visibility:visible;}
