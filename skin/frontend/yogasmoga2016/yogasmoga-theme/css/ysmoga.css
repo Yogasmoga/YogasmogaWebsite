@@ -859,6 +859,7 @@ ul.tr-menu > li.free-shipping {
 .gender_p {
     font: 12px ITCAvantGardeProBk;
     position: relative;
+    letter-spacing: 1px;
 }
 
 .gender_p span {
