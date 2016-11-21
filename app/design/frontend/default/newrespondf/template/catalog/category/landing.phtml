@@ -1,0 +1,29 @@
+<?php
+
+$currentCategoryId = Mage::registry('current_category')->getId();
+$cat = Mage::getModel('catalog/category')->load($currentCategoryId);
+$subcats = $cat->getChildren();
+foreach (explode(',', $subcats) as $subCatid) {
+    $_category = Mage::getModel('catalog/category')->load($subCatid);
+    if ($_category->getIsActive()) {
+        ?>
+        <?php if($_category->getId() !=131 && $_category->getId() !=132 && $_category->getId() !=133 && $_category->getId() !=134):?>
+            <div class="category-box">
+                <a href="<?php echo $_category->getUrl(); ?>">
+                    <img class="img-responsive" src="<?php if ($_category->getThumbnail()) {
+                        echo Mage::getBaseUrl('media') . 'catalog/category/' . $_category->getThumbnail();
+                    } else {
+                        echo $this->getSkinUrl('popup/images/no_image.jpg');
+                    } ?>" alt=""/>
+                    <span><?php echo $_category->getMobileDescription(); ?></span>
+                    <?php if (!$_category->getThumbnail()) { ?>
+                        <span class="over-text"><?php echo $_category->getName().$_category->getId(); ?></span>
+                    <?php } ?>
+                </a>
+            </div>
+        <?php endif;?>
+        <?php
+    }
+}
+
+?>
