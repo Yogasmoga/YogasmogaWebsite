@@ -3048,6 +3048,7 @@ top:50%;
 .gender_p {
     font: 12px/20px GraphikRegular;
     position: relative;
+	letter-spacing:1px;
 }
 .signinDialog .sign-up-block{border-right:none;}
 .ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0px!important; }
