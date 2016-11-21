@@ -837,7 +837,7 @@ class Ysindia_Mod_UpsellproductController extends Mage_Core_Controller_Front_Act
 
 
 
-    public function upanddownAction(){
+    public function productdeatailsAction(){
         $type = Mage::app()->getRequest()->getParam('type');
         $mod = Mage::app()->getRequest()->getParam('mod');
 
