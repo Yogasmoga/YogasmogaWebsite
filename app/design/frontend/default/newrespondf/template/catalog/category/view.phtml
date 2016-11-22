@@ -185,11 +185,9 @@
 						</span>
 						<?php }
 						else{ ?>
-						<?php if($_category->getId()==132 || $_category->getId()==134):?>
-							<a href="javascript:void(0)" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
-							<?php else:?>
+
 							<a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
-						<?php endif;?>
+						
 					    <span>
 							<svg height="44px" width="44px">
 								<line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
