@@ -456,23 +456,12 @@ jQuery(window).on('keypress keydown',function(e){
 
 // home banner
 jQuery(document).ready(function(){
-	if(jQuery(window).width() < 1364){
- var hbanH = jQuery(window).height();	
+	var hbanH = jQuery(window).height();	
 	jQuery('.home-banner').css({'min-height': hbanH});
-}
-	
 });
-
 jQuery(window).resize(function(){
-	if(jQuery(window).width() < 1364){
- var hbanH = jQuery(window).height();	
+	var hbanH = jQuery(window).height();
 	jQuery('.home-banner').css({'min-height': hbanH});
-	}
-	if(jQuery(window).width() > 1364){
- var hbanH = jQuery(window).height();	
-	jQuery('.home-banner').css({'min-height': 1065});
-	}
-	
 });
 
 // add remove class on page load
