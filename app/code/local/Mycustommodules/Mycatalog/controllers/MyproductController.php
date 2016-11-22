@@ -4542,6 +4542,34 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 //                echo $rate->getCode().'455';
 //            }
     }
+    public function productdetailsAction(){
+        $type = Mage::app()->getRequest()->getParam('type');
+        $mod = Mage::app()->getRequest()->getParam('mod');
+        $source = Mage::app()->getRequest()->getParam('source');
+
+        $modstring =  "advanced/modules_disable_output/$mod";
+
+        $sql = "SELECT * FROM core_config_data where path='$modstring'";
+
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query($sql);
+        while($row = $readresult->fetch()){
+            $value = $row['value'];
+            $id = $row['config_id'];
+        }
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $write->update(
+            "$source",
+            array("path" => $modstring, "value" => $type),
+            "config_id=$id"
+        );
+        if($type==0)
+            echo "E...";
+        else
+            echo "D...";
+
+    }
+
     public function getmagentocurrenttimeAction()
     {
         echo "Magento Time :-".date("Y-m-d H:i:s", Mage::getModel('core/date')->timestamp(time()));
