@@ -8219,3 +8219,81 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
 }
 
 #popForm.mage-signup .error{position:static; text-align:left; font-size:14px; font-family:graphikregular;}
+
+/*==============new design 16-nov-2016==============*/
+.sign-text{padding-left:42px; }
+.sign-up .key{left:2px;}
+#menu_container.nav-container .sign-text a{line-height:44px!important;}
+.range-name{color:#555;display: block;font-family: Avantgarde-demi;font-size: 12px;line-height: 15px;text-transform: uppercase; text-align:left;}
+.cms-home .flexslider{display:none;}
+.banner-bucket{}
+.banner-bucket .bucket{}
+.banner-bucket .bcol-full{width:100%;float:left;}
+.banner-bucket .bcol-half{width:50%;float:left;}
+.banner-bucket .bucket a{}
+.banner-bucket .bucket img{width:100%; height:auto;}
+
+/*--navigation--*/
+#menu_container.nav-container a{letter-spacing:0.8px; color:#777;padding-left:57px;}
+.nav-dropdown.level3{margin-left:29px;}
+
+.menu-item.has-dropdown.main-heading.yogasmoga_li{padding-top:20px;}
+.menu-item.has-dropdown.main-heading.yogasmoga_li > .level2{padding-bottom:23px;}
+.menu-item.additional_links { padding: 15px 0 85px;}
+.nav svg .st0{stroke:#777!important;}
+.smogi-icon span{left:2px;}
+.menu-item.tech_icon > span, .menu-item.story_icon > span, .menu-item.usa_icon > span{left:2px;}
+/**** NEW COLLECTION PAGE CSS***/
+.collection-block{background: #fff none repeat scroll 0 0;
+    font-size: 0;
+    position: relative;
+
+}
+
+
+.collection-block .collection-box::after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.collection-block .collection-box img {
+    display: block;
+    width: 100%;
+}
+
+.collection-block .collection-box span {
+    bottom: 15px;
+    color: #fff;
+    font-family: freighttextbook;
+    font-size: 16px;
+    left: 0;
+    letter-spacing: 1px;
+    line-height: 16px;
+    position: absolute;
+    right: 0;
+    text-transform: capitalize;
+}
+
+.collection-block .collection-box span::after {
+    color: #ff6c00;
+    content: " >";
+}
+
+.collection-block .collection-box > a {
+    display: block;
+}
+.collection-page{ margin: 0;
+    overflow: hidden;
+    padding: 0;}
+/*
+a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
+.nav-dropdown.menu > .menu-item > a{font-family:AvantGarde-Demi;}*/
+
+/*---for fabric item on product page hidden--*/
+.fabric_detail_mobile ul li p{pointer-events:none;}
+.fabric_detail_mobile ul li p svg{display:opacity:0; visibility:hidden;}
+.fabric_detail_mobile ul li p .fab-icon svg{display:opacity:1; visibility:visible;}

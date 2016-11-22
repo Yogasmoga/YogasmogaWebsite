@@ -105,9 +105,9 @@
             <ul class="nav-menu menu  level1">
                 <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
                     <li class="menu-item sign-up">
-                    <i></i>
+                        <i></i>
 				<span class="key">
-
+<!--					<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/key1.png') ?><!--" alt=""/>-->
                 <svg xml:space="preserve" enable-background="new 164.167 0 44 44" viewBox="164.167 0 44 44"
                      height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink"
                      xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
@@ -132,12 +132,12 @@
 
                     <li class="username menu-item has-dropdown">
 					   <span class="profile_img">
-
+<!--						   <img src="/rangoli/wp-content/themes/rangoli/images/default.jpg" alt=""/>-->
 	                    </span>
                         <a class="menu-link m-link "
                            href="javascript:void(0)" onclick="jQuery(this).next().click();">Hi <?php echo $customerData['firstname']; ?></a>
 							<span class="arrow-tag toggle-ys-menu">
-
+<!--								<img alt="V" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png')?><!--" class="responsive">-->
 								<svg width="44px" height="44px">
                                     <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
                                           y2="109.657"/>
@@ -167,13 +167,14 @@
 
                 <?php endif; ?>
                 <li class="menu-item has-dropdown main-heading yogasmoga_li">
-                    <a href="<?php echo $this->getUrl('') ?>" class="menu-link m-link ">
+                    <?php /* commented for new design ?>
+					<a href="<?php echo $this->getUrl('') ?>" class="menu-link m-link ">
                         <svg width="227.831px" height="46.423px">
                             <use xlink:href="#yogasmoga_logo"></use>
                         </svg>
                     </a>
 								<span class="arrow-tag toggle-ys-menu is-active">
-
+<!--									<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
 									<svg width="44px" height="44px">
                                         <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
                                               y2="109.657"/>
@@ -183,7 +184,7 @@
                                               y1="13.39" x2="22.374" y2="29.39"/>
                                     </svg>
 								</span>
-
+					<?php */ ?>
 
                     <?php $_helper = Mage::helper('catalog/category') ?>
                     <?php $_categories = $_helper->getStoreCategories() ?>
@@ -195,7 +196,7 @@
                             <?php $_subcategories = $_category->getChildrenCategories() ?>
 
                             <li class="menu-item has-dropdown c-text">
-                            <i></i>
+                                <i></i>
 
                                 <a class="menu-link main-txt" rel="cat_<?php echo $_category->getId();?>" href="<?php echo $_helper->getCategoryUrl($_category) ?>">
                                     <?php echo $_category->getName() ?>
@@ -204,7 +205,7 @@
                                 <?php if(trim(strtolower($_category->getName()))=="gift sets"){ ?>
 
                                     <span class="arrow-tag toggle-ys-menu">
-
+                                        <!--											<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              width="44px" height="44px" viewBox="0 0 44 44"
@@ -219,20 +220,20 @@
                                     <ul class="nav-dropdown menu level3">
                                         <li class="menu-item">
                                             <i></i>
-                                            <a class="menu-link sub_cat gift_set_link" href="gift-sets?style=women" rel="women">Women</a>
+                                            <a class="menu-link sub_cat gift_set_link" href="gift-sets?style=men" rel="men">Men</a>
                                         </li>
                                         <li class="menu-item">
                                             <i></i>
-                                            <a class="menu-link sub_cat gift_set_link" href="gift-sets?style=men" rel="men">Men</a>
+                                            <a class="menu-link sub_cat gift_set_link" href="gift-sets?style=women" rel="women">Women</a>
                                         </li>
                                     </ul>
                                     <?php
                                 }
                                 else{ ?>
 
-                                <?php if(isset($_subcategories) && count($_subcategories)>0){ ?>
+                                    <?php if(isset($_subcategories) && count($_subcategories)>0){ ?>
                                         <span class="arrow-tag toggle-ys-menu">
-
+                                        <!--											<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              width="44px" height="44px" viewBox="0 0 44 44"
@@ -245,33 +246,23 @@
                                         </svg>
                                         </span>
 
-                                <?php } ?>
+                                    <?php } ?>
 
-                                <?php //if ($currentCategory && $currentCategory->getId() == $_category->getId()): ?>
-                                <?php if (count($_subcategories) > 0): ?>
-                                    <ul class="nav-dropdown menu level3">
-                                        <?php foreach ($_subcategories as $_subcategory): ?>
-                                            <li class="menu-item">
-                                                <i></i>
-                                                <?php if($_subcategory->getId() == 131 || $_subcategory->getId() == 133): ?>
-                                                <?php else: ?>
-                                                        <?php if($_subcategory->getId() == 132 || $_subcategory->getId() == 134):?>
-                                                        <a class="menu-link sub_cat" rel="cat_<?php echo $_subcategory->getId();?>" data="cat_<?php echo $_category->getId(); ?>"
-                                                       href="javascript:void(0)">
+                                    <?php //if ($currentCategory && $currentCategory->getId() == $_category->getId()): ?>
+                                    <?php if (count($_subcategories) > 0): ?>
+                                        <ul class="nav-dropdown menu level3">
+                                            <?php foreach ($_subcategories as $_subcategory): ?>
+                                                <li class="menu-item">
+                                                    <i></i>
+                                                    <a class="menu-link sub_cat" rel="cat_<?php echo $_subcategory->getId();?>" data="cat_<?php echo $_category->getId(); ?>"
+                                                       href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
                                                         <?php echo $_subcategory->getName() ?></a>
-                                                        <?php else: ?>
-                                                        <a class="menu-link sub_cat" rel="cat_<?php echo $_subcategory->getId();?>" data="cat_<?php echo $_category->getId(); ?>"
-                                                           href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
-                                                            <?php echo $_subcategory->getName() ?></a>
-                                                    <?php endif; ?>
-                                                <?php endif; ?>
 
 
-
-                                                <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
-                                                <?php $_subsubcategories = $_subcategory->getChildrenCategories() ?>
-                                                <?php if (count($_subsubcategories) > 0): ?>
-                                                    <span class="arrow-tag sub_menu_icons">
+                                                    <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+                                                    <?php $_subsubcategories = $_subcategory->getChildrenCategories() ?>
+                                                    <?php if (count($_subsubcategories) > 0): ?>
+                                                        <span class="arrow-tag sub_menu_icons">
 																<svg width="44px" height="44px">
                                                                     <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
                                                                           y2="109.657"/>
@@ -282,22 +273,22 @@
                                                                 </svg>
 
 																	</span>
-                                                    <ul class="sub_menu_links">
-                                                        <?php foreach ($_subsubcategories as $_subsubcategory): ?>
-                                                            <li class="menu-item">
-                                                                <a class="menu-link"  rel="cat_<?php echo $_subcategory->getId() . '_' . $_subsubcategory->getId();?>"
-                                                                   href="<?php echo $_helper->getCategoryUrl($_subsubcategory) ?>">
-                                                                    <?php echo $_subsubcategory->getName() ?></a>
-                                                            </li>
-                                                        <?php endforeach; ?>
-                                                    </ul>
-                                                <?php endif; ?>
+                                                        <ul class="sub_menu_links">
+                                                            <?php foreach ($_subsubcategories as $_subsubcategory): ?>
+                                                                <li class="menu-item">
+                                                                    <a class="menu-link"  rel="cat_<?php echo $_subcategory->getId() . '_' . $_subsubcategory->getId();?>"
+                                                                       href="<?php echo $_helper->getCategoryUrl($_subsubcategory) ?>">
+                                                                        <?php echo $_subsubcategory->getName() ?></a>
+                                                                </li>
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                    <?php endif; ?>
 
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                <?php endif; ?>
-                                <?php //endif; ?>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
+                                    <?php //endif; ?>
 
                                 <?php } // gift set check finishes ?>
                             </li>
@@ -305,328 +296,386 @@
                         <?php endif; ?>
                         <li class="menu-item story_icon">
 								  <span>
-									  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                           viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;"
-                                           xml:space="preserve">
-<style type="text/css">
-    .st0 {
-        fill: none;
-        stroke: #CCCCCC;
-        stroke-miterlimit: 10;
-    }
-</style>
-<!--                                          <use xlink:href="#ys_story"></use>-->
-                                          <g id="XMLID_35_">
-                                              <polyline id="XMLID_37_" class="st0"
-                                                        points="29.4,160.3 16.3,166.6 22.6,153.5 	"/>
-                                              <circle id="XMLID_36_" class="st0" cx="27.8" cy="155.1" r="5.5"/>
-                                          </g>
-                                          <g id="XMLID_32_">
-                                              <rect id="XMLID_34_" x="22.9" y="238.4" class="st0" width="3.9"
-                                                    height="14.7"/>
-                                              <circle id="XMLID_33_" class="st0" cx="24.8" cy="232.1" r="2.7"/>
-                                          </g>
-                                          <g id="XMLID_25_">
-                                              <line id="XMLID_31_" class="st0" x1="26.4" y1="109.5" x2="30.7" y2="117"/>
-                                              <line id="XMLID_30_" class="st0" x1="18.8" y1="117.1" x2="23.3"
-                                                    y2="109.3"/>
-                                              <line id="XMLID_29_" class="st0" x1="29.2" y1="119.7" x2="20.4"
-                                                    y2="119.7"/>
-                                              <circle id="XMLID_28_" class="st0" cx="24.8" cy="106.8" r="3"/>
-                                              <circle id="XMLID_27_" class="st0" cx="32.2" cy="119.7" r="3"/>
-                                              <path id="XMLID_26_" class="st0"
-                                                    d="M20.4,119.7c0,1.7-1.4,3-3,3c-1.7,0-3-1.4-3-3s1.4-3,3-3C19,116.6,20.4,118,20.4,119.7"/>
-                                          </g>
-                                          <g id="XMLID_18_">
-                                              <circle id="XMLID_24_" class="st0" cx="24.8" cy="195.5" r="6.6"/>
-                                              <circle id="XMLID_23_" class="st0" cx="21" cy="197.7" r="6.6"/>
-                                              <circle id="XMLID_22_" class="st0" cx="21" cy="202.1" r="6.6"/>
-                                              <circle id="XMLID_21_" class="st0" cx="24.8" cy="204.3" r="6.6"/>
-                                              <circle id="XMLID_20_" class="st0" cx="28.6" cy="202.1" r="6.6"/>
-                                              <circle id="XMLID_19_" class="st0" cx="28.6" cy="197.7" r="6.6"/>
-                                          </g>
-                                          <g id="XMLID_15_">
-                                              <path id="XMLID_17_" class="st0"
-                                                    d="M23.3,23.5c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S23.3,23.5,23.3,23.5z"/>
-                                              <path id="XMLID_16_" class="st0"
-                                                    d="M23.3,23.5c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S23.3,23.5,23.3,23.5z"/>
-                                          </g>
-                                          <line id="XMLID_14_" class="st0" x1="23.3" y1="23.5" x2="23.3" y2="30.5"/>
-                                          <g id="XMLID_3_">
-                                              <g id="XMLID_5_">
-                                                  <line id="XMLID_12_" class="st0" x1="-211.6" y1="-75.5" x2="-185.5"
-                                                        y2="-75.5"/>
-                                                  <line id="XMLID_11_" class="st0" x1="-211.6" y1="-80.8" x2="-185.5"
-                                                        y2="-80.8"/>
-                                                  <line id="XMLID_10_" class="st0" x1="-211.6" y1="-78.2" x2="-185.5"
-                                                        y2="-78.2"/>
-                                                  <line id="XMLID_9_" class="st0" x1="-201.2" y1="-83.5" x2="-185.5"
-                                                        y2="-83.5"/>
-                                                  <line id="XMLID_8_" class="st0" x1="-201.2" y1="-86.2" x2="-185.5"
-                                                        y2="-86.2"/>
-                                                  <line id="XMLID_7_" class="st0" x1="-201.2" y1="-88.8" x2="-185.5"
-                                                        y2="-88.8"/>
-                                                  <line id="XMLID_6_" class="st0" x1="-201.2" y1="-91.5" x2="-185.5"
-                                                        y2="-91.5"/>
-                                              </g>
-                                              <polygon id="XMLID_4_" class="st0" points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
-		-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	"/>
-                                          </g>
-</svg>
+										<svg style="margin-top:-2px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 44" xml:space="preserve">
+										<style type="text/css">
+                                            .st0 {
+                                                fill: none;
+                                                stroke: #CCCCCC;
+                                                stroke-miterlimit: 10;
+                                            }
+                                        </style>
+                                            <!--                                          <use xlink:href="#ys_tech"></use>-->
+                                            <g id="XMLID_35_">
+                                                <polyline id="XMLID_37_" class="st0" points="29.4,160.3 16.3,166.6 22.6,153.5 	"/>
+                                                <circle id="XMLID_36_" class="st0" cx="27.8" cy="155.1" r="5.5"/>
+                                            </g>
+                                            <g id="XMLID_32_">
+                                                <rect id="XMLID_34_" x="22.9" y="238.4" class="st0" width="3.9" height="14.7"/>
+                                                <circle id="XMLID_33_" class="st0" cx="24.8" cy="232.1" r="2.7"/>
+                                            </g>
+                                            <g id="XMLID_25_">
+                                                <line id="XMLID_31_" class="st0" x1="23.7" y1="18.3" x2="28" y2="25.8"/>
+                                                <line id="XMLID_30_" class="st0" x1="16.1" y1="25.9" x2="20.6" y2="18.1"/>
+                                                <line id="XMLID_29_" class="st0" x1="26.5" y1="28.5" x2="17.7" y2="28.5"/>
+                                                <circle id="XMLID_28_" class="st0" cx="22.1" cy="15.5" r="3"/>
+                                                <circle id="XMLID_27_" class="st0" cx="29.5" cy="28.5" r="3"/>
+                                                <path id="XMLID_26_" class="st0" d="M17.7,28.5c0,1.7-1.4,3-3,3s-3-1.4-3-3c0-1.7,1.4-3,3-3S17.7,26.8,17.7,28.5"/>
+                                            </g>
+                                            <g id="XMLID_18_">
+                                                <circle id="XMLID_24_" class="st0" cx="24.8" cy="195.5" r="6.6"/>
+                                                <circle id="XMLID_23_" class="st0" cx="21" cy="197.7" r="6.6"/>
+                                                <circle id="XMLID_22_" class="st0" cx="21" cy="202.1" r="6.6"/>
+                                                <circle id="XMLID_21_" class="st0" cx="24.8" cy="204.3" r="6.6"/>
+                                                <circle id="XMLID_20_" class="st0" cx="28.6" cy="202.1" r="6.6"/>
+                                                <circle id="XMLID_19_" class="st0" cx="28.6" cy="197.7" r="6.6"/>
+                                            </g>
+                                            <g id="XMLID_15_">
+                                                <path id="XMLID_17_" class="st0" d="M-147.1,37c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S-147.1,37-147.1,37z"/>
+                                                <path id="XMLID_16_" class="st0" d="M-147.1,37c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S-147.1,37-147.1,37z"/>
+                                            </g>
+                                            <line id="XMLID_14_" class="st0" x1="-147.1" y1="37" x2="-147.1" y2="44"/>
+                                            <g id="XMLID_3_">
+                                                <g id="XMLID_5_">
+                                                    <line id="XMLID_12_" class="st0" x1="-211.6" y1="-75.5" x2="-185.5" y2="-75.5"/>
+                                                    <line id="XMLID_11_" class="st0" x1="-211.6" y1="-80.8" x2="-185.5" y2="-80.8"/>
+                                                    <line id="XMLID_10_" class="st0" x1="-211.6" y1="-78.2" x2="-185.5" y2="-78.2"/>
+                                                    <line id="XMLID_9_" class="st0" x1="-201.2" y1="-83.5" x2="-185.5" y2="-83.5"/>
+                                                    <line id="XMLID_8_" class="st0" x1="-201.2" y1="-86.2" x2="-185.5" y2="-86.2"/>
+                                                    <line id="XMLID_7_" class="st0" x1="-201.2" y1="-88.8" x2="-185.5" y2="-88.8"/>
+                                                    <line id="XMLID_6_" class="st0" x1="-201.2" y1="-91.5" x2="-185.5" y2="-91.5"/>
+                                                </g>
+                                                <polygon id="XMLID_4_" class="st0" points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
+										-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	"/>
+                                            </g>
+										</svg>
+                                      <?php /* svg commented for new design ?>
+										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+										xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;"
+										xml:space="preserve">
+										<style type="text/css">
+										.st0 {
+										fill: none;
+										stroke: #CCCCCC;
+										stroke-miterlimit: 10;
+										}
+										</style>
+										<!--                                          <use xlink:href="#ys_story"></use>-->
+										<g id="XMLID_35_">
+										<polyline id="XMLID_37_" class="st0"
+										points="29.4,160.3 16.3,166.6 22.6,153.5 	"/>
+										<circle id="XMLID_36_" class="st0" cx="27.8" cy="155.1" r="5.5"/>
+										</g>
+										<g id="XMLID_32_">
+										<rect id="XMLID_34_" x="22.9" y="238.4" class="st0" width="3.9"
+										height="14.7"/>
+										<circle id="XMLID_33_" class="st0" cx="24.8" cy="232.1" r="2.7"/>
+										</g>
+										<g id="XMLID_25_">
+										<line id="XMLID_31_" class="st0" x1="26.4" y1="109.5" x2="30.7" y2="117"/>
+										<line id="XMLID_30_" class="st0" x1="18.8" y1="117.1" x2="23.3"
+										y2="109.3"/>
+										<line id="XMLID_29_" class="st0" x1="29.2" y1="119.7" x2="20.4"
+										y2="119.7"/>
+										<circle id="XMLID_28_" class="st0" cx="24.8" cy="106.8" r="3"/>
+										<circle id="XMLID_27_" class="st0" cx="32.2" cy="119.7" r="3"/>
+										<path id="XMLID_26_" class="st0"
+										d="M20.4,119.7c0,1.7-1.4,3-3,3c-1.7,0-3-1.4-3-3s1.4-3,3-3C19,116.6,20.4,118,20.4,119.7"/>
+										</g>
+										<g id="XMLID_18_">
+										<circle id="XMLID_24_" class="st0" cx="24.8" cy="195.5" r="6.6"/>
+										<circle id="XMLID_23_" class="st0" cx="21" cy="197.7" r="6.6"/>
+										<circle id="XMLID_22_" class="st0" cx="21" cy="202.1" r="6.6"/>
+										<circle id="XMLID_21_" class="st0" cx="24.8" cy="204.3" r="6.6"/>
+										<circle id="XMLID_20_" class="st0" cx="28.6" cy="202.1" r="6.6"/>
+										<circle id="XMLID_19_" class="st0" cx="28.6" cy="197.7" r="6.6"/>
+										</g>
+										<g id="XMLID_15_">
+										<path id="XMLID_17_" class="st0"
+										d="M23.3,23.5c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S23.3,23.5,23.3,23.5z"/>
+										<path id="XMLID_16_" class="st0"
+										d="M23.3,23.5c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S23.3,23.5,23.3,23.5z"/>
+										</g>
+										<line id="XMLID_14_" class="st0" x1="23.3" y1="23.5" x2="23.3" y2="30.5"/>
+										<g id="XMLID_3_">
+										<g id="XMLID_5_">
+										<line id="XMLID_12_" class="st0" x1="-211.6" y1="-75.5" x2="-185.5"
+										y2="-75.5"/>
+										<line id="XMLID_11_" class="st0" x1="-211.6" y1="-80.8" x2="-185.5"
+										y2="-80.8"/>
+										<line id="XMLID_10_" class="st0" x1="-211.6" y1="-78.2" x2="-185.5"
+										y2="-78.2"/>
+										<line id="XMLID_9_" class="st0" x1="-201.2" y1="-83.5" x2="-185.5"
+										y2="-83.5"/>
+										<line id="XMLID_8_" class="st0" x1="-201.2" y1="-86.2" x2="-185.5"
+										y2="-86.2"/>
+										<line id="XMLID_7_" class="st0" x1="-201.2" y1="-88.8" x2="-185.5"
+										y2="-88.8"/>
+										<line id="XMLID_6_" class="st0" x1="-201.2" y1="-91.5" x2="-185.5"
+										y2="-91.5"/>
+										</g>
+										<polygon id="XMLID_4_" class="st0" points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
+										-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	"/>
+										</g>
+										</svg>
+										<?php */ ?>
 								  </span>
                             <a href="<?php echo $this->getBaseUrl(); ?>our-story" class="menu-link sub-title">YS story</a></li>
+                        <?php /* commented for new designs ?>
+						<li class="menu-item tech_icon">
+							<span>
+							<svg style="margin-top:-2px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;"
+							xml:space="preserve">
+							<style type="text/css">
+							.st0 {
+							fill: none;
+							stroke: #CCCCCC;
+							stroke-miterlimit: 10;
+							}
+							</style>
+							<!--                                          <use xlink:href="#ys_tech"></use>-->
+							<g id="XMLID_35_">
+							<polyline id="XMLID_37_" class="st0"
+							points="29.4,160.3 16.3,166.6 22.6,153.5 	"/>
+							<circle id="XMLID_36_" class="st0" cx="27.8" cy="155.1" r="5.5"/>
+							</g>
+							<g id="XMLID_32_">
+							<rect id="XMLID_34_" x="22.9" y="238.4" class="st0" width="3.9"
+							height="14.7"/>
+							<circle id="XMLID_33_" class="st0" cx="24.8" cy="232.1" r="2.7"/>
+							</g>
+							<g id="XMLID_25_">
+							<line id="XMLID_31_" class="st0" x1="23.7" y1="18.3" x2="28" y2="25.8"/>
+							<line id="XMLID_30_" class="st0" x1="16.1" y1="25.9" x2="20.6" y2="18.1"/>
+							<line id="XMLID_29_" class="st0" x1="26.5" y1="28.5" x2="17.7" y2="28.5"/>
+							<circle id="XMLID_28_" class="st0" cx="22.1" cy="15.5" r="3"/>
+							<circle id="XMLID_27_" class="st0" cx="29.5" cy="28.5" r="3"/>
+							<path id="XMLID_26_" class="st0"
+							d="M17.7,28.5c0,1.7-1.4,3-3,3s-3-1.4-3-3c0-1.7,1.4-3,3-3S17.7,26.8,17.7,28.5"/>
+							</g>
+							<g id="XMLID_18_">
+							<circle id="XMLID_24_" class="st0" cx="24.8" cy="195.5" r="6.6"/>
+							<circle id="XMLID_23_" class="st0" cx="21" cy="197.7" r="6.6"/>
+							<circle id="XMLID_22_" class="st0" cx="21" cy="202.1" r="6.6"/>
+							<circle id="XMLID_21_" class="st0" cx="24.8" cy="204.3" r="6.6"/>
+							<circle id="XMLID_20_" class="st0" cx="28.6" cy="202.1" r="6.6"/>
+							<circle id="XMLID_19_" class="st0" cx="28.6" cy="197.7" r="6.6"/>
+							</g>
+							<g id="XMLID_15_">
+							<path id="XMLID_17_" class="st0"
+							d="M-147.1,37c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S-147.1,37-147.1,37z"/>
+							<path id="XMLID_16_" class="st0"
+							d="M-147.1,37c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S-147.1,37-147.1,37z"/>
+							</g>
+							<line id="XMLID_14_" class="st0" x1="-147.1" y1="37" x2="-147.1" y2="44"/>
+							<g id="XMLID_3_">
+							<g id="XMLID_5_">
+							<line id="XMLID_12_" class="st0" x1="-211.6" y1="-75.5" x2="-185.5"
+							y2="-75.5"/>
+							<line id="XMLID_11_" class="st0" x1="-211.6" y1="-80.8" x2="-185.5"
+							y2="-80.8"/>
+							<line id="XMLID_10_" class="st0" x1="-211.6" y1="-78.2" x2="-185.5"
+							y2="-78.2"/>
+							<line id="XMLID_9_" class="st0" x1="-201.2" y1="-83.5" x2="-185.5"
+							y2="-83.5"/>
+							<line id="XMLID_8_" class="st0" x1="-201.2" y1="-86.2" x2="-185.5"
+							y2="-86.2"/>
+							<line id="XMLID_7_" class="st0" x1="-201.2" y1="-88.8" x2="-185.5"
+							y2="-88.8"/>
+							<line id="XMLID_6_" class="st0" x1="-201.2" y1="-91.5" x2="-185.5"
+							y2="-91.5"/>
+							</g>
+							<polygon id="XMLID_4_" class="st0" points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
+							-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	"/>
+							</g>
+							</svg>
+
+							</span>
+							<a href="<?php echo $this->getBaseUrl(); ?>ys-fabric-tech" class="menu-link sub-title">YS tech</a>
+						</li>
+
+						<?php */ ?>
                         <li class="menu-item tech_icon">
-								  <span>
-									  <svg style="margin-top:-2px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                           viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;"
-                                           xml:space="preserve">
-<style type="text/css">
-    .st0 {
-        fill: none;
-        stroke: #CCCCCC;
-        stroke-miterlimit: 10;
-    }
-</style>
-<!--                                          <use xlink:href="#ys_tech"></use>-->
-                                          <g id="XMLID_35_">
-                                              <polyline id="XMLID_37_" class="st0"
-                                                        points="29.4,160.3 16.3,166.6 22.6,153.5 	"/>
-                                              <circle id="XMLID_36_" class="st0" cx="27.8" cy="155.1" r="5.5"/>
-                                          </g>
-                                          <g id="XMLID_32_">
-                                              <rect id="XMLID_34_" x="22.9" y="238.4" class="st0" width="3.9"
-                                                    height="14.7"/>
-                                              <circle id="XMLID_33_" class="st0" cx="24.8" cy="232.1" r="2.7"/>
-                                          </g>
-                                          <g id="XMLID_25_">
-                                              <line id="XMLID_31_" class="st0" x1="23.7" y1="18.3" x2="28" y2="25.8"/>
-                                              <line id="XMLID_30_" class="st0" x1="16.1" y1="25.9" x2="20.6" y2="18.1"/>
-                                              <line id="XMLID_29_" class="st0" x1="26.5" y1="28.5" x2="17.7" y2="28.5"/>
-                                              <circle id="XMLID_28_" class="st0" cx="22.1" cy="15.5" r="3"/>
-                                              <circle id="XMLID_27_" class="st0" cx="29.5" cy="28.5" r="3"/>
-                                              <path id="XMLID_26_" class="st0"
-                                                    d="M17.7,28.5c0,1.7-1.4,3-3,3s-3-1.4-3-3c0-1.7,1.4-3,3-3S17.7,26.8,17.7,28.5"/>
-                                          </g>
-                                          <g id="XMLID_18_">
-                                              <circle id="XMLID_24_" class="st0" cx="24.8" cy="195.5" r="6.6"/>
-                                              <circle id="XMLID_23_" class="st0" cx="21" cy="197.7" r="6.6"/>
-                                              <circle id="XMLID_22_" class="st0" cx="21" cy="202.1" r="6.6"/>
-                                              <circle id="XMLID_21_" class="st0" cx="24.8" cy="204.3" r="6.6"/>
-                                              <circle id="XMLID_20_" class="st0" cx="28.6" cy="202.1" r="6.6"/>
-                                              <circle id="XMLID_19_" class="st0" cx="28.6" cy="197.7" r="6.6"/>
-                                          </g>
-                                          <g id="XMLID_15_">
-                                              <path id="XMLID_17_" class="st0"
-                                                    d="M-147.1,37c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S-147.1,37-147.1,37z"/>
-                                              <path id="XMLID_16_" class="st0"
-                                                    d="M-147.1,37c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S-147.1,37-147.1,37z"/>
-                                          </g>
-                                          <line id="XMLID_14_" class="st0" x1="-147.1" y1="37" x2="-147.1" y2="44"/>
-                                          <g id="XMLID_3_">
-                                              <g id="XMLID_5_">
-                                                  <line id="XMLID_12_" class="st0" x1="-211.6" y1="-75.5" x2="-185.5"
-                                                        y2="-75.5"/>
-                                                  <line id="XMLID_11_" class="st0" x1="-211.6" y1="-80.8" x2="-185.5"
-                                                        y2="-80.8"/>
-                                                  <line id="XMLID_10_" class="st0" x1="-211.6" y1="-78.2" x2="-185.5"
-                                                        y2="-78.2"/>
-                                                  <line id="XMLID_9_" class="st0" x1="-201.2" y1="-83.5" x2="-185.5"
-                                                        y2="-83.5"/>
-                                                  <line id="XMLID_8_" class="st0" x1="-201.2" y1="-86.2" x2="-185.5"
-                                                        y2="-86.2"/>
-                                                  <line id="XMLID_7_" class="st0" x1="-201.2" y1="-88.8" x2="-185.5"
-                                                        y2="-88.8"/>
-                                                  <line id="XMLID_6_" class="st0" x1="-201.2" y1="-91.5" x2="-185.5"
-                                                        y2="-91.5"/>
-                                              </g>
-                                              <polygon id="XMLID_4_" class="st0" points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
-		-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	"/>
-                                          </g>
-</svg>
+							<span>
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
 
-								  </span>
-                            <a href="<?php echo $this->getBaseUrl(); ?>ys-fabric-tech" class="menu-link sub-title">YS tech</a>
-                        </li>
-                        <!--new ys-store icon added-->
-                        <li class="menu-item tech_icon">
-								  <span>
-									<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                         viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+							<g id="XMLID_2_">
+                                <path id="XMLID_7_" fill="#777777"  d="M9.9,11.4l11.8,20.5l11.8-20.5H9.9z M11.7,12.4h20.2L21.7,29.9L11.7,12.4z"/>
+                                <path id="XMLID_4_" fill="#777777"  d="M14.6,14.1l7.1,12.4l7.1-12.4H14.6z M16.3,15.1h4.9v2h-1.7l2.2,3.9l2.3-3.9h-1.8v-2h4.9
+							l-5.4,9.4L16.3,15.1z"/>
+                            </g>
+							</svg>
 
-<g id="XMLID_2_">
-    <path id="XMLID_7_" fill="#CECECD"  d="M9.9,11.4l11.8,20.5l11.8-20.5H9.9z M11.7,12.4h20.2L21.7,29.9L11.7,12.4z"/>
-    <path id="XMLID_4_" fill="#CECECD"  d="M14.6,14.1l7.1,12.4l7.1-12.4H14.6z M16.3,15.1h4.9v2h-1.7l2.2,3.9l2.3-3.9h-1.8v-2h4.9
-		l-5.4,9.4L16.3,15.1z"/>
-</g>
-</svg>
-
-								  </span>
+							</span>
                             <a href="<?php echo $this->getBaseUrl(); ?>our-stores" class="menu-link sub-title">YS Stores</a>
-                        </li><!--new ys-store icon added, end-->
-
-                        <li class="menu-item smogi-icon">
-                            <a href="<?php echo $this->getBaseUrl(); ?>smogi-bucks" class="menu-link sub-title">SMOGI Bucks</a>
-							  <span>
-
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-     y="0px"
-     viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
-<style type="text/css">
-    .st0 {
-        fill: none;
-        stroke: #CCCCCC;
-        stroke-miterlimit: 10;
-    }
-</style>
-<!--    <use xlink:href="#smogi_bucks"></use>-->
-    <g id="XMLID_35_">
-        <polyline id="XMLID_37_" class="st0" points="-155,197.7 -168.1,204 -161.8,190.9 	"/>
-        <circle id="XMLID_36_" class="st0" cx="-156.6" cy="192.5" r="5.5"/>
-    </g>
-    <g id="XMLID_32_">
-        <rect id="XMLID_34_" x="22.9" y="238.4" class="st0" width="3.9" height="14.7"/>
-        <circle id="XMLID_33_" class="st0" cx="24.8" cy="232.1" r="2.7"/>
-    </g>
-    <g id="XMLID_25_">
-        <line id="XMLID_31_" class="st0" x1="-150.6" y1="106.8" x2="-146.2" y2="114.3"/>
-        <line id="XMLID_30_" class="st0" x1="-158.1" y1="114.4" x2="-153.6" y2="106.6"/>
-        <line id="XMLID_29_" class="st0" x1="-147.7" y1="117" x2="-156.5" y2="117"/>
-        <circle id="XMLID_28_" class="st0" cx="-152.1" cy="104.1" r="3"/>
-        <circle id="XMLID_27_" class="st0" cx="-144.7" cy="117" r="3"/>
-        <path id="XMLID_26_" class="st0" d="M-156.5,117c0,1.7-1.4,3-3,3s-3-1.4-3-3s1.4-3,3-3S-156.5,115.3-156.5,117"/>
-    </g>
-    <g id="XMLID_18_">
-        <circle id="XMLID_24_" class="st0" cx="22" cy="17.6" r="6.6"/>
-        <circle id="XMLID_23_" class="st0" cx="18.2" cy="19.8" r="6.6"/>
-        <circle id="XMLID_22_" class="st0" cx="18.2" cy="24.2" r="6.6"/>
-        <circle id="XMLID_21_" class="st0" cx="22" cy="26.4" r="6.6"/>
-        <circle id="XMLID_20_" class="st0" cx="25.8" cy="24.2" r="6.6"/>
-        <circle id="XMLID_19_" class="st0" cx="25.8" cy="19.8" r="6.6"/>
-    </g>
-    <g id="XMLID_15_">
-        <path id="XMLID_17_" class="st0"
-              d="M-147.1,37c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S-147.1,37-147.1,37z"/>
-        <path id="XMLID_16_" class="st0"
-              d="M-147.1,37c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S-147.1,37-147.1,37z"/>
-    </g>
-    <line id="XMLID_14_" class="st0" x1="-147.1" y1="37" x2="-147.1" y2="44"/>
-    <g id="XMLID_3_">
-        <g id="XMLID_5_">
-            <line id="XMLID_12_" class="st0" x1="-211.6" y1="-75.5" x2="-185.5" y2="-75.5"/>
-            <line id="XMLID_11_" class="st0" x1="-211.6" y1="-80.8" x2="-185.5" y2="-80.8"/>
-            <line id="XMLID_10_" class="st0" x1="-211.6" y1="-78.2" x2="-185.5" y2="-78.2"/>
-            <line id="XMLID_9_" class="st0" x1="-201.2" y1="-83.5" x2="-185.5" y2="-83.5"/>
-            <line id="XMLID_8_" class="st0" x1="-201.2" y1="-86.2" x2="-185.5" y2="-86.2"/>
-            <line id="XMLID_7_" class="st0" x1="-201.2" y1="-88.8" x2="-185.5" y2="-88.8"/>
-            <line id="XMLID_6_" class="st0" x1="-201.2" y1="-91.5" x2="-185.5" y2="-91.5"/>
-        </g>
-        <polygon id="XMLID_4_" class="st0" points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
-		-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	"/>
-    </g>
-</svg>
-							  </span>
                         </li>
 
+                        <?php /* commented for new designs ?>
+						<li class="menu-item smogi-icon">
+							<a href="<?php echo $this->getBaseUrl(); ?>smogi-bucks" class="menu-link sub-title">SMOGI Bucks</a>
+							<span>
+							<!--								  <img class="responsive" src="--><?php //echo $this->getSkinUrl('images/smogi-icon.png') ?><!--" alt="">-->
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+							y="0px"
+							viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+							<style type="text/css">
+							.st0 {
+							fill: none;
+							stroke: #CCCCCC;
+							stroke-miterlimit: 10;
+							}
+							</style>
+							<!--    <use xlink:href="#smogi_bucks"></use>-->
+							<g id="XMLID_35_">
+							<polyline id="XMLID_37_" class="st0" points="-155,197.7 -168.1,204 -161.8,190.9 	"/>
+							<circle id="XMLID_36_" class="st0" cx="-156.6" cy="192.5" r="5.5"/>
+							</g>
+							<g id="XMLID_32_">
+							<rect id="XMLID_34_" x="22.9" y="238.4" class="st0" width="3.9" height="14.7"/>
+							<circle id="XMLID_33_" class="st0" cx="24.8" cy="232.1" r="2.7"/>
+							</g>
+							<g id="XMLID_25_">
+							<line id="XMLID_31_" class="st0" x1="-150.6" y1="106.8" x2="-146.2" y2="114.3"/>
+							<line id="XMLID_30_" class="st0" x1="-158.1" y1="114.4" x2="-153.6" y2="106.6"/>
+							<line id="XMLID_29_" class="st0" x1="-147.7" y1="117" x2="-156.5" y2="117"/>
+							<circle id="XMLID_28_" class="st0" cx="-152.1" cy="104.1" r="3"/>
+							<circle id="XMLID_27_" class="st0" cx="-144.7" cy="117" r="3"/>
+							<path id="XMLID_26_" class="st0" d="M-156.5,117c0,1.7-1.4,3-3,3s-3-1.4-3-3s1.4-3,3-3S-156.5,115.3-156.5,117"/>
+							</g>
+							<g id="XMLID_18_">
+							<circle id="XMLID_24_" class="st0" cx="22" cy="17.6" r="6.6"/>
+							<circle id="XMLID_23_" class="st0" cx="18.2" cy="19.8" r="6.6"/>
+							<circle id="XMLID_22_" class="st0" cx="18.2" cy="24.2" r="6.6"/>
+							<circle id="XMLID_21_" class="st0" cx="22" cy="26.4" r="6.6"/>
+							<circle id="XMLID_20_" class="st0" cx="25.8" cy="24.2" r="6.6"/>
+							<circle id="XMLID_19_" class="st0" cx="25.8" cy="19.8" r="6.6"/>
+							</g>
+							<g id="XMLID_15_">
+							<path id="XMLID_17_" class="st0"
+							d="M-147.1,37c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S-147.1,37-147.1,37z"/>
+							<path id="XMLID_16_" class="st0"
+							d="M-147.1,37c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S-147.1,37-147.1,37z"/>
+							</g>
+							<line id="XMLID_14_" class="st0" x1="-147.1" y1="37" x2="-147.1" y2="44"/>
+							<g id="XMLID_3_">
+							<g id="XMLID_5_">
+							<line id="XMLID_12_" class="st0" x1="-211.6" y1="-75.5" x2="-185.5" y2="-75.5"/>
+							<line id="XMLID_11_" class="st0" x1="-211.6" y1="-80.8" x2="-185.5" y2="-80.8"/>
+							<line id="XMLID_10_" class="st0" x1="-211.6" y1="-78.2" x2="-185.5" y2="-78.2"/>
+							<line id="XMLID_9_" class="st0" x1="-201.2" y1="-83.5" x2="-185.5" y2="-83.5"/>
+							<line id="XMLID_8_" class="st0" x1="-201.2" y1="-86.2" x2="-185.5" y2="-86.2"/>
+							<line id="XMLID_7_" class="st0" x1="-201.2" y1="-88.8" x2="-185.5" y2="-88.8"/>
+							<line id="XMLID_6_" class="st0" x1="-201.2" y1="-91.5" x2="-185.5" y2="-91.5"/>
+							</g>
+							<polygon id="XMLID_4_" class="st0" points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
+							-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	"/>
+							</g>
+							</svg>
+							</span>
+						</li>
+						<?php */ ?>
                         <li class="menu-item smogi-icon">
                             <a href="<?php echo $this->getBaseUrl(); ?>gift_of_ys" class="menu-link sub-title">YS Gift Card</a>
-							  <span>
+							<span>
 							<!--<img class="responsive" src="<?php //echo $this->getSkinUrl('images/gift-card-icon-new.pngo') ?>" alt="ys gift card">-->
-				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
-						<g>
-                            <defs>
-                                <rect id="SVGID_1_" x="9" y="13" width="26.807" height="16.983"/>
-                            </defs>
-                            <clipPath id="SVGID_2_">
-                                <use xlink:href="#SVGID_1_"  overflow="visible"/>
-                            </clipPath>
-                            <path clip-path="url(#SVGID_2_)" fill="#CCCCCC" d="M34.888,29.126H9.917V13.858h24.971V29.126z M35.805,13H9v16.983h26.805V13z"/>
-                            <polygon clip-path="url(#SVGID_2_)" fill="none" stroke="#CCCCCC" stroke-width="0.707" stroke-miterlimit="10" points="
-								40.326,26.249 38.492,27.965 21.066,11.666 22.9,9.95 	"/>
-                            <path clip-path="url(#SVGID_2_)" fill="none" stroke="#CCCCCC" stroke-width="0.707" stroke-miterlimit="10" d="M26.144,33.528
-								l-1.835,1.716L6.882,18.946l1.834-1.716L26.144,33.528z"/>
-                        </g>
-				</svg>
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+							<g>
+                                <defs>
+                                    <rect id="SVGID_1_" x="9" y="13" width="26.807" height="16.983"/>
+                                </defs>
+                                <clipPath id="SVGID_2_">
+                                    <use xlink:href="#SVGID_1_"  overflow="visible"/>
+                                </clipPath>
+                                <path clip-path="url(#SVGID_2_)" fill="#777777" d="M34.888,29.126H9.917V13.858h24.971V29.126z M35.805,13H9v16.983h26.805V13z"/>
+                                <polygon clip-path="url(#SVGID_2_)" fill="none" stroke="#777777" stroke-width="0.707" stroke-miterlimit="10" points="
+							40.326,26.249 38.492,27.965 21.066,11.666 22.9,9.95 	"/>
+                                <path clip-path="url(#SVGID_2_)" fill="none" stroke="#777777" stroke-width="0.707" stroke-miterlimit="10" d="M26.144,33.528
+							l-1.835,1.716L6.882,18.946l1.834-1.716L26.144,33.528z"/>
+                            </g>
+							</svg>
 
 
-							  </span>
+							</span>
                         </li>
+                        <?php /* commented for new designs ?>
+						<li style="position:relative;" class="menu-item contact_icon_li"><a href="<?php echo $this->getBaseUrl(); ?>contacts/" class="menu-link sub-title">Contact</a>
+							<span class="contact-icon">
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+							<style type="text/css">
+							.st0 {
+							fill: none;
+							stroke: #CCCCCC;
+							stroke-miterlimit: 10;
+							}
+							</style>
+							<!--                                    <use xlink:href="#contact"></use>-->
+							<g id="XMLID_4_">
+							<rect id="XMLID_6_" x="20.1" y="59.3" class="st0" width="3.9" height="14.7"/>
+							<circle id="XMLID_5_" class="st0" cx="22" cy="53" r="2.7"/>
+							</g>
+							<path id="XMLID_3_" class="st0" d="M28.4,26.9l0.6,0h6.5v-4.4c0-2.7-6-5-13.5-5c-7.4,0-13.5,2.2-13.5,5v4.4h7l0-3.2
+							c0-1.6,2.9-2.9,6.4-2.9s6.4,1.3,6.4,2.9L28.4,26.9z"/>
+							</svg>
 
 
-                        <li style="position:relative;" class="menu-item contact_icon_li"><a href="<?php echo $this->getBaseUrl(); ?>contacts/" class="menu-link sub-title">Contact</a>
-							    <span class="contact-icon">
-								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                     viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
-<style type="text/css">
-    .st0 {
-        fill: none;
-        stroke: #CCCCCC;
-        stroke-miterlimit: 10;
-    }
-</style>
-<!--                                    <use xlink:href="#contact"></use>-->
-                                    <g id="XMLID_4_">
-                                        <rect id="XMLID_6_" x="20.1" y="59.3" class="st0" width="3.9" height="14.7"/>
-                                        <circle id="XMLID_5_" class="st0" cx="22" cy="53" r="2.7"/>
-                                    </g>
-                                    <path id="XMLID_3_" class="st0" d="M28.4,26.9l0.6,0h6.5v-4.4c0-2.7-6-5-13.5-5c-7.4,0-13.5,2.2-13.5,5v4.4h7l0-3.2
-	c0-1.6,2.9-2.9,6.4-2.9s6.4,1.3,6.4,2.9L28.4,26.9z"/>
-</svg>
+							</span>
+
+						</li>
 
 
-								</span>
-
-                        </li>
-
-
-                        <li style="position:relative;" class="menu-item contact_icon_li"><a href="<?php echo $this->getBaseUrl(); ?>help/" class="menu-link sub-title">Help</a>
-							    <span class="contact-icon">
-								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                     viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+						<li style="position:relative;" class="menu-item contact_icon_li"><a href="<?php echo $this->getBaseUrl(); ?>help/" class="menu-link sub-title">Help</a>
+							<span class="contact-icon">
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
 
 
-            <style type="text/css">
-                .st0{fill:none;stroke:#CCCCCC;stroke-miterlimit:10;}
-            </style>
-<!--                                    <use xlink:href="#help"></use>-->
-                                    <g id="XMLID_4_">
-                                        <rect id="XMLID_6_" x="19.8" y="19.1" class="st0" width="3.9" height="14.7"/>
-                                        <circle id="XMLID_5_" class="st0" cx="21.8" cy="12.8" r="2.7"/>
-                                    </g>
-                                    <path id="XMLID_3_" class="st0" d="M-70.9,26.7l0.6,0h6.5v-4.4c0-2.7-6-5-13.5-5c-7.4,0-13.5,2.2-13.5,5v4.4h7l0-3.2
-	c0-1.6,2.9-2.9,6.4-2.9s6.4,1.3,6.4,2.9L-70.9,26.7z"/>
-</svg>
+							<style type="text/css">
+							.st0{fill:none;stroke:#CCCCCC;stroke-miterlimit:10;}
+							</style>
+							<!--                                    <use xlink:href="#help"></use>-->
+							<g id="XMLID_4_">
+							<rect id="XMLID_6_" x="19.8" y="19.1" class="st0" width="3.9" height="14.7"/>
+							<circle id="XMLID_5_" class="st0" cx="21.8" cy="12.8" r="2.7"/>
+							</g>
+							<path id="XMLID_3_" class="st0" d="M-70.9,26.7l0.6,0h6.5v-4.4c0-2.7-6-5-13.5-5c-7.4,0-13.5,2.2-13.5,5v4.4h7l0-3.2
+							c0-1.6,2.9-2.9,6.4-2.9s6.4,1.3,6.4,2.9L-70.9,26.7z"/>
+							</svg>
 
 
-								</span>
+							</span>
 
-                        </li>
-                        <li style="position:relative;" class="menu-item contact_icon_li"><a href="/careers" class="menu-link sub-title">Careers</a>
-							    <span class="contact-icon">
-								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                     viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
-									<style type="text/css">
-                                        .st0{fill:none;stroke:#CCCBCB;stroke-miterlimit:10;}
-                                    </style>
-                                    <polygon id="XMLID_2_" class="st0" points="25,16.6 25,22.2 19.9,22.2 19.9,27.3 14.2,27.3 14.2,33.4 31.1,33.4 31.1,16.6 "/>
-								</svg>
+						</li>
+						<li style="position:relative;" class="menu-item contact_icon_li"><a href="/careers" class="menu-link sub-title">Careers</a>
+							<span class="contact-icon">
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+							<style type="text/css">
+							.st0{fill:none;stroke:#CCCBCB;stroke-miterlimit:10;}
+							</style>
+							<polygon id="XMLID_2_" class="st0" points="25,16.6 25,22.2 19.9,22.2 19.9,27.3 14.2,27.3 14.2,33.4 31.1,33.4 31.1,16.6 "/>
+							</svg>
 
 
-								</span>
+							</span>
 
-                        </li>
-
+						</li>
+						<?php */ ?>
 
                     </ul><span class="border-line"></span>
                 </li>
                 <!--							  <li class="menu-item"><a href="-->
                 <?php //echo $this->getBaseUrl();?><!--our-story" class="menu-link sub-title">YS For USA</a></li>-->
+                <?php /* commented for new design ?>
                 <li class="menu-item has-dropdown rangoli-link main-heading">
-
+                    <!--								 <span class="rangoli-icon" style="opacity: 1"><img class="responsive" src="-->
+                    <?php //echo $this->getSkinUrl('images/rangoli-icon.png') ?><!--" alt=""/></span>-->
 
 								  <span class="arrow-tag toggle-ys-menu">
                                       <svg width="44px" height="44px">
@@ -637,7 +686,7 @@
                                           <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
                                                 y1="13.39" x2="22.374" y2="29.39"/>
                                       </svg>
-
+<!--									  <img alt="" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png'); ?><!--" class="responsive">-->
 
 								</span>
 
@@ -645,6 +694,9 @@
 								<span class="white-img rangoli_text_a" style="display:block; height: 44px">
                                  <a href="<?php echo $this->getUrl('rangoli') ?>"
                                     class="menu-link m-link  rangoli_li_a">
+                                     <!--	<img class="responsive" src="-->
+                                     <?php //echo $this->getSkinUrl('images/rangoli-text.png') ?><!--" alt=""/>-->
+
                                      <span><svg  width="168.676px"
                                                  height="45.014px">
                                              <use xlink:href="#rangoli_logo" x="0" y="0" width="168.676px"
@@ -804,6 +856,7 @@
                                 <svg viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px"> <g>     <path d="M12.274,16.006c-1.265,1.265-1.265,3.315,0,4.58l0.973,0.972   l-0.973,0.972c-1.265,1.265-1.265,3.315,0,4.579c1.265,1.265,3.314,1.265,4.579,0l5.552-5.551l-5.552-5.552   C15.589,14.742,13.539,14.742,12.274,16.006z" stroke-miterlimit="10" stroke="#CCCCCC" fill="none"/>     <path d="M32.536,16.006c1.265,1.265,1.265,3.315,0,4.58l-0.973,0.972   l0.973,0.972c1.265,1.265,1.265,3.315,0,4.579c-1.265,1.265-3.314,1.265-4.579,0l-5.552-5.551l5.552-5.552   C29.222,14.742,31.271,14.742,32.536,16.006z" stroke-miterlimit="10" stroke="#CCCCCC" fill="none"/> </g> </svg>
                             </span>
                             <a href="/rangoli/love-yogasmoga/" class="menu-link main-txt">Love</a>
+
                         </li>
                         <li class="menu-item has-dropdown c-text_small r_grey_text">
                             <a href="/rangoli/smogis/" class="menu-link main-txt">SMOGIs</a>
@@ -1008,14 +1061,17 @@
                     </ul>
                     <span class="border-line"></span>
                 </li>
-
-                    <li class="menu-item additional_links">
-                        <ul>
-                            <li><a href="javascript:void(0);">&copy; 2016 YOGASMOGA</a></li>
-                            <li><a href="<?php echo $this->getBaseUrl(); ?>privacy-policy/">Privacy Policy</a></li>
-                            <li><a href="<?php echo $this->getBaseUrl(); ?>terms-and-conditions/">Terms &amp; Conditions</a></li>
-                        </ul>
-                    </li>
+				<?php */ ?>
+                <li class="menu-item additional_links">
+                    <ul>
+                        <li><a href="javascript:void(0);">&copy; 2015 YOGASMOGA</a></li>
+                        <li><a href="<?php echo $this->getBaseUrl(); ?>contacts/">Contact</a></li>
+                        <li><a href="<?php echo $this->getBaseUrl(); ?>help/">Help</a></li>
+                        <li><a href="<?php echo $this->getBaseUrl(); ?>careers/">Careers</a></li>
+                        <li><a href="<?php echo $this->getBaseUrl(); ?>privacy-policy/">Privacy Policy</a></li>
+                        <li><a href="<?php echo $this->getBaseUrl(); ?>terms-and-conditions/">Terms &amp; Conditions</a></li>
+                    </ul>
+                </li>
 
             </ul>
         </div>

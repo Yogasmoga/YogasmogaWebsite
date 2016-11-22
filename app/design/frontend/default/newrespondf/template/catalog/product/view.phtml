@@ -798,33 +798,43 @@ if ($lengthAvailable) {
                         $styleIds = array(125,126,127,128,129,130);
                         $finalIds = array_intersect($catIds, $styleIds);
                         $imageName = "";
+                        $rangeName = "";
                         foreach($finalIds as $finalId){
                             //for women.
                             if($finalId == 125){
                             $imageName = "women-core-stylev4";
+                            $rangeName = "Core";
                             }
                             elseif($finalId == 126){
                              $imageName = "women-select-stylev4";
+                              $rangeName = "Select";
                              }
                             elseif($finalId == 127){
                              $imageName = "women-premium-stylev5";
+                             $rangeName = "Premium";
                              }
                              //for men.
                             if($finalId == 128){
                             $imageName = "men-core-stylev4";
+                            $rangeName = "Core";
                             }
                             elseif($finalId == 129){
                              $imageName = "men-select-stylev4";
+                             $rangeName = "Select";
                              }
                             elseif($finalId == 130){
                              $imageName = "men-premium-stylev4";
+                             $rangeName = "Premium";
                              }
                         }
 
 
                  ?>
-                 <?php if($imageName):?>
-                <div class="style-image" style="padding:15px 15px 0 15px;"><img style="width:100%; height:auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/new-design-images/range/mobile/<?php echo $imageName ?>.png"/></div>
+                 <?php if($rangeName):?>
+                <div class="style-image" style="padding:28px 15px 0 15px;margin-bottom:-10px">
+					<!--<img style="width:100%; height:auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/new-design-images/range/mobile/<?php echo $imageName ?>.png"/>-->
+					<span class="range-name"><?php echo $rangeName; ?></span>
+				</div>
 				
                 <?php endif; ?>
 				

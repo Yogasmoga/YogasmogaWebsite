@@ -59,6 +59,32 @@
 		
 			  <?php //echo $this->getChildHtml('global_messages') ?>
 			  <?php echo $this->getChildHtml('content') ?>
+        <!--banner-bucket start-->
+        <div class="banner-bucket">
+            <div class="bucket bucket1">
+                <div class="bcol-full">
+                    <a href="/women"><img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/mobile/homepage/bth-women.jpg" alt=""/></a>
+                </div>
+                <div class="bcol-half">
+                    <a href="/women/tops"><img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/mobile/homepage/shop-tops-women.jpg" alt=""/></a>
+                </div>
+                <div class="bcol-half">
+                    <a href="/women/bottoms"><img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/mobile/homepage/shop-bottoms-women.jpg" alt=""/></a>
+                </div>
+            </div>
+            <div class="bucket bucket2">
+                <div class="bcol-full">
+                    <a href="/men"><img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/mobile/homepage/bth-men.jpg" alt=""/></a>
+                </div>
+                <div class="bcol-half">
+                    <a href="/men/tops"><img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/mobile/homepage/shop-tops-men.jpg" alt=""/></a>
+                </div>
+                <div class="bcol-half">
+                    <a href="/men/bottoms"><img src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/mobile/homepage/shop-bottoms-men.jpg" alt=""/></a>
+                </div>
+            </div>
+        </div>
+        <!--banner-bucket end-->
               
               <div class="clearfix"></div>
               <div class="block-nav">
@@ -79,10 +105,10 @@
 <!--                  <a href="#"><span>learn more</span></a>-->
               </div>
                 <?php }?>
-        <div class="carbon6" onclick="window.location='/women/carbon6/'">
+        <?php /* ?><div class="carbon6" onclick="window.location='/women/carbon6/'">
             <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/mobile_homepage_collection.png') ?>" alt="carbon6"/>
             <!--                  <a href="#"><span>learn more</span></a>-->
-        </div>
+        </div><?php */ ?>
               <div class="clearfix"></div>
               <div class="block-invite">
                   <div class="visit-us" onclick="window.location='/our-stores/'">

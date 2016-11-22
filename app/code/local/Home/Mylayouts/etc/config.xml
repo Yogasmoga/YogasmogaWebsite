@@ -213,21 +213,45 @@
         </share-smogi>
         <!--for customer account layout-->
 
-        <!--Collection Men layouts start here -->
+        <!-- Color Collection Men layouts End here -->
+
         <collection-men translate="label">
           <label>Collection Men</label>
           <template>page/collection_men.phtml</template>
           <layout_handle>Collection Men</layout_handle>
         </collection-men>
-        <!-- Collection Men layouts End here -->
+        <!-- Color Collection Men layouts End here -->
 
-        <!-- Collection Women page layouts Start here -->
+
+        <!-- Color Collection Women page layouts End here -->
+
         <collection-women translate="label">
           <label>Collection Women</label>
           <template>page/collection_women.phtml</template>
           <layout_handle>Collection Women</layout_handle>
         </collection-women>
-        <!-- Collection Women page layouts End here -->
+        <!-- Color Collection Women page layouts End here -->
+
+
+
+        <!-- Color Range Men layouts End here -->
+
+        <range-men translate="label">
+          <label>Range Men</label>
+          <template>page/range_men.phtml</template>
+          <layout_handle>Range Men</layout_handle>
+        </range-men>
+        <!-- Color Range Men layouts End here -->
+
+
+        <!-- Color Range Women page layouts End here -->
+
+        <range-women translate="label">
+          <label>Range Women</label>
+          <template>page/range_women.phtml</template>
+          <layout_handle>Range Women</layout_handle>
+        </range-women>
+        <!-- Color Range Women page layouts End here -->
       </layouts>
     </page>
   </global>
