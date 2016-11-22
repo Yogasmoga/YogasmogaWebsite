@@ -4112,7 +4112,7 @@ table.productdetailtable div#sizecontainer{margin-top:20px!important;}
 }
 
 /*********** home page changes start **************/
-#pagecontainer .home-banner{min-height:530px;}
+#pagecontainer .home-banner{min-height:1065px;}
 #pagecontainer .home-banner img {width:100%;height:auto;}
 ul.main-menu > li.smenu, ul.main-menu > li.active.over, ul.main-menu > li:hover, ul.main-menu2 > li.active.over {
     /* background: rgba(0, 0, 0, 0) url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/menu_arrow.png") no-repeat scroll center bottom / 17px 14px;*/
