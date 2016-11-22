@@ -17,7 +17,7 @@ foreach (explode(',', $subcats) as $subCatid) {
                     } ?>" alt=""/>
                     <span><?php echo $_category->getMobileDescription(); ?></span>
                     <?php if (!$_category->getThumbnail()) { ?>
-                        <span class="over-text"><?php echo $_category->getName().$_category->getId(); ?></span>
+                        <span class="over-text"><?php echo $_category->getName(); ?></span>
                     <?php } ?>
                 </a>
             </div>
