@@ -66,36 +66,8 @@ $cms_block = Mage::getModel('cms/block')->load($page);
 $title = $cms_block->getTitle(); // title of cms block
 $identifier = $cms_block->getIdentifier(); //identifier for that cms block
 $content = $cms_block->getContent(); //get entire content of cms block
-if (isset($page) && $page == '11') {
-    ?>
-    <?php
-    $cat = Mage::getModel('catalog/category')->load($currentCategoryId);
-    $subcats = $cat->getChildren();
-    foreach (explode(',', $subcats) as $subCatid) {
-        $_category = Mage::getModel('catalog/category')->load($subCatid);
-        if ($_category->getIsActive()) {
-            ?>
-            <div class="category-box">
-                <a href="<?php echo $_category->getUrl(); ?>">
-                    <img class="img-responsive" src="<?php if ($_category->getThumbnail()) {
-                        echo Mage::getBaseUrl('media') . 'catalog/category/' . $_category->getThumbnail();
-                    } else {
-                        echo $this->getSkinUrl('popup/images/no_image.jpg');
-                    } ?>" alt=""/>
-                    <span><?php echo $_category->getMobileDescription(); ?></span>
-                    <?php if (!$_category->getThumbnail()) { ?>
-                        <span class="over-text"><?php echo $_category->getName(); ?></span>
-                    <?php } ?>
-                </a>
-            </div>
-            <!--            <div class="clearfix"></div>-->
-
-            <?php
-        }
-    }
-
-    ?>
-
+if (isset($page) && $page == '11') {?>
+   <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('landing_page')->toHtml();?>
 <?php } else { ?>
     <?php
     $_category = Mage::registry('current_category');
