@@ -193,18 +193,37 @@
                     <?php $_helper = Mage::helper('catalog/category') ?>
                     <?php $_categories = $_helper->getStoreCategories() ?>
                     <?php $currentCategory = Mage::registry('current_category') ?>
+                    <?php $ccId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId()?>
                     <?php if (count($_categories) > 0): ?>
                     <ul class="nav-dropdown menu level2" style="display: block;">
-                        <?php foreach ($_categories as $_category): ?>
+
+                        <?php //edited...
+                        $identity ='';foreach ($_categories as $_category): ?>
                             <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
                             <?php $_subcategories = $_category->getChildrenCategories() ?>
 
                             <li class="menu-item has-dropdown c-text">
-                            <i></i>
+                                <i></i>
 
-                                <a class="menu-link main-txt" rel="cat_<?php echo $_category->getId();?>" href="<?php echo $_helper->getCategoryUrl($_category) ?>">
-                                    <?php echo $_category->getName() ?>
-                                </a>
+
+                                <?php if($_category->getId() == $ccId){
+                                    //edited...
+                                    $identity = $_category->getUrlKey();
+                                    ?>
+                                    <a class="menu-link main-txt" rel="cat_<?php echo $_category->getId().$identity;?>" href="<?php echo $_helper->getCategoryUrl($_category) ?>">
+                                        <?php echo $_category->getName() ?>
+                                    </a>
+                                <?php  } else{
+                                    //edited...
+                                    $identity = $_category->getUrlKey();
+                                    ?>
+                                    <a class="menu-link main-txt" rel="cat_<?php echo $_category->getId().$identity;?>" href="<?php echo $_helper->getCategoryUrl($_category) ?>">
+                                        <?php echo $_category->getName() ?>
+                                    </a>
+                                <?php }?>
+
+
+
 
                                 <?php if(trim(strtolower($_category->getName()))=="gift sets"){ ?>
 
@@ -231,11 +250,11 @@
                                             <a class="menu-link sub_cat gift_set_link" href="gift-sets?style=women" rel="women">Women</a>
                                         </li>
                                     </ul>
-                                <?php
+                                    <?php
                                 }
                                 else{ ?>
 
-                                <?php if(isset($_subcategories) && count($_subcategories)>0){ ?>
+                                    <?php if(isset($_subcategories) && count($_subcategories)>0){ ?>
                                         <span class="arrow-tag toggle-ys-menu">
                                         <!--											<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -250,23 +269,115 @@
                                         </svg>
                                         </span>
 
-                                <?php } ?>
+                                    <?php } ?>
 
-                                <?php //if ($currentCategory && $currentCategory->getId() == $_category->getId()): ?>
-                                <?php if (count($_subcategories) > 0): ?>
-                                    <ul class="nav-dropdown menu level3">
-                                        <?php foreach ($_subcategories as $_subcategory): ?>
-                                            <li class="menu-item">
-                                                <i></i>
-                                                <a class="menu-link sub_cat" rel="cat_<?php echo $_subcategory->getId();?>" data="cat_<?php echo $_category->getId(); ?>"
-                                                   href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
-                                                    <?php echo $_subcategory->getName() ?></a>
+                                    <?php //if ($currentCategory && $currentCategory->getId() == $_category->getId()): ?>
+                                    <?php if (count($_subcategories) > 0): ?>
+                                        <ul class="nav-dropdown menu level3">
+                                            <?php if($identity=="women"){ //edited... ?>
+                                                <?php $womenWhatsnew = Mage::getModel('catalog/category')->load(16) ?>
+                                                <li class="menu-item"><a href="<?php echo $womenWhatsnew->getUrl();?>"><?php echo $womenWhatsnew->getName();?></a></li>
+                                            <?php } else{?>
+                                                <?php $womenWhatsnew = Mage::getModel('catalog/category')->load(19) ?>
+                                                <li class="menu-item"><a href="<?php echo $womenWhatsnew->getUrl();?>"><?php echo $womenWhatsnew->getName();?></a></li>
+                                            <?php } foreach ($_subcategories as $_subcategory): ?>
+
+                                                <li class="menu-item">
+                                                    <i></i>
+                                                    <?php //edited...
+                                                    $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_collection_categoryids')->getValue('plain')), true);
+                                                    $menCollectionIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('men_collection_categoryids')->getValue('plain')), true);
+                                                    $prints = $categoryIds['prints'];
+                                                    $carbon6 = $categoryIds['women_carbon6'];
+                                                    $vivacity = $categoryIds['vivacity'];
+                                                    $golf = $menCollectionIds['golf'];
+                                                    $menCarbon6 = $menCollectionIds['men_carbon6'];
 
 
-                                                <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
-                                                <?php $_subsubcategories = $_subcategory->getChildrenCategories() ?>
-                                                <?php if (count($_subsubcategories) > 0): ?>
-                                                    <span class="arrow-tag sub_menu_icons">
+
+                                                    ?>
+                                                    <?php
+                                                    //edited...
+                                                    if($_subcategory->getId() == 16 ||
+                                                        $_subcategory->getId() == 19 ||
+                                                        $_subcategory->getId()==$prints  ||
+                                                        $_subcategory->getId()==$carbon6  ||
+                                                        $_subcategory->getId()==$vivacity ||
+                                                        $_subcategory->getId()==$golf ||
+                                                        $_subcategory->getId()==$menCarbon6
+
+                                                    ){?>
+                                                    <?php }else{
+                                                        //edited...
+                                                        ?>
+                                                        <?php if($_subcategory->getId() != 131 && $_subcategory->getId() != 133){?>
+                                                            <a class="menu-link sub_cat" rel="cat_<?php echo $_subcategory->getId();?>" data="cat_<?php echo $_category->getId(); ?>"
+                                                               href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
+                                                                <?php echo $_subcategory->getName() ?></a>
+                                                        <?php } else {
+                                                            //edited...
+                                                            ?>
+
+                                                            <?php if($identity=='women'):?>
+
+                                                                <a class="menu-link sub_cat" rel="cat_<?php echo $_subcategory->getId();?>" data="cat_<?php echo $_category->getId(); ?>"
+                                                                   href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
+                                                                    <?php echo $_subcategory->getName() ?></a>
+
+                                                                <span class="arrow-tag sub_menu_icons">
+																<svg width="44px" height="44px">
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                                                          y2="109.657"/>
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                                                          y1="21.39" x2="30.374" y2="21.39"/>
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                                                          y1="13.39" x2="22.374" y2="29.39"/>
+                                                                </svg>
+
+														 </span>
+                                                                <ul class="sub_menu_links">
+                                                                    <?php foreach($categoryIds as $ids ):
+                                                                        $sub_subcategory = Mage::getModel('catalog/category')->load($ids);?>
+                                                                        <li class="menu-item"><a class="menu-link" href="<?php echo $sub_subcategory->getUrl();?>"><?php echo $sub_subcategory->getName();?></a></li>
+                                                                    <?php endforeach?>
+                                                                </ul>
+                                                            <?php else: ?>
+
+                                                                <a class="menu-link sub_cat" rel="cat_<?php echo $_subcategory->getId();?>" data="cat_<?php echo $_category->getId(); ?>"
+                                                                   href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
+                                                                    <?php echo $_subcategory->getName() ?></a>
+
+                                                                <span class="arrow-tag sub_menu_icons">
+																<svg width="44px" height="44px">
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                                                          y2="109.657"/>
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                                                          y1="21.39" x2="30.374" y2="21.39"/>
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                                                          y1="13.39" x2="22.374" y2="29.39"/>
+                                                                </svg>
+
+														 </span>
+                                                                <ul class="sub_menu_links">
+                                                                    <?php //edited...
+                                                                    foreach($menCollectionIds as $ids ):
+                                                                        $sub_subcategory = Mage::getModel('catalog/category')->load($ids);?>
+                                                                        <li class="menu-item"><a class="menu-link" href="<?php echo $sub_subcategory->getUrl();?>"><?php echo $sub_subcategory->getName();?></a></li>
+                                                                    <?php endforeach?>
+                                                                </ul>
+
+                                                            <?php endif;?>
+
+
+
+
+
+                                                        <?php } } ?>
+
+                                                    <?php  $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+                                                    <?php $_subsubcategories = $_subcategory->getChildrenCategories() ?>
+                                                    <?php if (count($_subsubcategories) > 0): ?>
+                                                        <span class="arrow-tag sub_menu_icons">
 																<svg width="44px" height="44px">
                                                                     <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
                                                                           y2="109.657"/>
@@ -277,22 +388,24 @@
                                                                 </svg>
 
 																	</span>
-                                                    <ul class="sub_menu_links">
-                                                        <?php foreach ($_subsubcategories as $_subsubcategory): ?>
-                                                            <li class="menu-item">
-                                                                <a class="menu-link"  rel="cat_<?php echo $_subcategory->getId() . '_' . $_subsubcategory->getId();?>"
-                                                                   href="<?php echo $_helper->getCategoryUrl($_subsubcategory) ?>">
-                                                                    <?php echo $_subsubcategory->getName() ?></a>
-                                                            </li>
-                                                        <?php endforeach; ?>
-                                                    </ul>
-                                                <?php endif; ?>
+                                                        <ul class="sub_menu_links">
+                                                            <?php foreach ($_subsubcategories as $_subsubcategory): ?>
 
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                <?php endif; ?>
-                                <?php //endif; ?>
+                                                                <li class="menu-item">
+                                                                    <a class="menu-link"  rel="cat_<?php echo $_subcategory->getId() . '_' . $_subsubcategory->getId();?>"
+                                                                       href="<?php echo $_helper->getCategoryUrl($_subsubcategory) ?>">
+                                                                        <?php echo $_subsubcategory->getName() ?></a>
+                                                                </li>
+
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                    <?php endif; ?>
+
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
+                                    <?php //endif; ?>
 
                                 <?php } // gift set check finishes ?>
                             </li>
@@ -302,57 +415,57 @@
 								  <span>
 										<svg style="margin-top:-2px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 44" xml:space="preserve">
 										<style type="text/css">
-										.st0 {
-										fill: none;
-										stroke: #CCCCCC;
-										stroke-miterlimit: 10;
-										}
-										</style>
-										<!--                                          <use xlink:href="#ys_tech"></use>-->
-										<g id="XMLID_35_">
-										<polyline id="XMLID_37_" class="st0" points="29.4,160.3 16.3,166.6 22.6,153.5 	"/>
-										<circle id="XMLID_36_" class="st0" cx="27.8" cy="155.1" r="5.5"/>
-										</g>
-										<g id="XMLID_32_">
-										<rect id="XMLID_34_" x="22.9" y="238.4" class="st0" width="3.9" height="14.7"/>
-										<circle id="XMLID_33_" class="st0" cx="24.8" cy="232.1" r="2.7"/>
-										</g>
-										<g id="XMLID_25_">
-										<line id="XMLID_31_" class="st0" x1="23.7" y1="18.3" x2="28" y2="25.8"/>
-										<line id="XMLID_30_" class="st0" x1="16.1" y1="25.9" x2="20.6" y2="18.1"/>
-										<line id="XMLID_29_" class="st0" x1="26.5" y1="28.5" x2="17.7" y2="28.5"/>
-										<circle id="XMLID_28_" class="st0" cx="22.1" cy="15.5" r="3"/>
-										<circle id="XMLID_27_" class="st0" cx="29.5" cy="28.5" r="3"/>
-										<path id="XMLID_26_" class="st0" d="M17.7,28.5c0,1.7-1.4,3-3,3s-3-1.4-3-3c0-1.7,1.4-3,3-3S17.7,26.8,17.7,28.5"/>
-										</g>
-										<g id="XMLID_18_">
-										<circle id="XMLID_24_" class="st0" cx="24.8" cy="195.5" r="6.6"/>
-										<circle id="XMLID_23_" class="st0" cx="21" cy="197.7" r="6.6"/>
-										<circle id="XMLID_22_" class="st0" cx="21" cy="202.1" r="6.6"/>
-										<circle id="XMLID_21_" class="st0" cx="24.8" cy="204.3" r="6.6"/>
-										<circle id="XMLID_20_" class="st0" cx="28.6" cy="202.1" r="6.6"/>
-										<circle id="XMLID_19_" class="st0" cx="28.6" cy="197.7" r="6.6"/>
-										</g>
-										<g id="XMLID_15_">
-										<path id="XMLID_17_" class="st0" d="M-147.1,37c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S-147.1,37-147.1,37z"/>
-										<path id="XMLID_16_" class="st0" d="M-147.1,37c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S-147.1,37-147.1,37z"/>
-										</g>
-										<line id="XMLID_14_" class="st0" x1="-147.1" y1="37" x2="-147.1" y2="44"/>
-										<g id="XMLID_3_">
-										<g id="XMLID_5_">
-										<line id="XMLID_12_" class="st0" x1="-211.6" y1="-75.5" x2="-185.5" y2="-75.5"/>
-										<line id="XMLID_11_" class="st0" x1="-211.6" y1="-80.8" x2="-185.5" y2="-80.8"/>
-										<line id="XMLID_10_" class="st0" x1="-211.6" y1="-78.2" x2="-185.5" y2="-78.2"/>
-										<line id="XMLID_9_" class="st0" x1="-201.2" y1="-83.5" x2="-185.5" y2="-83.5"/>
-										<line id="XMLID_8_" class="st0" x1="-201.2" y1="-86.2" x2="-185.5" y2="-86.2"/>
-										<line id="XMLID_7_" class="st0" x1="-201.2" y1="-88.8" x2="-185.5" y2="-88.8"/>
-										<line id="XMLID_6_" class="st0" x1="-201.2" y1="-91.5" x2="-185.5" y2="-91.5"/>
-										</g>
-										<polygon id="XMLID_4_" class="st0" points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
+                                            .st0 {
+                                                fill: none;
+                                                stroke: #CCCCCC;
+                                                stroke-miterlimit: 10;
+                                            }
+                                        </style>
+                                            <!--                                          <use xlink:href="#ys_tech"></use>-->
+                                            <g id="XMLID_35_">
+                                                <polyline id="XMLID_37_" class="st0" points="29.4,160.3 16.3,166.6 22.6,153.5 	"/>
+                                                <circle id="XMLID_36_" class="st0" cx="27.8" cy="155.1" r="5.5"/>
+                                            </g>
+                                            <g id="XMLID_32_">
+                                                <rect id="XMLID_34_" x="22.9" y="238.4" class="st0" width="3.9" height="14.7"/>
+                                                <circle id="XMLID_33_" class="st0" cx="24.8" cy="232.1" r="2.7"/>
+                                            </g>
+                                            <g id="XMLID_25_">
+                                                <line id="XMLID_31_" class="st0" x1="23.7" y1="18.3" x2="28" y2="25.8"/>
+                                                <line id="XMLID_30_" class="st0" x1="16.1" y1="25.9" x2="20.6" y2="18.1"/>
+                                                <line id="XMLID_29_" class="st0" x1="26.5" y1="28.5" x2="17.7" y2="28.5"/>
+                                                <circle id="XMLID_28_" class="st0" cx="22.1" cy="15.5" r="3"/>
+                                                <circle id="XMLID_27_" class="st0" cx="29.5" cy="28.5" r="3"/>
+                                                <path id="XMLID_26_" class="st0" d="M17.7,28.5c0,1.7-1.4,3-3,3s-3-1.4-3-3c0-1.7,1.4-3,3-3S17.7,26.8,17.7,28.5"/>
+                                            </g>
+                                            <g id="XMLID_18_">
+                                                <circle id="XMLID_24_" class="st0" cx="24.8" cy="195.5" r="6.6"/>
+                                                <circle id="XMLID_23_" class="st0" cx="21" cy="197.7" r="6.6"/>
+                                                <circle id="XMLID_22_" class="st0" cx="21" cy="202.1" r="6.6"/>
+                                                <circle id="XMLID_21_" class="st0" cx="24.8" cy="204.3" r="6.6"/>
+                                                <circle id="XMLID_20_" class="st0" cx="28.6" cy="202.1" r="6.6"/>
+                                                <circle id="XMLID_19_" class="st0" cx="28.6" cy="197.7" r="6.6"/>
+                                            </g>
+                                            <g id="XMLID_15_">
+                                                <path id="XMLID_17_" class="st0" d="M-147.1,37c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S-147.1,37-147.1,37z"/>
+                                                <path id="XMLID_16_" class="st0" d="M-147.1,37c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S-147.1,37-147.1,37z"/>
+                                            </g>
+                                            <line id="XMLID_14_" class="st0" x1="-147.1" y1="37" x2="-147.1" y2="44"/>
+                                            <g id="XMLID_3_">
+                                                <g id="XMLID_5_">
+                                                    <line id="XMLID_12_" class="st0" x1="-211.6" y1="-75.5" x2="-185.5" y2="-75.5"/>
+                                                    <line id="XMLID_11_" class="st0" x1="-211.6" y1="-80.8" x2="-185.5" y2="-80.8"/>
+                                                    <line id="XMLID_10_" class="st0" x1="-211.6" y1="-78.2" x2="-185.5" y2="-78.2"/>
+                                                    <line id="XMLID_9_" class="st0" x1="-201.2" y1="-83.5" x2="-185.5" y2="-83.5"/>
+                                                    <line id="XMLID_8_" class="st0" x1="-201.2" y1="-86.2" x2="-185.5" y2="-86.2"/>
+                                                    <line id="XMLID_7_" class="st0" x1="-201.2" y1="-88.8" x2="-185.5" y2="-88.8"/>
+                                                    <line id="XMLID_6_" class="st0" x1="-201.2" y1="-91.5" x2="-185.5" y2="-91.5"/>
+                                                </g>
+                                                <polygon id="XMLID_4_" class="st0" points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
 										-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	"/>
-										</g>
+                                            </g>
 										</svg>
-									  <?php /* svg commented for new design ?>
+                                      <?php /* svg commented for new design ?>
 										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
 										xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 										viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;"
@@ -425,7 +538,7 @@
 										<?php */ ?>
 								  </span>
                             <a href="<?php echo $this->getBaseUrl(); ?>our-story" class="menu-link sub-title">YS story</a></li>
-						<?php /* commented for new designs ?>	
+                        <?php /* commented for new designs ?>
 						<li class="menu-item tech_icon">
 							<span>
 							<svg style="margin-top:-2px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -501,23 +614,23 @@
 						</li>
 						
 						<?php */ ?>
-						<li class="menu-item tech_icon">
+                        <li class="menu-item tech_icon">
 							<span>
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+                                 viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
 
 							<g id="XMLID_2_">
-							<path id="XMLID_7_" fill="#777777"  d="M9.9,11.4l11.8,20.5l11.8-20.5H9.9z M11.7,12.4h20.2L21.7,29.9L11.7,12.4z"/>
-							<path id="XMLID_4_" fill="#777777"  d="M14.6,14.1l7.1,12.4l7.1-12.4H14.6z M16.3,15.1h4.9v2h-1.7l2.2,3.9l2.3-3.9h-1.8v-2h4.9
+                                <path id="XMLID_7_" fill="#777777"  d="M9.9,11.4l11.8,20.5l11.8-20.5H9.9z M11.7,12.4h20.2L21.7,29.9L11.7,12.4z"/>
+                                <path id="XMLID_4_" fill="#777777"  d="M14.6,14.1l7.1,12.4l7.1-12.4H14.6z M16.3,15.1h4.9v2h-1.7l2.2,3.9l2.3-3.9h-1.8v-2h4.9
 							l-5.4,9.4L16.3,15.1z"/>
-							</g>
+                            </g>
 							</svg>
 
 							</span>
-							<a href="<?php echo $this->getBaseUrl(); ?>our-stores" class="menu-link sub-title">YS Stores</a>
-						</li>
-						
-						<?php /* commented for new designs ?>
+                            <a href="<?php echo $this->getBaseUrl(); ?>our-stores" class="menu-link sub-title">YS Stores</a>
+                        </li>
+
+                        <?php /* commented for new designs ?>
 						<li class="menu-item smogi-icon">
 							<a href="<?php echo $this->getBaseUrl(); ?>smogi-bucks" class="menu-link sub-title">SMOGI Bucks</a>
 							<span>
@@ -581,31 +694,31 @@
 							</span>
 						</li>
 						<?php */ ?>
-						<li class="menu-item smogi-icon">
-							<a href="<?php echo $this->getBaseUrl(); ?>gift_of_ys" class="menu-link sub-title">YS Gift Card</a>
+                        <li class="menu-item smogi-icon">
+                            <a href="<?php echo $this->getBaseUrl(); ?>gift_of_ys" class="menu-link sub-title">YS Gift Card</a>
 							<span>
 							<!--<img class="responsive" src="<?php //echo $this->getSkinUrl('images/gift-card-icon-new.pngo') ?>" alt="ys gift card">-->
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+                                 width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
 							<g>
-							<defs>
-							<rect id="SVGID_1_" x="9" y="13" width="26.807" height="16.983"/>
-							</defs>
-							<clipPath id="SVGID_2_">
-							<use xlink:href="#SVGID_1_"  overflow="visible"/>
-							</clipPath>
-							<path clip-path="url(#SVGID_2_)" fill="#777777" d="M34.888,29.126H9.917V13.858h24.971V29.126z M35.805,13H9v16.983h26.805V13z"/>
-							<polygon clip-path="url(#SVGID_2_)" fill="none" stroke="#777777" stroke-width="0.707" stroke-miterlimit="10" points="
+                                <defs>
+                                    <rect id="SVGID_1_" x="9" y="13" width="26.807" height="16.983"/>
+                                </defs>
+                                <clipPath id="SVGID_2_">
+                                    <use xlink:href="#SVGID_1_"  overflow="visible"/>
+                                </clipPath>
+                                <path clip-path="url(#SVGID_2_)" fill="#777777" d="M34.888,29.126H9.917V13.858h24.971V29.126z M35.805,13H9v16.983h26.805V13z"/>
+                                <polygon clip-path="url(#SVGID_2_)" fill="none" stroke="#777777" stroke-width="0.707" stroke-miterlimit="10" points="
 							40.326,26.249 38.492,27.965 21.066,11.666 22.9,9.95 	"/>
-							<path clip-path="url(#SVGID_2_)" fill="none" stroke="#777777" stroke-width="0.707" stroke-miterlimit="10" d="M26.144,33.528
+                                <path clip-path="url(#SVGID_2_)" fill="none" stroke="#777777" stroke-width="0.707" stroke-miterlimit="10" d="M26.144,33.528
 							l-1.835,1.716L6.882,18.946l1.834-1.716L26.144,33.528z"/>
-							</g>
+                            </g>
 							</svg>
 
 
 							</span>
-						</li>
-						<?php /* commented for new designs ?>
+                        </li>
+                        <?php /* commented for new designs ?>
 						<li style="position:relative;" class="menu-item contact_icon_li"><a href="<?php echo $this->getBaseUrl(); ?>contacts/" class="menu-link sub-title">Contact</a>
 							<span class="contact-icon">
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
