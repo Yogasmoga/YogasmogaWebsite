@@ -476,7 +476,6 @@ jQuery(window).resize(function(){
 		var hbanH = jQuery(window).height();
 		jQuery('.home-banner').css({'min-height': '1065px'});
 	}
-
 });
 // add remove class on page load
 jQuery(document).ready(function(){
