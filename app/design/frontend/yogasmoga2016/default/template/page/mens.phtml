@@ -243,11 +243,11 @@
             $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
 
             // check for in sale category
-            /* $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('insale_category')->getValue('plain')), true);
+             $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('insale_category')->getValue('plain')), true);
              $showInSaleProduct = true;
              if ($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens']) {
                  $showInSaleProduct = true;
-             }*/
+             }
             // end check for in sale category
 
             //get color array
@@ -368,10 +368,7 @@
                 $finalPos = implode(',',$position);
 
                 if($i == (int)$finalPos[0] || $i == (int)$finalPos[2]):
-
-
-
-                    ?>
+                ?>
                     <div class="productCont prodduct_horizontal product-color-<?php echo $productColorIndex;?>" color="<?php echo $simpleproductarr['filter_color']; ?>" rel="<?php echo $strSizes;?>" data="<?php echo $catsids;?>">
                         <div class="prod-img">
 
@@ -385,9 +382,27 @@
                                href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"></a>
                         </div>
                         <div class="caption">
-                            <a class="caption-title" href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName()."<br/>"; ?></a>
-                            <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
-                            <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="price-spn">$<?php echo round($confProduct->getPrice(), 2); ?></span></a>
+                            <?php
+                            if ($showInSaleProduct && $simpleproductarr['insale'] == 'Yes') {
+                                ?>
+                                <a class="caption-title"
+                                   href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName(); ?></a>
+                                <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+                                <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="price-spn">$<?php echo round($simpleproductarr['price'], 2); ?><cite class="was-amount" style="font-style:normal;"> was $<?php echo round($confProduct->getPrice(), 2); ?></cite></span></a>
+
+
+                                <?php
+                            } else {
+                                ?>
+
+                                <a class="caption-title" href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName(); ?></a>
+
+
+                                <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+                                <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="price-spn">&dollar;<?php echo round($confProduct->getPrice(), 2); ?></span></a>
+                                <?php
+                            }
+                            ?>
 
                         </div>
                     </div>
