@@ -7,7 +7,7 @@
  */
 
 ini_set("memory_limit", "320M");
-set_time_limit(0);
+
 
 
 //12-02-2013
