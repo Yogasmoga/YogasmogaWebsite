@@ -43,10 +43,10 @@ $orderId = '100021922';
 
     //echo "<pre/>";
     //print_r($orderData->getAllVisibleItems()->getData());
-    $items= array();
+
     foreach($order->getAllVisibleItems() as $item){
-        $items['name']=$item->getName();
-        $items['sku']=$item->getSku();
+        $name =$item->getName();
+        $sku =$item->getSku();
         /*$options = $item->getProductOptions();
 
         foreach($item->getProductOptions() as $key => $options){
@@ -57,9 +57,15 @@ $orderId = '100021922';
 
         }
         $items[] = $color;*/
-        $items['qty']=round($item->getQtyOrdered());
-        $items['price']=round($item->getPrice());
+        $qty = round($item->getQtyOrdered());
+        $price =round($item->getPrice());
     }
+    $items= array(
+                'name'=>$name,
+                'sku'=>$sku,
+                'qty'=>$qty,
+                'price'=>$price
+                );
 //}
 echo '<pre/>';
 print_r($items);
