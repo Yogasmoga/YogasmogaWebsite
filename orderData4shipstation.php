@@ -29,43 +29,61 @@ echo '<pre/>';
 
 
 
+$items =array();
+foreach($orders as $order){
+//$orderId = '100021922';
+if($order->getIncrementId()=='100021922') {
 
-//foreach($orders as $order){
+    $order = Mage::getModel('sales/order')->loadByIncrementId($order->getIncrementId());
+    //print_r($order->getData());
+    //echo "<hr/>";
 
 
-$orderId = '100021922';
+    /****************--------------***********/
+    $items[] = $order->getData('increment_id');
+    $items[] = $order->getData('created_at');
+    $items[] = $order->getData('grand_total');
+    $items[] = $order->getData('total_paid');
+    $items[] = $order->getData('tax_amount');
+    $items[] = $order->getData('shipping_amount');
+    $items[] =$order->getData('shipping_description');
+    $items[] = $order->getData('customer_firstname') . ' ' . $order->getData('customer_lastname');
+    $items[] = $order->getData('customer_firstname');
+    $items[] = $order->getData('customer_lastname');
+    $items[] = $order->getData('customer_email');
 
-//$orderId = '100014441';
+    //echo "Shipping Address.<br/>";
 
-    $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
-    print_r($order->getData());
-    echo "<hr/>";
+    $items[] = $order->getShippingAddress()->getTelephone();
+    $items[] = $order->getShippingAddress()->getFirstname();
+    $items[] = $order->getShippingAddress()->getLastname();
+    $items[] = $order->getShippingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
+    $items[] = $order->getShippingAddress()->getData('street');
+    $items[] = $order->getShippingAddress()->getCity();
+    $items[] = $order->getShippingAddress()->getRegion();
+    $items[] = $order->getShippingAddress()->getPostcode();
+    $items[] = $order->getShippingAddress()->getCountryId();
 
-    //echo "<pre/>";
-    //print_r($orderData->getAllVisibleItems()->getData());
+    //echo "Billing Address <br/>";
+    $items[] = $order->getBillingAddress()->getTelephone();
+    $items[] = $order->getBillingAddress()->getFirstname();
+    $items[] = $order->getBillingAddress()->getLastname();
+    $items[] = $order->getBillingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
+    $items[] = $order->getBillingAddress()->getData('street');
+    $items[] = $order->getBillingAddress()->getCity();
+    $items[] = $order->getBillingAddress()->getRegion();
+    $items[] = $order->getBillingAddress()->getPostcode();
+    $items[] = $order->getBillingAddress()->getCountryId();
 
-    foreach($order->getAllVisibleItems() as $item){
-        $name =$item->getName();
-        $sku =$item->getSku();
-        /*$options = $item->getProductOptions();
+    foreach ($order->getAllVisibleItems() as $item) {
 
-        foreach($item->getProductOptions() as $key => $options){
-            $color = $options[0]['value'];
-            if(isset($color)) {
-                $color = substr($color, 0, strpos($color, "|"));
-            }
-
-        }
-        $items[] = $color;*/
-        $qty = round($item->getQtyOrdered());
-        $price =round($item->getPrice());
+        $items[] = $item->getName();
+        $items[] = $item->getSku();
+        $items[] = round($item->getQtyOrdered());
+        $items[] = round($item->getPrice());
     }
-    $items= array(
-                'name'=>$name,
-                'sku'=>$sku,
-                'qty'=>$qty,
-                'price'=>$price
-                );
-//}
+}
+
+}
 echo '<pre/>';
 print_r($items);
