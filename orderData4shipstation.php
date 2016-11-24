@@ -15,7 +15,7 @@ require_once 'app/Mage.php';
 Mage::app();
 umask(0);
 
-$date_to_look_start = date('Y-m-d', strtotime('-2 day', strtotime(date('Y-m-d'))));
+$date_to_look_start = date('Y-m-d', strtotime('-1 day', strtotime(date('Y-m-d'))));
 $date_to_look_end = date('Y-m-d', strtotime(date('Y-m-d')));
 
 
