@@ -133,18 +133,21 @@ jQuery(document).ready(function($){
         closeSignup();
     });
     /* **************YS MENU ACCORDIAN**************** */
-        $(".level1>li>span.arrow-tag").click(function(){
+       $(".level1>li>span.arrow-tag").click(function(){
             $(".level1>li>span.arrow-tag").not($(this)).removeClass("is-active");
             var child = $(this).parent().children("ul");
-            $(".level1 li ul").not(child).hide();
+           // $(".level1 li ul").not(child).hide();//for new design
+			$(".level2 li ul").hide(); //for new design			
             $(".level2 li>span.arrow-tag").removeClass("is-active");
             child.toggle();
             $(".menu-item.additional_links ul").show();
         });
         $(".level2>li>span.arrow-tag").click(function(){
-            $(".level2>li>span.arrow-tag").not($(this)).removeClass("is-active");
+            $(".level1>li.username>span.arrow-tag").removeClass("is-active");//for new design
+			$(".level1>li.username>ul").hide();//for new design
+			$(".level2>li>span.arrow-tag").not($(this)).removeClass("is-active");
             var child = $(this).parent().children("ul");
-            $(".level2 li ul").not(child).hide();
+            $(".level2 li ul").not(child).hide();			
             $(".level3 li>span.arrow-tag").not($(this)).removeClass("is-active");
             child.toggle();
         });
