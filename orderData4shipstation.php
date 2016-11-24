@@ -15,7 +15,7 @@ require_once 'app/Mage.php';
 Mage::app();
 umask(0);
 
-$date_to_look_start = date('Y-m-d', strtotime('-2 day', strtotime(date('Y-m-d'))));
+$date_to_look_start = date('Y-m-d', strtotime('-3 day', strtotime(date('Y-m-d'))));
 $date_to_look_end = date('Y-m-d', strtotime(date('Y-m-d')));
 
 
@@ -36,7 +36,7 @@ fputcsv($fp, array("order_id","created_at","grand_total","total_paid","tax_amoun
 $items =array();
 foreach($orders as $order){
 //$orderId = '100021922';
-if($order->getIncrementId()=='100021922') {
+//if($order->getIncrementId()=='100021922') {
 
     $order = Mage::getModel('sales/order')->loadByIncrementId($order->getIncrementId());
     //print_r($order->getData());
@@ -83,11 +83,11 @@ if($order->getIncrementId()=='100021922') {
 
         $items[] = $item->getName();
         $items[] = $item->getSku();
-        $items[] = round($item->getQtyOrdered());
-        $items[] = round($item->getPrice());
+        $items[] = $item->getQtyOrdered();
+        $items[] = $item->getPrice();
     }
     fputcsv($fp,$items);
-}
+//}
 
 }
 
