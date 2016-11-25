@@ -15,9 +15,11 @@ require_once 'app/Mage.php';
 Mage::app();
 umask(0);
 
-$date_to_look_start = date('Y-m-d', strtotime('-1 day', strtotime(date('Y-m-d'))));
-$date_to_look_end = date('Y-m-d', strtotime(date('Y-m-d')));
+//echo $date_to_look_start = date('Y-m-d', strtotime('-1 day', strtotime(date('Y-m-d'))))."<br/>";
+//echo $date_to_look_end = date('Y-m-d', strtotime(date('Y-m-d')));
 
+$date_to_look_start = Mage::app()->getRequest()->getParam('startdate');
+$date_to_look_end = Mage::app()->getRequest()->getParam('enddate');
 
 $orders = Mage::getModel('sales/order')
     ->getCollection()
