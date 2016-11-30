@@ -23,7 +23,7 @@ umask(0);
 $date_to_look_start = Mage::app()->getRequest()->getParam('startdate');
 $date_to_look_end = Mage::app()->getRequest()->getParam('enddate');
 $limit = Mage::app()->getRequest()->getParam('limit');
-if(isset($limit)){
+/* if(isset($limit)){
     $collection = Mage::getModel('sales/order')
         ->getCollection()
         ->addAttributeToFilter('created_at', array('gteq' => $date_to_look_start . ' 00:00:01'))
@@ -32,27 +32,28 @@ if(isset($limit)){
     $orders = $collection->setPageSize($limit)->setCurPage(1);
 
 }
-else {
+else {*/
     $orders = Mage::getModel('sales/order')
         ->getCollection()
+        ->addAttributeToSelect('*')
         ->addAttributeToFilter('created_at', array('gteq' => $date_to_look_start . ' 00:00:01'))
         ->addAttributeToFilter('created_at', array('lteq' => $date_to_look_end . ' 23:59:59'));
-}
+//}
 
 //$stelephone = Mage::getModel('customer/customer')->load(16130)->getPrimaryBillingAddress();
-
+/*
 echo "<pre/>";
 
 print_r($orders->getData());
 
 exit;
-
+*/
 
 
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=orderdata4shipstation.csv');
 $fp = fopen('php://output', 'w');
-
+/*
 fputcsv($fp, array("order_id","created_at","grand_total","total_paid","tax_amount","shipping_amount",
     "shipping_description","customer_name","customer_firstname","customer_lastname",
     "customer_email","shipping_telephone","shipping_first_name","shipping_last_name",
@@ -61,6 +62,12 @@ fputcsv($fp, array("order_id","created_at","grand_total","total_paid","tax_amoun
     "billing_address","billing_city","billing_region","billing_postcode","billing_country",
     "product_name","sku","qty","price"));
 
+*/
+
+
+fputcsv($fp, array("order_id","created_at","grand_total","total_paid","tax_amount","shipping_amount",
+    "shipping_description","customer_name","customer_firstname","customer_lastname",
+    "customer_email","product_name","sku","qty","price"));
 
 foreach($orders as $order) {
 //$orderId = '100021922';
@@ -87,7 +94,7 @@ foreach($orders as $order) {
 
      $customer = Mage::getModel('customer/customer')->load($order->getData('customer_id'));
     $shippingAddress = $customer->getPrimaryShippingAddress();
-    /*
+
     $stelephone = $order->getShippingAddress()->getTelephone();
     $sfirstname = $order->getShippingAddress()->getFirstname();
     $slastname = $order->getShippingAddress()->getLastname();
@@ -97,8 +104,8 @@ foreach($orders as $order) {
     $sregion = $order->getShippingAddress()->getRegion();
     $spostcode = $order->getShippingAddress()->getPostcode();
     $scountry = $order->getShippingAddress()->getCountryId();
-    */
-    if($shippingAddress) {
+
+    /*
         $stelephone = $shippingAddress->getTelephone();
         $sfirstname = $shippingAddress->getFirstname();
         $slastname = $shippingAddress->getLastname();
@@ -108,23 +115,23 @@ foreach($orders as $order) {
         $sregion = $shippingAddress->getRegion();
         $spostcode = $shippingAddress->getPostcode();
         $scountry = $shippingAddress->getCcountryId();
-    }
+    */
 
 
     //echo "Billing Address <br/>";
-    $billingAddress = Mage::getModel('customer/customer')->load($order->getData('customer_id'))->getPrimaryBillingAddress();
-    /*
+    //$billingAddress = Mage::getModel('customer/customer')->load($order->getData('customer_id'))->getPrimaryBillingAddress();
+
     $btelephone = $order->getBillingAddress()->getTelephone();
     $bfirstname = $order->getBillingAddress()->getFirstname();
-    $lastname = $order->getBillingAddress()->getLastname();
+    $blastname = $order->getBillingAddress()->getLastname();
     $bfullname = $order->getBillingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
     $bstreet = $order->getBillingAddress()->getData('street');
     $bcity = $order->getBillingAddress()->getCity();
     $bregion = $order->getBillingAddress()->getRegion();
     $bpostcode = $order->getBillingAddress()->getPostcode();
     $bcountry = $order->getBillingAddress()->getCountryId();
-    */
 
+    /*
     $btelephone  = $billingAddress->getData('telephone');
     $bfirstname  =  $billingAddress->getData('firstname');
     $blastname   =  $billingAddress->getData('lastname');
@@ -134,7 +141,7 @@ foreach($orders as $order) {
     $bregion     =  $billingAddress->getData('region');
     $bpostcode   =  $billingAddress->getData('postcode');
     $bcountry    =  $billingAddress->getData('country_id');
-
+    */
 
 
     $items=array();
@@ -145,16 +152,24 @@ foreach($orders as $order) {
         $items[] = $item->getQtyOrdered();
         $items[] = $item->getPrice();
     }
-
-    $arr1 =   array($order_id,$created_at,$grand_total,$total_paid,$tax_amount,$shipping_amount,$shipping_description,$name,$firstname,$lastname,$email,
-        $stelephone,$sfirstname,$slastname,$sfullname,$saddress,$scity,$sregion,$spostcode,$scountry,$btelephone,$bfirstname,
-        $blastname,$bfullname,$bstreet,$bcity,$bregion,$bpostcode,$bcountry);
+/*
+    $arr1 =   array($order_id,$created_at,$grand_total,$total_paid,$tax_amount,
+        $shipping_amount,$shipping_description,$name,$firstname,$lastname,$email,
+        $stelephone,$sfirstname,$slastname,$sfullname,$saddress,$scity,$sregion,
+        $spostcode,$scountry,$btelephone,$bfirstname,$blastname,$bfullname,$bstreet,
+        $bcity,$bregion,$bpostcode,$bcountry);
+  */
+    $arr1 =   array($order_id,$created_at,$grand_total,$total_paid,$tax_amount,
+        $shipping_amount,$shipping_description,$name,$firstname,$lastname,$email,
+        );
     $finalData = array_merge($arr1,$items);
 
     fputcsv($fp,$finalData );
 
 //}
 }
-
+//echo count($finalData)."<hr/>";
+//echo "<pre/>";
+//print_r($finalData);
 fclose($fp);
 exit;
