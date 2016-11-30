@@ -64,8 +64,8 @@ foreach($orders as $order) {
 
     //echo "Shipping Address.<br/>";
 
-    $stelephone = Mage::getModel('customer/customer')->load($order->getData('customer_id'))->getPrimaryBillingAddress()->getTelephone();
-
+    //$stelephone = Mage::getModel('customer/customer')->load($order->getData('customer_id'))->getPrimaryBillingAddress()->getTelephone();
+    $stelephone = $order->getShippingAddress()->getTelephone();
     $sfirstname = $order->getShippingAddress()->getFirstname();
     $slastname = $order->getShippingAddress()->getLastname();
     $sfullname = $order->getShippingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
