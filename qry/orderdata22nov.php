@@ -22,20 +22,30 @@ umask(0);
 
 $date_to_look_start = Mage::app()->getRequest()->getParam('startdate');
 $date_to_look_end = Mage::app()->getRequest()->getParam('enddate');
+$limit = Mage::app()->getRequest()->getParam('limit');
+if(isset($limit)){
+    $collection = Mage::getModel('sales/order')
+        ->getCollection()
+        ->addAttributeToFilter('created_at', array('gteq' => $date_to_look_start . ' 00:00:01'))
+        ->addAttributeToFilter('created_at', array('lteq' => $date_to_look_end . ' 23:59:59'));
 
-$orders = Mage::getModel('sales/order')
-    ->getCollection()
-    ->addAttributeToFilter('created_at', array('gteq' => $date_to_look_start . ' 00:00:01'))
-    ->addAttributeToFilter('created_at', array('lteq' => $date_to_look_end . ' 23:59:59'));
+    $orders = $collection->setPageSize($limit)->setCurPage(1);
 
+}
+else {
+    $orders = Mage::getModel('sales/order')
+        ->getCollection()
+        ->addAttributeToFilter('created_at', array('gteq' => $date_to_look_start . ' 00:00:01'))
+        ->addAttributeToFilter('created_at', array('lteq' => $date_to_look_end . ' 23:59:59'));
+}
 
 //$stelephone = Mage::getModel('customer/customer')->load(16130)->getPrimaryBillingAddress();
 
-//echo "<pre/>";
+echo "<pre/>";
 
-//print_r($stelephone->getData());
+print_r($orders->getData());
 
-//exit;
+exit;
 
 
 
@@ -75,8 +85,8 @@ foreach($orders as $order) {
 
     //echo "Shipping Address.<br/>";
 
-    $shippingAddress = Mage::getModel('customer/customer')->load($order->getData('customer_id'))->getPrimaryShippingAddress();
-
+     $customer = Mage::getModel('customer/customer')->load($order->getData('customer_id'));
+    $shippingAddress = $customer->getPrimaryShippingAddress();
     /*
     $stelephone = $order->getShippingAddress()->getTelephone();
     $sfirstname = $order->getShippingAddress()->getFirstname();
@@ -88,17 +98,17 @@ foreach($orders as $order) {
     $spostcode = $order->getShippingAddress()->getPostcode();
     $scountry = $order->getShippingAddress()->getCountryId();
     */
-
-    $stelephone  = $shippingAddress->getTelephone();
-    $sfirstname  =  $shippingAddress->getFirstname();
-    $slastname   =  $shippingAddress->getLastname();
-    $sfullname   =  $shippingAddress->getFirstname().' '.$shippingAddress->getLastname();
-    $saddress    =  $shippingAddress->getStreet();
-    $scity       =  $shippingAddress->getCity();
-    $sregion     =  $shippingAddress->getRegion();
-    $spostcode   =  $shippingAddress->getPostcode();
-    $scountry    =  $shippingAddress->getCcountryId();
-
+    if($shippingAddress) {
+        $stelephone = $shippingAddress->getTelephone();
+        $sfirstname = $shippingAddress->getFirstname();
+        $slastname = $shippingAddress->getLastname();
+        $sfullname = $shippingAddress->getFirstname() . ' ' . $shippingAddress->getLastname();
+        $saddress = $shippingAddress->getStreet();
+        $scity = $shippingAddress->getCity();
+        $sregion = $shippingAddress->getRegion();
+        $spostcode = $shippingAddress->getPostcode();
+        $scountry = $shippingAddress->getCcountryId();
+    }
 
 
     //echo "Billing Address <br/>";
