@@ -23,11 +23,13 @@ umask(0);
 $date_to_look_start = Mage::app()->getRequest()->getParam('startdate');
 $date_to_look_end = Mage::app()->getRequest()->getParam('enddate');
 
-$orders = Mage::getModel('sales/order')
+$collection = Mage::getModel('sales/order')
     ->getCollection()
     ->addAttributeToFilter('created_at', array('gteq' => $date_to_look_start . ' 00:00:01'))
     ->addAttributeToFilter('created_at', array('lteq' => $date_to_look_end . ' 23:59:59'));
 
+
+$orders = $collection->getSelect()->limit(20);
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=orderdata4shipstation.csv');
 $fp = fopen('php://output', 'w');
@@ -65,7 +67,7 @@ foreach($orders as $order) {
     //echo "Shipping Address.<br/>";
 
     //$stelephone = Mage::getModel('customer/customer')->load($order->getData('customer_id'))->getPrimaryBillingAddress()->getTelephone();
-    $stelephone = htmlspecialchars($order->getShippingAddress()->getTelephone());
+    $stelephone = $order->getShippingAddress()->getTelephone();
     $sfirstname = $order->getShippingAddress()->getFirstname();
     $slastname = $order->getShippingAddress()->getLastname();
     $sfullname = $order->getShippingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
@@ -76,7 +78,7 @@ foreach($orders as $order) {
     $scountry = $order->getShippingAddress()->getCountryId();
 
     //echo "Billing Address <br/>";
-    $btelephone = htmlspecialchars($order->getBillingAddress()->getTelephone());
+    $btelephone = $order->getBillingAddress()->getTelephone();
     $bfirstname = $order->getBillingAddress()->getFirstname();
     $lastname = $order->getBillingAddress()->getLastname();
     $bfullname = $order->getBillingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
