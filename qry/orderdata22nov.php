@@ -91,7 +91,7 @@ foreach($orders as $order) {
     $email = $order->getData('customer_email');
 
     //echo "Shipping Address.<br/>";
-
+    /*
      $customer = Mage::getModel('customer/customer')->load($order->getData('customer_id'));
     $shippingAddress = $customer->getPrimaryShippingAddress();
 
@@ -104,7 +104,7 @@ foreach($orders as $order) {
     $sregion = $order->getShippingAddress()->getRegion();
     $spostcode = $order->getShippingAddress()->getPostcode();
     $scountry = $order->getShippingAddress()->getCountryId();
-
+    */
     /*
         $stelephone = $shippingAddress->getTelephone();
         $sfirstname = $shippingAddress->getFirstname();
@@ -120,7 +120,7 @@ foreach($orders as $order) {
 
     //echo "Billing Address <br/>";
     //$billingAddress = Mage::getModel('customer/customer')->load($order->getData('customer_id'))->getPrimaryBillingAddress();
-
+    /*
     $btelephone = $order->getBillingAddress()->getTelephone();
     $bfirstname = $order->getBillingAddress()->getFirstname();
     $blastname = $order->getBillingAddress()->getLastname();
@@ -130,7 +130,7 @@ foreach($orders as $order) {
     $bregion = $order->getBillingAddress()->getRegion();
     $bpostcode = $order->getBillingAddress()->getPostcode();
     $bcountry = $order->getBillingAddress()->getCountryId();
-
+    */
     /*
     $btelephone  = $billingAddress->getData('telephone');
     $bfirstname  =  $billingAddress->getData('firstname');
