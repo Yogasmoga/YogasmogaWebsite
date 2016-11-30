@@ -29,7 +29,7 @@ $collection = Mage::getModel('sales/order')
     ->addAttributeToFilter('created_at', array('lteq' => $date_to_look_end . ' 23:59:59'));
 
 
-$orders = $collection->getSelect()->limit(20);
+$orders = $collection->setPageSize(100)->setCurPage(1);
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=orderdata4shipstation.csv');
 $fp = fopen('php://output', 'w');
