@@ -67,7 +67,7 @@ foreach($orders as $order) {
 
     //echo "Shipping Address.<br/>";
 
-    $stelephone = $order->getShippingAddress()->getTelephone();
+    $stelephone = $order->getShippingAddress()->getData('telephone');
     $sfirstname = $order->getShippingAddress()->getFirstname();
     $slastname = $order->getShippingAddress()->getLastname();
     $sfullname = $order->getShippingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
@@ -78,7 +78,7 @@ foreach($orders as $order) {
     $scountry = $order->getShippingAddress()->getCountryId();
 
     //echo "Billing Address <br/>";
-    $btelephone = $order->getBillingAddress()->getTelephone();
+    $btelephone = $order->getBillingAddress()->getData('telephone');
     $bfirstname = $order->getBillingAddress()->getFirstname();
     $lastname = $order->getBillingAddress()->getLastname();
     $bfullname = $order->getBillingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
