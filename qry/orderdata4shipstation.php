@@ -64,10 +64,13 @@ foreach($orders as $order) {
     $firstname = $order->getData('customer_firstname');
     $lastname = $order->getData('customer_lastname');
     $email = $order->getData('customer_email');
+    $customerId = $order->getData('customer_id');
 
     //echo "Shipping Address.<br/>";
 
-    $stelephone = $order->getShippingAddress()->getTelephone();
+    //$stelephone = $order->getShippingAddress()->getTelephone();
+    $stelephone = Mage::getModel('customer/customer')->load($customerId)->getPrimaryShippingAddress()->getTelephone();
+
     $sfirstname = $order->getShippingAddress()->getFirstname();
     $slastname = $order->getShippingAddress()->getLastname();
     $sfullname = $order->getShippingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
