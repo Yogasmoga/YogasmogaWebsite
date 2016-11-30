@@ -89,15 +89,15 @@ foreach($orders as $order) {
     $scountry = $order->getShippingAddress()->getCountryId();
     */
 
-    $stelephone  = $shippingAddress->getData('telephone');
-    $sfirstname  =  $shippingAddress->getData('firstname');
-    $slastname   =  $shippingAddress->getData('lastname');
-    $sfullname   =  $shippingAddress->getData('firstname').' '.$shippingAddress->getData('lastname');
-    $saddress    =  $shippingAddress->getData('street');
-    $scity       =  $shippingAddress->getData('city');
-    $sregion     =  $shippingAddress->getData('region');
-    $spostcode   =  $shippingAddress->getData('postcode');
-    $scountry    =  $shippingAddress->getData('country_id');
+    $stelephone  = $shippingAddress->getTelephone();
+    $sfirstname  =  $shippingAddress->getFirstname();
+    $slastname   =  $shippingAddress->getLastname();
+    $sfullname   =  $shippingAddress->getFirstname().' '.$shippingAddress->getLastname();
+    $saddress    =  $shippingAddress->getStreet();
+    $scity       =  $shippingAddress->getCity();
+    $sregion     =  $shippingAddress->getRegion();
+    $spostcode   =  $shippingAddress->getPostcode();
+    $scountry    =  $shippingAddress->getCcountryId();
 
 
 
