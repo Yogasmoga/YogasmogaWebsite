@@ -11,6 +11,9 @@ ini_set("memory_limit", "320M");
 set_time_limit(0);
 
 
+ini_set("error_reporting",E_ALL);
+ini_set("display_errors",true);
+
 //12-02-2013
 require_once '../app/Mage.php';
 Mage::app();
@@ -24,6 +27,7 @@ $date_to_look_end = Mage::app()->getRequest()->getParam('enddate');
 
 $orders = Mage::getModel('sales/order')
     ->getCollection()
+    ->addAttributeToSelect('created_at')
     ->addAttributeToFilter('created_at', array('gteq' => $date_to_look_start . ' 00:00:01'))
     ->addAttributeToFilter('created_at', array('lteq' => $date_to_look_end . ' 23:59:59'));
 
