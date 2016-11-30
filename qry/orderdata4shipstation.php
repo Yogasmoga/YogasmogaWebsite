@@ -9,8 +9,6 @@
 
 ini_set("memory_limit", "320M");
 set_time_limit(0);
-
-
 ini_set("error_reporting",E_ALL);
 ini_set("display_errors",true);
 
@@ -27,7 +25,6 @@ $date_to_look_end = Mage::app()->getRequest()->getParam('enddate');
 
 $orders = Mage::getModel('sales/order')
     ->getCollection()
-    ->addAttributeToSelect('created_at')
     ->addAttributeToFilter('created_at', array('gteq' => $date_to_look_start . ' 00:00:01'))
     ->addAttributeToFilter('created_at', array('lteq' => $date_to_look_end . ' 23:59:59'));
 
@@ -64,13 +61,11 @@ foreach($orders as $order) {
     $firstname = $order->getData('customer_firstname');
     $lastname = $order->getData('customer_lastname');
     $email = $order->getData('customer_email');
-    $customerId = $order->getData('customer_id');
 
     //echo "Shipping Address.<br/>";
 
-    //$stelephone = $order->getShippingAddress()->getTelephone();
-    $stelephone = Mage::getModel('customer/customer')->load($customerId)->getPrimaryShippingAddress()->getTelephone();
-
+    $stelephone = $order->getShippingAddress()->getTelephone();
+    if(!isset($stelephone)){$stelephone="null";}
     $sfirstname = $order->getShippingAddress()->getFirstname();
     $slastname = $order->getShippingAddress()->getLastname();
     $sfullname = $order->getShippingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
@@ -82,6 +77,7 @@ foreach($orders as $order) {
 
     //echo "Billing Address <br/>";
     $btelephone = $order->getBillingAddress()->getTelephone();
+    if(!isset($btelephone)){$btelephone="null";}
     $bfirstname = $order->getBillingAddress()->getFirstname();
     $lastname = $order->getBillingAddress()->getLastname();
     $bfullname = $order->getBillingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
