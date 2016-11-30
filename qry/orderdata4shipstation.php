@@ -34,12 +34,13 @@ $orders = $collection->setPageSize($limit)->setCurPage(1);
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=orderdata4shipstation.csv');
 $fp = fopen('php://output', 'w');
-
+//,"shipping_telephone".
+//,"billing_telephone".
 fputcsv($fp, array("order_id","created_at","grand_total","total_paid","tax_amount","shipping_amount",
     "shipping_description","customer_name","customer_firstname","customer_lastname",
-    "customer_email","shipping_telephone","shipping_first_name","shipping_last_name",
+    "customer_email","shipping_first_name","shipping_last_name",
     "shipping_full_name","shipping_address","shipping_city","shipping_region","shipping_postcode",
-    "shipping_country","billing_telephone","billing_first_name","billing_last_name","billing_full_name",
+    "shipping_country","billing_first_name","billing_last_name","billing_full_name",
     "billing_address","billing_city","billing_region","billing_postcode","billing_country",
     "product_name","sku","qty","price"));
 
@@ -68,7 +69,7 @@ foreach($orders as $order) {
     //echo "Shipping Address.<br/>";
 
     //$stelephone = Mage::getModel('customer/customer')->load($order->getData('customer_id'))->getPrimaryBillingAddress()->getTelephone();
-    $stelephone = $order->getShippingAddress()->getTelephone();
+   // $stelephone = $order->getShippingAddress()->getTelephone();
     $sfirstname = $order->getShippingAddress()->getFirstname();
     $slastname = $order->getShippingAddress()->getLastname();
     $sfullname = $order->getShippingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
@@ -79,7 +80,7 @@ foreach($orders as $order) {
     $scountry = $order->getShippingAddress()->getCountryId();
 
     //echo "Billing Address <br/>";
-    $btelephone = $order->getBillingAddress()->getTelephone();
+   // $btelephone = $order->getBillingAddress()->getTelephone();
     $bfirstname = $order->getBillingAddress()->getFirstname();
     $lastname = $order->getBillingAddress()->getLastname();
     $bfullname = $order->getBillingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
@@ -98,8 +99,9 @@ foreach($orders as $order) {
         $items[] = $item->getPrice();
     }
 
-    $arr1 =   array($order_id,$created_at,$grand_total,$total_paid,$tax_amount,$shipping_amount,$shipping_description,$name,$firstname,$lastname,$email,
-        $stelephone,$sfirstname,$slastname,$sfullname,$saddress,$scity,$sregion,$spostcode,$scountry,$btelephone,$bfirstname,
+    $arr1 =   array($order_id,$created_at,$grand_total,
+        $total_paid,$tax_amount,$shipping_amount,$shipping_description,$name,$firstname,$lastname,$email,
+        $sfirstname,$slastname,$sfullname,$saddress,$scity,$sregion,$spostcode,$scountry,$bfirstname,
         $lastname,$bfullname,$bstreet,$bcity,$bregion,$bpostcode,$bcountry);
     $finalData = array_merge($arr1,$items);
 
