@@ -71,24 +71,14 @@ fputcsv($fp, array("order_id","created_at","grand_total","total_paid","tax_amoun
 
 foreach($orders as $order) {
 //$orderId = '100021922';
-//if($order->getIncrementId()=='100021922') {
+//if($order->getIncrementId()=='100014439') {
 
     $order = Mage::getModel('sales/order')->loadByIncrementId($order->getIncrementId());
 
 
 
     /****************--------------***********/
-    $order_id = $order->getData('increment_id');
-    $created_at = $order->getData('created_at');
-    $grand_total = $order->getData('grand_total');
-    $total_paid = $order->getData('total_paid');
-    $tax_amount = $order->getData('tax_amount');
-    $shipping_amount = $order->getData('shipping_amount');
-    $shipping_description = $order->getData('shipping_description');
-    $name = $order->getData('customer_firstname') . ' ' . $order->getData('customer_lastname');
-    $firstname = $order->getData('customer_firstname');
-    $lastname = $order->getData('customer_lastname');
-    $email = $order->getData('customer_email');
+
 
     //echo "Shipping Address.<br/>";
     /*
@@ -144,14 +134,55 @@ foreach($orders as $order) {
     */
 
 
-    $items=array();
+    $i=0;
     foreach ($order->getAllVisibleItems() as $item) {
 
-        $items[] = $item->getName();
-        $items[] = $item->getSku();
-        $items[] = $item->getQtyOrdered();
-        $items[] = $item->getPrice();
+        if($i==0){
+            $items = array(
+                $order->getData('increment_id'),
+                $order->getData('created_at'),
+                $order->getData('grand_total'),
+                $order->getData('total_paid'),
+                $order->getData('tax_amount'),
+                $order->getData('shipping_amount'),
+                $order->getData('shipping_description'),
+                $order->getData('customer_firstname') . ' ' . $order->getData('customer_lastname'),
+                $order->getData('customer_firstname'),
+                $order->getData('customer_lastname'),
+                $order->getData('customer_email'),
+                $item->getName(),
+                $item->getSku(),
+                $item->getQtyOrdered(),
+                $item->getPrice()
+            );
+
+        }else{
+
+            $items = array(
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                $item->getName(),
+                $item->getSku(),
+                $item->getQtyOrdered(),
+                $item->getPrice()
+            );
+
+        }
+
+        $i++;
+        fputcsv($fp,$items);
     }
+
+
 /*
     $arr1 =   array($order_id,$created_at,$grand_total,$total_paid,$tax_amount,
         $shipping_amount,$shipping_description,$name,$firstname,$lastname,$email,
@@ -159,12 +190,8 @@ foreach($orders as $order) {
         $spostcode,$scountry,$btelephone,$bfirstname,$blastname,$bfullname,$bstreet,
         $bcity,$bregion,$bpostcode,$bcountry);
   */
-    $arr1 =   array($order_id,$created_at,$grand_total,$total_paid,$tax_amount,
-        $shipping_amount,$shipping_description,$name,$firstname,$lastname,$email,
-        );
-    $finalData = array_merge($arr1,$items);
 
-    fputcsv($fp,$finalData );
+
 
 //}
 }
