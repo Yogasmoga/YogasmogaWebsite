@@ -43,7 +43,7 @@ fputcsv($fp, array("order_id","created_at","grand_total","total_paid","tax_amoun
 
 foreach($orders as $order) {
 //$orderId = '100021922';
-//if($order->getIncrementId()=='100021922') {
+if($order->getIncrementId()!='100020357') {
 
     $order = Mage::getModel('sales/order')->loadByIncrementId($order->getIncrementId());
 
@@ -102,7 +102,7 @@ foreach($orders as $order) {
 
     fputcsv($fp,$finalData );
 
-//}
+}
 }
 
 fclose($fp);
