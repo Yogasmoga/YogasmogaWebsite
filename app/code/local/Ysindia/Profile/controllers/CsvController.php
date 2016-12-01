@@ -31,7 +31,7 @@ class Ysindia_Profile_CsvController extends Mage_Core_Controller_Front_Action
 	  $type.telephone,
 	  $type.postcode,  sfo.created_at
 	FROM sales_flat_order AS sfo
-	JOIN sales_flat_order_address AS billing
+	JOIN sales_flat_order_address AS $type
     ON $type.parent_id = sfo.entity_id
     AND $type.address_type = '$type'
 	WHERE (sfo.created_at BETWEEN '$startDate 00:00:01' AND  '$endDate 23:59:59')";
