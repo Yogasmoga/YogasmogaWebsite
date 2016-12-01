@@ -93,7 +93,7 @@ foreach($orders as $order) {
     $btelephone = $order->getBillingAddress()->getTelephone();
     $bfirstname = $order->getBillingAddress()->getFirstname();
     $lastname = $order->getBillingAddress()->getLastname();
-    $bfullname = $order->getBillingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
+    $bfullname = $order->getBillingAddress()->getFirstname() . ' ' . $order->getBillingAddress()->getLastname();
     $bstreet = $order->getBillingAddress()->getData('street');
     $bcity = $order->getBillingAddress()->getCity();
     $bregion = $order->getBillingAddress()->getRegion();
