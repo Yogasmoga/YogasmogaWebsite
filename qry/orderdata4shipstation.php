@@ -48,24 +48,13 @@ foreach($orders as $order) {
     $order = Mage::getModel('sales/order')->loadByIncrementId($order->getIncrementId());
 
 
-
     /****************--------------***********/
-    $order_id = $order->getData('increment_id');
-    $created_at = $order->getData('created_at');
-    $grand_total = $order->getData('grand_total');
-    $total_paid = $order->getData('total_paid');
-    $tax_amount = $order->getData('tax_amount');
-    $shipping_amount = $order->getData('shipping_amount');
-    $shipping_description = $order->getData('shipping_description');
-    $name = $order->getData('customer_firstname') . ' ' . $order->getData('customer_lastname');
-    $firstname = $order->getData('customer_firstname');
-    $lastname = $order->getData('customer_lastname');
-    $email = $order->getData('customer_email');
+
 
     //echo "Shipping Address.<br/>";
 
     //$stelephone = Mage::getModel('customer/customer')->load($order->getData('customer_id'))->getPrimaryBillingAddress()->getTelephone();
-    if($order->getShippingAddress()) {
+    if ($order->getShippingAddress()) {
         $stelephone = $order->getShippingAddress()->getTelephone();
         $sfirstname = $order->getShippingAddress()->getFirstname();
         $slastname = $order->getShippingAddress()->getLastname();
@@ -75,8 +64,7 @@ foreach($orders as $order) {
         $sregion = $order->getShippingAddress()->getRegion();
         $spostcode = $order->getShippingAddress()->getPostcode();
         $scountry = $order->getShippingAddress()->getCountryId();
-    }
-    else{
+    } else {
 
         $stelephone = '';
         $sfirstname = '';
@@ -90,34 +78,117 @@ foreach($orders as $order) {
     }
 
     //echo "Billing Address <br/>";
-    $btelephone = $order->getBillingAddress()->getTelephone();
-    $bfirstname = $order->getBillingAddress()->getFirstname();
-    $lastname = $order->getBillingAddress()->getLastname();
-    $bfullname = $order->getBillingAddress()->getFirstname() . ' ' . $order->getBillingAddress()->getLastname();
-    $bstreet = $order->getBillingAddress()->getData('street');
-    $bcity = $order->getBillingAddress()->getCity();
-    $bregion = $order->getBillingAddress()->getRegion();
-    $bpostcode = $order->getBillingAddress()->getPostcode();
-    $bcountry = $order->getBillingAddress()->getCountryId();
 
-    $items=array();
-    foreach ($order->getAllVisibleItems() as $item) {
+    if ($order->getBillingAddress()) {
 
-        $items[] = $item->getName();
-        $items[] = $item->getSku();
-        $items[] = $item->getQtyOrdered();
-        $items[] = $item->getPrice();
+        $btelephone = $order->getBillingAddress()->getTelephone();
+        $bfirstname = $order->getBillingAddress()->getFirstname();
+        $lastname = $order->getBillingAddress()->getLastname();
+        $bfullname = $order->getBillingAddress()->getFirstname() . ' ' . $order->getBillingAddress()->getLastname();
+        $bstreet = $order->getBillingAddress()->getData('street');
+        $bcity = $order->getBillingAddress()->getCity();
+        $bregion = $order->getBillingAddress()->getRegion();
+        $bpostcode = $order->getBillingAddress()->getPostcode();
+        $bcountry = $order->getBillingAddress()->getCountryId();
+
+    } else {
+
+        $btelephone = '';
+        $bfirstname = '';
+        $lastname = '';
+        $bfullname = '';
+        $bstreet = '';
+        $bcity = '';
+        $bregion = '';
+        $bpostcode = '';
+        $bcountry = '';
+
     }
 
-    $arr1 =   array($order_id,$created_at,$grand_total,$total_paid,$tax_amount,$shipping_amount,$shipping_description,$name,$firstname,$lastname,$email,
-        $stelephone,$sfirstname,$slastname,$sfullname,$saddress,$scity,$sregion,$spostcode,$scountry,$btelephone,$bfirstname,
-        $lastname,$bfullname,$bstreet,$bcity,$bregion,$bpostcode,$bcountry);
-    $finalData = array_merge($arr1,$items);
 
-    fputcsv($fp,$finalData );
+    $i = 0;
+    foreach ($order->getAllVisibleItems() as $item) {
+
+        if ($i == 0) {
+            $items = array(
+                $order->getData('increment_id'),
+                $order->getData('created_at'),
+                $order->getData('grand_total'),
+                $order->getData('total_paid'),
+                $order->getData('tax_amount'),
+                $order->getData('shipping_amount'),
+                $order->getData('shipping_description'),
+                $order->getData('customer_firstname') . ' ' . $order->getData('customer_lastname'),
+                $order->getData('customer_firstname'),
+                $order->getData('customer_lastname'),
+                $order->getData('customer_email'),
+                $stelephone,
+                $sfirstname,
+                $slastname,
+                $sfullname,
+                $saddress,
+                $scity,
+                $sregion,
+                $spostcode,
+                $scountry,
+                $btelephone,
+                $bfirstname,
+                $lastname,
+                $bfullname,
+                $bstreet,
+                $bcity,
+                $bregion,
+                $bpostcode,
+                $bcountry,
+                $item->getName(),
+                $item->getSku(),
+                $item->getQtyOrdered(),
+                $item->getPrice()
+            );
+        } else {
+            $items = array(
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                " ",
+                $item->getName(),
+                $item->getSku(),
+                $item->getQtyOrdered(),
+                $item->getPrice()
+            );
+
+        }
+
+        $i++;
+        fputcsv($fp, $items);
 
 //}
+    }
 }
-
 fclose($fp);
 exit;
