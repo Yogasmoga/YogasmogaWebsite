@@ -43,7 +43,7 @@ fputcsv($fp, array("order_id","created_at","grand_total","total_paid","tax_amoun
 
 foreach($orders as $order) {
 //$orderId = '100021922';
-if($order->getIncrementId()!='100020357') {
+//if($order->getIncrementId()!='100020357') {
 
     $order = Mage::getModel('sales/order')->loadByIncrementId($order->getIncrementId());
 
@@ -65,15 +65,29 @@ if($order->getIncrementId()!='100020357') {
     //echo "Shipping Address.<br/>";
 
     //$stelephone = Mage::getModel('customer/customer')->load($order->getData('customer_id'))->getPrimaryBillingAddress()->getTelephone();
-    $stelephone = $order->getShippingAddress()->getTelephone();
-    $sfirstname = $order->getShippingAddress()->getFirstname();
-    $slastname = $order->getShippingAddress()->getLastname();
-    $sfullname = $order->getShippingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
-    $saddress = $order->getShippingAddress()->getData('street');
-    $scity = $order->getShippingAddress()->getCity();
-    $sregion = $order->getShippingAddress()->getRegion();
-    $spostcode = $order->getShippingAddress()->getPostcode();
-    $scountry = $order->getShippingAddress()->getCountryId();
+    if($order->getShippingAddress()) {
+        $stelephone = $order->getShippingAddress()->getTelephone();
+        $sfirstname = $order->getShippingAddress()->getFirstname();
+        $slastname = $order->getShippingAddress()->getLastname();
+        $sfullname = $order->getShippingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname();
+        $saddress = $order->getShippingAddress()->getData('street');
+        $scity = $order->getShippingAddress()->getCity();
+        $sregion = $order->getShippingAddress()->getRegion();
+        $spostcode = $order->getShippingAddress()->getPostcode();
+        $scountry = $order->getShippingAddress()->getCountryId();
+    }
+    else{
+
+        $stelephone = '';
+        $sfirstname = '';
+        $slastname = '';
+        $sfullname = '';
+        $saddress = '';
+        $scity = '';
+        $sregion = '';
+        $spostcode = '';
+        $scountry = '';
+    }
 
     //echo "Billing Address <br/>";
     $btelephone = $order->getBillingAddress()->getTelephone();
@@ -102,7 +116,7 @@ if($order->getIncrementId()!='100020357') {
 
     fputcsv($fp,$finalData );
 
-}
+//}
 }
 
 fclose($fp);
