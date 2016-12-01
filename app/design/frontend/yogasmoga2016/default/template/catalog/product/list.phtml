@@ -83,7 +83,11 @@ if($this->getRequest()->getParam('hidden')){
         $categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
         $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
         $shopthecolor_imgUrl = $shopthecolorCategory ->getImageUrl();
-        $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
+        $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')
+            ->addAttributeToFilter(
+                'status',
+                array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED))
+        ->addAttributeToSelect('*');
 
         // check for in sale category
         $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('insale_category')->getValue('plain')), true);
