@@ -197,6 +197,21 @@ window.onload = function(){
     pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/5310b5f2fcdb878ad0000085.js";
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
   })();
+
+
+  //Clear Console.
+
+  console.API;
+
+  if (typeof console._commandLineAPI !== 'undefined') {
+      console.API = console._commandLineAPI; //chrome
+  } else if (typeof console._inspectorCommandLineAPI !== 'undefined') {
+      console.API = console._inspectorCommandLineAPI; //Safari
+  } else if (typeof console.clear !== 'undefined') {
+      console.API = console;
+  }
+
+  console.API.clear();
 </script>
                 
     <?php } ?>
