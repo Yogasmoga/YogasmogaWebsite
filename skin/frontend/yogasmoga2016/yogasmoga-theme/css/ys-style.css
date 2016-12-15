@@ -4602,7 +4602,7 @@ table.productdetailtable div.outofstockitem{
  .categorypath-men-bottoms-shorts  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.58);-webkit-transform: scale(0.58);} 
  .categorypath-men-bottoms-pants  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.89);-webkit-transform: scale(0.89);} 
  .categorypath-men-tops-jackets-hoodies  .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: scale(0.9);-webkit-transform: scale(0.9);} 
- .product-monsoon-apex-tank.categorypath-men-tops-tanks .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: none;-webkit-transform: none;} 
+ .product-ballerina-crop.categorypath-women-bottoms-crops .product-details .product-row table.productimagecontainer table.smallimagecontiner td:nth-child(5) img{transform: none;-webkit-transform: none;}
  /****** css for 5th image end **************/
  /***** close icon svg***/
  .addedItem .close{background: url("../images/shopping-cart/bag-close.svg"); }
