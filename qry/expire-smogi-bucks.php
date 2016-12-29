@@ -1,6 +1,6 @@
 <?php
 
-//exit;
+exit;
 
 require '../app/Mage.php';
 
