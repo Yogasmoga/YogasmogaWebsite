@@ -989,7 +989,7 @@ function addtocart() {
     if (_isoptionavailable && _braSelected) {
 //        addurl = addurl + '&options[1]=1';
 
-        addurl = addurl + '&options[' + _braOptionID + ']=' + _braOptionTypeID;
+        //addurl = addurl + '&options[' + _braOptionID + ']=' + _braOptionTypeID;
     }
 
     //if(_isBundleOptionAvailable && ){
