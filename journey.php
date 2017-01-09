@@ -23,6 +23,8 @@
 
     echo $date_to_look_start . " , " . $date_to_look_end . "<br/><br/>";
 
+	//exit;
+	
     $collection = Mage::getModel('customer/customer')->getCollection()
         ->addAttributeToSelect('entity_id')
         ->addAttributeToSelect('firstname')
@@ -94,9 +96,12 @@
 
         if($days==0) continue;
 
-        $templateId = $templates[$days-1];
-        $subject = $subjects[$days-1];
-
+        echo $templateId = $templates[$days-1];
+		echo "<br/>";
+        echo $subject = $subjects[$days-1];
+		
+		
+		/*
         $emailTemplate = Mage::getModel('core/email_template')->load($templateId);
         $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
         $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
@@ -114,5 +119,6 @@
         $emailTemplate->send($customerEmail, $customerName, $vars);
 
         echo "<hr/>";
+		*/
     }
 ?>
