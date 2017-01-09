@@ -97,9 +97,9 @@
         if($days==0) continue;
 
         $templateId = $templates[$days-1];
-		//echo "<br/>";
+		echo  "Template Id: ".$templateId."<br/>";
         $subject = $subjects[$days-1];
-		
+		echo  "subject Id: ".$subject;
 		
 		/*
         $emailTemplate = Mage::getModel('core/email_template')->load($templateId);
