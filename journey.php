@@ -92,13 +92,13 @@
         $datediff = $now - $your_date;
         $days = floor($datediff/(60*60*24));
 
-        echo "days = $days<br/>";
+        //echo "days = $days<br/>";
 
         if($days==0) continue;
 
-        echo $templateId = $templates[$days-1];
-		echo "<br/>";
-        echo $subject = $subjects[$days-1];
+        $templateId = $templates[$days-1];
+		//echo "<br/>";
+        $subject = $subjects[$days-1];
 		
 		
 		/*
@@ -120,5 +120,6 @@
 
         echo "<hr/>";
 		*/
+		break;
     }
 ?>
