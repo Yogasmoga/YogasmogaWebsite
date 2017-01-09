@@ -101,29 +101,26 @@
         $subject = $subjects[$days-1];
 		//echo  "subject Id: ".$subject;
 		
-		/*
-        $emailTemplate = Mage::getModel('core/email_template')->load($templateId);
-        $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
-        $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
-
-        $vars = array('name' => $customerName);
-
-        $processed = $emailTemplate->getProcessedTemplate($vars);
-
-        echo "<hr/>";
-        echo $processed;
-        echo "<hr/>";
-
-        echo "Sending email to $customerEmail with template = " . $templateId;
-
-        $emailTemplate->send($customerEmail, $customerName, $vars);
-
-        echo "<hr/>";
-		*/
 		if($templateId == 29){
 			
-			echo  "Template Id: ".$templateId."<br/>";
-			echo  "subject Id: ".$subject;
+			$emailTemplate = Mage::getModel('core/email_template')->load($templateId);
+			$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
+			$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
+
+			$vars = array('name' => $customerName);
+
+			$processed = $emailTemplate->getProcessedTemplate($vars);
+
+			echo "<hr/>";
+			echo $processed;
+			echo "<hr/>";
+
+			echo "Sending email to $customerEmail with template = " . $templateId;
+
+			$emailTemplate->send($customerEmail, $customerName, $vars);
+
+			echo "<hr/>";
+				
 		}
 		
     }
