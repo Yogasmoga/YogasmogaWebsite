@@ -154,7 +154,7 @@
                                     <input type="text" title="<?php echo $this->__('Zip Code') ?>"
                                            name="billing[postcode]" id="billing:postcode"
                                            value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>"
-                                           class="input-text required-entry validate-zip-international validate-zip-code-custom2 <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>"/>
+                                           class="input-text required-entry validate-zip-international  <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>"/>
                                 </div>
                             </div>
                             <div class="field" style="margin-top:10px;">
