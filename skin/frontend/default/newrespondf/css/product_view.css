@@ -1315,3 +1315,4 @@ td.popupproductdetail table.smogibucks td div.smogibuckcount {
 #sizecontainer > table {
     border-collapse: collapse;
 }
+.detail-page .includeoptionmain{display:none!important;}
