@@ -23,8 +23,7 @@
  * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
-
- ?>
+?>
 <script type="text/javascript">
     var StateCollection = <?php echo $this->helper('directory')->getRegionJson() ?>;
     //console.log(StateCollection);    
@@ -219,9 +218,51 @@
 <!-- addNewAddress -->
 
 
+<!-- selectShipping -->
+<div class="shippingOption clear">
+    <span class="addVal">YS 7/14 Day Expedited Service ($0.00)</span><span class="showShpOpt"></span>
+    <div class="showShippingOpt clear">
+        <ul id="us-shipping">
+            <li value="1" id="s_method_freeshipping_freeshipping"><span>YS 7/14 Day Expedited Service ($0.00)</span></li>
+            <?php /* ?><li value="2" id="s_method_flatrate_flatrate"><span>YS 2 Day Guaranteed Service ($25.00)</span></li>
+            <li value="3" id="s_method_tablerate_bestway"><span>YS 1 Day Guaranteed Service ($38.00)</span></li><?php */ ?>
+        </ul>
+        <ul id="canada-shipping">
+            <li value="1" id="s_method_ysfirstclassservice_ysfirstclassservice"><span>YS First Class Service : 7/14 Days ($0.00)</span></li>
+            <?php /* ?><li value="2" id="s_method_ysprimeservice_ysprimeservice"><span>YS Prime Service : 3/6 Days ($35.00)</span></li><?php */?>
+        </ul>
+      <?php /* ?>  <ul id="other-shipping">
+            <li value="1" id="s_method_ysinternationalpriority_ysinternationalpriority"><span>YS International Priority Service : 6/10 Days ($35.00)</span></li>
+        </ul><?php */ ?>
+    </div>
+</div>
+<!-- selectShipping -->
 
+<!-- selectAddress -->
+<?php if ($this->customerHasAddresses()): ?>
+    <div id="shippingaddressselectionblock" class="selectAddress clear">
+        <span class="addVal"><?php echo $this->__('Use a different Shipping Address') ?></span><label for="shipping-address-select"></label>
+        <span class="showUpadd"></span>
+        <div class="input-box">
+            <?php echo $this->getAddressesHtmlSelect('shipping') ?>
 
+            <ul class="listadd"></ul>
+        </div>
+    </div>
+<?php endif ?>
+<?php if (!$this->customerHasAddresses()): ?>
+    <div id="shippingaddressselectionblock" class="selectAddress clear" style="display:none">
+        <span class="addVal"><?php echo $this->__('Use a different Shipping Address') ?></span><label for="shipping-address-select"></label>
+        <span class="showUpadd"></span>
+        <div class="input-box">
+            <?php echo $this->getAddressesHtmlSelect('shipping') ?>
 
+            <ul class="listadd"></ul>
+        </div>
+    </div>
+<?php endif ?>
+
+<!-- selectAddress -->
 
 
 <table class="useshippingasbilling dnone">
