@@ -2,7 +2,6 @@
 <layout>
 
 <default>
-
 <reference name="head">  
     <action method="addCss"><stylesheet>css/fonts.css</stylesheet></action>
     <!--<action method="addCss"><stylesheet>css/vivacity-pop-up.css</stylesheet></action>-->
