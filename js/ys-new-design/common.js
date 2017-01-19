@@ -261,14 +261,14 @@ sizeChartPop();
     $(".share-strip").on("click",".sign-up-new a",function(){
         if(!_islogedinuser)
         {
-            $("#signup").dialog( "open" );
+            //$("#signup").dialog( "open" );
         }
     });
 
 	$(".footer-block").on("click",".smogi-love",function(){
          if(!_islogedinuser)
          {
-		 $("#signup").dialog( "open" );   
+		 //$("#signup").dialog( "open" );   
         }
 	});
     $(".footer-block").on("click","#invite-friend",function(){
