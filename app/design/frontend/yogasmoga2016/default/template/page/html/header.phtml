@@ -264,9 +264,9 @@ if($serverType == 'production')
                              ?>_gaq.push(['_trackEvent', 'account open popup', 'Sign Up']);
                             <?php } ?>
 
-                             $( "#signup" ).dialog("close");
+                             //$( "#signup" ).dialog("close");
                             $("#sign_up_box").hide();
-                            //$("#thank_you_box").show();
+                            $("#thank_you_box").show();
                             _islogedinuser = true;
                             $("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
                             if(name != '')
