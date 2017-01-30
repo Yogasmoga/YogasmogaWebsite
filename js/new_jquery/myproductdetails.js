@@ -728,6 +728,7 @@ function changeColor(clr) {
         var price = sizetemp[2];
         var rewardpoints = sizetemp[3];
         var instock = sizetemp[4];
+		var show_pre = sizetemp[6];
         var canbackorder = false;
         if ((sizetemp[5] * 1) > 0)
             canbackorder = true;
@@ -738,6 +739,7 @@ function changeColor(clr) {
         jQuery("div#sizecontainer div[size='" + size + "']").attr("qty", qty);
         jQuery("div#sizecontainer div[size='" + size + "']").attr("price", price);
         jQuery("div#sizecontainer div[size='" + size + "']").attr("rewardpoints", rewardpoints);
+		jQuery("div#sizecontainer div[size='" + size + "']").attr("showpre", show_pre);
 
         if (instock == 0) {
             jQuery("div#sizecontainer div[size='" + size + "']").addClass('outofstock');
