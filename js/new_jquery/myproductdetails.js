@@ -15,6 +15,8 @@ jQuery(window).load(function ($) {
 });
 jQuery(document).ready(function ($) {
 	 insertBraOption();
+	 var gs = jQuery("div#sizecontainer.showing-pre.dvselectedsize").attr("showpre");
+	 alert(gs);
 });
 
 //Upsell product ..........
@@ -218,7 +220,7 @@ jQuery(document).ready(function ($) {
         jQuery("#orderitem").removeClass('bagdisabled');
         jQuery("#orderitem").addClass('spbutton');
         changeproductsize($(this));
-		alert($(this));
+		
     });
 
     $(".selectedlength div:visible").live("click", function () {
