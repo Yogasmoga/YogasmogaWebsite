@@ -218,6 +218,7 @@ jQuery(document).ready(function ($) {
         jQuery("#orderitem").removeClass('bagdisabled');
         jQuery("#orderitem").addClass('spbutton');
         changeproductsize($(this));
+		alert($(this));
     });
 
     $(".selectedlength div:visible").live("click", function () {
@@ -539,17 +540,11 @@ function changeproductsize(sz) {
 		//make regular size default selected
 		jQuery("body").find("div.selectedlength div:nth-child(1)").trigger("click");
 		//make regular size default selected
-    } else {
+    } 
+else {
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
-		//fahim
-				if (sz.hasClass("showing-pre")) {
-					alert("nn");
-                    jQuery("#orderitem").hide();
-                    jQuery("#preorderitem").show();
-                    jQuery("#preorderhelp").show();
-                    jQuery("#outofstockitem").hide();
-                }
+		
 
         if (sz.hasClass("outofstock")) {
             jQuery("#orderitem").hide();
