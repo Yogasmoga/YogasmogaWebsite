@@ -378,7 +378,8 @@ foreach ($_childProducts as $_childProduct) {
         $temp1 .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
         $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
         $temp1 .= "|" . $backOrderCheck;
-
+		$showPre = $_childProduct->getAttributeText('pre_order_product');
+		$temp1 .= "|" . $showPre;
         if (!isset($arProductColorInfo[$colorAttributeValue]["length"])) {
             $arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')] = array($temp1);
             foreach ($_gallery as $_image) {

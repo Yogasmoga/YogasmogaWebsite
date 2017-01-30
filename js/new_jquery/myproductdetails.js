@@ -492,12 +492,21 @@ function changeproductsize(sz) {
             var price = lengthtemp[2];
             var rewardpoints = lengthtemp[3];
             var instock = lengthtemp[4];
+			var show_pre = lengthtemp[6]; //fahim
             var canbackorder = false;
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("qty", qty);
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("price", price);
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("rewardpoints", rewardpoints);
-            jQuery(".selectedlength div[lengthtype='" + lengthType + "']").show();
-
+			jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("showpre", show_pre); //fahim
+			jQuery(".selectedlength div[lengthtype='" + lengthType + "']").show();
+			
+			// fahim	
+			if(show_pre == 'Yes'){
+				jQuery(".selectedlength div[lengthtype='" + lengthType + "']").addClass('showing-pre');
+			}
+			else{
+				jQuery(".selectedlength div[lengthtype='" + lengthType + "']").removeClass('showing-pre');
+			}
             if ((lengthtemp[5] * 1) > 0)
                 canbackorder = true;
 
@@ -552,14 +561,15 @@ function changeproductsize(sz) {
                 jQuery("#outofstockitem").hide();
             }
             else {
-				
+				//fahim
 				if (sz.hasClass("showing-pre")) {
-					alert("show");
+					alert("nn");
                     jQuery("#orderitem").hide();
                     jQuery("#preorderitem").show();
                     jQuery("#preorderhelp").show();
                     jQuery("#outofstockitem").hide();
                 }
+				
                 if (sz.hasClass("canbackorder")) {
 					alert("2");
                     jQuery("#orderitem").hide();
@@ -739,10 +749,8 @@ function changeColor(clr) {
         var price = sizetemp[2];
         var rewardpoints = sizetemp[3];
         var instock = sizetemp[4];
-		var show_pre = sizetemp[6];
-		
-		
-        var canbackorder = false;
+		var show_pre = sizetemp[6]; //fahim
+		var canbackorder = false;
         if ((sizetemp[5] * 1) > 0)
             canbackorder = true;
         //var size = _productcolorinfo[colorindex].sizes[i].substr(0, _productcolorinfo[colorindex].sizes[i].indexOf('|'));
