@@ -523,6 +523,7 @@ function changeproductsize(sz) {
                 jQuery(".selectedlength div[lengthtype='" + lengthType + "']").removeClass('canbackorder');
 
         }
+		
         // check for insale
         var amount = jQuery(".amount");
         var firstSize = jQuery("div.selectedlength div").first().next();
@@ -546,8 +547,8 @@ else {
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
 		
-		var gs = jQuery("div#sizecontainer.showing-pre").attr("showpre");
-	 alert(gs);
+		var gs = jQuery("div#sizecontainer div.showing-pre.dvselectedsize").attr("showpre");
+		alert(gs);
 
         if (sz.hasClass("outofstock")) {
             jQuery("#orderitem").hide();
