@@ -15,8 +15,7 @@ jQuery(window).load(function ($) {
 });
 jQuery(document).ready(function ($) {
 	 insertBraOption();
-	 var gs = jQuery("div#sizecontainer.showing-pre.dvselectedsize").attr("showpre");
-	 alert(gs);
+	 
 });
 
 //Upsell product ..........
@@ -547,6 +546,8 @@ else {
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
 		
+		var gs = jQuery("div#sizecontainer.showing-pre.dvselectedsize").attr("showpre");
+	 alert(gs);
 
         if (sz.hasClass("outofstock")) {
             jQuery("#orderitem").hide();
