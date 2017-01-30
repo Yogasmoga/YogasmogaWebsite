@@ -511,7 +511,7 @@ function changeproductsize(sz) {
 			}*/
             if ((lengthtemp[5] * 1) > 0)
                 canbackorder = true;
-			jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("showpre", "No"); //fahim
+			
 
             if (instock == 0)
                 jQuery(".selectedlength div[lengthtype='" + lengthType + "']").addClass('outofstock');
@@ -759,9 +759,9 @@ function changeColor(clr) {
         jQuery("div#sizecontainer div[size='" + size + "']").attr("price", price);
         jQuery("div#sizecontainer div[size='" + size + "']").attr("rewardpoints", rewardpoints);
 		jQuery("div#sizecontainer div[size='" + size + "']").attr("showpre", show_pre);
+		
 		if ((sizetemp[5] * 1) > 0)
             canbackorder = true;
-		jQuery("div#sizecontainer div[size='" + size + "']").attr("showpre", "No");
         if (instock == 0) {
             jQuery("div#sizecontainer div[size='" + size + "']").addClass('outofstock');
             jQuery("div#sizecontainer div[size='" + size + "']").find('img').show();
