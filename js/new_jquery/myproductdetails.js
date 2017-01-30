@@ -549,10 +549,12 @@ else {
 		
 		var gs = jQuery("div#sizecontainer div.showing-pre.dvselectedsize").attr("showpre");
 		if(gs == "Yes"){
-					jQuery("#orderitem").hide();
-                    jQuery("#preorderitem").show();
-                    jQuery("#preorderhelp").show();
-                    jQuery("#outofstockitem").hide();
+			
+					jQuery("#orderitem").css("display","none");
+                    jQuery("#preorderitem").css("display","block");
+                    jQuery("#preorderhelp").css("display","block");
+                    jQuery("#outofstockitem").css("display","none");
+					alert(gs);
 		}
 
         if (sz.hasClass("outofstock")) {
