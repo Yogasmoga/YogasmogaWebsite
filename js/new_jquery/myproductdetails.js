@@ -502,13 +502,13 @@ function changeproductsize(sz) {
 			jQuery(".selectedlength div[lengthtype='" + lengthType + "']").show();
 			
 			// fahim	
-			/*
+			
 			if(show_pre == 'Yes'){
 				jQuery(".selectedlength div[lengthtype='" + lengthType + "']").addClass('showing-pre');
 			}
 			else{
 				jQuery(".selectedlength div[lengthtype='" + lengthType + "']").removeClass('showing-pre');
-			}*/
+			}
             if ((lengthtemp[5] * 1) > 0)
                 canbackorder = true;
 			
@@ -569,6 +569,14 @@ else {
                 jQuery("#outofstockitem").hide();
             }
             else {
+				
+				if (sz.hasClass("showing-pre")) {
+					alert("show");
+                    jQuery("#orderitem").hide();
+                    jQuery("#preorderitem").show();
+                    jQuery("#preorderhelp").show();
+                    jQuery("#outofstockitem").hide();
+                }
 				if (sz.hasClass("canbackorder")) {
 					alert("2");
                     jQuery("#orderitem").hide();
@@ -770,12 +778,12 @@ function changeColor(clr) {
             jQuery("div#sizecontainer div[size='" + size + "']").removeClass('outofstock');
             jQuery("div#sizecontainer div[size='" + size + "']").find('img').hide();
         }
-		/*if(show_pre == "Yes"){
+		if(show_pre == "Yes"){
 			 jQuery("div#sizecontainer div[size='" + size + "']").addClass('showing-pre');
 		}
 		else{
 			jQuery("div#sizecontainer div[size='" + size + "']").removeClass('showing-pre');
-		}*/
+		}
 
         if (canbackorder)
             jQuery("div#sizecontainer div[size='" + size + "']").addClass('canbackorder');
