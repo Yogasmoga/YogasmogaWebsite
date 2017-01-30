@@ -363,6 +363,7 @@ function changelengthtype(sz) {
         }
         else {
             if (sz.hasClass("canbackorder")) {
+				alert("1");
                 jQuery("#orderitem").hide();
                 jQuery("#preorderitem").show();
                 jQuery("#preorderhelp").show();
@@ -552,6 +553,7 @@ function changeproductsize(sz) {
             }
             else {
                 if (sz.hasClass("canbackorder")) {
+					alert("2");
                     jQuery("#orderitem").hide();
                     jQuery("#preorderitem").show();
                     jQuery("#preorderhelp").show();
@@ -659,6 +661,7 @@ function changeOrderqty(qty) {
             }
             else {
                 if (jQuery("div#sizecontainer div.dvselectedsize").hasClass('canbackorder')) {
+					alert("3");
                     jQuery("#orderitem").hide();
                     jQuery("#preorderitem").show();
                     jQuery("#preorderhelp").show();
