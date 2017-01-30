@@ -546,7 +546,7 @@ else {
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
 		
-		var gs = jQuery("div#sizecontainer.showing-pre.dvselectedsize").attr("showpre");
+		var gs = jQuery("div#sizecontainer.showing-pre").attr("showpre");
 	 alert(gs);
 
         if (sz.hasClass("outofstock")) {
