@@ -379,7 +379,8 @@ foreach ($_childProducts as $_childProduct) {
         $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
         $temp1 .= "|" . $backOrderCheck;
 		$showPre = $_childProduct->getAttributeText('pre_order_product');
-		$temp1 .= "|" . $showPre . "|" .$_childProduct->getAttributeText('pre_order_msg');
+		$showpremsg = $_helper->productAttribute($_childProduct, $_childProduct->getPreOrderMsg(), 'pre_order_msg');
+		$temp1 .= "|" . $showPre . "|" .$showpremsg;
         if (!isset($arProductColorInfo[$colorAttributeValue]["length"])) {
             $arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')] = array($temp1);
             foreach ($_gallery as $_image) {
@@ -457,7 +458,8 @@ foreach ($_childProducts as $_childProduct) {
         $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
         $temp1 .= "|" . $backOrderCheck;
 		$showPre = $_childProduct->getAttributeText('pre_order_product');// fahim
-		$temp1 .= "|" . $showPre . "|" . $_childProduct->getAttributeText('pre_order_msg');
+		$showpremsg = $_helper->productAttribute($_childProduct, $_childProduct->getPreOrderMsg(), 'pre_order_msg');//fahim.
+		$temp1 .= "|" . $showPre . "|" .$showpremsg;
 		
         if (isset($arProductColorInfo[$colorAttributeValue]["sizes"])) {
             array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $temp1);
