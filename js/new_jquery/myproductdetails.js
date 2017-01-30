@@ -548,7 +548,12 @@ else {
         sz.addClass("dvselectedsize");
 		
 		var gs = jQuery("div#sizecontainer div.showing-pre.dvselectedsize").attr("showpre");
-		alert(gs);
+		if(gs == "Yes"){
+					jQuery("#orderitem").hide();
+                    jQuery("#preorderitem").show();
+                    jQuery("#preorderhelp").show();
+                    jQuery("#outofstockitem").hide();
+		}
 
         if (sz.hasClass("outofstock")) {
             jQuery("#orderitem").hide();
