@@ -570,7 +570,7 @@ else {
             }
             else {
 				
-				if (sz.hasClass("showing-pre")) {
+				if (gs == "Yes") {
 					alert("show");
                     jQuery("#orderitem").hide();
                     jQuery("#preorderitem").show();
