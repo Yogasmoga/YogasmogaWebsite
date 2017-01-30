@@ -575,7 +575,7 @@ else {
 				//fahim
 				if (sz.hasClass("showing-pre")) {
 					alert("show");
-					var preordermsg =  jQuery(".showing-pre").attr("preordermsg");
+					var preordermsg =  jQuery(".showing-pre").attr("showpremsg");
 					jQuery(".pre-order-msg").html(preordermsg);
 					jQuery(".pre-order-msg").show();
                     jQuery("#orderitem").hide();
