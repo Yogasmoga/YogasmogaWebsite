@@ -565,6 +565,7 @@ else {
             var qty = sz.attr("qty") * 1;
             var orderqty = _productorderqty;
             if ((qty - orderqty) >= 0) {
+				//fahim
 				if (sz.hasClass("showing-pre")) {
 					alert("show");
                     jQuery("#orderitem").hide();
