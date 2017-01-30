@@ -494,11 +494,13 @@ function changeproductsize(sz) {
             var rewardpoints = lengthtemp[3];
             var instock = lengthtemp[4];
 			var show_pre = lengthtemp[6]; //fahim
+			var show_pre_msg = lengthtemp[7]; //fahim
             var canbackorder = false;
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("qty", qty);
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("price", price);
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("rewardpoints", rewardpoints);
 			jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("showpre", show_pre); //fahim
+			jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("showpremsg", show_pre_msg); //fahim
 			jQuery(".selectedlength div[lengthtype='" + lengthType + "']").show();
 			
 			// fahim	
@@ -509,6 +511,10 @@ function changeproductsize(sz) {
 			else{
 				jQuery(".selectedlength div[lengthtype='" + lengthType + "']").removeClass('showing-pre');
 			}
+			
+			
+			
+			
             if ((lengthtemp[5] * 1) > 0)
                 canbackorder = true;
 			
@@ -763,6 +769,7 @@ function changeColor(clr) {
         var rewardpoints = sizetemp[3];
         var instock = sizetemp[4];
 		var show_pre = sizetemp[6]; //fahim
+		var show_pre_msg = sizetemp[7]; //fahim
 		var canbackorder = false;
         
         //var size = _productcolorinfo[colorindex].sizes[i].substr(0, _productcolorinfo[colorindex].sizes[i].indexOf('|'));
@@ -772,7 +779,8 @@ function changeColor(clr) {
         jQuery("div#sizecontainer div[size='" + size + "']").attr("qty", qty);
         jQuery("div#sizecontainer div[size='" + size + "']").attr("price", price);
         jQuery("div#sizecontainer div[size='" + size + "']").attr("rewardpoints", rewardpoints);
-		jQuery("div#sizecontainer div[size='" + size + "']").attr("showpre", show_pre);
+		jQuery("div#sizecontainer div[size='" + size + "']").attr("showpre", show_pre); //fahim.
+		jQuery("div#sizecontainer div[size='" + size + "']").attr("showpremsg", show_pre_msg); //fahim.
 		
 		if ((sizetemp[5] * 1) > 0)
             canbackorder = true;
