@@ -568,19 +568,23 @@ else {
 			
 			
             jQuery("#outofstockitem").hide();
+			
             var qty = sz.attr("qty") * 1;
             var orderqty = _productorderqty;
             if ((qty - orderqty) >= 0) {
 				//fahim
 				if (sz.hasClass("showing-pre")) {
 					alert("show");
+					var preordermsg =  jQuery(".showing-pre").attr("preordermsg");
+					jQuery(".pre-order-msg").html(preordermsg);
+					jQuery(".pre-order-msg").show();
                     jQuery("#orderitem").hide();
                     jQuery("#preorderitem").show();
                     jQuery("#preorderhelp").show();
                     jQuery("#outofstockitem").hide();
                 }
 				else{
-				
+				jQuery(".pre-order-msg").hide();
 				jQuery("#orderitem").show();
                 jQuery("#preorderitem").hide();
                 jQuery("#preorderhelp").hide();
@@ -601,6 +605,7 @@ else {
                     jQuery("#preorderitem").hide();
                     jQuery("#preorderhelp").hide();
                     jQuery("#outofstockitem").show();
+					jQuery(".pre-order-msg").show();//fahim
 //                return;
                 }
             }
