@@ -554,7 +554,7 @@ else {
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
 		
-		var gs = jQuery("div#sizecontainer div.showing-pre.dvselectedsize").attr("showpre");
+		var premsghtml='';
 		
 
         if (sz.hasClass("outofstock")) {
@@ -576,8 +576,9 @@ else {
 				if (sz.hasClass("showing-pre")) {
 					
 					var preordermsg =  sz.attr("showpremsg");
-					//jQuery(".pre-order-msg").html(preordermsg);
-					//jQuery(".pre-order-msg").show();
+					premsghtml = premsghtml + preordermsg;
+					jQuery(".pre-order-msg").html(preordermsg);
+					jQuery(".pre-order-msg").show();
                     alert(preordermsg);
 					jQuery("#orderitem").hide();
                     jQuery("#preorderitem").show();
