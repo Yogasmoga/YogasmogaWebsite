@@ -596,7 +596,7 @@ else {
             }
             else {
 				if (sz.hasClass("canbackorder")) {
-					//fahim.
+					
 					var preordermsg =  sz.attr("showpremsg");
 					premsghtml = premsghtml + preordermsg;
 					jQuery(".pre-order-msg").html(preordermsg);
@@ -710,7 +710,7 @@ function changeOrderqty(qty) {
             }
             else {
                 if (jQuery("div#sizecontainer div.dvselectedsize").hasClass('canbackorder')) {
-					//alert("3");
+					alert("3");
                     jQuery("#orderitem").hide();
                     jQuery("#preorderitem").show();
                     jQuery("#preorderhelp").show();
