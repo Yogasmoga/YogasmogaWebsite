@@ -574,11 +574,12 @@ else {
             if ((qty - orderqty) >= 0) {
 				//fahim
 				if (sz.hasClass("showing-pre")) {
-					alert("show");
-					var preordermsg =  jQuery(".showing-pre").attr("showpremsg");
-					jQuery(".pre-order-msg").html(preordermsg);
-					jQuery(".pre-order-msg").show();
-                    jQuery("#orderitem").hide();
+					
+					var preordermsg =  sz.attr("showpremsg");
+					//jQuery(".pre-order-msg").html(preordermsg);
+					//jQuery(".pre-order-msg").show();
+                    alert(preordermsg);
+					jQuery("#orderitem").hide();
                     jQuery("#preorderitem").show();
                     jQuery("#preorderhelp").show();
                     jQuery("#outofstockitem").hide();
