@@ -596,6 +596,11 @@ else {
             }
             else {
 				if (sz.hasClass("canbackorder")) {
+					
+					var preordermsg =  sz.attr("showpremsg");
+					premsghtml = premsghtml + preordermsg;
+					jQuery(".pre-order-msg").html(preordermsg);
+					jQuery(".pre-order-msg").show();
 					alert("2");
                     jQuery("#orderitem").hide();
                     jQuery("#preorderitem").show();
