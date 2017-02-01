@@ -121,7 +121,10 @@ if($path != strtolower('/checkout/onepage')){
                 echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-women.jpg").'"></div>';
             }
             else{
-                echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-men.jpg").'"></div>';
+				if($identity == strtolower('men')){
+				echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-men.jpg").'"></div>';	
+				}
+                
             }
             echo "</ul></li>";
         }
