@@ -8,14 +8,14 @@ $rangeCats = explode(",",$rangeCategories);
     <img src="<?=$_category->getImageUrl()?>" alt="<?=$_category->getName()?>" title="<?=$_category->getName()?>" />
     <div class="category-info csp-block"><?=$_category->getDescription()?></div>
 </div>
-<?php else: ?>
-	<?php if($_category->getId() == 135)?>
+<?php endif;?>
+<?php if($_category->getId() == 135)?>
 	<div class="bannerFluid">
 		<img src="<?=$_category->getImageUrl()?>" alt="<?=$_category->getName()?>" title="<?=$_category->getName()?>" />
 		<div class="category-info csp-block"><?=$_category->getDescription()?></div>
 	</div>
-	<?php endif;?>
 <?php endif;?>
+
 <h1 class="bnrtxt cat-name  bnr"><?=$_category->getName()?></h1>
 <?php
     $currentCategoryId = Mage::registry('current_category')->getId();
