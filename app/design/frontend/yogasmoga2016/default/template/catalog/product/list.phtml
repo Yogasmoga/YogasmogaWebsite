@@ -7,15 +7,9 @@ $rangeCats = explode(",",$rangeCategories);
 <div class="bannerFluid">
     <img src="<?=$_category->getImageUrl()?>" alt="<?=$_category->getName()?>" title="<?=$_category->getName()?>" />
     <div class="category-info csp-block"><?=$_category->getDescription()?></div>
+	<!--<img alt="made-in-ca" src="<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/madeinusa-seal.png" class="img_madeinusa" draggable="false">-->
 </div>
 <?php endif;?>
-<?php if($_category->getId() == '135')?>
-	<div class="bannerFluid">
-		<img src="<?=$_category->getImageUrl()?>" alt="<?=$_category->getName()?>" title="<?=$_category->getName()?>" />
-		<div class="category-info csp-block"><?=$_category->getDescription()?></div>
-	</div>
-<?php endif;?>
-
 <h1 class="bnrtxt cat-name  bnr"><?=$_category->getName()?></h1>
 <?php
     $currentCategoryId = Mage::registry('current_category')->getId();
