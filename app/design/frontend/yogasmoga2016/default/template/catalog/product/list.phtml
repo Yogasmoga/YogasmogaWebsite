@@ -3,7 +3,7 @@ $rangeCategories = Mage::getModel('core/variable')->loadByCode('range_categories
 $rangeCats = explode(",",$rangeCategories);
 ?>
 
-<?php if(in_array($_category->getId(),$rangeCats)): ?>
+<?php if(in_array($_category->getId(),$rangeCats) || $_category->getId() =='135'): ?>
 <div class="bannerFluid">
     <img src="<?=$_category->getImageUrl()?>" alt="<?=$_category->getName()?>" title="<?=$_category->getName()?>" />
     <div class="category-info csp-block"><?=$_category->getDescription()?></div>
