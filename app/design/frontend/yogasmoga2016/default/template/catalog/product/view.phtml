@@ -33,6 +33,21 @@
 ?>
 <?php
 
+$_product = $this->getProduct();
+
+//added code by fahim;
+	$haveHeart=false;
+	$_product->getCategoryIds();
+	foreach($_product->getCategoryIds() as $pids){
+			if(in_array(135,$pids)){
+				$haveHeart = true;
+				echo $haveHeart."********";
+			}
+	}
+
+
+
+
 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
 $readresult = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
 while ($row = $readresult->fetch()) {
@@ -59,15 +74,6 @@ if (!$bundledProduct) {
 
 $_product = $this->getProduct();
 
-//added code by fahim;
-	$haveHeart=false;
-	$_product->getCategoryIds();
-	foreach($_product->getCategoryIds() as $pids){
-			if(in_array(135,$pids)){
-				$haveHeart = true;
-				echo $haveHeart."********";
-			}
-	}
 	
 	
 
