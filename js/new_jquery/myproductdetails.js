@@ -150,7 +150,7 @@ jQuery(document).ready(function ($) {
         jQuery("#orderitem").removeClass('bagdisabled');
         jQuery("#orderitem").addClass('spbutton');
         changeColor($(this).attr("color"));
-		alert($(this).attr("color"));
+		//alert($(this).attr("color"));
         selectfirstsizeonload();
 
         /*------------Change Upsell product Edited By Fahim (code start)------------*/
@@ -248,9 +248,11 @@ jQuery(document).ready(function ($) {
         changePartOfGiftSet(_defaultprcolor);
         if ($("div#colorcontainer table[value='" + _defaultprcolor + "']").length > 0)
             changeColor($("div#colorcontainer table[value='" + _defaultprcolor + "']").attr("color"));
+			alert("1");
         else {
             if ($("div#colorcontainer table:first").length > 0)
                 changeColor($("div#colorcontainer table:first").attr("color"));
+			alert("2");
         }
         //_defaultprcolor = '';
     }
@@ -258,6 +260,7 @@ jQuery(document).ready(function ($) {
         if ($("div#colorcontainer table:first").length > 0) {
             changeColor($("div#colorcontainer table:first").attr("color"));
             changePartOfGiftSet(changeColor($("div#colorcontainer table:first").attr("value")));
+			alert("3");
         }
     }
 
