@@ -785,7 +785,7 @@ function changeColor(clr) {
 		var show_pre = sizetemp[6]; //fahim.
 		var show_pre_msg = sizetemp[7]; //fahim.
 		var haveHeart = sizetemp[8];//fahim.
-		alert(haveHeart);
+		//alert(haveHeart);
 		var canbackorder = false;
         
         //var size = _productcolorinfo[colorindex].sizes[i].substr(0, _productcolorinfo[colorindex].sizes[i].indexOf('|'));
