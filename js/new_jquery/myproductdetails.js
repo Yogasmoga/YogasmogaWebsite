@@ -820,8 +820,7 @@ function changeColor(clr) {
     }
 	
 	if(jQuery("body").attr("class","category-haveheart")){
-			  
-			  jQuery("#preorderitem").hide();
+			  jQuery("#preorderitem").show();
 	}
 	else{
 		jQuery("#orderitem").show();
