@@ -824,7 +824,7 @@ function changeColor(clr) {
             jQuery("div#sizecontainer div[size='" + size + "']").removeClass('canbackorder');
 
     }
-	alert(have);
+	//alert(have);
 	if(haveHeart){
 	jQuery("#orderitem").hide();
 	jQuery("#preorderitem").show();
