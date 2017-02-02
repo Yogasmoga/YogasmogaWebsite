@@ -58,6 +58,18 @@ $bundledProduct = isset($bundled_product_ids) && strlen($bundled_product_ids) > 
 if (!$bundledProduct) {
 
 $_product = $this->getProduct();
+
+//added code by fahim;
+	$haveHeart=false;
+	$_product->getCategoryIds();
+	foreach($_product->getCategoryIds() as $pids){
+			if(in_array(135,$pids)){
+				$haveHeart = true;
+			}
+	}
+	
+	
+
 $_product = Mage::getModel('catalog/product')->load($_product->getId());
 $productName = $_product->getName();
 $productId = intval($_product->getId());
@@ -1451,12 +1463,15 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                     <!-- addToBag -->
                                     <div class="box-seprtr last" style="padding-top:25px;">
                                         <!--<div class="blck-head-sml"><span class="qty">Step 3</span></div>-->
-
+										
+										
+										
                                         <!-- addToBagBtn -->
                                         <div id="orderitem" class="addtobag spbutton"
                                              imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on-v2.png'); ?>"
                                              downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on-v2.png'); ?>">
                                         </div>
+										
                                         <div id='addtobagloader' style="display: none"><img
                                                 src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif'/>
                                         </div>
@@ -1473,7 +1488,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                         </div>
 										<div class="pre-order-msg" style="display:none; clear:both; padding-top:6px;"></div>
                                         <!-- preOrderItemBtn -->
-
+										<script type="text/javascript"> haveHeart = <?php echo haveHeart;?></script>	
                                         <!-- producterrorcontainer -->
                                         <div class="producterrorcontainer">
                                             <div class="errormsg"></div>
@@ -1486,7 +1501,10 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                             <img id="preorderhelp" src="<?php //echo $this->getSkinUrl('images/help.png');
                                             ?>" /> -->
                                         </div>
-                                        <!-- producterrorcontainer -->
+                                        
+										
+										<!-- producterrorcontainer -->
+										
 										<div class="wishlist-nw">
                                
 											<?php
@@ -2824,7 +2842,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
         <div style="font:12px/15px GothamBook; color:#555; padding: 25px 50px 0px; text-align: left">*To order more than 1 of the same set, please place a separate order.</div>
         <div style="display: none" id="outofstockimage"><img src="<?php echo $this->getSkinUrl('/images/out-of-stock.png');?>"/></div>
         <script type="text/javascript">
-
+			
             <?php
                 foreach($allSizes as $key => $value)
                     echo "allSizes['$key'] = '$value';";

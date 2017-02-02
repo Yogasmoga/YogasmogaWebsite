@@ -1,3 +1,4 @@
+var haveHeart = false;
 _preorderinfohovered = false;
 var _rewardpoints = 0;
 var currentColorObject;     // to store what color is clicked
@@ -819,18 +820,10 @@ function changeColor(clr) {
 
     }
 	
-	if(jQuery("body").attr("class","category-haveheart")){
-			  jQuery("#preorderitem").show();
-			  jQuery("#orderitem").hide();
-	}
-	else{
-		jQuery("#orderitem").show();
-		jQuery("#preorderitem").hide();
-	}
- 
-	
-    
-    jQuery("#preorderhelp").hide();
+	alert(haveHeart);
+	jQuery("#orderitem").show();
+	jQuery("#preorderitem").hide();
+	jQuery("#preorderhelp").hide();
     jQuery("#outofstockitem").hide();
     var smallimagehtml = '';
 
