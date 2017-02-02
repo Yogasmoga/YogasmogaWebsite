@@ -1,4 +1,4 @@
-var haveHeart = false;
+
 _preorderinfohovered = false;
 var _rewardpoints = 0;
 var currentColorObject;     // to store what color is clicked
@@ -782,8 +782,10 @@ function changeColor(clr) {
         var price = sizetemp[2];
         var rewardpoints = sizetemp[3];
         var instock = sizetemp[4];
-		var show_pre = sizetemp[6]; //fahim
-		var show_pre_msg = sizetemp[7]; //fahim
+		var show_pre = sizetemp[6]; //fahim.
+		var show_pre_msg = sizetemp[7]; //fahim.
+		var haveHeart = sizetemp[8];//fahim.
+		
 		var canbackorder = false;
         
         //var size = _productcolorinfo[colorindex].sizes[i].substr(0, _productcolorinfo[colorindex].sizes[i].indexOf('|'));
@@ -820,9 +822,14 @@ function changeColor(clr) {
 
     }
 	
-	alert(haveHeart);
+	if(haveHeart){
+	jQuery("#orderitem").hide();
+	jQuery("#preorderitem").show();
+	}else{
 	jQuery("#orderitem").show();
 	jQuery("#preorderitem").hide();
+	}
+	
 	jQuery("#preorderhelp").hide();
     jQuery("#outofstockitem").hide();
     var smallimagehtml = '';

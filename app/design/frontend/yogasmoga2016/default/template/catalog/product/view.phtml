@@ -392,7 +392,7 @@ foreach ($_childProducts as $_childProduct) {
         $temp1 .= "|" . $backOrderCheck;
 		$showPre = $_childProduct->getAttributeText('pre_order_product');
 		$showpremsg = $_helper->productAttribute($_childProduct, $_childProduct->getPreOrderMsg(), 'pre_order_msg');
-		$temp1 .= "|" . $showPre . "|" .$showpremsg;
+		$temp1 .= "|" . $showPre . "|" .$showpremsg . "|" .$haveHeart;
         if (!isset($arProductColorInfo[$colorAttributeValue]["length"])) {
             $arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')] = array($temp1);
             foreach ($_gallery as $_image) {
@@ -471,7 +471,7 @@ foreach ($_childProducts as $_childProduct) {
         $temp1 .= "|" . $backOrderCheck;
 		$showPre = $_childProduct->getAttributeText('pre_order_product');// fahim
 		$showpremsg = $_helper->productAttribute($_childProduct, $_childProduct->getPreOrderMsg(), 'pre_order_msg');//fahim.
-		$temp1 .= "|" . $showPre . "|" .$showpremsg;
+		$temp1 .= "|" . $showPre . "|" .$showpremsg . "|" .$haveHeart;
 		
         if (isset($arProductColorInfo[$colorAttributeValue]["sizes"])) {
             array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $temp1);
@@ -1488,7 +1488,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                         </div>
 										<div class="pre-order-msg" style="display:none; clear:both; padding-top:6px;"></div>
                                         <!-- preOrderItemBtn -->
-										<script type="text/javascript"> haveHeart = <?php echo haveHeart;?></script>	
+										
                                         <!-- producterrorcontainer -->
                                         <div class="producterrorcontainer">
                                             <div class="errormsg"></div>
