@@ -819,8 +819,9 @@ function changeColor(clr) {
 
     }
 	
-    jQuery("#orderitem").show();
-	alert();
+	alert(jQuery("body").attr("class"));
+   jQuery("#orderitem").show();
+	
     jQuery("#preorderitem").hide();
     jQuery("#preorderhelp").hide();
     jQuery("#outofstockitem").hide();
