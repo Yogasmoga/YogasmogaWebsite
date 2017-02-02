@@ -57,9 +57,14 @@ $bundledProduct = isset($bundled_product_ids) && strlen($bundled_product_ids) > 
 
 if (!$bundledProduct) {
 
+
 $_product = $this->getProduct();
 
-	
+$catIds =  $_product->getCategoryIds();
+	$haveHeart = false;
+	if(in_array(135,$catIds)){
+		$haveHeart =true;
+	}	
 	
 
 $_product = Mage::getModel('catalog/product')->load($_product->getId());
