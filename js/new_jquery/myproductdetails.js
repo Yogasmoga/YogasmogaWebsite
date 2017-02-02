@@ -821,9 +821,11 @@ function changeColor(clr) {
 	
 	if(jQuery("body").attr("class","category-haveheart")){
 			  jQuery("#preorderitem").show();
+			  jQuery("#orderitem").hide();
 	}
 	else{
 		jQuery("#orderitem").show();
+		jQuery("#preorderitem").hide();
 	}
  
 	
