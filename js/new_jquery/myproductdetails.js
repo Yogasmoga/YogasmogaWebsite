@@ -15,8 +15,7 @@ jQuery(window).load(function ($) {
 });
 jQuery(document).ready(function ($) {
 	 insertBraOption();
-	 $(".category-haveheart #preorderitem").show();
-	 $(".category-haveheart #orderitem").hide();
+	 
 	 
 });
 
@@ -819,7 +818,9 @@ function changeColor(clr) {
             jQuery("div#sizecontainer div[size='" + size + "']").removeClass('canbackorder');
 
     }
+	
     jQuery("#orderitem").show();
+	alert();
     jQuery("#preorderitem").hide();
     jQuery("#preorderhelp").hide();
     jQuery("#outofstockitem").hide();
