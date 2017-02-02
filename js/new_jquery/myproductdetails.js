@@ -819,10 +819,16 @@ function changeColor(clr) {
 
     }
 	
-	alert(jQuery("body").attr("class"));
-   jQuery("#orderitem").show();
+	if(jQuery("body").attr("class","category-haveheart")){
+			  
+			  jQuery("#preorderitem").hide();
+	}
+	else{
+		jQuery("#orderitem").show();
+	}
+ 
 	
-    jQuery("#preorderitem").hide();
+    
     jQuery("#preorderhelp").hide();
     jQuery("#outofstockitem").hide();
     var smallimagehtml = '';
