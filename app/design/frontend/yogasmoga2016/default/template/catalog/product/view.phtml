@@ -1210,7 +1210,7 @@ $_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos]
                                     $psc = explode(",",$rangeCategories);
                                     $finalIds = array_intersect($catIds, $psc);
                                     ?>
-									<div class="csp-name" rel="<?php echo haveHeart; ?>">
+									<div class="csp-name" rel="<?php echo $haveHeart; ?>">
                                         <?php foreach($finalIds as $rangeId):
                                             $rangeName = Mage::getModel('catalog/category')->load($rangeId);
                                             ?>
