@@ -150,6 +150,7 @@ jQuery(document).ready(function ($) {
         jQuery("#orderitem").removeClass('bagdisabled');
         jQuery("#orderitem").addClass('spbutton');
         changeColor($(this).attr("color"));
+		alert($(this).attr("color"));
         selectfirstsizeonload();
 
         /*------------Change Upsell product Edited By Fahim (code start)------------*/
@@ -586,7 +587,7 @@ else {
                     jQuery("#outofstockitem").hide();
                 }
 				else{
-				jQuery(".pre-order-msg").hide();
+				jQuery(".pre-order-msg").hide();//fahim.
 				jQuery("#orderitem").show();
                 jQuery("#preorderitem").hide();
                 jQuery("#preorderhelp").hide();
