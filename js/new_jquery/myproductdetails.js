@@ -15,6 +15,8 @@ jQuery(window).load(function ($) {
 });
 jQuery(document).ready(function ($) {
 	 insertBraOption();
+	 $(".category-haveheart #preorderitem").show();
+	 $(".category-haveheart #orderitem").hide();
 	 
 });
 
