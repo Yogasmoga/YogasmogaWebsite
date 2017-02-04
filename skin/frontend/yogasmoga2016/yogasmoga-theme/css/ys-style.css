@@ -4368,6 +4368,7 @@ transform: translateY(-50%);
     position: absolute;
     right: 3%;
     width: 100px;}
+	.csp-block .range-seal.left{left:3%;}
 /**************** csp css ends **************************/
 
 .women-collection-banner.firstbanner  .new-collection-block{margin-top:46px;}
