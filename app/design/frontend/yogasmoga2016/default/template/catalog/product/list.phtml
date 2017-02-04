@@ -3,7 +3,7 @@ $rangeCategories = Mage::getModel('core/variable')->loadByCode('range_categories
 $rangeCats = explode(",",$rangeCategories);
 ?>
 
-<?php if(in_array($_category->getId(),$rangeCats) || $_category->getId() =='135'): ?>
+<?php if(in_array($_category->getId(),$rangeCats) || $_category->getId() =='135' || $_category->getId() =='136'): ?>
 <div class="bannerFluid">
     <img src="<?=$_category->getImageUrl()?>" alt="<?=$_category->getName()?>" title="<?=$_category->getName()?>" />
     <div class="category-info csp-block"><?=$_category->getDescription()?></div>
@@ -19,7 +19,7 @@ $rangeCats = explode(",",$rangeCategories);
     $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
     if($showSizeFilter){
 ?>
-<?php if(($_category->getId() != 43) || ($_category->getId() != 135)){?>
+<?php if(($_category->getId() != 43) || ($_category->getId() != 135) || ($_category->getId() != 136)){?>
 <div id="div_sizes" class="sz_filter">&nbsp;</div>
 <!-- category filter -->
 <div id="div_cats" class="ct_filter"></div>
@@ -273,7 +273,7 @@ if($this->getRequest()->getParam('hidden')){
 
 
 
-if(($_category->getId() != 43) || ($_category->getId() != 135)){
+if(($_category->getId() != 43) || ($_category->getId() != 135) || ($_category->getId() != 136)){
 if($showSizeFilter){
 /************** size filter ***********************/
 if(isset($allSkuSizes) && count($allSkuSizes)>0)
