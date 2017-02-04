@@ -286,7 +286,7 @@ if($this->getRequest()->getParam('hidden')){
 
 
 
-if(($_category->getId() != 43) && ($_category->getId() != 135) && ($_category->getId() != 136)){
+if(($_category->getId() != 43) || ($_category->getId() != 135) || ($_category->getId() != 136)){
 if($showSizeFilter){
 /************** size filter ***********************/
 if(isset($allSkuSizes) && count($allSkuSizes)>0)
