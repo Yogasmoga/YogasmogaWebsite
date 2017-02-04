@@ -67,7 +67,7 @@ $rangeCategories = Mage::getModel('core/variable')->loadByCode('range_categories
 $rangeCats = explode(",",$rangeCategories);
 ?>
 
-<?php if(in_array($_category->getId(),$rangeCats)): ?>
+<?php if(in_array($_category->getId(),$rangeCats) || $_category->getId()==136): ?>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().' '.$listingClass.' category-range"':'' ?>>
 <?php else: ?>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().' '.$listingClass.' "':'' ?>>
