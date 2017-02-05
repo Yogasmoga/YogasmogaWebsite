@@ -610,12 +610,20 @@ else {
                     jQuery("#outofstockitem").hide();
                 }
                 else {
-                    jQuery("#orderitem").hide();
+					
+					if (sz.hasClass("showing-pre")) {
+					alert("h");
+					}
+					else{
+					jQuery("#orderitem").hide();
                     jQuery("#preorderitem").hide();
                     jQuery("#preorderhelp").hide();
                     jQuery("#outofstockitem").show();
 					jQuery(".pre-order-msg").show();//fahim
 //                return;
+						
+					}
+                    
                 }
             }
 
