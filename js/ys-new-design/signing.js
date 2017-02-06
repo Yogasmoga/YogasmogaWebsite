@@ -15,11 +15,11 @@ jQuery(document).ready(function($){
     });
 
     if(window.location.href.indexOf('https://') >= 0)
-       root='https://yogasmoga.com/';
-      //  root='http://ysmaster.dev/';
+      // root='https://yogasmoga.com/';
+        root='http://master.com.local/';
     else
         root='http://yogasmoga.com/';
-        //root='http://ysmaster.dev/';
+        root='http://master.com.local/';
 
     checkIsUserLogged();
 
@@ -589,8 +589,47 @@ function loginCustomer() {
             if (status == "success") {
                 /************** code update by ys team ******************/
                     //doWordpressLogin(email_id, pwd, name);
-                doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
-                /************** code update by ys team ******************/
+                //doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
+                
+				
+				
+				jQuery("#div_sizes").css("top","auto");
+
+            var filterOffsetTop = jQuery("#div_sizes").offset().top - 69; //Remove Banner.
+			//var filterOffsetTop = jQuery("#div_sizes").offset().top - 94; // With Banner
+            positionFilter(filterOffsetTop);
+            jQuery(window).scroll(function(){
+                positionFilter(filterOffsetTop);
+
+            });
+            function positionFilter(filterOffsetTop){
+                //alert();
+                var winScrollTop = jQuery(window).scrollTop();
+                if( winScrollTop > filterOffsetTop){
+
+                    jQuery("#div_sizes").addClass("fixed_top");
+                   // jQuery("#div_sizes.fixed_top").css("top","69px");
+					jQuery("#div_sizes.fixed_top").css("top","94px");
+                }else{
+                    jQuery("#div_sizes").removeClass("fixed_top");
+                    jQuery("#div_sizes").css("top","auto");
+                }
+            }
+            //added code for top red banner end here.
+
+				
+				
+				
+				/************** code update by ys team ******************/
+				
+				
+				
+				
+				
+				
+				
+				
+				
 
                 if (_redirectFromSingingPopup != null)
                     window.location.assign(_redirectFromSingingPopup);
