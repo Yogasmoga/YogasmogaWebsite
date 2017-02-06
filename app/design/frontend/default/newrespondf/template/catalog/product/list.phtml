@@ -102,6 +102,14 @@ if (isset($page) && $page == '11') {?>
 
     </a>
     <div class="product-grid">
+			<?php if($_category->getId()==136):?>
+			<div class="category-box">
+                <a href="javascript:void(0)">
+                    <img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$cat->getThumbnail();?>" alt="">
+                    <span></span>
+                </a>
+			</div>
+			<?php endif?>
         <!-- custom list GridProducts -->
         <div class="gridWrap">
             <?php
