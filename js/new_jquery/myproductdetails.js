@@ -835,16 +835,23 @@ function changeColor(clr) {
 	//alert(have);
 	var sz = jQuery("div#sizecontainer div.sizediv.showing-pre");
 	if (sz.hasClass("outofstock")) {
-	alert("yes");	
-	}
-	else{
-		alert("no");
-	}
 	
-	jQuery("#orderitem").show();
+	jQuery("#orderitem").hide();
 	jQuery("#preorderitem").hide();
 	jQuery("#preorderhelp").hide();
+    jQuery("#outofstockitem").show();
+	}
+	else{
+	jQuery("#orderitem").hide();
+	jQuery("#preorderitem").show();
+	jQuery("#preorderhelp").hide();
     jQuery("#outofstockitem").hide();
+	}
+	
+	//jQuery("#orderitem").show();
+	//jQuery("#preorderitem").hide();
+	//jQuery("#preorderhelp").hide();
+    //jQuery("#outofstockitem").hide();
     var smallimagehtml = '';
 
     if (_productdisplaymode == 'popup') {
