@@ -403,9 +403,10 @@ function loginCustomer() {
 
                 if (status == "success") {
                     /************** code update by ys team ******************/
-                    doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
+                    //doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
                     /************** code update by ys team ******************/
                     _islogedinuser = true;
+					location.reload(true);
                     if(window.location.href.indexOf("refer-a-friend") > -1) {
                         window.location.assign(homeUrl + 'rewardpoints/index/referral');
                     }
