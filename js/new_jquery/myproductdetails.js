@@ -833,10 +833,13 @@ function changeColor(clr) {
 
     }
 	//alert(have);
-	var sz = jQuery("div#sizecontainer div.sizediv");
-	//if (sz.hasClass("outofstock")) {
-	alert();	
-	//}
+	var sz = jQuery("div#sizecontainer div.sizediv.showing-pre");
+	if (sz.hasClass("outofstock")) {
+	alert("yes");	
+	}
+	else{
+		alert("no");
+	}
 	
 	jQuery("#orderitem").show();
 	jQuery("#preorderitem").hide();
