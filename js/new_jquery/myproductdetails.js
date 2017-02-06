@@ -763,7 +763,7 @@ function changeColor(clr) {
     changeDescription(clr);
     changeBraCupInsert(clr);
     getUpsellProduct(_productid,jQuery("div.selected > table").attr("value"));
-	
+
     jQuery(".amount").removeClass("insale-price");
     jQuery(".box-seprtr").find("p.insale").addClass("dnone");
     jQuery(".was-amount").addClass("no-display");
@@ -833,42 +833,11 @@ function changeColor(clr) {
 
     }
 	//alert(have);
-	var szpre = jQuery("div#sizecontainer div.sizediv.showing-pre");
-	var sznormal = jQuery("div#sizecontainer div.sizediv");
-	if (sznormal.hasClass("outofstock")) {
-	jQuery("#orderitem").hide();
+	
+	jQuery("#orderitem").show();
 	jQuery("#preorderitem").hide();
 	jQuery("#preorderhelp").hide();
-    jQuery("#outofstockitem").show();
-	}
-	
-	if (szpre.hasClass("outofstock")) {
-	jQuery("#orderitem").hide();
-	jQuery("#preorderitem").hide();
-	jQuery("#preorderhelp").hide();
-    jQuery("#outofstockitem").show();
-	}
-	else{
-		if(sznormal.attr("showpre","No"))
-		{
-		jQuery("#orderitem").show();
-		jQuery("#preorderitem").hide();
-		jQuery("#preorderhelp").hide();
-		jQuery("#outofstockitem").hide();
-		}
-		else if(sznormal.attr("showpre","Yes")){
-		jQuery("#orderitem").hide();
-		jQuery("#preorderitem").show();
-		jQuery("#preorderhelp").hide();
-		jQuery("#outofstockitem").hide();
-		}
-	
-	}
-	
-	//jQuery("#orderitem").show();
-	//jQuery("#preorderitem").hide();
-	//jQuery("#preorderhelp").hide();
-    //jQuery("#outofstockitem").hide();
+    jQuery("#outofstockitem").hide();
     var smallimagehtml = '';
 
     if (_productdisplaymode == 'popup') {
