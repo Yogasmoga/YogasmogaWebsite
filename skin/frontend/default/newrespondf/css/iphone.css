@@ -8324,3 +8324,6 @@ a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
 
 /***changes haveheart***/
 .shop-col-desc{ padding:30px 0;}
+.shop-col-desc p{line-height:20px;}
+.shop-col-desc p.seperat{ margin:15px 0;}
+.shop-col-desc h2{padding:15px 0;color:#555}
