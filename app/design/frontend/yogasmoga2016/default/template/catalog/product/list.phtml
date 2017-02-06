@@ -21,9 +21,7 @@ $rangeCats = explode(",",$rangeCategories);
 
 	
 	?>
-<?php if($_category->getId() != 136){
-	//$st = "style='display:none'";
-	?>
+<?php if($_category->getId() == 136){$st = "style='display:none'";?>
 <div id="div_sizes" class="sz_filter" <?php echo $st;?>>&nbsp;</div>
 <!-- category filter -->
 <div id="div_cats" class="ct_filter" <?php echo $st;?>></div>
@@ -292,7 +290,7 @@ if($this->getRequest()->getParam('hidden')){
 
 
 
-if(($_category->getId() != 136)){
+if(($_category->getId() != 43) || ($_category->getId() != 135) || ($_category->getId() != 136)){
 if($showSizeFilter){
 /************** size filter ***********************/
 if(isset($allSkuSizes) && count($allSkuSizes)>0)
