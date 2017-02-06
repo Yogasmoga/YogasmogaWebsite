@@ -4702,7 +4702,7 @@ font: 38px/34px avantgardegothicitcw01d;}
 /*Haveheart*/
 .csp-block .csp-inner-block.have-banner-text{bottom:6%;}
 .csp-block .csp-inner-block.have-banner-text .csp-info{ text-transform:uppercase;}
-.shop-col-desc.have-text{ margin-top:-3%;}
+.shop-col-desc.have-text{ margin-top:-4%;}
 .shop-col-desc.have-text h2{
 	font-size: 35px;
     font-weight: bold;
@@ -4710,6 +4710,6 @@ font: 38px/34px avantgardegothicitcw01d;}
     padding: 20px 0 8px 0;
 	}
 .shop-col-desc.have-text .new-arrival-heading span{display:inline-block; border-bottom:2px solid #999; padding-bottom:1%; width:30%;}
-.shop-col-desc.have-text p{color:#666; margin:0; tex-transform:capitalize;}
+.shop-col-desc.have-text p{color:#666; margin:0; text-transform:capitalize;}
 .shop-col-desc.have-text p.seperat{padding:30px 0;}
 
