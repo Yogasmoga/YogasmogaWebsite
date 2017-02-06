@@ -18,8 +18,10 @@ $rangeCats = explode(",",$rangeCategories);
     $categoriesWithNoFilter = explode(",", $categoriesWithNoFilterVariable);
     $showSizeFilter = !in_array($currentCategoryId, $categoriesWithNoFilter);
     if($showSizeFilter){
-?>
-<?php if(($_category->getId() != 43) || ($_category->getId() != 135) || ($_category->getId() != 136)){?>
+
+	
+	?>
+<?php if($_category->getId() != 136){?>
 <div id="div_sizes" class="sz_filter">&nbsp;</div>
 <!-- category filter -->
 <div id="div_cats" class="ct_filter"></div>
