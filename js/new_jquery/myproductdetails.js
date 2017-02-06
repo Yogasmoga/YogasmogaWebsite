@@ -836,20 +836,20 @@ function changeColor(clr) {
 	var szpre = jQuery("div#sizecontainer div.sizediv.showing-pre");
 	var sznormal = jQuery("div#sizecontainer div.sizediv");
 	if (szpre.hasClass("outofstock")) {
-	
 	jQuery("#orderitem").hide();
 	jQuery("#preorderitem").hide();
 	jQuery("#preorderhelp").hide();
     jQuery("#outofstockitem").show();
 	}
 	else{
-		if(sznormal.attr("showpre","No")){
+		if(sznormal.attr("showpre","No"))
+		{
 		jQuery("#orderitem").show();
 		jQuery("#preorderitem").hide();
 		jQuery("#preorderhelp").hide();
 		jQuery("#outofstockitem").hide();
 		}
-		elseif(sznormal.attr("showpre","Yes")){
+		else if(sznormal.attr("showpre","Yes")){
 		jQuery("#orderitem").hide();
 		jQuery("#preorderitem").show();
 		jQuery("#preorderhelp").hide();
