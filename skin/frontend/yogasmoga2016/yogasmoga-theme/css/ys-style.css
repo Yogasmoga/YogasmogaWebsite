@@ -4004,7 +4004,7 @@ border-top-style:solid!important; position:absolute; bottom:0;}
 .gry-box table.productdetailtable div.addtobag.bagdisabled:active{background: rgba(0, 0, 0, 0) url("../images/catalog/product/add-to-bag-on-v2-btn-down.jpg") no-repeat scroll center center!important;background-size:100% auto!important; }
 
 .gry-box table.productdetailtable div.preorderitem{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-v3.png") no-repeat scroll center center!important;background-size:100% auto!important;height:40px!important;}
-.gry-box table.productdetailtable div.preorderitem:hover{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2-hover.jpg") no-repeat scroll center center!important;background-size:100% auto!important;}
+.gry-box table.productdetailtable div.preorderitem:hover{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-v3.jpg") no-repeat scroll center center!important;background-size:100% auto!important;}
 .gry-box table.productdetailtable div.preorderitem:active{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2-btn-down.jpg") no-repeat scroll center center!important;background-size:100% auto!important;}
 .needhelp{}
 .needhelp a{color:#555; text-decoration:underline;font:13px/13px GraphikRegular; letter-spacing:0.22px;} 
