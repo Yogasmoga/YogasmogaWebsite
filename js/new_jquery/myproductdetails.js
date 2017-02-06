@@ -560,6 +560,7 @@ else {
 		
 
         if (sz.hasClass("outofstock")) {
+			alert("1");
             jQuery("#orderitem").hide();
             jQuery("#preorderitem").hide();
             jQuery("#preorderhelp").hide();
@@ -665,6 +666,7 @@ function changeOrderqty(qty) {
             jQuery("#preorderitem").hide();
             jQuery("#preorderhelp").hide();
             jQuery("#outofstockitem").show();
+			alert("2");
             //        return;
         }
         else {
@@ -687,6 +689,7 @@ function changeOrderqty(qty) {
                     jQuery("#preorderitem").hide();
                     jQuery("#preorderhelp").hide();
                     jQuery("#outofstockitem").show();
+					alert("3");
                 }
             }
         }
@@ -708,6 +711,7 @@ function changeOrderqty(qty) {
             jQuery("#preorderitem").hide();
             jQuery("#preorderhelp").hide();
             jQuery("#outofstockitem").show();
+			alert("4");
 //        return;
         }
         else {
@@ -840,7 +844,6 @@ function changeColor(clr) {
 	jQuery("#orderitem").show();
 	jQuery("#preorderitem").hide();
 	}
-	
 	jQuery("#preorderhelp").hide();
     jQuery("#outofstockitem").hide();
     var smallimagehtml = '';
