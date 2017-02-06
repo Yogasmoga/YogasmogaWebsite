@@ -105,6 +105,7 @@ if (isset($page) && $page == '11') {?>
 
     </a>
     <div class="product-grid">
+			<?php if($_SERVER['REMOTE_ADDR']=='103.211.52.22'):?>
 			<?php if($_category->getId()==136):?>
 			<div class="category-box">
                 <a href="javascript:void(0)">
@@ -128,6 +129,7 @@ if (isset($page) && $page == '11') {?>
 			
 			
 			
+			<?php endif?>
 			<?php endif?>
         <!-- custom list GridProducts -->
         <div class="gridWrap">
