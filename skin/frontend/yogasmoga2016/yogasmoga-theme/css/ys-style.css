@@ -4559,7 +4559,8 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .mac-osys .main-menu.main-menu2 .sub-menu{margin-top:3px;/*--for macsystem--*/}
 
 table.productdetailtable div.outofstockitem{
-    background: url("../images/catalog/product/out-of-stock-dis-v2.png") no-repeat scroll center center rgba(0, 0, 0, 0)!important;
+    /*background: url("../images/catalog/product/out-of-stock-dis-v2.png") no-repeat scroll center center rgba(0, 0, 0, 0)!important;*/
+	background: url("../images/catalog/product/not-avialable-v4.jpg") no-repeat scroll center center rgba(0, 0, 0, 0)!important;
 	height:40px!important;
 	background-size:100% auto!important;
 	}
