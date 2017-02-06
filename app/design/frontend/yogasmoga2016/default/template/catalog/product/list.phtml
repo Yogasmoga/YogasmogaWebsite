@@ -21,7 +21,7 @@ $rangeCats = explode(",",$rangeCategories);
 
 	
 	?>
-<?php if($_category->getId() != 136){$st = "style='display:none'";?>
+<?php if($_category->getId() == 136){$st = "style='display:none'";?>
 <div id="div_sizes" class="sz_filter" <?php echo $st;?>>&nbsp;</div>
 <!-- category filter -->
 <div id="div_cats" class="ct_filter" <?php echo $st;?>></div>
