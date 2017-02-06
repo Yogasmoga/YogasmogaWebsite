@@ -833,8 +833,9 @@ function changeColor(clr) {
 
     }
 	//alert(have);
-	var sz = jQuery("div#sizecontainer div.sizediv.showing-pre");
-	if (sz.hasClass("outofstock")) {
+	var szpre = jQuery("div#sizecontainer div.sizediv.showing-pre");
+	var sznormal = jQuery("div#sizecontainer div.sizediv");
+	if (szpre.hasClass("outofstock")) {
 	
 	jQuery("#orderitem").hide();
 	jQuery("#preorderitem").hide();
@@ -842,10 +843,19 @@ function changeColor(clr) {
     jQuery("#outofstockitem").show();
 	}
 	else{
-	jQuery("#orderitem").hide();
-	jQuery("#preorderitem").show();
-	jQuery("#preorderhelp").hide();
-    jQuery("#outofstockitem").hide();
+		if(sznormal.attr("showpre","No")){
+		jQuery("#orderitem").show();
+		jQuery("#preorderitem").hide();
+		jQuery("#preorderhelp").hide();
+		jQuery("#outofstockitem").hide();
+		}
+		elseif(sznormal.attr("showpre","Yes")){
+		jQuery("#orderitem").hide();
+		jQuery("#preorderitem").show();
+		jQuery("#preorderhelp").hide();
+		jQuery("#outofstockitem").hide();
+		}
+	
 	}
 	
 	//jQuery("#orderitem").show();
