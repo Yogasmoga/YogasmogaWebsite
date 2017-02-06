@@ -835,6 +835,13 @@ function changeColor(clr) {
 	//alert(have);
 	var szpre = jQuery("div#sizecontainer div.sizediv.showing-pre");
 	var sznormal = jQuery("div#sizecontainer div.sizediv");
+	if (sznormal.hasClass("outofstock")) {
+	jQuery("#orderitem").hide();
+	jQuery("#preorderitem").hide();
+	jQuery("#preorderhelp").hide();
+    jQuery("#outofstockitem").show();
+	}
+	
 	if (szpre.hasClass("outofstock")) {
 	jQuery("#orderitem").hide();
 	jQuery("#preorderitem").hide();
