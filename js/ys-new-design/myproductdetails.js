@@ -583,20 +583,17 @@ function changeproductsize(sz) {
 				
 
 					if (sz.hasClass("showing-pre")) {
-						alert("15");
-						//alert(jQuery(".showing-pre").attr("showpremsg"));
 						var preordermsg =  sz.attr("showpremsg");
-						
 						premsghtml = premsghtml + preordermsg;
 						jQuery(".ship-msg").html(preordermsg);
-						//alert(""+premsghtml);
 						jQuery("#orderitem").hide();
 						jQuery("#preorderitem").show();
-						jQuery(".ship-msg").show();
+						jQuery("#ship-msg-li").show();
 						jQuery("#preorderhelp").show();
 						jQuery("#outofstockitem").hide();
 					}
 					else{
+					jQuery("#ship-msg-li").hide();
 					jQuery("#orderitem").show();
 					jQuery("#preorderitem").hide();
 					jQuery("#preorderhelp").hide();
