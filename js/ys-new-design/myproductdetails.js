@@ -982,6 +982,7 @@ function changeColor(clr) {
     }
 
 			if(jQuery("div#sizecontainer div").hasClass("showing-pre")){
+			jQuery(".haveheart-description").show();
 			}
 			else{
 			jQuery(".haveheart-description").hide();
