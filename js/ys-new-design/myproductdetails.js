@@ -826,12 +826,7 @@ function changeColor(clr) {
 			}
             
 
-			if(jQuery("div#sizecontainer div.sizediv").hasClass("showing-pre")){
 			
-			}
-			else{
-			jQuery(".haveheart-description").hide();
-			}
 	
 	
 	}
@@ -986,7 +981,11 @@ function changeColor(clr) {
         amount.html("$" + firstSizePrice);
     }
 
-
+			if(jQuery("div#sizecontainer div").hasClass("showing-pre")){
+			}
+			else{
+			jQuery(".haveheart-description").hide();
+			}
     //end insale
 }
 
