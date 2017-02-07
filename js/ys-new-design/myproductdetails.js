@@ -980,7 +980,7 @@ function changeColor(clr) {
 
         amount.html("$" + firstSizePrice);
     }
-
+			//Fahim.
 			if(jQuery("div#sizecontainer div").hasClass("showing-pre")){
 			jQuery(".haveheart-description").show();
 			}

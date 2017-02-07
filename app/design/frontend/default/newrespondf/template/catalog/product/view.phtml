@@ -358,6 +358,10 @@ foreach ($_childProducts as $_childProduct) {
         $temp1 .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
         $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
         $temp1 .= "|" . $backOrderCheck;
+			//added Fahim.
+			$showPre = $_childProduct->getAttributeText('pre_order_product');
+			$showpremsg = $_helper->productAttribute($_childProduct, $_childProduct->getPreOrderMsg(), 'pre_order_msg');
+			$temp1 .= "|" . $showPre . "|" .$showpremsg;
 
         if (!isset($arProductColorInfo[$colorAttributeValue]["length"])) {
             $arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')] = array($temp1);
@@ -435,6 +439,11 @@ foreach ($_childProducts as $_childProduct) {
 
         $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
         $temp1 .= "|" . $backOrderCheck;
+			//added by Fahim.
+			$showPre = $_childProduct->getAttributeText('pre_order_product');
+			$showpremsg = $_helper->productAttribute($_childProduct, $_childProduct->getPreOrderMsg(), 'pre_order_msg');
+			$temp1 .= "|" . $showPre . "|" .$showpremsg;
+		
         if (isset($arProductColorInfo[$colorAttributeValue]["sizes"])) {
             array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $temp1);
         } else {
@@ -1194,7 +1203,11 @@ if ($lengthAvailable) {
 
                             </a>
                         <?php } ?>
-
+						
+										<?php //fahim.
+											$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+											$categoryName = explode('/', $currentUrl);
+											$urlKey = $categoryName[3];?>
                         <a id="outofstockitem" class="out_of_stock_item" href="javascript:void(0)">OUT OF STOCK</a>
                         <!--                   imageurl="-->
                         <?php ///*echo $this->getSkinUrl('images/catalog/product/out_of_stock.png'); */?><!--" -->
@@ -1211,11 +1224,20 @@ if ($lengthAvailable) {
                         <!-- outOfStockBtn -->
 
                         <!-- preOrderItemBtn -->
-                        <div id="preorderitem" class="preorderitem spbutton"
+						<?php if($urlKey ==strtolower('haveheart')):?>
+                        <div id="preorderitem" class="preorderitem spbutton haveheart-cat"
                              imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"
                              downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>">
                             PRE-ORDER ITEM
                         </div>
+						<?php else:?>
+						<div id="preorderitem" class="preorderitem spbutton"
+                             imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"
+                             downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>">
+                            PRE-ORDER ITEM
+                        </div>
+						<?php endif?>
+						
                         <!-- preOrderItemBtn -->
 
                         <!-- producterrorcontainer -->
@@ -1224,7 +1246,19 @@ if ($lengthAvailable) {
 
                         </div>
                         <!-- producterrorcontainer -->
-
+												<!--Added by fahim-->
+											<?php if($urlKey ==strtolower('haveheart')):?>
+												<?php if($_product->getId()==3655):?>
+												<div class="haveheart-description">
+												<div class="pre-order-details">This item is part of our <a class="haveheart-anchor" href="<?php echo Mage::getModel('catalog/category')->load('136')->getUrl()?>">HAVEHEART</a> Collection.<br/> Don't just Make a Purchase. Make a Difference.</div>
+												<ul class="pre-order-text">
+													<li>1. <span>Pre-Order</span></li>
+													<li>2. <span>Manufacture</span></li>
+													<li id="ship-msg-li">3. <span class="ship-msg"></span></li>
+												</ul>
+												</div>
+												<?php endif;?>
+											<?php endif;?>
 
                     </div>
                     <!-- addToBag -->

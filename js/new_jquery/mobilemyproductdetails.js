@@ -363,12 +363,25 @@ function changeproductsize(sz) {
             var price = lengthtemp[2];
             var rewardpoints = lengthtemp[3];
             var instock = lengthtemp[4];
+			
+			var show_pre = lengthtemp[6]; //fahim
+			var show_pre_msg = lengthtemp[7]; //fahim
+			
             var canbackorder = false;
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("qty", qty);
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("price", price);
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("rewardpoints", rewardpoints);
+			jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("showpre", show_pre); //fahim
+			jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("showpremsg", show_pre_msg); //fahim
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").show();
 
+			// fahim.	
+			if(show_pre == 'Yes'){
+				jQuery(".selectedlength div[lengthtype='" + lengthType + "']").addClass('showing-pre');
+			}
+			else{
+				jQuery(".selectedlength div[lengthtype='" + lengthType + "']").removeClass('showing-pre');
+			}
             if ((lengthtemp[5] * 1) > 0)
                 canbackorder = true;
 
@@ -401,7 +414,9 @@ function changeproductsize(sz) {
     } else {
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
-
+		
+		var premsghtml='';
+		
         if (sz.hasClass("outofstock")) {
             jQuery("#orderitem").hide();
             jQuery("#preorderitem").hide();
@@ -417,10 +432,34 @@ function changeproductsize(sz) {
             console.log(qty + "---" + orderqty);
             if ((qty - orderqty) >= 0) {
                 console.log('2');
-                jQuery("#orderitem").show();
-                jQuery("#preorderitem").hide();
-                jQuery("#preorderhelp").hide();
-                jQuery("#outofstockitem").hide();
+                
+				
+				//fahim.	
+					if (sz.hasClass("showing-pre")) {
+						var preordermsg =  sz.attr("showpremsg");
+						premsghtml = premsghtml + preordermsg;
+						jQuery(".ship-msg").html(preordermsg);
+						jQuery("#orderitem").hide();
+						jQuery("#preorderitem").show();
+						jQuery("#ship-msg-li").show();
+						jQuery("#preorderhelp").show();
+						jQuery("#outofstockitem").hide();
+					}
+					else{
+					jQuery("#ship-msg-li").hide();
+					jQuery("#orderitem").show();
+					jQuery("#preorderitem").hide();
+					jQuery("#preorderhelp").hide();
+					jQuery("#outofstockitem").hide();
+					}
+				
+				
+				
+				
+				//jQuery("#orderitem").show();
+                //jQuery("#preorderitem").hide();
+                //jQuery("#preorderhelp").hide();
+                //jQuery("#outofstockitem").hide();
             }
             else {
                 if (sz.hasClass("canbackorder")) {
@@ -591,6 +630,11 @@ function changeColor(clr) {
         var price = sizetemp[2];
         var rewardpoints = sizetemp[3];
         var instock = sizetemp[4];
+		
+		var show_pre = sizetemp[6]; //fahim.
+		var show_pre_msg = sizetemp[7]; //fahim.
+		
+		
         var canbackorder = false;
         if ((sizetemp[5] * 1) > 0)
             canbackorder = true;
@@ -602,7 +646,17 @@ function changeColor(clr) {
         jQuery("div#sizecontainer div[size='" + size + "']").attr("qty", qty);
         jQuery("div#sizecontainer div[size='" + size + "']").attr("price", price);
         jQuery("div#sizecontainer div[size='" + size + "']").attr("rewardpoints", rewardpoints);
-
+		jQuery("div#sizecontainer div[size='" + size + "']").attr("showpre", show_pre); //fahim.
+		jQuery("div#sizecontainer div[size='" + size + "']").attr("showpremsg", show_pre_msg); //fahim.
+		
+		//fahim.
+		if(show_pre == "Yes"){
+			 jQuery("div#sizecontainer div[size='" + size + "']").addClass('showing-pre');
+		}
+		else{
+			jQuery("div#sizecontainer div[size='" + size + "']").removeClass('showing-pre');
+		}	
+		
         if (instock == 0) {
             jQuery("div#sizecontainer div[size='" + size + "']").addClass('outofstock');
             jQuery("div#sizecontainer div[size='" + size + "']").find('img').show();
@@ -732,8 +786,14 @@ function changeColor(clr) {
         //console.log(firstSizePrice+"oooooo");
         amount.html("$" + firstSizePrice);
     }
-
-
+	
+		//Fahim.
+			if(jQuery("div#sizecontainer div").hasClass("showing-pre")){
+			jQuery(".haveheart-description").show();
+			}
+			else{
+			jQuery(".haveheart-description").hide();
+			}
     //end insale
 }
 
