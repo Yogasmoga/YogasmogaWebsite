@@ -1253,7 +1253,7 @@ if (!$bundledProduct) {
                                                                         $colorCount++;
                                                                         ?>
                                                                         <div>
-                                                                            <table color="<?php echo $key; ?>"
+                                                                            <table  color="<?php echo $key; ?>"
                                                                                    value="<?php echo $colorInfo['value']; ?>">
                                                                                 <tr <?php if($colorInfo['value'] == 106 || $colorInfo['value'] == 306 || $colorInfo['value'] == 300):?>class="light-color"<?php endif?>>
                                                                                     <?php
@@ -1502,12 +1502,14 @@ if (!$bundledProduct) {
 											<!--fahim-->
 											<?php if($urlKey ==strtolower('haveheart')):?>
 												<?php if($_product->getId()==3655):?>
+												<div class="haveheart-description">
 												<div class="pre-order-details">This item is part of our <a class="haveheart-anchor" href="<?php echo Mage::getModel('catalog/category')->load('136')->getUrl()?>">HAVEHEART</a> Collection.<br/> Don't just Make a Purchase. Make a Difference.</div>
 												<ul class="pre-order-text">
 													<li>1. <span>Pre-Order</span></li>
 													<li>2. <span>Manufacture</span></li>
 													<li id="ship-msg-li">3. <span class="ship-msg"></span></li>
 												</ul>
+												</div>
 												<?php endif;?>
 											<?php endif;?>
                                             <!-- producterrorcontainer -->

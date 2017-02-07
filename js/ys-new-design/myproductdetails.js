@@ -756,7 +756,11 @@ function changeColor(clr) {
     changeBraCupInsert(clr);
     changeDescription(clr);
     getUpsellProduct(_productid,jQuery("div.selected > table").attr("value"));
-
+if(jQuery("div#sizecontainer div.sizediv").hasClass("showing-pre")){
+}
+else{
+	jQuery(".haveheart-description").hide();
+}
     jQuery(".amount").removeClass("insale-price");
     jQuery(".box-seprtr").find("p.insale").addClass("dnone");
     jQuery(".was-amount").addClass("no-display");
