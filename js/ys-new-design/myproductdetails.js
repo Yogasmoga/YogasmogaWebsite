@@ -588,7 +588,7 @@ function changeproductsize(sz) {
 						var preordermsg =  sz.attr("showpremsg");
 						
 						premsghtml = premsghtml + preordermsg;
-						jQuery(".ship-msg").html("3. "+preordermsg);
+						jQuery(".ship-msg").html(preordermsg);
 						//alert(""+premsghtml);
 						jQuery("#orderitem").hide();
 						jQuery("#preorderitem").show();
