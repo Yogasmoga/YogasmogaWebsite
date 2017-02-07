@@ -580,26 +580,25 @@ function changeproductsize(sz) {
             if ((qty - orderqty) >= 0) {
 				
 
-				if (sz.hasClass("showing-pre")) {
-					alert("15");
-					var preordermsg =  sz.attr("showpremsg");
-					premsghtml = premsghtml + preordermsg;
-					jQuery(".ship-msg").html(preordermsg);
-					
-                    //alert(preordermsg);
-					jQuery("#orderitem").hide();
-                    jQuery("#preorderitem").show();
-                    jQuery(".ship-msg").show();
-					//jQuery("#preorderhelp").show();
-                    jQuery("#outofstockitem").hide();
-                }
-				else{
-				jQuery("#orderitem").show();
-                jQuery("#preorderitem").hide();
-                jQuery("#preorderhelp").hide();
-                jQuery("#outofstockitem").hide();
+					if (sz.hasClass("showing-pre")) {
+						alert("15");
+						var preordermsg =  sz.attr("showpremsg");
+						premsghtml = premsghtml + preordermsg;
+						jQuery(".ship-msg").html(preordermsg);
+						alert(preordermsg);
+						jQuery("#orderitem").hide();
+						jQuery("#preorderitem").show();
+						jQuery(".ship-msg").show();
+						//jQuery("#preorderhelp").show();
+						jQuery("#outofstockitem").hide();
+					}
+						else{
+						jQuery("#orderitem").show();
+						jQuery("#preorderitem").hide();
+						jQuery("#preorderhelp").hide();
+						jQuery("#outofstockitem").hide();
 
-				}
+						}
                             
 			
 			
