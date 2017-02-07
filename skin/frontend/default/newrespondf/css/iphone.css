@@ -8298,3 +8298,15 @@ a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
 .fabric_detail_mobile ul li p svg{display:opacity:0; visibility:hidden;}
 .fabric_detail_mobile ul li p .fab-icon svg{display:opacity:1; visibility:visible;}
 .menu-item.story_icon span{ transform: rotate(180deg);-webkit-transform: rotate(180deg); }
+
+/*Pre Order*/
+.haveheart-description{
+	display:block;
+    float: left;
+    padding-left: 5px;
+    margin-top: 15px;
+	}
+.haveheart-description .pre-order-details{padding:15px 0;}
+.haveheart-description .pre-order-details .haveheart-anchor{ text-decoration:underline; color:#555;}	
+.haveheart-description .pre-order-text { float:left;margin:0; padding:0;}
+.haveheart-description .pre-order-text li{text-align:left; text-transform:capitalize;}
