@@ -585,10 +585,10 @@ function changeproductsize(sz) {
 					if (sz.hasClass("showing-pre")) {
 						alert("15");
 						//alert(jQuery(".showing-pre").attr("showpremsg"));
-						var preordermsg =  "3. "+sz.attr("showpremsg");
+						var preordermsg =  sz.attr("showpremsg");
 						
 						premsghtml = premsghtml + preordermsg;
-						jQuery(".ship-msg").html(preordermsg);
+						jQuery(".ship-msg").html("3. "+preordermsg);
 						//alert(""+premsghtml);
 						jQuery("#orderitem").hide();
 						jQuery("#preorderitem").show();
