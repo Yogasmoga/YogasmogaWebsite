@@ -507,6 +507,7 @@ function changeproductsize(sz) {
             var price = lengthtemp[2];
             var rewardpoints = lengthtemp[3];
             var instock = lengthtemp[4];
+			
             var canbackorder = false;
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("qty", qty);
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("price", price);
@@ -749,6 +750,9 @@ function changeColor(clr) {
         var price = sizetemp[2];
         var rewardpoints = sizetemp[3];
         var instock = sizetemp[4];
+		var preOrder = sizetemp[6];
+		var preOrdermsg = sizetemp[7];
+		alert(preOrder+ " -- " + preOrdermsg);
         var canbackorder = false;
         if ((sizetemp[5] * 1) > 0)
             canbackorder = true;

@@ -456,7 +456,8 @@ if (!$bundledProduct) {
             $temp1 .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
 
             $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
-            $temp1 .= "|" . $backOrderCheck;
+            $temp1 .= "|" . $backOrderCheck . "|" $_childProduct->getAttributeText('pre_order_product') . "|" .$_helper->productAttribute($_childProduct, $_childProduct->getPreOrderMsg(),'pre_order_msg');
+			
             if (isset($arProductColorInfo[$colorAttributeValue]["sizes"])) {
                 array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $temp1);
             } else {
