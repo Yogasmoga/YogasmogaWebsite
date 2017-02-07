@@ -1455,7 +1455,10 @@ if (!$bundledProduct) {
                                         <!-- addToBag -->
                                         <div class="box-seprtr last" style="padding-top:25px;">
                                             <!--<div class="blck-head-sml"><span class="qty">Step 3</span></div>-->
-
+											<?php
+											$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+											$categoryName = explode('/', $currentUrl);
+											$urlKey = $categoryName[3];?>
                                             <!-- addToBagBtn -->
                                             <div id="orderitem" class="addtobag spbutton"
                                                  imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on-v2.png'); ?>"
@@ -1470,11 +1473,18 @@ if (!$bundledProduct) {
                                             <div id="outofstockitem" class="outofstockitem"></div>
                                             <!-- outOfStockBtn -->
 
-                                            <!-- preOrderItemBtn -->
-                                            <div id="preorderitem" class="preorderitem spbutton"
-                                                 imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"
-                                                 downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>">
-                                            </div>
+                                            <!-- preOrderItemBtn fahim.-->
+											<?php if($urlKey ==strtolower('haveheart')):?>
+												<div id="preorderitem" class="preorderitem spbutton haveheart"
+													 imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"
+													 downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>">
+												</div>
+											<?php else:?>
+												<div id="preorderitem" class="preorderitem spbutton"
+													 imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"
+													 downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>">
+												</div>
+											<?php endif?>
                                             <!-- preOrderItemBtn -->
 
                                             <!-- producterrorcontainer -->
@@ -1489,6 +1499,17 @@ if (!$bundledProduct) {
                                             <img id="preorderhelp" src="<?php //echo $this->getSkinUrl('images/help.png');
                                                 ?>" /> -->
                                             </div>
+											<!--fahim-->
+											<?php if($urlKey ==strtolower('haveheart')):?>
+												<?php if($_product->getId()==3655):?>
+												<div class="">This item is part of our <a href="">HAVEHEART</a> Collection.<br/> Don't just Make a Purchase. Make a Difference.</div>
+												<ul>
+													<li>1. Pre-Order</li>
+													<li>2. Manufacture</li>
+													<li class="ship-msg"></li>
+												</ul>
+												<?php endif;?>
+											<?php endif;?>
                                             <!-- producterrorcontainer -->
                                             <div class="wishlist-nw">
 
