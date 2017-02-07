@@ -507,13 +507,24 @@ function changeproductsize(sz) {
             var price = lengthtemp[2];
             var rewardpoints = lengthtemp[3];
             var instock = lengthtemp[4];
-			
+			var show_pre = lengthtemp[6]; //fahim
+			var show_pre_msg = lengthtemp[7]; //fahim
             var canbackorder = false;
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("qty", qty);
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("price", price);
             jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("rewardpoints", rewardpoints);
-            jQuery(".selectedlength div[lengthtype='" + lengthType + "']").show();
-
+            jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("showpre", show_pre); //fahim
+			jQuery(".selectedlength div[lengthtype='" + lengthType + "']").attr("showpremsg", show_pre_msg); //fahim
+			jQuery(".selectedlength div[lengthtype='" + lengthType + "']").show();
+			
+			// fahim.	
+			if(show_pre == 'Yes'){
+				jQuery(".selectedlength div[lengthtype='" + lengthType + "']").addClass('showing-pre');
+			}
+			else{
+				jQuery(".selectedlength div[lengthtype='" + lengthType + "']").removeClass('showing-pre');
+			}
+			
             if ((lengthtemp[5] * 1) > 0)
                 canbackorder = true;
 
