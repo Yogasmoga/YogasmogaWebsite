@@ -592,7 +592,7 @@ function changeproductsize(sz) {
 						//alert(""+premsghtml);
 						jQuery("#orderitem").hide();
 						jQuery("#preorderitem").show();
-						jQuery(".ship-msg").show();
+						//jQuery(".ship-msg").show();
 						//jQuery("#preorderhelp").show();
 						jQuery("#outofstockitem").hide();
 					}
