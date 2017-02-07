@@ -1502,8 +1502,8 @@ if (!$bundledProduct) {
 											<!--fahim-->
 											<?php if($urlKey ==strtolower('haveheart')):?>
 												<?php if($_product->getId()==3655):?>
-												<div class="">This item is part of our <a href="">HAVEHEART</a> Collection.<br/> Don't just Make a Purchase. Make a Difference.</div>
-												<ul>
+												<div class="pre-order-details">This item is part of our <a class="haveheart-anchor" href="<?php echo Mage::getModel('catalog/category')->load('136')->getUrl()?>">HAVEHEART</a> Collection.<br/> Don't just Make a Purchase. Make a Difference.</div>
+												<ul class="pre-order-text">
 													<li>1. <span>Pre-Order</span></li>
 													<li>2. <span>Manufacture</span></li>
 													<li id="ship-msg-li">3. <span class="ship-msg"></span></li>

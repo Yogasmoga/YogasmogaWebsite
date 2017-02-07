@@ -4737,3 +4737,8 @@ table.productdetailtable div.outofstockitem{
 /******--------grey background edited by fahim-------****/
 .grey-header-bg .page{ background: #f4f4f4}
 .grey-header-bg .product-details{ background: #fff!important;}
+/* pre order */
+#ship-msg-li{display:none;}
+.pre-order-details{ padding:15px 0;}
+.pre-order-details .haveheart-anchor{ text-decoration:underline;color:#555;}
+.pre-order-text li{ text-transform:capitalize;}
