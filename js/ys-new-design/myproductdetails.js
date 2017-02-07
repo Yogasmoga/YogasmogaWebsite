@@ -565,7 +565,7 @@ function changeproductsize(sz) {
 	else {
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
-
+		var premsghtml='';
         if (sz.hasClass("outofstock")) {
             jQuery("#orderitem").hide();
             jQuery("#preorderitem").hide();
@@ -592,13 +592,12 @@ function changeproductsize(sz) {
 						//jQuery("#preorderhelp").show();
 						jQuery("#outofstockitem").hide();
 					}
-						else{
-						jQuery("#orderitem").show();
-						jQuery("#preorderitem").hide();
-						jQuery("#preorderhelp").hide();
-						jQuery("#outofstockitem").hide();
-
-						}
+					else{
+					jQuery("#orderitem").show();
+					jQuery("#preorderitem").hide();
+					jQuery("#preorderhelp").hide();
+					jQuery("#outofstockitem").hide();
+					}
                             
 			
 			
