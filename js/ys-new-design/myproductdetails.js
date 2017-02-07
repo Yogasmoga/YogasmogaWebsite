@@ -565,7 +565,9 @@ function changeproductsize(sz) {
 	else {
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
+		
 		var premsghtml='';
+		
         if (sz.hasClass("outofstock")) {
             jQuery("#orderitem").hide();
             jQuery("#preorderitem").hide();
@@ -585,7 +587,7 @@ function changeproductsize(sz) {
 						var preordermsg =  sz.attr("showpremsg");
 						premsghtml = premsghtml + preordermsg;
 						jQuery(".ship-msg").html(preordermsg);
-						alert(preordermsg);
+						alert(""+premsghtml);
 						jQuery("#orderitem").hide();
 						jQuery("#preorderitem").show();
 						jQuery(".ship-msg").show();
