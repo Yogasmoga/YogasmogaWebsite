@@ -15,11 +15,11 @@ jQuery(document).ready(function($){
     });
 
     if(window.location.href.indexOf('https://') >= 0)
-      // root='https://yogasmoga.com/';
-        root='http://master.com.local/';
+       root='https://yogasmoga.com/';
+      //  root='http://master.com.local/';
     else
         root='http://yogasmoga.com/';
-        root='http://master.com.local/';
+      //  root='http://master.com.local/';
 
     checkIsUserLogged();
 
