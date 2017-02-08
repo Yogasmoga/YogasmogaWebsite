@@ -117,9 +117,29 @@ if (isset($page) && $page == '11') {
 
     </a>
     <div class="product-grid">
+			<?php if($_category->getId()==136):?>
+			<div class="category-box">
+                <a href="javascript:void(0)">
+                    <img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$cat->getThumbnail()?>" alt="">
+                    <span></span>
+                </a>
+			</div>
+			<!--text-->
+			<div class="shop-col-desc have-text">
+                    <div class="new-arrival-heading"><span><img alt="" src="<?php echo $this->getSkinUrl('images/catalog/product/heart-icon-mobile.png')?>"/></span></div>
+							<h2>HAVEHEART</h2>
+                            <p class="na-subhead">1. You Pre-Order a high quality product.</p>
+							<p class="na-subhead">2. We manufacture—giving our US factories a constant flow of work.</p>
+							<p class="na-subhead">3. Your products will be shipped within weeks.</p>
+					<p class="na-subhead seperat">Support Our US Factories—Give back for the love & care they put into the products you purchase.</p>
+                </div>
+			<?php endif?>
+	
+	
         <!-- custom list GridProducts -->
         <div class="gridWrap">
-            <?php
+				
+		<?php
             $_productCollectionForOneToMany = $this->getLoadedProductCollection();
             foreach ($_productCollectionForOneToMany as $_product) {
                 $categoryIdForOneToMany = $_product->getCategoryId();
