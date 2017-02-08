@@ -4041,6 +4041,14 @@ div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34p
 .gry-box table.productdetailtable div.preorderitem{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2.png") no-repeat scroll center center!important;background-size:100% auto!important;height:40px!important;}
 .gry-box table.productdetailtable div.preorderitem:hover{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2-hover.jpg") no-repeat scroll center center!important;background-size:100% auto!important;}
 .gry-box table.productdetailtable div.preorderitem:active{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2-btn-down.jpg") no-repeat scroll center center!important;background-size:100% auto!important;}
+
+/*For haveheart start*/
+.gry-box table.productdetailtable div.preorderitem.haveheart{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2-new.png") no-repeat scroll center center!important;background-size:100% auto!important;height:40px!important;}
+.gry-box table.productdetailtable div.preorderitem.haveheart:hover{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2-new.jpg") no-repeat scroll center center!important;background-size:100% auto!important;}
+.gry-box table.productdetailtable div.preorderitem.haveheart:active{background: rgba(0, 0, 0, 0) url("../images/catalog/product/pre-order-now-on-v2-new.jpg") no-repeat scroll center center!important;background-size:100% auto!important;}
+/*For Haveheart end*/
+
+
 .needhelp{}
 .needhelp a{color:#555; text-decoration:underline;font:13px/13px GraphikRegular; letter-spacing:0.22px;}
 .gry-box table.productdetailtable div.outofstockitem{height:40px;}
