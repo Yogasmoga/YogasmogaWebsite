@@ -1469,17 +1469,21 @@ if (!$bundledProduct) {
                                             </div>
                                             <!-- addToBagBtn -->
 
-                                            <!-- outOfStockBtn -->
-                                            <div id="outofstockitem" class="outofstockitem"></div>
-                                            <!-- outOfStockBtn -->
+                                            
 
                                             <!-- preOrderItemBtn fahim.-->
 											<?php if($urlKey ==strtolower('haveheart')):?>
+											<!-- outOfStockBtn -->
+                                            <div id="outofstockitem" class="outofstockitem haveheart"></div>
+                                            <!-- outOfStockBtn -->
 												<div id="preorderitem" class="preorderitem spbutton haveheart"
 													 imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on-v2-new.png'); ?>"
 													 downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on-v2-new.png'); ?>">
 												</div>
 											<?php else:?>
+											<!-- outOfStockBtn -->
+                                            <div id="outofstockitem" class="outofstockitem"></div>
+                                            <!-- outOfStockBtn -->
 												<div id="preorderitem" class="preorderitem spbutton"
 													 imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"
 													 downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>">

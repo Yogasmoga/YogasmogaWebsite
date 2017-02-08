@@ -4504,6 +4504,15 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .catalog-category-view.categorypath-women-ranges-select  .scrolled-effect ul.main-menu2 a.main-heading,
 .catalog-category-view.categorypath-women-ranges-select  .scrolled-effect .tr-menu>li>a:first-child,
 .catalog-category-view.categorypath-women-ranges-select  .scrolled-effect .tr-menu>li.signout_link>span,
+
+.catalog-category-view.categorypath-haveheart  .scrolled-effect .free-shipping-txt,
+.catalog-category-view.categorypath-haveheart  .scrolled-effect #welcome-name,
+.catalog-category-view.categorypath-haveheart  .scrolled-effect .header-banner .orange-banner,
+.catalog-category-view.categorypath-haveheart  .scrolled-effect ul.main-menu li a.menu-heading,
+.catalog-category-view.categorypath-haveheart  .scrolled-effect ul.main-menu2 a.main-heading,
+.catalog-category-view.categorypath-haveheart  .scrolled-effect .tr-menu>li>a:first-child,
+.catalog-category-view.categorypath-haveheart  .scrolled-effect .tr-menu>li.signout_link>span,
+
 .catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect .free-shipping-txt,
 .catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect #welcome-name,
 .catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect .header-banner .orange-banner,
@@ -4517,11 +4526,13 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .catalog-category-view.categorypath-men-ranges-select  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading,
 .catalog-category-view.categorypath-men-ranges-premium  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading,
 .catalog-category-view.categorypath-women-ranges-select  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading,
+.catalog-category-view.categorypath-haveheart  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading,
 .catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect #globalheader ul.main-menu > li  > a.menu-heading
 {color:#fff;}
 .catalog-category-view.categorypath-men-ranges-select  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading,
 .catalog-category-view.categorypath-men-ranges-premium  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading,
 .catalog-category-view.categorypath-women-ranges-select  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading,
+.catalog-category-view.categorypath-haveheart  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading,
 .catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading
 {color:#fff;}
 
