@@ -8311,3 +8311,7 @@ a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
 .haveheart-description .pre-order-details .haveheart-anchor{ text-decoration:underline; color:#555;}	
 .haveheart-description .pre-order-text { float:left;margin:0; padding:0;}
 .haveheart-description .pre-order-text li{text-align:left; text-transform:capitalize;}
+.shop-col-desc{ padding:30px 0; width:52%; text-align:center; margin:0 auto;}
+.shop-col-desc p{line-height:20px;}
+.shop-col-desc p.seperat{ margin:15px 0;}
+.shop-col-desc h2{padding:15px 0;color:#555; font-size:30px;}
