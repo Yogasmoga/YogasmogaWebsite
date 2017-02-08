@@ -20,11 +20,16 @@ $rangeCats = explode(",",$rangeCategories);
 
 if($showSizeFilter){
 ?>
-<?php if($_category->getId() != 43){?>
-<div id="div_sizes" class="sz_filter">&nbsp;</div>
+<?php if($_category->getId() == 136){?>
+<div id="div_sizes" class="sz_filter" style="display:none">&nbsp;</div>
+<!-- category filter -->
+<div id="div_cats" class="ct_filter" style="display:none"></div>
+ <?php } else{ ?>
+ 
+ <div id="div_sizes" class="sz_filter">&nbsp;</div>
 <!-- category filter -->
 <div id="div_cats" class="ct_filter"></div>
- <?php } ?>
+ <?php }?>
 
 <?php 
 $catIdsArray = array();

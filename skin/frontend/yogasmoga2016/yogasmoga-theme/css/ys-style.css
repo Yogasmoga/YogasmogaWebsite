@@ -4766,6 +4766,7 @@ table.productdetailtable div.outofstockitem{
 
 /*Haveheart*/
 .csp-block .csp-inner-block.have-banner-text{bottom:6%;}
+.csp-block .range-seal.left{left:3%}
 .csp-block .csp-inner-block.have-banner-text .csp-info{ text-transform:uppercase;}
 .shop-col-desc.have-text{ margin-top:-4%; position:relative;z-index:15;}
 .shop-col-desc.have-text h2{
@@ -4775,6 +4776,6 @@ table.productdetailtable div.outofstockitem{
     padding: 20px 0 8px 0;
 	}
 .shop-col-desc.have-text .new-arrival-heading span{display:inline-block; border-bottom:2px solid #999; padding-bottom:1%; width:30%;}
-.shop-col-desc.have-text p{color:#666; margin:0; text-transform:capitalize;}
+.shop-col-desc.have-text p{color:#666; margin:0;}
 .shop-col-desc.have-text p.seperat{padding:30px 0 35px 0;}
 
