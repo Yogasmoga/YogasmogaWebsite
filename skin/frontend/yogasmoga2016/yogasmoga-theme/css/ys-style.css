@@ -4761,7 +4761,7 @@ table.productdetailtable div.outofstockitem{
 #ship-msg-li{display:none;}
 .pre-order-details{ padding:15px 0;}
 .pre-order-details .haveheart-anchor{ text-decoration:underline;color:#555;}
-.pre-order-text li{ text-transform:capitalize;}
+.pre-order-text li{}
 .haveheart-description{display:block;}
 
 /*Haveheart*/
