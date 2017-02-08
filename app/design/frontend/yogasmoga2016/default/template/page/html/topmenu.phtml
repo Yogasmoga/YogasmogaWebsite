@@ -120,7 +120,8 @@ if($path != strtolower('/checkout/onepage')){
             if($identity == strtolower('women')){
                 echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-women.jpg").'"></div>';
             }
-            else{
+            elseif($identity == strtolower('men'))
+			{
                 echo '<div class="nav-img" ><img src="'.$this->getSkinUrl("images/nav-men.jpg").'"></div>';
             }
             echo "</ul></li>";
