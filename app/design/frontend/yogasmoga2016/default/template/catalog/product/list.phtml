@@ -20,7 +20,7 @@ $rangeCats = explode(",",$rangeCategories);
 
 if($showSizeFilter){
 ?>
-<?php if($_category->getId() != 136){?>
+<?php if($_category->getId() != 43){?>
 <div id="div_sizes" class="sz_filter">&nbsp;</div>
 <!-- category filter -->
 <div id="div_cats" class="ct_filter"></div>
@@ -78,6 +78,21 @@ if($this->getRequest()->getParam('hidden')){
     <!-- GridProducts -->
     <div class="gridWrap">
 
+	
+	<?php if($_category->getId()==136):?>
+
+<div class="shop-col-desc have-text">
+                    <div class="new-arrival-heading"><span><img alt="" src="<?php echo $this->getSkinUrl('images/catalog/product/heart-icon.png')?>"/></span></div>
+							<h2>HAVEHEART</h2>
+                            <p class="na-subhead">1. You Pre-Order a high quality products.</p>
+							<p class="na-subhead">2. We manufacture&mdash;giving our US factories a constant flow of work.</p>
+							<p class="na-subhead">3. Your products will be shipped within weeks.</p>
+					<p class="na-subhead seperat">Support our US Factories&mdash;Give back for the love &amp; care they put into the products you purchase.</p>
+                </div>
+<?php endif;?>
+	
+	
+	
 
         <?php
         $categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
@@ -278,7 +293,7 @@ if($this->getRequest()->getParam('hidden')){
 
 
 
-        if($_category->getId() != 136){
+        if($_category->getId() != 43){
             if($showSizeFilter){
                 /************** size filter ***********************/
                 if(isset($allSkuSizes) && count($allSkuSizes)>0)

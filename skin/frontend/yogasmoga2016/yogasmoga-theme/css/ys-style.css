@@ -4756,9 +4756,25 @@ table.productdetailtable div.outofstockitem{
 /******--------grey background edited by fahim-------****/
 .grey-header-bg .page{ background: #f4f4f4}
 .grey-header-bg .product-details{ background: #fff!important;}
+
 /* pre order */
 #ship-msg-li{display:none;}
 .pre-order-details{ padding:15px 0;}
 .pre-order-details .haveheart-anchor{ text-decoration:underline;color:#555;}
 .pre-order-text li{ text-transform:capitalize;}
 .haveheart-description{display:block;}
+
+/*Haveheart*/
+.csp-block .csp-inner-block.have-banner-text{bottom:6%;}
+.csp-block .csp-inner-block.have-banner-text .csp-info{ text-transform:uppercase;}
+.shop-col-desc.have-text{ margin-top:-4%; position:relative;z-index:15;}
+.shop-col-desc.have-text h2{
+	font-size: 35px;
+    font-weight: bold;
+    color: #555;
+    padding: 20px 0 8px 0;
+	}
+.shop-col-desc.have-text .new-arrival-heading span{display:inline-block; border-bottom:2px solid #999; padding-bottom:1%; width:30%;}
+.shop-col-desc.have-text p{color:#666; margin:0; text-transform:capitalize;}
+.shop-col-desc.have-text p.seperat{padding:30px 0 35px 0;}
+
