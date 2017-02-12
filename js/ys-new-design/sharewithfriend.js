@@ -102,20 +102,15 @@ function sharewithfriendPopup(formData){
         },
         success :   function(data){
 
-            data = eval('('+data + ')');
-            var status = data.status;
-            var message = data.message;
-            if(data)
-            {
-				jQuery("#invite-friend-form .invite-button span").html("Sent");
-				jQuery("#invite-friend-form .err-msg").html("Invited Successfully.").css("visibility","visible");
-				document.getElementById("invite-friend-form").reset();
-				
-			}
-            else{
-				jQuery("#invite-friend-form .invite-button span").html("Send");
-				jQuery("#invite-friend-form .err-msg").html(message).css("visibility","visible");
-				}
+            //data = eval('('+data + ')');
+            //var status = data.status;
+            //var message = data.message;
+						data = JSON.parse(data)
+						for(var i=0; i <data.length; i++){
+							alert(data[i].status);
+							alert(data[i].message);
+						}
+            
         }
     });
 	
