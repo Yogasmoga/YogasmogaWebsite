@@ -983,6 +983,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             //$errors = array();
             try {
 					$i=1;
+					$arr = array();
 					foreach ($emails as $key_email => $email){
 						$name = trim((string) $names[$key_email]);
 						$email = trim((string) $email);
@@ -1017,7 +1018,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 										}
 										$arr['status'] = "success";
 										$arr['message'] = $this->__('Email was successfully invited.');
-										return;
+										
 									
 									} 
 								}
