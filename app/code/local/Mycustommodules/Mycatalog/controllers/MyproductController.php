@@ -1006,7 +1006,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 								{
 									if ($referralModel->subscribe($customerSession->getCustomer(), $email, $name)) {
 										// Send email.
-										if($i == 1){
+										/*if($i == 1){
 										
 										$templateId = "share_smogi_bucks";
 										$emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
@@ -1015,7 +1015,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 										$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', Mage::app()->getStore()->getId()));
 										$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', Mage::app()->getStore()->getId()));
 										$emailTemplate->send($custemail, $vars);
-										}
+										}*/
 										$arr['status'] = "success";
 										$arr['message'] = $this->__('Email was successfully invited.');
 										
