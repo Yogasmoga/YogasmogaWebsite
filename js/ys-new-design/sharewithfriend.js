@@ -100,17 +100,20 @@ function sharewithfriendPopup(formData){
            // jQuery("#invite-friend-form .form-loader").show();
         },
         success :  function(data){
-			jQuery("#invite-friend-form .invite-button span").html("Send");
-			alert();
-            //data = eval('('+data + ')');
-            //var status = data.status;
-            //var message = data.message;
-			/*			data = JSON.parse(data)
-						for(var i=0; i <data.length; i++){
-							alert(data[i].status);
-							alert(data[i].message);
-						}
-            */
+			
+            data = eval('('+data + ')');
+            var status = data.status;
+            var message = data.message;
+			if(status == 'success'){
+				jQuery("#invite-friend-form .invite-button span").html("Sent");
+				jQuery("#invite-friend-form .action-button .err-msg").html(message).css("visibility","visible");
+				jQuery("#invite-friend-form input").val("").focus().blur();
+				
+			}
+			else{
+				jQuery("#invite-friend-form .invite-button span").html("Send");
+				jQuery("#invite-friend-form .err-msg").html(message).css("visibility","visible");
+			}
         }
     });
 	
