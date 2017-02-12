@@ -972,6 +972,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 //fahim.
 	public function referfriendpopupAction()
 	{
+		/*
 			$emails           = $this->getRequest()->getPost('email'); 
             $names            = $this->getRequest()->getPost('name');
 		foreach ($emails as $key_email => $email){
@@ -979,9 +980,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $email = trim((string) $email);
 					echo $name ."--" . $email."<br/>";
 		}			
+		*/
 		
-		
-		 /*
+		 
 		if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
             $session         = Mage::getSingleton('core/session');
             $emails           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
@@ -1048,7 +1049,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 								$arr['status'] = "success";
 								$arr['message'] = $this->__('Email was successfully invited.');
 								echo json_encode($arr);
-																	// Send email.
+								// Send email.
 								$templateId = "share_smogi_bucks";
 								$emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
 								$vars = array('email' => $custemail);
@@ -1057,12 +1058,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 								$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', Mage::app()->getStore()->getId()));
 								$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', Mage::app()->getStore()->getId()));
 								$emailTemplate->send($custemail, $vars);
-								
-								
-								return;
-								
-								
-                            } else {
+							
+							} else {
                                 //$session->addError($this->__('There was a problem with the invitation email %s.', $email));
 								$arr['status'] = "error";
 								$arr['message'] = $this->__('There was a problem with the invitation email %s.', $email);
@@ -1095,7 +1092,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 echo json_encode($arr);
                 return;
             }
-        }*/
+        }
 	}
 	
 	
