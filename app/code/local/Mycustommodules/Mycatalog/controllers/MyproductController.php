@@ -972,14 +972,13 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 //fahim.
 	public function referfriendpopupAction()
 	{
-		foreach($this->getRequest()->getPost() as $data){
-			
-			
-			print_r($data);
-			
-			
-			
-		}
+			$emails           = $this->getRequest()->getPost('email'); 
+            $names            = $this->getRequest()->getPost('name');
+		foreach ($emails as $key_email => $email){
+                     $name = trim((string) $names[$key_email]);
+                    $email = trim((string) $email);
+					echo $name ."--" . $email."<br/>";
+		}			
 		
 		
 		 /*
