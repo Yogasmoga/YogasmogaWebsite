@@ -1013,6 +1013,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $referralModel = Mage::getModel('rewardpoints/referral');
 						$custemail = $customerSession->getCustomer();
                         $custemail = $custemail->getEmail();
+						$pName = $custemail->getName();
                         $customer = Mage::getModel('customer/customer')
                                         ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
                                         ->loadByEmail($email);
@@ -1032,7 +1033,18 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                 //$session->addSuccess($this->__('Email %s was successfully invited.', $email));
 								//For Parent Email sending code. 
 								if(true){
-									// parent email.code.
+									// Send email.
+										$templateId = "share_smogi_bucks";
+										$emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
+										$vars = array('email' => $custemail, 'name'=> $pName);
+
+										$emailTemplate->getProcessedTemplate($vars);
+										$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', Mage::app()->getStore()->getId()));
+										$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', Mage::app()->getStore()->getId()));
+										
+										$emailTemplate->send($custemail, $vars);
+										$arr['parent'] = $custemail;
+										break;
 								}
 								
 								$arr['status'] = "success";
