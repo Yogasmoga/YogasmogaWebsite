@@ -92,25 +92,25 @@ function sharewithfriendPopup(formData){
 
         url     :   url,
         type    :   'POST',
-      //  data    :   {'name':fname,'email':email_id,'id':id},
-	   data : 		formData,
+		data 	: 	formData,
         beforeSend: function() {
            // jQuery("#invite-friend-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
 		    jQuery("#invite-friend-form .invite-button span").html("Sending...");
             //jQuery("#send-invite").parent().hide();
            // jQuery("#invite-friend-form .form-loader").show();
         },
-        success :   function(data){
-
+        success :  function(data){
+			jQuery("#invite-friend-form .invite-button span").html("Send");
+			alert();
             //data = eval('('+data + ')');
             //var status = data.status;
             //var message = data.message;
-						data = JSON.parse(data)
+			/*			data = JSON.parse(data)
 						for(var i=0; i <data.length; i++){
 							alert(data[i].status);
 							alert(data[i].message);
 						}
-            
+            */
         }
     });
 	
