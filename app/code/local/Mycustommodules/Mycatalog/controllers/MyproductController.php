@@ -1003,22 +1003,22 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                      if (!Zend_Validate::is($email, 'EmailAddress')) {
                         //Mage::throwException($this->__('Please enter a valid email address.'));
                         //$errors[] = $this->__('Wrong email address (%s).', $email);
+						//$session->addError($this->__('Wrong email address (%s).', $email));
 						$arr['status'] = "error";
 						$arr['message'] = $this->__('Wrong email address (%s).', $email);
-                        //$session->addError($this->__('Wrong email address (%s).', $email));
-                        $no_errors = false;
-						echo json_encode($arr);
-                        //return;
+                        echo json_encode($arr);
+						$no_errors = false;
+						
+                        
                     }
                     if ($name == ''){
                         //Mage::throwException($this->__('Please enter your friend name.'));
                         //$errors[] = $this->__('Friend name is required for (%s) on line %s.', $email, ($key_email+1));
                         //$session->addError($this->__('Friend name is required for email: %s on line %s.', $email, ($key_email+1)));
-                        $no_errors = false;
-						$arr['status'] = "error";
+                        $arr['status'] = "error";
 						$arr['message'] = $this->__('Friend name is required for email: %s on line %s.', $email, ($key_email+1));
 						echo json_encode($arr);
-                        return;
+                        $no_errors = false;
                     }
                     
                     if ($no_errors){
