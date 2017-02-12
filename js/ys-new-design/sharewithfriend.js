@@ -101,9 +101,17 @@ function sharewithfriendPopup(formData){
         },
         success :  function(data){
 			
-            data = eval('('+data + ')');
-            var status = data.status;
-            var message = data.message;
+            //data = eval('('+data + ')');
+            //var status = data.status;
+            //var message = data.message;
+			
+			var obj = jQuery.parseJSON(data);
+			jQuery.each(obj, function(key,value) {
+				alert(value.status);
+			}); 
+			
+			
+			/*
 			if(status == 'success'){
 				jQuery("#invite-friend-form .invite-button span").html("Sent");
 				jQuery("#invite-friend-form .action-button .err-msg").html(message).css("visibility","visible");
@@ -114,6 +122,7 @@ function sharewithfriendPopup(formData){
 				jQuery("#invite-friend-form .invite-button span").html("Send");
 				jQuery("#invite-friend-form .err-msg").html(message).css("visibility","visible");
 			}
+			*/
         }
     });
 	
