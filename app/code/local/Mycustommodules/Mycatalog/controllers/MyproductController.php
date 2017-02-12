@@ -1012,9 +1012,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     
                     if ($no_errors){
                         $referralModel = Mage::getModel('rewardpoints/referral');
-						$custemail = $customerSession->getCustomer();
-                        $custemail = $custemail->getEmail();
-						$pName = $custemail->getName();
+						$custSession = $customerSession->getCustomer();
+                        $custemail = $custSession->getEmail();
+						$pName = $custSession->getName();
                         $customer = Mage::getModel('customer/customer')
                                         ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
                                         ->loadByEmail($email);
