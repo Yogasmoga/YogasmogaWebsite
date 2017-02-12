@@ -998,9 +998,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 												->loadByEmail($email);
 
 								if ($referralModel->isSubscribed($email) || $customer->getEmail() == $email) {
-									$arr['status'] = "error";
-									$arr['message'] = $this->__('Email %s has been already submitted.', $email);
-									return;
+									$arr[] = array(
+										"status" => "error",
+										'message' =>	$this->__('Email %s has been already submitted.', $email),	
+									);
+								
 								}
 								else 
 								{
@@ -1016,17 +1018,23 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 										$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', Mage::app()->getStore()->getId()));
 										$emailTemplate->send($custemail, $vars);
 										}*/
-										$arr['status'] = "success";
-										$arr['message'] = $this->__('Email was successfully invited.');
-										
-									
+										$arr[] = array(
+										"status" => "success",
+										"message" =>$this->__('Email was successfully invited.'),
+										);
+										 
 									} 
 								}
 						
-							echo json_encode($arr);
+							
 							$i++;
 						///////////////////////////////////////////
 					}
+					if(count($arr)>0)
+					echo json_encode(array("datafound" => "yes", "data" =>$arr));
+					else
+					echo json_encode(array("datafound" => "no"));
+					
 					
                 
             }
