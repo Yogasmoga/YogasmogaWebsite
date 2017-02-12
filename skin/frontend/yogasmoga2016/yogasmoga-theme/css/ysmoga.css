@@ -891,11 +891,36 @@ ul.tr-menu > li.free-shipping {
     cursor: pointer;
 }
 
+
 .sharingDialog{
-    width: 376px !important;
-    background: #f3f3f5 !important;
+    width: 520px !important;
+    background: #fff !important;
     color: #555 !important;
+	min-height:520px;
 }
+.sharingDialog .ui-dialog-titlebar-close{display:none;}
+.sharingDialog .invite-right{padding:95px 58px 0 0;}
+/*.sharingDialog .invite-right .invite{width:53px!important; height:20px!important; padding:5px 5px 5px 20px;color:#fff;background:green;}*/
+.sharingDialog .invite-right .invite .referfriendforms input{ width:230px;}
+.sharingDialog .invite-form{width:80%!important; margin:0 auto!important;padding-top:15px;}
+.sharingDialog .invite-form .field.j2t-rewardpoints-name{float:left;width:200px;border:1px solid #fff;}
+.sharingDialog .invite-form .field.j2t-rewardpoints-email{float:right; position:relative;}
+.sharingDialog .invite-form .field.j2t-rewardpoints-email{width:200px; margin-top:1px;}
+.sharingDialog .invite-form .field.j2t-rewardpoints-email .remove_link{position:absolute;bottom:0; right:-25px;cursor:pointer;}
+
+.sharingDialog .invite-form button.button span{background:#ae8536; height:30px; width:80px; font:11px/28px AvantGardeGothicITCW01B; text-transform:uppercase;}
+.sharingDialog .invite-form p.heart-img{margin-top:25px;}
+.sharingDialog .invite-form .heart-ul {margin-top:35px;}
+
+.sharingDialog .invite-form  ul li{}
+.sharingDialog .invite-form .field.j2t-rewardpoints-email input.input-text{width:200px;!important;}
+.sharingDialog .invite-form .field input.input-text{border:none; width:190px;!important; border-bottom:1px solid #555; padding:5px 0;}
+.sharingDialog .invite-form .action-button{width:100%;clear:both; margin-top:25px;}
+.sharingDialog .invite-form .action-button a.close-invite-popup{text-decoration:underline;font:11px/20px AvantGardeGothicITCW01B; padding-left:12px; display:block;}
+
+
+
+
 
 .smogi-love-msg > span {
     display: block;
@@ -3136,3 +3161,6 @@ ul.main-menu > li.one-too-many{padding-right:0;}
 
 
 }
+
+
+

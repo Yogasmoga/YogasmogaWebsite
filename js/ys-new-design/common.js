@@ -276,9 +276,9 @@ sizeChartPop();
         if(!_islogedinuser)
         {
             _isClickShareWithFriends = true;
-            $("#signing_popup").dialog( "open" );
+            //$("#signing_popup").dialog( "open" );
         }else{
-            $("#invite_friends").dialog( "open" );
+            //$("#invite_friends").dialog( "open" );
         }            
     });
     $(".footer-block").on("click","#welcome-name",function(e){

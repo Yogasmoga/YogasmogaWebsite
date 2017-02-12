@@ -279,8 +279,8 @@ div.copy-privacy-likes ul li img{height: 30px;}
 /***Share with your friend popup***/
 .sharingDialog{width: 640px !important; min-height: 300px; /*z-index: 10011 !important;*/ border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#555 !important;}
 .invite-left{width:260px; /*height:333px;*/ background-color: #ccc;}
-.invite-right{width:315px; padding:30px 30px 0;}
-#invite-friend-form{width: 315px; margin: 0 auto;}
+/*.invite-right{width:315px; padding:95px 87px 87px 87px;}*/
+/*#invite-friend-form{width: 315px; margin: 0 auto;}*/
 .smogi-love-msg{margin-bottom: 45px; text-transform: uppercase;}
 .smogi-love{cursor:pointer;}
 .smogi-love:hover{color: #CC0033;}
@@ -293,7 +293,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .sharingDialog .ui-corner-bottom,
 .sharingDialog .ui-corner-right,
 .sharingDialog .ui-corner-br {
-    border-radius: 0 !important;
+    /*border-radius: 0 !important;*/
 }
 
 /****First Time Pop Up Home page****/
@@ -3825,13 +3825,14 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 div#bodycompensator{height: 109px!important;}
 .header-container  .header  {position:relative;}
 .header-banner{height:40px;padding:0 40px;}
-.header-banner .new-orange-banner{font:11px/40px avantgardegothicitcw01d;
+.header-banner .new-orange-banner{font:11px/14px avantgardegothicitcw01d;
     color:#444444;text-transform:uppercase;
     width:auto;
     margin:0 auto;
     position:absolute;left:50%; transform:translateX(-50%); -webkit-transform:translateX(-50%);
     letter-spacing:0.3px;
     cursor:pointer;
+	padding-top:13px;
 }
 .header-banner  .orange-banner{
     background:none;
@@ -4779,3 +4780,4 @@ table.productdetailtable div.outofstockitem{
 .shop-col-desc.have-text p{color:#666; margin:0; text-transform:initial;}
 .shop-col-desc.have-text p.seperat{padding:30px 0 35px 0;}
 
+.sharingDialog.ui-corner-all{border-radius:100%!important;}

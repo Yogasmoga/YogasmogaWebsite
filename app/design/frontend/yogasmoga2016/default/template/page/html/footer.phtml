@@ -270,6 +270,11 @@ window.onload = function(){
         ?>
             <script>
                 jQuery( document ).ready(function() {
+					jQuery(".orange-banner.spread-popup").click(function(){
+						if(_islogedinuser){
+							jQuery("#invite_friends").dialog( "open" );
+						}
+					});
                     jQuery("#pagecontainer").css("margin-top","0px");
                     jQuery("#div_sizes").css("top","auto");
                     jQuery("#div_sizes.fixed_top").css("top","69px"); //without banner.

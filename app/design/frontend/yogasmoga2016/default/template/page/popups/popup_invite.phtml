@@ -1,41 +1,134 @@
 <div id="invite_friends" style="display: none;">
-<!--    <div class="invite-left f-left">
-       <img class="full-width" src="<?php //echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/popups/dummy-in.png"/>
-   </div> -->
-   <div class="invite-right f-right">
-        <div class="invite-form">
-            <p class="c-align smogi-love-msg">Share the YOGASMOGA joy, your friends get $25 Smogi Bucks on signup.</span></p>
-            <?php /* ?><p class="c-align smogi-love-msg">SHARE THE SMOGI LOVE<br>WITH YOUR FRIENDS<span>THEY WILL RECEIVE $25 SMOGI BUCKS<br>UPON SIGN UP</span></p><?php */ ?>
-            <form id="invite-friend-form" class="bl" action="" method="post">
-                <table width="100%" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td>
-                            <input type="text" id="friendname" name="friendname" class="watermark" watermark="Friend's Name" value="" maxlength="30" class="requiredfield">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" id="friendemail" name="friendemail" class="watermark" watermark="Friend's Email" value="" maxlength="30" class="requiredfield">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="no-padding">
-                            <input class="pointer" type="submit" id="send-invite" value="" style="background-image: url(<?php echo Mage::getUrl('/', array('_secure'=>true));?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/send-share.jpg); width:315px; margin-top:20px; height:39px; border:none;">
-                        </td>
-                        <td align="center" class="form-loader no-padding c-align"></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="min-height:15px;  margin: 0 auto; font-size: 12px; visibility:hidden" class="err-msg">All fields are required.</p>
-                        </td>
-                        </tr>                        
-                </table>
-            </form>
+		<div class="invite-form">
+            
+			<p class="c-align heart-img"><img src="<?php echo $this->getSkinUrl('images/desktop_popup-vday-2-heart.png')?>"></span></p>
+			<p class="c-align"><img src="<?php echo $this->getSkinUrl('images/desktop-popup-vday-2.png')?>"></span></p>
+			
+            <form id="invite-friend-form" class="bl" action="<?php //echo Mage::getUrl('rewardpoints/index/referral/') ?>" method="post">
+				<div class="box-invite heart-ul">
+					<fieldset class="group-select" id="j2t-referral-lines">
+						<?php echo $this->getBlockHtml('formkey')?>
+						<ul class="form-list">
+							<li class="fields">
+								<div class="j2t-rewardpoints-referral">
+									<div class="field j2t-rewardpoints-name">
+										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname" id="name" required/>
+									</div>
+									<div class="field j2t-rewardpoints-email">
+										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail" id="email" required/>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<!--2-->
+						<ul class="form-list">
+							<li class="fields">
+								<div class="j2t-rewardpoints-referral">
+									<div class="field j2t-rewardpoints-name">
+										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname" id="name" required/>
+									</div>
+									<div class="field j2t-rewardpoints-email">
+										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail" id="email" required/>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<!--3-->
+						<ul class="form-list">
+							<li class="fields">
+								<div class="j2t-rewardpoints-referral">
+									<div class="field j2t-rewardpoints-name">
+										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname" id="name" />
+									</div>
+									<div class="field j2t-rewardpoints-email">
+										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail" id="email"/>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<!--4-->
+						<ul class="form-list">
+							<li class="fields">
+								<div class="j2t-rewardpoints-referral">
+									<div class="field j2t-rewardpoints-name">
+										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname" id="name"/>
+									</div>
+									<div class="field j2t-rewardpoints-email">
+										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail" id="email"/>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<!--5-->
+						<ul class="form-list">
+							<li class="fields">
+								<div class="j2t-rewardpoints-referral">
+									<div class="field j2t-rewardpoints-name">
+										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname" id="name"/>
+									</div>
+									<div class="field j2t-rewardpoints-email">
+										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail" id="email"/>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<!--<a class="left" id="j2t-add-line" href="javascript:j2t_add_line();" title="<?php echo $this->__('Add new line') ?>">
+						   Add <span>+</span>
+						</a>-->
+						<div class="action-button">
+						<button class="btn-invite button invite-button" type="submit"><span><?php echo $this->__('Send') ?></span></button>
+						<p style="min-height:15px;  margin: 0 auto; font-size: 12px; visibility:hidden" class="err-msg">All fields are required.</p>
+						<a href="#" class="close-invite-popup"><span>Close</span></a>
+						</div>
+					</fieldset>
+				</div>
+			</form>
         </div>
-        <div class="invite-message no-display">
-            <p class="c-align smogi-love-msg">Thank you for<br />sharing SMOGI love.</p>
-            <p class="mtop10"><input class="pointer" type="button" id="continue-shopping" value=""style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/contineu-shop.jpg); width:315px; margin-top:20px; height:39px; border:none;"></p>
-        </div>       
-   </div>
-    
 </div>
+<script type="text/javascript">
+
+            var elmt_id_j2t = 0;
+            function j2t_add_line(){
+                var form_list_ul = $('j2t-add-line').up().down("ul");
+
+                var form_list_ul_clone = Element.clone(form_list_ul, true);
+
+                var form_list_ul_clone = form_list_ul.cloneNode(true);
+                
+//                form_list_ul_clone.down("#label-name").id = "label-name-"+elmt_id_j2t;
+                form_list_ul_clone.down("#name").id = "name-"+elmt_id_j2t;
+//                form_list_ul_clone.down("#label-email").id = "label-email-"+elmt_id_j2t;
+                form_list_ul_clone.down("#email").id = "email-"+elmt_id_j2t;
+                
+                form_list_ul_clone.down("#name-"+elmt_id_j2t).value = "";
+                form_list_ul_clone.down("#email-"+elmt_id_j2t).value = "";
+                
+                var del_img = document.createElement('span');
+                del_img.setAttribute('class', 'remove_link');
+                del_img.appendChild(document.createTextNode("X"));
+                form_list_ul_clone.down(".j2t-rewardpoints-email").insert({
+                    bottom: del_img
+                });
+                del_img.observe('click', function(event) {
+                    Event.element(event).up("ul").remove();
+                });
+                if(elmt_id_j2t++ < 8){
+				$('j2t-add-line').insert({ before: form_list_ul_clone });	
+				}
+                
+                elmt_id_j2t++;
+				//alert(elmt_id_j2t++);
+            }
+			jQuery(function(){
+					jQuery(".close-invite-popup").click(function(e){
+					e.preventDefault();
+					jQuery("#invite_friends").dialog( "close" );
+					//alert();
+					
+				});
+			});
+			
+        </script>
+		<script type="text/javascript">
+   //var dataForm = new VarienForm('invite-friend-form', true);
+</script>

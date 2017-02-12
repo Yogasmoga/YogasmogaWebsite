@@ -970,10 +970,119 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         }
     }
 
+	public function referfriendpopupAction()
+	{
+		if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
+            $session         = Mage::getSingleton('core/session');
+            $emails           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
+            $names            = $this->getRequest()->getPost('name'); //trim((string) $this->getRequest()->getPost('name'));
+
+            
+            $customerSession = Mage::getSingleton('customer/session');
+            //$errors = array();
+            try {
+                foreach ($emails as $key_email => $email){
+                    $name = trim((string) $names[$key_email]);
+                    $email = trim((string) $email);
+                    
+                    ///////////////////////////////////////////
+                    
+                    $no_errors = true;
+                    if (!Zend_Validate::is($email, 'EmailAddress')) {
+                        //Mage::throwException($this->__('Please enter a valid email address.'));
+                        //$errors[] = $this->__('Wrong email address (%s).', $email);
+						$arr['status'] = "error";
+						$arr['message'] = $this->__('Wrong email address (%s).', $email);
+                        //$session->addError($this->__('Wrong email address (%s).', $email));
+                        $no_errors = false;
+						echo json_encode($arr);
+                        return;
+                    }
+                    if ($name == ''){
+                        //Mage::throwException($this->__('Please enter your friend name.'));
+                        //$errors[] = $this->__('Friend name is required for (%s) on line %s.', $email, ($key_email+1));
+                        //$session->addError($this->__('Friend name is required for email: %s on line %s.', $email, ($key_email+1)));
+                        $no_errors = false;
+						$arr['status'] = "error";
+						$arr['message'] = $this->__('Friend name is required for email: %s on line %s.', $email, ($key_email+1));
+						echo json_encode($arr);
+                        return;
+                    }
+                    
+                    if ($no_errors){
+                        $referralModel = Mage::getModel('rewardpoints/referral');
+						$custemail = $customerSession->getCustomer();
+                        $custemail = $custemail->getEmail();
+                        $customer = Mage::getModel('customer/customer')
+                                        ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                                        ->loadByEmail($email);
+
+                        if ($referralModel->isSubscribed($email) || $customer->getEmail() == $email) {
+                            //Mage::throwException($this->__('Email %s has been already submitted.', $email));
+                            //$session->addError($this->__('Email %s has been already submitted.', $email));
+							$arr['status'] = "error";
+							$arr['message'] = $this->__('Email %s has been already submitted.', $email);
+							echo json_encode($arr);
+							return;
+							
+							
+							
+                        } else {
+                            if ($referralModel->subscribe($customerSession->getCustomer(), $email, $name)) {
+                                //$session->addSuccess($this->__('Email %s was successfully invited.', $email));
+								//For Parent Email sending code. 
+								if(true){
+									// parent email.code.
+								}
+								
+								$arr['status'] = "success";
+								$arr['message'] = $this->__('Email %s was successfully invited.', $email);
+								echo json_encode($arr);
+								return;
+								
+								
+                            } else {
+                                //$session->addError($this->__('There was a problem with the invitation email %s.', $email));
+								$arr['status'] = "error";
+								$arr['message'] = $this->__('There was a problem with the invitation email %s.', $email);
+								echo json_encode($arr);
+								return;
+								
+                            }
+                        }
+                    }
+                    
+                    ///////////////////////////////////////////
+                }
+                
+            }
+            catch (Mage_Core_Exception $e) {
+                $session->addException($e, $this->__('%s', $e->getMessage()));
+				$arr['status'] = "error";
+                $arr['message'] = "An unexpected error occured.";
+                echo json_encode($arr);
+                return;
+				
+				
+            }
+            catch (Exception $e) {
+                //print_r($e);
+                //die;
+                //$session->addException($e, $this->__('There was a problem with the invitation.'));
+				$arr['status'] = "error";
+                $arr['message'] = "An unexpected error occured.";
+                echo json_encode($arr);
+                return;
+            }
+        }
+	}
+	
+	
+	
+	
     public function referfriendAction()
     {
-
-        if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
+		if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
             $session         = Mage::getSingleton('core/session');
             $email           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
             $name            = $this->getRequest()->getPost('name'); //trim((string) $this->getRequest()->getPost('name'));

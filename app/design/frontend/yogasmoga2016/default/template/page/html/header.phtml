@@ -387,10 +387,19 @@ if($currentUrl != $checkoutpage){
             <?php
             $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
             //if(!$loggedIn){ ?>
-                <div class="new-orange-banner orange-banner">
-				Buy 2 or More Items and Get 25% Off - Limited Time. Use Code: 2ORMORE
-                    <?php /* ?>40% OFF On-Line Only. New Styles & Color Added for Women & Men. Use Code: FIT2017<?php */?>
+                
+				<?php if(Mage::getBlockSingleton('cms/page')->getPage()->getId()==45):?>
+				<div class="new-orange-banner orange-banner spread-popup">
+				Spread the smogi love <img src="<?php echo $this->getSkinUrl('images/mobile-banner-vday.png')?>"> they get 20, you get 20 
+                    <?php /* ?>Buy 2 or More Items and Get 25% Off - Limited Time. Use Code: 2ORMORE --- 40% OFF On-Line Only. New Styles & Color Added for Women & Men. Use Code: FIT2017<?php */?>
                 </div>
+				<?php else: ?>
+				<div class="new-orange-banner orange-banner">
+				Buy 2 or More Items and Get 25% Off - Limited Time. Use Code: 2ORMORE
+                    <?php /* ?>Buy 2 or More Items and Get 25% Off - Limited Time. Use Code: 2ORMORE --- 40% OFF On-Line Only. New Styles & Color Added for Women & Men. Use Code: FIT2017<?php */?>
+                </div>
+				<?php endif;?>
+				
             <?php // }
             ?>
 
