@@ -15,10 +15,12 @@
 									</div>
 									<div class="field j2t-rewardpoints-email">
 										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail" required/>
-									</div>
+								
+								</div>
 								</div>
 							</li>
 						</ul>
+						
 						<!--2-->
 						<ul class="form-list">
 							<li class="fields">
@@ -71,6 +73,7 @@
 								</div>
 							</li>
 						</ul>
+						
 						<!--<a class="left" id="j2t-add-line" href="javascript:j2t_add_line();" title="<?php echo $this->__('Add new line') ?>">
 						   Add <span>+</span>
 						</a>-->
@@ -111,9 +114,9 @@
                 del_img.observe('click', function(event) {
                     Event.element(event).up("ul").remove();
                 });
-                if(elmt_id_j2t++ < 8){
+                
 				$('j2t-add-line').insert({ before: form_list_ul_clone });	
-				}
+				
                 
                 elmt_id_j2t++;
 				//alert(elmt_id_j2t++);
