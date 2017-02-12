@@ -109,8 +109,19 @@ function sharewithfriendPopup(formData){
 			if(result.datafound=='yes'){
 				var i;
 				for(i=0;i < result.data.length; i++){
-					//alert(result.data[i]['status']);
-					alert(result.data[i]['message']);
+					if(result.data[i]['status']=='success'){
+					jQuery("#invite-friend-form .invite-button span").html("Send");
+					jQuery("#invite-friend-form .action-button .err-msg").html(result.data[i]['message']).css("visibility","visible");
+					jQuery("#invite-friend-form")[0].reset();
+					}
+					else{
+						if(result.data[i]['status']=='error'){
+							jQuery("#invite-friend-form .invite-button span").html("Send");
+							jQuery("#invite-friend-form .action-button .err-msg1").html(result.data[i]['message']).css("visibility","visible");
+							jQuery("#invite-friend-form")[0].reset();
+						}
+					}
+					
 				}
 			}
 			
