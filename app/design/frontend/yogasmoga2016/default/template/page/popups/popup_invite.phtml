@@ -6,15 +6,15 @@
 			<form id="invite-friend-form" class="bl" action="<?php //echo Mage::getUrl('rewardpoints/index/referral/') ?>" method="post">
 				<div class="box-invite heart-ul">
 					<fieldset class="group-select" id="j2t-referral-lines">
-						<?php //echo $this->getBlockHtml('formkey')?>
+						<?php echo $this->getBlockHtml('formkey')?>
 						<ul class="form-list">
 							<li class="fields">
 								<div class="j2t-rewardpoints-referral">
 									<div class="field j2t-rewardpoints-name">
-										<input type="text" name="name" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname" required/>
+										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname" required/>
 									</div>
 									<div class="field j2t-rewardpoints-email">
-										<input type="email" name="email" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail" required/>
+										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail" required/>
 									</div>
 								</div>
 							</li>
@@ -24,10 +24,10 @@
 							<li class="fields">
 								<div class="j2t-rewardpoints-referral">
 									<div class="field j2t-rewardpoints-name">
-										<input type="text" name="name" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname"/>
+										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname"/>
 									</div>
 									<div class="field j2t-rewardpoints-email">
-										<input type="email" name="email" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail"/>
+										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail"/>
 									</div>
 								</div>
 							</li>
@@ -37,10 +37,10 @@
 							<li class="fields">
 								<div class="j2t-rewardpoints-referral">
 									<div class="field j2t-rewardpoints-name">
-										<input type="text" name="name" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname"/>
+										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname"/>
 									</div>
 									<div class="field j2t-rewardpoints-email">
-										<input type="email" name="email" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail"/>
+										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail"/>
 									</div>
 								</div>
 							</li>
@@ -50,10 +50,10 @@
 							<li class="fields">
 								<div class="j2t-rewardpoints-referral">
 									<div class="field j2t-rewardpoints-name">
-										<input type="text" name="name" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname"/>
+										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname"/>
 									</div>
 									<div class="field j2t-rewardpoints-email">
-										<input type="email" name="email" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail"/>
+										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail"/>
 									</div>
 								</div>
 							</li>
@@ -63,10 +63,10 @@
 							<li class="fields">
 								<div class="j2t-rewardpoints-referral">
 									<div class="field j2t-rewardpoints-name">
-										<input type="text" name="name" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname"/>
+										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname"/>
 									</div>
 									<div class="field j2t-rewardpoints-email">
-										<input type="email" name="email" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail"/>
+										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail"/>
 									</div>
 								</div>
 							</li>
