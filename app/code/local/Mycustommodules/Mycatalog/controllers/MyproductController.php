@@ -1037,20 +1037,18 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 								
 								
 								$arr['status'] = "success";
-								$arr['message'] = $this->__('Email %s was successfully invited.', $email);
+								$arr['message'] = $this->__('Email was successfully invited.');
 								echo json_encode($arr);
-								if(true){
-									// Send email.
-										$templateId = "share_smogi_bucks";
-										$emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
-										$vars = array('email' => $custemail);
+																	// Send email.
+								$templateId = "share_smogi_bucks";
+								$emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
+								$vars = array('email' => $custemail);
 
-										$emailTemplate->getProcessedTemplate($vars);
-										$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', Mage::app()->getStore()->getId()));
-										$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', Mage::app()->getStore()->getId()));
-										$emailTemplate->send($custemail, $vars);
-										break;
-								}
+								$emailTemplate->getProcessedTemplate($vars);
+								$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', Mage::app()->getStore()->getId()));
+								$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', Mage::app()->getStore()->getId()));
+								$emailTemplate->send($custemail, $vars);
+								
 								
 								return;
 								
