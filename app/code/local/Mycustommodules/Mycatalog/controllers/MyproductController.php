@@ -985,9 +985,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 foreach ($emails as $key_email => $email){
                     $name = trim((string) $names[$key_email]);
                     $email = trim((string) $email);
-                    echo $email;
-					die;
-                    ///////////////////////////////////////////
+                    
+					///////////////////////////////////////////
                     
                     $no_errors = true;
                     if (!Zend_Validate::is($email, 'EmailAddress')) {
