@@ -973,10 +973,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 	public function referfriendpopupAction()
 	{
 		foreach($this->getRequest()->getPost() as $data){
-			foreach($data as $key => $value){
 			
-			echo $key . "---" . $value."<br/>";			
-			}
+			
+			print_r($data);
 			
 			
 			
