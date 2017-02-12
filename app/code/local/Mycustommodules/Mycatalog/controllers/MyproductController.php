@@ -992,6 +992,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $customerSession = Mage::getSingleton('customer/session');
             //$errors = array();
             try {
+				$i=1;
                 foreach ($emails as $key_email => $email){
                     $name = trim((string) $names[$key_email]);
                     $email = trim((string) $email);
@@ -1050,6 +1051,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 								$arr['message'] = $this->__('Email was successfully invited.');
 								echo json_encode($arr);
 								// Send email.
+								if($i = 1){
+								
 								$templateId = "share_smogi_bucks";
 								$emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
 								$vars = array('email' => $custemail);
@@ -1058,6 +1061,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 								$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', Mage::app()->getStore()->getId()));
 								$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', Mage::app()->getStore()->getId()));
 								$emailTemplate->send($custemail, $vars);
+								}
+								
 							
 							} else {
                                 //$session->addError($this->__('There was a problem with the invitation email %s.', $email));
@@ -1069,7 +1074,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             }
                         }
                     }
-                    
+						$i++;
                     ///////////////////////////////////////////
                 }
                 
