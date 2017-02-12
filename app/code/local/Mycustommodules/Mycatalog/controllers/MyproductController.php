@@ -990,7 +990,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 					///////////////////////////////////////////
                     
                     $no_errors = true;
-                     if (!Zend_Validate::is($email, 'EmailAddress')) {
+                     /*if (!Zend_Validate::is($email, 'EmailAddress')) {
                         //Mage::throwException($this->__('Please enter a valid email address.'));
                         //$errors[] = $this->__('Wrong email address (%s).', $email);
 						//$session->addError($this->__('Wrong email address (%s).', $email));
@@ -1011,52 +1011,51 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 						echo json_encode($arr);
                         $no_errors = false;
 						return;
-                    }
+                    }*/
                     
-                    if ($no_errors){
-                        $referralModel = Mage::getModel('rewardpoints/referral');
-						$custSession = $customerSession->getCustomer();
-                        $custemail = $custSession->getEmail();
-						
-                        $customer = Mage::getModel('customer/customer')
-                                        ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
-                                        ->loadByEmail($email);
+                    if ($no_errors)
+					{
+							$referralModel = Mage::getModel('rewardpoints/referral');
+							$custSession = $customerSession->getCustomer();
+							$custemail = $custSession->getEmail();
+							
+							$customer = Mage::getModel('customer/customer')
+											->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+											->loadByEmail($email);
 
-                        if ($referralModel->isSubscribed($email) || $customer->getEmail() == $email) {
-                            //Mage::throwException($this->__('Email %s has been already submitted.', $email));
-                            //$session->addError($this->__('Email %s has been already submitted.', $email));
-							$arr['status'] = "already";
-							$arr['message'] = $this->__('Email %s has been already submitted.', $email);
-							echo json_encode($arr);
-							return;
-							
-							
-							
-                        } else {
-                            if ($referralModel->subscribe($customerSession->getCustomer(), $email, $name)) {
-                                //$session->addSuccess($this->__('Email %s was successfully invited.', $email));
-								
-								//For Parent Email sending code. 
-								
-								
-								$arr['status'] = "welldone";
-								$arr['message'] = $this->__('Email was successfully invited.');
+							if ($referralModel->isSubscribed($email) || $customer->getEmail() == $email) {
+								//Mage::throwException($this->__('Email %s has been already submitted.', $email));
+								//$session->addError($this->__('Email %s has been already submitted.', $email));
+								$arr['status'] = "already";
+								$arr['message'] = $this->__('Email %s has been already submitted.', $email);
 								echo json_encode($arr);
-								// Send email.
-								if($i == 1){
+								return;
+							}
+							else {
+								if ($referralModel->subscribe($customerSession->getCustomer(), $email, $name)) {
+									//$session->addSuccess($this->__('Email %s was successfully invited.', $email));
+									
+									//For Parent Email sending code. 
+									
+									
+									$arr['status'] = "welldone";
+									$arr['message'] = $this->__('Email was successfully invited.');
+									echo json_encode($arr);
+									// Send email.
+									if($i == 1){
+									
+									$templateId = "share_smogi_bucks";
+									$emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
+									$vars = array('email' => $custemail);
+									$emailTemplate->getProcessedTemplate($vars);
+									$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', Mage::app()->getStore()->getId()));
+									$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', Mage::app()->getStore()->getId()));
+									$emailTemplate->send($custemail, $vars);
+									}
+									
 								
-								$templateId = "share_smogi_bucks";
-								$emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
-								$vars = array('email' => $custemail);
-								$emailTemplate->getProcessedTemplate($vars);
-								$emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', Mage::app()->getStore()->getId()));
-								$emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', Mage::app()->getStore()->getId()));
-								$emailTemplate->send($custemail, $vars);
-								}
-								
-							
-							} else {
-                                //$session->addError($this->__('There was a problem with the invitation email %s.', $email));
+								} else {
+									//$session->addError($this->__('There was a problem with the invitation email %s.', $email));
 								$arr['status'] = "problem_with_email";
 								$arr['message'] = $this->__('There was a problem with the invitation email %s.', $email);
 								echo json_encode($arr);
