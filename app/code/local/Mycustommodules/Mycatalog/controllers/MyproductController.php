@@ -987,9 +987,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $name = trim((string) $names[$key_email]);
                     $email = trim((string) $email);
                     
-					///////////////////////////////////////////
-                    
-                    $no_errors = true;
+					$no_errors = true;
                      /*if (!Zend_Validate::is($email, 'EmailAddress')) {
                         //Mage::throwException($this->__('Please enter a valid email address.'));
                         //$errors[] = $this->__('Wrong email address (%s).', $email);
@@ -1026,19 +1024,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 							if ($referralModel->isSubscribed($email) || $customer->getEmail() == $email) {
 								//Mage::throwException($this->__('Email %s has been already submitted.', $email));
 								//$session->addError($this->__('Email %s has been already submitted.', $email));
-								$arr['status'] = "already";
+								$arr['status'] = "error";
 								$arr['message'] = $this->__('Email %s has been already submitted.', $email);
 								echo json_encode($arr);
 								return;
 							}
 							else {
 								if ($referralModel->subscribe($customerSession->getCustomer(), $email, $name)) {
-									//$session->addSuccess($this->__('Email %s was successfully invited.', $email));
-									
-									//For Parent Email sending code. 
-									
-									
-									$arr['status'] = "welldone";
+									$arr['status'] = "success";
 									$arr['message'] = $this->__('Email was successfully invited.');
 									echo json_encode($arr);
 									// Send email.
@@ -1056,13 +1049,13 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 								
 								} else {
 									//$session->addError($this->__('There was a problem with the invitation email %s.', $email));
-								$arr['status'] = "problem_with_email";
+								$arr['status'] = "error";
 								$arr['message'] = $this->__('There was a problem with the invitation email %s.', $email);
 								echo json_encode($arr);
 								return;
 								
-                            }
-                        }
+								}
+							}
                     }
 						$i++;
                     ///////////////////////////////////////////
@@ -1075,9 +1068,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $arr['message'] = "An unexpected error occured.";
                 echo json_encode($arr);
                 return;
-				
-				
-            }
+			}
             catch (Exception $e) {
                 //print_r($e);
                 //die;

@@ -105,23 +105,16 @@ function sharewithfriendPopup(formData){
             data = eval('('+data + ')');
             var status = data.status;
             var message = data.message;
-            if(status == "welldone")
+            if(status == "success")
             {
 				jQuery("#invite-friend-form .invite-button span").html("Sent");
 				jQuery("#invite-friend-form .err-msg").html(message).css("visibility","visible");
 				
 			}
             else{
-				if(status == "already"){
-						jQuery("#invite-friend-form .invite-button span").html("Send");
-						jQuery("#invite-friend-form .err-msg").html(message).css("visibility","visible");
+				jQuery("#invite-friend-form .invite-button span").html("Send");
+				jQuery("#invite-friend-form .err-msg").html(message).css("visibility","visible");
 				}
-				if(status == "problem_with_email"){
-						jQuery("#invite-friend-form .invite-button span").html("Send");
-						jQuery("#invite-friend-form .err-msg").html(message).css("visibility","visible");
-				}
-				
-            }
         }
     });
 	
