@@ -972,17 +972,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 //fahim.
 	public function referfriendpopupAction()
 	{
-		/*
-			$emails           = $this->getRequest()->getPost('email'); 
-            $names            = $this->getRequest()->getPost('name');
-		foreach ($emails as $key_email => $email){
-                     $name = trim((string) $names[$key_email]);
-                    $email = trim((string) $email);
-					echo $name ."--" . $email."<br/>";
-		}			
-		*/
 		
-		 
 		if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
             $session         = Mage::getSingleton('core/session');
             $emails           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
@@ -1008,6 +998,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 						$arr['message'] = $this->__('Wrong email address (%s).', $email);
                         echo json_encode($arr);
 						$no_errors = false;
+						return;
 						
                         
                     }
@@ -1019,6 +1010,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 						$arr['message'] = $this->__('Friend name is required for email: %s on line %s.', $email, ($key_email+1));
 						echo json_encode($arr);
                         $no_errors = false;
+						return;
                     }
                     
                     if ($no_errors){
@@ -1033,7 +1025,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         if ($referralModel->isSubscribed($email) || $customer->getEmail() == $email) {
                             //Mage::throwException($this->__('Email %s has been already submitted.', $email));
                             //$session->addError($this->__('Email %s has been already submitted.', $email));
-							$arr['status'] = "error";
+							$arr['status'] = "already";
 							$arr['message'] = $this->__('Email %s has been already submitted.', $email);
 							echo json_encode($arr);
 							return;
@@ -1047,7 +1039,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 								//For Parent Email sending code. 
 								
 								
-								$arr['status'] = "success";
+								$arr['status'] = "welldone";
 								$arr['message'] = $this->__('Email was successfully invited.');
 								echo json_encode($arr);
 								// Send email.
@@ -1065,7 +1057,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 							
 							} else {
                                 //$session->addError($this->__('There was a problem with the invitation email %s.', $email));
-								$arr['status'] = "error";
+								$arr['status'] = "problem_with_email";
 								$arr['message'] = $this->__('There was a problem with the invitation email %s.', $email);
 								echo json_encode($arr);
 								return;
