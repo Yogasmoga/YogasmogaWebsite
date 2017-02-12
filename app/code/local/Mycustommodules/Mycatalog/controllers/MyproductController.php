@@ -972,6 +972,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
 	public function referfriendpopupAction()
 	{
+		echo "hello";
+		die;
 		if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
             $session         = Mage::getSingleton('core/session');
             $emails           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
