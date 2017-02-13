@@ -988,7 +988,16 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 						$name = trim((string) $names[$key_email]);
 						$email = trim((string) $email);
 						
-						
+								$no_errors = true;
+								
+								if (!Zend_Validate::is(trim($email), 'EmailAddress')) {
+									$arr[] = array(
+										"status" => "error",
+										'message' =>	$this->__("Invalid Email Address (".$email.")"),	
+									);
+									$no_errors = false;
+								}
+							if($no_errors){	
 								$referralModel = Mage::getModel('rewardpoints/referral');
 								$custSession = $customerSession->getCustomer();
 								$custemail = $custSession->getEmail();
@@ -1026,7 +1035,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 									} 
 								}
 						
-							
+							}
 							$i++;
 						///////////////////////////////////////////
 					}

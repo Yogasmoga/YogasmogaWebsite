@@ -902,13 +902,13 @@ ul.tr-menu > li.free-shipping {
 .sharingDialog .invite-right{padding:95px 58px 0 0;}
 /*.sharingDialog .invite-right .invite{width:53px!important; height:20px!important; padding:5px 5px 5px 20px;color:#fff;background:green;}*/
 .sharingDialog .invite-right .invite .referfriendforms input{ width:230px;}
-.sharingDialog .invite-form{width:80%!important; margin:0 auto!important;padding-top:15px;}
+.sharingDialog .invite-form{width:80%!important; margin:0 auto!important;padding-top:15px;display:block;}
 .sharingDialog .invite-form .field.j2t-rewardpoints-name{float:left;width:200px;border:1px solid #fff;}
 .sharingDialog .invite-form .field.j2t-rewardpoints-email{float:right; position:relative;}
 .sharingDialog .invite-form .field.j2t-rewardpoints-email{width:200px; margin-top:1px;}
 .sharingDialog .invite-form .field.j2t-rewardpoints-email .remove_link{position:absolute;bottom:0; right:-25px;cursor:pointer;}
 
-.sharingDialog .invite-form button.button span{background:#ae8536; height:30px; width:80px; font:11px/28px AvantGardeGothicITCW01B; text-transform:uppercase;}
+.sharingDialog .invite-form button.button span{background:#ae8536; height:30px; width:80px; font:11px/30px AvantGardeGothicITCW01B; text-transform:uppercase;}
 .sharingDialog .invite-form p.heart-img{margin-top:25px;}
 .sharingDialog .invite-form .heart-ul {margin-top:35px;}
 
@@ -916,8 +916,11 @@ ul.tr-menu > li.free-shipping {
 .sharingDialog .invite-form .field.j2t-rewardpoints-email input.input-text{width:200px;!important;}
 .sharingDialog .invite-form .field input.input-text{border:none; width:190px;!important; border-bottom:1px solid #555; padding:5px 0;}
 .sharingDialog .invite-form .action-button{width:100%;clear:both; margin-top:25px;}
-.sharingDialog .invite-form .action-button a.close-invite-popup{text-decoration:underline;font:11px/20px AvantGardeGothicITCW01B; padding-left:12px; display:block;}
-
+.sharingDialog .invite-form .action-button a.close-invite-popup,.sharingDialog .thanks-text a{
+	text-decoration:underline;font:11px/20px AvantGardeGothicITCW01B; padding-left:12px; display:block;}
+.sharingDialog .thanks-text{width:80%!important; margin:0 auto!important;padding-top:30%;display:none;}
+.sharingDialog .thanks-text h2{ text-transform:uppercase;}
+.sharingDialog .thanks-text a{ text-decoration:underline;color:#555;}
 
 
 

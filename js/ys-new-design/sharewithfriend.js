@@ -77,10 +77,7 @@ function sharewithfriend(formData)
 
 function sharewithfriendPopup(formData){
 	
-	//var fname = jQuery.trim(jQuery("#friendname").val());
-    //var email_id = jQuery.trim(jQuery("#friendemail").val());
-    //var id = "1";
-    if(window.location.href.indexOf('https://') >= 0)
+	if(window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
     else
         _usesecureurl = false;
@@ -89,8 +86,7 @@ function sharewithfriendPopup(formData){
         url = securehomeUrl + 'mycatalog/myproduct/referfriendpopup';
 
 	jQuery.ajax({
-
-        url     :   url,
+		url     :   url,
         type    :   'POST',
 		data 	: 	formData,
 		dataType: 'json',
@@ -102,44 +98,28 @@ function sharewithfriendPopup(formData){
         },
         success :  function(result){
 			
-            //data = eval('('+data + ')');
-            //var status = data.status;
-            //var message = data.message;
-			
-			if(result.datafound=='yes'){
-				var i;
-				for(i=0;i < result.data.length; i++){
-					if(result.data[i]['status']=='success'){
-					jQuery("#invite-friend-form .invite-button span").html("Send");
-					jQuery("#invite-friend-form .action-button .err-msg").html(result.data[i]['message']).css("visibility","visible");
-					jQuery("#invite-friend-form")[0].reset();
-					}
-					else{
-						if(result.data[i]['status']=='error'){
-							jQuery("#invite-friend-form .invite-button span").html("Send");
-							jQuery("#invite-friend-form .action-button .err-msg1").html(result.data[i]['message']).css("visibility","visible");
-							jQuery("#invite-friend-form")[0].reset();
+            if(result.datafound=='yes'){
+					var i;
+					var _success_status = false;
+					var message ="Email  has been already submitted.";
+					for(i=0;i < result.data.length; i++){
+						if(result.data[i]['status']=='success'){
+						_success_status = true;
 						}
 					}
 					
-				}
+					if(_success_status){
+					jQuery("#invite-friend-form .invite-button span").html("Send");
+					jQuery("#invite-friend-form")[0].reset();
+					jQuery(".sharingDialog .invite-form").hide();
+					jQuery(".sharingDialog .thanks-text").show();
+					}
+					else{
+						jQuery("#invite-friend-form .invite-button span").html("Send");
+						jQuery("#invite-friend-form .action-button .err-msg1").html(message).css("visibility","visible");
+						jQuery("#invite-friend-form")[0].reset();
+					}
 			}
-			
-			
-			/*
-			if(status == 'success'){
-				jQuery("#invite-friend-form .invite-button span").html("Sent");
-				jQuery("#invite-friend-form .action-button .err-msg").html(message).css("visibility","visible");
-				jQuery("#invite-friend-form input").val("").focus().blur();
-				
-			}
-			else{
-				jQuery("#invite-friend-form .invite-button span").html("Send");
-				jQuery("#invite-friend-form .err-msg").html(message).css("visibility","visible");
-			}
-			*/
-        }
+		}
     });
-	
-	
 }
