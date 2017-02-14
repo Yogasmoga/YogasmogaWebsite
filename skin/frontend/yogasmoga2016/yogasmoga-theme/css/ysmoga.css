@@ -918,9 +918,11 @@ ul.tr-menu > li.free-shipping {
 .sharingDialog .invite-form .action-button{width:100%;clear:both; margin-top:25px;}
 .sharingDialog .invite-form .action-button a.close-invite-popup,.sharingDialog .thanks-text a{
 	text-decoration:underline;font:11px/20px AvantGardeGothicITCW01B; padding-left:12px; display:block;}
-.sharingDialog .thanks-text{width:80%!important; margin:0 auto!important;padding-top:30%;display:none;}
-.sharingDialog .thanks-text h2{ text-transform:uppercase;}
-.sharingDialog .thanks-text a{ text-decoration:underline;color:#555;}
+.sharingDialog .thanks-text{width:80%!important; margin:0 auto!important;padding-top:24%;display:none;}
+.sharingDialog .thanks-text h2{color:#AE8536; font-weight:bold;  text-transform:uppercase; margin:20px 0;}
+.sharingDialog .thanks-text a{ text-decoration:underline;color:#555; font-size: 13px;letter-spacing: 1px;}
+.sharingDialog .thanks-text p.email-text{font-size:16px;}
+.sharingDialog .thanks-text p.heart-img img{ width:100%; max-width:24%; height:auto;}
 
 
 

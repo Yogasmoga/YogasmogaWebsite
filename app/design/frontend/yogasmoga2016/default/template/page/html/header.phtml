@@ -264,10 +264,14 @@ if($serverType == 'production')
                              ?>_gaq.push(['_trackEvent', 'account open popup', 'Sign Up']);
                             <?php } ?>
 
-                             //$( "#signup" ).dialog("close");
-                            $("#sign_up_box").hide();
-                            $("#thank_you_box").show();
+                             $( "#signup" ).dialog("close");
+                            //$("#sign_up_box").hide();
+                            //$("#thank_you_box").show();
                             _islogedinuser = true;
+							if(_islogedinuser){
+								jQuery("#invite_friends").dialog("open");	
+							}
+							
                             $("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
                             if(name != '')
                                 $("#welcome-name").html("Hi "+name);
@@ -388,17 +392,17 @@ if($currentUrl != $checkoutpage){
             $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
             //if(!$loggedIn){ ?>
                 
-				<?php if(Mage::getBlockSingleton('cms/page')->getPage()->getId()==45):?>
+				<?php //if(Mage::getBlockSingleton('cms/page')->getPage()->getId()==2):?>
 				<div class="new-orange-banner orange-banner spread-popup">
-				Spread the smogi love <img src="<?php echo $this->getSkinUrl('images/mobile-banner-vday.png')?>"> they get 20, you get 20 
-                    <?php /* ?>Buy 2 or More Items and Get 25% Off - Limited Time. Use Code: 2ORMORE --- 40% OFF On-Line Only. New Styles & Color Added for Women & Men. Use Code: FIT2017<?php */?>
+				SPREAD THE SMOGI LOVE <img src="<?php echo $this->getSkinUrl('images/mobile-banner-vday.png')?>"> THEY GET 35% OFF <img src="<?php echo $this->getSkinUrl('images/mobile-banner-vday.png')?>"> You Get 35% OFF
+				    <?php /* ?>Buy 2 or More Items and Get 25% Off - Limited Time. Use Code: 2ORMORE --- 40% OFF On-Line Only. New Styles & Color Added for Women & Men. Use Code: FIT2017<?php */?>
                 </div>
-				<?php else: ?>
+				<?php /* else:  ?>
 				<div class="new-orange-banner orange-banner">
 				Buy 2 or More Items and Get 25% Off - Limited Time. Use Code: 2ORMORE
-                    <?php /* ?>Buy 2 or More Items and Get 25% Off - Limited Time. Use Code: 2ORMORE --- 40% OFF On-Line Only. New Styles & Color Added for Women & Men. Use Code: FIT2017<?php */?>
+                    Buy 2 or More Items and Get 25% Off - Limited Time. Use Code: 2ORMORE --- 40% OFF On-Line Only. New Styles & Color Added for Women & Men. Use Code: FIT2017
                 </div>
-				<?php endif;?>
+				<?php  endif; */ ?>
 				
             <?php // }
             ?>
@@ -412,7 +416,7 @@ if($currentUrl != $checkoutpage){
                 <div  class="right-top-block r-align">
                     <ul class="tr-menu">
 
-
+						<li><a class="spread-heart" style="display:block" href="javascript:void(0)"><img src="<?php echo $this->getSkinUrl('images/spread-heart.png')?>"/></a></li>
                         <li>
 
                             <?php

@@ -15,10 +15,7 @@ jQuery(document).ready(function(jQuery){
             if(!_islogedinuser){
                 openLogin();
             }
-
-
-
-    }
+}
 
     jQuery(".sign_signup_form input").on("keyup",function(){
         isinputvalid();
@@ -44,6 +41,11 @@ jQuery(document).ready(function(jQuery){
             errMsgCont.css("visibility","hidden");
         }
     });
+	
+	
+	
+	
+	
 });
 
 function loginSmogiPage() {
@@ -273,6 +275,10 @@ function createCustomerAccount() {
                 if (status == "success") {
                     createRangoliUser(email_id, pwd, first_name, last_name, customer_id);
                     _islogedinuser = true;
+					if(_islogedinuser){
+						//closeSignup();
+						//jQuery("#invite_friends").show();
+					}
                     //For refer a friend link redirection.
                     if(window.location.href.indexOf("refer-a-friend") > -1) {
                         window.location.assign(homeUrl + 'rewardpoints/index/referral');
@@ -406,7 +412,14 @@ function loginCustomer() {
                     doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
                     /************** code update by ys team ******************/
                     _islogedinuser = true;
-					location.reload(true);
+					if(_islogedinuser){
+						
+						AjaxLoginForm.hideLoginContainer();
+						
+						location.reload(true);
+						//jQuery("#invite_friends").show();
+					}
+					
                     if(window.location.href.indexOf("refer-a-friend") > -1) {
                         window.location.assign(homeUrl + 'rewardpoints/index/referral');
                     }

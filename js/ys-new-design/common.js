@@ -264,21 +264,44 @@ sizeChartPop();
             $("#signup").dialog( "open" );
         }
     });
-
+	
 	$(".footer-block").on("click",".smogi-love",function(){
          if(!_islogedinuser)
          {
 		 $("#signup").dialog( "open" );   
         }
 	});
+	//fahim.
+	$(".right-top-block").on("click","a.spread-heart",function(){
+
+        if(!_islogedinuser)
+        {
+            _isClickShareWithFriends = true;
+            $("#signing_popup").dialog( "open" );
+        }else{
+            $("#invite_friends").dialog( "open" );
+        }            
+    });
+	jQuery(".orange-banner").click(function(){
+                       if(_islogedinuser){
+						  $("#invite_friends").dialog( "open" ); 
+					   }
+					   else{
+						jQuery("#signup").dialog( "open" );   
+					   }
+					   
+                       //window.location.assign(homeUrl+'women');
+
+                    });
+	//end.
     $(".footer-block").on("click","#invite-friend",function(){
 
         if(!_islogedinuser)
         {
             _isClickShareWithFriends = true;
-            //$("#signing_popup").dialog( "open" );
+            $("#signing_popup").dialog( "open" );
         }else{
-            //$("#invite_friends").dialog( "open" );
+            $("#invite_friends").dialog( "open" );
         }            
     });
     $(".footer-block").on("click","#welcome-name",function(e){

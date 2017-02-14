@@ -101,7 +101,7 @@
                 
                     <ul class="before-login <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()) echo 'sb-show'; ?>">
                         <li><a href="javascript:void(0);" id="" class="smogi-love gothambd">FEEL THE SMOGI LOVE</a></li>
-                        <li class="smogi-love">SIGN UP NOW & GET 15% OFF</li>
+                        <li class="smogi-love">SPREAD THE SMOGI LOVE, GET 35% Off</li>
 <?php /* ?><li class="smogi-love">Sign up now to instantly get 25% off your first order</li><?php */ ?>
                     </ul>               
                     
@@ -224,11 +224,7 @@ window.onload = function(){
             <script>
 
                 jQuery(document).ready(function() {
-                   jQuery(".orange-banner").click(function(){
-                       jQuery("#signup").dialog( "open" );
-                       //window.location.assign(homeUrl+'women');
-
-                    });
+                   
 
                     jQuery("#pagecontainer").css("margin-top","0");
                     jQuery("div#bodycompensator").css("height","94px");
@@ -270,12 +266,7 @@ window.onload = function(){
         ?>
             <script>
                 jQuery( document ).ready(function() {
-					jQuery(".orange-banner.spread-popup").click(function(){
-						if(_islogedinuser){
-							jQuery("#invite_friends").dialog( "open" );
-						}
-					});
-                    jQuery("#pagecontainer").css("margin-top","0px");
+					jQuery("#pagecontainer").css("margin-top","0px");
                     jQuery("#div_sizes").css("top","auto");
                     jQuery("#div_sizes.fixed_top").css("top","69px"); //without banner.
 

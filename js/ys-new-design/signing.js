@@ -16,9 +16,9 @@ jQuery(document).ready(function($){
 
     if(window.location.href.indexOf('https://') >= 0)
        root='https://yogasmoga.com/';
-      //  root='http://master.com.local/';
+       //root='http://master.com.local/';
     else
-        root='http://yogasmoga.com/';
+       root='http://yogasmoga.com/';
       //  root='http://master.com.local/';
 
     checkIsUserLogged();
@@ -419,7 +419,9 @@ function  createCustomerAccount()
                 jQuery(".thank-you-block").removeClass("no-display");
                 jQuery(".signinDialog").addClass("wdthauto");
                 _islogedinuser = true;
-
+				if(_islogedinuser){
+				jQuery("#invite_friends").dialog("open");	
+				}
                 if(window.location.href.indexOf("refer-a-friend") > -1) {
                     //window.location.assign(homeUrl+'rewardpoints/index/referral');
                     window.location.assign('https://yogasmoga.com/rewardpoints/index/referral/');
@@ -428,7 +430,7 @@ function  createCustomerAccount()
 
                 // Redirection for invite friend.
 
-
+				
                 if(name != ''){
                     jQuery("#welcome-name").html("Hi "+name).attr("href",homeUrl+'customer/account/');
                 }
@@ -605,7 +607,9 @@ function loginCustomer() {
                 jQuery(".signin-loader").html("");
                 jQuery("#signing_popup").dialog("close");
                 _islogedinuser = true;
-
+				if(_islogedinuser){
+				jQuery("#invite_friends").dialog("open");	
+				}
                 // Redirection for invite friend.
                 if(window.location.href.indexOf("refer-a-friend") > -1) {
                     //window.location.assign(homeUrl+'rewardpoints/index/referral');
