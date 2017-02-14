@@ -8318,7 +8318,7 @@ a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
 .shop-col-desc h2{padding:15px 0;color:#555; font-size:30px;}
 
 /*******invite popup*****/
-#invite_friends{ width:100%; height:100%; background:#333; position:fixed; z-index:99999; left:0; right:0; margin:auto; top:0; bottom:0;}
+#invite_friends{ width:100%; height:100%;overflow:scroll; background:#333; position:fixed; z-index:99999; left:0; right:0; margin:auto; top:0; bottom:0;}
 #invite_friends .invite-form{max-width:620px; margin: 0 auto; padding-top:10%;font:14px graphikregular !important;overflow: hidden;
     padding-left: 2%;
     padding-right: 2%; display:block;}
@@ -8343,3 +8343,4 @@ a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
 #invite_friends .thanks-text h2{color:#AE8536; text-transform:uppercase; margin:15px 0 20px 0}
 #invite_friends .thanks-text p.email-text{font-size:16px;}
 #invite_friends .thanks-text p.heart-img img{ width:100%; max-width:20%; height:auto;}
+.top-heading svg{max-width:100%;width:100%; height:auto;}
