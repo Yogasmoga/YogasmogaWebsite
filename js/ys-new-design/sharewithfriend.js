@@ -101,7 +101,7 @@ function sharewithfriendPopup(formData){
             if(result.datafound=='yes'){
 					var i;
 					var _success_status = false;
-					var message ="Email  has been already submitted.";
+					var message ="One of the emails you entered already exists.";
 					for(i=0;i < result.data.length; i++){
 						if(result.data[i]['status']=='success'){
 						_success_status = true;
@@ -116,7 +116,7 @@ function sharewithfriendPopup(formData){
 					}
 					else{
 						jQuery("#invite-friend-form .invite-button span").html("Send");
-						jQuery("#invite-friend-form .action-button .err-msg1").html(message).css("visibility","visible");
+						jQuery("#invite-friend-form .action-button .err-msg").html(message).css("visibility","visible");
 						jQuery("#invite-friend-form")[0].reset();
 					}
 			}

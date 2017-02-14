@@ -1019,7 +1019,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 										// Send email.
 										if($i == 1){
 										
-										$templateId = "share_smogi_bucks";
+										$templateId = "spread_smogi_love";
 										$emailTemplate = Mage::getModel('core/email_template')->loadByCode($templateId);
 										$vars = array('email' => $custemail);
 										$emailTemplate->getProcessedTemplate($vars);

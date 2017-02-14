@@ -1,8 +1,8 @@
 <div id="invite_friends" style="display: none;">
 		<div class="invite-form">
-            
-			<p class="c-align heart-img"><img src="<?php echo $this->getSkinUrl('images/desktop_popup-vday-2-heart.png')?>"></span></p>
-			<p class="c-align"><img src="<?php echo $this->getSkinUrl('images/desktop_popup-vday-2.png')?>"></span></p>
+		
+			<p class="c-align heart-img"><img src="<?php echo $this->getSkinUrl('images/mobile-popup-vday.png')?>"></span></p>
+			<p class="c-align"><img src="<?php echo $this->getSkinUrl('images/PopUp-Vday-text.png')?>"></span></p>
 			<form id="invite-friend-form" class="bl" action="<?php //echo Mage::getUrl('rewardpoints/index/referral/') ?>" method="post">
 				<div class="box-invite heart-ul">
 					<fieldset class="group-select" id="j2t-referral-lines">
@@ -73,73 +73,108 @@
 								</div>
 							</li>
 						</ul>
-						
-						<!--<a class="left" id="j2t-add-line" href="javascript:j2t_add_line();" title="<?php echo $this->__('Add new line') ?>">
-						   Add <span>+</span>
-						</a>-->
 						<div class="action-button">
 						<button class="btn-invite button invite-button" type="submit"><span><?php echo $this->__('Send') ?></span></button>
-						<p style="min-height:15px;  margin: 0 auto; font-size: 12px; visibility:visible" class="err-msg">One of the emails you entered already exists.</p>
-						<a href="#" class="close-invite-popup"><span>Close</span></a>
+						<p style="min-height:15px;color:#fff;  margin: 0 auto; font-size: 12px; visibility:hidden" class="err-msg">All fields are required.</p>
+						<a href="javascript:void(0)" class="close-invite-popup"><span>Close</span></a>
 						<p>*Two email addresses mandatory.</p>
 						</div>
 					</fieldset>
 				</div>
 			</form>
-        </div>
+		
+		</div>
 		<div class="thanks-text">
 			<p class="c-align heart-img"><img src="<?php echo $this->getSkinUrl('images/heart_up.png')?>"></span></p>
-			<h2>THANK YOU FOR <br/>SPREADING THE SMOGI LOVE</h2> 
+			<h2>THANK YOU FOR 
+SPREADING THE SMOGI LOVE</h2> 
 			<p class="c-align email-text">You will receive an email with your 35% off promo code.</p>
 			<div class="action-button">
 				<a href="javascript:void(0)" class="close-invite-popup"><span>Close</span></a>
 			</div>
 		</div>
-</div>
-<script type="text/javascript">
-
-            var elmt_id_j2t = 0;
-            function j2t_add_line(){
-                var form_list_ul = $('j2t-add-line').up().down("ul");
-
-                var form_list_ul_clone = Element.clone(form_list_ul, true);
-
-                var form_list_ul_clone = form_list_ul.cloneNode(true);
-                
-//                form_list_ul_clone.down("#label-name").id = "label-name-"+elmt_id_j2t;
-                form_list_ul_clone.down("#name").id = "name-"+elmt_id_j2t;
-//                form_list_ul_clone.down("#label-email").id = "label-email-"+elmt_id_j2t;
-                form_list_ul_clone.down("#email").id = "email-"+elmt_id_j2t;
-                
-                form_list_ul_clone.down("#name-"+elmt_id_j2t).value = "";
-                form_list_ul_clone.down("#email-"+elmt_id_j2t).value = "";
-                
-                var del_img = document.createElement('span');
-                del_img.setAttribute('class', 'remove_link');
-                del_img.appendChild(document.createTextNode("X"));
-                form_list_ul_clone.down(".j2t-rewardpoints-email").insert({
-                    bottom: del_img
-                });
-                del_img.observe('click', function(event) {
-                    Event.element(event).up("ul").remove();
-                });
-                
-				$('j2t-add-line').insert({ before: form_list_ul_clone });	
-				
-                
-                elmt_id_j2t++;
-				//alert(elmt_id_j2t++);
-            }
-			jQuery(function(){
-					jQuery(".close-invite-popup").click(function(e){
-					e.preventDefault();
-					jQuery("#invite_friends").dialog( "close" );
-					//alert();
-					
-				});
-			});
+		
+</div>		
+<script>
+jQuery(function(){
+	//alert(_islogedinuser);
+	jQuery(".action-button").on("click","a.close-invite-popup",function(){
+		jQuery("#invite_friends").hide();	
+	});
+	/*jQuery("#invite_friends").show();	
+	setTimeout(function(){
+			jQuery("#invite_friends").hide();	
+			}, 5000);*/
+	jQuery(".spread-popup").click(function(){
+	jQuery("#invite_friends").show();
+		/*if(_islogedinuser){
+			openLogin();
+		}
+		else{
+			jQuery("#invite_friends").show();
+		}
+		*/	
 			
-        </script>
-		<script type="text/javascript">
-   //var dataForm = new VarienForm('invite-friend-form', true);
+			
+	});
+	
+	jQuery("#invite-friend-form").submit(function(event){
+        event.preventDefault();
+		var formid = "#invite-friend-form";
+		var formData = jQuery(this).serialize();
+		sharewithfriendPopup(formData);
+        
+    });
+	
+	
+});
+function sharewithfriendPopup(formData){
+	
+	if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mycatalog/myproduct/referfriendpopup';
+    if(_usesecureurl)
+        url = securehomeUrl + 'mycatalog/myproduct/referfriendpopup';
+
+	jQuery.ajax({
+
+        url     :   url,
+        type    :   'POST',
+		data 	: 	formData,
+		dataType: 'json',
+        beforeSend: function() {
+           // jQuery("#invite-friend-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+		    jQuery("#invite-friend-form .invite-button span").html("Sending...");
+            //jQuery("#send-invite").parent().hide();
+           // jQuery("#invite-friend-form .form-loader").show();
+        },
+        success :  function(result){
+			
+            if(result.datafound=='yes'){
+					var i;
+					var _success_status = false;
+					var message ="One of the emails you entered already exists.";
+					for(i=0;i < result.data.length; i++){
+						if(result.data[i]['status']=='success'){
+						_success_status = true;
+						}
+					}
+					
+					if(_success_status){
+					jQuery("#invite-friend-form .invite-button span").html("Send");
+					jQuery("#invite-friend-form")[0].reset();
+					jQuery(".sharingDialog .invite-form").hide();
+					jQuery(".sharingDialog .thanks-text").show();
+					}
+					else{
+						jQuery("#invite-friend-form .invite-button span").html("Send");
+						jQuery("#invite-friend-form .action-button .err-msg").html(message).css("visibility","visible");
+						jQuery("#invite-friend-form")[0].reset();
+					}
+			}
+		}
+    });
+}
 </script>
