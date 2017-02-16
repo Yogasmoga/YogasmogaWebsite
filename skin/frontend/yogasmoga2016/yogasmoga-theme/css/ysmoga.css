@@ -924,7 +924,12 @@ ul.tr-menu > li.free-shipping {
 .sharingDialog .thanks-text p.email-text{font-size:16px;}
 .sharingDialog .thanks-text p.heart-img img{ width:100%; max-width:24%; height:auto;}
 
-
+.home-banner .upper-text{     position: absolute;
+    top: 24%;
+    left: 60px;
+   text-transform: uppercase;
+    width: 40%;}
+.home-banner .upper-text .cspbldtxt{font: 30px/53px avantgardegothicitcw01d; font-weight:bold;letter-spacing:0.5px;margin:1.5% 0 1.5%;color:#000;}
 
 
 .smogi-love-msg > span {
