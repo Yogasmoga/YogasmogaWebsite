@@ -2,7 +2,9 @@
     require 'app/Mage.php';
 
     Mage::app();
-
+	
+	exit;	
+	
     /*
         29 => welcome
         30 => rangoli
