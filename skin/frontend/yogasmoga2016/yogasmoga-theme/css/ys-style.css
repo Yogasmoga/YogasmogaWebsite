@@ -3245,11 +3245,11 @@ iframe[name="google_conversion_frame"] {
 #signup.mc-signup .signup-title .highlight{color:#ae8536;font-family:avantgardegothicitcw01d;display:block;max-width:240px;margin:1% auto;}
 #signup.mc-signup .signup-title .highlight img{max-width:100%;}
 #signup.mc-signup small{font-size:13px; letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px;display:block;}
-#signup.mc-signup input{width:242px;height:40px;border:0 none;padding:0 5px;box-sizing:border-box;}
+#signup.mc-signup input{height:40px;border:0 none;padding:0 5px;box-sizing:border-box;}
 #signup.mc-signup input[type="text"]{margin-bottom:5px;}
 #signup.mc-signup input[type="submit"]{background:#ccc; color:#fff!important;font-family:avantgardegothicitcw01d;cursor:pointer;text-transform:uppercase;}
 #signup.mc-signup .signup-content{padding:0!important;}
-
+#signup.mc-signup .gender_p{ padding:15px 0;}
 #signup.mc-signup .signup-thankyou{display:none;padding:0!important;}
 #signup.mc-signup .signup-thankyou .spn_line {line-height:42px;}
 #signup.mc-signup .signup-thankyou small{font-size:15px;margin-bottom:0;text-transform:uppercase;line-height:normal;}
@@ -3271,15 +3271,18 @@ iframe[name="google_conversion_frame"] {
     line-height: normal;
     text-transform: uppercase;}
 #signup.mc-signup .svg-logo{margin:0 0 5.19% 0;}
-#signup.mc-signup .fields-area{width:100%; max-width:402px;margin:0 auto; position:relative;text-align:left;}
-#signup.mc-signup .fields-area p{display:inline-block;}
-#signup.mc-signup .fields-area p.button-area{position:absolute; top:0; right:0;width:112px;}
+#signup.mc-signup .fields-area{width:100%; max-width:402px;margin:0 auto; position:relative;text-align:left; margin-top:-8%}
+/*#signup.mc-signup .fields-area p{display:inline-block;}*/
+/*#signup.mc-signup .fields-area p.button-area{position:absolute; top:0; right:0;width:112px;}*/
+
 #signup.mc-signup .fields-area p.button-area input[type="submit"]{width:100%;font-family:gothamBold;font-size:12px;}
 #signup.mc-signup .fields-area p.button-area input[type="submit"].on{background:#AE8536;}
-#signup.mc-signup .fields-area p input[type="text"]{width:280px;font-family:gothamBook;font-size:12px;}
+/*#signup.mc-signup .fields-area p input[type="text"]{width:280px;font-family:gothamBook;font-size:12px;}*/
+#signup.mc-signup .fields-area p input[type="text"]{width:100%;font-family:gothamBook;font-size:12px; background:none; color:#fff!important; border-bottom:1px solid #fff;}
 
 #signup.mc-signup .svg-logontext{margin:0 0 64px 0; }
-#signup.mc-signup form,#signup.mc-signup .signup-thankyou-content{position:absolute; top:50%; left:0; right:0; transform:translateY(-50%);}
+#signup.mc-signup form,#signup.mc-signup .signup-thankyou-content{position:absolute; top:50%; left:0; right:0; transform:translateY(-50%);padding:5% 0;}
+#signup.mc-signup form{top:55%;}
 .mens-slider .over-the-slide .avant-grade-bk-small {line-height:40px;}
 @media only screen and (max-width : 1400px) {
     #signup.mc-signup .svg-logo{margin:0 0 4.19% 0;}
@@ -3304,6 +3307,9 @@ iframe[name="google_conversion_frame"] {
 #signup.mage-signup #sign_up_box #popup-register{width:100%; max-width:496px; left:50%; top:50%; bottom:auto; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);}
 #signup.mage-signup .gender_p label{float:right; padding-right:0;margin-left:39px; font-size:16px!important; font-family:gothamBook;}
 #signup.mage-signup .gender_p label .gender_radio{background:#fff;float:left;display:inline-block; width:24px; height:24px; line-height:24px; color:transparent; margin-right:16px;top:1px;}
+#signup.mc-signup .gender_p label{float:right; padding-right:0;margin-left:39px; font-size:16px!important; font-family:gothamBook;}
+#signup.mc-signup .gender_p label .gender_radio{background:#fff;float:left;display:inline-block; width:24px; height:24px; line-height:24px; color:transparent; margin-right:16px;top:1px;}
+#signup.mc-signup  .gender_p span.selected{background:#ae8536;border:1px solid #ae8536;}
 #signup.mage-signup .gender_tr .gender_p span.selected{background:#ae8536;border:1px solid #ae8536;}
 #signup.mage-signup button#signup-button{background:#1eaa18; width:100%;height:42px; line-height:42px; padding:0; font-family:gothamBold; font-size:13px; text-transform:uppercase;}
 #signup.mage-signup .close-text,#signup.mage-signup .opensignin{color: #ae8536; cursor: pointer;font-family: itcavantgardepromd;
@@ -4766,9 +4772,12 @@ table.productdetailtable div.outofstockitem{
 .haveheart-description{display:block;}
 
 /*Haveheart*/
-.csp-block .csp-inner-block.have-banner-text{bottom:6%;}
+
+.csp-block .csp-inner-block.have-banner-text{bottom:4%;}
 .csp-block .range-seal.left{left:3%}
+.csp-block .csp-inner-block.have-banner-text > span{display:block;margin:25px 0 10px 0;}
 .csp-block .csp-inner-block.have-banner-text .csp-info{ text-transform:uppercase;}
+.csp-block .csp-inner-block.have-banner-text .csp-info.pre-order-text{margin:12px 0 0 0}
 .shop-col-desc.have-text{ margin-top:-4%; position:relative;z-index:15;}
 .shop-col-desc.have-text h2{
 	font-size: 35px;
