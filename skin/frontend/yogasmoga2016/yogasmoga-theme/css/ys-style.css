@@ -4703,7 +4703,7 @@ font: 38px/34px avantgardegothicitcw01d;}
 /*Haveheart*/
 .csp-block .csp-inner-block.have-banner-text{bottom:4%;}
 .csp-block .csp-inner-block.have-banner-text .csp-info{ text-transform:uppercase;}
-.csp-block .csp-inner-block.have-banner-text .csp-info.pre-order-text{margin:12px 0;}
+.csp-block .csp-inner-block.have-banner-text .csp-info.pre-order-text{margin:12px 0 0 0;}
 .shop-col-desc.have-text{ margin-top:-4%; position:relative;z-index:15;}
 .shop-col-desc.have-text h2{
 	font-size: 35px;
