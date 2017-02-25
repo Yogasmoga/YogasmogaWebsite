@@ -4774,6 +4774,7 @@ table.productdetailtable div.outofstockitem{
 {
     color:#555!important;
 }
+.cms-index-index.cms-home .header-banner .header-banner-block{border-bottom:1px solid #555}
 /* pre order */
 #ship-msg-li{display:none;}
 .pre-order-details{ padding:15px 0;}
