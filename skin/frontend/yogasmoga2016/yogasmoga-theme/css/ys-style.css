@@ -4763,7 +4763,17 @@ table.productdetailtable div.outofstockitem{
 /******--------grey background edited by fahim-------****/
 .grey-header-bg .page{ background: #f4f4f4}
 .grey-header-bg .product-details{ background: #fff!important;}
-
+/*Home page nav color changed*/
+.cms-index-index.cms-home  .scrolled-effect .free-shipping-txt,
+.cms-index-index.cms-home  .scrolled-effect #welcome-name,
+.cms-index-index.cms-home  .scrolled-effect .header-banner .orange-banner,
+.cms-index-index.cms-home  .scrolled-effect ul.main-menu li a.menu-heading,
+.cms-index-index.cms-home  .scrolled-effect ul.main-menu2 a.main-heading,
+.cms-index-index.cms-home  .scrolled-effect .tr-menu>li>a:first-child,
+.cms-index-index.cms-home  .scrolled-effect .tr-menu>li.signout_link>span
+{
+    color:#555!important;
+}
 /* pre order */
 #ship-msg-li{display:none;}
 .pre-order-details{ padding:15px 0;}
@@ -4790,3 +4800,6 @@ table.productdetailtable div.outofstockitem{
 .shop-col-desc.have-text p.seperat{padding:30px 0 35px 0;}
 
 .sharingDialog.ui-corner-all{border-radius:100%!important;}
+
+
+
