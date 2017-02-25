@@ -4804,4 +4804,6 @@ table.productdetailtable div.outofstockitem{
 .sharingDialog.ui-corner-all{border-radius:100%!important;}
 
 
-
+@media only screen and (min-width: 1440px) {
+.cms-index-index.cms-home .header-container .header-inner{margin-top:1%;}
+}
