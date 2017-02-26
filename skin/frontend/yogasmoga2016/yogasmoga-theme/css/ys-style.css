@@ -4765,6 +4765,7 @@ table.productdetailtable div.outofstockitem{
 .grey-header-bg .page{ background: #f4f4f4}
 .grey-header-bg .product-details{ background: #fff!important;}
 /*Home page nav color changed*/
+/*
 .cms-index-index.cms-home  .scrolled-effect .free-shipping-txt,
 .cms-index-index.cms-home  .scrolled-effect #welcome-name,
 .cms-index-index.cms-home  .scrolled-effect .header-banner .orange-banner,
@@ -4776,6 +4777,7 @@ table.productdetailtable div.outofstockitem{
     color:#555!important;
 }
 .cms-index-index.cms-home .header-banner .header-banner-block{border-bottom:1px solid #555}
+*/
 /* pre order */
 #ship-msg-li{display:none;}
 .pre-order-details{ padding:15px 0;}
@@ -4803,7 +4805,15 @@ table.productdetailtable div.outofstockitem{
 
 .sharingDialog.ui-corner-all{border-radius:100%!important;}
 
-
+/*
 @media only screen and (min-width: 1440px) {
 .cms-index-index.cms-home .header-container .header-inner{margin-top:1%;}
 }
+@media only screen and (max-width: 1900px){
+		#signup.mc-signup .svg-logontext {
+			max-width: 100%;
+			margin-bottom:155px;
+		}
+}
+#signup.mc-signup form{top:50%;}
+*/
