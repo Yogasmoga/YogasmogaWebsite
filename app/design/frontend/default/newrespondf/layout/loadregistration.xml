@@ -2,6 +2,7 @@
 <layout version="0.1.0">
     <default>
         <reference name='before_body_end'>
+			<block type="core/template" name="mailchimp-popup" template="loadregister/mailchimp-popup.phtml"/>
 			<block type="core/template" name="loadregistration" template="loadregister/popup.phtml"/>
         </reference>
        

@@ -4808,7 +4808,7 @@ table.productdetailtable div.outofstockitem{
 /*
 @media only screen and (min-width: 1440px) {
 .cms-index-index.cms-home .header-container .header-inner{margin-top:1%;}
-}
+}*/
 @media only screen and (max-width: 1900px){
 		#signup.mc-signup .svg-logontext {
 			max-width: 100%;
@@ -4816,4 +4816,4 @@ table.productdetailtable div.outofstockitem{
 		}
 }
 #signup.mc-signup form{top:50%;}
-*/
+

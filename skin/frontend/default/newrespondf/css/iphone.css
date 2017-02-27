@@ -8202,7 +8202,7 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
 #popForm.mage-signup input[type="text"], #popForm.mage-signup input[type="password"]{border-bottom:1px solid #717171;}
 #popForm.mage-signup input[type="text"].on, #popForm.mage-signup input[type="password"].on{color:#fff!important;}
 #popForm.mage-signup input[data-watermark],#popForm.mage-signup input.watermark_password,#popForm.mage-signup input.watermark_password.on,#popForm.mage-signup .gender-link span label{color:#717171!important; opacity:1!important}
-#popForm.mage-signup .svg-logontext{max-width:239px;}
+/*#popForm.mage-signup .svg-logontext{max-width:239px;}*/
 #popForm.mage-signup .no-thanks, #popForm.mage-signup .already_signed_up,#popForm.mage-signup .already-text {
     color: #ae8536; display: inline-block; float: none; font: 12px/24px ITCAvantGardeStd-Md;
     margin: 0; letter-spacing:0.18; opacity: 1; text-align: center; text-decoration: underline;}
@@ -8307,6 +8307,7 @@ a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
     padding-left: 5px;
     margin-top: 15px;
 	}
+	
 .haveheart-description #ship-msg-li{ display:none;}
 .haveheart-description .pre-order-details{padding:15px 0; text-align:left;}
 .haveheart-description .pre-order-details .haveheart-anchor{ text-decoration:underline; color:#555;}	
@@ -8338,11 +8339,12 @@ a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
 #invite_friends .invite-form .action-button{width:100%;clear:both; margin-top:25px; text-align:center;}
 #invite_friends .invite-form .action-button a.close-invite-popup{text-decoration:underline;color:#ae8536;display:block;}
 #invite_friends .invite-form .action-button a.close-invite-popup, #invite_friends .thanks-text a{
-	text-decoration:underline;display:block; font-size:14px; margin:60px 0;}
+	text-decoration:underline;display:block; font-size:14px; margin:60px 0;color:#fff;}
 #invite_friends .thanks-text{width:80%!important;color:#fff; margin:0 auto!important;padding-top:20%;display:none;}
 #invite_friends .thanks-text h2{color:#AE8536; text-transform:uppercase; margin:15px 0 20px 0}
 #invite_friends .thanks-text p.email-text{font-size:16px;}
 #invite_friends .thanks-text p.heart-img img{ width:100%; max-width:20%; height:auto;}
+#invite_friends .invite-form .svg-logontext{max-width:100%; width:90%; height:auto;}  
 .top-heading svg{max-width:100%;width:100%; height:auto;}
 #popup-mailsignup li p.gender_p{
     width: 100%;
@@ -8355,3 +8357,6 @@ a.main-txt{font-family:ITCAvantGardeStd-MD!important;}
 #popup-mailsignup li	p.gender_p label span.gender_radio.selected{background:#AE8536;}
 /*#MailpopForm  .signup-info  .scroll, #MailpopForm .thanks-popup  .signup-info  .scroll{overflow:hidden!important}*/
 /*#MailpopForm  .sign-up-popup{ overflow:scroll;}*/
+
+#MailpopForm .svg-logontext,#popForm .svg-logontext { max-width:90%; width:100%; height:auto;}
+

@@ -386,7 +386,7 @@ input, textarea, select {
 
 .left_block.left_block_new .top-heading {
     float: left;
-    margin-bottom: 0 !important;
+    margin-bottom: 10% !important;
     margin-top: 0 !important;
     width: 100%;
     text-align: center;
