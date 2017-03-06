@@ -390,14 +390,17 @@ if($currentUrl != $checkoutpage){
         <div class="header-banner-block" style="float:left;width:100%;">
 		<?php 
 		//$catid =  Mage::registry('current_category')->getId();
-		$catid =  $this->getLayout()->getBlock('product_list')->getCategoryId();
+		//$catid =  $this->getLayout()->getBlock('product_list')->getCategoryId();
+		            $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                    $categoryName = explode('/', $currentUrl);
+                    $urlKey = $categoryName[3];
 		?>
             <?php
             $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
             //if(!$loggedIn){ ?>
                 
 				<?php //if(Mage::getBlockSingleton('cms/page')->getPage()->getId()==2):?>
-				<?php if(isset($catid) && $catid == '136' ):?>
+				<?php if(isset($urlKey) && $urlKey == 'haveheart' ):?>
 				<div class="new-orange-banner orange-banner spread-popup">
 				BUY A HAVEHEART LEGGING AND GET A SURPRISE PAIR FREE ON US. 2 DAYS ONLY.
 				 </div>
