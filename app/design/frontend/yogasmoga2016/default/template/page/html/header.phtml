@@ -387,17 +387,24 @@ if($currentUrl != $checkoutpage){
 
 <div id="ysheader" style="height:109px !important;" class="header-container scrolled-effect">
     <div style="height:40px;padding:0 30px;" class="header-banner">
-        <div class="test header-banner-block" style="float:left;width:100%;">
+        <div class="header-banner-block" style="float:left;width:100%;">
+		<?php $catid =  Mage::registry('current_category')->getId(); ?>
             <?php
             $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
             //if(!$loggedIn){ ?>
                 
 				<?php //if(Mage::getBlockSingleton('cms/page')->getPage()->getId()==2):?>
+				<?php if(isset($catid) && $catid == '136' ):?>
+				<div class="new-orange-banner orange-banner spread-popup">
+				BUY A HAVEHEART LEGGING AND GET A SURPRISE PAIR FREE ON US. 2 DAYS ONLY.
+				 </div>
+                 <?php  else:  ?>
 				<div class="new-orange-banner orange-banner spread-popup">
 				
 				SPREAD THE SMOGI LOVE <img src="<?php echo $this->getSkinUrl('images/spread-heart.png')?>"> THEY GET 30% OFF <img src="<?php echo $this->getSkinUrl('images/spread-heart.png')?>"> You Get 30% OFF
 				    <?php /* ?>40% OFF Online. Use Code MAKEUSA. --Buy 2 or More Items and Get 25% Off - Limited Time. Use Code: 2ORMORE --- 40% OFF On-Line Only. New Styles & Color Added for Women & Men. Use Code: FIT2017<?php */?>
                 </div>
+				<?php  endif;  ?>
 				<?php /* else:  ?>
 				<div class="new-orange-banner orange-banner">
 				Buy 2 or More Items and Get 25% Off - Limited Time. Use Code: 2ORMORE
