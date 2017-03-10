@@ -1,36 +1,11 @@
-<?php
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
- *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-
-/**
- * Product view template
- *
- * @see Mage_Catalog_Block_Product_View
- * @see Mage_Review_Block_Product_View
- */
-?>
+<style>
+.regular {
+  font: 14px/20px graphikregular;
+  letter-spacing: 0.3px;
+  margin-top: 5px;
+ text-transform: initial;
+}
+</style>
 <?php
 
 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
@@ -1220,11 +1195,11 @@ if (!$bundledProduct) {
                                                             </div>
                                                             <div  class="product-price-dv" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                                                 <span itemprop="priceCurrency" content="USD"></span>
-                                                                <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>
-										 <span class="was-amount no-display"
-                                               style="text-transform: uppercase;"><?php echo 'was $' . $productPrice; ?></span>
+                       
+                        <span class="regular">Regular Price <?php echo '$' . $productPrice; ?></span>
+						<span style="display: block;font-size: 14px;width: 100%;">PRE-ORDER SPECIAL PRICE <span style="display: -moz-inline-stack;" class="productcost amount" itemprop="price"> <?php echo $productPrice; ?></span>
                                                             </div>
-
+</span>
 
                                                             <div class='part-of-gift-set' style="display: none;"></div>
 
@@ -1570,8 +1545,8 @@ if (!$bundledProduct) {
                                                 <?php endif; ?>
                                             <?php $pscCollection = $finalId; endforeach; ?>
                                         </p><?php */?>
-                                            <p class="insale dnone" style="color: #c03; margin-left: 4px;">
-                                                Final Sale.</p>
+                                           <!--  <p class="insale dnone" style="color: #c03; margin-left: 4px;">
+                                                Final Sale.</p> -->
                                             <p class="freeshipptext"><em>Free shipping to US and Canada</em></p>
 
 

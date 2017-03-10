@@ -266,7 +266,9 @@ if($this->getRequest()->getParam('hidden')){
                         <a class="caption-title"
                            href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName(); ?></a>
                         <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
-                        <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="price-spn">$<?php echo round($simpleproductarr['price'], 2); ?><cite class="was-amount" style="font-style:normal;"> was $<?php echo round($confProduct->getPrice(), 2); ?></cite></span></a>
+                        <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="price-spn">Regular Price $<?php echo round($confProduct->getPrice(), 2); ?><br/>
+						<!-- <cite class="was-amount" style="font-style:normal;"> --> PRE-ORDER SPECIAL PRICE $<?php echo round($simpleproductarr['price'], 2); ?><?php //echo round($confProduct->getPrice(), 2); ?><!-- </cite> -->
+						</span></a>
 
 
                         <?php
