@@ -287,7 +287,10 @@ if($this->getRequest()->getParam('hidden')){
                         <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="price-spn">&dollar;<?php echo round($confProduct->getPrice(), 2); ?></span></a>
 
 						<?php
-                            if (isset($simpleproductarr['shipinweek'])) { echo $simpleproductarr['shipinweek']; }
+                            //if (isset($simpleproductarr['shipinweek'])) { echo $simpleproductarr['shipinweek']; }
+
+
+						if($simpleproductarr['color'] ='261' || $simpleproductarr['color'] ='366' || $simpleproductarr['color'] ='249') { echo 'Ships in 1 week'; }
                         ?>
                         <?php
                     }
