@@ -111,6 +111,7 @@ if($this->getRequest()->getParam('hidden')){
         // check for in sale category
         $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('insale_category')->getValue('plain')), true);
         $showInSaleProduct = true;
+		 $showInShipProduct = true;
         if ($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens']) {
             $showInSaleProduct = true;
         }
@@ -270,6 +271,7 @@ if($this->getRequest()->getParam('hidden')){
 						<span class="price-spn">
 						<!-- <cite class="was-amount" style="font-style:normal;"> --> PRE-ORDER SPECIAL PRICE $<?php echo round($simpleproductarr['price'], 2); ?><?php //echo round($confProduct->getPrice(), 2); ?><!-- </cite> -->
 						<br/>Regular Price $<?php echo round($confProduct->getPrice(), 2); ?>
+
 						</span>
 						</a>
 
@@ -283,6 +285,10 @@ if($this->getRequest()->getParam('hidden')){
 
                         <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
                         <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="price-spn">&dollar;<?php echo round($confProduct->getPrice(), 2); ?></span></a>
+
+						<?php
+                            if (isset($simpleproductarr['shipinweek'])) { echo $simpleproductarr['shipinweek']; }
+                        ?>
                         <?php
                     }
                     ?>
