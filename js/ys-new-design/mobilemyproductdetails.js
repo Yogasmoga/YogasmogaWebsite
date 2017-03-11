@@ -389,7 +389,8 @@ function changeproductsize(sz) {
         var firstSizePrice = firstSize.attr("price");
         if (_productcolorinfo[colorindex].insale == 'Yes') {
             firstSize.trigger("click");
-            amount.html("$" + firstSizePrice);
+            //amount.html("$" + firstSizePrice);
+			amount.html("PRE-ORDER PRICE $" + firstSizePrice);
             amount.addClass("insale-price");
             jQuery(".prd-info").find("p.insale").removeClass("dnone");
             jQuery(".was-amount").removeClass("no-display");
@@ -722,7 +723,8 @@ function changeColor(clr) {
     console.log(amount + "--" + firstSize.html() + "--" + firstSizePrice);
     if (_productcolorinfo[colorindex].insale == 'Yes') {
         firstSize.trigger("click");//console.log(firstSizePrice+"mmmmm");
-        amount.html("$" + firstSizePrice);
+        //amount.html("$" + firstSizePrice);
+		amount.html("PRE-ORDER PRICE $" + firstSizePrice);
         amount.addClass("insale-price");
         jQuery(".prd-info").find("p.insale").removeClass("dnone");
         jQuery(".was-amount").removeClass("no-display");

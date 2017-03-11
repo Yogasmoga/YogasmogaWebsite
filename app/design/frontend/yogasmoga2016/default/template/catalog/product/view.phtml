@@ -1,9 +1,8 @@
 <style>
 .was-amount {
   font: 14px/20px graphikregular;
-  letter-spacing: 0.3px;
-  margin-top: 5px;
-  text-transform: uppercase !important;color: unset;text-decoration: line-through;
+  letter-spacing: 0.3px;display: block;
+  text-transform: capitalize !important;color: unset;
 }
 </style>
 <?php
@@ -1196,10 +1195,12 @@ if (!$bundledProduct) {
                                                             <div  class="product-price-dv" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                                                 <span itemprop="priceCurrency" content="USD"></span>
                        
-                        <span class="was-amount no-display"><?php echo '$' . $productPrice; ?></span>
-						<span style="display: block;font-size: 14px;width: 100%;"><span style="display: -moz-inline-stack;" class="productcost amount" itemprop="price"> <?php echo $productPrice; ?></span>
+                       <span style="font-size: 14px;width: 100%;">
+					   <span style="display: -moz-inline-stack;" class="productcost amount" itemprop="price"> <?php echo $productPrice; ?></span></span>
+						<span class="was-amount no-display">Regular Price <?php echo '$' . $productPrice; ?></span>
+						
                                                             </div>
-</span>
+
 
                                                             <div class='part-of-gift-set' style="display: none;"></div>
 

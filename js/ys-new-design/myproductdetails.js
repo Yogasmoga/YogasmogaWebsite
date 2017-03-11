@@ -971,7 +971,7 @@ function changeColor(clr) {
 
     if (_productcolorinfo[colorindex].insale == 'Yes') {
         firstSize.trigger("click");
-        amount.html("$" + firstSizePrice);
+        amount.html("PRE-ORDER SPECIAL PRICE $" + firstSizePrice);
         amount.addClass("insale-price");
         jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
         jQuery(".was-amount").removeClass("no-display");
