@@ -290,7 +290,7 @@ if($this->getRequest()->getParam('hidden')){
                             //if (isset($simpleproductarr['shipinweek'])) { echo $simpleproductarr['shipinweek']; }
 
 
-						if($simpleproductarr['color'] ='261' || $simpleproductarr['color'] ='366' || $simpleproductarr['color'] ='249') { echo 'Ships in 1 week'; }
+						if($categoryId =='136' && ($simpleproductarr['color'] =='261' || $simpleproductarr['color'] =='366' || $simpleproductarr['color'] =='249')) { echo 'Ships in 1 week'; }
                         ?>
                         <?php
                     }
