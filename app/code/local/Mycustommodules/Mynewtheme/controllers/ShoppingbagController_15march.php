@@ -1923,7 +1923,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if(isset($item['insale']) && $item['insale'] == 'Yes')
             {
-                $html .='<span class="size" style="color: #c03;">This Item is Final Sale. Cannot be exchanged or returned.</span>';
+                $html .='<span class="size">This item has been pre-ordered and will be shipped within weeks.</span>';
             }
             $html .='</span>';
 
@@ -2443,7 +2443,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
         if($item['insale'] == 'Yes')
         {
-            $html .='<span class="size" style="color: #c03;">This Item is Final Sale. Cannot be exchanged or returned.</span>';
+            $html .='<span class="size">This item has been pre-ordered and will be shipped within weeks.</span>';
         }
             $html .='</span>
 <a href="#" class="close"></a>';
