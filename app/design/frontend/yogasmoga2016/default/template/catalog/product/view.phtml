@@ -1195,8 +1195,17 @@ if (!$bundledProduct) {
                                                             <div  class="product-price-dv" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                                                 <span itemprop="priceCurrency" content="USD"></span>
                        
-                       <span style="font-size: 14px;width: 100%;">
-					   <span style="display: -moz-inline-stack;" class="productcost amount" itemprop="price"> <?php echo $productPrice; ?></span></span>
+                       
+					   
+					  <?php 
+					  //$temp1 .= "|" . $showPre . "|" .$showpremsg;
+					  echo 'showpremsg'. $showpremsg;
+					  ?>
+					   <span style="font-size: 14px;width: 100%;">
+					      <span style="display: -moz-inline-stack;" class="productcost amount" itemprop="price"> 
+						  <?php echo $productPrice; ?>
+						  </span>
+					   </span>
 						<span class="was-amount no-display">Regular Price <?php echo '$' . $productPrice; ?></span>
 						
                                                             </div>
