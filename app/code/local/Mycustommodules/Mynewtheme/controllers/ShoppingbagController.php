@@ -1923,9 +1923,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if(isset($item['insale']) && $item['insale'] == 'Yes')
             {
-                $html .='<span class="size">This item has been pre-ordered and will be shipped within weeks.</span>';
-            }
-            $html .='</span>';
+                if($item['pre_order_product'] == 'Yes'){
+			$html .='<span class="size">This item has been pre-ordered and will be shipped within weeks.</span>';
+			} else {
+			   $html .='<span class="size">All sales are final.</span>';
+			   }
+		   $html .='</span>';
 
 /************* for gift set ***************/
             // disabling gift set
@@ -2443,8 +2446,14 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
         if($item['insale'] == 'Yes')
         {
-            $html .='<span class="size">This item has been pre-ordered and will be shipped within weeks.</span>';
-        }
+           
+			if($item['pre_order_product'] == 'Yes'){
+			$html .='<span class="size">This item has been pre-ordered and will be shipped within weeks.</span>';
+			} else {
+			
+			$html .='<span class="size">All sales are final.</span>';
+
+                  }
             $html .='</span>
 <a href="#" class="close"></a>';
             // Preorder
