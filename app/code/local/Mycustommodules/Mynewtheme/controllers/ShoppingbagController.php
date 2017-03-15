@@ -1321,7 +1321,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $temparray['preorder'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getBackorders();
                     $temparray['instock'] = $_product->stock_item->is_in_stock;
                     $temparray['typeid'] = 'configurable';
-                    // for insale
+                    // for insale 
+                    $temparray['pre_order_product'] = $_product->getAttributeText('pre_order_product');
+
                     $temparray['insale'] = $_product->getAttributeText('insale');
                     $temparray['confPrice'] = '';
                     if($temparray['insale'] == 'Yes')
@@ -1923,7 +1925,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if(isset($item['insale']) && $item['insale'] == 'Yes')
             {
-                if($item['pre_order_product'] == 'Yes'){
+               // if($item['pre_order_product'] == 'Yes')
+			 if(isset($item['pre_order_product']) && $item['pre_order_product'] == 'Yes')
+			   {
 			$html .='<span class="size">This item has been pre-ordered and will be shipped within weeks.</span>';
 			} else {
 			   $html .='<span class="size">All sales are final.</span>';
