@@ -318,7 +318,7 @@ if($this->getRequest()->getParam('hidden')){
 
 
 
-        if($_category->getId() != 43){
+        //if($_category->getId() != 43) {
             if($showSizeFilter){
                 /************** size filter ***********************/
                 if(isset($allSkuSizes) && count($allSkuSizes)>0)
@@ -389,7 +389,9 @@ if($this->getRequest()->getParam('hidden')){
                 <script src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>ys-new-design/size-filter-new.js"></script>
 
                 <!-- ********************************* checkbox filter ********************** -->
-            <?php } } ?>
+            <?php } 
+			
+			//} ?>
 
         <?php
         /*
