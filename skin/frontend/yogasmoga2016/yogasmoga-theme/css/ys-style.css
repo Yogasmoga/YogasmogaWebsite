@@ -4260,8 +4260,7 @@ ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(3), ul.main-menu 
   margin-top: 20px;
 }
 ul.main-menu li ul.sub-menu > li > ul:first-child li:nth-child(3) a {
-  font-family: AvantGardeGothicITCW01X;
-  font-weight: bold;
+  font: 11px/11px avantgardegothicitcw01d;
 }
 
 
