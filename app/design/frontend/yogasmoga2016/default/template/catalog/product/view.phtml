@@ -459,7 +459,7 @@ if (!$bundledProduct) {
 
             $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
             $temp1 .= "|" . $backOrderCheck;
-			$showPre = $_childProduct->getAttributeText('pre_order_product');// fahim
+			$showPre = $_childProduct->getAttributeText('pre_order_product');// fahim ravi
 			$showpremsg = $_helper->productAttribute($_childProduct, $_childProduct->getPreOrderMsg(), 'pre_order_msg');//fahim.
 			$temp1 .= "|" . $showPre . "|" .$showpremsg;
             if (isset($arProductColorInfo[$colorAttributeValue]["sizes"])) {
@@ -1220,10 +1220,32 @@ if (!$bundledProduct) {
                                                             </div>
                                                             <div  class="product-price-dv" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                                                 <span itemprop="priceCurrency" content="USD"></span>
-                                                                <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>
-										 <span class="was-amount no-display"
-                                               style="text-transform: uppercase;"><?php echo 'was $' . $productPrice; ?></span>
-                                                            </div>
+
+                        <?php 
+						
+						//echo 'ravi123'.$showPre = $_childProduct->getAttributeText('pre_order_product');
+						if(isset($showPre) && $showPre == 'Yes' ) {
+						?>
+						<style>
+						.was-amount {
+						  font: 14px/20px graphikregular;
+						  letter-spacing: 0.3px;display: block;
+						  text-transform: capitalize !important;color: unset;
+						}
+						</style>
+
+						<span style="font-size: 14px;width: 100%;">PRE-ORDER SPECIAL PRICE 
+					   <span style="display: -moz-inline-stack;" class="productcost amount" itemprop="price"> <?php echo $productPrice; ?></span></span>
+						<span class="was-amount no-display">Regular Price <?php echo '$' . $productPrice; ?></span>
+
+                       <?php } else { ?>
+
+        <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>
+		<span class="was-amount no-display" style="text-transform: uppercase;"><?php echo 'was $' . $productPrice; ?></span>
+
+		           <?php } ?>
+
+                       </div>
 
 
                                                             <div class='part-of-gift-set' style="display: none;"></div>
@@ -1504,7 +1526,11 @@ if (!$bundledProduct) {
                                                 ?>" /> -->
                                             </div>
 											<!--fahim-->
-											<?php if($urlKey ==strtolower('haveheart')):?>
+				     <?php 
+					 //echo 'ravi123'.$showPre = $_childProduct->getAttributeText('pre_order_product');
+						if(isset($showPre) && $showPre == 'Yes' ) :
+						?>
+											<?php //if($urlKey ==strtolower('haveheart')):?>
 												
 												<div class="haveheart-description">
 												<div class="pre-order-details">This item is part of our <a class="haveheart-anchor" href="<?php echo Mage::getModel('catalog/category')->load('136')->getUrl()?>">HAVEHEART</a> Collection.<br/> Don't Just Make a Purchase. Make a Difference.</div>
@@ -1570,8 +1596,14 @@ if (!$bundledProduct) {
                                                 <?php endif; ?>
                                             <?php $pscCollection = $finalId; endforeach; ?>
                                         </p><?php */?>
+
+
+										 <?php if(isset($showPre) && $showPre != 'Yes' ) { ?>
+							
                                             <p class="insale dnone" style="color: #c03; margin-left: 4px;">
                                                 Final Sale.</p>
+
+												<?php } ?>
                                             <p class="freeshipptext"><em>Free air shipping to US and Canada</em></p>
 
 
