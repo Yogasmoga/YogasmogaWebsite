@@ -868,7 +868,7 @@ function changeColor(clr) {
         smallimagehtml = '<tr>';
 
         for (i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++) {
-            smallimagehtml = smallimagehtml + "<td fahim-data='"+ _productcolorinfo[colorindex].smallimages[i][3] +"' bigimageurl='" + _productcolorinfo[colorindex].bigimages[i][0] + "' zoomimageurl='" + _productcolorinfo[colorindex].zoomimages[i][0] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i][0] + "' alt='" + _productcolorinfo[colorindex].smallimages[i][1] + "'  title='" + _productcolorinfo[colorindex].smallimages[i][2] + "'></td>";
+            smallimagehtml = smallimagehtml + "<td fahim-data='" + _productcolorinfo[colorindex].smallimages[i][3] + "' bigimageurl='" + _productcolorinfo[colorindex].bigimages[i][0] + "' zoomimageurl='" + _productcolorinfo[colorindex].zoomimages[i][0] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i][0] + "' alt='" + _productcolorinfo[colorindex].smallimages[i][1] + "'  title='" + _productcolorinfo[colorindex].smallimages[i][2] + "'></td>";
         }
         smallimagehtml = smallimagehtml + "</tr>";
         jQuery("table.productimagecontainer").hide();
