@@ -3247,7 +3247,7 @@ iframe[name="google_conversion_frame"] {
 #signup.mc-signup small{font-size:13px; letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px;display:block;}
 #signup.mc-signup input{height:40px;border:0 none;padding:0 5px;box-sizing:border-box;}
 #signup.mc-signup input[type="text"]{margin-bottom:5px;}
-#signup.mc-signup input[type="submit"]{background:#ccc; color:#fff!important;font-family:avantgardegothicitcw01d;cursor:pointer;text-transform:uppercase;}
+#signup.mc-signup input[type="submit"]{background:#32CD32; color:#fff!important;font-family:avantgardegothicitcw01d;cursor:pointer;text-transform:uppercase;}
 #signup.mc-signup .signup-content{padding:0!important;}
 #signup.mc-signup .gender_p{ padding:15px 0;}
 #signup.mc-signup .signup-thankyou{display:none;padding:0!important;}
@@ -3307,8 +3307,9 @@ iframe[name="google_conversion_frame"] {
 #signup.mage-signup #sign_up_box #popup-register{width:100%; max-width:496px; left:50%; top:50%; bottom:auto; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);}
 #signup.mage-signup .gender_p label{float:right; padding-right:0;margin-left:39px; font-size:16px!important; font-family:gothamBook;}
 #signup.mage-signup .gender_p label .gender_radio{background:#fff;float:left;display:inline-block; width:24px; height:24px; line-height:24px; color:transparent; margin-right:16px;top:1px;}
-#signup.mc-signup .gender_p label{float:right; padding-right:0;margin-left:39px; font-size:16px!important; font-family:gothamBook;}
-#signup.mc-signup .gender_p label .gender_radio{background:#fff;float:left;display:inline-block; width:24px; height:24px; line-height:24px; color:transparent; margin-right:16px;top:1px;}
+#signup.mc-signup .gender_p label{float:right; padding-right:0;margin-left:39px; font-size:12px!important; font-family:gothamBook;}
+#signup.mc-signup .gender_p label .gender_radio{background:#fff;float:left;display:inline-block; width:20px; height:20px; line-height:20px; color:transparent; margin-right:16px;top:1px;}
+#signup.mc-signup .close-text-anchor-link{}
 #signup.mc-signup  .gender_p span.selected{background:#ae8536;border:1px solid #ae8536;}
 #signup.mage-signup .gender_tr .gender_p span.selected{background:#ae8536;border:1px solid #ae8536;}
 #signup.mage-signup button#signup-button{background:#1eaa18; width:100%;height:42px; line-height:42px; padding:0; font-family:gothamBold; font-size:13px; text-transform:uppercase;}
