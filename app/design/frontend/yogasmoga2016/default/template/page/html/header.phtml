@@ -406,8 +406,9 @@ if($currentUrl != $checkoutpage){
 				 </div> -->
                  <?php  //else:  ?>
 				<div class="new-orange-banner orange-banner spread-popup">
-				SPREAD THE SMOGI LOVE. YOU GET 30% OFF. YOUR FRIENDS GET 30% OFF.
-				<!-- Snow or Shine use code SNOWSHINE and receive 40% off today only. -->
+				<a style="color:#fff;" href="http://www.refinery29.com/sweeps/ethically-made-products?utm_medium=YogasmogaBanner&utm_source=site&utm_campaign=YogasmogaGood17" target="_blank">ENTER NOW FOR A CHANCE TO WIN REFINERY29 + YOGASMOGA + GOOD SWEEPSTAKE</a>
+				<!--SPREAD THE SMOGI LOVE. YOU GET 30% OFF. YOUR FRIENDS GET 30% OFF.
+				 Snow or Shine use code SNOWSHINE and receive 40% off today only. -->
 				
 				</div>
 				<?php  //endif;  ?>
@@ -429,13 +430,10 @@ if($currentUrl != $checkoutpage){
             <div style="float:right;" class="right-bar-menu">
                 <div  class="right-top-block r-align">
                     <ul class="tr-menu">
-
 						<li><a class="spread-heart" style="display:block" href="javascript:void(0)"><img src="<?php echo $this->getSkinUrl('images/spread-heart.png')?>"/></a></li>
                         <li>
-
-                            <?php
-
-                            $islogedinuser = false;
+							<?php
+							$islogedinuser = false;
                             if (Mage::getSingleton('customer/session')->isLoggedIn()) {
 
                                 $islogedinuser = true;
