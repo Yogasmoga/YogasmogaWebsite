@@ -1221,8 +1221,10 @@ if (!$bundledProduct) {
                                                             <?php endforeach; ?>
 														<?php else:?>
 														<?php 
-														$corset =  $_helper->productAttribute($_product, $_product->getCoreSetWarm(), 'core_set_warm');
-														echo $corset;?>
+														$corset =  $_helper->productAttribute($_product, $_product->getCoreSetWarm(), 'core_set_warm');?>
+															<?php if($corset){?>
+																<a class="csp-link" href="javascript:void(0);"><?php echo $corset;?></a>
+															<?php }?>	
 														<?php endif;?>		
                                                         </div>
                                                         <div class="prdname">
