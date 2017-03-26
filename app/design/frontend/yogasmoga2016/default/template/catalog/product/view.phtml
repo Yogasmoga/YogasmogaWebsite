@@ -1230,7 +1230,7 @@ if (!$bundledProduct) {
                                                                 <h1><?php echo html_entity_decode($productName); ?></h1>
                                                                 <h4 style="display:none" itemprop="name"><?php echo html_entity_decode($productName).$colorname.' | YOGASMOGA.COM'; ?></h4>
                                                             </div>
-                                                            <div  class="product-price-dv" <?php if($_product->getId() == 4766 && $_product->getId() == 4791){echo "style='margin-bottom:0'";}?> itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                                            <div  class="product-price-dv" <?php if($_product->getId() == 4766 || $_product->getId() == 4791){echo "style='margin-bottom:0!important'";}?> itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                                                 <span itemprop="priceCurrency" content="USD"></span>
 
                         <?php 
