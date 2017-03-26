@@ -263,6 +263,7 @@ if($this->getRequest()->getParam('hidden')){
                 </div>
                 <div class="caption">
                     <?php
+					$_helper = $this->helper('catalog/output');
 					$corset =  $_helper->productAttribute($confProduct, $confProduct->getCoreSetWarm(), 'core_set_warm');
                     if ($showInSaleProduct && $simpleproductarr['insale'] == 'Yes') {
                         ?>
