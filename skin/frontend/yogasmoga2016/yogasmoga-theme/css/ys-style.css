@@ -4817,6 +4817,10 @@ table.productdetailtable div.outofstockitem{
 .shop-col-desc.have-text p{color:#666; margin:0; text-transform:initial;}
 .shop-col-desc.have-text p.seperat{padding:30px 0 35px 0;}
 .shop-col-desc.have-text p.na-subhead span{ font-weight:bold}
+.category-haveheart .productCont .caption .price-spn{ display:inline-block}
+.category-haveheart .productCont .caption .price-spn .regular-price{ float:left; margin-right:5px;line-height:19px;color:#999; text-decoration:line-through;}
+
+
 .sharingDialog.ui-corner-all{border-radius:100%!important;}
 
 /*
