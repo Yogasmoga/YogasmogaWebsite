@@ -1246,9 +1246,11 @@ if (!$bundledProduct) {
 						}
 						</style>
 
-						<span style="font-size: 14px;width: 100%;">PRE-ORDER SPECIAL PRICE 
-					   <span style="display: -moz-inline-stack;" class="productcost amount" itemprop="price"> <?php echo $productPrice; ?></span></span>
-						<span class="was-amount no-display">Regular Price <?php echo '$' . $productPrice; ?></span>
+						<span style="font-size: 14px;width: 100%;"> 
+						<span style="display: -moz-inline-stack;" class="productcost amount" itemprop="price"> <?php echo $productPrice; ?></span>
+					   <span>(<?php echo '$' . $productPrice; ?>)</span>
+					   </span>
+						<!--<span class="was-amount no-display">Regular Price </span>-->
 
                        <?php } else { ?>
 
@@ -1266,7 +1268,8 @@ if (!$bundledProduct) {
                                                         <!-- heading -->
 
                                                         <!-- selectColor -->
-                                                        <div class="box-seprtr">
+														<?php if($_product->getId() !=4766 || $_product->getId() !=4791):?>
+                                                        <div class="box-seprtr" >
                                                             <!--<div class="blck-head-sml"><span>Step 1:</span> choose your color</div>-->
 
                                                             <div id="colorcontainer">
@@ -1338,6 +1341,80 @@ if (!$bundledProduct) {
                                                             </div>
                                                             <div style="clear:both;"></div>
                                                         </div>
+														<?php else:?>
+														<div class="box-seprtr" style="display:none;">
+                                                            <!--<div class="blck-head-sml"><span>Step 1:</span> choose your color</div>-->
+
+                                                            <div id="colorcontainer">
+                                                                <?php
+                                                                $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
+                                                                $first = true;
+
+                                                                $colorCount = 0;
+                                                                for ($incr = 0; $incr < 2; $incr++) {
+                                                                    foreach ($arProductColorInfo as $key => $colorInfo) {
+                                                                        if ($incr == 0) {
+                                                                            if ($colorInfo['value'] != $primarycolorcode)
+                                                                                continue;
+                                                                        } else {
+                                                                            if ($colorInfo['value'] == $primarycolorcode)
+                                                                                continue;
+                                                                        }
+                                                                        $colorCount++;
+                                                                        ?>
+                                                                        <div>
+                                                                            <table  color="<?php echo $key; ?>"
+                                                                                   value="<?php echo $colorInfo['value']; ?>">
+                                                                                <tr <?php if($colorInfo['value'] == 106 || $colorInfo['value'] == 306 || $colorInfo['value'] == 300):?>class="light-color"<?php endif?>>
+                                                                                    <?php
+
+                                                                                    foreach ($colorInfo['hex'] as $hex) {
+                                                                                        if (count($colorInfo['hex']) == 1) {
+
+                                                                                            ?>
+                                                                                            <td style="border-color: transparent !important; background-color: <?php echo $hex ?>;">
+                                                                                                <div></div>
+                                                                                            </td>
+                                                                                            <?php
+                                                                                        } else {
+                                                                                            ?>
+                                                                                            <td style="border-color: <?php echo $hex ?>;">
+                                                                                                <div></div>
+                                                                                            </td>
+                                                                                            <?php
+                                                                                        }
+                                                                                    }
+                                                                                    ?>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td colspan="<?php echo count($colorInfo['hex']); ?>" <?php if ($first) {
+                                                                                        echo "class='tdselectedcolor'";
+                                                                                        $first = false;
+                                                                                    } ?>>
+
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </div>
+                                                                        <?php
+                                                                        //if(($colorcount % 5) == 0)
+                                                                        //echo "<br/>";
+                                                                    }
+                                                                }
+
+                                                                ?>
+                                                            </div>
+                                                            <div class="blck-head-sml">
+                                                                <table class="selectedcolor">
+                                                                    <tr>
+                                                                        <!--<td><span>Color:</span></td>-->
+                                                                        <td class="selectedcolortext" itemprop="color"></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div style="clear:both;"></div>
+                                                        </div>
+														<?php endif;?>
                                                         <!-- selectColor -->
 
                                                         <!-- selectSize -->
