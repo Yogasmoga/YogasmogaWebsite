@@ -1232,7 +1232,7 @@ if (!$bundledProduct) {
                                                                 <h1><?php echo html_entity_decode($productName); ?></h1>
                                                                 <h4 style="display:none" itemprop="name"><?php echo html_entity_decode($productName).$colorname.' | YOGASMOGA.COM'; ?></h4>
                                                             </div>
-                                                            <div  class="product-price-dv" <?php if($_product->getId() == 4766 || $_product->getId() == 4791){echo "style='margin-bottom:0!important'";}?> itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <div  class="product-price-dv" <?php if($_product->getId() == 4766 || $_product->getId() == 4791){echo "style='margin-bottom:0!important'";}?> itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                                                 <span itemprop="priceCurrency" content="USD"></span>
 
                         <?php 
@@ -1250,7 +1250,7 @@ if (!$bundledProduct) {
 
 						<span class="price-block"> 
 						<span style="display: -moz-inline-stack;" class="productcost amount coreset-amount" itemprop="price"> <?php echo $productPrice; ?></span>
-					   <span class="conf-price">(<?php echo '$' . $productPrice. " VALUE"; ?>)</span>
+					   <span class="was-amount no-display conf-price">(<?php echo '$' . $productPrice. " VALUE"; ?>)</span>
 					   </span>
 						<!--<span class="was-amount no-display">Regular Price </span>-->
 
