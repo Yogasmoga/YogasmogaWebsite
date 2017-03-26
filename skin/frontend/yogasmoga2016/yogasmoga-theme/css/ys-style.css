@@ -4824,8 +4824,8 @@ table.productdetailtable div.outofstockitem{
 .productdetailtable .csp{font-weight:bold; font-family:avantgardegothicitcw01d; padding-bottom:6px;}
 
 .price-block {font-size: 14px;width: 100%;}
-.price-block .amount.coreset-amount{display:inline-block;}
-.price-block .conf-price{font-weight:bold}
+.price-block .amount.coreset-amount{display:inline-block; font-size:18px;}
+.price-block .conf-price{font-weight:bold;font-size:12px;}
 
 .sharingDialog.ui-corner-all{border-radius:100%!important;}
 /*
