@@ -1211,6 +1211,7 @@ if (!$bundledProduct) {
                                                         $finalIds = array_intersect($catIds, $psc);
                                                         ?>
                                                         <div class="csp-name">
+														<?php if($finalIds):?>
                                                             <?php foreach($finalIds as $rangeId):
                                                                 $rangeName = Mage::getModel('catalog/category')->load($rangeId);
                                                                 ?>
@@ -1218,6 +1219,11 @@ if (!$bundledProduct) {
                                                                 <a class="csp-link <?php echo strtolower($rangeName->getName());?>" href="#"><?php echo $rangeName->getName();?></a>
                                                             <?php  break; endif; ?>
                                                             <?php endforeach; ?>
+														<?php else:?>
+														<?php 
+														$corset =  $_helper->productAttribute($_product, $_product->getCoreSetWarm(), 'core_set_warm');
+														echo $corset;?>
+														<?php endif;?>		
                                                         </div>
                                                         <div class="prdname">
                                                             <div class="productname">
