@@ -63,6 +63,7 @@ function prodnewdetail(){
         'top':imgrowh,
         'opacity':1
     });*/
+	
 }
 function prodnewdetailresize(){
 
@@ -125,9 +126,7 @@ function getUpsellProduct(id,colorCode){
 
 jQuery(document).ready(function ($) {
 
-
-
-    if (_sizesuperattribute == false)
+ if (_sizesuperattribute == false)
         jQuery(".qty").empty().html("Step 2");
     $(document).keydown(function (e) {
         var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
@@ -177,7 +176,7 @@ jQuery(document).ready(function ($) {
             }
         }, 1000);
         /*---New design js end--*/
-
+	
     });
 
     $("table.smallimagecontiner td:not(.selectedimage)").live("click", function () {
@@ -337,6 +336,7 @@ jQuery(document).ready(function ($) {
 //        //$("div#preorderinfo").hide();
 //        $("div#preorderinfo").fadeOut('fast');
 //    });
+jQuery(".productdetailtable .box-seprtr.coreset").css("display","none");
 });
 
 function InitializeProductQty() {
