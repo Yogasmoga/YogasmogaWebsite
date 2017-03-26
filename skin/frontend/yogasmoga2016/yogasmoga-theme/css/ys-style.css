@@ -4803,7 +4803,7 @@ table.productdetailtable div.outofstockitem{
 .csp-block .csp-inner-block.have-banner-text{bottom:4%;}
 .csp-block .range-seal.left{left:3%}
 .csp-block .csp-inner-block.have-banner-text > span{display:block;margin:10px 0 10px 0;}
-.csp-block .csp-inner-block.have-banner-text .csp-info{ text-transform:uppercase; font-weight:bold; font-size:12px;}
+.csp-block .csp-inner-block.have-banner-text .csp-info{ text-transform:uppercase; font-weight:bold; font-size:12px; line-height:18px;}
 .csp-block .csp-inner-block.have-banner-text .csp-info.pre-order-text{margin:12px 0 0 0}
 .shop-col-desc.have-text{ margin-top:-4%; position:relative;z-index:15;}
 .shop-col-desc.have-text h2{

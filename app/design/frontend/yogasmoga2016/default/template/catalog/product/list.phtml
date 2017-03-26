@@ -278,8 +278,10 @@ if($this->getRequest()->getParam('hidden')){
 							?>
 
 						<span class="price-spn" style="color: #555 !important;">
-						<!-- <cite class="was-amount" style="font-style:normal;"> --> PRE-ORDER SPECIAL PRICE $<?php echo round($simpleproductarr['price'], 2); ?><?php //echo round($confProduct->getPrice(), 2); ?><!-- </cite> -->
-						<br/>Regular Price $<?php echo round($confProduct->getPrice(), 2); ?>
+						<!-- <cite class="was-amount" style="font-style:normal;"> -->
+						  <span class="regular-price">$<?php echo round($confProduct->getPrice(), 2); ?></span>  $<?php echo round($simpleproductarr['price'], 2); ?> PRE-ORDER
+						  <?php //echo round($confProduct->getPrice(), 2); ?><!-- </cite> -->
+						
                         </span>
                         <?php } else { ?>
                         <span class="price-spn">$<?php echo round($simpleproductarr['price'], 2); ?><cite class="was-amount" style="font-style:normal;"> was $<?php echo round($confProduct->getPrice(), 2); ?></cite></span>
