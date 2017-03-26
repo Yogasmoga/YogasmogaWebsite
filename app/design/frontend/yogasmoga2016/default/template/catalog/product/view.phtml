@@ -1211,7 +1211,6 @@ if (!$bundledProduct) {
                                                         $finalIds = array_intersect($catIds, $psc);
                                                         ?>
                                                         <div class="csp-name">
-														<?php if($finalIds):?>
                                                             <?php foreach($finalIds as $rangeId):
                                                                 $rangeName = Mage::getModel('catalog/category')->load($rangeId);
                                                                 ?>
@@ -1219,25 +1218,18 @@ if (!$bundledProduct) {
                                                                 <a class="csp-link <?php echo strtolower($rangeName->getName());?>" href="#"><?php echo $rangeName->getName();?></a>
                                                             <?php  break; endif; ?>
                                                             <?php endforeach; ?>
-														<?php else:?>
-														<?php 
-														$corset =  $_helper->productAttribute($_product, $_product->getCoreSetWarm(), 'core_set_warm');?>
-															<?php if($corset){?>
-																<a class="csp-link" href="javascript:void(0);"><?php echo $corset;?></a>
-															<?php }?>	
-														<?php endif;?>		
                                                         </div>
                                                         <div class="prdname">
                                                             <div class="productname">
                                                                 <h1><?php echo html_entity_decode($productName); ?></h1>
                                                                 <h4 style="display:none" itemprop="name"><?php echo html_entity_decode($productName).$colorname.' | YOGASMOGA.COM'; ?></h4>
                                                             </div>
-                <div  class="product-price-dv" <?php if($_product->getId() == 4766 || $_product->getId() == 4791){echo "style='margin-bottom:0!important'";}?> itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                                            <div  class="product-price-dv" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                                                 <span itemprop="priceCurrency" content="USD"></span>
 
                         <?php 
 						
-						echo 'ravi123'.$showPre = $_childProduct->getAttributeText('pre_order_product');
+						//echo 'ravi123'.$showPre = $_childProduct->getAttributeText('pre_order_product');
 						if(isset($showPre) && $showPre == 'Yes' ) {
 						?>
 						<style>
@@ -1248,11 +1240,9 @@ if (!$bundledProduct) {
 						}
 						</style>
 
-						<span class="price-block"> 
-						<span style="display: -moz-inline-stack;" class="productcost amount coreset-amount" itemprop="price"> <?php echo $productPrice; ?></span>
-					   <span class="was-amount no-display conf-price">(<?php echo '$' . $productPrice. " VALUE"; ?>)</span>
-					   </span>
-						<!--<span class="was-amount no-display">Regular Price </span>-->
+						<span style="font-size: 14px;width: 100%;">PRE-ORDER SPECIAL PRICE 
+					   <span style="display: -moz-inline-stack;" class="productcost amount" itemprop="price"> <?php echo $productPrice; ?></span></span>
+						<span class="was-amount no-display">Regular Price <?php echo '$' . $productPrice; ?></span>
 
                        <?php } else { ?>
 
@@ -1270,8 +1260,7 @@ if (!$bundledProduct) {
                                                         <!-- heading -->
 
                                                         <!-- selectColor -->
-														<?php if($_product->getId() !=4766 && $_product->getId() !=4791):?>
-                                                        <div class="box-seprtr" >
+                                                        <div class="box-seprtr">
                                                             <!--<div class="blck-head-sml"><span>Step 1:</span> choose your color</div>-->
 
                                                             <div id="colorcontainer">
@@ -1343,80 +1332,6 @@ if (!$bundledProduct) {
                                                             </div>
                                                             <div style="clear:both;"></div>
                                                         </div>
-														<?php else:?>
-														<div class="box-seprtr coreset" >
-                                                            <!--<div class="blck-head-sml"><span>Step 1:</span> choose your color</div>-->
-
-                                                            <div id="colorcontainer">
-                                                                <?php
-                                                                $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
-                                                                $first = true;
-
-                                                                $colorCount = 0;
-                                                                for ($incr = 0; $incr < 2; $incr++) {
-                                                                    foreach ($arProductColorInfo as $key => $colorInfo) {
-                                                                        if ($incr == 0) {
-                                                                            if ($colorInfo['value'] != $primarycolorcode)
-                                                                                continue;
-                                                                        } else {
-                                                                            if ($colorInfo['value'] == $primarycolorcode)
-                                                                                continue;
-                                                                        }
-                                                                        $colorCount++;
-                                                                        ?>
-                                                                        <div>
-                                                                            <table  color="<?php echo $key; ?>"
-                                                                                   value="<?php echo $colorInfo['value']; ?>">
-                                                                                <tr <?php if($colorInfo['value'] == 106 || $colorInfo['value'] == 306 || $colorInfo['value'] == 300):?>class="light-color"<?php endif?>>
-                                                                                    <?php
-
-                                                                                    foreach ($colorInfo['hex'] as $hex) {
-                                                                                        if (count($colorInfo['hex']) == 1) {
-
-                                                                                            ?>
-                                                                                            <td style="border-color: transparent !important; background-color: <?php echo $hex ?>;">
-                                                                                                <div></div>
-                                                                                            </td>
-                                                                                            <?php
-                                                                                        } else {
-                                                                                            ?>
-                                                                                            <td style="border-color: <?php echo $hex ?>;">
-                                                                                                <div></div>
-                                                                                            </td>
-                                                                                            <?php
-                                                                                        }
-                                                                                    }
-                                                                                    ?>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td colspan="<?php echo count($colorInfo['hex']); ?>" <?php if ($first) {
-                                                                                        echo "class='tdselectedcolor'";
-                                                                                        $first = false;
-                                                                                    } ?>>
-
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </table>
-                                                                        </div>
-                                                                        <?php
-                                                                        //if(($colorcount % 5) == 0)
-                                                                        //echo "<br/>";
-                                                                    }
-                                                                }
-
-                                                                ?>
-                                                            </div>
-                                                            <div class="blck-head-sml">
-                                                                <table class="selectedcolor">
-                                                                    <tr>
-                                                                        <!--<td><span>Color:</span></td>-->
-                                                                        <td class="selectedcolortext" itemprop="color"></td>
-                                                                    </tr>
-                                                                </table>
-                                                            </div>
-                                                            <div style="clear:both;"></div>
-                                                        </div>
-														<?php endif;?>
                                                         <!-- selectColor -->
 
                                                         <!-- selectSize -->
