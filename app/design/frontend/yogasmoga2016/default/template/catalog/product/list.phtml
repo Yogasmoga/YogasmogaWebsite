@@ -263,11 +263,22 @@ if($this->getRequest()->getParam('hidden')){
                 </div>
                 <div class="caption">
                     <?php
+					$corset =  $_helper->productAttribute($confProduct, $confProduct->getCoreSetWarm(), 'core_set_warm');
                     if ($showInSaleProduct && $simpleproductarr['insale'] == 'Yes') {
                         ?>
-                        <a class="caption-title"
+						<?php if($confProduct->getId() !=4766 && $confProduct->getId() !=4791):?>
+							<a class="caption-title"
                            href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName(); ?></a>
-                        <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+							<a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
+							
+						<?php else: ?>
+							<a class="caption-title"
+                           href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $corset; ?></a>
+							<a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $confProduct->getName();?></span></a>
+						<?php endif;?>
+							
+							
+							
                         <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>">
 
 						<?php
