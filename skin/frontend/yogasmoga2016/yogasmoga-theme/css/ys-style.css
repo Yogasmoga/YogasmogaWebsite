@@ -4593,7 +4593,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 .common-listing .header-banner .header-banner-block,.catalog-product-view .header-banner .header-banner-block{border-bottom:1px solid #777777;}
 .category-range.catalog-category-view.common-listing  .header-banner .header-banner-block{border-bottom:1px solid #fff;}
 .catalog-category-view.common-listing  .showhide  .header-banner .header-banner-block{border-bottom:1px solid #777;}
-.categorypath-women-ranges-core.catalog-category-view.common-listing  .header-banner .header-banner-block,.categorypath-men-ranges-core.catalog-category-view.common-listing  .header-banner .header-banner-block{border-bottom:1px solid #777777;}
+.categorypath-women-ranges-core.catalog-category-view.common-listing  .header-banner .header-banner-block,.categorypath-men-ranges-core.catalog-category-view.common-listing  .header-banner .header-banner-block{border-bottom:none!important;}
 
 .bubbleimg:hover img{animation:bubbleicon 0.2s linear;-webkit-animation:bubbleicon 0.2s linear;}
 #globalheader.header{ padding:0 30px;}
@@ -4840,6 +4840,7 @@ table.productdetailtable div.outofstockitem{
 .price-block .amount.coreset-amount{display:inline-block; font-size:18px;color:#555!important;}
 .price-block .conf-price{font-weight:bold;font-size:12px;}
 header-banner .header-banner-block{border-bottom:none!important;}
+
 
 
 
