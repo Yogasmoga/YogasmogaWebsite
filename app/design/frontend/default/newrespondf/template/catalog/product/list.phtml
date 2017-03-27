@@ -121,17 +121,14 @@ if (isset($page) && $page == '11') {
 			<div class="category-box">
                 <a href="javascript:void(0)">
                     <img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$cat->getThumbnail()?>" alt="">
-                    <span></span>
                 </a>
 			</div>
 			<!--text-->
 			<div class="shop-col-desc have-text">
 					<?php /* ?><div class="new-arrival-heading"><span><img alt="" src="<?php echo $this->getSkinUrl('images/catalog/product/heart-icon.png')?>"/></span></div>
 							<h2>HAVEHEART</h2><?php */ ?>
-                            <p class="na-subhead">1. You Pre-Order a high quality product.</p>
-							<p class="na-subhead">2. We manufacture your products&mdash;giving our US factories a constant flow of work.</p>
-							<p class="na-subhead">3. Your products ship out within weeks.</p>
-					<p class="na-subhead seperat">Support Our US Factories—Give back for the love & care they put into the products you purchase.</p>
+							<?php echo $_category->getMobileDescription(); ?>
+                            
 			</div>
 			<?php endif?>
 	
@@ -511,8 +508,11 @@ if (isset($page) && $page == '11') {
                         <div class="caption">
 
                             <?php
+							$_helper = $this->helper('catalog/output');
+							$corset =  $_helper->productAttribute($confProduct, $confProduct->getCoreSetWarm(), 'core_set_warm');
                             if ($showInSaleProduct && $childProduct['insale'] == 'Yes') {
                                 ?>
+								<?php if($confProduct->getId() !=4766 && $confProduct->getId() !=4791):?>
                                 <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl; ?>">
                                     <?php echo $confProduct->getName() ?>
                                 </a>
@@ -521,13 +521,21 @@ if (isset($page) && $page == '11') {
                                 <!--                        <a-->
                                 <!--                            href="--><?php //echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><!----><?php //echo $hiddenUrl;?><!--"> --><?php //echo $clrinfo[$childProduct['color']] ?><!--</a>-->
                                 <!--                        <span style="color:#ff5f00;"> $--><?php //echo round($childProduct['price'], 2); ?><!--</span>-->
-                                <p>
+									<p>
                                     <span class="prd-color"><?php echo $clrinfo[$childProduct['color']] ?></span>
+									<?php else:?>
+										<a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl; ?>">
+										<?php echo $corset ?>
+										</a>
+									<p>
+                                    <span class="prd-color"><?php echo $confProduct->getName() ?></span>
+									<?php endif?>
                                     <?php $categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
 									if($categoryId =='136') {
 									?>
-									<span class="prd-price">PRE-ORDER PRICE $<?php echo round($childProduct['price'], 2); ?></span>
-            <span class="prd-price" style="text-transform: capitalize;display: block;">Regular Price $<?php echo round($confProduct->getPrice(), 2); ?></span>
+									<span class="prd-price" style="text-transform: capitalize;display: inline-block;color:#999;margin-right:5px; text-decoration:line-through"> $<?php echo round($confProduct->getPrice(), 2); ?></span>
+									<span class="prd-price">$<?php echo round($childProduct['price'], 2); ?> Pre-Order</span>
+            
 									<?php } else { ?>
 
                                      <span class="prd-price" style="color:#ff5f00;"> $<?php echo round($childProduct['price'], 2); ?>

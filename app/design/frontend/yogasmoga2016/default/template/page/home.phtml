@@ -94,14 +94,20 @@
             <h1 style="display:none"><?php echo $this->__('YOGASMOGA: Yoga Clothes, Running, Spin and Athletic Workout Apparel')?></h1>
 
             <!-- sliderBanner -->
-
-            <div   class="home-banner" style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/desktop-homepage-banner-v6.jpg') center center; background-size:cover;opacity:1;cursor:pointer;position:relative;"  onclick="window.open('http://www.refinery29.com/sweeps/ethically-made-products?utm_medium=YogasmogaBanner&utm_source=site&utm_campaign=YogasmogaGood17', '_blank');"   >
-				<!--<div class="upper-text" >
-				<div class="cspbldtxt">The Zelos Legging - Our newest Multifunctional Legging <br/>- From Gym to Life</div>
-				</div>-->
-			</div>	
+			<div   class="home-banner" style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/CoreSets-Desktop.jpg') center center; background-size:cover;opacity:1;cursor:pointer;position:relative;"  onclick="window.open('/haveheart', '_blank');"   >
+			</div>
 			
-            <div class="clear-fix"></div>
+			<?php if(false):?>
+			<div class="flexslider home-slider" id="bucket1_slider">
+                <ul class="slides">
+					<li class="slider_li" title="Our Ethics" rel="http://www.refinery29.com/sweeps/ethically-made-products?utm_medium=YogasmogaBanner&utm_source=site&utm_campaign=YogasmogaGood17" moveto="http://www.refinery29.com/sweeps/ethically-made-products?utm_medium=YogasmogaBanner&utm_source=site&utm_campaign=YogasmogaGood17" style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/desktop-homepage-banner-v6.jpg') 0% 0% / cover; height: 705.527px; width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1; cursor: pointer;">
+					</li>
+					<li class="slider_li" title="Our Ethics" rel="/haveheart" style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/CoreSets-Desktop.jpg') 0% 0% / cover; height: 705.527px; width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1; cursor: pointer;">
+					</li>
+				</ul>
+			</div>
+			<?php endif?>	
+			<div class="clear-fix"></div>
             <!-- middleContainer -->
             <div class="cubix">
                 <!-- gridfull -->
