@@ -864,21 +864,19 @@ if ($lengthAvailable) {
 						<h1 style="display:none;"><?php echo html_entity_decode($productName); ?></h1>
                             <a href="javascript:void(0)"><?php echo html_entity_decode($productName); ?></a>
 
-                            <div class="blck-head-sml">
+                            <?php if(in_array('135',$catIds)):?>
+								<p>
+									<span class="productcost amount coreset-price"><?php echo $productPrice; ?></span>
+									<span class="was-amount no-display" style="text-transform: lowercase; font-size:12px; "><?php echo "(".$productPrice." VALUE)"; ?></span>
+								</p>
+							<?php else:?>
+							<div class="blck-head-sml">
                                 <table class="selectedcolor" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td class="selectedcolortext"></td>
                                     </tr>
                                 </table>
                             </div>
-
-							<?php if(in_array('135',$catIds)):?>
-								<p>
-								
-								<span class="productcost amount coreset-price"><?php echo $productPrice; ?></span>
-                                <span class="was-amount no-display" style="text-transform: lowercase; font-size:12px; "><?php echo "(".$productPrice." VALUE)"; ?></span>
-								</p>
-							<?php else:?>
 							<p><span class="productcost amount "><?php echo $productPrice; ?></span>
                                 <span class="was-amount no-display"
                                       style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
