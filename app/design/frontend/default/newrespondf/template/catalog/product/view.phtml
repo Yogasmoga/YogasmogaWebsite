@@ -871,7 +871,10 @@ if ($lengthAvailable) {
                                 <span class="was-amount no-display"
                                       style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
                             </p>
-                            <p class="insale insale-yes dnone">This Item is Final Sale.</p>
+								<?php in_array('135',$catIds):?>
+								<?php else:?>
+								<p class="insale insale-yes dnone">This Item is Final Sale.</p>
+								<?php endif;?>
                         </div>
                         <div class="social-detail">
                             <span></span>
