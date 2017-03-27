@@ -856,7 +856,7 @@ if ($lengthAvailable) {
                     <div class="prd-info">
                         <div class="prd-detail">
 						<?php $_helper = $this->helper('catalog/output');
-								$corset =  $_helper->productAttribute($confProduct, $confProduct->getCoreSetWarm(), 'core_set_warm');
+								$corset =  $_helper->productAttribute($_product, $_product->getCoreSetWarm(), 'core_set_warm');
 								if($corset):
 								?>
 								<p class="csp"><?php echo $corset;?></p>	
