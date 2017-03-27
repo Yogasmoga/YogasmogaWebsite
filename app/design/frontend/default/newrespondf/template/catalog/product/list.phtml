@@ -117,7 +117,7 @@ if (isset($page) && $page == '11') {
 
     </a>
     <div class="product-grid">
-			<?php if($_category->getId()==136):?>
+			<?php if($_category->getId()==135):?>
 			<div class="category-box">
                 <a href="javascript:void(0)">
                     <img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$cat->getThumbnail()?>" alt="">
@@ -524,7 +524,7 @@ if (isset($page) && $page == '11') {
                                 <p>
                                     <span class="prd-color"><?php echo $clrinfo[$childProduct['color']] ?></span>
                                     <?php $categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
-									if($categoryId =='136') {
+									if($categoryId =='135') {
 									?>
 									<span class="prd-price">PRE-ORDER PRICE $<?php echo round($childProduct['price'], 2); ?></span>
             <span class="prd-price" style="text-transform: capitalize;display: block;">Regular Price $<?php echo round($confProduct->getPrice(), 2); ?></span>
