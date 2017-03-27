@@ -855,6 +855,12 @@ if ($lengthAvailable) {
                 <td>
                     <div class="prd-info">
                         <div class="prd-detail">
+						<?php $_helper = $this->helper('catalog/output');
+								$corset =  $_helper->productAttribute($confProduct, $confProduct->getCoreSetWarm(), 'core_set_warm');
+								if($corset):
+								?>
+								<p class="csp"><?php echo $corset;?></p>	
+							<?php endif;?>
 						<h1 style="display:none;"><?php echo html_entity_decode($productName); ?></h1>
                             <a href="javascript:void(0)"><?php echo html_entity_decode($productName); ?></a>
 
