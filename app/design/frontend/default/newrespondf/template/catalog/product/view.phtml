@@ -866,13 +866,17 @@ if ($lengthAvailable) {
                                 </table>
                             </div>
 
-
-                            <p><span class="productcost amount "><?php echo $productPrice; ?></span>
+							<?php if(in_array('135',$catIds)):?>
+								<p>
+								
+								<span class="productcost amount coreset-price"><?php echo $productPrice; ?></span>
+                                <span class="was-amount no-display" style="text-transform: lowercase; font-size:12px; "><?php echo "(".$productPrice." VALUE)"; ?></span>
+								</p>
+							<?php else:?>
+							<p><span class="productcost amount "><?php echo $productPrice; ?></span>
                                 <span class="was-amount no-display"
                                       style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
                             </p>
-								<?php if(in_array('135',$catIds)):?>
-								<?php else:?>
 								<p class="insale insale-yes dnone">This Item is Final Sale.</p>
 								<?php endif;?>
                         </div>
