@@ -1232,13 +1232,13 @@ if (!$bundledProduct) {
                                                                 <h1><?php echo html_entity_decode($productName); ?></h1>
                                                                 <h4 style="display:none" itemprop="name"><?php echo html_entity_decode($productName).$colorname.' | YOGASMOGA.COM'; ?></h4>
                                                             </div>
-                <div  class="product-price-dv" <?php if($_product->getId() == 4766 || $_product->getId() == 4791){echo "style='margin-bottom:0!important'";}?> itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <div  class="product-price-dv" <?php if($_product->getId() == 4766 || $_product->getId() == 4729){echo "style='margin-bottom:0!important'";}?> itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                                                 <span itemprop="priceCurrency" content="USD"></span>
 
                         <?php 
 						
 						//echo 'ravi123'.$showPre = $_childProduct->getAttributeText('pre_order_product');
-						if(isset($showPre) && $showPre == 'Yes' ) {
+						if(in_array('136',$catIds)){
 						?>
 						<style>
 						.was-amount {
@@ -1270,7 +1270,7 @@ if (!$bundledProduct) {
                                                         <!-- heading -->
 
                                                         <!-- selectColor -->
-														<?php if($_product->getId() !=4766 && $_product->getId() !=4791):?>
+														<?php if($_product->getId() !=4722 || $_product->getId() !=4729):?>
                                                         <div class="box-seprtr" >
                                                             <!--<div class="blck-head-sml"><span>Step 1:</span> choose your color</div>-->
 
@@ -1688,7 +1688,7 @@ if (!$bundledProduct) {
                                         </p><?php */?>
 
 
-										 <?php if(isset($showPre) && $showPre != 'Yes' ) { ?>
+										 <?php if(!in_array('136',$catIds)){ ?>
 							
                                             <p class="insale dnone" style="color: #c03; margin-left: 4px;">
                                                 Final Sale.</p>

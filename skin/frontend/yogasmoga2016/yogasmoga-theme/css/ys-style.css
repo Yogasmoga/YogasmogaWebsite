@@ -4839,7 +4839,7 @@ table.productdetailtable div.outofstockitem{
 .price-block {font-size: 14px;width: 100%;}
 .price-block .amount.coreset-amount{display:inline-block; font-size:18px;color:#555!important;}
 .price-block .conf-price{font-weight:bold;font-size:12px;}
-
+header-banner .header-banner-block{border-bottom:none!important;}
 
 
 
