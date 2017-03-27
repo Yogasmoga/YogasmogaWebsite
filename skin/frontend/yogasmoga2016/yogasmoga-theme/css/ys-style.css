@@ -4779,6 +4779,17 @@ table.productdetailtable div.outofstockitem{
 .grey-header-bg .product-details{ background: #fff!important;}
 
 .header-banner{background:#b20000;}
+.scrolled-effect .free-shipping-txt,
+.scrolled-effect #welcome-name,
+.scrolled-effect .header-banner .orange-banner,
+.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect .tr-menu>li>a:first-child,
+.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect .tr-menu>li.signout_link>span
+{
+    color:#fff;
+}
+
+
+
 /*Home page nav color changed*/
 /*
 .cms-index-index.cms-home  .scrolled-effect .free-shipping-txt,
@@ -4828,6 +4839,9 @@ table.productdetailtable div.outofstockitem{
 .price-block {font-size: 14px;width: 100%;}
 .price-block .amount.coreset-amount{display:inline-block; font-size:18px;}
 .price-block .conf-price{font-weight:bold;font-size:12px;}
+
+
+
 
 .sharingDialog.ui-corner-all{border-radius:100%!important;}
 /*
