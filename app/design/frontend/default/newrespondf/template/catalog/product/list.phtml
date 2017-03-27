@@ -523,8 +523,9 @@ if (isset($page) && $page == '11') {
                                     <?php $categoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
 									if($categoryId =='135') {
 									?>
-									<span class="prd-price">PRE-ORDER PRICE $<?php echo round($childProduct['price'], 2); ?></span>
-            <span class="prd-price" style="text-transform: capitalize;display: block;">Regular Price $<?php echo round($confProduct->getPrice(), 2); ?></span>
+									<span class="prd-price" style="text-transform: capitalize;display: inline-block;color:#999; text-decoration:line-through"> $<?php echo round($confProduct->getPrice(), 2); ?></span>
+									<span class="prd-price">$<?php echo round($childProduct['price'], 2); ?> Pre-Order</span>
+            
 									<?php } else { ?>
 
                                      <span class="prd-price" style="color:#ff5f00;"> $<?php echo round($childProduct['price'], 2); ?>
