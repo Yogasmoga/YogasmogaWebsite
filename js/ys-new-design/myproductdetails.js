@@ -337,6 +337,8 @@ jQuery(document).ready(function ($) {
 //        //$("div#preorderinfo").hide();
 //        $("div#preorderinfo").fadeOut('fast');
 //    });
+
+jQuery(".productdetailtable .box-seprtr.coreset").css("display","none");
 });
 
 function InitializeProductQty() {
