@@ -267,7 +267,7 @@ if($this->getRequest()->getParam('hidden')){
 					$corset =  $_helper->productAttribute($confProduct, $confProduct->getCoreSetWarm(), 'core_set_warm');
                     if ($showInSaleProduct && $simpleproductarr['insale'] == 'Yes') {
                         ?>
-						<?php if($confProduct->getId() !=4766 && $confProduct->getId() !=4791):?>
+						<?php if($confProduct->getId() !=4722 && $confProduct->getId() !=4729):?>
 							<a class="caption-title"
                            href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $confProduct->getName(); ?></a>
 							<a href="<?php echo $confProduct->getProductUrl() . '?color=' . $simpleproductarr['color']; ?><?php echo $hiddenUrl;?>"><span class="color-spn"><?php echo $clrinfo[$simpleproductarr['color']]?></span></a>
