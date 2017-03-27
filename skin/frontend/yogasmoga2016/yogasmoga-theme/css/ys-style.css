@@ -4782,10 +4782,10 @@ table.productdetailtable div.outofstockitem{
 .scrolled-effect .free-shipping-txt,
 .scrolled-effect #welcome-name,
 .scrolled-effect .header-banner .orange-banner,
-.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect .tr-menu>li>a:first-child,
-.catalog-category-view.categorypath-women-ranges-premium  .scrolled-effect .tr-menu>li.signout_link>span
+.scrolled-effect .tr-menu>li>a:first-child,
+.scrolled-effect .tr-menu>li.signout_link>span
 {
-    color:#fff;
+    color:#fff!important;
 }
 
 
