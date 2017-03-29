@@ -1232,7 +1232,7 @@ if (!$bundledProduct) {
                                                                 <h1><?php echo html_entity_decode($productName); ?></h1>
                                                                 <h4 style="display:none" itemprop="name"><?php echo html_entity_decode($productName).$colorname.' | YOGASMOGA.COM'; ?></h4>
                                                             </div>
-                <div  class="product-price-dv" <?php if($_product->getId() == 4766 || $_product->getId() == 4729){echo "style='margin-bottom:0!important'";}?> itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <div  class="product-price-dv" <?php if($_product->getId() == 4722 || $_product->getId() == 4729){echo "style='margin-bottom:0!important'";}?> itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                                                 <span itemprop="priceCurrency" content="USD"></span>
 
                         <?php 
@@ -1240,21 +1240,27 @@ if (!$bundledProduct) {
 						//echo 'ravi123'.$showPre = $_childProduct->getAttributeText('pre_order_product');
 						if(in_array('136',$catIds)){
 						?>
-						<style>
+						<!--<style>
 						.was-amount {
 						  font: 14px/20px graphikregular;
 						  letter-spacing: 0.3px;display: block;
 						  text-transform: capitalize !important;color: unset;
 						}
-						</style>
-
-						<span class="price-block"> 
-						<span style="display: -moz-inline-stack;" class="productcost amount coreset-amount" itemprop="price"> <?php echo $productPrice; ?></span>
-					   <span class="conf-price">(<?php echo '$' . $productPrice. " VALUE"; ?>)</span>
-					   </span>
-						<!--<span class="was-amount no-display">Regular Price </span>-->
-
-                       <?php } else { ?>
+						</style>-->
+							<?php if($_product->getId() == 4722 || $_product->getId() == 4729):?>
+							<span class="price-block"> 
+								<span style="display: -moz-inline-stack;" class="productcost amount coreset-amount" itemprop="price"> <?php echo $productPrice; ?></span>
+								<span class="conf-price">(<?php echo '$' . $productPrice. " VALUE"; ?>)</span>
+						   </span>
+						   <?php else:?>
+						   <span class="price-block"> 
+								<span class="was-amount no-display conf-price" style="color:#999;text-decoration:line-through;display:inline-block"><?php echo '$' . $productPrice; ?></span>
+								<span style="display: -moz-inline-stack;" class="productcost amount coreset-amount" itemprop="price"> <?php echo $productPrice; ?></span>
+								<span class="pre-order-label">PRE-ORDER</span>
+						   </span>
+						   <?php endif;?>
+						
+						<?php } else { ?>
 
         <span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>
 		<span class="was-amount no-display" style="text-transform: uppercase;"><?php echo 'was $' . $productPrice; ?></span>
