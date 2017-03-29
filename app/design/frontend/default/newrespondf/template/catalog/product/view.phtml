@@ -873,10 +873,17 @@ if ($lengthAvailable) {
                             </div>
 
 							<?php if(in_array('136',$catIds)):?>
-								<p>
-								<span class="productcost amount coreset-price"><?php echo $productPrice; ?></span>
-                                <span class="was-amount no-display" style="text-transform: lowercase; font-size:12px; "><?php echo "(".$productPrice." VALUE)"; ?></span>
-								</p>
+										<?php if($_product->getId() ==4722 || $_product->getId() ==4729):?>
+										<p><span class="productcost amount coreset-price"><?php echo $productPrice; ?></span>
+											<span class="was-amount no-display" style="text-transform: lowercase; font-size:12px;font-weight:bold; "><?php echo "(".$productPrice." VALUE)"; ?></span>
+										</p>
+									<?php else:?>
+										<p>
+										<span class="was-amount no-display total-price" style="text-transform: lowercase; font-size:14px; margin-right:5px "><?php echo $productPrice; ?></span>
+										<span class="productcost amount coreset-price final-price"><?php echo $productPrice; ?></span><span class="pre-order-lable">PRE-ORDER</span>
+											
+										</p>
+									<?php endif;?>
 							<?php else:?>
 							<p><span class="productcost amount "><?php echo $productPrice; ?></span>
                                 <span class="was-amount no-display"
