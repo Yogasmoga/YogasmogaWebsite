@@ -1240,27 +1240,18 @@ if (!$bundledProduct) {
 						//echo 'ravi123'.$showPre = $_childProduct->getAttributeText('pre_order_product');
 						if(in_array('136',$catIds)){
 						?>
-						<!--<style>
+						<style>
 						.was-amount {
 						  font: 14px/20px graphikregular;
 						  letter-spacing: 0.3px;display: block;
 						  text-transform: capitalize !important;color: unset;
 						}
-						</style>-->
-								<?php if($_product->getId() == 4766 || $_product->getId() == 4729){?>
-								
-								<span class="price-block"> 
-									<span style="display: -moz-inline-stack;" class="productcost amount coreset-amount" itemprop="price"> <?php echo $productPrice; ?></span>
-									<span class="conf-price">(<?php echo '$' . $productPrice. " VALUE"; ?>)</span>
-							   </span>	
-								<?php } else{?>
-									<span class="price-block"> 
-									
-									<span class="conf-price normal-price"><?php echo '$' . $productPrice; ?></span>
-							<span style="display: -moz-inline-stack;" class="productcost amount coreset-amount normal-amount" itemprop="price"> <?php echo $productPrice . " <span style='font-size:11px'>PRE-ORDER</span>"; ?></span>
-									</span>
-								<?php }?>	
-								
+						</style>
+
+						<span class="price-block"> 
+						<span style="display: -moz-inline-stack;" class="productcost amount coreset-amount" itemprop="price"> <?php echo $productPrice; ?></span>
+					   <span class="conf-price">(<?php echo '$' . $productPrice. " VALUE"; ?>)</span>
+					   </span>
 						<!--<span class="was-amount no-display">Regular Price </span>-->
 
                        <?php } else { ?>
