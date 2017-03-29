@@ -874,8 +874,9 @@ if ($lengthAvailable) {
 
 							<?php if(in_array('135',$catIds)):?>
 								<p>
+								<span class="was-amount no-display" style="text-transform: lowercase; font-size:12px; "><?php echo "(".$productPrice." VALUE)"; ?></span>
 								<span class="productcost amount coreset-price"><?php echo $productPrice; ?></span>
-                                <span class="was-amount no-display" style="text-transform: lowercase; font-size:12px; "><?php echo "(".$productPrice." VALUE)"; ?></span>
+                                
 								</p>
 							<?php else:?>
 							<p><span class="productcost amount "><?php echo $productPrice; ?></span>
