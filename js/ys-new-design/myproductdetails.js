@@ -762,6 +762,8 @@ function changeColor(clr) {
     jQuery(".amount").removeClass("insale-price");
     jQuery(".box-seprtr").find("p.insale").addClass("dnone");
     jQuery(".was-amount").addClass("no-display");
+	jQuery(".pre-order-label").addClass("no-display");
+	
 
     //jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
     jQuery("body").find("#includeoption div:nth-child(1)").trigger("click");//New Design.
