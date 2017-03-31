@@ -39,13 +39,11 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
             "success_message" => ""
         );
         $errors = array();
-
         if (!$this->getCartItemCount()) {
             $response['errors'] = "Your cart is empty";
             echo json_encode($response);
             return;
         }
-
         $couponCode = (string) $this->getRequest()->getParam('coupon_code');
         $remove = (string) $this->getRequest()->getParam('remove');
         if(!strlen($couponCode) && !strlen($remove) )
@@ -68,20 +66,15 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
             echo json_encode($response);
             return;
         }
-
-
-
         if ($this->getRequest()->getParam('remove') == 1) {
             $couponCode = '';
         }
         $oldCouponCode = $this->_getQuote()->getCouponCode();
-
         if (!strlen($couponCode) && !strlen($oldCouponCode)) {
             $response['errors'] = "No Coupon code applied";
             echo json_encode($response);
             return;
         }
-        //check do not apply smogi bucks for only accesories in cart
         //check do not apply smogi bucks for only accesories in cart
         $miniitems = Mage::getSingleton('core/session')->getCartItems();
         if(isset($miniitems))
@@ -94,90 +87,69 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
             {
                 $mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
                 $cids = $mitemProduct->getCategoryIds();
-
                 $flag = 0;
                 foreach($excludecats as $key=>$val)
                 {
                     $foundOnlyNoSmogiProduct = $this->_value_in_array($cids,$val);
                     if($foundOnlyNoSmogiProduct == 1)
-                    {   $flag = 1;
-                        break;
-                    }
-
+                        $flag = 1;
                 }
-                if($flag == 1)break;
+                if($flag == 0)break;
 //                echo $foundOnlyNoSmogiProduct;
 //                if($foundOnlyNoSmogiProduct == 0)die('treast');
 //                else die('dddd');
             }
-            /*if($flag == 1)
-            {// comment the code on client demand
-             /*   $response['errors'] = "Promo Codes cannot be used toward Accessories";
-                echo json_encode($response);
-                return;*/
-
-            //}
-            // end check do not apply smogi bucks for only accesories in cart
-            try {
-                $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
-                $this->_getQuote()->setCouponCode(strlen($couponCode) ? $couponCode : '')
-                    ->collectTotals()
-                    ->save();
-
-                if (strlen($couponCode)) {
-                    if ($couponCode == $this->_getQuote()->getCouponCode()) {
-                        $this->_getSession()->addSuccess(
-                            $this->__('Coupon code "%s" was applied.', Mage::helper('core')->htmlEscape($couponCode))
-                        );
-                        $response['success_message'] = "Coupon code ".$couponCode." is applied Successfully";
-                        $response['status'] = "success";
-                        echo json_encode($response);
-                        return;
-                    }
-                    else {
-                        $this->_getSession()->addError(
-                            $this->__('cpnerror-msgCoupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
-                        );
-
-                        if($flag === 1){
-                            $oCoupon = Mage::getSingleton('salesrule/coupon')->load($couponCode, 'code');
-                            if($oCoupon->getRuleId()){
-                                $response['errors'] = "Promo Codes can not be applied to One 2 Many, Accessories, Gift Cards or other promotions.";
-                            }else{
-                                $response['errors'] = "Promo code is invalid";
-                            }
-
-                        }else{
-                            $response['errors'] = "Promo code is invalid...";
-                        }
-                        echo json_encode($response);
-                        return;
-                    }
-                } else {
-                    $this->_getSession()->addSuccess($this->__('Coupon code was canceled'));
-                    $response['status'] = "success";
-                    $response['success_message'] = "Promo code has been removed successfully";
-                    echo json_encode($response);
-                    return;
-                }
-
-            } catch (Mage_Core_Exception $e) {
-                $this->_getSession()->addError("cpnerror-msg".$e->getMessage());
-                $response['errors'] = "Cannot apply the Promo code.";
-                echo json_encode($response);
-                return;
-            } catch (Exception $e) {
-                $this->_getSession()->addError($this->__('cpnerror-msgCannot apply the coupon code.'));
-                Mage::logException($e);
-                $response['errors'] = "Cannot apply the Promo code.";
+            if($flag == 1)
+            {
+                $response['errors'] = "Promo Codes cannot be used toward Accessories";
                 echo json_encode($response);
                 return;
             }
-
-            //$this->_goBack();
+        // end check do not apply smogi bucks for only accesories in cart
+        try {
+            $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
+            $this->_getQuote()->setCouponCode(strlen($couponCode) ? $couponCode : '')
+                ->collectTotals()
+                ->save();
+            if (strlen($couponCode)) {
+                if ($couponCode == $this->_getQuote()->getCouponCode()) {
+                    $this->_getSession()->addSuccess(
+                        $this->__('Coupon code "%s" was applied.', Mage::helper('core')->htmlEscape($couponCode))
+                    );
+                    $response['success_message'] = "Coupon code ".$couponCode." is applied Successfully";
+                    $response['status'] = "success";
+                    echo json_encode($response);
+                    return;
+                }
+                else {
+                    $this->_getSession()->addError(
+                        $this->__('cpnerror-msgCoupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
+                    );
+                    $response['errors'] = "Promo code is not valid";
+                    echo json_encode($response);
+                    return;
+                }
+            } else {
+                $this->_getSession()->addSuccess($this->__('Coupon code was canceled'));
+                $response['status'] = "success";
+                $response['success_message'] = "Promo code has been removed successfully";
+                echo json_encode($response);
+                return;
+            }
+        } catch (Mage_Core_Exception $e) {
+            $this->_getSession()->addError("cpnerror-msg".$e->getMessage());
+            $response['errors'] = "Cannot apply the Promo code.";
+            echo json_encode($response);
+            return;
+        } catch (Exception $e) {
+            $this->_getSession()->addError($this->__('cpnerror-msgCannot apply the coupon code.'));
+            Mage::logException($e);
+            $response['errors'] = "Cannot apply the Promo code.";
+            echo json_encode($response);
+            return;
         }
-
-
+        //$this->_goBack();
+    }
     
 }
     public function _value_in_array($array, $find){
