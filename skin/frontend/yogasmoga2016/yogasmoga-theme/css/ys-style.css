@@ -4778,7 +4778,7 @@ table.productdetailtable div.outofstockitem{
 .grey-header-bg .page{ background: #f4f4f4}
 .grey-header-bg .product-details{ background: #fff!important;}
 
-.header-banner{background:#b20000;}
+.header-banner{background: rgb(255, 102, 0) none repeat scroll 0 0;}
 .scrolled-effect .free-shipping-txt,
 .scrolled-effect #welcome-name,
 .scrolled-effect .header-banner .orange-banner,

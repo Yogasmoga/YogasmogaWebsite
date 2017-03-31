@@ -8154,7 +8154,7 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
     z-index: 999;}
 */
 .mobile-orange-banner,.spread-popup {
-    /*background: rgb(255, 102, 0) none repeat scroll 0 0;*/
+    background: rgb(255, 102, 0) none repeat scroll 0 0;
     color: rgb(255, 255, 255);
     font-size: 11px;
     height: 44px;
@@ -8167,7 +8167,7 @@ p.apply_promo_label.promo_used > span{color:#ccc;}
     z-index: 999;
     padding: 10px;
     text-transform: uppercase;
-	background:#b20000;
+	/*background:#b20000;*/
 }
 .mobile-orange-banner img,.spread-popup img{ vertical-align:text-bottom}
 
