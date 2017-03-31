@@ -148,7 +148,7 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
                             }
 
                         }else{
-                            $response['errors'] = "Promo code is invalid...";
+                            $response['errors'] = "Promo code is invalid.";
                         }
                         echo json_encode($response);
                         return;
