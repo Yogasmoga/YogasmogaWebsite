@@ -105,10 +105,10 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
                     }
 
                 }
-                if($flag == 1)break;
-//                echo $foundOnlyNoSmogiProduct;
-//                if($foundOnlyNoSmogiProduct == 0)die('treast');
-//                else die('dddd');
+                if($flag == 1)//break;
+                echo $foundOnlyNoSmogiProduct;
+                if($foundOnlyNoSmogiProduct == 0)die('treast');
+                else die('dddd');
             }
             /*if($flag == 1)
             {// comment the code on client demand
