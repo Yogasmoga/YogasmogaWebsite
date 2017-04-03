@@ -3605,7 +3605,7 @@ ul.main-menu2 li ul.sub-menu li a:hover {
 .category-women  .scrolled-effect ul.main-menu2 a.main-heading,
 .category-women  .scrolled-effect .tr-menu>li>a:first-child,
 .category-women  .scrolled-effect .tr-menu>li.signout_link>span{color:#555;}
-.category-women .header-banner .header-banner-block{border-bottom:1px solid #777;}
+.category-women .header-banner .header-banner-block{border-bottom:none!important;}
 .category-women .scrolled-effect #globalheader ul.main-menu > li > a.menu-heading{color:#555;}
 .category-women .scrolled-effect #globalheader ul.main-menu.main-menu2 > li > a.main-heading{color:#555;}
 
@@ -4587,7 +4587,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #ae8536;}
 
 .hoverscalebg{overflow:hidden;background-size:100% 100%!important;}
 .hoverscalebg:hover{background-size:110% 110%!important;}
-.header-banner .header-banner-block{border-bottom:1px solid #fff;}
+.header-banner .header-banner-block{border-bottom:none!important;}
 .showhide .header-banner .header-banner-block{border-bottom:1px solid #777777;}
 
 .common-listing .header-banner .header-banner-block,.catalog-product-view .header-banner .header-banner-block{border-bottom:none!important;}
