@@ -1593,7 +1593,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         </li>';
             }else{
                 $html .='<li class="promotion">
-                            <span class="f-left">&#39;'.$promotioncode.'&#39; promo used | </span>
+                            <span class="f-left kk">&#39;'.$promotioncode.'&#39; promo used | </span>
                             <span class="removepromotion"><a>remove</a></span>
                             <span class="f-right" class="active" usedpromotion ="'.$discount.'">-$'.$discount.'</span>
                         </li>';
