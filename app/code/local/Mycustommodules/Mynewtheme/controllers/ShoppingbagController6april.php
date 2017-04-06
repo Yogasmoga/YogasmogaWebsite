@@ -849,8 +849,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             {
             
 			//  $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
-			//	$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
-                $smogiplaceholder = "SMOGI Bucks can not be applied with other promotions.";
+				$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
+			
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
                 $applysmogi="";
@@ -866,8 +866,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             {
                 //$gryclassgift = "gry";
                // $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
-			   //$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
-                $smogiplaceholder="SMOGI Bucks can not be applied with other promotions.";
+			   $smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";
@@ -1321,8 +1320,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $temparray['preorder'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getBackorders();
                     $temparray['instock'] = $_product->stock_item->is_in_stock;
                     $temparray['typeid'] = 'configurable';
-                    // for preorder ravi coding
-					$temparray['pre_order_product'] = $_product->getAttributeText('pre_order_product');
                     // for insale
                     $temparray['insale'] = $_product->getAttributeText('insale');
                     $temparray['confPrice'] = '';
@@ -1708,8 +1705,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if($checkpromoapplied)
             {
             //$smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
-			//$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
-                $smogiplaceholder = "SMOGI Bucks can not be applied with other promotions.";
+			$smogiplaceholder="SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
                 $applysmogi="";
@@ -1725,8 +1721,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             {
                 //$gryclassgift = "gry";
             //  $smogiplaceholder="SMOGI Bucks can not be applied to One 2 Many, Accessories or other promotions.";
-				//$smogiplaceholder = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
-                $smogiplaceholder = "SMOGI Bucks can not be applied with other promotions.";
+				$smogiplaceholder = "SMOGI Bucks can not be applied to Super Sale, Accessories or other promotions.";
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";
@@ -1824,12 +1819,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $giftCount = 0;
         foreach($minidetails['items'] as $item)
         {
-
-         //echo '<pre>';
-		// print_r($item);
-		// echo '<pre>';
-		 //$html = $item;
-
             foreach($vivacityConfigurableIds as $vivacityId){
                 if($item['pid']==$vivacityId){
                     $vivacityFound = true;
@@ -1931,17 +1920,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if(isset($item['insale']) && $item['insale'] == 'Yes')
             {
-                
-			if(isset($item['pre_order_product']) && $item['pre_order_product'] == 'Yes')
-            {
-                
-			  $html .='<span class="size" style="color: #c03;">This item has been pre-ordered and will be shipped within weeks.</span>';
-			} else {
-				$html .='<span class="size" style="color: #c03;">This Item is Final Sale. Cannot be exchanged or returned.</span>';
-            }
-				
-				
-				
+                $html .='<span class="size" style="color: #c03;">This Item is Final Sale. Cannot be exchanged or returned.</span>';
             }
             $html .='</span>';
 
@@ -2461,7 +2440,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
         if($item['insale'] == 'Yes')
         {
-            $html .='<span class="size" style="color: #c03;">This item has been pre-ordered and will be shipped within weeks.</span>';
+            $html .='<span class="size" style="color: #c03;">This Item is Final Sale. Cannot be exchanged or returned.</span>';
         }
             $html .='</span>
 <a href="#" class="close"></a>';
