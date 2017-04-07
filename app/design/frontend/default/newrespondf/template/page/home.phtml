@@ -38,7 +38,7 @@
  <div class="wrapper">
      <?php
      $loggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
-     //if(!$loggedIn){ 
+     if(!$loggedIn){ 
 	 
 	 /*if(Mage::getBlockSingleton('page/html_header')->getIsHomePage()) {
 	 ?>
@@ -54,8 +54,11 @@
 	SPRING SALE ENDS TONIGHT. <br/>USE CODE SPRING17 for 40% OFF
 	40% OFF Online. Use Code MAKEUSA.Buy 2 or More Items and Get 25% Off <br/>Limited Time. Use Code: 2ORMORE
 	 40% OFF On-Line Only. New Styles & Color Added <br/>for Women & Men. Use Code: FIT2017<?php  ?>
+	 </div><?php */ ?>
+	 <div class="mobile-orange-banner mobile-red-banner spread-popup">
+	 <a style="color:#fff;" href="/haveheart" target="_blank">BUY ANY TWO HAVEHEART BOTTOMS FOR THE COST <br/>OF ONE. USE CODE: HAVEHEART</a>
 	 </div>
-	 <?php  }else{ */ ?>
+	 <?php  }else{  ?>
 	 <div class="mobile-red-banner spread-popup">
 	 <a style="color:#fff;" href="/haveheart" target="_blank">BUY ANY TWO HAVEHEART BOTTOMS FOR THE COST <br/>OF ONE. USE CODE: HAVEHEART</a>
 	 <?php /* ?>
@@ -63,7 +66,7 @@
 	 40% OFF Online. Use Code MAKEUSA.Buy 2 or More Items and Get 25% Off <br/>Limited Time. Use Code: 2ORMORE
 	 40% OFF On-Line Only. New Styles & Color Added <br/>for Women & Men. Use Code: FIT2017<?php */ ?>
 	 </div>
-	 <?php //}?>
+	 <?php }?>
    <div class="page">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <?php //echo $this->getChildHtml('global_notices') ?>

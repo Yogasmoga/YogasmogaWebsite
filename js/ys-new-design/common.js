@@ -283,7 +283,7 @@ sizeChartPop();
         }            
     });
 	//Invite Popup.
-	/*
+	
 	jQuery(".orange-banner").click(function(){
                        if(_islogedinuser){
 						  $("#invite_friends").dialog( "open" ); 
@@ -295,7 +295,7 @@ sizeChartPop();
                        //window.location.assign(homeUrl+'women');
 
                     });
-	*/				
+					
 	//end.
     $(".footer-block").on("click","#invite-friend",function(){
 
