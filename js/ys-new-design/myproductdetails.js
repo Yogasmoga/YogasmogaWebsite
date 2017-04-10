@@ -370,6 +370,8 @@ function changelengthtype(sz) {
 						premsghtml = premsghtml + preordermsg;
 						jQuery("#ship-msg-pre-order").html(preordermsg);
 						jQuery("#orderitem").hide();
+						jQuery(".freeshipptext").css("padding-top","10px!important");
+						jQuery("#ship-msg-pre-order").css("padding-top","10px!important");
 						jQuery("#preorderitem").show();
 						jQuery("#ship-msg-pre-order").show();
 						//jQuery(".price-block").addClass("haveheart-price-block");
