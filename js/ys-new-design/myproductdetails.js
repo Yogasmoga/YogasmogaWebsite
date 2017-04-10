@@ -71,7 +71,7 @@ function prodnewdetailresize(){
     var imgrowh = jQuery('.thumb-imgs table.smallimagecontiner tr td img').height();
 
 
-    jQuery('.prod-col .pcol-right-content').height(imgrowh);
+    jQuery('.prod-col .pcol-right-content').height(560);
 
         if(jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').length){
         jQuery('.thumb-imgs table.smallimagecontiner tr td:nth-child(4),.thumb-imgs table.smallimagecontiner tr td:nth-child(5)').addClass('two-col');
@@ -919,7 +919,7 @@ function changeColor(clr) {
                         'width': (windW/2) - 5
                     });
                 }
-                jQuery('.prod-col .pcol-right-content').height(imgrowh);
+                jQuery('.prod-col .pcol-right-content').height(560);
 
             }, 200);
             setTimeout(function () {
