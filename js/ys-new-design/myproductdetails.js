@@ -368,17 +368,17 @@ function changelengthtype(sz) {
 					if (sz.hasClass("showing-pre")) {
 						var preordermsg =  sz.attr("showpremsg");
 						premsghtml = premsghtml + preordermsg;
-						jQuery(".ship-msg").html(preordermsg);
+						jQuery("#ship-msg-pre-order").html(preordermsg);
 						jQuery("#orderitem").hide();
 						jQuery("#preorderitem").show();
-						jQuery("#ship-msg-pre-oder").show();
+						jQuery("#ship-msg-pre-order").show();
 						//jQuery(".price-block").addClass("haveheart-price-block");
 						
 						jQuery("#preorderhelp").show();
 						jQuery("#outofstockitem").hide();
 					}
 					else{
-					jQuery("#ship-msg-pre-oder").hide();
+					jQuery("#ship-msg-pre-order").hide();
 					jQuery("#orderitem").show();
 					jQuery("#preorderitem").hide();
 					jQuery("#preorderhelp").hide();
