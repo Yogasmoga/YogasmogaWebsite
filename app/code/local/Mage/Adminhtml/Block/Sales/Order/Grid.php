@@ -144,6 +144,12 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
             'index' => 'shipping_name',
             'filter_index' => 'shipping_name',
         ));
+		$this->addColumn('coupon_code', array(
+            'header' => Mage::helper('sales')->__('Coupon Code'),
+            'index' => 'coupon_code',
+            'filter_index' => 'coupon_code',
+			'width' => '100px',
+        ));
 
         $this->addColumn('base_grand_total', array(
             'header' => Mage::helper('sales')->__('G.T. (Base)'),
