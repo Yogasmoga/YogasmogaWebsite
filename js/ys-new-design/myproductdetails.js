@@ -371,14 +371,14 @@ function changelengthtype(sz) {
 						jQuery(".ship-msg").html(preordermsg);
 						jQuery("#orderitem").hide();
 						jQuery("#preorderitem").show();
-						jQuery("#ship-msg-li").show();
+						jQuery("#ship-msg-pre-oder").show();
 						//jQuery(".price-block").addClass("haveheart-price-block");
 						
 						jQuery("#preorderhelp").show();
 						jQuery("#outofstockitem").hide();
 					}
 					else{
-					jQuery("#ship-msg-li").hide();
+					jQuery("#ship-msg-pre-oder").hide();
 					jQuery("#orderitem").show();
 					jQuery("#preorderitem").hide();
 					jQuery("#preorderhelp").hide();
