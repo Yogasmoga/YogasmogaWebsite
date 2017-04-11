@@ -353,7 +353,7 @@ function changelengthtype(sz) {
     jQuery("div.selectedlength div").removeClass("selected");
     sz.addClass("selected");
 
-
+	var premsghtml='';
     if (sz.hasClass("outofstock")) {
         jQuery("#orderitem").hide();
         jQuery("#preorderitem").hide();
@@ -366,10 +366,28 @@ function changelengthtype(sz) {
         var qty = sz.attr("qty") * 1;
         var orderqty = _productorderqty;
         if ((qty - orderqty) >= 0) {
-            jQuery("#orderitem").show();
-            jQuery("#preorderitem").hide();
-            jQuery("#preorderhelp").hide();
-            jQuery("#outofstockitem").hide();
+            	//fahim.	
+					if (sz.hasClass("showing-pre")) {
+						var preordermsg =  sz.attr("showpremsg");
+						premsghtml = premsghtml + preordermsg;
+						jQuery("#ship-msg-pre-order").html(preordermsg);
+						jQuery("#orderitem").hide();
+						jQuery(".freeshipptext").css("padding-top","10px!important");
+						jQuery("#ship-msg-pre-order").css("padding-top","10px!important");
+						jQuery("#preorderitem").show();
+						jQuery("#ship-msg-pre-order").show();
+						//jQuery(".price-block").addClass("haveheart-price-block");
+						
+						jQuery("#preorderhelp").show();
+						jQuery("#outofstockitem").hide();
+					}
+					else{
+					jQuery("#ship-msg-pre-order").hide();
+					jQuery("#orderitem").show();
+					jQuery("#preorderitem").hide();
+					jQuery("#preorderhelp").hide();
+					jQuery("#outofstockitem").hide();
+					}
         }
         else {
             if (sz.hasClass("canbackorder")) {
