@@ -997,6 +997,7 @@ function changeColor(clr) {
         amount.addClass("insale-price");
         jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
         jQuery(".was-amount").removeClass("no-display");
+		jQuery(".pre-order-label").removeClass("no-display");	
 
     } else {
 
