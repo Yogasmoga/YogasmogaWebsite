@@ -622,6 +622,7 @@ function changeColor(clr) {
     jQuery(".amount").removeClass("insale-price");
     jQuery(".prd-info").find("p.insale").addClass("dnone");
     jQuery(".was-amount").addClass("no-display");
+	jQuery(".pre-order-lable").addClass("no-display");
 
     jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
     var colorindex = searchproductcolorinfoarrray(clr);
