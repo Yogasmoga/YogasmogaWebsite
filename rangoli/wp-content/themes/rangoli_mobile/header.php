@@ -299,6 +299,7 @@ $logged_in = is_user_logged_in();
         <link rel="stylesheet" href="<?php echo $home; ?>/wp-content/themes/rangoli_mobile/css/croppic.css"/>
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_url') ?>"/>
         <link rel="stylesheet" href="<?php echo $home; ?>/wp-content/themes/rangoli_mobile/css/custom.css"/>
+		<link rel="stylesheet" href="<?php echo $home; ?>/wp-content/themes/rangoli_mobile/css/fonts.css"/>
         <?php
         if (is_home()) {
             ?>
@@ -668,20 +669,35 @@ $logged_in = is_user_logged_in();
                                             <!--<li><a href="/women/accessories/yoga-mats">Yoga Mats</a></li>
                                             <li><a href="/women/accessories/yoga-towels">Yoga Towels</a></li>-->
                                             <li><a href="/women/accessories/yoga-flops">Yoga Flops</a></li>
-                                            <li><a href="/women/accessories/namaskar-bracelets">Namask&aacute;r Bracelets</a>
-                                            </li>
+                                           <!-- <li><a href="/women/accessories/namaskar-bracelets">Namask&aacute;r Bracelets</a></li>-->
                                         </ul>
                                     </li>
+									<li><a href="javascript:void(0)">Ranges</a>
+                                        <span class="menu_arrow">
+                                            <svg width="44px" height="44px">
+                                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
+                                                      x2="288.374"
+                                                      y2="109.657"/>
+                                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                                      y1="21.39" x2="30.374" y2="21.39"/>
+                                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                                      y1="13.39" x2="22.374" y2="29.39"/>
+                                            </svg>
+                                        </span>
+											<ul>
+											<li><a href="/women/core">Core</a></li>
+											<li><a href="/women/select">Select</a></li>
+											<li><a href="/women/premium">Premium</a></li>
+											</ul>
+                                    </li>
+									
                                     <li><a href="/women/whats-new">What&rsquo;s New</a></li>
-									<li><a href="/women/core">Core</a></li>
-									<li><a href="/women/select">Select</a></li>
-								    <li><a href="/women/premium">Premium</a></li>
-                                    <li><a href="/women/prints"> PRINTS</a></li>
+									
                                     <!--<li><a href="/women/one-too-many">ONE 2 MANY</a></li>-->
 									<!--<li><a href="/women/super-sale">Super Sale</a></li>-->
                                     <li><a href="/women/additional-sizes">ADDITIONAL SIZES</a></li>
-                                    <li><a href="/women/vivacity-collection">VIVACITY COLLECTION</a></li>
-                                    <li><a href="/women/carbon6">CARBON 6&trade; COLLECTION</a></li>
+                                    <!--<li><a href="/women/vivacity-collection">VIVACITY COLLECTION</a></li>
+                                    <li><a href="/women/carbon6">CARBON 6&trade; COLLECTION</a></li>-->
                                     <!--<li><a href="/women/rangoli-collection">RANGOLI COLLECTION</a></li>-->
                                 </ul>
                             </li>
@@ -759,15 +775,31 @@ $logged_in = is_user_logged_in();
                                             </li>
                                         </ul>
                                     </li>
+									<li><a href="javascript:void(0)">Ranges</a>
+                                        <span class="menu_arrow">
+                                            <svg width="44px" height="44px">
+                                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
+                                                      x2="288.374"
+                                                      y2="109.657"/>
+                                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                                      y1="21.39" x2="30.374" y2="21.39"/>
+                                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                                      y1="13.39" x2="22.374" y2="29.39"/>
+                                            </svg>
+                                        </span>
+                                        <ul>
+										<li><a href="/men/core">CORE</a></li>
+										<li><a href="/men/select">SELECT</a></li>
+										<li><a href="/men/premium">PREMIUM</a></li>
+										</ul>
+									</li>	
                                     <li><a href="/men/whats-new">WHAT'S NEW</a></li>
-									<li><a href="/men/core">CORE</a></li>
-									<li><a href="/men/select">SELECT</a></li>
-									<li><a href="/men/premium">PREMIUM</a></li>
-                                    <li><a href="/men/carbon6">CARBON 6&trade; COLLECTION</a></li>
-                                    <li><a href="/men/golf-inspired"> Golf Inspired</a></li>
+									
+                                    <!--<li><a href="/men/carbon6">CARBON 6&trade; COLLECTION</a></li>
+                                    <li><a href="/men/golf-inspired"> Golf Inspired</a></li>-->
                                 </ul>
                             </li>
-                            <li class="ys_main_category"><p><a href="/one-too-many"> ONE 2 MANY</a></p></li>
+                            <li class="ys_main_category"><p><a href="/one-too-many"> HAVEHEART</a></p></li>
 
                             <li class="ys_single_link"><a href="/our-story">YS Story</a>
                                 <span class="ys_story">
@@ -871,7 +903,7 @@ $logged_in = is_user_logged_in();
                                 </span>
                             </li>
                             <!--new ys-stores icon added-->
-                            <li class="ys_single_link"><a href="/our-stores">YS Stores</a>
+                            <!--<li class="ys_single_link"><a href="/our-stores">YS Stores</a>
                                 <span class="tech_icon">
                                        <svg width="44" height="44" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                             viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
@@ -883,7 +915,7 @@ $logged_in = is_user_logged_in();
 </g>
 </svg>
                                 </span>
-                            </li><!--new ys-stores icon added , end-->
+                            </li>--><!--new ys-stores icon added , end-->
                             <li class="ys_single_link"><a href="/smogi-bucks">
                                     <span class="smogi_bucks_icon">
 
@@ -1045,7 +1077,7 @@ $logged_in = is_user_logged_in();
                 </div>
                 <div class="additional_links">
                     <ul>
-                        <li><a href="javascript:void(0);">&copy; 2016 YOGASMOGA</a></li>
+                        <li><a href="javascript:void(0);">&copy; 2017 YOGASMOGA</a></li>
                         <li><a href="/privacy-policy/">Privacy Policy</a></li>
                         <li><a href="/terms-and-conditions/">Terms &amp; Conditions</a></li>
                     </ul>
@@ -1178,7 +1210,7 @@ if (!is_user_logged_in() && is_home()) {
     if(is_home()) {
         ?>
         <?php /*?><div  class="mobile-orange-banner">RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30</div><?php */ ?>
-    <div  class="mobile-orange-banner">SHOP YOUR FAVORITES: ONE 2 MANY - NEW ITEMS <br/>ADDED AT GREAT PRICES : LIMITED TIME</div>
+    <div  class="mobile-orange-banner">GET READY FOR SPRING. 40% OFF. <br/>USE CODE: SPRINGTIME</div>
         <?php
     }
     ?>

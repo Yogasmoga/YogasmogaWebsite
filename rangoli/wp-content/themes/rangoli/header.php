@@ -442,9 +442,10 @@ $style= "";
     </style>";
      ?>
     <!--<div class="banner" style="text-transform: uppercase"  onclick="open_red_popup()">-->
-    <div class="banner" style="text-transform: uppercase"  onclick="window.location.assign(homeUrl+'one-too-many')">
-        <?php /* ?>RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30<?php */ ?>
-        SHOP YOUR FAVORITES: ONE 2 MANY - NEW ITEMS ADDED AT GREAT PRICES : LIMITED TIME
+    <div class="banner" style="text-transform: uppercase"  onclick="window.location.assign(homeUrl+'women')">
+        <?php /* ?>RECEIVE 30% OFF IN-STORE AND ONLINE NOW THROUGH 9/25. USE CODE: NAMASKAR30
+        SHOP YOUR FAVORITES: ONE 2 MANY - NEW ITEMS ADDED AT GREAT PRICES : LIMITED TIME<?php */ ?>
+		GET READY FOR SPRING. 40% OFF. USE CODE: SPRINGTIME
 
     </div>
     <?php //}?>
@@ -460,15 +461,12 @@ $style= "";
                         <li>
                             <ul>
                                 <li><a href="/women/whats-new"> What's New</a></li>
-								<li style="margin-top:15px"><a href="/women/core"> Core</a></li>
-								<li><a href="/women/select"> Select</a></li>
-								<li style="margin-bottom:15px"><a href="/women/premium"> Premium</a></li>
-                                <li><a href="/women/prints"> PRINTS</a></li>
+								
                                 <!--<li><a href="/women/one-too-many"> One 2 Many</a></li>-->
 								<!--<li><a href="/women/super-sale">Super Sale</a></li>-->
                                 <li><a href="/women/additional-sizes"> ADDITIONAL SIZES</a></li>
-                                <li><a href="/women/vivacity-collection"> VIVACITY COLLECTION</a></li>
-                                <li><a href="/women/carbon6">CARBON 6&trade; COLLECTION</a></li>
+                               <!-- <li><a href="/women/vivacity-collection"> VIVACITY COLLECTION</a></li>
+                                <li><a href="/women/carbon6">CARBON 6&trade; COLLECTION</a></li>-->
                                 <!--<li><a href="/women/rangoli-collection"> RANGOLI COLLECTION</a></li>-->
                             </ul>
                         </li>
@@ -500,9 +498,17 @@ $style= "";
                                 <!--<li><a href="/women/accessories/yoga-mats">Yoga Mats</a></li>
                                 <li><a href="/women/accessories/yoga-towels">Yoga Towels</a></li>-->
                                 <li><a href="/women/accessories/yoga-flops">Yoga Flops</a></li>
-                                <li><a href="/women/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>
+                                <!--<li><a href="/women/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>-->
                             </ul>
                         </li>
+						<li><a href="javascript:void(0)"> Ranges </a>
+                            <ul>
+								<li><a href="/women/core"> Core</a></li>
+								<li><a href="/women/select"> Select</a></li>
+								<li style="margin-bottom:15px"><a href="/women/premium"> Premium</a></li>
+                                
+							</ul>
+						</li>		
                     </ul>
 
                 </li>
@@ -511,11 +517,9 @@ $style= "";
                         <li>
                             <ul>
                                 <li><a href="/men/whats-new"> What's New</a></li>
-								<li style="margin-top:15px"><a href="/men/core"> Core</a></li>
-								<li><a href="/men/select"> Select</a></li>
-								<li style="margin-bottom:15px"><a href="/men/premium"> Premium</a></li>
-                                <li><a href="/men/carbon6">CARBON 6&trade; COLLECTION</a></li>
-                                <li><a href="/men/golf-inspired"> Golf Inspired</a></li>
+								
+                                <!--<li><a href="/men/carbon6">CARBON 6&trade; COLLECTION</a></li>
+                                <li><a href="/men/golf-inspired"> Golf Inspired</a></li>-->
                             </ul>
                         </li>
 
@@ -536,12 +540,19 @@ $style= "";
                                 <li><a href="/men/accessories/bags">Bags</a></li>
                                 <!--<li><a href="/men/accessories/yoga-mats">Yoga Mats</a></li>
                                 <li><a href="/men/accessories/yoga-towels">Yoga Towels</a></li>-->
-                                <li><a href="/men/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>
+                                <!--<li><a href="/men/accessories/namaskar-bracelets">Namaskár Bracelets</a></li>-->
                             </ul>
                         </li>
+						<li><a href="javascript:void(0)"> Ranges</a>
+                            <ul>	
+								<li><a href="/men/core"> Core</a></li>
+								<li><a href="/men/select"> Select</a></li>
+								<li><a href="/men/premium"> Premium</a></li>
+							</ul>
+						</li>		
                     </ul>
                 </li>
-                <li class="menu-heading"><a  class="menu-heading" href="/one-too-many"> One 2 Many</a></li>
+                <li class="menu-heading"><a  class="menu-heading" href="/haveheart"> Haveheart</a></li>
             </ul>
         </div>
         <div class="f-right header-right">
@@ -612,17 +623,17 @@ $style= "";
                             <ul style="left:-73px;" class="sub-menu l-align cms-header-link">
                                 <li><a href="/ys-fabric-tech">ys fabric tech</a></li>
                                 <li><a href="/ys-color-tech">ys color tech</a></li>
-                                <li><a href="/design-elements">ys design elements</a></li>
+                               <!-- <li><a href="/design-elements">ys design elements</a></li>-->
                             </ul>
                         </li>
-                        <li><a href="/our-stores">ys stores</a></li>
+                       <!-- <li><a href="/our-stores">ys stores</a></li>
                         <li><a class="main-heading" href="/smogi-bucks">Smogi Bucks</a>
                             <ul style="left:-57px;" class="sub-menu mlink l-align">
                                 <li><a href="/smogi-bucks">what is smogi bucks</a></li>
                                 <li><a href="/smogi-bucks#get-smogi-bucks">how can i get them</a></li>
                                 <li><a href="/smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                         <li class="rangoli"><a id="rangoli-head" class="rangoliBlu" href="/rangoli">Rangoli</a></li>
                     </ul>
                 </div>

@@ -424,9 +424,9 @@ if(!isset($ipInfo)){
             <li>
                 <ul>
                     <li><a href="/our-story">YS STORY</a></li>
-                    <li><a href="/ys-fabric-tech">YS TECH</a></li>
+                    <!--<li><a href="/ys-fabric-tech">YS TECH</a></li>
                     <li><a href="/our-stores">YS STORES</a></li>
-                    <li><a href="/smogi-bucks">SMOGI BUCKS</a></li>
+                    <li><a href="/smogi-bucks">SMOGI BUCKS</a></li>-->
                     <li><a href="/namaskar">NAMASK&Aacute;R FOUNDATION</a></li>
                 </ul>
             </li>
@@ -448,7 +448,7 @@ if(!isset($ipInfo)){
                     <li><a class="bold-heading" href="mailto:hello@yogasmoga.com">CONTACT US</a></li>
                     <li>888-990-YOGA (9642)</li>
                     <li><a href="mailto:hello@yogasmoga.com ">HELLO@YOGASMOGA.COM</a></li>
-                    <li><a href="javascript:void($zopim.livechat.window.show())">LIVE CHAT</a> <span class="chat-status"> online now</span></li>
+                    <!--<li><a href="javascript:void($zopim.livechat.window.show())">LIVE CHAT</a> <span class="chat-status"> online now</span></li>-->
                     <li><a href="/help#faq">FAQ</a></li>
                 </ul>
             </li>
@@ -466,7 +466,7 @@ if(!isset($ipInfo)){
                     <li><a class="bold-heading" href="javascript:void(0)" onclick="open_red_popup()">FEEL THE SMOGI LOVE</a></li>
 
                     <?php /* ?><li>Sign up for $25 SMOGI Bucks<br/> toward your first order.</li><?php */ ?>
-                        <li>Sign up now to Receive $25 Smogi Bucks</li>
+                        <li>SPREAD THE SMOGI LOVE, GET 30% Off</li>
                     <?php
                     }
                     else{
@@ -498,7 +498,7 @@ if(!isset($ipInfo)){
         </div>
         <div class="privacy">
             <ul>
-                <li>Copyright &copy; 2016 YOGASMOGA. All Rights Reserved. </li>
+                <li>Copyright &copy; 2017 YOGASMOGA. All Rights Reserved. </li>
                 <li> | </li>
                 <li><a href="/privacy-policy/">Privacy Policy</a></li>
                 <li> | </li>
