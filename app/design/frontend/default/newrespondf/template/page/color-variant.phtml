@@ -174,7 +174,7 @@ $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];    
 					$currentCategoryId = Mage::registry('current_category')->getId();
 
 					foreach($collection as $category):
-						if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=43 ):
+						if($category->getId()!=3 && $category->getId()!=5 && $category->getId()!=9 && $category->getId()!=43 && $category->getId()!=136  && $category->getId()!=137):
 							if($category->getLevel()==2 && $category->getIsActive()):
 								$url = $category->getUrl();
 								$name = $category->getName();
