@@ -129,7 +129,7 @@
 													 $bdate = date('d', strtotime($beforeDate));
 													 $wdate = date('d', strtotime($weekdate));
 													 $bday = date('l', strtotime($beforeDate));	
-													echo "<strong>WEEK OF ".$bmonth ." ".$bdate."TH</strong>";	
+													echo "<strong style='text-transform:uppercase'>WEEK OF ".$bmonth ." ".$bdate."TH</strong>";	
 													}
 													
 													 //echo $bdate .'-- '.$wdate;
@@ -203,6 +203,7 @@
         });
 	jQuery(".clickdata").click(function(){
 		jQuery(this).html("working...");
+		alert("workink...");
 	})
     });
 </script>
