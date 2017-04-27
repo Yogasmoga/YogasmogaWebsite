@@ -4874,14 +4874,14 @@ table.productdetailtable div.outofstockitem{
 .left-section4block .slider-block{width:100%; height:360px;background:#eee;}
 
 
-.left-section4block .social-insta-block{width:100%; margin-top:8%;}
+.left-section4block .social-insta-block{width:100%; margin-top:20%;}
 .left-section4block .social-insta-block .block{width:32%;height:304px; background:#eee;float:left;position:relative;}
 .left-section4block .social-insta-block .block.block2{margin: 0 2% 0 2%;padding:0;}
 .left-section4block .social-insta-block .block a{ display:block;color:#fff;font-size:15px;}
 .left-section4block .social-insta-block .block .block-caption{margin-top:190px;}
 .left-section4block .social-insta-block .block .block-caption span{display:block;}
 .right-section4block .right-block-content .right-block-info{text-align:left;}
-.right-section4block .right-block-content .right-block-info strong{font:14px/15px ITCAvantGardeProMd}
+.right-section4block .right-block-content .right-block-info strong{font:14px/25px ITCAvantGardeProMd}
 .right-section4block .right-block-content .right-block-info strong.time-info{padding-top:25px; display:block}
 .right-section4block .right-block-content .right-block-info p{font:13px/16px gothamBook}
 .right-section4block .right-block-content .right-block-info p.comment-info{padding-top:30px;}
@@ -4972,9 +4972,11 @@ table.productdetailtable div.outofstockitem{
 .left-section4block .social-insta-block .block a img:hover{width:100%; max-width:100%; height:auto;}
 
 
-.left-section4block .slider-block .flex-control-nav{bottom:4px;}
+.left-section4block .slider-block .flex-control-nav{bottom:-4px;}
 .left-section4block .slider-block .flex-direction-nav a{top:37%;}
-.left-section4block .slider-block .flexslider{min-height:400px;}
+.left-section4block .slider-block .flexslider{min-height:540px;}
+.left-section4block .slider-block .flex-control-paging li a{height:10px;width:10px;border-radius:50%;}
+.cms-page-view.cms-our-stores .csp-block .csp-inner-block.whitetxt .cspbldtxt{font:40px/45px avantgardegothicitcw01d; margin:-14% 0 0 0;}
 .store-events h2{float:left}
 .store-events h5{float:right}
 .store-events strong{clear:both;display:block;}

@@ -9,7 +9,7 @@ jQuery(document).ready(function($){
 //    var bannerFliudHeight = ww * 0.3125;
     $(".gridfull").css('min-height',ww*0.48);
     $("#bucket1_slider.flexslider .slides li").css({"height": sliderHeight});
-	jQuery(".slider-block .slides .slider_li").height(360);
+	jQuery(".slider-block .slides .slider_li").height(510);
 
     //$(flexslider)
     $('.flexslider').flexslider({
@@ -73,7 +73,7 @@ jQuery(document).ready(function($){
         //jQuery(".gridfull").css('min-height',jQuery(window).width()*0.48);
         //jQuery("#bucket1_slider.flexslider .slides li").css({"height": sliderHeight});
         jQuery(".gridfull.nophotoshop .slider_li").css('min-height',ww*0.48);
-		jQuery(".slider-block .slides .slider_li").height(360);
+		jQuery(".slider-block .slides .slider_li").height(500);
         //alert("resized");
         // positionfloatingimages();
         
