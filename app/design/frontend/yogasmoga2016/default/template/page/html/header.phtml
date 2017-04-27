@@ -599,6 +599,7 @@ if($currentUrl != $checkoutpage){
                 <div class="right-bottom-block">
                     <div class="in-bl">
                         <ul class="main-menu main-menu2">
+							
                             <li><a href="<?php echo $this->getBaseUrl();?>our-story" class="main-heading">ys story</a>
                                 <ul class="sub-menu l-align ys-content" style="left:-73px;">
                                     <div class="left-side">
@@ -629,8 +630,8 @@ if($currentUrl != $checkoutpage){
                                     </div>
                                 </ul>
                             </li>
-                            <li style="padding-right:0;display:none;"><a href="<?php echo $this->getBaseUrl();?>our-stores" class="main-heading">YS Stores</a>
-                                <ul class="sub-menu l-align  cms-header-link stores-nav" style="left:-73px;">
+                            <li style="padding-right:0;"><a href="<?php echo $this->getBaseUrl();?>our-stores" class="main-heading">YS Store</a>
+                                <?php /*?><ul class="sub-menu l-align  cms-header-link stores-nav" style="left:-73px;">
                                     <div class="left-side">
                                         <div class="left-st-image">
                                             <img src="<?php echo $this->getSkinUrl('images/nav-ysstore1.jpg')?>">
@@ -673,7 +674,7 @@ if($currentUrl != $checkoutpage){
                                             <li><a href="<?php echo $this->getBaseUrl();?>our-stores#westchester">WESTCHESTER</a></li>
                                         </ul>
                                     </div>
-                                </ul>
+                                </ul><?php */?>
                             </li>
                             <li style="margin-left:20px;" id="shop-bag-count"><span>0</span></li>
                         </ul>
@@ -690,7 +691,7 @@ if($currentUrl != $checkoutpage){
     </div>
 </div>
 <div id="bodycompensator"
-    <?php if ($this->getIsHomePage() && strlen($isfirsttime) == 0)
+    <?php if ($this->getIsHomePage() && strlen($isfirsttime) == 0 && Mage::getSingleton('cms/page')->getIdentifier()=='our-stores')
     {
         ?>
         style="display:none;"
