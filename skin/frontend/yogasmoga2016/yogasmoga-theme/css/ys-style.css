@@ -2971,8 +2971,8 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
-	.slides .flex-active-slide .banner_avant_grade_demi{ font: 50px/52px AvantGardeGothicITCW01D;}
-    .banner-avant-grade-bk-small{ font: 38px/38px ITCAvantGardeProBk;}
+	.slides .flex-active-slide .banner_avant_grade_demi{ font: 40px/42px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 30px/30px ITCAvantGardeProBk;}
     .flexslider .slides img.img_madeinusa{max-width:208px;}
     .flexslider .slides img.img_rndinca{max-width:175px;}
     .banner_text5{right:4%;}
@@ -4885,7 +4885,7 @@ table.productdetailtable div.outofstockitem{
 .right-section4block .right-block-content .right-block-info strong.time-info{padding-top:25px; display:block}
 .right-section4block .right-block-content .right-block-info p{font:13px/16px gothamBook}
 .right-section4block .right-block-content .right-block-info p.comment-info{padding-top:30px;}
-.right-section4block .right-block-content .events-block{text-align:left;padding-top:30px;}
+.right-section4block .right-block-content .events-block{text-align:left;padding-top:30px;position:relative;}
 .right-section4block .right-block-content .events-block h1{color:#555; font-weight:bold; margin-top:5px;}
 .left-section4block .social-insta-block .block .parent {
     width: 100%;
@@ -4987,3 +4987,84 @@ table.productdetailtable div.outofstockitem{
 	}
 .store-events .store-event-section1 p{margin:0; padding:0;}
 
+/***event slider***/
+.events-block .events-controller{float:right;}
+.events-block .events-controller .control_prev,.events-block .events-controller .control_next{font-size:30px;color:#666;display:inline-block;cursor:pointer;} 
+#eventslider {
+  position: relative;
+  overflow: hidden;
+}
+
+#eventslider ul {
+  position: relative;
+  height: 100%;
+}
+
+#eventslider ul li {
+  position: relative;
+  display: block;
+  float: left;
+  width: 331px;
+  height: 100%;
+}
+
+#eventslider a.control_prev, #eventslider a.control_next {
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+#eventslider a.control_prev:hover, #eventslider a.control_next:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease;
+}
+
+#eventslider a.control_prev {
+  border-radius: 0 2px 2px 0;
+}
+
+#eventslider a.control_next {
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+a.instagram-img{
+	background: url(../images/d21416.png);
+    background-repeat: no-repeat;
+    background-position: -106px -223px;
+    height: 40px;
+    width: 40px;
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+    .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi{ font: 40px/42px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 25px/30px ITCAvantGardeProBk; margin:15px 0;}
+    .flexslider .slides img.img_madeinusa{max-width:208px;}
+    .flexslider .slides img.img_rndinca{max-width:175px;}
+    .banner_text5{right:4%;}
+    .collection-banner{font: 28px/28px AvantGardeGothicITCW01D;}
+    .collection-banner span{font: 17px/21px freight;}
+    .collection-banner img{width:5%;padding:2% 0%;}
+}
+@media screen and (min-width: 1400px) and (max-width: 1600px) {
+    .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi{ font: 40px/42px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 25px/30px ITCAvantGardeProBk; margin:15px 0;}
+    .flexslider .slides img.img_madeinusa{max-width:208px;}
+    .flexslider .slides img.img_rndinca{max-width:175px;}
+    .banner_text5{right:4%;}
+    .collection-banner{font: 28px/28px AvantGardeGothicITCW01D;}
+    .collection-banner span{font: 17px/21px freight;}
+    .collection-banner img{width:5%;padding:2% 0%;}
+}
