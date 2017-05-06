@@ -3186,3 +3186,12 @@ ul.main-menu > li.one-too-many{padding-right:0;}
 }
 .cms-index-index.cms-home .header-banner .header-banner-block{border-bottom:1px solid #555;}
 */
+#bucket1_slider .over-the-slide {
+    padding: 80px 77px !important;
+    position: absolute;
+    top: 15%;
+    left:24%;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+}

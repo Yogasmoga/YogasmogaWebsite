@@ -4859,3 +4859,27 @@ header-banner .header-banner-block{border-bottom:none!important;}
 }
 #signup.mc-signup form{top:50%;}
 
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+    .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi{ font: 40px/42px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi.code{ font: 26px/42px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 25px/30px ITCAvantGardeProBk; margin:15px 0;}
+    .flexslider .slides img.img_madeinusa{max-width:208px;}
+    .flexslider .slides img.img_rndinca{max-width:175px;}
+    .banner_text5{right:4%;}
+    .collection-banner{font: 28px/28px AvantGardeGothicITCW01D;}
+    .collection-banner span{font: 17px/21px freight;}
+    .collection-banner img{width:5%;padding:2% 0%;}
+}
+@media screen and (min-width: 1400px) and (max-width: 1600px) {
+    .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi{ font: 40px/42px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi.code{ font: 26px/42px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 25px/30px ITCAvantGardeProBk; margin:15px 0;}
+    .flexslider .slides img.img_madeinusa{max-width:208px;}
+    .flexslider .slides img.img_rndinca{max-width:175px;}
+    .banner_text5{right:4%;}
+    .collection-banner{font: 28px/28px AvantGardeGothicITCW01D;}
+    .collection-banner span{font: 17px/21px freight;}
+    .collection-banner img{width:5%;padding:2% 0%;}
+}
