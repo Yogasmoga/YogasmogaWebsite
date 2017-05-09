@@ -4875,20 +4875,21 @@ table.productdetailtable div.outofstockitem{
 
 
 .left-section4block .social-insta-block{width:100%; margin-top:20%;}
-.left-section4block .social-insta-block strong{font-weight:bold; color:#555;}
+.left-section4block .social-insta-block strong{font-weight:bold; color:#555;padding-bottom: 11px;display: block;font-family: graphikregular;}
 .left-section4block .social-insta-block .block{width:32%;height:304px; background:#eee;float:left;position:relative;}
 .left-section4block .social-insta-block .block.block2{margin: 0 2% 0 2%;padding:0;}
 .left-section4block .social-insta-block .block a{ display:block;color:#fff;font-size:15px;}
 .left-section4block .social-insta-block .block .block-caption{margin-top:190px;}
 .left-section4block .social-insta-block .block .block-caption span{display:block;}
 .right-section4block .right-block-content .right-block-info{text-align:left;}
-.right-section4block .right-block-content .right-block-info strong,.right-section4block .right-block-content .events-block strong{font:14px/15px graphikregular; color:#555; font-weight:bold;}
+.right-section4block .right-block-content .right-block-info strong,.right-section4block .right-block-content .events-block strong{font:14px/15px graphikregular; color:#555; font-weight:bold; padding-top:5px;}
 .right-section4block .right-block-content .right-block-info strong.time-info{padding-top:25px; display:block}
 .right-section4block .right-block-content .right-block-info p{font:13px/16px gothamBook}
 .right-section4block .right-block-content .right-block-info p.comment-info{padding-top:30px;}
 .right-section4block .right-block-content .events-block{text-align:left;padding-top:30px;position:relative;}
 .right-section4block .right-block-content .events-block h1{color:#555; font-weight:bold; margin-top:5px;font:30px/30px AvantGardeGothicMedium}
-
+.right-section4block .right-block-content .events-block .right-bottom-part{margin-top:105px;}
+.right-section4block .right-block-content .events-block strong.first-load{font-family:AvantGardeGothicMedium}
 .left-section4block .social-insta-block .block .parent {
     width: 100%;
     height: 304px;
@@ -4987,7 +4988,7 @@ table.productdetailtable div.outofstockitem{
     padding: 15px 0;
     margin-top: 15px;
 	}
-.store-events .store-event-section1 p{margin:0; padding:0;}
+.store-events .store-event-section p{margin:0; padding:0;}
 
 /***event slider***/
 .events-block .events-controller{float:right;}
