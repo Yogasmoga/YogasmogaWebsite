@@ -4880,16 +4880,19 @@ table.productdetailtable div.outofstockitem{
 .left-section4block .social-insta-block .block.block2{margin: 0 2% 0 2%;padding:0;}
 .left-section4block .social-insta-block .block a{ display:block;color:#fff;font-size:15px;}
 .left-section4block .social-insta-block .block .block-caption{margin-top:190px;}
+.left-section4block .social-insta-block .block .block-caption strong,#eventslider h5,{font:10px/15px AvantGardeGothicITCW01D;color:#555}
 .left-section4block .social-insta-block .block .block-caption span{display:block;}
-.right-section4block .right-block-content .right-block-info{text-align:left;}
-.right-section4block .right-block-content .right-block-info strong,.right-section4block .right-block-content .events-block strong{font:14px/15px graphikregular; color:#555; font-weight:bold; padding-top:5px;}
+.right-section4block .right-block-content .right-block-info{text-align:left;color:#555;}
+.right-section4block .right-block-content .right-block-info strong,.right-section4block .right-block-content .events-block strong{font:12px/19px graphikmedium; color:#555; padding-top:5px;}
 .right-section4block .right-block-content .right-block-info strong.time-info{padding-top:25px; display:block}
-.right-section4block .right-block-content .right-block-info p{font:13px/16px gothamBook}
+.right-section4block .right-block-content .right-block-info strong.la-jolla{font:12px/19px graphikmedium;font-weight:normal}
+
+.right-section4block .right-block-content .right-block-info p{font:12px/19px graphikregular; color:#555;}
 .right-section4block .right-block-content .right-block-info p.comment-info{padding-top:30px;}
 .right-section4block .right-block-content .events-block{text-align:left;padding-top:30px;position:relative;}
 .right-section4block .right-block-content .events-block h1{color:#555; font-weight:bold; margin-top:5px;font:30px/30px AvantGardeGothicMedium}
 .right-section4block .right-block-content .events-block .right-bottom-part{margin-top:105px;}
-.right-section4block .right-block-content .events-block strong.first-load{font-family:AvantGardeGothicMedium}
+.right-section4block .right-block-content .events-block strong.first-load{font:12px/19px AvantGardeGothicITCW01D}
 .left-section4block .social-insta-block .block .parent {
     width: 100%;
     height: 304px;
@@ -4981,7 +4984,7 @@ table.productdetailtable div.outofstockitem{
 .left-section4block .slider-block .flex-control-paging li a{height:10px;width:10px;border-radius:50%;}
 .cms-page-view.cms-our-stores .csp-block .csp-inner-block.whitetxt .cspbldtxt{font:40px/45px avantgardegothicitcw01d; margin:-14% 0 0 0;}
 .store-events h2{float:left}
-.store-events h5{float:right}
+.store-events h5{float:right;text-transform:uppercase}
 .store-events strong{clear:both;display:block;}
 .store-events .store-event-section{    
 	border-top: 1px solid #bbb;
@@ -4992,6 +4995,7 @@ table.productdetailtable div.outofstockitem{
 
 /***event slider***/
 .events-block .events-controller{float:right;}
+#eventslider h2{font:24px/28px AvantGardeGothicITCW01B;color:#555}
 .events-block .events-controller .control_prev{margin-right:5px;}
 .events-block .events-controller img{max-width:36%; width:100%; height:auto;}
 .events-block .events-controller .control_prev,.events-block .events-controller .control_next{font-size:30px;color:#666;display:inline-block;cursor:pointer;} 
