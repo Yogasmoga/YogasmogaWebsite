@@ -57,7 +57,7 @@ SetEnvIf X-Forwarded-Proto https HTTPS=on
 php_flag zlib.output_compression on
 FileETag none
 #    php_value memory_limit 64M
-    php_value memory_limit 512M
+    php_value memory_limit 1024M
     php_value max_execution_time 18000
     php_value max_input_vars 10000
 
