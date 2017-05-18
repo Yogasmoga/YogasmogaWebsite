@@ -5054,7 +5054,7 @@ a.instagram-img{
     height: 40px;
     width: 40px;
 }
-
+.csp-block .range-seal.os{bottom:5%;width:130px;}
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
 	.slides .flex-active-slide .banner_avant_grade_demi{ font: 40px/42px AvantGardeGothicITCW01D;}
