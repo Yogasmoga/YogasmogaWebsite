@@ -134,7 +134,7 @@
 													 $i++;
 												}
 												$bmonth = date('F', strtotime($timestamp));
-													//echo "<strong class='first-load' style='text-transform:uppercase'>MONTH OF <span class='m'>".$bmonth ."</span></strong>";	
+													echo "<strong class='first-load' style='text-transform:uppercase'>MONTH OF <span class='m'>".$bmonth ."</span></strong>";	
 
 												?>
 												<!--<strong class='after-click-load' style='display:none;text-transform:uppercase'></strong>-->
@@ -146,11 +146,13 @@
 													<ul>
 													<?php $i =0; $count=3; $len = count($collection);foreach($collection as $item){
 																$timestamp = $item->getDate();
-																$beforeDate = date('Y-m-d', strtotime($timestamp . ' - 1 day'));
+																//$beforeDate = date('Y-m-d', strtotime($timestamp . ' - 1 day'));
 																$date = date('d', strtotime($timestamp));
 																$day = date('l', strtotime($timestamp));
-																$bmonth = date('F', strtotime($beforeDate));
-																$bdate = date('d', strtotime($beforeDate));
+																//$bmonth = date('F', strtotime($beforeDate));
+																//$bdate = date('d', strtotime($beforeDate));
+																$bmonth = date('F', strtotime($timestamp));
+																$bdate = date('d', strtotime($timestamp));
 																
 																if($i%$count ==0){
 																echo  "<li m='".$bmonth."' d='".$bdate."'>";
