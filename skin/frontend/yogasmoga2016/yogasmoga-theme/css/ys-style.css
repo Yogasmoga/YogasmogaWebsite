@@ -4993,7 +4993,7 @@ header-banner .header-banner-block{border-bottom:none!important;}
 
 /***event slider***/
 .events-block .events-controller{float:right;}
-#eventslider h2{font:24px/28px AvantGardeGothicITCW01B;color:#555}
+#eventslider h2{font:18px/28px AvantGardeGothicITCW01B;color:#555}
 
 .events-block .events-controller .control_prev{margin-right:18px;}
 .events-block .events-controller img{max-width:100%; width:10px; height:auto;}

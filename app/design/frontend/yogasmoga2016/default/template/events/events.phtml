@@ -41,7 +41,7 @@
 									<div class="social-insta-block">
 									
 										<div class="block block1">
-											<div class="parent" onclick="">
+											<div class="parent" onclick="window.open('https://www.instagram.com/yogasmoga_lajolla/')">
 												<div class="child bg-one">
 													<a href="https://www.instagram.com/yogasmoga_lajolla/" target="_blank" class="instagram"></a>
 												</div>
@@ -53,7 +53,7 @@
 											</div>
 										</div>
 										<div class="block block2">
-											<div class="parent" onclick="">
+											<div class="parent" onclick="window.open('http://laplazalajolla.com/')">
 												<div class="child bg-two">
 													<a href="http://laplazalajolla.com/" target="_blank"></a>
 												</div>
@@ -164,7 +164,7 @@
 														<div class="store-events <?php echo $style; if($i==0){ echo ' first-section';}elseif($i==$len -1){echo ' last-section';}?>" rel="<?php echo $timestamp?>">
 															
 															<div class="store-event-section es-<?php echo $i;?>"   >
-																<h2><?php echo $date; ?></h2><h5><?php echo $day; ?></h5>
+																<h2><?php echo "<span style='display:inline-block;margin-right:5px;'>$bmonth</span>".$date; ?></h2><h5><?php echo $day; ?></h5>
 																<strong><?php echo $item->getTitle()?></strong>
 																<p><?php echo $item->getStartAtTime()?></p>
 																<p><?php echo $item->getFunction()?></p>
