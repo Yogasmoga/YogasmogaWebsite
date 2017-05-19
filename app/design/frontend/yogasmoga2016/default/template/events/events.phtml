@@ -1,0 +1,265 @@
+<div class="namaskar-overlay1">&nbsp;</div>
+
+<div id="Allproducts" desc="Haveheart Products" class="fullscreen pgsection " style="min-height: 295px;">
+    <div class="product-grid">
+
+            <div class="2-columns-wrapper">
+                        
+                                    
+							<div class="bannerFluid">
+								<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/homepage/ys-ten-stores-v2.jpg" alt="Haveheart" title="Haveheart">
+								<div class="category-info csp-block">
+									<div class="csp-inner-block whitetxt ws have-banner-text">
+										<div class="cspbldtxt">VISIT US AT <br/>YOGASMOGA LA JOLLA</div>
+									</div>
+									<div class="range-seal left os">
+										<img src="<?php echo Mage::getBaseUrl('media')?>wysiwyg/new-design-images/homepage/seal/seal-badge.png" style="margin-bottom: 11px;" alt="Women Select">
+									</div>
+								</div>
+							
+							</div>
+							
+							
+							<div class="content-block">
+								<!--Left Section start-->
+								<div class="left-section4block">
+								
+									<div class="slider-block">
+											
+											<div class="flexslider home-slider" id="bucket1_slider">
+												<ul class="slides">
+													<li class="slider_li" title="YOGASMOGA:Spring Time" rel="" moveto="" style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/Yogasmoga-La-Jolla.jpg') 0% 0% / cover; width: 100%; float: left; margin-right: -25%; position: relative; opacity: 0; display: block; z-index: 1; cursor: pointer;">
+													</li>
+													<li class="slider_li" title="Our Ethics" rel="" style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/ys-our-store-slider2.jpg') 0% 0% / cover;  width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1; cursor: pointer;">
+													</li>
+													<li class="slider_li" title="Our Ethics" rel="" style="background: url('<?php echo Mage::getUrl('/', array('_secure' => false)); ?>media/wysiwyg/new-design-images/homepage/ten-stores-ysv3.jpg') 0% 0% / cover;  width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1; cursor: pointer;">
+													</li>
+													
+												</ul>
+											</div>
+									</div>
+									<div class="social-insta-block">
+									
+										<div class="block block1">
+											<div class="parent" onclick="">
+												<div class="child bg-one">
+													<a href="https://www.instagram.com/yogasmoga_lajolla/" target="_blank" class="instagram"></a>
+												</div>
+											</div>
+											<div class="block-caption">
+												<strong>YS LA JOLLA INSTAGRAM</strong>
+												<span>Follow YOGASMOGA LA JOLLA </span>
+												<span class="clickable-elm" onclick="window.open('https://www.instagram.com/yogasmoga_lajolla/')">on Instagram @yogasmoga_lajolla</span>
+											</div>
+										</div>
+										<div class="block block2">
+											<div class="parent" onclick="">
+												<div class="child bg-two">
+													<a href="http://laplazalajolla.com/" target="_blank"></a>
+												</div>
+											</div>
+											<div class="block-caption">
+												<strong>EXPLORE LA JOLLA</strong>
+												<span>Other things to do at La Plaza</span>
+												<span>and neighborhoods</span>
+											</div>
+										</div>
+										<div class="block block3">
+											<div class="parent" onclick="">
+												<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('ys-maps')->toHtml();?>
+											</div>
+											<div class="block-caption">
+												<strong class="how-to">HOW TO GET HERE</strong>
+												<span>Get directions on how to get</span>
+												<span>to YOGASMOGA La Jolla</span>
+											</div>
+										</div>
+										
+									</div>
+								
+								</div>
+								<!--Left Section end-->
+								
+								
+								
+								<!--Right Section start-->
+								<div class="right-section4block">
+									
+									<div class="right-block-content">
+									
+											<div class="right-block-info">
+												<strong class="la-jolla">YOGASMOGA LA JOLLA at La Plaza</strong>
+												<p>7863 Girard Avenue, La Jolla, CA 92037<br/>
+												858-732-9642 (YOGA)<br/>
+												lajolla@yogasmoga.com		
+												</p>
+												<strong class="time-info">Monday-Saturday</strong>
+												<p>10am&ndash;7pm</p>
+												<strong class="time-info">Sunday</strong>
+												<p>10am&ndash;6pm</p>
+												<p class="comment-info">We welcome the community to join<br/> us for our store events</p>
+											</div>
+											<div class="events-block">
+												<?php 
+
+												$collection = Mage::getModel('events/events')
+													->getCollection()
+													->addFieldToFilter("status", array('eq'=>1));
+													
+												$i=1;
+												foreach($collection as $item){
+													 $timestamp = $item->getDate();
+													$weekdate = date('Y-m-d', strtotime($timestamp . ' + 7 day'));
+													//echo $weekdate."<br/>"; 
+													
+													
+													if($i==1){
+													$beforeDate = date('Y-m-d', strtotime($timestamp . ' - 1 day'));
+													
+													$bmonth = date('F', strtotime($beforeDate));
+													 $bdate = date('d', strtotime($beforeDate));
+													 $wdate = date('d', strtotime($weekdate));
+													 $bday = date('l', strtotime($beforeDate));	
+													echo "<strong class='first-load' style='text-transform:uppercase'>WEEK OF <span class='m'>".$bmonth ."</span> <span class='d'>".$bdate."</span>TH</strong>";	
+													}
+													
+													 //echo $bdate .'-- '.$wdate;
+													 
+													 
+													 
+													 $date = date('d', strtotime($timestamp));
+													 $day = date('l', strtotime($timestamp));
+													 //echo $date .'----'.$day."<br/>";
+													 
+													 $i++;
+												}
+												
+
+												?>
+												<strong class='after-click-load' style='display:none;text-transform:uppercase'></strong>
+												<div class="events-controller"><span class="control_prev"><img src="<?php echo $this->getSkinUrl('images/left-bg.png')?>"></span><span class="control_next"><img src="<?php echo $this->getSkinUrl('images/right-bg.png')?>"></span></div>
+												
+												<h1>STORE EVENTS</h1>
+												<div id="eventslider">
+												
+													<ul>
+													<?php $i =0; $count=3; $len = count($collection);foreach($collection as $item){
+																$timestamp = $item->getDate();
+																$beforeDate = date('Y-m-d', strtotime($timestamp . ' - 1 day'));
+																$date = date('d', strtotime($timestamp));
+																$day = date('l', strtotime($timestamp));
+																$bmonth = date('F', strtotime($beforeDate));
+																$bdate = date('d', strtotime($beforeDate));
+																
+																if($i%$count ==0){
+																echo  "<li m='".$bmonth."' d='".$bdate."'>";
+																
+																}
+																
+																?>
+														
+														<div class="store-events <?php echo $style; if($i==0){ echo ' first-section';}elseif($i==$len -1){echo ' last-section';}?>" rel="<?php echo $timestamp?>">
+															
+															<div class="store-event-section es-<?php echo $i;?>"   >
+																<h2><?php echo $date; ?></h2><h5><?php echo $day; ?></h5>
+																<strong><?php echo $item->getTitle()?></strong>
+																<p><?php echo $item->getStartAtTime()?></p>
+																<p><?php echo $item->getFunction()?></p>
+															</div>
+																
+															
+														</div>
+														
+														<?php if ($i % $count == ($count-1) || $i ==   $len-1) {
+																echo '</li>';
+																	}?>
+																
+														<?php ++$i;}  ?>
+														
+													</ul>
+												</div>
+												<p class="right-bottom-part">You can also help you create <br/>beautiful experiences for your next <br/>event in our studio loft spaces.</p>		
+												<p>Email us at <a href="mailto:lajolla@yogasmoga.com">lajolla@yogasmoga.com</a> <br/>to help create your event.</p>
+											</div>
+									
+									</div>
+								</div>
+								<!--Right Section end-->
+							
+							</div>
+							
+						<div class="clear-fix"></div>
+			</div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        jQuery('body').css('overflow', 'auto');
+        jQuery('.namaskar-overlay1').fadeOut('slow');
+		/*jQuery('a[href*="#"]:not([href="#"])').click(function(e){
+            e.preventDefault();
+            var bcomh = jQuery('#bodycompensator').height();
+			var target = this.hash;
+            var $target = jQuery(target);
+		jQuery('html, body').animate({scrollTop: $target.offset().top - bcomh }, 900);
+        });*/
+	jQuery(".clickdata").click(function(){
+		jQuery(this).html("working...");
+		alert("working...");
+	});
+	//slider start.
+	
+	 var slideCount = $('#eventslider ul li').length;
+    var slideWidth = $('#eventslider ul li').width();
+    var slideHeight = $('#eventslider ul li').height();
+    var sliderUlWidth = slideCount * slideWidth;
+	//alert();
+    $('#eventslider').css({ width: slideWidth, height: slideHeight });
+
+    $('#eventslider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+
+    $('#eventslider ul li:last-child').prependTo('#eventslider ul');
+
+    function moveLeft() {
+        
+		$('#eventslider ul').animate({
+            left: + slideWidth
+        }, 800, function () {
+            $('#eventslider ul li:last-child').prependTo('#eventslider ul');
+            $('#eventslider ul').css('left', '');
+			
+        });
+		
+    };
+
+    function moveRight() {
+        $('#eventslider ul').animate({
+            left: - slideWidth
+        }, 800, function () {
+            $('#eventslider ul li:first-child').appendTo('#eventslider ul');
+            $('#eventslider ul').css('left', '');
+        });
+		
+    };
+
+    $('span.control_prev').click(function () {
+        moveLeft();
+		var m = $('#eventslider ul li:first-child').attr('m');
+		var d = $('#eventslider ul li:first-child').attr('d');
+		$(".first-load span.m").html(m);
+		$(".first-load span.d").html(d);
+	});
+
+    $('span.control_next').click(function () {
+        moveRight();
+		var m = $('#eventslider ul li:last-child').attr('m');
+		var d = $('#eventslider ul li:last-child').attr('d');
+		$(".first-load span.m").html(m);
+		$(".first-load span.d").html(d);
+		
+	});
+	});
+	
+	
+</script>

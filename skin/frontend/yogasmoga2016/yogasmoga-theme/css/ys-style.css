@@ -4859,6 +4859,229 @@ header-banner .header-banner-block{border-bottom:none!important;}
 }
 #signup.mc-signup form{top:50%;}
 
+
+
+/**********New Store Page design ***********/
+.cms-page-view.cms-our-stores  div#bodycompensator { height: 0 !important;}
+.cms-page-view.cms-our-stores .scrolled-effect #globalheader ul.main-menu>li>a.menu-heading,
+.cms-page-view.cms-our-stores .scrolled-effect #globalheader ul.main-menu.main-menu2>li>a.main-heading
+{color:#fff;}
+.clickable-elm{cursor:pointer;}
+.content-block{clear:both;margin-top:30px; overflow:hidden; margin-right:1%;margin-left:1%;}
+.left-section4block{ float:left;width:72%;}
+.right-section4block{float:right;width:25%;height:100%;min-height:400px;margin-right:2px;}
+.right-section4block .right-block-content{width:100%;min-height:400px;}
+.left-section4block .slider-block{width:100%; height:360px;background:#eee;}
+
+
+.left-section4block .social-insta-block{width:100%; margin-top:180px;}
+.left-section4block .social-insta-block strong{font-weight:bold; color:#555;padding-bottom: 11px;display: block;font-family: graphikregular;}
+.left-section4block .social-insta-block .block{width:32%;height:304px; background:#eee;float:left;position:relative;border:none;}
+.left-section4block .social-insta-block .block.block2{margin: 0 2% 0 2%;padding:0;}
+.left-section4block .social-insta-block .block a{ display:block;color:#fff;font-size:15px;}
+.left-section4block .social-insta-block .block .block-caption{margin-top:190px;}
+#eventslider h5{font:10px/15px AvantGardeGothicITCW01D;color:#555}
+.left-section4block .social-insta-block .block .block-caption strong{font:12px/19px AvantGardeGothicITCW01D;color:#555}
+.left-section4block .social-insta-block .block .block-caption span{display:block;}
+.right-section4block .right-block-content .right-block-info{text-align:left;color:#555;}
+.right-section4block .right-block-content .right-block-info strong,.right-section4block .right-block-content .events-block strong{font:12px/19px graphikmedium; color:#555; padding-top:5px;}
+.right-section4block .right-block-content .right-block-info strong.time-info{padding-top:19px; display:block}
+.right-section4block .right-block-content .right-block-info strong.la-jolla{font:12px/19px graphikmedium;font-weight:normal}
+
+.right-section4block .right-block-content .right-block-info p{font:12px/19px graphikregular; color:#555;}
+.right-section4block .right-block-content .right-block-info p.comment-info{padding-top:19px;}
+.right-section4block .right-block-content .events-block{text-align:left;padding-top:30px;position:relative;}
+.right-section4block .right-block-content .events-block h1{color:#555; margin-top:5px;font:24px/30px AvantGardeGothicITCW01D;}
+.right-section4block .right-block-content .events-block .right-bottom-part{margin-top:25px;}
+.right-section4block .right-block-content .events-block strong.first-load, .block-caption strong.how-to{font:12px/19px AvantGardeGothicITCW01D}
+.left-section4block .social-insta-block .block .parent {
+    width: 100%;
+    height: 304px;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    display: inline-block;
+    cursor: pointer;
+	margin-bottom:20px;
+}
+
+.left-section4block .social-insta-block .block .child {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+/* Several different images */
+.left-section4block .social-insta-block .block .bg-one {background-image: url('../images/instagram.png');}
+.bg-two {background-image: url('../images/lajolla.png');}
+.bg-three {background-image: url(https://media.timeout.com/images/101484105/image.jpg);}
+
+.left-section4block .social-insta-block .block a {
+    display: none;
+    font-size: 25px;
+    color: #ffffff !important;
+    font-family: gothambook;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    cursor: pointer;
+    /*text-decoration: none;*/
+}
+/*
+.left-section4block .social-insta-block .block .parent:hover .child, .parent:focus .child {
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+*/
+.left-section4block .social-insta-block .block .parent:hover .child:before, .left-section4block .social-insta-block .block .parent:focus .child:before {
+    display: block;
+}
+
+.left-section4block .social-insta-block .block .parent:hover a, .left-section4block .social-insta-block .block .parent:focus a {
+    display: block;
+}
+
+.left-section4block .social-insta-block .block .child:before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*background-color: rgba(52,73,94,0.75);*/
+}
+
+/* Media Queries */
+@media screen and (max-width: 960px) {
+    .left-section4block .social-insta-block .block .parent {width: 100%; margin: 20px 0px}
+       /* .wrapper {padding: 20px 20px;}*/
+}
+
+
+
+.left-section4block .social-insta-block .block a img:hover{width:100%; max-width:100%; height:auto;}
+
+
+.left-section4block .slider-block .flex-control-nav{bottom:-10px;}
+.left-section4block .slider-block .flex-direction-nav a{top:37%;}
+.left-section4block .slider-block .flexslider{min-height:530px;}
+.left-section4block .slider-block .flex-control-paging li a{height:8px;width:8px;border-radius:50%;background:#ddd;box-shadow:none;}
+.left-section4block .slider-block .flex-control-paging li a.flex-active{background:#ae8536}
+.cms-page-view.cms-our-stores .csp-block .csp-inner-block.whitetxt .cspbldtxt{font:40px/45px avantgardegothicitcw01d; margin:-26.3% 0 0 0;}
+.store-events h2{float:left}
+.store-events h5{float:right;text-transform:uppercase}
+.store-events strong{clear:both;display:block;}
+.store-events .store-event-section{    
+	border-top: 1px solid #bbb;
+    padding: 15px 0;
+    margin-top: 15px;
+	}
+.store-events .store-event-section p{margin:0; padding:0;}
+
+/***event slider***/
+.events-block .events-controller{float:right;}
+#eventslider h2{font:24px/28px AvantGardeGothicITCW01B;color:#555}
+
+.events-block .events-controller .control_prev{margin-right:18px;}
+.events-block .events-controller img{max-width:100%; width:10px; height:auto;}
+.events-block .events-controller .control_prev,.events-block .events-controller .control_next{font-size:30px;color:#666;display:inline-block;cursor:pointer;} 
+#eventslider {
+  position: relative;
+  overflow: hidden;
+}
+
+#eventslider ul {
+  position: relative;
+  height: 100%;
+}
+
+#eventslider ul li {
+  position: relative;
+  display: block;
+  float: left;
+  width: 331px;
+  height: 100%;
+}
+
+#eventslider a.control_prev, #eventslider a.control_next {
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+#eventslider a.control_prev:hover, #eventslider a.control_next:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease;
+}
+
+#eventslider a.control_prev {
+  border-radius: 0 2px 2px 0;
+}
+
+#eventslider a.control_next {
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+a.instagram-img{
+	background: url(../images/d21416.png);
+    background-repeat: no-repeat;
+    background-position: -106px -223px;
+    height: 40px;
+    width: 40px;
+}
+.csp-block .range-seal.os{bottom:5%;width:130px;}
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+    .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi{ font: 40px/42px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi.code{ font: 26px/42px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 25px/30px ITCAvantGardeProBk; margin:15px 0;}
+    .flexslider .slides img.img_madeinusa{max-width:208px;}
+    .flexslider .slides img.img_rndinca{max-width:175px;}
+    .banner_text5{right:4%;}
+    .collection-banner{font: 28px/28px AvantGardeGothicITCW01D;}
+    .collection-banner span{font: 17px/21px freight;}
+    .collection-banner img{width:5%;padding:2% 0%;}
+}
+@media screen and (min-width: 1400px) and (max-width: 1600px) {
+    .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi{ font: 40px/42px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi.code{ font: 26px/42px AvantGardeGothicITCW01D;}
+    .banner-avant-grade-bk-small{ font: 25px/30px ITCAvantGardeProBk; margin:15px 0;}
+    .flexslider .slides img.img_madeinusa{max-width:208px;}
+    .flexslider .slides img.img_rndinca{max-width:175px;}
+    .banner_text5{right:4%;}
+    .collection-banner{font: 28px/28px AvantGardeGothicITCW01D;}
+    .collection-banner span{font: 17px/21px freight;}
+    .collection-banner img{width:5%;padding:2% 0%;}
+	.events-block .events-controller{margin-right:10%;}
+	.left-section4block .slider-block .flex-control-nav{bottom:-10px;}
+	.left-section4block .social-insta-block{width:100%; margin-top:180px;}
+}
+
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
 	.slides .flex-active-slide .banner_avant_grade_demi{ font: 40px/42px AvantGardeGothicITCW01D;}
