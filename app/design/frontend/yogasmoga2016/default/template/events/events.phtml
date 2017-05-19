@@ -120,7 +120,7 @@
 													 $bdate = date('d', strtotime($beforeDate));
 													 $wdate = date('d', strtotime($weekdate));
 													 $bday = date('l', strtotime($beforeDate));	
-													echo "<strong class='first-load' style='text-transform:uppercase'>WEEK OF <span class='m'>".$bmonth ."</span> <span class='d'>".$bdate."</span>TH</strong>";	
+													//echo "<strong class='first-load' style='text-transform:uppercase'>MONTH OF <span class='m'>".$bmonth ."</span></strong>";	
 													}
 													
 													 //echo $bdate .'-- '.$wdate;
@@ -133,10 +133,11 @@
 													 
 													 $i++;
 												}
-												
+												$bmonth = date('F', strtotime($timestamp));
+													echo "<strong class='first-load' style='text-transform:uppercase'>MONTH OF <span class='m'>".$bmonth ."</span></strong>";	
 
 												?>
-												<strong class='after-click-load' style='display:none;text-transform:uppercase'></strong>
+												<!--<strong class='after-click-load' style='display:none;text-transform:uppercase'></strong>-->
 												<div class="events-controller"><span class="control_prev"><img src="<?php echo $this->getSkinUrl('images/left-bg.png')?>"></span><span class="control_next"><img src="<?php echo $this->getSkinUrl('images/right-bg.png')?>"></span></div>
 												
 												<h1>STORE EVENTS</h1>
