@@ -16,8 +16,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             $write->query("Update customer_address_entity_varchar set value='".str_replace("'","''",ucwords($row['value']))."' where value_id=".$row['value_id']);
         }
     }
-
-    public function inventoryAction()
+	public function inventoryAction()
     {
         $_product = Mage::getModel('catalog/product')->load($this->getRequest()->getParam('id'));
         $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
