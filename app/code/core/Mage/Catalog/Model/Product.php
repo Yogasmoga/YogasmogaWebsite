@@ -815,8 +815,8 @@ class Mage_Catalog_Model_Product extends Mage_Catalog_Model_Abstract
         $collection = $this->getLinkInstance()->useRelatedLinks()
             ->getProductCollection()
             ->setIsStrongMode();
-        $collection->setProduct($this);
-        return $collection;
+				$collection->setProduct($this);
+				return $collection;
     }
 
     /**
@@ -2047,8 +2047,7 @@ class Mage_Catalog_Model_Product extends Mage_Catalog_Model_Abstract
     {
         return $this->_getResource()->getProductEntitiesInfo($columns);
     }
-
-    /**
+	/**
      * Checks whether product has disabled status
      *
      * @return bool

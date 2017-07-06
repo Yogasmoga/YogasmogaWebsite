@@ -76,10 +76,10 @@ class Mage_Catalog_Model_Product_Action extends Mage_Core_Model_Abstract
             'store_id'          => $storeId
         ));
 
-        // register mass action indexer event
-        Mage::getSingleton('index/indexer')->processEntityAction(
-            $this, Mage_Catalog_Model_Product::ENTITY, Mage_Index_Model_Event::TYPE_MASS_ACTION
-        );
+			// register mass action indexer event
+			Mage::getSingleton('index/indexer')->processEntityAction(
+				$this, Mage_Catalog_Model_Product::ENTITY, Mage_Index_Model_Event::TYPE_MASS_ACTION
+			);
         return $this;
     }
 
@@ -109,9 +109,9 @@ class Mage_Catalog_Model_Product_Action extends Mage_Core_Model_Abstract
         }
 
         $this->setData(array(
-            'product_ids' => array_unique($productIds),
-            'website_ids' => $websiteIds,
-            'action_type' => $type
+						'product_ids' => array_unique($productIds),
+						'website_ids' => $websiteIds,
+						'action_type' => $type
         ));
 
         // register mass action indexer event

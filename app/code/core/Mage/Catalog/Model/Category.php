@@ -235,8 +235,8 @@ class Mage_Catalog_Model_Category extends Mage_Catalog_Model_Abstract
             Mage::dispatchEvent('catalog_category_tree_move_after', $eventParams);
             $this->_getResource()->commit();
 
-            // Set data for indexer
-            $this->setAffectedCategoryIds(array($this->getId(), $this->getParentId(), $parentId));
+				// Set data for indexer
+				$this->setAffectedCategoryIds(array($this->getId(), $this->getParentId(), $parentId));
 
             $moveComplete = true;
         } catch (Exception $e) {
@@ -285,11 +285,8 @@ class Mage_Catalog_Model_Category extends Mage_Catalog_Model_Abstract
      */
     public function getAttributes($noDesignAttributes = false)
     {
-        $result = $this->getResource()
-            ->loadAllAttributes($this)
-            ->getSortedAttributes();
-
-        if ($noDesignAttributes){
+        $result = $this->getResource()->loadAllAttributes($this)->getSortedAttributes();
+		if ($noDesignAttributes){
             foreach ($result as $k=>$a){
                 if (in_array($k, $this->_designAttributes)) {
                     unset($result[$k]);
@@ -331,12 +328,10 @@ class Mage_Catalog_Model_Category extends Mage_Catalog_Model_Abstract
         if ($this->getInitialSetupFlag()) {
             return array();
         }
-
-        if ($storeIds = $this->getData('store_ids')) {
+		if ($storeIds = $this->getData('store_ids')) {
             return $storeIds;
         }
-
-        if (!$this->getId()) {
+		if (!$this->getId()) {
             return array();
         }
 
