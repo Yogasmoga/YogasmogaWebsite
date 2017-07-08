@@ -5065,6 +5065,7 @@ a.instagram-img{
     .collection-banner{font: 28px/28px AvantGardeGothicITCW01D;}
     .collection-banner span{font: 17px/21px freight;}
     .collection-banner img{width:5%;padding:2% 0%;}
+	.cms-home .banner_text4{left:23%;}
 }
 @media screen and (min-width: 1400px) and (max-width: 1600px) {
     .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
@@ -5080,6 +5081,7 @@ a.instagram-img{
 	.events-block .events-controller{margin-right:10%;}
 	.left-section4block .slider-block .flex-control-nav{bottom:-10px;}
 	.left-section4block .social-insta-block{width:100%; margin-top:180px;}
+	.cms-home .banner_text4{left:22%;}
 }
 /*
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
