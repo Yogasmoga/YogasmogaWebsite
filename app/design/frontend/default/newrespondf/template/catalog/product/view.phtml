@@ -890,7 +890,7 @@ if ($lengthAvailable) {
 							
 							<?php if($_product->getId() == 4823){?>
 							<p><span class="productcost" itemprop="price"><span class="p-free">$70</span><span class="t-free"><?php echo "Free"; ?></span></span>
-							<span class="" itemprop="price" style="display:block;font-size:12px;"><?php echo $_helper->productAttribute($_product, $_product->getFixedShiping(), 'fixed_shiping'); ?></span>
+							<span class="ship-handlingmsg" itemprop="price"><?php echo $_helper->productAttribute($_product, $_product->getFixedShiping(), 'fixed_shiping'); ?></span>
                             </p>
 							<?php }else{?>
 							<p><span class="productcost amount "><?php echo $productPrice; ?></span>
