@@ -1317,6 +1317,6 @@ td.popupproductdetail table.smogibucks td div.smogibuckcount {
 }
 .detail-page .includeoptionmain{display:none!important;}
 .productcost{padding: 8px 0;display: block;}
-.ship-handlingmsg{display:block;font-size:12px;padding:7px 0;}
+.ship-handlingmsg{display:block;font-size:12px;padding:4px 0;}
 .productcost .p-free{text-decoration:line-through; color:#999; font-size:18px;padding-right:8px; }
 .productcost .t-free{color:#555; font-size:18px;}
