@@ -2,7 +2,7 @@
 		<div class="invite-form">
             
 			<p class="c-align heart-img"><img src="<?php echo $this->getSkinUrl('images/desktop_popup-vday-2-heart.png')?>"></span></p>
-			<p class="c-align"><img src="<?php echo $this->getSkinUrl('images/Desktop_SpreadLove-PopUp-30per.png')?>"></span></p>
+			<p class="c-align"><img src="<?php echo $this->getSkinUrl('images/Desktop_SpreadLove-PopUp-25-off.png')?>"></span></p>
 			<form id="invite-friend-form" class="bl" action="<?php //echo Mage::getUrl('rewardpoints/index/referral/') ?>" method="post">
 				<div class="box-invite heart-ul">
 					<fieldset class="group-select" id="j2t-referral-lines">
@@ -39,10 +39,10 @@
 							<li class="fields">
 								<div class="j2t-rewardpoints-referral">
 									<div class="field j2t-rewardpoints-name">
-										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname"/>
+										<input type="text" name="name[]" value="" placeholder="Friend's Name" title="<?php echo $this->__('Friend\' Name') ?>" class="required-entry input-text friendname" required/>
 									</div>
 									<div class="field j2t-rewardpoints-email">
-										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail"/>
+										<input type="email" name="email[]" placeholder="Friend's Email" value="" title="<?php echo $this->__('Friend\'s Email') ?>" class=" required-entry input-text friendemail" required/>
 									</div>
 								</div>
 							</li>
@@ -81,7 +81,7 @@
 						<button class="btn-invite button invite-button" type="submit"><span><?php echo $this->__('Send') ?></span></button>
 						<p style="min-height:15px; margin: 0 auto; font-size: 12px; visibility:hidden" class="err-msg">One of the emails you entered already exists.</p>
 						<a href="#" class="close-invite-popup"><span>Close</span></a>
-						<p style="font-size:12px;"><sup>*</sup>At least 2 Friend's emails required to <br/>Spread the SMOGI Love.</p>
+						<p style="font-size:12px;"><sup>*</sup>At least 3 Friend's emails required to <br/>Spread the SMOGI Love.</p>
 						</div>
 					</fieldset>
 				</div>
