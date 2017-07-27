@@ -1,5 +1,5 @@
 <?php
-/*
+
 include_once '../app/Mage.php';
 
 Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
@@ -19,7 +19,7 @@ try {
 
 
 exit;
-*/
+/*
 
 	$filename = "customers_having_smogi_bucks.csv";
 	if(isset($_REQUEST['type'])) {
@@ -78,4 +78,5 @@ exit;
 			}
 		}
     }
+	*/
 ?>
