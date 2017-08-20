@@ -24,9 +24,9 @@ RewriteCond %{HTTP_HOST} ^ftp.yogasmoga.com$ [NC]
 RewriteRule ^(.*)$ http://yogasmoga.com%{REQUEST_URI} [R=301,NC,L,QSA]
 
 
- RewriteCond %{HTTPS} off
- RewriteCond %{HTTP:X-Forwarded-Proto} !https
- RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+ #RewriteCond %{HTTPS} off
+ #RewriteCond %{HTTP:X-Forwarded-Proto} !https
+ #RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 </IfModule>
 
