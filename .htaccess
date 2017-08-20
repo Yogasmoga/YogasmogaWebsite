@@ -6,10 +6,6 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
-
-
-
-
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -22,11 +18,6 @@ RewriteRule . /index.php [L]
 
 RewriteCond %{HTTP_HOST} ^ftp.yogasmoga.com$ [NC]
 RewriteRule ^(.*)$ http://yogasmoga.com%{REQUEST_URI} [R=301,NC,L,QSA]
-
-
- #RewriteCond %{HTTPS} off
- #RewriteCond %{HTTP:X-Forwarded-Proto} !https
- #RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 </IfModule>
 
