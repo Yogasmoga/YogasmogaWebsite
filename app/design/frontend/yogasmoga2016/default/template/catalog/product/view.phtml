@@ -1262,13 +1262,13 @@ if (!$bundledProduct) {
 						
 						<?php } else { ?>
 							<?php //for Race Tee ?>
-						<?php if($_product->getId() == 2834){?>
+						<?php /* if($_product->getId() == 2834){?>
 							<span class="productcost" itemprop="price"><span class="p-free">$70</span><span class="t-free"><?php echo "Free"; ?></span></span>
 							<span class="" itemprop="price" style="display:block;font-size:12px;"><?php echo $_helper->productAttribute($_product, $_product->getFixedShiping(), 'fixed_shiping'); ?></span>
-						<?php }else{?>
+						<?php }else{ */?>
 						<span class="productcost amount" itemprop="price"><?php echo $productPrice; ?></span>
 						<span class="was-amount no-display" style="text-transform: uppercase;"><?php echo 'was $' . $productPrice; ?></span>
-						<?php }?>
+						<?php //}?>
 		           <?php } ?>
 
                        </div>
