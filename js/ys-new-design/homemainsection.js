@@ -8,7 +8,8 @@ jQuery(document).ready(function($){
     var sliderHeight = ww * 0.523;
 //    var bannerFliudHeight = ww * 0.3125;
     $(".gridfull").css('min-height',ww*0.48);
-    $("#bucket1_slider.flexslider .slides li").css({"height": sliderHeight});
+	$("#bucket1_slider.flexslider .slides li").height(755);//added by fahim khan
+    //$("#bucket1_slider.flexslider .slides li").css({"height": sliderHeight});
 	jQuery(".slider-block .slides .slider_li").height(510);
     //$(flexslider)
     $('.flexslider').flexslider({
