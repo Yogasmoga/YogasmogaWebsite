@@ -1,7 +1,8 @@
 
 #Redirection
-Redirect 302 /author/marjorie-nass http://yogasmoga.com/rangoli/author/marjorie-nass-2/
 
+Redirect 302 /author/marjorie-nass http://yogasmoga.com/rangoli/author/marjorie-nass-2/
+Redirect 302 /rangoli https://yogasmoga.com
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
