@@ -4061,10 +4061,14 @@ ul.checkout-cont > li {
     font-size: 14px;
     line-height: 20px;
     text-decoration: none;
+	display:inline-block;
+	margin-left:5px;
 }
 
 .was-amount {
     font: 14px/20px ITCAvantGardeStd-Bk;
+	color: #db2023;
+	text-decoration:line-through;
 }
 
 .detail-page .social-detail ul {

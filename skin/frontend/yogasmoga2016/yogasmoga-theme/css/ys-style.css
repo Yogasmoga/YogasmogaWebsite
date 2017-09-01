@@ -3757,8 +3757,8 @@ table.selectedcolor td span,.blck-head-sml span{font:13px/13px AvantGardeGothicB
 }
 .gry-box .insale{margin-bottom:5px!important;}
 .insale-price{color:#db2023;}
-.was-amount { color: #555; font: 12px/20px graphikregular;  text-transform: lowercase !important; letter-spacing:0.3px;}
-
+.was-amount { color: #db2023; text-decoration:line-through; font: 20px/20px graphikregular;  text-transform: lowercase !important; letter-spacing:0.3px;}
+.was-amount.sale-conf-p{font: 12px/20px graphikregular;display:inline-block;margin-right:5px;}
 /********** new- changes ************/
 /************* size chart start*************/
 #prod-tab-content2 .featureList{margin:0;}
@@ -3964,7 +3964,7 @@ ul.main-menu li a, ul.tr-menu > li > ul.sub-menu li a{font-size:11px; line-heigh
 .product-row .box-seprtr{border:0 none;}
 .product-row .accord{display:none;}
 .product-row .product-price-dv{margin-bottom:28px;}
-.product-row .product-price-dv .productcost{letter-spacing:0.2px;}
+.product-row .product-price-dv .productcost{letter-spacing:0.2px; display:inline-block;}
 div.product-details .product-row  .wdth35{width:100%!important;margin-bottom:34px;}
 
 .product-row .productimagecontainer,.product-row .productimagecontainer tbody,.product-row .productimagecontainer tr,.product-row .productimagecontainer tr td{display:block!important;}

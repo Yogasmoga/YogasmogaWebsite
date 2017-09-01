@@ -893,9 +893,10 @@ if ($lengthAvailable) {
 							<span class="ship-handlingmsg" itemprop="price"><?php echo $_helper->productAttribute($_product, $_product->getFixedShiping(), 'fixed_shiping'); ?></span>
                             </p>
 							<?php }else{*/?>
-							<p><span class="productcost amount "><?php echo $productPrice; ?></span>
-                                <span class="was-amount no-display"
-                                      style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
+							<p>
+								<span class="was-amount no-display" style="text-transform: lowercase;"><?php echo $productPrice; ?></span>
+								<span class="productcost amount "><?php echo $productPrice; ?></span>
+                                
                             </p>
 							
 							<?php //}?>

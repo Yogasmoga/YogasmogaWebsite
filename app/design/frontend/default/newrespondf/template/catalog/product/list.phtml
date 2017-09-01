@@ -537,12 +537,9 @@ if (isset($page) && $page == '11') {
 									<span class="prd-price">$<?php echo round($childProduct['price'], 2); ?> Pre-Order</span>
             
 									<?php } else { ?>
-
-                                     <span class="prd-price" style="color:#ff5f00;"> $<?php echo round($childProduct['price'], 2); ?>
-									</span>
-                                    <span class="prd-price"
-                                         style="text-transform: lowercase;">was $<?php echo round($confProduct->getPrice(), 2); ?>
-								    </span>
+									<span class="prd-price" style="margin-right:5px;text-transform: lowercase;color: #db2023;text-decoration:line-through;">$<?php echo round($confProduct->getPrice(), 2); ?></span>
+                                     <span class="prd-price" style="color:#555;"> $<?php echo round($childProduct['price'], 2); ?></span>
+                                    
 
 									<?php }  ?>
                                 </p>

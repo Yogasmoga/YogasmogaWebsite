@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
        //root='http://master.com.local/';
     else
        root='http://yogasmoga.com/';
-      //  root='http://master.com.local/';
+       //root='http://master.com.local/';
 
     checkIsUserLogged();
 
@@ -420,7 +420,7 @@ function  createCustomerAccount()
                 jQuery(".signinDialog").addClass("wdthauto");
                 _islogedinuser = true;
 				if(_islogedinuser){
-				jQuery("#invite_friends").dialog("open");	
+				//jQuery("#invite_friends").dialog("open");	
 				}
                 if(window.location.href.indexOf("refer-a-friend") > -1) {
                     //window.location.assign(homeUrl+'rewardpoints/index/referral');
@@ -442,7 +442,7 @@ function  createCustomerAccount()
                 {
                     setTimeout(function(){
                         jQuery("#signing_popup").dialog( "close" );
-                        jQuery("#invite_friends").dialog( "open" );
+                        //jQuery("#invite_friends").dialog( "open" );
                     },2000);
                 }
 
@@ -608,7 +608,7 @@ function loginCustomer() {
                 jQuery("#signing_popup").dialog("close");
                 _islogedinuser = true;
 				if(_islogedinuser){
-				jQuery("#invite_friends").dialog("open");	
+				//jQuery("#invite_friends").dialog("open");	
 				}
                 // Redirection for invite friend.
                 if(window.location.href.indexOf("refer-a-friend") > -1) {
@@ -623,7 +623,7 @@ function loginCustomer() {
                 jQuery(".after-login li.smogi-balance a span").html(somgiBal);
                 if (_isClickShareWithFriends) {
                     //_isClickShareWithFriends = false;
-                    jQuery("#invite_friends").dialog("open");
+                    //jQuery("#invite_friends").dialog("open");
                 }
                 //check for _isClickAddtowishlist and trigger wishlist link automatically
                 if (_isClickAddtowishlist) {
