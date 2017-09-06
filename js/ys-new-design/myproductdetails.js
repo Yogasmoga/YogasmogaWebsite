@@ -1006,9 +1006,12 @@ function changeColor(clr) {
 			//Fahim.
 			if(jQuery("div#sizecontainer div").hasClass("showing-pre")){
 			jQuery(".haveheart-description").show();
+			
+			console.log("No-PreOrder");
 			}
 			else{
 			jQuery(".haveheart-description").hide();
+			console.log("PreOrder");
 			}
     //end insale
 }
