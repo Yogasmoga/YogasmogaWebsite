@@ -8371,5 +8371,5 @@ p span.pre-order-lable{margin-left:5px; font-weight:bold;}
 #MailpopForm .svg-logontext,#popForm .svg-logontext { max-width:90%; width:100%; height:auto;}
 
 .bcol-full a.first-image-block{display:block; position:relative;} 
-.bcol-full a.first-image-block .right-corner-text{display: block;position: absolute;bottom: 70%;right: 18%;z-index: 9;color: #fff;font:14px/22px Avantgarde-Demi;}
+.bcol-full a.first-image-block .right-corner-text{display: block;position: absolute;bottom: 70%;right: 17%;z-index: 9;color: #fff;font:14px/22px Avantgarde-Demi;}
 .bcol-full a.first-image-block .right-corner-text span{display:block;margin-top:5px; font-size:10px; text-transform:uppercase;}
