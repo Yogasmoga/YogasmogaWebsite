@@ -1007,11 +1007,11 @@ function changeColor(clr) {
 			if(jQuery("div#sizecontainer div").hasClass("showing-pre")){
 			jQuery(".haveheart-description").show();
 			
-			console.log("No-PreOrder");
+			jQuery(".pre-order-label").addClass("no-display");	
 			}
 			else{
 			jQuery(".haveheart-description").hide();
-			console.log("PreOrder");
+			jQuery(".pre-order-label").removeClass("no-display");	
 			}
     //end insale
 }

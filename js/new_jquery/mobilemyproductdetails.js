@@ -807,9 +807,11 @@ function changeColor(clr) {
 		//Fahim.
 			if(jQuery("div#sizecontainer div").hasClass("showing-pre")){
 			jQuery(".haveheart-description").show();
+			jQuery(".pre-order-label").addClass("no-display");	
 			}
 			else{
 			jQuery(".haveheart-description").hide();
+			jQuery(".pre-order-label").removeClass("no-display");	
 			}
     //end insale
 }
