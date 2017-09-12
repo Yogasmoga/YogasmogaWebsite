@@ -64,4 +64,9 @@
             </adminhtml>
         </routers>
     </admin>
+	<frontend>
+     <secure_url>
+      <all>/</all>
+     </secure_url>
+   </frontend>
 </config>
