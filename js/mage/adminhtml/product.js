@@ -415,7 +415,7 @@ Product.Configurable.prototype = {
                 li.attributeObject = attribute;
 
                 this.container.appendChild(li);
-                li.attributeValues = li.down('.attribute-values');
+                li.attributeValues = li.down('.attribute-values').disabled=true;
 
                 if (attribute.values) {
                     attribute.values.each( function(value) {
