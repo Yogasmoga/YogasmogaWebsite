@@ -819,7 +819,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
                 }
                 //      echo $output;
-                $fname = mktime().'.xls';
+                $fname = mktime();
 				chmod($fname, 0644);
                 file_put_contents('tempreports/'.$fname,$output);
                 Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
