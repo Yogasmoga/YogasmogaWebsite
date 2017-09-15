@@ -531,8 +531,10 @@ if($currentUrl != $checkoutpage){
 				</ul>
 				<script>
 				jQuery(function(){
+					<?php if ($clearance->getIsActive()) {?>
 					var _clearance = '<li rel="<?php echo $clearance->getId()?>" class="<?php echo $clearance->getName()?>"><a class="menu-heading" href="<?php echo $clearance->getUrl()?>"><?php echo $clearance->getName()?></a></li>';
 					jQuery(".main-menu.ctag-menu").append(_clearance);
+					<?php }?>
 				});
 				</script>
             </div>
