@@ -524,9 +524,17 @@ if($currentUrl != $checkoutpage){
             </span></li>
 
                     <!--menu-->
+					<?php $clearance =  Mage::getModel('catalog/category')->load(139)?>
                     <?php echo $this->getChildHtml('topMenu') ?>
-
-
+				
+					
+				</ul>
+				<script>
+				jQuery(function(){
+					var _clearance = '<li rel="<?php echo $clearance->getId()?>" class="<?php echo $clearance->getName()?>"><a class="menu-heading" href="<?php echo $clearance->getUrl()?>"><?php echo $clearance->getName()?></a></li>';
+					jQuery(".main-menu.ctag-menu").append(_clearance);
+				});
+				</script>
             </div>
             <div class="clearfix"></div>
             <div style="display:block;" class="f-right header-right">
