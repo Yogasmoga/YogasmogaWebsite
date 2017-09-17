@@ -294,6 +294,13 @@
                                 <?php } // gift set check finishes ?>
                             </li>
                         <?php endforeach; ?>
+						<?php $clearance =  Mage::getModel('catalog/category')->load(139)?>
+						<li class="menu-item has-dropdown c-text">
+                                <i></i>
+							<a class="menu-link main-txt" rel="cat_<?php echo $clearance->getId();?>" href="<?php echo $_helper->getCategoryUrl($clearance) ?>">
+                                    <?php echo $clearance->getName() ?>
+                                </a>
+						</li>		
                         <?php endif; ?>
                         <li class="menu-item story_icon">
 								  <span>
