@@ -2948,7 +2948,7 @@ ul.main-menu > li.over.gift-sets > ul.sub-menu .gift a{
 .banner_text1{position:relative;/* top:32%; left:14.5%;*/ top:21.84%; left:60.56%; float: left; text-align:center; padding-right:0px !important}
 .banner_text2{text-align:center; padding-right:0px !important; position:relative;left:27%; top: 36%;}
 .banner_text3{position:relative; text-align:center; display:inline-block; left:50%; top:47%;transform:translateX(-50%);-webkit-transform:translateX(-50%)}
-.banner_text4{float:right;position:relative;top:85%; right:4%;}
+.banner_text4{float:right;position:relative;top:33%; right:27%;}
 .banner_text5{text-align: center; float: right; position:relative; top:32%; right:6%; }
 .banner_text6{position:relative; top:26%;left:16.5%;float:left;}
 .banner_text7{ text-align:center; display:inline-block; float:left; position:relative; top:41.7%; left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%) }
@@ -5058,7 +5058,7 @@ a.instagram-img{
 .banner_text4 .banner_avant_grade_demi{font: 30px/30px AvantGardeGothicITCW01D;}
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
-	.slides .flex-active-slide .banner_avant_grade_demi{ font: 20px/20px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi{ font: 22px/24px AvantGardeGothicITCW01D;}
 	.slides .flex-active-slide .banner_avant_grade_demi.code{ font: 26px/42px AvantGardeGothicITCW01D;}
     .banner-avant-grade-bk-small{ font: 25px/30px ITCAvantGardeProBk; margin:15px 0;}
     .flexslider .slides img.img_madeinusa{max-width:208px;}
@@ -5071,7 +5071,7 @@ a.instagram-img{
 }
 @media screen and (min-width: 1400px) and (max-width: 1600px) {
     .banner_avant_grade_demi{ font: 38px/38px AvantGardeGothicITCW01D;}
-	.slides .flex-active-slide .banner_avant_grade_demi{ font: 20px/20px AvantGardeGothicITCW01D;}
+	.slides .flex-active-slide .banner_avant_grade_demi{ font: 22px/24px AvantGardeGothicITCW01D;}
 	.slides .flex-active-slide .banner_avant_grade_demi.code{ font: 26px/42px AvantGardeGothicITCW01D;}
     .banner-avant-grade-bk-small{ font: 25px/30px ITCAvantGardeProBk; margin:15px 0;}
     .flexslider .slides img.img_madeinusa{max-width:208px;}
@@ -5083,7 +5083,7 @@ a.instagram-img{
 	.events-block .events-controller{margin-right:10%;}
 	.left-section4block .slider-block .flex-control-nav{bottom:-10px;}
 	.left-section4block .social-insta-block{width:100%; margin-top:180px;}
-	.cms-home .banner_text4{}
+	.cms-home .banner_text4{right:31%}
 }
 .productcost .p-free{text-decoration:line-through; color:#999; font-size:18px;padding-right:8px; }
 .productcost .t-free{color:#555; font-size:18px;}
