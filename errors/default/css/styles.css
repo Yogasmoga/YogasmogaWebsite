@@ -765,10 +765,10 @@ body.mobile-body{
 body.mobile-body .page{
 	background: #000 url(../images/namaskar.jpg) top left;
 	background-size:cover;
-    width:720px!important;
+    width:100%!important;
 	margin:0 auto;
 	height:100%!important;
-	min-height:370px;
+	min-height:720px;
 }
 
 p {
