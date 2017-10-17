@@ -782,9 +782,8 @@ p {
     text-align: center;
     font-size: 17px;
 	display:none;
-	
 }
-
+body.mobile-body h1,body.mobile-body .page-title{display:block;color:#fff; margin-top:20px} 
 .page-title h1 {
     margin: 0;
     color: #777;
