@@ -752,6 +752,7 @@ p.required {
 
 /********************** design update by ys team *****************/
 
+
 body.desktop{
 	
 	background:url(../images/namaskar.jpg) #000; background-size:cover;
@@ -762,14 +763,19 @@ body.mobile-body{
 	
 	
 }
-body.mobile-body .page{
-	background: #000 url(../images/namaskar.jpg) top left;
-	background-size:cover;
-    width:100%!important;
-	margin:0 auto;
-	height:100%!important;
-	min-height:720px;
-}
+body.mobile-body .wrapper{
+	background: url(../images/namaskar.jpg) 0 0 no-repeat #000;
+	background-size: cover;
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999999;
+    height: 100%;
+	
+	}
 
 p {
     margin: 0 0 10px;
