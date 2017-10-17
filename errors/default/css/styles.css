@@ -751,10 +751,32 @@ p.required {
 /* ======================================================================================= */
 
 /********************** design update by ys team *****************/
+
+body.desktop{
+	
+	background:url(../images/namaskar.jpg) #000; background-size:cover;
+    width:100%!important;height:100%!important;
+}
+body.mobile-body{
+	
+	
+	
+}
+body.mobile-body .page{
+	background: #000 url(../images/namaskar.jpg) top left;
+	background-size:cover;
+    width:720px!important;
+	margin:0 auto;
+	height:100%!important;
+	min-height:370px;
+}
+
 p {
     margin: 0 0 10px;
     text-align: center;
-    font-size: 17px
+    font-size: 17px;
+	display:none;
+	
 }
 
 .page-title h1 {
@@ -762,8 +784,9 @@ p {
     color: #777;
     font-size: 40px;
     text-align: center;
+	
 }
-
+.page-title{display:none;}
 .main-container {
     background: none;
 }
