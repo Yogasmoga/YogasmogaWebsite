@@ -63,7 +63,7 @@ if (!file_exists($mageFilename)) {
     exit;
 }
 
-$allowed_ips = array('103.211.19.204');
+$allowed_ips = array('103.211.19.204','115.118.154.169');
 $ip = $_SERVER['REMOTE_ADDR'];
 
 
